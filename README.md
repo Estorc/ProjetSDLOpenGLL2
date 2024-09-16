@@ -7,8 +7,4 @@
 - SDL2 TTF
 
 # Install
-sudo apt install build-essential
-sudo apt-get install kdialog
-sudo apt-get install libsdl2-dev
-sudo apt-get install libsdl2-image-dev
-sudo apt-get install libsdl2-ttf-dev
+sudo apt install build-essential kdialog libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
