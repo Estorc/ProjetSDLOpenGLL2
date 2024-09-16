@@ -14,7 +14,12 @@ git clone https://github.com/Estorc/ProjetSDLOpenGLL2.git
 ```
 
 # GIT
+## Récupérer les changements :
+```git
+git pull                # Permet de récupérer les dernières mises à jour du projet.
 ```
-git pull # Permet de récupérer les dernières mises à jour du projet.
-git push # Permet d'envoyer les changements locaux au git.
+## Envoyer les changements :
+```git
+git commit -a           # Prépare le commit (utilisez "git commit -am uncommented" pour passer le commentaire).
+git push -u origin main     # Permet d'envoyer les changements locaux au git.
 ```
