@@ -13,6 +13,13 @@ cd <EMPLACEMENT_DU_PROJET>
 git clone https://github.com/Estorc/ProjetSDLOpenGLL2.git
 ```
 
+## Compiler le projet
+```
+make            # Construit le projet avec la configuration par défaut.
+make debug      # Construit le projet avec la configuration de déboggage.
+make tools      # Construit les outils de compilation.
+```
+
 ## GIT
 ### Récupérer les changements :
 ```git
