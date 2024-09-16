@@ -1,24 +1,24 @@
 # ProjetSDLOpenGLL2
 
-# Librairies
+## Librairies
 - KDialog
 - SDL2
 - SDL2 Image
 - SDL2 TTF
 
-# Installer le projet
+## Installer le projet
 ```sh
 sudo apt install build-essential kdialog libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
 cd <EMPLACEMENT_DU_PROJET>
 git clone https://github.com/Estorc/ProjetSDLOpenGLL2.git
 ```
 
-# GIT
-## Récupérer les changements :
+## GIT
+### Récupérer les changements :
 ```git
 git pull                # Permet de récupérer les dernières mises à jour du projet.
 ```
-## Envoyer les changements :
+### Envoyer les changements :
 ```git
 git commit -a           # Prépare le commit (utilisez "git commit -am uncommented" pour passer le commentaire).
 git push -u origin main     # Permet d'envoyer les changements locaux au git.
