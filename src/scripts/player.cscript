@@ -1,0 +1,89 @@
+NEW_SCRIPT(player)
+	PARAMS_COUNT(2);
+
+	int *show_fps = &node->params[0].i;
+	int *force_60fps = &node->params[1].i;
+
+	if (*show_fps) {
+		char delta_str[50];
+		char fps_str[50];
+		sprintf(delta_str, "DELTA: %.4f", delta);
+		if (delta) {
+			fps = (fps+(1.0/delta))/2.0;
+			sprintf(fps_str, "FPS: %.4f", fps);
+		}
+
+		TTF_Font *font = TTF_OpenFont("fonts/determination-mono.ttf", 48);
+		SDL_Color textColor = {255, 255, 255, 255};
+		draw_text(window->ui_surface, 8, 0, delta_str, font, textColor);
+		draw_text(window->ui_surface, 8, 32, fps_str, font, textColor);
+		TTF_CloseFont(font);
+	}
+
+	if (*force_60fps) {
+		const float TARGET_FPS = 1.0/60.0;
+		nanosleep((const struct timespec[]){{0, (TARGET_FPS-delta)*10e9}}, NULL);
+		delta += (TARGET_FPS-delta);
+	}
+
+
+	if (input->pressed_keys & KEY_F) {
+		(*show_fps) = !(*show_fps);
+	}
+
+	if (input->pressed_keys & KEY_G) {
+		(*force_60fps) = !(*force_60fps);
+	}
+
+
+
+
+	KinematicBody *player = (KinematicBody*) node->object;
+
+	f32 vel = 0.05f;
+	if (input->active_keys & KEY_SHIFT) vel = 0.2f;
+	vel *= delta * 100.0;
+
+
+	Camera *c = (Camera*) node->children[0]->object;
+
+	vec3 appliedVelocity;
+	glm_vec3_zero(appliedVelocity);
+	
+	if (input->active_keys & KEY_LEFT) {
+		appliedVelocity[0] += -c->dir[2] * vel;
+		appliedVelocity[2] += c->dir[0] * vel;
+	};
+	if (input->active_keys & KEY_RIGHT) {
+		appliedVelocity[0] -= -c->dir[2] * vel;
+		appliedVelocity[2] -= c->dir[0] * vel;
+	};
+	if (input->active_keys & KEY_UP) {
+		appliedVelocity[0] -= c->dir[0] * vel;
+		appliedVelocity[2] -= c->dir[2] * vel;
+	};
+	if (input->active_keys & KEY_DOWN) {
+		appliedVelocity[0] += c->dir[0] * vel;
+		appliedVelocity[2] += c->dir[2] * vel;
+	};
+
+	if (input->pressed_keys & KEY_JUMP) {
+		player->velocity[1] = 0.2f;
+	};
+
+	if (appliedVelocity[0])
+		player->velocity[0] = appliedVelocity[0];
+	else
+		player->velocity[0] += (-player->velocity[0])/20.0;
+
+	if (appliedVelocity[2])
+		player->velocity[2] = appliedVelocity[2];
+	else
+		player->velocity[2] += (-player->velocity[2])/20.0;
+
+	player->velocity[1] -= 0.5*delta;
+
+    //if (input->active_keys & KEY_JUMP) c->targetPos[1] += vel;
+	//if (input->active_keys & KEY_CROUCH) c->targetPos[1] -= vel;
+
+END_SCRIPT(player)

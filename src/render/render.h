@@ -1,0 +1,1 @@
+void draw_screen(Window *window, Node *viewportNode, Camera *c, Shader shaders[], DepthMap *depthMap);

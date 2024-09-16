@@ -1,0 +1,9 @@
+empty{level_editor}:3
+camera(1){free_camera}
+empty:3
+mdl(models/collisionShapes/box.obj)[v0]
+mdl(models/collisionShapes/plane.obj)[v0]
+mdl(models/collisionShapes/sphere.obj)[v0]
+empty[a0]:0
+v:1
+msaa

@@ -1,0 +1,1 @@
+float get_time_in_seconds();

@@ -1,0 +1,21 @@
+empty[m0.0,0.0,0.0]:5
+rbody(0.0,0.0,0.0, 0.0,0.0,0.0, 0.0,-1.0,0.0, 5.0, 0.99, 0.0,0.0,0.0, 1)
+csphere;
+[m0.0,100.0,0.0]:1
+mdl(models/debug_sphere/model.obj)
+sbody(1)
+cbox;
+[m0.0,0.0,0.0r0.0,0.0,45.0,s4.0,2.0,2.0]:1
+mdl(models/crate/model.obj)
+kbody(0.0,0.0,0.0, 1)
+csphere;
+[m0.0,5.0,10.0r0.0,180.0,0.0]{player}:1
+camera(1)[m0.0,4.0,0.0r0.0,0.0,0.0]{camera}
+empty[m0.1,0.0,0.1]:1
+sbody(1)
+cplane;
+[m0.0,0.0,0.0]:1
+tp(textures/texture.png)[r180.0,0.0,0.0]
+sky(skybox/right.jpg,skybox/left.jpg,skybox/top.jpg,skybox/bottom.jpg,skybox/front.jpg,skybox/back.jpg)
+v:1
+msaa
