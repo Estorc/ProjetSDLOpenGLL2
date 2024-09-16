@@ -1,7 +1,6 @@
 # ProjetSDLOpenGLL2
 
 # Librairies
-- Make
 - KDialog
 - SDL2
 - SDL2 Image
