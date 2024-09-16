@@ -15,5 +15,6 @@ git clone https://github.com/Estorc/ProjetSDLOpenGLL2.git
 
 # GIT
 ```
-git push -u origin main
+git pull
+git push
 ```
