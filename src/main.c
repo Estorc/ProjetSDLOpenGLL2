@@ -78,10 +78,16 @@ int main(int argc, char *argv[]) {
 
     CollisionBuffer collisionBuffer;
     Node *viewportNode;
+
+    Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 640);
+    Mix_Music *music = Mix_LoadMUS("audio/musics/test.mp3");
+    Mix_PlayMusic(music, 1);
+
     if (argc >= 2 && !strcmp(argv[1], "editor")) viewportNode = load_scene("scenes/editor.scene", &cam, &collisionBuffer, scripts);
     else viewportNode = load_scene("scenes/boot.scene", &cam, &collisionBuffer, scripts);
     while (update(&window, viewportNode, cam, &input, shaders, &depthMap, &collisionBuffer) >= 0);
 
+    Mix_FreeMusic(music);
     free(collisionBuffer.collisionsShapes);
     free_memory_cache();
     free_node(viewportNode);

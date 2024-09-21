@@ -48,10 +48,11 @@ LFLAGS += `sdl2-config --cflags --libs`
 LFLAGS += -lm
 LFLAGS += -Ilib
 LFLAGS += -lSDL2_image
+LFLAGS += -lSDL2_ttf
+LFLAGS += -lSDL2_mixer
 LFLAGS += -lGL
 LFLAGS += -lGLU
 LFLAGS += -lGLX
-LFLAGS += -lSDL2_ttf
 
 WFLAGS += -Wall
 WFLAGS += -Wno-implicit-function-declaration
