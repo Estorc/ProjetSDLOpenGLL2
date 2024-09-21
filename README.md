@@ -8,7 +8,7 @@
 
 ## Installation
 ```sh
-sudo apt install build-essential kdialog libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
+sudo apt install build-essential kdialog libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
 cd <EMPLACEMENT_DU_PROJET>
 git clone https://github.com/Estorc/ProjetSDLOpenGLL2.git
 ```
