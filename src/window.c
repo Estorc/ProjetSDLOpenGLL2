@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_opengl.h>
+#include <SDL2/SDL_mixer.h>
 #include <GL/glu.h>
 #include <GL/glext.h>
 #include "utils/time.h"
@@ -40,8 +41,14 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
     window->startTime = get_time_in_seconds();
     window->time = 0.0f;
     window->lastTime = 0.0f;
-    if(SDL_Init(SDL_INIT_VIDEO) < 0) {
+    if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
         printf("Failed to initialize the SDL2 library\n");
+        return -1;
+    }
+
+    if (Mix_Init(flags) < 0) {
+        printf("Could not initialize mixer\n");
+        printf("Mix_Init: %s\n", Mix_GetError());
         return -1;
     }
 

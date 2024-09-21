@@ -56,9 +56,9 @@ in VS_OUT {
     mat3 TBN;
 } fs_in;
 
-uniform sampler2D diffuseTexture;
-uniform sampler2D normalTexture;
-uniform sampler2D displacementTexture;
+uniform sampler2D diffuseMap;
+uniform sampler2D normalMap;
+uniform sampler2D displacementMap;
 uniform sampler2D shadowMap;
 
 
@@ -76,7 +76,7 @@ vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir, flo
 
 vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir)
 { 
-    float height =  texture(displacementTexture, texCoords).r;    
+    float height =  texture(displacementMap, texCoords).r;    
     vec2 p = viewDir.xy / viewDir.z * (height * 0.01);
     return texCoords - p; 
 }   
@@ -126,7 +126,7 @@ void main()
     //}
 
 
-    vec4 tex = texture(diffuseTexture, texCoords);
+    vec4 tex = texture(diffuseMap, texCoords);
     if (tex.a < 0.1)
         discard;
     vec3 color = tex.rgb;
@@ -134,7 +134,7 @@ void main()
 
     vec3 normal = fs_in.Normal;
     if (normalMapActive) {
-        normal = texture(normalTexture, fs_in.TexCoords).rgb;
+        normal = texture(normalMap, fs_in.TexCoords).rgb;
         normal = normal * 2.0 - 1.0;   
     }
     normal = normalize(normal); 

@@ -60,7 +60,7 @@ void create_textured_plane(TexturedMesh *texturedMesh, char *texture) {
 
         25.0f, 0.0f,  25.0f,  0.0f, -1.0f, 0.0f,  25.0f,  0.0f,
         -25.0f, 0.0f, -25.0f,  0.0f, -1.0f, 0.0f,   0.0f, 25.0f,
-        25.0f, 0.0f, -25.0f,  0.0f, -1.0f, 0.0f,  25.0f, 25.0f    
+        25.0f, 0.0f, -25.0f,  0.0f, -1.0f, 0.0f,  25.0f, 25.0f
     };
     glGenVertexArrays(1, &meshVAO);
     glGenBuffers(1, &meshVBO);

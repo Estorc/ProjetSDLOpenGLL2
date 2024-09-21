@@ -37,8 +37,8 @@ void main()
         col = texture(screenTexture,uv).rgb;
     */
     vec3 col = texture(screenTexture,fragCoord).rgb;
-    col *= 1-(pow((fragCoord.x-0.5)*2.0,2) + pow((fragCoord.y-0.5)*1.5,2));
-    col *= min(0.2/(pow((fragCoord.x-0.5),2) + pow((fragCoord.y-0.5),2)), 2.0);
+    //col *= 1-(pow((fragCoord.x-0.5)*2.0,2) + pow((fragCoord.y-0.5)*1.5,2));
+    //col *= min(0.2/(pow((fragCoord.x-0.5),2) + pow((fragCoord.y-0.5),2)), 2.0);
     vec4 hud = texture(UITexture,vec2(fragCoord.x, -fragCoord.y));
     col = mix(col, hud.rgb, hud.a);
     
