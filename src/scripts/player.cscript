@@ -71,14 +71,14 @@ NEW_SCRIPT(player)
 		player->velocity[1] = 0.2f;
 	};
 
-	if (appliedVelocity[0])
-		player->velocity[0] = appliedVelocity[0];
-	else
+	if (appliedVelocity[0]) {
+		player->velocity[0] += (appliedVelocity[0] - player->velocity[0]) / 20.0;
+	} else
 		player->velocity[0] += (-player->velocity[0])/20.0;
 
-	if (appliedVelocity[2])
-		player->velocity[2] = appliedVelocity[2];
-	else
+	if (appliedVelocity[2]) {
+		player->velocity[2] += (appliedVelocity[2] - player->velocity[2]) / 20.0;
+	} else
 		player->velocity[2] += (-player->velocity[2])/20.0;
 
 	player->velocity[1] -= 0.5*delta;
