@@ -133,7 +133,7 @@ void update_window(Window *window, Node *viewportNode, Camera *c, WorldShaders *
 
     window->lastTime = window->time;
     window->time = get_time_in_seconds() - window->startTime;
-    //SDL_SetRelativeMouseMode(SDL_TRUE);  
+    SDL_SetRelativeMouseMode(SDL_TRUE);  
 
 
 
