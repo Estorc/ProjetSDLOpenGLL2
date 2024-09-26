@@ -147,9 +147,9 @@ void main()
     normal = normalize(normal); 
     //vec3 rgb_normal = normal * 0.5 + 0.5; // transforms from [-1,1] to [0,1]  
 
-    float shadow;
+    float shadow = 0.0;
 
-    vec3 result;
+    vec3 result = vec3(0);
     // phase 1: directional lighting
     for(int i = 0; i < dirLightsNum && i < DIR_LIGHTS_MAX; i++) {
         shadow += ShadowCalculation(fs_in.FragPosLightSpace, normal, dirLights[i].position);
@@ -166,8 +166,7 @@ void main()
     
 
     float gamma = 2.2;
-    //FragColor = vec4(result, 1.0) * tex;
-    FragColor = vec4(1.0) * tex;
+    FragColor = vec4(result, 1.0) * tex;
     FragColor.rgb = pow(FragColor.rgb, vec3(1.0/gamma));
 }
 
