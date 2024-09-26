@@ -32,7 +32,7 @@
 
 void apply_impulse(Node *node, vec3 impulse, vec3 torque, vec3 correction, float momentOfInertia) {
     switch (node->type) {
-        case NODE_RIGID_BODY:
+        case NODE_RIGID_BODY: ;
             RigidBody *rigidBody = (RigidBody *) node->object;
 
             // Change velocity
@@ -49,7 +49,7 @@ void apply_impulse(Node *node, vec3 impulse, vec3 torque, vec3 correction, float
             glm_vec3_sub(rigidBody->angularVelocity, torque, rigidBody->angularVelocity);
 
         break;
-        case NODE_KINEMATIC_BODY:
+        case NODE_KINEMATIC_BODY: ;
             KinematicBody *kinematicBody = (KinematicBody *) node->object;
 
             // Change velocity
@@ -73,10 +73,10 @@ void apply_impulse(Node *node, vec3 impulse, vec3 torque, vec3 correction, float
 
 float get_velocity_norm(Node *node) {
     switch (node->type) {
-        case NODE_KINEMATIC_BODY:
+        case NODE_KINEMATIC_BODY: ;
             KinematicBody *kinematicBody = (KinematicBody *) node->object;
             return glm_vec3_norm(kinematicBody->velocity);
-        case NODE_RIGID_BODY:
+        case NODE_RIGID_BODY: ;
             RigidBody *rigidBody = (RigidBody *) node->object;
             return glm_vec3_norm(rigidBody->velocity);
     }
@@ -92,15 +92,15 @@ float get_velocity_norm(Node *node) {
 
 void get_velocity(Node *node, vec3 velocity) {
     switch (node->type) {
-        case NODE_KINEMATIC_BODY:
+        case NODE_KINEMATIC_BODY: ;
             KinematicBody *kinematicBody = (KinematicBody *) node->object;
             glm_vec3_copy(kinematicBody->velocity, velocity);
         break;
-        case NODE_RIGID_BODY:
+        case NODE_RIGID_BODY: ;
             RigidBody *rigidBody = (RigidBody *) node->object;
             glm_vec3_copy(rigidBody->velocity, velocity);
         break;
-        case NODE_STATIC_BODY:
+        case NODE_STATIC_BODY: ;
             glm_vec3_zero(velocity);
         break;
     }
@@ -109,14 +109,14 @@ void get_velocity(Node *node, vec3 velocity) {
 
 void get_mass(Node *node, float * mass) {
     switch (node->type) {
-        case NODE_RIGID_BODY:
+        case NODE_RIGID_BODY: ;
             RigidBody *rigidBody = (RigidBody *) node->object;
             (*mass) = rigidBody->mass;
         break;
-        case NODE_STATIC_BODY:
+        case NODE_STATIC_BODY: ;
             (*mass) = INFINITY;
         break;
-        case NODE_KINEMATIC_BODY:
+        case NODE_KINEMATIC_BODY: ;
             (*mass) = 100.0;
         break;
     }
@@ -124,14 +124,14 @@ void get_mass(Node *node, float * mass) {
 
 void get_center_of_mass(Node *node, vec3 com) {
     switch (node->type) {
-        case NODE_RIGID_BODY:
+        case NODE_RIGID_BODY: ;
             RigidBody *rigidBody = (RigidBody *) node->object;
             glm_vec3_copy(rigidBody->centerOfMass, com);
         break;
-        case NODE_STATIC_BODY:
+        case NODE_STATIC_BODY: ;
             glm_vec3_zero(com);
         break;
-        case NODE_KINEMATIC_BODY:
+        case NODE_KINEMATIC_BODY: ;
             glm_vec3_zero(com);
         break;
     }
@@ -950,13 +950,13 @@ void update_spot_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, 
 
 void update_node_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, CollisionBuffer *collisionBuffer, u8 lightsCount[LIGHTS_COUNT]) {
     switch (node->type) {
-        case NODE_RIGID_BODY:
+        case NODE_RIGID_BODY: ;
             update_rigid_body(node, pos, rot, scale, delta, collisionBuffer);
         break;
-        case NODE_STATIC_BODY:
+        case NODE_STATIC_BODY: ;
             update_static_body(node, pos, rot, scale, delta, collisionBuffer);
         break;
-        case NODE_KINEMATIC_BODY:
+        case NODE_KINEMATIC_BODY: ;
             update_kinematic_body(node, pos, rot, scale, delta, collisionBuffer);
         break;
         case NODE_CAMERA:

@@ -71,7 +71,7 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
       IMMEDIATE = 0,
       VSYNC = 1
     };
-    SDL_GL_SetSwapInterval(VSYNC);
+    SDL_GL_SetSwapInterval(ADAPTIVE_VSYNC);
 
     window->sdl_window = SDL_CreateWindow(title, x, y, width, height, flags);
     window->opengl_ctx = SDL_GL_CreateContext(window->sdl_window);

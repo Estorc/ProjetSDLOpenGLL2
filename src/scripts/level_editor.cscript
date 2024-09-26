@@ -1,13 +1,12 @@
+#ifdef DEBUG
 #include "../io/node_loader.h"
 #include "../utils/node_tools.h"
 #include "../utils/editor_utils.c"
 #include "../io/osio.h"
 
-#ifdef DEBUG
 const char NodeTypeNames[][100] = {
 	NODE_NAMES
 };
-#endif
 
 
 void load_menu(Window *window, Node *node, Input *input, TTF_Font *font) {
@@ -348,7 +347,10 @@ void draw_node_tree(Window *window, Node *node, int level, Input *input, TTF_Fon
 
 }
 
+#endif
+
 NEW_SCRIPT(level_editor)
+#ifdef DEBUG
 	PARAMS_COUNT(6);
 
 	int *scrollY = &node->params[0].i;
@@ -404,5 +406,6 @@ NEW_SCRIPT(level_editor)
 
 	}
 	TTF_CloseFont(font);
+#endif
 
 END_SCRIPT(level_editor)

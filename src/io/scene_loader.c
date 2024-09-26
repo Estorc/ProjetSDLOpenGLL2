@@ -112,7 +112,7 @@ Node *load_node(FILE *file, Camera **c, CollisionBuffer *collisionBuffer, Script
         paramSymbol = getc(file);
         
         switch (paramSymbol) {
-            case ':':
+            case ':': ;
                 
                 int children_count = 0;
                 fscanf(file,"%d\n", &children_count);
@@ -123,7 +123,7 @@ Node *load_node(FILE *file, Camera **c, CollisionBuffer *collisionBuffer, Script
                 for (int i = 0; i < children_count; i++)
                     add_child(node, load_node(file, c, collisionBuffer, scripts, editor));
                 break;
-            case '[':
+            case '[': ;
                 char transformSymbol;
                 do {
                     
@@ -132,32 +132,32 @@ Node *load_node(FILE *file, Camera **c, CollisionBuffer *collisionBuffer, Script
                     float x,y,z;
                     u8 value;
                     switch (transformSymbol) {
-                        case 's':
+                        case 's': ;
                             fscanf(file, "%f,%f,%f", &x, &y, &z);
                             node->scale[0] = x;
                             node->scale[1] = y;
                             node->scale[2] = z;
                             break;
-                        case 'r':
+                        case 'r': ;
                             fscanf(file, "%f,%f,%f", &x, &y, &z);
                             node->rot[0] = x;
                             node->rot[1] = y;
                             node->rot[2] = z;
                             break;
-                        case 'm':
+                        case 'm': ;
                             fscanf(file, "%f,%f,%f", &x, &y, &z);
                             node->pos[0] = x;
                             node->pos[1] = y;
                             node->pos[2] = z;
                             break;
-                        case 'v':
+                        case 'v': ;
                             fscanf(file, "%hhd", &value);
                             if (value)
                                 node->flags |= NODE_VISIBLE;
                             else
                                 node->flags &= ~NODE_VISIBLE;
                             break;
-                        case 'a':
+                        case 'a': ;
                             fscanf(file, "%hhd", &value);
                             if (value)
                                 node->flags |= NODE_ACTIVE;
@@ -167,7 +167,7 @@ Node *load_node(FILE *file, Camera **c, CollisionBuffer *collisionBuffer, Script
                     }
                 } while (transformSymbol != ']');
                 break;
-            case '{':
+            case '{': ;
                 char scriptname[100];
                 fscanf(file, "%100[^}]}", scriptname);
                 for (int i = 0; i < SCRIPTS_COUNT; i++) {

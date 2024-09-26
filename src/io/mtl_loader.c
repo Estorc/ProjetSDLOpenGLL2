@@ -88,7 +88,7 @@ int load_mtl(char *path, char *filename, Material **materials) {
         if (!*materials) return -1;
         symbol = getc(file);
         switch (symbol) {
-        case 'n':
+        case 'n': ;
             fscanf(file, "%*[^ ] %s", (char *) &(*materials)[++mi].name);
             (*materials)[mi].ambientCol[0] = (*materials)[mi].ambientCol[1] = (*materials)[mi].ambientCol[2] = 0.5f;
             (*materials)[mi].specularCol[0] = (*materials)[mi].specularCol[1] = (*materials)[mi].specularCol[2] = 0.5f;
@@ -98,37 +98,37 @@ int load_mtl(char *path, char *filename, Material **materials) {
             (*materials)[mi].normalTextureMap = 0;
             (*materials)[mi].displacementTextureMap = 0;
             break;
-        case 'N':
+        case 'N': ;
             symbol = getc(file);
             switch (symbol) {
-                case 's':
+                case 's': ;
                     fscanf(file, "%f\n", &(*materials)[mi].specularExp);
                     break;
-                case 'i':
+                case 'i': ;
                     fscanf(file, "%f\n", &(*materials)[mi].opticalDensity);
                     break;
                 default: fscanf(file, "%*[^\n]\n");
             }
             break;
-        case 'K':
+        case 'K': ;
             symbol = getc(file);
             switch (symbol) {
-                case 'a':
+                case 'a': ;
                     fscanf(file, "%f %f %f\n", &(*materials)[mi].ambientCol[0], &(*materials)[mi].ambientCol[1], &(*materials)[mi].ambientCol[2]);
                     break;
-                case 's':
+                case 's': ;
                     fscanf(file, "%f %f %f\n", &(*materials)[mi].specularCol[0], &(*materials)[mi].specularCol[1], &(*materials)[mi].specularCol[2]);
                     break;
-                case 'd':
+                case 'd': ;
                     fscanf(file, "%f %f %f\n", &(*materials)[mi].diffuseCol[0], &(*materials)[mi].diffuseCol[1], &(*materials)[mi].diffuseCol[2]);
                     break;
                 default: fscanf(file, "%*[^\n]\n");
             }
             break;
-        case 'i':
+        case 'i': ;
             fscanf(file, "%hhd\n", &(*materials)[mi].illumFlag);
             break;
-        case 'd':
+        case 'd': ;
             
             if (getc(file) == 'i') {
 
@@ -142,7 +142,7 @@ int load_mtl(char *path, char *filename, Material **materials) {
 
             } else fscanf(file, "%f\n", &(*materials)[mi].opacity);
             break;
-        case 'm':
+        case 'm': ;
             
             char textureFilename[50];
             char textureType[20];
@@ -157,7 +157,7 @@ int load_mtl(char *path, char *filename, Material **materials) {
             free(fullPath);
 
             break;
-        case '#':
+        case '#': ;
         default:
             fscanf(file, "%*[^\n]\n");
             break;

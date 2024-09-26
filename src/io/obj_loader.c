@@ -244,25 +244,25 @@ int load_obj_model(char *path, Model **modelPtr) {
         }
         symbol = getc(file);
         switch (symbol) {
-        case 'v':
+        case 'v': ;
             symbol = getc(file);
             switch (symbol) {
-                case ' ':
+                case ' ': ;
                     fscanf(file, "%f %f %f\n", &object->vertex[vi][0],&object->vertex[vi][1],&object->vertex[vi][2]);
                     vi++;
                     break;
-                case 't':
+                case 't': ;
                     fscanf(file, "%f %f\n", &object->textureVertex[vti][0],&object->textureVertex[vti][1]);
                     vti++;
                     break;
-                case 'n':
+                case 'n': ;
                     fscanf(file, "%f %f %f\n", &object->normals[vni][0],&object->normals[vni][1],&object->normals[vni][2]);
                     vni++;
                     break;
                 default: fscanf(file, "%*[^\n]\n");
             }
             break;
-        case 'f':
+        case 'f': ;
             if (!object->materialsCount || model->materials[selectedMaterialId].name != object->materials[object->materialsCount-1]->name) {
                 
                 object->materialsCount++;
@@ -334,7 +334,7 @@ int load_obj_model(char *path, Model **modelPtr) {
             }
             fi++;
             break;
-        case 'm':
+        case 'm': ;
             
             char materialFilename[50];
             fscanf(file, "%*[^ ] %s\n", (char *) &materialFilename);
@@ -343,17 +343,17 @@ int load_obj_model(char *path, Model **modelPtr) {
             free(material_path);
             model->materialsCount = mc;
             break;
-        case 's':
+        case 's': ;
             
             fscanf(file, "%hhd\n", &object->smoothShading);
             break;
-        case 'u':
+        case 'u': ;
             
             char materialName[50];
             fscanf(file, "%*[^ ] %[^\n]", (char *) materialName);
             selectedMaterialId = find_material(model->materials, mc, materialName);
             break;
-        case 'o':
+        case 'o': ;
             
             fscanf(file, "%*[^\n]");
             if (object) {
@@ -369,9 +369,9 @@ int load_obj_model(char *path, Model **modelPtr) {
             offv += vi, offvt += vti, offvn += vni, fi = 0, vi = 0, vti = 0, vni = 0, fim = 30, vim = 50, vtim = 50, vnim = 50;
             malloc_obj(object, vim, fim, vnim, vtim);
             break;
-        case '\n':
+        case '\n': ;
             break;
-        case '#':
+        case '#': ;
         default:
             fscanf(file, "%*[^\n]\n");
             break;

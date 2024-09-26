@@ -723,7 +723,7 @@ void free_node(Node *node) {
     switch (node->type) {
         case NODE_MODEL:
             break;
-        case NODE_VIEWPORT:
+        case NODE_VIEWPORT: ;
             Viewport *viewport = (Viewport *) node->object;
             if (viewport->scene)
                 free_node(viewport->scene);
