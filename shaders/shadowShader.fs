@@ -10,6 +10,7 @@ struct Material {
 
 struct DirLight {
     vec3 position;
+    vec3 direction;
 	
     vec3 ambient;
     vec3 diffuse;
@@ -43,8 +44,6 @@ struct SpotLight {
     vec3 specular;       
 };
 
-#define NR_POINT_LIGHTS 4
-
 in VS_OUT {
     vec3 FragPos;
     vec3 Normal;
@@ -61,13 +60,20 @@ uniform sampler2D normalMap;
 uniform sampler2D displacementMap;
 uniform sampler2D shadowMap;
 
-
 uniform bool normalMapActive;
 uniform bool displacementMapActive;
-uniform DirLight dirLight;
-uniform PointLight pointLights[NR_POINT_LIGHTS];
-uniform SpotLight spotLight;
 uniform Material material;
+
+#define DIR_LIGHTS_MAX 100
+#define POINT_LIGHTS_MAX 100
+#define SPOT_LIGHTS_MAX 100
+
+uniform int pointLightsNum;
+uniform int dirLightsNum;
+uniform int spotLightsNum;
+uniform DirLight dirLights[DIR_LIGHTS_MAX];
+uniform PointLight pointLights[POINT_LIGHTS_MAX];
+uniform SpotLight spotLights[SPOT_LIGHTS_MAX];
 
 
 vec3 CalcDirLight(DirLight light, vec3 normal, vec3 fragPos, vec3 viewDir, float shadow);
@@ -135,20 +141,28 @@ void main()
     vec3 normal = fs_in.Normal;
     if (normalMapActive) {
         normal = texture(normalMap, fs_in.TexCoords).rgb;
-        normal = normal * 2.0 - 1.0;   
+        normal = normal * 2.0 - 1.0;
+        normal = normalize(fs_in.TBN * normal);
     }
     normal = normalize(normal); 
     //vec3 rgb_normal = normal * 0.5 + 0.5; // transforms from [-1,1] to [0,1]  
 
-    float shadow = ShadowCalculation(fs_in.FragPosLightSpace, normal, dirLight.position);
+    float shadow;
 
+    vec3 result;
     // phase 1: directional lighting
-    vec3 result = CalcDirLight(dirLight, normal, fs_in.FragPos, viewDir, shadow);
+    for(int i = 0; i < dirLightsNum && i < DIR_LIGHTS_MAX; i++) {
+        shadow += ShadowCalculation(fs_in.FragPosLightSpace, normal, dirLights[i].position);
+        result += CalcDirLight(dirLights[i], normal, fs_in.FragPos, viewDir, shadow);
+    }
     // phase 2: point lights
-    for(int i = 0; i < NR_POINT_LIGHTS; i++)
+    for(int i = 0; i < pointLightsNum && i < POINT_LIGHTS_MAX; i++) {
         result += CalcPointLight(pointLights[i], normal, fs_in.FragPos, viewDir, shadow);    
+    }
     // phase 3: spot light
-    result += CalcSpotLight(spotLight, normal, fs_in.FragPos, viewDir, shadow);    
+    for(int i = 0; i < spotLightsNum && i < SPOT_LIGHTS_MAX; i++) {
+        result += CalcSpotLight(spotLights[i], normal, fs_in.FragPos, viewDir, shadow);    
+    }
     
 
     float gamma = 2.2;
@@ -160,7 +174,7 @@ void main()
 // calculates the color when using a directional light.
 vec3 CalcDirLight(DirLight light, vec3 normal, vec3 fragPos, vec3 viewDir, float shadow)
 {
-    vec3 lightDir = normalize(light.position - fragPos);
+    vec3 lightDir = normalize(light.direction);
     // diffuse shading
     float diff = max(dot(normal, lightDir), 0.0);
     // specular shading

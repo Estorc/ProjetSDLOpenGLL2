@@ -21,8 +21,9 @@ typedef struct Window {
     float lastTime;
 } Window;
 
+struct WorldShaders;
 s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Window *window);
-void update_window(Window *window, Node *viewportNode, Camera *c, Shader shaders[], DepthMap *depthMap);
+void update_window(Window *window, Node *viewportNode, Camera *c, struct WorldShaders *shaders, DepthMap *depthMap);
 void refresh_ui(Window *window);
 void free_window(Window *window);
 

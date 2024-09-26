@@ -5,41 +5,10 @@
 #include <GL/glu.h>
 #include <GL/glext.h>
 #include "stringio.h"
+#include "../math/math_util.h"
 #include "shader.h"
-
-
-/**
- * Creates and compiles multiple shader programs for different rendering purposes.
- *
- * @param shaders {Shader[]} An array to hold the shader program identifiers. 
- *                            Must have sufficient space for all shader programs.
- *
- * This function initializes a collection of shader programs by calling the 
- * `create_shader` function with predefined vertex and fragment shader file paths. 
- * Each shader program corresponds to specific rendering tasks such as 
- * classic lighting, shadow mapping, anti-aliasing, and skybox rendering.
- *
- * Shader Programs Created:
- * - `SHADER_CLASSIC_LIGHTING`: Shader program for classic lighting effects.
- * - `SHADER_SHADOW`: Shader program for rendering shadows using depth mapping.
- * - `SHADER_AA`: Shader program for post-processing anti-aliasing effects.
- * - `SHADER_SKYBOX`: Shader program for rendering a skybox.
- *
- * Important Notes:
- * - Ensure that the shader file paths provided in the function are correct and 
- *   the files are accessible. Missing or incorrect paths will result in compilation 
- *   errors.
- * - The array `shaders` should be allocated with sufficient space to hold all 
- *   the shader program IDs, based on the number of shaders being created.
- */
-
-void create_shaders(Shader shaders[]) {
-    shaders[SHADER_CLASSIC_LIGHTING] = create_shader("shaders/shadowShader.vs", "shaders/shadowShader.fs");
-    shaders[SHADER_DEPTH_DEBUG] = create_shader("shaders/debugDepthShader.vs", "shaders/debugDepthShader.fs");
-    shaders[SHADER_SHADOW] = create_shader("shaders/simpleDepthShader.vs", "shaders/simpleDepthShader.fs");
-    shaders[SHADER_AA] = create_shader("shaders/aa_post.vs", "shaders/aa_post.fs");
-    shaders[SHADER_SKYBOX] = create_shader("shaders/skybox.vs", "shaders/skybox.fs");
-}
+#include "model.h"
+#include "../memory.h"
 
 
 /**
@@ -66,6 +35,15 @@ void create_shaders(Shader shaders[]) {
  */
 
 Shader create_shader(const char* vertexPath, const char* fragmentPath) {
+    for (int i = 0; i < memoryCaches.shadersCount; i++) {
+        if (!strcmp(memoryCaches.shaderCache[i].shaderName[0], vertexPath) &&
+            !strcmp(memoryCaches.shaderCache[i].shaderName[1], fragmentPath)) {
+            #ifdef DEBUG
+                printf("Shader loaded from cache!\n");
+            #endif
+            return memoryCaches.shaderCache[i].shader;
+        }
+    }
     Shader vertex, fragment;
     int success;
     char infoLog[512];
@@ -111,6 +89,11 @@ Shader create_shader(const char* vertexPath, const char* fragmentPath) {
 
     free(vShaderCode);
     free(fShaderCode);
+
+    memoryCaches.shaderCache = realloc(memoryCaches.shaderCache, sizeof (ShaderCache) * (++memoryCaches.shadersCount));
+    memoryCaches.shaderCache[memoryCaches.shadersCount-1].shader = ID;
+    strcpy(memoryCaches.shaderCache[memoryCaches.shadersCount-1].shaderName[0], vertexPath);
+    strcpy(memoryCaches.shaderCache[memoryCaches.shadersCount-1].shaderName[1], fragmentPath);
 
     return ID;
 
@@ -210,5 +193,9 @@ void set_shader_int(Shader ID, char *name, int value) {
  */
 
 void set_shader_float(Shader ID, char *name, float value) { 
-    glUniform1f(glGetUniformLocation(ID, name), value); 
+    glUniform1f(glGetUniformLocation(ID, name), 1, &value);
+}
+
+void set_shader_vec3(Shader ID, char *name, vec3 value) {
+    glUniform3fv(glGetUniformLocation(ID, name), 1, value);
 }

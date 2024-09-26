@@ -1,4 +1,9 @@
 #include "camera.h"
+#include "render.h"
+#include "../math/math_util.h"
+#include "../io/model.h"
+#include "../io/shader.h"
+#include "../memory.h"
 
 
 /**
@@ -33,7 +38,7 @@ void init_camera(Camera *c) {
  * @param shaders {shaders[]} - Array of shaders to be used for rendering the scene.
  */
 
-void camera_projection(Camera *c, Shader shaders[]) {
+void camera_projection(Camera *c, WorldShaders *shaders) {
     // Camera
     mat4 view = GLM_MAT4_IDENTITY_INIT;
     vec3 cameraPos   = {c->pos[0],c->pos[1],c->pos[2]};
@@ -46,16 +51,10 @@ void camera_projection(Camera *c, Shader shaders[]) {
     mat4 projection = GLM_MAT4_IDENTITY_INIT;
     glm_perspective(PI/4, 2, 0.1f, 300.0f, projection);
 
-    use_shader(shaders[SHADER_CLASSIC_LIGHTING]);
-    glUniformMatrix4fv(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "projection"), 1, GL_FALSE, &projection);
-    glUniformMatrix4fv(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "view"), 1, GL_FALSE, &view);
-    glUniform3fv(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "viewPos"), 1, &c->pos);
-    use_shader(shaders[SHADER_SKYBOX]);
-    glUniformMatrix4fv(glGetUniformLocation(shaders[SHADER_SKYBOX], "projection"), 1, GL_FALSE, &projection);
-    glUniformMatrix4fv(glGetUniformLocation(shaders[SHADER_SKYBOX], "view"), 1, GL_FALSE, &view);
-    glUniform3fv(glGetUniformLocation(shaders[SHADER_SKYBOX], "camPos"), 1, &c->pos);
-    use_shader(shaders[SHADER_AA]);
-    glUniformMatrix4fv(glGetUniformLocation(shaders[SHADER_AA], "projection"), 1, GL_FALSE, &projection);
-    glUniformMatrix4fv(glGetUniformLocation(shaders[SHADER_AA], "view"), 1, GL_FALSE, &view);
-    glUniform3fv(glGetUniformLocation(shaders[SHADER_AA], "camPos"), 1, &c->pos);
+    for (int i = 0; i < memoryCaches.shadersCount; i++) {
+        use_shader(memoryCaches.shaderCache[i].shader);
+        glUniformMatrix4fv(glGetUniformLocation(memoryCaches.shaderCache[i].shader, "projection"), 1, GL_FALSE, &projection);
+        glUniformMatrix4fv(glGetUniformLocation(memoryCaches.shaderCache[i].shader, "view"), 1, GL_FALSE, &view);
+        glUniform3fv(glGetUniformLocation(memoryCaches.shaderCache[i].shader, "viewPos"), 1, &c->pos);
+    }
 }

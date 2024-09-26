@@ -10,11 +10,11 @@
 #include "io/model.h"
 #include "render/framebuffer.h"
 #include "node.h"
-#include "window.h"
 #include "render/color.h"
 #include "render/camera.h"
 #include "render/depth_map.h"
 #include "render/render.h"
+#include "window.h"
 
 /**
  * Creates a new SDL window with an OpenGL context.
@@ -129,7 +129,7 @@ void refresh_ui(Window *window) {
  * to display the rendered content on the window.
  */
 
-void update_window(Window *window, Node *viewportNode, Camera *c, Shader shaders[], DepthMap *depthMap) {
+void update_window(Window *window, Node *viewportNode, Camera *c, WorldShaders *shaders, DepthMap *depthMap) {
 
     window->lastTime = window->time;
     window->time = get_time_in_seconds() - window->startTime;

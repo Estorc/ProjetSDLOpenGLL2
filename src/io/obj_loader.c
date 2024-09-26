@@ -4,6 +4,7 @@
 #include "../types.h"
 #include "../math/math_util.h"
 #include "model.h"
+#include "shader.h"
 #include "../memory.h"
 
 
@@ -300,9 +301,6 @@ int load_obj_model(char *path, Model **modelPtr) {
                 object->faces[fi].normals[j] = normalsId[j]-offvn;
                 object->faces[fi].textureVertex[j] = textureVertexId[j]-offvt;
             }
-
-
-            
             
             vec2 deltaUV1;
             vec2 deltaUV2;
@@ -319,20 +317,20 @@ int load_obj_model(char *path, Model **modelPtr) {
 
             tangent[0] = f * (deltaUV2[1] * edge1[0] - deltaUV1[1] * edge2[0]);
             tangent[1] = f * (deltaUV2[1] * edge1[1] - deltaUV1[1] * edge2[1]);
-            tangent[2] = f * (deltaUV2[1] * edge1[2] - deltaUV1[1] * edge2[0]);
+            tangent[2] = f * (deltaUV2[1] * edge1[2] - deltaUV1[1] * edge2[2]);
 
             bitangent[0] = f * (-deltaUV2[0] * edge1[0] + deltaUV1[0] * edge2[0]);
             bitangent[1] = f * (-deltaUV2[0] * edge1[1] + deltaUV1[0] * edge2[1]);
             bitangent[2] = f * (-deltaUV2[0] * edge1[2] + deltaUV1[0] * edge2[2]);
 
             for (int j = 0; j < i; j++) {
-                object->facesVertex[fi][j][9] = tangent[0];
-                object->facesVertex[fi][j][10] = tangent[1];
-                object->facesVertex[fi][j][11] = tangent[2];
+                object->facesVertex[fi][j][8] = tangent[0];
+                object->facesVertex[fi][j][9] = tangent[1];
+                object->facesVertex[fi][j][10] = tangent[2];
 
-                object->facesVertex[fi][j][12] = bitangent[0];
-                object->facesVertex[fi][j][13] = bitangent[1];
-                object->facesVertex[fi][j][14] = bitangent[2];
+                object->facesVertex[fi][j][11] = bitangent[0];
+                object->facesVertex[fi][j][12] = bitangent[1];
+                object->facesVertex[fi][j][13] = bitangent[2];
             }
             fi++;
             break;

@@ -8,9 +8,24 @@
 #include "../io/model.h"
 #include "framebuffer.h"
 #include "../node.h"
+#include "../render/render.h"
 #include "../window.h"
 #include "color.h"
 #include "camera.h"
+#include "../memory.h"
+#include "lighting.h"
+
+
+
+
+void set_lightings(u8 lightsCount[LIGHTS_COUNT]) {
+    for (int i = 0; i < memoryCaches.shadersCount; i++) {
+        use_shader(memoryCaches.shaderCache[i].shader);
+        set_shader_int(memoryCaches.shaderCache[i].shader, "pointLightsNum", lightsCount[POINT_LIGHT]);
+        set_shader_int(memoryCaches.shaderCache[i].shader, "dirLightsNum", lightsCount[DIRECTIONAL_LIGHT]);
+        set_shader_int(memoryCaches.shaderCache[i].shader, "spotLightsNum", lightsCount[SPOT_LIGHT]);
+    }
+}
 
 
 /**
@@ -28,37 +43,23 @@
  * in the shader. This ensures that the scene is lit correctly based on the specified light properties.
  */
 
-void configure_global_lighting(Window *window, Node *root, Camera *c, Shader shaders[]) {
-    use_shader(shaders[SHADER_CLASSIC_LIGHTING]);
+void configure_global_lighting(Window *window, Node *root, Camera *c, WorldShaders *shaders) {
+    use_shader(shaders->render);
 
     vec3 lightPos = {5.0f, 1.0f, 0.0f};
-    vec3 lightDir;
+    vec3 lightDir = {c->dir[0], c->dir[1], c->dir[2]};
     glm_vec3_copy(c->pos, lightPos);
-    glm_vec3_copy(c->dir, lightDir);
 
-    glUniform3fv(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "objectColor"), 1, (vec3){0.2f,0.2f,0.2f});
+    glUniform3fv(glGetUniformLocation(shaders->render, "objectColor"), 1, (vec3){0.2f,0.2f,0.2f});
 
-    glUniform3fv(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "dirLight.position"), 1, c->pos);
-    glUniform3fv(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "dirLight.direction"), 1, c->dir);
+    glUniform3fv(glGetUniformLocation(shaders->render, "dirLight.position"), 1, c->pos);
+    glUniform3fv(glGetUniformLocation(shaders->render, "dirLight.direction"), 1, lightDir);
 
-    glUniform3fv(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "dirLight.ambient"), 1, (vec3){0.0f,0.0f,0.0f});
-    glUniform3fv(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "dirLight.diffuse"), 1, (vec3){0.8f,0.8f,0.8f});
-    glUniform3fv(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "dirLight.specular"), 1, (vec3){0.8f,0.8f,0.8f});
+    glUniform3fv(glGetUniformLocation(shaders->render, "dirLight.ambient"), 1, (vec3){0.0f,0.0f,0.0f});
+    glUniform3fv(glGetUniformLocation(shaders->render, "dirLight.diffuse"), 1, (vec3){0.8f,0.8f,0.8f});
+    glUniform3fv(glGetUniformLocation(shaders->render, "dirLight.specular"), 1, (vec3){0.8f,0.8f,0.8f});
 
-    glUniform3fv(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "pointLights[0].ambient"), 1, (vec3){0.0f,0.0f,0.0f});
-    glUniform3fv(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "pointLights[0].diffuse"), 1, (vec3){2.0f,2.0f,2.0f});
-    glUniform3fv(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "pointLights[0].specular"), 1, (vec3){2.0f,2.0f,2.0f});
-
-    glUniform3fv(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "lightPos"), 1, lightPos);
-
-    float lightConstant = 1.0f;
-    glUniform1f(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "pointLights[0].constant"), 1, &lightConstant);
-    float lightLinear = 0.09f;
-    glUniform1f(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "pointLights[0].linear"), 1, &lightLinear);
-    float lightQuadratic = 0.032f;
-    glUniform1f(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "pointLights[0].quadratic"), 1, &lightQuadratic);
-
-    int vertexColorLocation = glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "ourColor");
+    int vertexColorLocation = glGetUniformLocation(shaders->render, "ourColor");
     glUniform4f(vertexColorLocation, 1.0f, 1.0f, 1.0f, 1.0f);
 }
 
@@ -79,7 +80,7 @@ void configure_global_lighting(Window *window, Node *root, Camera *c, Shader sha
  * lighting effects in the rendered scene.
  */
 
-void configure_directional_lighting(Window *window, Node *root, Camera *c, Shader shaders[]) {
+void configure_directional_lighting(Window *window, Node *root, Camera *c, WorldShaders *shaders) {
     // Lights and shadows
     mat4 lightProjection, lightView;
     mat4 lightSpaceMatrix;
@@ -101,8 +102,8 @@ void configure_directional_lighting(Window *window, Node *root, Camera *c, Shade
     glm_mat4_mul(lightProjection, lightView, lightSpaceMatrix);
 
     // Cast shadow direction (render scene from light's point of view)
-    use_shader(shaders[SHADER_CLASSIC_LIGHTING]);
-    glUniformMatrix4fv(glGetUniformLocation(shaders[SHADER_CLASSIC_LIGHTING], "lightSpaceMatrix"), 1, GL_FALSE, &lightSpaceMatrix);
-    use_shader(shaders[SHADER_SHADOW]);
-    glUniformMatrix4fv(glGetUniformLocation(shaders[SHADER_SHADOW], "lightSpaceMatrix"), 1, GL_FALSE, &lightSpaceMatrix);
+    use_shader(shaders->render);
+    glUniformMatrix4fv(glGetUniformLocation(shaders->render, "lightSpaceMatrix"), 1, GL_FALSE, &lightSpaceMatrix);
+    use_shader(shaders->depth);
+    glUniformMatrix4fv(glGetUniformLocation(shaders->depth, "lightSpaceMatrix"), 1, GL_FALSE, &lightSpaceMatrix);
 }

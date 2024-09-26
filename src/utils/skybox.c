@@ -6,6 +6,7 @@
 #include "../types.h"
 #include "../math/math_util.h"
 #include "../io/model.h"
+#include "../io/shader.h"
 #include "../memory.h"
 
 TextureMap load_cubemap(char faces[6][100]) {

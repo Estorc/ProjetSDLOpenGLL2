@@ -4,6 +4,7 @@
 #include "render/framebuffer.h"
 #include "node.h"
 #include "utils/node_tools.h"
+#include "render/lighting.h"
 #include <stdio.h>
 
 /**
@@ -28,10 +29,13 @@ Node * create_node(Node *node, u8 type, void *data) {
         case NODE_STATIC_BODY:              return create_static_body_node(node, (StaticBody *) data);
         case NODE_RIGID_BODY:               return create_rigid_body_node(node, (RigidBody *) data);
         case NODE_KINEMATIC_BODY:           return create_kinematic_body_node(node, (KinematicBody *) data);
-        case NODE_BOX_CSHAPE:      return create_box_collision_shape_node(node, (BoxCollisionShape *) data);
-        case NODE_SPHERE_CSHAPE:   return create_sphere_collision_shape_node(node, (SphereCollisionShape *) data);
-        case NODE_PLANE_CSHAPE:    return create_plane_collision_shape_node(node, (PlaneCollisionShape *) data);
+        case NODE_BOX_CSHAPE:               return create_box_collision_shape_node(node, (BoxCollisionShape *) data);
+        case NODE_SPHERE_CSHAPE:            return create_sphere_collision_shape_node(node, (SphereCollisionShape *) data);
+        case NODE_PLANE_CSHAPE:             return create_plane_collision_shape_node(node, (PlaneCollisionShape *) data);
         case NODE_CAMERA:                   return create_camera_node(node, (Camera *) data);
+        case NODE_POINT_LIGHT:              return create_point_light_node(node, (PointLight *) data);
+        case NODE_DIRECTIONAL_LIGHT:        return create_directional_light_node(node, (DirectionalLight *) data);
+        case NODE_SPOT_LIGHT:               return create_spot_light_node(node, (SpotLight *) data);
     }
     return NULL;
 }
@@ -65,10 +69,53 @@ Node * initialize_node(Node *node) {
     node->script = NULL;
     node->params = NULL;
     node->params_count = 0;
+    node->shader = 0;
     Vec3fZero(node->pos);
     Vec3fZero(node->rot);
     Vec3fOne(node->scale);
     return node;
+}
+
+/**
+ * Initializes a Node structure for a point light object.
+ *
+ * @param node {Node*} - The node pointer.
+ * @param pointLight {PointLight*} - The point light object.
+ * @returns {Node*} The node pointer.
+ */
+
+Node * create_point_light_node(Node *node, PointLight *pointLight) {
+    node->object = pointLight;
+    node->type = NODE_POINT_LIGHT;
+    return initialize_node(node);
+}
+
+/**
+ * Initializes a Node structure for a directional light object.
+ *
+ * @param node {Node*} - The node pointer.
+ * @param camera {DirectionalLight*} - The directional light object.
+ * @returns {Node*} The node pointer.
+ */
+
+Node * create_directional_light_node(Node *node, DirectionalLight *directionalLight) {
+    node->object = directionalLight;
+    node->type = NODE_DIRECTIONAL_LIGHT;
+    return initialize_node(node);
+}
+
+/**
+ * Initializes a Node structure for a spot light object.
+ *
+ * @param node {Node*} - The node pointer.
+ * @param spotLight {SpotLight*} - The spot light object.
+ * @returns {Node*} The node pointer.
+ */
+
+Node * create_spot_light_node(Node *node, SpotLight *spotLight) {
+    node->object = spotLight;
+    node->type = NODE_SPOT_LIGHT;
+    return initialize_node(node);
 }
 
 /**
@@ -221,7 +268,9 @@ Node * create_textured_mesh_node(Node *node, TexturedMesh *texturedMesh) {
 Node * create_skybox_node(Node *node, TexturedMesh *texturedMesh) {
     node->object = texturedMesh;
     node->type = NODE_SKYBOX;
-    return initialize_node(node);
+    initialize_node(node);
+    node->shader = create_shader(DEFAULT_SKYBOX_SHADER);
+    return node;
 }
 
 /**
@@ -414,7 +463,7 @@ void remove_child_and_free_and_realloc(Node *node, Node *child) {
  * based on its type (e.g., model, textured mesh, skybox).
  */
 
-void render_node(Node *node, Shader *shaders, mat4 modelMatrix) {
+void render_node(Node *node, mat4 modelMatrix) {
     
     Shader shader;
     glGetIntegerv(GL_CURRENT_PROGRAM, (int*) &shader);
@@ -428,12 +477,88 @@ void render_node(Node *node, Shader *shaders, mat4 modelMatrix) {
     glm_scale(modelMatrix, (vec3){node->scale[0], node->scale[1], node->scale[2]});
     
     switch (node->type) {
-        case NODE_MODEL:            render_model(node, modelMatrix);                            break;
-        case NODE_TEXTURED_MESH:    render_textured_mesh(node, modelMatrix);                    break;
-        case NODE_MESH:             render_mesh(node, modelMatrix);                             break;
-        case NODE_SKYBOX:           render_skybox(node, shaders[SHADER_SKYBOX], modelMatrix);   break;
+        case NODE_MODEL:                render_model(node, modelMatrix);                            break;
+        case NODE_TEXTURED_MESH:        render_textured_mesh(node, modelMatrix);                    break;
+        case NODE_MESH:                 render_mesh(node, modelMatrix);                             break;
+        case NODE_SKYBOX:               render_skybox(node, modelMatrix);                           break;
+        #ifdef DEBUG
+        case NODE_POINT_LIGHT:          render_point_light(node, modelMatrix);                      break;
+        case NODE_DIRECTIONAL_LIGHT:    render_directional_light(node, modelMatrix);                break;
+        case NODE_SPOT_LIGHT:           render_directional_light(node, modelMatrix);                break;
+        #endif
     }
 }
+
+#ifdef DEBUG
+
+VBO lightBillboardVBO = 0;
+VAO lightBillboardVAO = 0;
+Shader billboardShader;
+TextureMap lightPointTexture;
+TextureMap directionalLightTexture;
+
+const float lightBillboardQuadVertices[] = {
+    // positions        // texture Coords
+    1.0f,  -1.0f,  0.0f, 1.0f,
+    1.0f, 1.0f,  0.0f, 0.0f,
+    -1.0f, 1.0f,  1.0f, 0.0f,
+
+    1.0f,  -1.0f,  0.0f, 1.0f,
+    -1.0f, 1.0f,  1.0f, 0.0f,
+    -1.0f,  -1.0f,  1.0f, 1.0f
+};
+// setup plane VAO
+void init_light_billboard_vao() {
+    if (!lightBillboardVAO) {
+        lightPointTexture = load_texture_from_path("textures/editor/light_bulb.png");
+        directionalLightTexture = load_texture_from_path("textures/editor/sun.png");
+        billboardShader = create_shader("shaders/billboard.vs", "shaders/billboard.fs");
+        glGenVertexArrays(1, &lightBillboardVAO);
+        glGenBuffers(1, &lightBillboardVBO);
+        glBindVertexArray(lightBillboardVAO);
+        glBindBuffer(GL_ARRAY_BUFFER, lightBillboardVBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(lightBillboardQuadVertices), &lightBillboardQuadVertices, GL_STATIC_DRAW);
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
+    }
+}
+
+void render_point_light(Node *node, mat4 modelMatrix) {
+    init_light_billboard_vao();
+    use_shader(billboardShader);
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, lightPointTexture);
+    
+    int modelLoc = glGetUniformLocation(billboardShader, "model");
+
+    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, modelMatrix);
+
+    glBindVertexArray(lightBillboardVAO);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glBindVertexArray(0);
+}
+void render_directional_light(Node *node, mat4 modelMatrix) {
+    init_light_billboard_vao();
+    use_shader(billboardShader);
+    
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, directionalLightTexture);
+
+    int modelLoc = glGetUniformLocation(billboardShader, "model");
+
+    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, modelMatrix);
+
+    glBindVertexArray(lightBillboardVAO);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glBindVertexArray(0);
+}
+#endif
+
+
+
 
 /**
  * Renders a 3D model represented by a Node structure.
@@ -481,7 +606,6 @@ void render_model(Node *node, mat4 modelMatrix) {
                 glActiveTexture(GL_TEXTURE2);
                 glBindTexture(GL_TEXTURE_2D, model->objects[j].materials[k]->displacementTextureMap);
             }
-
             
             glDrawArrays(GL_TRIANGLES, objectPosition, model->objects[j].materialsLength[k] * 3);
             
@@ -534,9 +658,10 @@ void render_textured_mesh(Node *node, mat4 modelMatrix) {
  * After rendering, the function resets the depth function to its default state.
  */
 
-void render_skybox(Node *node, Shader shader, mat4 modelMatrix) {
+void render_skybox(Node *node, mat4 modelMatrix) {
     glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
-    use_shader(shader);
+    Shader shader;
+    glGetIntegerv(GL_CURRENT_PROGRAM, (int*) &shader);
 
     int modelLoc = glGetUniformLocation(shader, "model");
     TexturedMesh *texturedMesh = (TexturedMesh *)node->object;
@@ -652,12 +777,13 @@ const char NodeTypeNames[][100] = {
 void print_node(Node *node, int level) {
     #ifdef DEBUG
     for (int i = 0; i < level; i++) printf("\t");
-    printf(" - %c%c%c%c %p [%s] %d children:\n", 
+    printf(" - %c%c%c%c%c %p [%s] %d children:\n", 
     
             (!level) ? 'r' : '_', 
             (node->flags & NODE_ACTIVE) ? 'a' : '_', 
             (node->flags & NODE_VISIBLE) ? 'v' : '_', 
             (node->flags & NODE_SCRIPT) ? 's' : '_', 
+            (node->shader) ? 'S' : '_', 
             
             node, NodeTypeNames[node->type], node->length);
     for (int i = 0; i < node->length; i++) {

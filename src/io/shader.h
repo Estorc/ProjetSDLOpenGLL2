@@ -3,14 +3,10 @@
 
 typedef unsigned int Shader;
 
-enum Shaders {
-    SHADER_CLASSIC_LIGHTING,
-    SHADER_DEPTH_DEBUG,
-    SHADER_SHADOW,
-    SHADER_AA,
-    SHADER_SKYBOX,
-    SHADER_COUNT
-};
+#define DEFAULT_RENDER_SHADER "shaders/shadowShader.vs", "shaders/shadowShader.fs"
+#define DEFAULT_DEPTH_SHADER "shaders/simpleDepthShader.vs", "shaders/simpleDepthShader.fs"
+#define DEFAULT_SCREEN_SHADER "shaders/aa_post.vs", "shaders/aa_post.fs"
+#define DEFAULT_SKYBOX_SHADER "shaders/skybox.vs", "shaders/skybox.fs"
 
 void create_shaders(Shader shaders[]);
 Shader create_shader(const char* vertexPath, const char* fragmentPath);

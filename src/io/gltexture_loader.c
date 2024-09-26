@@ -14,6 +14,7 @@
 #include "model.h"
 #include "input.h"
 #include "gltexture_loader.h"
+#include "shader.h"
 #include "../memory.h"
 
 

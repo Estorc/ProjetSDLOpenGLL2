@@ -17,12 +17,19 @@ typedef struct {
 } ModelCache;
 
 typedef struct {
+    Shader shader;
+    char shaderName[2][100];
+} ShaderCache;
+
+typedef struct {
     CubeMapCache *cubeMapCache;
     int cubeMapCount;
     TextureCache *textureCache;
     int texturesCount;
     ModelCache *modelCache;
     int modelsCount;
+    ShaderCache *shaderCache;
+    int shadersCount;
 } MemoryCaches;
 
 extern MemoryCaches memoryCaches;
@@ -30,6 +37,7 @@ extern MemoryCaches memoryCaches;
 #endif
 
 void init_memory_cache();
+void free_shaders();
 void free_models();
 void free_textures();
 void free_cubemaps();

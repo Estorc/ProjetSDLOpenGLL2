@@ -5,6 +5,7 @@
 #include "model.h"
 #include "../render/framebuffer.h"
 #include "../node.h"
+#include "../render/render.h"
 #include "../window.h"
 #include "../render/camera.h"
 #include "input.h"

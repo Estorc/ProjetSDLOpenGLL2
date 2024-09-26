@@ -9,7 +9,8 @@ typedef struct {
     Vec3f pos,dir,rot,targetRot,targetPos;
 } Camera;
 
+struct WorldShaders;
 void init_camera(Camera *c);
-void camera_projection(Camera *c, Shader shaders[]);
+void camera_projection(Camera *c, struct WorldShaders *shaders);
 
 #endif

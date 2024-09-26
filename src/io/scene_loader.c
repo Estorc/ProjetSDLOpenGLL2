@@ -12,6 +12,7 @@
 #include "../render/framebuffer.h"
 #include "../physics/bodies.h"
 #include "../node.h"
+#include "../render/render.h"
 #include "../window.h"
 #include "input.h"
 #include "../render/camera.h"
@@ -91,6 +92,15 @@ Node *load_node(FILE *file, Camera **c, CollisionBuffer *collisionBuffer, Script
     }
     if (!strcmp(symbol, "msaa")) {
         malloc_node(node, NODE_FRAMEBUFFER, file, c, collisionBuffer, scripts, editor);
+    }
+    if (!strcmp(symbol, "plight")) {
+        malloc_node(node, NODE_POINT_LIGHT, file, c, collisionBuffer, scripts, editor);
+    }
+    if (!strcmp(symbol, "dlight")) {
+        malloc_node(node, NODE_DIRECTIONAL_LIGHT, file, c, collisionBuffer, scripts, editor);
+    }
+    if (!strcmp(symbol, "slight")) {
+        malloc_node(node, NODE_SPOT_LIGHT, file, c, collisionBuffer, scripts, editor);
     }
     
     #ifdef DEBUG

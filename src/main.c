@@ -9,12 +9,14 @@
 #include "io/model.h"
 #include "render/framebuffer.h"
 #include "node.h"
+#include "render/depth_map.h"
+#include "render/render.h"
+#include "render/lighting.h"
 #include "window.h"
 #include "io/input.h"
 #include "render/camera.h"
 #include "io/shader.h"
 #include "utils/skybox.h"
-#include "render/depth_map.h"
 #include "io/scene_loader.h"
 #include "physics/physics.h"
 #include "physics/bodies.h"
@@ -25,7 +27,7 @@
 
 int FPS[2] = {0,0};
 float fps = 0;
-int update(Window *window, Node *viewportNode, Camera *c, Input *input, Shader shaders[], DepthMap *depthMap, CollisionBuffer *collisionBuffer) {
+int update(Window *window, Node *viewportNode, Camera *c, Input *input, WorldShaders *shaders, DepthMap *depthMap, CollisionBuffer *collisionBuffer) {
 
     float delta = (window->lastTime) ? window->time - window->lastTime : 0.0;
 
@@ -43,7 +45,9 @@ int update(Window *window, Node *viewportNode, Camera *c, Input *input, Shader s
 
     SDL_FillRect(window->ui_surface, NULL, 0x000000);
     collisionBuffer->length = 0;
-    update_physics(((Viewport *) viewportNode->object)->scene, (vec3) {0.0, 0.0, 0.0}, (vec3) {0.0, 0.0, 0.0}, (vec3) {1.0, 1.0, 1.0}, delta, collisionBuffer, input, window, true);
+    u8 lightsCount[LIGHTS_COUNT] = {0};
+    update_physics(((Viewport *) viewportNode->object)->scene, (vec3) {0.0, 0.0, 0.0}, (vec3) {0.0, 0.0, 0.0}, (vec3) {1.0, 1.0, 1.0}, delta, collisionBuffer, input, window, lightsCount, true);
+    set_lightings(lightsCount);
     refresh_ui(window);
     update_window(window, viewportNode, c, shaders, depthMap);
 
@@ -53,7 +57,6 @@ int update(Window *window, Node *viewportNode, Camera *c, Input *input, Shader s
 
 MemoryCaches memoryCaches;
 
-#define NUM_SHADERS 5
 int main(int argc, char *argv[]) {
 
     init_memory_cache();
@@ -63,14 +66,17 @@ int main(int argc, char *argv[]) {
 
     Window window;
     if (create_window("Physics Engine Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_MOUSE_GRABBED, &window) == -1) return -1;
-
+    
     Input input;
     init_input(&input);
 
     Camera *cam;
 
-    Shader shaders[NUM_SHADERS];
-    create_shaders(shaders);
+    WorldShaders defaultShaders = {
+        .render = create_shader(DEFAULT_RENDER_SHADER),
+        .depth = create_shader(DEFAULT_DEPTH_SHADER),
+        .screen = create_shader(DEFAULT_SCREEN_SHADER)
+    };
 
     DepthMap depthMap;
     create_depthmap(&depthMap);
@@ -83,9 +89,12 @@ int main(int argc, char *argv[]) {
     Mix_Music *music = Mix_LoadMUS("audio/musics/test.mp3");
     Mix_PlayMusic(music, 1);
 
+    #ifdef DEBUG
     if (argc >= 2 && !strcmp(argv[1], "editor")) viewportNode = load_scene("scenes/editor.scene", &cam, &collisionBuffer, scripts);
-    else viewportNode = load_scene("scenes/boot.scene", &cam, &collisionBuffer, scripts);
-    while (update(&window, viewportNode, cam, &input, shaders, &depthMap, &collisionBuffer) >= 0);
+    else 
+    #endif
+    viewportNode = load_scene("scenes/boot.scene", &cam, &collisionBuffer, scripts);
+    while (update(&window, viewportNode, cam, &input, &defaultShaders, &depthMap, &collisionBuffer) >= 0);
 
     Mix_FreeMusic(music);
     free(collisionBuffer.collisionsShapes);

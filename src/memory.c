@@ -2,6 +2,7 @@
 #include "types.h"
 #include "math/math_util.h"
 #include "io/model.h"
+#include "io/shader.h"
 #include "memory.h"
 
 void init_memory_cache() {
@@ -11,6 +12,14 @@ void init_memory_cache() {
     memoryCaches.texturesCount = 0;
     memoryCaches.modelCache = NULL;
     memoryCaches.modelsCount = 0;
+    memoryCaches.shaderCache = NULL;
+    memoryCaches.shadersCount = 0;
+}
+
+void free_shaders() {
+    free(memoryCaches.shaderCache);
+    memoryCaches.shadersCount = 0;
+    printf("Free shaders!\n");
 }
 
 void free_models() {
@@ -55,4 +64,5 @@ void free_memory_cache() {
     free_models();
     free_textures();
     free_cubemaps();
+    free_shaders();
 }

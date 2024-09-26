@@ -6,7 +6,7 @@
 #define SHADOW_WIDTH 1024
 #define SHADOW_HEIGHT 1024
 
-typedef struct {
+typedef struct DepthMap {
     FBO frameBuffer;
     TextureMap texture;
 } DepthMap;

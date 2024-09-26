@@ -13,6 +13,7 @@
 #include "../render/camera.h"
 #include "../render/depth_map.h"
 #include "../render/viewport.h"
+#include "../render/lighting.h"
 #include "../io/gltexture_loader.h"
 #include "physics.h"
 #include "bodies.h"

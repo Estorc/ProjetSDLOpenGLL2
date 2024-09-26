@@ -115,6 +115,25 @@ void draw_vec3_input(int *id, int x, int y, Window *window, Node *node, vec3 vec
 	}
 }
 
+void draw_rgb_input(int *id, int x, int y, Window *window, Node *node, vec3 vector, Input *input, TTF_Font *font, char * name) {
+	char str[100];
+	sprintf(str, "%s:", name);
+	draw_text(window->ui_surface, x+10, y, str, font, (SDL_Color) {255, 255, 255, 255});
+	for (int i = 0; i < 3; i++) {
+		sprintf(str, "%c: ", "RGB"[i]);
+		draw_text(window->ui_surface, x+190, y, str, font, (SDL_Color) {255, 255, 255, 255});
+		if (draw_input_box(window->ui_surface, x+190 + 50, y-1, 140, 28, 0xffd0d0d0, input))
+			node->params[3].i = (*id);
+		if (node->params[3].i == (*id)) {
+			sprintf(str, "%s", input->inputBuffer);
+			sscanf(str, "%f", &vector[i]);
+		} else sprintf(str, "%.2f", vector[i]);
+		draw_text(window->ui_surface, x+190 + 50, y, str, font, (SDL_Color) {255, 255, 255, 255});
+		x += 200;
+        (*id)++;
+	}
+}
+
 void draw_float_input(int *id, int x, int y, Window *window, Node *node, float *flt, Input *input, TTF_Font *font, char * name) {
 	char str[100];
 	sprintf(str, "%s:", name);
@@ -302,7 +321,7 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
             break;
 
         case NODE_MODEL:
-            {   // TODO
+            {
             Model **model = (Model**) &node->object;
             draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
             draw_model_input(&c, x, y, window, editor, model, input, font, "Model");
@@ -311,7 +330,7 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
             break;
 
         case NODE_TEXTURED_MESH:
-            {   // TODO
+            {
             TextureMap *texture = &((TexturedMesh*) node->object)->texture;
             draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
             draw_texture_input(&c, x, y, window, editor, texture, input, font, "Texture");
@@ -320,7 +339,7 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
             break;
 
         case NODE_SKYBOX:
-            {   // TODO
+            {
             TextureMap *texture = &((TexturedMesh*) node->object)->texture;
             draw_rectangle(window->ui_surface, x, y, 800, 192, 0xff555555);
             draw_cubemap_input(&c, x, y, window, editor, texture, input, font, "Texture");
@@ -339,6 +358,86 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
             //
             }
             break;
+
+        case NODE_POINT_LIGHT:
+            {
+            PointLight *pointLight = (PointLight*) node->object;
+
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_rgb_input(&c, x, y, window, editor, pointLight->ambient, input, font, "Ambient");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_rgb_input(&c, x, y, window, editor, pointLight->diffuse, input, font, "Diffuse");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_rgb_input(&c, x, y, window, editor, pointLight->specular, input, font, "Specular");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_float_input(&c, x, y, window, editor, &pointLight->constant, input, font, "Constant");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_float_input(&c, x, y, window, editor, &pointLight->linear, input, font, "Linear");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_float_input(&c, x, y, window, editor, &pointLight->quadratic, input, font, "Quadratic");
+            y += 32;
+            break;
+            }
+
+        case NODE_DIRECTIONAL_LIGHT:
+            {
+            DirectionalLight *directionalLight = (DirectionalLight*) node->object;
+
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_rgb_input(&c, x, y, window, editor, directionalLight->ambient, input, font, "Ambient");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_rgb_input(&c, x, y, window, editor, directionalLight->diffuse, input, font, "Diffuse");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_rgb_input(&c, x, y, window, editor, directionalLight->specular, input, font, "Specular");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_float_input(&c, x, y, window, editor, &directionalLight->constant, input, font, "Constant");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_float_input(&c, x, y, window, editor, &directionalLight->linear, input, font, "Linear");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_float_input(&c, x, y, window, editor, &directionalLight->quadratic, input, font, "Quadratic");
+            y += 32;
+            break;
+            }
+        case NODE_SPOT_LIGHT:
+            {
+            SpotLight *spotLight = (SpotLight*) node->object;
+
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_rgb_input(&c, x, y, window, editor, spotLight->ambient, input, font, "Ambient");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_rgb_input(&c, x, y, window, editor, spotLight->diffuse, input, font, "Diffuse");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_rgb_input(&c, x, y, window, editor, spotLight->specular, input, font, "Specular");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_float_input(&c, x, y, window, editor, &spotLight->constant, input, font, "Constant");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_float_input(&c, x, y, window, editor, &spotLight->linear, input, font, "Linear");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_float_input(&c, x, y, window, editor, &spotLight->quadratic, input, font, "Quadratic");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_float_input(&c, x, y, window, editor, &spotLight->cutOff, input, font, "Cut Off");
+            y += 32;
+            draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
+            draw_float_input(&c, x, y, window, editor, &spotLight->outerCutOff, input, font, "Outer Cut Off");
+            y += 32;
+            break;
+            }
     }
 
     return y;

@@ -11,6 +11,8 @@
 #include "model.h"
 #include "../render/framebuffer.h"
 #include "../node.h"
+#include "../render/render.h"
+#include "../render/lighting.h"
 #include "../window.h"
 #include "input.h"
 #include "../render/camera.h"
@@ -266,6 +268,97 @@ void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, CollisionBuff
             add_child(node, create_framebuffer_node(frameBufferMSAAIntermediate, msaa_framebuffer_intermediate));
             }
             break;
+
+        case NODE_POINT_LIGHT:
+            {
+            PointLight *pointLight;
+            pointLight = malloc(sizeof(PointLight));
+            POINTER_CHECK(pointLight);
+
+            if (file) {
+                fscanf(file,"(%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f)\n", 
+                    &pointLight->ambient[0], &pointLight->ambient[1], &pointLight->ambient[2], 
+                    &pointLight->diffuse[0], &pointLight->diffuse[1], &pointLight->diffuse[2], 
+                    &pointLight->specular[0], &pointLight->specular[1], &pointLight->specular[2],
+                    &pointLight->constant,
+                    &pointLight->linear,
+                    &pointLight->quadratic
+                    );
+            } else {
+                glm_vec3_zero(pointLight->ambient);
+                glm_vec3_copy(GLM_VEC3_ONE, pointLight->diffuse);
+                glm_vec3_copy(GLM_VEC3_ONE, pointLight->specular);
+                pointLight->constant = 1.0f;
+                pointLight->linear = 0.09f;
+                pointLight->quadratic = 0.032f;
+            }
+
+            create_point_light_node(node, pointLight);
+            node->flags |= NODE_EDITOR_FLAG;
+            }
+            break;
+
+        case NODE_DIRECTIONAL_LIGHT:
+            {
+            DirectionalLight *directionalLight;
+            directionalLight = malloc(sizeof(DirectionalLight));
+            POINTER_CHECK(directionalLight);
+
+            if (file) {
+                fscanf(file,"(%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f)\n", 
+                    &directionalLight->ambient[0], &directionalLight->ambient[1], &directionalLight->ambient[2], 
+                    &directionalLight->diffuse[0], &directionalLight->diffuse[1], &directionalLight->diffuse[2], 
+                    &directionalLight->specular[0], &directionalLight->specular[1], &directionalLight->specular[2],
+                    &directionalLight->constant,
+                    &directionalLight->linear,
+                    &directionalLight->quadratic
+                    );
+            } else {
+                glm_vec3_zero(directionalLight->ambient);
+                glm_vec3_copy(GLM_VEC3_ONE, directionalLight->diffuse);
+                glm_vec3_copy(GLM_VEC3_ONE, directionalLight->specular);
+                directionalLight->constant = 1.0f;
+                directionalLight->linear = 0.09f;
+                directionalLight->quadratic = 0.032f;
+            }
+
+            create_directional_light_node(node, directionalLight);
+            node->flags |= NODE_EDITOR_FLAG;
+            }
+            break;
+
+        case NODE_SPOT_LIGHT:
+            {
+            SpotLight *spotLight;
+            spotLight = malloc(sizeof(SpotLight));
+            POINTER_CHECK(spotLight);
+
+            if (file) {
+                fscanf(file,"(%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f)\n", 
+                    &spotLight->ambient[0], &spotLight->ambient[1], &spotLight->ambient[2], 
+                    &spotLight->diffuse[0], &spotLight->diffuse[1], &spotLight->diffuse[2], 
+                    &spotLight->specular[0], &spotLight->specular[1], &spotLight->specular[2],
+                    &spotLight->constant,
+                    &spotLight->linear,
+                    &spotLight->quadratic,
+                    &spotLight->cutOff,
+                    &spotLight->outerCutOff
+                    );
+            } else {
+                glm_vec3_zero(spotLight->ambient);
+                glm_vec3_copy(GLM_VEC3_ONE, spotLight->diffuse);
+                glm_vec3_copy(GLM_VEC3_ONE, spotLight->specular);
+                spotLight->constant = 1.0f;
+                spotLight->linear = 0.09f;
+                spotLight->quadratic = 0.032f;
+                spotLight->cutOff = 0.01f;
+                spotLight->outerCutOff = 50.0f;
+            }
+
+            create_spot_light_node(node, spotLight);
+            node->flags |= NODE_EDITOR_FLAG;
+            }
+            break;
     }
 }
 
@@ -406,6 +499,52 @@ void node_tree_to_file(FILE * file, Node *node, Node *editor) {
         case NODE_FRAMEBUFFER:
             {
             fprintf(file, "msaa");
+            }
+            break;
+
+        case NODE_POINT_LIGHT:
+            {
+            PointLight *pointLight = (PointLight*) node->object;
+            fprintf(file, "plight");
+            fprintf(file, "(%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f)",
+                pointLight->ambient[0], pointLight->ambient[1], pointLight->ambient[2], 
+                pointLight->diffuse[0], pointLight->diffuse[1], pointLight->diffuse[2], 
+                pointLight->specular[0], pointLight->specular[1], pointLight->specular[2],
+                pointLight->constant,
+                pointLight->linear,
+                pointLight->quadratic
+            );
+            }
+            break;
+
+        case NODE_DIRECTIONAL_LIGHT:
+            {
+            DirectionalLight *directionalLight = (DirectionalLight*) node->object;
+            fprintf(file, "dlight");
+            fprintf(file, "(%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f)",
+                directionalLight->ambient[0], directionalLight->ambient[1], directionalLight->ambient[2], 
+                directionalLight->diffuse[0], directionalLight->diffuse[1], directionalLight->diffuse[2], 
+                directionalLight->specular[0], directionalLight->specular[1], directionalLight->specular[2],
+                directionalLight->constant,
+                directionalLight->linear,
+                directionalLight->quadratic
+            );
+            }
+            break;
+        case NODE_SPOT_LIGHT:
+            {
+            SpotLight *spotLight = (SpotLight*) node->object;
+            fprintf(file, "slight");
+            fprintf(file, "(%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f)",
+                spotLight->ambient[0], spotLight->ambient[1], spotLight->ambient[2], 
+                spotLight->diffuse[0], spotLight->diffuse[1], spotLight->diffuse[2], 
+                spotLight->specular[0], spotLight->specular[1], spotLight->specular[2],
+                spotLight->constant,
+                spotLight->linear,
+                spotLight->quadratic,
+                spotLight->cutOff,
+                spotLight->outerCutOff
+            );
             }
             break;
     }

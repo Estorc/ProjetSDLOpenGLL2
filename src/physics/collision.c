@@ -13,7 +13,9 @@
 #include "../render/camera.h"
 #include "../render/depth_map.h"
 #include "../render/viewport.h"
+#include "../render/lighting.h"
 #include "../io/gltexture_loader.h"
+#include "../memory.h"
 #include "physics.h"
 #include "bodies.h"
 #include "collision.h"
@@ -800,6 +802,142 @@ void update_camera(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Coll
 }
 
 /**
+ * Update a point light
+ *
+ * @param {Node*} node - The point light node.
+ * @param {vec3} pos - The computed position by physics inheritance tree.
+ * @param {vec3} rot - The computed rotation by physics inheritance tree.
+ * @param {vec3} scale - The computed scale by physics inheritance tree.
+ * @param {vec3} delta - Elapsed time since the game last frame.
+ */
+
+void update_point_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, CollisionBuffer *collisionBuffer /*unused*/, u8 lightsCount[LIGHTS_COUNT]) {
+    PointLight *pointLight = (PointLight *) node->object;
+
+    update_global_position(node, pos, rot, scale);
+
+    const char uniforms[7][20] = {
+        "].position",
+        "].ambient",
+        "].diffuse",
+        "].specular",
+        "].constant",
+        "].linear",
+        "].quadratic"
+    };
+
+    char uniformsName[7][50];
+
+    for (int i = 0; i < 7; i++) {
+        strcpy(uniformsName[i], "pointLights[");
+        sprintf(uniformsName[i] + strlen(uniformsName[i]), "%d", lightsCount[POINT_LIGHT]);
+        strcat(uniformsName[i], uniforms[i]);
+    }
+
+    for (int i = 0; i < memoryCaches.shadersCount; i++) {
+        use_shader(memoryCaches.shaderCache[i].shader);
+        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[0], node->globalPos);
+        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], pointLight->ambient);
+        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[2], pointLight->diffuse);
+        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[3], pointLight->specular);
+        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[4], pointLight->constant);
+        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], pointLight->linear);
+        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], pointLight->quadratic);
+    }
+    lightsCount[POINT_LIGHT]++;
+
+}
+
+/**
+ * Update a directional light
+ *
+ * @param {Node*} node - The directional light node.
+ * @param {vec3} pos - The computed position by physics inheritance tree.
+ * @param {vec3} rot - The computed rotation by physics inheritance tree.
+ * @param {vec3} scale - The computed scale by physics inheritance tree.
+ * @param {vec3} delta - Elapsed time since the game last frame.
+ */
+
+void update_directional_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, CollisionBuffer *collisionBuffer /*unused*/, u8 lightsCount[LIGHTS_COUNT]) {
+    DirectionalLight *directionalLight = (DirectionalLight *) node->object;
+
+    update_global_position(node, pos, rot, scale);
+
+    lightsCount[DIRECTIONAL_LIGHT]++;
+
+    for (int i = 0; i < memoryCaches.shadersCount; i++) {
+        use_shader(memoryCaches.shaderCache[i].shader);
+        set_shader_vec3(memoryCaches.shaderCache[i].shader, "pointLights[0].pos", pos);
+        set_shader_vec3(memoryCaches.shaderCache[i].shader, "pointLights[0].ambient", directionalLight->ambient);
+        set_shader_vec3(memoryCaches.shaderCache[i].shader, "pointLights[0].diffuse", directionalLight->diffuse);
+        set_shader_vec3(memoryCaches.shaderCache[i].shader, "pointLights[0].specular", directionalLight->specular);
+        set_shader_float(memoryCaches.shaderCache[i].shader, "pointLights[0].constant", directionalLight->constant);
+        set_shader_float(memoryCaches.shaderCache[i].shader, "pointLights[0].linear", directionalLight->linear);
+        set_shader_float(memoryCaches.shaderCache[i].shader, "pointLights[0].quadratic", directionalLight->quadratic);
+    }
+
+}
+
+/**
+ * Update a spot light
+ *
+ * @param {Node*} node - The spot light node.
+ * @param {vec3} pos - The computed position by physics inheritance tree.
+ * @param {vec3} rot - The computed rotation by physics inheritance tree.
+ * @param {vec3} scale - The computed scale by physics inheritance tree.
+ * @param {vec3} delta - Elapsed time since the game last frame.
+ */
+
+void update_spot_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, CollisionBuffer *collisionBuffer /*unused*/, u8 lightsCount[LIGHTS_COUNT]) {
+    SpotLight *spotLight = (SpotLight *) node->object;
+
+    update_global_position(node, pos, rot, scale);
+
+    const char uniforms[10][20] = {
+        "].position",
+        "].direction",
+        "].ambient",
+        "].diffuse",
+        "].specular",
+        "].constant",
+        "].linear",
+        "].quadratic",
+        "].cutOff",
+        "].outerCutOff"
+    };
+
+    char uniformsName[10][50];
+
+    for (int i = 0; i < 10; i++) {
+        strcpy(uniformsName[i], "spotLights[");
+        sprintf(uniformsName[i] + strlen(uniformsName[i]), "%d", lightsCount[SPOT_LIGHT]);
+        strcat(uniformsName[i], uniforms[i]);
+    }
+
+    vec3 dir = {1.0, 0.0, 0.0};
+
+    glm_vec3_rotate(dir, to_radians(rot[0]), (vec3){1.0f, 0.0f, 0.0f});
+    glm_vec3_rotate(dir, to_radians(rot[1]), (vec3){0.0f, 1.0f, 0.0f});
+    glm_vec3_rotate(dir, to_radians(rot[2]), (vec3){0.0f, 0.0f, 1.0f});
+
+    for (int i = 0; i < memoryCaches.shadersCount; i++) {
+        use_shader(memoryCaches.shaderCache[i].shader);
+        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[0], node->globalPos);
+        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], dir);
+        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[2], spotLight->ambient);
+        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[3], spotLight->diffuse);
+        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[4], spotLight->specular);
+        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], spotLight->constant);
+        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], spotLight->linear);
+        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[7], spotLight->quadratic);
+        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[8], spotLight->cutOff);
+        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[9], spotLight->outerCutOff);
+    }
+    lightsCount[SPOT_LIGHT]++;
+
+}
+
+/**
  * Update node in the physics world
  *
  * @param {Node*} node - The affected node.
@@ -810,7 +948,7 @@ void update_camera(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Coll
  * @param {CollisionBuffer*} collisionBuffer - The collision buffer.
  */
 
-void update_node_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, CollisionBuffer *collisionBuffer) {
+void update_node_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, CollisionBuffer *collisionBuffer, u8 lightsCount[LIGHTS_COUNT]) {
     switch (node->type) {
         case NODE_RIGID_BODY:
             update_rigid_body(node, pos, rot, scale, delta, collisionBuffer);
@@ -823,6 +961,15 @@ void update_node_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta
         break;
         case NODE_CAMERA:
             update_camera(node, pos, rot, scale, delta, collisionBuffer);
+        break;
+        case NODE_POINT_LIGHT:
+            update_point_light(node, pos, rot, scale, delta, collisionBuffer, lightsCount);
+        break;
+        case NODE_DIRECTIONAL_LIGHT:
+            update_directional_light(node, pos, rot, scale, delta, collisionBuffer, lightsCount);
+        break;
+        case NODE_SPOT_LIGHT:
+            update_spot_light(node, pos, rot, scale, delta, collisionBuffer, lightsCount);
         break;
         default:
             update_global_position(node, pos, rot, scale);
@@ -845,7 +992,7 @@ void update_script(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Coll
  * @param {CollisionBuffer*} collisionBuffer - The collision buffer.
  */
 
-void update_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, CollisionBuffer *collisionBuffer, Input *input, Window *window, bool active) {
+void update_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, CollisionBuffer *collisionBuffer, Input *input, Window *window, u8 lightsCount[LIGHTS_COUNT], bool active) {
     vec3 newPos;
     vec3 newRot;
     vec3 newScale;
@@ -854,14 +1001,14 @@ void update_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Col
     glm_vec3_copy(rot, newRot);
     glm_vec3_copy(scale, newScale);
 
-    if (node->flags & NODE_ACTIVE && active) {
+    if (node->flags & NODE_ACTIVE && (active || node->flags & NODE_EDITOR_FLAG)) {
         update_script(node, newPos, newRot, newScale, delta, collisionBuffer, input, window);
-        update_node_physics(node, newPos, newRot, newScale, delta, collisionBuffer);
+        update_node_physics(node, newPos, newRot, newScale, delta, collisionBuffer, lightsCount);
     } else {
         active = false;
         update_global_position(node, newPos, newRot, newScale);
     }
 
     for (int i = 0; i < node->length; i++)
-        update_physics(node->children[i], newPos, newRot, newScale, delta, collisionBuffer, input, window, active);
+        update_physics(node->children[i], newPos, newRot, newScale, delta, collisionBuffer, input, window, lightsCount, active);
 }

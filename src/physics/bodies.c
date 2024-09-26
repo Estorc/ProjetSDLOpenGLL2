@@ -7,6 +7,7 @@
 #include "../render/framebuffer.h"
 #include "../node.h"
 #include "../window.h"
+#include "../render/lighting.h"
 #include "physics.h"
 #include "bodies.h"
 

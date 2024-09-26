@@ -13,18 +13,23 @@ typedef struct Node {
     void *object;
     struct Node **children;
     struct Node *parent;
-    NODE_FUNC_RETURN (*script)(NODE_FUNC_PARAMS);
-    ScriptParameter *params;
-    u8 params_count;
     u16 length;
     u8 type;
     u8 flags;
+
     Vec3f pos;
     Vec3f rot;
     Vec3f scale;
+
     Vec3f globalPos;
     Vec3f globalRot;
     Vec3f globalScale;
+
+    NODE_FUNC_RETURN (*script)(NODE_FUNC_PARAMS);
+    ScriptParameter *params;
+    u8 params_count;
+
+    Shader shader;
 } Node;
 
 enum NodeType {
@@ -56,6 +61,9 @@ enum NodeType {
     _M_NODE_CSHAPES__END__,
 
     NODE_CAMERA,
+    NODE_POINT_LIGHT,
+    NODE_DIRECTIONAL_LIGHT,
+    NODE_SPOT_LIGHT,
     NODE_COUNT,
 };
 
@@ -68,7 +76,7 @@ enum NodeFlags {
     NODE_UNUSED3            = 1 << 4, // 0001 0000
     NODE_UNUSED4            = 1 << 5, // 0010 0000
     NODE_UNUSED5            = 1 << 6, // 0100 0000
-    NODE_UNUSED6            = 1 << 7, // 1000 0000
+    NODE_EDITOR_FLAG        = 1 << 7, // 1000 0000
 };
 
 #define NODE_ACTIVE_AND_VISIBLE NODE_ACTIVE | NODE_VISIBLE // 0000 0011
@@ -76,7 +84,14 @@ enum NodeFlags {
 
 #endif
 
+struct PointLight;
+struct DirectionalLight;
+struct SpotLight;
+
 Node * create_node(Node *node, u8 type, void *data);
+Node * create_point_light_node(Node *node, struct PointLight *pointLight);
+Node * create_directional_light_node(Node *node, struct DirectionalLight *directionalLight);
+Node * create_spot_light_node(Node *node, struct SpotLight *spotLight);
 Node * create_camera_node(Node *node, Camera *camera);
 Node * create_static_body_node(Node *node, StaticBody *staticBody);
 Node * create_rigid_body_node(Node *node, RigidBody *rigidBody);
@@ -101,11 +116,13 @@ void remove_child_and_realloc(Node *node, Node *child);
 void remove_child_and_free(Node *node, Node *child);
 void remove_child_and_free_and_realloc(Node *node, Node *child);
 
-void render_node(Node *node, Shader *shaders, mat4 modelMatrix);
+void render_node(Node *node, mat4 modelMatrix);
 void render_model(Node *node, mat4 modelMatrix);
 void render_textured_mesh(Node *node, mat4 modelMatrix);
-void render_skybox(Node *node, Shader shader, mat4 modelMatrix);
+void render_skybox(Node *node, mat4 modelMatrix);
 void render_mesh(Node *node, mat4 modelMatrix);
+void render_point_light(Node *node, mat4 modelMatrix);
+void render_directional_light(Node *node, mat4 modelMatrix);
 
 void free_node(Node *node);
 void print_node(Node *node, int level);
