@@ -147,7 +147,7 @@ void main()
     normal = normalize(normal); 
     //vec3 rgb_normal = normal * 0.5 + 0.5; // transforms from [-1,1] to [0,1]  
 
-    float shadow = 0.0;
+    float shadow = 0;
 
     vec3 result = vec3(0);
     // phase 1: directional lighting
@@ -198,7 +198,7 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, f
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
     // attenuation
     float distance = length(light.position - fragPos);
-    float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));    
+    float attenuation = 1.0 / (light.constant + light.linear * distance + max(light.quadratic, 0.032) * (distance * distance));    
     // combine results
     vec3 ambient = light.ambient * material.ambient;
     vec3 diffuse = light.diffuse * diff * material.diffuse;
@@ -220,7 +220,7 @@ vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir, flo
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
     // attenuation
     float distance = length(light.position - fragPos);
-    float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));    
+    float attenuation = 1.0 / (light.constant + max(light.linear, 0.032) * distance + max(light.quadratic, 0.032) * (distance * distance));    
     // spotlight intensity
     float theta = dot(lightDir, normalize(-light.direction)); 
     float epsilon = light.cutOff - light.outerCutOff;

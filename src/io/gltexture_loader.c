@@ -9,6 +9,7 @@
 #include <SDL2/SDL_ttf.h>
 #include <GL/glu.h>
 #include <GL/glext.h>
+#include <limits.h>
 
 #include "../math/math_util.h"
 #include "model.h"
@@ -128,7 +129,7 @@ int draw_button(SDL_Surface *render_surface, int x, int y, int width, int height
 void draw_text(SDL_Surface *render_surface, int x, int y, char *text, TTF_Font *font, SDL_Color color) {
     SDL_Surface *surface;
 
-    surface = TTF_RenderText_Blended_Wrapped(font, text, color, 0);
+    surface = TTF_RenderText_Blended_Wrapped(font, text, color, INT_MAX);
     SDL_Rect textLocation = { x, y, 0, 0 };
     SDL_BlitSurface(surface, NULL, render_surface, &textLocation);
     SDL_FreeSurface(surface);
