@@ -26,7 +26,7 @@
 #include <SDL2/SDL_ttf.h>
 
 int FPS[2] = {0,0};
-float fps = 0;
+float fps = 1.0;
 int update(Window *window, Node *viewportNode, Camera *c, Input *input, WorldShaders *shaders, DepthMap *depthMap, CollisionBuffer *collisionBuffer) {
 
     float delta = (window->lastTime) ? window->time - window->lastTime : 0.0;

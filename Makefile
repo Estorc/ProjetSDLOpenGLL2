@@ -2,43 +2,81 @@
 # ====================     Makefile     =========================
 # ===============================================================
 
-newline := $(shell printf "\n")
 
-# C Files path
+NC=\033[0;0m
 
-modules += src/io/gltexture_loader.c
-modules += src/io/obj_loader.c
-modules += src/io/mtl_loader.c
-modules += src/io/scene_loader.c
-modules += src/io/node_loader.c
-modules += src/io/model.c
-modules += src/io/input.c
-modules += src/io/stringio.c
-modules += src/io/shader.c
-modules += src/io/osio.c
+BOLD=1
+ITALIC=3
+UNDELINE=4
+BLINK=5
 
-modules += src/math/math_util.c
-modules += src/math/graph.c
+FG_GREY=30
+FG_RED=31
+FG_GREEN=32
+FG_ORANGE=33
+FG_BLUE=34
+FG_PURPLE=35
+FG_AQUA=36
+FG_WHITE=37
+FG_DEFAULT=39
 
-modules += src/render/lighting.c
-modules += src/render/render.c
-modules += src/render/color.c
-modules += src/render/camera.c
-modules += src/render/framebuffer.c
-modules += src/render/depth_map.c
-modules += src/render/viewport.c
-modules += src/render/filter.c
+BG_GREY=40
+BG_RED=41
+BG_GREEN=42
+BG_ORANGE=43
+BG_BLUE=44
+BG_PURPLE=45
+BG_AQUA=46
+BG_WHITE=47
+BG_DEFAULT=49
 
-modules += src/physics/cube.c
-modules += src/physics/collision.c
-modules += src/physics/bodies.c
+NOTE_COL=\033[0;${FG_GREY};${BG_DEFAULT}m
+ACT_COL=\033[0;${FG_BLUE};${BG_DEFAULT}m
+STEP_COL=\033[0;${FG_DEFAULT};${BG_DEFAULT};${BOLD}m
+FILE_COL=\033[0;${FG_ORANGE};${BG_DEFAULT};${ITALIC}m
+SUCCESS_COL=\033[0;${FG_GREEN};${BG_DEFAULT};${BOLD}m
 
-modules += src/utils/skybox.c
-modules += src/utils/time.c
+NEWLINE := $(shell printf "\n")
 
-modules += src/memory.c
-modules += src/window.c
-modules += src/node.c
+# Object Files path
+
+BUILD_DIR := build
+
+MODULES += src/io/gltexture_loader.o
+MODULES += src/io/obj_loader.o
+MODULES += src/io/mtl_loader.o
+MODULES += src/io/scene_loader.o
+MODULES += src/io/node_loader.o
+MODULES += src/io/model.o
+MODULES += src/io/input.o
+MODULES += src/io/stringio.o
+MODULES += src/io/shader.o
+MODULES += src/io/osio.o
+
+MODULES += src/math/math_util.o
+MODULES += src/math/graph.o
+
+MODULES += src/render/lighting.o
+MODULES += src/render/render.o
+MODULES += src/render/color.o
+MODULES += src/render/camera.o
+MODULES += src/render/framebuffer.o
+MODULES += src/render/depth_map.o
+MODULES += src/render/viewport.o
+MODULES += src/render/filter.o
+
+MODULES += src/physics/cube.o
+MODULES += src/physics/collision.o
+MODULES += src/physics/bodies.o
+
+MODULES += src/utils/skybox.o
+MODULES += src/utils/time.o
+
+MODULES += src/memory.o
+MODULES += src/window.o
+MODULES += src/node.o
+
+BUILD_MODULES = $(addprefix $(BUILD_DIR)/,${MODULES})
 
 # ===============================================================
 
@@ -70,52 +108,55 @@ NODE_TOOLS := $(NODE_TOOLS)$(shell tools/node_tools 1)
 
 # Targets
 
-all:
-	@echo "===================== Begin build. ===================="
-	@$(MAKE) generate_header
-	@echo "Build app..."
-	@gcc -o app src/main.c ${SCRIPTS_COUNT} ${modules} ${LFLAGS} ${WFLAGS}
-	@echo "============= Successfully build the app! ============="
+all:build launch
 
-debug:
-	@echo "===================== Begin debug build. ===================="
-	@$(MAKE) generate_header
-	@echo "Build debug app..."
-	@gcc -o debug -g src/main.c -DDEBUG ${SCRIPTS_COUNT} ${modules} ${LFLAGS} ${WFLAGS}
-	@echo "============= Successfully build the debug app! ============="
+init_build:
+	@echo "${STEP_COL}===================== Begin build. ====================${NC}"
 
-bin:
-	@echo "===================== Begin build. ===================="
-	@$(MAKE) generate_header
-	@echo "Build app..."
-	@gcc -o bin/release/app src/main.c ${SCRIPTS_COUNT} ${modules} ${LFLAGS} ${WFLAGS}
-	@echo "============= Successfully build the app! ============="
+launch:
+	@echo "${STEP_COL}=================== Launch the app... =================${NC}"
+	@${BUILD_DIR}/app
+
+
+build: init_build generate_header ${BUILD_DIR}/src/main.o ${BUILD_MODULES}
+	@echo "${STEP_COL}===================== Begin linking. ====================${NC}"
+	@echo "${ACT_COL}Linking app...${NC}"
+	@gcc -o ${BUILD_DIR}/app ${BUILD_DIR}/src/main.o ${SCRIPTS_COUNT} ${BUILD_MODULES} ${LFLAGS} ${WFLAGS}
+	@echo "${STEP_COL}============= ${SUCCESS_COL}Successfully build the app!${NC}${STEP_COL} =============${NC}"
+
+debug: init_build generate_header ${BUILD_DIR}/src/main.o ${BUILD_MODULES}
+	@echo "${STEP_COL}===================== Begin debug linking. ====================${NC}"
+	@echo "${ACT_COL}Linking debug app...${NC}"
+	@gcc -o ${BUILD_DIR}/debug -g ${BUILD_DIR}/src/main.o -DDEBUG ${SCRIPTS_COUNT} ${BUILD_MODULES} ${LFLAGS} ${WFLAGS}
+	@echo "${STEP_COL}============= ${SUCCESS_COL}Successfully build the debug app!${NC}${STEP_COL} =============${NC}"
 
 tools:
-	@echo "===================== Begin build tools. ===================="
-	@echo "Build app..."
+	@echo "${STEP_COL}===================== Begin build tools. ===================="
+	@echo "${ACT_COL}Build tools...${NC}"
 	@gcc -o tools/node_tools tools/node_tools.c ${WFLAGS}
-	@echo "============= Successfully build the tools! ============="
-	@$(MAKE) generate_header
+	@echo "${STEP_COL}============= ${NC}${SUCCESS_COL}Successfully build the tools!${NC}${STEP_COL} =============${NC}"
 
-%:
-	@if test ! -f src/$@.c; then echo "File $@.c doesn't exist in src/"; exit 1; fi
-	@echo "===================== Begin build. ===================="
-	@$(MAKE) generate_header
-	@echo "Build $@..."
-	@gcc -o $@ src/$@.c ${SCRIPTS_COUNT} ${modules} ${LFLAGS} ${WFLAGS}
-	@echo "============= Successfully build $@! ============="
+${BUILD_DIR}/%.o: %.c
+	@echo "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}..."
+	@mkdir -p ${BUILD_DIR}/${dir $*}
+	@gcc -c $*.c -o ${BUILD_DIR}/$*.o ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@echo "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/$*.o${NC}"
 
 
 generate_header:
-	@echo "Generate loading scripts header..."
+	@echo "${ACT_COL}Generate loading scripts header...${NC}"
 	@echo "// Auto-generated scripts loading header file" > $(LOADING_SCRIPT_HEADER)
 	@for file in $(SCRIPTS_FILES); do \
 		echo "#include \"$$file\"" >> $(LOADING_SCRIPT_HEADER); \
 	done
 
-	@echo "Generate node tools header..."
+	@echo "${ACT_COL}Generate node tools header...${NC}"
 	@echo "// Auto-generated node tools header file" > $(NODE_TOOLS_HEADER)
 	@echo "$(NODE_TOOLS)" >> $(NODE_TOOLS_HEADER)
 
-.PHONY: all debug bin tools generate_header
+clean:
+	@echo "${ACT_COL}Generate node tools header...${NC}"
+	@rm -rf ${BUILD_DIR}
+	@echo "${SUCCESS_COL}Successfully clear the build!${NC}"
+
+.PHONY: all build debug tools generate_header
