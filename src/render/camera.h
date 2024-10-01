@@ -5,7 +5,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-typedef struct {
+typedef struct Camera {
     Vec3f pos,dir,rot,targetRot,targetPos;
 } Camera;
 

@@ -15,13 +15,13 @@ struct Window;
 #ifndef SCRIPTS_H
 #define SCRIPTS_H
 
-typedef union {
+typedef union ScriptParameter {
     int i;
     float f;
     struct Node *node;
 } ScriptParameter;
 
-typedef struct {
+typedef struct Script {
     NODE_FUNC_RETURN (*script)(NODE_FUNC_PARAMS);
     char * name;
 } Script;

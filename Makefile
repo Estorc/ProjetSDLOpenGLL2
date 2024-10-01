@@ -40,7 +40,7 @@ NEWLINE := $(shell printf "\n")
 
 # Object Files path
 
-BUILD_DIR := build
+BUILD_DIR := bin
 
 MODULES += src/io/gltexture_loader.o
 MODULES += src/io/obj_loader.o
@@ -76,11 +76,14 @@ MODULES += src/memory.o
 MODULES += src/window.o
 MODULES += src/node.o
 
-BUILD_MODULES = $(addprefix $(BUILD_DIR)/,${MODULES})
+RELEASE_MODULES = $(addprefix $(BUILD_DIR)/,${MODULES})
+DEBUG_MODULES = $(addprefix $(BUILD_DIR)/debug/,${MODULES})
 
 # ===============================================================
 
 # Flags
+
+CFLAGS += -MD
 
 LFLAGS += `sdl2-config --cflags --libs`
 LFLAGS += -lm
@@ -108,26 +111,28 @@ NODE_TOOLS := $(NODE_TOOLS)$(shell tools/node_tools 1)
 
 # Targets
 
-all:build launch
+all:release launch
 
 init_build:
 	@echo "${STEP_COL}===================== Begin build. ====================${NC}"
 
 launch:
 	@echo "${STEP_COL}=================== Launch the app... =================${NC}"
-	@${BUILD_DIR}/app
+	@${BUILD_DIR}/release/app
 
 
-build: init_build generate_header ${BUILD_DIR}/src/main.o ${BUILD_MODULES}
+release: init_build generate_header ${BUILD_DIR}/src/main.o ${RELEASE_MODULES}
 	@echo "${STEP_COL}===================== Begin linking. ====================${NC}"
 	@echo "${ACT_COL}Linking app...${NC}"
-	@gcc -o ${BUILD_DIR}/app ${BUILD_DIR}/src/main.o ${SCRIPTS_COUNT} ${BUILD_MODULES} ${LFLAGS} ${WFLAGS}
+	@mkdir -p ${BUILD_DIR}/release
+	@gcc -o ${BUILD_DIR}/release/app ${BUILD_DIR}/src/main.o ${SCRIPTS_COUNT} ${RELEASE_MODULES} ${LFLAGS} ${WFLAGS}
 	@echo "${STEP_COL}============= ${SUCCESS_COL}Successfully build the app!${NC}${STEP_COL} =============${NC}"
 
-debug: init_build generate_header ${BUILD_DIR}/src/main.o ${BUILD_MODULES}
+debug: init_build generate_header ${BUILD_DIR}/debug/src/main.o ${DEBUG_MODULES}
 	@echo "${STEP_COL}===================== Begin debug linking. ====================${NC}"
 	@echo "${ACT_COL}Linking debug app...${NC}"
-	@gcc -o ${BUILD_DIR}/debug -g ${BUILD_DIR}/src/main.o -DDEBUG ${SCRIPTS_COUNT} ${BUILD_MODULES} ${LFLAGS} ${WFLAGS}
+	@mkdir -p ${BUILD_DIR}/debug
+	@gcc -o ${BUILD_DIR}/debug/app -g ${BUILD_DIR}/debug/src/main.o -DDEBUG ${SCRIPTS_COUNT} ${DEBUG_MODULES} ${LFLAGS} ${WFLAGS}
 	@echo "${STEP_COL}============= ${SUCCESS_COL}Successfully build the debug app!${NC}${STEP_COL} =============${NC}"
 
 tools:
@@ -136,11 +141,19 @@ tools:
 	@gcc -o tools/node_tools tools/node_tools.c ${WFLAGS}
 	@echo "${STEP_COL}============= ${NC}${SUCCESS_COL}Successfully build the tools!${NC}${STEP_COL} =============${NC}"
 
+# Release objects constructor
 ${BUILD_DIR}/%.o: %.c
 	@echo "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}..."
 	@mkdir -p ${BUILD_DIR}/${dir $*}
-	@gcc -c $*.c -o ${BUILD_DIR}/$*.o ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@gcc -c $*.c -o ${BUILD_DIR}/$*.o ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
 	@echo "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/$*.o${NC}"
+
+# Debug objects constructor
+${BUILD_DIR}/debug/%.o: %.c
+	@echo "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}..."
+	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
+	@gcc -c $*.c -o ${BUILD_DIR}/debug/$*.o -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@echo "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}"
 
 
 generate_header:
@@ -155,8 +168,10 @@ generate_header:
 	@echo "$(NODE_TOOLS)" >> $(NODE_TOOLS_HEADER)
 
 clean:
-	@echo "${ACT_COL}Generate node tools header...${NC}"
+	@echo "${ACT_COL}Clear the build...${NC}"
 	@rm -rf ${BUILD_DIR}
 	@echo "${SUCCESS_COL}Successfully clear the build!${NC}"
 
 .PHONY: all build debug tools generate_header
+-include $(RELEASE_MODULES:.o=.d)
+-include $(DEBUG_MODULES:.o=.d)

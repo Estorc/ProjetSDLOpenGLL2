@@ -26,7 +26,10 @@ typedef struct SpotLight {
 
 struct WorldShaders;
 struct Window;
-void configure_global_lighting(struct Window *window, Node *root, Camera *c, struct WorldShaders *shaders);
-void configure_directional_lighting(struct Window *window, Node *root, Camera *c, struct WorldShaders *shaders);
+struct Node;
+struct Camera;
+
+void configure_global_lighting(struct Window *window, struct Node *root, struct Camera *c, struct WorldShaders *shaders);
+void configure_directional_lighting(struct Window *window, struct Node *root, struct Camera *c, struct WorldShaders *shaders);
 void reset_lightings();
 #endif

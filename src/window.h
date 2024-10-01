@@ -22,8 +22,12 @@ typedef struct Window {
 } Window;
 
 struct WorldShaders;
+struct Node;
+struct Camera;
+struct DepthMap;
+
 s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Window *window);
-void update_window(Window *window, Node *viewportNode, Camera *c, struct WorldShaders *shaders, DepthMap *depthMap);
+void update_window(Window *window, struct Node *viewportNode, struct Camera *c, struct WorldShaders *shaders, struct DepthMap *depthMap);
 void refresh_ui(Window *window);
 void free_window(Window *window);
 

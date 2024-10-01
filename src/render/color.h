@@ -1,14 +1,14 @@
 #ifndef COLOR_H
 #define COLOR_H
 
-typedef struct {
+typedef struct ColRGBA {
     f32 r;
     f32 g;
     f32 b;
     f32 a;
 } ColRGBA;
 
-typedef struct {
+typedef struct ColRGB {
     f32 r;
     f32 g;
     f32 b;

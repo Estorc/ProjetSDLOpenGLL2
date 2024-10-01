@@ -3,7 +3,7 @@
 
 struct Node;
 
-typedef struct {
+typedef struct Filter {
     void (*beginScript)(struct Node *node, TextureMap *texture);
     void (*endScript)(struct Node *node, TextureMap *texture);
     u8 flags;

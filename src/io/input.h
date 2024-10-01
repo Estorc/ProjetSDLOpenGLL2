@@ -22,12 +22,12 @@ enum Keys {
     KEY_COUNT,
 };
 
-typedef struct {
+typedef struct Mouse {
     s32 x, y, lastX, lastY;
     u8 pressed_button, active_button, released_button;
 } Mouse;
 
-typedef struct {
+typedef struct Input {
     u16 active_keys;
     u16 pressed_keys;
     u16 released_keys;

@@ -9,8 +9,9 @@ typedef struct WorldShaders {
 
 struct Window;
 struct DepthMap;
+struct Camera;
 struct Node;
 
-void configure_global_lighting(struct Window *window, struct Node *root, Camera *c, WorldShaders *shaders);
-void draw_screen(struct Window *window, struct Node *viewportNode, Camera *c, WorldShaders *shaders, struct DepthMap *depthMap);
+void configure_global_lighting(struct Window *window, struct Node *root, struct Camera *c, WorldShaders *shaders);
+void draw_screen(struct Window *window, struct Node *viewportNode, struct Camera *c, WorldShaders *shaders, struct DepthMap *depthMap);
 #endif

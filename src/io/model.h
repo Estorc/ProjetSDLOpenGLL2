@@ -18,7 +18,7 @@ typedef u32 TextureMap;
     Vec3f vec;
 } Vertex;*/
 
-typedef struct {
+typedef struct Material {
     char name[20]; // On pourrait imaginer une somme des lettres en exposant ou une conversion en base 64 / MD5 pour obtenir un identifiant unique plus simple à retrouver.
     Vec3f ambientCol;
     Vec3f diffuseCol;
@@ -32,14 +32,14 @@ typedef struct {
     TextureMap displacementTextureMap;
 } Material;
 
-typedef struct {
+typedef struct Face {
     int vertex[MAX_VERTEX_PER_FACE];
     int normals[MAX_VERTEX_PER_FACE];
     int textureVertex[MAX_VERTEX_PER_FACE];
     u8 length;
 } Face;
 
-typedef struct {
+typedef struct Object {
     Vertex *vertex;
     Normal *normals;
     TextureVertex *textureVertex;
@@ -54,20 +54,20 @@ typedef struct {
     u8 materialsCount;
 } Object;
 
-typedef struct {
+typedef struct Model {
     Material *materials;
     u8 materialsCount;
     Object *objects;
     u8 length;
 } Model;
 
-typedef struct {
+typedef struct TexturedMesh {
     VAO VAO;
     TextureMap texture;
     u8 length;
 } TexturedMesh;
 
-typedef struct {
+typedef struct Mesh {
     VAO VAO;
     u8 length;
 } Mesh;

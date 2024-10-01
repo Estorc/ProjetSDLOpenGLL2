@@ -1,6 +1,8 @@
 #ifndef BODIES_H
 #define BODIES_H
 
+struct Node;
+
 typedef struct StaticBody {
     struct Node **collisionsShapes;
     u8 length;
