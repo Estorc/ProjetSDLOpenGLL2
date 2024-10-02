@@ -47,8 +47,8 @@ int main(int argc, char *argv[]) {
 
 
     Model models[NUM_MODELS];
-    if (load_obj_model("models/Deku Tree/", "untitled.obj", &models[0]) == -1) return -1;
-    if (load_obj_model("models/dillonPonchoHDMdl.vpl/", "untitled.obj", &models[1]) == -1) return -1;
+    if (load_obj_model("assets/models/Deku Tree/", "untitled.obj", &models[0]) == -1) return -1;
+    if (load_obj_model("assets/models/dillonPonchoHDMdl.vpl/", "untitled.obj", &models[1]) == -1) return -1;
     Vec3fScale(models[0].scale, 0.01f);
 
 
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
 
     TexturedMesh texturedMeshes[NUM_TEXTURED_MESHES];
     create_skybox(&texturedMeshes[0], SKYBOX_SEA);
-    create_textured_plane(&texturedMeshes[1], "models/texture.png");
+    create_textured_plane(&texturedMeshes[1], "assets/models/texture.png");
     texturedMeshes[1].rot[0] = 180.0f;
 
     FrameBuffer msaa_framebuffer;

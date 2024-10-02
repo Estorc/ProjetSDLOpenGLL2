@@ -8,15 +8,20 @@
 #include "../io/model.h"
 #include "../io/shader.h"
 #include "../memory.h"
+#include "../io/stringio.h"
 
 TextureMap load_cubemap(char faces[6][100]) {
+    char *paths[6];
+    for (int i = 0; i < 6; i++) {
+        paths[i] = relative_path(faces[i]);
+    }
     for (int i = 0; i < memoryCaches.cubeMapCount; i++) {
-        if (!strcmp(memoryCaches.cubeMapCache[i].textureName[0], faces[0]) &&
-            !strcmp(memoryCaches.cubeMapCache[i].textureName[1], faces[1]) &&
-            !strcmp(memoryCaches.cubeMapCache[i].textureName[2], faces[2]) &&
-            !strcmp(memoryCaches.cubeMapCache[i].textureName[3], faces[3]) &&
-            !strcmp(memoryCaches.cubeMapCache[i].textureName[4], faces[4]) &&
-            !strcmp(memoryCaches.cubeMapCache[i].textureName[5], faces[5])) {
+        if (!strcmp(memoryCaches.cubeMapCache[i].textureName[0], paths[0]) &&
+            !strcmp(memoryCaches.cubeMapCache[i].textureName[1], paths[1]) &&
+            !strcmp(memoryCaches.cubeMapCache[i].textureName[2], paths[2]) &&
+            !strcmp(memoryCaches.cubeMapCache[i].textureName[3], paths[3]) &&
+            !strcmp(memoryCaches.cubeMapCache[i].textureName[4], paths[4]) &&
+            !strcmp(memoryCaches.cubeMapCache[i].textureName[5], paths[5])) {
             #ifdef DEBUG
                 printf("Cube Map loaded from cache!\n");
             #endif
@@ -31,7 +36,7 @@ TextureMap load_cubemap(char faces[6][100]) {
     int success = 1;
 
     for (unsigned int i = 0; i < 6; i++) {
-        SDL_Surface* textureSurface = IMG_Load(faces[i]);
+        SDL_Surface* textureSurface = IMG_Load(paths[i]);
 
         if (textureSurface) {
             glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 
@@ -39,7 +44,7 @@ TextureMap load_cubemap(char faces[6][100]) {
             );
             SDL_FreeSurface(textureSurface);
         } else {
-            printf("Cubemap tex failed to load at path: %s\n", faces[i]);
+            printf("Cubemap tex failed to load at path: %s\n", paths[i]);
             SDL_FreeSurface(textureSurface);
             success = 0;
         }
@@ -54,9 +59,10 @@ TextureMap load_cubemap(char faces[6][100]) {
         memoryCaches.cubeMapCache = realloc(memoryCaches.cubeMapCache, sizeof (CubeMapCache) * (++memoryCaches.cubeMapCount));
         memoryCaches.cubeMapCache[memoryCaches.cubeMapCount-1].cubeMap = textureID;
         for (unsigned int i = 0; i < 6; i++) {
-            strcpy(memoryCaches.cubeMapCache[memoryCaches.cubeMapCount-1].textureName[i], faces[i]);
+            strcpy(memoryCaches.cubeMapCache[memoryCaches.cubeMapCount-1].textureName[i], paths[i]);
         }
     }
+    for (int i = 0; i < 6; i++) free(paths[i]);
     return textureID;
 }  
 

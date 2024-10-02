@@ -126,6 +126,14 @@ release: init_build generate_header ${BUILD_DIR}/src/main.o ${RELEASE_MODULES}
 	@echo "${ACT_COL}Linking app...${NC}"
 	@mkdir -p ${BUILD_DIR}/release
 	@gcc -o ${BUILD_DIR}/release/app ${BUILD_DIR}/src/main.o ${SCRIPTS_COUNT} ${RELEASE_MODULES} ${LFLAGS} ${WFLAGS}
+
+	@echo "${ACT_COL}Copying assets...${NC}"
+	@rsync -rupE assets ${BUILD_DIR}/release/
+	@echo "${SUCCESS_COL}Assets copied!${NC}"
+	@echo "${ACT_COL}Copying shaders...${NC}"
+	@rsync -rupE shaders ${BUILD_DIR}/release/
+	@echo "${SUCCESS_COL}Shaders copied!${NC}"
+
 	@echo "${STEP_COL}============= ${SUCCESS_COL}Successfully build the app!${NC}${STEP_COL} =============${NC}"
 
 debug: init_build generate_header ${BUILD_DIR}/debug/src/main.o ${DEBUG_MODULES}
@@ -133,6 +141,14 @@ debug: init_build generate_header ${BUILD_DIR}/debug/src/main.o ${DEBUG_MODULES}
 	@echo "${ACT_COL}Linking debug app...${NC}"
 	@mkdir -p ${BUILD_DIR}/debug
 	@gcc -o ${BUILD_DIR}/debug/app -g ${BUILD_DIR}/debug/src/main.o -DDEBUG ${SCRIPTS_COUNT} ${DEBUG_MODULES} ${LFLAGS} ${WFLAGS}
+
+	@echo "${ACT_COL}Copying assets...${NC}"
+	@rsync -rupE assets ${BUILD_DIR}/debug/
+	@echo "${SUCCESS_COL}Assets copied!${NC}"
+	@echo "${ACT_COL}Copying shaders...${NC}"
+	@rsync -rupE shaders ${BUILD_DIR}/debug/
+	@echo "${SUCCESS_COL}Shaders copied!${NC}"
+
 	@echo "${STEP_COL}============= ${SUCCESS_COL}Successfully build the debug app!${NC}${STEP_COL} =============${NC}"
 
 tools:

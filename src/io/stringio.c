@@ -1,4 +1,5 @@
 #include "../types.h"
+#include "stringio.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -53,8 +54,19 @@ char * get_folder_path(char * fullpath) {
     strcpy(path, fullpath);
     int slash_count = 0;
     for (char * ptr = path; *ptr; ptr++) if (*ptr == '/' || *ptr == '\\') slash_count++;
+    if (!slash_count) {
+        path[0] = 0;
+        return path;
+    }
     for (char * ptr = path; slash_count; ptr++) if (*ptr == '/' || *ptr == '\\') if (!(--slash_count) && *(ptr+1)) *(ptr+1) = 0;
     return path;
+}
+
+char * relative_path(char * path) {
+    char * rel_path = malloc((strlen(path) + strlen(RELATIVE_PATH) + 1) * sizeof(char));
+    strcpy(rel_path, RELATIVE_PATH);
+    strcat(rel_path, path);
+    return rel_path;
 }
 
 int str_includes(char *src, char *occ) {

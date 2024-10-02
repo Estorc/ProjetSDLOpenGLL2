@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #include "../types.h"
 
 #include <SDL2/SDL.h>
@@ -16,6 +15,7 @@
 #include "input.h"
 #include "gltexture_loader.h"
 #include "shader.h"
+#include "stringio.h"
 #include "../memory.h"
 
 
@@ -43,6 +43,7 @@
 
 TextureMap load_texture_from_path(char * path) {
 
+    path = relative_path(path);
     for (int i = 0; i < memoryCaches.texturesCount; i++) {
         if (!strcmp(memoryCaches.textureCache[i].textureName, path)) {
             #ifdef DEBUG
@@ -78,6 +79,7 @@ TextureMap load_texture_from_path(char * path) {
     }
 
     SDL_FreeSurface(textureSurface);
+    free(path);
     return texture;
 }
 

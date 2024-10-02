@@ -1,10 +1,11 @@
 void draw_model_input(int *id, int x, int y, Window *window, Node *node, Model **model, Input *input, TTF_Font *font, char * name) {
 	char str[150];
 
-    if (draw_button(window->ui_surface, x+800-48, y, 32, 32, "textures/editor/folder.png", 0xffffffff, input)) {
+    if (draw_button(window->ui_surface, x+800-48, y, 32, 32, "assets/textures/editor/folder.png", 0xffffffff, input)) {
         char path[200];
         if (osio_open_file(path, "\"Object 3d Model File(*.obj)\"") == 0) {
             absolute_path_to_relative(path);
+            printf("%s\n", path);
             FILE * file = fopen(path, "r");
             if (file) {
                 Model *new_model;
@@ -28,7 +29,7 @@ void draw_model_input(int *id, int x, int y, Window *window, Node *node, Model *
 void draw_texture_input(int *id, int x, int y, Window *window, Node *node, TextureMap *texture, Input *input, TTF_Font *font, char * name) {
 	char str[150];
 
-    if (draw_button(window->ui_surface, x+800-48, y, 32, 32, "textures/editor/folder.png", 0xffffffff, input)) {
+    if (draw_button(window->ui_surface, x+800-48, y, 32, 32, "assets/textures/editor/folder.png", 0xffffffff, input)) {
         char path[200];
         if (osio_open_file(path, "\"image/png image/bmp image/jpeg\"") == 0) {
             absolute_path_to_relative(path);
@@ -54,8 +55,8 @@ void draw_texture_input(int *id, int x, int y, Window *window, Node *node, Textu
 void draw_cubemap_input(int *id, int x, int y, Window *window, Node *node, TextureMap *texture, Input *input, TTF_Font *font, char * name) {
 	char str[150];
 
-    if (draw_button(window->ui_surface, x+800-48, y, 32, 32, "textures/editor/folder.png", 0xffffffff, input)) {
-        char path[6][100];
+    if (draw_button(window->ui_surface, x+800-48, y, 32, 32, "assets/textures/editor/folder.png", 0xffffffff, input)) {
+        char path[6][200];
         int res = 0;
         for (int i = 0; i < 6; i++) res |= osio_open_file(path[i], "\"image/png image/bmp image/jpeg\"");
         if (res == 0) {
@@ -266,7 +267,7 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
         case NODE_CAMERA:
             {
             draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
-            if (draw_button(window->ui_surface, x+400-16, y, 32, 32, editor->params[5].node == node ? "textures/editor/camera.png" : "textures/editor/camera-off.png", 0xffffffff, input)) {
+            if (draw_button(window->ui_surface, x+400-16, y, 32, 32, editor->params[5].node == node ? "assets/textures/editor/camera.png" : "assets/textures/editor/camera-off.png", 0xffffffff, input)) {
                 if (editor->params[5].node == node) editor->params[5].node = 0;
                 else editor->params[5].node = node;
             }

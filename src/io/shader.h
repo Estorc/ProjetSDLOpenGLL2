@@ -9,7 +9,7 @@ typedef unsigned int Shader;
 #define DEFAULT_SKYBOX_SHADER "shaders/skybox.vs", "shaders/skybox.fs"
 
 void create_shaders(Shader shaders[]);
-Shader create_shader(const char* vertexPath, const char* fragmentPath);
+Shader create_shader(char* vertexPath, char* fragmentPath);
 void use_shader(Shader ID);
 void set_shader_int(Shader ID, char *name, int value);
 void set_shader_float(Shader ID, char *name, float value);

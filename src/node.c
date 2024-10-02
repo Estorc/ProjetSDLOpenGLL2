@@ -510,8 +510,8 @@ const float lightBillboardQuadVertices[] = {
 // setup plane VAO
 void init_light_billboard_vao() {
     if (!lightBillboardVAO) {
-        lightPointTexture = load_texture_from_path("textures/editor/light_bulb.png");
-        directionalLightTexture = load_texture_from_path("textures/editor/sun.png");
+        lightPointTexture = load_texture_from_path("assets/textures/editor/light_bulb.png");
+        directionalLightTexture = load_texture_from_path("assets/textures/editor/sun.png");
         billboardShader = create_shader("shaders/billboard.vs", "shaders/billboard.fs");
         glGenVertexArrays(1, &lightBillboardVAO);
         glGenBuffers(1, &lightBillboardVBO);

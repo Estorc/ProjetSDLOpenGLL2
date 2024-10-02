@@ -3,5 +3,5 @@
 //
 #endif
 
-TextureMap load_cubemap(char faces[6][100]);
-void create_skybox(TextureMap *texturedMesh, char skyboxTexture[6][100]);
+TextureMap load_cubemap(char faces[6][200]);
+void create_skybox(TextureMap *texturedMesh, char skyboxTexture[6][200]);

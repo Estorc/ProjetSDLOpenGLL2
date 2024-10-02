@@ -13,7 +13,7 @@ NEW_SCRIPT(player)
 			sprintf(fps_str, "FPS: %.4f", fps);
 		}
 
-		TTF_Font *font = TTF_OpenFont("fonts/determination-mono.ttf", 48);
+		TTF_Font *font = TTF_OpenFont("assets/fonts/determination-mono.ttf", 48);
 		SDL_Color textColor = {255, 255, 255, 255};
 		draw_text(window->ui_surface, 8, 0, delta_str, font, textColor);
 		draw_text(window->ui_surface, 8, 32, fps_str, font, textColor);

@@ -27,7 +27,7 @@ int update(Window *window, Node *viewportNode, Camera *c, Input *input, Shader s
 Node *load_test() {
     Model *model;
     model = malloc(sizeof(Model));
-    load_obj_model("models/dillonPonchoHDMdl.vpl/", "untitled.obj", model);
+    load_obj_model("assets/models/dillonPonchoHDMdl.vpl/", "untitled.obj", model);
     Node *model2;
     model2 = malloc(sizeof(Node));
     return create_model_node(model2, model);
@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
 
 
     Model models[NUM_MODELS];
-    if (load_obj_model("models/Deku Tree/", "untitled.obj", &models[0]) == -1) return -1;
+    if (load_obj_model("assets/models/Deku Tree/", "untitled.obj", &models[0]) == -1) return -1;
     Vec3fScale(models[0].scale, 0.01f);
 
 
@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
 
     TexturedMesh texturedMeshes[NUM_TEXTURED_MESHES];
     create_skybox(&texturedMeshes[0], SKYBOX_SEA);
-    create_textured_plane(&texturedMeshes[1], "models/texture.png");
+    create_textured_plane(&texturedMeshes[1], "assets/models/texture.png");
     texturedMeshes[1].rot[0] = 180.0f;
 
     FrameBuffer msaa_framebuffer;

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <string.h>
+#include "stringio.h"
 #include <stdlib.h>
 #include <unistd.h>
 #define ZENITY
@@ -63,10 +63,11 @@ int osio_print_error(char *msg) {
 }
 
 int absolute_path_to_relative(char *path) {
-    char cwd[100];
+    char cwd[200];
     char *str = malloc(sizeof(path) * (strlen(path)+1));
     strcpy(str, path);
     if (getcwd(cwd, sizeof(cwd)) != NULL) {
+        strcat(cwd, RELATIVE_PATH);
         char *strcp = str;
         for (char *rpath = cwd;*rpath && *strcp; rpath++, strcp++);
         strcpy(path, ++strcp);
@@ -138,10 +139,12 @@ int osio_print_error(char *msg) {
 }
 
 int absolute_path_to_relative(char *path) {
-    char cwd[100];
+    char cwd[200];
     char *str = malloc(sizeof(path) * (strlen(path)+1));
     strcpy(str, path);
     if (getcwd(cwd, sizeof(cwd)) != NULL) {
+        strcat(cwd, RELATIVE_PATH);
+        printf("%s\n", cwd);
         char *strcp = str;
         for (char *rpath = cwd;*rpath && *strcp; rpath++, strcp++);
         strcpy(path, ++strcp);

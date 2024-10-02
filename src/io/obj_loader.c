@@ -179,7 +179,7 @@ void close_realloc_obj(Object *obj, u32 vi, u32 fi, u32 vni, u32 vti) {
  *
  * Example Usage:
  * Model model;
- * if (load_obj_model("models/", "example.obj", &model) == 0) {
+ * if (load_obj_model("assets/models/", "example.obj", &model) == 0) {
  *     // Successfully loaded the model
  * } else {
  *     // Handle error
@@ -188,6 +188,8 @@ void close_realloc_obj(Object *obj, u32 vi, u32 fi, u32 vni, u32 vti) {
 
 
 int load_obj_model(char *path, Model **modelPtr) {
+
+    path = relative_path(path);
 
     for (int i = 0; i < memoryCaches.modelsCount; i++) {
         if (!strcmp(memoryCaches.modelCache[i].modelName, path)) {
@@ -338,7 +340,7 @@ int load_obj_model(char *path, Model **modelPtr) {
             
             char materialFilename[50];
             fscanf(file, "%*[^ ] %s\n", (char *) &materialFilename);
-            char * material_path = get_folder_path(path);
+            char * material_path = get_folder_path(path+strlen(RELATIVE_PATH));
             if ((mc = load_mtl(material_path, materialFilename, &model->materials)) == -1) return -1;
             free(material_path);
             model->materialsCount = mc;
@@ -387,6 +389,7 @@ int load_obj_model(char *path, Model **modelPtr) {
     memoryCaches.modelCache = realloc(memoryCaches.modelCache, sizeof (ModelCache) * (++memoryCaches.modelsCount));
     memoryCaches.modelCache[memoryCaches.modelsCount-1].model = model;
     strcpy(memoryCaches.modelCache[memoryCaches.modelsCount-1].modelName, path);
+    free(path);
     
     return 0;
 

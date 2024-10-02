@@ -14,6 +14,7 @@
 #include "render/lighting.h"
 #include "window.h"
 #include "io/input.h"
+#include "io/stringio.h"
 #include "render/camera.h"
 #include "io/shader.h"
 #include "utils/skybox.h"
@@ -57,12 +58,19 @@ int update(Window *window, Node *viewportNode, Camera *c, Input *input, WorldSha
 
 MemoryCaches memoryCaches;
 
+const char* RELATIVE_PATH;
+
 int main(int argc, char *argv[]) {
+    int pathShift;
+    for (pathShift = 0;argv[0][pathShift] && (argv[0][pathShift]=='/' || argv[0][pathShift]=='\\' || argv[0][pathShift]=='.');pathShift++);
+    RELATIVE_PATH = get_folder_path(argv[0]+pathShift);
 
     init_memory_cache();
     static Script scripts[SCRIPTS_COUNT];
     static u8 scriptIndex;
     #include "scripts/loading_scripts.h"
+
+    char * path;
 
     Window window;
     if (create_window("Physics Engine Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL, &window) == -1) return -1;
@@ -86,14 +94,18 @@ int main(int argc, char *argv[]) {
     Node *viewportNode;
 
     Mix_OpenAudio(48000, AUDIO_S16SYS, 2, 2048);
-    Mix_Music *music = Mix_LoadMUS("audio/musics/test.mp3");
+    path = relative_path("assets/audio/musics/test.mp3");
+    Mix_Music *music = Mix_LoadMUS(path);
+    free(path);
     Mix_PlayMusic(music, 1);
 
     #ifdef DEBUG
-    if (argc >= 2 && !strcmp(argv[1], "editor")) viewportNode = load_scene("scenes/editor.scene", &cam, &collisionBuffer, scripts);
+    if (argc >= 2 && !strcmp(argv[1], "editor")) path = relative_path("assets/scenes/editor.scene");
     else 
     #endif
-    viewportNode = load_scene("scenes/boot.scene", &cam, &collisionBuffer, scripts);
+    path = relative_path("assets/scenes/boot.scene");
+    viewportNode = load_scene(path, &cam, &collisionBuffer, scripts);
+    free(path);
     while (update(&window, viewportNode, cam, &input, &defaultShaders, &depthMap, &collisionBuffer) >= 0);
 
     Mix_FreeMusic(music);
