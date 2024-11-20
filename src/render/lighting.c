@@ -8,12 +8,13 @@
 #include "../io/model.h"
 #include "framebuffer.h"
 #include "../node.h"
-#include "../render/render.h"
 #include "../window.h"
 #include "color.h"
 #include "camera.h"
+#include "render.h"
 #include "../memory.h"
 #include "lighting.h"
+#include "depth_map.h"
 
 
 
@@ -46,18 +47,10 @@ void set_lightings(u8 lightsCount[LIGHTS_COUNT]) {
 void configure_global_lighting(Window *window, Node *root, Camera *c, WorldShaders *shaders) {
     use_shader(shaders->render);
 
-    vec3 lightPos = {5.0f, 1.0f, 0.0f};
-    vec3 lightDir = {c->dir[0], c->dir[1], c->dir[2]};
-    glm_vec3_copy(c->pos, lightPos);
+    //vec3 lightPos = {5.0f, 1.0f, 0.0f};
+    //glm_vec3_copy(c->pos, lightPos);
 
     glUniform3fv(glGetUniformLocation(shaders->render, "objectColor"), 1, (vec3){0.2f,0.2f,0.2f});
-
-    glUniform3fv(glGetUniformLocation(shaders->render, "dirLight.position"), 1, c->pos);
-    glUniform3fv(glGetUniformLocation(shaders->render, "dirLight.direction"), 1, lightDir);
-
-    glUniform3fv(glGetUniformLocation(shaders->render, "dirLight.ambient"), 1, (vec3){0.0f,0.0f,0.0f});
-    glUniform3fv(glGetUniformLocation(shaders->render, "dirLight.diffuse"), 1, (vec3){0.8f,0.8f,0.8f});
-    glUniform3fv(glGetUniformLocation(shaders->render, "dirLight.specular"), 1, (vec3){0.8f,0.8f,0.8f});
 
     int vertexColorLocation = glGetUniformLocation(shaders->render, "ourColor");
     glUniform4f(vertexColorLocation, 1.0f, 1.0f, 1.0f, 1.0f);
@@ -80,30 +73,91 @@ void configure_global_lighting(Window *window, Node *root, Camera *c, WorldShade
  * lighting effects in the rendered scene.
  */
 
-void configure_directional_lighting(Window *window, Node *root, Camera *c, WorldShaders *shaders) {
+void configure_directional_lighting(Window *window, Node *root, Camera *c, WorldShaders *shaders, Node *light, int index, u8 lightsCount[LIGHTS_COUNT], int pointLightId) {
+
     // Lights and shadows
     mat4 lightProjection, lightView;
     mat4 lightSpaceMatrix;
-    vec3 lightPos = {5.0f, 1.0f, 0.0f};
-    glm_vec3_copy(c->pos, lightPos);
 
-    f32 near_plane = 1.0f, far_plane = 50.0f;
-    glm_ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane, lightProjection);
-    glm_lookat(lightPos, (vec3){0.0f}, (vec3){0.0, 1.0, 0.0}, lightView);
+    char uniformsName[50];
 
-    vec3 cameraPos   = {c->pos[0],c->pos[1],c->pos[2]};
-    vec3 cameraFront = {c->dir[0], c->dir[1], c->dir[2]};
-    vec3 cameraUp    = {0.0f, 1.0f,  0.0f};
-    vec3 cameraB;
-    glm_vec3_sub(cameraPos, cameraFront, cameraB);
-    glm_lookat(cameraPos, cameraB, cameraUp, lightView);
+    switch (light->type) {
+        case NODE_POINT_LIGHT:
+            {
+            f32 near_plane = 1.0f, far_plane = 50.0f;
+            glm_perspective(to_radians(90.0f), SHADOW_WIDTH/SHADOW_HEIGHT, near_plane, far_plane, lightProjection);
+            //glm_ortho(-50.0f, 50.0f, -50.0f, 50.0f, near_plane, far_plane, lightProjection);
+
+            vec3 directions[6] = {
+                { 1.0f, 0.0f, 0.0f},
+                {-1.0f, 0.0f, 0.0f},
+                { 0.0f, 1.0f, 0.0f},
+                { 0.0f,-1.0f, 0.0f},
+                { 0.0f, 0.0f, 1.0f},
+                { 0.0f, 0.0f,-1.0f},
+            };
+
+            vec3 lightPos   = {light->globalPos[0], light->globalPos[1], light->globalPos[2]};
+            vec3 lightUp    = {0.0f, 1.0f,  0.0f};
+            vec3 lightB;
+            glm_vec3_sub(lightPos, directions[pointLightId], lightB);
+            glm_lookat(lightPos, lightB, lightUp, lightView);
+
+            sprintf(uniformsName, "pointLightSpaceMatrix[%d]", lightsCount[POINT_LIGHT]*6+pointLightId);
+            if (pointLightId == 5) lightsCount[POINT_LIGHT]++;
+            }
+            break;
+        case NODE_DIRECTIONAL_LIGHT:
+            {
+            f32 near_plane = -50.0f, far_plane = 50.0f;
+            glm_ortho(-50.0f, 50.0f, -50.0f, 50.0f, near_plane, far_plane, lightProjection);
+            vec3 dir = {1.0, 0.0, 0.0};
+
+            glm_vec3_rotate(dir, to_radians(light->rot[0]), (vec3){1.0f, 0.0f, 0.0f});
+            glm_vec3_rotate(dir, to_radians(light->rot[1]), (vec3){0.0f, 1.0f, 0.0f});
+            glm_vec3_rotate(dir, to_radians(light->rot[2]), (vec3){0.0f, 0.0f, 1.0f});
+
+            vec3 lightPos   = {c->pos[0], c->pos[1], c->pos[2]};
+            vec3 lightFront = {dir[0], dir[1], dir[2]};
+            vec3 lightUp    = {0.0f, 1.0f,  0.0f};
+            vec3 lightB;
+            glm_vec3_sub(lightPos, lightFront, lightB);
+            glm_lookat(lightPos, lightB, lightUp, lightView);
+
+            sprintf(uniformsName, "dirLightSpaceMatrix[%d]", lightsCount[DIRECTIONAL_LIGHT]);
+            }
+            lightsCount[DIRECTIONAL_LIGHT]++;
+            break;
+        case NODE_SPOT_LIGHT:
+            {
+            f32 near_plane = 1.0f, far_plane = 50.0f;
+            glm_perspective(to_radians(90.0f), SHADOW_WIDTH/SHADOW_HEIGHT, near_plane, far_plane, lightProjection);
+            //glm_ortho(-50.0f, 50.0f, -50.0f, 50.0f, near_plane, far_plane, lightProjection);
+            vec3 dir = {1.0, 0.0, 0.0};
+
+            glm_vec3_rotate(dir, to_radians(light->globalRot[0]), (vec3){1.0f, 0.0f, 0.0f});
+            glm_vec3_rotate(dir, to_radians(-light->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
+            glm_vec3_rotate(dir, to_radians(light->globalRot[2] + 180), (vec3){0.0f, 0.0f, 1.0f});
+
+            vec3 lightPos   = {light->globalPos[0], light->globalPos[1], light->globalPos[2]};
+            vec3 lightFront = {dir[0], dir[1], dir[2]};
+            vec3 lightUp    = {0.0f, 1.0f,  0.0f};
+            vec3 lightB;
+            glm_vec3_sub(lightPos, lightFront, lightB);
+            glm_lookat(lightPos, lightB, lightUp, lightView);
+
+            sprintf(uniformsName, "spotLightSpaceMatrix[%d]", lightsCount[SPOT_LIGHT]);
+            }
+            lightsCount[SPOT_LIGHT]++;
+            break;
+    }
 
 
     glm_mat4_mul(lightProjection, lightView, lightSpaceMatrix);
 
     // Cast shadow direction (render scene from light's point of view)
     use_shader(shaders->render);
-    glUniformMatrix4fv(glGetUniformLocation(shaders->render, "lightSpaceMatrix"), 1, GL_FALSE, &lightSpaceMatrix);
+    glUniformMatrix4fv(glGetUniformLocation(shaders->render, uniformsName), 1, GL_FALSE, &lightSpaceMatrix);
     use_shader(shaders->depth);
     glUniformMatrix4fv(glGetUniformLocation(shaders->depth, "lightSpaceMatrix"), 1, GL_FALSE, &lightSpaceMatrix);
 }

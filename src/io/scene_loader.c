@@ -10,6 +10,7 @@
 #include "../math/math_util.h"
 #include "model.h"
 #include "../render/framebuffer.h"
+#include "../render/lighting.h"
 #include "../physics/bodies.h"
 #include "../node.h"
 #include "../render/render.h"
@@ -19,6 +20,7 @@
 #include "shader.h"
 #include "../render/depth_map.h"
 #include "node_loader.h"
+#include "../buffer.h"
 
 
 /**
@@ -26,7 +28,6 @@
  * 
  * @param file {FILE*} Pointer to the file from which the node will be loaded.
  * @param c {Camera**} Pointer to a Camera pointer that will be set if a camera node is loaded.
- * @param collisionBuffer {CollisionBuffer*} Pointer to a CollisionBuffer structure for managing collision shapes.
  * 
  * @return {Node*} Returns a pointer to the newly created Node. The node's properties and type 
  *                 are determined by the data read from the file.
@@ -39,7 +40,7 @@
  * structures and checks for memory allocation failures.
  */
 
-Node *load_node(FILE *file, Camera **c, CollisionBuffer *collisionBuffer, Script scripts[SCRIPTS_COUNT], Node *editor) {
+Node *load_node(FILE *file, Camera **c, Script scripts[SCRIPTS_COUNT], Node *editor) {
     
     char symbol[10];
     Node *node;
@@ -49,58 +50,58 @@ Node *load_node(FILE *file, Camera **c, CollisionBuffer *collisionBuffer, Script
     
     fscanf(file,"%10[a-z]", symbol);
     if (!strcmp(symbol, "empty")) {
-        malloc_node(node, NODE_EMPTY, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_EMPTY, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "camera")) {
-        malloc_node(node, NODE_CAMERA, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_CAMERA, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "cbox")) {
-        malloc_node(node, NODE_BOX_CSHAPE, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_BOX_CSHAPE, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "cplane")) {
-        malloc_node(node, NODE_PLANE_CSHAPE, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_PLANE_CSHAPE, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "csphere")) {
-        malloc_node(node, NODE_SPHERE_CSHAPE, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_SPHERE_CSHAPE, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "kbody")) {
-        malloc_node(node, NODE_KINEMATIC_BODY, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_KINEMATIC_BODY, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "rbody")) {
-        malloc_node(node, NODE_RIGID_BODY, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_RIGID_BODY, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "sbody")) {
-        malloc_node(node, NODE_STATIC_BODY, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_STATIC_BODY, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "sp")) {
-        malloc_node(node, NODE_MESH, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_MESH, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "m")) {
-        malloc_node(node, NODE_MESH, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_MESH, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "mdl")) {
-        malloc_node(node, NODE_MODEL, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_MODEL, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "tp")) {
-        malloc_node(node, NODE_TEXTURED_MESH, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_TEXTURED_MESH, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "sky")) {
-        malloc_node(node, NODE_SKYBOX, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_SKYBOX, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "v")) {
-        malloc_node(node, NODE_VIEWPORT, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_VIEWPORT, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "msaa")) {
-        malloc_node(node, NODE_FRAMEBUFFER, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_FRAMEBUFFER, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "plight")) {
-        malloc_node(node, NODE_POINT_LIGHT, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_POINT_LIGHT, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "dlight")) {
-        malloc_node(node, NODE_DIRECTIONAL_LIGHT, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_DIRECTIONAL_LIGHT, file, c, scripts, editor);
     }
     if (!strcmp(symbol, "slight")) {
-        malloc_node(node, NODE_SPOT_LIGHT, file, c, collisionBuffer, scripts, editor);
+        malloc_node(node, NODE_SPOT_LIGHT, file, c, scripts, editor);
     }
     
     #ifdef DEBUG
@@ -121,7 +122,7 @@ Node *load_node(FILE *file, Camera **c, CollisionBuffer *collisionBuffer, Script
                 POINTER_CHECK(node->children);
                 
                 for (int i = 0; i < children_count; i++)
-                    add_child(node, load_node(file, c, collisionBuffer, scripts, editor));
+                    add_child(node, load_node(file, c, scripts, editor));
                 break;
             case '[': ;
                 char transformSymbol;
@@ -189,7 +190,6 @@ Node *load_node(FILE *file, Camera **c, CollisionBuffer *collisionBuffer, Script
  * 
  * @param path {char*} - Path to the scene file to be loaded.
  * @param c {Camera**} - Pointer to a Camera pointer that will be set if a camera node is loaded.
- * @param collisionBuffer {CollisionBuffer*} - Pointer to a CollisionBuffer structure for managing collision shapes.
  * 
  * @return Node* Returns a pointer to the root Node of the loaded scene graph.
  *               If the file cannot be opened, returns NULL.
@@ -202,14 +202,14 @@ Node *load_node(FILE *file, Camera **c, CollisionBuffer *collisionBuffer, Script
  * If any allocation fails during the loading process, appropriate error handling should be considered.
  */
 
-Node *load_scene(char *path, Camera **c, CollisionBuffer *collisionBuffer, Script *scripts) {
-    if (collisionBuffer) collisionBuffer->length = 0;
+Node *load_scene(char *path, Camera **c, Script *scripts) {
+    buffers.collisionBuffer.length = 0;
     FILE * file = fopen(path, "r");
 
     if (!file) return NULL;
 
     Node *root;
-    root = load_node(file, c, collisionBuffer, scripts, 0);
+    root = load_node(file, c, scripts, 0);
     if (!root) {
         fclose(file);
         return NULL;
@@ -217,7 +217,7 @@ Node *load_scene(char *path, Camera **c, CollisionBuffer *collisionBuffer, Scrip
     print_node(root, 0);
 
     Node *node;
-    node = load_node(file, c, collisionBuffer, scripts, 0);
+    node = load_node(file, c, scripts, 0);
     if (!node) {
         free_node(root);
         fclose(file);
@@ -229,14 +229,22 @@ Node *load_scene(char *path, Camera **c, CollisionBuffer *collisionBuffer, Scrip
     root->parent = node;
     node->parent = NULL;
     print_node(node, 0);
-    if (collisionBuffer) {
-        collisionBuffer->collisionsShapes = malloc(sizeof(Node *) * collisionBuffer->length);
-        if (!collisionBuffer->collisionsShapes) {
-            free_node(root);
-            free_node(node);
-            fclose(file);
-            return NULL;
-        }
+
+    buffers.collisionBuffer.collisionsShapes = realloc(buffers.collisionBuffer.collisionsShapes, sizeof(Node *) * buffers.collisionBuffer.length);
+    if (!buffers.collisionBuffer.collisionsShapes) {
+        free_node(root);
+        free_node(node);
+        fclose(file);
+        return NULL;
+    }
+
+    buffers.lightingBuffer.lightings = realloc(buffers.lightingBuffer.lightings, sizeof(Node *) * buffers.lightingBuffer.length);
+    if (!buffers.lightingBuffer.lightings) {
+        free(buffers.collisionBuffer.collisionsShapes);
+        free_node(root);
+        free_node(node);
+        fclose(file);
+        return NULL;
     }
 
     fclose(file);

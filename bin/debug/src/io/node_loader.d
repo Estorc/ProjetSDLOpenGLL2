@@ -237,4 +237,4 @@ bin/debug/src/io/node_loader.o: src/io/node_loader.c \
  src/io/../render/depth_map.h src/io/../render/../io/model.h \
  src/io/../render/framebuffer.h src/io/input.h src/io/../render/camera.h \
  src/io/shader.h src/io/../render/depth_map.h src/io/scene_loader.h \
- src/io/../memory.h
+ src/io/../memory.h src/io/../buffer.h

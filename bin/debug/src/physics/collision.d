@@ -241,5 +241,5 @@ bin/debug/src/physics/collision.o: src/physics/collision.c \
  src/physics/../render/depth_map.h src/physics/../render/viewport.h \
  src/physics/../render/lighting.h src/physics/../io/gltexture_loader.h \
  /usr/include/SDL2/SDL_ttf.h src/physics/../memory.h \
- src/physics/physics.h src/physics/../io/input.h src/physics/bodies.h \
- src/physics/collision.h src/physics/cube.h
+ src/physics/../buffer.h src/physics/physics.h src/physics/../io/input.h \
+ src/physics/bodies.h src/physics/collision.h src/physics/cube.h

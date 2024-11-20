@@ -5,6 +5,7 @@
 
 #define SHADOW_WIDTH 1024
 #define SHADOW_HEIGHT 1024
+#define MAX_SHADOW 100
 
 typedef struct DepthMap {
     FBO frameBuffer;

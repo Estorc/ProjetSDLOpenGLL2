@@ -73,8 +73,10 @@ MODULES += src/utils/skybox.o
 MODULES += src/utils/time.o
 
 MODULES += src/memory.o
+MODULES += src/buffer.o
 MODULES += src/window.o
 MODULES += src/node.o
+MODULES += src/main.o
 
 RELEASE_MODULES = $(addprefix $(BUILD_DIR)/,${MODULES})
 DEBUG_MODULES = $(addprefix $(BUILD_DIR)/debug/,${MODULES})
@@ -121,11 +123,11 @@ launch:
 	@${BUILD_DIR}/release/app
 
 
-release: init_build generate_header ${BUILD_DIR}/src/main.o ${RELEASE_MODULES}
+release: init_build generate_header ${RELEASE_MODULES}
 	@echo "${STEP_COL}===================== Begin linking. ====================${NC}"
 	@echo "${ACT_COL}Linking app...${NC}"
 	@mkdir -p ${BUILD_DIR}/release
-	@gcc -o ${BUILD_DIR}/release/app ${BUILD_DIR}/src/main.o ${SCRIPTS_COUNT} ${RELEASE_MODULES} ${LFLAGS} ${WFLAGS}
+	@gcc -o ${BUILD_DIR}/release/app ${SCRIPTS_COUNT} ${RELEASE_MODULES} ${LFLAGS} ${WFLAGS}
 
 	@echo "${ACT_COL}Copying assets...${NC}"
 	@rsync -rupE assets ${BUILD_DIR}/release/
@@ -136,11 +138,11 @@ release: init_build generate_header ${BUILD_DIR}/src/main.o ${RELEASE_MODULES}
 
 	@echo "${STEP_COL}============= ${SUCCESS_COL}Successfully build the app!${NC}${STEP_COL} =============${NC}"
 
-debug: init_build generate_header ${BUILD_DIR}/debug/src/main.o ${DEBUG_MODULES}
+debug: init_build generate_header ${DEBUG_MODULES}
 	@echo "${STEP_COL}===================== Begin debug linking. ====================${NC}"
 	@echo "${ACT_COL}Linking debug app...${NC}"
 	@mkdir -p ${BUILD_DIR}/debug
-	@gcc -o ${BUILD_DIR}/debug/app -g ${BUILD_DIR}/debug/src/main.o -DDEBUG ${SCRIPTS_COUNT} ${DEBUG_MODULES} ${LFLAGS} ${WFLAGS}
+	@gcc -o ${BUILD_DIR}/debug/app -g ${SCRIPTS_COUNT} ${DEBUG_MODULES} ${LFLAGS} ${WFLAGS}
 
 	@echo "${ACT_COL}Copying assets...${NC}"
 	@rsync -rupE assets ${BUILD_DIR}/debug/

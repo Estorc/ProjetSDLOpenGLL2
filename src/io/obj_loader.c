@@ -297,7 +297,7 @@ int load_obj_model(char *path, Model **modelPtr) {
                 object->facesVertex[fi][j][5] = object->normals[normalsId[j]-offvn][2];
                 object->facesVertex[fi][j][6] = object->textureVertex[textureVertexId[j]-offvt][0];
                 object->facesVertex[fi][j][7] = -object->textureVertex[textureVertexId[j]-offvt][1];
-                object->facesVertex[fi][j][8] = selectedMaterialId;
+                //object->facesVertex[fi][j][8] = selectedMaterialId;
 
                 //object->facesVertex[fi][j] = vertexId[j]-offv;
                 object->faces[fi].normals[j] = normalsId[j]-offvn;
@@ -315,15 +315,17 @@ int load_obj_model(char *path, Model **modelPtr) {
 
             vec3 tangent;
             vec3 bitangent;
-            float f = 1.0f / (deltaUV1[0] * deltaUV2[1] - deltaUV2[0] * deltaUV1[1]);
+            double f = 1.0 / (deltaUV1[0] * deltaUV2[1] - deltaUV2[0] * deltaUV1[1]);
 
             tangent[0] = f * (deltaUV2[1] * edge1[0] - deltaUV1[1] * edge2[0]);
             tangent[1] = f * (deltaUV2[1] * edge1[1] - deltaUV1[1] * edge2[1]);
             tangent[2] = f * (deltaUV2[1] * edge1[2] - deltaUV1[1] * edge2[2]);
+            glm_vec3_normalize(tangent);
 
             bitangent[0] = f * (-deltaUV2[0] * edge1[0] + deltaUV1[0] * edge2[0]);
             bitangent[1] = f * (-deltaUV2[0] * edge1[1] + deltaUV1[0] * edge2[1]);
             bitangent[2] = f * (-deltaUV2[0] * edge1[2] + deltaUV1[0] * edge2[2]);
+            glm_vec3_normalize(bitangent);
 
             for (int j = 0; j < i; j++) {
                 object->facesVertex[fi][j][8] = tangent[0];

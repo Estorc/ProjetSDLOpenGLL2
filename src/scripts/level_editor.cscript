@@ -303,7 +303,7 @@ void draw_node_tree(Window *window, Node *node, int level, Input *input, TTF_Fon
 					new_node = malloc(sizeof(Node));
 					POINTER_CHECK(new_node);
 
-					malloc_node(new_node, *selectedNodeType, 0, 0, 0, 0, 0);
+					malloc_node(new_node, *selectedNodeType, 0, 0, 0, 0);
 					add_shape_and_realloc(node, new_node);
 				}
 			} else {
@@ -311,8 +311,11 @@ void draw_node_tree(Window *window, Node *node, int level, Input *input, TTF_Fon
 				new_node = malloc(sizeof(Node));
 				POINTER_CHECK(new_node);
 
-				malloc_node(new_node, *selectedNodeType, 0, 0, 0, 0, 0);
+				malloc_node(new_node, *selectedNodeType, 0, 0, 0, 0);
 				add_child_and_realloc(node, new_node);
+				buffers.collisionBuffer.collisionsShapes = realloc(buffers.collisionBuffer.collisionsShapes, sizeof(Node *) * buffers.collisionBuffer.length);
+				buffers.lightingBuffer.lightings = realloc(buffers.lightingBuffer.lightings, sizeof(Node *) * buffers.lightingBuffer.length);
+
 			}
 		}
 	}

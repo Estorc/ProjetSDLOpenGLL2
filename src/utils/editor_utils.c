@@ -201,7 +201,7 @@ int update_scene_for_node_editing(Window *window, Node *node, Input *input, TTF_
 
 void load_node_tree(FILE * file, Node *node) {
 
-	Node *loadedScene = load_node(file, 0, 0, scripts, node->parent);
+	Node *loadedScene = load_node(file, 0, scripts, node->parent);
 	//free_node(node->children[2]);
 	loadedScene->flags &= ~NODE_ACTIVE;
 	loadedScene->parent = node->parent;

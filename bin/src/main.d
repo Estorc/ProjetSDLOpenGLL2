@@ -211,8 +211,10 @@ bin/src/main.o: src/main.c /usr/include/stdc-predef.h src/types.h \
  src/render/../io/model.h src/render/framebuffer.h src/render/render.h \
  src/render/lighting.h src/window.h src/io/input.h src/io/stringio.h \
  src/utils/skybox.h src/io/scene_loader.h src/physics/physics.h \
- src/physics/../io/input.h src/memory.h /usr/include/SDL2/SDL_ttf.h \
- /usr/include/SDL2/SDL.h src/scripts/loading_scripts.h \
- src/scripts/camera.cscript src/scripts/free_camera.cscript \
- src/scripts/level_editor.cscript src/scripts/player.cscript \
- src/scripts/test.cscript
+ src/physics/../io/input.h src/memory.h src/buffer.h \
+ /usr/include/SDL2/SDL_ttf.h /usr/include/SDL2/SDL.h \
+ src/scripts/loading_scripts.h src/scripts/camera.cscript \
+ src/scripts/flashlight.cscript src/scripts/free_camera.cscript \
+ src/scripts/helice.cscript src/scripts/level_editor.cscript \
+ src/scripts/player.cscript src/scripts/test.cscript \
+ src/scripts/twomp.cscript

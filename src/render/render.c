@@ -15,6 +15,8 @@
 #include "camera.h"
 #include "viewport.h"
 #include "../io/gltexture_loader.h"
+#include "lighting.h"
+#include "../buffer.h"
 
 /**
  * Configures the shaders for rendering the scene with the provided lighting and camera settings.
@@ -87,14 +89,21 @@ void render_scene(Window *window, Node *node, Camera *c, Shader shader, mat4 mod
 
 void draw_shadow_map(Window *window, Node *root, Camera *c, WorldShaders *shaders, DepthMap *depthMap) {
     // Draw shadow map (render scene with depth map shader)
+    glDisable(GL_CULL_FACE);
     glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
     glBindFramebuffer(GL_FRAMEBUFFER, depthMap->frameBuffer);
-    glClear(GL_DEPTH_BUFFER_BIT);
-    glDisable(GL_CULL_FACE);
-
-    mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
-    render_scene(window, root, c, shaders->depth,modelMatrix);
-
+    u8 lightsCount[LIGHTS_COUNT] = {0};
+    for (int i = 0, index = 0, pl = 0; i < buffers.lightingBuffer.index; i++, index++) {
+        configure_directional_lighting(window,root,c,shaders,buffers.lightingBuffer.lightings[i], index, lightsCount, pl);
+        glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthMap->texture, 0, index);
+        glClear(GL_DEPTH_BUFFER_BIT);
+        mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
+        render_scene(window, root, c, shaders->depth,modelMatrix);
+        if (buffers.lightingBuffer.lightings[i]->type == NODE_POINT_LIGHT && pl < 5) {
+            i--;
+            pl++;
+        } else pl = 0;
+    }
     glEnable(GL_CULL_FACE);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
@@ -122,7 +131,7 @@ void draw_scene(Window *window, Node *root, Camera *c, WorldShaders *shaders, De
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     configure_shader(window, root, c, shaders);
     glActiveTexture(GL_TEXTURE3);
-    glBindTexture(GL_TEXTURE_2D, depthMap->texture);
+    glBindTexture(GL_TEXTURE_2D_ARRAY, depthMap->texture);
     set_shader_int(shaders->render, "diffuseMap", 0);
     set_shader_int(shaders->render, "normalMap", 1);
     set_shader_int(shaders->render, "displacementMap", 2);
@@ -158,7 +167,6 @@ void draw_screen(Window *window, Node *viewportNode, Camera *c, WorldShaders *sh
     init_viewport();
 
     camera_projection(c,shaders);
-    configure_directional_lighting(window,scene,c,shaders);
     draw_shadow_map(window,scene,c,shaders,depthMap);
     
 

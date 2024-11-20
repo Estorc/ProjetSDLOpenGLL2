@@ -225,8 +225,9 @@ bin/debug/src/io/scene_loader.o: src/io/scene_loader.c \
  lib/cglm/clipspace/project_no.h lib/cglm/clipspace/../vec3.h \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
- src/io/model.h src/io/../render/framebuffer.h src/io/../physics/bodies.h \
- src/io/../node.h src/io/../io/shader.h src/io/../render/filter.h \
+ src/io/model.h src/io/../render/framebuffer.h \
+ src/io/../render/lighting.h src/io/../physics/bodies.h src/io/../node.h \
+ src/io/../io/shader.h src/io/../render/filter.h \
  src/io/../render/viewport.h src/io/../render/camera.h \
  src/io/../render/../types.h src/io/../render/../config.h \
  src/io/../render/../math/math_util.h src/io/../render/../math/graph.h \
@@ -235,4 +236,5 @@ bin/debug/src/io/scene_loader.o: src/io/scene_loader.c \
  src/io/../render/render.h src/io/../window.h \
  src/io/../render/depth_map.h src/io/../render/../io/model.h \
  src/io/../render/framebuffer.h src/io/input.h src/io/../render/camera.h \
- src/io/shader.h src/io/../render/depth_map.h src/io/node_loader.h
+ src/io/shader.h src/io/../render/depth_map.h src/io/node_loader.h \
+ src/io/../buffer.h

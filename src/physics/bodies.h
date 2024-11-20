@@ -40,6 +40,7 @@ typedef struct SphereCollisionShape {
 typedef struct CollisionBuffer {
     struct Node **collisionsShapes;
     u8 length;
+    u8 index;
 } CollisionBuffer;
 
 #define IS_NODE_BODY(x) (x > _M_NODE_BODIES__START__ && x < _M_NODE_BODIES__END__)

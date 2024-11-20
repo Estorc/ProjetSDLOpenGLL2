@@ -23,12 +23,13 @@
 #include "physics/bodies.h"
 #include "scripts/scripts.h"
 #include "memory.h"
+#include "buffer.h"
 
 #include <SDL2/SDL_ttf.h>
 
 int FPS[2] = {0,0};
 float fps = 1.0;
-int update(Window *window, Node *viewportNode, Camera *c, Input *input, WorldShaders *shaders, DepthMap *depthMap, CollisionBuffer *collisionBuffer) {
+int update(Window *window, Node *viewportNode, Camera *c, Input *input, WorldShaders *shaders, DepthMap *depthMap) {
 
     float delta = (window->lastTime) ? window->time - window->lastTime : 0.0;
 
@@ -45,9 +46,10 @@ int update(Window *window, Node *viewportNode, Camera *c, Input *input, WorldSha
     }*/
 
     SDL_FillRect(window->ui_surface, NULL, 0x000000);
-    collisionBuffer->length = 0;
+    buffers.collisionBuffer.index = 0;
+    buffers.lightingBuffer.index = 0;
     u8 lightsCount[LIGHTS_COUNT] = {0};
-    update_physics(((Viewport *) viewportNode->object)->scene, (vec3) {0.0, 0.0, 0.0}, (vec3) {0.0, 0.0, 0.0}, (vec3) {1.0, 1.0, 1.0}, delta, collisionBuffer, input, window, lightsCount, true);
+    update_physics(((Viewport *) viewportNode->object)->scene, (vec3) {0.0, 0.0, 0.0}, (vec3) {0.0, 0.0, 0.0}, (vec3) {1.0, 1.0, 1.0}, delta, input, window, lightsCount, true);
     set_lightings(lightsCount);
     refresh_ui(window);
     update_window(window, viewportNode, c, shaders, depthMap);
@@ -57,6 +59,7 @@ int update(Window *window, Node *viewportNode, Camera *c, Input *input, WorldSha
 }
 
 MemoryCaches memoryCaches;
+BufferCollection buffers;
 
 const char* RELATIVE_PATH;
 
@@ -89,8 +92,7 @@ int main(int argc, char *argv[]) {
     DepthMap depthMap;
     create_depthmap(&depthMap);
     
-
-    CollisionBuffer collisionBuffer;
+    init_buffers();
     Node *viewportNode;
 
     Mix_OpenAudio(48000, AUDIO_S16SYS, 2, 2048);
@@ -104,12 +106,12 @@ int main(int argc, char *argv[]) {
     else 
     #endif
     path = relative_path("assets/scenes/boot.scene");
-    viewportNode = load_scene(path, &cam, &collisionBuffer, scripts);
+    viewportNode = load_scene(path, &cam, scripts);
     free(path);
-    while (update(&window, viewportNode, cam, &input, &defaultShaders, &depthMap, &collisionBuffer) >= 0);
+    while (update(&window, viewportNode, cam, &input, &defaultShaders, &depthMap) >= 0);
 
     Mix_FreeMusic(music);
-    free(collisionBuffer.collisionsShapes);
+    free_buffers();
     free_memory_cache();
     free_node(viewportNode);
     printf("Free nodes!\n");

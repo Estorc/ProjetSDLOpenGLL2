@@ -20,8 +20,9 @@
 #include "../render/depth_map.h"
 #include "scene_loader.h"
 #include "../memory.h"
+#include "../buffer.h"
 
-void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, CollisionBuffer *collisionBuffer, Script scripts[SCRIPTS_COUNT], Node *editor) {
+void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, Script scripts[SCRIPTS_COUNT], Node *editor) {
     
     switch (nodeType) {
         case NODE_EMPTY:
@@ -92,11 +93,11 @@ void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, CollisionBuff
             create_kinematic_body_node(node, kinematicBody);
 
             kinematicBody->collisionsShapes = malloc(sizeof(Node *) * children_count);
-            if (collisionBuffer) collisionBuffer->length += children_count;
+            buffers.collisionBuffer.length += children_count;
             POINTER_CHECK(kinematicBody->collisionsShapes);
             
             for (int i = 0; i < children_count; i++) {
-                Node *child = load_node(file, c, collisionBuffer, scripts, editor);
+                Node *child = load_node(file, c, scripts, editor);
                 kinematicBody->collisionsShapes[kinematicBody->length++] = child;
                 child->parent = node;
             }
@@ -130,11 +131,11 @@ void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, CollisionBuff
             create_rigid_body_node(node, rigidBody);
 
             rigidBody->collisionsShapes = malloc(sizeof(Node *) * children_count);
-            if (collisionBuffer) collisionBuffer->length += children_count;
+            buffers.collisionBuffer.length += children_count;
             POINTER_CHECK(rigidBody->collisionsShapes);
             
             for (int i = 0; i < children_count; i++) {
-                Node *child = load_node(file, c, collisionBuffer, scripts, editor);
+                Node *child = load_node(file, c, scripts, editor);
                 rigidBody->collisionsShapes[rigidBody->length++] = child;
                 child->parent = node;
             }
@@ -153,11 +154,11 @@ void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, CollisionBuff
             create_static_body_node(node, staticBody);
 
             staticBody->collisionsShapes = malloc(sizeof(Node *) * children_count);
-            if (collisionBuffer) collisionBuffer->length += children_count;
+            buffers.collisionBuffer.length += children_count;
             POINTER_CHECK(staticBody->collisionsShapes);
             
             for (int i = 0; i < children_count; i++) {
-                Node *child = load_node(file, c, collisionBuffer, scripts, editor);
+                Node *child = load_node(file, c, scripts, editor);
                 staticBody->collisionsShapes[staticBody->length++] = child;
                 child->parent = node;
             }
@@ -301,6 +302,7 @@ void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, CollisionBuff
                 pointLight->quadratic = 0.032f;
             }
 
+            buffers.lightingBuffer.length++;
             create_point_light_node(node, pointLight);
             node->flags |= NODE_EDITOR_FLAG;
             }
@@ -330,6 +332,7 @@ void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, CollisionBuff
                 directionalLight->quadratic = 0.032f;
             }
 
+            buffers.lightingBuffer.length++;
             create_directional_light_node(node, directionalLight);
             node->flags |= NODE_EDITOR_FLAG;
             }
@@ -363,6 +366,7 @@ void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, CollisionBuff
                 spotLight->outerCutOff = 50.0f;
             }
 
+            buffers.lightingBuffer.length++;
             create_spot_light_node(node, spotLight);
             node->flags |= NODE_EDITOR_FLAG;
             }

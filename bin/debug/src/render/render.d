@@ -237,4 +237,5 @@ bin/debug/src/render/render.o: src/render/render.c \
  src/render/../render/depth_map.h src/render/../render/../io/model.h \
  src/render/../render/framebuffer.h src/render/color.h \
  src/render/camera.h src/render/../io/shader.h src/render/viewport.h \
- src/render/../io/gltexture_loader.h /usr/include/SDL2/SDL_ttf.h
+ src/render/../io/gltexture_loader.h /usr/include/SDL2/SDL_ttf.h \
+ src/render/lighting.h src/render/../buffer.h
