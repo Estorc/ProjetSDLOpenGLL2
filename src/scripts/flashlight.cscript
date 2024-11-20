@@ -1,0 +1,6 @@
+NEW_SCRIPT(flashlight)
+
+	//node->rot[2] += 1.0f;
+	//node->rot[1] += 1.0f;
+
+END_SCRIPT(flashlight)
