@@ -142,7 +142,7 @@ debug: init_build generate_header ${DEBUG_MODULES}
 	@echo "${STEP_COL}===================== Begin debug linking. ====================${NC}"
 	@echo "${ACT_COL}Linking debug app...${NC}"
 	@mkdir -p ${BUILD_DIR}/debug
-	@gcc -o ${BUILD_DIR}/debug/app -g ${SCRIPTS_COUNT} ${DEBUG_MODULES} ${LFLAGS} ${WFLAGS}
+	@gcc -o ${BUILD_DIR}/debug/app -g -O0 ${SCRIPTS_COUNT} ${DEBUG_MODULES} ${LFLAGS} ${WFLAGS}
 
 	@echo "${ACT_COL}Copying assets...${NC}"
 	@rsync -rupE assets ${BUILD_DIR}/debug/
@@ -170,7 +170,7 @@ ${BUILD_DIR}/%.o: %.c
 ${BUILD_DIR}/debug/%.o: %.c
 	@echo "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}..."
 	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
-	@gcc -c $*.c -o ${BUILD_DIR}/debug/$*.o -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@gcc -c $*.c -g -o ${BUILD_DIR}/debug/$*.o -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
 	@echo "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}"
 
 

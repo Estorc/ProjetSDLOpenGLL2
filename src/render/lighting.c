@@ -133,11 +133,11 @@ void configure_directional_lighting(Window *window, Node *root, Camera *c, World
             f32 near_plane = 1.0f, far_plane = 50.0f;
             glm_perspective(to_radians(90.0f), SHADOW_WIDTH/SHADOW_HEIGHT, near_plane, far_plane, lightProjection);
             //glm_ortho(-50.0f, 50.0f, -50.0f, 50.0f, near_plane, far_plane, lightProjection);
-            vec3 dir = {1.0, 0.0, 0.0};
+            vec3 dir;
 
-            glm_vec3_rotate(dir, to_radians(light->globalRot[0]), (vec3){1.0f, 0.0f, 0.0f});
-            glm_vec3_rotate(dir, to_radians(-light->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
-            glm_vec3_rotate(dir, to_radians(light->globalRot[2] + 180), (vec3){0.0f, 0.0f, 1.0f});
+            dir[0] = sin(-light->globalRot[1] * PI/180);
+            dir[1] = light->globalRot[0] * PI/180;
+            dir[2] = -cos(-light->globalRot[1] * PI/180);
 
             vec3 lightPos   = {light->globalPos[0], light->globalPos[1], light->globalPos[2]};
             vec3 lightFront = {dir[0], dir[1], dir[2]};

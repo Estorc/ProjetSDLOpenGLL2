@@ -62,13 +62,6 @@ char * get_folder_path(char * fullpath) {
     return path;
 }
 
-char * relative_path(char * path) {
-    char * rel_path = malloc((strlen(path) + strlen(RELATIVE_PATH) + 1) * sizeof(char));
-    strcpy(rel_path, RELATIVE_PATH);
-    strcat(rel_path, path);
-    return rel_path;
-}
-
 int str_includes(char *src, char *occ) {
 	int start = 0;
 	for (char * str = src; *str; str++) {

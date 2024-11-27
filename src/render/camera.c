@@ -24,8 +24,6 @@ void init_camera(Camera *c) {
     Vec3fZero(c->pos);
     Vec3fZero(c->dir);
     Vec3fZero(c->rot);
-    Vec3fSet(c->targetRot, c->rot);
-    Vec3fSet(c->targetPos, c->pos);
 
 }
 

@@ -180,7 +180,6 @@ void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, Script script
             Model *model;
             if (file) {
                 char path[100];
-                strcpy(path, RELATIVE_PATH);
                 fscanf(file,"(%100[^)])", path);
                 load_obj_model(path, &model);
             }
@@ -378,7 +377,6 @@ void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, Script script
 void node_tree_to_file(FILE * file, Node *node, Node *editor) {
 
     int nodeType = node->type;
-    int relativePathLength = strlen(RELATIVE_PATH);
     
     switch (nodeType) {
         case NODE_EMPTY:
@@ -463,7 +461,7 @@ void node_tree_to_file(FILE * file, Node *node, Node *editor) {
             fprintf(file, "mdl");
             for (int i = 0; i < memoryCaches.modelsCount; i++) {
                 if (memoryCaches.modelCache[i].model == model) {
-                    fprintf(file, "(%s)", memoryCaches.modelCache[i].modelName+relativePathLength);
+                    fprintf(file, "(%s)", memoryCaches.modelCache[i].modelName);
                     break;
                 }
             }
@@ -476,7 +474,7 @@ void node_tree_to_file(FILE * file, Node *node, Node *editor) {
             fprintf(file, "tp");
             for (int i = 0; i < memoryCaches.texturesCount; i++) {
                 if (memoryCaches.textureCache[i].textureMap == texture) {
-                    fprintf(file, "(%s)", memoryCaches.textureCache[i].textureName+relativePathLength);
+                    fprintf(file, "(%s)", memoryCaches.textureCache[i].textureName);
                     break;
                 }
             }
@@ -490,12 +488,12 @@ void node_tree_to_file(FILE * file, Node *node, Node *editor) {
             for (int i = 0; i < memoryCaches.cubeMapCount; i++) {
                 if (memoryCaches.cubeMapCache[i].cubeMap == texture) {
                     fprintf(file, "(%s,%s,%s,%s,%s,%s)",
-                        memoryCaches.cubeMapCache[i].textureName[0]+relativePathLength,
-                        memoryCaches.cubeMapCache[i].textureName[1]+relativePathLength,
-                        memoryCaches.cubeMapCache[i].textureName[2]+relativePathLength,
-                        memoryCaches.cubeMapCache[i].textureName[3]+relativePathLength,
-                        memoryCaches.cubeMapCache[i].textureName[4]+relativePathLength,
-                        memoryCaches.cubeMapCache[i].textureName[5]+relativePathLength
+                        memoryCaches.cubeMapCache[i].textureName[0],
+                        memoryCaches.cubeMapCache[i].textureName[1],
+                        memoryCaches.cubeMapCache[i].textureName[2],
+                        memoryCaches.cubeMapCache[i].textureName[3],
+                        memoryCaches.cubeMapCache[i].textureName[4],
+                        memoryCaches.cubeMapCache[i].textureName[5]
                     );
                     break;
                 }

@@ -1,0 +1,50 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug App",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/debug/app",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb", // or "lldb" or "cppvsdbg" (Windows)
+            "preLaunchTask": "Build Debug",  // Reference to your Makefile build task
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "miDebuggerArgs": "-ex 'set pagination off'",  // Optional, to prevent `gdb` paging
+        },
+        {
+            "name": "Debug Editor",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/debug/app",
+            "args": ["editor"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb", // or "lldb" or "cppvsdbg" (Windows)
+            "preLaunchTask": "Build Debug",  // Reference to your Makefile build task
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "miDebuggerArgs": "-ex 'set pagination off'",  // Optional, to prevent `gdb` paging
+        }
+    ]
+}

@@ -50,7 +50,7 @@ void glPolygonVec3(Vec3f *vecs, u8 length);
 #define Vec3fZero(a) (a[0]=0,a[1]=0,a[2]=0)
 #define Vec3fOne(a) (a[0]=1,a[1]=1,a[2]=1)
 #define Vec3fSet(a,b) (a[0]=b[0],a[1]=b[1],a[2]=b[2])
-#define Vec3fApproach(a,b,t) (a[0]+=(b[0]-a[0])/t,a[1]+=(b[1]-a[1])/t,a[2]+=(b[2]-a[2])/t)
+#define Vec3fApproach(a,b,t) ((a)[0]+=((b)[0]-(a)[0])/t,(a)[1]+=((b)[1]-(a)[1])/t,(a)[2]+=((b)[2]-(a)[2])/t)
 #define Vec3fSum(a,b) (a[0] += b[0],a[1] += b[1],a[2] += b[2])
 #define Vec3fDiff(a,b) (a[0] -= b[0],a[1] -= b[1],a[2] -= b[2])
 #define Vec3fDot(a,b) (a[0]*b[0] + a[1]*b[1] + a[2]*b[2])

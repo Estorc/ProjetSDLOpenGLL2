@@ -220,16 +220,16 @@ void main()
     }
     // phase 2: point lights
     for(int i = 0; i < fs_in.pointLightsNum && i < POINT_LIGHTS_MAX; i++) {
-        float shadow = 0;
+        float shadow = 0.0;
         for (int j = 0; j < 6; j++)
             shadow += ShadowCalculation(fs_in.FragPosPointLightSpace[i*6+j], normal, pointLights[i].position, pointLights[i].index+j);
-        result += CalcPointLight(pointLights[i], normal, fs_in.FragPos, viewDir, shadow);    
-    }
+        result += CalcPointLight(pointLights[i], normal, fs_in.FragPos, viewDir, shadow);  
+    }  
     // phase 3: spot light
     for(int i = 0; i < fs_in.spotLightsNum && i < SPOT_LIGHTS_MAX; i++) {
         float shadow = ShadowCalculation(fs_in.FragPosSpotLightSpace[i], normal, spotLights[i].position, spotLights[i].index);
-        result += CalcSpotLight(spotLights[i], normal, fs_in.FragPos, viewDir, shadow);    
-    }
+        result += CalcSpotLight(spotLights[i], normal, fs_in.FragPos, viewDir, shadow);
+    }  
     
 
     float gamma = 2.2;
@@ -273,7 +273,7 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, f
     ambient *= attenuation;
     diffuse *= attenuation;
     specular *= attenuation;
-    return max(ambient + diffuse + specular, 0.0);
+    return max(ambient + (1.0 - shadow) * (diffuse + specular), 0.0);
 }
 
 // calculates the color when using a spot light.
@@ -299,5 +299,5 @@ vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir, flo
     ambient *= attenuation * intensity;
     diffuse *= attenuation * intensity;
     specular *= attenuation * intensity;
-    return max(ambient + diffuse + specular, 0.0);
+    return max(ambient + (1.0 - shadow) * (diffuse + specular), 0.0);
 }

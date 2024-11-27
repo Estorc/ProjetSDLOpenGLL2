@@ -43,7 +43,6 @@
 
 TextureMap load_texture_from_path(char * path) {
 
-    path = relative_path(path);
     for (int i = 0; i < memoryCaches.texturesCount; i++) {
         if (!strcmp(memoryCaches.textureCache[i].textureName, path)) {
             #ifdef DEBUG
@@ -79,7 +78,6 @@ TextureMap load_texture_from_path(char * path) {
     }
 
     SDL_FreeSurface(textureSurface);
-    free(path);
     return texture;
 }
 

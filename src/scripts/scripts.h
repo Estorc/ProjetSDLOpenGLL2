@@ -6,7 +6,7 @@ struct Window;
 		                    node->params = malloc(sizeof(ScriptParameter) * x); \
 		                    POINTER_CHECK(node->params); \
                             node->params_count = x; \
-                            for (int i = 0; i < x; i++) node->params[i].i = 0; \
+                            for (int i = 0; i < x; i++) memset(&node->params[i], 0, sizeof(union ScriptParameter)); \
 	                    }
 
 #define NEW_SCRIPT(script_name) NODE_FUNC_RETURN script_name(NODE_FUNC_PARAMS) {
@@ -18,6 +18,7 @@ struct Window;
 typedef union ScriptParameter {
     int i;
     float f;
+    vec3 v3;
     struct Node *node;
 } ScriptParameter;
 

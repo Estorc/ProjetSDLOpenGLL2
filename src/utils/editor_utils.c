@@ -206,6 +206,8 @@ void load_node_tree(FILE * file, Node *node) {
 	loadedScene->flags &= ~NODE_ACTIVE;
 	loadedScene->parent = node->parent;
 	node->parent->children[2] = loadedScene;
+    buffers.collisionBuffer.collisionsShapes = realloc(buffers.collisionBuffer.collisionsShapes, sizeof(Node *) * buffers.collisionBuffer.length);
+    buffers.lightingBuffer.lightings = realloc(buffers.lightingBuffer.lightings, sizeof(Node *) * buffers.lightingBuffer.length);
 
 }
 

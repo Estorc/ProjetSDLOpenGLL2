@@ -34,9 +34,7 @@
  *   to the console with the relevant error messages.
  */
 
-Shader create_shader(char* vertexRelPath, char* fragmentRelPath) {
-    char *vertexPath = relative_path(vertexRelPath);
-    char *fragmentPath = relative_path(fragmentRelPath);
+Shader create_shader(char* vertexPath, char* fragmentPath) {
     for (int i = 0; i < memoryCaches.shadersCount; i++) {
         if (!strcmp(memoryCaches.shaderCache[i].shaderName[0], vertexPath) &&
             !strcmp(memoryCaches.shaderCache[i].shaderName[1], fragmentPath)) {
@@ -96,9 +94,6 @@ Shader create_shader(char* vertexRelPath, char* fragmentRelPath) {
     memoryCaches.shaderCache[memoryCaches.shadersCount-1].shader = ID;
     strcpy(memoryCaches.shaderCache[memoryCaches.shadersCount-1].shaderName[0], vertexPath);
     strcpy(memoryCaches.shaderCache[memoryCaches.shadersCount-1].shaderName[1], fragmentPath);
-
-    free(vertexPath);
-    free(fragmentPath);
 
     return ID;
 
@@ -197,8 +192,8 @@ void set_shader_int(Shader ID, char *name, int value) {
  *   out by the shader compiler.
  */
 
-void set_shader_float(Shader ID, char *name, float value) { 
-    glUniform1f(glGetUniformLocation(ID, name), 1, &value);
+void set_shader_float(Shader ID, char *name, f32 value) { 
+    glUniform1fv(glGetUniformLocation(ID, name), 1, &value);
 }
 
 void set_shader_vec3(Shader ID, char *name, vec3 value) {

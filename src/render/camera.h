@@ -6,7 +6,7 @@
 #define CAMERA_H
 
 typedef struct Camera {
-    Vec3f pos,dir,rot,targetRot,targetPos;
+    Vec3f pos,dir,rot;
 } Camera;
 
 struct WorldShaders;

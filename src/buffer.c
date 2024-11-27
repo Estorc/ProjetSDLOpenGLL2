@@ -14,5 +14,5 @@ void init_buffers() {
 void free_buffers() {
     free(buffers.collisionBuffer.collisionsShapes);
     free(buffers.lightingBuffer.lightings);
-    printf("Free buffers!");
+    printf("Free buffers!\n");
 }

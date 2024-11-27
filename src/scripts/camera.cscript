@@ -1,15 +1,15 @@
 NEW_SCRIPT(camera)
+	PARAMS_COUNT(1);
 
-	Camera *c = (Camera*) node->object;
+	vec3 *targetRot = &node->params[0].v3;
 
-	if (glm_vec3_norm2(c->targetPos) == 0) glm_vec3_copy(node->pos, c->targetPos);
-	if (glm_vec3_norm2(c->targetRot) == 0) glm_vec3_copy(node->rot, c->targetRot);
+	if (glm_vec3_norm2(*targetRot) == 0) glm_vec3_copy(node->rot, *targetRot);
 
 
-	c->targetRot[1] -= fmod((f32) (input->mouse.x - input->mouse.lastX) * delta * 100.0, 360.0);
-	c->targetRot[0] -= fmod((f32) (input->mouse.lastY - input->mouse.y) * delta * 100.0, 360.0);
-	c->targetRot[0] = CLAMP(-180,c->targetRot[0],180);
+	(*targetRot)[1] -= fmod((f32) (input->mouse.x - input->mouse.lastX) * delta * 100.0, 360.0);
+	(*targetRot)[0] -= fmod((f32) (input->mouse.lastY - input->mouse.y) * delta * 100.0, 360.0);
+	(*targetRot)[0] = CLAMP(-180,(*targetRot)[0],180);
 
-	Vec3fApproach(node->rot, c->targetRot, (0.1/delta));
+	Vec3fApproach(node->rot, *targetRot, (0.1/delta));
 
 END_SCRIPT(camera)

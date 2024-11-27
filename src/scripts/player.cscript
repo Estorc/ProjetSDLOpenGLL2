@@ -1,16 +1,17 @@
 NEW_SCRIPT(player)
-	PARAMS_COUNT(2);
+	PARAMS_COUNT(3);
 
 	int *show_fps = &node->params[0].i;
 	int *force_60fps = &node->params[1].i;
+	float *fps = &node->params[2].f;
 
 	if (*show_fps) {
 		char delta_str[50];
 		char fps_str[50];
 		sprintf(delta_str, "DELTA: %.4f", delta);
 		if (delta) {
-			fps = (fps+(1.0/delta))/2.0;
-			sprintf(fps_str, "FPS: %.4f", fps);
+			*fps = (*fps+(1.0/delta))/2.0;
+			sprintf(fps_str, "FPS: %.4f", *fps);
 		}
 
 		TTF_Font *font = TTF_OpenFont("assets/fonts/determination-mono.ttf", 48);

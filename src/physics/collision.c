@@ -947,11 +947,11 @@ void update_spot_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, 
         strcat(uniformsName[i], uniforms[i]);
     }
 
-    vec3 dir = {1.0, 0.0, 0.0};
+    vec3 dir;
 
-    glm_vec3_rotate(dir, to_radians(rot[0]), (vec3){1.0f, 0.0f, 0.0f});
-    glm_vec3_rotate(dir, to_radians(rot[1]), (vec3){0.0f, 1.0f, 0.0f});
-    glm_vec3_rotate(dir, to_radians(rot[2]), (vec3){0.0f, 0.0f, 1.0f});
+    dir[0] = sin(-rot[1] * PI/180 + PI);
+	dir[1] = -rot[0] * PI/180;
+    dir[2] = -cos(-rot[1] * PI/180 + PI);
 
     for (int i = 0; i < memoryCaches.shadersCount; i++) {
         use_shader(memoryCaches.shaderCache[i].shader);

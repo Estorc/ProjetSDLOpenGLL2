@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "loading_scripts.h": "c",
+        "sdl_ttf.h": "c",
+        "*.cscript": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
