@@ -46,7 +46,8 @@ bin/debug/src/io/scene_loader.o: src/io/scene_loader.c \
  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
- /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/string.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio_lim.h src/io/stringio.h \
+ /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
  /usr/include/strings.h src/io/../types.h \
@@ -233,8 +234,31 @@ bin/debug/src/io/scene_loader.o: src/io/scene_loader.c \
  src/io/../render/../math/math_util.h src/io/../render/../math/graph.h \
  src/io/../render/../io/shader.h src/io/../physics/bodies.h \
  src/io/../scripts/scripts.h src/io/../scripts/../io/input.h \
- src/io/../render/render.h src/io/../window.h \
- src/io/../render/depth_map.h src/io/../render/../io/model.h \
- src/io/../render/framebuffer.h src/io/input.h src/io/../render/camera.h \
- src/io/shader.h src/io/../render/depth_map.h src/io/node_loader.h \
- src/io/../buffer.h
+ src/io/../render/render.h src/io/../window.h src/io/input.h \
+ src/io/../render/camera.h src/io/shader.h src/io/../render/depth_map.h \
+ src/io/../render/../io/model.h src/io/../render/framebuffer.h \
+ src/io/node_loader.h src/io/../buffer.h src/io/../classes/classes.h \
+ src/io/../classes/import_class.h \
+ src/io/../classes/__processed__/node.class.h \
+ src/io/../classes/__processed__/nodes_bodies_body.class.h \
+ src/io/../classes/__processed__/nodes_bodies_kinematic_body.class.h \
+ src/io/../classes/__processed__/nodes_bodies_rigid_body.class.h \
+ src/io/../classes/__processed__/nodes_bodies_static_body.class.h \
+ src/io/../classes/__processed__/nodes_camera.class.h \
+ src/io/../classes/__processed__/nodes_cshapes_box_cshape.class.h \
+ src/io/../classes/__processed__/nodes_cshapes_cshape.class.h \
+ src/io/../classes/__processed__/nodes_cshapes_plane_cshape.class.h \
+ src/io/../classes/__processed__/nodes_cshapes_sphere_cshape.class.h \
+ src/io/../classes/__processed__/nodes_filter.class.h \
+ src/io/../classes/__processed__/nodes_framebuffer.class.h \
+ src/io/../classes/__processed__/nodes_lights_directional_light.class.h \
+ src/io/../classes/__processed__/nodes_lights_point_light.class.h \
+ src/io/../classes/__processed__/nodes_lights_spot_light.class.h \
+ src/io/../classes/__processed__/nodes_mesh.class.h \
+ src/io/../classes/__processed__/nodes_model.class.h \
+ src/io/../classes/__processed__/nodes_skybox.class.h \
+ src/io/../classes/__processed__/nodes_texture.class.h \
+ src/io/../classes/__processed__/nodes_textured_mesh.class.h \
+ src/io/../classes/__processed__/nodes_viewport.class.h \
+ src/io/../classes/__processed__/nodes_windows_window.class.h \
+ src/io/../classes/../types.h src/io/../classes/../config.h

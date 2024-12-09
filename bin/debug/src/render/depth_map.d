@@ -226,4 +226,5 @@ bin/debug/src/render/depth_map.o: src/render/depth_map.c \
  lib/cglm/clipspace/project_no.h lib/cglm/clipspace/../vec3.h \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
- src/render/depth_map.h src/render/../io/model.h src/render/framebuffer.h
+ src/render/../io/shader.h src/render/render.h src/render/depth_map.h \
+ src/render/../io/model.h src/render/framebuffer.h

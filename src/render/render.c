@@ -17,6 +17,7 @@
 #include "../io/gltexture_loader.h"
 #include "lighting.h"
 #include "../buffer.h"
+#include "../classes/classes.h"
 
 /**
  * Configures the shaders for rendering the scene with the provided lighting and camera settings.
@@ -89,7 +90,7 @@ void render_scene(Window *window, Node *node, Camera *c, Shader shader, mat4 mod
 
 void draw_shadow_map(Window *window, Node *root, Camera *c, WorldShaders *shaders, DepthMap *depthMap) {
     // Draw shadow map (render scene with depth map shader)
-    glDisable(GL_CULL_FACE);
+    glCullFace(GL_FRONT);
     glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
     glBindFramebuffer(GL_FRAMEBUFFER, depthMap->frameBuffer);
     u8 lightsCount[LIGHTS_COUNT] = {0};
@@ -99,12 +100,12 @@ void draw_shadow_map(Window *window, Node *root, Camera *c, WorldShaders *shader
         glClear(GL_DEPTH_BUFFER_BIT);
         mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
         render_scene(window, root, c, shaders->depth,modelMatrix);
-        if (buffers.lightingBuffer.lightings[i]->type == NODE_POINT_LIGHT && pl < 5) {
+        if (buffers.lightingBuffer.lightings[i]->type == CLASS_TYPE_POINTLIGHT && pl < 5) {
             i--;
             pl++;
         } else pl = 0;
     }
-    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
@@ -134,7 +135,7 @@ void draw_scene(Window *window, Node *root, Camera *c, WorldShaders *shaders, De
     glBindTexture(GL_TEXTURE_2D_ARRAY, depthMap->texture);
     set_shader_int(shaders->render, "diffuseMap", 0);
     set_shader_int(shaders->render, "normalMap", 1);
-    set_shader_int(shaders->render, "displacementMap", 2);
+    set_shader_int(shaders->render, "parallaxMap", 2);
     set_shader_int(shaders->render, "shadowMap", 3);
 
     mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
@@ -195,7 +196,7 @@ void draw_screen(Window *window, Node *viewportNode, Camera *c, WorldShaders *sh
         glUniform2fv(glGetUniformLocation(shaders->screen, "iResolution"), 1, (vec2){1, 1});
 
         mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
-        render_mesh(viewport->screenPlane, modelMatrix);
+        METHOD(viewport->screenPlane, render, &modelMatrix);
         
     } else draw_scene(window,scene,c,shaders,depthMap);
 }

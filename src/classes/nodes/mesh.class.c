@@ -1,0 +1,47 @@
+#include "math/math_util.h"
+#include "io/model.h"
+#include "render/framebuffer.h"
+#include "node.h"
+
+class Mesh @promote extends Node {
+    __containerType__ Node *
+
+    void constructor(struct Mesh *mesh) {
+        this->object = mesh;
+        this->type = __type__;
+        SUPER(initialize_node);
+    }
+
+    void cast(void ** data) {
+        IGNORE(data);
+    }
+
+    void load() {
+        Mesh *mesh;
+        mesh = malloc(sizeof(Mesh));
+        POINTER_CHECK(mesh);
+        create_screen_plane(mesh);
+        METHOD_TYPE(this, CLASS_TYPE_MESH, constructor, mesh);
+    }
+
+    void save(FILE *file) {
+        fprintf(file, "%s", classManager.class_names[this->type]);
+    }
+
+
+    void render(mat4 *modelMatrix) {
+        Shader shader;
+        glGetIntegerv(GL_CURRENT_PROGRAM, (int*) &shader);
+        
+        int modelLoc = glGetUniformLocation(shader, "model");
+        Mesh *mesh = (Mesh *)this->object;
+
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, modelMatrix);
+
+        glBindVertexArray(mesh->VAO);
+        glDrawArrays(GL_TRIANGLES, 0, mesh->length);
+        glBindVertexArray(0);
+    }
+
+    
+}

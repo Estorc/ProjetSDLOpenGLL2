@@ -15,6 +15,7 @@
 #include "../memory.h"
 #include "lighting.h"
 #include "depth_map.h"
+#include "../classes/classes.h"
 
 
 
@@ -79,10 +80,10 @@ void configure_directional_lighting(Window *window, Node *root, Camera *c, World
     mat4 lightProjection, lightView;
     mat4 lightSpaceMatrix;
 
-    char uniformsName[50];
+    size_t storageBufferIndex;
 
     switch (light->type) {
-        case NODE_POINT_LIGHT:
+        case CLASS_TYPE_POINTLIGHT:
             {
             f32 near_plane = 1.0f, far_plane = 50.0f;
             glm_perspective(to_radians(90.0f), SHADOW_WIDTH/SHADOW_HEIGHT, near_plane, far_plane, lightProjection);
@@ -103,11 +104,11 @@ void configure_directional_lighting(Window *window, Node *root, Camera *c, World
             glm_vec3_sub(lightPos, directions[pointLightId], lightB);
             glm_lookat(lightPos, lightB, lightUp, lightView);
 
-            sprintf(uniformsName, "pointLightSpaceMatrix[%d]", lightsCount[POINT_LIGHT]*6+pointLightId);
+            storageBufferIndex = (lightsCount[POINT_LIGHT]*6+pointLightId)*sizeof(mat4)+100*sizeof(mat4);
             if (pointLightId == 5) lightsCount[POINT_LIGHT]++;
             }
             break;
-        case NODE_DIRECTIONAL_LIGHT:
+        case CLASS_TYPE_DIRECTIONALLIGHT:
             {
             f32 near_plane = -50.0f, far_plane = 50.0f;
             glm_ortho(-50.0f, 50.0f, -50.0f, 50.0f, near_plane, far_plane, lightProjection);
@@ -124,11 +125,11 @@ void configure_directional_lighting(Window *window, Node *root, Camera *c, World
             glm_vec3_sub(lightPos, lightFront, lightB);
             glm_lookat(lightPos, lightB, lightUp, lightView);
 
-            sprintf(uniformsName, "dirLightSpaceMatrix[%d]", lightsCount[DIRECTIONAL_LIGHT]);
+            storageBufferIndex = lightsCount[DIRECTIONAL_LIGHT]*sizeof(mat4)+0*sizeof(mat4);
             }
             lightsCount[DIRECTIONAL_LIGHT]++;
             break;
-        case NODE_SPOT_LIGHT:
+        case CLASS_TYPE_SPOTLIGHT:
             {
             f32 near_plane = 1.0f, far_plane = 50.0f;
             glm_perspective(to_radians(90.0f), SHADOW_WIDTH/SHADOW_HEIGHT, near_plane, far_plane, lightProjection);
@@ -146,7 +147,7 @@ void configure_directional_lighting(Window *window, Node *root, Camera *c, World
             glm_vec3_sub(lightPos, lightFront, lightB);
             glm_lookat(lightPos, lightB, lightUp, lightView);
 
-            sprintf(uniformsName, "spotLightSpaceMatrix[%d]", lightsCount[SPOT_LIGHT]);
+            storageBufferIndex = lightsCount[SPOT_LIGHT]*sizeof(mat4)+200*sizeof(mat4);
             }
             lightsCount[SPOT_LIGHT]++;
             break;
@@ -157,7 +158,7 @@ void configure_directional_lighting(Window *window, Node *root, Camera *c, World
 
     // Cast shadow direction (render scene from light's point of view)
     use_shader(shaders->render);
-    glUniformMatrix4fv(glGetUniformLocation(shaders->render, uniformsName), 1, GL_FALSE, &lightSpaceMatrix);
+    glBufferSubData(GL_UNIFORM_BUFFER, storageBufferIndex, sizeof(mat4), &lightSpaceMatrix);
     use_shader(shaders->depth);
     glUniformMatrix4fv(glGetUniformLocation(shaders->depth, "lightSpaceMatrix"), 1, GL_FALSE, &lightSpaceMatrix);
 }

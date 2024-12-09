@@ -90,13 +90,13 @@ int load_mtl(char *path, char *filename, Material **materials) {
         switch (symbol) {
         case 'n': ;
             fscanf(file, "%*[^ ] %s", (char *) &(*materials)[++mi].name);
-            (*materials)[mi].ambientCol[0] = (*materials)[mi].ambientCol[1] = (*materials)[mi].ambientCol[2] = 0.5f;
-            (*materials)[mi].specularCol[0] = (*materials)[mi].specularCol[1] = (*materials)[mi].specularCol[2] = 0.5f;
-            (*materials)[mi].diffuseCol[0] = (*materials)[mi].diffuseCol[1] = (*materials)[mi].diffuseCol[2] = 0.5f;
+            (*materials)[mi].opacity = 1.0f;
+            (*materials)[mi].opticalDensity = 1.0f;
             (*materials)[mi].specularExp = 64.0f;
-            (*materials)[mi].diffuseTextureMap = 0;
-            (*materials)[mi].normalTextureMap = 0;
-            (*materials)[mi].displacementTextureMap = 0;
+            for (int i = 0; i < MATERIAL_PROPERTY_COUNT; i++) {
+                glm_vec3_copy((vec3) {0.5f, 0.5f, 0.5f}, (*materials)[mi].flatColors[i]);
+                (*materials)[mi].textureMaps[i] = 0;
+            }
             break;
         case 'N': ;
             symbol = getc(file);
@@ -114,13 +114,44 @@ int load_mtl(char *path, char *filename, Material **materials) {
             symbol = getc(file);
             switch (symbol) {
                 case 'a': ;
-                    fscanf(file, "%f %f %f\n", &(*materials)[mi].ambientCol[0], &(*materials)[mi].ambientCol[1], &(*materials)[mi].ambientCol[2]);
+                    fscanf(file, "%f %f %f\n", 
+                        &(*materials)[mi].flatColors[AMBIENT_MATERIAL_PROPERTY][0], 
+                        &(*materials)[mi].flatColors[AMBIENT_MATERIAL_PROPERTY][1], 
+                        &(*materials)[mi].flatColors[AMBIENT_MATERIAL_PROPERTY][2]);
                     break;
                 case 's': ;
-                    fscanf(file, "%f %f %f\n", &(*materials)[mi].specularCol[0], &(*materials)[mi].specularCol[1], &(*materials)[mi].specularCol[2]);
+                    fscanf(file, "%f %f %f\n", 
+                        &(*materials)[mi].flatColors[SPECULAR_MATERIAL_PROPERTY][0], 
+                        &(*materials)[mi].flatColors[SPECULAR_MATERIAL_PROPERTY][1], 
+                        &(*materials)[mi].flatColors[SPECULAR_MATERIAL_PROPERTY][2]);
                     break;
                 case 'd': ;
-                    fscanf(file, "%f %f %f\n", &(*materials)[mi].diffuseCol[0], &(*materials)[mi].diffuseCol[1], &(*materials)[mi].diffuseCol[2]);
+                    fscanf(file, "%f %f %f\n", 
+                        &(*materials)[mi].flatColors[DIFFUSE_MATERIAL_PROPERTY][0], 
+                        &(*materials)[mi].flatColors[DIFFUSE_MATERIAL_PROPERTY][1], 
+                        &(*materials)[mi].flatColors[DIFFUSE_MATERIAL_PROPERTY][2]);
+                    break;
+                default: fscanf(file, "%*[^\n]\n");
+            }
+            break;
+        case 'P': ;
+            symbol = getc(file);
+            switch (symbol) {
+                case 'r': ;
+                    fscanf(file, "%f %f %f\n", 
+                        &(*materials)[mi].flatColors[ROUGHNESS_MATERIAL_PROPERTY][0], 
+                        &(*materials)[mi].flatColors[ROUGHNESS_MATERIAL_PROPERTY][1], 
+                        &(*materials)[mi].flatColors[ROUGHNESS_MATERIAL_PROPERTY][2]);
+                    break;
+                case 'm': ;
+                    fscanf(file, "%f %f %f\n", 
+                        &(*materials)[mi].flatColors[METALLIC_MATERIAL_PROPERTY][0], 
+                        &(*materials)[mi].flatColors[METALLIC_MATERIAL_PROPERTY][1], 
+                        &(*materials)[mi].flatColors[METALLIC_MATERIAL_PROPERTY][2]);
+                    break;
+                case 'x': ;
+                    fscanf(file, "%f\n", 
+                        &(*materials)[mi].flatColors[PARALLAX_MATERIAL_PROPERTY][0]);
                     break;
                 default: fscanf(file, "%*[^\n]\n");
             }
@@ -129,31 +160,26 @@ int load_mtl(char *path, char *filename, Material **materials) {
             fscanf(file, "%hhd\n", &(*materials)[mi].illumFlag);
             break;
         case 'd': ;
-            
-            if (getc(file) == 'i') {
-
-                char textureFilename[50];
-                fscanf(file, "sp %s\n", (char *) &textureFilename);
-                char *fullPath = malloc(strlen(path) + 1 + strlen(textureFilename) + 1);
-                POINTER_CHECK(fullPath);
-                strcat(strcpy(fullPath, path), textureFilename);
-                (*materials)[mi].displacementTextureMap = load_texture_from_path(fullPath);
-                free(fullPath);
-
-            } else fscanf(file, "%f\n", &(*materials)[mi].opacity);
+            fscanf(file, "%f\n", &(*materials)[mi].opacity);
             break;
         case 'm': ;
             
             char textureFilename[50];
             char textureType[20];
-            fscanf(file, "%s %s\n", (char *) &textureType, (char *) &textureFilename);
+            fscanf(file, "%*[^_]_%s %s\n", (char *) &textureType, (char *) &textureFilename);
             char *fullPath = malloc(strlen(path) + 1 + strlen(textureFilename) + 1);
             POINTER_CHECK(fullPath);
             strcat(strcpy(fullPath, path), textureFilename);
-            if (!strcmp(textureType, "ap_Bump"))
-                (*materials)[mi].normalTextureMap = load_texture_from_path(fullPath);
-            else
-                (*materials)[mi].diffuseTextureMap = load_texture_from_path(fullPath);
+            if (!strcmp(textureType, "Px"))
+                (*materials)[mi].textureMaps[PARALLAX_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F);
+            if (!strcmp(textureType, "Bump"))
+                (*materials)[mi].textureMaps[NORMAL_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F);
+            if (!strcmp(textureType, "Kd"))
+                (*materials)[mi].textureMaps[DIFFUSE_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_SRGB_ALPHA);
+            if (!strcmp(textureType, "Pr"))
+                (*materials)[mi].textureMaps[ROUGHNESS_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F);
+            if (!strcmp(textureType, "Pm"))
+                (*materials)[mi].textureMaps[METALLIC_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F);
             free(fullPath);
 
             break;

@@ -1,7 +1,3 @@
-#include "render/camera.h"
-#include "io/shader.h"
-#include "render/depth_map.h"
-
 #define SCREEN_WIDTH   1280
 #define SCREEN_HEIGHT  720
 #define window_sleep(x) SDL_Delay(x)

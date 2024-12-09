@@ -99,27 +99,6 @@ struct Mesh;
 struct Viewport;
 struct Filter;
 
-Node * create_node(Node *node, u8 type, void *data);
-Node * create_point_light_node(Node *node, struct PointLight *pointLight);
-Node * create_directional_light_node(Node *node, struct DirectionalLight *directionalLight);
-Node * create_spot_light_node(Node *node, struct SpotLight *spotLight);
-Node * create_camera_node(Node *node, struct Camera *camera);
-Node * create_static_body_node(Node *node, struct StaticBody *staticBody);
-Node * create_rigid_body_node(Node *node, struct RigidBody *rigidBody);
-Node * create_kinematic_body_node(Node *node, struct KinematicBody *kinematicBody);
-Node * create_plane_collision_shape_node(Node *node, struct PlaneCollisionShape *planeCollisionShape);
-Node * create_box_collision_shape_node(Node *node, struct BoxCollisionShape *boxCollisionShape);
-Node * create_sphere_collision_shape_node(Node *node, struct SphereCollisionShape *sphereCollisionShape);
-Node * create_empty_node(Node *node);
-Node * create_model_node(Node *node, struct Model *model);
-Node * create_textured_mesh_node(Node *node, struct TexturedMesh *texturedMesh);
-Node * create_skybox_node(Node *node, struct TexturedMesh *texturedMesh);
-Node * create_mesh_node(Node *node, struct Mesh *mesh);
-Node * create_framebuffer_node(Node *node, FrameBuffer *frameBuffer);
-Node * create_texture_node(Node *node, TextureMap *texture);
-Node * create_viewport_node(Node *node, struct Viewport *viewport);
-Node * create_filter_node(Node *node, struct Filter *filter);
-
 void add_child(Node *node, Node *child);
 void add_child_and_realloc(Node *node, Node *child);
 void remove_child(Node *node, Node *child);
@@ -128,10 +107,6 @@ void remove_child_and_free(Node *node, Node *child);
 void remove_child_and_free_and_realloc(Node *node, Node *child);
 
 void render_node(Node *node, mat4 modelMatrix);
-void render_model(Node *node, mat4 modelMatrix);
-void render_textured_mesh(Node *node, mat4 modelMatrix);
-void render_skybox(Node *node, mat4 modelMatrix);
-void render_mesh(Node *node, mat4 modelMatrix);
 void render_point_light(Node *node, mat4 modelMatrix);
 void render_directional_light(Node *node, mat4 modelMatrix);
 

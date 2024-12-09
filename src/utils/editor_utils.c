@@ -36,7 +36,7 @@ void draw_texture_input(int *id, int x, int y, Window *window, Node *node, Textu
             FILE * file = fopen(path, "r");
             if (file) {
                 printf("%s\n", path);
-                (*texture) = load_texture_from_path(path);
+                (*texture) = load_texture_from_path(path, GL_SRGB_ALPHA);
                 fclose(file);
             }
         }
@@ -163,13 +163,13 @@ int update_scene_for_node_editing(Window *window, Node *node, Input *input, TTF_
 
 	s8 collisionShapeID = -1;
 	switch (selectedNode->type) {
-		case NODE_BOX_CSHAPE:
+		case CLASS_TYPE_BOXCSHAPE:
 			collisionShapeID = 0;
 			break;
-		case NODE_PLANE_CSHAPE:
+		case CLASS_TYPE_PLANECSHAPE:
 			collisionShapeID = 1;
 			break;
-		case NODE_SPHERE_CSHAPE:
+		case CLASS_TYPE_SPHERECSHAPE:
 			collisionShapeID = 2;
 			if (node->params[3].i == 7) {
 				selectedNode->scale[1] = selectedNode->scale[0];
@@ -220,16 +220,18 @@ void save_node_tree(FILE * file, Window *window, Node *node, Node *editor, Input
 	Node ***collisionsShapes;
 	GET_FROM_BODY_NODE(node, length, collisionsLength);
 	GET_FROM_BODY_NODE(node, collisionsShapes, collisionsShapes);
-	if (IS_NODE_BODY(node->type)) {
+    bool condition;
+    METHOD(node, is_body, (&condition));
+	if (condition) {
 		fprintf(file, "\n");
 		for (int i = 0; i < *collisionsLength; i++) {
 			save_node_tree(file, window, (*collisionsShapes)[i], editor, input, font);
 		}
 	}
 	fprintf(file, "[");
-	fprintf(file, "m%f,%f,%f", node->pos[0], node->pos[1], node->pos[2]);
-	fprintf(file, "r%f,%f,%f", node->rot[0], node->rot[1], node->rot[2]);
-	fprintf(file, "s%f,%f,%f", node->scale[0], node->scale[1], node->scale[2]);
+	fprintf(file, "m%g,%g,%g", node->pos[0], node->pos[1], node->pos[2]);
+	fprintf(file, "r%g,%g,%g", node->rot[0], node->rot[1], node->rot[2]);
+	fprintf(file, "s%g,%g,%g", node->scale[0], node->scale[1], node->scale[2]);
 	fprintf(file, "a%d", !!(node->flags & NODE_ACTIVE));
 	fprintf(file, "v%d", !!(node->flags & NODE_VISIBLE));
 	fprintf(file, "]");
@@ -260,13 +262,13 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
     int c = 1;
     Node *node = editor->params[2].node;
     switch (node->type) {
-        case NODE_EMPTY:
+        case CLASS_TYPE_NODE:
             {
             //
             }
             break;
 
-        case NODE_CAMERA:
+        case CLASS_TYPE_CAMERA:
             {
             draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
             if (draw_button(window->ui_surface, x+400-16, y, 32, 32, editor->params[5].node == node ? "assets/textures/editor/camera.png" : "assets/textures/editor/camera-off.png", 0xffffffff, input)) {
@@ -277,7 +279,7 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
             }
             break;
 
-        case NODE_KINEMATIC_BODY:
+        case CLASS_TYPE_KINEMATICBODY:
             {
             KinematicBody *kinematicBody = (KinematicBody*) node->object;
 
@@ -287,7 +289,7 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
             }
             break;
 
-        case NODE_RIGID_BODY:
+        case CLASS_TYPE_RIGIDBODY:
             {
             RigidBody *rigidBody = (RigidBody*) node->object;
 
@@ -311,19 +313,19 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
             y += 32;
             break;
             }
-        case NODE_STATIC_BODY:
+        case CLASS_TYPE_STATICBODY:
             {
             //
             }
             break;
 
-        case NODE_MESH:
+        case CLASS_TYPE_MESH:
             {
             //
             }
             break;
 
-        case NODE_MODEL:
+        case CLASS_TYPE_MODEL:
             {
             Model **model = (Model**) &node->object;
             draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
@@ -332,7 +334,7 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
             }
             break;
 
-        case NODE_TEXTURED_MESH:
+        case CLASS_TYPE_TEXTUREDMESH:
             {
             TextureMap *texture = &((TexturedMesh*) node->object)->texture;
             draw_rectangle(window->ui_surface, x, y, 800, 32, 0xff555555);
@@ -341,7 +343,7 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
             }
             break;
 
-        case NODE_SKYBOX:
+        case CLASS_TYPE_SKYBOX:
             {
             TextureMap *texture = &((TexturedMesh*) node->object)->texture;
             draw_rectangle(window->ui_surface, x, y, 800, 192, 0xff555555);
@@ -350,19 +352,19 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
             }
             break;
 
-        case NODE_VIEWPORT:
+        case CLASS_TYPE_VIEWPORT:
             {
             //
             }
             break;
 
-        case NODE_FRAMEBUFFER:
+        case CLASS_TYPE_FRAMEBUFFER:
             {
             //
             }
             break;
 
-        case NODE_POINT_LIGHT:
+        case CLASS_TYPE_POINTLIGHT:
             {
             PointLight *pointLight = (PointLight*) node->object;
 
@@ -387,7 +389,7 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
             break;
             }
 
-        case NODE_DIRECTIONAL_LIGHT:
+        case CLASS_TYPE_DIRECTIONALLIGHT:
             {
             DirectionalLight *directionalLight = (DirectionalLight*) node->object;
 
@@ -411,7 +413,7 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
             y += 32;
             break;
             }
-        case NODE_SPOT_LIGHT:
+        case CLASS_TYPE_SPOTLIGHT:
             {
             SpotLight *spotLight = (SpotLight*) node->object;
 

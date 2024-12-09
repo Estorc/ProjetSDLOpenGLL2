@@ -43,15 +43,12 @@ typedef struct CollisionBuffer {
     u8 index;
 } CollisionBuffer;
 
-#define IS_NODE_BODY(x) (x > _M_NODE_BODIES__START__ && x < _M_NODE_BODIES__END__)
-#define IS_NODE_CSHAPE(x) (x > _M_NODE_CSHAPES__START__ && x < _M_NODE_CSHAPES__END__)
-
 // All the bodies listed bellow have shared attributes. It allows the compiler to get an attribute from the void* pointer.
 #define GET_FROM_BODY_NODE(node, attribute, dest) \
 switch (node->type) {\
-    case NODE_STATIC_BODY:              dest = &((StaticBody *) node->object)->attribute;                  break;\
-    case NODE_RIGID_BODY:               dest = &((RigidBody *) node->object)->attribute;                   break;\
-    case NODE_KINEMATIC_BODY:           dest = &((KinematicBody *) node->object)->attribute;               break;\
+    case CLASS_TYPE_STATICBODY:              dest = &((StaticBody *) node->object)->attribute;                  break;\
+    case CLASS_TYPE_RIGIDBODY:               dest = &((RigidBody *) node->object)->attribute;                   break;\
+    case CLASS_TYPE_KINEMATICBODY:           dest = &((KinematicBody *) node->object)->attribute;               break;\
     default:                            dest = 0;                                                         break;\
 };
 

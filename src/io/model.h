@@ -18,18 +18,29 @@ typedef u32 TextureMap;
     Vec3f vec;
 } Vertex;*/
 
+typedef enum {
+    DIFFUSE_MATERIAL_PROPERTY,
+    NORMAL_MATERIAL_PROPERTY,
+    PARALLAX_MATERIAL_PROPERTY,
+    ROUGHNESS_MATERIAL_PROPERTY,
+    METALLIC_MATERIAL_PROPERTY,
+    AMBIENT_MATERIAL_PROPERTY,
+    SPECULAR_MATERIAL_PROPERTY,
+    EMISSION_MATERIAL_PROPERTY,
+    HEIGHT_MATERIAL_PROPERTY,
+    REFLECTION_MATERIAL_PROPERTY,
+    REFRACTION_MATERIAL_PROPERTY,
+    MATERIAL_PROPERTY_COUNT
+} MaterialProperties;
+
 typedef struct Material {
     char name[20]; // On pourrait imaginer une somme des lettres en exposant ou une conversion en base 64 / MD5 pour obtenir un identifiant unique plus simple à retrouver.
-    Vec3f ambientCol;
-    Vec3f diffuseCol;
-    Vec3f specularCol;
+    Vec3f flatColors[MATERIAL_PROPERTY_COUNT];
+    TextureMap textureMaps[MATERIAL_PROPERTY_COUNT];
     f32 specularExp;
     f32 opacity;
     f32 opticalDensity;
     u8 illumFlag;
-    TextureMap diffuseTextureMap;
-    TextureMap normalTextureMap;
-    TextureMap displacementTextureMap;
 } Material;
 
 typedef struct Face {
@@ -39,7 +50,7 @@ typedef struct Face {
     u8 length;
 } Face;
 
-typedef struct Object {
+typedef struct ObjectMesh {
     Vertex *vertex;
     Normal *normals;
     TextureVertex *textureVertex;
@@ -52,12 +63,12 @@ typedef struct Object {
     Material **materials;
     u32 *materialsLength;
     u8 materialsCount;
-} Object;
+} ObjectMesh;
 
 typedef struct Model {
     Material *materials;
     u8 materialsCount;
-    Object *objects;
+    ObjectMesh *objects;
     u8 length;
 } Model;
 
@@ -92,6 +103,6 @@ int find_material(Material *materials, int materialsCount, char *materialName);
 void create_textured_plane(TexturedMesh *texturedMesh, char *texture);
 void create_screen_plane(Mesh *mesh);
 //Vec3f get_face_center(Face *face);
-//void sort_faces_by_distance(Object *obj, Vec3f *vec);
+//void sort_faces_by_distance(ObjectMesh *obj, Vec3f *vec);
 
 #endif

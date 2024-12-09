@@ -115,4 +115,27 @@ bin/debug/src/node.o: src/node.c /usr/include/stdc-predef.h src/types.h \
  src/render/../types.h src/render/../config.h \
  src/render/../math/math_util.h src/render/../math/graph.h \
  src/render/../io/shader.h src/physics/bodies.h src/scripts/scripts.h \
- src/scripts/../io/input.h src/utils/node_tools.h src/render/lighting.h
+ src/scripts/../io/input.h src/render/lighting.h src/classes/classes.h \
+ src/classes/import_class.h src/classes/__processed__/node.class.h \
+ src/classes/__processed__/nodes_bodies_body.class.h \
+ src/classes/__processed__/nodes_bodies_kinematic_body.class.h \
+ src/classes/__processed__/nodes_bodies_rigid_body.class.h \
+ src/classes/__processed__/nodes_bodies_static_body.class.h \
+ src/classes/__processed__/nodes_camera.class.h \
+ src/classes/__processed__/nodes_cshapes_box_cshape.class.h \
+ src/classes/__processed__/nodes_cshapes_cshape.class.h \
+ src/classes/__processed__/nodes_cshapes_plane_cshape.class.h \
+ src/classes/__processed__/nodes_cshapes_sphere_cshape.class.h \
+ src/classes/__processed__/nodes_filter.class.h \
+ src/classes/__processed__/nodes_framebuffer.class.h \
+ src/classes/__processed__/nodes_lights_directional_light.class.h \
+ src/classes/__processed__/nodes_lights_point_light.class.h \
+ src/classes/__processed__/nodes_lights_spot_light.class.h \
+ src/classes/__processed__/nodes_mesh.class.h \
+ src/classes/__processed__/nodes_model.class.h \
+ src/classes/__processed__/nodes_skybox.class.h \
+ src/classes/__processed__/nodes_texture.class.h \
+ src/classes/__processed__/nodes_textured_mesh.class.h \
+ src/classes/__processed__/nodes_viewport.class.h \
+ src/classes/__processed__/nodes_windows_window.class.h \
+ src/classes/../types.h src/classes/../config.h

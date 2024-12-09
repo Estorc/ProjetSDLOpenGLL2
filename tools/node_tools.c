@@ -1,30 +1,29 @@
 #include <stdio.h>
 #include <string.h>
+#include <dirent.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <unistd.h>
+#include <ctype.h>
 
 
-int check_str_occurence(char *src, char *occ) {
-	int start = 0;
-	for (char * str = src; *str; str++) {
-		if (*str == *occ) occ++, start++;
-		else if (start) return 0;
-		if (!*occ) return 1;
-	}
-	return 0;
-}
+#define NODE_HEADER_PATH "src/node.h" 
+#define NODE_TYPE_MARKER "_M_"
+
 
 int main(int argc, char ** argv) {
 	int mode = 0;
 	if (argc > 1) {
 		sscanf(argv[1], "%d", &mode);
 	}
-    FILE * file = fopen("src/node.h", "r");
+    FILE * file = fopen(NODE_HEADER_PATH, "r");
 	if (!file) {
-		fprintf(stderr, "Le fichier \"src/node.h\" n'existe pas!");
+		fprintf(stderr, "Le fichier \"%s\" n'existe pas!", NODE_HEADER_PATH);
 		return -1;
 	}
 	char line[200];
     do fscanf(file, "%[^\n]\n", line);
-	while (!check_str_occurence(line, "enum NodeType {") && !feof(file));
+	while (!strstr(line, "enum NodeType {") && !feof(file));
 	char name[100];
 	if (mode == 0)
 		fprintf(stdout, "#define NODE_NAMES ");
@@ -33,9 +32,9 @@ int main(int argc, char ** argv) {
 	int c = 0;
     do {
         fscanf(file, "%[^,],\n", name);
-		if (mode == 0 && !check_str_occurence(name, "};")) fprintf(stdout, "\\\"%s\\\",\n", name);
-		if (mode == 1 && check_str_occurence(name, "_M_")) fprintf(stdout, "%s(x) == %s", c++ ? " || " : "", name);
-    } while(!check_str_occurence(name, "};") && !feof(file));
+		if (mode == 0 && !strstr(name, "};")) fprintf(stdout, "\\\"%s\\\",\n", name);
+		if (mode == 1 && strstr(name, NODE_TYPE_MARKER)) fprintf(stdout, "%s(x) == %s", c++ ? " || " : "", name);
+    } while(!strstr(name, "};") && !feof(file));
 	if (mode == 1)
 		fprintf(stdout, ")");
 	fclose(file);

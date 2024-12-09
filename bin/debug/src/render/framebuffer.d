@@ -233,6 +233,4 @@ bin/debug/src/render/framebuffer.o: src/render/framebuffer.c \
  src/render/../render/../math/math_util.h \
  src/render/../render/../math/graph.h src/render/../render/../io/shader.h \
  src/render/../physics/bodies.h src/render/../scripts/scripts.h \
- src/render/../scripts/../io/input.h src/render/../window.h \
- src/render/../render/depth_map.h src/render/../render/../io/model.h \
- src/render/../render/framebuffer.h
+ src/render/../scripts/../io/input.h src/render/../window.h

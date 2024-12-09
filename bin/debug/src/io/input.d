@@ -229,6 +229,5 @@ bin/debug/src/io/input.o: src/io/input.c /usr/include/stdc-predef.h \
  src/io/../render/../math/math_util.h src/io/../render/../math/graph.h \
  src/io/../render/../io/shader.h src/io/../physics/bodies.h \
  src/io/../scripts/scripts.h src/io/../scripts/../io/input.h \
- src/io/../render/render.h src/io/../window.h \
- src/io/../render/depth_map.h src/io/../render/../io/model.h \
- src/io/../render/framebuffer.h src/io/../render/camera.h src/io/input.h
+ src/io/../render/render.h src/io/../window.h src/io/../render/camera.h \
+ src/io/input.h

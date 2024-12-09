@@ -233,9 +233,31 @@ bin/debug/src/render/render.o: src/render/render.c \
  src/render/../render/../math/graph.h src/render/../render/../io/shader.h \
  src/render/../physics/bodies.h src/render/../scripts/scripts.h \
  src/render/../scripts/../io/input.h src/render/depth_map.h \
- src/render/render.h src/render/../window.h \
- src/render/../render/depth_map.h src/render/../render/../io/model.h \
- src/render/../render/framebuffer.h src/render/color.h \
+ src/render/render.h src/render/../window.h src/render/color.h \
  src/render/camera.h src/render/../io/shader.h src/render/viewport.h \
  src/render/../io/gltexture_loader.h /usr/include/SDL2/SDL_ttf.h \
- src/render/lighting.h src/render/../buffer.h
+ src/render/lighting.h src/render/../buffer.h \
+ src/render/../classes/classes.h src/render/../classes/import_class.h \
+ src/render/../classes/__processed__/node.class.h \
+ src/render/../classes/__processed__/nodes_bodies_body.class.h \
+ src/render/../classes/__processed__/nodes_bodies_kinematic_body.class.h \
+ src/render/../classes/__processed__/nodes_bodies_rigid_body.class.h \
+ src/render/../classes/__processed__/nodes_bodies_static_body.class.h \
+ src/render/../classes/__processed__/nodes_camera.class.h \
+ src/render/../classes/__processed__/nodes_cshapes_box_cshape.class.h \
+ src/render/../classes/__processed__/nodes_cshapes_cshape.class.h \
+ src/render/../classes/__processed__/nodes_cshapes_plane_cshape.class.h \
+ src/render/../classes/__processed__/nodes_cshapes_sphere_cshape.class.h \
+ src/render/../classes/__processed__/nodes_filter.class.h \
+ src/render/../classes/__processed__/nodes_framebuffer.class.h \
+ src/render/../classes/__processed__/nodes_lights_directional_light.class.h \
+ src/render/../classes/__processed__/nodes_lights_point_light.class.h \
+ src/render/../classes/__processed__/nodes_lights_spot_light.class.h \
+ src/render/../classes/__processed__/nodes_mesh.class.h \
+ src/render/../classes/__processed__/nodes_model.class.h \
+ src/render/../classes/__processed__/nodes_skybox.class.h \
+ src/render/../classes/__processed__/nodes_texture.class.h \
+ src/render/../classes/__processed__/nodes_textured_mesh.class.h \
+ src/render/../classes/__processed__/nodes_viewport.class.h \
+ src/render/../classes/__processed__/nodes_windows_window.class.h \
+ src/render/../classes/../types.h src/render/../classes/../config.h

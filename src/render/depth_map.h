@@ -10,8 +10,12 @@
 typedef struct DepthMap {
     FBO frameBuffer;
     TextureMap texture;
+    GLuint ubo;
 } DepthMap;
+
+struct WorldShaders;
 
 #endif
 
-void create_depthmap(DepthMap *depthMap);
+
+void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders);

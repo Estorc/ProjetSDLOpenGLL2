@@ -8,6 +8,7 @@ enum ReturnSymbol {
     NO_ERROR,
 };
 
+#define IGNORE(x) (void)x;
 #ifdef DEBUG
 #include <signal.h>
 #define BREAKPOINT printf("Breakpoint in %s at line %d\n", __FILE__, __LINE__), raise(SIGTRAP)

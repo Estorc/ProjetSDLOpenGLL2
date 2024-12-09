@@ -2,7 +2,27 @@
     "files.associations": {
         "loading_scripts.h": "c",
         "sdl_ttf.h": "c",
-        "*.cscript": "cpp"
+        "*.cscript": "cpp",
+        "stdlib.h": "c",
+        "typeinfo": "c",
+        "import_class.h": "c",
+        "node.h": "c",
+        "framebuffer.h": "c",
+        "model.h": "c",
+        "math_util.h": "c",
+        "window.h": "c",
+        "physics.h": "c",
+        "bodies.h": "c",
+        "lighting.h": "c",
+        "classes.h": "c",
+        "compare": "c",
+        "type_traits": "c",
+        "scene_loader.h": "c",
+        "depth_map.h": "c",
+        "collision.h": "c",
+        "buffer.h": "c",
+        "memory.h": "c",
+        "render.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

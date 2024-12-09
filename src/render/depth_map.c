@@ -5,6 +5,8 @@
 #include <GL/glext.h>
 #include "../types.h"
 #include "../math/math_util.h"
+#include "../io/shader.h"
+#include "render.h"
 #include "depth_map.h"
 
 
@@ -22,7 +24,35 @@
  * for later use in rendering shadows.
  */
 
-void create_depthmap(DepthMap *depthMap) {
+void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
+
+    // Allocate enough space for your matrices
+    size_t numDirectionalLights = 100;
+    size_t numPointLights = 100;
+    size_t numSpotLights = 100;
+
+    glGenBuffers(1, &depthMap->ubo);
+    glBindBuffer(GL_UNIFORM_BUFFER, depthMap->ubo);
+
+    size_t bufferSize = sizeof(mat4) * (numDirectionalLights + numPointLights + numSpotLights);
+    glBufferData(GL_UNIFORM_BUFFER, bufferSize, NULL, GL_DYNAMIC_DRAW);
+
+    GLint bindingPoint = 0;
+    glBindBufferBase(GL_UNIFORM_BUFFER, bindingPoint, depthMap->ubo);
+
+    GLuint blockIndex = glGetUniformBlockIndex(shaders->render, "LightMatrices");
+    glUniformBlockBinding(shaders->render, blockIndex, bindingPoint);
+
+
+    GLint actualBinding;
+    glGetActiveUniformBlockiv(shaders->render, blockIndex, GL_UNIFORM_BLOCK_BINDING, &actualBinding);
+
+    if (actualBinding != bindingPoint) {
+        printf("Error: Uniform block binding point mismatch!");
+    }
+
+
+
     FBO depthMapFBO;
     glGenFramebuffers(1, &depthMapFBO);  
 

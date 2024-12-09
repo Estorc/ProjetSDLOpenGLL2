@@ -62,12 +62,11 @@ char * get_folder_path(char * fullpath) {
     return path;
 }
 
-int str_includes(char *src, char *occ) {
-	int start = 0;
-	for (char * str = src; *str; str++) {
-		if (*str == *occ) occ++, start++;
-		else if (start) return 0;
-		if (!*occ) return 1;
+int find_string_index(char *str, const char **str_list, int list_size) {
+	for (int i = 0; i < list_size; i++) {
+		if (strcmp(str, str_list[i]) == 0) {
+			return i;
+		}
 	}
-	return 0;
+	return -1; // Return -1 if the string is not found
 }

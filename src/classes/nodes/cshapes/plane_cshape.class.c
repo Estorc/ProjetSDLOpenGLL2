@@ -1,0 +1,38 @@
+#include "math/math_util.h"
+#include "io/model.h"
+#include "render/framebuffer.h"
+#include "node.h"
+
+class PlaneCShape @promote extends CShape {
+    __containerType__ Node *
+
+    void constructor(struct PlaneCollisionShape *planeCollisionShape) {
+        this->object = planeCollisionShape;
+        this->type = __type__;
+        SUPER(initialize_node);
+    }
+
+    void cast(void ** data) {
+        IGNORE(data);
+    }
+
+    void get_priority(int *priority) {
+        *priority = 2;
+    }
+
+    void load() {
+        PlaneCollisionShape *planeCollisionShape;
+        planeCollisionShape = malloc(sizeof(PlaneCollisionShape));
+        POINTER_CHECK(planeCollisionShape);
+        METHOD_TYPE(this, CLASS_TYPE_PLANECSHAPE, constructor, planeCollisionShape);
+    }
+
+    void save(FILE *file) {
+        fprintf(file, "%s", classManager.class_names[this->type]);
+    }
+
+
+
+
+    
+}

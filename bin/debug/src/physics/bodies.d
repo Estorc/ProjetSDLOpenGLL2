@@ -233,7 +233,29 @@ bin/debug/src/physics/bodies.o: src/physics/bodies.c \
  src/physics/../render/../math/graph.h \
  src/physics/../render/../io/shader.h src/physics/../physics/bodies.h \
  src/physics/../scripts/scripts.h src/physics/../scripts/../io/input.h \
- src/physics/../window.h src/physics/../render/depth_map.h \
- src/physics/../render/../io/model.h src/physics/../render/framebuffer.h \
- src/physics/../render/lighting.h src/physics/physics.h \
- src/physics/../io/input.h src/physics/bodies.h
+ src/physics/../window.h src/physics/../render/lighting.h \
+ src/physics/../classes/classes.h src/physics/../classes/import_class.h \
+ src/physics/../classes/__processed__/node.class.h \
+ src/physics/../classes/__processed__/nodes_bodies_body.class.h \
+ src/physics/../classes/__processed__/nodes_bodies_kinematic_body.class.h \
+ src/physics/../classes/__processed__/nodes_bodies_rigid_body.class.h \
+ src/physics/../classes/__processed__/nodes_bodies_static_body.class.h \
+ src/physics/../classes/__processed__/nodes_camera.class.h \
+ src/physics/../classes/__processed__/nodes_cshapes_box_cshape.class.h \
+ src/physics/../classes/__processed__/nodes_cshapes_cshape.class.h \
+ src/physics/../classes/__processed__/nodes_cshapes_plane_cshape.class.h \
+ src/physics/../classes/__processed__/nodes_cshapes_sphere_cshape.class.h \
+ src/physics/../classes/__processed__/nodes_filter.class.h \
+ src/physics/../classes/__processed__/nodes_framebuffer.class.h \
+ src/physics/../classes/__processed__/nodes_lights_directional_light.class.h \
+ src/physics/../classes/__processed__/nodes_lights_point_light.class.h \
+ src/physics/../classes/__processed__/nodes_lights_spot_light.class.h \
+ src/physics/../classes/__processed__/nodes_mesh.class.h \
+ src/physics/../classes/__processed__/nodes_model.class.h \
+ src/physics/../classes/__processed__/nodes_skybox.class.h \
+ src/physics/../classes/__processed__/nodes_texture.class.h \
+ src/physics/../classes/__processed__/nodes_textured_mesh.class.h \
+ src/physics/../classes/__processed__/nodes_viewport.class.h \
+ src/physics/../classes/__processed__/nodes_windows_window.class.h \
+ src/physics/../classes/../types.h src/physics/../classes/../config.h \
+ src/physics/physics.h src/physics/../io/input.h src/physics/bodies.h

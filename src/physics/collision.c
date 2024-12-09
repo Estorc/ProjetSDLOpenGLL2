@@ -15,55 +15,13 @@
 #include "../render/viewport.h"
 #include "../render/lighting.h"
 #include "../io/gltexture_loader.h"
+#include "../classes/classes.h"
 #include "../memory.h"
 #include "../buffer.h"
 #include "physics.h"
 #include "bodies.h"
 #include "collision.h"
 #include "cube.h"
-
-/**
- * Apply force vector to a node.
- *
- * @param {Node*} node - The affected node.
- * @param {vec3} origin - Node absolute position.
- * @param {vec3} force - Force vector.
- * @param {float} distance - Distance from force origin.
- */
-
-void apply_impulse(Node *node, vec3 impulse, vec3 torque, vec3 correction, float momentOfInertia) {
-    switch (node->type) {
-        case NODE_RIGID_BODY: ;
-            RigidBody *rigidBody = (RigidBody *) node->object;
-
-            // Change velocity
-            glm_vec3_add(rigidBody->velocity, impulse, rigidBody->velocity);
-
-            // Move shape A out of shape B
-            glm_vec3_sub(node->pos, correction, node->pos);
-            for (int i = 0; i < rigidBody->length; i++) {
-                glm_vec3_sub(rigidBody->collisionsShapes[i]->globalPos, correction, rigidBody->collisionsShapes[i]->globalPos);
-            }
-
-            // Apply torque
-            glm_vec3_scale(torque, momentOfInertia, torque);
-            glm_vec3_sub(rigidBody->angularVelocity, torque, rigidBody->angularVelocity);
-
-        break;
-        case NODE_KINEMATIC_BODY: ;
-            KinematicBody *kinematicBody = (KinematicBody *) node->object;
-
-            // Change velocity
-            glm_vec3_add(kinematicBody->velocity, impulse, kinematicBody->velocity);
-
-            // Move shape A out of shape B
-            glm_vec3_sub(node->pos, correction, node->pos);
-            for (int i = 0; i < kinematicBody->length; i++) {
-                glm_vec3_sub(kinematicBody->collisionsShapes[i]->globalPos, correction, kinematicBody->collisionsShapes[i]->globalPos);
-            }
-        break;
-    }
-};
 
 /**
  * Get the velocity's norm of a node.
@@ -74,10 +32,10 @@ void apply_impulse(Node *node, vec3 impulse, vec3 torque, vec3 correction, float
 
 float get_velocity_norm(Node *node) {
     switch (node->type) {
-        case NODE_KINEMATIC_BODY: ;
+        case CLASS_TYPE_KINEMATICBODY: ;
             KinematicBody *kinematicBody = (KinematicBody *) node->object;
             return glm_vec3_norm(kinematicBody->velocity);
-        case NODE_RIGID_BODY: ;
+        case CLASS_TYPE_RIGIDBODY: ;
             RigidBody *rigidBody = (RigidBody *) node->object;
             return glm_vec3_norm(rigidBody->velocity);
     }
@@ -93,15 +51,15 @@ float get_velocity_norm(Node *node) {
 
 void get_velocity(Node *node, vec3 velocity) {
     switch (node->type) {
-        case NODE_KINEMATIC_BODY: ;
+        case CLASS_TYPE_KINEMATICBODY: ;
             KinematicBody *kinematicBody = (KinematicBody *) node->object;
             glm_vec3_copy(kinematicBody->velocity, velocity);
         break;
-        case NODE_RIGID_BODY: ;
+        case CLASS_TYPE_RIGIDBODY: ;
             RigidBody *rigidBody = (RigidBody *) node->object;
             glm_vec3_copy(rigidBody->velocity, velocity);
         break;
-        case NODE_STATIC_BODY: ;
+        case CLASS_TYPE_STATICBODY: ;
             glm_vec3_zero(velocity);
         break;
     }
@@ -110,14 +68,14 @@ void get_velocity(Node *node, vec3 velocity) {
 
 void get_mass(Node *node, float * mass) {
     switch (node->type) {
-        case NODE_RIGID_BODY: ;
+        case CLASS_TYPE_RIGIDBODY: ;
             RigidBody *rigidBody = (RigidBody *) node->object;
             (*mass) = rigidBody->mass;
         break;
-        case NODE_STATIC_BODY: ;
+        case CLASS_TYPE_STATICBODY: ;
             (*mass) = INFINITY;
         break;
-        case NODE_KINEMATIC_BODY: ;
+        case CLASS_TYPE_KINEMATICBODY: ;
             (*mass) = 100.0;
         break;
     }
@@ -125,14 +83,14 @@ void get_mass(Node *node, float * mass) {
 
 void get_center_of_mass(Node *node, vec3 com) {
     switch (node->type) {
-        case NODE_RIGID_BODY: ;
+        case CLASS_TYPE_RIGIDBODY: ;
             RigidBody *rigidBody = (RigidBody *) node->object;
             glm_vec3_copy(rigidBody->centerOfMass, com);
         break;
-        case NODE_STATIC_BODY: ;
+        case CLASS_TYPE_STATICBODY: ;
             glm_vec3_zero(com);
         break;
-        case NODE_KINEMATIC_BODY: ;
+        case CLASS_TYPE_KINEMATICBODY: ;
             glm_vec3_zero(com);
         break;
     }
@@ -298,7 +256,10 @@ bool check_collision_box_with_box(Node *boxB, Node *boxA, vec3 collisionNormal, 
 bool check_collision_box_with_sphere(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 angularNormal, float *penetrationDepth) {
     Node *boxShape;
     Node *sphereShape;
-    if (shapeA->type < shapeB->type) {
+    int priorityA, priorityB;
+    METHOD(shapeA, get_priority, &priorityA);
+    METHOD(shapeB, get_priority, &priorityB);
+    if (priorityA < priorityB) {
         boxShape = shapeA;
         sphereShape = shapeB;
     } else {
@@ -350,7 +311,11 @@ bool check_collision_box_with_sphere(Node *shapeA, Node *shapeB, vec3 collisionN
         (*penetrationDepth) = -(sqrt(distanceSquared) - radius);
 
         glm_vec3_sub(closestPoint, localSphereCenter, collisionNormal);
-        if (shapeA->type < shapeB->type) glm_vec3_negate(collisionNormal);
+
+        int priorityA, priorityB;
+        METHOD(shapeA, get_priority, &priorityA);
+        METHOD(shapeB, get_priority, &priorityB);
+        if (priorityA < priorityB) glm_vec3_negate(collisionNormal);
         glm_vec3_normalize(collisionNormal);
 
         glm_vec3_rotate_m4(cubeRotation, collisionNormal, collisionNormal);
@@ -367,7 +332,11 @@ bool check_collision_box_with_sphere(Node *shapeA, Node *shapeB, vec3 collisionN
 bool check_collision_box_with_plane(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 angularNormal, float *penetrationDepth) {
     Node *boxShape;
     Node *planeShape;
-    if (shapeA->type < shapeB->type) {
+
+    int priorityA, priorityB;
+    METHOD(shapeA, get_priority, &priorityA);
+    METHOD(shapeB, get_priority, &priorityB);
+    if (priorityA < priorityB) {
         boxShape = shapeA;
         planeShape = shapeB;
     } else {
@@ -430,7 +399,11 @@ bool check_collision_box_with_plane(Node *shapeA, Node *shapeB, vec3 collisionNo
 
         // Calculate the collision normal (direction of the force)
         glm_vec3_copy(planeNormal, collisionNormal);
-        if (shapeA->type < shapeB->type) glm_vec3_negate(collisionNormal);
+
+        int priorityA, priorityB;
+        METHOD(shapeA, get_priority, &priorityA);
+        METHOD(shapeB, get_priority, &priorityB);
+        if (priorityA < priorityB) glm_vec3_negate(collisionNormal);
         glm_vec3_normalize(collisionNormal);
         glm_vec3_copy(collisionNormal, angularNormal);
 
@@ -487,7 +460,11 @@ bool check_collision_sphere_with_sphere(Node *shapeA, Node *shapeB, vec3 collisi
 bool check_collision_sphere_with_plane(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 angularNormal, float *penetrationDepth) {
     Node *sphereShape;
     Node *planeShape;
-    if (shapeA->type < shapeB->type) {
+    
+    int priorityA, priorityB;
+    METHOD(shapeA, get_priority, &priorityA);
+    METHOD(shapeB, get_priority, &priorityB);
+    if (priorityA < priorityB) {
         sphereShape = shapeA;
         planeShape = shapeB;
     } else {
@@ -510,7 +487,11 @@ bool check_collision_sphere_with_plane(Node *shapeA, Node *shapeB, vec3 collisio
 
         // Calculate the collision normal (direction of the force)
         glm_vec3_copy(planeNormal, collisionNormal);
-        if (shapeA->type < shapeB->type) glm_vec3_negate(collisionNormal);
+
+        int priorityA, priorityB;
+        METHOD(shapeA, get_priority, &priorityA);
+        METHOD(shapeB, get_priority, &priorityB);
+        if (priorityA < priorityB) glm_vec3_negate(collisionNormal);
         glm_vec3_normalize(collisionNormal);
         glm_vec3_copy(collisionNormal, angularNormal);
 
@@ -534,7 +515,10 @@ bool check_collision_plane_with_plane(Node *shapeA, Node *shapeB, vec3 collision
  */
 
 unsigned int get_collision_code(Node *shapeA, Node *shapeB) {
-    if (shapeA->type < shapeB->type)
+    int priorityA, priorityB;
+    METHOD(shapeA, get_priority, &priorityA);
+    METHOD(shapeB, get_priority, &priorityB);
+    if (priorityA < priorityB)
         return shapeA->type | shapeB->type << 8;
     return shapeB->type | shapeA->type << 8;
 }
@@ -575,6 +559,10 @@ void check_collisions(Node *shape) {
             break;
             case CTEST_PLANE_WITH_PLANE:
                 condition = check_collision_plane_with_plane;
+            break;
+            default:
+                printf("ERROR: Collision code not found.\n");
+                printf("Collision code: %d\n", get_collision_code(shapeA, shapeB));
             break;
         }
 
@@ -647,10 +635,11 @@ void check_collisions(Node *shape) {
             else
                 glm_vec3_zero(correction);
 
-            apply_impulse(shapeA->parent, impulseA, torqueA, correction, sqr(invMassA)*500.0f);
+            float momentOfInertia = (1.0f / (invMassA + invMassB)) * 50000.0f;
+            METHOD(shapeA->parent, apply_impulse, impulseA, torqueA, correction, &momentOfInertia);
             glm_vec3_negate(impulseB);
             glm_vec3_negate(correction);
-            apply_impulse(shapeB->parent, impulseB, torqueB, correction, sqr(invMassB)*500.0f);
+            METHOD(shapeB->parent, apply_impulse, impulseB, torqueB, correction, &momentOfInertia);
 
         }
     }
@@ -731,9 +720,14 @@ void update_rigid_body(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) 
     glm_vec3_scale(rigidBody->velocity, rigidBody->friction * (1.0-delta), rigidBody->velocity);
     glm_vec3_add(node->pos, rigidBody->velocity, node->pos);
 
+    #ifdef DEBUG
+    printf("nodeType: %s\n", classManager.class_names[node->type]);
+    printf("velocity: %f %f %f\n", rigidBody->velocity[0], rigidBody->velocity[1], rigidBody->velocity[2]);
+    printf("angularVelocity: %f %f %f\n\n", rigidBody->angularVelocity[0], rigidBody->angularVelocity[1], rigidBody->angularVelocity[2]);
+    #endif
+    
     glm_vec3_scale(rigidBody->angularVelocity, rigidBody->friction * (1.0-delta), rigidBody->angularVelocity);
     glm_vec3_add(node->rot, rigidBody->angularVelocity, node->rot);
-
 
     update_global_position(node, pos, rot, scale);
 
@@ -985,25 +979,25 @@ void update_spot_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, 
 
 void update_node_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, u8 lightsCount[LIGHTS_COUNT]) {
     switch (node->type) {
-        case NODE_RIGID_BODY: ;
+        case CLASS_TYPE_RIGIDBODY: ;
             update_rigid_body(node, pos, rot, scale, delta);
         break;
-        case NODE_STATIC_BODY: ;
+        case CLASS_TYPE_STATICBODY: ;
             update_static_body(node, pos, rot, scale, delta);
         break;
-        case NODE_KINEMATIC_BODY: ;
+        case CLASS_TYPE_KINEMATICBODY: ;
             update_kinematic_body(node, pos, rot, scale, delta);
         break;
-        case NODE_CAMERA:
+        case CLASS_TYPE_CAMERA:
             update_camera(node, pos, rot, scale, delta);
         break;
-        case NODE_POINT_LIGHT:
+        case CLASS_TYPE_POINTLIGHT:
             update_point_light(node, pos, rot, scale, delta, lightsCount);
         break;
-        case NODE_DIRECTIONAL_LIGHT:
+        case CLASS_TYPE_DIRECTIONALLIGHT:
             update_directional_light(node, pos, rot, scale, delta, lightsCount);
         break;
-        case NODE_SPOT_LIGHT:
+        case CLASS_TYPE_SPOTLIGHT:
             update_spot_light(node, pos, rot, scale, delta, lightsCount);
         break;
         default:

@@ -233,11 +233,34 @@ bin/debug/src/main.o: src/main.c /usr/include/stdc-predef.h src/types.h \
  src/render/lighting.h src/window.h src/io/input.h src/io/stringio.h \
  src/io/osio.h src/utils/skybox.h src/io/scene_loader.h \
  src/physics/physics.h src/physics/../io/input.h src/memory.h \
- src/buffer.h /usr/include/SDL2/SDL_ttf.h /usr/include/SDL2/SDL.h \
+ src/buffer.h src/classes/classes.h src/classes/import_class.h \
+ src/classes/__processed__/node.class.h \
+ src/classes/__processed__/nodes_bodies_body.class.h \
+ src/classes/__processed__/nodes_bodies_kinematic_body.class.h \
+ src/classes/__processed__/nodes_bodies_rigid_body.class.h \
+ src/classes/__processed__/nodes_bodies_static_body.class.h \
+ src/classes/__processed__/nodes_camera.class.h \
+ src/classes/__processed__/nodes_cshapes_box_cshape.class.h \
+ src/classes/__processed__/nodes_cshapes_cshape.class.h \
+ src/classes/__processed__/nodes_cshapes_plane_cshape.class.h \
+ src/classes/__processed__/nodes_cshapes_sphere_cshape.class.h \
+ src/classes/__processed__/nodes_filter.class.h \
+ src/classes/__processed__/nodes_framebuffer.class.h \
+ src/classes/__processed__/nodes_lights_directional_light.class.h \
+ src/classes/__processed__/nodes_lights_point_light.class.h \
+ src/classes/__processed__/nodes_lights_spot_light.class.h \
+ src/classes/__processed__/nodes_mesh.class.h \
+ src/classes/__processed__/nodes_model.class.h \
+ src/classes/__processed__/nodes_skybox.class.h \
+ src/classes/__processed__/nodes_texture.class.h \
+ src/classes/__processed__/nodes_textured_mesh.class.h \
+ src/classes/__processed__/nodes_viewport.class.h \
+ src/classes/__processed__/nodes_windows_window.class.h \
+ src/classes/../types.h src/classes/../config.h \
+ /usr/include/SDL2/SDL_ttf.h /usr/include/SDL2/SDL.h \
  src/scripts/loading_scripts.h src/scripts/camera.cscript \
  src/scripts/flashlight.cscript src/scripts/free_camera.cscript \
  src/scripts/helice.cscript src/scripts/level_editor.cscript \
- src/scripts/../io/node_loader.h src/scripts/../utils/node_tools.h \
- src/scripts/../utils/editor_utils.c src/scripts/../io/osio.h \
- src/scripts/player.cscript src/scripts/test.cscript \
- src/scripts/twomp.cscript
+ src/scripts/../io/node_loader.h src/scripts/../utils/editor_utils.c \
+ src/scripts/../io/osio.h src/scripts/player.cscript \
+ src/scripts/test.cscript src/scripts/twomp.cscript

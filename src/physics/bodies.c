@@ -8,6 +8,7 @@
 #include "../node.h"
 #include "../window.h"
 #include "../render/lighting.h"
+#include "../classes/classes.h"
 #include "physics.h"
 #include "bodies.h"
 

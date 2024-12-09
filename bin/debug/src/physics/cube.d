@@ -235,10 +235,9 @@ bin/debug/src/physics/cube.o: src/physics/cube.c \
  src/physics/../render/../math/graph.h \
  src/physics/../render/../io/shader.h src/physics/../physics/bodies.h \
  src/physics/../scripts/scripts.h src/physics/../scripts/../io/input.h \
- src/physics/../window.h src/physics/../render/depth_map.h \
+ src/physics/../window.h src/physics/../render/color.h \
+ src/physics/../render/camera.h src/physics/../render/depth_map.h \
  src/physics/../render/../io/model.h src/physics/../render/framebuffer.h \
- src/physics/../render/color.h src/physics/../render/camera.h \
- src/physics/../render/depth_map.h src/physics/../render/viewport.h \
- src/physics/../render/lighting.h src/physics/../io/gltexture_loader.h \
- /usr/include/SDL2/SDL_ttf.h src/physics/physics.h \
- src/physics/../io/input.h src/physics/bodies.h
+ src/physics/../render/viewport.h src/physics/../render/lighting.h \
+ src/physics/../io/gltexture_loader.h /usr/include/SDL2/SDL_ttf.h \
+ src/physics/physics.h src/physics/../io/input.h src/physics/bodies.h

@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
+#include "stringio.h"
 #include "../types.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
@@ -21,6 +21,7 @@
 #include "../render/depth_map.h"
 #include "node_loader.h"
 #include "../buffer.h"
+#include "../classes/classes.h"
 
 
 /**
@@ -42,68 +43,17 @@
 
 Node *load_node(FILE *file, Camera **c, Script scripts[SCRIPTS_COUNT], Node *editor) {
     
-    char symbol[10];
+    char symbol[100];
     Node *node;
     
     node = malloc(sizeof(Node));
     POINTER_CHECK(node);
     
-    fscanf(file,"%10[a-z]", symbol);
-    if (!strcmp(symbol, "empty")) {
-        malloc_node(node, NODE_EMPTY, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "camera")) {
-        malloc_node(node, NODE_CAMERA, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "cbox")) {
-        malloc_node(node, NODE_BOX_CSHAPE, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "cplane")) {
-        malloc_node(node, NODE_PLANE_CSHAPE, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "csphere")) {
-        malloc_node(node, NODE_SPHERE_CSHAPE, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "kbody")) {
-        malloc_node(node, NODE_KINEMATIC_BODY, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "rbody")) {
-        malloc_node(node, NODE_RIGID_BODY, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "sbody")) {
-        malloc_node(node, NODE_STATIC_BODY, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "sp")) {
-        malloc_node(node, NODE_MESH, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "m")) {
-        malloc_node(node, NODE_MESH, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "mdl")) {
-        malloc_node(node, NODE_MODEL, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "tp")) {
-        malloc_node(node, NODE_TEXTURED_MESH, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "sky")) {
-        malloc_node(node, NODE_SKYBOX, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "v")) {
-        malloc_node(node, NODE_VIEWPORT, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "msaa")) {
-        malloc_node(node, NODE_FRAMEBUFFER, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "plight")) {
-        malloc_node(node, NODE_POINT_LIGHT, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "dlight")) {
-        malloc_node(node, NODE_DIRECTIONAL_LIGHT, file, c, scripts, editor);
-    }
-    if (!strcmp(symbol, "slight")) {
-        malloc_node(node, NODE_SPOT_LIGHT, file, c, scripts, editor);
-    }
+    fscanf(file,"%100[a-z,A-Z]", symbol);
+
+    malloc_node(node, find_string_index(symbol, (const char **) classManager.class_names, CLASS_TYPE_COUNT), file, c, scripts, editor);
     
+
     #ifdef DEBUG
     //print_node(node,0);
     #endif

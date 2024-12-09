@@ -26,6 +26,8 @@
 #include "memory.h"
 #include "buffer.h"
 
+#include "classes/classes.h"
+
 #include <SDL2/SDL_ttf.h>
 
 int update(Window *window, Node *viewportNode, Camera *c, Input *input, WorldShaders *shaders, DepthMap *depthMap) {
@@ -51,6 +53,8 @@ int update(Window *window, Node *viewportNode, Camera *c, Input *input, WorldSha
 
 MemoryCaches memoryCaches;
 BufferCollection buffers;
+//const struct ClassManager classManager;
+BUILD_CLASS_METHODS_CORRESPONDANCE(classManager);
 
 int main(int argc, char *argv[]) {
 
@@ -75,7 +79,7 @@ int main(int argc, char *argv[]) {
     };
 
     DepthMap depthMap;
-    create_depthmap(&depthMap);
+    create_depthmap(&depthMap, &defaultShaders);
     
     init_buffers();
     Node *viewportNode;
