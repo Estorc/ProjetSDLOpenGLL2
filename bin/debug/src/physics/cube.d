@@ -178,6 +178,7 @@ bin/debug/src/physics/cube.o: src/physics/cube.c \
  /usr/include/SDL2/SDL_opengl.h /usr/include/SDL2/SDL_opengl_glext.h \
  /usr/include/GL/glu.h /usr/include/GL/gl.h /usr/include/GL/glext.h \
  /usr/include/KHR/khrplatform.h src/physics/../types.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h \
  src/physics/../config.h /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
@@ -200,8 +201,7 @@ bin/debug/src/physics/cube.o: src/physics/cube.c \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
  src/physics/../math/math_util.h src/physics/../math/graph.h \
- lib/cglm/cglm.h lib/cglm/common.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h lib/cglm/types.h \
+ lib/cglm/cglm.h lib/cglm/common.h lib/cglm/types.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
  lib/cglm/simd/intrin.h lib/cglm/simd/x86.h lib/cglm/simd/intrin.h \
  lib/cglm/vec2.h lib/cglm/util.h lib/cglm/vec2-ext.h lib/cglm/vec3.h \
@@ -227,17 +227,23 @@ bin/debug/src/physics/cube.o: src/physics/cube.c \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
  src/physics/../io/model.h src/physics/../render/framebuffer.h \
- src/physics/../node.h src/physics/../io/shader.h \
- src/physics/../render/filter.h src/physics/../render/viewport.h \
- src/physics/../render/camera.h src/physics/../render/../types.h \
- src/physics/../render/../config.h \
+ src/physics/../storage/node.h src/physics/../storage/../io/shader.h \
+ src/physics/../storage/../render/camera.h \
+ src/physics/../storage/../render/../types.h \
+ src/physics/../storage/../render/../config.h \
+ src/physics/../storage/../render/../math/math_util.h \
+ src/physics/../storage/../render/../math/graph.h \
+ src/physics/../storage/../render/../io/shader.h \
+ src/physics/../storage/../physics/bodies.h \
+ src/physics/../storage/../scripts/scripts.h \
+ src/physics/../storage/../scripts/../io/input.h \
+ src/physics/../storage/../render/framebuffer.h src/physics/../window.h \
+ src/physics/../render/color.h src/physics/../render/camera.h \
+ src/physics/../render/../types.h src/physics/../render/../config.h \
  src/physics/../render/../math/math_util.h \
  src/physics/../render/../math/graph.h \
- src/physics/../render/../io/shader.h src/physics/../physics/bodies.h \
- src/physics/../scripts/scripts.h src/physics/../scripts/../io/input.h \
- src/physics/../window.h src/physics/../render/color.h \
- src/physics/../render/camera.h src/physics/../render/depth_map.h \
+ src/physics/../render/../io/shader.h src/physics/../render/depth_map.h \
  src/physics/../render/../io/model.h src/physics/../render/framebuffer.h \
- src/physics/../render/viewport.h src/physics/../render/lighting.h \
- src/physics/../io/gltexture_loader.h /usr/include/SDL2/SDL_ttf.h \
- src/physics/physics.h src/physics/../io/input.h src/physics/bodies.h
+ src/physics/../render/lighting.h src/physics/../io/gltexture_loader.h \
+ /usr/include/SDL2/SDL_ttf.h src/physics/physics.h \
+ src/physics/../io/input.h src/physics/bodies.h

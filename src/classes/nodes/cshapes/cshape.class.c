@@ -1,7 +1,7 @@
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
-#include "node.h"
+#include "storage/node.h"
 
 class CShape @promote extends Node {
     __containerType__ Node *

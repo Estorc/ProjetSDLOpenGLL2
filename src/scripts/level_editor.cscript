@@ -22,40 +22,6 @@ void load_menu(Window *window, Node *node, Input *input, TTF_Font *font) {
 	node->parent->params[3].i = 0;
 
 
-	/*draw_rectangle(window->ui_surface, SCREEN_WIDTH-64-8, 32-8, 48, 48, 0xff555555);
-	if (draw_button(window->ui_surface, SCREEN_WIDTH-64, 32, 32, 32, "assets/textures/editor/corner-left-up.png", 0xffffffff, input)) {
-		node->parent->params[1].i = 0;
-		node->parent->params[3].i = 0;
-	}
-
-	char str[100];
-	draw_rectangle(window->ui_surface, SCREEN_WIDTH/2-400, SCREEN_HEIGHT/2-140, 800, 280, 0xff555555);
-	draw_text(window->ui_surface, SCREEN_WIDTH/2-295, SCREEN_HEIGHT/2-50, "Veuillez saisir le nom de la sc\350ne :", font, (SDL_Color) {255, 255, 255, 255});
-	if (draw_input_box(window->ui_surface, SCREEN_WIDTH/2-300, SCREEN_HEIGHT/2, 600, 36, 0xffd0d0d0, input))
-		node->parent->params[3].i = 1;
-	if (node->parent->params[3].i == 1) {
-		input->inputBuffer[30] = 0;
-		if (!input->inputBuffer[0]) sprintf(str, "%s", "|");
-		else sprintf(str, "%s", input->inputBuffer);
-		draw_text(window->ui_surface, SCREEN_WIDTH/2-300, SCREEN_HEIGHT/2, str, font, (SDL_Color) {255, 255, 255, 255});
-	}
-	draw_rectangle(window->ui_surface, SCREEN_WIDTH/2-24, SCREEN_HEIGHT/2+140+20, 48, 48, 0xff555555);
-	if (input->pressed_keys & KEY_ENTER || draw_button(window->ui_surface, SCREEN_WIDTH/2-16, SCREEN_HEIGHT/2+140+20+8, 32, 32, "assets/textures/editor/folder.png", 0xffffffff, input)) {
-		//root->parent->params[1].i = 3;
-		if (input->inputBuffer[0]) {
-			char filename[100] = "assets/scenes/";
-			FILE * file = fopen(strcat(strcat(filename, input->inputBuffer), ".scene"), "r");
-			if (!file) {
-				printf("File \"%s.scene\" doesn't exist!\n", input->inputBuffer);
-			} else {
-				Node * parent = node->parent;
-				load_node_tree(file, node);
-				fclose(file);
-				parent->params[1].i = 0;
-				parent->params[3].i = 0;
-			}
-		}
-	}*/
 };
 
 
@@ -81,35 +47,6 @@ void save_menu(Window *window, Node *node, Input *input, TTF_Font *font) {
 	node->parent->params[1].i = 0;
 	node->parent->params[3].i = 0;
 
-	/*draw_rectangle(window->ui_surface, SCREEN_WIDTH-64-8, 32-8, 48, 48, 0xff555555);
-	if (draw_button(window->ui_surface, SCREEN_WIDTH-64, 32, 32, 32, "assets/textures/editor/corner-left-up.png", 0xffffffff, input)) {
-		node->parent->params[1].i = 0;
-		node->parent->params[3].i = 0;
-	}
-
-	char str[100];
-	draw_rectangle(window->ui_surface, SCREEN_WIDTH/2-400, SCREEN_HEIGHT/2-140, 800, 280, 0xff555555);
-	draw_text(window->ui_surface, SCREEN_WIDTH/2-295, SCREEN_HEIGHT/2-50, "Veuillez saisir le nom de la sc\350ne :", font, (SDL_Color) {255, 255, 255, 255});
-	if (draw_input_box(window->ui_surface, SCREEN_WIDTH/2-300, SCREEN_HEIGHT/2, 600, 36, 0xffd0d0d0, input))
-		node->parent->params[3].i = 1;
-	if (node->parent->params[3].i == 1) {
-		input->inputBuffer[30] = 0;
-		if (!input->inputBuffer[0]) sprintf(str, "%s", "|");
-		else sprintf(str, "%s", input->inputBuffer);
-		draw_text(window->ui_surface, SCREEN_WIDTH/2-300, SCREEN_HEIGHT/2, str, font, (SDL_Color) {255, 255, 255, 255});
-	}
-	draw_rectangle(window->ui_surface, SCREEN_WIDTH/2-24, SCREEN_HEIGHT/2+140+20, 48, 48, 0xff555555);
-	if (input->pressed_keys & KEY_ENTER || draw_button(window->ui_surface, SCREEN_WIDTH/2-16, SCREEN_HEIGHT/2+140+20+8, 32, 32, "assets/textures/editor/save.png", 0xffffffff, input)) {
-		//root->parent->params[1].i = 3;
-		if (input->inputBuffer[0]) {
-			char filename[100] = "assets/scenes/";
-			FILE * file = fopen(strcat(strcat(filename, input->inputBuffer), ".scene"), "w");
-			save_node_tree(file, window, node, node->parent, input, font);
-			fclose(file);
-			node->parent->params[1].i = 0;
-			node->parent->params[3].i = 0;
-		}
-	}*/
 };
 
 
@@ -148,8 +85,8 @@ void draw_node_editing(Window *window, Node *node, Input *input, TTF_Font *font)
 
 	char scriptname[100] = "None";
 	for (int i = 0; i < SCRIPTS_COUNT; i++) {
-		if (scripts[i].script == selectedNode->script) {
-			strcpy(scriptname, scripts[i].name);
+		if (mainNodeTree.scripts[i].script == selectedNode->script) {
+			strcpy(scriptname, mainNodeTree.scripts[i].name);
 			break;
 		}
 			
@@ -205,14 +142,14 @@ void draw_node_editing(Window *window, Node *node, Input *input, TTF_Font *font)
 
 	x += 96;
 
-	draw_text(window->ui_surface, x-390, y, "Script:", font, (SDL_Color) {255, 255, 255, 255});
+	draw_text(window->ui_surface, x-390, y, "Script:", font, (SDL_Color) {255, 255, 255, 255}, "lt", -1);
 	if (draw_input_box(window->ui_surface, x-230+  0, y-1, 300, 28, 0xffd0d0d0, input))
 		node->params[3].i = 10;
 	if (node->params[3].i == 10) {
 		sprintf(str, "%s", input->inputBuffer);
 		sscanf(str, "%s", scriptname);
 	} else sprintf(str, "%s", scriptname);
-	draw_text(window->ui_surface, x-230, y, str, font, (SDL_Color) {255, 255, 255, 255});
+	draw_text(window->ui_surface, x-230, y, str, font, (SDL_Color) {255, 255, 255, 255}, "lt", -1);
 
 	if (input->pressed_keys & KEY_ENTER) {
 		if (node->params[3].i == 10) {
@@ -221,9 +158,9 @@ void draw_node_editing(Window *window, Node *node, Input *input, TTF_Font *font)
 				selectedNode->script = NULL;
 			}
 			else for (int i = 0; i < SCRIPTS_COUNT; i++) {
-				if (!strcmp(scripts[i].name, scriptname)) {
+				if (!strcmp(mainNodeTree.scripts[i].name, scriptname)) {
 					selectedNode->flags |= NODE_SCRIPT;
-					selectedNode->script = scripts[i].script;
+					selectedNode->script = mainNodeTree.scripts[i].script;
 				}
 					
 			}
@@ -285,8 +222,8 @@ void draw_node_tree(Window *window, Node *node, int level, Input *input, TTF_Fon
 		add_child_and_realloc(node->parent->parent, node);
 		return;
 	}
-	if (node != root) draw_text(window->ui_surface, x + 16 + 32, y+4, classManager.class_names[node->type], font, (SDL_Color) {255, 255, 255, 255});
-	else draw_text(window->ui_surface, x + 16 + 32, y+4, "Root", font, (SDL_Color) {255, 255, 255, 255});
+	if (node != root) draw_text(window->ui_surface, x + 16 + 32, y+4, classManager.class_names[node->type], font, (SDL_Color) {255, 255, 255, 255}, "lt", -1);
+	else draw_text(window->ui_surface, x + 16 + 32, y+4, "Root", font, (SDL_Color) {255, 255, 255, 255}, "lt", -1);
 
 	u8 *collisionsLength;
 	Node ***collisionsShapes;
@@ -338,7 +275,7 @@ void draw_node_tree(Window *window, Node *node, int level, Input *input, TTF_Fon
 		if (*selectedNodeType >= CLASS_TYPE_COUNT) *selectedNodeType = 0;
 		char str[150];
 		sprintf(str, " < %s > ", classManager.class_names[*selectedNodeType]);
-		draw_text(window->ui_surface, 450, SCREEN_HEIGHT-100+10, str, font, (SDL_Color) {255, 255, 255, 255});
+		draw_text(window->ui_surface, 450, SCREEN_HEIGHT-100+10, str, font, (SDL_Color) {255, 255, 255, 255}, "lt", -1);
 
 		draw_rectangle(window->ui_surface, SCREEN_WIDTH-64-8, 32-8, 48, 48, 0xff555555);
 		if (draw_button(window->ui_surface, SCREEN_WIDTH-64, 32, 32, 32, "assets/textures/editor/camera.png", 0xffffffff, input)) {

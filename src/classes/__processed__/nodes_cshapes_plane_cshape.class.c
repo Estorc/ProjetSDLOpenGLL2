@@ -4,10 +4,11 @@
 #include "../../math/math_util.h"
 #include "../../io/model.h"
 #include "../../render/framebuffer.h"
-#include "../../node.h"
+#include "../../storage/node.h"
+static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_PLANECSHAPE;
+
+
 void __class_method_planecshape_constructor(unsigned type, ...) {
-unsigned __type__ = 8;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -19,9 +20,8 @@ va_end(args);
     SUPER(initialize_node);
 }
 
+
 void __class_method_planecshape_cast(unsigned type, ...) {
-unsigned __type__ = 8;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -31,9 +31,8 @@ va_end(args);
     IGNORE(data);
 }
 
+
 void __class_method_planecshape_get_priority(unsigned type, ...) {
-unsigned __type__ = 8;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -43,9 +42,8 @@ va_end(args);
     *priority = 2;
 }
 
+
 void __class_method_planecshape_load(unsigned type, ...) {
-unsigned __type__ = 8;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -54,12 +52,11 @@ va_end(args);
     PlaneCollisionShape *planeCollisionShape;
     planeCollisionShape = malloc(sizeof(PlaneCollisionShape));
     POINTER_CHECK(planeCollisionShape);
-    METHOD_TYPE(this, CLASS_TYPE_PLANECSHAPE, constructor, planeCollisionShape);
+    METHOD_TYPE(this, __type__, constructor, planeCollisionShape);
 }
 
+
 void __class_method_planecshape_save(unsigned type, ...) {
-unsigned __type__ = 8;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -68,4 +65,13 @@ va_end(args);
 (void)this;
     fprintf(file, "%s", classManager.class_names[this->type]);
 }
+
+
+
+
+
+
+
+
+    
 

@@ -4,10 +4,11 @@
 #include "../../math/math_util.h"
 #include "../../io/model.h"
 #include "../../render/framebuffer.h"
-#include "../../node.h"
+#include "../../storage/node.h"
+static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_NODE;
+
+
 void __class_method_node_constructor(unsigned type, ...) {
-unsigned __type__ = 0;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -18,9 +19,8 @@ va_end(args);
     METHOD(this, initialize_node);
 }
 
+
 void __class_method_node_initialize_node(unsigned type, ...) {
-unsigned __type__ = 0;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -38,9 +38,8 @@ va_end(args);
     Vec3fOne(this->scale);
 }
 
+
 void __class_method_node_cast(unsigned type, ...) {
-unsigned __type__ = 0;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -50,20 +49,18 @@ va_end(args);
     IGNORE(data);
 }
 
+
 void __class_method_node_load(unsigned type, ...) {
-unsigned __type__ = 0;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
 va_end(args);
 (void)this;
-    METHOD_TYPE(this, CLASS_TYPE_NODE, constructor);
+    METHOD_TYPE(this, __type__, constructor);
 }
 
+
 void __class_method_node_save(unsigned type, ...) {
-unsigned __type__ = 0;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -73,9 +70,8 @@ va_end(args);
     fprintf(file, "%s", classManager.class_names[this->type]);
 }
 
+
 void __class_method_node_render(unsigned type, ...) {
-unsigned __type__ = 0;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -84,9 +80,18 @@ va_end(args);
     //
 }
 
+
+void __class_method_node_update(unsigned type, ...) {
+va_list args;
+va_start(args, type);
+Node * this = va_arg(args, Node *);
+va_end(args);
+(void)this;
+    //
+}
+
+
 void __class_method_node_free(unsigned type, ...) {
-unsigned __type__ = 0;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -101,27 +106,35 @@ va_end(args);
     free(this);
 }
 
+
 void __class_method_node_is_cshape(unsigned type, ...) {
-unsigned __type__ = 0;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
 bool * cshape = va_arg(args, bool *);
 va_end(args);
 (void)this;
-    (*cshape) = false;
+    *cshape = false;
 }
 
+
 void __class_method_node_is_body(unsigned type, ...) {
-unsigned __type__ = 0;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
 bool * body = va_arg(args, bool *);
 va_end(args);
 (void)this;
-    (*body) = false;
+    *body = false;
 }
 
+
+void __class_method_node_is_gui_element(unsigned type, ...) {
+va_list args;
+va_start(args, type);
+Node * this = va_arg(args, Node *);
+bool * result = va_arg(args, bool *);
+va_end(args);
+(void)this;
+    *result = false;
+}

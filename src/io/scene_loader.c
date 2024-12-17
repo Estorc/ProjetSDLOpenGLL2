@@ -12,7 +12,7 @@
 #include "../render/framebuffer.h"
 #include "../render/lighting.h"
 #include "../physics/bodies.h"
-#include "../node.h"
+#include "../storage/node.h"
 #include "../render/render.h"
 #include "../window.h"
 #include "input.h"
@@ -125,6 +125,7 @@ Node *load_node(FILE *file, Camera **c, Script scripts[SCRIPTS_COUNT], Node *edi
                     if (!strcmp(scripts[i].name, scriptname)) {
                         node->flags |= NODE_SCRIPT;
                         node->script = scripts[i].script;
+                        break;
                     }
                         
                 }
@@ -154,6 +155,9 @@ Node *load_node(FILE *file, Camera **c, Script scripts[SCRIPTS_COUNT], Node *edi
 
 Node *load_scene(char *path, Camera **c, Script *scripts) {
     buffers.collisionBuffer.length = 0;
+    buffers.lightingBuffer.length = 0;
+    buffers.collisionBuffer.index = 0;
+    buffers.lightingBuffer.index = 0;
     FILE * file = fopen(path, "r");
 
     if (!file) return NULL;
@@ -164,41 +168,17 @@ Node *load_scene(char *path, Camera **c, Script *scripts) {
         fclose(file);
         return NULL;
     }
+    root->parent = NULL;
     print_node(root, 0);
 
-    Node *node;
-    node = load_node(file, c, scripts, 0);
-    if (!node) {
-        free_node(root);
-        fclose(file);
-        return NULL;
-    }
-
-    Viewport *viewport = (Viewport *) node->object;
-    viewport->scene = root;
-    root->parent = node;
-    node->parent = NULL;
-    print_node(node, 0);
-
     buffers.collisionBuffer.collisionsShapes = realloc(buffers.collisionBuffer.collisionsShapes, sizeof(Node *) * buffers.collisionBuffer.length);
-    if (!buffers.collisionBuffer.collisionsShapes) {
-        free_node(root);
-        free_node(node);
-        fclose(file);
-        return NULL;
-    }
+    // Check if the memory allocation was successful
 
     buffers.lightingBuffer.lightings = realloc(buffers.lightingBuffer.lightings, sizeof(Node *) * buffers.lightingBuffer.length);
-    if (!buffers.lightingBuffer.lightings) {
-        free(buffers.collisionBuffer.collisionsShapes);
-        free_node(root);
-        free_node(node);
-        fclose(file);
-        return NULL;
-    }
+    // Check if the memory allocation was successful
 
     fclose(file);
 
-    return node;
+    return root;
 
 }

@@ -8,6 +8,7 @@
 #include "../io/shader.h"
 #include "render.h"
 #include "depth_map.h"
+#include "../settings.h"
 
 
 /**
@@ -53,14 +54,12 @@ void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
 
 
 
-    FBO depthMapFBO;
-    glGenFramebuffers(1, &depthMapFBO);  
-
-    TextureMap depthMapTexture;
-    glGenTextures(1, &depthMapTexture);
-    glBindTexture(GL_TEXTURE_2D_ARRAY, depthMapTexture);
+    glGenFramebuffers(1, &depthMap->frameBuffer);  
+    glGenTextures(1, &depthMap->texture);
+    // Disable binding if settings do not allow shadows
+    glBindTexture(GL_TEXTURE_2D_ARRAY, depthMap->texture);
     glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_DEPTH_COMPONENT, 
-                SHADOW_WIDTH, SHADOW_HEIGHT, MAX_SHADOW, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+                SHADOW_WIDTH, SHADOW_HEIGHT, MAX_SHADOW, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_SHORT, NULL);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER); 
@@ -70,12 +69,9 @@ void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
     float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
     glTexParameterfv(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_BORDER_COLOR, borderColor);  
 
-    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
-    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthMapTexture, 0, 0);
+    glBindFramebuffer(GL_FRAMEBUFFER, depthMap->frameBuffer);
+    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthMap->texture, 0, 0);
     glDrawBuffer(GL_NONE);
     glReadBuffer(GL_NONE);
     glBindFramebuffer(GL_FRAMEBUFFER, 0); 
-
-    depthMap->frameBuffer = depthMapFBO;
-    depthMap->texture = depthMapTexture;
 }  

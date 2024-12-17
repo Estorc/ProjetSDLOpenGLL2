@@ -5,5 +5,3 @@ Model(assets/models/collisionShapes/box.obj)[v0]
 Model(assets/models/collisionShapes/plane.obj)[v0]
 Model(assets/models/collisionShapes/sphere.obj)[v0]
 Node[a0]:0
-Viewport:1
-Framebuffer

@@ -30,12 +30,12 @@ else {\
     ClassType type = classManager.extends[default_type];\
     while (!method) {\
         if (type == -1) {\
-            fprintf(stderr, "Object doesn't have method: %s\n", "method_name");\
+            fprintf(stderr, "Object doesn't have method: %s\n", #method_name);\
             break;\
         }\
         method = classManager.methodsCorrespondance.method_name[type];\
         type = classManager.extends[type];\
     }\
-    method(default_type, obj, ##__VA_ARGS__);\
+    if (method) method(default_type, obj, ##__VA_ARGS__);\
 }};
 #define METHOD(obj, method_name, ...) METHOD_TYPE(obj, obj->type, method_name, ##__VA_ARGS__)

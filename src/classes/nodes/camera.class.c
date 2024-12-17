@@ -1,7 +1,7 @@
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
-#include "node.h"
+#include "storage/node.h"
 
 class Camera @promote extends Node {
     __containerType__ Node *
@@ -30,7 +30,7 @@ class Camera @promote extends Node {
                 else if (editor) editor->params[5].node = this;
             }
         }
-        METHOD_TYPE(this, CLASS_TYPE_CAMERA, constructor, cam);
+        METHOD_TYPE(this, __type__, constructor, cam);
     }
 
     void save(FILE *file, Node *editor) {

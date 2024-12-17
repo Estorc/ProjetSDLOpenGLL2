@@ -4,6 +4,8 @@
 #include "../io/model.h"
 #include "../io/shader.h"
 #include "../memory.h"
+#include <SDL2/SDL.h>
+#include "../window.h"
 
 
 /**
@@ -37,6 +39,8 @@ void init_camera(Camera *c) {
  */
 
 void camera_projection(Camera *c, WorldShaders *shaders) {
+    int window_width, window_height;
+    get_resolution(&window_width, &window_height);
     // Camera
     mat4 view = GLM_MAT4_IDENTITY_INIT;
     vec3 cameraPos   = {c->pos[0],c->pos[1],c->pos[2]};
@@ -47,7 +51,7 @@ void camera_projection(Camera *c, WorldShaders *shaders) {
     glm_lookat(cameraPos, cameraB, cameraUp, view);
 
     mat4 projection = GLM_MAT4_IDENTITY_INIT;
-    glm_perspective(PI/4, 2, 0.1f, 300.0f, projection);
+    glm_perspective(PI/4, (float)window_width/(float)window_height, 0.1f, 300.0f, projection);
 
     for (int i = 0; i < memoryCaches.shadersCount; i++) {
         use_shader(memoryCaches.shaderCache[i].shader);

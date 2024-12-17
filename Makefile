@@ -41,6 +41,7 @@ NEWLINE := $(shell printf "\n")
 # Object Files path
 
 BUILD_DIR := bin
+PROCESSED_CLASS_DIR := src/classes/__processed__
 
 MODULES += src/io/gltexture_loader.o
 MODULES += src/io/obj_loader.o
@@ -62,8 +63,6 @@ MODULES += src/render/color.o
 MODULES += src/render/camera.o
 MODULES += src/render/framebuffer.o
 MODULES += src/render/depth_map.o
-MODULES += src/render/viewport.o
-MODULES += src/render/filter.o
 
 MODULES += src/physics/cube.o
 MODULES += src/physics/collision.o
@@ -72,10 +71,16 @@ MODULES += src/physics/bodies.o
 MODULES += src/utils/skybox.o
 MODULES += src/utils/time.o
 
+MODULES += src/gui/frame.o
+
+MODULES += src/storage/node.o
+MODULES += src/storage/stack.o
+MODULES += src/storage/queue.o
+
 MODULES += src/memory.o
 MODULES += src/buffer.o
 MODULES += src/window.o
-MODULES += src/node.o
+MODULES += src/settings.o
 MODULES += src/main.o
 
 RELEASE_MODULES = $(addprefix $(BUILD_DIR)/,${MODULES})
@@ -102,8 +107,10 @@ WFLAGS += -Wno-implicit-function-declaration
 
 
 LOADING_SCRIPT_HEADER := src/scripts/loading_scripts.h
-SCRIPTS_FILES := $(notdir $(wildcard src/scripts/*.cscript))
-SCRIPTS_COUNT := -D SCRIPTS_COUNT=$(words $(SCRIPTS_FILES))
+NEW_SCRIPT_SYMBOL := NEW_SCRIPT
+SCRIPTS_PATHS := $(wildcard src/scripts/*.cscript)
+SCRIPTS_FILES := $(notdir $(SCRIPTS_PATHS))
+SCRIPTS_COUNT := -D SCRIPTS_COUNT=$(shell grep -o '\b$(NEW_SCRIPT_SYMBOL)\b' $(SCRIPTS_PATHS) | wc -l)
 
 CLASS_TOOLS := $(shell tools/class_tools)
 CLASSES_MODULES := $(wildcard src/classes/__processed__/*.class.c)
@@ -126,7 +133,7 @@ launch:
 	@${BUILD_DIR}/release/app
 
 
-release: init_build ${RELEASE_MODULES}
+release: generate_header init_build ${RELEASE_MODULES}
 	@echo "${STEP_COL}===================== Begin linking. ====================${NC}"
 	@echo "${ACT_COL}Linking app...${NC}"
 	@mkdir -p ${BUILD_DIR}/release
@@ -141,7 +148,7 @@ release: init_build ${RELEASE_MODULES}
 
 	@echo "${STEP_COL}============= ${SUCCESS_COL}Successfully build the app!${NC}${STEP_COL} =============${NC}"
 
-debug: init_build ${DEBUG_MODULES}
+debug: generate_header init_build ${DEBUG_MODULES}
 	@echo "${STEP_COL}===================== Begin debug linking. ====================${NC}"
 	@echo "${ACT_COL}Linking debug app...${NC}"
 	@mkdir -p ${BUILD_DIR}/debug
@@ -177,12 +184,19 @@ ${BUILD_DIR}/debug/%.o: %.c
 	@gcc -c $*.c -g -o ${BUILD_DIR}/debug/$*.o -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
 	@echo "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}"
 
+generate_header:
+	@echo "Generate loading scripts header..."
+	@echo "// Auto-generated scripts loading header file" > $(LOADING_SCRIPT_HEADER)
+	@for file in $(SCRIPTS_FILES); do \
+		echo "#include \"$$file\"" >> $(LOADING_SCRIPT_HEADER); \
+	done
 
 clean:
 	@echo "${ACT_COL}Clear the build...${NC}"
+	@rm -rf ${PROCESSED_CLASS_DIR}
 	@rm -rf ${BUILD_DIR}
 	@echo "${SUCCESS_COL}Successfully clear the build!${NC}"
 
-.PHONY: all build debug tools
+.PHONY: all build debug tools generate_header
 -include $(RELEASE_MODULES:.o=.d)
 -include $(DEBUG_MODULES:.o=.d)

@@ -49,7 +49,8 @@ bin/debug/src/buffer.o: src/buffer.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h src/types.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h src/config.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h src/config.h \
  /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
@@ -81,8 +82,7 @@ bin/debug/src/buffer.o: src/buffer.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h lib/cglm/cglm.h \
  lib/cglm/common.h /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h lib/cglm/types.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
+ lib/cglm/types.h /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
  lib/cglm/simd/intrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \

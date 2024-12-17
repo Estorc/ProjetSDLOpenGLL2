@@ -63,6 +63,7 @@ typedef struct ObjectMesh {
     Material **materials;
     u32 *materialsLength;
     u8 materialsCount;
+    GLuint *displayLists;
 } ObjectMesh;
 
 typedef struct Model {

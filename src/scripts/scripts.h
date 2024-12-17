@@ -10,7 +10,7 @@ struct Window;
 	                    }
 
 #define NEW_SCRIPT(script_name) NODE_FUNC_RETURN script_name(NODE_FUNC_PARAMS) {
-#define END_SCRIPT(script_name) }; scripts[scriptIndex].name = #script_name, scripts[scriptIndex++].script = script_name;
+#define END_SCRIPT(script_name) }; mainNodeTree.scripts[mainNodeTree.scriptIndex].name = #script_name, mainNodeTree.scripts[mainNodeTree.scriptIndex++].script = script_name;
 
 #ifndef SCRIPTS_H
 #define SCRIPTS_H
@@ -18,7 +18,7 @@ struct Window;
 typedef union ScriptParameter {
     int i;
     float f;
-    vec3 v3;
+    bool b;
     struct Node *node;
 } ScriptParameter;
 

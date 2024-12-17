@@ -25,7 +25,8 @@ bin/debug/src/memory.o: src/memory.c /usr/include/stdc-predef.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h src/config.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h src/config.h \
  /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
@@ -81,8 +82,7 @@ bin/debug/src/memory.o: src/memory.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/select.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
  /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h lib/cglm/types.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h lib/cglm/types.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
  lib/cglm/simd/intrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \

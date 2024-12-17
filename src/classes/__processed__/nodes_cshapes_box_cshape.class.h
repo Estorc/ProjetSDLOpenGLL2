@@ -1,5 +1,5 @@
-#ifndef __PROCESSED__NODES_CSHAPES_BOX_CSHAPEODY_H
-#define __PROCESSED__NODES_CSHAPES_BOX_CSHAPEODY_H
+#ifndef __PROCESSED__NODES_CSHAPES_BOX_CSHAPE_H
+#define __PROCESSED__NODES_CSHAPES_BOX_CSHAPE_H
 void __class_method_boxcshape_constructor(unsigned type, ...);
 void __class_method_boxcshape_cast(unsigned type, ...);
 void __class_method_boxcshape_get_priority(unsigned type, ...);

@@ -4,7 +4,7 @@
 #include "../math/math_util.h"
 #include "model.h"
 #include "../render/framebuffer.h"
-#include "../node.h"
+#include "../storage/node.h"
 #include "../render/render.h"
 #include "../window.h"
 #include "../render/camera.h"
@@ -41,12 +41,15 @@ void init_input(Input *input) {
  */
 
 int update_input(Input *input) {
+    input->mouse.scroll_x = 0;
+    input->mouse.scroll_y = 0;
     input->mouse.lastX = input->mouse.x;
     input->mouse.lastY = input->mouse.y;
     input->released_keys = 0;
     input->pressed_keys = 0;
     input->mouse.pressed_button = 0;
     input->mouse.released_button = 0;
+    input->text_input = false;
 	SDL_Event event;
     while( SDL_PollEvent( &event ) ) {
         switch( event.type ){
@@ -95,6 +98,7 @@ int update_input(Input *input) {
                         break;
 					case SDLK_BACKSPACE:
 						input->inputBuffer[strlen(input->inputBuffer)-1] = 0;
+                        input->text_input = true;
                         break;
                     default:
                         break;
@@ -149,14 +153,20 @@ int update_input(Input *input) {
             case SDL_TEXTINPUT:
                 if (strlen(input->inputBuffer)+1 < 100)
                     strcat(input->inputBuffer, event.text.text);
+                input->text_input = true;
                 break;
             case SDL_MOUSEMOTION:
                 if (input->mouse.x == 0 && input->mouse.y == 0) {
                     input->mouse.lastX = event.motion.x;
                     input->mouse.lastY = event.motion.y;
                 }
-				input->mouse.x = event.motion.x;
-				input->mouse.y = event.motion.y;
+                int window_width, window_height;
+                SDL_GetWindowSize(window.sdl_window, &window_width, &window_height);
+                int res_width, res_height;
+                get_resolution(&res_width, &res_height);
+
+				input->mouse.x = event.motion.x / (float)window_width * res_width;
+				input->mouse.y = event.motion.y / (float)window_height * res_height;
                 break;
             case SDL_MOUSEBUTTONDOWN:
                 input->mouse.pressed_button = event.button.button;
@@ -165,6 +175,20 @@ int update_input(Input *input) {
             case SDL_MOUSEBUTTONUP:
                 input->mouse.released_button = event.button.button;
                 input->mouse.active_button &= ~event.button.button;
+                break;
+            case SDL_MOUSEWHEEL:
+                if (event.wheel.direction == SDL_MOUSEWHEEL_NORMAL) {
+                    input->mouse.scroll_x = event.wheel.x;
+                    input->mouse.scroll_y = event.wheel.y;
+                } else if (event.wheel.direction == SDL_MOUSEWHEEL_FLIPPED) {
+                    input->mouse.scroll_x = event.wheel.x;
+                    input->mouse.scroll_y = event.wheel.y;
+                }
+                break;
+            case SDL_WINDOWEVENT:
+                if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
+                    return 1;
+                }
                 break;
             case SDL_QUIT:
                 return -1;

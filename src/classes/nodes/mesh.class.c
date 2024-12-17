@@ -1,7 +1,7 @@
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
-#include "node.h"
+#include "storage/node.h"
 
 class Mesh @promote extends Node {
     __containerType__ Node *
@@ -21,7 +21,7 @@ class Mesh @promote extends Node {
         mesh = malloc(sizeof(Mesh));
         POINTER_CHECK(mesh);
         create_screen_plane(mesh);
-        METHOD_TYPE(this, CLASS_TYPE_MESH, constructor, mesh);
+        METHOD_TYPE(this, __type__, constructor, mesh);
     }
 
     void save(FILE *file) {
@@ -29,11 +29,8 @@ class Mesh @promote extends Node {
     }
 
 
-    void render(mat4 *modelMatrix) {
-        Shader shader;
-        glGetIntegerv(GL_CURRENT_PROGRAM, (int*) &shader);
-        
-        int modelLoc = glGetUniformLocation(shader, "model");
+    void render(mat4 *modelMatrix, Shader activeShader) {
+        int modelLoc = glGetUniformLocation(activeShader, "model");
         Mesh *mesh = (Mesh *)this->object;
 
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, modelMatrix);

@@ -144,6 +144,7 @@ TextureMap load_texture_from_path(char * path, GLenum format) {
     SDL_FreeSurface(textureSurface);
     SDL_FreeSurface(correctedSurface);
     SDL_FreeSurface(formattedSurface);
+    free(fTextureData);
     return texture;
 }
 
@@ -192,10 +193,34 @@ int draw_button(SDL_Surface *render_surface, int x, int y, int width, int height
     return 0;
 }
 
-void draw_text(SDL_Surface *render_surface, int x, int y, char *text, TTF_Font *font, SDL_Color color) {
+void draw_text(SDL_Surface *render_surface, int x, int y, char *text, TTF_Font *font, SDL_Color color, char *alignment, int width) {
     SDL_Surface *surface;
 
-    surface = TTF_RenderText_Blended_Wrapped(font, text, color, INT_MAX);
+    surface = TTF_RenderUTF8_Blended_Wrapped(font, text, color, (width == -1) ? INT_MAX : width);
+    if (!surface) {
+        printf("Failed to render text: %s\n", TTF_GetError());
+        return;
+    }
+    switch (alignment[0]) {
+        case 'l':
+            break;
+        case 'r':
+            x += render_surface->w-surface->w;
+            break;
+        case 'c':
+            x += (render_surface->w-surface->w) / 2;
+            break;
+    }
+    switch (alignment[1]) {
+        case 't':
+            break;
+        case 'b':
+            y += render_surface->h-surface->h;
+            break;
+        case 'c':
+            y += (render_surface->h-surface->h) / 2;
+            break;
+    }
     SDL_Rect textLocation = { x, y, 0, 0 };
     SDL_BlitSurface(surface, NULL, render_surface, &textLocation);
     SDL_FreeSurface(surface);

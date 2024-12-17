@@ -1,11 +1,11 @@
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
-#include "node.h"
+#include "storage/node.h"
 #include "render/lighting.h"
 #include "buffer.h"
 
-class DirectionalLight @promote extends Node {
+class DirectionalLight @promote extends Light {
     __containerType__ Node *
 
     void constructor(struct DirectionalLight *directionalLight) {
@@ -42,7 +42,7 @@ class DirectionalLight @promote extends Node {
         }
 
         buffers.lightingBuffer.length++;
-        METHOD_TYPE(this, CLASS_TYPE_DIRECTIONALLIGHT, constructor, directionalLight);
+        METHOD_TYPE(this, __type__, constructor, directionalLight);
         this->flags |= NODE_EDITOR_FLAG;
     }
 

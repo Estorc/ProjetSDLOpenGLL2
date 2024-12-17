@@ -3,19 +3,19 @@ NEW_SCRIPT(free_camera)
 
 	int *movable = &node->params[0].i;
 	int *active = &node->params[1].i;
-	vec3 *targetRot = &node->params[2].v3;
-	vec3 *targetPos = &node->params[3].v3;
+	float *targetRot = &node->params[2].f;
+	float *targetPos = &node->params[2+3].f;
 
 
 	Camera *c = (Camera*) node->object;
 
-	if (glm_vec3_norm2(*targetPos) == 0) glm_vec3_copy(node->pos, *targetPos);
-	if (glm_vec3_norm2(*targetRot) == 0) glm_vec3_copy(node->rot, *targetRot);
+	if (glm_vec3_norm2(targetPos) == 0) glm_vec3_copy(node->pos, targetPos);
+	if (glm_vec3_norm2(targetRot) == 0) glm_vec3_copy(node->rot, targetRot);
 
 	if (*movable) {
-		(*targetRot)[1] -= (f32) (input->mouse.x - input->mouse.lastX) * delta * 100.0;
-		(*targetRot)[0] -= (f32) (input->mouse.lastY - input->mouse.y) * delta * 100.0;
-		(*targetRot)[0] = CLAMP(-180,(*targetRot)[0],180);
+		targetRot[1] -= (f32) (input->mouse.x - input->mouse.lastX) * delta * 100.0;
+		targetRot[0] -= (f32) (input->mouse.lastY - input->mouse.y) * delta * 100.0;
+		targetRot[0] = CLAMP(-180,targetRot[0],180);
 
 		f32 vel = 0.05f;
 		if (input->active_keys & KEY_SHIFT) vel = 0.3f;
@@ -23,28 +23,28 @@ NEW_SCRIPT(free_camera)
 		f32 forwardVel = 0.0f;
 		
 		if (input->active_keys & KEY_LEFT) {
-			(*targetPos)[0] += -c->dir[2] * vel;
-			(*targetPos)[2] += c->dir[0] * vel;
+			targetPos[0] += -c->dir[2] * vel;
+			targetPos[2] += c->dir[0] * vel;
 		};
 		if (input->active_keys & KEY_RIGHT) {
-			(*targetPos)[0] -= -c->dir[2] * vel;
-			(*targetPos)[2] -= c->dir[0] * vel;
+			targetPos[0] -= -c->dir[2] * vel;
+			targetPos[2] -= c->dir[0] * vel;
 		};
 
-		if (input->active_keys & KEY_JUMP) (*targetPos)[1] += vel;
-		if (input->active_keys & KEY_CROUCH) (*targetPos)[1] -= vel;
+		if (input->active_keys & KEY_JUMP) targetPos[1] += vel;
+		if (input->active_keys & KEY_CROUCH) targetPos[1] -= vel;
 
 		if (input->active_keys & KEY_UP) forwardVel -= vel;
 		if (input->active_keys & KEY_DOWN) forwardVel += vel;
 
-		(*targetPos)[0] += c->dir[0] * forwardVel;
-		(*targetPos)[1] += c->dir[1] * forwardVel;
-		(*targetPos)[2] += c->dir[2] * forwardVel;
+		targetPos[0] += c->dir[0] * forwardVel;
+		targetPos[1] += c->dir[1] * forwardVel;
+		targetPos[2] += c->dir[2] * forwardVel;
 	}
 
 	if (*active) {
-		Vec3fApproach(node->rot, (*targetRot), (0.1/delta));
-		Vec3fApproach(node->pos, (*targetPos), (0.1/delta));
+		Vec3fApproach(node->rot, targetRot, (0.1/delta));
+		Vec3fApproach(node->pos, targetPos, (0.1/delta));
 	}
 	
 END_SCRIPT(free_camera)

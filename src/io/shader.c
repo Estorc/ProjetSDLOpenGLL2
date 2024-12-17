@@ -44,6 +44,11 @@ Shader create_shader(char* vertexPath, char* fragmentPath) {
             return memoryCaches.shaderCache[i].shader;
         }
     }
+
+    #ifdef DEBUG
+        printf("Compiling shader: %s, %s\n", vertexPath, fragmentPath);
+    #endif
+
     Shader vertex, fragment;
     int success;
     char infoLog[512];
@@ -196,6 +201,18 @@ void set_shader_float(Shader ID, char *name, f32 value) {
     glUniform1fv(glGetUniformLocation(ID, name), 1, &value);
 }
 
+void set_shader_vec2(Shader ID, char *name, vec2 value) {
+    glUniform2fv(glGetUniformLocation(ID, name), 1, value);
+}
+
 void set_shader_vec3(Shader ID, char *name, vec3 value) {
     glUniform3fv(glGetUniformLocation(ID, name), 1, value);
+}
+
+void set_shader_vec4(Shader ID, char *name, vec4 value) {
+    glUniform4fv(glGetUniformLocation(ID, name), 1, value);
+}
+
+void set_shader_mat4(Shader ID, char *name, mat4 *value) {
+    glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, value);
 }

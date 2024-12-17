@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <stdbool.h>
 #include "config.h"
 
 #define u8 uint8_t

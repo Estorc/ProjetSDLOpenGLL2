@@ -1,7 +1,7 @@
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
-#include "node.h"
+#include "storage/node.h"
 
 class PlaneCShape @promote extends CShape {
     __containerType__ Node *
@@ -24,7 +24,7 @@ class PlaneCShape @promote extends CShape {
         PlaneCollisionShape *planeCollisionShape;
         planeCollisionShape = malloc(sizeof(PlaneCollisionShape));
         POINTER_CHECK(planeCollisionShape);
-        METHOD_TYPE(this, CLASS_TYPE_PLANECSHAPE, constructor, planeCollisionShape);
+        METHOD_TYPE(this, __type__, constructor, planeCollisionShape);
     }
 
     void save(FILE *file) {

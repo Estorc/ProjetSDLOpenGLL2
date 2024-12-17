@@ -24,6 +24,7 @@ enum Keys {
 
 typedef struct Mouse {
     s32 x, y, lastX, lastY;
+    s8 scroll_x, scroll_y;
     u8 pressed_button, active_button, released_button;
 } Mouse;
 
@@ -31,6 +32,7 @@ typedef struct Input {
     u16 active_keys;
     u16 pressed_keys;
     u16 released_keys;
+    bool text_input;
     char inputBuffer[100];
     Mouse mouse;
 } Input;
@@ -38,3 +40,5 @@ typedef struct Input {
 void init_input(Input *input);
 int update_input(Input *input);
 #endif
+
+extern Input input;

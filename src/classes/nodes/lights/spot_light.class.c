@@ -1,11 +1,11 @@
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
-#include "node.h"
+#include "storage/node.h"
 #include "render/lighting.h"
 #include "buffer.h"
 
-class SpotLight @promote extends Node {
+class SpotLight @promote extends Light {
     __containerType__ Node *
 
     void constructor(struct SpotLight *spotLight) {
@@ -46,7 +46,7 @@ class SpotLight @promote extends Node {
         }
 
         buffers.lightingBuffer.length++;
-        METHOD_TYPE(this, CLASS_TYPE_SPOTLIGHT, constructor, spotLight);
+        METHOD_TYPE(this, __type__, constructor, spotLight);
         this->flags |= NODE_EDITOR_FLAG;
     }
 

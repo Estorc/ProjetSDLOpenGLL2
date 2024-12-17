@@ -49,7 +49,8 @@ bin/debug/src/io/gltexture_loader.o: src/io/gltexture_loader.c \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h src/io/../types.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h src/io/../config.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h src/io/../config.h \
  /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
@@ -209,8 +210,8 @@ bin/debug/src/io/gltexture_loader.o: src/io/gltexture_loader.c \
  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min.h \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  src/io/../math/math_util.h src/io/../math/graph.h lib/cglm/cglm.h \
- lib/cglm/common.h /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h \
- lib/cglm/types.h /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
+ lib/cglm/common.h lib/cglm/types.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
  lib/cglm/simd/intrin.h lib/cglm/simd/x86.h lib/cglm/simd/intrin.h \
  lib/cglm/vec2.h lib/cglm/util.h lib/cglm/vec2-ext.h lib/cglm/vec3.h \
  lib/cglm/vec4.h lib/cglm/vec4-ext.h lib/cglm/vec3-ext.h lib/cglm/ivec2.h \

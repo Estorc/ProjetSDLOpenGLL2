@@ -80,6 +80,7 @@ uniform int spotLightsNum;
 uniform bool diffuseMapActive;
 uniform bool normalMapActive;
 uniform bool parallaxMapActive;
+uniform bool shadowCastActive;
 uniform Material material;
 
 uniform DirLight dirLights[DIR_LIGHTS_MAX];
@@ -219,20 +220,22 @@ void main()
     vec3 result = vec3(0);
     // phase 1: directional lighting
     for(int i = 0; i < dirLightsNum && i < DIR_LIGHTS_MAX; i++) {
-        float shadow = ShadowCalculation(dirLightSpaceMatrix[i] * vec4(fs_in.FragPos, 1.0), normal, dirLights[i].position, dirLights[i].index);
-        result += CalcDirLight(dirLights[i], normal, fs_in.FragPos, viewDir, shadow);
+        float shadow;
+        if (shadowCastActive) shadow = ShadowCalculation(dirLightSpaceMatrix[i] * vec4(fs_in.FragPos, 1.0), normal, dirLights[i].position, dirLights[i].index);
+        result += CalcDirLight(dirLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? shadow : 0.0);
     }
     // phase 2: point lights
     for(int i = 0; i < pointLightsNum && i < POINT_LIGHTS_MAX; i++) {
         float shadow = 0.0;
-        for (int j = 0; j < 6; j++)
+        if (shadowCastActive) for (int j = 0; j < 6; j++)
             shadow += ShadowCalculation(pointLightSpaceMatrix[i*6+j] * vec4(fs_in.FragPos, 1.0), normal, pointLights[i].position, pointLights[i].index+j);
-        result += CalcPointLight(pointLights[i], normal, fs_in.FragPos, viewDir, shadow);  
+        result += CalcPointLight(pointLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? shadow : 0.0);  
     }  
     // phase 3: spot light
     for(int i = 0; i < spotLightsNum && i < SPOT_LIGHTS_MAX; i++) {
-        float shadow = ShadowCalculation(spotLightSpaceMatrix[i] * vec4(fs_in.FragPos, 1.0), normal, spotLights[i].position, spotLights[i].index);
-        result += CalcSpotLight(spotLights[i], normal, fs_in.FragPos, viewDir, shadow);
+        float shadow;
+        if (shadowCastActive) shadow = ShadowCalculation(spotLightSpaceMatrix[i] * vec4(fs_in.FragPos, 1.0), normal, spotLights[i].position, spotLights[i].index);
+        result += CalcSpotLight(spotLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? shadow : 0.0);
     }  
     
 

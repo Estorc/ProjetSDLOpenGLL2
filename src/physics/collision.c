@@ -7,12 +7,11 @@
 #include "../math/math_util.h"
 #include "../io/model.h"
 #include "../render/framebuffer.h"
-#include "../node.h"
+#include "../storage/node.h"
 #include "../window.h"
 #include "../render/color.h"
 #include "../render/camera.h"
 #include "../render/depth_map.h"
-#include "../render/viewport.h"
 #include "../render/lighting.h"
 #include "../io/gltexture_loader.h"
 #include "../classes/classes.h"
@@ -720,12 +719,6 @@ void update_rigid_body(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) 
     glm_vec3_scale(rigidBody->velocity, rigidBody->friction * (1.0-delta), rigidBody->velocity);
     glm_vec3_add(node->pos, rigidBody->velocity, node->pos);
 
-    #ifdef DEBUG
-    printf("nodeType: %s\n", classManager.class_names[node->type]);
-    printf("velocity: %f %f %f\n", rigidBody->velocity[0], rigidBody->velocity[1], rigidBody->velocity[2]);
-    printf("angularVelocity: %f %f %f\n\n", rigidBody->angularVelocity[0], rigidBody->angularVelocity[1], rigidBody->angularVelocity[2]);
-    #endif
-    
     glm_vec3_scale(rigidBody->angularVelocity, rigidBody->friction * (1.0-delta), rigidBody->angularVelocity);
     glm_vec3_add(node->rot, rigidBody->angularVelocity, node->rot);
 
@@ -1031,6 +1024,7 @@ void update_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Inp
 
     if (node->flags & NODE_ACTIVE && (active || node->flags & NODE_EDITOR_FLAG)) {
         update_script(node, newPos, newRot, newScale, delta, input, window);
+        METHOD(node, update, newPos, newRot, newScale, delta);
         update_node_physics(node, newPos, newRot, newScale, delta, lightsCount);
     } else {
         active = false;

@@ -140,13 +140,17 @@ void create_obj_vao(ObjectMesh *obj) {
 void close_realloc_obj(ObjectMesh *obj, u32 vi, u32 fi, u32 vni, u32 vti) {
     obj->length = fi;
 
+    create_obj_vao(obj);
     free(obj->normals);
     free(obj->textureVertex);
     free(obj->vertex);
     free(obj->faces);
-    obj->facesVertex = realloc(obj->facesVertex, sizeof(Vertex)*3 * fi);
-    POINTER_CHECK(obj->facesVertex);
-    create_obj_vao(obj);
+    free(obj->facesVertex);
+    obj->displayLists = malloc(sizeof(GLuint) * obj->materialsCount);
+    POINTER_CHECK(obj->displayLists);
+    for (int j = 0; j < obj->materialsCount; j++) {
+        obj->displayLists[j] = 0;
+    }
 }
 
 
@@ -202,6 +206,9 @@ int load_obj_model(char *path, Model **modelPtr) {
     Model *model = *modelPtr = malloc(sizeof(Model));
 
     int selectedMaterialId;
+    #ifdef DEBUG
+        printf("Loading model %s\n", path);
+    #endif
     FILE * file = fopen(path, "r");
     POINTER_CHECK(file);
 
@@ -360,6 +367,7 @@ int load_obj_model(char *path, Model **modelPtr) {
             fscanf(file, "%*[^\n]");
             if (object) {
                 close_realloc_obj(object, vi, fi, vni, vti);
+
                 oi++;
                 if (oi >= oim) {
                     oim<<=1;

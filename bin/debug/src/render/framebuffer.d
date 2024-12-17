@@ -178,6 +178,7 @@ bin/debug/src/render/framebuffer.o: src/render/framebuffer.c \
  /usr/include/SDL2/SDL_opengl.h /usr/include/SDL2/SDL_opengl_glext.h \
  /usr/include/GL/glu.h /usr/include/GL/gl.h /usr/include/GL/glext.h \
  /usr/include/KHR/khrplatform.h src/render/../types.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h \
  src/render/../config.h /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
@@ -200,8 +201,7 @@ bin/debug/src/render/framebuffer.o: src/render/framebuffer.c \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
  src/render/../math/math_util.h src/render/../math/graph.h \
- lib/cglm/cglm.h lib/cglm/common.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h lib/cglm/types.h \
+ lib/cglm/cglm.h lib/cglm/common.h lib/cglm/types.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
  lib/cglm/simd/intrin.h lib/cglm/simd/x86.h lib/cglm/simd/intrin.h \
  lib/cglm/vec2.h lib/cglm/util.h lib/cglm/vec2-ext.h lib/cglm/vec3.h \
@@ -226,11 +226,15 @@ bin/debug/src/render/framebuffer.o: src/render/framebuffer.c \
  lib/cglm/clipspace/project_no.h lib/cglm/clipspace/../vec3.h \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
- src/render/../io/model.h src/render/framebuffer.h src/render/../node.h \
- src/render/../io/shader.h src/render/../render/filter.h \
- src/render/../render/viewport.h src/render/../render/camera.h \
- src/render/../render/../types.h src/render/../render/../config.h \
- src/render/../render/../math/math_util.h \
- src/render/../render/../math/graph.h src/render/../render/../io/shader.h \
- src/render/../physics/bodies.h src/render/../scripts/scripts.h \
- src/render/../scripts/../io/input.h src/render/../window.h
+ src/render/../io/model.h src/render/framebuffer.h \
+ src/render/../storage/node.h src/render/../storage/../io/shader.h \
+ src/render/../storage/../render/camera.h \
+ src/render/../storage/../render/../types.h \
+ src/render/../storage/../render/../config.h \
+ src/render/../storage/../render/../math/math_util.h \
+ src/render/../storage/../render/../math/graph.h \
+ src/render/../storage/../render/../io/shader.h \
+ src/render/../storage/../physics/bodies.h \
+ src/render/../storage/../scripts/scripts.h \
+ src/render/../storage/../scripts/../io/input.h \
+ src/render/../storage/../render/framebuffer.h src/render/../window.h

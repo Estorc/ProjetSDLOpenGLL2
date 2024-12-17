@@ -1,7 +1,7 @@
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
-#include "node.h"
+#include "storage/node.h"
 #include "io/scene_loader.h"
 #include "render/lighting.h"
 #include "buffer.h"
@@ -32,7 +32,7 @@ class KinematicBody @promote extends Body {
         } else {
             glm_vec3_zero(kinematicBody->velocity);
         }
-        METHOD_TYPE(this, CLASS_TYPE_KINEMATICBODY, constructor, kinematicBody);
+        METHOD_TYPE(this, __type__, constructor, kinematicBody);
 
         kinematicBody->collisionsShapes = malloc(sizeof(Node *) * children_count);
         buffers.collisionBuffer.length += children_count;

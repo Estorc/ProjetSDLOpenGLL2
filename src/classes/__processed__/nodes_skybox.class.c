@@ -4,11 +4,13 @@
 #include "../../math/math_util.h"
 #include "../../io/model.h"
 #include "../../render/framebuffer.h"
-#include "../../node.h"
+#include "../../storage/node.h"
 #include "../../memory.h"
+#include "../../render/render.h"
+static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_SKYBOX;
+
+
 void __class_method_skybox_constructor(unsigned type, ...) {
-unsigned __type__ = 17;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -18,12 +20,10 @@ va_end(args);
     this->object = texturedMesh;
     this->type = __type__;
     SUPER(initialize_node);
-    this->shader = create_shader(DEFAULT_SKYBOX_SHADER);
 }
 
+
 void __class_method_skybox_cast(unsigned type, ...) {
-unsigned __type__ = 17;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -33,9 +33,8 @@ va_end(args);
     IGNORE(data);
 }
 
+
 void __class_method_skybox_load(unsigned type, ...) {
-unsigned __type__ = 17;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -59,12 +58,11 @@ va_end(args);
         path[0][0] = path[1][0] = path[2][0] = path[3][0] = path[4][0] = path[5][0] = 0;
     }
     create_skybox(texturedMesh, path);
-    METHOD_TYPE(this, CLASS_TYPE_SKYBOX, constructor, texturedMesh);
+    METHOD_TYPE(this, __type__, constructor, texturedMesh);
 }
 
+
 void __class_method_skybox_save(unsigned type, ...) {
-unsigned __type__ = 17;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -88,19 +86,24 @@ va_end(args);
     }
 }
 
+
+
+
 void __class_method_skybox_render(unsigned type, ...) {
-unsigned __type__ = 17;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
 mat4 * modelMatrix = va_arg(args, mat4 *);
+Shader  activeShader = va_arg(args, Shader );
+WorldShaders * shaders = va_arg(args, WorldShaders *);
 va_end(args);
 (void)this;
+    IGNORE(activeShader);
+    
     glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
-    Shader shader;
-    glGetIntegerv(GL_CURRENT_PROGRAM, (int*) &shader);
 
+    Shader shader = shaders->skybox;
+    use_shader(shader);
     int modelLoc = glGetUniformLocation(shader, "model");
     TexturedMesh *texturedMesh = (TexturedMesh *)this->object;
 
@@ -115,4 +118,7 @@ va_end(args);
 
     glDepthFunc(GL_LESS); // set depth function back to default
 }
+
+
+    
 

@@ -4,12 +4,13 @@
 #include "../../math/math_util.h"
 #include "../../io/model.h"
 #include "../../render/framebuffer.h"
-#include "../../node.h"
+#include "../../storage/node.h"
 #include "../../render/lighting.h"
 #include "../../buffer.h"
+static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_SPOTLIGHT;
+
+
 void __class_method_spotlight_constructor(unsigned type, ...) {
-unsigned __type__ = 14;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -21,9 +22,8 @@ va_end(args);
     SUPER(initialize_node);
 }
 
+
 void __class_method_spotlight_cast(unsigned type, ...) {
-unsigned __type__ = 14;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -33,9 +33,8 @@ va_end(args);
     IGNORE(data);
 }
 
+
 void __class_method_spotlight_load(unsigned type, ...) {
-unsigned __type__ = 14;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -69,13 +68,12 @@ va_end(args);
     }
 
     buffers.lightingBuffer.length++;
-    METHOD_TYPE(this, CLASS_TYPE_SPOTLIGHT, constructor, spotLight);
+    METHOD_TYPE(this, __type__, constructor, spotLight);
     this->flags |= NODE_EDITOR_FLAG;
 }
 
+
 void __class_method_spotlight_save(unsigned type, ...) {
-unsigned __type__ = 14;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -95,4 +93,7 @@ va_end(args);
         spotLight->outerCutOff
     );
 }
+
+
+    
 

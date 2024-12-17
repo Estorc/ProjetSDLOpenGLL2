@@ -9,7 +9,7 @@
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
-#include "node.h"
+#include "storage/node.h"
 #include "render/color.h"
 #include "render/camera.h"
 #include "render/depth_map.h"
@@ -36,7 +36,6 @@
  */
 
 s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Window *window) {
-	glGenTextures(1, &window->ui_texture);
     window->startTime = get_time_in_seconds();
     window->time = 0.0f;
     window->lastTime = 0.0f;
@@ -75,6 +74,10 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
       IMMEDIATE = 0,
       VSYNC = 1
     };
+
+    #ifdef DEBUG
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG); 
+    #endif
     SDL_GL_SetSwapInterval(ADAPTIVE_VSYNC);
 
     window->sdl_window = SDL_CreateWindow(title, x, y, width, height, flags);
@@ -95,6 +98,30 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
         return -1;
     }
     glEnable(GL_DEPTH_TEST);
+
+
+
+    #ifdef DEBUG
+    printf("OpenGL Version: %s\n", glGetString(GL_VERSION));
+    printf("GLSL Version: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
+    printf("OpenGL Renderer: %s\n", glGetString(GL_RENDERER));
+
+    void APIENTRY openglDebugCallback(GLenum source, GLenum type, GLuint id,
+                                    GLenum severity, GLsizei length,
+                                    const GLchar* message, const void* userParam) {
+        fprintf(stderr, "[OpenGL Debug] (%d): %s\n", id, message);
+
+        if (severity == GL_DEBUG_SEVERITY_HIGH) {
+            fprintf(stderr, "SEVERITY: HIGH. Terminating!\n");
+            abort(); // Stop execution if severity is high
+        }
+    }
+
+        // Enable OpenGL Debugging
+    glEnable(GL_DEBUG_OUTPUT);
+    glDebugMessageCallback(openglDebugCallback, NULL);
+    #endif
+	glGenTextures(1, &window->ui_texture);
     return 0;
 }
 
@@ -133,24 +160,22 @@ void refresh_ui(Window *window) {
  * to display the rendered content on the window.
  */
 
-void update_window(Window *window, Node *viewportNode, Camera *c, WorldShaders *shaders, DepthMap *depthMap) {
+void update_window(Window *window, Node *scene, Camera *c, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa, Mesh *screenPlane) {
 
     window->lastTime = window->time;
     window->time = get_time_in_seconds() - window->startTime;
     //SDL_SetRelativeMouseMode(SDL_TRUE);  
 
 
-
-    /*Model *model = (Model *) root[MODEL_1].object;
-    model->rot[1] += 0.1f;
-    model->scale[0] = 0.01f+0.001f*(sin(window->timer/4.0f));
-    model->scale[1] = 0.01f+0.001f*(cos(window->timer/4.0f));
-    model->scale[2] = 0.01f+0.001f*(sin(window->timer/4.0f));*/
-
-    draw_screen(window, viewportNode, c, shaders, depthMap);
+    draw_screen(window, scene, c, shaders, depthMap, msaa, screenPlane);
     SDL_GL_SwapWindow(window->sdl_window);
     
 
+}
+
+void refresh_resolution() {
+    resize_msaa_framebuffer(&mainNodeTree.msaa);
+    window.resized = true;
 }
 
 

@@ -4,10 +4,11 @@
 #include "../../math/math_util.h"
 #include "../../io/model.h"
 #include "../../render/framebuffer.h"
-#include "../../node.h"
+#include "../../storage/node.h"
+static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_MESH;
+
+
 void __class_method_mesh_constructor(unsigned type, ...) {
-unsigned __type__ = 15;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -19,9 +20,8 @@ va_end(args);
     SUPER(initialize_node);
 }
 
+
 void __class_method_mesh_cast(unsigned type, ...) {
-unsigned __type__ = 15;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -31,9 +31,8 @@ va_end(args);
     IGNORE(data);
 }
 
+
 void __class_method_mesh_load(unsigned type, ...) {
-unsigned __type__ = 15;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -43,12 +42,11 @@ va_end(args);
     mesh = malloc(sizeof(Mesh));
     POINTER_CHECK(mesh);
     create_screen_plane(mesh);
-    METHOD_TYPE(this, CLASS_TYPE_MESH, constructor, mesh);
+    METHOD_TYPE(this, __type__, constructor, mesh);
 }
 
+
 void __class_method_mesh_save(unsigned type, ...) {
-unsigned __type__ = 15;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
@@ -58,19 +56,18 @@ va_end(args);
     fprintf(file, "%s", classManager.class_names[this->type]);
 }
 
+
+
+
 void __class_method_mesh_render(unsigned type, ...) {
-unsigned __type__ = 15;
-(void)__type__;
 va_list args;
 va_start(args, type);
 Node * this = va_arg(args, Node *);
 mat4 * modelMatrix = va_arg(args, mat4 *);
+Shader  activeShader = va_arg(args, Shader );
 va_end(args);
 (void)this;
-    Shader shader;
-    glGetIntegerv(GL_CURRENT_PROGRAM, (int*) &shader);
-    
-    int modelLoc = glGetUniformLocation(shader, "model");
+    int modelLoc = glGetUniformLocation(activeShader, "model");
     Mesh *mesh = (Mesh *)this->object;
 
     glUniformMatrix4fv(modelLoc, 1, GL_FALSE, modelMatrix);
@@ -79,4 +76,7 @@ va_end(args);
     glDrawArrays(GL_TRIANGLES, 0, mesh->length);
     glBindVertexArray(0);
 }
+
+
+    
 

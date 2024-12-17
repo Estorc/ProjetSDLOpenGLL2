@@ -1,7 +1,7 @@
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
-#include "node.h"
+#include "storage/node.h"
 #include "io/scene_loader.h"
 #include "render/lighting.h"
 #include "buffer.h"
@@ -42,7 +42,7 @@ class RigidBody @promote extends Body {
             rigidBody->friction = 0.98;
             glm_vec3_copy((vec3) {0.0,0.0,0.0}, rigidBody->centerOfMass);
         }
-        METHOD_TYPE(this, CLASS_TYPE_RIGIDBODY, constructor, rigidBody);
+        METHOD_TYPE(this, __type__, constructor, rigidBody);
 
         rigidBody->collisionsShapes = malloc(sizeof(Node *) * children_count);
         buffers.collisionBuffer.length += children_count;

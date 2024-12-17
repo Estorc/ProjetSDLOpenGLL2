@@ -1,7 +1,7 @@
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
-#include "node.h"
+#include "storage/node.h"
 
 class Node @promote {
     __containerType__ Node *
@@ -30,7 +30,7 @@ class Node @promote {
     }
 
     void load() {
-        METHOD_TYPE(this, CLASS_TYPE_NODE, constructor);
+        METHOD_TYPE(this, __type__, constructor);
     }
 
     void save(FILE *file) {
@@ -38,6 +38,10 @@ class Node @promote {
     }
 
     void render() {
+        //
+    }
+
+    void update() {
         //
     }
 
@@ -52,10 +56,14 @@ class Node @promote {
     }
 
     void is_cshape(bool *cshape) {
-        (*cshape) = false;
+        *cshape = false;
     }
 
     void is_body(bool *body) {
-        (*body) = false;
+        *body = false;
+    }
+
+    void is_gui_element(bool *result) {
+        *result = false;
     }
 }

@@ -10,7 +10,7 @@
 #include "../math/math_util.h"
 #include "model.h"
 #include "../render/framebuffer.h"
-#include "../node.h"
+#include "../storage/node.h"
 #include "../render/render.h"
 #include "../render/lighting.h"
 #include "../window.h"

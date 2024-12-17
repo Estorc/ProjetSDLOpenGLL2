@@ -1,8 +1,9 @@
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
-#include "node.h"
+#include "storage/node.h"
 #include "memory.h"
+#include "render/render.h"
 
 class Skybox @promote extends Node {
     __containerType__ Node *
@@ -11,7 +12,6 @@ class Skybox @promote extends Node {
         this->object = texturedMesh;
         this->type = __type__;
         SUPER(initialize_node);
-        this->shader = create_shader(DEFAULT_SKYBOX_SHADER);
     }
 
     void cast(void ** data) {
@@ -36,7 +36,7 @@ class Skybox @promote extends Node {
             path[0][0] = path[1][0] = path[2][0] = path[3][0] = path[4][0] = path[5][0] = 0;
         }
         create_skybox(texturedMesh, path);
-        METHOD_TYPE(this, CLASS_TYPE_SKYBOX, constructor, texturedMesh);
+        METHOD_TYPE(this, __type__, constructor, texturedMesh);
     }
 
     void save(FILE *file) {
@@ -58,11 +58,13 @@ class Skybox @promote extends Node {
     }
 
 
-    void render(mat4 *modelMatrix) {
+    void render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
+        IGNORE(activeShader);
+        
         glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
-        Shader shader;
-        glGetIntegerv(GL_CURRENT_PROGRAM, (int*) &shader);
 
+        Shader shader = shaders->skybox;
+        use_shader(shader);
         int modelLoc = glGetUniformLocation(shader, "model");
         TexturedMesh *texturedMesh = (TexturedMesh *)this->object;
 

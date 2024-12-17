@@ -1,8 +1,6 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-//#define DEBUG
-
 enum ReturnSymbol {
     CLOSE_PROGRAM = -1,
     NO_ERROR,
@@ -16,6 +14,5 @@ enum ReturnSymbol {
 #else
 #define BREAKPOINT
 #define POINTER_CHECK(x)
-#endif
-
+#endif 
 #endif

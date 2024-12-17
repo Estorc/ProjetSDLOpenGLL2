@@ -178,7 +178,8 @@ bin/debug/src/utils/skybox.o: src/utils/skybox.c \
  /usr/include/SDL2/SDL_opengl.h /usr/include/SDL2/SDL_opengl_glext.h \
  /usr/include/GL/glu.h /usr/include/GL/gl.h /usr/include/GL/glext.h \
  /usr/include/KHR/khrplatform.h src/utils/../types.h \
- src/utils/../config.h /usr/include/signal.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h src/utils/../config.h \
+ /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
  /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h \
@@ -200,8 +201,8 @@ bin/debug/src/utils/skybox.o: src/utils/skybox.c \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
  src/utils/../math/math_util.h src/utils/../math/graph.h lib/cglm/cglm.h \
- lib/cglm/common.h /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h \
- lib/cglm/types.h /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
+ lib/cglm/common.h lib/cglm/types.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
  lib/cglm/simd/intrin.h lib/cglm/simd/x86.h lib/cglm/simd/intrin.h \
  lib/cglm/vec2.h lib/cglm/util.h lib/cglm/vec2-ext.h lib/cglm/vec3.h \
  lib/cglm/vec4.h lib/cglm/vec4-ext.h lib/cglm/vec3-ext.h lib/cglm/ivec2.h \

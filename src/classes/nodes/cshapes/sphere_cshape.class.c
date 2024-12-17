@@ -1,7 +1,7 @@
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
-#include "node.h"
+#include "storage/node.h"
 
 class SphereCShape @promote extends CShape {
     __containerType__ Node *
@@ -24,7 +24,7 @@ class SphereCShape @promote extends CShape {
         SphereCollisionShape *sphereCollisionShape;
         sphereCollisionShape = malloc(sizeof(SphereCollisionShape));
         POINTER_CHECK(sphereCollisionShape);
-        METHOD_TYPE(this, CLASS_TYPE_SPHERECSHAPE, constructor, sphereCollisionShape);
+        METHOD_TYPE(this, __type__, constructor, sphereCollisionShape);
     }
 
     void save(FILE *file) {

@@ -5,7 +5,7 @@
 #include "../math/math_util.h"
 #include "../io/model.h"
 #include "../render/framebuffer.h"
-#include "../node.h"
+#include "../storage/node.h"
 #include "../window.h"
 #include "../render/lighting.h"
 #include "../classes/classes.h"

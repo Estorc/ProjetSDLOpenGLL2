@@ -14,9 +14,17 @@ bin/debug/src/classes/__processed__/nodes_bodies_kinematic_body.class.o: \
  src/classes/__processed__/../../classes/__processed__/nodes_cshapes_cshape.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_cshapes_plane_cshape.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_cshapes_sphere_cshape.class.h \
- src/classes/__processed__/../../classes/__processed__/nodes_filter.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_framebuffer.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_frames_button.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_frames_checkbox.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_frames_control_frame.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_frames_frame.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_frames_input_area.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_frames_label.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_frames_radiobutton.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_frames_selectlist.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_lights_directional_light.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_lights_light.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_lights_point_light.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_lights_spot_light.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_mesh.class.h \
@@ -24,8 +32,6 @@ bin/debug/src/classes/__processed__/nodes_bodies_kinematic_body.class.o: \
  src/classes/__processed__/../../classes/__processed__/nodes_skybox.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_texture.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_textured_mesh.class.h \
- src/classes/__processed__/../../classes/__processed__/nodes_viewport.class.h \
- src/classes/__processed__/../../classes/__processed__/nodes_windows_window.class.h \
  src/classes/__processed__/../../classes/../types.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -42,6 +48,7 @@ bin/debug/src/classes/__processed__/nodes_bodies_kinematic_body.class.o: \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h \
  src/classes/__processed__/../../classes/../config.h \
  /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
@@ -104,8 +111,7 @@ bin/debug/src/classes/__processed__/nodes_bodies_kinematic_body.class.o: \
  /usr/include/x86_64-linux-gnu/bits/select.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
  /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h lib/cglm/types.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h lib/cglm/types.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
  lib/cglm/simd/intrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
@@ -143,19 +149,18 @@ bin/debug/src/classes/__processed__/nodes_bodies_kinematic_body.class.o: \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
  src/classes/__processed__/../../io/model.h \
  src/classes/__processed__/../../render/framebuffer.h \
- src/classes/__processed__/../../node.h \
- src/classes/__processed__/../../io/shader.h \
- src/classes/__processed__/../../render/filter.h \
- src/classes/__processed__/../../render/viewport.h \
- src/classes/__processed__/../../render/camera.h \
- src/classes/__processed__/../../render/../types.h \
- src/classes/__processed__/../../render/../config.h \
- src/classes/__processed__/../../render/../math/math_util.h \
- src/classes/__processed__/../../render/../math/graph.h \
- src/classes/__processed__/../../render/../io/shader.h \
- src/classes/__processed__/../../physics/bodies.h \
- src/classes/__processed__/../../scripts/scripts.h \
- src/classes/__processed__/../../scripts/../io/input.h \
+ src/classes/__processed__/../../storage/node.h \
+ src/classes/__processed__/../../storage/../io/shader.h \
+ src/classes/__processed__/../../storage/../render/camera.h \
+ src/classes/__processed__/../../storage/../render/../types.h \
+ src/classes/__processed__/../../storage/../render/../config.h \
+ src/classes/__processed__/../../storage/../render/../math/math_util.h \
+ src/classes/__processed__/../../storage/../render/../math/graph.h \
+ src/classes/__processed__/../../storage/../render/../io/shader.h \
+ src/classes/__processed__/../../storage/../physics/bodies.h \
+ src/classes/__processed__/../../storage/../scripts/scripts.h \
+ src/classes/__processed__/../../storage/../scripts/../io/input.h \
+ src/classes/__processed__/../../storage/../render/framebuffer.h \
  src/classes/__processed__/../../io/scene_loader.h \
  src/classes/__processed__/../../render/lighting.h \
  src/classes/__processed__/../../buffer.h

@@ -1,7 +1,7 @@
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
-#include "node.h"
+#include "storage/node.h"
 #include "io/scene_loader.h"
 #include "render/lighting.h"
 #include "buffer.h"
@@ -27,7 +27,7 @@ class StaticBody @promote extends Body {
         POINTER_CHECK(staticBody);
         if (file)
             fscanf(file,"(%d)\n", &children_count);
-        METHOD_TYPE(this, CLASS_TYPE_STATICBODY, constructor, staticBody);
+        METHOD_TYPE(this, __type__, constructor, staticBody);
 
         staticBody->collisionsShapes = malloc(sizeof(Node *) * children_count);
         buffers.collisionBuffer.length += children_count;

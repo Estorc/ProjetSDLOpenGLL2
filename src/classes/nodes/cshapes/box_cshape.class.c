@@ -1,7 +1,7 @@
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
-#include "node.h"
+#include "storage/node.h"
 
 class BoxCShape @promote extends CShape {
     __containerType__ Node *
@@ -24,7 +24,7 @@ class BoxCShape @promote extends CShape {
         BoxCollisionShape *boxCollisionShape;
         boxCollisionShape = malloc(sizeof(BoxCollisionShape));
         POINTER_CHECK(boxCollisionShape);
-        METHOD_TYPE(this, CLASS_TYPE_BOXCSHAPE, constructor, boxCollisionShape);
+        METHOD_TYPE(this, __type__, constructor, boxCollisionShape);
     }
 
     void save(FILE *file) {

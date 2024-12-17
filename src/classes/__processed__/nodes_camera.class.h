@@ -1,5 +1,5 @@
-#ifndef __PROCESSED__NODES_CAMERA_STATIC_BODYODY_H
-#define __PROCESSED__NODES_CAMERA_STATIC_BODYODY_H
+#ifndef __PROCESSED__NODES_CAMERA_H
+#define __PROCESSED__NODES_CAMERA_H
 void __class_method_camera_constructor(unsigned type, ...);
 void __class_method_camera_cast(unsigned type, ...);
 void __class_method_camera_load(unsigned type, ...);

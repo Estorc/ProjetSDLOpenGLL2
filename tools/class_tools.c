@@ -24,7 +24,6 @@ time_t getFileCreationTime(char *path) {
 #define CLASS_IMPORT_HEADER_FILENAME "import_class.h"
 #define PROCESSED_PREFIX "__processed__/"
 #define PROCESSED_HEADER_PREFIX "__PROCESSED__"
-#define SYMBOL_PREFIX "__symbol__"
 #define CONTAINER_TYPE_PREFIX "__containerType__"
 #define NODE_TYPE_MARKER "_M_"
 #define INSTRUCTION_CHARSET "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_"
@@ -35,8 +34,6 @@ time_t getFileCreationTime(char *path) {
 #define LINE_SIZE 200
 #define NAME_SIZE 100
 #define TYPE_SIZE 100
-#define SYMBOL_SIZE 20
-#define METHOD_CONTENT_SIZE 10000
 #define ARGUMENTS_SIZE 100
 #define METHODS_SIZE 100
 #define CLASS_SIZE 100
@@ -50,13 +47,11 @@ typedef struct Method {
 	char name[NAME_SIZE];
 	char type[TYPE_SIZE];
 	Argument arguments[ARGUMENTS_SIZE];
-	char content[METHOD_CONTENT_SIZE];
 	int arguments_count;
 } Method;
 
 typedef struct Class {
 	char name[NAME_SIZE];
-	char symbol[SYMBOL_SIZE];
 	char type[TYPE_SIZE];
 	Method methods[METHODS_SIZE];
 	int methods_count;
@@ -258,6 +253,10 @@ int main(int argc, char ** argv) {
 		return (strstr(entry->d_name, ".class.c") != NULL && !strstr(entry->d_name, PROCESSED_PREFIX)) || (entry->d_type == DT_DIR && entry->d_name[0] != '.' && entry->d_name[0] != '_');
 	}
 
+	char dirpath[PATH_SIZE];
+	strcpy(dirpath, CLASS_PATH);
+	strcat(dirpath, PROCESSED_PREFIX);
+	mkdir(dirpath, 0755);
 	recursive_scan(CLASS_PATH, NULL, &namelist, filter, &n);
 
 
@@ -271,8 +270,10 @@ int main(int argc, char ** argv) {
 		FILE * processed_file;
 		FILE * processed_header_file;
 		bool need_rewriting_imports = false;
+		char lwname[NAME_SIZE];
+		char uppername[NAME_SIZE];
 		for (int i = 0; i < n; i++) {
-			char *filepath = malloc(strlen(namelist[i]->d_name) + strlen(CLASS_PATH));
+			char *filepath = malloc(strlen(namelist[i]->d_name) + strlen(CLASS_PATH) + 1);
 			filepath[0] = 0;
 			strcat(filepath, CLASS_PATH);
 			strcat(filepath, namelist[i]->d_name);
@@ -282,13 +283,10 @@ int main(int argc, char ** argv) {
 				return -1;
 			}
 
-			printf("line: %s\n", filepath);
-
 			time_t lastEditTime = getFileCreationTime(filepath);
 			printf("Processing file %s -> ", filepath);
 
-			free(filepath);
-			filepath = malloc(strlen(namelist[i]->d_name) + strlen(CLASS_PATH) + strlen(PROCESSED_PREFIX));
+			filepath = realloc(filepath, strlen(namelist[i]->d_name) + strlen(CLASS_PATH) + strlen(PROCESSED_PREFIX) + 1);
 			filepath[0] = 0;
 			strcat(filepath, CLASS_PATH);
 			strcat(filepath, PROCESSED_PREFIX);
@@ -299,7 +297,7 @@ int main(int argc, char ** argv) {
 			lastProcessedTime = getFileCreationTime(filepath);
 
 			if (lastEditTime < lastProcessedTime) {
-				printf(" - Already processed\n");
+				printf("(Already processed) ");
 				processed_file = fopen("/dev/null", "w");
 				processed_header_file = fopen("/dev/null", "w");
 				if (processed_file == NULL) {
@@ -322,6 +320,7 @@ int main(int argc, char ** argv) {
 			size_t filename_len = strspn(namelist[i]->d_name, INSTRUCTION_CHARSET);
 			char filename[100];
 			strncpy(filename, namelist[i]->d_name, filename_len);
+			filename[filename_len] = '\0';
 			uppercase_string(filename);
 			
 			fprintf(processed_header_file, "#ifndef %s%s_H\n", PROCESSED_HEADER_PREFIX, filename);
@@ -344,44 +343,10 @@ int main(int argc, char ** argv) {
 				int j = 0;
 				for (; line[j-1] != '\n' && !feof(source_file); j++) line[j] = fgetc(source_file);
 				line[j] = 0;
+				if (feof(source_file)) line[j-1] = 0;
 				if (in_class) {
 					Method *current_method = &current_class.methods[current_class.methods_count];
-					if (in_method) {
-						char * text = line;
-						while (space_count > text - line && (*text == ' ' || *text == '\t')) text++;
-						strcat(current_method->content, text);
-					} else {
-						if ((space_count = get_class_method(line, current_method)) != -1) {
-							strcpy(current_method->arguments[0].name, "this");
-							strcpy(current_method->arguments[0].type, current_class.type);
-							printf("\tMethod type: %s\n", current_method->type);
-							printf("\tMethod name: %s\n", current_method->name);
-							for (size_t i = 0; i < current_method->arguments_count; i++) {
-								printf("\t\tArgument type: %s\n", current_method->arguments[i].type);
-								printf("\t\tArgument name: %s\n", current_method->arguments[i].name);
-							}
-							current_method->content[0] = 0;
-							in_method = true;
-						}
-						if (strstr(line, SYMBOL_PREFIX)) {
-							char *expr_pos = strstr(line, SYMBOL_PREFIX);
-							expr_pos += strlen(SYMBOL_PREFIX);
-							expr_pos += strspn(expr_pos, " ");
-							size_t expr_len = strspn(expr_pos, INSTRUCTION_CHARSET);
-							strncpy(current_class.symbol, expr_pos, expr_len);
-							current_class.symbol[expr_len] = '\0';
-							printf("Class symbol: %s\n", current_class.symbol);
-						}
-						if (strstr(line, CONTAINER_TYPE_PREFIX)) {
-							char *expr_pos = strstr(line, CONTAINER_TYPE_PREFIX);
-							expr_pos += strlen(CONTAINER_TYPE_PREFIX);
-							expr_pos += strspn(expr_pos, " ");
-							size_t expr_len = strcspn(expr_pos, "\n");
-							strncpy(current_class.type, expr_pos, expr_len);
-							current_class.type[expr_len] = '\0';
-							printf("Class type: %s\n", current_class.type);
-						}
-					}
+
 					if (strstr(line, "{")) brace_count++;
 					if (strstr(line, "}") != NULL) {
 						brace_count--;
@@ -389,27 +354,13 @@ int main(int argc, char ** argv) {
 						if (!brace_count && in_method) {
 							current_class.methods_count++;
 							in_method = false;
+							fprintf(processed_file, "}\n");
 						}
 						if (!in_class) {
 							brace_count = 0;
-							char lwname[100];
-							strcpy(lwname, current_class.name);
-							lowercase_string(lwname);
 
 							for (size_t i = 0; i < current_class.methods_count; i++) {
-								fprintf(processed_file, "%s%s%s_%s(unsigned type, ...) {\n", current_class.methods[i].type, PROCESSED_METHOD_PREFIX, lwname, current_class.methods[i].name);
 								fprintf(processed_header_file, "%s%s%s_%s(unsigned type, ...);\n", current_class.methods[i].type, PROCESSED_METHOD_PREFIX, lwname, current_class.methods[i].name);
-								fprintf(processed_file, "unsigned __type__ = %d;\n", import_struct.class_count-1);
-								fprintf(processed_file, "(void)__type__;\n");
-								fprintf(processed_file, "va_list args;\n");
-								fprintf(processed_file, "va_start(args, type);\n");
-								for (size_t j = 0; j < current_class.methods[i].arguments_count; j++) {
-									fprintf(processed_file, "%s %s = va_arg(args, %s);\n", current_class.methods[i].arguments[j].type, current_class.methods[i].arguments[j].name, current_class.methods[i].arguments[j].type);
-								}
-								fprintf(processed_file, "va_end(args);\n");
-								fprintf(processed_file, "(void)this;\n");
-								
-								fprintf(processed_file, "%s\n", current_class.methods[i].content);
 
 								int index;
 								if ((index = find_string_index(current_class.methods[i].name, import_struct.unique_method_name, import_struct.unique_method_count)) == -1) {
@@ -425,6 +376,43 @@ int main(int argc, char ** argv) {
 							}
 
 						}
+						if (!in_method) {
+							continue;
+						}
+					}
+
+
+					if (in_method) {
+						char * text = line;
+						while (space_count > text - line && (*text == ' ' || *text == '\t')) text++;
+						fprintf(processed_file, "%s", text);
+					} else {
+						if (strstr(line, CONTAINER_TYPE_PREFIX)) {
+							char *expr_pos = strstr(line, CONTAINER_TYPE_PREFIX);
+							expr_pos += strlen(CONTAINER_TYPE_PREFIX);
+							expr_pos += strspn(expr_pos, " ");
+							size_t expr_len = strcspn(expr_pos, "\n");
+							strncpy(current_class.type, expr_pos, expr_len);
+							current_class.type[expr_len] = '\0';
+							continue;
+						}
+						if ((space_count = get_class_method(line, current_method)) != -1) {
+							strcpy(current_method->arguments[0].name, "this");
+							strcpy(current_method->arguments[0].type, current_class.type);
+
+							fprintf(processed_file, "%s%s%s_%s(unsigned type, ...) {\n", current_method->type, PROCESSED_METHOD_PREFIX, lwname, current_method->name);
+							fprintf(processed_file, "va_list args;\n");
+							fprintf(processed_file, "va_start(args, type);\n");
+							for (size_t j = 0; j < current_method->arguments_count; j++) {
+								fprintf(processed_file, "%s %s = va_arg(args, %s);\n", current_method->arguments[j].type, current_method->arguments[j].name, current_method->arguments[j].type);
+							}
+							fprintf(processed_file, "va_end(args);\n");
+							fprintf(processed_file, "(void)this;\n");
+
+							in_method = true;
+						} else {
+							fprintf(processed_file, "%s\n", line);
+						}
 					}
 				} else {
 					if (strstr(line, "#")) {
@@ -436,6 +424,12 @@ int main(int argc, char ** argv) {
 					}
 					in_class = get_class_name(line, &current_class);
 					if (in_class) {
+
+						strcpy(uppername, current_class.name);
+						fprintf(processed_file, "static unsigned __type__ __attribute__((unused)) = %s%s;\n", CLASS_TYPE_PREFIX, uppercase_string(uppername));
+
+						strcpy(lwname, current_class.name);
+						lowercase_string(lwname);
 
 						char *extends = strstr(line, "extends");
 						if (extends) {
@@ -452,7 +446,6 @@ int main(int argc, char ** argv) {
 						
 						strcpy(import_struct.class_name[import_struct.class_count], current_class.name);
 						import_struct.class_count++;
-						printf("Class name: %s\n", current_class.name);
 					}
 				}
 
@@ -480,7 +473,6 @@ int main(int argc, char ** argv) {
 			fprintf(import_class_header_file, "#define IMPORT_CLASS_H\n");
 			fprintf(import_class_header_file, "typedef enum ClassType {\n");
 			for (size_t i = 0; i < import_struct.class_count; i++) {
-				char uppername[NAME_SIZE];
 				strcpy(uppername, import_struct.class_name[i]);
 				fprintf(import_class_header_file, "\t%s%s,\n", CLASS_TYPE_PREFIX, uppercase_string(uppername));
 			}

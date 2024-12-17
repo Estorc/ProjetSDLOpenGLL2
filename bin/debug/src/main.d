@@ -13,7 +13,8 @@ bin/debug/src/main.o: src/main.c /usr/include/stdc-predef.h src/types.h \
  /usr/include/x86_64-linux-gnu/bits/time64.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h src/config.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h src/config.h \
  /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
@@ -195,11 +196,11 @@ bin/debug/src/main.o: src/main.c /usr/include/stdc-predef.h src/types.h \
  /usr/include/SDL2/SDL_timer.h /usr/include/SDL2/SDL_version.h \
  /usr/include/SDL2/SDL_locale.h /usr/include/SDL2/SDL_misc.h \
  /usr/include/SDL2/SDL_opengl.h /usr/include/SDL2/SDL_opengl_glext.h \
- /usr/include/SDL2/SDL_mixer.h /usr/include/GL/glu.h /usr/include/GL/gl.h \
+ /usr/include/SDL2/SDL_mixer.h /usr/include/SDL2/SDL_ttf.h \
+ /usr/include/SDL2/SDL.h /usr/include/GL/glu.h /usr/include/GL/gl.h \
  /usr/include/GL/glext.h /usr/include/KHR/khrplatform.h \
  src/math/math_util.h src/math/graph.h lib/cglm/cglm.h lib/cglm/common.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h lib/cglm/types.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
+ lib/cglm/types.h /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
  lib/cglm/simd/intrin.h lib/cglm/simd/x86.h lib/cglm/simd/intrin.h \
  lib/cglm/vec2.h lib/cglm/util.h lib/cglm/vec2-ext.h lib/cglm/vec3.h \
  lib/cglm/vec4.h lib/cglm/vec4-ext.h lib/cglm/vec3-ext.h lib/cglm/ivec2.h \
@@ -223,18 +224,24 @@ bin/debug/src/main.o: src/main.c /usr/include/stdc-predef.h src/types.h \
  lib/cglm/clipspace/project_no.h lib/cglm/clipspace/../vec3.h \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
- src/io/model.h src/render/framebuffer.h src/node.h src/io/shader.h \
- src/render/filter.h src/render/viewport.h src/render/camera.h \
- src/render/../types.h src/render/../config.h \
- src/render/../math/math_util.h src/render/../math/graph.h \
- src/render/../io/shader.h src/physics/bodies.h src/scripts/scripts.h \
- src/scripts/../io/input.h src/render/depth_map.h \
+ src/io/model.h src/render/framebuffer.h src/storage/node.h \
+ src/storage/../io/shader.h src/storage/../render/camera.h \
+ src/storage/../render/../types.h src/storage/../render/../config.h \
+ src/storage/../render/../math/math_util.h \
+ src/storage/../render/../math/graph.h \
+ src/storage/../render/../io/shader.h src/storage/../physics/bodies.h \
+ src/storage/../scripts/scripts.h src/storage/../scripts/../io/input.h \
+ src/storage/../render/framebuffer.h src/render/depth_map.h \
  src/render/../io/model.h src/render/framebuffer.h src/render/render.h \
  src/render/lighting.h src/window.h src/io/input.h src/io/stringio.h \
- src/io/osio.h src/utils/skybox.h src/io/scene_loader.h \
- src/physics/physics.h src/physics/../io/input.h src/memory.h \
- src/buffer.h src/classes/classes.h src/classes/import_class.h \
- src/classes/__processed__/node.class.h \
+ src/io/osio.h src/render/camera.h src/render/../types.h \
+ src/render/../config.h src/render/../math/math_util.h \
+ src/render/../math/graph.h src/render/../io/shader.h src/io/shader.h \
+ src/utils/skybox.h src/io/scene_loader.h src/physics/physics.h \
+ src/physics/../io/input.h src/physics/bodies.h src/scripts/scripts.h \
+ src/scripts/../io/input.h src/gui/frame.h src/settings.h src/memory.h \
+ src/buffer.h src/storage/queue.h src/classes/classes.h \
+ src/classes/import_class.h src/classes/__processed__/node.class.h \
  src/classes/__processed__/nodes_bodies_body.class.h \
  src/classes/__processed__/nodes_bodies_kinematic_body.class.h \
  src/classes/__processed__/nodes_bodies_rigid_body.class.h \
@@ -244,9 +251,17 @@ bin/debug/src/main.o: src/main.c /usr/include/stdc-predef.h src/types.h \
  src/classes/__processed__/nodes_cshapes_cshape.class.h \
  src/classes/__processed__/nodes_cshapes_plane_cshape.class.h \
  src/classes/__processed__/nodes_cshapes_sphere_cshape.class.h \
- src/classes/__processed__/nodes_filter.class.h \
  src/classes/__processed__/nodes_framebuffer.class.h \
+ src/classes/__processed__/nodes_frames_button.class.h \
+ src/classes/__processed__/nodes_frames_checkbox.class.h \
+ src/classes/__processed__/nodes_frames_control_frame.class.h \
+ src/classes/__processed__/nodes_frames_frame.class.h \
+ src/classes/__processed__/nodes_frames_input_area.class.h \
+ src/classes/__processed__/nodes_frames_label.class.h \
+ src/classes/__processed__/nodes_frames_radiobutton.class.h \
+ src/classes/__processed__/nodes_frames_selectlist.class.h \
  src/classes/__processed__/nodes_lights_directional_light.class.h \
+ src/classes/__processed__/nodes_lights_light.class.h \
  src/classes/__processed__/nodes_lights_point_light.class.h \
  src/classes/__processed__/nodes_lights_spot_light.class.h \
  src/classes/__processed__/nodes_mesh.class.h \
@@ -254,13 +269,12 @@ bin/debug/src/main.o: src/main.c /usr/include/stdc-predef.h src/types.h \
  src/classes/__processed__/nodes_skybox.class.h \
  src/classes/__processed__/nodes_texture.class.h \
  src/classes/__processed__/nodes_textured_mesh.class.h \
- src/classes/__processed__/nodes_viewport.class.h \
- src/classes/__processed__/nodes_windows_window.class.h \
  src/classes/../types.h src/classes/../config.h \
- /usr/include/SDL2/SDL_ttf.h /usr/include/SDL2/SDL.h \
  src/scripts/loading_scripts.h src/scripts/camera.cscript \
  src/scripts/flashlight.cscript src/scripts/free_camera.cscript \
  src/scripts/helice.cscript src/scripts/level_editor.cscript \
  src/scripts/../io/node_loader.h src/scripts/../utils/editor_utils.c \
- src/scripts/../io/osio.h src/scripts/player.cscript \
- src/scripts/test.cscript src/scripts/twomp.cscript
+ src/scripts/../io/osio.h src/scripts/menu.cscript \
+ src/scripts/player.cscript src/scripts/settings.cscript \
+ src/scripts/test.cscript src/scripts/title_screen.cscript \
+ src/scripts/twomp.cscript
