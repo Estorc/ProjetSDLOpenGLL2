@@ -1,5 +1,5 @@
 bin/debug/src/math/graph.o: src/math/graph.c /usr/include/stdc-predef.h \
- src/math/../types.h /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
+ src/math/../types.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h \
  /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -15,7 +15,8 @@ bin/debug/src/math/graph.o: src/math/graph.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h src/math/../config.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h src/math/../config.h \
  /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
@@ -35,7 +36,7 @@ bin/debug/src/math/graph.o: src/math/graph.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/sigevent-consts.h \
  /usr/include/x86_64-linux-gnu/bits/sigaction.h \
  /usr/include/x86_64-linux-gnu/bits/sigcontext.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/include/x86_64-linux-gnu/bits/types/stack_t.h \
  /usr/include/x86_64-linux-gnu/sys/ucontext.h \
  /usr/include/x86_64-linux-gnu/bits/sigstack.h \
@@ -74,13 +75,13 @@ bin/debug/src/math/graph.o: src/math/graph.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/select.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
  /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h lib/cglm/types.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h lib/cglm/types.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
  lib/cglm/simd/intrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h lib/cglm/simd/x86.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/xmmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/mmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/mm_malloc.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/emmintrin.h lib/cglm/simd/x86.h \
  lib/cglm/simd/intrin.h lib/cglm/vec2.h lib/cglm/util.h \
  lib/cglm/vec2-ext.h lib/cglm/vec3.h lib/cglm/vec4.h lib/cglm/vec4-ext.h \
  lib/cglm/vec3-ext.h lib/cglm/ivec2.h lib/cglm/ivec3.h lib/cglm/ivec4.h \
@@ -100,13 +101,14 @@ bin/debug/src/math/graph.o: src/math/graph.c /usr/include/stdc-predef.h \
  lib/cglm/simd/sse2/quat.h lib/cglm/euler.h \
  lib/cglm/handed/euler_to_quat_rh.h lib/cglm/handed/../common.h \
  lib/cglm/aabb2d.h lib/cglm/box.h lib/cglm/color.h lib/cglm/io.h \
- /usr/include/stdio.h /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
+ /usr/include/stdio.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+ /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h lib/cglm/project.h \
  lib/cglm/clipspace/project_no.h lib/cglm/clipspace/../vec3.h \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \

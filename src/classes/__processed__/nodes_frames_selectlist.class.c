@@ -79,6 +79,9 @@ va_start(args, type);
 Node * this = va_arg(args, Node *);
 va_end(args);
 (void)this;
+    for (int i = 0; i < this->length; i++) {
+        METHOD(this->children[i], free);
+    }
     METHOD(this, refresh);
     Frame *frame = (Frame *) this->object;
     SelectList *selectList = (SelectList *) frame->selectList;

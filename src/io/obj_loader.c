@@ -141,11 +141,8 @@ void close_realloc_obj(ObjectMesh *obj, u32 vi, u32 fi, u32 vni, u32 vti) {
     obj->length = fi;
 
     create_obj_vao(obj);
-    free(obj->normals);
     free(obj->textureVertex);
-    free(obj->vertex);
     free(obj->faces);
-    free(obj->facesVertex);
     obj->displayLists = malloc(sizeof(GLuint) * obj->materialsCount);
     POINTER_CHECK(obj->displayLists);
     for (int j = 0; j < obj->materialsCount; j++) {

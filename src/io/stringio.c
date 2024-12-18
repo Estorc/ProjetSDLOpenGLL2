@@ -70,3 +70,24 @@ int find_string_index(char *str, const char **str_list, int list_size) {
 	}
 	return -1; // Return -1 if the string is not found
 }
+
+// Function to check if a byte is the start of a UTF-8 character (i.e., 0xC0 or above).
+int is_utf8_start_byte(unsigned char c) {
+    return (c & 0xC0) != 0x80;  // Check if it's not a continuation byte (0x80-0xBF).
+}
+
+// Function to remove the last UTF-8 character in the input string.
+void remove_last_utf8_char(char *inputBuffer) {
+    size_t len = strlen(inputBuffer);
+    
+    if (len == 0) return;
+
+    // Move backward to find the start of the last character
+    size_t i = len - 1;
+    while (i > 0 && !is_utf8_start_byte((unsigned char)inputBuffer[i])) {
+        i--;
+    }
+    
+    // Null-terminate the string at the start of the last character
+    inputBuffer[i] = '\0';
+}

@@ -52,6 +52,9 @@ class SelectList @promote extends Frame {
     }
 
     void refreshOptions() {
+        for (int i = 0; i < this->length; i++) {
+            METHOD(this->children[i], free);
+        }
         METHOD(this, refresh);
         Frame *frame = (Frame *) this->object;
         SelectList *selectList = (SelectList *) frame->selectList;

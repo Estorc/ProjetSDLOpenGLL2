@@ -34,6 +34,9 @@ void free_models() {
                 glDeleteVertexArrays(1, &model->objects[j].VAO);
                 free(model->objects[j].materials);
                 free(model->objects[j].materialsLength);
+                free(model->objects[j].vertex);
+                free(model->objects[j].normals);
+                free(model->objects[j].facesVertex);
             }
             free(model->objects);
             free(model->materials);

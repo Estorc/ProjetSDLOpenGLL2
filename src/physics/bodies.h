@@ -1,3 +1,6 @@
+#include "../math/math_util.h"
+#include "../io/model.h"
+
 #ifndef BODIES_H
 #define BODIES_H
 
@@ -36,6 +39,19 @@ typedef struct BoxCollisionShape {
 typedef struct SphereCollisionShape {
     u8 UNUSED;
 } SphereCollisionShape;
+
+typedef struct MeshCollisionShape {
+    Vertex (*facesVertex)[3];
+    u32 numFaces;
+} MeshCollisionShape;
+
+typedef struct CapsuleCollisionShape {
+    u8 UNUSED;
+} CapsuleCollisionShape;
+
+typedef struct RayCollisionShape {
+    u8 UNUSED;
+} RayCollisionShape;
 
 typedef struct CollisionBuffer {
     struct Node **collisionsShapes;

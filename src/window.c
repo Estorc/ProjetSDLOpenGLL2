@@ -91,6 +91,7 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
 
     window->surface = SDL_GetWindowSurface(window->sdl_window);
     window->ui_surface = SDL_CreateRGBSurface(0,width,height,32,0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000);
+	glGenTextures(1, &window->ui_texture);
 	refresh_ui(window);
 
     if(!window->surface) {
@@ -121,7 +122,6 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
     glEnable(GL_DEBUG_OUTPUT);
     glDebugMessageCallback(openglDebugCallback, NULL);
     #endif
-	glGenTextures(1, &window->ui_texture);
     return 0;
 }
 

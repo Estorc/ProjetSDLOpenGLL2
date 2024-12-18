@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include "math/math_util.h"
 #include "io/model.h"
+#include "render/framebuffer.h"
 #include "window.h"
 
 const char resolutionsText[RES_COUNT][256] = {

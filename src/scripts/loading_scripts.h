@@ -5,6 +5,7 @@
 #include "helice.cscript"
 #include "level_editor.cscript"
 #include "menu.cscript"
+#include "pinball.cscript"
 #include "player.cscript"
 #include "settings.cscript"
 #include "test.cscript"

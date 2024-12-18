@@ -8,8 +8,8 @@ bin/debug/src/memory.o: src/memory.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/long-double.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
  /usr/include/x86_64-linux-gnu/bits/time64.h \
@@ -19,14 +19,16 @@ bin/debug/src/memory.o: src/memory.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+ /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h src/types.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h src/config.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h src/config.h \
  /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
@@ -82,13 +84,13 @@ bin/debug/src/memory.o: src/memory.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/select.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
  /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h lib/cglm/types.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h lib/cglm/types.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
  lib/cglm/simd/intrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h lib/cglm/simd/x86.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/xmmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/mmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/mm_malloc.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/emmintrin.h lib/cglm/simd/x86.h \
  lib/cglm/simd/intrin.h lib/cglm/vec2.h lib/cglm/util.h \
  lib/cglm/vec2-ext.h lib/cglm/vec3.h lib/cglm/vec4.h lib/cglm/vec4-ext.h \
  lib/cglm/vec3-ext.h lib/cglm/ivec2.h lib/cglm/ivec3.h lib/cglm/ivec4.h \

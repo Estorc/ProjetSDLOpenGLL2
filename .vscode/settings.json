@@ -76,7 +76,8 @@
         "numbers": "c",
         "ostream": "c",
         "stdexcept": "c",
-        "cinttypes": "c"
+        "cinttypes": "c",
+        "collision_util.h": "c"
     },
     "files.exclude": {
         "bin/": true,

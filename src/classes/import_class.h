@@ -6,8 +6,11 @@
 #include "__processed__/nodes_bodies_static_body.class.h"
 #include "__processed__/nodes_camera.class.h"
 #include "__processed__/nodes_cshapes_box_cshape.class.h"
+#include "__processed__/nodes_cshapes_capsule_cshape.class.h"
 #include "__processed__/nodes_cshapes_cshape.class.h"
+#include "__processed__/nodes_cshapes_mesh_cshape.class.h"
 #include "__processed__/nodes_cshapes_plane_cshape.class.h"
+#include "__processed__/nodes_cshapes_ray_cshape.class.h"
 #include "__processed__/nodes_cshapes_sphere_cshape.class.h"
 #include "__processed__/nodes_framebuffer.class.h"
 #include "__processed__/nodes_frames_button.class.h"
@@ -24,6 +27,7 @@
 #include "__processed__/nodes_lights_spot_light.class.h"
 #include "__processed__/nodes_mesh.class.h"
 #include "__processed__/nodes_model.class.h"
+#include "__processed__/nodes_scene.class.h"
 #include "__processed__/nodes_skybox.class.h"
 #include "__processed__/nodes_texture.class.h"
 #include "__processed__/nodes_textured_mesh.class.h"
@@ -37,8 +41,11 @@ typedef enum ClassType {
 	CLASS_TYPE_STATICBODY,
 	CLASS_TYPE_CAMERA,
 	CLASS_TYPE_BOXCSHAPE,
+	CLASS_TYPE_CAPSULECSHAPE,
 	CLASS_TYPE_CSHAPE,
+	CLASS_TYPE_MESHCSHAPE,
 	CLASS_TYPE_PLANECSHAPE,
+	CLASS_TYPE_RAYCSHAPE,
 	CLASS_TYPE_SPHERECSHAPE,
 	CLASS_TYPE_FRAMEBUFFER,
 	CLASS_TYPE_BUTTON,
@@ -55,83 +62,84 @@ typedef enum ClassType {
 	CLASS_TYPE_SPOTLIGHT,
 	CLASS_TYPE_MESH,
 	CLASS_TYPE_MODEL,
+	CLASS_TYPE_SCENE,
 	CLASS_TYPE_SKYBOX,
 	CLASS_TYPE_TEXTURE,
 	CLASS_TYPE_TEXTUREDMESH,
 	CLASS_TYPE_COUNT
 } ClassType;
 struct MethodsCorrespondance {
-	void  (*constructor[28])(unsigned type, ...);
-	void  (*initialize_node[28])(unsigned type, ...);
-	void  (*cast[28])(unsigned type, ...);
-	void  (*load[28])(unsigned type, ...);
-	void  (*save[28])(unsigned type, ...);
-	void  (*render[28])(unsigned type, ...);
-	void  (*update[28])(unsigned type, ...);
-	void  (*free[28])(unsigned type, ...);
-	void  (*is_cshape[28])(unsigned type, ...);
-	void  (*is_body[28])(unsigned type, ...);
-	void  (*is_gui_element[28])(unsigned type, ...);
-	void  (*apply_impulse[28])(unsigned type, ...);
-	void  (*get_priority[28])(unsigned type, ...);
-	void  (*init_button[28])(unsigned type, ...);
-	void  (*is_button[28])(unsigned type, ...);
-	void  (*is_checkbox[28])(unsigned type, ...);
-	void  (*handle_dimension_unit[28])(unsigned type, ...);
-	void  (*init_frame[28])(unsigned type, ...);
-	void  (*refreshContent[28])(unsigned type, ...);
-	void  (*refresh[28])(unsigned type, ...);
-	void  (*prepare_render[28])(unsigned type, ...);
-	void  (*draw_frame[28])(unsigned type, ...);
-	void  (*get_vao[28])(unsigned type, ...);
-	void  (*is_input_area[28])(unsigned type, ...);
-	void  (*is_selectlist[28])(unsigned type, ...);
-	void  (*is_radiobutton[28])(unsigned type, ...);
-	void  (*init_radiobutton[28])(unsigned type, ...);
-	void  (*refreshOptions[28])(unsigned type, ...);
-	void  (*init_vao[28])(unsigned type, ...);
-	void  (*precompile_display_lists[28])(unsigned type, ...);
+	void  (*constructor[32])(unsigned type, ...);
+	void  (*initialize_node[32])(unsigned type, ...);
+	void  (*cast[32])(unsigned type, ...);
+	void  (*load[32])(unsigned type, ...);
+	void  (*save[32])(unsigned type, ...);
+	void  (*render[32])(unsigned type, ...);
+	void  (*update[32])(unsigned type, ...);
+	void  (*free[32])(unsigned type, ...);
+	void  (*is_cshape[32])(unsigned type, ...);
+	void  (*is_body[32])(unsigned type, ...);
+	void  (*is_gui_element[32])(unsigned type, ...);
+	void  (*apply_impulse[32])(unsigned type, ...);
+	void  (*get_priority[32])(unsigned type, ...);
+	void  (*init_button[32])(unsigned type, ...);
+	void  (*is_button[32])(unsigned type, ...);
+	void  (*is_checkbox[32])(unsigned type, ...);
+	void  (*handle_dimension_unit[32])(unsigned type, ...);
+	void  (*init_frame[32])(unsigned type, ...);
+	void  (*refreshContent[32])(unsigned type, ...);
+	void  (*refresh[32])(unsigned type, ...);
+	void  (*prepare_render[32])(unsigned type, ...);
+	void  (*draw_frame[32])(unsigned type, ...);
+	void  (*get_vao[32])(unsigned type, ...);
+	void  (*is_input_area[32])(unsigned type, ...);
+	void  (*is_selectlist[32])(unsigned type, ...);
+	void  (*is_radiobutton[32])(unsigned type, ...);
+	void  (*init_radiobutton[32])(unsigned type, ...);
+	void  (*refreshOptions[32])(unsigned type, ...);
+	void  (*init_vao[32])(unsigned type, ...);
+	void  (*precompile_display_lists[32])(unsigned type, ...);
 };
 struct ClassManager {
 	struct MethodsCorrespondance methodsCorrespondance;
-	ClassType extends[28];
-	const char * class_names[28];
+	ClassType extends[32];
+	const char * class_names[32];
 };
 extern const struct ClassManager classManager;
 #define BUILD_CLASS_METHODS_CORRESPONDANCE(classManager) const struct ClassManager classManager = {\
 	.methodsCorrespondance = {\
-		.constructor = {__class_method_node_constructor, NULL, __class_method_kinematicbody_constructor, __class_method_rigidbody_constructor, __class_method_staticbody_constructor, __class_method_camera_constructor, __class_method_boxcshape_constructor, NULL, __class_method_planecshape_constructor, __class_method_spherecshape_constructor, __class_method_framebuffer_constructor, __class_method_button_constructor, __class_method_checkbox_constructor, __class_method_controlframe_constructor, __class_method_frame_constructor, __class_method_inputarea_constructor, __class_method_label_constructor, __class_method_radiobutton_constructor, __class_method_selectlist_constructor, __class_method_directionallight_constructor, NULL, __class_method_pointlight_constructor, __class_method_spotlight_constructor, __class_method_mesh_constructor, __class_method_model_constructor, __class_method_skybox_constructor, __class_method_texture_constructor, __class_method_texturedmesh_constructor},\
-		.initialize_node = {__class_method_node_initialize_node, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.cast = {__class_method_node_cast, NULL, __class_method_kinematicbody_cast, __class_method_rigidbody_cast, __class_method_staticbody_cast, __class_method_camera_cast, __class_method_boxcshape_cast, NULL, __class_method_planecshape_cast, __class_method_spherecshape_cast, __class_method_framebuffer_cast, __class_method_button_cast, __class_method_checkbox_cast, __class_method_controlframe_cast, __class_method_frame_cast, __class_method_inputarea_cast, __class_method_label_cast, __class_method_radiobutton_cast, __class_method_selectlist_cast, __class_method_directionallight_cast, NULL, __class_method_pointlight_cast, __class_method_spotlight_cast, __class_method_mesh_cast, __class_method_model_cast, __class_method_skybox_cast, __class_method_texture_cast, __class_method_texturedmesh_cast},\
-		.load = {__class_method_node_load, NULL, __class_method_kinematicbody_load, __class_method_rigidbody_load, __class_method_staticbody_load, __class_method_camera_load, __class_method_boxcshape_load, NULL, __class_method_planecshape_load, __class_method_spherecshape_load, __class_method_framebuffer_load, __class_method_button_load, __class_method_checkbox_load, __class_method_controlframe_load, __class_method_frame_load, __class_method_inputarea_load, __class_method_label_load, __class_method_radiobutton_load, __class_method_selectlist_load, __class_method_directionallight_load, NULL, __class_method_pointlight_load, __class_method_spotlight_load, __class_method_mesh_load, __class_method_model_load, __class_method_skybox_load, __class_method_texture_load, __class_method_texturedmesh_load},\
-		.save = {__class_method_node_save, NULL, __class_method_kinematicbody_save, __class_method_rigidbody_save, __class_method_staticbody_save, __class_method_camera_save, __class_method_boxcshape_save, NULL, __class_method_planecshape_save, __class_method_spherecshape_save, __class_method_framebuffer_save, __class_method_button_save, __class_method_checkbox_save, __class_method_controlframe_save, __class_method_frame_save, __class_method_inputarea_save, __class_method_label_save, __class_method_radiobutton_save, __class_method_selectlist_save, __class_method_directionallight_save, NULL, __class_method_pointlight_save, __class_method_spotlight_save, __class_method_mesh_save, __class_method_model_save, __class_method_skybox_save, __class_method_texture_save, __class_method_texturedmesh_save},\
-		.render = {__class_method_node_render, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_controlframe_render, __class_method_frame_render, NULL, __class_method_label_render, NULL, NULL, NULL, __class_method_light_render, NULL, NULL, __class_method_mesh_render, __class_method_model_render, __class_method_skybox_render, NULL, __class_method_texturedmesh_render},\
-		.update = {__class_method_node_update, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_button_update, NULL, NULL, __class_method_frame_update, __class_method_inputarea_update, NULL, NULL, __class_method_selectlist_update, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.free = {__class_method_node_free, __class_method_body_free, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_button_free, __class_method_checkbox_free, NULL, __class_method_frame_free, __class_method_inputarea_free, __class_method_label_free, __class_method_radiobutton_free, __class_method_selectlist_free, NULL, NULL, NULL, NULL, NULL, __class_method_model_free, NULL, NULL, NULL},\
-		.is_cshape = {__class_method_node_is_cshape, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_cshape_is_cshape, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.is_body = {__class_method_node_is_body, __class_method_body_is_body, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.is_gui_element = {__class_method_node_is_gui_element, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_is_gui_element, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.apply_impulse = {NULL, __class_method_body_apply_impulse, __class_method_kinematicbody_apply_impulse, __class_method_rigidbody_apply_impulse, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.get_priority = {NULL, NULL, NULL, NULL, NULL, NULL, __class_method_boxcshape_get_priority, NULL, __class_method_planecshape_get_priority, __class_method_spherecshape_get_priority, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.init_button = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_button_init_button, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.is_button = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_button_is_button, NULL, NULL, __class_method_frame_is_button, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.is_checkbox = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_checkbox_is_checkbox, NULL, __class_method_frame_is_checkbox, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.handle_dimension_unit = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_handle_dimension_unit, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.init_frame = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_init_frame, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.refreshContent = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_refreshContent, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.refresh = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_refresh, __class_method_inputarea_refresh, __class_method_label_refresh, NULL, __class_method_selectlist_refresh, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.prepare_render = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_prepare_render, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.draw_frame = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_draw_frame, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.get_vao = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_get_vao, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.is_input_area = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_is_input_area, __class_method_inputarea_is_input_area, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.is_selectlist = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_is_selectlist, NULL, NULL, NULL, __class_method_selectlist_is_selectlist, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.is_radiobutton = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_is_radiobutton, NULL, NULL, __class_method_radiobutton_is_radiobutton, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.init_radiobutton = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_radiobutton_init_radiobutton, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.refreshOptions = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_selectlist_refreshOptions, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.init_vao = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_light_init_vao, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
-		.precompile_display_lists = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_model_precompile_display_lists, NULL, NULL, NULL},\
+		.constructor = {__class_method_node_constructor, NULL, __class_method_kinematicbody_constructor, __class_method_rigidbody_constructor, __class_method_staticbody_constructor, __class_method_camera_constructor, __class_method_boxcshape_constructor, __class_method_capsulecshape_constructor, NULL, __class_method_meshcshape_constructor, __class_method_planecshape_constructor, __class_method_raycshape_constructor, __class_method_spherecshape_constructor, __class_method_framebuffer_constructor, __class_method_button_constructor, __class_method_checkbox_constructor, __class_method_controlframe_constructor, __class_method_frame_constructor, __class_method_inputarea_constructor, __class_method_label_constructor, __class_method_radiobutton_constructor, __class_method_selectlist_constructor, __class_method_directionallight_constructor, NULL, __class_method_pointlight_constructor, __class_method_spotlight_constructor, __class_method_mesh_constructor, __class_method_model_constructor, __class_method_scene_constructor, __class_method_skybox_constructor, __class_method_texture_constructor, __class_method_texturedmesh_constructor},\
+		.initialize_node = {__class_method_node_initialize_node, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.cast = {__class_method_node_cast, NULL, __class_method_kinematicbody_cast, __class_method_rigidbody_cast, __class_method_staticbody_cast, __class_method_camera_cast, __class_method_boxcshape_cast, __class_method_capsulecshape_cast, NULL, __class_method_meshcshape_cast, __class_method_planecshape_cast, __class_method_raycshape_cast, __class_method_spherecshape_cast, __class_method_framebuffer_cast, __class_method_button_cast, __class_method_checkbox_cast, __class_method_controlframe_cast, __class_method_frame_cast, __class_method_inputarea_cast, __class_method_label_cast, __class_method_radiobutton_cast, __class_method_selectlist_cast, __class_method_directionallight_cast, NULL, __class_method_pointlight_cast, __class_method_spotlight_cast, __class_method_mesh_cast, __class_method_model_cast, __class_method_scene_cast, __class_method_skybox_cast, __class_method_texture_cast, __class_method_texturedmesh_cast},\
+		.load = {__class_method_node_load, NULL, __class_method_kinematicbody_load, __class_method_rigidbody_load, __class_method_staticbody_load, __class_method_camera_load, __class_method_boxcshape_load, __class_method_capsulecshape_load, NULL, __class_method_meshcshape_load, __class_method_planecshape_load, __class_method_raycshape_load, __class_method_spherecshape_load, __class_method_framebuffer_load, __class_method_button_load, __class_method_checkbox_load, __class_method_controlframe_load, __class_method_frame_load, __class_method_inputarea_load, __class_method_label_load, __class_method_radiobutton_load, __class_method_selectlist_load, __class_method_directionallight_load, NULL, __class_method_pointlight_load, __class_method_spotlight_load, __class_method_mesh_load, __class_method_model_load, __class_method_scene_load, __class_method_skybox_load, __class_method_texture_load, __class_method_texturedmesh_load},\
+		.save = {__class_method_node_save, NULL, __class_method_kinematicbody_save, __class_method_rigidbody_save, __class_method_staticbody_save, __class_method_camera_save, __class_method_boxcshape_save, __class_method_capsulecshape_save, NULL, __class_method_meshcshape_save, __class_method_planecshape_save, __class_method_raycshape_save, __class_method_spherecshape_save, __class_method_framebuffer_save, __class_method_button_save, __class_method_checkbox_save, __class_method_controlframe_save, __class_method_frame_save, __class_method_inputarea_save, __class_method_label_save, __class_method_radiobutton_save, __class_method_selectlist_save, __class_method_directionallight_save, NULL, __class_method_pointlight_save, __class_method_spotlight_save, __class_method_mesh_save, __class_method_model_save, __class_method_scene_save, __class_method_skybox_save, __class_method_texture_save, __class_method_texturedmesh_save},\
+		.render = {__class_method_node_render, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_controlframe_render, __class_method_frame_render, NULL, __class_method_label_render, NULL, NULL, NULL, __class_method_light_render, NULL, NULL, __class_method_mesh_render, __class_method_model_render, __class_method_scene_render, __class_method_skybox_render, NULL, __class_method_texturedmesh_render},\
+		.update = {__class_method_node_update, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_button_update, NULL, NULL, __class_method_frame_update, __class_method_inputarea_update, NULL, NULL, __class_method_selectlist_update, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.free = {__class_method_node_free, __class_method_body_free, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_button_free, __class_method_checkbox_free, NULL, __class_method_frame_free, __class_method_inputarea_free, __class_method_label_free, __class_method_radiobutton_free, __class_method_selectlist_free, NULL, NULL, NULL, NULL, NULL, __class_method_model_free, NULL, NULL, NULL, NULL},\
+		.is_cshape = {__class_method_node_is_cshape, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_cshape_is_cshape, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.is_body = {__class_method_node_is_body, __class_method_body_is_body, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.is_gui_element = {__class_method_node_is_gui_element, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_is_gui_element, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.apply_impulse = {NULL, __class_method_body_apply_impulse, __class_method_kinematicbody_apply_impulse, __class_method_rigidbody_apply_impulse, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.get_priority = {NULL, NULL, NULL, NULL, NULL, NULL, __class_method_boxcshape_get_priority, __class_method_capsulecshape_get_priority, NULL, __class_method_meshcshape_get_priority, __class_method_planecshape_get_priority, __class_method_raycshape_get_priority, __class_method_spherecshape_get_priority, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.init_button = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_button_init_button, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.is_button = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_button_is_button, NULL, NULL, __class_method_frame_is_button, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.is_checkbox = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_checkbox_is_checkbox, NULL, __class_method_frame_is_checkbox, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.handle_dimension_unit = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_handle_dimension_unit, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.init_frame = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_init_frame, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.refreshContent = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_refreshContent, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.refresh = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_refresh, __class_method_inputarea_refresh, __class_method_label_refresh, NULL, __class_method_selectlist_refresh, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.prepare_render = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_prepare_render, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.draw_frame = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_draw_frame, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.get_vao = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_get_vao, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.is_input_area = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_is_input_area, __class_method_inputarea_is_input_area, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.is_selectlist = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_is_selectlist, NULL, NULL, NULL, __class_method_selectlist_is_selectlist, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.is_radiobutton = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_frame_is_radiobutton, NULL, NULL, __class_method_radiobutton_is_radiobutton, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.init_radiobutton = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_radiobutton_init_radiobutton, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.refreshOptions = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_selectlist_refreshOptions, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.init_vao = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_light_init_vao, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},\
+		.precompile_display_lists = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, __class_method_model_precompile_display_lists, NULL, NULL, NULL, NULL},\
 	},\
-	.extends = {-1, 0, 1, 1, 1, 0, 7, 0, 7, 7, 0, 14, 11, 14, 0, 14, 14, 11, 14, 20, 0, 20, 20, 0, 0, 0, 0, 0},\
-	.class_names = {"Node", "Body", "KinematicBody", "RigidBody", "StaticBody", "Camera", "BoxCShape", "CShape", "PlaneCShape", "SphereCShape", "Framebuffer", "Button", "CheckBox", "ControlFrame", "Frame", "InputArea", "Label", "RadioButton", "SelectList", "DirectionalLight", "Light", "PointLight", "SpotLight", "Mesh", "Model", "Skybox", "Texture", "TexturedMesh"}\
+	.extends = {-1, 0, 1, 1, 1, 0, 8, 8, 0, 8, 8, 8, 8, 0, 17, 14, 17, 0, 17, 17, 14, 17, 23, 0, 23, 23, 0, 0, 0, 0, 0, 0},\
+	.class_names = {"Node", "Body", "KinematicBody", "RigidBody", "StaticBody", "Camera", "BoxCShape", "CapsuleCShape", "CShape", "MeshCShape", "PlaneCShape", "RayCShape", "SphereCShape", "Framebuffer", "Button", "CheckBox", "ControlFrame", "Frame", "InputArea", "Label", "RadioButton", "SelectList", "DirectionalLight", "Light", "PointLight", "SpotLight", "Mesh", "Model", "Scene", "Skybox", "Texture", "TexturedMesh"}\
 };
 #endif

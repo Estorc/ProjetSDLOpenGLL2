@@ -97,7 +97,7 @@ int update_input(Input *input) {
 						HANDLE_KEY_PRESSED(KEY_ENTER);
                         break;
 					case SDLK_BACKSPACE:
-						input->inputBuffer[strlen(input->inputBuffer)-1] = 0;
+                        remove_last_utf8_char(input->inputBuffer);
                         input->text_input = true;
                         break;
                     default:
