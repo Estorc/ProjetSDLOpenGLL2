@@ -36,7 +36,7 @@ void draw_texture_input(int *id, int x, int y, Window *window, Node *node, Textu
             FILE * file = fopen(path, "r");
             if (file) {
                 printf("%s\n", path);
-                (*texture) = load_texture_from_path(path, GL_SRGB_ALPHA);
+                (*texture) = load_texture_from_path(path, GL_SRGB_ALPHA, true);
                 fclose(file);
             }
         }

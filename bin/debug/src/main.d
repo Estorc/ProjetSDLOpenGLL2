@@ -276,6 +276,7 @@ bin/debug/src/main.o: src/main.c /usr/include/stdc-predef.h src/types.h \
  src/classes/__processed__/nodes_frames_checkbox.class.h \
  src/classes/__processed__/nodes_frames_control_frame.class.h \
  src/classes/__processed__/nodes_frames_frame.class.h \
+ src/classes/__processed__/nodes_frames_image_frame.class.h \
  src/classes/__processed__/nodes_frames_input_area.class.h \
  src/classes/__processed__/nodes_frames_label.class.h \
  src/classes/__processed__/nodes_frames_radiobutton.class.h \
@@ -295,7 +296,8 @@ bin/debug/src/main.o: src/main.c /usr/include/stdc-predef.h src/types.h \
  src/scripts/flashlight.cscript src/scripts/free_camera.cscript \
  src/scripts/helice.cscript src/scripts/level_editor.cscript \
  src/scripts/../io/node_loader.h src/scripts/../utils/editor_utils.c \
- src/scripts/../io/osio.h src/scripts/menu.cscript \
- src/scripts/pinball.cscript src/scripts/player.cscript \
- src/scripts/settings.cscript src/scripts/test.cscript \
- src/scripts/title_screen.cscript src/scripts/twomp.cscript
+ src/scripts/../io/osio.h src/scripts/level_editor2.cscript \
+ src/scripts/menu.cscript src/scripts/pinball.cscript \
+ src/scripts/player.cscript src/scripts/settings.cscript \
+ src/scripts/test.cscript src/scripts/title_screen.cscript \
+ src/scripts/twomp.cscript

@@ -171,15 +171,15 @@ int load_mtl(char *path, char *filename, Material **materials) {
             POINTER_CHECK(fullPath);
             strcat(strcpy(fullPath, path), textureFilename);
             if (!strcmp(textureType, "Px"))
-                (*materials)[mi].textureMaps[PARALLAX_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F);
+                (*materials)[mi].textureMaps[PARALLAX_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F, true);
             if (!strcmp(textureType, "Bump"))
-                (*materials)[mi].textureMaps[NORMAL_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F);
+                (*materials)[mi].textureMaps[NORMAL_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F, true);
             if (!strcmp(textureType, "Kd"))
-                (*materials)[mi].textureMaps[DIFFUSE_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_SRGB_ALPHA);
+                (*materials)[mi].textureMaps[DIFFUSE_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_SRGB_ALPHA, true);
             if (!strcmp(textureType, "Pr"))
-                (*materials)[mi].textureMaps[ROUGHNESS_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F);
+                (*materials)[mi].textureMaps[ROUGHNESS_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F, true);
             if (!strcmp(textureType, "Pm"))
-                (*materials)[mi].textureMaps[METALLIC_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F);
+                (*materials)[mi].textureMaps[METALLIC_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F, true);
             free(fullPath);
 
             break;

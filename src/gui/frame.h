@@ -5,6 +5,10 @@ typedef enum ButtonState {
     BUTTON_STATE_PRESSED,
 } ButtonState;
 
+typedef struct ImageFrame {
+    char path[256];
+} ImageFrame;
+
 typedef struct RadioButton {
     u16 *checked;
     u16 id;
@@ -70,6 +74,7 @@ typedef struct Frame {
         Button * button;
         InputArea * inputArea;
         SelectList * selectList;
+        ImageFrame * imageFrame;
     };
     FrameFlags flags;
 } Frame;

@@ -90,7 +90,6 @@ bool check_collision_sphere_with_mesh(Node *shapeA, Node *shapeB) {
                 if (priorityA < priorityB) glm_vec3_negate(collisionNormal);
                 apply_collision(shapeA, shapeB, collisionNormal, angularNormal, penetrationDepth);
 
-                printf("Collision detected\n");
                 collisionDetected = true;
             }
         }
@@ -99,7 +98,6 @@ bool check_collision_sphere_with_mesh(Node *shapeA, Node *shapeB) {
     if (collisionDetected) {
         return true;
     }
-    printf("No collision detected\n");
     return false;
 }
 

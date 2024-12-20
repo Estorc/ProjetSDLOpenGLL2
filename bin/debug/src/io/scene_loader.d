@@ -280,6 +280,7 @@ bin/debug/src/io/scene_loader.o: src/io/scene_loader.c \
  src/io/../classes/__processed__/nodes_frames_checkbox.class.h \
  src/io/../classes/__processed__/nodes_frames_control_frame.class.h \
  src/io/../classes/__processed__/nodes_frames_frame.class.h \
+ src/io/../classes/__processed__/nodes_frames_image_frame.class.h \
  src/io/../classes/__processed__/nodes_frames_input_area.class.h \
  src/io/../classes/__processed__/nodes_frames_label.class.h \
  src/io/../classes/__processed__/nodes_frames_radiobutton.class.h \

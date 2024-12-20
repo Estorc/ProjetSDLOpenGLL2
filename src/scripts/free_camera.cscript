@@ -1,5 +1,5 @@
 NEW_SCRIPT(free_camera)
-	PARAMS_COUNT(4);
+	PARAMS_COUNT(8);
 
 	int *movable = &node->params[0].i;
 	int *active = &node->params[1].i;

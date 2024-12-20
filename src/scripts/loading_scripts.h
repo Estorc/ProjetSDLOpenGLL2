@@ -4,6 +4,7 @@
 #include "free_camera.cscript"
 #include "helice.cscript"
 #include "level_editor.cscript"
+#include "level_editor2.cscript"
 #include "menu.cscript"
 #include "pinball.cscript"
 #include "player.cscript"

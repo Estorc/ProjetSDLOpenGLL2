@@ -78,7 +78,7 @@ SDL_Surface * flip_y_surface(SDL_Surface *surface) {
 }
 
 
-TextureMap load_texture_from_path(char * path, GLenum format) {
+TextureMap load_texture_from_path(char * path, GLenum format, bool yReversed) {
 
     for (int i = 0; i < memoryCaches.texturesCount; i++) {
         if (!strcmp(memoryCaches.textureCache[i].textureName, path)) {
@@ -112,7 +112,9 @@ TextureMap load_texture_from_path(char * path, GLenum format) {
             dataType = GL_UNSIGNED_BYTE;
             break;
     }
-    SDL_Surface* correctedSurface = flip_y_surface(formattedSurface);
+    SDL_Surface* correctedSurface;
+    if (yReversed) correctedSurface = flip_y_surface(formattedSurface);
+    else correctedSurface = formattedSurface;
 
     if (format == GL_RGB32F) {
         fTextureData = convert_to_rgb32f_texture(correctedSurface);
@@ -141,8 +143,8 @@ TextureMap load_texture_from_path(char * path, GLenum format) {
     strcpy(memoryCaches.textureCache[memoryCaches.texturesCount-1].textureName, path);
     
 
+    if (yReversed) SDL_FreeSurface(correctedSurface);
     SDL_FreeSurface(textureSurface);
-    SDL_FreeSurface(correctedSurface);
     SDL_FreeSurface(formattedSurface);
     free(fTextureData);
     return texture;

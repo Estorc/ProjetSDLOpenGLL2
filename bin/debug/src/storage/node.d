@@ -145,6 +145,7 @@ bin/debug/src/storage/node.o: src/storage/node.c \
  src/storage/../classes/__processed__/nodes_frames_checkbox.class.h \
  src/storage/../classes/__processed__/nodes_frames_control_frame.class.h \
  src/storage/../classes/__processed__/nodes_frames_frame.class.h \
+ src/storage/../classes/__processed__/nodes_frames_image_frame.class.h \
  src/storage/../classes/__processed__/nodes_frames_input_area.class.h \
  src/storage/../classes/__processed__/nodes_frames_label.class.h \
  src/storage/../classes/__processed__/nodes_frames_radiobutton.class.h \

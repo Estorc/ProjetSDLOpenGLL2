@@ -67,7 +67,7 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
       SOFTWARE_RENDERING = 0,
       HARDWARE_RENDERING = 1,
     };
-    SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, SOFTWARE_RENDERING);
+    SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, HARDWARE_RENDERING);
     // Sync buffer swap with monitor refresh rate
     enum {
       ADAPTIVE_VSYNC = -1,
@@ -78,14 +78,14 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
     #ifdef DEBUG
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG); 
     #endif
-    SDL_GL_SetSwapInterval(ADAPTIVE_VSYNC);
+    SDL_GL_SetSwapInterval(VSYNC);
 
     window->sdl_window = SDL_CreateWindow(title, x, y, width, height, flags);
     window->opengl_ctx = SDL_GL_CreateContext(window->sdl_window);
 
 
     if(!window->sdl_window) {
-        printf("Failed to create window\n");
+        printf("Failed to create window: %s\n", SDL_GetError());
         return -1;
     }
 
@@ -174,6 +174,10 @@ void update_window(Window *window, Node *scene, Camera *c, WorldShaders *shaders
 }
 
 void refresh_resolution() {
+    int window_width, window_height;
+    get_resolution(&window_width, &window_height);
+    SDL_FreeSurface(window.ui_surface);
+    window.ui_surface = SDL_CreateRGBSurface(0,window_width,window_height,32,0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000);
     resize_msaa_framebuffer(&mainNodeTree.msaa);
     window.resized = true;
 }

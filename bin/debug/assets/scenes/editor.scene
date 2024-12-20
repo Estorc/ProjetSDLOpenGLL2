@@ -1,4 +1,4 @@
-Node{level_editor}:3
+Node{level_editor}:6
 Camera(1){free_camera}
 Node:3
 Model(assets/models/collisionShapes/box.obj)[v0]

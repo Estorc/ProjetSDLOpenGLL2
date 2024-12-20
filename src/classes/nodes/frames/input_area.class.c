@@ -21,17 +21,6 @@ class InputArea @promote extends Frame {
         this->type = __type__; 
         SUPER(initialize_node);
         METHOD(this, init_frame);
-    }
-
-    void cast(void ** data) {
-        IGNORE(data);
-    }
-
-    void load(FILE *file) {
-        METHOD_TYPE(this, __type__, constructor);
-        Frame *frame = (Frame *) this->object;
-        frame->inputArea = malloc(sizeof(InputArea));
-        POINTER_CHECK(frame->inputArea);
         frame->relPos[0] = 0.0f;
         frame->relPos[1] = 0.0f;
         frame->scale[0] = 100.0f;
@@ -41,6 +30,18 @@ class InputArea @promote extends Frame {
         frame->unit[2] = '%';
         frame->unit[3] = '%';
         frame->flags |= FRAME_CONTENT;
+        frame->inputArea = malloc(sizeof(InputArea));
+        POINTER_CHECK(frame->inputArea);
+        glGenTextures(1, &frame->contentTexture);
+    }
+
+    void cast(void ** data) {
+        IGNORE(data);
+    }
+
+    void load(FILE *file) {
+        METHOD_TYPE(this, __type__, constructor);
+        Frame *frame = (Frame *) this->object;
         if (file) {
             fscanf(file, "(%[^,],%c%c)", 
             frame->inputArea->defaultText, &frame->alignment[0], &frame->alignment[1]);
@@ -53,6 +54,11 @@ class InputArea @promote extends Frame {
         Frame *frame = (Frame *) this->object;
         InputArea *inputArea = (InputArea *) frame->inputArea;
 
+        if (frame->contentSurface) SDL_FreeSurface(frame->contentSurface);
+        frame->contentSurface = SDL_CreateRGBSurface(0,frame->size[0],frame->size[1],32,0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000);
+        if (!frame->contentSurface) {
+            printf("Error creating surface: %s\n", SDL_GetError());
+        }
         if (inputArea->text[0]) draw_text(frame->contentSurface, 0, 0, inputArea->text, frame->theme->font.font, frame->theme->textColor, frame->alignment, -1);
         else draw_text(frame->contentSurface, 0, 0, inputArea->defaultText, frame->theme->font.font, (SDL_Color) {frame->theme->textColor.r, frame->theme->textColor.g, frame->theme->textColor.b, frame->theme->textColor.a*0.8}, frame->alignment, -1);
         SUPER(refreshContent);

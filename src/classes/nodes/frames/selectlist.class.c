@@ -21,16 +21,7 @@ class SelectList @promote extends Frame {
         this->type = __type__; 
         SUPER(initialize_node);
         METHOD(this, init_frame);
-    }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
-
-    void load(FILE *file) {
-        IGNORE(file);
-        METHOD_TYPE(this, __type__, constructor);
-        Frame *frame = (Frame *) this->object;
         frame->selectList = malloc(sizeof(SelectList));
         POINTER_CHECK(frame->selectList);
         frame->relPos[0] = 0.0f;
@@ -49,6 +40,16 @@ class SelectList @promote extends Frame {
         frame->selectList->selected = NULL;
         frame->flags |= FRAME_CONTENT;
         frame->flags |= FRAME_BACKGROUND;
+        glGenTextures(1, &frame->contentTexture);
+    }
+
+    void cast(void ** data) {
+        IGNORE(data);
+    }
+
+    void load(FILE *file) {
+        IGNORE(file);
+        METHOD_TYPE(this, __type__, constructor);
     }
 
     void refreshOptions() {

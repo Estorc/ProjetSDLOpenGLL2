@@ -40,8 +40,9 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
     float delta = (window->lastTime) ? window->time - window->lastTime : 0.0;
     const float maxDelta = 0.1f;
     delta = (delta > maxDelta) ? maxDelta : delta;
+    accumulator += delta;
 
-    SDL_FillRect(window->ui_surface, NULL, 0x000000);
+    if (accumulator >= fixedTimeStep) SDL_FillRect(window->ui_surface, NULL, 0x000000);
 
     while (!queue_is_empty(&callQueue)) {
         void(*call)() = queue_pop(&callQueue);
@@ -65,8 +66,7 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
         draw_text(window->ui_surface, 8, 32, fps_str, font, textColor, "lt", -1);
         TTF_CloseFont(font);
     }
-    
-    accumulator += delta;
+
     u8 lightsCount[LIGHTS_COUNT];
     while (accumulator >= fixedTimeStep) {
         s8 input_result = update_input(&input);

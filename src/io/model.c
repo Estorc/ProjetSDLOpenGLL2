@@ -52,7 +52,7 @@ void create_textured_plane(TexturedMesh *texturedMesh, char *texture) {
 
     VBO meshVBO;
     VAO meshVAO;
-    TextureMap meshTex = load_texture_from_path(texture, GL_SRGB_ALPHA);
+    TextureMap meshTex = load_texture_from_path(texture, GL_SRGB_ALPHA, true);
     float vertices[] = {
         25.0f, 0.0f,  25.0f,  0.0f, -1.0f, 0.0f,  25.0f,  0.0f,
         -25.0f, 0.0f,  25.0f,  0.0f, -1.0f, 0.0f,   0.0f,  0.0f,

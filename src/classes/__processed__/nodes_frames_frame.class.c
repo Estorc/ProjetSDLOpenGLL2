@@ -126,7 +126,7 @@ va_end(args);
                 &frame->theme->font.size,
                 &frame->theme->textColor.r, &frame->theme->textColor.g, &frame->theme->textColor.b, &frame->theme->textColor.a);
             frame->theme->font.font = TTF_OpenFont(frame->theme->font.path, frame->theme->font.size);
-            frame->theme->windowSkin = load_texture_from_path(texturePath, GL_SRGB_ALPHA);
+            frame->theme->windowSkin = load_texture_from_path(texturePath, GL_SRGB_ALPHA, true);
         }
 
         frame->flags |= FRAME_BACKGROUND;
@@ -135,22 +135,6 @@ va_end(args);
         } else if (scroll == 'v') {
             frame->flags |= OVERFLOW_VISIBLE;
         }
-    }
-}
-
-
-void __class_method_frame_refreshContent(unsigned type, ...) {
-va_list args;
-va_start(args, type);
-Node * this = va_arg(args, Node *);
-va_end(args);
-(void)this;
-    Frame *frame = (Frame *) this->object;
-    if (frame->flags & FRAME_CONTENT) {
-        glBindTexture(GL_TEXTURE_2D, frame->contentTexture);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB_ALPHA, frame->contentSurface->w, frame->contentSurface->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, frame->contentSurface->pixels);
-        glGenerateMipmap(GL_TEXTURE_2D);
-        glBindTexture(GL_TEXTURE_2D, 0);
     }
 }
 
@@ -254,17 +238,22 @@ va_end(args);
         if (parentFrame->contentSize[0] < this->scale[0] + this->pos[0] - scroll[0]) parentFrame->contentSize[0] = this->scale[0] + this->pos[0] - scroll[0];
         if (parentFrame->contentSize[1] < this->scale[1] - this->pos[1] + scroll[1]) parentFrame->contentSize[1] = this->scale[1] - this->pos[1] + scroll[1];
     }
-
-    if (frame->flags & FRAME_CONTENT) {
-        if (!frame->contentSurface) glGenTextures(1, &frame->contentTexture);
-        if (frame->contentSurface) SDL_FreeSurface(frame->contentSurface);
-        frame->contentSurface = SDL_CreateRGBSurface(0,frame->size[0],frame->size[1],32,0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000);
-        if (!frame->contentSurface) {
-            printf("Error creating surface: %s\n", SDL_GetError());
-        }
-    }
     
     frame->flags &= ~FRAME_NEEDS_REFRESH;
+}
+
+
+void __class_method_frame_refreshContent(unsigned type, ...) {
+va_list args;
+va_start(args, type);
+Node * this = va_arg(args, Node *);
+va_end(args);
+(void)this;
+    Frame *frame = (Frame *) this->object;
+    glBindTexture(GL_TEXTURE_2D, frame->contentTexture);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB_ALPHA, frame->contentSurface->w, frame->contentSurface->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, frame->contentSurface->pixels);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 

@@ -63,8 +63,8 @@ va_end(args);
        -1.0f,   1.0f,       1.0f,   0.0f,
        -1.0f,  -1.0f,       1.0f,   1.0f
     };
-    lightPointTexture = load_texture_from_path("assets/textures/editor/light_bulb.png", GL_SRGB_ALPHA);
-    directionalLightTexture = load_texture_from_path("assets/textures/editor/sun.png", GL_SRGB_ALPHA);
+    lightPointTexture = load_texture_from_path("assets/textures/editor/light_bulb.png", GL_SRGB_ALPHA, false);
+    directionalLightTexture = load_texture_from_path("assets/textures/editor/sun.png", GL_SRGB_ALPHA, false);
     billboardShader = create_shader("shaders/billboard.vs", "shaders/billboard.fs");
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);

@@ -272,6 +272,7 @@ bin/debug/src/physics/bodies.o: src/physics/bodies.c \
  src/physics/../classes/__processed__/nodes_frames_checkbox.class.h \
  src/physics/../classes/__processed__/nodes_frames_control_frame.class.h \
  src/physics/../classes/__processed__/nodes_frames_frame.class.h \
+ src/physics/../classes/__processed__/nodes_frames_image_frame.class.h \
  src/physics/../classes/__processed__/nodes_frames_input_area.class.h \
  src/physics/../classes/__processed__/nodes_frames_label.class.h \
  src/physics/../classes/__processed__/nodes_frames_radiobutton.class.h \

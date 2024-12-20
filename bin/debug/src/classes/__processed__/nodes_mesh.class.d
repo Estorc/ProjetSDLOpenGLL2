@@ -21,6 +21,7 @@ bin/debug/src/classes/__processed__/nodes_mesh.class.o: \
  src/classes/__processed__/../../classes/__processed__/nodes_frames_checkbox.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_frames_control_frame.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_frames_frame.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_frames_image_frame.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_frames_input_area.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_frames_label.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_frames_radiobutton.class.h \

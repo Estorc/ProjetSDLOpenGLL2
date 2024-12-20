@@ -62,22 +62,6 @@ int osio_print_error(char *msg) {
     return 0;
 }
 
-int absolute_path_to_relative(char *path) {
-    char cwd[200];
-    char *str = malloc(sizeof(path) * (strlen(path)+1));
-    strcpy(str, path);
-    if (getcwd(cwd, sizeof(cwd)) != NULL) {
-        strcat(cwd, "");
-        char *strcp = str;
-        for (char *rpath = cwd;*rpath && *strcp; rpath++, strcp++);
-        strcpy(path, ++strcp);
-        free(str);
-    } else {
-        printf("Getcwd error!");
-        return -1;
-    }
-    return 0;
-}
 #endif
 
 #ifdef ZENITY
@@ -138,6 +122,8 @@ int osio_print_error(char *msg) {
     return 0;
 }
 
+#endif
+
 int update_cwd() {
     char exe_path[1024]; // Buffer to store the executable path.
 
@@ -193,4 +179,3 @@ int absolute_path_to_relative(char *path) {
     }
     return 0;
 }
-#endif

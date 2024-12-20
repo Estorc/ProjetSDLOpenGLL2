@@ -22,6 +22,7 @@ class Label @promote extends Frame {
         SUPER(initialize_node);
         METHOD(this, init_frame);
         frame->label = malloc(sizeof(Label));
+        POINTER_CHECK(frame->label);
         frame->relPos[0] = 0.0f;
         frame->relPos[1] = 0.0f;
         frame->scale[0] = 100.0f;
@@ -31,6 +32,7 @@ class Label @promote extends Frame {
         frame->unit[2] = '%';
         frame->unit[3] = '%';
         frame->flags |= FRAME_CONTENT;
+        glGenTextures(1, &frame->contentTexture);
     }
 
     void cast(void ** data) {
@@ -40,7 +42,6 @@ class Label @promote extends Frame {
     void load(FILE *file) {
         METHOD_TYPE(this, __type__, constructor);
         Frame *frame = (Frame *) this->object;
-        POINTER_CHECK(frame->label);
         if (file) {
             fscanf(file, "(%[^,],%c%c)", 
             frame->label->text, &frame->alignment[0], &frame->alignment[1]);
@@ -53,6 +54,11 @@ class Label @promote extends Frame {
         Frame *frame = (Frame *) this->object;
         Label *label = (Label *) frame->label;
 
+        if (frame->contentSurface) SDL_FreeSurface(frame->contentSurface);
+        frame->contentSurface = SDL_CreateRGBSurface(0,frame->size[0],frame->size[1],32,0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000);
+        if (!frame->contentSurface) {
+            printf("Error creating surface: %s\n", SDL_GetError());
+        }
         if (label->text[0]) draw_text(frame->contentSurface, 0, 0, label->text, frame->theme->font.font, frame->theme->textColor, frame->alignment, -1);
         SUPER(refreshContent);
     }

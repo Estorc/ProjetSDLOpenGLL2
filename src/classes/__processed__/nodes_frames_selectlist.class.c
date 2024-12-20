@@ -28,6 +28,26 @@ va_end(args);
     this->type = __type__; 
     SUPER(initialize_node);
     METHOD(this, init_frame);
+
+    frame->selectList = malloc(sizeof(SelectList));
+    POINTER_CHECK(frame->selectList);
+    frame->relPos[0] = 0.0f;
+    frame->relPos[1] = 0.0f;
+    frame->scale[0] = 100.0f;
+    frame->scale[1] = 100.0f;
+    frame->unit[0] = '%';
+    frame->unit[1] = '%';
+    frame->unit[2] = '%';
+    frame->unit[3] = '%';
+    frame->alignment[0] = 'c';
+    frame->alignment[1] = 'c';
+    frame->selectList->state = BUTTON_STATE_NORMAL;
+    frame->selectList->options = (char (*)[256]) "Default Option";
+    frame->selectList->count = 1;
+    frame->selectList->selected = NULL;
+    frame->flags |= FRAME_CONTENT;
+    frame->flags |= FRAME_BACKGROUND;
+    glGenTextures(1, &frame->contentTexture);
 }
 
 
@@ -51,25 +71,6 @@ va_end(args);
 (void)this;
     IGNORE(file);
     METHOD_TYPE(this, __type__, constructor);
-    Frame *frame = (Frame *) this->object;
-    frame->selectList = malloc(sizeof(SelectList));
-    POINTER_CHECK(frame->selectList);
-    frame->relPos[0] = 0.0f;
-    frame->relPos[1] = 0.0f;
-    frame->scale[0] = 100.0f;
-    frame->scale[1] = 100.0f;
-    frame->unit[0] = '%';
-    frame->unit[1] = '%';
-    frame->unit[2] = '%';
-    frame->unit[3] = '%';
-    frame->alignment[0] = 'c';
-    frame->alignment[1] = 'c';
-    frame->selectList->state = BUTTON_STATE_NORMAL;
-    frame->selectList->options = (char (*)[256]) "Default Option";
-    frame->selectList->count = 1;
-    frame->selectList->selected = NULL;
-    frame->flags |= FRAME_CONTENT;
-    frame->flags |= FRAME_BACKGROUND;
 }
 
 
