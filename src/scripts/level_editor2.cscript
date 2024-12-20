@@ -1,0 +1,195 @@
+#ifdef DEBUG
+#include "../io/node_loader.h"
+#include "../io/osio.h"
+
+
+
+
+/*void draw_node_tree(Window *window, Node *node, int level, Input *input) {
+
+	static int y;
+	static Node *root;
+	bool condition;
+	int x = 16;
+	if (level == 0) {
+		y = node->parent->params[0].i;
+		root = node;
+	}
+	int *selectedNodeType = &root->parent->params[4].i;
+	y += 32;
+    x *= level+1;
+	x -= 32;
+	int index = index_of_child(node->parent, node);
+
+
+	draw_rectangle(window->ui_surface, 16, y, 700, 32, 0xff555555);
+	if (node != root) if (draw_button(window->ui_surface, x += 32, y, 32, 32, "assets/textures/editor/minus-square.png", 0xffffffff, input)) {
+		METHOD(node, is_cshape, &condition);
+		if (condition) remove_shape_and_free_and_realloc(node->parent, node);
+		else remove_child_and_free_and_realloc(node->parent, node);
+		return;
+	}
+	if (node != root) if (draw_button(window->ui_surface, x += 32, y, 32, 32, "assets/textures/editor/edit.png", 0xffffffff, input)) {
+		root->parent->params[1].i = 1;
+		root->parent->params[2].node = node;
+	}
+	METHOD(node, is_cshape, &condition);
+	if (!condition && index-1 >= 0 && node != root) if (draw_button(window->ui_surface, x += 32, y, 32, 32, "assets/textures/editor/arrow-up-circle.png", 0xffffffff, input)) {
+		Node *moved_node = node->parent->children[index-1];
+		node->parent->children[index-1] = node->parent->children[index];
+		node->parent->children[index] = moved_node;
+	}
+	METHOD(node, is_cshape, &condition);
+	if (!condition && index+1 < node->parent->length && node != root) if (draw_button(window->ui_surface, x += 32, y, 32, 32, "assets/textures/editor/arrow-down-circle.png", 0xffffffff, input)) {
+		Node *moved_node = node->parent->children[index+1];
+		node->parent->children[index+1] = node->parent->children[index];
+		node->parent->children[index] = moved_node;
+	}
+	METHOD(node, is_cshape, &condition);
+	if (!condition && index+1 < node->parent->length && level) if (draw_button(window->ui_surface, x += 32, y, 32, 32, "assets/textures/editor/corner-down-right.png", 0xffffffff, input)) {
+		Node *parent = node->parent;
+		remove_child_and_realloc(parent, node);
+		add_child_and_realloc(parent->children[index], node);
+	}
+	METHOD(node, is_cshape, &condition);
+	if (!condition && level > 1) if (draw_button(window->ui_surface, x += 32, y, 32, 32, "assets/textures/editor/corner-left-up.png", 0xffffffff, input)) {
+		remove_child_and_realloc(node->parent, node);
+		add_child_and_realloc(node->parent->parent, node);
+		return;
+	}
+	if (node != root) draw_text(window->ui_surface, x + 16 + 32, y+4, classManager.class_names[node->type], font, (SDL_Color) {255, 255, 255, 255}, "lt", -1);
+	else draw_text(window->ui_surface, x + 16 + 32, y+4, "Root", font, (SDL_Color) {255, 255, 255, 255}, "lt", -1);
+
+	u8 *collisionsLength;
+	Node ***collisionsShapes;
+	GET_FROM_BODY_NODE(node, length, collisionsLength);
+	GET_FROM_BODY_NODE(node, collisionsShapes, collisionsShapes);
+	METHOD(node, is_body, &condition);
+    if (condition) for (int i = 0; i < *collisionsLength; i++) {
+        draw_node_tree(window, (*collisionsShapes)[i], level+1, input, font);
+    }
+    for (int i = 0; i < node->length; i++) {
+        draw_node_tree(window, node->children[i], level+1, input, font);
+    }
+	METHOD(node, is_cshape, &condition);
+	if (!condition) {
+		y += 32;
+		draw_rectangle(window->ui_surface, 16, y, 700, 32, 0xff555555);
+		if (draw_button(window->ui_surface, (level+1)*16 + 16, y, 32, 32, "assets/textures/editor/plus-square.png", 0xffffffff, input)) {
+			METHOD(node, is_cshape, &condition);
+			if (condition) {
+				METHOD(node, is_body, &condition);
+				if (condition) {
+					Node *new_node;
+					new_node = malloc(sizeof(Node));
+					POINTER_CHECK(new_node);
+
+					malloc_node(new_node, *selectedNodeType, 0, 0, 0, 0);
+					add_shape_and_realloc(node, new_node);
+				}
+			} else {
+				Node *new_node;
+				new_node = malloc(sizeof(Node));
+				POINTER_CHECK(new_node);
+
+				malloc_node(new_node, *selectedNodeType, 0, 0, 0, 0);
+				add_child_and_realloc(node, new_node);
+				buffers.collisionBuffer.collisionsShapes = realloc(buffers.collisionBuffer.collisionsShapes, sizeof(Node *) * buffers.collisionBuffer.length);
+				buffers.lightingBuffer.lightings = realloc(buffers.lightingBuffer.lightings, sizeof(Node *) * buffers.lightingBuffer.length);
+
+			}
+		}
+	}
+	if (!level) {
+		if (y < SCREEN_HEIGHT-70) node->parent->params[0].i += ((SCREEN_HEIGHT-70)-y)/20.0;
+		if (node->parent->params[0].i > 0) node->parent->params[0].i += (-node->parent->params[0].i)/20.0;
+		draw_rectangle(window->ui_surface, 450, SCREEN_HEIGHT-100, 750, 60, 0xff999999);
+		if (input->pressed_keys & KEY_LEFT) (*selectedNodeType)--;
+		if (input->pressed_keys & KEY_RIGHT) (*selectedNodeType)++;
+		if (*selectedNodeType < 0) *selectedNodeType = CLASS_TYPE_COUNT-1;
+		if (*selectedNodeType >= CLASS_TYPE_COUNT) *selectedNodeType = 0;
+		char str[150];
+		sprintf(str, " < %s > ", classManager.class_names[*selectedNodeType]);
+		draw_text(window->ui_surface, 450, SCREEN_HEIGHT-100+10, str, font, (SDL_Color) {255, 255, 255, 255}, "lt", -1);
+
+		draw_rectangle(window->ui_surface, SCREEN_WIDTH-64-8, 32-8, 48, 48, 0xff555555);
+		if (draw_button(window->ui_surface, SCREEN_WIDTH-64, 32, 32, 32, "assets/textures/editor/camera.png", 0xffffffff, input)) {
+			root->parent->params[1].i = 2;
+		}
+
+		draw_rectangle(window->ui_surface, SCREEN_WIDTH-64-8, 32-8+52, 48, 48, 0xff555555);
+		if (draw_button(window->ui_surface, SCREEN_WIDTH-64, 32+52, 32, 32, "assets/textures/editor/save.png", 0xffffffff, input)) {
+			root->parent->params[1].i = 3;
+		}
+
+		draw_rectangle(window->ui_surface, SCREEN_WIDTH-64-8, 32-8+52*2, 48, 48, 0xff555555);
+		if (draw_button(window->ui_surface, SCREEN_WIDTH-64, 32+52*2, 32, 32, "assets/textures/editor/folder.png", 0xffffffff, input)) {
+			root->parent->params[1].i = 4;
+		}
+	}
+
+
+}*/
+
+#endif
+
+NEW_SCRIPT(level_editor2)
+#ifdef DEBUG
+	PARAMS_COUNT(6);
+
+	int *scrollY = &node->params[0].i;
+	int *menu = &node->params[1].i;
+	//Node *selectedNode = node->params[2].node;
+	//int *selectedInputBox = &node->params[3].i;
+	//int *selectedNodeType = &node->params[4].i;
+	//Node *activeCamera = node->params[5].node;
+
+
+
+	if (input->mouse.active_button) (*scrollY) -= input->mouse.lastY - input->mouse.y;
+	
+	switch (*menu) {
+		case 0:
+			if (node->children[0]->params) {
+				node->children[0]->params[0].i = 0;
+				node->children[0]->params[1].i = 1;
+			}
+			//draw_node_tree(window, node->children[2], 0, input);
+			break;
+		case 1:
+			if (node->children[0]->params) {
+				node->children[0]->params[0].i = 0;
+				node->children[0]->params[1].i = 0;
+			}
+			//draw_node_editing(window, node, input);
+			break;
+		case 2:
+			if (node->children[0]->params) {
+				node->children[0]->params[0].i = 1;
+				node->children[0]->params[1].i = 1;
+			}
+			draw_rectangle(window->ui_surface, SCREEN_WIDTH-64-8, 32-8, 48, 48, 0xff555555);
+			if (draw_button(window->ui_surface, SCREEN_WIDTH-64, 32, 32, 32, "assets/textures/editor/corner-left-up.png", 0xffffffff, input)) {
+				node->params[1].i = 0;
+			}
+			break;
+		case 3:
+			//FILE * file = fopen("assets/scenes/new_scene.scene", "w");
+			//save_menu(window, node->children[2], input);
+			//fclose(file);
+			break;
+		case 4:
+			//load_menu(window, node->children[2], input);
+			break;
+		case 5:
+			if (node->children[0]->params) {
+				node->children[0]->params[0].i = 0;
+				node->children[0]->params[1].i = 0;
+			}
+			//draw_node_settings(window, node, input);
+			break;
+
+	}
+#endif
+
+END_SCRIPT(level_editor2)
