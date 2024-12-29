@@ -23,6 +23,8 @@ class Model @promote extends Node {
             char path[100];
             fscanf(file,"(%100[^)])", path);
             load_obj_model(path, &model);
+        } else {
+            model = NULL;
         }
         METHOD_TYPE(this, __type__, constructor, model);
     }
@@ -62,6 +64,8 @@ class Model @promote extends Node {
         int modelLoc = glGetUniformLocation(activeShader, "model");
         Model *model = (Model *) this->object;
 
+        if (!model) return;
+
         METHOD(this, precompile_display_lists);
 
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, *modelMatrix);
@@ -69,26 +73,32 @@ class Model @promote extends Node {
             for (int k = 0; k < model->objects[j].materialsCount; k++) {
                 glActiveTexture(GL_TEXTURE0);
 
-                glUniform3fv(glGetUniformLocation(activeShader, "material.ambient"), 1, &model->objects[j].materials[k]->flatColors[AMBIENT_MATERIAL_PROPERTY]);
-                glUniform3fv(glGetUniformLocation(activeShader, "material.specular"), 1, &model->objects[j].materials[k]->flatColors[SPECULAR_MATERIAL_PROPERTY]);
-                glUniform3fv(glGetUniformLocation(activeShader, "material.diffuse"), 1, &model->objects[j].materials[k]->flatColors[DIFFUSE_MATERIAL_PROPERTY]);
-                glUniform1fv(glGetUniformLocation(activeShader, "material.parallax"), 1, &model->objects[j].materials[k]->flatColors[PARALLAX_MATERIAL_PROPERTY]);
+                glUniform3fv(glGetUniformLocation(activeShader, "material.ambient"), 1, model->objects[j].materials[k]->flatColors[AMBIENT_MATERIAL_PROPERTY]);
+                glUniform3fv(glGetUniformLocation(activeShader, "material.specular"), 1, model->objects[j].materials[k]->flatColors[SPECULAR_MATERIAL_PROPERTY]);
+                glUniform3fv(glGetUniformLocation(activeShader, "material.diffuse"), 1, model->objects[j].materials[k]->flatColors[DIFFUSE_MATERIAL_PROPERTY]);
+                glUniform1fv(glGetUniformLocation(activeShader, "material.parallax"), 1, model->objects[j].materials[k]->flatColors[PARALLAX_MATERIAL_PROPERTY]);
                 glUniform1fv(glGetUniformLocation(activeShader, "material.shininess"), 1, &model->objects[j].materials[k]->specularExp);
-            if (model->objects[j].materials[k]->textureMaps[DIFFUSE_MATERIAL_PROPERTY]) {
-                set_shader_int(activeShader, "diffuseMapActive", 1); 
-                glActiveTexture(GL_TEXTURE0);
-                glBindTexture(GL_TEXTURE_2D, model->objects[j].materials[k]->textureMaps[DIFFUSE_MATERIAL_PROPERTY]);
-            }
-            if (model->objects[j].materials[k]->textureMaps[NORMAL_MATERIAL_PROPERTY]) {
-                set_shader_int(activeShader, "normalMapActive", 1);
-                glActiveTexture(GL_TEXTURE1);
-                glBindTexture(GL_TEXTURE_2D, model->objects[j].materials[k]->textureMaps[NORMAL_MATERIAL_PROPERTY]);
-            }
-            if (model->objects[j].materials[k]->textureMaps[PARALLAX_MATERIAL_PROPERTY]) {
-                set_shader_int(activeShader, "parallaxMapActive", 1);
-                glActiveTexture(GL_TEXTURE2);
-                glBindTexture(GL_TEXTURE_2D, model->objects[j].materials[k]->textureMaps[PARALLAX_MATERIAL_PROPERTY]);
-            }
+                if (model->objects[j].materials[k]->textureMaps[DIFFUSE_MATERIAL_PROPERTY]) {
+                    set_shader_int(activeShader, "diffuseMapActive", 1); 
+                    glActiveTexture(GL_TEXTURE0);
+                    glBindTexture(GL_TEXTURE_2D, model->objects[j].materials[k]->textureMaps[DIFFUSE_MATERIAL_PROPERTY]);
+                } else {
+                    set_shader_int(activeShader, "diffuseMapActive", 0);
+                }
+                if (model->objects[j].materials[k]->textureMaps[NORMAL_MATERIAL_PROPERTY]) {
+                    set_shader_int(activeShader, "normalMapActive", 1);
+                    glActiveTexture(GL_TEXTURE1);
+                    glBindTexture(GL_TEXTURE_2D, model->objects[j].materials[k]->textureMaps[NORMAL_MATERIAL_PROPERTY]);
+                } else {
+                    set_shader_int(activeShader, "normalMapActive", 0);
+                }
+                if (model->objects[j].materials[k]->textureMaps[PARALLAX_MATERIAL_PROPERTY]) {
+                    set_shader_int(activeShader, "parallaxMapActive", 1);
+                    glActiveTexture(GL_TEXTURE2);
+                    glBindTexture(GL_TEXTURE_2D, model->objects[j].materials[k]->textureMaps[PARALLAX_MATERIAL_PROPERTY]);
+                } else {
+                    set_shader_int(activeShader, "parallaxMapActive", 0);
+                }
                 
                 glCallList(model->objects[j].displayLists[k]);
                 

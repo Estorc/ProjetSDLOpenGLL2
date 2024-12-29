@@ -64,6 +64,19 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
         for (int i = 0; i < node->length; i++) {
             render_scene(window, node->children[i], c, nodeModelMatrix, activeShader, shaders);
         }
+        if (settings.show_collision_boxes) {
+            bool is_body = false;
+            METHOD(node, is_body, (&is_body));
+            if (is_body) {
+                u8 *length;
+                Node ***shapes;
+                GET_FROM_BODY_NODE(node, length, length);
+                GET_FROM_BODY_NODE(node, collisionsShapes, shapes);
+                for (int i = 0; i < *length; i++) {
+                    render_scene(window, (*shapes)[i], c, nodeModelMatrix, activeShader, shaders);
+                }
+            }
+        }
     }
 
 }

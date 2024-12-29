@@ -99,7 +99,7 @@ BufferCollection buffers;
 Queue callQueue = {NULL};
 Tree mainNodeTree;
 Input input;
-Settings settings = {false, true, false, RES_RESPONSIVE};
+Settings settings = {false, true, false, RES_RESPONSIVE, false};
 Window window;
 
 BUILD_CLASS_METHODS_CORRESPONDANCE(classManager);

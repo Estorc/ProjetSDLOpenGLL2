@@ -14,33 +14,43 @@ typedef Vec3f Normal;
 typedef Vec2f TextureVertex;
 typedef u32 TextureMap;
 
-/*typedef struct {
-    Vec3f vec;
-} Vertex;*/
+/*
+ * To ensure MTL files are loaded correctly, the following rules must be followed:
+ * - The MTL file must be in the same directory as the OBJ file.
+ * - The MTL file must have the same name as the OBJ file.
+ * - The MTL file must have the extension ".mtl".
+ * - The MTL file must not contain this regex string: "(-s \d* \d* \d* *)*(-bm \d*\.*\d* )*""
+ */
 
 typedef enum {
-    DIFFUSE_MATERIAL_PROPERTY,
-    NORMAL_MATERIAL_PROPERTY,
-    PARALLAX_MATERIAL_PROPERTY,
-    ROUGHNESS_MATERIAL_PROPERTY,
-    METALLIC_MATERIAL_PROPERTY,
-    AMBIENT_MATERIAL_PROPERTY,
-    SPECULAR_MATERIAL_PROPERTY,
-    EMISSION_MATERIAL_PROPERTY,
-    HEIGHT_MATERIAL_PROPERTY,
-    REFLECTION_MATERIAL_PROPERTY,
-    REFRACTION_MATERIAL_PROPERTY,
+    DIFFUSE_MATERIAL_PROPERTY,              // Kd / map_Kd
+    SPECULAR_MATERIAL_PROPERTY,             // Ks / map_Ks
+    AMBIENT_MATERIAL_PROPERTY,              // Ka
+    EMISSION_MATERIAL_PROPERTY,             // Ke / map_Ke
+
+    PARALLAX_MATERIAL_PROPERTY,             // Px / map_Px
+    ROUGHNESS_MATERIAL_PROPERTY,            // Pr / map_Pr
+    SHEEN_MATERIAL_PROPERTY,                // Ps / map_Ps
+    METALLIC_MATERIAL_PROPERTY,             // Pm / map_Pm
+    CLEARCOAT_THICKNESS_MATERIAL_PROPERTY,  // Pc
+    CLEARCOAT_ROUGHNESS_MATERIAL_PROPERTY,  // Pcr
+
+    NORMAL_MATERIAL_PROPERTY,               // bump / map_Bump
+    // HEIGHT_MATERIAL_PROPERTY,
+    REFLECTION_MATERIAL_PROPERTY,           // refl
+    ANISOTROPY_MATERIAL_PROPERTY,           // aniso
+    ANISOTROPY_ROTATION_MATERIAL_PROPERTY,  // anisor
     MATERIAL_PROPERTY_COUNT
 } MaterialProperties;
 
 typedef struct Material {
-    char name[20]; // On pourrait imaginer une somme des lettres en exposant ou une conversion en base 64 / MD5 pour obtenir un identifiant unique plus simple à retrouver.
+    char name[128]; // On pourrait imaginer une somme des lettres en exposant ou une conversion en base 64 / MD5 pour obtenir un identifiant unique plus simple à retrouver.
     Vec3f flatColors[MATERIAL_PROPERTY_COUNT];
     TextureMap textureMaps[MATERIAL_PROPERTY_COUNT];
-    f32 specularExp;
-    f32 opacity;
-    f32 opticalDensity;
-    u8 illumFlag;
+    f32 specularExp;                        // Ns
+    f32 opacity;                            // d
+    f32 opticalDensity;                     // Ni
+    u8 illumFlag;                           // illum
 } Material;
 
 typedef struct Face {

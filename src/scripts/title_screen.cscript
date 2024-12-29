@@ -21,7 +21,7 @@ NEW_SCRIPT(play_game_button)
 		
 		queue_push(&callQueue, change_scene);
 		queue_push(&callQueue, &mainNodeTree.root);
-		queue_push(&callQueue, "assets/scenes/scene_test.scene");
+		queue_push(&callQueue, "assets/scenes/fpschess.scene");
 		queue_push(&callQueue, &mainNodeTree.camera);
 		queue_push(&callQueue, mainNodeTree.scripts);
 		*button->checked = false;

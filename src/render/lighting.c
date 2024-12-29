@@ -85,24 +85,31 @@ void configure_directional_lighting(Window *window, Node *root, Camera *c, World
     switch (light->type) {
         case CLASS_TYPE_POINTLIGHT:
             {
-            f32 near_plane = 1.0f, far_plane = 50.0f;
+            f32 near_plane = 1.0f, far_plane = 8000.0f;
             glm_perspective(to_radians(90.0f), SHADOW_WIDTH/SHADOW_HEIGHT, near_plane, far_plane, lightProjection);
-            //glm_ortho(-50.0f, 50.0f, -50.0f, 50.0f, near_plane, far_plane, lightProjection);
 
             vec3 directions[6] = {
                 { 1.0f, 0.0f, 0.0f},
                 {-1.0f, 0.0f, 0.0f},
                 { 0.0f, 1.0f, 0.0f},
                 { 0.0f,-1.0f, 0.0f},
-                { 0.0f, 0.0f, 1.0f},
                 { 0.0f, 0.0f,-1.0f},
+                { 0.0f, 0.0f, 1.0f},
+            };
+
+            vec3 upVectors[6] = {
+                { 0.0f, -1.0f,  0.0f},  // +X
+                { 0.0f, -1.0f,  0.0f},  // -X
+                { 0.0f,  0.0f,  1.0f},  // +Y (top)
+                { 0.0f,  0.0f, -1.0f},  // -Y (bottom)
+                { 0.0f, -1.0f,  0.0f},  // +Z
+                { 0.0f, -1.0f,  0.0f}   // -Z
             };
 
             vec3 lightPos   = {light->globalPos[0], light->globalPos[1], light->globalPos[2]};
-            vec3 lightUp    = {0.0f, 1.0f,  0.0f};
             vec3 lightB;
             glm_vec3_sub(lightPos, directions[pointLightId], lightB);
-            glm_lookat(lightPos, lightB, lightUp, lightView);
+            glm_lookat(lightPos, lightB, upVectors[pointLightId], lightView);
 
             storageBufferIndex = (lightsCount[POINT_LIGHT]*6+pointLightId)*sizeof(mat4)+100*sizeof(mat4);
             if (pointLightId == 5) lightsCount[POINT_LIGHT]++;
@@ -110,8 +117,8 @@ void configure_directional_lighting(Window *window, Node *root, Camera *c, World
             break;
         case CLASS_TYPE_DIRECTIONALLIGHT:
             {
-            f32 near_plane = -50.0f, far_plane = 50.0f;
-            glm_ortho(-50.0f, 50.0f, -50.0f, 50.0f, near_plane, far_plane, lightProjection);
+            f32 near_plane = -50.0f, far_plane = 200.0f;
+            glm_ortho(-near_plane, near_plane, -near_plane, near_plane, near_plane, far_plane, lightProjection);
             vec3 dir = {1.0, 0.0, 0.0};
 
             glm_vec3_rotate(dir, to_radians(light->rot[0]), (vec3){1.0f, 0.0f, 0.0f});
@@ -131,14 +138,13 @@ void configure_directional_lighting(Window *window, Node *root, Camera *c, World
             break;
         case CLASS_TYPE_SPOTLIGHT:
             {
-            f32 near_plane = 1.0f, far_plane = 50.0f;
+            f32 near_plane = 1.0f, far_plane = 200.0f;
             glm_perspective(to_radians(90.0f), SHADOW_WIDTH/SHADOW_HEIGHT, near_plane, far_plane, lightProjection);
-            //glm_ortho(-50.0f, 50.0f, -50.0f, 50.0f, near_plane, far_plane, lightProjection);
             vec3 dir;
 
-            dir[0] = sin(-light->globalRot[1] * PI/180);
-            dir[1] = light->globalRot[0] * PI/180;
-            dir[2] = -cos(-light->globalRot[1] * PI/180);
+            dir[0] = sin(-to_radians(light->globalRot[1]));
+            dir[1] = to_radians(light->globalRot[0]);
+            dir[2] = -cos(-to_radians(light->globalRot[1]));
 
             vec3 lightPos   = {light->globalPos[0], light->globalPos[1], light->globalPos[2]};
             vec3 lightFront = {dir[0], dir[1], dir[2]};

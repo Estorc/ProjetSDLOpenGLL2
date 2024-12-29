@@ -152,6 +152,9 @@ vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir) {
     return currentTexCoords;
 }
 
+#define BIAS 0.0003
+#define SHADOW_ATTENUATION 6.0
+
 float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir, int index)
 {
     // perform perspective divide
@@ -163,7 +166,7 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir, int 
     // get depth of current fragment from light's perspective
     float currentDepth = projCoords.z;
     // check whether current frag pos is in shadow
-    float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.05);  
+    float bias = max(BIAS * (1.0 - dot(normal, lightDir)), BIAS);  
 
     float shadow = 0.0;
     vec2 texelSize = 1.0 / textureSize(shadowMap, 0).xy;
@@ -175,7 +178,7 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir, int 
             shadow += currentDepth - bias > pcfDepth ? 1.0 : 0.0;        
         }    
     }
-    shadow /= 9.0;
+    shadow /= SHADOW_ATTENUATION;
 
     if(projCoords.z > 1.0)
         shadow = 0.0;
@@ -202,10 +205,10 @@ void main()
         tex = texture(diffuseMap, texCoords);
         if (tex.a < 0.1)
             discard;
-        color = tex.rgb;
     } else {
-        color = material.diffuse;
+        tex = vec4(material.diffuse, 1.0);
     }
+    color = tex.rgb;
 
 
     vec3 normal = fs_in.Normal;
