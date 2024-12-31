@@ -77,7 +77,8 @@ void configure_global_lighting(Window *window, Node *root, Camera *c, WorldShade
 void configure_directional_lighting(Window *window, Node *root, Camera *c, WorldShaders *shaders, Node *light, int index, u8 lightsCount[LIGHTS_COUNT], int pointLightId) {
 
     // Lights and shadows
-    mat4 lightProjection, lightView;
+    mat4 lightProjection;
+    mat4 lightView = GLM_MAT4_IDENTITY_INIT;
     mat4 lightSpaceMatrix;
 
     size_t storageBufferIndex;
@@ -140,18 +141,15 @@ void configure_directional_lighting(Window *window, Node *root, Camera *c, World
             {
             f32 near_plane = 1.0f, far_plane = 200.0f;
             glm_perspective(to_radians(90.0f), SHADOW_WIDTH/SHADOW_HEIGHT, near_plane, far_plane, lightProjection);
-            vec3 dir;
 
-            dir[0] = sin(-to_radians(light->globalRot[1]));
-            dir[1] = to_radians(light->globalRot[0]);
-            dir[2] = -cos(-to_radians(light->globalRot[1]));
+            vec3 rot, pos;
+            glm_vec3_negate_to(light->globalPos, pos);
+            glm_vec3_negate_to(light->globalRot, rot);
 
-            vec3 lightPos   = {light->globalPos[0], light->globalPos[1], light->globalPos[2]};
-            vec3 lightFront = {dir[0], dir[1], dir[2]};
-            vec3 lightUp    = {0.0f, 1.0f,  0.0f};
-            vec3 lightB;
-            glm_vec3_sub(lightPos, lightFront, lightB);
-            glm_lookat(lightPos, lightB, lightUp, lightView);
+            glm_rotate(lightView, to_radians(rot[0]), (vec3){1.0f, 0.0f, 0.0f});
+            glm_rotate(lightView, to_radians(rot[1]), (vec3){0.0f, 1.0f, 0.0f});
+            glm_rotate(lightView, to_radians(rot[2]), (vec3){0.0f, 0.0f, 1.0f});
+            glm_translate(lightView, (vec3){pos[0], pos[1], pos[2]});
 
             storageBufferIndex = lightsCount[SPOT_LIGHT]*sizeof(mat4)+200*sizeof(mat4);
             }

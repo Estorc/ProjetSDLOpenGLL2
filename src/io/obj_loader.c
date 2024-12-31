@@ -145,9 +145,7 @@ void close_realloc_obj(ObjectMesh *obj, u32 vi, u32 fi, u32 vni, u32 vti) {
     free(obj->faces);
     obj->displayLists = malloc(sizeof(GLuint) * obj->materialsCount);
     POINTER_CHECK(obj->displayLists);
-    for (int j = 0; j < obj->materialsCount; j++) {
-        obj->displayLists[j] = 0;
-    }
+    memset(obj->displayLists, 0, sizeof(GLuint) * obj->materialsCount);
 }
 
 
@@ -288,22 +286,14 @@ int load_obj_model(char *path, Model **modelPtr) {
             } while ((symbol = getc(file)) == ' ');
             object->faces[fi].length = i;
             for (int j = 0; j < i; j++) {
-                object->faces[fi].vertex[j] = vertexId[j]-offv;
+                object->faces[fi].vertex[j] = vertexId[j] - offv;
 
-                
-                object->facesVertex[fi][j][0] = object->vertex[vertexId[j]-offv][0];
-                object->facesVertex[fi][j][1] = object->vertex[vertexId[j]-offv][1];
-                object->facesVertex[fi][j][2] = object->vertex[vertexId[j]-offv][2];
-                object->facesVertex[fi][j][3] = object->normals[normalsId[j]-offvn][0];
-                object->facesVertex[fi][j][4] = object->normals[normalsId[j]-offvn][1];
-                object->facesVertex[fi][j][5] = object->normals[normalsId[j]-offvn][2];
-                object->facesVertex[fi][j][6] = object->textureVertex[textureVertexId[j]-offvt][0];
-                object->facesVertex[fi][j][7] = object->textureVertex[textureVertexId[j]-offvt][1];
-                //object->facesVertex[fi][j][8] = selectedMaterialId;
+                memcpy(&object->facesVertex[fi][j][0], &object->vertex[vertexId[j] - offv], sizeof(float) * 3);
+                memcpy(&object->facesVertex[fi][j][3], &object->normals[normalsId[j] - offvn], sizeof(float) * 3);
+                memcpy(&object->facesVertex[fi][j][6], &object->textureVertex[textureVertexId[j] - offvt], sizeof(float) * 2);
 
-                //object->facesVertex[fi][j] = vertexId[j]-offv;
-                object->faces[fi].normals[j] = normalsId[j]-offvn;
-                object->faces[fi].textureVertex[j] = textureVertexId[j]-offvt;
+                object->faces[fi].normals[j] = normalsId[j] - offvn;
+                object->faces[fi].textureVertex[j] = textureVertexId[j] - offvt;
             }
             
             vec2 deltaUV1;
@@ -330,13 +320,8 @@ int load_obj_model(char *path, Model **modelPtr) {
             glm_vec3_normalize(bitangent);
 
             for (int j = 0; j < i; j++) {
-                object->facesVertex[fi][j][8] = tangent[0];
-                object->facesVertex[fi][j][9] = tangent[1];
-                object->facesVertex[fi][j][10] = tangent[2];
-
-                object->facesVertex[fi][j][11] = bitangent[0];
-                object->facesVertex[fi][j][12] = bitangent[1];
-                object->facesVertex[fi][j][13] = bitangent[2];
+                memcpy(&object->facesVertex[fi][j][8], tangent, sizeof(tangent));
+                memcpy(&object->facesVertex[fi][j][11], bitangent, sizeof(bitangent));
             }
             fi++;
             break;

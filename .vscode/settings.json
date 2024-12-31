@@ -77,12 +77,13 @@
         "ostream": "c",
         "stdexcept": "c",
         "cinttypes": "c",
-        "collision_util.h": "c"
+        "collision_util.h": "c",
+        "sdl_opengl.h": "c"
     },
     "files.exclude": {
         "bin/": true,
         "lib/": true,
-        "src/classes/__processed__/": true
+        "src/classes/__processed__/": false
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

@@ -253,16 +253,12 @@ bin/debug/src/main.o: src/main.c /usr/include/stdc-predef.h src/types.h \
  src/render/../math/math_util.h src/render/../math/graph.h \
  src/render/../io/shader.h src/io/shader.h src/utils/skybox.h \
  src/io/scene_loader.h src/physics/physics.h src/physics/../io/input.h \
- src/physics/bodies.h src/physics/../math/math_util.h \
- src/physics/../math/graph.h src/physics/../io/model.h \
- src/scripts/scripts.h src/scripts/../io/input.h src/gui/frame.h \
- src/settings.h src/memory.h src/buffer.h src/storage/queue.h \
- src/classes/classes.h src/classes/import_class.h \
- src/classes/__processed__/node.class.h \
- src/classes/__processed__/nodes_bodies_body.class.h \
- src/classes/__processed__/nodes_bodies_kinematic_body.class.h \
- src/classes/__processed__/nodes_bodies_rigid_body.class.h \
- src/classes/__processed__/nodes_bodies_static_body.class.h \
+ src/physics/../render/lighting.h src/physics/bodies.h \
+ src/physics/../math/math_util.h src/physics/../math/graph.h \
+ src/physics/../io/model.h src/scripts/scripts.h \
+ src/scripts/../io/input.h src/gui/frame.h src/settings.h src/memory.h \
+ src/buffer.h src/storage/queue.h src/classes/classes.h \
+ src/classes/import_class.h src/classes/__processed__/node.class.h \
  src/classes/__processed__/nodes_camera.class.h \
  src/classes/__processed__/nodes_cshapes_box_cshape.class.h \
  src/classes/__processed__/nodes_cshapes_capsule_cshape.class.h \
@@ -287,6 +283,12 @@ bin/debug/src/main.o: src/main.c /usr/include/stdc-predef.h src/types.h \
  src/classes/__processed__/nodes_lights_spot_light.class.h \
  src/classes/__processed__/nodes_mesh.class.h \
  src/classes/__processed__/nodes_model.class.h \
+ src/classes/__processed__/nodes_physics_area.class.h \
+ src/classes/__processed__/nodes_physics_bodies_body.class.h \
+ src/classes/__processed__/nodes_physics_bodies_kinematic_body.class.h \
+ src/classes/__processed__/nodes_physics_bodies_rigid_body.class.h \
+ src/classes/__processed__/nodes_physics_bodies_static_body.class.h \
+ src/classes/__processed__/nodes_physics_physical_node.class.h \
  src/classes/__processed__/nodes_scene.class.h \
  src/classes/__processed__/nodes_skybox.class.h \
  src/classes/__processed__/nodes_texture.class.h \
@@ -294,10 +296,8 @@ bin/debug/src/main.o: src/main.c /usr/include/stdc-predef.h src/types.h \
  src/classes/../types.h src/classes/../config.h \
  src/scripts/loading_scripts.h src/scripts/camera.cscript \
  src/scripts/flashlight.cscript src/scripts/free_camera.cscript \
- src/scripts/helice.cscript src/scripts/level_editor.cscript \
- src/scripts/../io/node_loader.h src/scripts/../utils/editor_utils.c \
- src/scripts/../io/osio.h src/scripts/level_editor2.cscript \
- src/scripts/menu.cscript src/scripts/pinball.cscript \
- src/scripts/player.cscript src/scripts/settings.cscript \
- src/scripts/test.cscript src/scripts/title_screen.cscript \
- src/scripts/twomp.cscript
+ src/scripts/level_editor.cscript src/scripts/../io/node_loader.h \
+ src/scripts/../utils/editor_utils.c src/scripts/../io/osio.h \
+ src/scripts/level_editor2.cscript src/scripts/menu.cscript \
+ src/scripts/pinball.cscript src/scripts/player.cscript \
+ src/scripts/settings.cscript src/scripts/title_screen.cscript

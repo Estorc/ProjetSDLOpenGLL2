@@ -226,8 +226,6 @@ va_end(args);
                     Button *button = (Button *) childFrame->button;
                     if (button->state != BUTTON_STATE_NORMAL) {
                         if (selectList->selected) *selectList->selected = i;
-                        printf("Selected: %d\n", i);
-                        printf("True Selected: %d\n", *selectList->selected);
                         break;
                     }
                 }

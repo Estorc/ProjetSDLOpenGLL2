@@ -129,6 +129,17 @@ va_end(args);
 }
 
 
+void __class_method_node_is_area(unsigned type, ...) {
+va_list args;
+va_start(args, type);
+Node * this = va_arg(args, Node *);
+bool * area = va_arg(args, bool *);
+va_end(args);
+(void)this;
+    *area = false;
+}
+
+
 void __class_method_node_is_gui_element(unsigned type, ...) {
 va_list args;
 va_start(args, type);

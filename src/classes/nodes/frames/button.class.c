@@ -9,7 +9,7 @@
 #include "gui/frame.h"
 #include "io/input.h"
 
-class Button @promote extends Frame {
+class Button extends Frame {
     __containerType__ Node *
 
     void constructor() {

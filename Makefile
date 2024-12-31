@@ -66,7 +66,6 @@ MODULES += src/render/depth_map.o
 
 MODULES += src/physics/physics.o
 MODULES += src/physics/collision_util.o
-MODULES += src/physics/isolate.o
 MODULES += src/physics/collision.o
 MODULES += src/physics/bodies.o
 

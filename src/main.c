@@ -79,9 +79,7 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
 
         buffers.collisionBuffer.index = 0;
         buffers.lightingBuffer.index = 0;
-        for (int i = 0; i < LIGHTS_COUNT; i++) {
-            lightsCount[i] = 0;
-        }
+        memset(lightsCount, 0, sizeof(lightsCount));
         update_physics(mainNodeTree.root, (vec3) {0.0, 0.0, 0.0}, (vec3) {0.0, 0.0, 0.0}, (vec3) {1.0, 1.0, 1.0}, fixedTimeStep, &input, window, lightsCount, true);
         window->resized = false;
         accumulator -= fixedTimeStep;
@@ -111,7 +109,6 @@ int main(int argc, char *argv[]) {
     #include "scripts/loading_scripts.h"
 
     if (create_window("Physics Engine Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL, &window) == -1) return -1;
-    
     init_input(&input);
 
 

@@ -9,7 +9,7 @@
 #include "window.h"
 #include "gui/frame.h"
 
-class Label @promote extends Frame {
+class Label extends Frame {
     __containerType__ Node *
 
     void constructor() {

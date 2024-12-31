@@ -5,8 +5,10 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+struct Node;
+
 typedef struct Camera {
-    Vec3f pos,dir,rot;
+    vec3 pos,rot;
 } Camera;
 
 struct WorldShaders;

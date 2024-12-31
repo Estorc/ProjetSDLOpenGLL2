@@ -8,7 +8,7 @@
 #include "window.h"
 #include "gui/frame.h"
 
-class ControlFrame @promote extends Frame {
+class ControlFrame extends Frame {
     __containerType__ Node *
 
     void constructor() {

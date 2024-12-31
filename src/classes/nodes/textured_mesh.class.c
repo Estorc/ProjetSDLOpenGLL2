@@ -4,7 +4,7 @@
 #include "storage/node.h"
 #include "memory.h"
 
-class TexturedMesh @promote extends Node {
+class TexturedMesh extends Node {
     __containerType__ Node *
 
     void constructor(struct TexturedMesh *texturedMesh) {

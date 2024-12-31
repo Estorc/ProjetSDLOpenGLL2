@@ -7,8 +7,8 @@ NEW_SCRIPT(camera)
 
 	if (!node->parent->params[0].b) {
 		targetRot[1] -= fmod((f32) (input->mouse.x - input->mouse.lastX) * delta * 100.0, 360.0);
-		targetRot[0] -= fmod((f32) (input->mouse.lastY - input->mouse.y) * delta * 100.0, 360.0);
-		targetRot[0] = CLAMP(-180,targetRot[0],180);
+		targetRot[0] += fmod((f32) (input->mouse.lastY - input->mouse.y) * delta * 100.0, 360.0);
+		targetRot[0] = CLAMP(-90,targetRot[0],90);
 	}
 
 	Vec3fApproach(node->rot, targetRot, (0.1/delta));

@@ -5,10 +5,6 @@ bin/debug/src/classes/__processed__/nodes_lights_directional_light.class.o: \
  src/classes/__processed__/../../classes/classes.h \
  src/classes/__processed__/../../classes/import_class.h \
  src/classes/__processed__/../../classes/__processed__/node.class.h \
- src/classes/__processed__/../../classes/__processed__/nodes_bodies_body.class.h \
- src/classes/__processed__/../../classes/__processed__/nodes_bodies_kinematic_body.class.h \
- src/classes/__processed__/../../classes/__processed__/nodes_bodies_rigid_body.class.h \
- src/classes/__processed__/../../classes/__processed__/nodes_bodies_static_body.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_camera.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_cshapes_box_cshape.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_cshapes_capsule_cshape.class.h \
@@ -33,6 +29,12 @@ bin/debug/src/classes/__processed__/nodes_lights_directional_light.class.o: \
  src/classes/__processed__/../../classes/__processed__/nodes_lights_spot_light.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_mesh.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_model.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_physics_area.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_physics_bodies_body.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_physics_bodies_kinematic_body.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_physics_bodies_rigid_body.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_physics_bodies_static_body.class.h \
+ src/classes/__processed__/../../classes/__processed__/nodes_physics_physical_node.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_scene.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_skybox.class.h \
  src/classes/__processed__/../../classes/__processed__/nodes_texture.class.h \

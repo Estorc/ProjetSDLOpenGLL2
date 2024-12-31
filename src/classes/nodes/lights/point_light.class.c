@@ -5,13 +5,14 @@
 #include "render/lighting.h"
 #include "buffer.h"
 
-class PointLight @promote extends Light {
+class PointLight extends Light {
     __containerType__ Node *
 
     void constructor(struct PointLight *pointLight) {
         this->object = pointLight;
         this->type = __type__;
         SUPER(initialize_node);
+        SUPER(init_light);
     }
 
     void cast(void ** data) {

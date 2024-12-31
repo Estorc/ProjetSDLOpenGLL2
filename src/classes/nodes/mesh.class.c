@@ -3,7 +3,7 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class Mesh @promote extends Node {
+class Mesh extends Node {
     __containerType__ Node *
 
     void constructor(struct Mesh *mesh) {

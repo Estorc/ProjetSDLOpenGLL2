@@ -1,3 +1,6 @@
+#pragma once
+
+
 enum CollisionsCode {
     CTEST_BOX_WITH_BOX              = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_BOXCSHAPE << 8,
     CTEST_BOX_WITH_SPHERE           = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_SPHERECSHAPE << 8,

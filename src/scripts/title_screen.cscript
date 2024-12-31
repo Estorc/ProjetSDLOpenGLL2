@@ -2,7 +2,7 @@ NEW_SCRIPT(title_screen_camera)
 
 	node->rot[1] += 1.0f;
 	const float distance = 25.0f;
-	glm_vec3_copy((vec3) {sin(to_radians(node->rot[1]) + PI)*distance, 5.0f, cos(to_radians(node->rot[1]) + PI)*distance}, node->pos);
+	glm_vec3_copy((vec3) {sin(to_radians(node->rot[1]))*distance, 5.0f, cos(to_radians(node->rot[1]))*distance}, node->pos);
 
 END_SCRIPT(title_screen_camera)
 
@@ -21,7 +21,7 @@ NEW_SCRIPT(play_game_button)
 		
 		queue_push(&callQueue, change_scene);
 		queue_push(&callQueue, &mainNodeTree.root);
-		queue_push(&callQueue, "assets/scenes/fpschess.scene");
+		queue_push(&callQueue, "assets/scenes/scene_test.scene");
 		queue_push(&callQueue, &mainNodeTree.camera);
 		queue_push(&callQueue, mainNodeTree.scripts);
 		*button->checked = false;

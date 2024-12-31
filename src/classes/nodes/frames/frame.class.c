@@ -9,7 +9,7 @@
 #include "gui/frame.h"
 #include "memory.h"
 
-class Frame @promote extends Node {
+class Frame extends Node {
     __containerType__ Node *
 
     void constructor() {

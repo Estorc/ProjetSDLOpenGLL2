@@ -9,7 +9,7 @@
 #include "gui/frame.h"
 #include "io/input.h"
 
-class SelectList @promote extends Frame {
+class SelectList extends Frame {
     __containerType__ Node *
 
     void constructor() {
@@ -185,8 +185,6 @@ class SelectList @promote extends Frame {
                         Button *button = (Button *) childFrame->button;
                         if (button->state != BUTTON_STATE_NORMAL) {
                             if (selectList->selected) *selectList->selected = i;
-                            printf("Selected: %d\n", i);
-                            printf("True Selected: %d\n", *selectList->selected);
                             break;
                         }
                     }

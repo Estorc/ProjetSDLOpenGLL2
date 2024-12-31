@@ -5,13 +5,14 @@
 #include "render/lighting.h"
 #include "buffer.h"
 
-class DirectionalLight @promote extends Light {
+class DirectionalLight extends Light {
     __containerType__ Node *
 
     void constructor(struct DirectionalLight *directionalLight) {
         this->object = directionalLight;
         this->type = __type__;
         SUPER(initialize_node);
+        SUPER(init_light);
     }
 
     void cast(void ** data) {

@@ -3,7 +3,7 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class Framebuffer @promote extends Node {
+class Framebuffer extends Node {
     __containerType__ Node *
 
     void constructor(FrameBuffer *frameBuffer) {

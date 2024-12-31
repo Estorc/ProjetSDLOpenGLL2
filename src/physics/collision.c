@@ -41,6 +41,22 @@ unsigned int get_collision_code(Node *shapeA, Node *shapeB) {
 }
 
 
+void apply_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 angularNormal, float penetrationDepth) {
+    bool conditionA, conditionB;
+    METHOD(shapeA->parent, is_body, &conditionA);
+    METHOD(shapeB->parent, is_body, &conditionB);
+    if (conditionA && conditionB)
+        apply_body_collision(shapeA, shapeB, collisionNormal, angularNormal, penetrationDepth);
+    METHOD(shapeA->parent, is_area, &conditionA);
+    if (conditionA)
+        METHOD(shapeA->parent, collect_node, shapeB, penetrationDepth);
+    METHOD(shapeB->parent, is_area, &conditionB);
+    if (conditionB)
+        METHOD(shapeB->parent, collect_node, shapeA, penetrationDepth);
+    
+}
+
+
 
 // Main SAT algorithm for box-box collision detection
 bool check_collision_box_with_box(Node *boxB, Node *boxA) {
@@ -380,8 +396,99 @@ bool check_collision_box_with_mesh(Node *shapeA, Node *shapeB) {
     return 0;
 }
 
-bool check_collision_box_with_ray(Node *shapeA, Node *shapeB) {
-    return 0;
+bool check_collision_box_with_ray(struct Node *shapeA, struct Node *shapeB) {
+    Node *boxShape, *rayShape;
+    int priorityA, priorityB;
+    METHOD(shapeA, get_priority, &priorityA);
+    METHOD(shapeB, get_priority, &priorityB);
+    if (priorityA < priorityB) {
+        boxShape = shapeA;
+        rayShape = shapeB;
+    } else {
+        boxShape = shapeB;
+        rayShape = shapeA;
+    }
+
+    // Get ray properties
+    vec3 rayOrigin;
+    glm_vec3_copy(rayShape->globalPos, rayOrigin);
+
+    vec3 rayDirection = {0.0f, 0.0f, -1.0f};
+    glm_vec3_rotate(rayDirection, to_radians(rayShape->globalRot[0]), (vec3){1.0f, 0.0f, 0.0f});
+    glm_vec3_rotate(rayDirection, to_radians(rayShape->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
+    glm_vec3_rotate(rayDirection, to_radians(rayShape->globalRot[2]), (vec3){0.0f, 0.0f, 1.0f});
+
+    // Get cube properties
+    vec3 cubeHalfExtents;
+    glm_vec3_copy(boxShape->globalScale, cubeHalfExtents);
+    
+    mat4 cubeRotation = GLM_MAT4_IDENTITY_INIT;  // Rotation matrix of the cube
+    glm_rotate(cubeRotation, to_radians(boxShape->globalRot[0]), (vec3){1.0f, 0.0f, 0.0f});
+    glm_rotate(cubeRotation, to_radians(boxShape->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
+    glm_rotate(cubeRotation, to_radians(boxShape->globalRot[2]), (vec3){0.0f, 0.0f, 1.0f});
+
+    // Step 1: Calculate the inverse of the cube's rotation matrix
+    mat4 inverseCubeRotation;
+    glm_mat4_inv(cubeRotation, inverseCubeRotation);
+
+    // Step 2: Transform the ray's origin and direction into the cube's local space
+    vec3 localRayOrigin, localRayDirection;
+    vec3 relativeRayOrigin;
+    glm_vec3_sub(rayOrigin, boxShape->globalPos, relativeRayOrigin);  // ray origin relative to the cube center
+    glm_mat4_mulv3(inverseCubeRotation, relativeRayOrigin, 1.0f, localRayOrigin);  // Rotate the relative position
+    glm_mat4_mulv3(inverseCubeRotation, rayDirection, 0.0f, localRayDirection);  // Rotate the direction
+
+    // Step 3: Perform the AABB vs. ray collision check
+    float tMin = -FLT_MAX, tMax = FLT_MAX;
+    for (int i = 0; i < 3; i++) {
+        if (fabs(localRayDirection[i]) < FLT_EPSILON) {
+            // Ray is parallel to the slab. No hit if origin not within slab
+            if (localRayOrigin[i] < -cubeHalfExtents[i] || localRayOrigin[i] > cubeHalfExtents[i]) {
+                return 0;  // No collision
+            }
+        } else {
+            // Compute intersection t value of ray with near and far plane of slab
+            float t1 = (-cubeHalfExtents[i] - localRayOrigin[i]) / localRayDirection[i];
+            float t2 = (cubeHalfExtents[i] - localRayOrigin[i]) / localRayDirection[i];
+            // Make t1 be intersection with near plane, t2 with far plane
+            if (t1 > t2) {
+                float temp = t1;
+                t1 = t2;
+                t2 = temp;
+            }
+            // Compute the intersection of slab intersection intervals
+            if (t1 > tMin) tMin = t1;
+            if (t2 < tMax) tMax = t2;
+            // Exit with no collision as soon as slab intersection becomes empty
+            if (tMin > tMax) {
+                
+                return 0;  // No collision
+            }
+        }
+    }
+    if (tMin < 0) {
+        
+        return 0;  // No collision
+    }
+
+    // If we reach here, there is a collision
+    vec3 collisionPoint;
+    glm_vec3_scale(localRayDirection, tMin, collisionPoint);
+    glm_vec3_add(localRayOrigin, collisionPoint, collisionPoint);
+
+    vec3 collisionNormal = {0.0f, 0.0f, 0.0f};
+    for (int i = 0; i < 3; i++) {
+        if (fabs(collisionPoint[i] - cubeHalfExtents[i]) < FLT_EPSILON) {
+            collisionNormal[i] = 1.0f;
+        } else if (fabs(collisionPoint[i] + cubeHalfExtents[i]) < FLT_EPSILON) {
+            collisionNormal[i] = -1.0f;
+        }
+    }
+
+    glm_vec3_rotate_m4(cubeRotation, collisionNormal, collisionNormal);
+
+    apply_collision(shapeA, shapeB, collisionNormal, collisionNormal, tMin);
+    return 1;  // Collision detected
 }
 
 
@@ -483,8 +590,149 @@ bool check_collision_sphere_with_capsule(Node *shapeA, Node *shapeB) {
     return 0;
 }
 
-bool check_collision_sphere_with_ray(Node *shapeA, Node *shapeB) {
-    return 0;
+bool check_collision_sphere_with_mesh(Node *shapeA, Node *shapeB) {
+    vec3 collisionNormal;
+    vec3 angularNormal;
+    float penetrationDepth;
+    Node *sphereShape;
+    Node *meshShape;
+    int priorityA, priorityB;
+    METHOD(shapeA, get_priority, &priorityA);
+    METHOD(shapeB, get_priority, &priorityB);
+    if (priorityA < priorityB) {
+        sphereShape = shapeA;
+        meshShape = shapeB;
+    } else {
+        sphereShape = shapeB;
+        meshShape = shapeA;
+    }
+    MeshCollisionShape *mesh = (MeshCollisionShape *)meshShape->object;
+    float radius = sphereShape->scale[0];
+
+    mat4 meshRotation = GLM_MAT4_IDENTITY_INIT;
+    glm_rotate(meshRotation, to_radians(meshShape->globalRot[0]), (vec3){1.0f, 0.0f, 0.0f});
+    glm_rotate(meshRotation, to_radians(meshShape->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
+    glm_rotate(meshRotation, to_radians(meshShape->globalRot[2]), (vec3){0.0f, 0.0f, 1.0f});
+
+    mat4 inverseMeshRotation;
+    glm_mat4_inv(meshRotation, inverseMeshRotation);
+
+    bool collisionDetected = false;
+    float minPenetrationDepth = FLT_MAX;
+    vec3 bestCollisionNormal = {0.0f, 0.0f, 0.0f};
+
+    for (int i = 0; i < mesh->numFaces; ++i) {
+        vec3 face[3];
+        for (int j = 0; j < 3; ++j) {
+            glm_vec3_copy(mesh->facesVertex[i][j], face[j]);
+            glm_vec3_mul(face[j], meshShape->globalScale, face[j]);
+            glm_mat4_mulv3(meshRotation, face[j], 1.0f, face[j]);
+            glm_vec3_add(face[j], meshShape->globalPos, face[j]);
+        }
+
+        vec3 closestPoint;
+        closest_point_on_triangle(sphereShape->globalPos, face[0], face[1], face[2], closestPoint);
+
+        vec3 diff;
+        glm_vec3_sub(sphereShape->globalPos, closestPoint, diff);
+        float distanceSquared = glm_vec3_norm2(diff);
+
+        if (distanceSquared < radius * radius) {
+            float distance = sqrt(distanceSquared);
+            float penetration = radius - distance;
+            if (penetration < minPenetrationDepth) {
+                minPenetrationDepth = penetration;
+                glm_vec3_copy(diff, bestCollisionNormal);
+
+                glm_vec3_normalize(bestCollisionNormal);
+                glm_vec3_copy(bestCollisionNormal, collisionNormal);
+                glm_vec3_copy(bestCollisionNormal, angularNormal);
+                penetrationDepth = minPenetrationDepth;
+                // Ensure the normal vector is oriented correctly
+                vec3 toSphere;
+                glm_vec3_sub(sphereShape->globalPos, closestPoint, toSphere);
+                if (glm_vec3_dot(collisionNormal, toSphere) < 0.0f) {
+                    glm_vec3_negate(collisionNormal);
+                }
+                if (priorityA < priorityB) glm_vec3_negate(collisionNormal);
+                apply_collision(shapeA, shapeB, collisionNormal, angularNormal, penetrationDepth);
+
+                collisionDetected = true;
+            }
+        }
+    }
+
+    if (collisionDetected) {
+        return true;
+    }
+    return false;
+}
+
+bool check_collision_sphere_with_ray(struct Node *shapeA, struct Node *shapeB) {
+    Node *sphereShape, *rayShape;
+    int priorityA, priorityB;
+    METHOD(shapeA, get_priority, &priorityA);
+    METHOD(shapeB, get_priority, &priorityB);
+    if (priorityA < priorityB) {
+        sphereShape = shapeA;
+        rayShape = shapeB;
+    } else {
+        sphereShape = shapeB;
+        rayShape = shapeA;
+    }
+
+    // Get ray properties
+    vec3 rayOrigin;
+    glm_vec3_copy(rayShape->globalPos, rayOrigin);
+
+    vec3 rayDirection = {0.0f, 0.0f, -1.0f};
+    glm_vec3_rotate(rayDirection, to_radians(rayShape->globalRot[0]), (vec3){1.0f, 0.0f, 0.0f});
+    glm_vec3_rotate(rayDirection, to_radians(rayShape->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
+    glm_vec3_rotate(rayDirection, to_radians(rayShape->globalRot[2]), (vec3){0.0f, 0.0f, 1.0f});
+
+    // Get sphere properties
+    vec3 sphereCenter;
+    glm_vec3_copy(sphereShape->globalPos, sphereCenter);
+    float sphereRadius = sphereShape->globalScale[0];  // Assuming uniform scaling
+
+    // Compute the vector from the ray origin to the sphere center
+    vec3 oc;
+    glm_vec3_sub(rayOrigin, sphereCenter, oc);
+
+    // Compute the coefficients of the quadratic equation
+    float a = glm_vec3_dot(rayDirection, rayDirection);
+    float b = 2.0f * glm_vec3_dot(oc, rayDirection);
+    float c = glm_vec3_dot(oc, oc) - sphereRadius * sphereRadius;
+
+    // Compute the discriminant
+    float discriminant = b * b - 4 * a * c;
+
+    if (discriminant < 0) {
+        
+        return 0;  // No collision
+    } else {
+        float t = (-b - sqrt(discriminant)) / (2.0f * a);
+        if (t < 0) {
+            t = (-b + sqrt(discriminant)) / (2.0f * a);
+        }
+        if (t < 0) {
+            
+            return 0;  // No collision
+        }
+
+        // Compute the collision point
+        vec3 collisionPoint;
+        glm_vec3_scale(rayDirection, t, collisionPoint);
+        glm_vec3_add(rayOrigin, collisionPoint, collisionPoint);
+
+        // Compute the collision normal
+        vec3 collisionNormal;
+        glm_vec3_sub(collisionPoint, sphereCenter, collisionNormal);
+        glm_vec3_normalize(collisionNormal);
+        
+        apply_collision(shapeA, shapeB, collisionNormal, collisionNormal, t);
+        return 1;  // Collision detected
+    }
 }
 
 

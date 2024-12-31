@@ -9,7 +9,7 @@
 #include "gui/frame.h"
 #include "io/input.h"
 
-class RadioButton @promote extends Button {
+class RadioButton extends Button {
     __containerType__ Node *
 
     void constructor() {

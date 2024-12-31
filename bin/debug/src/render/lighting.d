@@ -258,10 +258,6 @@ bin/debug/src/render/lighting.o: src/render/lighting.c \
  src/render/depth_map.h src/render/../classes/classes.h \
  src/render/../classes/import_class.h \
  src/render/../classes/__processed__/node.class.h \
- src/render/../classes/__processed__/nodes_bodies_body.class.h \
- src/render/../classes/__processed__/nodes_bodies_kinematic_body.class.h \
- src/render/../classes/__processed__/nodes_bodies_rigid_body.class.h \
- src/render/../classes/__processed__/nodes_bodies_static_body.class.h \
  src/render/../classes/__processed__/nodes_camera.class.h \
  src/render/../classes/__processed__/nodes_cshapes_box_cshape.class.h \
  src/render/../classes/__processed__/nodes_cshapes_capsule_cshape.class.h \
@@ -286,6 +282,12 @@ bin/debug/src/render/lighting.o: src/render/lighting.c \
  src/render/../classes/__processed__/nodes_lights_spot_light.class.h \
  src/render/../classes/__processed__/nodes_mesh.class.h \
  src/render/../classes/__processed__/nodes_model.class.h \
+ src/render/../classes/__processed__/nodes_physics_area.class.h \
+ src/render/../classes/__processed__/nodes_physics_bodies_body.class.h \
+ src/render/../classes/__processed__/nodes_physics_bodies_kinematic_body.class.h \
+ src/render/../classes/__processed__/nodes_physics_bodies_rigid_body.class.h \
+ src/render/../classes/__processed__/nodes_physics_bodies_static_body.class.h \
+ src/render/../classes/__processed__/nodes_physics_physical_node.class.h \
  src/render/../classes/__processed__/nodes_scene.class.h \
  src/render/../classes/__processed__/nodes_skybox.class.h \
  src/render/../classes/__processed__/nodes_texture.class.h \

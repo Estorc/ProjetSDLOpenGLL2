@@ -3,7 +3,7 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class BoxCShape @promote extends CShape {
+class BoxCShape extends CShape {
     __containerType__ Node *
 
     void constructor(struct BoxCollisionShape *boxCollisionShape) {

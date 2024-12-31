@@ -3,7 +3,7 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class Node @promote {
+class Node {
     __containerType__ Node *
 
     void constructor() {
@@ -61,6 +61,10 @@ class Node @promote {
 
     void is_body(bool *body) {
         *body = false;
+    }
+
+    void is_area(bool *area) {
+        *area = false;
     }
 
     void is_gui_element(bool *result) {

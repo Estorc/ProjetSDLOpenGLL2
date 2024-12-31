@@ -12,6 +12,18 @@ static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_LIGHT;
 
 
 
+void __class_method_light_init_light(unsigned type, ...) {
+va_list args;
+va_start(args, type);
+Node * this = va_arg(args, Node *);
+va_end(args);
+(void)this;
+    this->flags |= NODE_LIGHT_ACTIVE;
+}
+
+
+
+
     static VBO vbo = 0;
 
     static VAO vao = 0;

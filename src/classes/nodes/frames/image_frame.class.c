@@ -9,7 +9,7 @@
 #include "window.h"
 #include "gui/frame.h"
 
-class ImageFrame @promote extends Frame {
+class ImageFrame extends Frame {
     __containerType__ Node *
 
     void constructor() {
@@ -23,6 +23,7 @@ class ImageFrame @promote extends Frame {
         METHOD(this, init_frame);
         frame->imageFrame = malloc(sizeof(ImageFrame));
         POINTER_CHECK(frame->imageFrame);
+        frame->flags &= ~FRAME_BACKGROUND;
         frame->relPos[0] = 0.0f;
         frame->relPos[1] = 0.0f;
         frame->scale[0] = 100.0f;
@@ -68,8 +69,10 @@ class ImageFrame @promote extends Frame {
  
     void free() {
         Frame *frame = (Frame *) this->object;
-        Label *label = (Label *) frame->label;
-        free(label);
+        ImageFrame *imageFrame = (ImageFrame *) frame->imageFrame;
+        free(imageFrame);
+        frame->flags &= ~FRAME_CONTENT; // Ensure the glTexture is not deleted
+        if (frame->contentSurface) SDL_FreeSurface(frame->contentSurface);
         SUPER(free);
     }
     

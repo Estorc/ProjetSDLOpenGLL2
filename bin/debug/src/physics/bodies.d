@@ -255,10 +255,6 @@ bin/debug/src/physics/bodies.o: src/physics/bodies.c \
  src/physics/../render/lighting.h src/physics/../classes/classes.h \
  src/physics/../classes/import_class.h \
  src/physics/../classes/__processed__/node.class.h \
- src/physics/../classes/__processed__/nodes_bodies_body.class.h \
- src/physics/../classes/__processed__/nodes_bodies_kinematic_body.class.h \
- src/physics/../classes/__processed__/nodes_bodies_rigid_body.class.h \
- src/physics/../classes/__processed__/nodes_bodies_static_body.class.h \
  src/physics/../classes/__processed__/nodes_camera.class.h \
  src/physics/../classes/__processed__/nodes_cshapes_box_cshape.class.h \
  src/physics/../classes/__processed__/nodes_cshapes_capsule_cshape.class.h \
@@ -283,6 +279,12 @@ bin/debug/src/physics/bodies.o: src/physics/bodies.c \
  src/physics/../classes/__processed__/nodes_lights_spot_light.class.h \
  src/physics/../classes/__processed__/nodes_mesh.class.h \
  src/physics/../classes/__processed__/nodes_model.class.h \
+ src/physics/../classes/__processed__/nodes_physics_area.class.h \
+ src/physics/../classes/__processed__/nodes_physics_bodies_body.class.h \
+ src/physics/../classes/__processed__/nodes_physics_bodies_kinematic_body.class.h \
+ src/physics/../classes/__processed__/nodes_physics_bodies_rigid_body.class.h \
+ src/physics/../classes/__processed__/nodes_physics_bodies_static_body.class.h \
+ src/physics/../classes/__processed__/nodes_physics_physical_node.class.h \
  src/physics/../classes/__processed__/nodes_scene.class.h \
  src/physics/../classes/__processed__/nodes_skybox.class.h \
  src/physics/../classes/__processed__/nodes_texture.class.h \

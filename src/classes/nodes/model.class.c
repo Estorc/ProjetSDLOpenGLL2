@@ -4,7 +4,7 @@
 #include "storage/node.h"
 #include "memory.h"
 
-class Model @promote extends Node {
+class Model extends Node {
     __containerType__ Node *
 
     void constructor(struct Model *model) {

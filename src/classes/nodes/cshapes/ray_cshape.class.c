@@ -3,7 +3,7 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class RayCShape @promote extends CShape {
+class RayCShape extends CShape {
     __containerType__ Node *
 
     void constructor(struct RayCollisionShape *rayCollisionShape) {

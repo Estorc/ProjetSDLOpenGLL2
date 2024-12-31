@@ -20,6 +20,7 @@ va_end(args);
     this->object = directionalLight;
     this->type = __type__;
     SUPER(initialize_node);
+    SUPER(init_light);
 }
 
 

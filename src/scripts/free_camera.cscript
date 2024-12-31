@@ -9,6 +9,11 @@ NEW_SCRIPT(free_camera)
 
 	Camera *c = (Camera*) node->object;
 
+	vec3 dir = {0.0f, 0.0f, 1.0f};
+	glm_vec3_rotate(dir, c->rot[0], (vec3){1.0f, 0.0f, 0.0f});
+	glm_vec3_rotate(dir, c->rot[1], (vec3){0.0f, 1.0f, 0.0f});
+	glm_vec3_rotate(dir, c->rot[2], (vec3){0.0f, 0.0f, 1.0f});
+
 	if (glm_vec3_norm2(targetPos) == 0) glm_vec3_copy(node->pos, targetPos);
 	if (glm_vec3_norm2(targetRot) == 0) glm_vec3_copy(node->rot, targetRot);
 
@@ -23,12 +28,12 @@ NEW_SCRIPT(free_camera)
 		f32 forwardVel = 0.0f;
 		
 		if (input->active_keys & KEY_LEFT) {
-			targetPos[0] += -c->dir[2] * vel;
-			targetPos[2] += c->dir[0] * vel;
+			targetPos[0] += -dir[2] * vel;
+			targetPos[2] += dir[0] * vel;
 		};
 		if (input->active_keys & KEY_RIGHT) {
-			targetPos[0] -= -c->dir[2] * vel;
-			targetPos[2] -= c->dir[0] * vel;
+			targetPos[0] -= -dir[2] * vel;
+			targetPos[2] -= dir[0] * vel;
 		};
 
 		if (input->active_keys & KEY_JUMP) targetPos[1] += vel;
@@ -37,9 +42,9 @@ NEW_SCRIPT(free_camera)
 		if (input->active_keys & KEY_UP) forwardVel -= vel;
 		if (input->active_keys & KEY_DOWN) forwardVel += vel;
 
-		targetPos[0] += c->dir[0] * forwardVel;
-		targetPos[1] += c->dir[1] * forwardVel;
-		targetPos[2] += c->dir[2] * forwardVel;
+		targetPos[0] += dir[0] * forwardVel;
+		targetPos[1] += dir[1] * forwardVel;
+		targetPos[2] += dir[2] * forwardVel;
 	}
 
 	if (*active) {

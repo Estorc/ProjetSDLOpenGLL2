@@ -115,7 +115,21 @@ bin/debug/src/render/camera.o: src/render/camera.c \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
  src/render/../io/shader.h src/render/render.h src/render/../io/model.h \
- src/render/../memory.h /usr/include/SDL2/SDL.h \
+ src/render/../memory.h src/render/../storage/node.h \
+ src/render/../storage/../io/shader.h \
+ src/render/../storage/../render/camera.h \
+ src/render/../storage/../render/../types.h \
+ src/render/../storage/../render/../config.h \
+ src/render/../storage/../render/../math/math_util.h \
+ src/render/../storage/../render/../math/graph.h \
+ src/render/../storage/../render/../io/shader.h \
+ src/render/../storage/../physics/bodies.h \
+ src/render/../storage/../physics/../math/math_util.h \
+ src/render/../storage/../physics/../math/graph.h \
+ src/render/../storage/../physics/../io/model.h \
+ src/render/../storage/../scripts/scripts.h \
+ src/render/../storage/../scripts/../io/input.h \
+ src/render/../storage/../render/framebuffer.h /usr/include/SDL2/SDL.h \
  /usr/include/SDL2/SDL_main.h /usr/include/SDL2/SDL_stdinc.h \
  /usr/include/SDL2/SDL_config.h \
  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \

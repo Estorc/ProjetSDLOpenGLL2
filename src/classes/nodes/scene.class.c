@@ -4,7 +4,7 @@
 #include "io/scene_loader.h"
 #include "render/framebuffer.h"
 
-class Scene @promote extends Node {
+class Scene extends Node {
     __containerType__ Node *
 
     void constructor() {

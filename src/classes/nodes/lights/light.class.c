@@ -5,8 +5,13 @@
 #include "render/lighting.h"
 #include "buffer.h"
 
-class Light @promote extends Node {
+class Light extends Node {
     __containerType__ Node *
+
+
+    void init_light() {
+        this->flags |= NODE_LIGHT_ACTIVE;
+    }
 
 
     static VBO vbo = 0;

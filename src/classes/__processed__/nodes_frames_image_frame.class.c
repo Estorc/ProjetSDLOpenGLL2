@@ -30,6 +30,7 @@ va_end(args);
     METHOD(this, init_frame);
     frame->imageFrame = malloc(sizeof(ImageFrame));
     POINTER_CHECK(frame->imageFrame);
+    frame->flags &= ~FRAME_BACKGROUND;
     frame->relPos[0] = 0.0f;
     frame->relPos[1] = 0.0f;
     frame->scale[0] = 100.0f;
@@ -113,8 +114,10 @@ Node * this = va_arg(args, Node *);
 va_end(args);
 (void)this;
     Frame *frame = (Frame *) this->object;
-    Label *label = (Label *) frame->label;
-    free(label);
+    ImageFrame *imageFrame = (ImageFrame *) frame->imageFrame;
+    free(imageFrame);
+    frame->flags &= ~FRAME_CONTENT; // Ensure the glTexture is not deleted
+    if (frame->contentSurface) SDL_FreeSurface(frame->contentSurface);
     SUPER(free);
 }
     

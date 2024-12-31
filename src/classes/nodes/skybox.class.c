@@ -5,7 +5,7 @@
 #include "memory.h"
 #include "render/render.h"
 
-class Skybox @promote extends Node {
+class Skybox extends Node {
     __containerType__ Node *
 
     void constructor(struct TexturedMesh *texturedMesh) {

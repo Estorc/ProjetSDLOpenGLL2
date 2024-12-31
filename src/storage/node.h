@@ -43,7 +43,7 @@ enum NodeFlags {
     NODE_ACTIVE             = 1 << 0, // 0000 0001
     NODE_VISIBLE            = 1 << 1, // 0000 0010
     NODE_SCRIPT             = 1 << 2, // 0000 0100
-    NODE_UNUSED2            = 1 << 3, // 0000 1000
+    NODE_LIGHT_ACTIVE       = 1 << 3, // 0000 1000
     NODE_UNUSED3            = 1 << 4, // 0001 0000
     NODE_UNUSED4            = 1 << 5, // 0010 0000
     NODE_UNUSED5            = 1 << 6, // 0100 0000

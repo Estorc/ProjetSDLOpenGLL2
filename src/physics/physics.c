@@ -95,7 +95,7 @@ void get_center_of_mass(Node *node, vec3 com) {
 }
 
 
-void apply_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 angularNormal, float penetrationDepth) {
+void apply_body_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 angularNormal, float penetrationDepth) {
     // Mass calculation
     float massA, massB;
     get_mass(shapeA->parent, &massA);
@@ -308,9 +308,8 @@ void update_static_body(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta)
         glm_vec3_copy(node->globalScale, scale);
         check_collisions(staticBody->collisionsShapes[i]);
     }
-    for (int i = 0; i < staticBody->length; i++) {
-        buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index++] = staticBody->collisionsShapes[i];
-    }
+    memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], staticBody->collisionsShapes, staticBody->length * sizeof(staticBody->collisionsShapes[0]));
+    buffers.collisionBuffer.index += staticBody->length;
 }
 
 /**
@@ -345,9 +344,8 @@ void update_rigid_body(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) 
         glm_vec3_copy(node->globalScale, scale);
         check_collisions(rigidBody->collisionsShapes[i]);
     }
-    for (int i = 0; i < rigidBody->length; i++) {
-        buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index++] = rigidBody->collisionsShapes[i];
-    }
+    memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], rigidBody->collisionsShapes, rigidBody->length * sizeof(rigidBody->collisionsShapes[0]));
+    buffers.collisionBuffer.index += rigidBody->length;
 }
 
 /**
@@ -374,9 +372,8 @@ void update_kinematic_body(Node *node, vec3 pos, vec3 rot, vec3 scale, float del
         glm_vec3_copy(node->globalScale, scale);
         check_collisions(kinematicBody->collisionsShapes[i]);
     }
-    for (int i = 0; i < kinematicBody->length; i++) {
-        buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index++] = kinematicBody->collisionsShapes[i];
-    }
+    memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], kinematicBody->collisionsShapes, kinematicBody->length * sizeof(kinematicBody->collisionsShapes[0]));
+    buffers.collisionBuffer.index += kinematicBody->length;
 }
 
 /**
@@ -393,12 +390,8 @@ void update_camera(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) {
     Camera *camera = (Camera *) node->object;
 
     update_global_position(node, pos, rot, scale);
-
-    glm_vec3_copy(pos, camera->pos);
-    glm_vec3_copy(rot, camera->rot);
-    camera->dir[0] = sin(-camera->rot[1] * PI/180);
-	camera->dir[1] = camera->rot[0] * PI/180;
-    camera->dir[2] = -cos(-camera->rot[1] * PI/180);
+    glm_vec3_negate_to(pos, camera->pos);
+    glm_vec3_negate_to(rot, camera->rot);
 }
 
 /**
@@ -412,6 +405,7 @@ void update_camera(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) {
  */
 
 void update_point_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, u8 lightsCount[LIGHTS_COUNT]) {
+    if (!(node->flags & NODE_LIGHT_ACTIVE)) return;
     PointLight *pointLight = (PointLight *) node->object;
 
     update_global_position(node, pos, rot, scale);
@@ -462,6 +456,7 @@ void update_point_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta,
  */
 
 void update_directional_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, u8 lightsCount[LIGHTS_COUNT]) {
+    if (!(node->flags & NODE_LIGHT_ACTIVE)) return;
     DirectionalLight *directionalLight = (DirectionalLight *) node->object;
 
     update_global_position(node, pos, rot, scale);
@@ -521,6 +516,7 @@ void update_directional_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float 
  */
 
 void update_spot_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, u8 lightsCount[LIGHTS_COUNT]) {
+    if (!(node->flags & NODE_LIGHT_ACTIVE)) return;
     SpotLight *spotLight = (SpotLight *) node->object;
 
     update_global_position(node, pos, rot, scale);
@@ -547,11 +543,10 @@ void update_spot_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, 
         strcat(uniformsName[i], uniforms[i]);
     }
 
-    vec3 dir;
-
-    dir[0] = sin(-rot[1] * PI/180 + PI);
-	dir[1] = -rot[0] * PI/180;
-    dir[2] = -cos(-rot[1] * PI/180 + PI);
+    vec3 dir = {0.0, 0.0, -1.0};
+    glm_vec3_rotate(dir, to_radians(node->globalRot[0]), (vec3){1.0f, 0.0f, 0.0f});
+    glm_vec3_rotate(dir, to_radians(node->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
+    glm_vec3_rotate(dir, to_radians(node->globalRot[2]), (vec3){0.0f, 0.0f, 1.0f});
 
     for (int i = 0; i < memoryCaches.shadersCount; i++) {
         use_shader(memoryCaches.shaderCache[i].shader);

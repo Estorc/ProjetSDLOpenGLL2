@@ -9,7 +9,7 @@
 #include "gui/frame.h"
 #include "io/input.h"
 
-class CheckBox @promote extends Button {
+class CheckBox extends Button {
     __containerType__ Node *
 
     void constructor() {

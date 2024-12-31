@@ -3,7 +3,7 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class Camera @promote extends Node {
+class Camera extends Node {
     __containerType__ Node *
 
     void constructor(struct Camera *camera) {
