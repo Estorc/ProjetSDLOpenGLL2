@@ -1,0 +1,55 @@
+\doxysection{graph.\+h}
+\hypertarget{graph_8h_source}{}\label{graph_8h_source}\index{src/math/graph.h@{src/math/graph.h}}
+\mbox{\hyperlink{graph_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <GL/gl.h>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cglm/cglm.h>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ GRAPH\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ GRAPH\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{typedef}\ vec4\ \mbox{\hyperlink{group__VectorGroup_ga364d181ce92f92629aba5ee06ab95c73}{Vec4f}};}
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ vec3\ \mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{typedef}\ vec2\ \mbox{\hyperlink{group__VectorGroup_gab992b8206e1d8a1dbe60ecce9e721376}{Vec2f}};}
+\DoxyCodeLine{00017\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group__VectorGroup_gad5e5d6e46b12b86abb43198e05365067}{Vec1f}};}
+\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ mat4\ \mbox{\hyperlink{group__VectorGroup_ga94b1556f7d3a1a388285098bbcb00190}{Mat4}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00036\ \mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}\ \mbox{\hyperlink{group__VectorGroup_gae32063e06798649530242796d312da8b}{get\_vec3f\_magnitude}}(\mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}}\ *vec);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00058\ \mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}\ \mbox{\hyperlink{group__VectorGroup_ga59d0526046a4f625cc3e8bb7f565fb64}{get\_vec3f\_sqr\_magnitude}}(\mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}}\ *vec);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__VectorGroup_ga9f0077d5dd486e4ac9282184a0771448}{set\_vec3f\_magnitude}}(\mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}}\ *vec,\ \mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}\ magnitude);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__VectorGroup_gad65f148a83f54f0e064d7fd11e609755}{glPolygonVec3}}(\mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}}\ *vecs,\ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ length);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ Mat4SetIdentity(a)\ (a[0][0]\ =\ 1.0f,\ a[0][1]\ =\ 0.0f,\ a[0][2]\ =\ 0.0f,\ a[0][3]\ =\ 0.0f,\ \(\backslash\)}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a[1][0]\ =\ 0.0f,\ a[1][1]\ =\ 1.0f,\ a[1][2]\ =\ 0.0f,\ a[1][3]\ =\ 0.0f,\ \(\backslash\)}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a[2][0]\ =\ 0.0f,\ a[2][1]\ =\ 0.0f,\ a[2][2]\ =\ 1.0f,\ a[2][3]\ =\ 0.0f,\ \(\backslash\)}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a[3][0]\ =\ 0.0f,\ a[3][1]\ =\ 0.0f,\ a[3][2]\ =\ 0.0f,\ a[3][3]\ =\ 1.0f)}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ Vec3fScale(a,s)\ (a[0]*=s,\ a[1]*=s,\ a[2]*=s)}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#define\ Vec3fZero(a)\ (a[0]=0,a[1]=0,a[2]=0)}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#define\ Vec3fOne(a)\ (a[0]=1,a[1]=1,a[2]=1)}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#define\ Vec3fSet(a,b)\ (a[0]=b[0],a[1]=b[1],a[2]=b[2])}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#define\ Vec3fApproach(a,b,t)\ ((a)[0]+=((b)[0]-\/(a)[0])/t,(a)[1]+=((b)[1]-\/(a)[1])/t,(a)[2]+=((b)[2]-\/(a)[2])/t)}}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#define\ Vec3fSum(a,b)\ (a[0]\ +=\ b[0],a[1]\ +=\ b[1],a[2]\ +=\ b[2])}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\#define\ Vec3fDiff(a,b)\ (a[0]\ -\/=\ b[0],a[1]\ -\/=\ b[1],a[2]\ -\/=\ b[2])}}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\#define\ Vec3fDot(a,b)\ (a[0]*b[0]\ +\ a[1]*b[1]\ +\ a[2]*b[2])}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\#define\ Vec3fNormalize(a)\ (set\_vec3f\_magnitude(\&a,\ 1))}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#define\ glVertexVec3(a)\ glVertex3f(\ a[0],\ a[1],\ a[2]\ )}}
+\DoxyCodeLine{00209\ }
+ \textcolor{comment}{// End of OtherGroup}\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

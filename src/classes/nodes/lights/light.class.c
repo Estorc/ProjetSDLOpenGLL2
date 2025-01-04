@@ -5,8 +5,9 @@
 #include "render/lighting.h"
 #include "buffer.h"
 
-class Light extends Node {
+class Light : public Node {
     __containerType__ Node *
+    public:
 
 
     void init_light() {

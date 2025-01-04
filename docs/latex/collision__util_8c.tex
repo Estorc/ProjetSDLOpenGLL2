@@ -1,0 +1,39 @@
+\doxysection{src/physics/collision\+\_\+util.c File Reference}
+\hypertarget{collision__util_8c}{}\label{collision__util_8c}\index{src/physics/collision\_util.c@{src/physics/collision\_util.c}}
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+opengl.\+h$>$}\newline
+{\ttfamily \#include $<$GL/glu.\+h$>$}\newline
+{\ttfamily \#include $<$GL/glext.\+h$>$}\newline
+{\ttfamily \#include "{}../types.\+h"{}}\newline
+{\ttfamily \#include "{}../math/math\+\_\+util.\+h"{}}\newline
+{\ttfamily \#include "{}../io/model.\+h"{}}\newline
+{\ttfamily \#include "{}../render/framebuffer.\+h"{}}\newline
+{\ttfamily \#include "{}../storage/node.\+h"{}}\newline
+{\ttfamily \#include "{}../window.\+h"{}}\newline
+{\ttfamily \#include "{}../render/camera.\+h"{}}\newline
+{\ttfamily \#include "{}../render/depth\+\_\+map.\+h"{}}\newline
+{\ttfamily \#include "{}../render/lighting.\+h"{}}\newline
+{\ttfamily \#include "{}../io/gltexture\+\_\+loader.\+h"{}}\newline
+{\ttfamily \#include "{}physics.\+h"{}}\newline
+{\ttfamily \#include "{}bodies.\+h"{}}\newline
+Include dependency graph for collision\+\_\+util.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{collision__util_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__CollisionUtil_gaf2d5738dccc46ab8aea8c19bdbb6ee3d}{project\+\_\+box\+\_\+onto\+\_\+axis}} (vec3 axis, vec3 half\+Extents, mat3 rotation, vec3 box\+Center, float \texorpdfstring{$\ast$}{*}min\+Proj, float \texorpdfstring{$\ast$}{*}max\+Proj)
+\begin{DoxyCompactList}\small\item\em Projects a box onto a given axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CollisionUtil_gaf4dd1bc14bc3d1ba1924dc4b39c642a2}{project\+\_\+capsule\+\_\+onto\+\_\+axis}} (vec3 axis, vec3 capsule\+Start, vec3 capsule\+End, float capsule\+Radius, float \texorpdfstring{$\ast$}{*}min\+Proj, float \texorpdfstring{$\ast$}{*}max\+Proj)
+\begin{DoxyCompactList}\small\item\em Projects a capsule onto a given axis. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__CollisionUtil_gae7bef81b9525080c3b948836aa82dc88}{projections\+\_\+overlap}} (float minA, float maxA, float minB, float maxB)
+\begin{DoxyCompactList}\small\item\em Checks if two projections overlap. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group__CollisionUtil_ga4aae0c429a4146e14becc2528d3accb8}{compute\+\_\+overlap}} (float minA, float maxA, float minB, float maxB)
+\begin{DoxyCompactList}\small\item\em Computes the overlap between two projections. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CollisionUtil_ga887c531e537fcc2721fbda07db006867}{closest\+\_\+point\+\_\+on\+\_\+triangle}} (vec3 p, vec3 a, vec3 b, vec3 c, vec3 closest\+Point)
+\begin{DoxyCompactList}\small\item\em Finds the closest point on a triangle to a given point. \end{DoxyCompactList}\end{DoxyCompactItemize}

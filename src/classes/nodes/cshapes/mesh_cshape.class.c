@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class MeshCShape extends CShape {
+class MeshCShape : public CShape {
     __containerType__ Node *
+    public:
 
     void constructor(struct MeshCollisionShape *meshCollisionShape) {
         this->object = meshCollisionShape;
@@ -22,15 +23,16 @@ class MeshCShape extends CShape {
 
     void load(FILE *file) {
         Model *model;
+        model = malloc(sizeof(Model));
         if (file) {
             char path[100];
             fscanf(file,"(%100[^)])", path);
-            load_obj_model(path, &model);
+            load_obj_model(path, &model->data);
         }
         MeshCollisionShape *meshCollisionShape;
         meshCollisionShape = malloc(sizeof(MeshCollisionShape));
-        meshCollisionShape->facesVertex = model->objects[0].facesVertex;
-        meshCollisionShape->numFaces = model->objects[0].length;
+        meshCollisionShape->facesVertex = model->data->objects[0].facesVertex;
+        meshCollisionShape->numFaces = model->data->objects[0].length;
         POINTER_CHECK(meshCollisionShape);
         METHOD_TYPE(this, __type__, constructor, meshCollisionShape);
     }

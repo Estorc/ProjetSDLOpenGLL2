@@ -78,12 +78,16 @@
         "stdexcept": "c",
         "cinttypes": "c",
         "collision_util.h": "c",
-        "sdl_opengl.h": "c"
+        "sdl_opengl.h": "c",
+        "gl.h": "c",
+        "obj_loader.h": "c"
     },
     "files.exclude": {
         "bin/": true,
         "lib/": true,
-        "src/classes/__processed__/": false
+        "src/classes/__processed__/": false,
+        "docs/html/": true,
+        "docs/latex/": true,
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

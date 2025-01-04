@@ -1,0 +1,44 @@
+\doxysection{shader.\+h}
+\hypertarget{shader_8h_source}{}\label{shader_8h_source}\index{src/io/shader.h@{src/io/shader.h}}
+\mbox{\hyperlink{shader_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SHADER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SHADER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ DEFAULT\_RENDER\_SHADER\ "{}shaders/shadowShader.vs"{},\ "{}shaders/shadowShader.fs"{}}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ DEFAULT\_DEPTH\_SHADER\ "{}shaders/simpleDepthShader.vs"{},\ "{}shaders/simpleDepthShader.fs"{}}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ DEFAULT\_SCREEN\_SHADER\ "{}shaders/aa\_post.vs"{},\ "{}shaders/aa\_post.fs"{}}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ DEFAULT\_SKYBOX\_SHADER\ "{}shaders/skybox.vs"{},\ "{}shaders/skybox.fs"{}}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ DEFAULT\_GUI\_SHADER\ "{}shaders/gui.vs"{},\ "{}shaders/gui.fs"{}}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ShaderManagement_ga7c682b9bed25d2159985f6a11de0b712}{create\_shaders}}(\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ shaders[]);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00084\ \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ \mbox{\hyperlink{group__ShaderManagement_ga8c5722406ee9544fe6a6fdab7e87a1c0}{create\_shader}}(\textcolor{keywordtype}{char}*\ vertexPath,\ \textcolor{keywordtype}{char}*\ fragmentPath);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ShaderManagement_ga1117f5894f4b4abe13e41cfc8109ddbe}{use\_shader}}(\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ ID);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ShaderManagement_gaafee5005fc182fefb7fab74fa868631c}{set\_shader\_int}}(\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ ID,\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00115\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ShaderManagement_ga4f343c92d0744283d520b975c5408885}{set\_shader\_float}}(\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ ID,\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keywordtype}{float}\ value);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00126\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ShaderManagement_ga4ddd55e651817701c9e65c3006d84f06}{set\_shader\_vec2}}(\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ ID,\ \textcolor{keywordtype}{char}\ *name,\ vec2\ value);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00137\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ShaderManagement_gabe939b6bc86c802ec4514fb3c7a916c0}{set\_shader\_vec3}}(\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ ID,\ \textcolor{keywordtype}{char}\ *name,\ vec3\ value);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00148\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ShaderManagement_ga225dc3d3319fe8c8cc67bb58cdea93d2}{set\_shader\_vec4}}(\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ ID,\ \textcolor{keywordtype}{char}\ *name,\ vec4\ value);}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00159\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ShaderManagement_gaaed666bd75a0e319dbacab5ed2191291}{set\_shader\_mat4}}(\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ ID,\ \textcolor{keywordtype}{char}\ *name,\ mat4\ *value);}
+\DoxyCodeLine{00160\ }
+ \textcolor{comment}{// end of ShaderManagement}\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

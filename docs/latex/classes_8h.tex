@@ -1,0 +1,38 @@
+\doxysection{src/classes/classes.h File Reference}
+\hypertarget{classes_8h}{}\label{classes_8h}\index{src/classes/classes.h@{src/classes/classes.h}}
+{\ttfamily \#include "{}import\+\_\+class.\+h"{}}\newline
+{\ttfamily \#include "{}../types.\+h"{}}\newline
+Include dependency graph for classes.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{classes_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classes_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structObject}{Object}}
+\begin{DoxyCompactList}\small\item\em A generic object structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__Classes_ga6ffe789dbf997896dbf1d3272473ae06}{SUPER}}(method\+\_\+name, ...)~\mbox{\hyperlink{group__Classes_gad4c7f13c93ebcba4957759a3e6aaae8c}{call\+\_\+method}}(class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}class\+Manager.\+extends\mbox{[}\+\_\+\+\_\+type\+\_\+\+\_\+\mbox{]}\mbox{]}, this, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em Invokes a method from the superclass. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__Classes_ga8f04a6a79e7b9d2cf4b94bc9611bfb2d}{METHOD\+\_\+\+TYPE}}(obj,  default\+\_\+type,  method\+\_\+name, ...)~\mbox{\hyperlink{group__Classes_gad4c7f13c93ebcba4957759a3e6aaae8c}{call\+\_\+method}}(class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}default\+\_\+type\mbox{]}, obj, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em Invokes a method with a specified default type. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__Classes_ga3e71cb668e96673fdb3ee83e5ea49ddd}{METHOD}}(obj,  method\+\_\+name, ...)~\mbox{\hyperlink{group__Classes_gad4c7f13c93ebcba4957759a3e6aaae8c}{call\+\_\+method}}(class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}obj-\/$>$type\mbox{]}, obj, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em Invokes a method on an object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__Classes_gad4c7f13c93ebcba4957759a3e6aaae8c}{call\+\_\+method}} (void(\texorpdfstring{$\ast$}{*}func)(void \texorpdfstring{$\ast$}{*}, va\+\_\+list),...)
+\end{DoxyCompactItemize}

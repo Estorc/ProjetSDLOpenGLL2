@@ -9,8 +9,9 @@
 #include "window.h"
 #include "gui/frame.h"
 
-class Label extends Frame {
+class Label : public Frame {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;

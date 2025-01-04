@@ -9,8 +9,9 @@
 #include "gui/frame.h"
 #include "io/input.h"
 
-class CheckBox extends Button {
+class CheckBox : public Button {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;

@@ -1,0 +1,221 @@
+\doxysection{Area Struct Reference}
+\hypertarget{classArea}{}\label{classArea}\index{Area@{Area}}
+
+
+Represents an area with collision shapes and nodes.  
+
+
+
+
+{\ttfamily \#include $<$physics.\+h$>$}
+
+
+
+Inheritance diagram for Area\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{classArea__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Area\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classArea__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classArea_ac11f515e9397bfa728e7ddd112ae74c6}{constructor}} (struct \mbox{\hyperlink{classArea}{Area}} \texorpdfstring{$\ast$}{*}area)
+\item 
+void \mbox{\hyperlink{classArea_a8b3a15e262a7125cfca3793ec0fadcd7}{collect\+\_\+node}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, double distance)
+\item 
+void \mbox{\hyperlink{classArea_aaa5492d5041c690d630e9be327acdc0c}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
+\item 
+void \mbox{\hyperlink{classArea_a10c01b01dd5bd4bed630b8438d70adb1}{sort\+\_\+nodes}} ()
+\item 
+void \mbox{\hyperlink{classArea_a589fbdb24b0e82711669645e24b40c91}{update}} (float \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, float \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, float \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\item 
+void \mbox{\hyperlink{classArea_a65ef78dfa2896acac466bd56416ffb1c}{get\+\_\+collisions\+\_\+shapes}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shapes, \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__Physics_ga5c4242000d4253a21530ef91d066167c}{length}})
+\item 
+void \mbox{\hyperlink{classArea_a4e6ad11b74b7bdae576e7421c5df6338}{get\+\_\+node\+\_\+collection}} (\mbox{\hyperlink{structDistanceNode}{Distance\+Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}nodes, \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__Physics_ga5c4242000d4253a21530ef91d066167c}{length}})
+\item 
+void \mbox{\hyperlink{classArea_a18cc3c9215fb618b5c90e8d30f0eb929}{load}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}scripts, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
+\item 
+void \mbox{\hyperlink{classArea_a0fc67491e18cd5c2552fe115a5f56acb}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classPhysicalNode}{Physical\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classPhysicalNode_ab4fba76d5aa0a7a55ac60153eca1b466}{free}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}} ()
+\item 
+void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
+\item 
+void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+\item 
+void \mbox{\hyperlink{classNode_a9b702cf3be32e9c0fcbfadf561e8d867}{cast}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}data)
+\item 
+void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
+\item 
+void \mbox{\hyperlink{classNode_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
+\item 
+void \mbox{\hyperlink{classNode_ab93a6f41e02422a21c44227c0355382a}{render}} ()
+\item 
+void \mbox{\hyperlink{classNode_ac7b956795b2d4b16c59c1155bd7cba91}{update}} ()
+\item 
+void \mbox{\hyperlink{classNode_acda79ab291312990e96552767c577a3d}{free}} ()
+\item 
+void \mbox{\hyperlink{classNode_ae2ee01789b301b3c0323473dbe968283}{is\+\_\+cshape}} (bool \texorpdfstring{$\ast$}{*}cshape)
+\item 
+void \mbox{\hyperlink{classNode_a75c27b8cf028ae9509b20ad7392c49f8}{is\+\_\+body}} (bool \texorpdfstring{$\ast$}{*}body)
+\item 
+void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
+\item 
+void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
+\item 
+int \mbox{\hyperlink{classNode_a5ebf24b90913a3442e2ad9856c099072}{test\+\_\+function}} (int a, int b)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classArea_a08b84bd1f8ae3d3dbdbfe7d58d181c05}{compare\+\_\+distance\+\_\+nodes}} (const void \texorpdfstring{$\ast$}{*}a, const void \texorpdfstring{$\ast$}{*}b)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__Physics_ga175207703c02eab5dfadac62b858ea21}{collisions\+Shapes}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__Physics_ga5c4242000d4253a21530ef91d066167c}{length}}
+\item 
+struct \mbox{\hyperlink{structDistanceNode}{Distance\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__Physics_gadbc7aad1ad1fb1a8749e5edd5c9fa289}{collected\+Nodes}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__Physics_ga29d1258f19a60662071a6e97ba7d0f39}{collected\+Length}}
+\item 
+struct \mbox{\hyperlink{structDistanceNode}{Distance\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__Physics_ga83a373d278c424eeab8b2e294cedd787}{sorted\+Nodes}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__Physics_gad1f81ed83c6ef496c3991a225c82270d}{sorted\+Length}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga9cf70c2b354e11c49130331da4519864}{object}}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga3d857c2fdb25634fe92ca32ff006c233}{children}}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{parent}}
+\item 
+\mbox{\hyperlink{types_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga1cf2ef86297b1bdfed11d030c0ed3dd2}{global\+Pos}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{global\+Rot}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
+\item 
+\mbox{\hyperlink{scripts_8h_ab7576c513306b5641c2b903c7d18850f}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
+\item 
+\mbox{\hyperlink{unionBehaviorParameter}{Behavior\+Parameter}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gac639490f60bdc872491ffaaea5991ed0}{params}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga1411990c75c0b134485d07be7a21e58c}{params\+\_\+count}}
+\item 
+\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a44e2ccb5f2209f6367f33a3c712f0eb1}{glow\+Shader}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an area with collision shapes and nodes. 
+
+This structure holds information about an area, including its collision shapes, collected nodes, and sorted nodes. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classArea_a8b3a15e262a7125cfca3793ec0fadcd7}\label{classArea_a8b3a15e262a7125cfca3793ec0fadcd7} 
+\index{Area@{Area}!collect\_node@{collect\_node}}
+\index{collect\_node@{collect\_node}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{collect\_node()}{collect\_node()}}
+{\footnotesize\ttfamily void Area\+::collect\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{double}]{distance }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classArea_a08b84bd1f8ae3d3dbdbfe7d58d181c05}\label{classArea_a08b84bd1f8ae3d3dbdbfe7d58d181c05} 
+\index{Area@{Area}!compare\_distance\_nodes@{compare\_distance\_nodes}}
+\index{compare\_distance\_nodes@{compare\_distance\_nodes}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{compare\_distance\_nodes()}{compare\_distance\_nodes()}}
+{\footnotesize\ttfamily static int Area\+::compare\+\_\+distance\+\_\+nodes (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const void \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classArea_ac11f515e9397bfa728e7ddd112ae74c6}\label{classArea_ac11f515e9397bfa728e7ddd112ae74c6} 
+\index{Area@{Area}!constructor@{constructor}}
+\index{constructor@{constructor}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
+{\footnotesize\ttfamily void Area\+::constructor (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classArea}{Area}} \texorpdfstring{$\ast$}{*}}]{area }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classArea_a65ef78dfa2896acac466bd56416ffb1c}\label{classArea_a65ef78dfa2896acac466bd56416ffb1c} 
+\index{Area@{Area}!get\_collisions\_shapes@{get\_collisions\_shapes}}
+\index{get\_collisions\_shapes@{get\_collisions\_shapes}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{get\_collisions\_shapes()}{get\_collisions\_shapes()}}
+{\footnotesize\ttfamily void Area\+::get\+\_\+collisions\+\_\+shapes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{shapes,  }\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classArea_a4e6ad11b74b7bdae576e7421c5df6338}\label{classArea_a4e6ad11b74b7bdae576e7421c5df6338} 
+\index{Area@{Area}!get\_node\_collection@{get\_node\_collection}}
+\index{get\_node\_collection@{get\_node\_collection}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{get\_node\_collection()}{get\_node\_collection()}}
+{\footnotesize\ttfamily void Area\+::get\+\_\+node\+\_\+collection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDistanceNode}{Distance\+Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{nodes,  }\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classArea_aaa5492d5041c690d630e9be327acdc0c}\label{classArea_aaa5492d5041c690d630e9be327acdc0c} 
+\index{Area@{Area}!is\_area@{is\_area}}
+\index{is\_area@{is\_area}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{is\_area()}{is\_area()}}
+{\footnotesize\ttfamily void Area\+::is\+\_\+area (\begin{DoxyParamCaption}\item[{bool \texorpdfstring{$\ast$}{*}}]{area }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classArea_a18cc3c9215fb618b5c90e8d30f0eb929}\label{classArea_a18cc3c9215fb618b5c90e8d30f0eb929} 
+\index{Area@{Area}!load@{load}}
+\index{load@{load}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Area\+::load (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file,  }\item[{\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}}]{scripts,  }\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{editor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classArea_a0fc67491e18cd5c2552fe115a5f56acb}\label{classArea_a0fc67491e18cd5c2552fe115a5f56acb} 
+\index{Area@{Area}!save@{save}}
+\index{save@{save}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Area\+::save (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classArea_a10c01b01dd5bd4bed630b8438d70adb1}\label{classArea_a10c01b01dd5bd4bed630b8438d70adb1} 
+\index{Area@{Area}!sort\_nodes@{sort\_nodes}}
+\index{sort\_nodes@{sort\_nodes}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{sort\_nodes()}{sort\_nodes()}}
+{\footnotesize\ttfamily void Area\+::sort\+\_\+nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classArea_a589fbdb24b0e82711669645e24b40c91}\label{classArea_a589fbdb24b0e82711669645e24b40c91} 
+\index{Area@{Area}!update@{update}}
+\index{update@{update}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Area\+::update (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{float \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{float \texorpdfstring{$\ast$}{*}}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/classes/nodes/physics/\mbox{\hyperlink{area_8class_8c}{area.\+class.\+c}}\item 
+src/physics/\mbox{\hyperlink{physics_8h}{physics.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,130 @@
+\doxysection{src/scripts/scripts.h File Reference}
+\hypertarget{scripts_8h}{}\label{scripts_8h}\index{src/scripts/scripts.h@{src/scripts/scripts.h}}
+{\ttfamily \#include "{}../io/input.\+h"{}}\newline
+Include dependency graph for scripts.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{scripts_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scripts_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionBehaviorParameter}{Behavior\+Parameter}}
+\item 
+struct \mbox{\hyperlink{structScript}{Script}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{scripts_8h_a974cce8e58a6368403c267f9c3a87735}{NODE\+\_\+\+FUNC\+\_\+\+PARAMS}}~struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{structInput}{Input}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__InputHandling_gad4db59ccea8946af2bb70f8269e99eeb}{input}}, struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, float delta
+\item 
+\#define \mbox{\hyperlink{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}{NODE\+\_\+\+FUNC\+\_\+\+RETURN}}~void
+\item 
+\#define \mbox{\hyperlink{scripts_8h_a9a13d86efe5cc8f4cb4e1d33229673aa}{PARAMS\+\_\+\+COUNT}}(x)
+\item 
+\#define \mbox{\hyperlink{scripts_8h_af416bb3d38a37f18dd2c6b4705113481}{NEW\+\_\+\+SCRIPT}}(script\+\_\+name)~\mbox{\hyperlink{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}{NODE\+\_\+\+FUNC\+\_\+\+RETURN}} script\+\_\+name(\mbox{\hyperlink{scripts_8h_a974cce8e58a6368403c267f9c3a87735}{NODE\+\_\+\+FUNC\+\_\+\+PARAMS}}) \{
+\item 
+\#define \mbox{\hyperlink{scripts_8h_ac7d49370a5c29bbfabf7a4653d96e43f}{END\+\_\+\+SCRIPT}}(script\+\_\+name)~\}; main\+Node\+Tree.\+scripts\mbox{[}main\+Node\+Tree.\+script\+Index\mbox{]}.name = \#script\+\_\+name, main\+Node\+Tree.\+scripts\mbox{[}main\+Node\+Tree.\+script\+Index++\mbox{]}.script = script\+\_\+name;
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}{NODE\+\_\+\+FUNC\+\_\+\+RETURN}}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{scripts_8h_ab7576c513306b5641c2b903c7d18850f}{Behavior}}\mbox{[}\mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dceaf4deb964fef817f01b86d7487ab15d3a}{BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+COUNT}}\mbox{]}) (\mbox{\hyperlink{scripts_8h_a974cce8e58a6368403c267f9c3a87735}{NODE\+\_\+\+FUNC\+\_\+\+PARAMS}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dce}{Behavior\+Scripts}} \{ \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dcea3b3f46718a5654c73ce66a0598b95c3b}{BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+READY}}
+, \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dceaa83501e0d766b4d51cf23afd35ec5d13}{BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+UPDATE}}
+, \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dcea14e2dd7810c43e265390ddd9e51cd337}{BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+SIGNAL}}
+, \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dceaf4deb964fef817f01b86d7487ab15d3a}{BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+COUNT}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{scripts_8h_ac7d49370a5c29bbfabf7a4653d96e43f}\label{scripts_8h_ac7d49370a5c29bbfabf7a4653d96e43f} 
+\index{scripts.h@{scripts.h}!END\_SCRIPT@{END\_SCRIPT}}
+\index{END\_SCRIPT@{END\_SCRIPT}!scripts.h@{scripts.h}}
+\doxysubsubsection{\texorpdfstring{END\_SCRIPT}{END\_SCRIPT}}
+{\footnotesize\ttfamily \#define END\+\_\+\+SCRIPT(\begin{DoxyParamCaption}\item[{}]{script\+\_\+name }\end{DoxyParamCaption})~\}; main\+Node\+Tree.\+scripts\mbox{[}main\+Node\+Tree.\+script\+Index\mbox{]}.name = \#script\+\_\+name, main\+Node\+Tree.\+scripts\mbox{[}main\+Node\+Tree.\+script\+Index++\mbox{]}.script = script\+\_\+name;}
+
+\Hypertarget{scripts_8h_af416bb3d38a37f18dd2c6b4705113481}\label{scripts_8h_af416bb3d38a37f18dd2c6b4705113481} 
+\index{scripts.h@{scripts.h}!NEW\_SCRIPT@{NEW\_SCRIPT}}
+\index{NEW\_SCRIPT@{NEW\_SCRIPT}!scripts.h@{scripts.h}}
+\doxysubsubsection{\texorpdfstring{NEW\_SCRIPT}{NEW\_SCRIPT}}
+{\footnotesize\ttfamily \#define NEW\+\_\+\+SCRIPT(\begin{DoxyParamCaption}\item[{}]{script\+\_\+name }\end{DoxyParamCaption})~\mbox{\hyperlink{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}{NODE\+\_\+\+FUNC\+\_\+\+RETURN}} script\+\_\+name(\mbox{\hyperlink{scripts_8h_a974cce8e58a6368403c267f9c3a87735}{NODE\+\_\+\+FUNC\+\_\+\+PARAMS}}) \{}
+
+\Hypertarget{scripts_8h_a974cce8e58a6368403c267f9c3a87735}\label{scripts_8h_a974cce8e58a6368403c267f9c3a87735} 
+\index{scripts.h@{scripts.h}!NODE\_FUNC\_PARAMS@{NODE\_FUNC\_PARAMS}}
+\index{NODE\_FUNC\_PARAMS@{NODE\_FUNC\_PARAMS}!scripts.h@{scripts.h}}
+\doxysubsubsection{\texorpdfstring{NODE\_FUNC\_PARAMS}{NODE\_FUNC\_PARAMS}}
+{\footnotesize\ttfamily \#define NODE\+\_\+\+FUNC\+\_\+\+PARAMS~struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{structInput}{Input}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__InputHandling_gad4db59ccea8946af2bb70f8269e99eeb}{input}}, struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, float delta}
+
+\Hypertarget{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}\label{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab} 
+\index{scripts.h@{scripts.h}!NODE\_FUNC\_RETURN@{NODE\_FUNC\_RETURN}}
+\index{NODE\_FUNC\_RETURN@{NODE\_FUNC\_RETURN}!scripts.h@{scripts.h}}
+\doxysubsubsection{\texorpdfstring{NODE\_FUNC\_RETURN}{NODE\_FUNC\_RETURN}}
+{\footnotesize\ttfamily \#define NODE\+\_\+\+FUNC\+\_\+\+RETURN~void}
+
+\Hypertarget{scripts_8h_a9a13d86efe5cc8f4cb4e1d33229673aa}\label{scripts_8h_a9a13d86efe5cc8f4cb4e1d33229673aa} 
+\index{scripts.h@{scripts.h}!PARAMS\_COUNT@{PARAMS\_COUNT}}
+\index{PARAMS\_COUNT@{PARAMS\_COUNT}!scripts.h@{scripts.h}}
+\doxysubsubsection{\texorpdfstring{PARAMS\_COUNT}{PARAMS\_COUNT}}
+{\footnotesize\ttfamily \#define PARAMS\+\_\+\+COUNT(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!node-\/>params)\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ node-\/>params\ =\ malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{unionBehaviorParameter}{BehaviorParameter}})\ *\ x);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ POINTER\_CHECK(node-\/>params);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ node-\/>params\_count\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ x;\ i++)\ memset(\&node-\/>params[i],\ 0,\ \textcolor{keyword}{sizeof}(\textcolor{keyword}{union}\ \mbox{\hyperlink{unionBehaviorParameter}{BehaviorParameter}}));\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{scripts_8h_ab7576c513306b5641c2b903c7d18850f}\label{scripts_8h_ab7576c513306b5641c2b903c7d18850f} 
+\index{scripts.h@{scripts.h}!Behavior@{Behavior}}
+\index{Behavior@{Behavior}!scripts.h@{scripts.h}}
+\doxysubsubsection{\texorpdfstring{Behavior}{Behavior}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}{NODE\+\_\+\+FUNC\+\_\+\+RETURN}}(\texorpdfstring{$\ast$}{*} Behavior\mbox{[}\mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dceaf4deb964fef817f01b86d7487ab15d3a}{BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+COUNT}}\mbox{]})(\mbox{\hyperlink{scripts_8h_a974cce8e58a6368403c267f9c3a87735}{NODE\+\_\+\+FUNC\+\_\+\+PARAMS}})}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{scripts_8h_ac786ca734f29141f39a61d61836f1dce}\label{scripts_8h_ac786ca734f29141f39a61d61836f1dce} 
+\index{scripts.h@{scripts.h}!BehaviorScripts@{BehaviorScripts}}
+\index{BehaviorScripts@{BehaviorScripts}!scripts.h@{scripts.h}}
+\doxysubsubsection{\texorpdfstring{BehaviorScripts}{BehaviorScripts}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dce}{Behavior\+Scripts}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BEHAVIOR\_SCRIPT\_READY@{BEHAVIOR\_SCRIPT\_READY}!scripts.h@{scripts.h}}\index{scripts.h@{scripts.h}!BEHAVIOR\_SCRIPT\_READY@{BEHAVIOR\_SCRIPT\_READY}}}\Hypertarget{scripts_8h_ac786ca734f29141f39a61d61836f1dcea3b3f46718a5654c73ce66a0598b95c3b}\label{scripts_8h_ac786ca734f29141f39a61d61836f1dcea3b3f46718a5654c73ce66a0598b95c3b} 
+BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+READY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BEHAVIOR\_SCRIPT\_UPDATE@{BEHAVIOR\_SCRIPT\_UPDATE}!scripts.h@{scripts.h}}\index{scripts.h@{scripts.h}!BEHAVIOR\_SCRIPT\_UPDATE@{BEHAVIOR\_SCRIPT\_UPDATE}}}\Hypertarget{scripts_8h_ac786ca734f29141f39a61d61836f1dceaa83501e0d766b4d51cf23afd35ec5d13}\label{scripts_8h_ac786ca734f29141f39a61d61836f1dceaa83501e0d766b4d51cf23afd35ec5d13} 
+BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+UPDATE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BEHAVIOR\_SCRIPT\_SIGNAL@{BEHAVIOR\_SCRIPT\_SIGNAL}!scripts.h@{scripts.h}}\index{scripts.h@{scripts.h}!BEHAVIOR\_SCRIPT\_SIGNAL@{BEHAVIOR\_SCRIPT\_SIGNAL}}}\Hypertarget{scripts_8h_ac786ca734f29141f39a61d61836f1dcea14e2dd7810c43e265390ddd9e51cd337}\label{scripts_8h_ac786ca734f29141f39a61d61836f1dcea14e2dd7810c43e265390ddd9e51cd337} 
+BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+SIGNAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BEHAVIOR\_SCRIPT\_COUNT@{BEHAVIOR\_SCRIPT\_COUNT}!scripts.h@{scripts.h}}\index{scripts.h@{scripts.h}!BEHAVIOR\_SCRIPT\_COUNT@{BEHAVIOR\_SCRIPT\_COUNT}}}\Hypertarget{scripts_8h_ac786ca734f29141f39a61d61836f1dceaf4deb964fef817f01b86d7487ab15d3a}\label{scripts_8h_ac786ca734f29141f39a61d61836f1dceaf4deb964fef817f01b86d7487ab15d3a} 
+BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+COUNT&\\
+\hline
+
+\end{DoxyEnumFields}

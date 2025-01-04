@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class Framebuffer extends Node {
+class Framebuffer : public Node {
     __containerType__ Node *
+    public:
 
     void constructor(FrameBuffer *frameBuffer) {
         this->object = frameBuffer;

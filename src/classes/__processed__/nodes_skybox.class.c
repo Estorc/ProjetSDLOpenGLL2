@@ -9,37 +9,25 @@
 #include "../../render/render.h"
 static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_SKYBOX;
 
-
-void __class_method_skybox_constructor(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_skybox_constructor(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 struct TexturedMesh * texturedMesh = va_arg(args, struct TexturedMesh *);
-va_end(args);
 (void)this;
     this->object = texturedMesh;
     this->type = __type__;
     SUPER(initialize_node);
 }
 
-
-void __class_method_skybox_cast(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_skybox_cast(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 void **  data = va_arg(args, void ** );
-va_end(args);
 (void)this;
     IGNORE(data);
 }
 
-
-void __class_method_skybox_load(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_skybox_load(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
-va_end(args);
 (void)this;
     TexturedMesh *texturedMesh;
     texturedMesh = malloc(sizeof(TexturedMesh));
@@ -61,13 +49,9 @@ va_end(args);
     METHOD_TYPE(this, __type__, constructor, texturedMesh);
 }
 
-
-void __class_method_skybox_save(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_skybox_save(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
-va_end(args);
 (void)this;
     fprintf(file, "%s", classManager.class_names[this->type]);
     TextureMap texture = ((TexturedMesh*) this->object)->texture;
@@ -87,16 +71,11 @@ va_end(args);
 }
 
 
-
-
-void __class_method_skybox_render(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_skybox_render(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 mat4 * modelMatrix = va_arg(args, mat4 *);
 Shader  activeShader = va_arg(args, Shader );
 WorldShaders * shaders = va_arg(args, WorldShaders *);
-va_end(args);
 (void)this;
     IGNORE(activeShader);
     
@@ -119,6 +98,4 @@ va_end(args);
     glDepthFunc(GL_LESS); // set depth function back to default
 }
 
-
     
-

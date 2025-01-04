@@ -6,8 +6,9 @@
 #include "render/lighting.h"
 #include "buffer.h"
 
-class PhysicalNode extends Node {
+class PhysicalNode : public Node {
     __containerType__ Node *
+    public:
 
     void free() {
         u8 length;

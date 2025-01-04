@@ -1,0 +1,23 @@
+<map id="src/io/stringio.h" name="src/io/stringio.h">
+<area shape="rect" id="Node000001" title="Provides utility functions for string and file operations." alt="" coords="824,5,947,31"/>
+<area shape="rect" id="Node000002" href="$area_8class_8c.html" title=" " alt="" coords="5,79,195,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="811,26,544,46,376,62,207,81,195,83,194,78,206,76,375,56,543,41,810,21"/>
+<area shape="rect" id="Node000003" href="$gltexture__loader_8c.html" title=" " alt="" coords="219,86,397,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="811,30,628,51,410,81,367,89,366,83,409,76,627,46,810,25"/>
+<area shape="rect" id="Node000004" href="$node__loader_8c.html" title=" " alt="" coords="422,86,573,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="814,36,586,81,551,89,550,83,585,76,813,31"/>
+<area shape="rect" id="Node000005" href="$obj__loader_8c.html" title=" " alt="" coords="597,86,736,111"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="841,38,699,88,698,83,840,33"/>
+<area shape="rect" id="Node000006" href="$osio_8c.html" title=" " alt="" coords="760,86,859,111"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="867,42,823,88,819,84,863,39"/>
+<area shape="rect" id="Node000007" href="$scene__loader_8c.html" title=" " alt="" coords="883,86,1040,111"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="908,39,952,84,948,88,904,42"/>
+<area shape="rect" id="Node000008" href="$shader_8c.html" title=" " alt="" coords="1064,86,1179,111"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="933,32,1088,83,1086,89,932,37"/>
+<area shape="rect" id="Node000009" href="$stringio_8c.html" title=" " alt="" coords="1203,86,1325,111"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="961,30,1191,76,1222,83,1220,89,1190,81,960,35"/>
+<area shape="rect" id="Node000010" href="$main_8c.html" title=" " alt="" coords="1349,86,1438,111"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="960,22,1134,41,1236,56,1338,76,1364,83,1362,89,1337,81,1235,61,1133,46,960,27"/>
+<area shape="rect" id="Node000011" href="$skybox_8c.html" title=" " alt="" coords="1462,86,1597,111"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="960,21,1181,40,1316,56,1451,76,1486,83,1485,89,1450,81,1315,61,1180,46,960,27"/>
+</map>

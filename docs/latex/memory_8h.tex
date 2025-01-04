@@ -1,0 +1,53 @@
+\doxysection{src/memory.h File Reference}
+\hypertarget{memory_8h}{}\label{memory_8h}\index{src/memory.h@{src/memory.h}}
+
+
+Header file for memory management functions and structures.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{memory_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structCubeMapCache}{Cube\+Map\+Cache}}
+\begin{DoxyCompactList}\small\item\em Structure to cache cube map textures. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structTextureCache}{Texture\+Cache}}
+\begin{DoxyCompactList}\small\item\em Structure to cache textures. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structModelCache}{Model\+Cache}}
+\begin{DoxyCompactList}\small\item\em Structure to cache models. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structShaderCache}{Shader\+Cache}}
+\begin{DoxyCompactList}\small\item\em Structure to cache shaders. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structMemoryCaches}{Memory\+Caches}}
+\begin{DoxyCompactList}\small\item\em Structure to manage all types of caches. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__MemoryCache_gafc915248428e8d076d93d7029a2dcb79}{init\+\_\+memory\+\_\+cache}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the memory cache. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MemoryCache_ga687de09be998a3af723f109e54937e46}{free\+\_\+shaders}} ()
+\begin{DoxyCompactList}\small\item\em Frees the allocated shaders. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MemoryCache_gaf7e9da715331648efbb53611a886b7ba}{free\+\_\+models}} ()
+\begin{DoxyCompactList}\small\item\em Frees the allocated models. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MemoryCache_ga4761da15daadabf43f15b2c2d29eb98b}{free\+\_\+textures}} ()
+\begin{DoxyCompactList}\small\item\em Frees the allocated textures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MemoryCache_gaa4a40d70edd62e77d572df8a576693b3}{free\+\_\+cubemaps}} ()
+\begin{DoxyCompactList}\small\item\em Frees the allocated cubemaps. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MemoryCache_ga188eb3da198efe442aab7756e7f0e838}{free\+\_\+memory\+\_\+cache}} ()
+\begin{DoxyCompactList}\small\item\em Frees the entire memory cache. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structMemoryCaches}{Memory\+Caches}} \mbox{\hyperlink{group__MemoryCache_gac20453e81d80b4c155cbf48f8f58d1e0}{memory\+Caches}}
+\begin{DoxyCompactList}\small\item\em External variable representing the memory caches. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for memory management functions and structures. 
+
+This file contains declarations for functions and structures used to manage memory caches, shaders, models, textures, and cubemaps in the project. 

@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class RayCShape extends CShape {
+class RayCShape : public CShape {
     __containerType__ Node *
+    public:
 
     void constructor(struct RayCollisionShape *rayCollisionShape) {
         this->object = rayCollisionShape;

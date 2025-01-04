@@ -221,9 +221,8 @@ bin/debug/src/io/gltexture_loader.o: src/io/gltexture_loader.c \
  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min.h \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
- src/io/../math/math_util.h src/io/../math/graph.h lib/cglm/cglm.h \
- lib/cglm/common.h lib/cglm/types.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
+ src/io/../math/math_util.h lib/cglm/cglm.h lib/cglm/common.h \
+ lib/cglm/types.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
  lib/cglm/simd/intrin.h lib/cglm/simd/x86.h lib/cglm/simd/intrin.h \
  lib/cglm/vec2.h lib/cglm/util.h lib/cglm/vec2-ext.h lib/cglm/vec3.h \
  lib/cglm/vec4.h lib/cglm/vec4-ext.h lib/cglm/vec3-ext.h lib/cglm/ivec2.h \
@@ -247,5 +246,6 @@ bin/debug/src/io/gltexture_loader.o: src/io/gltexture_loader.c \
  lib/cglm/clipspace/project_no.h lib/cglm/clipspace/../vec3.h \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
- src/io/model.h src/io/input.h src/io/gltexture_loader.h src/io/shader.h \
- src/io/stringio.h src/io/../memory.h
+ src/io/model.h src/io/obj_loader.h src/io/mtl_loader.h src/io/input.h \
+ src/io/gltexture_loader.h src/io/shader.h src/io/stringio.h \
+ src/io/../memory.h

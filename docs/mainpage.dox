@@ -1,0 +1,23 @@
+/**
+ * @mainpage My C Project Documentation
+ * 
+ * Welcome to the documentation for **My C Project**. This project provides:
+ * - A set of mathematical utilities
+ * - Modular and reusable functions
+ * - Well-documented APIs for integration
+ * 
+ * ## Features
+ * - **Easy to Use**: Simple API for common operations
+ * - **High Performance**: Optimized for speed and efficiency
+ * - **Portable**: Cross-platform compatibility
+ * 
+ * ## Quick Links
+ * - @ref MathUtils "Mathematical Utilities"
+ * - @ref OtherGroup "Other Utilities"
+ * 
+ * ## Getting Started
+ * To use this library:
+ * 1. Include the appropriate header files.
+ * 2. Link against the provided library.
+ * 3. Explore the documentation for usage examples.
+ */

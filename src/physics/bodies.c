@@ -13,10 +13,9 @@
 #include "bodies.h"
 
 /**
- * Add a child to a node
- *
- * @param node {Node*} - The parent node.
- * @param child {Node*} - The child node.
+ * @internal
+ * @brief Add a shape to a node.
+ * 
  */
 
 void add_shape(Node *node, Node *child) {

@@ -11,12 +11,9 @@
 static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_RIGIDBODY;
 
 
-void __class_method_rigidbody_constructor(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_rigidbody_constructor(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 struct RigidBody * rigidBody = va_arg(args, struct RigidBody *);
-va_end(args);
 (void)this;
     this->object = rigidBody;
     this->type = __type__;
@@ -24,13 +21,10 @@ va_end(args);
 }
 
 
-void __class_method_rigidbody_get_collisions_shapes(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_rigidbody_get_collisions_shapes(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 Node *** shapes = va_arg(args, Node ***);
 u8 * length = va_arg(args, u8 *);
-va_end(args);
 (void)this;
     RigidBody *rigidBody = (RigidBody *) this->object;
     *length = rigidBody->length;
@@ -38,15 +32,12 @@ va_end(args);
 }
 
 
-void __class_method_rigidbody_load(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_rigidbody_load(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
 Camera ** c = va_arg(args, Camera **);
 Script * scripts = va_arg(args, Script *);
 Node * editor = va_arg(args, Node *);
-va_end(args);
 (void)this;
     RigidBody *rigidBody;
     rigidBody = malloc(sizeof(RigidBody));
@@ -84,12 +75,9 @@ va_end(args);
 }
 
 
-void __class_method_rigidbody_save(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_rigidbody_save(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
-va_end(args);
 (void)this;
     fprintf(file, "%s", classManager.class_names[this->type]);
     RigidBody *rigidBody = (RigidBody*) this->object;
@@ -105,15 +93,12 @@ va_end(args);
 }
 
 
-void __class_method_rigidbody_apply_impulse(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_rigidbody_apply_impulse(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 float * impulse = va_arg(args, float *);
 float * torque = va_arg(args, float *);
 float * correction = va_arg(args, float *);
 float * momentOfInertia = va_arg(args, float *);
-va_end(args);
 (void)this;
     RigidBody *rigidBody = (RigidBody *) this->object;
 

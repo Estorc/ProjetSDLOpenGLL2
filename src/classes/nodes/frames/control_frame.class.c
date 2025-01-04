@@ -8,8 +8,9 @@
 #include "window.h"
 #include "gui/frame.h"
 
-class ControlFrame extends Frame {
+class ControlFrame : public Frame {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;

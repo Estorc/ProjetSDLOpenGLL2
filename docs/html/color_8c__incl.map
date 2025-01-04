@@ -1,0 +1,15 @@
+<map id="src/render/color.c" name="src/render/color.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="174,5,307,31"/>
+<area shape="rect" id="Node000002" href="$types_8h.html" title="This file contains type definitions for fixed&#45;width integer types and floating&#45;point types." alt="" coords="101,79,183,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,33,171,73,168,68,223,29"/>
+<area shape="rect" id="Node000006" href="$color_8h.html" title=" " alt="" coords="208,79,273,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="243,31,243,65,238,65,238,31"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="298,79,365,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="257,29,307,68,304,72,254,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,76,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="127,106,70,146,67,142,124,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="101,152,183,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="145,104,145,138,139,138,139,104"/>
+<area shape="rect" id="Node000005" href="$config_8h.html" title=" " alt="" coords="208,152,281,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="160,102,218,142,215,146,157,106"/>
+</map>

@@ -11,11 +11,8 @@
 static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_PHYSICALNODE;
 
 
-void __class_method_physicalnode_free(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_physicalnode_free(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     u8 length;
     Node **shapes;

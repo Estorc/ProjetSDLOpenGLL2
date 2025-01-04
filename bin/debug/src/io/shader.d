@@ -212,9 +212,8 @@ bin/debug/src/io/shader.o: src/io/shader.c /usr/include/stdc-predef.h \
  /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_opengl.h \
  /usr/include/SDL2/SDL_opengl_glext.h /usr/include/GL/glu.h \
  /usr/include/GL/gl.h /usr/include/GL/glext.h src/io/stringio.h \
- src/io/../math/math_util.h src/io/../math/graph.h lib/cglm/cglm.h \
- lib/cglm/common.h lib/cglm/types.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
+ src/io/../math/math_util.h lib/cglm/cglm.h lib/cglm/common.h \
+ lib/cglm/types.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
  lib/cglm/simd/intrin.h lib/cglm/simd/x86.h lib/cglm/simd/intrin.h \
  lib/cglm/vec2.h lib/cglm/util.h lib/cglm/vec2-ext.h lib/cglm/vec3.h \
  lib/cglm/vec4.h lib/cglm/vec4-ext.h lib/cglm/vec3-ext.h lib/cglm/ivec2.h \
@@ -238,4 +237,5 @@ bin/debug/src/io/shader.o: src/io/shader.c /usr/include/stdc-predef.h \
  lib/cglm/clipspace/project_no.h lib/cglm/clipspace/../vec3.h \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
- src/io/shader.h src/io/model.h src/io/../memory.h
+ src/io/shader.h src/io/model.h src/io/obj_loader.h src/io/mtl_loader.h \
+ src/io/../memory.h

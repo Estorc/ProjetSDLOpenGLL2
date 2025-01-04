@@ -5,6 +5,7 @@
 
 class Node {
     __containerType__ Node *
+    public:
 
     void constructor() {
         this->object = NULL;
@@ -16,13 +17,21 @@ class Node {
         this->flags = NODE_DEFAULT_FLAGS;
         this->length = 0;
         this->children = NULL;
-        this->script = NULL;
+        this->behavior = NULL;
         this->params = NULL;
         this->params_count = 0;
         this->shader = 0;
-        Vec3fZero(this->pos);
-        Vec3fZero(this->rot);
-        Vec3fOne(this->scale);
+        glm_vec3_zero(this->pos);
+        glm_vec3_zero(this->rot);
+        glm_vec3_one(this->scale);
+    }
+
+    static Shader glowShader = 0;
+    void get_glow_shader(Shader *shader) {
+        if (!glowShader) {
+            glowShader = create_shader("shaders/glow.vs", "shaders/glow.fs");
+        }
+        *shader = glowShader;
     }
 
     void cast(void ** data) {
@@ -69,5 +78,10 @@ class Node {
 
     void is_gui_element(bool *result) {
         *result = false;
+    } 
+
+    int test_function(int a, int b) {
+        printf("a: %d, b: %d\n", a, b);
+        return a + b;
     }
 }

@@ -10,30 +10,10 @@
 #include "io/model.h"
 #include "render/framebuffer.h"
 #include "storage/node.h"
-#include "render/color.h"
 #include "render/camera.h"
 #include "render/depth_map.h"
 #include "render/render.h"
 #include "window.h"
-
-/**
- * Creates a new SDL window with an OpenGL context.
- * 
- * @param title {char*} The title of the window.
- * @param x {s32} The x-coordinate of the window's position on the screen.
- * @param y {s32} The y-coordinate of the window's position on the screen.
- * @param width {s32} The width of the window in pixels.
- * @param height {s32} The height of the window in pixels.
- * @param flags {u8} Flags to configure the window's behavior (e.g., fullscreen, resizable).
- * @param window {Window*} Pointer to the Window structure to be initialized.
- * @return {s8} Returns 0 on success, or -1 on failure.
- * 
- * This function initializes the SDL2 library and creates a window with an OpenGL 
- * context. It sets various OpenGL attributes, including enabling double-buffering 
- * and depth testing. The window's start time and initial timing values are also 
- * initialized. If window creation or surface retrieval fails, an error message 
- * is printed and -1 is returned.
- */
 
 s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Window *window) {
     window->startTime = get_time_in_seconds();
@@ -138,27 +118,6 @@ void refresh_ui(Window *window) {
     glGenerateMipmap(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
-
-/**
- * Updates the window by rendering the scene and swapping the buffers.
- * 
- * @param window {Window*} Pointer to the Window structure containing 
- *                         the window's state and timing information.
- * @param viewportNode {Node*} Pointer to the Node structure representing 
- *                             the viewport to be rendered.
- * @param c {Camera*} Pointer to the Camera structure used for rendering 
- *                    the scene.
- * @param shaders {Shader[]} Array of Shader structures used for rendering.
- * @param depthMap {DepthMap*} Pointer to the DepthMap structure that handles 
- *                              depth information for rendering.
- * @return {void} This function does not return a value.
- * 
- * This function calculates the time elapsed since the last update, 
- * updates the window's state accordingly, and calls the draw_screen function 
- * to render the viewport's content. It also enables relative mouse mode 
- * for capturing mouse movements. Finally, it swaps the OpenGL buffers 
- * to display the rendered content on the window.
- */
 
 void update_window(Window *window, Node *scene, Camera *c, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa, Mesh *screenPlane) {
 

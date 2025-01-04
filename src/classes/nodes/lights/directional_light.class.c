@@ -5,8 +5,9 @@
 #include "render/lighting.h"
 #include "buffer.h"
 
-class DirectionalLight extends Light {
+class DirectionalLight : public Light {
     __containerType__ Node *
+    public:
 
     void constructor(struct DirectionalLight *directionalLight) {
         this->object = directionalLight;

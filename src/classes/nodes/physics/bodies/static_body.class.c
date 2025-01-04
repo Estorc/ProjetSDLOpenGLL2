@@ -6,8 +6,9 @@
 #include "render/lighting.h"
 #include "buffer.h"
 
-class StaticBody extends Body {
+class StaticBody : public Body {
     __containerType__ Node *
+    public:
 
     void constructor(struct StaticBody *staticBody) {
         this->object = staticBody;

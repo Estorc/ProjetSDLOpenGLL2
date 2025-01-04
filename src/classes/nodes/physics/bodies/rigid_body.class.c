@@ -6,8 +6,9 @@
 #include "render/lighting.h"
 #include "buffer.h"
 
-class RigidBody extends Body {
+class RigidBody : public Body {
     __containerType__ Node *
+    public:
 
     void constructor(struct RigidBody *rigidBody) {
         this->object = rigidBody;

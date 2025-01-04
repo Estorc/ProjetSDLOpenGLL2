@@ -1,0 +1,162 @@
+\doxysection{Render Functions}
+\hypertarget{group__RenderFunctions}{}\label{group__RenderFunctions}\index{Render Functions@{Render Functions}}
+
+
+Functions for configuring shaders, rendering scenes, and drawing shadow maps.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structWorldShaders}{World\+Shaders}}
+\begin{DoxyCompactList}\small\item\em A structure to hold various shaders used in the rendering process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__RenderFunctions_gaeff689418cd5e5fb37a09dd9b32c498d}{configure\+\_\+shader}} (struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}root, struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, struct \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders)
+\begin{DoxyCompactList}\small\item\em Configures the shader program for rendering. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RenderFunctions_ga7228f0476961799d9cf59f1d23088dca}{render\+\_\+scene}} (struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, mat4 model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader, struct \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders)
+\begin{DoxyCompactList}\small\item\em Renders the scene using the specified shader. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RenderFunctions_ga5be131954e4b841d5dbb65b09aee0af0}{draw\+\_\+shadow\+\_\+map}} (struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}root, struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, struct \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, struct \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}depth\+Map)
+\begin{DoxyCompactList}\small\item\em Draws the shadow map for the scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RenderFunctions_ga3a40b329a60cbe367e798eecbb95c855}{draw\+\_\+scene}} (struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}root, struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, struct \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, struct \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}depth\+Map)
+\begin{DoxyCompactList}\small\item\em Draws the entire scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RenderFunctions_ga93a265287cf95e99d6118358e849e2c6}{draw\+\_\+screen}} (struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}scene, struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, struct \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}depth\+Map, struct \mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}msaa, struct \mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}screen\+Plane)
+\begin{DoxyCompactList}\small\item\em Draws the final screen output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions for configuring shaders, rendering scenes, and drawing shadow maps. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__RenderFunctions_gaeff689418cd5e5fb37a09dd9b32c498d}\label{group__RenderFunctions_gaeff689418cd5e5fb37a09dd9b32c498d} 
+\index{Render Functions@{Render Functions}!configure\_shader@{configure\_shader}}
+\index{configure\_shader@{configure\_shader}!Render Functions@{Render Functions}}
+\doxysubsubsection{\texorpdfstring{configure\_shader()}{configure\_shader()}}
+{\footnotesize\ttfamily void configure\+\_\+shader (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{root,  }\item[{struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{struct \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders }\end{DoxyParamCaption})}
+
+
+
+Configures the shader program for rendering. 
+
+This function sets up the shader program by binding the necessary resources and configuring the shader parameters based on the provided window, scene graph root node, camera, and world shaders.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Pointer to the \doxylink{structWindow}{Window} structure. \\
+\hline
+{\em root} & Pointer to the root \doxylink{classNode}{Node} of the scene graph. \\
+\hline
+{\em c} & Pointer to the \doxylink{classCamera}{Camera} structure. \\
+\hline
+{\em shaders} & Pointer to the \doxylink{structWorldShaders}{World\+Shaders} structure containing shader programs. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__RenderFunctions_ga3a40b329a60cbe367e798eecbb95c855}\label{group__RenderFunctions_ga3a40b329a60cbe367e798eecbb95c855} 
+\index{Render Functions@{Render Functions}!draw\_scene@{draw\_scene}}
+\index{draw\_scene@{draw\_scene}!Render Functions@{Render Functions}}
+\doxysubsubsection{\texorpdfstring{draw\_scene()}{draw\_scene()}}
+{\footnotesize\ttfamily void draw\+\_\+scene (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{root,  }\item[{struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{struct \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders,  }\item[{struct \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}}]{depth\+Map }\end{DoxyParamCaption})}
+
+
+
+Draws the entire scene. 
+
+This function renders the entire scene graph starting from the root node. It uses the provided window, camera, world shaders, and depth map to render the scene with shadows and other effects.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Pointer to the \doxylink{structWindow}{Window} structure. \\
+\hline
+{\em root} & Pointer to the root \doxylink{classNode}{Node} of the scene graph. \\
+\hline
+{\em c} & Pointer to the \doxylink{classCamera}{Camera} structure. \\
+\hline
+{\em shaders} & Pointer to the \doxylink{structWorldShaders}{World\+Shaders} structure containing shader programs. \\
+\hline
+{\em depth\+Map} & Pointer to the \doxylink{structDepthMap}{Depth\+Map} structure for shadow mapping. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__RenderFunctions_ga93a265287cf95e99d6118358e849e2c6}\label{group__RenderFunctions_ga93a265287cf95e99d6118358e849e2c6} 
+\index{Render Functions@{Render Functions}!draw\_screen@{draw\_screen}}
+\index{draw\_screen@{draw\_screen}!Render Functions@{Render Functions}}
+\doxysubsubsection{\texorpdfstring{draw\_screen()}{draw\_screen()}}
+{\footnotesize\ttfamily void draw\+\_\+screen (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{scene,  }\item[{struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders,  }\item[{struct \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}}]{depth\+Map,  }\item[{struct \mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}}]{msaa,  }\item[{struct \mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{screen\+Plane }\end{DoxyParamCaption})}
+
+
+
+Draws the final screen output. 
+
+This function renders the final output to the screen. It uses the provided window, scene graph, camera, world shaders, depth map, \doxylink{structMSAA}{MSAA} settings, and screen plane mesh to draw the final image on the screen.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Pointer to the \doxylink{structWindow}{Window} structure. \\
+\hline
+{\em scene} & Pointer to the root \doxylink{classNode}{Node} of the scene graph. \\
+\hline
+{\em c} & Pointer to the \doxylink{classCamera}{Camera} structure. \\
+\hline
+{\em shaders} & Pointer to the \doxylink{structWorldShaders}{World\+Shaders} structure containing shader programs. \\
+\hline
+{\em depth\+Map} & Pointer to the \doxylink{structDepthMap}{Depth\+Map} structure for shadow mapping. \\
+\hline
+{\em msaa} & Pointer to the \doxylink{structMSAA}{MSAA} structure for multi-\/sample anti-\/aliasing. \\
+\hline
+{\em screen\+Plane} & Pointer to the \doxylink{classMesh}{Mesh} structure representing the screen plane. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__RenderFunctions_ga5be131954e4b841d5dbb65b09aee0af0}\label{group__RenderFunctions_ga5be131954e4b841d5dbb65b09aee0af0} 
+\index{Render Functions@{Render Functions}!draw\_shadow\_map@{draw\_shadow\_map}}
+\index{draw\_shadow\_map@{draw\_shadow\_map}!Render Functions@{Render Functions}}
+\doxysubsubsection{\texorpdfstring{draw\_shadow\_map()}{draw\_shadow\_map()}}
+{\footnotesize\ttfamily void draw\+\_\+shadow\+\_\+map (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{root,  }\item[{struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{struct \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders,  }\item[{struct \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}}]{depth\+Map }\end{DoxyParamCaption})}
+
+
+
+Draws the shadow map for the scene. 
+
+This function generates the shadow map by rendering the scene from the light\textquotesingle{}s perspective. It uses the provided window, scene graph root node, camera, world shaders, and depth map to create the shadow map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Pointer to the \doxylink{structWindow}{Window} structure. \\
+\hline
+{\em root} & Pointer to the root \doxylink{classNode}{Node} of the scene graph. \\
+\hline
+{\em c} & Pointer to the \doxylink{classCamera}{Camera} structure. \\
+\hline
+{\em shaders} & Pointer to the \doxylink{structWorldShaders}{World\+Shaders} structure containing shader programs. \\
+\hline
+{\em depth\+Map} & Pointer to the \doxylink{structDepthMap}{Depth\+Map} structure for storing the shadow map. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__RenderFunctions_ga7228f0476961799d9cf59f1d23088dca}\label{group__RenderFunctions_ga7228f0476961799d9cf59f1d23088dca} 
+\index{Render Functions@{Render Functions}!render\_scene@{render\_scene}}
+\index{render\_scene@{render\_scene}!Render Functions@{Render Functions}}
+\doxysubsubsection{\texorpdfstring{render\_scene()}{render\_scene()}}
+{\footnotesize\ttfamily void render\+\_\+scene (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{mat4}]{model\+Matrix,  }\item[{\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{active\+Shader,  }\item[{struct \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders }\end{DoxyParamCaption})}
+
+
+
+Renders the scene using the specified shader. 
+
+This function renders the scene graph starting from the given node using the active shader. It applies the model matrix transformations and uses the provided camera and world shaders to render the scene.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Pointer to the \doxylink{structWindow}{Window} structure. \\
+\hline
+{\em node} & Pointer to the current \doxylink{classNode}{Node} in the scene graph. \\
+\hline
+{\em c} & Pointer to the \doxylink{classCamera}{Camera} structure. \\
+\hline
+{\em model\+Matrix} & The model matrix for transforming the node. \\
+\hline
+{\em active\+Shader} & The shader program to use for rendering. \\
+\hline
+{\em shaders} & Pointer to the \doxylink{structWorldShaders}{World\+Shaders} structure containing shader programs. \\
+\hline
+\end{DoxyParams}

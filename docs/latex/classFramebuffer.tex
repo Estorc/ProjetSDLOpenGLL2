@@ -1,0 +1,135 @@
+\doxysection{Framebuffer Class Reference}
+\hypertarget{classFramebuffer}{}\label{classFramebuffer}\index{Framebuffer@{Framebuffer}}
+
+
+Inheritance diagram for Framebuffer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=156pt]{classFramebuffer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Framebuffer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{classFramebuffer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classFramebuffer_a666857a6d8b88bd6d17fbce1bbfd1993}{constructor}} (\mbox{\hyperlink{group__Framebuffer_gab75cdf3b36517627dfe9b6029e00129d}{Frame\+Buffer}} \texorpdfstring{$\ast$}{*}frame\+Buffer)
+\item 
+void \mbox{\hyperlink{classFramebuffer_aa2d131d59a7e5b7c82ec2989c0ff2f8f}{cast}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}data)
+\item 
+void \mbox{\hyperlink{classFramebuffer_ac161f22dbe63e5c27ac0728ecc4b217b}{load}} ()
+\item 
+void \mbox{\hyperlink{classFramebuffer_af9d417157ea0fcb731e6d78a657743ab}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}} ()
+\item 
+void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
+\item 
+void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+\item 
+void \mbox{\hyperlink{classNode_a9b702cf3be32e9c0fcbfadf561e8d867}{cast}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}data)
+\item 
+void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
+\item 
+void \mbox{\hyperlink{classNode_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
+\item 
+void \mbox{\hyperlink{classNode_ab93a6f41e02422a21c44227c0355382a}{render}} ()
+\item 
+void \mbox{\hyperlink{classNode_ac7b956795b2d4b16c59c1155bd7cba91}{update}} ()
+\item 
+void \mbox{\hyperlink{classNode_acda79ab291312990e96552767c577a3d}{free}} ()
+\item 
+void \mbox{\hyperlink{classNode_ae2ee01789b301b3c0323473dbe968283}{is\+\_\+cshape}} (bool \texorpdfstring{$\ast$}{*}cshape)
+\item 
+void \mbox{\hyperlink{classNode_a75c27b8cf028ae9509b20ad7392c49f8}{is\+\_\+body}} (bool \texorpdfstring{$\ast$}{*}body)
+\item 
+void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
+\item 
+void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
+\item 
+int \mbox{\hyperlink{classNode_a5ebf24b90913a3442e2ad9856c099072}{test\+\_\+function}} (int a, int b)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga9cf70c2b354e11c49130331da4519864}{object}}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga3d857c2fdb25634fe92ca32ff006c233}{children}}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{parent}}
+\item 
+\mbox{\hyperlink{types_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga1cf2ef86297b1bdfed11d030c0ed3dd2}{global\+Pos}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{global\+Rot}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
+\item 
+\mbox{\hyperlink{scripts_8h_ab7576c513306b5641c2b903c7d18850f}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
+\item 
+\mbox{\hyperlink{unionBehaviorParameter}{Behavior\+Parameter}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gac639490f60bdc872491ffaaea5991ed0}{params}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga1411990c75c0b134485d07be7a21e58c}{params\+\_\+count}}
+\item 
+\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a44e2ccb5f2209f6367f33a3c712f0eb1}{glow\+Shader}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classFramebuffer_aa2d131d59a7e5b7c82ec2989c0ff2f8f}\label{classFramebuffer_aa2d131d59a7e5b7c82ec2989c0ff2f8f} 
+\index{Framebuffer@{Framebuffer}!cast@{cast}}
+\index{cast@{cast}!Framebuffer@{Framebuffer}}
+\doxysubsubsection{\texorpdfstring{cast()}{cast()}}
+{\footnotesize\ttfamily void Framebuffer\+::cast (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classFramebuffer_a666857a6d8b88bd6d17fbce1bbfd1993}\label{classFramebuffer_a666857a6d8b88bd6d17fbce1bbfd1993} 
+\index{Framebuffer@{Framebuffer}!constructor@{constructor}}
+\index{constructor@{constructor}!Framebuffer@{Framebuffer}}
+\doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
+{\footnotesize\ttfamily void Framebuffer\+::constructor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__Framebuffer_gab75cdf3b36517627dfe9b6029e00129d}{Frame\+Buffer}} \texorpdfstring{$\ast$}{*}}]{frame\+Buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classFramebuffer_ac161f22dbe63e5c27ac0728ecc4b217b}\label{classFramebuffer_ac161f22dbe63e5c27ac0728ecc4b217b} 
+\index{Framebuffer@{Framebuffer}!load@{load}}
+\index{load@{load}!Framebuffer@{Framebuffer}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Framebuffer\+::load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classFramebuffer_af9d417157ea0fcb731e6d78a657743ab}\label{classFramebuffer_af9d417157ea0fcb731e6d78a657743ab} 
+\index{Framebuffer@{Framebuffer}!save@{save}}
+\index{save@{save}!Framebuffer@{Framebuffer}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Framebuffer\+::save (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/classes/nodes/\mbox{\hyperlink{framebuffer_8class_8c}{framebuffer.\+class.\+c}}\end{DoxyCompactItemize}

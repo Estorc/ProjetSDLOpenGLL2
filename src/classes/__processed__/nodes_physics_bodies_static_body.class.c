@@ -11,12 +11,9 @@
 static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_STATICBODY;
 
 
-void __class_method_staticbody_constructor(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_staticbody_constructor(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 struct StaticBody * staticBody = va_arg(args, struct StaticBody *);
-va_end(args);
 (void)this;
     this->object = staticBody;
     this->type = __type__;
@@ -24,13 +21,10 @@ va_end(args);
 }
 
 
-void __class_method_staticbody_get_collisions_shapes(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_staticbody_get_collisions_shapes(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 Node *** shapes = va_arg(args, Node ***);
 u8 * length = va_arg(args, u8 *);
-va_end(args);
 (void)this;
     StaticBody *staticBody = (StaticBody *) this->object;
     *length = staticBody->length;
@@ -38,15 +32,12 @@ va_end(args);
 }
 
 
-void __class_method_staticbody_load(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_staticbody_load(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
 Camera ** c = va_arg(args, Camera **);
 Script * scripts = va_arg(args, Script *);
 Node * editor = va_arg(args, Node *);
-va_end(args);
 (void)this;
     StaticBody *staticBody;
     staticBody = malloc(sizeof(StaticBody));
@@ -69,12 +60,9 @@ va_end(args);
 }
 
 
-void __class_method_staticbody_save(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_staticbody_save(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
-va_end(args);
 (void)this;
     fprintf(file, "%s", classManager.class_names[this->type]);
     StaticBody *staticBody = (StaticBody*) this->object;

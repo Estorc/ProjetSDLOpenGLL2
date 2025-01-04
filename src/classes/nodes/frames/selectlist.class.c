@@ -9,8 +9,9 @@
 #include "gui/frame.h"
 #include "io/input.h"
 
-class SelectList extends Frame {
+class SelectList : public Frame {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;

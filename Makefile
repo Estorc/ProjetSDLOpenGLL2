@@ -43,6 +43,8 @@ NEWLINE := $(shell printf "\n")
 BUILD_DIR := bin
 PROCESSED_CLASS_DIR := src/classes/__processed__
 
+MODULES += src/classes/classes.o
+
 MODULES += src/io/gltexture_loader.o
 MODULES += src/io/obj_loader.o
 MODULES += src/io/mtl_loader.o
@@ -55,11 +57,9 @@ MODULES += src/io/shader.o
 MODULES += src/io/osio.o
 
 MODULES += src/math/math_util.o
-MODULES += src/math/graph.o
 
 MODULES += src/render/lighting.o
 MODULES += src/render/render.o
-MODULES += src/render/color.o
 MODULES += src/render/camera.o
 MODULES += src/render/framebuffer.o
 MODULES += src/render/depth_map.o

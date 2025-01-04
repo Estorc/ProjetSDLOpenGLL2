@@ -9,8 +9,9 @@
 #include "gui/frame.h"
 #include "io/input.h"
 
-class RadioButton extends Button {
+class RadioButton : public Button {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;

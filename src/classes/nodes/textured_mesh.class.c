@@ -4,8 +4,9 @@
 #include "storage/node.h"
 #include "memory.h"
 
-class TexturedMesh extends Node {
+class TexturedMesh : public Node {
     __containerType__ Node *
+    public:
 
     void constructor(struct TexturedMesh *texturedMesh) {
         this->object = texturedMesh;

@@ -35,26 +35,12 @@ int index_of_child(Node *node, Node *child) {
     return -1;
 }
 
-/**
- * Add a child to a node
- *
- * @param node {Node*} - The parent node.
- * @param child {Node*} - The child node.
- */
-
 void add_child(Node *node, Node *child) {
     
     node->children[node->length++] = child;
     child->parent = node;
     
 }
-
-/**
- * Add a child to a node and realloc the parent
- *
- * @param node {Node*} - The parent node.
- * @param child {Node*} - The child node.
- */
 
 void add_child_and_realloc(Node *node, Node *child) {
     node->children = realloc(node->children, sizeof(Node *) * (node->length+1));
@@ -63,26 +49,12 @@ void add_child_and_realloc(Node *node, Node *child) {
     child->parent = node;
 }
 
-/**
- * Remove a child from the parent
- *
- * @param node {Node*} - The parent node.
- * @param child {Node*} - The child node.
- */
-
 void remove_child(Node *node, Node *child) {
     for (Node **rightCursor, **leftCursor = rightCursor = node->children; rightCursor < node->children + node->length; leftCursor++, rightCursor++) {
         if (child == *rightCursor) rightCursor++;
         if (leftCursor != rightCursor && rightCursor < node->children + node->length) *leftCursor = *rightCursor;
     }
 }
-
-/**
- * Remove a child from the parent and realloc the parent
- *
- * @param node {Node*} - The parent node.
- * @param child {Node*} - The children node.
- */
 
 void remove_child_and_realloc(Node *node, Node *child) {
     for (Node **rightCursor, **leftCursor = rightCursor = node->children; rightCursor < node->children + node->length; leftCursor++, rightCursor++) {
@@ -93,13 +65,6 @@ void remove_child_and_realloc(Node *node, Node *child) {
     //POINTER_CHECK(node->children);
 }
 
-/**
- * Remove a child from the parent and free the child
- *
- * @param node {Node*} - The parent node.
- * @param child {Node*} - The children node.
- */
-
 void remove_child_and_free(Node *node, Node *child) {
     for (Node **rightCursor, **leftCursor = rightCursor = node->children; rightCursor < node->children + node->length; leftCursor++, rightCursor++) {
         if (child == *rightCursor) free_node(*rightCursor), rightCursor++;
@@ -107,12 +72,6 @@ void remove_child_and_free(Node *node, Node *child) {
     }
 }
 
-/**
- * Remove a child from the parent, realloc the parent and free the child
- *
- * @param node {Node*} - The parent node.
- * @param child {Node*} - The children node.
- */
 
 void remove_child_and_free_and_realloc(Node *node, Node *child) {
     for (Node **rightCursor, **leftCursor = rightCursor = node->children; rightCursor < node->children + node->length; leftCursor++, rightCursor++) {
@@ -126,21 +85,6 @@ void remove_child_and_free_and_realloc(Node *node, Node *child) {
     //POINTER_CHECK(node->children);
 }
 
-
-
-
-/**
- * Renders a 3D node with applied transformations.
- * 
- * @param node {Node*} - Pointer to the Node structure containing object data.
- * @param shaders {Shader*} - Array of shaders for rendering different node types.
- * @param modelMatrix {mat4} - Transformation matrix to be applied to the node.
- * 
- * The function applies translation, rotation, and scaling to the modelMatrix
- * based on the node's properties, disables normal and displacement maps in
- * the current shader, and then renders the node using the appropriate function
- * based on its type (e.g., model, textured mesh, skybox).
- */
 
 void render_node(Node *node, mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
     
@@ -158,36 +102,11 @@ void render_node(Node *node, mat4 modelMatrix, Shader activeShader, WorldShaders
 }
 
 
-
-/**
- * Frees the memory associated with a Node structure and its children.
- * 
- * @param node {Node*} - Pointer to the Node structure to be freed.
- * 
- * This function recursively frees all child nodes of the given node. It handles different 
- * node types, freeing associated resources specific to each type (e.g., models, viewports, 
- * rigid bodies). It also frees the object's memory, the children array, and finally the 
- * node itself. This ensures proper memory management and prevents memory leaks.
- */
-
 void free_node(Node *node) {
     METHOD(node, free);
     printf("Free nodes!\n");
 }
 
-
-
-/**
- * Prints the details of a Node structure and its children to the console.
- * 
- * @param node {Node*} - Pointer to the Node structure to be printed.
- * @param level {int} - Current depth level in the node hierarchy for indentation.
- * 
- * This function is used for debugging purposes. It prints the node's address, type, 
- * active and visible flags, and the number of children. The output is indented according 
- * to the node's level in the hierarchy to visually represent the tree structure of the nodes. 
- * The function recursively prints all child nodes, providing a full view of the node tree.
- */
 
 void print_node(Node *node, int level) {
     #ifdef DEBUG

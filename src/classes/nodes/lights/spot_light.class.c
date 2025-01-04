@@ -5,8 +5,9 @@
 #include "render/lighting.h"
 #include "buffer.h"
 
-class SpotLight extends Light {
+class SpotLight : public Light {
     __containerType__ Node *
+    public:
 
     void constructor(struct SpotLight *spotLight) {
         this->object = spotLight;

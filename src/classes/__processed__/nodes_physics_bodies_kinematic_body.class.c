@@ -11,12 +11,9 @@
 static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_KINEMATICBODY;
 
 
-void __class_method_kinematicbody_constructor(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_kinematicbody_constructor(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 struct KinematicBody * kinematicBody = va_arg(args, struct KinematicBody *);
-va_end(args);
 (void)this;
     this->object = kinematicBody;
     this->type = __type__;
@@ -24,25 +21,19 @@ va_end(args);
 }
 
 
-void __class_method_kinematicbody_get_length(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_kinematicbody_get_length(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 u8 * length = va_arg(args, u8 *);
-va_end(args);
 (void)this;
     KinematicBody *kinematicBody = (KinematicBody *) this->object;
     *length = kinematicBody->length;
 }
 
 
-void __class_method_kinematicbody_get_collisions_shapes(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_kinematicbody_get_collisions_shapes(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 Node *** shapes = va_arg(args, Node ***);
 u8 * length = va_arg(args, u8 *);
-va_end(args);
 (void)this;
     KinematicBody *kinematicBody = (KinematicBody *) this->object;
     *length = kinematicBody->length;
@@ -50,15 +41,12 @@ va_end(args);
 }
 
 
-void __class_method_kinematicbody_load(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_kinematicbody_load(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
 Camera ** c = va_arg(args, Camera **);
 Script * scripts = va_arg(args, Script *);
 Node * editor = va_arg(args, Node *);
-va_end(args);
 (void)this;
     KinematicBody *kinematicBody;
     kinematicBody = malloc(sizeof(KinematicBody));
@@ -86,12 +74,9 @@ va_end(args);
 }
 
 
-void __class_method_kinematicbody_save(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_kinematicbody_save(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
-va_end(args);
 (void)this;
     fprintf(file, "%s", classManager.class_names[this->type]);
     KinematicBody *kinematicBody = (KinematicBody*) this->object;
@@ -104,14 +89,11 @@ va_end(args);
 
 
 
-void __class_method_kinematicbody_apply_impulse(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_kinematicbody_apply_impulse(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 float * impulse = va_arg(args, float *);
 float * torque = va_arg(args, float *);
 float * correction = va_arg(args, float *);
-va_end(args);
 (void)this;
     IGNORE(torque);
     KinematicBody *kinematicBody = (KinematicBody *) this->object;

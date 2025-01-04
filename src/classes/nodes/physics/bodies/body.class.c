@@ -6,8 +6,9 @@
 #include "render/lighting.h"
 #include "buffer.h"
 
-class Body extends PhysicalNode {
+class Body : public PhysicalNode {
     __containerType__ Node *
+    public:
 
     void is_body(bool *body) {
         (*body) = true;

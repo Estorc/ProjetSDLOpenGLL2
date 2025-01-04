@@ -1,0 +1,20 @@
+<map id="src/io/stringio.c" name="src/io/stringio.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="280,5,401,31"/>
+<area shape="rect" id="Node000002" href="$types_8h.html" title="This file contains type definitions for fixed&#45;width integer types and floating&#45;point types." alt="" coords="107,79,190,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="311,33,194,76,192,71,309,28"/>
+<area shape="rect" id="Node000006" href="$stringio_8h.html" title="Provides utility functions for string and file operations." alt="" coords="221,79,303,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="330,33,287,71,283,68,326,29"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="305,152,376,177"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="343,31,343,138,338,138,338,31"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="378,79,445,104"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="354,29,392,67,388,71,350,33"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="469,79,540,104"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="368,28,467,71,464,76,366,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,76,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="133,106,71,147,68,142,130,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="101,152,183,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="150,105,147,139,142,138,145,104"/>
+<area shape="rect" id="Node000005" href="$config_8h.html" title=" " alt="" coords="208,152,281,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="166,102,219,141,216,146,163,106"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="276,102,320,141,316,145,273,106"/>
+</map>

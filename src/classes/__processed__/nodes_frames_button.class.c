@@ -14,11 +14,8 @@
 static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_BUTTON;
 
 
-void __class_method_button_constructor(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_button_constructor(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     Frame *frame;
     frame = malloc(sizeof(Frame));
@@ -31,11 +28,8 @@ va_end(args);
 }
 
 
-void __class_method_button_init_button(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_button_init_button(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     Frame *frame = (Frame *) this->object;
     frame->button = malloc(sizeof(Button));
@@ -52,23 +46,17 @@ va_end(args);
 }
 
 
-void __class_method_button_cast(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_button_cast(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 void **  data = va_arg(args, void ** );
-va_end(args);
 (void)this;
     IGNORE(data);
 }
 
 
-void __class_method_button_load(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_button_load(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
-va_end(args);
 (void)this;
     IGNORE(file);
     METHOD_TYPE(this, __type__, constructor);
@@ -76,11 +64,8 @@ va_end(args);
 }
 
 
-void __class_method_button_update(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_button_update(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     Frame *frame = (Frame *) this->object;
     Button *button = (Button *) frame->button;
@@ -118,35 +103,26 @@ va_end(args);
 }
 
 
-void __class_method_button_is_button(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_button_is_button(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 bool * result = va_arg(args, bool *);
-va_end(args);
 (void)this;
     *result = true;
 }
 
 
-void __class_method_button_save(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_button_save(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
 Node * editor = va_arg(args, Node *);
-va_end(args);
 (void)this;
     IGNORE(editor);
     fprintf(file, "%s", classManager.class_names[this->type]);
 }
 
 
-void __class_method_button_free(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_button_free(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     Frame *frame = (Frame *) this->object;
     Button *button = (Button *) frame->button;

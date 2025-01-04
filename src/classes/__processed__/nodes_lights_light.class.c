@@ -12,11 +12,8 @@ static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_LIGHT;
 
 
 
-void __class_method_light_init_light(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_light_init_light(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     this->flags |= NODE_LIGHT_ACTIVE;
 }
@@ -34,12 +31,9 @@ va_end(args);
 
     static TextureMap directionalLightTexture = 0;
 
-void __class_method_light_render(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_light_render(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 mat4 * modelMatrix = va_arg(args, mat4 *);
-va_end(args);
 (void)this;
     if (!vao) METHOD(this, init_vao);
     use_shader(billboardShader);
@@ -59,11 +53,8 @@ va_end(args);
 
 
 
-void __class_method_light_init_vao(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_light_init_vao(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     float quadVertices[] = {
         // positions        // texture Coords

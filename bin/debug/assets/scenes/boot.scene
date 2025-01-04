@@ -20,7 +20,7 @@ BoxCShape[m0,0,0r0,0,0s1,1,1a1v1]
 [m0,10,0r0,45,45s2,4,2a1v1]:1
 Model(assets/models/crate/model.obj)[m0,0,0r0,0,0s1,1,1a1v1]
 Node:1
-Camera(1)[m0,3,0r0,0,0s1,1,1a1v1]{title_screen_camera}
+Camera(1)[m0,3,0r0,0,0s1,1,1a1v1]{NULL,title_screen_camera,NULL}
 Node[m0.1,0,0.1r0,0,0s1,1,1a1v1]:1
 StaticBody(1)
 PlaneCShape[m0,0,0r0,0,0s1,1,1a1v1]
@@ -37,11 +37,11 @@ Frame(0w,10h,60w,10h,ctn,[assets/textures/windowskin/Window.png,assets/fonts/Orb
 Label(Claude Chappe's Curse,cc)
 Frame(0w,20h,60w,20h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):3
 Frame(2w,0h,30w,90h,lcn):1
-Button{play_game_button}:1
+Button{NULL,play_game_button,NULL}:1
 Label(Jouer,cc)
 Frame(0w,0h,30w,90h,ccn):1
-Button{settings_game_button}:1
+Button{NULL,settings_game_button,NULL}:1
 Label(Options,cc)
 Frame(-2w,0h,30w,90h,rcn):1
-Button{quit_game_button}:1
+Button{NULL,quit_game_button,NULL}:1
 Label(Quitter,cc)

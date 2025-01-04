@@ -1,0 +1,173 @@
+\doxysection{import\+\_\+class.\+h}
+\hypertarget{import__class_8h_source}{}\label{import__class_8h_source}\index{src/classes/import\_class.h@{src/classes/import\_class.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ This\ file\ is\ generated\ by\ the\ class\_tools.c\ tool}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/node.class.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_camera.class.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_cshapes\_box\_cshape.class.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_cshapes\_capsule\_cshape.class.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_cshapes\_cshape.class.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_cshapes\_mesh\_cshape.class.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_cshapes\_plane\_cshape.class.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_cshapes\_ray\_cshape.class.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_cshapes\_sphere\_cshape.class.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_framebuffer.class.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_frames\_button.class.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_frames\_checkbox.class.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_frames\_control\_frame.class.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_frames\_frame.class.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_frames\_image\_frame.class.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_frames\_input\_area.class.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_frames\_label.class.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_frames\_radiobutton.class.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_frames\_selectlist.class.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_lights\_directional\_light.class.h"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_lights\_light.class.h"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_lights\_point\_light.class.h"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_lights\_spot\_light.class.h"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_mesh.class.h"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_model.class.h"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_physics\_area.class.h"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_physics\_bodies\_body.class.h"{}}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_physics\_bodies\_kinematic\_body.class.h"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_physics\_bodies\_rigid\_body.class.h"{}}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_physics\_bodies\_static\_body.class.h"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_physics\_physical\_node.class.h"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_scene.class.h"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_skybox.class.h"{}}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_texture.class.h"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\_\_processed\_\_/nodes\_textured\_mesh.class.h"{}}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#ifndef\ IMPORT\_CLASS\_H}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ IMPORT\_CLASS\_H}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ ClassType\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ CLASS\_TYPE\_NODE,}
+\DoxyCodeLine{00041\ \ \ \ \ CLASS\_TYPE\_CAMERA,}
+\DoxyCodeLine{00042\ \ \ \ \ CLASS\_TYPE\_BOXCSHAPE,}
+\DoxyCodeLine{00043\ \ \ \ \ CLASS\_TYPE\_CAPSULECSHAPE,}
+\DoxyCodeLine{00044\ \ \ \ \ CLASS\_TYPE\_CSHAPE,}
+\DoxyCodeLine{00045\ \ \ \ \ CLASS\_TYPE\_MESHCSHAPE,}
+\DoxyCodeLine{00046\ \ \ \ \ CLASS\_TYPE\_PLANECSHAPE,}
+\DoxyCodeLine{00047\ \ \ \ \ CLASS\_TYPE\_RAYCSHAPE,}
+\DoxyCodeLine{00048\ \ \ \ \ CLASS\_TYPE\_SPHERECSHAPE,}
+\DoxyCodeLine{00049\ \ \ \ \ CLASS\_TYPE\_FRAMEBUFFER,}
+\DoxyCodeLine{00050\ \ \ \ \ CLASS\_TYPE\_BUTTON,}
+\DoxyCodeLine{00051\ \ \ \ \ CLASS\_TYPE\_CHECKBOX,}
+\DoxyCodeLine{00052\ \ \ \ \ CLASS\_TYPE\_CONTROLFRAME,}
+\DoxyCodeLine{00053\ \ \ \ \ CLASS\_TYPE\_FRAME,}
+\DoxyCodeLine{00054\ \ \ \ \ CLASS\_TYPE\_IMAGEFRAME,}
+\DoxyCodeLine{00055\ \ \ \ \ CLASS\_TYPE\_INPUTAREA,}
+\DoxyCodeLine{00056\ \ \ \ \ CLASS\_TYPE\_LABEL,}
+\DoxyCodeLine{00057\ \ \ \ \ CLASS\_TYPE\_RADIOBUTTON,}
+\DoxyCodeLine{00058\ \ \ \ \ CLASS\_TYPE\_SELECTLIST,}
+\DoxyCodeLine{00059\ \ \ \ \ CLASS\_TYPE\_DIRECTIONALLIGHT,}
+\DoxyCodeLine{00060\ \ \ \ \ CLASS\_TYPE\_LIGHT,}
+\DoxyCodeLine{00061\ \ \ \ \ CLASS\_TYPE\_POINTLIGHT,}
+\DoxyCodeLine{00062\ \ \ \ \ CLASS\_TYPE\_SPOTLIGHT,}
+\DoxyCodeLine{00063\ \ \ \ \ CLASS\_TYPE\_MESH,}
+\DoxyCodeLine{00064\ \ \ \ \ CLASS\_TYPE\_MODEL,}
+\DoxyCodeLine{00065\ \ \ \ \ CLASS\_TYPE\_AREA,}
+\DoxyCodeLine{00066\ \ \ \ \ CLASS\_TYPE\_BODY,}
+\DoxyCodeLine{00067\ \ \ \ \ CLASS\_TYPE\_KINEMATICBODY,}
+\DoxyCodeLine{00068\ \ \ \ \ CLASS\_TYPE\_RIGIDBODY,}
+\DoxyCodeLine{00069\ \ \ \ \ CLASS\_TYPE\_STATICBODY,}
+\DoxyCodeLine{00070\ \ \ \ \ CLASS\_TYPE\_PHYSICALNODE,}
+\DoxyCodeLine{00071\ \ \ \ \ CLASS\_TYPE\_SCENE,}
+\DoxyCodeLine{00072\ \ \ \ \ CLASS\_TYPE\_SKYBOX,}
+\DoxyCodeLine{00073\ \ \ \ \ CLASS\_TYPE\_TEXTURE,}
+\DoxyCodeLine{00074\ \ \ \ \ CLASS\_TYPE\_TEXTUREDMESH,}
+\DoxyCodeLine{00075\ \ \ \ \ CLASS\_TYPE\_COUNT}
+\DoxyCodeLine{00076\ \}\ ClassType;}
+\DoxyCodeLine{00077\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMethodsCorrespondance}{MethodsCorrespondance}}\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ void\ \ (*constructor[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00079\ \ \ \ \ void\ \ (*initialize\_node[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00080\ \ \ \ \ void\ \ (*get\_glow\_shader[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00081\ \ \ \ \ void\ \ (*cast[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00082\ \ \ \ \ void\ \ (*load[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00083\ \ \ \ \ void\ \ (*save[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00084\ \ \ \ \ void\ \ (*render[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00085\ \ \ \ \ void\ \ (*update[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00086\ \ \ \ \ void\ \ (*free[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00087\ \ \ \ \ void\ \ (*is\_cshape[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00088\ \ \ \ \ void\ \ (*is\_body[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00089\ \ \ \ \ void\ \ (*is\_area[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00090\ \ \ \ \ void\ \ (*is\_gui\_element[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00091\ \ \ \ \ void\ \ (*get\_priority[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00092\ \ \ \ \ void\ \ (*get\_vao[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00093\ \ \ \ \ void\ \ (*init\_button[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00094\ \ \ \ \ void\ \ (*is\_button[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00095\ \ \ \ \ void\ \ (*is\_checkbox[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00096\ \ \ \ \ void\ \ (*handle\_dimension\_unit[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00097\ \ \ \ \ void\ \ (*init\_frame[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00098\ \ \ \ \ void\ \ (*refresh[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00099\ \ \ \ \ void\ \ (*refreshContent[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00100\ \ \ \ \ void\ \ (*prepare\_render[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00101\ \ \ \ \ void\ \ (*draw\_frame[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00102\ \ \ \ \ void\ \ (*is\_input\_area[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00103\ \ \ \ \ void\ \ (*is\_selectlist[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00104\ \ \ \ \ void\ \ (*is\_radiobutton[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00105\ \ \ \ \ void\ \ (*init\_radiobutton[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00106\ \ \ \ \ void\ \ (*refreshOptions[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00107\ \ \ \ \ void\ \ (*init\_light[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00108\ \ \ \ \ void\ \ (*init\_vao[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00109\ \ \ \ \ void\ \ (*precompile\_display\_lists[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00110\ \ \ \ \ void\ \ (*collect\_node[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00111\ \ \ \ \ void\ \ (*sort\_nodes[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00112\ \ \ \ \ void\ \ (*get\_collisions\_shapes[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00113\ \ \ \ \ void\ \ (*get\_node\_collection[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00114\ \ \ \ \ void\ \ (*apply\_impulse[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00115\ \ \ \ \ void\ \ (*get\_length[35])(\textcolor{keywordtype}{unsigned}\ type,\ ...);}
+\DoxyCodeLine{00116\ \};}
+\DoxyCodeLine{00117\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structClassManager}{ClassManager}}\ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMethodsCorrespondance}{MethodsCorrespondance}}\ methodsCorrespondance;}
+\DoxyCodeLine{00119\ \ \ \ \ ClassType\ extends[35];}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ class\_names[35];}
+\DoxyCodeLine{00121\ \};}
+\DoxyCodeLine{00122\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structClassManager}{ClassManager}}\ classManager;}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ BUILD\_CLASS\_METHODS\_CORRESPONDANCE(classManager)\ const\ struct\ ClassManager\ classManager\ =\ \{\(\backslash\)}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\ \ \ \ .methodsCorrespondance\ =\ \{\(\backslash\)}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .constructor\ =\ \{\_\_class\_method\_node\_constructor,\ \_\_class\_method\_camera\_constructor,\ \_\_class\_method\_boxcshape\_constructor,\ \_\_class\_method\_capsulecshape\_constructor,\ NULL,\ \_\_class\_method\_meshcshape\_constructor,\ \_\_class\_method\_planecshape\_constructor,\ \_\_class\_method\_raycshape\_constructor,\ \_\_class\_method\_spherecshape\_constructor,\ \_\_class\_method\_framebuffer\_constructor,\ \_\_class\_method\_button\_constructor,\ \_\_class\_method\_checkbox\_constructor,\ \_\_class\_method\_controlframe\_constructor,\ \_\_class\_method\_frame\_constructor,\ \_\_class\_method\_imageframe\_constructor,\ \_\_class\_method\_inputarea\_constructor,\ \_\_class\_method\_label\_constructor,\ \_\_class\_method\_radiobutton\_constructor,\ \_\_class\_method\_selectlist\_constructor,\ \_\_class\_method\_directionallight\_constructor,\ NULL,\ \_\_class\_method\_pointlight\_constructor,\ \_\_class\_method\_spotlight\_constructor,\ \_\_class\_method\_mesh\_constructor,\ \_\_class\_method\_model\_constructor,\ \_\_class\_method\_area\_constructor,\ NULL,\ \_\_class\_method\_kinematicbody\_constructor,\ \_\_class\_method\_rigidbody\_constructor,\ \_\_class\_method\_staticbody\_constructor,\ NULL,\ \_\_class\_method\_scene\_constructor,\ \_\_class\_method\_skybox\_constructor,\ \_\_class\_method\_texture\_constructor,\ \_\_class\_method\_texturedmesh\_constructor\},\(\backslash\)}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .initialize\_node\ =\ \{\_\_class\_method\_node\_initialize\_node,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .get\_glow\_shader\ =\ \{\_\_class\_method\_node\_get\_glow\_shader,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .cast\ =\ \{\_\_class\_method\_node\_cast,\ \_\_class\_method\_camera\_cast,\ \_\_class\_method\_boxcshape\_cast,\ \_\_class\_method\_capsulecshape\_cast,\ NULL,\ \_\_class\_method\_meshcshape\_cast,\ \_\_class\_method\_planecshape\_cast,\ \_\_class\_method\_raycshape\_cast,\ \_\_class\_method\_spherecshape\_cast,\ \_\_class\_method\_framebuffer\_cast,\ \_\_class\_method\_button\_cast,\ \_\_class\_method\_checkbox\_cast,\ \_\_class\_method\_controlframe\_cast,\ \_\_class\_method\_frame\_cast,\ \_\_class\_method\_imageframe\_cast,\ \_\_class\_method\_inputarea\_cast,\ \_\_class\_method\_label\_cast,\ \_\_class\_method\_radiobutton\_cast,\ \_\_class\_method\_selectlist\_cast,\ \_\_class\_method\_directionallight\_cast,\ NULL,\ \_\_class\_method\_pointlight\_cast,\ \_\_class\_method\_spotlight\_cast,\ \_\_class\_method\_mesh\_cast,\ \_\_class\_method\_model\_cast,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_scene\_cast,\ \_\_class\_method\_skybox\_cast,\ \_\_class\_method\_texture\_cast,\ \_\_class\_method\_texturedmesh\_cast\},\(\backslash\)}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .load\ =\ \{\_\_class\_method\_node\_load,\ \_\_class\_method\_camera\_load,\ \_\_class\_method\_boxcshape\_load,\ \_\_class\_method\_capsulecshape\_load,\ NULL,\ \_\_class\_method\_meshcshape\_load,\ \_\_class\_method\_planecshape\_load,\ \_\_class\_method\_raycshape\_load,\ \_\_class\_method\_spherecshape\_load,\ \_\_class\_method\_framebuffer\_load,\ \_\_class\_method\_button\_load,\ \_\_class\_method\_checkbox\_load,\ \_\_class\_method\_controlframe\_load,\ \_\_class\_method\_frame\_load,\ \_\_class\_method\_imageframe\_load,\ \_\_class\_method\_inputarea\_load,\ \_\_class\_method\_label\_load,\ \_\_class\_method\_radiobutton\_load,\ \_\_class\_method\_selectlist\_load,\ \_\_class\_method\_directionallight\_load,\ NULL,\ \_\_class\_method\_pointlight\_load,\ \_\_class\_method\_spotlight\_load,\ \_\_class\_method\_mesh\_load,\ \_\_class\_method\_model\_load,\ \_\_class\_method\_area\_load,\ NULL,\ \_\_class\_method\_kinematicbody\_load,\ \_\_class\_method\_rigidbody\_load,\ \_\_class\_method\_staticbody\_load,\ NULL,\ \_\_class\_method\_scene\_load,\ \_\_class\_method\_skybox\_load,\ \_\_class\_method\_texture\_load,\ \_\_class\_method\_texturedmesh\_load\},\(\backslash\)}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .save\ =\ \{\_\_class\_method\_node\_save,\ \_\_class\_method\_camera\_save,\ \_\_class\_method\_boxcshape\_save,\ \_\_class\_method\_capsulecshape\_save,\ NULL,\ \_\_class\_method\_meshcshape\_save,\ \_\_class\_method\_planecshape\_save,\ \_\_class\_method\_raycshape\_save,\ \_\_class\_method\_spherecshape\_save,\ \_\_class\_method\_framebuffer\_save,\ \_\_class\_method\_button\_save,\ \_\_class\_method\_checkbox\_save,\ \_\_class\_method\_controlframe\_save,\ \_\_class\_method\_frame\_save,\ \_\_class\_method\_imageframe\_save,\ \_\_class\_method\_inputarea\_save,\ \_\_class\_method\_label\_save,\ \_\_class\_method\_radiobutton\_save,\ \_\_class\_method\_selectlist\_save,\ \_\_class\_method\_directionallight\_save,\ NULL,\ \_\_class\_method\_pointlight\_save,\ \_\_class\_method\_spotlight\_save,\ \_\_class\_method\_mesh\_save,\ \_\_class\_method\_model\_save,\ \_\_class\_method\_area\_save,\ NULL,\ \_\_class\_method\_kinematicbody\_save,\ \_\_class\_method\_rigidbody\_save,\ \_\_class\_method\_staticbody\_save,\ NULL,\ \_\_class\_method\_scene\_save,\ \_\_class\_method\_skybox\_save,\ \_\_class\_method\_texture\_save,\ \_\_class\_method\_texturedmesh\_save\},\(\backslash\)}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .render\ =\ \{\_\_class\_method\_node\_render,\ NULL,\ \_\_class\_method\_boxcshape\_render,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_controlframe\_render,\ \_\_class\_method\_frame\_render,\ \_\_class\_method\_imageframe\_render,\ NULL,\ \_\_class\_method\_label\_render,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_light\_render,\ NULL,\ NULL,\ \_\_class\_method\_mesh\_render,\ \_\_class\_method\_model\_render,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_scene\_render,\ \_\_class\_method\_skybox\_render,\ NULL,\ \_\_class\_method\_texturedmesh\_render\},\(\backslash\)}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .update\ =\ \{\_\_class\_method\_node\_update,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_button\_update,\ NULL,\ NULL,\ \_\_class\_method\_frame\_update,\ NULL,\ \_\_class\_method\_inputarea\_update,\ NULL,\ NULL,\ \_\_class\_method\_selectlist\_update,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_area\_update,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .free\ =\ \{\_\_class\_method\_node\_free,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_button\_free,\ \_\_class\_method\_checkbox\_free,\ NULL,\ \_\_class\_method\_frame\_free,\ \_\_class\_method\_imageframe\_free,\ \_\_class\_method\_inputarea\_free,\ \_\_class\_method\_label\_free,\ \_\_class\_method\_radiobutton\_free,\ \_\_class\_method\_selectlist\_free,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_model\_free,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_physicalnode\_free,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .is\_cshape\ =\ \{\_\_class\_method\_node\_is\_cshape,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_cshape\_is\_cshape,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .is\_body\ =\ \{\_\_class\_method\_node\_is\_body,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_body\_is\_body,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .is\_area\ =\ \{\_\_class\_method\_node\_is\_area,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_area\_is\_area,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .is\_gui\_element\ =\ \{\_\_class\_method\_node\_is\_gui\_element,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_frame\_is\_gui\_element,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .get\_priority\ =\ \{NULL,\ NULL,\ \_\_class\_method\_boxcshape\_get\_priority,\ \_\_class\_method\_capsulecshape\_get\_priority,\ NULL,\ \_\_class\_method\_meshcshape\_get\_priority,\ \_\_class\_method\_planecshape\_get\_priority,\ \_\_class\_method\_raycshape\_get\_priority,\ \_\_class\_method\_spherecshape\_get\_priority,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .get\_vao\ =\ \{NULL,\ NULL,\ \_\_class\_method\_boxcshape\_get\_vao,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_frame\_get\_vao,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .init\_button\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_button\_init\_button,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .is\_button\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_button\_is\_button,\ NULL,\ NULL,\ \_\_class\_method\_frame\_is\_button,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .is\_checkbox\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_checkbox\_is\_checkbox,\ NULL,\ \_\_class\_method\_frame\_is\_checkbox,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .handle\_dimension\_unit\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_frame\_handle\_dimension\_unit,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .init\_frame\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_frame\_init\_frame,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .refresh\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_frame\_refresh,\ NULL,\ \_\_class\_method\_inputarea\_refresh,\ \_\_class\_method\_label\_refresh,\ NULL,\ \_\_class\_method\_selectlist\_refresh,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .refreshContent\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_frame\_refreshContent,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .prepare\_render\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_frame\_prepare\_render,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .draw\_frame\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_frame\_draw\_frame,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .is\_input\_area\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_frame\_is\_input\_area,\ NULL,\ \_\_class\_method\_inputarea\_is\_input\_area,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .is\_selectlist\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_frame\_is\_selectlist,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_selectlist\_is\_selectlist,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .is\_radiobutton\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_frame\_is\_radiobutton,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_radiobutton\_is\_radiobutton,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .init\_radiobutton\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_radiobutton\_init\_radiobutton,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .refreshOptions\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_selectlist\_refreshOptions,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .init\_light\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_light\_init\_light,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .init\_vao\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_light\_init\_vao,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .precompile\_display\_lists\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_model\_precompile\_display\_lists,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .collect\_node\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_area\_collect\_node,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .sort\_nodes\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_area\_sort\_nodes,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .get\_collisions\_shapes\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_area\_get\_collisions\_shapes,\ NULL,\ \_\_class\_method\_kinematicbody\_get\_collisions\_shapes,\ \_\_class\_method\_rigidbody\_get\_collisions\_shapes,\ \_\_class\_method\_staticbody\_get\_collisions\_shapes,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .get\_node\_collection\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_area\_get\_node\_collection,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .apply\_impulse\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_body\_apply\_impulse,\ \_\_class\_method\_kinematicbody\_apply\_impulse,\ \_\_class\_method\_rigidbody\_apply\_impulse,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .get\_length\ =\ \{NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ \_\_class\_method\_kinematicbody\_get\_length,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL,\ NULL\},\(\backslash\)}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\ \ \ \ \},\(\backslash\)}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\ \ \ \ .extends\ =\ \{-\/1,\ 0,\ 4,\ 4,\ 0,\ 4,\ 4,\ 4,\ 4,\ 0,\ 13,\ 10,\ 13,\ 0,\ 13,\ 13,\ 13,\ 10,\ 13,\ 20,\ 0,\ 20,\ 20,\ 0,\ 0,\ 30,\ 30,\ 26,\ 26,\ 26,\ 0,\ 0,\ 0,\ 0,\ 0\},\(\backslash\)}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\ \ \ \ .class\_names\ =\ \{"{}Node"{},\ "{}Camera"{},\ "{}BoxCShape"{},\ "{}CapsuleCShape"{},\ "{}CShape"{},\ "{}MeshCShape"{},\ "{}PlaneCShape"{},\ "{}RayCShape"{},\ "{}SphereCShape"{},\ "{}Framebuffer"{},\ "{}Button"{},\ "{}CheckBox"{},\ "{}ControlFrame"{},\ "{}Frame"{},\ "{}ImageFrame"{},\ "{}InputArea"{},\ "{}Label"{},\ "{}RadioButton"{},\ "{}SelectList"{},\ "{}DirectionalLight"{},\ "{}Light"{},\ "{}PointLight"{},\ "{}SpotLight"{},\ "{}Mesh"{},\ "{}Model"{},\ "{}Area"{},\ "{}Body"{},\ "{}KinematicBody"{},\ "{}RigidBody"{},\ "{}StaticBody"{},\ "{}PhysicalNode"{},\ "{}Scene"{},\ "{}Skybox"{},\ "{}Texture"{},\ "{}TexturedMesh"{}\}\(\backslash\)}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\};}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

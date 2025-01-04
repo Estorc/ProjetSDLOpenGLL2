@@ -102,6 +102,7 @@ Window window;
 
 BUILD_CLASS_METHODS_CORRESPONDANCE(classManager);
 
+
 int main(int argc, char *argv[]) {
 
     if (update_cwd() == -1) return -1;

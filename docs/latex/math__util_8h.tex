@@ -1,0 +1,38 @@
+\doxysection{src/math/math\+\_\+util.h File Reference}
+\hypertarget{math__util_8h}{}\label{math__util_8h}\index{src/math/math\_util.h@{src/math/math\_util.h}}
+{\ttfamily \#include $<$cglm/cglm.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$GL/gl.\+h$>$}\newline
+Include dependency graph for math\+\_\+util.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{math__util_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__MathGroup_gadee8c6d2fc20a1194cf64c481e7b6353}{sqr}}(x)~((x)\texorpdfstring{$\ast$}{*}(x))
+\begin{DoxyCompactList}\small\item\em Computes the square of a number. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__MathGroup_ga8368822f21884eec2e99ce31c08b0df4}{cube}}(x)~((x)\texorpdfstring{$\ast$}{*}(x)\texorpdfstring{$\ast$}{*}(x))
+\begin{DoxyCompactList}\small\item\em Computes the cube of a number. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__MathGroup_ga598a3330b3c21701223ee0ca14316eca}{PI}}~3.\+14159265358979323846264338327
+\begin{DoxyCompactList}\small\item\em The mathematical constant π (pi). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__MathGroup_ga74e75242132eaabbc1c512488a135926}{MIN}}(x,  y)~((x $<$ y) ? x \+: y)
+\begin{DoxyCompactList}\small\item\em Computes the minimum of two values. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__MathGroup_gaacc3ee1a7f283f8ef65cea31f4436a95}{MAX}}(x,  y)~((x $>$ y) ? x \+: y)
+\begin{DoxyCompactList}\small\item\em Computes the maximum of two values. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__MathGroup_ga3d82ffe4989b63f6edc6e6349838ae3c}{CLAMP}}(x,  y,  z)~(\mbox{\hyperlink{group__MathGroup_ga74e75242132eaabbc1c512488a135926}{MIN}}(\mbox{\hyperlink{group__MathGroup_gaacc3ee1a7f283f8ef65cea31f4436a95}{MAX}}(x,y),z))
+\begin{DoxyCompactList}\small\item\em Clamps a value between a minimum and maximum range. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__MathGroup_gabbc13ae04da31954fc7106856d090ab5}{Vec3f\+Approach}}(a,  b,  t)~((a)\mbox{[}0\mbox{]}+=((b)\mbox{[}0\mbox{]}-\/(a)\mbox{[}0\mbox{]})/t,(a)\mbox{[}1\mbox{]}+=((b)\mbox{[}1\mbox{]}-\/(a)\mbox{[}1\mbox{]})/t,(a)\mbox{[}2\mbox{]}+=((b)\mbox{[}2\mbox{]}-\/(a)\mbox{[}2\mbox{]})/t)
+\begin{DoxyCompactList}\small\item\em Approaches a target vector by a given factor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \mbox{\hyperlink{group__MathGroup_ga2e853840b7e363d728f0295d2241e7c7}{frsqrt}} (\mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} number)
+\begin{DoxyCompactList}\small\item\em Computes the fast inverse square root of a given number using the "{}\+Fast Inverse Square Root"{} algorithm. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \mbox{\hyperlink{group__MathGroup_gaf12eb49731c13c96d3bcc7818566af82}{to\+\_\+radians}} (\mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} angle)
+\begin{DoxyCompactList}\small\item\em Converts an angle from degrees to radians. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \mbox{\hyperlink{group__MathGroup_ga2409f579c7b190a358b346041eded59a}{to\+\_\+degrees}} (\mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} angle)
+\begin{DoxyCompactList}\small\item\em Converts an angle from radians to degrees. \end{DoxyCompactList}\end{DoxyCompactItemize}

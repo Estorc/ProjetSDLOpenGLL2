@@ -9,7 +9,6 @@
 #include "framebuffer.h"
 #include "../storage/node.h"
 #include "../window.h"
-#include "color.h"
 #include "camera.h"
 #include "render.h"
 #include "../memory.h"
@@ -30,21 +29,6 @@ void set_lightings(u8 lightsCount[LIGHTS_COUNT]) {
 }
 
 
-/**
- * Configures the global lighting parameters for the scene.
- * 
- * @param window {Window*} Pointer to the Window structure that holds the current rendering context.
- * @param root {Node*} Pointer to the root Node structure of the scene graph.
- * @param c {Camera*} Pointer to the Camera structure that defines the view settings for rendering.
- * @param shaders {Shader[]} Array of Shader structures containing shaders used for rendering the scene.
- * 
- * This function sets the global lighting parameters for the classic lighting shader. It configures 
- * the directional light properties including position, direction, ambient, diffuse, and specular 
- * components. It also sets the properties for a point light, including position, ambient, diffuse, 
- * and specular colors, along with attenuation factors. Finally, it sets a default vertex color used 
- * in the shader. This ensures that the scene is lit correctly based on the specified light properties.
- */
-
 void configure_global_lighting(Window *window, Node *root, Camera *c, WorldShaders *shaders) {
     use_shader(shaders->render);
 
@@ -57,22 +41,6 @@ void configure_global_lighting(Window *window, Node *root, Camera *c, WorldShade
     glUniform4f(vertexColorLocation, 1.0f, 1.0f, 1.0f, 1.0f);
 }
 
-
-/**
- * Configures the directional lighting parameters for the scene.
- * 
- * @param window {Window*} Pointer to the Window structure that holds the current rendering context.
- * @param root {Node*} Pointer to the root Node structure of the scene graph.
- * @param c {Camera*} Pointer to the Camera structure that defines the view settings for rendering.
- * @param shaders {Shader[]} Array of Shader structures containing shaders used for rendering the scene.
- * 
- * This function calculates and sets the light space matrix for directional lighting, which is 
- * used to project shadows in the scene. It creates an orthographic projection matrix and a view 
- * matrix from the light's position, combining them to form the light space matrix. This matrix 
- * is then passed to both the classic lighting shader and the shadow shader. The function ensures 
- * that shadows are cast correctly from the directional light's perspective, allowing for realistic 
- * lighting effects in the rendered scene.
- */
 
 void configure_directional_lighting(Window *window, Node *root, Camera *c, WorldShaders *shaders, Node *light, int index, u8 lightsCount[LIGHTS_COUNT], int pointLightId) {
 

@@ -8,16 +8,14 @@ void draw_model_input(int *id, int x, int y, Window *window, Node *node, Model *
             printf("%s\n", path);
             FILE * file = fopen(path, "r");
             if (file) {
-                Model *new_model;
-                load_obj_model(path, &new_model);
-                *model = new_model;
+                load_obj_model(path, &(*model)->data);
                 fclose(file);
             }
         }
     }
     sprintf(str, "%s: %s", name, "None");
     for (int i = 0; i < memoryCaches.modelsCount; i++) {
-        if (memoryCaches.modelCache[i].model == *model) {
+        if (memoryCaches.modelCache[i].model == (*model)->data) {
             sprintf(str, "%s: %s", name, memoryCaches.modelCache[i].modelName);
             break;
         }
@@ -239,7 +237,7 @@ void save_node_tree(FILE * file, Window *window, Node *node, Node *editor, Input
 	if (node->flags & NODE_SCRIPT) {
 		char scriptname[100] = "None";
 		for (int i = 0; i < SCRIPTS_COUNT; i++) {
-			if (mainNodeTree.scripts[i].script == node->script) {
+			if (mainNodeTree.scripts[i].script == (*node->behavior)[BEHAVIOR_SCRIPT_UPDATE]) {
 				strcpy(scriptname, mainNodeTree.scripts[i].name);
 				break;
 			}

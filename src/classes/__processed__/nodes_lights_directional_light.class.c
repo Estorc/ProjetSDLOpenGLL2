@@ -10,12 +10,9 @@
 static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_DIRECTIONALLIGHT;
 
 
-void __class_method_directionallight_constructor(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_directionallight_constructor(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 struct DirectionalLight * directionalLight = va_arg(args, struct DirectionalLight *);
-va_end(args);
 (void)this;
     this->object = directionalLight;
     this->type = __type__;
@@ -24,23 +21,17 @@ va_end(args);
 }
 
 
-void __class_method_directionallight_cast(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_directionallight_cast(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 void **  data = va_arg(args, void ** );
-va_end(args);
 (void)this;
     IGNORE(data);
 }
 
 
-void __class_method_directionallight_load(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_directionallight_load(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
-va_end(args);
 (void)this;
     DirectionalLight *directionalLight;
     directionalLight = malloc(sizeof(DirectionalLight));
@@ -70,12 +61,9 @@ va_end(args);
 }
 
 
-void __class_method_directionallight_save(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_directionallight_save(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
-va_end(args);
 (void)this;
     fprintf(file, "%s", classManager.class_names[this->type]);
     DirectionalLight *directionalLight = (DirectionalLight*) this->object;

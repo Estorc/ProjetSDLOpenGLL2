@@ -212,9 +212,8 @@ bin/debug/src/render/framebuffer.o: src/render/framebuffer.c \
  /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
- src/render/../math/math_util.h src/render/../math/graph.h \
- lib/cglm/cglm.h lib/cglm/common.h lib/cglm/types.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
+ src/render/../math/math_util.h lib/cglm/cglm.h lib/cglm/common.h \
+ lib/cglm/types.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
  lib/cglm/simd/intrin.h lib/cglm/simd/x86.h lib/cglm/simd/intrin.h \
  lib/cglm/vec2.h lib/cglm/util.h lib/cglm/vec2-ext.h lib/cglm/vec3.h \
  lib/cglm/vec4.h lib/cglm/vec4-ext.h lib/cglm/vec3-ext.h lib/cglm/ivec2.h \
@@ -238,17 +237,16 @@ bin/debug/src/render/framebuffer.o: src/render/framebuffer.c \
  lib/cglm/clipspace/project_no.h lib/cglm/clipspace/../vec3.h \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
- src/render/../io/model.h src/render/framebuffer.h \
+ src/render/../io/model.h src/render/../io/obj_loader.h \
+ src/render/../io/mtl_loader.h src/render/framebuffer.h \
  src/render/../storage/node.h src/render/../storage/../io/shader.h \
  src/render/../storage/../render/camera.h \
  src/render/../storage/../render/../types.h \
  src/render/../storage/../render/../config.h \
  src/render/../storage/../render/../math/math_util.h \
- src/render/../storage/../render/../math/graph.h \
  src/render/../storage/../render/../io/shader.h \
  src/render/../storage/../physics/bodies.h \
  src/render/../storage/../physics/../math/math_util.h \
- src/render/../storage/../physics/../math/graph.h \
  src/render/../storage/../physics/../io/model.h \
  src/render/../storage/../scripts/scripts.h \
  src/render/../storage/../scripts/../io/input.h \

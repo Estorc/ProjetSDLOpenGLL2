@@ -24,7 +24,7 @@ void free_shaders() {
 
 void free_models() {
     for (int i = 0; i < memoryCaches.modelsCount; i++) {
-        Model *model = memoryCaches.modelCache[i].model;
+        ModelData *model = memoryCaches.modelCache[i].model;
         if (model) {
             for (int j = 0; j < model->length; j++) {
                 for (int k = 0; k < model->objects[j].materialsCount; k++) {

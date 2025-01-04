@@ -1,0 +1,82 @@
+\doxysection{src/storage/node.h File Reference}
+\hypertarget{node_8h}{}\label{node_8h}\index{src/storage/node.h@{src/storage/node.h}}
+{\ttfamily \#include "{}../io/shader.\+h"{}}\newline
+{\ttfamily \#include "{}../render/camera.\+h"{}}\newline
+{\ttfamily \#include "{}../physics/bodies.\+h"{}}\newline
+{\ttfamily \#include "{}../scripts/scripts.\+h"{}}\newline
+{\ttfamily \#include "{}../render/framebuffer.\+h"{}}\newline
+Include dependency graph for node.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{node_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{node_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structTree}{Tree}}
+\begin{DoxyCompactList}\small\item\em Represents a tree structure containing nodes, a camera, \doxylink{structMSAA}{MSAA} settings, and scripts. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{classNode}{Node}}
+\begin{DoxyCompactList}\small\item\em Represents a node in the tree structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__NodeFunctions_ga459f59c37b902a28ff3fcfb9a0200850}{NODE\+\_\+\+ACTIVE\+\_\+\+AND\+\_\+\+VISIBLE}}~\mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a60ab1e6cf30478e53bd7bcba32c2c792}{NODE\+\_\+\+ACTIVE}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a579273ea1ad284119327d60ff4dbc4b5}{NODE\+\_\+\+VISIBLE}}
+\item 
+\#define \mbox{\hyperlink{group__NodeFunctions_ga7997ef817b41c1047ed905c912608173}{NODE\+\_\+\+DEFAULT\+\_\+\+FLAGS}}~\mbox{\hyperlink{group__NodeFunctions_ga459f59c37b902a28ff3fcfb9a0200850}{NODE\+\_\+\+ACTIVE\+\_\+\+AND\+\_\+\+VISIBLE}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__NodeFunctions_gae925b777d12c58434a689cce258b57c0}{Node\+Flags}} \{ \newline
+\mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a60ab1e6cf30478e53bd7bcba32c2c792}{NODE\+\_\+\+ACTIVE}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a579273ea1ad284119327d60ff4dbc4b5}{NODE\+\_\+\+VISIBLE}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0ab2fcac4053398589571a32ecd8006451}{NODE\+\_\+\+SCRIPT}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a4c9ec9a67e59ef9acb25ed7b719b5687}{NODE\+\_\+\+LIGHT\+\_\+\+ACTIVE}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3
+, \newline
+\mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a5828f469f2d164bbe0a2ff682a180d3a}{NODE\+\_\+\+UNUSED3}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a81804ec13b8cf9cdc42a6ae1e89066ee}{NODE\+\_\+\+UNUSED4}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 5
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a114b0f86ab1e39a1162d185834e9567f}{NODE\+\_\+\+UNUSED5}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 6
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0acb4410df9bfe0bd0ef7dc83b26fe77ca}{NODE\+\_\+\+EDITOR\+\_\+\+FLAG}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 7
+ \}
+\begin{DoxyCompactList}\small\item\em Flags indicating the state and properties of a node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__NodeFunctions_ga428f8c2a6fb7b5d720bb0e25a7086a46}{change\+\_\+scene}} ()
+\begin{DoxyCompactList}\small\item\em Changes the current scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__NodeFunctions_ga87744f09034742abd0578b91e60605ff}{add\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child node to a parent node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__NodeFunctions_gabd85826408177719daecbfe65107ceb7}{add\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child node to a parent node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__NodeFunctions_ga07afd05de306495ef3fce2b6092b05d6}{remove\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__NodeFunctions_ga883fa21c935e2b78e68300b35dcd4098}{remove\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__NodeFunctions_ga17c986959dca436c93514141b4082710}{remove\+\_\+child\+\_\+and\+\_\+free}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node and frees the memory of the child node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__NodeFunctions_ga33322172ad6291c13ae857d72c845651}{remove\+\_\+child\+\_\+and\+\_\+free\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node, frees the memory of the child node, and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__NodeFunctions_gafd8472edda444bc73e19c8f8dc98d5e4}{render\+\_\+node}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, mat4 model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader, struct \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders)
+\begin{DoxyCompactList}\small\item\em Renders a node using the specified model matrix and shader. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__NodeFunctions_gac591a747b99d064727e6379bfa0630e2}{render\+\_\+point\+\_\+light}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, mat4 model\+Matrix)
+\begin{DoxyCompactList}\small\item\em Renders a point light node using the specified model matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__NodeFunctions_gac731a3c6a8efe834759d535ea2be9a55}{render\+\_\+directional\+\_\+light}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, mat4 model\+Matrix)
+\begin{DoxyCompactList}\small\item\em Renders a directional light node using the specified model matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__NodeFunctions_ga0aed6fd8e764732bb5533b022394c0eb}{free\+\_\+node}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated for a node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__NodeFunctions_gaeaa83a9409792dd56c0d7bfc9b5266c2}{print\+\_\+node}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, int level)
+\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structTree}{Tree}} \mbox{\hyperlink{group__NodeFunctions_ga190eab39f039817e31f2a8b6b4dbde63}{main\+Node\+Tree}}
+\begin{DoxyCompactList}\small\item\em The main tree structure used in the storage system. \end{DoxyCompactList}\end{DoxyCompactItemize}

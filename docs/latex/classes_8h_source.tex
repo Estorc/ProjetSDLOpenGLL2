@@ -1,0 +1,24 @@
+\doxysection{classes.\+h}
+\hypertarget{classes_8h_source}{}\label{classes_8h_source}\index{src/classes/classes.h@{src/classes/classes.h}}
+\mbox{\hyperlink{classes_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}import\_class.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../types.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structObject}{Object}}\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{group__Classes_ga25a33d93dce0441ddad41fbbf459bab8}{object}};}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{group__Classes_ga3cbb0b4b66f2476cac3652eb3876b827}{type}};}
+\DoxyCodeLine{00033\ \}\ \mbox{\hyperlink{structObject}{Object}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Classes_gad4c7f13c93ebcba4957759a3e6aaae8c}{call\_method}}(\textcolor{keywordtype}{void}\ (*func)(\textcolor{keywordtype}{void}\ *,\ va\_list),\ ...);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ SUPER(method\_name,\ ...)\ call\_method(classManager.methodsCorrespondance.method\_name[classManager.extends[\_\_type\_\_]],\ this,\ \#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ METHOD\_TYPE(obj,\ default\_type,\ method\_name,\ ...)\ call\_method(classManager.methodsCorrespondance.method\_name[default\_type],\ obj,\ \#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ METHOD(obj,\ method\_name,\ ...)\ call\_method(classManager.methodsCorrespondance.method\_name[obj-\/>type],\ obj,\ \#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00082\ }
+
+\end{DoxyCode}

@@ -211,9 +211,8 @@ bin/debug/src/physics/bodies.o: src/physics/bodies.c \
  /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
- src/physics/../math/math_util.h src/physics/../math/graph.h \
- /usr/include/GL/gl.h lib/cglm/cglm.h lib/cglm/common.h lib/cglm/types.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
+ src/physics/../math/math_util.h lib/cglm/cglm.h lib/cglm/common.h \
+ lib/cglm/types.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
  lib/cglm/simd/intrin.h lib/cglm/simd/x86.h lib/cglm/simd/intrin.h \
  lib/cglm/vec2.h lib/cglm/util.h lib/cglm/vec2-ext.h lib/cglm/vec3.h \
  lib/cglm/vec4.h lib/cglm/vec4-ext.h lib/cglm/vec3-ext.h lib/cglm/ivec2.h \
@@ -237,17 +236,17 @@ bin/debug/src/physics/bodies.o: src/physics/bodies.c \
  lib/cglm/clipspace/project_no.h lib/cglm/clipspace/../vec3.h \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
- src/physics/../io/model.h src/physics/../render/framebuffer.h \
- src/physics/../storage/node.h src/physics/../storage/../io/shader.h \
+ /usr/include/GL/gl.h src/physics/../io/model.h \
+ src/physics/../io/obj_loader.h src/physics/../io/mtl_loader.h \
+ src/physics/../render/framebuffer.h src/physics/../storage/node.h \
+ src/physics/../storage/../io/shader.h \
  src/physics/../storage/../render/camera.h \
  src/physics/../storage/../render/../types.h \
  src/physics/../storage/../render/../config.h \
  src/physics/../storage/../render/../math/math_util.h \
- src/physics/../storage/../render/../math/graph.h \
  src/physics/../storage/../render/../io/shader.h \
  src/physics/../storage/../physics/bodies.h \
  src/physics/../storage/../physics/../math/math_util.h \
- src/physics/../storage/../physics/../math/graph.h \
  src/physics/../storage/../physics/../io/model.h \
  src/physics/../storage/../scripts/scripts.h \
  src/physics/../storage/../scripts/../io/input.h \

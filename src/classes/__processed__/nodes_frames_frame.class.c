@@ -14,11 +14,8 @@
 static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_FRAME;
 
 
-void __class_method_frame_constructor(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_constructor(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     Frame *frame;
     frame = malloc(sizeof(Frame));
@@ -31,20 +28,15 @@ va_end(args);
 }
 
 
-void __class_method_frame_cast(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_cast(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 void **  data = va_arg(args, void ** );
-va_end(args);
 (void)this;
     IGNORE(data);
 }
 
 
-void __class_method_frame_handle_dimension_unit(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_handle_dimension_unit(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 float * src = va_arg(args, float *);
 float * dest = va_arg(args, float *);
@@ -53,7 +45,6 @@ double  size = va_arg(args, double );
 int  unit = va_arg(args, int );
 double  containerWidth = va_arg(args, double );
 double  containerHeight = va_arg(args, double );
-va_end(args);
 (void)this;
     *dest = *src;
     *dest = (vertical && size) ? -*dest : *dest; // Inverser l'axe vertical car OpenGL est en coordonnées inversées
@@ -76,11 +67,8 @@ va_end(args);
 }
 
 
-void __class_method_frame_init_frame(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_init_frame(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     Frame *frame = (Frame *) this->object;
     frame->alignment[0] = 'l';
@@ -97,12 +85,9 @@ va_end(args);
 }
 
 
-void __class_method_frame_load(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_load(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
-va_end(args);
 (void)this;
     METHOD_TYPE(this, __type__, constructor);
     Frame *frame = (Frame *) this->object;
@@ -139,11 +124,8 @@ va_end(args);
 }
 
 
-void __class_method_frame_refresh(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_refresh(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
 
     int window_width, window_height;
@@ -243,11 +225,8 @@ va_end(args);
 }
 
 
-void __class_method_frame_refreshContent(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_refreshContent(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     Frame *frame = (Frame *) this->object;
     glBindTexture(GL_TEXTURE_2D, frame->contentTexture);
@@ -257,11 +236,8 @@ va_end(args);
 }
 
 
-void __class_method_frame_update(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_update(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     Frame *frame = (Frame *) this->object;
     if (frame->flags & OVERFLOW_SCROLL) {
@@ -278,14 +254,11 @@ va_end(args);
 
 
 
-void __class_method_frame_prepare_render(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_prepare_render(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 mat4 * modelMatrix = va_arg(args, mat4 *);
 Shader  activeShader = va_arg(args, Shader );
 WorldShaders * shaders = va_arg(args, WorldShaders *);
-va_end(args);
 (void)this;
     IGNORE(activeShader);
     Frame *frame = (Frame *) this->object;
@@ -328,16 +301,16 @@ va_end(args);
     ButtonState state = BUTTON_STATE_NORMAL;
     bool is_element_type = false;
 
-    METHOD(this, is_button, &is_element_type)
+    METHOD(this, is_button, &is_element_type);
     if (is_element_type) {
         if (frame->button->checked) set_shader_int(shaders->gui, "checked", *frame->button->checked);
         state = frame->button->state;
     }
 
-    METHOD(this, is_input_area, &is_element_type)
+    METHOD(this, is_input_area, &is_element_type);
     if (is_element_type) state = frame->inputArea->state;
 
-    METHOD(this, is_selectlist, &is_element_type)
+    METHOD(this, is_selectlist, &is_element_type);
     if (is_element_type) state = frame->selectList->state;
 
     set_shader_int(shaders->gui, "pressed", state == BUTTON_STATE_PRESSED);
@@ -356,11 +329,8 @@ va_end(args);
 }
 
 
-void __class_method_frame_draw_frame(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_draw_frame(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     VAO vao;
     METHOD(this, get_vao, &vao);
@@ -379,14 +349,11 @@ va_end(args);
 
     static VAO _vao = 0;
 
-void __class_method_frame_render(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_render(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 mat4 * modelMatrix = va_arg(args, mat4 *);
 Shader  activeShader = va_arg(args, Shader );
 WorldShaders * shaders = va_arg(args, WorldShaders *);
-va_end(args);
 (void)this;
     IGNORE(modelMatrix);
     Frame *frame = (Frame *) this->object;
@@ -398,13 +365,10 @@ va_end(args);
 }
 
 
-void __class_method_frame_save(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_save(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
 Node * editor = va_arg(args, Node *);
-va_end(args);
 (void)this;
     Frame *frame = (Frame *) this->object;
     IGNORE(editor);
@@ -436,12 +400,9 @@ va_end(args);
 }
 
 
-void __class_method_frame_get_vao(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_get_vao(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 VAO * vao = va_arg(args, VAO *);
-va_end(args);
 (void)this;
     if (!_vao) {
         float quadVertices[] = {
@@ -471,77 +432,56 @@ va_end(args);
 
 
 
-void __class_method_frame_is_gui_element(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_is_gui_element(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 bool * result = va_arg(args, bool *);
-va_end(args);
 (void)this;
     *result = true;
 }
 
 
-void __class_method_frame_is_button(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_is_button(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 bool * result = va_arg(args, bool *);
-va_end(args);
 (void)this;
     *result = false;
 }
 
 
-void __class_method_frame_is_input_area(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_is_input_area(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 bool * result = va_arg(args, bool *);
-va_end(args);
 (void)this;
     *result = false;
 }
 
 
-void __class_method_frame_is_selectlist(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_is_selectlist(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 bool * result = va_arg(args, bool *);
-va_end(args);
 (void)this;
     *result = false;
 }
 
 
-void __class_method_frame_is_checkbox(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_is_checkbox(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 bool * result = va_arg(args, bool *);
-va_end(args);
 (void)this;
     *result = false;
 }
 
 
-void __class_method_frame_is_radiobutton(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_is_radiobutton(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 bool * result = va_arg(args, bool *);
-va_end(args);
 (void)this;
     *result = false;
 }
 
 
-void __class_method_frame_free(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_frame_free(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     Frame *frame = (Frame *) this->object;
     if (frame->flags & FRAME_CONTENT) {

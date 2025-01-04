@@ -9,33 +9,12 @@
 #include "../window.h"
 
 
-/**
- * Initializes a Camera structure by setting its position, direction,
- * rotation, target rotation, and target position to zero.
- * 
- * @param c {Camera*} - Pointer to the Camera structure to be initialized.
- * 
- * This function is typically called when creating a new camera instance 
- * to ensure all fields are set to a known starting state. This is 
- * particularly important in graphics applications where camera parameters 
- * can influence rendering and scene traversal.
- */
-
 void init_camera(Camera *c) {
 
-    Vec3fZero(c->pos);
-    Vec3fZero(c->rot);
+    glm_vec3_zero(c->pos);
+    glm_vec3_zero(c->rot);
 
 }
-
-
-/**
- * Updates the view and projection matrices based on the camera's current position and direction,
- * and sends these matrices to the appropriate shaders for rendering.
- * 
- * @param c {Camera*} - Pointer to the Camera structure containing the camera's position and direction.
- * @param shaders {shaders[]} - Array of shaders to be used for rendering the scene.
- */
 
 void camera_projection(Camera *c, WorldShaders *shaders) {
     int window_width, window_height;

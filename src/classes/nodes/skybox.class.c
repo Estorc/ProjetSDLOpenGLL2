@@ -5,8 +5,9 @@
 #include "memory.h"
 #include "render/render.h"
 
-class Skybox extends Node {
+class Skybox : public Node {
     __containerType__ Node *
+    public:
 
     void constructor(struct TexturedMesh *texturedMesh) {
         this->object = texturedMesh;

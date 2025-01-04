@@ -78,17 +78,16 @@ bin/debug/src/io/obj_loader.o: src/io/obj_loader.c \
  /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
- src/io/../math/math_util.h src/io/../math/graph.h /usr/include/GL/gl.h \
- /usr/include/GL/glext.h /usr/include/KHR/khrplatform.h \
+ src/io/../math/math_util.h lib/cglm/cglm.h lib/cglm/common.h \
  /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls.h lib/cglm/cglm.h \
- lib/cglm/common.h /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
- lib/cglm/types.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h lib/cglm/types.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
  lib/cglm/simd/intrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/xmmintrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/mmintrin.h \
@@ -116,5 +115,7 @@ bin/debug/src/io/obj_loader.o: src/io/obj_loader.c \
  lib/cglm/project.h lib/cglm/clipspace/project_no.h \
  lib/cglm/clipspace/../vec3.h lib/cglm/clipspace/../vec4.h \
  lib/cglm/sphere.h lib/cglm/ease.h lib/cglm/curve.h lib/cglm/bezier.h \
- lib/cglm/ray.h lib/cglm/affine2d.h src/io/model.h src/io/shader.h \
+ lib/cglm/ray.h lib/cglm/affine2d.h /usr/include/GL/gl.h \
+ /usr/include/GL/glext.h /usr/include/KHR/khrplatform.h src/io/model.h \
+ src/io/obj_loader.h src/io/mtl_loader.h src/io/shader.h \
  src/io/../memory.h

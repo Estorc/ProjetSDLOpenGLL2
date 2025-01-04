@@ -20,7 +20,7 @@ BoxCShape[m0,0,0r0,0,0s1,1,1a1v1]
 [m0,10,0r0,45,45s2,4,2a1v1]:1
 Model(assets/models/crate/model.obj)[m0,0,0r0,0,0s1,1,1a1v1]
 Node:1
-Camera(1)[m0,3,0r0,0,0s1,1,1a1v1]{title_screen_camera}
+Camera(1)[m0,3,0r0,0,0s1,1,1a1v1]{NULL,title_screen_camera,NULL}
 Node[m0.1,0,0.1r0,0,0s1,1,1a1v1]:1
 StaticBody(1)
 PlaneCShape[m0,0,0r0,0,0s1,1,1a1v1]

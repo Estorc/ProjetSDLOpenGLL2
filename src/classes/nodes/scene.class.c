@@ -4,8 +4,9 @@
 #include "io/scene_loader.h"
 #include "render/framebuffer.h"
 
-class Scene extends Node {
+class Scene : public Node {
     __containerType__ Node *
+    public:
 
     void constructor() {
         this->type = __type__;

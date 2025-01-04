@@ -1,0 +1,24 @@
+\doxysection{config.\+h}
+\hypertarget{config_8h_source}{}\label{config_8h_source}\index{src/config.h@{src/config.h}}
+\mbox{\hyperlink{config_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CONFIG\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CONFIG\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{config_8h_a4db59522f4f07ce6acf8a9a2f435340a}{ReturnSymbol}}\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \mbox{\hyperlink{config_8h_a4db59522f4f07ce6acf8a9a2f435340aa69508003332e749723160a0af087ad5c}{CLOSE\_PROGRAM}}\ =\ -\/1,}
+\DoxyCodeLine{00006\ \ \ \ \ \mbox{\hyperlink{config_8h_a4db59522f4f07ce6acf8a9a2f435340aabf350750d0d4fabd8954c0f1e9bbae94}{NO\_ERROR}},}
+\DoxyCodeLine{00007\ \};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ IGNORE(x)\ (void)x;}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifdef\ DEBUG}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <signal.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ BREAKPOINT\ printf("{}Breakpoint\ in\ \%s\ at\ line\ \%d\(\backslash\)n"{},\ \_\_FILE\_\_,\ \_\_LINE\_\_),\ raise(SIGTRAP)}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ POINTER\_CHECK(x)\ if\ (!x)\ printf("{}Pointer\ Exception\ in\ \%s\ at\ line\ \%d\(\backslash\)n"{},\ \_\_FILE\_\_,\ \_\_LINE\_\_),\ exit(EXIT\_FAILURE)}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ BREAKPOINT}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ POINTER\_CHECK(x)}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif\ }}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

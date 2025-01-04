@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class Camera extends Node {
+class Camera : public Node {
     __containerType__ Node *
+    public:
 
     void constructor(struct Camera *camera) {
         this->object = camera;

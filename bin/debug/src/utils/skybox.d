@@ -212,9 +212,8 @@ bin/debug/src/utils/skybox.o: src/utils/skybox.c \
  /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
- src/utils/../math/math_util.h src/utils/../math/graph.h lib/cglm/cglm.h \
- lib/cglm/common.h lib/cglm/types.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
+ src/utils/../math/math_util.h lib/cglm/cglm.h lib/cglm/common.h \
+ lib/cglm/types.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
  lib/cglm/simd/intrin.h lib/cglm/simd/x86.h lib/cglm/simd/intrin.h \
  lib/cglm/vec2.h lib/cglm/util.h lib/cglm/vec2-ext.h lib/cglm/vec3.h \
  lib/cglm/vec4.h lib/cglm/vec4-ext.h lib/cglm/vec3-ext.h lib/cglm/ivec2.h \
@@ -238,5 +237,6 @@ bin/debug/src/utils/skybox.o: src/utils/skybox.c \
  lib/cglm/clipspace/project_no.h lib/cglm/clipspace/../vec3.h \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
- src/utils/../io/model.h src/utils/../io/shader.h src/utils/../memory.h \
- src/utils/../io/stringio.h
+ src/utils/../io/model.h src/utils/../io/obj_loader.h \
+ src/utils/../io/mtl_loader.h src/utils/../io/shader.h \
+ src/utils/../memory.h src/utils/../io/stringio.h

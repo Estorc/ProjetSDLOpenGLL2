@@ -9,7 +9,6 @@
 #include "../render/framebuffer.h"
 #include "../storage/node.h"
 #include "../window.h"
-#include "../render/color.h"
 #include "../render/camera.h"
 #include "../render/depth_map.h"
 #include "../render/lighting.h"
@@ -21,12 +20,6 @@
 #include "bodies.h"
 #include "collision.h"
 
-/**
- * Get the velocity's norm of a node.
- *
- * @param {Node*} node - The affected node.
- * @returns {float} The velocity's norm.
- */
 
 float get_velocity_norm(Node *node) {
     switch (node->type) {
@@ -40,12 +33,6 @@ float get_velocity_norm(Node *node) {
     return 0.0f;
 };
 
-/**
- * Get the velocity of a node.
- *
- * @param {Node*} node - The affected node.
- * @returns {float} The velocity.
- */
 
 void get_velocity(Node *node, vec3 velocity) {
     switch (node->type) {
@@ -167,12 +154,6 @@ void apply_body_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3
 }
 
 
-/**
- * Check and apply the possibles collisions of the current shape with the collision buffer.
- *
- * @param {Node*} shape - The affected shape.
- */
-
 void check_collisions(Node *shape) {
     
     for (int i = 0; i < buffers.collisionBuffer.index; i++) {
@@ -257,15 +238,6 @@ void check_collisions(Node *shape) {
     }
 }
 
-/**
- * Set the relative position to the global position computed by physics inheritance tree 
- * (mandatory for bodies to work properly).
- *
- * @param {Node*} node - The affected node.
- * @param {vec3} pos - The computed position by physics inheritance tree.
- * @param {vec3} rot - The computed rotation by physics inheritance tree.
- * @param {vec3} scale - The computed scale by physics inheritance tree.
- */
 
 void update_global_position(Node *node, vec3 pos, vec3 rot, vec3 scale) {
     vec3 nodePos;
@@ -286,15 +258,6 @@ void update_global_position(Node *node, vec3 pos, vec3 rot, vec3 scale) {
     glm_vec3_copy(scale, node->globalScale);
 }
 
-/**
- * Update a static body in physics world
- *
- * @param {Node*} node - The affected node.
- * @param {vec3} pos - The computed position by physics inheritance tree.
- * @param {vec3} rot - The computed rotation by physics inheritance tree.
- * @param {vec3} scale - The computed scale by physics inheritance tree.
- * @param {vec3} delta - Elapsed time since the game last frame.
- */
 
 void update_static_body(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) {
     StaticBody *staticBody = (StaticBody *) node->object;
@@ -312,15 +275,6 @@ void update_static_body(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta)
     buffers.collisionBuffer.index += staticBody->length;
 }
 
-/**
- * Update a rigid body in physics world
- *
- * @param {Node*} node - The affected node.
- * @param {vec3} pos - The computed position by physics inheritance tree.
- * @param {vec3} rot - The computed rotation by physics inheritance tree.
- * @param {vec3} scale - The computed scale by physics inheritance tree.
- * @param {vec3} delta - Elapsed time since the game last frame.
- */
 
 void update_rigid_body(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) {
     RigidBody *rigidBody = (RigidBody *) node->object;
@@ -348,16 +302,6 @@ void update_rigid_body(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) 
     buffers.collisionBuffer.index += rigidBody->length;
 }
 
-/**
- * Update a rigid body in physics world
- *
- * @param {Node*} node - The affected node.
- * @param {vec3} pos - The computed position by physics inheritance tree.
- * @param {vec3} rot - The computed rotation by physics inheritance tree.
- * @param {vec3} scale - The computed scale by physics inheritance tree.
- * @param {vec3} delta - Elapsed time since the game last frame.
- */
-
 void update_kinematic_body(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) {
     KinematicBody *kinematicBody = (KinematicBody *) node->object;
 
@@ -376,16 +320,6 @@ void update_kinematic_body(Node *node, vec3 pos, vec3 rot, vec3 scale, float del
     buffers.collisionBuffer.index += kinematicBody->length;
 }
 
-/**
- * Set graphics camera to physics camera global position
- *
- * @param {Node*} node - The physics camera node.
- * @param {vec3} pos - The computed position by physics inheritance tree.
- * @param {vec3} rot - The computed rotation by physics inheritance tree.
- * @param {vec3} scale - The computed scale by physics inheritance tree.
- * @param {vec3} delta - Elapsed time since the game last frame.
- */
-
 void update_camera(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) {
     Camera *camera = (Camera *) node->object;
 
@@ -393,16 +327,6 @@ void update_camera(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) {
     glm_vec3_negate_to(pos, camera->pos);
     glm_vec3_negate_to(rot, camera->rot);
 }
-
-/**
- * Update a point light
- *
- * @param {Node*} node - The point light node.
- * @param {vec3} pos - The computed position by physics inheritance tree.
- * @param {vec3} rot - The computed rotation by physics inheritance tree.
- * @param {vec3} scale - The computed scale by physics inheritance tree.
- * @param {vec3} delta - Elapsed time since the game last frame.
- */
 
 void update_point_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, u8 lightsCount[LIGHTS_COUNT]) {
     if (!(node->flags & NODE_LIGHT_ACTIVE)) return;
@@ -444,16 +368,6 @@ void update_point_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta,
     lightsCount[POINT_LIGHT]++;
 
 }
-
-/**
- * Update a directional light
- *
- * @param {Node*} node - The directional light node.
- * @param {vec3} pos - The computed position by physics inheritance tree.
- * @param {vec3} rot - The computed rotation by physics inheritance tree.
- * @param {vec3} scale - The computed scale by physics inheritance tree.
- * @param {vec3} delta - Elapsed time since the game last frame.
- */
 
 void update_directional_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, u8 lightsCount[LIGHTS_COUNT]) {
     if (!(node->flags & NODE_LIGHT_ACTIVE)) return;
@@ -504,16 +418,6 @@ void update_directional_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float 
     lightsCount[DIRECTIONAL_LIGHT]++;
 
 }
-
-/**
- * Update a spot light
- *
- * @param {Node*} node - The spot light node.
- * @param {vec3} pos - The computed position by physics inheritance tree.
- * @param {vec3} rot - The computed rotation by physics inheritance tree.
- * @param {vec3} scale - The computed scale by physics inheritance tree.
- * @param {vec3} delta - Elapsed time since the game last frame.
- */
 
 void update_spot_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, u8 lightsCount[LIGHTS_COUNT]) {
     if (!(node->flags & NODE_LIGHT_ACTIVE)) return;
@@ -568,16 +472,6 @@ void update_spot_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, 
 
 }
 
-/**
- * Update node in the physics world
- *
- * @param {Node*} node - The affected node.
- * @param {vec3} pos - The computed position by physics inheritance tree.
- * @param {vec3} rot - The computed rotation by physics inheritance tree.
- * @param {vec3} scale - The computed scale by physics inheritance tree.
- * @param {vec3} delta - Elapsed time since the game last frame.
- */
-
 void update_node_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, u8 lightsCount[LIGHTS_COUNT]) {
     switch (node->type) {
         case CLASS_TYPE_RIGIDBODY: ;
@@ -608,18 +502,9 @@ void update_node_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta
 }
 
 void update_script(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Input *input, Window *window) {
-    if (node->flags & NODE_SCRIPT) node->script(node, input, window, delta);
+    if (node->flags & NODE_SCRIPT && (*node->behavior)[BEHAVIOR_SCRIPT_UPDATE]) (*node->behavior)[BEHAVIOR_SCRIPT_UPDATE](node, input, window, delta);
 }
 
-/**
- * Update the physics world
- *
- * @param {Node*} node - The selected node by physics inheritance tree.
- * @param {vec3} pos - The computed position by physics inheritance tree.
- * @param {vec3} rot - The computed rotation by physics inheritance tree.
- * @param {vec3} scale - The computed scale by physics inheritance tree.
- * @param {vec3} delta - Elapsed time since the game last frame.
- */
 
 void update_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Input *input, Window *window, u8 lightsCount[LIGHTS_COUNT], bool active) {
     vec3 newPos;

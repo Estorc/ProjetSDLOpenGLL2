@@ -1,8 +1,8 @@
 Node[m0,0,0r0,0,0s1,1,1a1v1]:10
 KinematicBody(0,0,0,1)
 SphereCShape[m0,0,0r0,0,0s1,1,1a1v1]
-[m0,0,10r0,0,0s1,1,1a1v1]{player_chess}:1
-Camera(1)[m0,0,0r0,0,0s1,1,1a1v1]{camera}
+[m0,0,10r0,0,0s1,1,1a1v1]{NULL,player_chess,NULL}:1
+Camera(1)[m0,0,0r0,0,0s1,1,1a1v1]{NULL,camera,NULL}
 Node[m0.1,0,0.1r0,0,0s1,1,1a1v1]:1
 StaticBody(1)
 PlaneCShape[m0,0,0r0,0,0s1,1,1a1v1]
@@ -15,10 +15,10 @@ PointLight(7,8,12,20,25,30,500,550,600,1,0.09,0.032)[m51,50,8r0,0,0s1,1,1a1v1]
 PointLight(7,8,12,20,25,30,500,550,600,1,0.09,0.032)[m51,50,-8r0,0,0s1,1,1a1v1]
 SpotLight(6,4,3,300,200,150,500,400,350,1,0.09,0.032,2,0.5)[m0,42,0r180,0,0s1,1,1a1v1]
 Model(assets/models/WholeScene/FPS_Chess_Models2.obj)[m0,0,0r0,0,0s5,5,5a1v1]
-Node{open_close_menu}:1
+Node{NULL,open_close_menu,NULL}:1
 Node[a0v0]:1
 Frame(0w,0h,60w,80h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):1
 Frame(5h,5h,90h,90h,lts):1
 Frame(5w,1h,90w,18h,ltn):1
-Button{return_to_main_menu}:1
+Button{NULL,return_to_main_menu,NULL}:1
 Label(Retour au menu,cc)

@@ -10,21 +10,6 @@
 #include "depth_map.h"
 #include "../settings.h"
 
-
-/**
- * Creates a depth map for shadow mapping by setting up a framebuffer and depth texture.
- * 
- * @param depthMap {DepthMap*} Pointer to the DepthMap structure where the framebuffer and texture will be stored.
- * 
- * This function initializes a framebuffer object (FBO) and a texture to store depth information.
- * The depth texture is configured to store depth data with the specified width and height for shadows.
- * It sets various parameters for the depth texture, including filtering and wrapping options, and binds
- * the texture to the depth attachment of the framebuffer.
- * 
- * After setup, the framebuffer and texture references are stored in the provided DepthMap structure
- * for later use in rendering shadows.
- */
-
 void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
 
     // Allocate enough space for your matrices

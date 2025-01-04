@@ -9,8 +9,9 @@
 #include "window.h"
 #include "gui/frame.h"
 
-class ImageFrame extends Frame {
+class ImageFrame : public Frame {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;

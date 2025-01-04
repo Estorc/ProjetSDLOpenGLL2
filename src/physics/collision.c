@@ -9,7 +9,6 @@
 #include "../render/framebuffer.h"
 #include "../storage/node.h"
 #include "../window.h"
-#include "../render/color.h"
 #include "../render/camera.h"
 #include "../render/depth_map.h"
 #include "../render/lighting.h"
@@ -23,13 +22,6 @@
 #include "collision_util.h"
 
 
-/**
- * Return a collision code to determine which function will resolve the collision check.
- *
- * @param {Node*} shapeA - The first shape.
- * @param {Node*} shapeB - The second shape.
- * @returns {unsigned int} The collision code.
- */
 
 unsigned int get_collision_code(Node *shapeA, Node *shapeB) {
     int priorityA, priorityB;
@@ -49,10 +41,10 @@ void apply_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 angu
         apply_body_collision(shapeA, shapeB, collisionNormal, angularNormal, penetrationDepth);
     METHOD(shapeA->parent, is_area, &conditionA);
     if (conditionA)
-        METHOD(shapeA->parent, collect_node, shapeB, penetrationDepth);
+        METHOD(shapeA->parent, collect_node, shapeB->parent, penetrationDepth);
     METHOD(shapeB->parent, is_area, &conditionB);
     if (conditionB)
-        METHOD(shapeB->parent, collect_node, shapeA, penetrationDepth);
+        METHOD(shapeB->parent, collect_node, shapeA->parent, penetrationDepth);
     
 }
 

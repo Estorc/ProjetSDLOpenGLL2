@@ -8,8 +8,9 @@
 #include "buffer.h"
 #include "io/stringio.h"
 
-class Area extends PhysicalNode {
+class Area : public PhysicalNode {
     __containerType__ Node *
+    public:
 
     void constructor(struct Area *area) {
         this->object = area;
@@ -29,7 +30,7 @@ class Area extends PhysicalNode {
         Area *area = (Area *) this->object;
         area->collectedNodes = realloc(area->collectedNodes, sizeof(DistanceNode) * (area->collectedLength + 1));
         POINTER_CHECK(area->collectedNodes);
-        area->collectedNodes[area->collectedLength].nodes = node;
+        area->collectedNodes[area->collectedLength].node = node;
         area->collectedNodes[area->collectedLength].distance = distance;
         area->collectedLength++;
     }
@@ -38,16 +39,16 @@ class Area extends PhysicalNode {
         (*area) = true;
     }
 
+    static int compare_distance_nodes(const void *a, const void *b) {
+        DistanceNode *nodeA = (DistanceNode *)a;
+        DistanceNode *nodeB = (DistanceNode *)b;
+        if (nodeA->distance < nodeB->distance) return -1;
+        if (nodeA->distance > nodeB->distance) return 1;
+        return 0;
+    }
+
     void sort_nodes() {
         Area *area = (Area *) this->object;
-
-        int compare_distance_nodes(const void *a, const void *b) {
-            DistanceNode *nodeA = (DistanceNode *)a;
-            DistanceNode *nodeB = (DistanceNode *)b;
-            if (nodeA->distance < nodeB->distance) return -1;
-            if (nodeA->distance > nodeB->distance) return 1;
-            return 0;
-        }
 
         qsort(area->collectedNodes, area->collectedLength, sizeof(DistanceNode), compare_distance_nodes);
         memcpy(area->sortedNodes, area->collectedNodes, area->collectedLength * sizeof(DistanceNode));

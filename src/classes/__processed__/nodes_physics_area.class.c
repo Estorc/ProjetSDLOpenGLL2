@@ -12,13 +12,9 @@
 #include "../../io/stringio.h"
 static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_AREA;
 
-
-void __class_method_area_constructor(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_area_constructor(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 struct Area * area = va_arg(args, struct Area *);
-va_end(args);
 (void)this;
     this->object = area;
     this->type = __type__;
@@ -33,65 +29,49 @@ va_end(args);
     }
 }
 
-
-void __class_method_area_collect_node(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_area_collect_node(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 Node *  node = va_arg(args, Node * );
 double  distance = va_arg(args, double );
-va_end(args);
 (void)this;
     Area *area = (Area *) this->object;
     area->collectedNodes = realloc(area->collectedNodes, sizeof(DistanceNode) * (area->collectedLength + 1));
     POINTER_CHECK(area->collectedNodes);
-    area->collectedNodes[area->collectedLength].nodes = node;
+    area->collectedNodes[area->collectedLength].node = node;
     area->collectedNodes[area->collectedLength].distance = distance;
     area->collectedLength++;
 }
 
-
-void __class_method_area_is_area(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_area_is_area(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 bool * area = va_arg(args, bool *);
-va_end(args);
 (void)this;
     (*area) = true;
 }
 
-
-void __class_method_area_sort_nodes(unsigned type, ...) {
-va_list args;
-va_start(args, type);
-Node * this = va_arg(args, Node *);
-va_end(args);
-(void)this;
-    Area *area = (Area *) this->object;
-
-    int compare_distance_nodes(const void *a, const void *b) {
+    static int compare_distance_nodes(const void *a, const void *b) {
         DistanceNode *nodeA = (DistanceNode *)a;
         DistanceNode *nodeB = (DistanceNode *)b;
         if (nodeA->distance < nodeB->distance) return -1;
         if (nodeA->distance > nodeB->distance) return 1;
         return 0;
-    }
+}
+
+void __class_method_area_sort_nodes(void * __retValueVP__, va_list args) {
+Node * this = va_arg(args, Node *);
+(void)this;
+    Area *area = (Area *) this->object;
 
     qsort(area->collectedNodes, area->collectedLength, sizeof(DistanceNode), compare_distance_nodes);
     memcpy(area->sortedNodes, area->collectedNodes, area->collectedLength * sizeof(DistanceNode));
     area->sortedLength = area->collectedLength;
 }
 
-
-void __class_method_area_update(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_area_update(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 float * pos = va_arg(args, float *);
 float * rot = va_arg(args, float *);
 float * scale = va_arg(args, float *);
-va_end(args);
 (void)this;
     Area *area = (Area *) this->object;
 
@@ -123,44 +103,32 @@ va_end(args);
     buffers.collisionBuffer.index += area->length;
 }
 
-
-void __class_method_area_get_collisions_shapes(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_area_get_collisions_shapes(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 Node *** shapes = va_arg(args, Node ***);
 u8 * length = va_arg(args, u8 *);
-va_end(args);
 (void)this;
     Area *area = (Area *) this->object;
     *length = area->length;
     *shapes = area->collisionsShapes;
 }
 
-
-void __class_method_area_get_node_collection(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_area_get_node_collection(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 DistanceNode ** nodes = va_arg(args, DistanceNode **);
 u8 * length = va_arg(args, u8 *);
-va_end(args);
 (void)this;
     Area *area = (Area *) this->object;
     *length = area->collectedLength;
     *nodes = area->collectedNodes;
 }
 
-
-void __class_method_area_load(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_area_load(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
 Camera ** c = va_arg(args, Camera **);
 Script * scripts = va_arg(args, Script *);
 Node * editor = va_arg(args, Node *);
-va_end(args);
 (void)this;
     Area *area;
     area = malloc(sizeof(Area));
@@ -182,18 +150,13 @@ va_end(args);
     }
 }
 
-
-void __class_method_area_save(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_area_save(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
-va_end(args);
 (void)this;
     fprintf(file, "%s", classManager.class_names[this->type]);
     Area *area = (Area*) this->object;
     u8 collisionsLength = area->length;
     fprintf(file, "(%d)", collisionsLength);
 }
-
 

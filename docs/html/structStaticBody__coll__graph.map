@@ -1,0 +1,9 @@
+<map id="StaticBody" name="StaticBody">
+<area shape="rect" id="Node000001" title="Represents a static body in the physics simulation." alt="" coords="5,97,97,123"/>
+<area shape="rect" id="Node000002" href="$classNode.html" title=" " alt="" coords="167,7,223,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,27,111,38,90,47,72,60,60,79,55,98,50,96,56,76,68,57,87,43,109,33,153,22"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="238,10,246,13,250,20,241,29,224,31,223,26,239,24,245,20,243,17,236,15"/>
+<area shape="rect" id="Node000003" href="$unionBehaviorParameter.html" title=" " alt="" coords="155,97,302,123"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="191,47,191,60,194,72,202,85,213,95,209,99,198,88,189,74,186,60,186,46"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="233,84,231,60,223,46,211,35,214,31,227,42,237,58,239,83"/>
+</map>

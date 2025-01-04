@@ -9,8 +9,9 @@
 #include "gui/frame.h"
 #include "io/input.h"
 
-class Button extends Frame {
+class Button : public Frame {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;

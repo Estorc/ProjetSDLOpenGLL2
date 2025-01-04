@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class PlaneCShape extends CShape {
+class PlaneCShape : public CShape {
     __containerType__ Node *
+    public:
 
     void constructor(struct PlaneCollisionShape *planeCollisionShape) {
         this->object = planeCollisionShape;

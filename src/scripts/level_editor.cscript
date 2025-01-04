@@ -91,7 +91,7 @@ void draw_node_editing(Window *window, Node *node, Input *input, TTF_Font *font)
 
 	char scriptname[100] = "None";
 	for (int i = 0; i < SCRIPTS_COUNT; i++) {
-		if (mainNodeTree.scripts[i].script == selectedNode->script) {
+		if (mainNodeTree.scripts[i].script == (*selectedNode->behavior)[BEHAVIOR_SCRIPT_UPDATE]) {
 			strcpy(scriptname, mainNodeTree.scripts[i].name);
 			break;
 		}
@@ -161,12 +161,12 @@ void draw_node_editing(Window *window, Node *node, Input *input, TTF_Font *font)
 		if (node->params[3].i == 10) {
 			if (!strcmp(scriptname, "None")) {
 				selectedNode->flags &= ~NODE_SCRIPT;
-				selectedNode->script = NULL;
+				(*selectedNode->behavior)[BEHAVIOR_SCRIPT_UPDATE] = NULL;
 			}
 			else for (int i = 0; i < SCRIPTS_COUNT; i++) {
 				if (!strcmp(mainNodeTree.scripts[i].name, scriptname)) {
 					selectedNode->flags |= NODE_SCRIPT;
-					selectedNode->script = mainNodeTree.scripts[i].script;
+					(*selectedNode->behavior)[BEHAVIOR_SCRIPT_UPDATE] = mainNodeTree.scripts[i].script;
 				}
 					
 			}

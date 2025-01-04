@@ -11,22 +11,16 @@
 static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_BODY;
 
 
-void __class_method_body_is_body(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_body_is_body(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 bool * body = va_arg(args, bool *);
-va_end(args);
 (void)this;
     (*body) = true;
 }
 
 
-void __class_method_body_apply_impulse(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_body_apply_impulse(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     // Do nothing
 }

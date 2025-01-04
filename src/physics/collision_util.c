@@ -9,7 +9,6 @@
 #include "../render/framebuffer.h"
 #include "../storage/node.h"
 #include "../window.h"
-#include "../render/color.h"
 #include "../render/camera.h"
 #include "../render/depth_map.h"
 #include "../render/lighting.h"

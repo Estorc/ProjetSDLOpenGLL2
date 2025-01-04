@@ -1,0 +1,61 @@
+Ajouter static body au bump simplifié (escaliers)
+Améliorer le torque
+
+Save and load settings
+
+
+Peut être taille partout pour les frames
+
+Edit Editor
+
+
+Optimiser le chargement des modèles/mesh, ect.
+
+Make parallax Color is vec1 and not vec3
+
+
+
+Gérer les "petites" fuites
+
+
+Avancer le tuto OpenGL
+
+RIG https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation
+
+SSAO https://learnopengl.com/Advanced-Lighting/SSAO
+
+PBR https://learnopengl.com/PBR/Theory
+
+
+
+Frustum Culling https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling
+
+TF SDL qu'est-ce que tu fous à manger mes FPS ?!!
+
+
+Désactiver le binding des ombres si désactivé
+
+
+Delete draw sprite ect...
+
+
+Docs :
+
+Settings
+enum NodeFlags
+Review
+
+Classes :
+
+Transform functions in class methods
+(node,
+camera,
+lighting,
+physics,
+bodies,
+maybe .h headers)
+
+Ajouter preprocesseur de type :
+Objet::Attribut => ATTRIBUT(Objet, Attribut)
+Objet::Method(...) => METHOD(Objet, Method, ...)
+Objet = new TYPE(...) => METHOD_TYPE(Objet, TYPE, constructor, ...)

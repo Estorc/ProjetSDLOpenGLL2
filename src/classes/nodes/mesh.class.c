@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class Mesh extends Node {
+class Mesh : public Node {
     __containerType__ Node *
+    public:
 
     void constructor(struct Mesh *mesh) {
         this->object = mesh;

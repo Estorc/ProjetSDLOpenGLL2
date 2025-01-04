@@ -8,12 +8,9 @@
 static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_CSHAPE;
 
 
-void __class_method_cshape_is_cshape(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_cshape_is_cshape(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 bool * cshape = va_arg(args, bool *);
-va_end(args);
 (void)this;
     (*cshape) = true;
 }

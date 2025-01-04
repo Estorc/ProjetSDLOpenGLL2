@@ -2,40 +2,82 @@
 #include "import_class.h"
 #include "../types.h"
 
+/**
+ * @brief Defines the Object structure and macros for method invocation in a class hierarchy.
+ * 
+ * This file contains the definition of the Object structure and several macros to facilitate
+ * method invocation in a class hierarchy. The macros handle method lookup and invocation,
+ * including support for inheritance and method overriding.
+ * @defgroup Classes Classes
+ * @{
+ */
+
+
+/**
+ * @struct Object
+ * @brief A generic object structure.
+ * 
+ * This structure represents a generic object with a pointer to the actual object data
+ * and a type identifier.
+ * 
+ * @var Object::object
+ * A pointer to the actual object data.
+ * 
+ * @var Object::type
+ * An unsigned 8-bit integer representing the type of the object.
+ */
+
 typedef struct Object {
     void *object;
     u8 type;
 } Object;
 
-#define SUPER(method_name, ...) {\
-    ClassType type = classManager.extends[__type__];\
-    void (*method)(unsigned type, ...) = classManager.methodsCorrespondance.method_name[type];\
-    if (method) method(type, this, ##__VA_ARGS__);\
-    else {\
-        while (!method) {\
-            if (type == -1) {\
-                fprintf(stderr, "Object doesn't have method: %s\n", "method_name");\
-                break;\
-            }\
-            type = classManager.extends[type];\
-            method = classManager.methodsCorrespondance.method_name[type];\
-        }\
-        method(type, this, ##__VA_ARGS__);\
-    }\
-}
-#define METHOD_TYPE(obj, default_type, method_name, ...) {\
-void (*method)(unsigned type, ...) = classManager.methodsCorrespondance.method_name[default_type];\
-if (method) method(default_type, obj, ##__VA_ARGS__);\
-else {\
-    ClassType type = classManager.extends[default_type];\
-    while (!method) {\
-        if (type == -1) {\
-            fprintf(stderr, "Object doesn't have method: %s\n", #method_name);\
-            break;\
-        }\
-        method = classManager.methodsCorrespondance.method_name[type];\
-        type = classManager.extends[type];\
-    }\
-    if (method) method(default_type, obj, ##__VA_ARGS__);\
-}};
-#define METHOD(obj, method_name, ...) METHOD_TYPE(obj, obj->type, method_name, ##__VA_ARGS__)
+
+void call_method(void (*func)(void *, va_list), ...);
+
+/**
+ * @def SUPER(method_name, ...)
+ * @brief Invokes a method from the superclass.
+ * 
+ * This macro is used to invoke a method from the superclass of the current object.
+ * It performs a lookup in the class hierarchy to find the appropriate method and
+ * invokes it with the provided arguments.
+ * 
+ * @param method_name The name of the method to invoke.
+ * @param ... Additional arguments to pass to the method.
+ */
+
+#define SUPER(method_name, ...) call_method(classManager.methodsCorrespondance.method_name[classManager.extends[__type__]], this, ##__VA_ARGS__)
+
+/**
+ * @def METHOD_TYPE(obj, default_type, method_name, ...)
+ * @brief Invokes a method with a specified default type.
+ * 
+ * This macro is used to invoke a method on an object with a specified default type.
+ * It performs a lookup in the class hierarchy to find the appropriate method and
+ * invokes it with the provided arguments.
+ * 
+ * @param obj The object on which to invoke the method.
+ * @param default_type The default type to use for method lookup.
+ * @param method_name The name of the method to invoke.
+ * @param ... Additional arguments to pass to the method.
+ */
+
+#define METHOD_TYPE(obj, default_type, method_name, ...) call_method(classManager.methodsCorrespondance.method_name[default_type], obj, ##__VA_ARGS__)
+
+/**
+ * @def METHOD(obj, method_name, ...)
+ * @brief Invokes a method on an object.
+ * 
+ * This macro is used to invoke a method on an object. It uses the object's type
+ * to perform a lookup in the class hierarchy and find the appropriate method,
+ * then invokes it with the provided arguments.
+ * 
+ * @param obj The object on which to invoke the method.
+ * @param method_name The name of the method to invoke.
+ * @param ... Additional arguments to pass to the method.
+ */
+
+#define METHOD(obj, method_name, ...) call_method(classManager.methodsCorrespondance.method_name[obj->type], obj, ##__VA_ARGS__)
+
+/** @} */

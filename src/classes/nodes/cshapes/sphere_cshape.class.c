@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class SphereCShape extends CShape {
+class SphereCShape : public CShape {
     __containerType__ Node *
+    public:
 
     void constructor(struct SphereCollisionShape *sphereCollisionShape) {
         this->object = sphereCollisionShape;

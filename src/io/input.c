@@ -25,21 +25,6 @@ void init_input(Input *input) {
 }
 
 
-
-/**
- * Updates the camera's position and orientation based on user input.
- * 
- * @param c {Camera*} Pointer to the Camera structure to be updated.
- * @param input {Input*} Pointer to the Input structure that stores current key states.
- * @return {int} Returns -1 if the escape key is pressed (to indicate an exit), otherwise returns 0.
- * 
- * This function processes keyboard events using SDL to modify the camera's target position 
- * and rotation based on key presses and releases. It also adjusts the movement speed based 
- * on whether the shift key is held down. The camera's direction is calculated based on its 
- * current rotation, and the target position is updated according to the pressed keys. 
- * Additionally, the function smoothly approaches the target position and rotation.
- */
-
 int update_input(Input *input) {
     input->mouse.scroll_x = 0;
     input->mouse.scroll_y = 0;

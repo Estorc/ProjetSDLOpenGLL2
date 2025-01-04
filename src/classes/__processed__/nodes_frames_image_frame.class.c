@@ -14,11 +14,8 @@
 static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_IMAGEFRAME;
 
 
-void __class_method_imageframe_constructor(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_imageframe_constructor(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     Frame *frame;
     frame = malloc(sizeof(Frame));
@@ -42,23 +39,17 @@ va_end(args);
 }
 
 
-void __class_method_imageframe_cast(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_imageframe_cast(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 void **  data = va_arg(args, void ** );
-va_end(args);
 (void)this;
     IGNORE(data);
 }
 
 
-void __class_method_imageframe_load(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_imageframe_load(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
-va_end(args);
 (void)this;
     METHOD_TYPE(this, __type__, constructor);
     Frame *frame = (Frame *) this->object;
@@ -78,26 +69,20 @@ va_end(args);
 
 
 
-void __class_method_imageframe_render(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_imageframe_render(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 mat4 * modelMatrix = va_arg(args, mat4 *);
 Shader  activeShader = va_arg(args, Shader );
 WorldShaders * shaders = va_arg(args, WorldShaders *);
-va_end(args);
 (void)this;
     SUPER(render, modelMatrix, activeShader, shaders);
 }
 
 
-void __class_method_imageframe_save(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_imageframe_save(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
 Node * editor = va_arg(args, Node *);
-va_end(args);
 (void)this;
     Frame *frame = (Frame *) this->object;
     IGNORE(editor);
@@ -107,11 +92,8 @@ va_end(args);
 }
  
 
-void __class_method_imageframe_free(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_imageframe_free(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
-va_end(args);
 (void)this;
     Frame *frame = (Frame *) this->object;
     ImageFrame *imageFrame = (ImageFrame *) frame->imageFrame;

@@ -6,8 +6,9 @@
 #include "render/lighting.h"
 #include "buffer.h"
 
-class KinematicBody @promote extends Body {
+class KinematicBody : public Body {
     __containerType__ Node *
+    public:
 
     void constructor(struct KinematicBody *kinematicBody) {
         this->object = kinematicBody;

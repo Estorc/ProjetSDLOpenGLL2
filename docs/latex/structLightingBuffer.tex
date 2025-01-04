@@ -1,0 +1,60 @@
+\doxysection{Lighting\+Buffer Struct Reference}
+\hypertarget{structLightingBuffer}{}\label{structLightingBuffer}\index{LightingBuffer@{LightingBuffer}}
+
+
+Buffer structure to manage an array of lighting nodes.  
+
+
+
+
+{\ttfamily \#include $<$lighting.\+h$>$}
+
+
+
+Collaboration diagram for Lighting\+Buffer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{structLightingBuffer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structLightingBuffer_aa21b26ad906cd0309f59c11d662f8608}{lightings}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{structLightingBuffer_af2037b9b9e262837c3dea59771d02222}{length}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{structLightingBuffer_a696ed4130d9750fa2093b997e4d21d4f}{index}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Buffer structure to manage an array of lighting nodes. 
+
+This structure is used to manage an array of lighting nodes, keeping track of the length of the array and the current index. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structLightingBuffer_a696ed4130d9750fa2093b997e4d21d4f}\label{structLightingBuffer_a696ed4130d9750fa2093b997e4d21d4f} 
+\index{LightingBuffer@{LightingBuffer}!index@{index}}
+\index{index@{index}!LightingBuffer@{LightingBuffer}}
+\doxysubsubsection{\texorpdfstring{index}{index}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Lighting\+Buffer\+::index}
+
+Current index in the array. \Hypertarget{structLightingBuffer_af2037b9b9e262837c3dea59771d02222}\label{structLightingBuffer_af2037b9b9e262837c3dea59771d02222} 
+\index{LightingBuffer@{LightingBuffer}!length@{length}}
+\index{length@{length}!LightingBuffer@{LightingBuffer}}
+\doxysubsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Lighting\+Buffer\+::length}
+
+Length of the array. \Hypertarget{structLightingBuffer_aa21b26ad906cd0309f59c11d662f8608}\label{structLightingBuffer_aa21b26ad906cd0309f59c11d662f8608} 
+\index{LightingBuffer@{LightingBuffer}!lightings@{lightings}}
+\index{lightings@{lightings}!LightingBuffer@{LightingBuffer}}
+\doxysubsubsection{\texorpdfstring{lightings}{lightings}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{classNode}{Node}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Lighting\+Buffer\+::lightings}
+
+Array of lighting nodes. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/render/\mbox{\hyperlink{lighting_8h}{lighting.\+h}}\end{DoxyCompactItemize}

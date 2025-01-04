@@ -1,0 +1,9 @@
+<map id="Camera" name="Camera">
+<area shape="rect" id="Node000001" title="A structure to represent a camera with position and rotation in 3D space." alt="" coords="5,97,79,123"/>
+<area shape="rect" id="Node000002" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="81,7,137,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,45,81,60,53,99,48,95,77,57,89,42"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="152,10,160,13,163,20,155,29,137,31,137,26,152,24,158,20,156,17,150,15"/>
+<area shape="rect" id="Node000003" href="$unionBehaviorParameter.html" title=" " alt="" coords="103,97,250,123"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="103,46,103,60,107,72,119,85,136,95,133,100,116,90,102,75,98,61,98,46"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="162,86,145,60,121,35,124,31,149,57,167,83"/>
+</map>

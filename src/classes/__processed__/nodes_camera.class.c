@@ -8,12 +8,9 @@
 static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_CAMERA;
 
 
-void __class_method_camera_constructor(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_camera_constructor(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 struct Camera * camera = va_arg(args, struct Camera *);
-va_end(args);
 (void)this;
     this->object = camera;
     this->type = __type__;
@@ -21,26 +18,20 @@ va_end(args);
 }
 
 
-void __class_method_camera_cast(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_camera_cast(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 void **  data = va_arg(args, void ** );
-va_end(args);
 (void)this;
     IGNORE(data);
 }
 
 
-void __class_method_camera_load(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_camera_load(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
 Camera ** c = va_arg(args, Camera **);
 Script * scripts = va_arg(args, Script *);
 Node * editor = va_arg(args, Node *);
-va_end(args);
 (void)this;
     IGNORE(scripts);
     Camera *cam;
@@ -59,13 +50,10 @@ va_end(args);
 }
 
 
-void __class_method_camera_save(unsigned type, ...) {
-va_list args;
-va_start(args, type);
+void __class_method_camera_save(void * __retValueVP__, va_list args) {
 Node * this = va_arg(args, Node *);
 FILE * file = va_arg(args, FILE *);
 Node * editor = va_arg(args, Node *);
-va_end(args);
 (void)this;
     fprintf(file, "%s", classManager.class_names[this->type]);
     if (editor) fprintf(file, "(%d)", !!(editor->params[5].node == this));

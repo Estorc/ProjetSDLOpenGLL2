@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class Texture extends Node {
+class Texture : public Node {
     __containerType__ Node *
+    public:
 
     void constructor(TextureMap *texture) {
         this->object = texture;

@@ -94,21 +94,12 @@ bin/debug/src/classes/__processed__/nodes_cshapes_cshape.class.o: \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
  src/classes/__processed__/../../types.h \
  src/classes/__processed__/../../config.h \
- src/classes/__processed__/../../math/math_util.h \
- src/classes/__processed__/../../math/graph.h /usr/include/GL/gl.h \
- /usr/include/GL/glext.h /usr/include/KHR/khrplatform.h \
- /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
- /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
- /usr/include/x86_64-linux-gnu/bits/floatn.h \
- /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
- /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
- /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
- /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls.h lib/cglm/cglm.h \
+ src/classes/__processed__/../../math/math_util.h lib/cglm/cglm.h \
  lib/cglm/common.h /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
+ /usr/include/x86_64-linux-gnu/bits/floatn.h \
+ /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
  /usr/include/x86_64-linux-gnu/sys/types.h \
  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
@@ -119,6 +110,13 @@ bin/debug/src/classes/__processed__/nodes_cshapes_cshape.class.o: \
  /usr/include/x86_64-linux-gnu/bits/select.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
  /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+ /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+ /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h lib/cglm/types.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
  lib/cglm/simd/intrin.h \
@@ -156,7 +154,11 @@ bin/debug/src/classes/__processed__/nodes_cshapes_cshape.class.o: \
  lib/cglm/clipspace/project_no.h lib/cglm/clipspace/../vec3.h \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
+ /usr/include/GL/gl.h /usr/include/GL/glext.h \
+ /usr/include/KHR/khrplatform.h \
  src/classes/__processed__/../../io/model.h \
+ src/classes/__processed__/../../io/obj_loader.h \
+ src/classes/__processed__/../../io/mtl_loader.h \
  src/classes/__processed__/../../render/framebuffer.h \
  src/classes/__processed__/../../storage/node.h \
  src/classes/__processed__/../../storage/../io/shader.h \
@@ -164,11 +166,9 @@ bin/debug/src/classes/__processed__/nodes_cshapes_cshape.class.o: \
  src/classes/__processed__/../../storage/../render/../types.h \
  src/classes/__processed__/../../storage/../render/../config.h \
  src/classes/__processed__/../../storage/../render/../math/math_util.h \
- src/classes/__processed__/../../storage/../render/../math/graph.h \
  src/classes/__processed__/../../storage/../render/../io/shader.h \
  src/classes/__processed__/../../storage/../physics/bodies.h \
  src/classes/__processed__/../../storage/../physics/../math/math_util.h \
- src/classes/__processed__/../../storage/../physics/../math/graph.h \
  src/classes/__processed__/../../storage/../physics/../io/model.h \
  src/classes/__processed__/../../storage/../scripts/scripts.h \
  src/classes/__processed__/../../storage/../scripts/../io/input.h \

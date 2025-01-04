@@ -1,0 +1,48 @@
+\doxysection{src/io/shader.h File Reference}
+\hypertarget{shader_8h}{}\label{shader_8h}\index{src/io/shader.h@{src/io/shader.h}}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shader_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__ShaderManagement_gaae0064bb82d7d6a3929c88550423b7db}{DEFAULT\+\_\+\+RENDER\+\_\+\+SHADER}}~"{}shaders/shadow\+Shader.\+vs"{}, "{}shaders/shadow\+Shader.\+fs"{}
+\begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for rendering shadows. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__ShaderManagement_ga770865347525c47610ef50f584783534}{DEFAULT\+\_\+\+DEPTH\+\_\+\+SHADER}}~"{}shaders/simple\+Depth\+Shader.\+vs"{}, "{}shaders/simple\+Depth\+Shader.\+fs"{}
+\begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for simple depth rendering. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__ShaderManagement_ga712eb81654f5792fdb633c586ac30389}{DEFAULT\+\_\+\+SCREEN\+\_\+\+SHADER}}~"{}shaders/aa\+\_\+post.\+vs"{}, "{}shaders/aa\+\_\+post.\+fs"{}
+\begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for screen post-\/processing. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__ShaderManagement_gab2db09e6298f20fac1c66c8c4ad69cee}{DEFAULT\+\_\+\+SKYBOX\+\_\+\+SHADER}}~"{}shaders/skybox.\+vs"{}, "{}shaders/skybox.\+fs"{}
+\begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for rendering the skybox. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__ShaderManagement_ga88325351f80640e41970b4141a549b44}{DEFAULT\+\_\+\+GUI\+\_\+\+SHADER}}~"{}shaders/gui.\+vs"{}, "{}shaders/gui.\+fs"{}
+\begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for rendering the GUI. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned int \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}
+\begin{DoxyCompactList}\small\item\em Represents an unsigned integer used as a shader identifier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__ShaderManagement_ga7c682b9bed25d2159985f6a11de0b712}{create\+\_\+shaders}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} shaders\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Creates multiple shaders. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__ShaderManagement_ga8c5722406ee9544fe6a6fdab7e87a1c0}{create\+\_\+shader}} (char \texorpdfstring{$\ast$}{*}vertex\+Path, char \texorpdfstring{$\ast$}{*}fragment\+Path)
+\begin{DoxyCompactList}\small\item\em Creates a shader program from vertex and fragment shader files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ShaderManagement_ga1117f5894f4b4abe13e41cfc8109ddbe}{use\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID)
+\begin{DoxyCompactList}\small\item\em Uses the specified shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ShaderManagement_gaafee5005fc182fefb7fab74fa868631c}{set\+\_\+shader\+\_\+int}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, int value)
+\begin{DoxyCompactList}\small\item\em Sets an integer uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ShaderManagement_ga4f343c92d0744283d520b975c5408885}{set\+\_\+shader\+\_\+float}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, float value)
+\begin{DoxyCompactList}\small\item\em Sets a float uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ShaderManagement_ga4ddd55e651817701c9e65c3006d84f06}{set\+\_\+shader\+\_\+vec2}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec2 value)
+\begin{DoxyCompactList}\small\item\em Sets a vec2 uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ShaderManagement_gabe939b6bc86c802ec4514fb3c7a916c0}{set\+\_\+shader\+\_\+vec3}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec3 value)
+\begin{DoxyCompactList}\small\item\em Sets a vec3 uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ShaderManagement_ga225dc3d3319fe8c8cc67bb58cdea93d2}{set\+\_\+shader\+\_\+vec4}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec4 value)
+\begin{DoxyCompactList}\small\item\em Sets a vec4 uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ShaderManagement_gaaed666bd75a0e319dbacab5ed2191291}{set\+\_\+shader\+\_\+mat4}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, mat4 \texorpdfstring{$\ast$}{*}value)
+\begin{DoxyCompactList}\small\item\em Sets a mat4 uniform in the shader program. \end{DoxyCompactList}\end{DoxyCompactItemize}

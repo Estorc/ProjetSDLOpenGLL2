@@ -1,0 +1,128 @@
+\doxysection{Texture Loader}
+\hypertarget{group__TextureLoader}{}\label{group__TextureLoader}\index{Texture Loader@{Texture Loader}}
+
+
+Functions for loading and manipulating textures.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__TextureLoader_ga423969b3bf83826b757323aaf6a1a975}{convert\+\_\+to\+\_\+rgb32f\+\_\+texture}} (SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}rgba\+Surface)
+\begin{DoxyCompactList}\small\item\em Converts an SDL\+\_\+\+Surface with RGBA format to an array of floats representing an RGB32F texture. \end{DoxyCompactList}\item 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__TextureLoader_ga63cbb7972f065dfe4d8a5bfb6690f3b6}{flip\+\_\+y\+\_\+surface}} (SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}surface)
+\begin{DoxyCompactList}\small\item\em Flips an SDL\+\_\+\+Surface vertically (along the Y-\/axis). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{group__TextureLoader_ga538a4617970ed626f3e13f6ac4e075d8}{load\+\_\+texture\+\_\+from\+\_\+path}} (char \texorpdfstring{$\ast$}{*}path, GLenum format, bool y\+Reversed)
+\begin{DoxyCompactList}\small\item\em Loads a texture from a specified file path and creates an Open\+GL texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__TextureLoader_gacf6319b1b2c90bd1af3e8dbdcbf80cb8}{draw\+\_\+text}} (SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}render\+\_\+surface, int x, int y, char \texorpdfstring{$\ast$}{*}text, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, SDL\+\_\+\+Color color, char \texorpdfstring{$\ast$}{*}alignment, int width)
+\begin{DoxyCompactList}\small\item\em Renders text onto an SDL\+\_\+\+Surface at a specified position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions for loading and manipulating textures. 
+
+This module provides functions for loading textures from files, converting them to different formats, and manipulating their properties for use in Open\+GL rendering. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__TextureLoader_ga423969b3bf83826b757323aaf6a1a975}\label{group__TextureLoader_ga423969b3bf83826b757323aaf6a1a975} 
+\index{Texture Loader@{Texture Loader}!convert\_to\_rgb32f\_texture@{convert\_to\_rgb32f\_texture}}
+\index{convert\_to\_rgb32f\_texture@{convert\_to\_rgb32f\_texture}!Texture Loader@{Texture Loader}}
+\doxysubsubsection{\texorpdfstring{convert\_to\_rgb32f\_texture()}{convert\_to\_rgb32f\_texture()}}
+{\footnotesize\ttfamily float \texorpdfstring{$\ast$}{*} convert\+\_\+to\+\_\+rgb32f\+\_\+texture (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}}]{rgba\+Surface }\end{DoxyParamCaption})}
+
+
+
+Converts an SDL\+\_\+\+Surface with RGBA format to an array of floats representing an RGB32F texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rgba\+Surface} & \{SDL\+\_\+\+Surface\texorpdfstring{$\ast$}{*}\} A pointer to the SDL\+\_\+\+Surface containing the RGBA texture data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{float\texorpdfstring{$\ast$}{*}\} A pointer to the array of floats representing the RGB32F texture data.
+\end{DoxyReturn}
+This function takes an SDL\+\_\+\+Surface that contains RGBA texture data and converts it to an array of floats representing an RGB32F texture. This format is suitable for high dynamic range (HDR) rendering in Open\+GL. \Hypertarget{group__TextureLoader_gacf6319b1b2c90bd1af3e8dbdcbf80cb8}\label{group__TextureLoader_gacf6319b1b2c90bd1af3e8dbdcbf80cb8} 
+\index{Texture Loader@{Texture Loader}!draw\_text@{draw\_text}}
+\index{draw\_text@{draw\_text}!Texture Loader@{Texture Loader}}
+\doxysubsubsection{\texorpdfstring{draw\_text()}{draw\_text()}}
+{\footnotesize\ttfamily void draw\+\_\+text (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}}]{render\+\_\+surface,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{SDL\+\_\+\+Color}]{color,  }\item[{char \texorpdfstring{$\ast$}{*}}]{alignment,  }\item[{int}]{width }\end{DoxyParamCaption})}
+
+
+
+Renders text onto an SDL\+\_\+\+Surface at a specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em render\+\_\+surface} & \{SDL\+\_\+\+Surface\texorpdfstring{$\ast$}{*}\} A pointer to the SDL\+\_\+\+Surface where the text will be rendered. \\
+\hline
+{\em x} & \{int\} The x-\/coordinate where the text will be rendered. \\
+\hline
+{\em y} & \{int\} The y-\/coordinate where the text will be rendered. \\
+\hline
+{\em text} & \{char\texorpdfstring{$\ast$}{*}\} A string containing the text to be rendered. \\
+\hline
+{\em font} & \{TTF\+\_\+\+Font\texorpdfstring{$\ast$}{*}\} A pointer to the TTF\+\_\+\+Font to be used for rendering the text. \\
+\hline
+{\em color} & \{SDL\+\_\+\+Color\} The color of the text. \\
+\hline
+{\em alignment} & \{char\texorpdfstring{$\ast$}{*}\} A string specifying the alignment of the text ("{}left"{}, "{}center"{}, "{}right"{}). \\
+\hline
+{\em width} & \{int\} The width of the area in which the text will be rendered.\\
+\hline
+\end{DoxyParams}
+This function renders the specified text onto the given SDL\+\_\+\+Surface at the specified position. The text is rendered using the provided TTF\+\_\+\+Font and color. The alignment parameter specifies how the text should be aligned within the given width. \Hypertarget{group__TextureLoader_ga63cbb7972f065dfe4d8a5bfb6690f3b6}\label{group__TextureLoader_ga63cbb7972f065dfe4d8a5bfb6690f3b6} 
+\index{Texture Loader@{Texture Loader}!flip\_y\_surface@{flip\_y\_surface}}
+\index{flip\_y\_surface@{flip\_y\_surface}!Texture Loader@{Texture Loader}}
+\doxysubsubsection{\texorpdfstring{flip\_y\_surface()}{flip\_y\_surface()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} flip\+\_\+y\+\_\+surface (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}}]{surface }\end{DoxyParamCaption})}
+
+
+
+Flips an SDL\+\_\+\+Surface vertically (along the Y-\/axis). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em surface} & \{SDL\+\_\+\+Surface\texorpdfstring{$\ast$}{*}\} A pointer to the SDL\+\_\+\+Surface to be flipped. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{SDL\+\_\+\+Surface\texorpdfstring{$\ast$}{*}\} A pointer to the new SDL\+\_\+\+Surface that has been flipped vertically.
+\end{DoxyReturn}
+This function creates a new SDL\+\_\+\+Surface that is a vertically flipped version of the input surface. This is useful for correcting the orientation of textures that are loaded upside down. \Hypertarget{group__TextureLoader_ga538a4617970ed626f3e13f6ac4e075d8}\label{group__TextureLoader_ga538a4617970ed626f3e13f6ac4e075d8} 
+\index{Texture Loader@{Texture Loader}!load\_texture\_from\_path@{load\_texture\_from\_path}}
+\index{load\_texture\_from\_path@{load\_texture\_from\_path}!Texture Loader@{Texture Loader}}
+\doxysubsubsection{\texorpdfstring{load\_texture\_from\_path()}{load\_texture\_from\_path()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} load\+\_\+texture\+\_\+from\+\_\+path (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{GLenum}]{format,  }\item[{bool}]{y\+Reversed }\end{DoxyParamCaption})}
+
+
+
+Loads a texture from a specified file path and creates an Open\+GL texture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \{char\texorpdfstring{$\ast$}{*}\} A string containing the file path to the texture image. \\
+\hline
+{\em format} & \{GLenum\} The format of the texture (e.\+g., GL\+\_\+\+RGBA, GL\+\_\+\+RGB). \\
+\hline
+{\em y\+Reversed} & \{bool\} A boolean indicating whether the texture\textquotesingle{}s Y-\/axis should be reversed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{Texture\+Map\} The generated Open\+GL texture ID, or 0 if loading fails.
+\end{DoxyReturn}
+This function utilizes SDL\+\_\+image to load a texture from the specified file path, creates an Open\+GL texture object, and configures its parameters. The loaded texture is suitable for use in rendering graphics with Open\+GL.
+
+Example Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ texture\ =\ \mbox{\hyperlink{group__TextureLoader_ga538a4617970ed626f3e13f6ac4e075d8}{load\_texture\_from\_path}}(\textcolor{stringliteral}{"{}path/to/texture.png"{}},\ GL\_RGBA,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (texture\ !=\ 0)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Use\ the\ texture\ for\ rendering...}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+Returns the Open\+GL texture ID on success. If the texture fails to load, the function returns 0. 
+\end{DoxyReturn}

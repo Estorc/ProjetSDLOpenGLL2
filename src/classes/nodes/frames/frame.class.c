@@ -9,8 +9,9 @@
 #include "gui/frame.h"
 #include "memory.h"
 
-class Frame extends Node {
+class Frame : public Node {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;
@@ -260,16 +261,16 @@ class Frame extends Node {
         ButtonState state = BUTTON_STATE_NORMAL;
         bool is_element_type = false;
 
-        METHOD(this, is_button, &is_element_type)
+        METHOD(this, is_button, &is_element_type);
         if (is_element_type) {
             if (frame->button->checked) set_shader_int(shaders->gui, "checked", *frame->button->checked);
             state = frame->button->state;
         }
 
-        METHOD(this, is_input_area, &is_element_type)
+        METHOD(this, is_input_area, &is_element_type);
         if (is_element_type) state = frame->inputArea->state;
 
-        METHOD(this, is_selectlist, &is_element_type)
+        METHOD(this, is_selectlist, &is_element_type);
         if (is_element_type) state = frame->selectList->state;
 
         set_shader_int(shaders->gui, "pressed", state == BUTTON_STATE_PRESSED);

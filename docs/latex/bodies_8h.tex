@@ -1,0 +1,61 @@
+\doxysection{src/physics/bodies.h File Reference}
+\hypertarget{bodies_8h}{}\label{bodies_8h}\index{src/physics/bodies.h@{src/physics/bodies.h}}
+{\ttfamily \#include "{}../math/math\+\_\+util.\+h"{}}\newline
+{\ttfamily \#include "{}../io/model.\+h"{}}\newline
+Include dependency graph for bodies.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bodies_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bodies_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{classStaticBody}{Static\+Body}}
+\begin{DoxyCompactList}\small\item\em Represents a static body in the physics simulation. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{classRigidBody}{Rigid\+Body}}
+\begin{DoxyCompactList}\small\item\em Represents a rigid body in the physics simulation. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{classKinematicBody}{Kinematic\+Body}}
+\begin{DoxyCompactList}\small\item\em Represents a kinematic body in the physics simulation. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structPlaneCollisionShape}{Plane\+Collision\+Shape}}
+\begin{DoxyCompactList}\small\item\em Represents a plane collision shape. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structBoxCollisionShape}{Box\+Collision\+Shape}}
+\begin{DoxyCompactList}\small\item\em Represents a box collision shape. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structSphereCollisionShape}{Sphere\+Collision\+Shape}}
+\begin{DoxyCompactList}\small\item\em Represents a sphere collision shape. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structMeshCollisionShape}{Mesh\+Collision\+Shape}}
+\begin{DoxyCompactList}\small\item\em Represents a mesh collision shape. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structCapsuleCollisionShape}{Capsule\+Collision\+Shape}}
+\begin{DoxyCompactList}\small\item\em Represents a capsule collision shape. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structRayCollisionShape}{Ray\+Collision\+Shape}}
+\begin{DoxyCompactList}\small\item\em Represents a ray collision shape. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structCollisionBuffer}{Collision\+Buffer}}
+\begin{DoxyCompactList}\small\item\em Represents a buffer for collision shapes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__BodiesGroup_gaee92f42cc80ce048ea337169c64cbba8}{GET\+\_\+\+FROM\+\_\+\+BODY\+\_\+\+NODE}}(node,  attribute,  dest)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__BodiesGroup_ga3f8891513a89cf7fd74f67c5ad500aa1}{add\+\_\+shape}} (struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child shape to the specified node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__BodiesGroup_ga65bb5950a820bda56edddca9a1ca7c99}{add\+\_\+shape\+\_\+and\+\_\+realloc}} (struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child shape to the specified node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__BodiesGroup_ga8934d3eb08772c4ffcd40f9858ed2a6d}{remove\+\_\+shape}} (struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child shape from the specified node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__BodiesGroup_ga7d13b0a0d8784f44e311fd96a78fd5e0}{remove\+\_\+shape\+\_\+and\+\_\+realloc}} (struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child shape from the specified node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__BodiesGroup_gaad9b71753f111c4db4c642b1066ba7dd}{remove\+\_\+shape\+\_\+and\+\_\+free}} (struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child shape from the specified node and frees the memory allocated for the child shape. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__BodiesGroup_ga3bdcf1b4e0ccacb54126d6fa3ff3fa85}{remove\+\_\+shape\+\_\+and\+\_\+free\+\_\+and\+\_\+realloc}} (struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child shape from the specified node, frees the memory allocated for the child shape, and reallocates memory if necessary. \end{DoxyCompactList}\end{DoxyCompactItemize}

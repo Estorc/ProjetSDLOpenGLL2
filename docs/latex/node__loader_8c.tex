@@ -1,0 +1,39 @@
+\doxysection{src/io/node\+\_\+loader.c File Reference}
+\hypertarget{node__loader_8c}{}\label{node__loader_8c}\index{src/io/node\_loader.c@{src/io/node\_loader.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}stringio.\+h"{}}\newline
+{\ttfamily \#include "{}../types.\+h"{}}\newline
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+opengl.\+h$>$}\newline
+{\ttfamily \#include $<$GL/glu.\+h$>$}\newline
+{\ttfamily \#include $<$GL/glext.\+h$>$}\newline
+{\ttfamily \#include "{}../math/math\+\_\+util.\+h"{}}\newline
+{\ttfamily \#include "{}model.\+h"{}}\newline
+{\ttfamily \#include "{}../render/framebuffer.\+h"{}}\newline
+{\ttfamily \#include "{}../storage/node.\+h"{}}\newline
+{\ttfamily \#include "{}../render/render.\+h"{}}\newline
+{\ttfamily \#include "{}../render/lighting.\+h"{}}\newline
+{\ttfamily \#include "{}../window.\+h"{}}\newline
+{\ttfamily \#include "{}input.\+h"{}}\newline
+{\ttfamily \#include "{}../render/camera.\+h"{}}\newline
+{\ttfamily \#include "{}shader.\+h"{}}\newline
+{\ttfamily \#include "{}../render/depth\+\_\+map.\+h"{}}\newline
+{\ttfamily \#include "{}scene\+\_\+loader.\+h"{}}\newline
+{\ttfamily \#include "{}../memory.\+h"{}}\newline
+{\ttfamily \#include "{}../buffer.\+h"{}}\newline
+{\ttfamily \#include "{}../classes/classes.\+h"{}}\newline
+Include dependency graph for node\+\_\+loader.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{node__loader_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__NodeLoader_gae4a14d7e7a38b0e9d99c338fe9ee060e}{malloc\+\_\+node}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, int node\+Type, FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} scripts\mbox{[}SCRIPTS\+\_\+\+COUNT\mbox{]}, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
+\begin{DoxyCompactList}\small\item\em Allocates memory for a node and initializes it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__NodeLoader_ga930ce06b98b45fb3cef57f5a2e3c91dd}{node\+\_\+tree\+\_\+to\+\_\+file}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
+\begin{DoxyCompactList}\small\item\em Writes the node tree to a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
