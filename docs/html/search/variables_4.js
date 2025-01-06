@@ -6,5 +6,5 @@ var searchData=
   ['diffuse_3',['diffuse',['../classPointLight.html#a3b2ed44f5f9dfc10facd2323d6360ae5',1,'PointLight::diffuse'],['../classDirectionalLight.html#ad9848664ed0f3d2cde729ce44688974e',1,'DirectionalLight::diffuse'],['../classSpotLight.html#af06e295a95eeafbe8c92e256f74fa78b',1,'SpotLight::diffuse']]],
   ['directionallighttexture_4',['directionalLightTexture',['../classLight.html#a7417dc99e235b7f775b5f80810cca6fc',1,'Light']]],
   ['displaylists_5',['displayLists',['../structModelObjectData.html#a1b0b3e5d50a9e645125e13e887e140e1',1,'ModelObjectData']]],
-  ['distance_6',['distance',['../group__Physics.html#gae98203da98c26588074aa8d385d29390',1,'DistanceNode']]]
+  ['distance_6',['distance',['../structDistanceNode.html#a699e233d8f147cb68ee9efffbaec65ce',1,'DistanceNode']]]
 ];

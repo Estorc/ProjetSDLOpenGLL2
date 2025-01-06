@@ -1,8 +1,3 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_opengl.h>
-#include <GL/glu.h>
-#include <GL/glext.h>
 #include "../types.h"
 #include "../math/math_util.h"
 #include "../io/model.h"
@@ -21,77 +16,16 @@
 #include "collision.h"
 
 
-float get_velocity_norm(Node *node) {
-    switch (node->type) {
-        case CLASS_TYPE_KINEMATICBODY: ;
-            KinematicBody *kinematicBody = (KinematicBody *) node->object;
-            return glm_vec3_norm(kinematicBody->velocity);
-        case CLASS_TYPE_RIGIDBODY: ;
-            RigidBody *rigidBody = (RigidBody *) node->object;
-            return glm_vec3_norm(rigidBody->velocity);
-    }
-    return 0.0f;
-};
-
-
-void get_velocity(Node *node, vec3 velocity) {
-    switch (node->type) {
-        case CLASS_TYPE_KINEMATICBODY: ;
-            KinematicBody *kinematicBody = (KinematicBody *) node->object;
-            glm_vec3_copy(kinematicBody->velocity, velocity);
-        break;
-        case CLASS_TYPE_RIGIDBODY: ;
-            RigidBody *rigidBody = (RigidBody *) node->object;
-            glm_vec3_copy(rigidBody->velocity, velocity);
-        break;
-        case CLASS_TYPE_STATICBODY: ;
-            glm_vec3_zero(velocity);
-        break;
-    }
-};
-
-
-void get_mass(Node *node, float * mass) {
-    switch (node->type) {
-        case CLASS_TYPE_RIGIDBODY: ;
-            RigidBody *rigidBody = (RigidBody *) node->object;
-            (*mass) = rigidBody->mass;
-        break;
-        case CLASS_TYPE_STATICBODY: ;
-            (*mass) = INFINITY;
-        break;
-        case CLASS_TYPE_KINEMATICBODY: ;
-            (*mass) = 100.0;
-        break;
-    }
-}
-
-void get_center_of_mass(Node *node, vec3 com) {
-    switch (node->type) {
-        case CLASS_TYPE_RIGIDBODY: ;
-            RigidBody *rigidBody = (RigidBody *) node->object;
-            glm_vec3_copy(rigidBody->centerOfMass, com);
-        break;
-        case CLASS_TYPE_STATICBODY: ;
-            glm_vec3_zero(com);
-        break;
-        case CLASS_TYPE_KINEMATICBODY: ;
-            glm_vec3_zero(com);
-        break;
-    }
-}
-
-
 void apply_body_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 angularNormal, float penetrationDepth) {
     // Mass calculation
     float massA, massB;
-    get_mass(shapeA->parent, &massA);
-    get_mass(shapeB->parent, &massB);
+    (shapeA->parent)::get_mass(&massA);
+    (shapeB->parent)::get_mass(&massB);
 
     // Calculate relative velocity
     vec3 velocityA, velocityB;
-    get_velocity(shapeA->parent, velocityA);
-    get_velocity(shapeB->parent, velocityB);
+    (shapeA->parent)::get_velocity(velocityA);
+    (shapeB->parent)::get_velocity(velocityB);
 
     // Calculate the relative velocity between the two bodies
     vec3 relativeVelocity;
@@ -120,8 +54,8 @@ void apply_body_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3
 
     // Get the center of mass
     vec3 comA, comB;
-    get_center_of_mass(shapeA->parent, comA);
-    get_center_of_mass(shapeB->parent, comB);
+    (shapeA->parent)::get_center_of_mass(comA);
+    (shapeB->parent)::get_center_of_mass(comB);
 
     // Calculate the point where the impulse is applied relative to the center of mass
     vec3 rA, rB;
@@ -147,10 +81,10 @@ void apply_body_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3
         glm_vec3_zero(correction);
 
     float momentOfInertia = (1.0f / (invMassA + invMassB)) * 50000.0f;
-    METHOD(shapeA->parent, apply_impulse, impulseA, torqueA, correction, &momentOfInertia);
+    (shapeA->parent)::apply_impulse(impulseA, torqueA, correction, &momentOfInertia);
     glm_vec3_negate(impulseB);
     glm_vec3_negate(correction);
-    METHOD(shapeB->parent, apply_impulse, impulseB, torqueB, correction, &momentOfInertia);
+    (shapeB->parent)::apply_impulse(impulseB, torqueB, correction, &momentOfInertia);
 }
 
 
@@ -239,267 +173,6 @@ void check_collisions(Node *shape) {
 }
 
 
-void update_global_position(Node *node, vec3 pos, vec3 rot, vec3 scale) {
-    vec3 nodePos;
-    glm_vec3_copy(node->pos, nodePos);
-
-    glm_vec3_mul(nodePos, scale, nodePos);
-
-    glm_vec3_rotate(nodePos, to_radians(rot[0]), (vec3){1.0f, 0.0f, 0.0f});
-    glm_vec3_rotate(nodePos, to_radians(rot[1]), (vec3){0.0f, 1.0f, 0.0f});
-    glm_vec3_rotate(nodePos, to_radians(rot[2]), (vec3){0.0f, 0.0f, 1.0f});
-
-    glm_vec3_add(pos, nodePos, pos);
-
-    glm_vec3_add(rot, node->rot, rot);
-    glm_vec3_mul(scale, node->scale, scale);
-    glm_vec3_copy(pos, node->globalPos);
-    glm_vec3_copy(rot, node->globalRot);
-    glm_vec3_copy(scale, node->globalScale);
-}
-
-
-void update_static_body(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) {
-    StaticBody *staticBody = (StaticBody *) node->object;
-
-    update_global_position(node, pos, rot, scale);
-
-    for (int i = 0; i < staticBody->length; i++) {
-        update_global_position(staticBody->collisionsShapes[i], pos, rot, scale);
-        glm_vec3_copy(node->globalPos, pos);
-        glm_vec3_copy(node->globalRot, rot);
-        glm_vec3_copy(node->globalScale, scale);
-        check_collisions(staticBody->collisionsShapes[i]);
-    }
-    memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], staticBody->collisionsShapes, staticBody->length * sizeof(staticBody->collisionsShapes[0]));
-    buffers.collisionBuffer.index += staticBody->length;
-}
-
-
-void update_rigid_body(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) {
-    RigidBody *rigidBody = (RigidBody *) node->object;
-
-    vec3 gravity;
-    glm_vec3_scale(rigidBody->gravity, delta, gravity);
-    glm_vec3_add(rigidBody->velocity, gravity, rigidBody->velocity);
-    glm_vec3_scale(rigidBody->velocity, rigidBody->friction * (1.0-delta), rigidBody->velocity);
-    glm_vec3_add(node->pos, rigidBody->velocity, node->pos);
-
-    glm_vec3_scale(rigidBody->angularVelocity, rigidBody->friction * (1.0-delta), rigidBody->angularVelocity);
-    glm_vec3_add(node->rot, rigidBody->angularVelocity, node->rot);
-
-    update_global_position(node, pos, rot, scale);
-
-
-    for (int i = 0; i < rigidBody->length; i++) {
-        update_global_position(rigidBody->collisionsShapes[i], pos, rot, scale);
-        glm_vec3_copy(node->globalPos, pos);
-        glm_vec3_copy(node->globalRot, rot);
-        glm_vec3_copy(node->globalScale, scale);
-        check_collisions(rigidBody->collisionsShapes[i]);
-    }
-    memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], rigidBody->collisionsShapes, rigidBody->length * sizeof(rigidBody->collisionsShapes[0]));
-    buffers.collisionBuffer.index += rigidBody->length;
-}
-
-void update_kinematic_body(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) {
-    KinematicBody *kinematicBody = (KinematicBody *) node->object;
-
-    glm_vec3_add(node->pos, kinematicBody->velocity, node->pos);
-    update_global_position(node, pos, rot, scale);
-
-
-    for (int i = 0; i < kinematicBody->length; i++) {
-        update_global_position(kinematicBody->collisionsShapes[i], pos, rot, scale);
-        glm_vec3_copy(node->globalPos, pos);
-        glm_vec3_copy(node->globalRot, rot);
-        glm_vec3_copy(node->globalScale, scale);
-        check_collisions(kinematicBody->collisionsShapes[i]);
-    }
-    memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], kinematicBody->collisionsShapes, kinematicBody->length * sizeof(kinematicBody->collisionsShapes[0]));
-    buffers.collisionBuffer.index += kinematicBody->length;
-}
-
-void update_camera(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta) {
-    Camera *camera = (Camera *) node->object;
-
-    update_global_position(node, pos, rot, scale);
-    glm_vec3_negate_to(pos, camera->pos);
-    glm_vec3_negate_to(rot, camera->rot);
-}
-
-void update_point_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, u8 lightsCount[LIGHTS_COUNT]) {
-    if (!(node->flags & NODE_LIGHT_ACTIVE)) return;
-    PointLight *pointLight = (PointLight *) node->object;
-
-    update_global_position(node, pos, rot, scale);
-
-    const char uniforms[8][20] = {
-        "].position",
-        "].ambient",
-        "].diffuse",
-        "].specular",
-        "].constant",
-        "].linear",
-        "].quadratic",
-        "].index"
-    };
-
-    char uniformsName[8][50];
-
-    for (int i = 0; i < 8; i++) {
-        strcpy(uniformsName[i], "pointLights[");
-        sprintf(uniformsName[i] + strlen(uniformsName[i]), "%d", lightsCount[POINT_LIGHT]);
-        strcat(uniformsName[i], uniforms[i]);
-    }
-
-    for (int i = 0; i < memoryCaches.shadersCount; i++) {
-        use_shader(memoryCaches.shaderCache[i].shader);
-        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[0], node->globalPos);
-        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], pointLight->ambient);
-        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[2], pointLight->diffuse);
-        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[3], pointLight->specular);
-        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[4], pointLight->constant);
-        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], pointLight->linear);
-        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], pointLight->quadratic);
-        set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[7], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
-    }
-    buffers.lightingBuffer.lightings[buffers.lightingBuffer.index++] = node;
-    lightsCount[POINT_LIGHT]++;
-
-}
-
-void update_directional_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, u8 lightsCount[LIGHTS_COUNT]) {
-    if (!(node->flags & NODE_LIGHT_ACTIVE)) return;
-    DirectionalLight *directionalLight = (DirectionalLight *) node->object;
-
-    update_global_position(node, pos, rot, scale);
-
-    const char uniforms[9][20] = {
-        "].position",
-        "].direction",
-        "].ambient",
-        "].diffuse",
-        "].specular",
-        "].constant",
-        "].linear",
-        "].quadratic",
-        "].index"
-    };
-
-    char uniformsName[9][50];
-
-    for (int i = 0; i < 9; i++) {
-        strcpy(uniformsName[i], "dirLights[");
-        sprintf(uniformsName[i] + strlen(uniformsName[i]), "%d", lightsCount[DIRECTIONAL_LIGHT]);
-        strcat(uniformsName[i], uniforms[i]);
-    }
-
-    vec3 dir = {1.0, 0.0, 0.0};
-
-    glm_vec3_rotate(dir, to_radians(node->rot[0]), (vec3){1.0f, 0.0f, 0.0f});
-    glm_vec3_rotate(dir, to_radians(node->rot[1]), (vec3){0.0f, 1.0f, 0.0f});
-    glm_vec3_rotate(dir, to_radians(node->rot[2]), (vec3){0.0f, 0.0f, 1.0f});
-
-    for (int i = 0; i < memoryCaches.shadersCount; i++) {
-        use_shader(memoryCaches.shaderCache[i].shader);
-        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[0], node->globalPos);
-        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], dir);
-        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[2], directionalLight->ambient);
-        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[3], directionalLight->diffuse);
-        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[4], directionalLight->specular);
-        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], directionalLight->constant);
-        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], directionalLight->linear);
-        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[7], directionalLight->quadratic);
-        set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[8], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
-    }
-
-    buffers.lightingBuffer.lightings[buffers.lightingBuffer.index++] = node;
-    lightsCount[DIRECTIONAL_LIGHT]++;
-
-}
-
-void update_spot_light(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, u8 lightsCount[LIGHTS_COUNT]) {
-    if (!(node->flags & NODE_LIGHT_ACTIVE)) return;
-    SpotLight *spotLight = (SpotLight *) node->object;
-
-    update_global_position(node, pos, rot, scale);
-
-    const char uniforms[11][20] = {
-        "].position",
-        "].direction",
-        "].ambient",
-        "].diffuse",
-        "].specular",
-        "].constant",
-        "].linear",
-        "].quadratic",
-        "].cutOff",
-        "].outerCutOff",
-        "].index"
-    };
-
-    char uniformsName[11][50];
-
-    for (int i = 0; i < 11; i++) {
-        strcpy(uniformsName[i], "spotLights[");
-        sprintf(uniformsName[i] + strlen(uniformsName[i]), "%d", lightsCount[SPOT_LIGHT]);
-        strcat(uniformsName[i], uniforms[i]);
-    }
-
-    vec3 dir = {0.0, 0.0, -1.0};
-    glm_vec3_rotate(dir, to_radians(node->globalRot[0]), (vec3){1.0f, 0.0f, 0.0f});
-    glm_vec3_rotate(dir, to_radians(node->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
-    glm_vec3_rotate(dir, to_radians(node->globalRot[2]), (vec3){0.0f, 0.0f, 1.0f});
-
-    for (int i = 0; i < memoryCaches.shadersCount; i++) {
-        use_shader(memoryCaches.shaderCache[i].shader);
-        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[0], node->globalPos);
-        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], dir);
-        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[2], spotLight->ambient);
-        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[3], spotLight->diffuse);
-        set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[4], spotLight->specular);
-        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], spotLight->constant);
-        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], spotLight->linear);
-        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[7], spotLight->quadratic);
-        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[8], spotLight->cutOff);
-        set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[9], spotLight->outerCutOff);
-        set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[10], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
-    }
-
-    buffers.lightingBuffer.lightings[buffers.lightingBuffer.index++] = node;
-    lightsCount[SPOT_LIGHT]++;
-
-}
-
-void update_node_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, u8 lightsCount[LIGHTS_COUNT]) {
-    switch (node->type) {
-        case CLASS_TYPE_RIGIDBODY: ;
-            update_rigid_body(node, pos, rot, scale, delta);
-        break;
-        case CLASS_TYPE_STATICBODY: ;
-            update_static_body(node, pos, rot, scale, delta);
-        break;
-        case CLASS_TYPE_KINEMATICBODY: ;
-            update_kinematic_body(node, pos, rot, scale, delta);
-        break;
-        case CLASS_TYPE_CAMERA:
-            update_camera(node, pos, rot, scale, delta);
-        break;
-        case CLASS_TYPE_POINTLIGHT:
-            update_point_light(node, pos, rot, scale, delta, lightsCount);
-        break;
-        case CLASS_TYPE_DIRECTIONALLIGHT:
-            update_directional_light(node, pos, rot, scale, delta, lightsCount);
-        break;
-        case CLASS_TYPE_SPOTLIGHT:
-            update_spot_light(node, pos, rot, scale, delta, lightsCount);
-        break;
-        default:
-            update_global_position(node, pos, rot, scale);
-        break;
-    }
-}
 
 void update_script(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Input *input, Window *window) {
     if (node->flags & NODE_SCRIPT && (*node->behavior)[BEHAVIOR_SCRIPT_UPDATE]) (*node->behavior)[BEHAVIOR_SCRIPT_UPDATE](node, input, window, delta);
@@ -517,11 +190,10 @@ void update_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Inp
 
     if (node->flags & NODE_ACTIVE && (active || node->flags & NODE_EDITOR_FLAG)) {
         update_script(node, newPos, newRot, newScale, delta, input, window);
-        METHOD(node, update, newPos, newRot, newScale, delta);
-        update_node_physics(node, newPos, newRot, newScale, delta, lightsCount);
+        node::update(newPos, newRot, newScale, delta, lightsCount);
     } else {
         active = false;
-        update_global_position(node, newPos, newRot, newScale);
+        node::update_global_position(pos, rot, scale);
     }
 
     for (int i = 0; i < node->length; i++)

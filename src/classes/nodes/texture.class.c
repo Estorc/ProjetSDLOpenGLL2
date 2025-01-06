@@ -13,9 +13,7 @@ class Texture : public Node {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load() {
 

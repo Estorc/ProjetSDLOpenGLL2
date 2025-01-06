@@ -1,0 +1,42 @@
+#line 1 "src/scripts/settings.cscript"
+NEW_SCRIPT(st_show_fps)
+    Frame *frame = (Frame*) node->object;
+	Button *button = (Button*) frame->button;
+    if (!button->checked) button->checked = &settings.show_fps;
+END_SCRIPT(st_show_fps)
+
+
+NEW_SCRIPT(st_cast_shadows)
+    Frame *frame = (Frame*) node->object;
+    Button *button = (Button*) frame->button;
+    if (!button->checked) button->checked = &settings.cast_shadows;
+END_SCRIPT(st_cast_shadows)
+
+NEW_SCRIPT(st_fullscreen)
+    Frame *frame = (Frame*) node->object;
+    Button *button = (Button*) frame->button;
+    if (!button->checked) button->checked = &settings.window_fullscreen;
+    if (settings.window_fullscreen) {
+        SDL_SetWindowFullscreen(window->sdl_window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+    } else {
+        SDL_SetWindowFullscreen(window->sdl_window, 0);
+    }
+END_SCRIPT(st_fullscreen)
+
+NEW_SCRIPT(st_res)
+    PARAMS_COUNT(1);
+    int *oldRes = &node->params[0].i;
+
+    Frame *frame = (Frame*) node->object;
+    SelectList *selectList = frame->selectList;
+    selectList->selected = &settings.resolution;
+    if (selectList->count == 1 && !(frame->flags & FRAME_NEEDS_REFRESH)) {
+        selectList->options = (char (*)[256]) resolutionsText;
+        selectList->count = RES_COUNT;
+        call_method_0(METHOD(refreshOptions,node));
+    }
+    if (*oldRes != settings.resolution) {
+        queue_push(&callQueue, refresh_resolution);
+    }
+    *oldRes = settings.resolution;
+END_SCRIPT(st_res)

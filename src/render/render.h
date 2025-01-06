@@ -33,20 +33,6 @@ typedef struct WorldShaders {
 
 
 /**
- * @brief Configures the shader program for rendering.
- *
- * This function sets up the shader program by binding the necessary resources and
- * configuring the shader parameters based on the provided window, scene graph root node,
- * camera, and world shaders.
- *
- * @param window Pointer to the Window structure.
- * @param root Pointer to the root Node of the scene graph.
- * @param c Pointer to the Camera structure.
- * @param shaders Pointer to the WorldShaders structure containing shader programs.
- */
-void configure_shader(struct Window *window, struct Node *root, struct Camera *c, struct WorldShaders *shaders);
-
-/**
  * @brief Renders the scene using the specified shader.
  *
  * This function renders the scene graph starting from the given node using the active shader.

@@ -1,12 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include "stringio.h"
 #include "../types.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_opengl.h>
-#include <GL/glu.h>
-#include <GL/glext.h>
-#include <stdio.h>
 #include "../math/math_util.h"
 #include "model.h"
 #include "../render/framebuffer.h"
@@ -24,7 +16,7 @@
 #include "../classes/classes.h"
 
 
-Node *load_node(FILE *file, Camera **c, Script scripts[SCRIPTS_COUNT], Node *editor) {
+Node *load_node(FILE *file, Camera **c, Script *scripts, Node *editor) {
     
     char symbol[100];
     Node *node;
@@ -38,7 +30,7 @@ Node *load_node(FILE *file, Camera **c, Script scripts[SCRIPTS_COUNT], Node *edi
     
 
     #ifdef DEBUG
-    //print_node(node,0);
+    //node::print(0);
     #endif
     char paramSymbol;
     do {
@@ -55,7 +47,7 @@ Node *load_node(FILE *file, Camera **c, Script scripts[SCRIPTS_COUNT], Node *edi
                 POINTER_CHECK(node->children);
                 
                 for (int i = 0; i < children_count; i++)
-                    add_child(node, load_node(file, c, scripts, editor));
+                    node::add_child(load_node(file, c, scripts, editor));
                 break;
             case '[': ;
                 char transformSymbol;
@@ -140,7 +132,7 @@ Node *load_scene(char *path, Camera **c, Script *scripts) {
         return NULL;
     }
     root->parent = NULL;
-    print_node(root, 0);
+    root::print(0);
 
     buffers.collisionBuffer.collisionsShapes = realloc(buffers.collisionBuffer.collisionsShapes, sizeof(Node *) * buffers.collisionBuffer.length);
     // Check if the memory allocation was successful

@@ -70,7 +70,7 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle"><div class="title">Skybox Utilities</div></div>
 </div><!--header-->
 <div class="contents">
@@ -78,85 +78,13 @@ $(function() {
 <p>Utility functions for creating and managing skyboxes.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ga5082b4f25d53cdefcfb8ccd5c0ad64c2" id="r_ga5082b4f25d53cdefcfb8ccd5c0ad64c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SkyboxUtilities.html#ga5082b4f25d53cdefcfb8ccd5c0ad64c2">load_cubemap</a> (char faces[6][200])</td></tr>
-<tr class="memdesc:ga5082b4f25d53cdefcfb8ccd5c0ad64c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a cubemap texture from 6 individual texture faces.  <br /></td></tr>
-<tr class="separator:ga5082b4f25d53cdefcfb8ccd5c0ad64c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga84027a962f1c5433d1a5909ecaa8bcdd" id="r_ga84027a962f1c5433d1a5909ecaa8bcdd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SkyboxUtilities.html#ga84027a962f1c5433d1a5909ecaa8bcdd">create_skybox</a> (<a class="el" href="group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a> *texturedMesh, char skyboxTexture[6][200])</td></tr>
-<tr class="memdesc:ga84027a962f1c5433d1a5909ecaa8bcdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a skybox with the given textures.  <br /></td></tr>
-<tr class="separator:ga84027a962f1c5433d1a5909ecaa8bcdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSkybox.html">Skybox</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Utility functions for creating and managing skyboxes. </p>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="ga84027a962f1c5433d1a5909ecaa8bcdd" name="ga84027a962f1c5433d1a5909ecaa8bcdd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga84027a962f1c5433d1a5909ecaa8bcdd">&#9670;&#160;</a></span>create_skybox()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void create_skybox </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a> *&#160;</td>
-          <td class="paramname"><em>texturedMesh</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>skyboxTexture</em>[6][200]&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Creates a skybox with the given textures. </p>
-<p>This function initializes a skybox using the provided textures and assigns it to the given textured mesh.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">texturedMesh</td><td>A pointer to the TextureMap structure where the skybox will be created. </td></tr>
-    <tr><td class="paramname">skyboxTexture</td><td>A 2D array containing the file paths of the six textures for the skybox. The textures should be ordered as follows: right, left, top, bottom, front, back. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>Each file path in the skyboxTexture array should not exceed 200 characters. </dd></dl>
-
-</div>
-</div>
-<a id="ga5082b4f25d53cdefcfb8ccd5c0ad64c2" name="ga5082b4f25d53cdefcfb8ccd5c0ad64c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5082b4f25d53cdefcfb8ccd5c0ad64c2">&#9670;&#160;</a></span>load_cubemap()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a> load_cubemap </td>
-          <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>faces</em>[6][200]</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Loads a cubemap texture from 6 individual texture faces. </p>
-<p>This function takes an array of file paths to 6 texture images, each representing one face of a cubemap (right, left, top, bottom, front, back), and loads them into a single cubemap texture.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">faces</td><td>An array of 6 strings, each containing the file path to a texture image. The order of the faces should be: right, left, top, bottom, front, back.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>TextureMap The loaded cubemap texture. </dd></dl>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

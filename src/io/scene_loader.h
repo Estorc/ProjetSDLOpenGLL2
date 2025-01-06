@@ -21,7 +21,7 @@ struct Camera;
  * @param editor A pointer to the editor node.
  * @return A pointer to the loaded node.
  */
-struct Node *load_node(FILE *file, struct Camera **c, Script scripts[SCRIPTS_COUNT], struct Node *editor);
+struct Node *load_node(FILE *file, struct Camera **c, Script *scripts, struct Node *editor);
 
 /**
  * @brief Loads a scene from a file.
@@ -34,7 +34,7 @@ struct Node *load_node(FILE *file, struct Camera **c, Script scripts[SCRIPTS_COU
  * @param scripts An array of scripts to be updated.
  * @return A pointer to the loaded scene.
  */
-struct Node *load_scene(char *path, struct Camera **c, Script scripts[SCRIPTS_COUNT]);
+struct Node *load_scene(char *path, struct Camera **c, Script *scripts);
 
 /** @} */
 #endif

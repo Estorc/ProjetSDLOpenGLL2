@@ -87,9 +87,6 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaeff689418cd5e5fb37a09dd9b32c498d" id="r_gaeff689418cd5e5fb37a09dd9b32c498d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RenderFunctions.html#gaeff689418cd5e5fb37a09dd9b32c498d">configure_shader</a> (struct <a class="el" href="structWindow.html">Window</a> *<a class="el" href="main_8c.html#ac5b0b3c19d476a314bb68af9bc4a0ee0">window</a>, struct <a class="el" href="classNode.html">Node</a> *root, struct <a class="el" href="classCamera.html">Camera</a> *c, struct <a class="el" href="structWorldShaders.html">WorldShaders</a> *shaders)</td></tr>
-<tr class="memdesc:gaeff689418cd5e5fb37a09dd9b32c498d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the shader program for rendering.  <br /></td></tr>
-<tr class="separator:gaeff689418cd5e5fb37a09dd9b32c498d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7228f0476961799d9cf59f1d23088dca" id="r_ga7228f0476961799d9cf59f1d23088dca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RenderFunctions.html#ga7228f0476961799d9cf59f1d23088dca">render_scene</a> (struct <a class="el" href="structWindow.html">Window</a> *<a class="el" href="main_8c.html#ac5b0b3c19d476a314bb68af9bc4a0ee0">window</a>, struct <a class="el" href="classNode.html">Node</a> *node, struct <a class="el" href="classCamera.html">Camera</a> *c, mat4 modelMatrix, <a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> activeShader, struct <a class="el" href="structWorldShaders.html">WorldShaders</a> *shaders)</td></tr>
 <tr class="memdesc:ga7228f0476961799d9cf59f1d23088dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the scene using the specified shader.  <br /></td></tr>
 <tr class="separator:ga7228f0476961799d9cf59f1d23088dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -106,58 +103,6 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Functions for configuring shaders, rendering scenes, and drawing shadow maps. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gaeff689418cd5e5fb37a09dd9b32c498d" name="gaeff689418cd5e5fb37a09dd9b32c498d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaeff689418cd5e5fb37a09dd9b32c498d">&#9670;&#160;</a></span>configure_shader()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void configure_shader </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structWindow.html">Window</a> *&#160;</td>
-          <td class="paramname"><em>window</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>root</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="classCamera.html">Camera</a> *&#160;</td>
-          <td class="paramname"><em>c</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structWorldShaders.html">WorldShaders</a> *&#160;</td>
-          <td class="paramname"><em>shaders</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Configures the shader program for rendering. </p>
-<p>This function sets up the shader program by binding the necessary resources and configuring the shader parameters based on the provided window, scene graph root node, camera, and world shaders.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">window</td><td>Pointer to the <a class="el" href="structWindow.html" title="Structure representing the SDL window and its associated OpenGL context.">Window</a> structure. </td></tr>
-    <tr><td class="paramname">root</td><td>Pointer to the root <a class="el" href="classNode.html" title="Represents a node in the tree structure.">Node</a> of the scene graph. </td></tr>
-    <tr><td class="paramname">c</td><td>Pointer to the <a class="el" href="classCamera.html" title="A structure to represent a camera with position and rotation in 3D space.">Camera</a> structure. </td></tr>
-    <tr><td class="paramname">shaders</td><td>Pointer to the <a class="el" href="structWorldShaders.html" title="A structure to hold various shaders used in the rendering process.">WorldShaders</a> structure containing shader programs. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ga3a40b329a60cbe367e798eecbb95c855" name="ga3a40b329a60cbe367e798eecbb95c855"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga3a40b329a60cbe367e798eecbb95c855">&#9670;&#160;</a></span>draw_scene()</h2>
 

@@ -129,64 +129,6 @@ switch (node->type) {\
     default:                            dest = 0;                                                         break;\
 };
 
- /**
- * @brief Adds a child shape to the specified node.
- * 
- * @param node The parent node to which the child shape will be added.
- * @param child The child shape to be added to the node.
- */
- 
-void add_shape(struct Node *node, struct Node *child);
-
-
-/**
- * @brief Adds a child shape to the specified node and reallocates memory if necessary.
- * 
- * @param node The parent node to which the child shape will be added.
- * @param child The child shape to be added to the node.
- */
-
-void add_shape_and_realloc(struct Node *node, struct Node *child);
-
-
-/**
- * @brief Removes a child shape from the specified node.
- * 
- * @param node The parent node from which the child shape will be removed.
- * @param child The child shape to be removed from the node.
- */
-
-void remove_shape(struct Node *node, struct Node *child);
-
-
-/**
- * @brief Removes a child shape from the specified node and reallocates memory if necessary.
- * 
- * @param node The parent node from which the child shape will be removed.
- * @param child The child shape to be removed from the node.
- */
-
-void remove_shape_and_realloc(struct Node *node, struct Node *child);
-
-
-/**
- * @brief Removes a child shape from the specified node and frees the memory allocated for the child shape.
- * 
- * @param node The parent node from which the child shape will be removed.
- * @param child The child shape to be removed and freed.
- */
-
-void remove_shape_and_free(struct Node *node, struct Node *child);
-
-
-/**
- * @brief Removes a child shape from the specified node, frees the memory allocated for the child shape, and reallocates memory if necessary.
- * 
- * @param node The parent node from which the child shape will be removed.
- * @param child The child shape to be removed, freed, and reallocated.
- */
-void remove_shape_and_free_and_realloc(struct Node *node, struct Node *child);
-
 /** @} */
 
 #endif

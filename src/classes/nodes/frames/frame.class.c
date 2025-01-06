@@ -3,8 +3,6 @@
 #include "storage/node.h"
 #include "io/shader.h"
 #include "render/render.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
 #include "window.h"
 #include "gui/frame.h"
 #include "memory.h"
@@ -21,12 +19,10 @@ class Frame : public Node {
         this->object = frame;
         this->type = __type__; 
         SUPER(initialize_node);
-        METHOD(this, init_frame);
+        this::init_frame();
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void handle_dimension_unit(float *src, float *dest, int vertical, double size, int unit, double containerWidth, double containerHeight) { // Devrait être calculé chaque frame
         *dest = *src;
@@ -65,7 +61,8 @@ class Frame : public Node {
     }
 
     void load(FILE *file) {
-        METHOD_TYPE(this, __type__, constructor);
+        this->type = __type__;
+        this::constructor();
         Frame *frame = (Frame *) this->object;
         if (file) {
             char scroll;
@@ -111,7 +108,7 @@ class Frame : public Node {
 
         for (int i = 0; i < this->length; i++) {
             bool is_child_gui = false;
-            METHOD(this->children[i], is_gui_element, &is_child_gui);
+            (this->children[i])::is_gui_element(&is_child_gui);
             if (is_child_gui) {
                 Frame * childFrame = (Frame *) this->children[i]->object;
                 childFrame->flags |= FRAME_NEEDS_REFRESH;
@@ -120,7 +117,7 @@ class Frame : public Node {
 
         bool is_parent_gui = false;
         if (this->parent) {
-            METHOD(this->parent, is_gui_element, &is_parent_gui);
+            (this->parent)::is_gui_element(&is_parent_gui);
         }
         if (is_parent_gui) {
             Frame * parentFrame = (Frame *) this->parent->object;
@@ -144,10 +141,10 @@ class Frame : public Node {
             }
         }
 
-        METHOD(this, handle_dimension_unit, &frame->scale[0], &this->scale[0], false, 0.0f, frame->unit[2], (double) containerSize[0], (double) containerSize[1]);
-        METHOD(this, handle_dimension_unit, &frame->scale[1], &this->scale[1], true, 0.0f, frame->unit[3], (double) containerSize[0], (double) containerSize[1]);
-        METHOD(this, handle_dimension_unit, &frame->relPos[0], &this->pos[0], false, this->scale[0], frame->unit[0], (double) containerSize[0], (double) containerSize[1]);
-        METHOD(this, handle_dimension_unit, &frame->relPos[1], &this->pos[1], true, this->scale[1], frame->unit[1], (double) containerSize[0], (double) containerSize[1]);
+        this::handle_dimension_unit(&frame->scale[0], &this->scale[0], false, 0.0f, frame->unit[2], (double) containerSize[0], (double) containerSize[1]);
+        this::handle_dimension_unit(&frame->scale[1], &this->scale[1], true, 0.0f, frame->unit[3], (double) containerSize[0], (double) containerSize[1]);
+        this::handle_dimension_unit(&frame->relPos[0], &this->pos[0], false, this->scale[0], frame->unit[0], (double) containerSize[0], (double) containerSize[1]);
+        this::handle_dimension_unit(&frame->relPos[1], &this->pos[1], true, this->scale[1], frame->unit[1], (double) containerSize[0], (double) containerSize[1]);
 
         glm_vec2_add(this->pos, scroll, this->pos);
 
@@ -219,78 +216,9 @@ class Frame : public Node {
     }
 
 
-    void prepare_render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
-        IGNORE(activeShader);
-        Frame *frame = (Frame *) this->object;
-        use_shader(shaders->gui);
-
-        set_shader_vec2(shaders->gui, "pixelSize", (vec2) {frame->size[0], frame->size[1]});
-
-        bool is_parent_gui = false;
-        if (this->parent) {
-            METHOD(this->parent, is_gui_element, &is_parent_gui);
-        }
-
-        set_shader_vec2(shaders->gui, "pixelPosition", frame->absPos);
-        set_shader_vec4(shaders->gui, "overflow", frame->overflow);
-        set_shader_float(shaders->gui, "time", SDL_GetTicks64());
-        
-        set_shader_int(shaders->gui, "background", 0);
-        set_shader_int(shaders->gui, "content", 1);
-
-        set_shader_int(shaders->gui, "backgroundEnabled", frame->flags & FRAME_BACKGROUND);
-        set_shader_int(shaders->gui, "contentEnabled", frame->flags & FRAME_CONTENT);
-
-
-        bool is_checkbox = false;
-        METHOD(this, is_checkbox, &is_checkbox);
-        set_shader_int(shaders->gui, "checked", 0);
-        if (is_checkbox) {
-            set_shader_int(shaders->gui, "isCheckBox", 1);
-        } else set_shader_int(shaders->gui, "isCheckBox", 0);
-
-        bool is_radiobutton = false;
-        METHOD(this, is_radiobutton, &is_radiobutton);
-        if (is_radiobutton) {
-            RadioButton *radiobutton = frame->button->radiobutton;
-            set_shader_int(shaders->gui, "isRadioButton", 1);
-            if (radiobutton->checked) set_shader_int(shaders->gui, "checked", !!(*radiobutton->checked & radiobutton->id));
-        } else set_shader_int(shaders->gui, "isRadioButton", 0);
-
-
-        ButtonState state = BUTTON_STATE_NORMAL;
-        bool is_element_type = false;
-
-        METHOD(this, is_button, &is_element_type);
-        if (is_element_type) {
-            if (frame->button->checked) set_shader_int(shaders->gui, "checked", *frame->button->checked);
-            state = frame->button->state;
-        }
-
-        METHOD(this, is_input_area, &is_element_type);
-        if (is_element_type) state = frame->inputArea->state;
-
-        METHOD(this, is_selectlist, &is_element_type);
-        if (is_element_type) state = frame->selectList->state;
-
-        set_shader_int(shaders->gui, "pressed", state == BUTTON_STATE_PRESSED);
-        set_shader_int(shaders->gui, "hovered", state == BUTTON_STATE_HOVERED);
-
-        if (frame->flags & FRAME_BACKGROUND) {
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, frame->theme->windowSkin);
-        }
-        if (frame->flags & FRAME_CONTENT) {
-            glActiveTexture(GL_TEXTURE1);
-            glBindTexture(GL_TEXTURE_2D, frame->contentTexture);
-        }
-
-        set_shader_mat4(shaders->gui, "model", modelMatrix);
-    }
-
     void draw_frame() {
         VAO vao;
-        METHOD(this, get_vao, &vao);
+        this::get_vao(&vao);
         glBindVertexArray(vao);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -306,10 +234,73 @@ class Frame : public Node {
     void render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
         IGNORE(modelMatrix);
         Frame *frame = (Frame *) this->object;
-        if (frame->flags & FRAME_NEEDS_REFRESH) METHOD(this, refresh);
+        if (frame->flags & FRAME_NEEDS_REFRESH) this::refresh();
         if (frame->flags & FRAME_VISIBLE && activeShader != shaders->depth) {
-            METHOD(this, prepare_render, modelMatrix, activeShader, shaders);
-            METHOD(this, draw_frame);
+            IGNORE(activeShader);
+            Frame *frame = (Frame *) this->object;
+            use_shader(shaders->gui);
+
+            set_shader_vec2(shaders->gui, "pixelSize", (vec2) {frame->size[0], frame->size[1]});
+
+            bool is_parent_gui = false;
+            if (this->parent) {
+                (this->parent)::is_gui_element(&is_parent_gui);
+            }
+
+            set_shader_vec2(shaders->gui, "pixelPosition", frame->absPos);
+            set_shader_vec4(shaders->gui, "overflow", frame->overflow);
+            set_shader_float(shaders->gui, "time", SDL_GetTicks64());
+            
+            set_shader_int(shaders->gui, "background", 0);
+            set_shader_int(shaders->gui, "content", 1);
+
+            set_shader_int(shaders->gui, "backgroundEnabled", frame->flags & FRAME_BACKGROUND);
+            set_shader_int(shaders->gui, "contentEnabled", frame->flags & FRAME_CONTENT);
+
+
+            bool is_checkbox = false;
+            this::is_checkbox(&is_checkbox);
+            set_shader_int(shaders->gui, "checked", 0);
+            if (is_checkbox) {
+                set_shader_int(shaders->gui, "isCheckBox", 1);
+            } else set_shader_int(shaders->gui, "isCheckBox", 0);
+
+            if (this::(bool)is_radiobutton()) {
+                RadioButton *radiobutton = frame->button->radiobutton;
+                set_shader_int(shaders->gui, "isRadioButton", 1);
+                if (radiobutton->checked) set_shader_int(shaders->gui, "checked", !!(*radiobutton->checked & radiobutton->id));
+            } else set_shader_int(shaders->gui, "isRadioButton", 0);
+
+
+            ButtonState state = BUTTON_STATE_NORMAL;
+            bool is_element_type = false;
+
+            this::is_button(&is_element_type);
+            if (is_element_type) {
+                if (frame->button->checked) set_shader_int(shaders->gui, "checked", *frame->button->checked);
+                state = frame->button->state;
+            }
+
+            this::is_input_area(&is_element_type);
+            if (is_element_type) state = frame->inputArea->state;
+
+            this::is_selectlist(&is_element_type);
+            if (is_element_type) state = frame->selectList->state;
+
+            set_shader_int(shaders->gui, "pressed", state == BUTTON_STATE_PRESSED);
+            set_shader_int(shaders->gui, "hovered", state == BUTTON_STATE_HOVERED);
+
+            if (frame->flags & FRAME_BACKGROUND) {
+                glActiveTexture(GL_TEXTURE0);
+                glBindTexture(GL_TEXTURE_2D, frame->theme->windowSkin);
+            }
+            if (frame->flags & FRAME_CONTENT) {
+                glActiveTexture(GL_TEXTURE1);
+                glBindTexture(GL_TEXTURE_2D, frame->contentTexture);
+            }
+
+            set_shader_mat4(shaders->gui, "model", modelMatrix);
+            this::draw_frame();
         }
     }
 
@@ -390,8 +381,8 @@ class Frame : public Node {
         *result = false;
     }
 
-    void is_radiobutton(bool *result) {
-        *result = false;
+    bool is_radiobutton() {
+        return false;
     }
 
     void free() {

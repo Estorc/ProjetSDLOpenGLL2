@@ -27,6 +27,24 @@ class KinematicBody : public Body {
         *shapes = kinematicBody->collisionsShapes;
     }
 
+    void update(vec3 *pos, vec3 *rot, vec3 *scale) {
+        KinematicBody *kinematicBody = (KinematicBody *) this->object;
+
+        glm_vec3_add(this->pos, kinematicBody->velocity, this->pos);
+        this::update_global_position(pos, rot, scale);
+
+
+        for (int i = 0; i < kinematicBody->length; i++) {
+            (kinematicBody->collisionsShapes[i])::update_global_position(*pos, *rot, *scale);
+            glm_vec3_copy(this->globalPos, *pos);
+            glm_vec3_copy(this->globalRot, *rot);
+            glm_vec3_copy(this->globalScale, *scale);
+            check_collisions(kinematicBody->collisionsShapes[i]);
+        }
+        memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], kinematicBody->collisionsShapes, kinematicBody->length * sizeof(kinematicBody->collisionsShapes[0]));
+        buffers.collisionBuffer.index += kinematicBody->length;
+    }
+
     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
         KinematicBody *kinematicBody;
         kinematicBody = malloc(sizeof(KinematicBody));
@@ -40,7 +58,8 @@ class KinematicBody : public Body {
         } else {
             glm_vec3_zero(kinematicBody->velocity);
         }
-        METHOD_TYPE(this, __type__, constructor, kinematicBody);
+        this->type = __type__;
+        this::constructor(kinematicBody);
 
         kinematicBody->collisionsShapes = malloc(sizeof(Node *) * children_count);
         buffers.collisionBuffer.length += children_count;
@@ -77,5 +96,46 @@ class KinematicBody : public Body {
         }
     }
 
-    
+    /**
+     * @brief Get the velocity norm of a node.
+     * 
+     * @return The velocity norm of the node.
+     */
+
+    float get_velocity_norm() {
+        KinematicBody *kinematicBody = (KinematicBody *) this->object;
+        return glm_vec3_norm(kinematicBody->velocity);
+    };
+
+    /**
+     * @brief Get the velocity of a node.
+     * 
+     * @param velocity Output vector to store the velocity.
+     */
+
+    void get_velocity(vec3 *velocity) {
+        KinematicBody *kinematicBody = (KinematicBody *) this->object;
+        glm_vec3_copy(kinematicBody->velocity, *velocity);
+    };
+
+    /**
+     * @brief Get the mass of a node.
+     * 
+     * @param mass Output pointer to store the mass.
+     */
+
+    void get_mass(float * mass) {
+        (*mass) = 100.0;
+    }
+
+    /**
+     * @brief Get the center of mass of a node.
+     * 
+     * @param com Output vector to store the center of mass.
+     */
+
+    void get_center_of_mass(vec3 *com) {
+        RigidBody *rigidBody = (RigidBody *) this->object;
+        glm_vec3_copy(rigidBody->centerOfMass, *com);
+    }
 }

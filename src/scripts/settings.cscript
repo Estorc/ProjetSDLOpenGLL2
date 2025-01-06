@@ -32,7 +32,7 @@ NEW_SCRIPT(st_res)
     if (selectList->count == 1 && !(frame->flags & FRAME_NEEDS_REFRESH)) {
         selectList->options = (char (*)[256]) resolutionsText;
         selectList->count = RES_COUNT;
-        METHOD(node, refreshOptions);
+        node::refreshOptions();
     }
     if (*oldRes != settings.resolution) {
         queue_push(&callQueue, refresh_resolution);

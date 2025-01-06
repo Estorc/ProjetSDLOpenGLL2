@@ -14,9 +14,7 @@ class TexturedMesh : public Node {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load(FILE *file) {
         TexturedMesh *texturedMesh;
@@ -29,7 +27,8 @@ class TexturedMesh : public Node {
             path[0] = 0;
         }
         create_textured_plane(texturedMesh, path);
-        METHOD_TYPE(this, __type__, constructor, texturedMesh);
+        this->type = __type__;
+        this::constructor(texturedMesh);
     }
 
     void save(FILE *file) {

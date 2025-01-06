@@ -8,9 +8,9 @@ Functions for loading nodes and scenes from files.
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__SceneLoader_gad860d6a5634b822166edd2f2a8126c80}{load\+\_\+node}} (FILE \texorpdfstring{$\ast$}{*}file, struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} scripts\mbox{[}SCRIPTS\+\_\+\+COUNT\mbox{]}, struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__SceneLoader_gafbb853272747ad89201f0a3bf8e7846f}{load\+\_\+node}} (FILE \texorpdfstring{$\ast$}{*}file, struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}scripts, struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
 \begin{DoxyCompactList}\small\item\em Loads a node from a file. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__SceneLoader_ga3e02922f09292218a574dd85e59bc6ab}{load\+\_\+scene}} (char \texorpdfstring{$\ast$}{*}path, struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} scripts\mbox{[}SCRIPTS\+\_\+\+COUNT\mbox{]})
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__SceneLoader_ga0aa55f0b593e73644e24b556cdfc58d7}{load\+\_\+scene}} (char \texorpdfstring{$\ast$}{*}path, struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}scripts)
 \begin{DoxyCompactList}\small\item\em Loads a scene from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -20,11 +20,11 @@ Functions for loading nodes and scenes from files.
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{group__SceneLoader_gad860d6a5634b822166edd2f2a8126c80}\label{group__SceneLoader_gad860d6a5634b822166edd2f2a8126c80} 
+\Hypertarget{group__SceneLoader_gafbb853272747ad89201f0a3bf8e7846f}\label{group__SceneLoader_gafbb853272747ad89201f0a3bf8e7846f} 
 \index{Scene Loader@{Scene Loader}!load\_node@{load\_node}}
 \index{load\_node@{load\_node}!Scene Loader@{Scene Loader}}
 \doxysubsubsection{\texorpdfstring{load\_node()}{load\_node()}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} load\+\_\+node (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file,  }\item[{struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structScript}{Script}}}]{scripts\mbox{[}\+SCRIPTS\+\_\+\+COUNT\mbox{]},  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{editor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} load\+\_\+node (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file,  }\item[{struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}}]{scripts,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{editor }\end{DoxyParamCaption})}
 
 
 
@@ -46,11 +46,11 @@ This function reads a node from the given file and initializes it. It also updat
 \begin{DoxyReturn}{Returns}
 A pointer to the loaded node. 
 \end{DoxyReturn}
-\Hypertarget{group__SceneLoader_ga3e02922f09292218a574dd85e59bc6ab}\label{group__SceneLoader_ga3e02922f09292218a574dd85e59bc6ab} 
+\Hypertarget{group__SceneLoader_ga0aa55f0b593e73644e24b556cdfc58d7}\label{group__SceneLoader_ga0aa55f0b593e73644e24b556cdfc58d7} 
 \index{Scene Loader@{Scene Loader}!load\_scene@{load\_scene}}
 \index{load\_scene@{load\_scene}!Scene Loader@{Scene Loader}}
 \doxysubsubsection{\texorpdfstring{load\_scene()}{load\_scene()}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} load\+\_\+scene (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structScript}{Script}}}]{scripts\mbox{[}\+SCRIPTS\+\_\+\+COUNT\mbox{]} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} load\+\_\+scene (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}}]{scripts }\end{DoxyParamCaption})}
 
 
 

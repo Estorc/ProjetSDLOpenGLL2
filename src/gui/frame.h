@@ -1,3 +1,4 @@
+#pragma once
 /**
  * @file frame.h
  * @brief GUI Frame and related structures for SDL and OpenGL project.

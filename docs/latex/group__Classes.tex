@@ -13,23 +13,16 @@ struct \mbox{\hyperlink{structObject}{Object}}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{group__Classes_ga6ffe789dbf997896dbf1d3272473ae06}{SUPER}}(method\+\_\+name, ...)~\mbox{\hyperlink{group__Classes_gad4c7f13c93ebcba4957759a3e6aaae8c}{call\+\_\+method}}(class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}class\+Manager.\+extends\mbox{[}\+\_\+\+\_\+type\+\_\+\+\_\+\mbox{]}\mbox{]}, this, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\#define \mbox{\hyperlink{group__Classes_ga6ffe789dbf997896dbf1d3272473ae06}{SUPER}}(method\+\_\+name, ...)~\mbox{\hyperlink{group__Classes_gaa5d13dbe9e2544404028633f7ed3d7cf}{call\+\_\+method\+\_\+0}}(class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}class\+Manager.\+extends\mbox{[}\+\_\+\+\_\+type\+\_\+\+\_\+\mbox{]}\mbox{]}, this, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
 \begin{DoxyCompactList}\small\item\em Invokes a method from the superclass. \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{group__Classes_ga8f04a6a79e7b9d2cf4b94bc9611bfb2d}{METHOD\+\_\+\+TYPE}}(obj,  default\+\_\+type,  method\+\_\+name, ...)~\mbox{\hyperlink{group__Classes_gad4c7f13c93ebcba4957759a3e6aaae8c}{call\+\_\+method}}(class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}default\+\_\+type\mbox{]}, obj, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\#define \mbox{\hyperlink{group__Classes_gab801d90c0de4f3fb6d7345a5b17f0ff5}{METHOD\+\_\+\+TYPE}}(default\+\_\+type,  method\+\_\+name,  obj, ...)~class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}default\+\_\+type\mbox{]}, obj, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+
 \begin{DoxyCompactList}\small\item\em Invokes a method with a specified default type. \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{group__Classes_ga3e71cb668e96673fdb3ee83e5ea49ddd}{METHOD}}(obj,  method\+\_\+name, ...)~\mbox{\hyperlink{group__Classes_gad4c7f13c93ebcba4957759a3e6aaae8c}{call\+\_\+method}}(class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}obj-\/$>$type\mbox{]}, obj, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\#define \mbox{\hyperlink{group__Classes_ga0bfc87ab830de742f54bfa6f631e5b60}{METHOD}}(method\+\_\+name,  obj, ...)~class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}obj-\/$>$type\mbox{]}, obj, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+
 \begin{DoxyCompactList}\small\item\em Invokes a method on an object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{group__Classes_gad4c7f13c93ebcba4957759a3e6aaae8c}{call\+\_\+method}} (void(\texorpdfstring{$\ast$}{*}func)(void \texorpdfstring{$\ast$}{*}, va\+\_\+list),...)
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Variables}
-\begin{DoxyCompactItemize}
-\item 
-void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__Classes_ga25a33d93dce0441ddad41fbbf459bab8}{Object\+::object}}
-\item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__Classes_ga3cbb0b4b66f2476cac3652eb3876b827}{Object\+::type}}
+void \mbox{\hyperlink{group__Classes_gaa5d13dbe9e2544404028633f7ed3d7cf}{call\+\_\+method\+\_\+0}} (void(\texorpdfstring{$\ast$}{*}func)(void \texorpdfstring{$\ast$}{*}, va\+\_\+list),...)
 \end{DoxyCompactItemize}
 
 
@@ -39,11 +32,11 @@ Defines the \doxylink{structObject}{Object} structure and macros for method invo
 This file contains the definition of the \doxylink{structObject}{Object} structure and several macros to facilitate method invocation in a class hierarchy. The macros handle method lookup and invocation, including support for inheritance and method overriding. 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{group__Classes_ga3e71cb668e96673fdb3ee83e5ea49ddd}\label{group__Classes_ga3e71cb668e96673fdb3ee83e5ea49ddd} 
+\Hypertarget{group__Classes_ga0bfc87ab830de742f54bfa6f631e5b60}\label{group__Classes_ga0bfc87ab830de742f54bfa6f631e5b60} 
 \index{Classes@{Classes}!METHOD@{METHOD}}
 \index{METHOD@{METHOD}!Classes@{Classes}}
 \doxysubsubsection{\texorpdfstring{METHOD}{METHOD}}
-{\footnotesize\ttfamily \#define METHOD(\begin{DoxyParamCaption}\item[{}]{obj,  }\item[{}]{method\+\_\+name,  }\item[{}]{... }\end{DoxyParamCaption})~\mbox{\hyperlink{group__Classes_gad4c7f13c93ebcba4957759a3e6aaae8c}{call\+\_\+method}}(class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}obj-\/$>$type\mbox{]}, obj, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+{\footnotesize\ttfamily \#define METHOD(\begin{DoxyParamCaption}\item[{}]{method\+\_\+name,  }\item[{}]{obj,  }\item[{}]{... }\end{DoxyParamCaption})~class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}obj-\/$>$type\mbox{]}, obj, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+}
 
 
 
@@ -53,18 +46,18 @@ This macro is used to invoke a method on an object. It uses the object\textquote
 
 
 \begin{DoxyParams}{Parameters}
-{\em obj} & The object on which to invoke the method. \\
-\hline
 {\em method\+\_\+name} & The name of the method to invoke. \\
+\hline
+{\em obj} & The object on which to invoke the method. \\
 \hline
 {\em ...} & Additional arguments to pass to the method. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{group__Classes_ga8f04a6a79e7b9d2cf4b94bc9611bfb2d}\label{group__Classes_ga8f04a6a79e7b9d2cf4b94bc9611bfb2d} 
+\Hypertarget{group__Classes_gab801d90c0de4f3fb6d7345a5b17f0ff5}\label{group__Classes_gab801d90c0de4f3fb6d7345a5b17f0ff5} 
 \index{Classes@{Classes}!METHOD\_TYPE@{METHOD\_TYPE}}
 \index{METHOD\_TYPE@{METHOD\_TYPE}!Classes@{Classes}}
 \doxysubsubsection{\texorpdfstring{METHOD\_TYPE}{METHOD\_TYPE}}
-{\footnotesize\ttfamily \#define METHOD\+\_\+\+TYPE(\begin{DoxyParamCaption}\item[{}]{obj,  }\item[{}]{default\+\_\+type,  }\item[{}]{method\+\_\+name,  }\item[{}]{... }\end{DoxyParamCaption})~\mbox{\hyperlink{group__Classes_gad4c7f13c93ebcba4957759a3e6aaae8c}{call\+\_\+method}}(class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}default\+\_\+type\mbox{]}, obj, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+{\footnotesize\ttfamily \#define METHOD\+\_\+\+TYPE(\begin{DoxyParamCaption}\item[{}]{default\+\_\+type,  }\item[{}]{method\+\_\+name,  }\item[{}]{obj,  }\item[{}]{... }\end{DoxyParamCaption})~class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}default\+\_\+type\mbox{]}, obj, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+}
 
 
 
@@ -74,11 +67,11 @@ This macro is used to invoke a method on an object with a specified default type
 
 
 \begin{DoxyParams}{Parameters}
-{\em obj} & The object on which to invoke the method. \\
-\hline
 {\em default\+\_\+type} & The default type to use for method lookup. \\
 \hline
 {\em method\+\_\+name} & The name of the method to invoke. \\
+\hline
+{\em obj} & The object on which to invoke the method. \\
 \hline
 {\em ...} & Additional arguments to pass to the method. \\
 \hline
@@ -87,7 +80,7 @@ This macro is used to invoke a method on an object with a specified default type
 \index{Classes@{Classes}!SUPER@{SUPER}}
 \index{SUPER@{SUPER}!Classes@{Classes}}
 \doxysubsubsection{\texorpdfstring{SUPER}{SUPER}}
-{\footnotesize\ttfamily \#define SUPER(\begin{DoxyParamCaption}\item[{}]{method\+\_\+name,  }\item[{}]{... }\end{DoxyParamCaption})~\mbox{\hyperlink{group__Classes_gad4c7f13c93ebcba4957759a3e6aaae8c}{call\+\_\+method}}(class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}class\+Manager.\+extends\mbox{[}\+\_\+\+\_\+type\+\_\+\+\_\+\mbox{]}\mbox{]}, this, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+{\footnotesize\ttfamily \#define SUPER(\begin{DoxyParamCaption}\item[{}]{method\+\_\+name,  }\item[{}]{... }\end{DoxyParamCaption})~\mbox{\hyperlink{group__Classes_gaa5d13dbe9e2544404028633f7ed3d7cf}{call\+\_\+method\+\_\+0}}(class\+Manager.\+methods\+Correspondance.\+method\+\_\+name\mbox{[}class\+Manager.\+extends\mbox{[}\+\_\+\+\_\+type\+\_\+\+\_\+\mbox{]}\mbox{]}, this, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
 
 
 
@@ -105,25 +98,9 @@ This macro is used to invoke a method from the superclass of the current object.
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{group__Classes_gad4c7f13c93ebcba4957759a3e6aaae8c}\label{group__Classes_gad4c7f13c93ebcba4957759a3e6aaae8c} 
-\index{Classes@{Classes}!call\_method@{call\_method}}
-\index{call\_method@{call\_method}!Classes@{Classes}}
-\doxysubsubsection{\texorpdfstring{call\_method()}{call\_method()}}
-{\footnotesize\ttfamily void call\+\_\+method (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*}, va\+\_\+list)}]{func,  }\item[{}]{... }\end{DoxyParamCaption})}
+\Hypertarget{group__Classes_gaa5d13dbe9e2544404028633f7ed3d7cf}\label{group__Classes_gaa5d13dbe9e2544404028633f7ed3d7cf} 
+\index{Classes@{Classes}!call\_method\_0@{call\_method\_0}}
+\index{call\_method\_0@{call\_method\_0}!Classes@{Classes}}
+\doxysubsubsection{\texorpdfstring{call\_method\_0()}{call\_method\_0()}}
+{\footnotesize\ttfamily void call\+\_\+method\+\_\+0 (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*}, va\+\_\+list)}]{func,  }\item[{}]{... }\end{DoxyParamCaption})}
 
-
-
-\doxysubsection{Variable Documentation}
-\Hypertarget{group__Classes_ga25a33d93dce0441ddad41fbbf459bab8}\label{group__Classes_ga25a33d93dce0441ddad41fbbf459bab8} 
-\index{Classes@{Classes}!object@{object}}
-\index{object@{object}!Classes@{Classes}}
-\doxysubsubsection{\texorpdfstring{object}{object}}
-{\footnotesize\ttfamily Object\+::object}
-
-A pointer to the actual object data. \Hypertarget{group__Classes_ga3cbb0b4b66f2476cac3652eb3876b827}\label{group__Classes_ga3cbb0b4b66f2476cac3652eb3876b827} 
-\index{Classes@{Classes}!type@{type}}
-\index{type@{type}!Classes@{Classes}}
-\doxysubsubsection{\texorpdfstring{type}{type}}
-{\footnotesize\ttfamily Object\+::type}
-
-An unsigned 8-\/bit integer representing the type of the object. 

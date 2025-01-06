@@ -1,3 +1,4 @@
+#include "../types.h"
 #include "camera.h"
 #include "render.h"
 #include "../math/math_util.h"
@@ -5,7 +6,6 @@
 #include "../io/shader.h"
 #include "../memory.h"
 #include "../storage/node.h"
-#include <SDL2/SDL.h>
 #include "../window.h"
 
 

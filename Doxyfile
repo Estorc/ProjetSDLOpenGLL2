@@ -1047,7 +1047,7 @@ RECURSIVE              = TRUE
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = ./src/classes/__processed__/ \
+EXCLUDE                = ./src/__processed__/ \
                          ./src/classes/import_class.h
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or

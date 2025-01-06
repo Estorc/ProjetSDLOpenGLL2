@@ -1,5 +1,4 @@
-#include <stdlib.h>
-#include <stdbool.h>
+#include "../types.h"
 #include "queue.h"
 
 void queue_push(Queue *queue, void *data) {

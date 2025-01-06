@@ -1,4 +1,3 @@
-#include <SDL2/SDL_ttf.h>
 #ifndef GLTEXTURE_LOADER_H
 #define GLTEXTURE_LOADER_H
 

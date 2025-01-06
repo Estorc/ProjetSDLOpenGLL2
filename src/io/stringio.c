@@ -1,8 +1,4 @@
 #include "../types.h"
-#include "stringio.h"
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 
 char * read_file(const char * path) {

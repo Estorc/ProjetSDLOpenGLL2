@@ -22,6 +22,32 @@ class RigidBody : public Body {
         *shapes = rigidBody->collisionsShapes;
     }
 
+    void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta) {
+        RigidBody *rigidBody = (RigidBody *) this->object;
+
+        vec3 gravity;
+        glm_vec3_scale(rigidBody->gravity, delta, gravity);
+        glm_vec3_add(rigidBody->velocity, gravity, rigidBody->velocity);
+        glm_vec3_scale(rigidBody->velocity, rigidBody->friction * (1.0-delta), rigidBody->velocity);
+        glm_vec3_add(this->pos, rigidBody->velocity, this->pos);
+
+        glm_vec3_scale(rigidBody->angularVelocity, rigidBody->friction * (1.0-delta), rigidBody->angularVelocity);
+        glm_vec3_add(this->rot, rigidBody->angularVelocity, this->rot);
+
+        this::update_global_position(pos, rot, scale);
+
+
+        for (int i = 0; i < rigidBody->length; i++) {
+            (rigidBody->collisionsShapes[i])::update_global_position(*pos, *rot, *scale);
+            glm_vec3_copy(this->globalPos, *pos);
+            glm_vec3_copy(this->globalRot, *rot);
+            glm_vec3_copy(this->globalScale, *scale);
+            check_collisions(rigidBody->collisionsShapes[i]);
+        }
+        memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], rigidBody->collisionsShapes, rigidBody->length * sizeof(rigidBody->collisionsShapes[0]));
+        buffers.collisionBuffer.index += rigidBody->length;
+    }
+
     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
         RigidBody *rigidBody;
         rigidBody = malloc(sizeof(RigidBody));
@@ -45,7 +71,8 @@ class RigidBody : public Body {
             rigidBody->friction = 0.98;
             glm_vec3_copy((vec3) {0.0,0.0,0.0}, rigidBody->centerOfMass);
         }
-        METHOD_TYPE(this, __type__, constructor, rigidBody);
+        this->type = __type__;
+        this::constructor(rigidBody);
 
         rigidBody->collisionsShapes = malloc(sizeof(Node *) * children_count);
         buffers.collisionBuffer.length += children_count;
@@ -89,6 +116,48 @@ class RigidBody : public Body {
         glm_vec3_add(rigidBody->angularVelocity, torque, rigidBody->angularVelocity);
     }
 
+    /**
+     * @brief Get the velocity norm of a node.
+     * 
+     * @return The velocity norm of the node.
+     */
 
+    float get_velocity_norm() {
+        RigidBody *rigidBody = (RigidBody *) this->object;
+        return glm_vec3_norm(rigidBody->velocity);
+    };
+
+    /**
+     * @brief Get the velocity of a node.
+     * 
+     * @param velocity Output vector to store the velocity.
+     */
+
+    void get_velocity(vec3 *velocity) {
+        RigidBody *rigidBody = (RigidBody *) this->object;
+        glm_vec3_copy(rigidBody->velocity, *velocity);
+    };
+
+    /**
+     * @brief Get the mass of a node.
+     * 
+     * @param mass Output pointer to store the mass.
+     */
+
+    void get_mass(float * mass) {
+        RigidBody *rigidBody = (RigidBody *) this->object;
+        (*mass) = rigidBody->mass;
+    }
+
+    /**
+     * @brief Get the center of mass of a node.
+     * 
+     * @param com Output vector to store the center of mass.
+     */
+
+    void get_center_of_mass(vec3 *com) {
+        RigidBody *rigidBody = (RigidBody *) this->object;
+        glm_vec3_copy(rigidBody->centerOfMass, *com);
+    }
     
 }

@@ -13,9 +13,7 @@ class SphereCShape : public CShape {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void get_priority(int *priority) {
         *priority = 1;
@@ -25,7 +23,8 @@ class SphereCShape : public CShape {
         SphereCollisionShape *sphereCollisionShape;
         sphereCollisionShape = malloc(sizeof(SphereCollisionShape));
         POINTER_CHECK(sphereCollisionShape);
-        METHOD_TYPE(this, __type__, constructor, sphereCollisionShape);
+        this->type = __type__;
+        this::constructor(sphereCollisionShape);
     }
 
     void save(FILE *file) {

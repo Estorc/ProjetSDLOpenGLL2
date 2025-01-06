@@ -1,3 +1,4 @@
+#pragma once
 #include "../io/input.h"
 #include "../render/lighting.h"
 
@@ -19,17 +20,11 @@ struct Node;
  * 
  * This structure holds a reference to a node and its associated distance.
  * It is used for sorting and managing nodes based on their distances.
- * 
- * @var DistanceNode::node
- * Pointer to the node.
- * 
- * @var DistanceNode::distance
- * Distance associated with the node.
  */
 
 typedef struct DistanceNode {
-    struct Node *node;
-    float distance;
+    struct Node *node; /** < Pointer to the node. */
+    float distance; /** < Distance associated with the node. */
 } DistanceNode;
 
 /**
@@ -38,66 +33,17 @@ typedef struct DistanceNode {
  * 
  * This structure holds information about an area, including its collision shapes,
  * collected nodes, and sorted nodes.
- * 
- * @var Area::collisionsShapes
- * Array of pointers to collision shapes.
- * 
- * @var Area::length
- * Number of collision shapes.
- * 
- * @var Area::collectedNodes
- * Array of collected nodes with distances.
- * 
- * @var Area::collectedLength
- * Number of collected nodes.
- * 
- * @var Area::sortedNodes
- * Array of sorted nodes with distances.
- * 
- * @var Area::sortedLength
- * Number of sorted nodes.
  */
 
 typedef struct Area {
-    struct Node **collisionsShapes;
-    u8 length;
-    struct DistanceNode *collectedNodes;
-    u8 collectedLength;
-    struct DistanceNode *sortedNodes;
-    u8 sortedLength;
+    struct Node **collisionsShapes; /** < Array of collected nodes with distances. */
+    u8 length; /** < Number of collision shapes. */
+    struct DistanceNode *collectedNodes; /** < Array of collected nodes with distances. */
+    u8 collectedLength; /** < Number of collected nodes. */
+    struct DistanceNode *sortedNodes; /** < Array of sorted nodes with distances. */
+    u8 sortedLength; /** < Number of sorted nodes. */
 } Area;
 
-/**
- * @brief Get the velocity norm of a node.
- * 
- * @param node Pointer to the node.
- * @return The velocity norm of the node.
- */
-float get_velocity_norm(struct Node *node);
-
-/**
- * @brief Get the velocity of a node.
- * 
- * @param node Pointer to the node.
- * @param velocity Output vector to store the velocity.
- */
-void get_velocity(struct Node *node, vec3 velocity);
-
-/**
- * @brief Get the mass of a node.
- * 
- * @param node Pointer to the node.
- * @param mass Output pointer to store the mass.
- */
-void get_mass(struct Node *node, float *mass);
-
-/**
- * @brief Get the center of mass of a node.
- * 
- * @param node Pointer to the node.
- * @param com Output vector to store the center of mass.
- */
-void get_center_of_mass(struct Node *node, vec3 com);
 
 /**
  * @brief Apply body collision between two shapes.

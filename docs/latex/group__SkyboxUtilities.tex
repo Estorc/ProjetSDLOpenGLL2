@@ -5,60 +5,13 @@
 Utility functions for creating and managing skyboxes.  
 
 
-\doxysubsubsection*{Functions}
+\doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{group__SkyboxUtilities_ga5082b4f25d53cdefcfb8ccd5c0ad64c2}{load\+\_\+cubemap}} (char faces\mbox{[}6\mbox{]}\mbox{[}200\mbox{]})
-\begin{DoxyCompactList}\small\item\em Loads a cubemap texture from 6 individual texture faces. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__SkyboxUtilities_ga84027a962f1c5433d1a5909ecaa8bcdd}{create\+\_\+skybox}} (\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \texorpdfstring{$\ast$}{*}textured\+Mesh, char skybox\+Texture\mbox{[}6\mbox{]}\mbox{[}200\mbox{]})
-\begin{DoxyCompactList}\small\item\em Creates a skybox with the given textures. \end{DoxyCompactList}\end{DoxyCompactItemize}
+class \mbox{\hyperlink{classSkybox}{Skybox}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Utility functions for creating and managing skyboxes. 
 
-
-
-\doxysubsection{Function Documentation}
-\Hypertarget{group__SkyboxUtilities_ga84027a962f1c5433d1a5909ecaa8bcdd}\label{group__SkyboxUtilities_ga84027a962f1c5433d1a5909ecaa8bcdd} 
-\index{Skybox Utilities@{Skybox Utilities}!create\_skybox@{create\_skybox}}
-\index{create\_skybox@{create\_skybox}!Skybox Utilities@{Skybox Utilities}}
-\doxysubsubsection{\texorpdfstring{create\_skybox()}{create\_skybox()}}
-{\footnotesize\ttfamily void create\+\_\+skybox (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \texorpdfstring{$\ast$}{*}}]{textured\+Mesh,  }\item[{char}]{skybox\+Texture\mbox{[}6\mbox{]}\mbox{[}200\mbox{]} }\end{DoxyParamCaption})}
-
-
-
-Creates a skybox with the given textures. 
-
-This function initializes a skybox using the provided textures and assigns it to the given textured mesh.
-
-
-\begin{DoxyParams}{Parameters}
-{\em textured\+Mesh} & A pointer to the Texture\+Map structure where the skybox will be created. \\
-\hline
-{\em skybox\+Texture} & A 2D array containing the file paths of the six textures for the skybox. The textures should be ordered as follows\+: right, left, top, bottom, front, back. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyNote}{Note}
-Each file path in the skybox\+Texture array should not exceed 200 characters. 
-\end{DoxyNote}
-\Hypertarget{group__SkyboxUtilities_ga5082b4f25d53cdefcfb8ccd5c0ad64c2}\label{group__SkyboxUtilities_ga5082b4f25d53cdefcfb8ccd5c0ad64c2} 
-\index{Skybox Utilities@{Skybox Utilities}!load\_cubemap@{load\_cubemap}}
-\index{load\_cubemap@{load\_cubemap}!Skybox Utilities@{Skybox Utilities}}
-\doxysubsubsection{\texorpdfstring{load\_cubemap()}{load\_cubemap()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} load\+\_\+cubemap (\begin{DoxyParamCaption}\item[{char}]{faces\mbox{[}6\mbox{]}\mbox{[}200\mbox{]} }\end{DoxyParamCaption})}
-
-
-
-Loads a cubemap texture from 6 individual texture faces. 
-
-This function takes an array of file paths to 6 texture images, each representing one face of a cubemap (right, left, top, bottom, front, back), and loads them into a single cubemap texture.
-
-
-\begin{DoxyParams}{Parameters}
-{\em faces} & An array of 6 strings, each containing the file path to a texture image. The order of the faces should be\+: right, left, top, bottom, front, back.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Texture\+Map The loaded cubemap texture. 
-\end{DoxyReturn}

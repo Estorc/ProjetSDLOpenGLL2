@@ -13,9 +13,7 @@ class PlaneCShape : public CShape {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void get_priority(int *priority) {
         *priority = 2;
@@ -25,7 +23,8 @@ class PlaneCShape : public CShape {
         PlaneCollisionShape *planeCollisionShape;
         planeCollisionShape = malloc(sizeof(PlaneCollisionShape));
         POINTER_CHECK(planeCollisionShape);
-        METHOD_TYPE(this, __type__, constructor, planeCollisionShape);
+        this->type = __type__;
+        this::constructor(planeCollisionShape);
     }
 
     void save(FILE *file) {

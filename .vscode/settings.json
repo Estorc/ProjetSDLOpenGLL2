@@ -80,12 +80,18 @@
         "collision_util.h": "c",
         "sdl_opengl.h": "c",
         "gl.h": "c",
-        "obj_loader.h": "c"
+        "obj_loader.h": "c",
+        "stdint.h": "c",
+        "limits.h": "c",
+        "stringio.h": "c",
+        "glext.h": "c",
+        "math.h": "c",
+        "glu.h": "c"
     },
     "files.exclude": {
         "bin/": true,
         "lib/": true,
-        "src/classes/__processed__/": false,
+        "src/__processed__/": true,
         "docs/html/": true,
         "docs/latex/": true,
     },

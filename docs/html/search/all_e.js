@@ -4,7 +4,7 @@ var searchData=
   ['obj_20loader_1',['OBJ Loader',['../group__ObjLoader.html',1,'']]],
   ['obj_5floader_2ec_2',['obj_loader.c',['../obj__loader_8c.html',1,'']]],
   ['obj_5floader_2eh_3',['obj_loader.h',['../obj__loader_8h.html',1,'']]],
-  ['object_4',['object',['../group__Classes.html#ga25a33d93dce0441ddad41fbbf459bab8',1,'Object::object'],['../group__NodeFunctions.html#ga9cf70c2b354e11c49130331da4519864',1,'Node::object'],['../structObject.html',1,'Object']]],
+  ['object_4',['object',['../structObject.html#a8cc6ed7117cf960bfbc8b5543b674968',1,'Object::object'],['../group__NodeFunctions.html#ga9cf70c2b354e11c49130331da4519864',1,'Node::object'],['../structObject.html',1,'Object']]],
   ['objects_5',['objects',['../structModelData.html#abed85b0c0f0a25e5775f7b824a6a8e2e',1,'ModelData']]],
   ['opacity_6',['opacity',['../structMaterial.html#a5f665ff4d2fdfd52db7f8a8624f4aab5',1,'Material']]],
   ['opengl_5fctx_7',['opengl_ctx',['../structWindow.html#ac292b9a43d516b4d2eaaaa259d60febb',1,'Window']]],

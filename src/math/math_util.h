@@ -1,7 +1,3 @@
-#include <cglm/cglm.h>
-#include <math.h>
-#include <GL/gl.h>
-
 #ifndef MATH_UTIL_H
 #define MATH_UTIL_H
 

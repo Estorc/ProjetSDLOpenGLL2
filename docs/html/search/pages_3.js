@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['project_20documentation_0',['My C Project Documentation',['../index.html',1,'']]]
+  ['game_20documentation_0',['Claude Chappe&apos; Curse - A C Game Documentation',['../index.html',1,'']]]
 ];

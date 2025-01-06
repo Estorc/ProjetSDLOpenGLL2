@@ -1,6 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include "stringio.h"
 #include "../types.h"
 #include "../math/math_util.h"
 #include "model.h"

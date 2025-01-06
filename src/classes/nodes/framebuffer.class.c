@@ -13,15 +13,13 @@ class Framebuffer : public Node {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load() {
         FrameBuffer *msaa_framebuffer;
         msaa_framebuffer = malloc(sizeof(FrameBuffer));
 
-        METHOD(this, constructor, msaa_framebuffer);
+        this::constructor(msaa_framebuffer);
     }
 
     void save(FILE *file) {

@@ -13,9 +13,7 @@ class RayCShape : public CShape {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void get_priority(int *priority) {
         *priority = 5;
@@ -25,7 +23,8 @@ class RayCShape : public CShape {
         RayCollisionShape *rayCollisionShape;
         rayCollisionShape = malloc(sizeof(RayCollisionShape));
         POINTER_CHECK(rayCollisionShape);
-        METHOD_TYPE(this, __type__, constructor, rayCollisionShape);
+        this->type = __type__;
+        this::constructor(rayCollisionShape);
     }
 
     void save(FILE *file) {

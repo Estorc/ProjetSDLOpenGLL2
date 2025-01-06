@@ -6,7 +6,6 @@
 #include "io/scene_loader.h"
 #include "render/lighting.h"
 #include "buffer.h"
-#include "io/stringio.h"
 
 class Area : public PhysicalNode {
     __containerType__ Node *
@@ -58,7 +57,7 @@ class Area : public PhysicalNode {
     void update(float *pos, float *rot, float *scale) {
         Area *area = (Area *) this->object;
 
-        METHOD(this, sort_nodes);
+        this::sort_nodes();
         #ifdef DEBUG
         #ifdef DEBUG_AREA
         if (area->sortedLength) {
@@ -73,10 +72,10 @@ class Area : public PhysicalNode {
         area->collectedLength = 0;
         area->collectedNodes = realloc(area->collectedNodes, buffers.collisionBuffer.length * sizeof(DistanceNode));
 
-        update_global_position(this, pos, rot, scale);
+        this::update_global_position(pos, rot, scale);
 
         for (int i = 0; i < area->length; i++) {
-            update_global_position(area->collisionsShapes[i], pos, rot, scale);
+            (area->collisionsShapes[i])::update_global_position(pos, rot, scale);
             glm_vec3_copy(this->globalPos, pos);
             glm_vec3_copy(this->globalRot, rot);
             glm_vec3_copy(this->globalScale, scale);
@@ -106,7 +105,8 @@ class Area : public PhysicalNode {
         POINTER_CHECK(area);
         if (file)
             fscanf(file,"(%d)\n", &children_count);
-        METHOD_TYPE(this, __type__, constructor, area);
+        this->type = __type__;
+        this::constructor(area);
 
         area->collisionsShapes = malloc(sizeof(Node *) * children_count);
         buffers.collisionBuffer.length += children_count;

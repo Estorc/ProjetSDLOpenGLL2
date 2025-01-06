@@ -1,6 +1,4 @@
 #include "../types.h"
-#include <SDL2/SDL.h>
-#include <stdio.h>
 #include "../math/math_util.h"
 #include "model.h"
 #include "../render/framebuffer.h"

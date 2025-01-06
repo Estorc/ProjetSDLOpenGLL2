@@ -13,9 +13,7 @@ class BoxCShape : public CShape {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void get_priority(int *priority) {
         *priority = 0;
@@ -25,7 +23,8 @@ class BoxCShape : public CShape {
         BoxCollisionShape *boxCollisionShape;
         boxCollisionShape = malloc(sizeof(BoxCollisionShape));
         POINTER_CHECK(boxCollisionShape);
-        METHOD_TYPE(this, __type__, constructor, boxCollisionShape);
+        this->type = __type__;
+        this::constructor(boxCollisionShape);
     }
 
     void save(FILE *file) {
@@ -117,7 +116,7 @@ class BoxCShape : public CShape {
 
     void render(mat4 *modelMatrix) {
         VAO vao;
-        METHOD(this, get_vao, &vao);
+        this::get_vao(&vao);
         use_shader(collisionShader);
 
         int modelLoc = glGetUniformLocation(collisionShader, "model");

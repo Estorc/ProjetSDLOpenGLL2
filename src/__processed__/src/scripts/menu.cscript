@@ -1,0 +1,28 @@
+#line 1 "src/scripts/menu.cscript"
+NEW_SCRIPT(open_close_menu)
+    if (input->released_keys & KEY_MENU) {
+        node->children[0]->flags ^= NODE_ACTIVE | NODE_VISIBLE;
+    }
+
+END_SCRIPT(open_close_menu)
+
+NEW_SCRIPT(return_to_main_menu)
+	PARAMS_COUNT(1);
+
+	bool *active = &node->params[0].b;
+
+	Frame *frame = (Frame*) node->object;
+	Button *button = (Button*) frame->button;
+
+	if (!button->checked) button->checked = active;
+
+	if ((*button->checked)) {
+		
+		queue_push(&callQueue, change_scene);
+		queue_push(&callQueue, &mainNodeTree.root);
+		queue_push(&callQueue, "assets/scenes/boot.scene");
+		queue_push(&callQueue, &mainNodeTree.camera);
+		queue_push(&callQueue, mainNodeTree.scripts);
+		*button->checked = false;
+	}
+END_SCRIPT(return_to_main_menu)

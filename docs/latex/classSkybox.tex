@@ -23,8 +23,10 @@ Collaboration diagram for Skybox\+:\nopagebreak
 \item 
 void \mbox{\hyperlink{classSkybox_a88b9ae09d6785b311041f0938ecbc5d3}{constructor}} (struct \mbox{\hyperlink{classTexturedMesh}{Textured\+Mesh}} \texorpdfstring{$\ast$}{*}textured\+Mesh)
 \item 
-void \mbox{\hyperlink{classSkybox_a649e5271ce0ca03afa0dc32f0ab36320}{cast}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}data)
-\item 
+\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{classSkybox_a48dff841df1b5da67af0b431ff2236a4}{load\+\_\+cubemap}} (char(\texorpdfstring{$\ast$}{*}faces)\mbox{[}100\mbox{]})
+\begin{DoxyCompactList}\small\item\em Loads a cubemap texture from 6 individual texture faces. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSkybox_ad9a2c4632c04aec361568e009d7aa386}{create\+\_\+skybox}} (\mbox{\hyperlink{classTexturedMesh}{Textured\+Mesh}} \texorpdfstring{$\ast$}{*}textured\+Mesh, char(\texorpdfstring{$\ast$}{*}skybox\+Texture)\mbox{[}100\mbox{]})
+\begin{DoxyCompactList}\small\item\em Creates a skybox with the given textures. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSkybox_ab3f6d0f115a0c7de517cbec153d35e16}{load}} (FILE \texorpdfstring{$\ast$}{*}file)
 \item 
 void \mbox{\hyperlink{classSkybox_aa02725c02a6ee94d82cbb817689e997e}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
@@ -40,15 +42,17 @@ void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\
 \item 
 void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
 \item 
-void \mbox{\hyperlink{classNode_a9b702cf3be32e9c0fcbfadf561e8d867}{cast}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}data)
-\item 
 void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
 \item 
 void \mbox{\hyperlink{classNode_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
 \item 
+void \mbox{\hyperlink{classNode_ab05e54fc6a226fe70d274e46e9ced07a}{prepare\+\_\+render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+\begin{DoxyCompactList}\small\item\em Renders a node using the specified model matrix and shader. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_ab93a6f41e02422a21c44227c0355382a}{render}} ()
 \item 
-void \mbox{\hyperlink{classNode_ac7b956795b2d4b16c59c1155bd7cba91}{update}} ()
+void \mbox{\hyperlink{classNode_a2621112ec04d166f9ec376eba06f3bbb}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\item 
+void \mbox{\hyperlink{classNode_a500a682914a24af188bd9eb79ba2aaae}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
 \item 
 void \mbox{\hyperlink{classNode_acda79ab291312990e96552767c577a3d}{free}} ()
 \item 
@@ -60,8 +64,22 @@ void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}
 \item 
 void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
 \item 
-int \mbox{\hyperlink{classNode_a5ebf24b90913a3442e2ad9856c099072}{test\+\_\+function}} (int a, int b)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classNode_a42da38ee8e0a621e438e14b94c0e381e}{add\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child node to a parent node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a8e6b8cc31d9259fcf89b21c180954996}{add\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child node to a parent node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ae86bdc267280b50e822501c7e74194f3}{remove\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ac78c1a018c6fac8fe8bd9f413190273f}{remove\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a33127e7928f75bccce339aafce1fe44b}{remove\+\_\+child\+\_\+and\+\_\+free}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node and frees the memory of the child node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_af08ebf5c3bb8542c012107606b88391b}{remove\+\_\+child\+\_\+and\+\_\+free\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node, frees the memory of the child node, and reallocates memory if necessary. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNode_af99346e2725916df2fbe2e4af7a2d51c}{index\+\_\+of\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Retrieves the index of a child node in a parent node\textquotesingle{}s children array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_aef2f74d45bec672840433aff6abe0d45}{print}} (int level)
+\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
@@ -106,24 +124,60 @@ static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5e
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classSkybox_a649e5271ce0ca03afa0dc32f0ab36320}\label{classSkybox_a649e5271ce0ca03afa0dc32f0ab36320} 
-\index{Skybox@{Skybox}!cast@{cast}}
-\index{cast@{cast}!Skybox@{Skybox}}
-\doxysubsubsection{\texorpdfstring{cast()}{cast()}}
-{\footnotesize\ttfamily void Skybox\+::cast (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
 \Hypertarget{classSkybox_a88b9ae09d6785b311041f0938ecbc5d3}\label{classSkybox_a88b9ae09d6785b311041f0938ecbc5d3} 
 \index{Skybox@{Skybox}!constructor@{constructor}}
 \index{constructor@{constructor}!Skybox@{Skybox}}
 \doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
 {\footnotesize\ttfamily void Skybox\+::constructor (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classTexturedMesh}{Textured\+Mesh}} \texorpdfstring{$\ast$}{*}}]{textured\+Mesh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\Hypertarget{classSkybox_ad9a2c4632c04aec361568e009d7aa386}\label{classSkybox_ad9a2c4632c04aec361568e009d7aa386} 
+\index{Skybox@{Skybox}!create\_skybox@{create\_skybox}}
+\index{create\_skybox@{create\_skybox}!Skybox@{Skybox}}
+\doxysubsubsection{\texorpdfstring{create\_skybox()}{create\_skybox()}}
+{\footnotesize\ttfamily void Skybox\+::create\+\_\+skybox (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTexturedMesh}{Textured\+Mesh}} \texorpdfstring{$\ast$}{*}}]{textured\+Mesh,  }\item[{char(\texorpdfstring{$\ast$}{*})}]{skybox\+Texture\mbox{[}100\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Creates a skybox with the given textures. 
+
+This function initializes a skybox using the provided textures and assigns it to the given textured mesh.
+
+
+\begin{DoxyParams}{Parameters}
+{\em textured\+Mesh} & A pointer to the Texture\+Map structure where the skybox will be created. \\
+\hline
+{\em skybox\+Texture} & A 2D array containing the file paths of the six textures for the skybox. The textures should be ordered as follows\+: right, left, top, bottom, front, back. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Each file path in the skybox\+Texture array should not exceed 200 characters. 
+\end{DoxyNote}
 \Hypertarget{classSkybox_ab3f6d0f115a0c7de517cbec153d35e16}\label{classSkybox_ab3f6d0f115a0c7de517cbec153d35e16} 
 \index{Skybox@{Skybox}!load@{load}}
 \index{load@{load}!Skybox@{Skybox}}
 \doxysubsubsection{\texorpdfstring{load()}{load()}}
 {\footnotesize\ttfamily void Skybox\+::load (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\Hypertarget{classSkybox_a48dff841df1b5da67af0b431ff2236a4}\label{classSkybox_a48dff841df1b5da67af0b431ff2236a4} 
+\index{Skybox@{Skybox}!load\_cubemap@{load\_cubemap}}
+\index{load\_cubemap@{load\_cubemap}!Skybox@{Skybox}}
+\doxysubsubsection{\texorpdfstring{load\_cubemap()}{load\_cubemap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} Skybox\+::load\+\_\+cubemap (\begin{DoxyParamCaption}\item[{char(\texorpdfstring{$\ast$}{*})}]{faces\mbox{[}100\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Loads a cubemap texture from 6 individual texture faces. 
+
+This function takes an array of file paths to 6 texture images, each representing one face of a cubemap (right, left, top, bottom, front, back), and loads them into a single cubemap texture.
+
+
+\begin{DoxyParams}{Parameters}
+{\em faces} & An array of 6 strings, each containing the file path to a texture image. The order of the faces should be\+: right, left, top, bottom, front, back.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Texture\+Map The loaded cubemap texture. 
+\end{DoxyReturn}
 \Hypertarget{classSkybox_a25ed22c6c3bcfec6519f68dc4d93bbce}\label{classSkybox_a25ed22c6c3bcfec6519f68dc4d93bbce} 
 \index{Skybox@{Skybox}!render@{render}}
 \index{render@{render}!Skybox@{Skybox}}

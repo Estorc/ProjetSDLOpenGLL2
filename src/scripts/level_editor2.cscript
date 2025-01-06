@@ -1,6 +1,4 @@
 #ifdef DEBUG
-#include "../io/node_loader.h"
-#include "../io/osio.h"
 
 
 
@@ -24,7 +22,7 @@
 
 	draw_rectangle(window->ui_surface, 16, y, 700, 32, 0xff555555);
 	if (node != root) if (draw_button(window->ui_surface, x += 32, y, 32, 32, "assets/textures/editor/minus-square.png", 0xffffffff, input)) {
-		METHOD(node, is_cshape, &condition);
+		node::is_cshape(&condition);
 		if (condition) remove_shape_and_free_and_realloc(node->parent, node);
 		else remove_child_and_free_and_realloc(node->parent, node);
 		return;
@@ -33,25 +31,25 @@
 		root->parent->params[1].i = 1;
 		root->parent->params[2].node = node;
 	}
-	METHOD(node, is_cshape, &condition);
+	node::is_cshape(&condition);
 	if (!condition && index-1 >= 0 && node != root) if (draw_button(window->ui_surface, x += 32, y, 32, 32, "assets/textures/editor/arrow-up-circle.png", 0xffffffff, input)) {
 		Node *moved_node = node->parent->children[index-1];
 		node->parent->children[index-1] = node->parent->children[index];
 		node->parent->children[index] = moved_node;
 	}
-	METHOD(node, is_cshape, &condition);
+	node::is_cshape(&condition);
 	if (!condition && index+1 < node->parent->length && node != root) if (draw_button(window->ui_surface, x += 32, y, 32, 32, "assets/textures/editor/arrow-down-circle.png", 0xffffffff, input)) {
 		Node *moved_node = node->parent->children[index+1];
 		node->parent->children[index+1] = node->parent->children[index];
 		node->parent->children[index] = moved_node;
 	}
-	METHOD(node, is_cshape, &condition);
+	node::is_cshape(&condition);
 	if (!condition && index+1 < node->parent->length && level) if (draw_button(window->ui_surface, x += 32, y, 32, 32, "assets/textures/editor/corner-down-right.png", 0xffffffff, input)) {
 		Node *parent = node->parent;
 		remove_child_and_realloc(parent, node);
 		add_child_and_realloc(parent->children[index], node);
 	}
-	METHOD(node, is_cshape, &condition);
+	node::is_cshape(&condition);
 	if (!condition && level > 1) if (draw_button(window->ui_surface, x += 32, y, 32, 32, "assets/textures/editor/corner-left-up.png", 0xffffffff, input)) {
 		remove_child_and_realloc(node->parent, node);
 		add_child_and_realloc(node->parent->parent, node);
@@ -64,21 +62,21 @@
 	Node ***collisionsShapes;
 	GET_FROM_BODY_NODE(node, length, collisionsLength);
 	GET_FROM_BODY_NODE(node, collisionsShapes, collisionsShapes);
-	METHOD(node, is_body, &condition);
+	node::is_body(&condition);
     if (condition) for (int i = 0; i < *collisionsLength; i++) {
         draw_node_tree(window, (*collisionsShapes)[i], level+1, input, font);
     }
     for (int i = 0; i < node->length; i++) {
         draw_node_tree(window, node->children[i], level+1, input, font);
     }
-	METHOD(node, is_cshape, &condition);
+	node::is_cshape(&condition);
 	if (!condition) {
 		y += 32;
 		draw_rectangle(window->ui_surface, 16, y, 700, 32, 0xff555555);
 		if (draw_button(window->ui_surface, (level+1)*16 + 16, y, 32, 32, "assets/textures/editor/plus-square.png", 0xffffffff, input)) {
-			METHOD(node, is_cshape, &condition);
+			node::is_cshape(&condition);
 			if (condition) {
-				METHOD(node, is_body, &condition);
+				node::is_body(&condition);
 				if (condition) {
 					Node *new_node;
 					new_node = malloc(sizeof(Node));

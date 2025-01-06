@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "types.h"
 #include "math/math_util.h"
 #include "io/model.h"

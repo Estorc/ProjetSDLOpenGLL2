@@ -1,5 +1,19 @@
+#include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdarg.h>
+#include <limits.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_opengl.h>
+#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_ttf.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glext.h>
+#include <cglm/cglm.h>
+#include <math.h>
+#include "io/stringio.h"
 #include "config.h"
 
 /**

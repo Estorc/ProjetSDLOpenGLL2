@@ -1,6 +1,5 @@
-bin/debug/src/render/lighting.o: src/render/lighting.c \
- /usr/include/stdc-predef.h src/render/../types.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
+bin/debug/src/render/lighting.o: src/__processed__/src/render/lighting.c \
+ /usr/include/stdc-predef.h src/render/../types.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -9,62 +8,11 @@ bin/debug/src/render/lighting.o: src/render/lighting.c \
  /usr/include/x86_64-linux-gnu/bits/long-double.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
  /usr/include/x86_64-linux-gnu/bits/time64.h \
- /usr/include/x86_64-linux-gnu/bits/wchar.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
- src/render/../config.h /usr/include/signal.h \
- /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
- /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
- /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
- /usr/include/x86_64-linux-gnu/bits/endian.h \
- /usr/include/x86_64-linux-gnu/bits/endianness.h \
- /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
- /usr/include/x86_64-linux-gnu/bits/siginfo-arch.h \
- /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h \
- /usr/include/x86_64-linux-gnu/bits/types/sigval_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
- /usr/include/x86_64-linux-gnu/bits/sigevent-consts.h \
- /usr/include/x86_64-linux-gnu/bits/sigaction.h \
- /usr/include/x86_64-linux-gnu/bits/sigcontext.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
- /usr/include/x86_64-linux-gnu/bits/types/stack_t.h \
- /usr/include/x86_64-linux-gnu/sys/ucontext.h \
- /usr/include/x86_64-linux-gnu/bits/sigstack.h \
- /usr/include/x86_64-linux-gnu/bits/sigstksz.h \
- /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
- /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
- /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
- /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
- /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
- /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
- /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
- /usr/include/x86_64-linux-gnu/bits/sigthread.h \
- /usr/include/x86_64-linux-gnu/bits/signal_ext.h /usr/include/SDL2/SDL.h \
- /usr/include/SDL2/SDL_main.h /usr/include/SDL2/SDL_stdinc.h \
- /usr/include/SDL2/SDL_config.h \
- /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
- /usr/include/SDL2/SDL_platform.h /usr/include/SDL2/begin_code.h \
- /usr/include/SDL2/close_code.h /usr/include/x86_64-linux-gnu/sys/types.h \
- /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/include/endian.h \
- /usr/include/x86_64-linux-gnu/bits/byteswap.h \
- /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
- /usr/include/x86_64-linux-gnu/sys/select.h \
- /usr/include/x86_64-linux-gnu/bits/select.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
- /usr/include/stdio.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
@@ -74,7 +22,46 @@ bin/debug/src/render/lighting.o: src/render/lighting.c \
  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
- /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/stdlib.h \
+ /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
+ /usr/include/x86_64-linux-gnu/bits/pthread_stack_min.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h /usr/include/SDL2/SDL.h \
+ /usr/include/SDL2/SDL_main.h /usr/include/SDL2/SDL_stdinc.h \
+ /usr/include/SDL2/SDL_config.h \
+ /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
+ /usr/include/SDL2/SDL_platform.h /usr/include/SDL2/begin_code.h \
+ /usr/include/SDL2/close_code.h /usr/include/x86_64-linux-gnu/sys/types.h \
+ /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/include/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/endianness.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+ /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+ /usr/include/x86_64-linux-gnu/sys/select.h \
+ /usr/include/x86_64-linux-gnu/bits/select.h \
+ /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
+ /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
+ /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
+ /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
+ /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
+ /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
+ /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/string.h \
@@ -210,9 +197,9 @@ bin/debug/src/render/lighting.o: src/render/lighting.c \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h /usr/include/SDL2/SDL_image.h \
  /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_opengl.h \
- /usr/include/SDL2/SDL_opengl_glext.h /usr/include/GL/glu.h \
- /usr/include/GL/gl.h /usr/include/GL/glext.h \
- src/render/../math/math_util.h lib/cglm/cglm.h lib/cglm/common.h \
+ /usr/include/SDL2/SDL_opengl_glext.h /usr/include/SDL2/SDL_mixer.h \
+ /usr/include/SDL2/SDL_ttf.h /usr/include/GL/gl.h /usr/include/GL/glu.h \
+ /usr/include/GL/glext.h lib/cglm/cglm.h lib/cglm/common.h \
  lib/cglm/types.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdalign.h \
  lib/cglm/simd/intrin.h lib/cglm/simd/x86.h lib/cglm/simd/intrin.h \
  lib/cglm/vec2.h lib/cglm/util.h lib/cglm/vec2-ext.h lib/cglm/vec3.h \
@@ -237,11 +224,34 @@ bin/debug/src/render/lighting.o: src/render/lighting.c \
  lib/cglm/clipspace/project_no.h lib/cglm/clipspace/../vec3.h \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
- src/render/../io/model.h src/render/../io/obj_loader.h \
- src/render/../io/mtl_loader.h src/render/framebuffer.h \
- src/render/../storage/node.h src/render/../storage/../io/shader.h \
+ src/render/../io/stringio.h src/render/../config.h /usr/include/signal.h \
+ /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
+ /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
+ /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
+ /usr/include/x86_64-linux-gnu/bits/siginfo-arch.h \
+ /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h \
+ /usr/include/x86_64-linux-gnu/bits/types/sigval_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
+ /usr/include/x86_64-linux-gnu/bits/sigevent-consts.h \
+ /usr/include/x86_64-linux-gnu/bits/sigaction.h \
+ /usr/include/x86_64-linux-gnu/bits/sigcontext.h \
+ /usr/include/x86_64-linux-gnu/bits/types/stack_t.h \
+ /usr/include/x86_64-linux-gnu/sys/ucontext.h \
+ /usr/include/x86_64-linux-gnu/bits/sigstack.h \
+ /usr/include/x86_64-linux-gnu/bits/sigstksz.h \
+ /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
+ /usr/include/x86_64-linux-gnu/bits/sigthread.h \
+ /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
+ src/render/../math/math_util.h src/render/../io/model.h \
+ src/render/../io/obj_loader.h src/render/../io/mtl_loader.h \
+ src/render/framebuffer.h src/render/../storage/node.h \
+ src/render/../storage/../io/shader.h \
  src/render/../storage/../render/camera.h \
  src/render/../storage/../render/../types.h \
+ src/render/../storage/../render/../io/stringio.h \
  src/render/../storage/../render/../config.h \
  src/render/../storage/../render/../math/math_util.h \
  src/render/../storage/../render/../io/shader.h \
@@ -251,42 +261,67 @@ bin/debug/src/render/lighting.o: src/render/lighting.c \
  src/render/../storage/../scripts/scripts.h \
  src/render/../storage/../scripts/../io/input.h \
  src/render/../storage/../render/framebuffer.h src/render/../window.h \
- src/render/camera.h src/render/../io/shader.h src/render/render.h \
- src/render/../memory.h src/render/lighting.h src/render/depth_map.h \
- src/render/../classes/classes.h src/render/../classes/import_class.h \
- src/render/../classes/__processed__/node.class.h \
- src/render/../classes/__processed__/nodes_camera.class.h \
- src/render/../classes/__processed__/nodes_cshapes_box_cshape.class.h \
- src/render/../classes/__processed__/nodes_cshapes_capsule_cshape.class.h \
- src/render/../classes/__processed__/nodes_cshapes_cshape.class.h \
- src/render/../classes/__processed__/nodes_cshapes_mesh_cshape.class.h \
- src/render/../classes/__processed__/nodes_cshapes_plane_cshape.class.h \
- src/render/../classes/__processed__/nodes_cshapes_ray_cshape.class.h \
- src/render/../classes/__processed__/nodes_cshapes_sphere_cshape.class.h \
- src/render/../classes/__processed__/nodes_framebuffer.class.h \
- src/render/../classes/__processed__/nodes_frames_button.class.h \
- src/render/../classes/__processed__/nodes_frames_checkbox.class.h \
- src/render/../classes/__processed__/nodes_frames_control_frame.class.h \
- src/render/../classes/__processed__/nodes_frames_frame.class.h \
- src/render/../classes/__processed__/nodes_frames_image_frame.class.h \
- src/render/../classes/__processed__/nodes_frames_input_area.class.h \
- src/render/../classes/__processed__/nodes_frames_label.class.h \
- src/render/../classes/__processed__/nodes_frames_radiobutton.class.h \
- src/render/../classes/__processed__/nodes_frames_selectlist.class.h \
- src/render/../classes/__processed__/nodes_lights_directional_light.class.h \
- src/render/../classes/__processed__/nodes_lights_light.class.h \
- src/render/../classes/__processed__/nodes_lights_point_light.class.h \
- src/render/../classes/__processed__/nodes_lights_spot_light.class.h \
- src/render/../classes/__processed__/nodes_mesh.class.h \
- src/render/../classes/__processed__/nodes_model.class.h \
- src/render/../classes/__processed__/nodes_physics_area.class.h \
- src/render/../classes/__processed__/nodes_physics_bodies_body.class.h \
- src/render/../classes/__processed__/nodes_physics_bodies_kinematic_body.class.h \
- src/render/../classes/__processed__/nodes_physics_bodies_rigid_body.class.h \
- src/render/../classes/__processed__/nodes_physics_bodies_static_body.class.h \
- src/render/../classes/__processed__/nodes_physics_physical_node.class.h \
- src/render/../classes/__processed__/nodes_scene.class.h \
- src/render/../classes/__processed__/nodes_skybox.class.h \
- src/render/../classes/__processed__/nodes_texture.class.h \
- src/render/../classes/__processed__/nodes_textured_mesh.class.h \
- src/render/../classes/../types.h src/render/../classes/../config.h
+ src/render/camera.h src/render/../types.h src/render/../math/math_util.h \
+ src/render/../io/shader.h src/render/render.h src/render/../memory.h \
+ src/render/lighting.h src/render/depth_map.h src/render/../io/model.h \
+ src/render/framebuffer.h src/render/../classes/classes.h \
+ src/render/../classes/import_class.h \
+ src/render/../classes/../__processed__/classes_node.class.h \
+ lib/../src/math/math_util.h lib/../src/io/model.h \
+ lib/../src/render/framebuffer.h lib/../src/storage/node.h \
+ lib/../src/storage/../io/shader.h lib/../src/storage/../render/camera.h \
+ lib/../src/storage/../render/../types.h \
+ lib/../src/storage/../render/../io/stringio.h \
+ lib/../src/storage/../render/../config.h \
+ lib/../src/storage/../render/../math/math_util.h \
+ lib/../src/storage/../render/../io/shader.h \
+ lib/../src/storage/../physics/bodies.h \
+ lib/../src/storage/../physics/../math/math_util.h \
+ lib/../src/storage/../physics/../io/model.h \
+ lib/../src/storage/../scripts/scripts.h \
+ lib/../src/storage/../scripts/../io/input.h \
+ lib/../src/storage/../render/framebuffer.h \
+ src/render/../classes/../__processed__/classes_nodes_camera.class.h \
+ src/render/../classes/../__processed__/classes_nodes_cshapes_box_cshape.class.h \
+ src/render/../classes/../__processed__/classes_nodes_cshapes_capsule_cshape.class.h \
+ src/render/../classes/../__processed__/classes_nodes_cshapes_cshape.class.h \
+ src/render/../classes/../__processed__/classes_nodes_cshapes_mesh_cshape.class.h \
+ src/render/../classes/../__processed__/classes_nodes_cshapes_plane_cshape.class.h \
+ src/render/../classes/../__processed__/classes_nodes_cshapes_ray_cshape.class.h \
+ src/render/../classes/../__processed__/classes_nodes_cshapes_sphere_cshape.class.h \
+ src/render/../classes/../__processed__/classes_nodes_framebuffer.class.h \
+ src/render/../classes/../__processed__/classes_nodes_frames_button.class.h \
+ lib/../src/io/shader.h lib/../src/render/render.h lib/../src/window.h \
+ lib/../src/gui/frame.h lib/../src/io/input.h \
+ src/render/../classes/../__processed__/classes_nodes_frames_checkbox.class.h \
+ src/render/../classes/../__processed__/classes_nodes_frames_control_frame.class.h \
+ src/render/../classes/../__processed__/classes_nodes_frames_frame.class.h \
+ lib/../src/memory.h \
+ src/render/../classes/../__processed__/classes_nodes_frames_image_frame.class.h \
+ src/render/../classes/../__processed__/classes_nodes_frames_input_area.class.h \
+ src/render/../classes/../__processed__/classes_nodes_frames_label.class.h \
+ src/render/../classes/../__processed__/classes_nodes_frames_radiobutton.class.h \
+ src/render/../classes/../__processed__/classes_nodes_frames_selectlist.class.h \
+ src/render/../classes/../__processed__/classes_nodes_lights_directional_light.class.h \
+ lib/../src/render/lighting.h lib/../src/render/depth_map.h \
+ lib/../src/render/../io/model.h lib/../src/render/framebuffer.h \
+ lib/../src/buffer.h \
+ src/render/../classes/../__processed__/classes_nodes_lights_light.class.h \
+ src/render/../classes/../__processed__/classes_nodes_lights_point_light.class.h \
+ src/render/../classes/../__processed__/classes_nodes_lights_spot_light.class.h \
+ src/render/../classes/../__processed__/classes_nodes_mesh.class.h \
+ src/render/../classes/../__processed__/classes_nodes_model.class.h \
+ src/render/../classes/../__processed__/classes_nodes_physics_area.class.h \
+ lib/../src/physics/physics.h lib/../src/physics/../io/input.h \
+ lib/../src/physics/../render/lighting.h lib/../src/io/scene_loader.h \
+ src/render/../classes/../__processed__/classes_nodes_physics_bodies_body.class.h \
+ src/render/../classes/../__processed__/classes_nodes_physics_bodies_kinematic_body.class.h \
+ src/render/../classes/../__processed__/classes_nodes_physics_bodies_rigid_body.class.h \
+ src/render/../classes/../__processed__/classes_nodes_physics_bodies_static_body.class.h \
+ src/render/../classes/../__processed__/classes_nodes_physics_physical_node.class.h \
+ src/render/../classes/../__processed__/classes_nodes_scene.class.h \
+ src/render/../classes/../__processed__/classes_nodes_skybox.class.h \
+ src/render/../classes/../__processed__/classes_nodes_texture.class.h \
+ src/render/../classes/../__processed__/classes_nodes_textured_mesh.class.h \
+ src/render/../classes/../types.h src/render/../classes/../io/stringio.h \
+ src/render/../classes/../config.h

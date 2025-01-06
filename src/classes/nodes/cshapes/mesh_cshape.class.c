@@ -13,9 +13,7 @@ class MeshCShape : public CShape {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void get_priority(int *priority) {
         *priority = 4;
@@ -34,7 +32,8 @@ class MeshCShape : public CShape {
         meshCollisionShape->facesVertex = model->data->objects[0].facesVertex;
         meshCollisionShape->numFaces = model->data->objects[0].length;
         POINTER_CHECK(meshCollisionShape);
-        METHOD_TYPE(this, __type__, constructor, meshCollisionShape);
+        this->type = __type__;
+        this::constructor(meshCollisionShape);
     }
 
     void save(FILE *file) {

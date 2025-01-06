@@ -43,19 +43,13 @@ Docs :
 
 Settings
 enum NodeFlags
-Review
+classes
+Review docs
 
 Classes :
 
 Transform functions in class methods
-(node,
-camera,
-lighting,
-physics,
-bodies,
-maybe .h headers)
+(maybe .h headers)
 
 Ajouter preprocesseur de type :
-Objet::Attribut => ATTRIBUT(Objet, Attribut)
-Objet::Method(...) => METHOD(Objet, Method, ...)
-Objet = new TYPE(...) => METHOD_TYPE(Objet, TYPE, constructor, ...)
+Trouver une solution pour permettre de donner le type au préprocesseur

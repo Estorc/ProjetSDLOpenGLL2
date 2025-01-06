@@ -41,7 +41,7 @@ NEWLINE := $(shell printf "\n")
 # Object Files path
 
 BUILD_DIR := bin
-PROCESSED_CLASS_DIR := src/classes/__processed__
+PROCESSED_CLASS_DIR := src/__processed__
 
 MODULES += src/classes/classes.o
 
@@ -67,14 +67,12 @@ MODULES += src/render/depth_map.o
 MODULES += src/physics/physics.o
 MODULES += src/physics/collision_util.o
 MODULES += src/physics/collision.o
-MODULES += src/physics/bodies.o
 
-MODULES += src/utils/skybox.o
+MODULES += src/utils/scene.o
 MODULES += src/utils/time.o
 
 MODULES += src/gui/frame.o
 
-MODULES += src/storage/node.o
 MODULES += src/storage/stack.o
 MODULES += src/storage/queue.o
 
@@ -114,7 +112,7 @@ SCRIPTS_FILES := $(notdir $(SCRIPTS_PATHS))
 SCRIPTS_COUNT := -D SCRIPTS_COUNT=$(shell grep -o '\b$(NEW_SCRIPT_SYMBOL)\b' $(SCRIPTS_PATHS) | wc -l)
 
 CLASS_TOOLS := $(shell tools/class_tools)
-CLASSES_MODULES := $(wildcard src/classes/__processed__/*.class.c)
+CLASSES_MODULES := $(wildcard $(PROCESSED_CLASS_DIR)/*.class.c)
 CLASSES_MODULES := $(patsubst %.class.c, %.class.o, $(CLASSES_MODULES))
 
 RELEASE_MODULES := $(RELEASE_MODULES) $(addprefix $(BUILD_DIR)/,${CLASSES_MODULES})
@@ -173,23 +171,33 @@ tools:
 
 # Release objects constructor
 ${BUILD_DIR}/%.o: %.c
+	@echo "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}..."
+	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
+	@python3 ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
+
 	@echo "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}..."
 	@mkdir -p ${BUILD_DIR}/${dir $*}
-	@gcc -c $*.c -o ${BUILD_DIR}/$*.o ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@gcc -c ${PROCESSED_CLASS_DIR}/$< -o ${BUILD_DIR}/$*.o -I$(dir $*) ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
 	@echo "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/$*.o${NC}"
 
 # Debug objects constructor
 ${BUILD_DIR}/debug/%.o: %.c
+	@echo "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}..."
+	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
+	@python3 ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
+
 	@echo "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}..."
 	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
-	@gcc -c $*.c -g -o ${BUILD_DIR}/debug/$*.o -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@gcc -c ${PROCESSED_CLASS_DIR}/$< -g -o ${BUILD_DIR}/debug/$*.o -I$(dir $*) -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
 	@echo "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}"
 
+# @python3 ./tools/preprocessor_pipeline.py $$file/${dir $<}
 generate_header:
 	@echo "Generate loading scripts header..."
 	@echo "// Auto-generated scripts loading header file" > $(LOADING_SCRIPT_HEADER)
-	@for file in $(SCRIPTS_FILES); do \
-		echo "#include \"$$file\"" >> $(LOADING_SCRIPT_HEADER); \
+	@for file in $(SCRIPTS_PATHS); do \
+		python3 ./tools/preprocessor_pipeline.py $$file ${PROCESSED_CLASS_DIR}/$$(dirname $$file); \
+		echo "#include \"../__processed__/$$file\"" >> $(LOADING_SCRIPT_HEADER); \
 	done
 
 clean:

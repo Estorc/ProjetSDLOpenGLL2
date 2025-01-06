@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "types.h"
 #include "math/math_util.h"
 #include "physics/bodies.h"

@@ -1,9 +1,4 @@
 #include "../types.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_opengl.h>
-#include <GL/glu.h>
-#include <GL/glext.h>
 #include "../math/math_util.h"
 #include "../io/model.h"
 #include "framebuffer.h"
@@ -19,28 +14,24 @@
 #include "../settings.h"
 
 
-void configure_shader(Window *window, Node *root, Camera *c, WorldShaders *shaders) {
-    configure_global_lighting(window,root,c,shaders);
-}
-
 void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
 
     if (node->flags & NODE_VISIBLE) {
         mat4 nodeModelMatrix = GLM_MAT4_IDENTITY_INIT;
         glm_mat4_mul(nodeModelMatrix, modelMatrix, nodeModelMatrix);
         use_shader(activeShader);
-        render_node(node, nodeModelMatrix, activeShader, shaders);
+        node::prepare_render(nodeModelMatrix, activeShader, shaders);
+        node::render(nodeModelMatrix, activeShader, shaders);
         for (int i = 0; i < node->length; i++) {
             render_scene(window, node->children[i], c, nodeModelMatrix, activeShader, shaders);
         }
         if (settings.show_collision_boxes) {
             bool is_body = false;
-            METHOD(node, is_body, (&is_body));
+            node::is_body((&is_body));
             if (is_body) {
                 u8 *length;
                 Node ***shapes;
-                GET_FROM_BODY_NODE(node, length, length);
-                GET_FROM_BODY_NODE(node, collisionsShapes, shapes);
+                node::get_collisions_shapes(shapes, length);
                 for (int i = 0; i < *length; i++) {
                     render_scene(window, (*shapes)[i], c, nodeModelMatrix, activeShader, shaders);
                 }
@@ -58,7 +49,7 @@ void draw_shadow_map(Window *window, Node *root, Camera *c, WorldShaders *shader
     glBindFramebuffer(GL_FRAMEBUFFER, depthMap->frameBuffer);
     u8 lightsCount[LIGHTS_COUNT] = {0};
     for (int i = 0, index = 0, pl = 0; i < buffers.lightingBuffer.index; i++, index++) {
-        configure_directional_lighting(window,root,c,shaders,buffers.lightingBuffer.lightings[i], index, lightsCount, pl);
+        (buffers.lightingBuffer.lightings[i])::configure_lighting(c,shaders, lightsCount, pl);
         glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthMap->texture, 0, index);
         glClear(GL_DEPTH_BUFFER_BIT);
         mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
@@ -82,7 +73,7 @@ void draw_scene(Window *window, Node *root, Camera *c, WorldShaders *shaders, De
 
     glViewport(0, 0, window_width, window_height);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    configure_shader(window, root, c, shaders);
+    use_shader(shaders->render);
     glActiveTexture(GL_TEXTURE3);
     glBindTexture(GL_TEXTURE_2D_ARRAY, depthMap->texture);
     set_shader_int(shaders->render, "diffuseMap", 0);

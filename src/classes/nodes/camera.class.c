@@ -13,8 +13,12 @@ class Camera : public Node {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
+    void update(vec3 *pos, vec3 *rot, vec3 *scale) {
+        Camera *camera = (Camera *) this->object;
+
+        this::update_global_position(pos, rot, scale);
+        glm_vec3_negate_to(*pos, camera->pos);
+        glm_vec3_negate_to(*rot, camera->rot);
     }
 
     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
@@ -31,7 +35,8 @@ class Camera : public Node {
                 else if (editor) editor->params[5].node = this;
             }
         }
-        METHOD_TYPE(this, __type__, constructor, cam);
+        this->type = __type__;
+        this::constructor(cam);
     }
 
     void save(FILE *file, Node *editor) {

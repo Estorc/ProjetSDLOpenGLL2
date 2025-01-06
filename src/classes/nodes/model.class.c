@@ -18,9 +18,7 @@ class Model : public Node {
         }
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load(FILE *file) {
         Model *model;
@@ -32,7 +30,8 @@ class Model : public Node {
         } else {
             model->data = NULL;
         }
-        METHOD_TYPE(this, __type__, constructor, model);
+        this->type = __type__;
+        this::constructor(model);
     }
 
     void save(FILE *file) {
@@ -73,7 +72,7 @@ class Model : public Node {
 
         if (!data) return;
 
-        METHOD(this, precompile_display_lists);
+        this::precompile_display_lists();
 
         int modelLoc = glGetUniformLocation(activeShader, "model");
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, *modelMatrix);
@@ -115,7 +114,7 @@ class Model : public Node {
 
         if (model->flags & MODEL_FLAG_GLOW) {
             Shader glowShader;
-            METHOD(this, get_glow_shader, &glowShader);
+            this::get_glow_shader(&glowShader);
             use_shader(glowShader);
 
             int modelLoc = glGetUniformLocation(glowShader, "model");
@@ -138,7 +137,7 @@ class Model : public Node {
     void free() {
         // See src/memory.c for the implementation of free_models
         for (int i = 0; i < this->length; i++) {
-            METHOD(this->children[i], free);
+            (this->children[i])::free();
         }
         free(this->params);
         free(this->children);

@@ -3,9 +3,6 @@
 #include "storage/node.h"
 #include "io/shader.h"
 #include "render/render.h"
-#include <SDL2/SDL.h>
-#include <limits.h>
-#include <SDL2/SDL_ttf.h>
 #include "window.h"
 #include "gui/frame.h"
 
@@ -21,7 +18,7 @@ class ImageFrame : public Frame {
         this->object = frame;
         this->type = __type__; 
         SUPER(initialize_node);
-        METHOD(this, init_frame);
+        this::init_frame();
         frame->imageFrame = malloc(sizeof(ImageFrame));
         POINTER_CHECK(frame->imageFrame);
         frame->flags &= ~FRAME_BACKGROUND;
@@ -35,12 +32,11 @@ class ImageFrame : public Frame {
         frame->unit[3] = '%';
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load(FILE *file) {
-        METHOD_TYPE(this, __type__, constructor);
+        this->type = __type__;
+        this::constructor();
         Frame *frame = (Frame *) this->object;
         if (file) {
             fscanf(file, "(%g%c,%g%c,%g%c,%g%c,%c%c, %[^)])", 

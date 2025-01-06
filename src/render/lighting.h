@@ -108,45 +108,15 @@ typedef struct LightingBuffer {
 
 
 /**
- * @brief Configures the global lighting settings.
+ * @brief Initializes the lighting buffer.
  * 
- * This function sets up the global lighting parameters for the rendering engine.
- * It takes into account the window, scene graph root node, camera, and shaders
- * to configure the lighting environment.
+ * This function initializes the lighting buffer, allocating memory for the array of lighting nodes
+ * and setting the length and index to zero.
  * 
- * @param window Pointer to the Window structure.
- * @param root Pointer to the root Node of the scene graph.
- * @param c Pointer to the Camera structure.
- * @param shaders Pointer to the WorldShaders structure containing shader programs.
+ * @param lightsCount The number of lights of each type to be initialized.
  */
-void configure_global_lighting(struct Window *window, struct Node *root, struct Camera *c, struct WorldShaders *shaders);
 
-/**
- * @brief Configures the directional lighting settings.
- * 
- * This function sets up the directional lighting parameters for the rendering engine.
- * It uses the window, scene graph root node, camera, shaders, and a specific light node
- * to configure the directional light. It also takes into account the index of the light,
- * the count of lights, and the ID of the point light.
- * 
- * @param window Pointer to the Window structure.
- * @param root Pointer to the root Node of the scene graph.
- * @param c Pointer to the Camera structure.
- * @param shaders Pointer to the WorldShaders structure containing shader programs.
- * @param light Pointer to the Node representing the directional light.
- * @param index Index of the directional light.
- * @param lightsCount Array containing the count of different types of lights.
- * @param pointLightId ID of the point light.
- */
-void configure_directional_lighting(struct Window *window, struct Node *root, struct Camera *c, struct WorldShaders *shaders, struct Node *light, int index, u8 lightsCount[LIGHTS_COUNT], int pointLightId);
-
-/**
- * @brief Resets all lighting settings.
- * 
- * This function resets all lighting configurations to their default states.
- * It is useful for clearing any custom lighting settings and starting fresh.
- */
-void reset_lightings();
+void set_lightings(u8 lightsCount[LIGHTS_COUNT]);
 
 /** @} */ // end of Lighting group
 #endif

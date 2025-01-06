@@ -23,8 +23,6 @@ Collaboration diagram for Framebuffer\+:\nopagebreak
 \item 
 void \mbox{\hyperlink{classFramebuffer_a666857a6d8b88bd6d17fbce1bbfd1993}{constructor}} (\mbox{\hyperlink{group__Framebuffer_gab75cdf3b36517627dfe9b6029e00129d}{Frame\+Buffer}} \texorpdfstring{$\ast$}{*}frame\+Buffer)
 \item 
-void \mbox{\hyperlink{classFramebuffer_aa2d131d59a7e5b7c82ec2989c0ff2f8f}{cast}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}data)
-\item 
 void \mbox{\hyperlink{classFramebuffer_ac161f22dbe63e5c27ac0728ecc4b217b}{load}} ()
 \item 
 void \mbox{\hyperlink{classFramebuffer_af9d417157ea0fcb731e6d78a657743ab}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
@@ -38,15 +36,17 @@ void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\
 \item 
 void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
 \item 
-void \mbox{\hyperlink{classNode_a9b702cf3be32e9c0fcbfadf561e8d867}{cast}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}data)
-\item 
 void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
 \item 
 void \mbox{\hyperlink{classNode_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
 \item 
+void \mbox{\hyperlink{classNode_ab05e54fc6a226fe70d274e46e9ced07a}{prepare\+\_\+render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+\begin{DoxyCompactList}\small\item\em Renders a node using the specified model matrix and shader. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_ab93a6f41e02422a21c44227c0355382a}{render}} ()
 \item 
-void \mbox{\hyperlink{classNode_ac7b956795b2d4b16c59c1155bd7cba91}{update}} ()
+void \mbox{\hyperlink{classNode_a2621112ec04d166f9ec376eba06f3bbb}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\item 
+void \mbox{\hyperlink{classNode_a500a682914a24af188bd9eb79ba2aaae}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
 \item 
 void \mbox{\hyperlink{classNode_acda79ab291312990e96552767c577a3d}{free}} ()
 \item 
@@ -58,8 +58,22 @@ void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}
 \item 
 void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
 \item 
-int \mbox{\hyperlink{classNode_a5ebf24b90913a3442e2ad9856c099072}{test\+\_\+function}} (int a, int b)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classNode_a42da38ee8e0a621e438e14b94c0e381e}{add\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child node to a parent node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a8e6b8cc31d9259fcf89b21c180954996}{add\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child node to a parent node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ae86bdc267280b50e822501c7e74194f3}{remove\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ac78c1a018c6fac8fe8bd9f413190273f}{remove\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a33127e7928f75bccce339aafce1fe44b}{remove\+\_\+child\+\_\+and\+\_\+free}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node and frees the memory of the child node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_af08ebf5c3bb8542c012107606b88391b}{remove\+\_\+child\+\_\+and\+\_\+free\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node, frees the memory of the child node, and reallocates memory if necessary. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNode_af99346e2725916df2fbe2e4af7a2d51c}{index\+\_\+of\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Retrieves the index of a child node in a parent node\textquotesingle{}s children array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_aef2f74d45bec672840433aff6abe0d45}{print}} (int level)
+\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
@@ -104,12 +118,6 @@ static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5e
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classFramebuffer_aa2d131d59a7e5b7c82ec2989c0ff2f8f}\label{classFramebuffer_aa2d131d59a7e5b7c82ec2989c0ff2f8f} 
-\index{Framebuffer@{Framebuffer}!cast@{cast}}
-\index{cast@{cast}!Framebuffer@{Framebuffer}}
-\doxysubsubsection{\texorpdfstring{cast()}{cast()}}
-{\footnotesize\ttfamily void Framebuffer\+::cast (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
 \Hypertarget{classFramebuffer_a666857a6d8b88bd6d17fbce1bbfd1993}\label{classFramebuffer_a666857a6d8b88bd6d17fbce1bbfd1993} 
 \index{Framebuffer@{Framebuffer}!constructor@{constructor}}
 \index{constructor@{constructor}!Framebuffer@{Framebuffer}}

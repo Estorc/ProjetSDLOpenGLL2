@@ -22,6 +22,22 @@ class StaticBody : public Body {
         *shapes = staticBody->collisionsShapes;
     }
 
+    void update(vec3 *pos, vec3 *rot, vec3 *scale) {
+        StaticBody *staticBody = (StaticBody *) this->object;
+
+        this::update_global_position(pos, rot, scale);
+
+        for (int i = 0; i < staticBody->length; i++) {
+            (staticBody->collisionsShapes[i])::update_global_position(pos, rot, scale);
+            glm_vec3_copy(this->globalPos, *pos);
+            glm_vec3_copy(this->globalRot, *rot);
+            glm_vec3_copy(this->globalScale, *scale);
+            check_collisions(staticBody->collisionsShapes[i]);
+        }
+        memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], staticBody->collisionsShapes, staticBody->length * sizeof(staticBody->collisionsShapes[0]));
+        buffers.collisionBuffer.index += staticBody->length;
+    }
+
     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
         StaticBody *staticBody;
         staticBody = malloc(sizeof(StaticBody));
@@ -30,7 +46,8 @@ class StaticBody : public Body {
         POINTER_CHECK(staticBody);
         if (file)
             fscanf(file,"(%d)\n", &children_count);
-        METHOD_TYPE(this, __type__, constructor, staticBody);
+        this->type = __type__;
+        this::constructor(staticBody);
 
         staticBody->collisionsShapes = malloc(sizeof(Node *) * children_count);
         buffers.collisionBuffer.length += children_count;
@@ -49,4 +66,45 @@ class StaticBody : public Body {
         u8 collisionsLength = staticBody->length;
         fprintf(file, "(%d)", collisionsLength);
     }
+
+    /**
+     * @brief Get the velocity norm of a node.
+     * 
+     * @return The velocity norm of the node.
+     */
+
+    float get_velocity_norm() {
+        return 0.0f;
+    };
+
+    /**
+     * @brief Get the velocity of a node.
+     * 
+     * @param velocity Output vector to store the velocity.
+     */
+
+    void get_velocity(vec3 *velocity) {
+        glm_vec3_zero(*velocity);
+    };
+
+    /**
+     * @brief Get the mass of a node.
+     * 
+     * @param mass Output pointer to store the mass.
+     */
+
+    void get_mass(float * mass) {
+        (*mass) = INFINITY;
+    }
+
+    /**
+     * @brief Get the center of mass of a node.
+     * 
+     * @param com Output vector to store the center of mass.
+     */
+
+    void get_center_of_mass(vec3 *com) {
+        glm_vec3_zero(*com);
+    }
+
 }

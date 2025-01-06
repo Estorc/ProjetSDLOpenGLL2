@@ -1,0 +1,17 @@
+<map id="src/__processed__/src/io/obj_loader.c" name="src/__processed__/src/io/obj_loader.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="239,5,401,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,88,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="255,48,100,92,99,87,254,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="112,93,259,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="289,48,218,89,216,84,286,43"/>
+<area shape="rect" id="Node000004" href="$model_8h.html" title="Defines structures and functions for handling 3D models and their properties." alt="" coords="283,93,357,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="323,46,323,79,317,79,317,46"/>
+<area shape="rect" id="Node000007" href="$shader_8h.html" title=" " alt="" coords="381,93,459,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="346,43,396,82,393,87,343,48"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="483,93,581,119"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="372,43,489,86,487,91,370,48"/>
+<area shape="rect" id="Node000005" href="$obj__loader_8h.html" title=" " alt="" coords="205,167,307,192"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="311,121,277,158,273,155,307,117"/>
+<area shape="rect" id="Node000006" href="$mtl__loader_8h.html" title=" " alt="" coords="331,167,434,192"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="332,117,365,154,361,158,328,121"/>
+</map>

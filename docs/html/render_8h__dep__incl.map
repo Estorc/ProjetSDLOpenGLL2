@@ -38,8 +38,8 @@
 <area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="2358,17,2543,19,2795,28,3083,46,3231,59,3375,76,3416,83,3415,89,3374,81,3230,64,3083,51,2795,33,2543,25,2358,22"/>
 <area shape="rect" id="Node000020" href="$render_8c.html" title=" " alt="" coords="3561,86,3703,111"/>
 <area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="2358,19,2960,38,3300,55,3442,65,3550,76,3589,83,3588,89,3549,81,3442,70,3300,60,2959,43,2357,24"/>
-<area shape="rect" id="Node000021" href="$node_8c.html" title=" " alt="" coords="3728,86,3869,111"/>
-<area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="2358,18,3039,36,3430,53,3593,64,3716,76,3756,83,3755,89,3716,81,3592,69,3430,58,3038,41,2358,23"/>
-<area shape="rect" id="Node000022" href="$window_8c.html" title=" " alt="" coords="3894,86,3999,111"/>
-<area shape="poly" id="edge21_Node000001_Node000022" title=" " alt="" coords="2358,17,2676,20,3117,30,3559,47,3743,60,3882,76,3913,83,3912,89,3881,81,3742,65,3558,52,3116,35,2676,26,2358,22"/>
+<area shape="rect" id="Node000021" href="$scene_8c.html" title=" " alt="" coords="3727,86,3854,111"/>
+<area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="2358,18,2646,23,3038,34,3430,51,3593,63,3716,76,3752,83,3751,89,3716,81,3592,68,3430,57,3038,40,2646,29,2357,23"/>
+<area shape="rect" id="Node000022" href="$window_8c.html" title=" " alt="" coords="3878,86,3983,111"/>
+<area shape="poly" id="edge21_Node000001_Node000022" title=" " alt="" coords="2358,17,2673,20,3109,29,3547,47,3729,60,3867,76,3898,83,3897,88,3866,81,3729,65,3547,52,3109,35,2673,26,2358,22"/>
 </map>

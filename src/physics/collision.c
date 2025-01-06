@@ -1,8 +1,3 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_opengl.h>
-#include <GL/glu.h>
-#include <GL/glext.h>
 #include "../types.h"
 #include "../math/math_util.h"
 #include "../io/model.h"
@@ -25,8 +20,8 @@
 
 unsigned int get_collision_code(Node *shapeA, Node *shapeB) {
     int priorityA, priorityB;
-    METHOD(shapeA, get_priority, &priorityA);
-    METHOD(shapeB, get_priority, &priorityB);
+    shapeA::get_priority(&priorityA);
+    shapeB::get_priority(&priorityB);
     if (priorityA < priorityB)
         return shapeA->type | shapeB->type << 8;
     return shapeB->type | shapeA->type << 8;
@@ -35,16 +30,16 @@ unsigned int get_collision_code(Node *shapeA, Node *shapeB) {
 
 void apply_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 angularNormal, float penetrationDepth) {
     bool conditionA, conditionB;
-    METHOD(shapeA->parent, is_body, &conditionA);
-    METHOD(shapeB->parent, is_body, &conditionB);
+    (shapeA->parent)::is_body(&conditionA);
+    (shapeB->parent)::is_body(&conditionB);
     if (conditionA && conditionB)
         apply_body_collision(shapeA, shapeB, collisionNormal, angularNormal, penetrationDepth);
-    METHOD(shapeA->parent, is_area, &conditionA);
+    (shapeA->parent)::is_area(&conditionA);
     if (conditionA)
-        METHOD(shapeA->parent, collect_node, shapeB->parent, penetrationDepth);
-    METHOD(shapeB->parent, is_area, &conditionB);
+        (shapeA->parent)::collect_node(shapeB->parent, penetrationDepth);
+    (shapeB->parent)::is_area(&conditionB);
     if (conditionB)
-        METHOD(shapeB->parent, collect_node, shapeA->parent, penetrationDepth);
+        (shapeB->parent)::collect_node(shapeA->parent, penetrationDepth);
     
 }
 
@@ -216,8 +211,8 @@ bool check_collision_box_with_sphere(Node *shapeA, Node *shapeB) {
     Node *boxShape;
     Node *sphereShape;
     int priorityA, priorityB;
-    METHOD(shapeA, get_priority, &priorityA);
-    METHOD(shapeB, get_priority, &priorityB);
+    shapeA::get_priority(&priorityA);
+    shapeB::get_priority(&priorityB);
     if (priorityA < priorityB) {
         boxShape = shapeA;
         sphereShape = shapeB;
@@ -272,8 +267,8 @@ bool check_collision_box_with_sphere(Node *shapeA, Node *shapeB) {
         glm_vec3_sub(closestPoint, localSphereCenter, collisionNormal);
 
         int priorityA, priorityB;
-        METHOD(shapeA, get_priority, &priorityA);
-        METHOD(shapeB, get_priority, &priorityB);
+        shapeA::get_priority(&priorityA);
+        shapeB::get_priority(&priorityB);
         if (priorityA < priorityB) glm_vec3_negate(collisionNormal);
         glm_vec3_normalize(collisionNormal);
 
@@ -298,8 +293,8 @@ bool check_collision_box_with_plane(Node *shapeA, Node *shapeB) {
     Node *planeShape;
 
     int priorityA, priorityB;
-    METHOD(shapeA, get_priority, &priorityA);
-    METHOD(shapeB, get_priority, &priorityB);
+    shapeA::get_priority(&priorityA);
+    shapeB::get_priority(&priorityB);
     if (priorityA < priorityB) {
         boxShape = shapeA;
         planeShape = shapeB;
@@ -365,8 +360,8 @@ bool check_collision_box_with_plane(Node *shapeA, Node *shapeB) {
         glm_vec3_copy(planeNormal, collisionNormal);
 
         int priorityA, priorityB;
-        METHOD(shapeA, get_priority, &priorityA);
-        METHOD(shapeB, get_priority, &priorityB);
+        shapeA::get_priority(&priorityA);
+        shapeB::get_priority(&priorityB);
         if (priorityA < priorityB) glm_vec3_negate(collisionNormal);
         glm_vec3_normalize(collisionNormal);
         glm_vec3_copy(collisionNormal, angularNormal);
@@ -391,8 +386,8 @@ bool check_collision_box_with_mesh(Node *shapeA, Node *shapeB) {
 bool check_collision_box_with_ray(struct Node *shapeA, struct Node *shapeB) {
     Node *boxShape, *rayShape;
     int priorityA, priorityB;
-    METHOD(shapeA, get_priority, &priorityA);
-    METHOD(shapeB, get_priority, &priorityB);
+    shapeA::get_priority(&priorityA);
+    shapeB::get_priority(&priorityB);
     if (priorityA < priorityB) {
         boxShape = shapeA;
         rayShape = shapeB;
@@ -537,8 +532,8 @@ bool check_collision_sphere_with_plane(Node *shapeA, Node *shapeB) {
     Node *planeShape;
     
     int priorityA, priorityB;
-    METHOD(shapeA, get_priority, &priorityA);
-    METHOD(shapeB, get_priority, &priorityB);
+    shapeA::get_priority(&priorityA);
+    shapeB::get_priority(&priorityB);
     if (priorityA < priorityB) {
         sphereShape = shapeA;
         planeShape = shapeB;
@@ -564,8 +559,8 @@ bool check_collision_sphere_with_plane(Node *shapeA, Node *shapeB) {
         glm_vec3_copy(planeNormal, collisionNormal);
 
         int priorityA, priorityB;
-        METHOD(shapeA, get_priority, &priorityA);
-        METHOD(shapeB, get_priority, &priorityB);
+        shapeA::get_priority(&priorityA);
+        shapeB::get_priority(&priorityB);
         if (priorityA < priorityB) glm_vec3_negate(collisionNormal);
         glm_vec3_normalize(collisionNormal);
         glm_vec3_copy(collisionNormal, angularNormal);
@@ -589,8 +584,8 @@ bool check_collision_sphere_with_mesh(Node *shapeA, Node *shapeB) {
     Node *sphereShape;
     Node *meshShape;
     int priorityA, priorityB;
-    METHOD(shapeA, get_priority, &priorityA);
-    METHOD(shapeB, get_priority, &priorityB);
+    shapeA::get_priority(&priorityA);
+    shapeB::get_priority(&priorityB);
     if (priorityA < priorityB) {
         sphereShape = shapeA;
         meshShape = shapeB;
@@ -663,8 +658,8 @@ bool check_collision_sphere_with_mesh(Node *shapeA, Node *shapeB) {
 bool check_collision_sphere_with_ray(struct Node *shapeA, struct Node *shapeB) {
     Node *sphereShape, *rayShape;
     int priorityA, priorityB;
-    METHOD(shapeA, get_priority, &priorityA);
-    METHOD(shapeB, get_priority, &priorityB);
+    shapeA::get_priority(&priorityA);
+    shapeB::get_priority(&priorityB);
     if (priorityA < priorityB) {
         sphereShape = shapeA;
         rayShape = shapeB;

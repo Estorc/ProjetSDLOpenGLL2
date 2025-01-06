@@ -1,13 +1,6 @@
 \doxysection{src/io/scene\+\_\+loader.c File Reference}
 \hypertarget{scene__loader_8c}{}\label{scene__loader_8c}\index{src/io/scene\_loader.c@{src/io/scene\_loader.c}}
-{\ttfamily \#include $<$stdlib.\+h$>$}\newline
-{\ttfamily \#include $<$stdio.\+h$>$}\newline
-{\ttfamily \#include "{}stringio.\+h"{}}\newline
 {\ttfamily \#include "{}../types.\+h"{}}\newline
-{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
-{\ttfamily \#include $<$SDL2/\+SDL\+\_\+opengl.\+h$>$}\newline
-{\ttfamily \#include $<$GL/glu.\+h$>$}\newline
-{\ttfamily \#include $<$GL/glext.\+h$>$}\newline
 {\ttfamily \#include "{}../math/math\+\_\+util.\+h"{}}\newline
 {\ttfamily \#include "{}model.\+h"{}}\newline
 {\ttfamily \#include "{}../render/framebuffer.\+h"{}}\newline
@@ -33,16 +26,7 @@ Include dependency graph for scene\+\_\+loader.\+c\+:\nopagebreak
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__SceneLoader_gad860d6a5634b822166edd2f2a8126c80}{load\+\_\+node}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} scripts\mbox{[}SCRIPTS\+\_\+\+COUNT\mbox{]}, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
+\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__SceneLoader_gafbb853272747ad89201f0a3bf8e7846f}{load\+\_\+node}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}scripts, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
 \begin{DoxyCompactList}\small\item\em Loads a node from a file. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{scene__loader_8c_abe0e5bbed1649a34dd9247de785c1276}{load\+\_\+scene}} (char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}scripts)
-\end{DoxyCompactItemize}
-
-
-\doxysubsection{Function Documentation}
-\Hypertarget{scene__loader_8c_abe0e5bbed1649a34dd9247de785c1276}\label{scene__loader_8c_abe0e5bbed1649a34dd9247de785c1276} 
-\index{scene\_loader.c@{scene\_loader.c}!load\_scene@{load\_scene}}
-\index{load\_scene@{load\_scene}!scene\_loader.c@{scene\_loader.c}}
-\doxysubsubsection{\texorpdfstring{load\_scene()}{load\_scene()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} load\+\_\+scene (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}}]{scripts }\end{DoxyParamCaption})}
-
+\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__SceneLoader_ga0aa55f0b593e73644e24b556cdfc58d7}{load\+\_\+scene}} (char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}scripts)
+\begin{DoxyCompactList}\small\item\em Loads a scene from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
