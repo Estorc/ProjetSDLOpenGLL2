@@ -153,7 +153,7 @@ vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir) {
 }
 
 #define BIAS 0.0003
-#define SHADOW_ATTENUATION 7.0
+#define SHADOW_ATTENUATION 6.0
 
 float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir, int index)
 {
