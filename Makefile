@@ -37,7 +37,7 @@ STEP_COL=\033[0;${FG_DEFAULT};${BG_DEFAULT};${BOLD}m
 FILE_COL=\033[0;${FG_ORANGE};${BG_DEFAULT};${ITALIC}m
 SUCCESS_COL=\033[0;${FG_GREEN};${BG_DEFAULT};${BOLD}m
 
-PRINT=@echo -e
+PRINT=@echo
 
 NEWLINE := $(shell printf "\n")
 
@@ -200,7 +200,7 @@ ${BUILD_DIR}/debug/%.o: %.c
 # @python3 ./tools/preprocessor_pipeline.py $$file/${dir $<}
 generate_header:
 	${PRINT} "Generate loading scripts header..."
-	${PRINT} "// Auto-generated scripts loading header file" > $(LOADING_SCRIPT_HEADER)
+	@echo "// Auto-generated scripts loading header file" > $(LOADING_SCRIPT_HEADER)
 	@for file in $(SCRIPTS_PATHS); do \
 		python3 ./tools/preprocessor_pipeline.py $$file ${PROCESSED_CLASS_DIR}/$$(dirname $$file); \
 		echo "#include \"../__processed__/$$file\"" >> $(LOADING_SCRIPT_HEADER); \

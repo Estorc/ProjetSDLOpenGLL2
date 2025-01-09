@@ -225,24 +225,24 @@ void main()
     for(int i = 0; i < dirLightsNum && i < DIR_LIGHTS_MAX; i++) {
         float shadow;
         if (shadowCastActive) shadow = ShadowCalculation(dirLightSpaceMatrix[i] * vec4(fs_in.FragPos, 1.0), normal, dirLights[i].position, dirLights[i].index);
-        result += CalcDirLight(dirLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? shadow : 0.0);
+        result += CalcDirLight(dirLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? min(shadow, 1.0) : 0.0);
     }
     // phase 2: point lights
     for(int i = 0; i < pointLightsNum && i < POINT_LIGHTS_MAX; i++) {
         float shadow = 0.0;
         if (shadowCastActive) for (int j = 0; j < 6; j++)
             shadow += ShadowCalculation(pointLightSpaceMatrix[i*6+j] * vec4(fs_in.FragPos, 1.0), normal, pointLights[i].position, pointLights[i].index+j);
-        result += CalcPointLight(pointLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? shadow : 0.0);  
+        result += CalcPointLight(pointLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? min(shadow, 1.0) : 0.0);  
     }  
     // phase 3: spot light
     for(int i = 0; i < spotLightsNum && i < SPOT_LIGHTS_MAX; i++) {
         float shadow;
         if (shadowCastActive) shadow = ShadowCalculation(spotLightSpaceMatrix[i] * vec4(fs_in.FragPos, 1.0), normal, spotLights[i].position, spotLights[i].index);
-        result += CalcSpotLight(spotLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? shadow : 0.0);
+        result += CalcSpotLight(spotLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? min(shadow, 1.0) : 0.0);
     }  
     
 
-    float gamma = 2.2;
+    float gamma = 1.8;
     FragColor = vec4(result, 1.0) * tex;
     FragColor.rgb = pow(FragColor.rgb, vec3(1.0/gamma));
     //vec3 debugColor = tangentViewDir * 0.5 + 0.5; // Map [-1, 1] range to [0, 1]
