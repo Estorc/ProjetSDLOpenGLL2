@@ -121,11 +121,11 @@ CLASSES_MODULES := $(patsubst %.class.c, %.class.o, $(CLASSES_MODULES))
 RELEASE_MODULES := $(RELEASE_MODULES) $(addprefix $(BUILD_DIR)/,${CLASSES_MODULES})
 DEBUG_MODULES := $(DEBUG_MODULES) $(addprefix $(BUILD_DIR)/debug/,${CLASSES_MODULES})
 
+UNAME_S := $(shell uname -s)
 PLATFORM := linux
 
-ifeq ($(PLATFORM), windows)
-	GCC = x86_64-w64-mingw32-gcc
-	LFLAGS += -lmingw32
+ifeq ($(findstring MINGW, $(UNAME)), MINGW)
+	GCC = gcc -m64
 else
 	GCC = gcc
 endif
