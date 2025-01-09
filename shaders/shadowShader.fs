@@ -242,7 +242,7 @@ void main()
     }  
     
 
-    float gamma = 2.0;
+    float gamma = 1.5;
     FragColor = vec4(result, 1.0) * tex;
     FragColor.rgb = pow(FragColor.rgb, vec3(1.0/gamma));
     //vec3 debugColor = tangentViewDir * 0.5 + 0.5; // Map [-1, 1] range to [0, 1]
