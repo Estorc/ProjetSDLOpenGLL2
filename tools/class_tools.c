@@ -3,9 +3,7 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#ifdef __linux__
 #include <unistd.h>
-#endif
 #include <ctype.h>
 #include <time.h>
 #include <sys/stat.h>
