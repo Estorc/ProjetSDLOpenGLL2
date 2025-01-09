@@ -121,14 +121,7 @@ CLASSES_MODULES := $(patsubst %.class.c, %.class.o, $(CLASSES_MODULES))
 RELEASE_MODULES := $(RELEASE_MODULES) $(addprefix $(BUILD_DIR)/,${CLASSES_MODULES})
 DEBUG_MODULES := $(DEBUG_MODULES) $(addprefix $(BUILD_DIR)/debug/,${CLASSES_MODULES})
 
-UNAME_S := $(shell uname -s)
-PLATFORM := linux
-
-ifeq ($(findstring MINGW, $(UNAME)), MINGW)
-	GCC = gcc -m64
-else
-	GCC = gcc
-endif
+GCC = gcc
 
 # ===============================================================
 
