@@ -27,4 +27,7 @@ void __class_method_node_remove_child_and_free(void * __retValueVP__, va_list ar
 void __class_method_node_remove_child_and_free_and_realloc(void * __retValueVP__, va_list args);
 void __class_method_node_index_of_child(void * __retValueVP__, va_list args);
 void __class_method_node_print(void * __retValueVP__, va_list args);
+void __class_method_node_emit_ready(void * __retValueVP__, va_list args);
+void __class_method_node_emit_update(void * __retValueVP__, va_list args);
+void __class_method_node_emit_signal(void * __retValueVP__, va_list args);
 #endif

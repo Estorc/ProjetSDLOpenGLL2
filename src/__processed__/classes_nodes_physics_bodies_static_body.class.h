@@ -16,4 +16,5 @@ void __class_method_staticbody_get_velocity_norm(void * __retValueVP__, va_list 
 void __class_method_staticbody_get_velocity(void * __retValueVP__, va_list args);
 void __class_method_staticbody_get_mass(void * __retValueVP__, va_list args);
 void __class_method_staticbody_get_center_of_mass(void * __retValueVP__, va_list args);
+void __class_method_staticbody_get_collision_normal(void * __retValueVP__, va_list args);
 #endif

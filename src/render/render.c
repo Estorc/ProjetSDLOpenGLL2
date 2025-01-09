@@ -29,11 +29,11 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
             bool is_body = false;
             node::is_body((&is_body));
             if (is_body) {
-                u8 *length;
-                Node ***shapes;
-                node::get_collisions_shapes(shapes, length);
-                for (int i = 0; i < *length; i++) {
-                    render_scene(window, (*shapes)[i], c, nodeModelMatrix, activeShader, shaders);
+                u8 length;
+                Node **shapes;
+                node::get_collisions_shapes(&shapes, &length);
+                for (int i = 0; i < length; i++) {
+                    render_scene(window, shapes[i], c, nodeModelMatrix, activeShader, shaders);
                 }
             }
         }

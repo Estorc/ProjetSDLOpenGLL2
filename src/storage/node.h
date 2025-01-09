@@ -68,8 +68,8 @@ typedef struct Node {
     vec3 globalScale; /**< The global scale of the node. */
 
     Behavior *behavior; /**< The behavior associated with the node. */
-    BehaviorParameter *params; /**< The parameters associated with the behavior. */
-    u8 params_count; /**< The number of parameters associated with the behavior. */
+    BehaviorAttribute *attribute; /**< The parameters associated with the behavior. */
+    u8 attributes_count; /**< The number of parameters associated with the behavior. */
 
     Shader shader; /**< The shader associated with the node. */
 } Node;
@@ -84,7 +84,7 @@ enum NodeFlags {
     NODE_VISIBLE            = 1 << 1, // 0000 0010
     NODE_SCRIPT             = 1 << 2, // 0000 0100 
     NODE_LIGHT_ACTIVE       = 1 << 3, // 0000 1000
-    NODE_UNUSED3            = 1 << 4, // 0001 0000
+    NODE_INITIALIZED        = 1 << 4, // 0001 0000
     NODE_UNUSED4            = 1 << 5, // 0010 0000
     NODE_UNUSED5            = 1 << 6, // 0100 0000
     NODE_EDITOR_FLAG        = 1 << 7, // 1000 0000

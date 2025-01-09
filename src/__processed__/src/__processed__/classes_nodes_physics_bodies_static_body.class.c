@@ -48,8 +48,15 @@ void __class_method_staticbody_load(void * __retValueVP__, va_list args) {Node *
         staticBody->length = 0;
         int children_count = 0;
         POINTER_CHECK(staticBody);
-        if (file)
-            fscanf(file,"(%d)\n", &children_count);
+        if (file) {
+            fscanf(file,"(%d", &children_count);
+            if (fgetc(file) != ')') {
+                fscanf(file, "%f,%f,%f)\n", &staticBody->forcedNormal[0], &staticBody->forcedNormal[1], &staticBody->forcedNormal[2]);
+            } else {
+                fscanf(file, "\n");
+                memset(staticBody->forcedNormal, 0, sizeof(staticBody->forcedNormal));
+            }
+        }
         this->type = __type__;
         call_method_0(METHOD(constructor,this,staticBody));
 
@@ -64,7 +71,7 @@ void __class_method_staticbody_load(void * __retValueVP__, va_list args) {Node *
         }
 }
 
-#line 63 "src/classes/nodes/physics/bodies/static_body.class.c"
+#line 70 "src/classes/nodes/physics/bodies/static_body.class.c"
 void __class_method_staticbody_save(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         fprintf(file, "%s", classManager.class_names[this->type]);
         StaticBody *staticBody = (StaticBody*) this->object;
@@ -78,7 +85,7 @@ void __class_method_staticbody_save(void * __retValueVP__, va_list args) {Node *
      * @return The velocity norm of the node.
      */
 
-#line 76 "src/classes/nodes/physics/bodies/static_body.class.c"
+#line 83 "src/classes/nodes/physics/bodies/static_body.class.c"
 void __class_method_staticbody_get_velocity_norm(void * __retValueVP__, va_list args) {float * __retValueP__ = (float *) __retValueVP__;Node * this = va_arg(args, Node *);(void)this;
         *__retValueP__ = 0.0f;return;
 }
@@ -89,7 +96,7 @@ void __class_method_staticbody_get_velocity_norm(void * __retValueVP__, va_list 
      * @param velocity Output vector to store the velocity.
      */
 
-#line 86 "src/classes/nodes/physics/bodies/static_body.class.c"
+#line 93 "src/classes/nodes/physics/bodies/static_body.class.c"
 void __class_method_staticbody_get_velocity(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);vec3 * velocity = va_arg(args, vec3 *);(void)this;
         glm_vec3_zero(*velocity);
 }
@@ -100,7 +107,7 @@ void __class_method_staticbody_get_velocity(void * __retValueVP__, va_list args)
      * @param mass Output pointer to store the mass.
      */
 
-#line 96 "src/classes/nodes/physics/bodies/static_body.class.c"
+#line 103 "src/classes/nodes/physics/bodies/static_body.class.c"
 void __class_method_staticbody_get_mass(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);float *  mass = va_arg(args, float * );(void)this;
         (*mass) = INFINITY;
 }
@@ -111,8 +118,16 @@ void __class_method_staticbody_get_mass(void * __retValueVP__, va_list args) {No
      * @param com Output vector to store the center of mass.
      */
 
-#line 106 "src/classes/nodes/physics/bodies/static_body.class.c"
+#line 113 "src/classes/nodes/physics/bodies/static_body.class.c"
 void __class_method_staticbody_get_center_of_mass(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);vec3 * com = va_arg(args, vec3 *);(void)this;
         glm_vec3_zero(*com);
+}
+
+
+
+#line 119 "src/classes/nodes/physics/bodies/static_body.class.c"
+void __class_method_staticbody_get_collision_normal(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);float * normal = va_arg(args, float *);(void)this;
+        StaticBody *staticBody = (StaticBody *) this->object;
+        glm_vec3_copy(staticBody->forcedNormal, normal);
 }
 

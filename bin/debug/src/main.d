@@ -328,7 +328,6 @@ bin/debug/src/main.o: src/__processed__/src/main.c \
  src/scripts/../__processed__/src/scripts/flashlight.cscript \
  src/scripts/../__processed__/src/scripts/free_camera.cscript \
  src/scripts/../__processed__/src/scripts/level_editor.cscript \
- src/scripts/../__processed__/src/scripts/level_editor2.cscript \
  src/scripts/../__processed__/src/scripts/menu.cscript \
  src/scripts/../__processed__/src/scripts/pinball.cscript \
  src/scripts/../__processed__/src/scripts/player.cscript \

@@ -18,8 +18,8 @@ class Node {
         this->length = 0;
         this->children = NULL;
         this->behavior = NULL;
-        this->params = NULL;
-        this->params_count = 0;
+        this->attribute = NULL;
+        this->attributes_count = 0;
         this->shader = 0;
         glm_vec3_zero(this->pos);
         glm_vec3_zero(this->rot);
@@ -100,7 +100,7 @@ class Node {
             (this->children[i])::free();
         }
         free(this->object);
-        free(this->params);
+        free(this->attribute);
         free(this->children);
         free(this);
     }
@@ -272,5 +272,18 @@ class Node {
             (this->children[i])::print(level+1);
         }
         #endif
+    }
+
+
+    void emit_ready(...) {
+        if (this->flags & NODE_SCRIPT && (*this->behavior)[BEHAVIOR_SCRIPT_READY]) (*this->behavior)[BEHAVIOR_SCRIPT_READY](this, args);
+    }
+
+    void emit_update(...) {
+        if (this->flags & NODE_SCRIPT && (*this->behavior)[BEHAVIOR_SCRIPT_UPDATE]) (*this->behavior)[BEHAVIOR_SCRIPT_UPDATE](this, args);
+    }
+
+    void emit_signal(...) {
+        if (this->flags & NODE_SCRIPT && (*this->behavior)[BEHAVIOR_SCRIPT_SIGNAL]) (*this->behavior)[BEHAVIOR_SCRIPT_SIGNAL](this, args);
     }
 }

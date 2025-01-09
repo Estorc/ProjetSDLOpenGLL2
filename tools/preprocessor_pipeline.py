@@ -107,33 +107,33 @@ try:
                         remaining_line = line[index:]
                         match = regex.match(r"^([a-zA-Z_][\da-zA-Z_]*||\([^)]*\))::\(([^)]*)\)([a-zA-Z_][\da-zA-Z_]*)(\((?:[^()]+|(?3))*+\))", remaining_line)
                         if match:
-                            class_name, ret_type, method_name, params = match.groups()
-                            params = params[1:-1] # Remove parentheses
-                            new_line += f"{json_data["type_cast"]["".join(ret_type.split())]}(METHOD({method_name},{class_name}{"," if params else ""}{params}))"
+                            class_name, ret_type, method_name, attribute = match.groups()
+                            attribute = attribute[1:-1] # Remove parentheses
+                            new_line += f"{json_data["type_cast"]["".join(ret_type.split())]}(METHOD({method_name},{class_name}{"," if attribute else ""}{attribute}))"
                             index += len(match.group(0))
                             continue
                         match = regex.match(r"^([a-zA-Z_][\da-zA-Z_]*||\([^)]*\))::([^:]*)::([a-zA-Z_][\da-zA-Z_]*)(\((?:[^()]+|(?3))*+\))", remaining_line)
                         if match:
-                            class_name, class_type, method_name, params = match.groups()
-                            params = params[1:-1] # Remove parentheses
-                            new_line += f"call_method_0(METHOD_TYPE({class_type},{method_name},{class_name}{"," if params else ""}{params}))"
+                            class_name, class_type, method_name, attribute = match.groups()
+                            attribute = attribute[1:-1] # Remove parentheses
+                            new_line += f"call_method_0(METHOD_TYPE({class_type},{method_name},{class_name}{"," if attribute else ""}{attribute}))"
                             index += len(match.group(0))
                             continue
                         match = regex.match(r"^([a-zA-Z_][\da-zA-Z_]*||\([^)]*\))::([a-zA-Z_][\da-zA-Z_]*)(\((?:[^()]+|(?3))*+\))", remaining_line)
                         if match:
-                            class_name, method_name, params = match.groups()
-                            params = params[1:-1] # Remove parentheses
+                            class_name, method_name, attribute = match.groups()
+                            attribute = attribute[1:-1] # Remove parentheses
                             if class_name in json_data["type_associations"]:
-                                new_line += f"{json_data["type_caller"][class_name][json_data["method_index"][method_name]]}(METHOD_TYPE({json_data["type_associations"][class_name]},{method_name}{"," if params else ""}{params}))"
+                                new_line += f"{json_data["type_caller"][class_name][json_data["method_index"][method_name]]}(METHOD_TYPE({json_data["type_associations"][class_name]},{method_name}{"," if attribute else ""}{attribute}))"
                             else:
-                                new_line += f"call_method_0(METHOD({method_name},{class_name}{"," if params else ""}{params}))"
+                                new_line += f"call_method_0(METHOD({method_name},{class_name}{"," if attribute else ""}{attribute}))"
                             index += len(match.group(0))
                             continue
                         match = regex.match(r"^([a-zA-Z_][\da-zA-Z_]*||\([^)]*\)) *= *new +([a-zA-Z_][\da-zA-Z_]*)\(([^)]*)\)", remaining_line)
                         if match:
-                            class_name, class_type, params = match.groups()
+                            class_name, class_type, attribute = match.groups()
                             if class_type in json_data["type_associations"]:
-                                new_line += f"{json_data["type_caller"][class_type][json_data["method_index"]["constructor"]]}(METHOD_TYPE({json_data["type_associations"][class_type]},constructor,{class_name}{"," if params else ""}{params}))"
+                                new_line += f"{json_data["type_caller"][class_type][json_data["method_index"]["constructor"]]}(METHOD_TYPE({json_data["type_associations"][class_type]},constructor,{class_name}{"," if attribute else ""}{attribute}))"
                             else:
                                 print(f"{input_file}:{line_index}:{index}: error: ‘{class_type}’ isn't a class name")
                             index += len(match.group(0))

@@ -1,46 +1,47 @@
 NEW_SCRIPT(free_camera)
-	PARAMS_COUNT(8);
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(8);
 
-	int *movable = &node->params[0].i;
-	int *active = &node->params[1].i;
-	float *targetRot = &node->params[2].f;
-	float *targetPos = &node->params[2+3].f;
+	int *movable = &this->attribute[0].i;
+	int *active = &this->attribute[1].i;
+	float *targetRot = &this->attribute[2].f;
+	float *targetPos = &this->attribute[2+3].f;
 
 
-	Camera *c = (Camera*) node->object;
+	Camera *c = (Camera*) this->object;
 
 	vec3 dir = {0.0f, 0.0f, 1.0f};
 	glm_vec3_rotate(dir, c->rot[0], (vec3){1.0f, 0.0f, 0.0f});
 	glm_vec3_rotate(dir, c->rot[1], (vec3){0.0f, 1.0f, 0.0f});
 	glm_vec3_rotate(dir, c->rot[2], (vec3){0.0f, 0.0f, 1.0f});
 
-	if (glm_vec3_norm2(targetPos) == 0) glm_vec3_copy(node->pos, targetPos);
-	if (glm_vec3_norm2(targetRot) == 0) glm_vec3_copy(node->rot, targetRot);
+	if (glm_vec3_norm2(targetPos) == 0) glm_vec3_copy(this->pos, targetPos);
+	if (glm_vec3_norm2(targetRot) == 0) glm_vec3_copy(this->rot, targetRot);
 
 	if (*movable) {
-		targetRot[1] -= (f32) (input->mouse.x - input->mouse.lastX) * delta * 100.0;
-		targetRot[0] -= (f32) (input->mouse.lastY - input->mouse.y) * delta * 100.0;
+		targetRot[1] -= (f32) (input.mouse.x - input.mouse.lastX) * delta * 100.0;
+		targetRot[0] -= (f32) (input.mouse.lastY - input.mouse.y) * delta * 100.0;
 		targetRot[0] = CLAMP(-180,targetRot[0],180);
 
 		f32 vel = 0.05f;
-		if (input->active_keys & KEY_SHIFT) vel = 0.3f;
+		if (input.active_keys & KEY_SHIFT) vel = 0.3f;
 		vel *= delta * 100.0;
 		f32 forwardVel = 0.0f;
 		
-		if (input->active_keys & KEY_LEFT) {
+		if (input.active_keys & KEY_LEFT) {
 			targetPos[0] += -dir[2] * vel;
 			targetPos[2] += dir[0] * vel;
 		};
-		if (input->active_keys & KEY_RIGHT) {
+		if (input.active_keys & KEY_RIGHT) {
 			targetPos[0] -= -dir[2] * vel;
 			targetPos[2] -= dir[0] * vel;
 		};
 
-		if (input->active_keys & KEY_JUMP) targetPos[1] += vel;
-		if (input->active_keys & KEY_CROUCH) targetPos[1] -= vel;
+		if (input.active_keys & KEY_JUMP) targetPos[1] += vel;
+		if (input.active_keys & KEY_CROUCH) targetPos[1] -= vel;
 
-		if (input->active_keys & KEY_UP) forwardVel -= vel;
-		if (input->active_keys & KEY_DOWN) forwardVel += vel;
+		if (input.active_keys & KEY_UP) forwardVel -= vel;
+		if (input.active_keys & KEY_DOWN) forwardVel += vel;
 
 		targetPos[0] += dir[0] * forwardVel;
 		targetPos[1] += dir[1] * forwardVel;
@@ -48,8 +49,8 @@ NEW_SCRIPT(free_camera)
 	}
 
 	if (*active) {
-		Vec3fApproach(node->rot, targetRot, (0.1/delta));
-		Vec3fApproach(node->pos, targetPos, (0.1/delta));
+		Vec3fApproach(this->rot, targetRot, (0.1/delta));
+		Vec3fApproach(this->pos, targetPos, (0.1/delta));
 	}
 	
 END_SCRIPT(free_camera)

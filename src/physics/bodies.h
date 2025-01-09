@@ -24,6 +24,7 @@ struct Node;
  */
 typedef struct StaticBody {
     struct Node **collisionsShapes; /**< Array of collision shapes associated with the static body. */
+    vec3 forcedNormal; /**< If defined, force the collision normal of the static body. */
     u8 length; /**< Number of collision shapes. */
 } StaticBody;
 

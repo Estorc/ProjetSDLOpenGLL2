@@ -139,7 +139,7 @@ class Model : public Node {
         for (int i = 0; i < this->length; i++) {
             (this->children[i])::free();
         }
-        free(this->params);
+        free(this->attribute);
         free(this->children);
         free(this);
     }

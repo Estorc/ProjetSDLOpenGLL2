@@ -22,6 +22,7 @@ class Light : public Node {
     static TextureMap lightPointTexture = 0;
     static TextureMap directionalLightTexture = 0;
     void render(mat4 *modelMatrix) {
+        #ifdef DEBUG
         if (!vao) this::init_vao();
         use_shader(billboardShader);
 
@@ -35,6 +36,7 @@ class Light : public Node {
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
+        #endif
     }
 
 

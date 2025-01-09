@@ -12,8 +12,6 @@
 #include "../render/camera.h"
 #include "../storage/queue.h"
 
-
-
 void change_scene() {
 
     Node **root = (Node **) queue_pop(&callQueue);
@@ -24,4 +22,12 @@ void change_scene() {
     (*root) = load_scene(path, camera, scripts);
     printf("Scene changed to %s\n", path);
     printf("Root: %p\n", *root);
+}
+
+void prepare_change_scene(char *path) {
+    queue_push(&callQueue, change_scene);
+    queue_push(&callQueue, &mainNodeTree.root);
+    queue_push(&callQueue, (void *) path);
+    queue_push(&callQueue, &mainNodeTree.camera);
+    queue_push(&callQueue, mainNodeTree.scripts);
 }

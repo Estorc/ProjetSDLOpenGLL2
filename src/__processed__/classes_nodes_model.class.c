@@ -144,7 +144,7 @@ void __class_method_model_free(void * __retValueVP__, va_list args) {Node * this
         for (int i = 0; i < this->length; i++) {
             (this->children[i])::free();
         }
-        free(this->params);
+        free(this->attribute);
         free(this->children);
         free(this);
 }

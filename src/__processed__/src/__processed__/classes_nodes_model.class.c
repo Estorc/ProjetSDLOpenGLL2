@@ -145,7 +145,7 @@ void __class_method_model_free(void * __retValueVP__, va_list args) {Node * this
         for (int i = 0; i < this->length; i++) {
             call_method_0(METHOD(free,(this->children[i])));
         }
-        free(this->params);
+        free(this->attribute);
         free(this->children);
         free(this);
 }

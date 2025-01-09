@@ -1,4 +1,15 @@
-Ajouter static body au bump simplifié (escaliers)
+Avancer le tuto OpenGL
+
+RIG https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation
+
+SSAO https://learnopengl.com/Advanced-Lighting/SSAO
+
+PBR https://learnopengl.com/PBR/Theory
+
+
+
+
+
 Améliorer le torque
 
 Save and load settings
@@ -16,16 +27,6 @@ Make parallax Color is vec1 and not vec3
 
 
 Gérer les "petites" fuites
-
-
-Avancer le tuto OpenGL
-
-RIG https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation
-
-SSAO https://learnopengl.com/Advanced-Lighting/SSAO
-
-PBR https://learnopengl.com/PBR/Theory
-
 
 
 Frustum Culling https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling

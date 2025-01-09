@@ -1,29 +1,27 @@
 NEW_SCRIPT(title_screen_camera)
+	GET_READY_PARAMETERS();
 
-	node->rot[1] += 1.0f;
+	this->rot[1] += 1.0f;
 	const float distance = 25.0f;
-	glm_vec3_copy((vec3) {sin(to_radians(node->rot[1]))*distance, 5.0f, cos(to_radians(node->rot[1]))*distance}, node->pos);
+	glm_vec3_copy((vec3) {sin(to_radians(this->rot[1]))*distance, 5.0f, cos(to_radians(this->rot[1]))*distance}, this->pos);
 
 END_SCRIPT(title_screen_camera)
 
 
 NEW_SCRIPT(play_game_button)
-	PARAMS_COUNT(1);
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(1);
 
-	bool *active = &node->params[0].b;
+	bool *active = &this->attribute[0].b;
 
-	Frame *frame = (Frame*) node->object;
+	Frame *frame = (Frame*) this->object;
 	Button *button = (Button*) frame->button;
 
 	if (!button->checked) button->checked = active;
 
 	if ((*button->checked)) {
 		
-		queue_push(&callQueue, change_scene);
-		queue_push(&callQueue, &mainNodeTree.root);
-		queue_push(&callQueue, "assets/scenes/scene_test.scene");
-		queue_push(&callQueue, &mainNodeTree.camera);
-		queue_push(&callQueue, mainNodeTree.scripts);
+		prepare_change_scene("assets/scenes/scene_test.scene");
 		*button->checked = false;
 	}
 
@@ -31,22 +29,19 @@ END_SCRIPT(play_game_button)
 
 
 NEW_SCRIPT(settings_game_button)
-	PARAMS_COUNT(1);
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(1);
 
-	bool *active = &node->params[0].b;
+	bool *active = &this->attribute[0].b;
 
-	Frame *frame = (Frame*) node->object;
+	Frame *frame = (Frame*) this->object;
 	Button *button = (Button*) frame->button;
 
 	if (!button->checked) button->checked = active;
 
 	if ((*button->checked)) {
 		
-		queue_push(&callQueue, change_scene);
-		queue_push(&callQueue, &mainNodeTree.root);
-		queue_push(&callQueue, "assets/scenes/settings.scene");
-		queue_push(&callQueue, &mainNodeTree.camera);
-		queue_push(&callQueue, mainNodeTree.scripts);
+		prepare_change_scene("assets/scenes/settings.scene");
 		*button->checked = false;
 	}
 
@@ -54,12 +49,13 @@ END_SCRIPT(settings_game_button)
 
 
 NEW_SCRIPT(quit_game_button)
-	PARAMS_COUNT(1);
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(1);
 
 
-	bool *active = &node->params[0].b;
+	bool *active = &this->attribute[0].b;
 
-	Frame *frame = (Frame*) node->object;
+	Frame *frame = (Frame*) this->object;
 	Button *button = (Button*) frame->button;
 
 	if (!button->checked) button->checked = active;

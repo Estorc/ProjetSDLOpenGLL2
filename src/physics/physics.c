@@ -17,6 +17,19 @@
 
 
 void apply_body_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 angularNormal, float penetrationDepth) {
+    vec3 collisionNormalA;
+    (shapeA->parent)::get_collision_normal(collisionNormalA);
+    vec3 collisionNormalB;
+    (shapeB->parent)::get_collision_normal(collisionNormalB);
+
+    if (collisionNormalA[0] || collisionNormalA[1] || collisionNormalA[2]) {
+        glm_vec3_copy(collisionNormalA, collisionNormal);
+    }
+    if (collisionNormalB[0] || collisionNormalB[1] || collisionNormalB[2]) {
+        glm_vec3_negate(collisionNormalB);
+        glm_vec3_copy(collisionNormalB, collisionNormal);
+    }
+
     // Mass calculation
     float massA, massB;
     (shapeA->parent)::get_mass(&massA);
@@ -173,12 +186,6 @@ void check_collisions(Node *shape) {
 }
 
 
-
-void update_script(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Input *input, Window *window) {
-    if (node->flags & NODE_SCRIPT && (*node->behavior)[BEHAVIOR_SCRIPT_UPDATE]) (*node->behavior)[BEHAVIOR_SCRIPT_UPDATE](node, input, window, delta);
-}
-
-
 void update_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Input *input, Window *window, u8 lightsCount[LIGHTS_COUNT], bool active) {
     vec3 newPos;
     vec3 newRot;
@@ -188,8 +195,13 @@ void update_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Inp
     glm_vec3_copy(rot, newRot);
     glm_vec3_copy(scale, newScale);
 
+    if (!(node->flags & NODE_INITIALIZED)) {
+        node::emit_ready(delta);
+        node->flags |= NODE_INITIALIZED;
+    }
+
     if (node->flags & NODE_ACTIVE && (active || node->flags & NODE_EDITOR_FLAG)) {
-        update_script(node, newPos, newRot, newScale, delta, input, window);
+        node::emit_update(delta);
         node::update(newPos, newRot, newScale, delta, lightsCount);
     } else {
         active = false;

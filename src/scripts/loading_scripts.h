@@ -3,7 +3,6 @@
 #include "../__processed__/src/scripts/flashlight.cscript"
 #include "../__processed__/src/scripts/free_camera.cscript"
 #include "../__processed__/src/scripts/level_editor.cscript"
-#include "../__processed__/src/scripts/level_editor2.cscript"
 #include "../__processed__/src/scripts/menu.cscript"
 #include "../__processed__/src/scripts/pinball.cscript"
 #include "../__processed__/src/scripts/player.cscript"

@@ -25,10 +25,10 @@ class Body : public PhysicalNode {
      */
 
     void add_shape(Node *child) {
-        u8 *length;
-        Node ***shapes;
-        this::get_collisions_shapes(shapes, length);
-        (*shapes)[(*length)++] = child;
+        u8 length;
+        Node **shapes;
+        this::get_collisions_shapes(&shapes, &length);
+        shapes[length++] = child;
         child->parent = this;
         
     }
@@ -41,12 +41,12 @@ class Body : public PhysicalNode {
      */
 
     void add_shape_and_realloc(Node *child) {
-        u8 *length;
-        Node ***shapes;
-        this::get_collisions_shapes(shapes, length);
-        (*shapes) = realloc((*shapes), sizeof(Node *) * ((*length)+1));
-        POINTER_CHECK((*shapes));
-        (*shapes)[(*length)++] = child;
+        u8 length;
+        Node **shapes;
+        this::get_collisions_shapes(&shapes, &length);
+        shapes = realloc(shapes, sizeof(Node *) * (length+1));
+        POINTER_CHECK(shapes);
+        shapes[length++] = child;
         child->parent = this;
     }
 
@@ -58,12 +58,12 @@ class Body : public PhysicalNode {
      */
 
     void remove_shape(Node *child) {
-        u8 *length;
-        Node ***shapes;
-        this::get_collisions_shapes(shapes, length);
-        for (Node **rightCursor, **leftCursor = rightCursor = (*shapes); rightCursor < (*shapes) + (*length); leftCursor++, rightCursor++) {
+        u8 length;
+        Node **shapes;
+        this::get_collisions_shapes(&shapes, &length);
+        for (Node **rightCursor, **leftCursor = rightCursor = shapes; rightCursor < shapes + length; leftCursor++, rightCursor++) {
             if (child == *rightCursor) rightCursor++;
-            if (leftCursor != rightCursor && rightCursor < (*shapes) + (*length)) *leftCursor = *rightCursor;
+            if (leftCursor != rightCursor && rightCursor < shapes + length) *leftCursor = *rightCursor;
         }
     }
 
@@ -75,14 +75,14 @@ class Body : public PhysicalNode {
      */
 
     void remove_shape_and_realloc(Node *child) {
-        u8 *length;
-        Node ***shapes;
-        this::get_collisions_shapes(shapes, length);
-        for (Node **rightCursor, **leftCursor = rightCursor = (*shapes); rightCursor < (*shapes) + (*length); leftCursor++, rightCursor++) {
+        u8 length;
+        Node **shapes;
+        this::get_collisions_shapes(&shapes, &length);
+        for (Node **rightCursor, **leftCursor = rightCursor = shapes; rightCursor < shapes + length; leftCursor++, rightCursor++) {
             if (child == *rightCursor) rightCursor++;
-            if (leftCursor != rightCursor && rightCursor < (*shapes) + (*length)) *leftCursor = *rightCursor;
+            if (leftCursor != rightCursor && rightCursor < shapes + length) *leftCursor = *rightCursor;
         }
-        (*shapes) = realloc((*shapes), sizeof(Node *) * (--(*length)));
+        shapes = realloc(shapes, sizeof(Node *) * (--length));
         //POINTER_CHECK((*shapes));
     }
 
@@ -94,12 +94,12 @@ class Body : public PhysicalNode {
      */
 
     void remove_shape_and_free(Node *child) {
-        u8 *length;
-        Node ***shapes;
-        this::get_collisions_shapes(shapes, length);
-        for (Node **rightCursor, **leftCursor = rightCursor = (*shapes); rightCursor < (*shapes) + (*length); leftCursor++, rightCursor++) {
+        u8 length;
+        Node **shapes;
+        this::get_collisions_shapes(&shapes, &length);
+        for (Node **rightCursor, **leftCursor = rightCursor = shapes; rightCursor < shapes + length; leftCursor++, rightCursor++) {
             if (child == *rightCursor) (*rightCursor)::free(), rightCursor++;
-            if (leftCursor != rightCursor && rightCursor < (*shapes) + (*length)) *leftCursor = *rightCursor;
+            if (leftCursor != rightCursor && rightCursor < shapes + length) *leftCursor = *rightCursor;
         }
     }
 
@@ -111,17 +111,21 @@ class Body : public PhysicalNode {
      */
 
     void remove_shape_and_free_and_realloc(Node *child) {
-        u8 *length;
-        Node ***shapes;
-        this::get_collisions_shapes(shapes, length);
-        for (Node **rightCursor, **leftCursor = rightCursor = (*shapes); rightCursor < (*shapes) + (*length); leftCursor++, rightCursor++) {
+        u8 length;
+        Node **shapes;
+        this::get_collisions_shapes(&shapes, &length);
+        for (Node **rightCursor, **leftCursor = rightCursor = shapes; rightCursor < shapes + length; leftCursor++, rightCursor++) {
             if (child == *rightCursor) {
                 (*rightCursor)::free();
                 rightCursor++;
             }
-            if (leftCursor != rightCursor && rightCursor < (*shapes) + (*length)) *leftCursor = *rightCursor;
+            if (leftCursor != rightCursor && rightCursor < shapes + length) *leftCursor = *rightCursor;
         }
-        (*shapes) = realloc((*shapes), sizeof(Node *) * (--(*length)));
+        shapes = realloc(shapes, sizeof(Node *) * (--length));
         //POINTER_CHECK((*shapes));
+    }
+
+    void get_collision_normal(float *normal) {
+        glm_vec3_zero(normal);
     }
 }

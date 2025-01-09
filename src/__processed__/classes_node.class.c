@@ -19,8 +19,8 @@ void __class_method_node_initialize_node(void * __retValueVP__, va_list args) {N
         this->length = 0;
         this->children = NULL;
         this->behavior = NULL;
-        this->params = NULL;
-        this->params_count = 0;
+        this->attribute = NULL;
+        this->attributes_count = 0;
         this->shader = 0;
         glm_vec3_zero(this->pos);
         glm_vec3_zero(this->rot);
@@ -109,7 +109,7 @@ void __class_method_node_free(void * __retValueVP__, va_list args) {Node * this 
             (this->children[i])::free();
         }
         free(this->object);
-        free(this->params);
+        free(this->attribute);
         free(this->children);
         free(this);
 }
@@ -301,4 +301,20 @@ void __class_method_node_print(void * __retValueVP__, va_list args) {Node * this
             (this->children[i])::print(level+1);
         }
         #endif
+}
+
+
+#line 278 "src/classes/node.class.c"
+void __class_method_node_emit_ready(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
+        if (this->flags & NODE_SCRIPT && (*this->behavior)[BEHAVIOR_SCRIPT_READY]) (*this->behavior)[BEHAVIOR_SCRIPT_READY](this, args);
+}
+
+#line 282 "src/classes/node.class.c"
+void __class_method_node_emit_update(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
+        if (this->flags & NODE_SCRIPT && (*this->behavior)[BEHAVIOR_SCRIPT_UPDATE]) (*this->behavior)[BEHAVIOR_SCRIPT_UPDATE](this, args);
+}
+
+#line 286 "src/classes/node.class.c"
+void __class_method_node_emit_signal(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
+        if (this->flags & NODE_SCRIPT && (*this->behavior)[BEHAVIOR_SCRIPT_SIGNAL]) (*this->behavior)[BEHAVIOR_SCRIPT_SIGNAL](this, args);
 }

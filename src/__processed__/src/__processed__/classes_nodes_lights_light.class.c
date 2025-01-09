@@ -24,6 +24,7 @@ void __class_method_light_init_light(void * __retValueVP__, va_list args) {Node 
     static TextureMap directionalLightTexture = 0;
 #line 24 "src/classes/nodes/lights/light.class.c"
 void __class_method_light_render(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);mat4 * modelMatrix = va_arg(args, mat4 *);(void)this;
+        #ifdef DEBUG
         if (!vao) call_method_0(METHOD(init_vao,this));
         use_shader(billboardShader);
 
@@ -37,10 +38,11 @@ void __class_method_light_render(void * __retValueVP__, va_list args) {Node * th
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
+        #endif
 }
 
 
-#line 41 "src/classes/nodes/lights/light.class.c"
+#line 43 "src/classes/nodes/lights/light.class.c"
 void __class_method_light_init_vao(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         float quadVertices[] = {
             // positions        // texture Coords
@@ -77,7 +79,7 @@ void __class_method_light_init_vao(void * __retValueVP__, va_list args) {Node * 
      * @param storageBufferIndex The index of the storage buffer.
      */
 
-#line 77 "src/classes/nodes/lights/light.class.c"
+#line 79 "src/classes/nodes/lights/light.class.c"
 void __class_method_light_configure_lighting(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);WorldShaders * shaders = va_arg(args, WorldShaders *);mat4 * lightView = va_arg(args, mat4 *);mat4 * lightProjection = va_arg(args, mat4 *);int  storageBufferIndex = va_arg(args, int );(void)this;
         mat4 lightSpaceMatrix;
         glm_mat4_mul(*lightProjection, *lightView, lightSpaceMatrix);

@@ -44,8 +44,15 @@ class StaticBody : public Body {
         staticBody->length = 0;
         int children_count = 0;
         POINTER_CHECK(staticBody);
-        if (file)
-            fscanf(file,"(%d)\n", &children_count);
+        if (file) {
+            fscanf(file,"(%d", &children_count);
+            if (fgetc(file) != ')') {
+                fscanf(file, "%f,%f,%f)\n", &staticBody->forcedNormal[0], &staticBody->forcedNormal[1], &staticBody->forcedNormal[2]);
+            } else {
+                fscanf(file, "\n");
+                memset(staticBody->forcedNormal, 0, sizeof(staticBody->forcedNormal));
+            }
+        }
         this->type = __type__;
         this::constructor(staticBody);
 
@@ -105,6 +112,13 @@ class StaticBody : public Body {
 
     void get_center_of_mass(vec3 *com) {
         glm_vec3_zero(*com);
+    }
+
+
+
+    void get_collision_normal(float *normal) {
+        StaticBody *staticBody = (StaticBody *) this->object;
+        glm_vec3_copy(staticBody->forcedNormal, normal);
     }
 
 }

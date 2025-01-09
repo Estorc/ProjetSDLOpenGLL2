@@ -179,6 +179,10 @@ int get_method_args(char *args, Argument *arg) {
 			char argstr[100];
 			strncpy(argstr, arg_start, arg_end - arg_start);
 			argstr[arg_end - arg_start] = '\0';
+
+			if (strstr(argstr, "...")) {
+				return arg_count;
+			}
 			
 			char * argstr_end = argstr + strlen(argstr);
 			while (*argstr_end == ' ') argstr_end--;

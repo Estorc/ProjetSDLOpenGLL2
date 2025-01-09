@@ -32,7 +32,7 @@ class Camera : public Node {
             fscanf(file,"(%d)", &active_camera);
             if (active_camera) {
                 if (c) *c = cam;
-                else if (editor) editor->params[5].node = this;
+                else if (editor) editor->attribute[5].node = this;
             }
         }
         this->type = __type__;
@@ -41,7 +41,7 @@ class Camera : public Node {
 
     void save(FILE *file, Node *editor) {
         fprintf(file, "%s", classManager.class_names[this->type]);
-        if (editor) fprintf(file, "(%d)", !!(editor->params[5].node == this));
+        if (editor) fprintf(file, "(%d)", !!(editor->attribute[5].node == this));
         else fprintf(file, "(%d)", 0);
     }
 

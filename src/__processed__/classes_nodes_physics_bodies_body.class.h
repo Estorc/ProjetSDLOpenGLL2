@@ -15,4 +15,5 @@ void __class_method_body_remove_shape(void * __retValueVP__, va_list args);
 void __class_method_body_remove_shape_and_realloc(void * __retValueVP__, va_list args);
 void __class_method_body_remove_shape_and_free(void * __retValueVP__, va_list args);
 void __class_method_body_remove_shape_and_free_and_realloc(void * __retValueVP__, va_list args);
+void __class_method_body_get_collision_normal(void * __retValueVP__, va_list args);
 #endif

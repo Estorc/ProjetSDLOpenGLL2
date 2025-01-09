@@ -34,7 +34,7 @@ void __class_method_camera_load(void * __retValueVP__, va_list args) {Node * thi
             fscanf(file,"(%d)", &active_camera);
             if (active_camera) {
                 if (c) *c = cam;
-                else if (editor) editor->params[5].node = this;
+                else if (editor) editor->attribute[5].node = this;
             }
         }
         this->type = __type__;
@@ -44,7 +44,7 @@ void __class_method_camera_load(void * __retValueVP__, va_list args) {Node * thi
 #line 42 "src/classes/nodes/camera.class.c"
 void __class_method_camera_save(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);Node * editor = va_arg(args, Node *);(void)this;
         fprintf(file, "%s", classManager.class_names[this->type]);
-        if (editor) fprintf(file, "(%d)", !!(editor->params[5].node == this));
+        if (editor) fprintf(file, "(%d)", !!(editor->attribute[5].node == this));
         else fprintf(file, "(%d)", 0);
 }
 

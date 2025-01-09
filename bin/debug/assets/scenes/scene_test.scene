@@ -15,7 +15,7 @@ RigidBody(0,0,0,0,0,0,0,-1,0,5,0.99,0,0,0,1)
 SphereCShape[m0,0,0r0,0,0s1,1,1a1v1]
 [m0,160,1r0,0,0s1,1,1a1v1]:1
 Model(assets/models/debug_sphere/model.obj)[m0,0,0r0,0,0s1,1,1a1v1]
-StaticBody(1)
+StaticBody(1,0,1,0)
 BoxCShape[m0,0,0r0,0,0s1,1,1a1v1]
 [m0,10,0r0,45,45s2,4,2a1v1]:1
 Model(assets/models/crate/model.obj)[m0,0,0r0,0,0s1,1,1a1v1]

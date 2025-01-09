@@ -96,6 +96,7 @@ Node *load_node(FILE *file, Camera **c, Script *scripts, Node *editor) {
             case '{': ;
                 char scriptname[BEHAVIOR_SCRIPT_COUNT][100];
                 Behavior *behavior = malloc(sizeof(Behavior));
+                memset(behavior, 0, sizeof(Behavior));
                 for (int i = 0; i < BEHAVIOR_SCRIPT_COUNT; i++) {
                     if (i == BEHAVIOR_SCRIPT_COUNT-1) fscanf(file, "%100[^}]}", scriptname[i]);
                     else fscanf(file, "%100[^,],", scriptname[i]);
