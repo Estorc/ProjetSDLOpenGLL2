@@ -153,7 +153,7 @@ vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir) {
 }
 
 #define BIAS 0.0003
-#define SHADOW_ATTENUATION 8.0
+#define SHADOW_ATTENUATION 7.0
 
 float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir, int index)
 {
@@ -242,7 +242,7 @@ void main()
     }  
     
 
-    float gamma = 2.0;
+    float gamma = 1.8;
     FragColor = vec4(result, 1.0) * tex;
     FragColor.rgb = pow(FragColor.rgb, vec3(1.0/gamma));
     //vec3 debugColor = tangentViewDir * 0.5 + 0.5; // Map [-1, 1] range to [0, 1]
