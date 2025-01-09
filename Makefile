@@ -37,6 +37,8 @@ STEP_COL=\033[0;${FG_DEFAULT};${BG_DEFAULT};${BOLD}m
 FILE_COL=\033[0;${FG_ORANGE};${BG_DEFAULT};${ITALIC}m
 SUCCESS_COL=\033[0;${FG_GREEN};${BG_DEFAULT};${BOLD}m
 
+PRINT=@echo -e
+
 NEWLINE := $(shell printf "\n")
 
 # Object Files path
@@ -135,87 +137,87 @@ endif
 all:release launch
 
 init_build:
-	@echo "${STEP_COL}===================== Begin build. ====================${NC}"
+	${PRINT} "${STEP_COL}===================== Begin build. ====================${NC}"
 
 launch:
-	@echo "${STEP_COL}=================== Launch the app... =================${NC}"
+	${PRINT} "${STEP_COL}=================== Launch the app... =================${NC}"
 	@${BUILD_DIR}/release/app
 
 
 release: generate_header init_build ${RELEASE_MODULES}
-	@echo "${STEP_COL}===================== Begin linking. ====================${NC}"
-	@echo "${ACT_COL}Linking app...${NC}"
+	${PRINT} "${STEP_COL}===================== Begin linking. ====================${NC}"
+	${PRINT} "${ACT_COL}Linking app...${NC}"
 	@mkdir -p ${BUILD_DIR}/release
 	@${GCC} -o ${BUILD_DIR}/release/app ${SCRIPTS_COUNT} ${RELEASE_MODULES} ${LFLAGS} ${WFLAGS}
 
-	@echo "${ACT_COL}Copying assets...${NC}"
+	${PRINT} "${ACT_COL}Copying assets...${NC}"
 	@rsync -rupE assets ${BUILD_DIR}/release/
-	@echo "${SUCCESS_COL}Assets copied!${NC}"
-	@echo "${ACT_COL}Copying shaders...${NC}"
+	${PRINT} "${SUCCESS_COL}Assets copied!${NC}"
+	${PRINT} "${ACT_COL}Copying shaders...${NC}"
 	@rsync -rupE shaders ${BUILD_DIR}/release/
-	@echo "${SUCCESS_COL}Shaders copied!${NC}"
+	${PRINT} "${SUCCESS_COL}Shaders copied!${NC}"
 
-	@echo "${STEP_COL}============= ${SUCCESS_COL}Successfully build the app!${NC}${STEP_COL} =============${NC}"
+	${PRINT} "${STEP_COL}============= ${SUCCESS_COL}Successfully build the app!${NC}${STEP_COL} =============${NC}"
 
 debug: generate_header init_build ${DEBUG_MODULES}
-	@echo "${GCC}"
-	@echo "${STEP_COL}===================== Begin debug linking. ====================${NC}"
-	@echo "${ACT_COL}Linking debug app...${NC}"
+	${PRINT} "${GCC}"
+	${PRINT} "${STEP_COL}===================== Begin debug linking. ====================${NC}"
+	${PRINT} "${ACT_COL}Linking debug app...${NC}"
 	@mkdir -p ${BUILD_DIR}/debug
 	@${GCC} -o ${BUILD_DIR}/debug/app -g -O0 ${SCRIPTS_COUNT} ${DEBUG_MODULES} ${LFLAGS} ${WFLAGS}
 
-	@echo "${ACT_COL}Copying assets...${NC}"
+	${PRINT} "${ACT_COL}Copying assets...${NC}"
 	@rsync -rupE assets ${BUILD_DIR}/debug/
-	@echo "${SUCCESS_COL}Assets copied!${NC}"
-	@echo "${ACT_COL}Copying shaders...${NC}"
+	${PRINT} "${SUCCESS_COL}Assets copied!${NC}"
+	${PRINT} "${ACT_COL}Copying shaders...${NC}"
 	@rsync -rupE shaders ${BUILD_DIR}/debug/
-	@echo "${SUCCESS_COL}Shaders copied!${NC}"
+	${PRINT} "${SUCCESS_COL}Shaders copied!${NC}"
 
-	@echo "${STEP_COL}============= ${SUCCESS_COL}Successfully build the debug app!${NC}${STEP_COL} =============${NC}"
+	${PRINT} "${STEP_COL}============= ${SUCCESS_COL}Successfully build the debug app!${NC}${STEP_COL} =============${NC}"
 
 tools:
-	@echo "${STEP_COL}===================== Begin build tools. ===================="
-	@echo "${ACT_COL}Build tools...${NC}"
+	${PRINT} "${STEP_COL}===================== Begin build tools. ===================="
+	${PRINT} "${ACT_COL}Build tools...${NC}"
 	@${GCC} -o tools/class_tools tools/class_tools.c ${WFLAGS} -Wno-format-truncation
 	@${GCC} -o tools/node_tools tools/node_tools.c ${WFLAGS}
-	@echo "${STEP_COL}============= ${NC}${SUCCESS_COL}Successfully build the tools!${NC}${STEP_COL} =============${NC}"
+	${PRINT} "${STEP_COL}============= ${NC}${SUCCESS_COL}Successfully build the tools!${NC}${STEP_COL} =============${NC}"
 
 # Release objects constructor
 ${BUILD_DIR}/%.o: %.c
-	@echo "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}..."
+	${PRINT} "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}..."
 	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
 	@python3 ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
 
-	@echo "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}..."
+	${PRINT} "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}..."
 	@mkdir -p ${BUILD_DIR}/${dir $*}
 	@${GCC} -c ${PROCESSED_CLASS_DIR}/$< -o ${BUILD_DIR}/$*.o -I$(dir $*) ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
-	@echo "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/$*.o${NC}"
+	${PRINT} "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/$*.o${NC}"
 
 # Debug objects constructor
 ${BUILD_DIR}/debug/%.o: %.c
-	@echo "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}..."
+	${PRINT} "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}..."
 	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
 	@python3 ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
 
-	@echo "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}..."
+	${PRINT} "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}..."
 	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
 	@${GCC} -c ${PROCESSED_CLASS_DIR}/$< -g -o ${BUILD_DIR}/debug/$*.o -I$(dir $*) -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
-	@echo "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}"
+	${PRINT} "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}"
 
 # @python3 ./tools/preprocessor_pipeline.py $$file/${dir $<}
 generate_header:
-	@echo "Generate loading scripts header..."
-	@echo "// Auto-generated scripts loading header file" > $(LOADING_SCRIPT_HEADER)
+	${PRINT} "Generate loading scripts header..."
+	${PRINT} "// Auto-generated scripts loading header file" > $(LOADING_SCRIPT_HEADER)
 	@for file in $(SCRIPTS_PATHS); do \
 		python3 ./tools/preprocessor_pipeline.py $$file ${PROCESSED_CLASS_DIR}/$$(dirname $$file); \
 		echo "#include \"../__processed__/$$file\"" >> $(LOADING_SCRIPT_HEADER); \
 	done
 
 clean:
-	@echo "${ACT_COL}Clear the build...${NC}"
+	${PRINT} "${ACT_COL}Clear the build...${NC}"
 	@rm -rf ${PROCESSED_CLASS_DIR}
 	@rm -rf ${BUILD_DIR}
-	@echo "${SUCCESS_COL}Successfully clear the build!${NC}"
+	${PRINT} "${SUCCESS_COL}Successfully clear the build!${NC}"
 
 .PHONY: all build debug tools generate_header
 -include $(RELEASE_MODULES:.o=.d)
