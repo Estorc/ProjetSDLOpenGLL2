@@ -89,7 +89,7 @@
         "glu.h": "c"
     },
     "files.exclude": {
-        "bin/": true,
+        "bin/": false,
         "lib/": true,
         "src/__processed__/": true,
         "docs/html/": true,

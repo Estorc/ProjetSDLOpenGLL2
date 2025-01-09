@@ -118,6 +118,15 @@ CLASSES_MODULES := $(patsubst %.class.c, %.class.o, $(CLASSES_MODULES))
 RELEASE_MODULES := $(RELEASE_MODULES) $(addprefix $(BUILD_DIR)/,${CLASSES_MODULES})
 DEBUG_MODULES := $(DEBUG_MODULES) $(addprefix $(BUILD_DIR)/debug/,${CLASSES_MODULES})
 
+PLATFORM := linux
+
+ifeq ($(PLATFORM), windows)
+	GCC = x86_64-w64-mingw32-gcc
+	LFLAGS += -lmingw32
+else
+	GCC = gcc
+endif
+
 # ===============================================================
 
 # Targets
@@ -136,7 +145,7 @@ release: generate_header init_build ${RELEASE_MODULES}
 	@echo "${STEP_COL}===================== Begin linking. ====================${NC}"
 	@echo "${ACT_COL}Linking app...${NC}"
 	@mkdir -p ${BUILD_DIR}/release
-	@gcc -o ${BUILD_DIR}/release/app ${SCRIPTS_COUNT} ${RELEASE_MODULES} ${LFLAGS} ${WFLAGS}
+	@${GCC} -o ${BUILD_DIR}/release/app ${SCRIPTS_COUNT} ${RELEASE_MODULES} ${LFLAGS} ${WFLAGS}
 
 	@echo "${ACT_COL}Copying assets...${NC}"
 	@rsync -rupE assets ${BUILD_DIR}/release/
@@ -148,10 +157,11 @@ release: generate_header init_build ${RELEASE_MODULES}
 	@echo "${STEP_COL}============= ${SUCCESS_COL}Successfully build the app!${NC}${STEP_COL} =============${NC}"
 
 debug: generate_header init_build ${DEBUG_MODULES}
+	@echo "${GCC}"
 	@echo "${STEP_COL}===================== Begin debug linking. ====================${NC}"
 	@echo "${ACT_COL}Linking debug app...${NC}"
 	@mkdir -p ${BUILD_DIR}/debug
-	@gcc -o ${BUILD_DIR}/debug/app -g -O0 ${SCRIPTS_COUNT} ${DEBUG_MODULES} ${LFLAGS} ${WFLAGS}
+	@${GCC} -o ${BUILD_DIR}/debug/app -g -O0 ${SCRIPTS_COUNT} ${DEBUG_MODULES} ${LFLAGS} ${WFLAGS}
 
 	@echo "${ACT_COL}Copying assets...${NC}"
 	@rsync -rupE assets ${BUILD_DIR}/debug/
@@ -165,8 +175,8 @@ debug: generate_header init_build ${DEBUG_MODULES}
 tools:
 	@echo "${STEP_COL}===================== Begin build tools. ===================="
 	@echo "${ACT_COL}Build tools...${NC}"
-	@gcc -o tools/class_tools tools/class_tools.c ${WFLAGS} -Wno-format-truncation
-	@gcc -o tools/node_tools tools/node_tools.c ${WFLAGS}
+	@${GCC} -o tools/class_tools tools/class_tools.c ${WFLAGS} -Wno-format-truncation
+	@${GCC} -o tools/node_tools tools/node_tools.c ${WFLAGS}
 	@echo "${STEP_COL}============= ${NC}${SUCCESS_COL}Successfully build the tools!${NC}${STEP_COL} =============${NC}"
 
 # Release objects constructor
@@ -177,7 +187,7 @@ ${BUILD_DIR}/%.o: %.c
 
 	@echo "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}..."
 	@mkdir -p ${BUILD_DIR}/${dir $*}
-	@gcc -c ${PROCESSED_CLASS_DIR}/$< -o ${BUILD_DIR}/$*.o -I$(dir $*) ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@${GCC} -c ${PROCESSED_CLASS_DIR}/$< -o ${BUILD_DIR}/$*.o -I$(dir $*) ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
 	@echo "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/$*.o${NC}"
 
 # Debug objects constructor
@@ -188,7 +198,7 @@ ${BUILD_DIR}/debug/%.o: %.c
 
 	@echo "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}..."
 	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
-	@gcc -c ${PROCESSED_CLASS_DIR}/$< -g -o ${BUILD_DIR}/debug/$*.o -I$(dir $*) -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@${GCC} -c ${PROCESSED_CLASS_DIR}/$< -g -o ${BUILD_DIR}/debug/$*.o -I$(dir $*) -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
 	@echo "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}"
 
 # @python3 ./tools/preprocessor_pipeline.py $$file/${dir $<}
