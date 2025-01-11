@@ -1,0 +1,378 @@
+\doxysection{Node Struct Reference}
+\hypertarget{classNode}{}\label{classNode}\index{Node@{Node}}
+
+
+Represents a node in the tree structure.  
+
+
+
+
+{\ttfamily \#include $<$node.\+h$>$}
+
+
+
+Inheritance diagram for Node\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classNode__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Node\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classNode__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}} ()
+\item 
+void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
+\item 
+void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+\item 
+void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
+\item 
+void \mbox{\hyperlink{classNode_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
+\item 
+void \mbox{\hyperlink{classNode_ab05e54fc6a226fe70d274e46e9ced07a}{prepare\+\_\+render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+\begin{DoxyCompactList}\small\item\em Renders a node using the specified model matrix and shader. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ab93a6f41e02422a21c44227c0355382a}{render}} ()
+\item 
+void \mbox{\hyperlink{classNode_a2621112ec04d166f9ec376eba06f3bbb}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\item 
+void \mbox{\hyperlink{classNode_a500a682914a24af188bd9eb79ba2aaae}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\item 
+void \mbox{\hyperlink{classNode_acda79ab291312990e96552767c577a3d}{free}} ()
+\item 
+void \mbox{\hyperlink{classNode_ae2ee01789b301b3c0323473dbe968283}{is\+\_\+cshape}} (bool \texorpdfstring{$\ast$}{*}cshape)
+\item 
+void \mbox{\hyperlink{classNode_a75c27b8cf028ae9509b20ad7392c49f8}{is\+\_\+body}} (bool \texorpdfstring{$\ast$}{*}body)
+\item 
+void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
+\item 
+void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
+\item 
+void \mbox{\hyperlink{classNode_a42da38ee8e0a621e438e14b94c0e381e}{add\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child node to a parent node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a8e6b8cc31d9259fcf89b21c180954996}{add\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child node to a parent node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ae86bdc267280b50e822501c7e74194f3}{remove\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ac78c1a018c6fac8fe8bd9f413190273f}{remove\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a33127e7928f75bccce339aafce1fe44b}{remove\+\_\+child\+\_\+and\+\_\+free}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node and frees the memory of the child node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_af08ebf5c3bb8542c012107606b88391b}{remove\+\_\+child\+\_\+and\+\_\+free\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node, frees the memory of the child node, and reallocates memory if necessary. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNode_af99346e2725916df2fbe2e4af7a2d51c}{index\+\_\+of\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Retrieves the index of a child node in a parent node\textquotesingle{}s children array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_aef2f74d45bec672840433aff6abe0d45}{print}} (int level)
+\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga9cf70c2b354e11c49130331da4519864}{object}}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga3d857c2fdb25634fe92ca32ff006c233}{children}}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{parent}}
+\item 
+\mbox{\hyperlink{types_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga1cf2ef86297b1bdfed11d030c0ed3dd2}{global\+Pos}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{global\+Rot}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
+\item 
+\mbox{\hyperlink{scripts_8h_ab7576c513306b5641c2b903c7d18850f}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
+\item 
+\mbox{\hyperlink{unionBehaviorParameter}{Behavior\+Parameter}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gac639490f60bdc872491ffaaea5991ed0}{params}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga1411990c75c0b134485d07be7a21e58c}{params\+\_\+count}}
+\item 
+\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a44e2ccb5f2209f6367f33a3c712f0eb1}{glow\+Shader}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a node in the tree structure. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classNode_a42da38ee8e0a621e438e14b94c0e381e}\label{classNode_a42da38ee8e0a621e438e14b94c0e381e} 
+\index{Node@{Node}!add\_child@{add\_child}}
+\index{add\_child@{add\_child}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{add\_child()}{add\_child()}}
+{\footnotesize\ttfamily void Node\+::add\+\_\+child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{child }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a child node to a parent node. 
+
+This function adds a child node to the specified parent node, establishing a parent-\/child relationship in the scene graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & The child node to be added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classNode_a8e6b8cc31d9259fcf89b21c180954996}\label{classNode_a8e6b8cc31d9259fcf89b21c180954996} 
+\index{Node@{Node}!add\_child\_and\_realloc@{add\_child\_and\_realloc}}
+\index{add\_child\_and\_realloc@{add\_child\_and\_realloc}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{add\_child\_and\_realloc()}{add\_child\_and\_realloc()}}
+{\footnotesize\ttfamily void Node\+::add\+\_\+child\+\_\+and\+\_\+realloc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{child }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a child node to a parent node and reallocates memory if necessary. 
+
+This function adds a child node to the specified parent node and reallocates memory for the parent\textquotesingle{}s children array if needed to accommodate the new child.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & The child node to be added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classNode_adc8290bb6f9a55e929ea1d8af7a75818}\label{classNode_adc8290bb6f9a55e929ea1d8af7a75818} 
+\index{Node@{Node}!constructor@{constructor}}
+\index{constructor@{constructor}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
+{\footnotesize\ttfamily void Node\+::constructor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classNode_acda79ab291312990e96552767c577a3d}\label{classNode_acda79ab291312990e96552767c577a3d} 
+\index{Node@{Node}!free@{free}}
+\index{free@{free}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{free()}{free()}}
+{\footnotesize\ttfamily void Node\+::free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classNode_a2811c63060e67e1c365b4ca6c583d804}\label{classNode_a2811c63060e67e1c365b4ca6c583d804} 
+\index{Node@{Node}!get\_glow\_shader@{get\_glow\_shader}}
+\index{get\_glow\_shader@{get\_glow\_shader}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{get\_glow\_shader()}{get\_glow\_shader()}}
+{\footnotesize\ttfamily void Node\+::get\+\_\+glow\+\_\+shader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}}]{shader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classNode_af99346e2725916df2fbe2e4af7a2d51c}\label{classNode_af99346e2725916df2fbe2e4af7a2d51c} 
+\index{Node@{Node}!index\_of\_child@{index\_of\_child}}
+\index{index\_of\_child@{index\_of\_child}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{index\_of\_child()}{index\_of\_child()}}
+{\footnotesize\ttfamily int Node\+::index\+\_\+of\+\_\+child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{child }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the index of a child node in a parent node\textquotesingle{}s children array. 
+
+This function retrieves the index of a child node in a parent node\textquotesingle{}s children array.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & The child node whose index is to be retrieved. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the child node in the parent node\textquotesingle{}s children array.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If the child node is not found in the parent node\textquotesingle{}s children array, the function returns -\/1. 
+\end{DoxyNote}
+\Hypertarget{classNode_a6b7d86c5640d6ea769915d22f1129186}\label{classNode_a6b7d86c5640d6ea769915d22f1129186} 
+\index{Node@{Node}!initialize\_node@{initialize\_node}}
+\index{initialize\_node@{initialize\_node}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{initialize\_node()}{initialize\_node()}}
+{\footnotesize\ttfamily void Node\+::initialize\+\_\+node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}\label{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb} 
+\index{Node@{Node}!is\_area@{is\_area}}
+\index{is\_area@{is\_area}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{is\_area()}{is\_area()}}
+{\footnotesize\ttfamily void Node\+::is\+\_\+area (\begin{DoxyParamCaption}\item[{bool \texorpdfstring{$\ast$}{*}}]{area }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classNode_a75c27b8cf028ae9509b20ad7392c49f8}\label{classNode_a75c27b8cf028ae9509b20ad7392c49f8} 
+\index{Node@{Node}!is\_body@{is\_body}}
+\index{is\_body@{is\_body}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{is\_body()}{is\_body()}}
+{\footnotesize\ttfamily void Node\+::is\+\_\+body (\begin{DoxyParamCaption}\item[{bool \texorpdfstring{$\ast$}{*}}]{body }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classNode_ae2ee01789b301b3c0323473dbe968283}\label{classNode_ae2ee01789b301b3c0323473dbe968283} 
+\index{Node@{Node}!is\_cshape@{is\_cshape}}
+\index{is\_cshape@{is\_cshape}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{is\_cshape()}{is\_cshape()}}
+{\footnotesize\ttfamily void Node\+::is\+\_\+cshape (\begin{DoxyParamCaption}\item[{bool \texorpdfstring{$\ast$}{*}}]{cshape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classNode_a29ad16f4987533c2ddebec71439bfbd5}\label{classNode_a29ad16f4987533c2ddebec71439bfbd5} 
+\index{Node@{Node}!is\_gui\_element@{is\_gui\_element}}
+\index{is\_gui\_element@{is\_gui\_element}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{is\_gui\_element()}{is\_gui\_element()}}
+{\footnotesize\ttfamily void Node\+::is\+\_\+gui\+\_\+element (\begin{DoxyParamCaption}\item[{bool \texorpdfstring{$\ast$}{*}}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}\label{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3} 
+\index{Node@{Node}!load@{load}}
+\index{load@{load}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Node\+::load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classNode_ab05e54fc6a226fe70d274e46e9ced07a}\label{classNode_ab05e54fc6a226fe70d274e46e9ced07a} 
+\index{Node@{Node}!prepare\_render@{prepare\_render}}
+\index{prepare\_render@{prepare\_render}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{prepare\_render()}{prepare\_render()}}
+{\footnotesize\ttfamily void Node\+::prepare\+\_\+render (\begin{DoxyParamCaption}\item[{mat4 \texorpdfstring{$\ast$}{*}}]{model\+Matrix,  }\item[{\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{active\+Shader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Renders a node using the specified model matrix and shader. 
+
+This function renders the specified node using the provided model matrix and active shader.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model\+Matrix} & The model matrix to be used for rendering. \\
+\hline
+{\em active\+Shader} & The shader to be used for rendering. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classNode_aef2f74d45bec672840433aff6abe0d45}\label{classNode_aef2f74d45bec672840433aff6abe0d45} 
+\index{Node@{Node}!print@{print}}
+\index{print@{print}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Node\+::print (\begin{DoxyParamCaption}\item[{int}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Prints the details of a node at a specified level of indentation. 
+
+This function prints the details of the specified node, including its properties and children, at the specified level of indentation for better readability.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & The node to be printed. \\
+\hline
+{\em level} & The level of indentation for printing. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classNode_ae86bdc267280b50e822501c7e74194f3}\label{classNode_ae86bdc267280b50e822501c7e74194f3} 
+\index{Node@{Node}!remove\_child@{remove\_child}}
+\index{remove\_child@{remove\_child}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{remove\_child()}{remove\_child()}}
+{\footnotesize\ttfamily void Node\+::remove\+\_\+child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{child }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Removes a child node from a parent node. 
+
+This function removes a child node from the specified parent node, breaking the parent-\/child relationship in the scene graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & The child node to be removed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classNode_a33127e7928f75bccce339aafce1fe44b}\label{classNode_a33127e7928f75bccce339aafce1fe44b} 
+\index{Node@{Node}!remove\_child\_and\_free@{remove\_child\_and\_free}}
+\index{remove\_child\_and\_free@{remove\_child\_and\_free}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{remove\_child\_and\_free()}{remove\_child\_and\_free()}}
+{\footnotesize\ttfamily void Node\+::remove\+\_\+child\+\_\+and\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{child }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Removes a child node from a parent node and frees the memory of the child node. 
+
+This function removes a child node from the specified parent node and frees the memory allocated for the child node.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & The child node to be removed and freed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classNode_af08ebf5c3bb8542c012107606b88391b}\label{classNode_af08ebf5c3bb8542c012107606b88391b} 
+\index{Node@{Node}!remove\_child\_and\_free\_and\_realloc@{remove\_child\_and\_free\_and\_realloc}}
+\index{remove\_child\_and\_free\_and\_realloc@{remove\_child\_and\_free\_and\_realloc}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{remove\_child\_and\_free\_and\_realloc()}{remove\_child\_and\_free\_and\_realloc()}}
+{\footnotesize\ttfamily void Node\+::remove\+\_\+child\+\_\+and\+\_\+free\+\_\+and\+\_\+realloc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{child }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Removes a child node from a parent node, frees the memory of the child node, and reallocates memory if necessary. 
+
+This function removes a child node from the specified parent node, frees the memory allocated for the child node, and reallocates memory for the parent\textquotesingle{}s children array if needed to optimize memory usage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & The child node to be removed and freed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classNode_ac78c1a018c6fac8fe8bd9f413190273f}\label{classNode_ac78c1a018c6fac8fe8bd9f413190273f} 
+\index{Node@{Node}!remove\_child\_and\_realloc@{remove\_child\_and\_realloc}}
+\index{remove\_child\_and\_realloc@{remove\_child\_and\_realloc}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{remove\_child\_and\_realloc()}{remove\_child\_and\_realloc()}}
+{\footnotesize\ttfamily void Node\+::remove\+\_\+child\+\_\+and\+\_\+realloc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{child }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Removes a child node from a parent node and reallocates memory if necessary. 
+
+This function removes a child node from the specified parent node and reallocates memory for the parent\textquotesingle{}s children array if needed to optimize memory usage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & The child node to be removed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classNode_ab93a6f41e02422a21c44227c0355382a}\label{classNode_ab93a6f41e02422a21c44227c0355382a} 
+\index{Node@{Node}!render@{render}}
+\index{render@{render}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Node\+::render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classNode_a06da5ccd34d78a1119160005629f0193}\label{classNode_a06da5ccd34d78a1119160005629f0193} 
+\index{Node@{Node}!save@{save}}
+\index{save@{save}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Node\+::save (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classNode_a500a682914a24af188bd9eb79ba2aaae}\label{classNode_a500a682914a24af188bd9eb79ba2aaae} 
+\index{Node@{Node}!update@{update}}
+\index{update@{update}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Node\+::update (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classNode_a2621112ec04d166f9ec376eba06f3bbb}\label{classNode_a2621112ec04d166f9ec376eba06f3bbb} 
+\index{Node@{Node}!update\_global\_position@{update\_global\_position}}
+\index{update\_global\_position@{update\_global\_position}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{update\_global\_position()}{update\_global\_position()}}
+{\footnotesize\ttfamily void Node\+::update\+\_\+global\+\_\+position (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classNode_a44e2ccb5f2209f6367f33a3c712f0eb1}\label{classNode_a44e2ccb5f2209f6367f33a3c712f0eb1} 
+\index{Node@{Node}!glowShader@{glowShader}}
+\index{glowShader@{glowShader}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{glowShader}{glowShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} Node\+::glow\+Shader = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/classes/\mbox{\hyperlink{node_8class_8c}{node.\+class.\+c}}\item 
+src/storage/\mbox{\hyperlink{node_8h}{node.\+h}}\end{DoxyCompactItemize}

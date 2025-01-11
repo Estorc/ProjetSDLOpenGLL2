@@ -1,0 +1,107 @@
+\doxysection{Stack Data Structure}
+\hypertarget{group__Stack}{}\label{group__Stack}\index{Stack Data Structure@{Stack Data Structure}}
+
+
+\doxylink{structStack}{Stack} data structure and its associated operations.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structStack}{Stack}}
+\begin{DoxyCompactList}\small\item\em A node in the stack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{group__Stack_gaa5bbdc634e8c5a1517207300e4b91482}{stack\+\_\+is\+\_\+empty}} (\mbox{\hyperlink{structStack}{Stack}} \texorpdfstring{$\ast$}{*}stack)
+\begin{DoxyCompactList}\small\item\em Checks if the stack is empty. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Stack_ga26f038389f7a063ff212ca6cfee41f2d}{stack\+\_\+push}} (\mbox{\hyperlink{structStack}{Stack}} \texorpdfstring{$\ast$}{*}stack, void \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Pushes an element onto the stack. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__Stack_ga81d5a10d57ff3cd9435c9ff19830cde4}{stack\+\_\+pop}} (\mbox{\hyperlink{structStack}{Stack}} \texorpdfstring{$\ast$}{*}stack)
+\begin{DoxyCompactList}\small\item\em Pops an element from the stack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Stack_gafc04d6c48f275815a5a248a37b9f30bc}{stack\+\_\+free}} (\mbox{\hyperlink{structStack}{Stack}} \texorpdfstring{$\ast$}{*}stack)
+\begin{DoxyCompactList}\small\item\em Frees the stack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{structStack}{Stack} data structure and its associated operations. 
+
+This file contains the definition of a stack data structure and the declarations of functions to manipulate the stack. The stack is implemented as a linked list, where each element points to the next element in the stack. The stack supports basic operations such as checking if it is empty, pushing an element onto the stack, popping an element from the stack, and freeing the stack. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__Stack_gafc04d6c48f275815a5a248a37b9f30bc}\label{group__Stack_gafc04d6c48f275815a5a248a37b9f30bc} 
+\index{Stack Data Structure@{Stack Data Structure}!stack\_free@{stack\_free}}
+\index{stack\_free@{stack\_free}!Stack Data Structure@{Stack Data Structure}}
+\doxysubsubsection{\texorpdfstring{stack\_free()}{stack\_free()}}
+{\footnotesize\ttfamily void stack\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structStack}{Stack}} \texorpdfstring{$\ast$}{*}}]{stack }\end{DoxyParamCaption})}
+
+
+
+Frees the stack. 
+
+This function frees all the elements in the stack and the data stored in each element. After calling this function, the stack pointer will be NULL.
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & Pointer to the stack. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__Stack_gaa5bbdc634e8c5a1517207300e4b91482}\label{group__Stack_gaa5bbdc634e8c5a1517207300e4b91482} 
+\index{Stack Data Structure@{Stack Data Structure}!stack\_is\_empty@{stack\_is\_empty}}
+\index{stack\_is\_empty@{stack\_is\_empty}!Stack Data Structure@{Stack Data Structure}}
+\doxysubsubsection{\texorpdfstring{stack\_is\_empty()}{stack\_is\_empty()}}
+{\footnotesize\ttfamily bool stack\+\_\+is\+\_\+empty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structStack}{Stack}} \texorpdfstring{$\ast$}{*}}]{stack }\end{DoxyParamCaption})}
+
+
+
+Checks if the stack is empty. 
+
+This function checks whether the given stack is empty. A stack is considered empty if the pointer to the stack is NULL.
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & Pointer to the stack. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the stack is empty, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{group__Stack_ga81d5a10d57ff3cd9435c9ff19830cde4}\label{group__Stack_ga81d5a10d57ff3cd9435c9ff19830cde4} 
+\index{Stack Data Structure@{Stack Data Structure}!stack\_pop@{stack\_pop}}
+\index{stack\_pop@{stack\_pop}!Stack Data Structure@{Stack Data Structure}}
+\doxysubsubsection{\texorpdfstring{stack\_pop()}{stack\_pop()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} stack\+\_\+pop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structStack}{Stack}} \texorpdfstring{$\ast$}{*}}]{stack }\end{DoxyParamCaption})}
+
+
+
+Pops an element from the stack. 
+
+This function removes the top element from the stack and returns the data stored in that element. If the stack is empty, the function returns NULL.
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & Pointer to the stack. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the data stored in the popped element, or NULL if the stack is empty. 
+\end{DoxyReturn}
+\Hypertarget{group__Stack_ga26f038389f7a063ff212ca6cfee41f2d}\label{group__Stack_ga26f038389f7a063ff212ca6cfee41f2d} 
+\index{Stack Data Structure@{Stack Data Structure}!stack\_push@{stack\_push}}
+\index{stack\_push@{stack\_push}!Stack Data Structure@{Stack Data Structure}}
+\doxysubsubsection{\texorpdfstring{stack\_push()}{stack\_push()}}
+{\footnotesize\ttfamily void stack\+\_\+push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structStack}{Stack}} \texorpdfstring{$\ast$}{*}}]{stack,  }\item[{void \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Pushes an element onto the stack. 
+
+This function pushes a new element onto the top of the stack. The new element contains the given data and becomes the new top of the stack.
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & Pointer to the stack. \\
+\hline
+{\em data} & Pointer to the data to be pushed onto the stack. \\
+\hline
+\end{DoxyParams}

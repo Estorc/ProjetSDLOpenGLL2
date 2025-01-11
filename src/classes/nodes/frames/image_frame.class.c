@@ -3,14 +3,12 @@
 #include "storage/node.h"
 #include "io/shader.h"
 #include "render/render.h"
-#include <SDL2/SDL.h>
-#include <limits.h>
-#include <SDL2/SDL_ttf.h>
 #include "window.h"
 #include "gui/frame.h"
 
-class ImageFrame @promote extends Frame {
+class ImageFrame : public Frame {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;
@@ -20,9 +18,10 @@ class ImageFrame @promote extends Frame {
         this->object = frame;
         this->type = __type__; 
         SUPER(initialize_node);
-        METHOD(this, init_frame);
+        this::init_frame();
         frame->imageFrame = malloc(sizeof(ImageFrame));
         POINTER_CHECK(frame->imageFrame);
+        frame->flags &= ~FRAME_BACKGROUND;
         frame->relPos[0] = 0.0f;
         frame->relPos[1] = 0.0f;
         frame->scale[0] = 100.0f;
@@ -33,12 +32,11 @@ class ImageFrame @promote extends Frame {
         frame->unit[3] = '%';
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load(FILE *file) {
-        METHOD_TYPE(this, __type__, constructor);
+        this->type = __type__;
+        this::constructor();
         Frame *frame = (Frame *) this->object;
         if (file) {
             fscanf(file, "(%g%c,%g%c,%g%c,%g%c,%c%c, %[^)])", 
@@ -68,8 +66,10 @@ class ImageFrame @promote extends Frame {
  
     void free() {
         Frame *frame = (Frame *) this->object;
-        Label *label = (Label *) frame->label;
-        free(label);
+        ImageFrame *imageFrame = (ImageFrame *) frame->imageFrame;
+        free(imageFrame);
+        frame->flags &= ~FRAME_CONTENT; // Ensure the glTexture is not deleted
+        if (frame->contentSurface) SDL_FreeSurface(frame->contentSurface);
         SUPER(free);
     }
     

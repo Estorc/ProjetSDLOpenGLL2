@@ -2,6 +2,7 @@
 # ====================     Makefile     =========================
 # ===============================================================
 
+export TERM = xterm-256color
 
 NC=\033[0;0m
 
@@ -36,12 +37,16 @@ STEP_COL=\033[0;${FG_DEFAULT};${BG_DEFAULT};${BOLD}m
 FILE_COL=\033[0;${FG_ORANGE};${BG_DEFAULT};${ITALIC}m
 SUCCESS_COL=\033[0;${FG_GREEN};${BG_DEFAULT};${BOLD}m
 
+PRINT=@printf
+
 NEWLINE := $(shell printf "\n")
 
 # Object Files path
 
 BUILD_DIR := bin
-PROCESSED_CLASS_DIR := src/classes/__processed__
+PROCESSED_CLASS_DIR := src/__processed__
+
+MODULES += src/classes/classes.o
 
 MODULES += src/io/gltexture_loader.o
 MODULES += src/io/obj_loader.o
@@ -55,27 +60,22 @@ MODULES += src/io/shader.o
 MODULES += src/io/osio.o
 
 MODULES += src/math/math_util.o
-MODULES += src/math/graph.o
 
 MODULES += src/render/lighting.o
 MODULES += src/render/render.o
-MODULES += src/render/color.o
 MODULES += src/render/camera.o
 MODULES += src/render/framebuffer.o
 MODULES += src/render/depth_map.o
 
 MODULES += src/physics/physics.o
 MODULES += src/physics/collision_util.o
-MODULES += src/physics/isolate.o
 MODULES += src/physics/collision.o
-MODULES += src/physics/bodies.o
 
-MODULES += src/utils/skybox.o
+MODULES += src/utils/scene.o
 MODULES += src/utils/time.o
 
 MODULES += src/gui/frame.o
 
-MODULES += src/storage/node.o
 MODULES += src/storage/stack.o
 MODULES += src/storage/queue.o
 
@@ -115,11 +115,13 @@ SCRIPTS_FILES := $(notdir $(SCRIPTS_PATHS))
 SCRIPTS_COUNT := -D SCRIPTS_COUNT=$(shell grep -o '\b$(NEW_SCRIPT_SYMBOL)\b' $(SCRIPTS_PATHS) | wc -l)
 
 CLASS_TOOLS := $(shell tools/class_tools)
-CLASSES_MODULES := $(wildcard src/classes/__processed__/*.class.c)
+CLASSES_MODULES := $(wildcard $(PROCESSED_CLASS_DIR)/*.class.c)
 CLASSES_MODULES := $(patsubst %.class.c, %.class.o, $(CLASSES_MODULES))
 
 RELEASE_MODULES := $(RELEASE_MODULES) $(addprefix $(BUILD_DIR)/,${CLASSES_MODULES})
 DEBUG_MODULES := $(DEBUG_MODULES) $(addprefix $(BUILD_DIR)/debug/,${CLASSES_MODULES})
+
+GCC = gcc
 
 # ===============================================================
 
@@ -128,76 +130,87 @@ DEBUG_MODULES := $(DEBUG_MODULES) $(addprefix $(BUILD_DIR)/debug/,${CLASSES_MODU
 all:release launch
 
 init_build:
-	@echo "${STEP_COL}===================== Begin build. ====================${NC}"
+	@printf "${STEP_COL}===================== Begin build. ====================${NC}\n"
 
 launch:
-	@echo "${STEP_COL}=================== Launch the app... =================${NC}"
+	@printf "${STEP_COL}=================== Launch the app... =================${NC}\n"
 	@${BUILD_DIR}/release/app
 
 
 release: generate_header init_build ${RELEASE_MODULES}
-	@echo "${STEP_COL}===================== Begin linking. ====================${NC}"
-	@echo "${ACT_COL}Linking app...${NC}"
+	@printf "${STEP_COL}===================== Begin linking. ====================${NC}\n"
+	@printf "${ACT_COL}Linking app...${NC}\n"
 	@mkdir -p ${BUILD_DIR}/release
-	@gcc -o ${BUILD_DIR}/release/app ${SCRIPTS_COUNT} ${RELEASE_MODULES} ${LFLAGS} ${WFLAGS}
+	@${GCC} -o ${BUILD_DIR}/release/app ${SCRIPTS_COUNT} ${RELEASE_MODULES} ${LFLAGS} ${WFLAGS}
 
-	@echo "${ACT_COL}Copying assets...${NC}"
+	@printf "${ACT_COL}Copying assets...${NC}\n"
 	@rsync -rupE assets ${BUILD_DIR}/release/
-	@echo "${SUCCESS_COL}Assets copied!${NC}"
-	@echo "${ACT_COL}Copying shaders...${NC}"
+	@printf "${SUCCESS_COL}Assets copied!${NC}\n"
+	@printf "${ACT_COL}Copying shaders...${NC}\n"
 	@rsync -rupE shaders ${BUILD_DIR}/release/
-	@echo "${SUCCESS_COL}Shaders copied!${NC}"
+	@printf "${SUCCESS_COL}Shaders copied!${NC}\n"
 
-	@echo "${STEP_COL}============= ${SUCCESS_COL}Successfully build the app!${NC}${STEP_COL} =============${NC}"
+	@printf "${STEP_COL}============= ${SUCCESS_COL}Successfully build the app!${NC}${STEP_COL} =============${NC}\n"
 
 debug: generate_header init_build ${DEBUG_MODULES}
-	@echo "${STEP_COL}===================== Begin debug linking. ====================${NC}"
-	@echo "${ACT_COL}Linking debug app...${NC}"
+	@printf "${GCC}\n"
+	@printf "${STEP_COL}===================== Begin debug linking. ====================${NC}\n"
+	@printf "${ACT_COL}Linking debug app...${NC}\n"
 	@mkdir -p ${BUILD_DIR}/debug
-	@gcc -o ${BUILD_DIR}/debug/app -g -O0 ${SCRIPTS_COUNT} ${DEBUG_MODULES} ${LFLAGS} ${WFLAGS}
+	@${GCC} -o ${BUILD_DIR}/debug/app -g -O0 ${SCRIPTS_COUNT} ${DEBUG_MODULES} ${LFLAGS} ${WFLAGS}
 
-	@echo "${ACT_COL}Copying assets...${NC}"
+	@printf "${ACT_COL}Copying assets...${NC}\n"
 	@rsync -rupE assets ${BUILD_DIR}/debug/
-	@echo "${SUCCESS_COL}Assets copied!${NC}"
-	@echo "${ACT_COL}Copying shaders...${NC}"
+	@printf "${SUCCESS_COL}Assets copied!${NC}\n"
+	@printf "${ACT_COL}Copying shaders...${NC}\n"
 	@rsync -rupE shaders ${BUILD_DIR}/debug/
-	@echo "${SUCCESS_COL}Shaders copied!${NC}"
+	@printf "${SUCCESS_COL}Shaders copied!${NC}\n"
 
-	@echo "${STEP_COL}============= ${SUCCESS_COL}Successfully build the debug app!${NC}${STEP_COL} =============${NC}"
+	@printf "${STEP_COL}============= ${SUCCESS_COL}Successfully build the debug app!${NC}${STEP_COL} =============${NC}\n"
 
 tools:
-	@echo "${STEP_COL}===================== Begin build tools. ===================="
-	@echo "${ACT_COL}Build tools...${NC}"
-	@gcc -o tools/class_tools tools/class_tools.c ${WFLAGS} -Wno-format-truncation
-	@gcc -o tools/node_tools tools/node_tools.c ${WFLAGS}
-	@echo "${STEP_COL}============= ${NC}${SUCCESS_COL}Successfully build the tools!${NC}${STEP_COL} =============${NC}"
+	@printf "${STEP_COL}===================== Begin build tools. ====================\n"
+	@printf "${ACT_COL}Build tools...${NC}\n"
+	@${GCC} -o tools/class_tools tools/class_tools.c ${WFLAGS} -Wno-format-truncation
+	@${GCC} -o tools/node_tools tools/node_tools.c ${WFLAGS}
+	@printf "${STEP_COL}============= ${NC}${SUCCESS_COL}Successfully build the tools!${NC}${STEP_COL} =============${NC}\n"
 
 # Release objects constructor
 ${BUILD_DIR}/%.o: %.c
-	@echo "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}..."
+	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}...\n"
+	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
+	@python3 ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
+
+	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
 	@mkdir -p ${BUILD_DIR}/${dir $*}
-	@gcc -c $*.c -o ${BUILD_DIR}/$*.o ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
-	@echo "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/$*.o${NC}"
+	@${GCC} -c ${PROCESSED_CLASS_DIR}/$< -o ${BUILD_DIR}/$*.o -I$(dir $*) ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/$*.o${NC}\n"
 
 # Debug objects constructor
 ${BUILD_DIR}/debug/%.o: %.c
-	@echo "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}..."
-	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
-	@gcc -c $*.c -g -o ${BUILD_DIR}/debug/$*.o -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
-	@echo "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}"
+	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}...\n"
+	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
+	@python3 ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
 
+	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
+	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
+	@${GCC} -c ${PROCESSED_CLASS_DIR}/$< -g -o ${BUILD_DIR}/debug/$*.o -I$(dir $*) -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}\n"
+
+# @python3 ./tools/preprocessor_pipeline.py $$file/${dir $<}
 generate_header:
-	@echo "Generate loading scripts header..."
+	@printf "Generate loading scripts header...\n"
 	@echo "// Auto-generated scripts loading header file" > $(LOADING_SCRIPT_HEADER)
-	@for file in $(SCRIPTS_FILES); do \
-		echo "#include \"$$file\"" >> $(LOADING_SCRIPT_HEADER); \
+	@for file in $(SCRIPTS_PATHS); do \
+		python3 ./tools/preprocessor_pipeline.py $$file ${PROCESSED_CLASS_DIR}/$$(dirname $$file); \
+		echo "#include \"../__processed__/$$file\"" >> $(LOADING_SCRIPT_HEADER); \
 	done
 
 clean:
-	@echo "${ACT_COL}Clear the build...${NC}"
+	@printf "${ACT_COL}Clear the build...${NC}\n"
 	@rm -rf ${PROCESSED_CLASS_DIR}
 	@rm -rf ${BUILD_DIR}
-	@echo "${SUCCESS_COL}Successfully clear the build!${NC}"
+	@printf "${SUCCESS_COL}Successfully clear the build!${NC}\n"
 
 .PHONY: all build debug tools generate_header
 -include $(RELEASE_MODULES:.o=.d)

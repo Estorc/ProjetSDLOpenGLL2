@@ -1,0 +1,373 @@
+\doxysection{Vectors Utilities}
+\hypertarget{group__VectorGroup}{}\label{group__VectorGroup}\index{Vectors Utilities@{Vectors Utilities}}
+
+
+Bunch of vectors functions.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__VectorGroup_ga146671186154a3893d4cf5cdaef07fcd}{Mat4\+Set\+Identity}}(a)
+\begin{DoxyCompactList}\small\item\em Sets the matrix to identity. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__VectorGroup_ga6d6a5971d667f0c1628f5cf908e3434b}{Vec3f\+Scale}}(a,  s)~(a\mbox{[}0\mbox{]}\texorpdfstring{$\ast$}{*}=s, a\mbox{[}1\mbox{]}\texorpdfstring{$\ast$}{*}=s, a\mbox{[}2\mbox{]}\texorpdfstring{$\ast$}{*}=s)
+\begin{DoxyCompactList}\small\item\em Scales a 3-\/dimensional vector by a scalar. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__VectorGroup_ga3592b07bb3b2c11af83fa99caa2b0cc8}{Vec3f\+Zero}}(a)~(a\mbox{[}0\mbox{]}=0,a\mbox{[}1\mbox{]}=0,a\mbox{[}2\mbox{]}=0)
+\begin{DoxyCompactList}\small\item\em Sets a 3-\/dimensional vector to zero. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__VectorGroup_gaeb6a5353793219b78ce1b2e0f92a16ac}{Vec3f\+One}}(a)~(a\mbox{[}0\mbox{]}=1,a\mbox{[}1\mbox{]}=1,a\mbox{[}2\mbox{]}=1)
+\begin{DoxyCompactList}\small\item\em Sets a 3-\/dimensional vector to one. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__VectorGroup_gab4ec273945cc416f1b5f15e57039034c}{Vec3f\+Set}}(a,  b)~(a\mbox{[}0\mbox{]}=b\mbox{[}0\mbox{]},a\mbox{[}1\mbox{]}=b\mbox{[}1\mbox{]},a\mbox{[}2\mbox{]}=b\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Copies the values of one 3-\/dimensional vector to another. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__VectorGroup_gabbc13ae04da31954fc7106856d090ab5}{Vec3f\+Approach}}(a,  b,  t)~((a)\mbox{[}0\mbox{]}+=((b)\mbox{[}0\mbox{]}-\/(a)\mbox{[}0\mbox{]})/t,(a)\mbox{[}1\mbox{]}+=((b)\mbox{[}1\mbox{]}-\/(a)\mbox{[}1\mbox{]})/t,(a)\mbox{[}2\mbox{]}+=((b)\mbox{[}2\mbox{]}-\/(a)\mbox{[}2\mbox{]})/t)
+\begin{DoxyCompactList}\small\item\em Approaches a target vector by a given factor. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__VectorGroup_gadece4ab12143eb317804f9d74d64899d}{Vec3f\+Sum}}(a,  b)~(a\mbox{[}0\mbox{]} += b\mbox{[}0\mbox{]},a\mbox{[}1\mbox{]} += b\mbox{[}1\mbox{]},a\mbox{[}2\mbox{]} += b\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Adds two 3-\/dimensional vectors. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__VectorGroup_ga096f24e0b8ce1627344beec6bc243545}{Vec3f\+Diff}}(a,  b)~(a\mbox{[}0\mbox{]} -\/= b\mbox{[}0\mbox{]},a\mbox{[}1\mbox{]} -\/= b\mbox{[}1\mbox{]},a\mbox{[}2\mbox{]} -\/= b\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Subtracts one 3-\/dimensional vector from another. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__VectorGroup_gadf0bf787046fb0a72025555ebec043ca}{Vec3f\+Dot}}(a,  b)~(a\mbox{[}0\mbox{]}\texorpdfstring{$\ast$}{*}b\mbox{[}0\mbox{]} + a\mbox{[}1\mbox{]}\texorpdfstring{$\ast$}{*}b\mbox{[}1\mbox{]} + a\mbox{[}2\mbox{]}\texorpdfstring{$\ast$}{*}b\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Computes the dot product of two 3-\/dimensional vectors. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__VectorGroup_ga69c27775dd5e506a719d49ed87e277d0}{Vec3f\+Normalize}}(a)~(\mbox{\hyperlink{group__VectorGroup_ga9f0077d5dd486e4ac9282184a0771448}{set\+\_\+vec3f\+\_\+magnitude}}(\&a, 1))
+\begin{DoxyCompactList}\small\item\em Normalizes a 3-\/dimensional vector. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__VectorGroup_ga7d4a0e84fb36c102c775d43c5dfca2e9}{gl\+Vertex\+Vec3}}(a)~gl\+Vertex3f( a\mbox{[}0\mbox{]}, a\mbox{[}1\mbox{]}, a\mbox{[}2\mbox{]} )
+\begin{DoxyCompactList}\small\item\em Specifies a vertex in 3D space for Open\+GL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef vec4 \mbox{\hyperlink{group__VectorGroup_ga364d181ce92f92629aba5ee06ab95c73}{Vec4f}}
+\item 
+typedef vec3 \mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}}
+\item 
+typedef vec2 \mbox{\hyperlink{group__VectorGroup_gab992b8206e1d8a1dbe60ecce9e721376}{Vec2f}}
+\item 
+typedef float \mbox{\hyperlink{group__VectorGroup_gad5e5d6e46b12b86abb43198e05365067}{Vec1f}}
+\item 
+typedef mat4 \mbox{\hyperlink{group__VectorGroup_ga94b1556f7d3a1a388285098bbcb00190}{Mat4}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \mbox{\hyperlink{group__VectorGroup_gae32063e06798649530242796d312da8b}{get\+\_\+vec3f\+\_\+magnitude}} (\mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}} \texorpdfstring{$\ast$}{*}vec)
+\begin{DoxyCompactList}\small\item\em Computes the magnitude (length) of a 3-\/dimensional vector. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \mbox{\hyperlink{group__VectorGroup_ga59d0526046a4f625cc3e8bb7f565fb64}{get\+\_\+vec3f\+\_\+sqr\+\_\+magnitude}} (\mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}} \texorpdfstring{$\ast$}{*}vec)
+\begin{DoxyCompactList}\small\item\em Computes the squared magnitude (length squared) of a 3-\/dimensional vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__VectorGroup_ga9f0077d5dd486e4ac9282184a0771448}{set\+\_\+vec3f\+\_\+magnitude}} (\mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}} \texorpdfstring{$\ast$}{*}vec, \mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} magnitude)
+\item 
+void \mbox{\hyperlink{group__VectorGroup_gad65f148a83f54f0e064d7fd11e609755}{gl\+Polygon\+Vec3}} (\mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}} \texorpdfstring{$\ast$}{*}vecs, \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} length)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Bunch of vectors functions. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group__VectorGroup_ga7d4a0e84fb36c102c775d43c5dfca2e9}\label{group__VectorGroup_ga7d4a0e84fb36c102c775d43c5dfca2e9} 
+\index{Vectors Utilities@{Vectors Utilities}!glVertexVec3@{glVertexVec3}}
+\index{glVertexVec3@{glVertexVec3}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{glVertexVec3}{glVertexVec3}}
+{\footnotesize\ttfamily \#define gl\+Vertex\+Vec3(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~gl\+Vertex3f( a\mbox{[}0\mbox{]}, a\mbox{[}1\mbox{]}, a\mbox{[}2\mbox{]} )}
+
+
+
+Specifies a vertex in 3D space for Open\+GL. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \{Vec3f\} The vector representing the vertex.\\
+\hline
+\end{DoxyParams}
+This macro calls the Open\+GL function gl\+Vertex3f with the components of vector a. \Hypertarget{group__VectorGroup_ga146671186154a3893d4cf5cdaef07fcd}\label{group__VectorGroup_ga146671186154a3893d4cf5cdaef07fcd} 
+\index{Vectors Utilities@{Vectors Utilities}!Mat4SetIdentity@{Mat4SetIdentity}}
+\index{Mat4SetIdentity@{Mat4SetIdentity}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Mat4SetIdentity}{Mat4SetIdentity}}
+{\footnotesize\ttfamily \#define Mat4\+Set\+Identity(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (a[0][0]\ =\ 1.0f,\ a[0][1]\ =\ 0.0f,\ a[0][2]\ =\ 0.0f,\ a[0][3]\ =\ 0.0f,\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a[1][0]\ =\ 0.0f,\ a[1][1]\ =\ 1.0f,\ a[1][2]\ =\ 0.0f,\ a[1][3]\ =\ 0.0f,\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a[2][0]\ =\ 0.0f,\ a[2][1]\ =\ 0.0f,\ a[2][2]\ =\ 1.0f,\ a[2][3]\ =\ 0.0f,\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a[3][0]\ =\ 0.0f,\ a[3][1]\ =\ 0.0f,\ a[3][2]\ =\ 0.0f,\ a[3][3]\ =\ 1.0f)}
+
+\end{DoxyCode}
+
+
+Sets the matrix to identity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \{Mat4\} The matrix to be set to identity.\\
+\hline
+\end{DoxyParams}
+This macro sets the given 4x4 matrix to the identity matrix, where all the diagonal elements are 1 and all other elements are 0. \Hypertarget{group__VectorGroup_gabbc13ae04da31954fc7106856d090ab5}\label{group__VectorGroup_gabbc13ae04da31954fc7106856d090ab5} 
+\index{Vectors Utilities@{Vectors Utilities}!Vec3fApproach@{Vec3fApproach}}
+\index{Vec3fApproach@{Vec3fApproach}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Vec3fApproach}{Vec3fApproach}}
+{\footnotesize\ttfamily \#define Vec3f\+Approach(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b,  }\item[{}]{t }\end{DoxyParamCaption})~((a)\mbox{[}0\mbox{]}+=((b)\mbox{[}0\mbox{]}-\/(a)\mbox{[}0\mbox{]})/t,(a)\mbox{[}1\mbox{]}+=((b)\mbox{[}1\mbox{]}-\/(a)\mbox{[}1\mbox{]})/t,(a)\mbox{[}2\mbox{]}+=((b)\mbox{[}2\mbox{]}-\/(a)\mbox{[}2\mbox{]})/t)}
+
+
+
+Approaches a target vector by a given factor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \{Vec3f\} The vector to be approached. \\
+\hline
+{\em b} & \{Vec3f\} The target vector. \\
+\hline
+{\em t} & \{f32\} The approach factor.\\
+\hline
+\end{DoxyParams}
+This macro moves vector a towards vector b by a factor of t. \Hypertarget{group__VectorGroup_ga096f24e0b8ce1627344beec6bc243545}\label{group__VectorGroup_ga096f24e0b8ce1627344beec6bc243545} 
+\index{Vectors Utilities@{Vectors Utilities}!Vec3fDiff@{Vec3fDiff}}
+\index{Vec3fDiff@{Vec3fDiff}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Vec3fDiff}{Vec3fDiff}}
+{\footnotesize\ttfamily \#define Vec3f\+Diff(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~(a\mbox{[}0\mbox{]} -\/= b\mbox{[}0\mbox{]},a\mbox{[}1\mbox{]} -\/= b\mbox{[}1\mbox{]},a\mbox{[}2\mbox{]} -\/= b\mbox{[}2\mbox{]})}
+
+
+
+Subtracts one 3-\/dimensional vector from another. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \{Vec3f\} The first vector and the result. \\
+\hline
+{\em b} & \{Vec3f\} The second vector.\\
+\hline
+\end{DoxyParams}
+This macro subtracts the components of vector b from vector a. \Hypertarget{group__VectorGroup_gadf0bf787046fb0a72025555ebec043ca}\label{group__VectorGroup_gadf0bf787046fb0a72025555ebec043ca} 
+\index{Vectors Utilities@{Vectors Utilities}!Vec3fDot@{Vec3fDot}}
+\index{Vec3fDot@{Vec3fDot}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Vec3fDot}{Vec3fDot}}
+{\footnotesize\ttfamily \#define Vec3f\+Dot(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~(a\mbox{[}0\mbox{]}\texorpdfstring{$\ast$}{*}b\mbox{[}0\mbox{]} + a\mbox{[}1\mbox{]}\texorpdfstring{$\ast$}{*}b\mbox{[}1\mbox{]} + a\mbox{[}2\mbox{]}\texorpdfstring{$\ast$}{*}b\mbox{[}2\mbox{]})}
+
+
+
+Computes the dot product of two 3-\/dimensional vectors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \{Vec3f\} The first vector. \\
+\hline
+{\em b} & \{Vec3f\} The second vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{f32\} The dot product of the two vectors.
+\end{DoxyReturn}
+This macro computes the dot product of vectors a and b. \Hypertarget{group__VectorGroup_ga69c27775dd5e506a719d49ed87e277d0}\label{group__VectorGroup_ga69c27775dd5e506a719d49ed87e277d0} 
+\index{Vectors Utilities@{Vectors Utilities}!Vec3fNormalize@{Vec3fNormalize}}
+\index{Vec3fNormalize@{Vec3fNormalize}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Vec3fNormalize}{Vec3fNormalize}}
+{\footnotesize\ttfamily \#define Vec3f\+Normalize(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~(\mbox{\hyperlink{group__VectorGroup_ga9f0077d5dd486e4ac9282184a0771448}{set\+\_\+vec3f\+\_\+magnitude}}(\&a, 1))}
+
+
+
+Normalizes a 3-\/dimensional vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \{Vec3f\} The vector to be normalized.\\
+\hline
+\end{DoxyParams}
+This macro normalizes the vector a to have a magnitude of 1. \Hypertarget{group__VectorGroup_gaeb6a5353793219b78ce1b2e0f92a16ac}\label{group__VectorGroup_gaeb6a5353793219b78ce1b2e0f92a16ac} 
+\index{Vectors Utilities@{Vectors Utilities}!Vec3fOne@{Vec3fOne}}
+\index{Vec3fOne@{Vec3fOne}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Vec3fOne}{Vec3fOne}}
+{\footnotesize\ttfamily \#define Vec3f\+One(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~(a\mbox{[}0\mbox{]}=1,a\mbox{[}1\mbox{]}=1,a\mbox{[}2\mbox{]}=1)}
+
+
+
+Sets a 3-\/dimensional vector to one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \{Vec3f\} The vector to be set to one.\\
+\hline
+\end{DoxyParams}
+This macro sets all components of the vector to one. \Hypertarget{group__VectorGroup_ga6d6a5971d667f0c1628f5cf908e3434b}\label{group__VectorGroup_ga6d6a5971d667f0c1628f5cf908e3434b} 
+\index{Vectors Utilities@{Vectors Utilities}!Vec3fScale@{Vec3fScale}}
+\index{Vec3fScale@{Vec3fScale}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Vec3fScale}{Vec3fScale}}
+{\footnotesize\ttfamily \#define Vec3f\+Scale(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{s }\end{DoxyParamCaption})~(a\mbox{[}0\mbox{]}\texorpdfstring{$\ast$}{*}=s, a\mbox{[}1\mbox{]}\texorpdfstring{$\ast$}{*}=s, a\mbox{[}2\mbox{]}\texorpdfstring{$\ast$}{*}=s)}
+
+
+
+Scales a 3-\/dimensional vector by a scalar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \{Vec3f\} The vector to be scaled. \\
+\hline
+{\em s} & \{f32\} The scalar value to scale the vector by.\\
+\hline
+\end{DoxyParams}
+This macro multiplies each component of the vector by the given scalar value. \Hypertarget{group__VectorGroup_gab4ec273945cc416f1b5f15e57039034c}\label{group__VectorGroup_gab4ec273945cc416f1b5f15e57039034c} 
+\index{Vectors Utilities@{Vectors Utilities}!Vec3fSet@{Vec3fSet}}
+\index{Vec3fSet@{Vec3fSet}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Vec3fSet}{Vec3fSet}}
+{\footnotesize\ttfamily \#define Vec3f\+Set(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~(a\mbox{[}0\mbox{]}=b\mbox{[}0\mbox{]},a\mbox{[}1\mbox{]}=b\mbox{[}1\mbox{]},a\mbox{[}2\mbox{]}=b\mbox{[}2\mbox{]})}
+
+
+
+Copies the values of one 3-\/dimensional vector to another. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \{Vec3f\} The destination vector. \\
+\hline
+{\em b} & \{Vec3f\} The source vector.\\
+\hline
+\end{DoxyParams}
+This macro copies the components of vector b to vector a. \Hypertarget{group__VectorGroup_gadece4ab12143eb317804f9d74d64899d}\label{group__VectorGroup_gadece4ab12143eb317804f9d74d64899d} 
+\index{Vectors Utilities@{Vectors Utilities}!Vec3fSum@{Vec3fSum}}
+\index{Vec3fSum@{Vec3fSum}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Vec3fSum}{Vec3fSum}}
+{\footnotesize\ttfamily \#define Vec3f\+Sum(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~(a\mbox{[}0\mbox{]} += b\mbox{[}0\mbox{]},a\mbox{[}1\mbox{]} += b\mbox{[}1\mbox{]},a\mbox{[}2\mbox{]} += b\mbox{[}2\mbox{]})}
+
+
+
+Adds two 3-\/dimensional vectors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \{Vec3f\} The first vector and the result. \\
+\hline
+{\em b} & \{Vec3f\} The second vector.\\
+\hline
+\end{DoxyParams}
+This macro adds the components of vector b to vector a. \Hypertarget{group__VectorGroup_ga3592b07bb3b2c11af83fa99caa2b0cc8}\label{group__VectorGroup_ga3592b07bb3b2c11af83fa99caa2b0cc8} 
+\index{Vectors Utilities@{Vectors Utilities}!Vec3fZero@{Vec3fZero}}
+\index{Vec3fZero@{Vec3fZero}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Vec3fZero}{Vec3fZero}}
+{\footnotesize\ttfamily \#define Vec3f\+Zero(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~(a\mbox{[}0\mbox{]}=0,a\mbox{[}1\mbox{]}=0,a\mbox{[}2\mbox{]}=0)}
+
+
+
+Sets a 3-\/dimensional vector to zero. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \{Vec3f\} The vector to be set to zero.\\
+\hline
+\end{DoxyParams}
+This macro sets all components of the vector to zero. 
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{group__VectorGroup_ga94b1556f7d3a1a388285098bbcb00190}\label{group__VectorGroup_ga94b1556f7d3a1a388285098bbcb00190} 
+\index{Vectors Utilities@{Vectors Utilities}!Mat4@{Mat4}}
+\index{Mat4@{Mat4}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Mat4}{Mat4}}
+{\footnotesize\ttfamily typedef mat4 \mbox{\hyperlink{group__VectorGroup_ga94b1556f7d3a1a388285098bbcb00190}{Mat4}}}
+
+\Hypertarget{group__VectorGroup_gad5e5d6e46b12b86abb43198e05365067}\label{group__VectorGroup_gad5e5d6e46b12b86abb43198e05365067} 
+\index{Vectors Utilities@{Vectors Utilities}!Vec1f@{Vec1f}}
+\index{Vec1f@{Vec1f}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Vec1f}{Vec1f}}
+{\footnotesize\ttfamily typedef float \mbox{\hyperlink{group__VectorGroup_gad5e5d6e46b12b86abb43198e05365067}{Vec1f}}}
+
+\Hypertarget{group__VectorGroup_gab992b8206e1d8a1dbe60ecce9e721376}\label{group__VectorGroup_gab992b8206e1d8a1dbe60ecce9e721376} 
+\index{Vectors Utilities@{Vectors Utilities}!Vec2f@{Vec2f}}
+\index{Vec2f@{Vec2f}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Vec2f}{Vec2f}}
+{\footnotesize\ttfamily typedef vec2 \mbox{\hyperlink{group__VectorGroup_gab992b8206e1d8a1dbe60ecce9e721376}{Vec2f}}}
+
+\Hypertarget{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}\label{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c} 
+\index{Vectors Utilities@{Vectors Utilities}!Vec3f@{Vec3f}}
+\index{Vec3f@{Vec3f}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Vec3f}{Vec3f}}
+{\footnotesize\ttfamily typedef vec3 \mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}}}
+
+\Hypertarget{group__VectorGroup_ga364d181ce92f92629aba5ee06ab95c73}\label{group__VectorGroup_ga364d181ce92f92629aba5ee06ab95c73} 
+\index{Vectors Utilities@{Vectors Utilities}!Vec4f@{Vec4f}}
+\index{Vec4f@{Vec4f}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{Vec4f}{Vec4f}}
+{\footnotesize\ttfamily typedef vec4 \mbox{\hyperlink{group__VectorGroup_ga364d181ce92f92629aba5ee06ab95c73}{Vec4f}}}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__VectorGroup_gae32063e06798649530242796d312da8b}\label{group__VectorGroup_gae32063e06798649530242796d312da8b} 
+\index{Vectors Utilities@{Vectors Utilities}!get\_vec3f\_magnitude@{get\_vec3f\_magnitude}}
+\index{get\_vec3f\_magnitude@{get\_vec3f\_magnitude}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{get\_vec3f\_magnitude()}{get\_vec3f\_magnitude()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} get\+\_\+vec3f\+\_\+magnitude (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}} \texorpdfstring{$\ast$}{*}}]{vec }\end{DoxyParamCaption})}
+
+
+
+Computes the magnitude (length) of a 3-\/dimensional vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & \{Vec3f\texorpdfstring{$\ast$}{*}\} Pointer to a Vec3f structure representing the vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{f32\} The magnitude of the vector as a floating-\/point value.
+\end{DoxyReturn}
+This function calculates the magnitude of the vector by taking the square root of the sum of the squares of its components. The magnitude is defined as the length of the vector in 3D space.
+
+The formula used is\+: \begin{DoxyVerb}|v| = √(x² + y² + z²)
+\end{DoxyVerb}
+ where x, y, and z are the components of the vector. \Hypertarget{group__VectorGroup_ga59d0526046a4f625cc3e8bb7f565fb64}\label{group__VectorGroup_ga59d0526046a4f625cc3e8bb7f565fb64} 
+\index{Vectors Utilities@{Vectors Utilities}!get\_vec3f\_sqr\_magnitude@{get\_vec3f\_sqr\_magnitude}}
+\index{get\_vec3f\_sqr\_magnitude@{get\_vec3f\_sqr\_magnitude}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{get\_vec3f\_sqr\_magnitude()}{get\_vec3f\_sqr\_magnitude()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} get\+\_\+vec3f\+\_\+sqr\+\_\+magnitude (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}} \texorpdfstring{$\ast$}{*}}]{vec }\end{DoxyParamCaption})}
+
+
+
+Computes the squared magnitude (length squared) of a 3-\/dimensional vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & \{Vec3f\texorpdfstring{$\ast$}{*}\} Pointer to a Vec3f structure representing the vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{f32\} The squared magnitude of the vector as a floating-\/point value.
+\end{DoxyReturn}
+This function calculates the squared magnitude of the vector without taking the square root. The squared magnitude is defined as the sum of the squares of the vector\textquotesingle{}s components.
+
+The formula used is\+: \begin{DoxyVerb}|v|² = x² + y² + z²
+\end{DoxyVerb}
+ where x, y, and z are the components of the vector.
+
+This function is useful for comparisons of vector lengths, as it avoids the computational cost of the square root operation. \Hypertarget{group__VectorGroup_gad65f148a83f54f0e064d7fd11e609755}\label{group__VectorGroup_gad65f148a83f54f0e064d7fd11e609755} 
+\index{Vectors Utilities@{Vectors Utilities}!glPolygonVec3@{glPolygonVec3}}
+\index{glPolygonVec3@{glPolygonVec3}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{glPolygonVec3()}{glPolygonVec3()}}
+{\footnotesize\ttfamily void gl\+Polygon\+Vec3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}} \texorpdfstring{$\ast$}{*}}]{vecs,  }\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}}]{length }\end{DoxyParamCaption})}
+
+Specifies a polygon by passing a set of 3D vertices to Open\+GL.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vecs} & \{Vec3f\texorpdfstring{$\ast$}{*}\} Pointer to an array of Vec3f structures representing the vertices of the polygon. \\
+\hline
+{\em length} & \{u8\} The number of vertices in the polygon.\\
+\hline
+\end{DoxyParams}
+This function iterates through the provided array of 3D vertices and calls the {\ttfamily gl\+Vertex\+Vec3} function for each vertex, effectively defining the shape of the polygon in the Open\+GL context. The order of the vertices determines how the polygon is rendered.
+
+It is assumed that the Open\+GL context has been properly set up and that the appropriate polygon mode (e.\+g., GL\+\_\+\+FILL, GL\+\_\+\+LINE) has been set prior to calling this function. The function does not perform any error checking regarding the validity of the vertices or Open\+GL state. \Hypertarget{group__VectorGroup_ga9f0077d5dd486e4ac9282184a0771448}\label{group__VectorGroup_ga9f0077d5dd486e4ac9282184a0771448} 
+\index{Vectors Utilities@{Vectors Utilities}!set\_vec3f\_magnitude@{set\_vec3f\_magnitude}}
+\index{set\_vec3f\_magnitude@{set\_vec3f\_magnitude}!Vectors Utilities@{Vectors Utilities}}
+\doxysubsubsection{\texorpdfstring{set\_vec3f\_magnitude()}{set\_vec3f\_magnitude()}}
+{\footnotesize\ttfamily void set\+\_\+vec3f\+\_\+magnitude (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__VectorGroup_ga3411e2f4e120cee085dcc3067ca6c62c}{Vec3f}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{\mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{magnitude }\end{DoxyParamCaption})}
+
+Sets the magnitude of a 3-\/dimensional vector to a specified value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & \{Vec3f\texorpdfstring{$\ast$}{*}\} Pointer to a Vec3f structure representing the vector. \\
+\hline
+{\em magnitude} & \{f32\} The desired magnitude for the vector.\\
+\hline
+\end{DoxyParams}
+This function adjusts the vector\textquotesingle{}s length to the specified magnitude while maintaining its direction. It first computes the current magnitude of the vector, then scales the vector accordingly.
+
+The scaling is achieved by dividing the desired magnitude by the current magnitude and multiplying each component of the vector by this scale factor.
+
+If the current magnitude is zero, the vector will remain unchanged as scaling would not be defined in this case. 

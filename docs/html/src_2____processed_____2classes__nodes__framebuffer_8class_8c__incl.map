@@ -1,0 +1,17 @@
+<map id="src/__processed__/src/__processed__/classes_nodes_framebuffer.class.c" name="src/__processed__/src/__processed__/classes_nodes_framebuffer.class.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="355,5,554,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,108,80,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="356,56,94,110,93,105,355,51"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="104,108,187,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="361,63,200,107,199,102,359,57"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="211,108,357,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="404,62,321,104,318,99,401,58"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="381,108,528,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="457,60,457,94,452,94,452,60"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="553,108,655,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="502,58,573,99,571,103,499,62"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="680,108,848,133"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="550,57,710,102,709,107,548,63"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="872,108,1003,133"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="555,49,860,103,859,108,554,54"/>
+</map>

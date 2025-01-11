@@ -1,0 +1,108 @@
+\doxysection{src/render/color.h File Reference}
+\hypertarget{color_8h}{}\label{color_8h}\index{src/render/color.h@{src/render/color.h}}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{color_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structColRGBA}{Col\+RGBA}}
+\item 
+struct \mbox{\hyperlink{structColRGB}{Col\+RGB}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{color_8h_a9cbbf5bc5e31a350c78498a25112bd43}{get\+\_\+hex\+\_\+color}}(x)~\mbox{\hyperlink{color_8c_afad5d53ab2e5ba07959ce45e8ab8006a}{get\+\_\+color}}((x$>$$>$24)\&0xff, (x$>$$>$16)\&0xff, (x$>$$>$8)\&8, x\&0xff)
+\item 
+\#define \mbox{\hyperlink{color_8h_a0001bb274845f9238d2de1bf0ba776dd}{gl\+Color\+RGBA}}(x)~gl\+Color4f(x.\+r, x.\+g, x.\+b, x.\+a)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structColRGBA}{Col\+RGBA}} \mbox{\hyperlink{color_8h_a9b3f6c6d6b647cb8e60a754aa5064007}{Col\+RGBA}}
+\item 
+typedef struct \mbox{\hyperlink{structColRGB}{Col\+RGB}} \mbox{\hyperlink{color_8h_abae49311a309e8ffe8d159680ad073ed}{Col\+RGB}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structColRGBA}{Col\+RGBA}} \mbox{\hyperlink{color_8h_afad5d53ab2e5ba07959ce45e8ab8006a}{get\+\_\+color}} (\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} r, \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} g, \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} b, \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} a)
+\item 
+void \mbox{\hyperlink{color_8h_a13c0dd39bc2cb8840b77f4ca9f6c4623}{darken\+\_\+color}} (\mbox{\hyperlink{structColRGBA}{Col\+RGBA}} \texorpdfstring{$\ast$}{*}col, \mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} rate)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{color_8h_a9cbbf5bc5e31a350c78498a25112bd43}\label{color_8h_a9cbbf5bc5e31a350c78498a25112bd43} 
+\index{color.h@{color.h}!get\_hex\_color@{get\_hex\_color}}
+\index{get\_hex\_color@{get\_hex\_color}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{get\_hex\_color}{get\_hex\_color}}
+{\footnotesize\ttfamily \#define get\+\_\+hex\+\_\+color(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~\mbox{\hyperlink{color_8c_afad5d53ab2e5ba07959ce45e8ab8006a}{get\+\_\+color}}((x$>$$>$24)\&0xff, (x$>$$>$16)\&0xff, (x$>$$>$8)\&8, x\&0xff)}
+
+\Hypertarget{color_8h_a0001bb274845f9238d2de1bf0ba776dd}\label{color_8h_a0001bb274845f9238d2de1bf0ba776dd} 
+\index{color.h@{color.h}!glColorRGBA@{glColorRGBA}}
+\index{glColorRGBA@{glColorRGBA}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{glColorRGBA}{glColorRGBA}}
+{\footnotesize\ttfamily \#define gl\+Color\+RGBA(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~gl\+Color4f(x.\+r, x.\+g, x.\+b, x.\+a)}
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{color_8h_abae49311a309e8ffe8d159680ad073ed}\label{color_8h_abae49311a309e8ffe8d159680ad073ed} 
+\index{color.h@{color.h}!ColRGB@{ColRGB}}
+\index{ColRGB@{ColRGB}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{ColRGB}{ColRGB}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structColRGB}{Col\+RGB}} \mbox{\hyperlink{structColRGB}{Col\+RGB}}}
+
+\Hypertarget{color_8h_a9b3f6c6d6b647cb8e60a754aa5064007}\label{color_8h_a9b3f6c6d6b647cb8e60a754aa5064007} 
+\index{color.h@{color.h}!ColRGBA@{ColRGBA}}
+\index{ColRGBA@{ColRGBA}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{ColRGBA}{ColRGBA}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structColRGBA}{Col\+RGBA}} \mbox{\hyperlink{structColRGBA}{Col\+RGBA}}}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{color_8h_a13c0dd39bc2cb8840b77f4ca9f6c4623}\label{color_8h_a13c0dd39bc2cb8840b77f4ca9f6c4623} 
+\index{color.h@{color.h}!darken\_color@{darken\_color}}
+\index{darken\_color@{darken\_color}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{darken\_color()}{darken\_color()}}
+{\footnotesize\ttfamily void darken\+\_\+color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structColRGBA}{Col\+RGBA}} \texorpdfstring{$\ast$}{*}}]{col,  }\item[{\mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{rate }\end{DoxyParamCaption})}
+
+Darkens a given color by multiplying its RGB components with a specified rate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em col} & \{Col\+RGBA\texorpdfstring{$\ast$}{*}\} Pointer to the \doxylink{structColRGBA}{Col\+RGBA} structure representing the color to be darkened. \\
+\hline
+{\em rate} & \{f32\} The rate by which to darken the color. A value between 0.\+0 and 1.\+0 will darken the color, where 0.\+0 results in black and 1.\+0 leaves the color unchanged.\\
+\hline
+\end{DoxyParams}
+This function takes a pointer to a \doxylink{structColRGBA}{Col\+RGBA} structure and modifies its RGB components by multiplying each component (red, green, and blue) by the specified rate. The alpha component remains unchanged. This is useful for achieving darker shades of the original color while preserving its transparency. \Hypertarget{color_8h_afad5d53ab2e5ba07959ce45e8ab8006a}\label{color_8h_afad5d53ab2e5ba07959ce45e8ab8006a} 
+\index{color.h@{color.h}!get\_color@{get\_color}}
+\index{get\_color@{get\_color}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{get\_color()}{get\_color()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structColRGBA}{Col\+RGBA}} get\+\_\+color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}}]{r,  }\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}}]{g,  }\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}}]{b,  }\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}}]{a }\end{DoxyParamCaption})}
+
+Converts RGBA color components from 0-\/255 range to a normalized floating-\/point format.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & \{u8\} Red component of the color (0-\/255). \\
+\hline
+{\em g} & \{u8\} Green component of the color (0-\/255). \\
+\hline
+{\em b} & \{u8\} Blue component of the color (0-\/255). \\
+\hline
+{\em a} & \{u8\} Alpha component of the color (0-\/255).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{\doxylink{structColRGBA}{Col\+RGBA}\} A \doxylink{structColRGBA}{Col\+RGBA} structure containing the normalized color components, where each component is in the range \mbox{[}0.\+0, 1.\+0\mbox{]}.
+\end{DoxyReturn}
+This function takes the red, green, blue, and alpha components of a color, which are typically represented as unsigned 8-\/bit integers (0-\/255), and converts them into a normalized format (0.\+0-\/1.\+0) suitable for rendering in graphics applications. The function creates a \doxylink{structColRGBA}{Col\+RGBA} structure that contains the converted color values and returns it. 

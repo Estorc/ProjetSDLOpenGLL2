@@ -20,7 +20,9 @@ time_t getFileCreationTime(char *path) {
 }
 
 
-#define CLASS_PATH "../src/classes/"
+#define CLASS_PATH "src/classes/"
+#define SRC_PATH "src/"
+#define CALLER_NAME "call_method"
 #define CLASS_IMPORT_HEADER_FILENAME "import_class.h"
 #define PROCESSED_PREFIX "__processed__/"
 #define PROCESSED_HEADER_PREFIX "__PROCESSED__"
@@ -30,6 +32,8 @@ time_t getFileCreationTime(char *path) {
 #define PROCESSED_METHOD_PREFIX "__class_method_"
 #define CLASS_TYPE_PREFIX "CLASS_TYPE_"
 #define CLASS_PREFIX "class "
+#define RETURN_VOID_POINTER "__retValueVP__"
+#define RETURN_POINTER "__retValueP__"
 #define PATH_SIZE 1000
 #define LINE_SIZE 200
 #define NAME_SIZE 100
@@ -37,6 +41,7 @@ time_t getFileCreationTime(char *path) {
 #define ARGUMENTS_SIZE 100
 #define METHODS_SIZE 100
 #define CLASS_SIZE 100
+#define TYPE_SIZE 100
 
 typedef struct Argument {
 	char name[NAME_SIZE];
@@ -63,10 +68,27 @@ typedef struct ImportStruct {
 	char unique_method_type[METHODS_SIZE][NAME_SIZE];
 	char class_name[CLASS_SIZE][NAME_SIZE];
 	char extends[CLASS_SIZE][NAME_SIZE];
+	char type[TYPE_SIZE][NAME_SIZE];
 	char (*filepath)[PATH_SIZE];
+	char (*srcfilepath)[PATH_SIZE];
+	int correponding_method_type_index[METHODS_SIZE][CLASS_SIZE];
+	int type_count;
 	int class_count;
 	int unique_method_count;
 } ImportStruct;
+
+
+void clear_spaces(char *str) {
+	char *i = str;
+	char *j = str;
+	while (*j != 0) {
+		*i = *j++;
+		if (*i != ' ') {
+			i++;
+		}
+	}
+	*i = 0;
+}
 
 
 int find_string_index(char *str, char (*str_list)[100], int list_size) {
@@ -113,6 +135,8 @@ int update_cwd() {
         return -1;
     }
 
+	strcat(exe_path, "/../"); // Go up one directory.
+
     // Change the current working directory to the directory of the executable.
     if (chdir(exe_path) != 0) {
         perror("chdir failed");
@@ -131,6 +155,19 @@ int update_cwd() {
     return 0;
 }
 
+void create_caller_function(char * type, int type_index, FILE * src_file, FILE * header_file) {
+	fprintf(header_file, "%s %s_%d(void (*func)(void *, va_list), ...);\n", type, CALLER_NAME, type_index);
+
+	fprintf(src_file, "%s %s_%d(void (*func)(void *, va_list), ...) {\n", type, CALLER_NAME, type_index);
+	fprintf(src_file, "    va_list args;\n");
+	fprintf(src_file, "    va_start(args, func);\n");
+	fprintf(src_file, "    %s value;\n", type);
+	fprintf(src_file, "    func(&value, args);\n");
+	fprintf(src_file, "    va_end(args);\n");
+	fprintf(src_file, "    return value;\n");
+	fprintf(src_file, "}\n");
+}
+
 int get_method_args(char *args, Argument *arg) {
 	char *arg_start = args;
 	char *arg_end = args;
@@ -142,6 +179,10 @@ int get_method_args(char *args, Argument *arg) {
 			char argstr[100];
 			strncpy(argstr, arg_start, arg_end - arg_start);
 			argstr[arg_end - arg_start] = '\0';
+
+			if (strstr(argstr, "...")) {
+				return arg_count;
+			}
 			
 			char * argstr_end = argstr + strlen(argstr);
 			while (*argstr_end == ' ') argstr_end--;
@@ -165,9 +206,14 @@ int get_class_method(char *line, Method *method) {
 		line++;
 		space_count++;
 	}
+	if (strspn(line, INSTRUCTION_CHARSET) == 0) return -1;
 	char *expr_pos = strstr(line, "(");
 	if (expr_pos) {
 		char *func_end = strstr(line, ")");
+		char *last_parenthesis = expr_pos;
+		while ((last_parenthesis = strstr(last_parenthesis + 1, "(")) < func_end && last_parenthesis != NULL) {
+			func_end = strstr(func_end + 1, ")");
+		}
 		if (func_end && func_end > expr_pos) {
 			size_t expr_len = expr_pos - line;
 			size_t func_args_len = func_end - (expr_pos+1);
@@ -187,7 +233,11 @@ int get_class_method(char *line, Method *method) {
 			strcpy(method->name, methodstr_end + 1);
 			strncpy(method->type, methodstr, methodstr_end - methodstr + 1);
 			method->name[expr_len] = '\0';
-			method->type[methodstr_end - methodstr + 1] = '\0';
+			method->type[methodstr_end - methodstr] = '\0';
+
+			if (strstr(method->type, "static")) {
+				return -2;
+			}
 
 			if (func_args_len) method->arguments_count = get_method_args(func_args, &method->arguments[1]) + 1;
 			else method->arguments_count = 1;
@@ -254,10 +304,10 @@ int main(int argc, char ** argv) {
 	}
 
 	char dirpath[PATH_SIZE];
-	strcpy(dirpath, CLASS_PATH);
+	strcpy(dirpath, SRC_PATH);
 	strcat(dirpath, PROCESSED_PREFIX);
 	mkdir(dirpath, 0755);
-	recursive_scan(CLASS_PATH, NULL, &namelist, filter, &n);
+	recursive_scan(SRC_PATH, NULL, &namelist, filter, &n);
 
 
 	if (n < 0) {
@@ -266,6 +316,10 @@ int main(int argc, char ** argv) {
 	} else {
 		ImportStruct import_struct = {0};
 		import_struct.filepath = malloc(n * sizeof(char[PATH_SIZE]));
+		import_struct.srcfilepath = malloc(n * sizeof(char[PATH_SIZE]));
+		// declare void because it is the default return type
+		import_struct.type_count = 1;
+		strcpy(import_struct.type[0], "void");
 		FILE * source_file;
 		FILE * processed_file;
 		FILE * processed_header_file;
@@ -273,9 +327,9 @@ int main(int argc, char ** argv) {
 		char lwname[NAME_SIZE];
 		char uppername[NAME_SIZE];
 		for (int i = 0; i < n; i++) {
-			char *filepath = malloc(strlen(namelist[i]->d_name) + strlen(CLASS_PATH) + 1);
+			char *filepath = malloc(strlen(namelist[i]->d_name) + strlen(SRC_PATH) + 1);
 			filepath[0] = 0;
-			strcat(filepath, CLASS_PATH);
+			strcat(filepath, SRC_PATH);
 			strcat(filepath, namelist[i]->d_name);
 			source_file = fopen(filepath, "r");
 			if (!source_file) {
@@ -285,10 +339,11 @@ int main(int argc, char ** argv) {
 
 			time_t lastEditTime = getFileCreationTime(filepath);
 			printf("Processing file %s -> ", filepath);
+			strcpy(import_struct.srcfilepath[i], filepath);
 
-			filepath = realloc(filepath, strlen(namelist[i]->d_name) + strlen(CLASS_PATH) + strlen(PROCESSED_PREFIX) + 1);
+			filepath = realloc(filepath, strlen(namelist[i]->d_name) + strlen(SRC_PATH) + strlen(PROCESSED_PREFIX) + 1);
 			filepath[0] = 0;
-			strcat(filepath, CLASS_PATH);
+			strcat(filepath, SRC_PATH);
 			strcat(filepath, PROCESSED_PREFIX);
 			replace_char(namelist[i]->d_name, '/', '_');
 			strcat(filepath, namelist[i]->d_name);
@@ -314,7 +369,7 @@ int main(int argc, char ** argv) {
 				printf("%s\n", filepath);
 			}
 
-			strcpy(import_struct.filepath[i], filepath + strlen(CLASS_PATH));
+			strcpy(import_struct.filepath[i], filepath + strlen(SRC_PATH));
 			printf("%s\n", import_struct.filepath[i]);
 
 			size_t filename_len = strspn(namelist[i]->d_name, INSTRUCTION_CHARSET);
@@ -331,15 +386,19 @@ int main(int argc, char ** argv) {
 			char line[LINE_SIZE];
 			bool in_class = false;
 			bool in_method = false;
+			bool in_static_method = false;
+			bool in_return = false;
 			int space_count = -1;
 			int brace_count = 0;
+			int line_count = 0;
 			Class current_class;
 
 			fprintf(processed_file, "#include <stdarg.h>\n");
-			fprintf(processed_file, "#include \"../../classes/classes.h\"\n");
-			fprintf(processed_file, "#include \"../../types.h\"\n");
+			fprintf(processed_file, "#include \"../types.h\"\n");
+			fprintf(processed_file, "#include \"../classes/classes.h\"\n");
 
 			do {
+				line_count++;
 				int j = 0;
 				for (; line[j-1] != '\n' && !feof(source_file); j++) line[j] = fgetc(source_file);
 				line[j] = 0;
@@ -350,7 +409,11 @@ int main(int argc, char ** argv) {
 					if (strstr(line, "{")) brace_count++;
 					if (strstr(line, "}") != NULL) {
 						brace_count--;
-						in_class = in_method;
+						in_class = in_method || in_static_method;
+						if (!brace_count && in_static_method) {
+							in_static_method = false;
+							fprintf(processed_file, "}\n");
+						}
 						if (!brace_count && in_method) {
 							current_class.methods_count++;
 							in_method = false;
@@ -360,7 +423,7 @@ int main(int argc, char ** argv) {
 							brace_count = 0;
 
 							for (size_t i = 0; i < current_class.methods_count; i++) {
-								fprintf(processed_header_file, "%s%s%s_%s(unsigned type, ...);\n", current_class.methods[i].type, PROCESSED_METHOD_PREFIX, lwname, current_class.methods[i].name);
+								fprintf(processed_header_file, "void %s%s_%s(void * %s, va_list args);\n", PROCESSED_METHOD_PREFIX, lwname, current_class.methods[i].name, RETURN_VOID_POINTER);
 
 								int index;
 								if ((index = find_string_index(current_class.methods[i].name, import_struct.unique_method_name, import_struct.unique_method_count)) == -1) {
@@ -376,7 +439,7 @@ int main(int argc, char ** argv) {
 							}
 
 						}
-						if (!in_method) {
+						if (!in_method && !in_static_method) {
 							continue;
 						}
 					}
@@ -384,9 +447,33 @@ int main(int argc, char ** argv) {
 
 					if (in_method) {
 						char * text = line;
-						while (space_count > text - line && (*text == ' ' || *text == '\t')) text++;
-						fprintf(processed_file, "%s", text);
+						//while (space_count > text - line && (*text == ' ' || *text == '\t')) text++;
+						char * return_pos;
+						if ((return_pos = strstr(line, "return "))) {
+							text[return_pos - text] = 0;
+							fprintf(processed_file, "%s", text);
+							text = return_pos;
+							text += strlen("return ");
+							fprintf(processed_file, "*%s = ", RETURN_POINTER);
+							in_return = true;
+						}
+						if (in_return) {
+							while (*text) {
+								if (*text == ';') {
+									fprintf(processed_file, ";return;\n");
+									in_return = false;
+									break;
+								} else fputc(*text, processed_file);
+								text++;
+							}
+						} else fprintf(processed_file, "%s", text);
 					} else {
+						if (strstr(line, "private:")) {
+							continue;
+						}
+						if (strstr(line, "public:")) {
+							continue;
+						}
 						if (strstr(line, CONTAINER_TYPE_PREFIX)) {
 							char *expr_pos = strstr(line, CONTAINER_TYPE_PREFIX);
 							expr_pos += strlen(CONTAINER_TYPE_PREFIX);
@@ -396,28 +483,45 @@ int main(int argc, char ** argv) {
 							current_class.type[expr_len] = '\0';
 							continue;
 						}
-						if ((space_count = get_class_method(line, current_method)) != -1) {
-							strcpy(current_method->arguments[0].name, "this");
-							strcpy(current_method->arguments[0].type, current_class.type);
+						if (!in_static_method && (space_count = get_class_method(line, current_method)) != -1) {
+							if (space_count == -2) {
+								fprintf(processed_file, "%s", line);
+								in_static_method = true;
+							} else {
+								clear_spaces(current_method->type);
+								int type_index = find_string_index(current_method->type, import_struct.type, import_struct.type_count);
+								if (type_index == -1) {
+									strcpy(import_struct.type[import_struct.type_count], current_method->type);
+									type_index = import_struct.type_count;
+									create_caller_function(current_method->type, type_index, processed_file, processed_header_file);
+									import_struct.type_count++;
+								}
+								import_struct.correponding_method_type_index[current_class.methods_count][import_struct.class_count-1] = type_index;
+								fprintf(processed_file, "#line %d \"%s\"\n", line_count, import_struct.srcfilepath[i]);
+								strcpy(current_method->arguments[0].name, "this");
+								strcpy(current_method->arguments[0].type, current_class.type);
 
-							fprintf(processed_file, "%s%s%s_%s(unsigned type, ...) {\n", current_method->type, PROCESSED_METHOD_PREFIX, lwname, current_method->name);
-							fprintf(processed_file, "va_list args;\n");
-							fprintf(processed_file, "va_start(args, type);\n");
-							for (size_t j = 0; j < current_method->arguments_count; j++) {
-								fprintf(processed_file, "%s %s = va_arg(args, %s);\n", current_method->arguments[j].type, current_method->arguments[j].name, current_method->arguments[j].type);
+								fprintf(processed_file, "void %s%s_%s(void * %s, va_list args) {", PROCESSED_METHOD_PREFIX, lwname, current_method->name, RETURN_VOID_POINTER);
+								if (strcmp(current_method->type, "void") != 0) {
+									fprintf(processed_file, "%s * %s = (%s *) %s;", current_method->type, RETURN_POINTER, current_method->type, RETURN_VOID_POINTER);
+								}
+								for (size_t j = 0; j < current_method->arguments_count; j++) {
+									char * arg_type_end = current_method->arguments[j].name + strspn(current_method->arguments[j].name, INSTRUCTION_CHARSET);
+									fprintf(processed_file, "%s %s = va_arg(args, %s%s);", current_method->arguments[j].type, current_method->arguments[j].name, current_method->arguments[j].type, arg_type_end);
+								}
+								fprintf(processed_file, "(void)this;\n");
+
+								in_method = true;
 							}
-							fprintf(processed_file, "va_end(args);\n");
-							fprintf(processed_file, "(void)this;\n");
-
-							in_method = true;
 						} else {
-							fprintf(processed_file, "%s\n", line);
+							fprintf(processed_file, "%s", line);
 						}
 					}
 				} else {
 					if (strstr(line, "#")) {
 						if (strstr(line, "#include \"")) {
-							fprintf(processed_file, "#include \"../../%s", line + strlen("#include \""));
+							fprintf(processed_file, "#include \"../%s", line + strlen("#include \""));	// ../ because we are in the __processed__ directory
+							fprintf(processed_header_file, "#include \"../src/%s", line + strlen("#include \"")); // ../src because we are in the __processed__ directory
 						} else {
 							fprintf(processed_file, "%s", line);
 						}
@@ -426,14 +530,14 @@ int main(int argc, char ** argv) {
 					if (in_class) {
 
 						strcpy(uppername, current_class.name);
-						fprintf(processed_file, "static unsigned __type__ __attribute__((unused)) = %s%s;\n", CLASS_TYPE_PREFIX, uppercase_string(uppername));
+						fprintf(processed_file, "static unsigned __type__ __attribute__((unused)) = %s%s;", CLASS_TYPE_PREFIX, uppercase_string(uppername));
 
 						strcpy(lwname, current_class.name);
 						lowercase_string(lwname);
 
-						char *extends = strstr(line, "extends");
+						char *extends = strstr(line, ": public");
 						if (extends) {
-							extends += strlen("extends");
+							extends += strlen(": public");
 							extends += strspn(extends, " ");
 							size_t extends_len = strspn(extends, INSTRUCTION_CHARSET);
 							strncpy(import_struct.extends[import_struct.class_count], extends, extends_len);
@@ -462,25 +566,30 @@ int main(int argc, char ** argv) {
 			filepath[0] = 0;
 			strcat(filepath, CLASS_PATH);
 			strcat(filepath, CLASS_IMPORT_HEADER_FILENAME);
+			FILE * json_data_file = fopen("./tools/import_class.json", "w");
 			FILE * import_class_header_file = fopen(filepath, "w");
 			free(filepath);
 
 			fprintf(import_class_header_file, "// This file is generated by the class_tools.c tool\n");
 			for (int i = 0; i < n; i++) {
-				fprintf(import_class_header_file, "#include \"%s\"\n", import_struct.filepath[i]);
+				fprintf(import_class_header_file, "#include \"../%s\"\n", import_struct.filepath[i]);
 			}
 			fprintf(import_class_header_file, "#ifndef IMPORT_CLASS_H\n");
 			fprintf(import_class_header_file, "#define IMPORT_CLASS_H\n");
 			fprintf(import_class_header_file, "typedef enum ClassType {\n");
+			fprintf(json_data_file, "{\n");
+			fprintf(json_data_file, "\t\"type_associations\": {\n");
 			for (size_t i = 0; i < import_struct.class_count; i++) {
 				strcpy(uppername, import_struct.class_name[i]);
+				fprintf(json_data_file, "\t\t\"%s\": \"%s%s\"%c\n", import_struct.class_name[i], CLASS_TYPE_PREFIX, uppercase_string(uppername), i < import_struct.class_count - 1 ? ',' : ' ');
 				fprintf(import_class_header_file, "\t%s%s,\n", CLASS_TYPE_PREFIX, uppercase_string(uppername));
 			}
+			fprintf(json_data_file, "\t},\n");
 			fprintf(import_class_header_file, "\t%sCOUNT\n", CLASS_TYPE_PREFIX);
 			fprintf(import_class_header_file, "} ClassType;\n");
 			fprintf(import_class_header_file, "struct MethodsCorrespondance {\n");
 			for (size_t i = 0; i < import_struct.unique_method_count; i++) {
-				fprintf(import_class_header_file, "\t%s (*%s[%d])(unsigned type, ...);\n", import_struct.unique_method_type[i], import_struct.unique_method_name[i], import_struct.class_count);
+				fprintf(import_class_header_file, "\tvoid (*%s[%d])(void * %s, va_list args);\n", import_struct.unique_method_name[i], import_struct.class_count, RETURN_VOID_POINTER);
 			}
 			fprintf(import_class_header_file, "};\n");
 
@@ -493,15 +602,44 @@ int main(int argc, char ** argv) {
 			fprintf(import_class_header_file, "extern const struct ClassManager classManager;\n");
 			fprintf(import_class_header_file, "#define BUILD_CLASS_METHODS_CORRESPONDANCE(classManager) const struct ClassManager classManager = {\\\n");
 			fprintf(import_class_header_file, "\t.methodsCorrespondance = {\\\n");
+			fprintf(json_data_file, "\t\"method_index\": {\n");
 			for (size_t i = 0; i < import_struct.unique_method_count; i++){
+				fprintf(json_data_file, "\t\t\"%s\": %ld%c\n", import_struct.unique_method_name[i], i, i < import_struct.unique_method_count - 1 ? ',' : ' ');
 				fprintf(import_class_header_file, "\t\t.%s = {", import_struct.unique_method_name[i]);
 				for (size_t j = 0; j < import_struct.class_count; j++) {
-					fprintf(import_class_header_file, "%s", import_struct.corresponding_method[i][j]);
-					if (j < import_struct.class_count - 1) fprintf(import_class_header_file, ", ");
+					size_t method_index = j;
+					size_t extends_index = find_string_index(import_struct.extends[method_index], import_struct.class_name, import_struct.class_count);
+					while (strcmp(import_struct.corresponding_method[i][method_index], "NULL") == 0 && extends_index != -1) {
+						method_index = extends_index;
+						extends_index = find_string_index(import_struct.extends[method_index], import_struct.class_name, import_struct.class_count);
+					}
+					fprintf(import_class_header_file, "%s", import_struct.corresponding_method[i][method_index]);
+					if (j < import_struct.class_count - 1) {
+						fprintf(import_class_header_file, ", ");
+					}
 				}
 				fprintf(import_class_header_file, "},\\\n");
 			}
+			fprintf(json_data_file, "\t},\n");
 			fprintf(import_class_header_file, "\t},\\\n");
+
+			fprintf(json_data_file, "\t\"type_caller\": {\n");
+			for (size_t i = 0; i < import_struct.class_count; i++){
+				fprintf(json_data_file, "\t\t\"%s\": [", import_struct.class_name[i]);
+				for (size_t j = 0; j < import_struct.unique_method_count; j++) {
+					fprintf(json_data_file, "\"%s_%d\"%c", CALLER_NAME, import_struct.correponding_method_type_index[j][i], j < import_struct.unique_method_count - 1 ? ',' : ' ');
+				}
+				fprintf(json_data_file, "]%c\n", i < import_struct.class_count - 1 ? ',' : ' ');
+			}
+			fprintf(json_data_file, "\t},\n");
+
+			fprintf(json_data_file, "\t\"type_cast\": {\n");
+			for (size_t i = 0; i < import_struct.type_count; i++){
+				fprintf(json_data_file, "\t\t\"%s\": \"%s_%ld\"%c\n", import_struct.type[i], CALLER_NAME, i, i < import_struct.type_count - 1 ? ',' : ' ');
+			}
+			fprintf(json_data_file, "\t}\n");
+
+
 			fprintf(import_class_header_file, "\t.extends = {");
 			for (size_t i = 0; i < import_struct.class_count; i++) {
 				fprintf(import_class_header_file, "%d", find_string_index(import_struct.extends[i], import_struct.class_name, import_struct.class_count));
@@ -517,7 +655,9 @@ int main(int argc, char ** argv) {
 			fprintf(import_class_header_file, "};\n");
 			
 			fprintf(import_class_header_file, "#endif\n");
+			fprintf(json_data_file, "}\n");
 			
+			fclose(json_data_file);
 			fclose(import_class_header_file);
 		}
 		free(namelist);

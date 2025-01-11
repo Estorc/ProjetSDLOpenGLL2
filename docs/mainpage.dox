@@ -1,0 +1,27 @@
+/**
+ * @mainpage Claude Chappe' Curse - A C Game Documentation
+ * 
+ * Welcome to the documentation for **Claude Chappe' Curse - A C Game**. This project provides:
+ * - A set of mathematical utilities
+ * - Modular and reusable functions
+ * - Well-documented APIs for integration
+ * - **An approach of C class expending the C struct**
+ * - **An original game engine fully operational asking only base C knowledges**
+ * 
+ * ## Features
+ * - **Easy to Use**: Simple API for common operations
+ * - **High Performance**: Optimized for speed and efficiency
+ * - **C class preprocessor**: A python/C preprocessor has been developped to handle the support of class in C.
+ * - **Game engine fully operational**: A game engine inspired of Godot's nodes system and really easy to use (level & code editor in developpment).
+ * 
+ * ## Quick Links
+ * - @ref Wiki "Getting Started"
+ * - @ref Node "Take a look to node class architecture!"
+ * - @ref ClassWiki "How to use the new C class ?"
+ * 
+ * ## Getting Started
+ * To use this game engine:
+ * 1. Refers to the given doc.
+ * 2. Starts your game from scratch by creating your first scene using the template scene in reference.
+ * 3. Have fun!
+ */

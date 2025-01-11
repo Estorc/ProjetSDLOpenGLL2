@@ -1,16 +1,17 @@
 NEW_SCRIPT(camera)
-	PARAMS_COUNT(3);
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(3);
 
-	float *targetRot = &node->params[0].f;
+	float *targetRot = &this->attribute[0].f;
 
-	if (glm_vec3_norm2(targetRot) == 0) glm_vec3_copy(node->rot, targetRot);
+	if (glm_vec3_norm2(targetRot) == 0) glm_vec3_copy(this->rot, targetRot);
 
-	if (!node->parent->params[0].b) {
-		targetRot[1] -= fmod((f32) (input->mouse.x - input->mouse.lastX) * delta * 100.0, 360.0);
-		targetRot[0] -= fmod((f32) (input->mouse.lastY - input->mouse.y) * delta * 100.0, 360.0);
-		targetRot[0] = CLAMP(-180,targetRot[0],180);
+	if (!this->parent->attribute[0].b) {
+		targetRot[1] -= fmod((f32) (input.mouse.x - input.mouse.lastX) * delta * 100.0, 360.0);
+		targetRot[0] += fmod((f32) (input.mouse.lastY - input.mouse.y) * delta * 100.0, 360.0);
+		targetRot[0] = CLAMP(-90,targetRot[0],90);
 	}
 
-	Vec3fApproach(node->rot, targetRot, (0.1/delta));
+	Vec3fApproach(this->rot, targetRot, (0.1/delta));
 
 END_SCRIPT(camera)

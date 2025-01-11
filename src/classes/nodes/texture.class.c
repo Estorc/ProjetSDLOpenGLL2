@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class Texture @promote extends Node {
+class Texture : public Node {
     __containerType__ Node *
+    public:
 
     void constructor(TextureMap *texture) {
         this->object = texture;
@@ -12,9 +13,7 @@ class Texture @promote extends Node {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load() {
 

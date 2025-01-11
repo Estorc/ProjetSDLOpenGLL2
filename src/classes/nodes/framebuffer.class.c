@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class Framebuffer @promote extends Node {
+class Framebuffer : public Node {
     __containerType__ Node *
+    public:
 
     void constructor(FrameBuffer *frameBuffer) {
         this->object = frameBuffer;
@@ -12,15 +13,13 @@ class Framebuffer @promote extends Node {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load() {
         FrameBuffer *msaa_framebuffer;
         msaa_framebuffer = malloc(sizeof(FrameBuffer));
 
-        METHOD(this, constructor, msaa_framebuffer);
+        this::constructor(msaa_framebuffer);
     }
 
     void save(FILE *file) {

@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class CapsuleCShape @promote extends CShape {
+class CapsuleCShape : public CShape {
     __containerType__ Node *
+    public:
 
     void constructor(struct CapsuleCollisionShape *capsuleCollisionShape) {
         this->object = capsuleCollisionShape;
@@ -12,9 +13,7 @@ class CapsuleCShape @promote extends CShape {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void get_priority(int *priority) {
         *priority = 3;
@@ -24,7 +23,8 @@ class CapsuleCShape @promote extends CShape {
         CapsuleCollisionShape *capsuleCollisionShape;
         capsuleCollisionShape = malloc(sizeof(CapsuleCollisionShape));
         POINTER_CHECK(capsuleCollisionShape);
-        METHOD_TYPE(this, __type__, constructor, capsuleCollisionShape);
+        this->type = __type__;
+        this::constructor(capsuleCollisionShape);
     }
 
     void save(FILE *file) {

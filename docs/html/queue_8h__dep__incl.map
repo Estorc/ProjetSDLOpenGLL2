@@ -1,0 +1,9 @@
+<map id="src/storage/queue.h" name="src/storage/queue.h">
+<area shape="rect" id="Node000001" title="Queue data structure and related operations." alt="" coords="119,5,269,31"/>
+<area shape="rect" id="Node000002" href="$main_8c.html" title=" " alt="" coords="5,79,95,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,39,75,81,72,76,158,34"/>
+<area shape="rect" id="Node000003" href="$queue_8c.html" title=" " alt="" coords="119,79,269,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,44,197,79,191,79,191,44"/>
+<area shape="rect" id="Node000004" href="$scene_8c.html" title=" " alt="" coords="293,79,420,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="234,34,331,76,329,81,232,39"/>
+</map>

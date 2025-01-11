@@ -1,0 +1,99 @@
+\doxysection{Window Struct Reference}
+\hypertarget{structWindow}{}\label{structWindow}\index{Window@{Window}}
+
+
+Structure representing the SDL window and its associated Open\+GL context.  
+
+
+
+
+{\ttfamily \#include $<$window.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structWindow_a60832cf15f95282154b8fb6ab6c52c72}{sdl\+\_\+window}}
+\item 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structWindow_a1a42da4979d383bb3556f62df57952e5}{surface}}
+\item 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structWindow_aca021ed255a9b7ac9db5cce3555191a8}{ui\+\_\+surface}}
+\item 
+\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{structWindow_a189814c3803362db4e171bfb48ed0058}{ui\+\_\+texture}}
+\item 
+SDL\+\_\+\+GLContext \mbox{\hyperlink{structWindow_ac292b9a43d516b4d2eaaaa259d60febb}{opengl\+\_\+ctx}}
+\item 
+float \mbox{\hyperlink{structWindow_ace1255057064121bed1b5ea6eb13a5a2}{start\+Time}}
+\item 
+float \mbox{\hyperlink{structWindow_a506a3b7598ed47b5823a02dc0c648b63}{time}}
+\item 
+float \mbox{\hyperlink{structWindow_abfc5f54e2c9ade4fdb3866dca7bd39a9}{last\+Time}}
+\item 
+bool \mbox{\hyperlink{structWindow_abfd6a085fe40e9011e695b2840640e2e}{resized}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure representing the SDL window and its associated Open\+GL context. 
+
+This structure encapsulates the SDL window and its related properties, including the Open\+GL context, surfaces for rendering, and timing information. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structWindow_abfc5f54e2c9ade4fdb3866dca7bd39a9}\label{structWindow_abfc5f54e2c9ade4fdb3866dca7bd39a9} 
+\index{Window@{Window}!lastTime@{lastTime}}
+\index{lastTime@{lastTime}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{lastTime}{lastTime}}
+{\footnotesize\ttfamily float Window\+::last\+Time}
+
+Time of the last frame update. \Hypertarget{structWindow_ac292b9a43d516b4d2eaaaa259d60febb}\label{structWindow_ac292b9a43d516b4d2eaaaa259d60febb} 
+\index{Window@{Window}!opengl\_ctx@{opengl\_ctx}}
+\index{opengl\_ctx@{opengl\_ctx}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{opengl\_ctx}{opengl\_ctx}}
+{\footnotesize\ttfamily SDL\+\_\+\+GLContext Window\+::opengl\+\_\+ctx}
+
+Open\+GL context associated with the window. \Hypertarget{structWindow_abfd6a085fe40e9011e695b2840640e2e}\label{structWindow_abfd6a085fe40e9011e695b2840640e2e} 
+\index{Window@{Window}!resized@{resized}}
+\index{resized@{resized}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{resized}{resized}}
+{\footnotesize\ttfamily bool Window\+::resized}
+
+Flag indicating if the window has been resized. \Hypertarget{structWindow_a60832cf15f95282154b8fb6ab6c52c72}\label{structWindow_a60832cf15f95282154b8fb6ab6c52c72} 
+\index{Window@{Window}!sdl\_window@{sdl\_window}}
+\index{sdl\_window@{sdl\_window}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{sdl\_window}{sdl\_window}}
+{\footnotesize\ttfamily SDL\+\_\+\+Window\texorpdfstring{$\ast$}{*} Window\+::sdl\+\_\+window}
+
+Pointer to the SDL window. \Hypertarget{structWindow_ace1255057064121bed1b5ea6eb13a5a2}\label{structWindow_ace1255057064121bed1b5ea6eb13a5a2} 
+\index{Window@{Window}!startTime@{startTime}}
+\index{startTime@{startTime}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{startTime}{startTime}}
+{\footnotesize\ttfamily float Window\+::start\+Time}
+
+Time when the window was created or initialized. \Hypertarget{structWindow_a1a42da4979d383bb3556f62df57952e5}\label{structWindow_a1a42da4979d383bb3556f62df57952e5} 
+\index{Window@{Window}!surface@{surface}}
+\index{surface@{surface}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{surface}{surface}}
+{\footnotesize\ttfamily SDL\+\_\+\+Surface\texorpdfstring{$\ast$}{*} Window\+::surface}
+
+Main rendering surface. \Hypertarget{structWindow_a506a3b7598ed47b5823a02dc0c648b63}\label{structWindow_a506a3b7598ed47b5823a02dc0c648b63} 
+\index{Window@{Window}!time@{time}}
+\index{time@{time}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{time}{time}}
+{\footnotesize\ttfamily float Window\+::time}
+
+Current time since the window was created or initialized. \Hypertarget{structWindow_aca021ed255a9b7ac9db5cce3555191a8}\label{structWindow_aca021ed255a9b7ac9db5cce3555191a8} 
+\index{Window@{Window}!ui\_surface@{ui\_surface}}
+\index{ui\_surface@{ui\_surface}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{ui\_surface}{ui\_surface}}
+{\footnotesize\ttfamily SDL\+\_\+\+Surface\texorpdfstring{$\ast$}{*} Window\+::ui\+\_\+surface}
+
+Surface for UI rendering. \Hypertarget{structWindow_a189814c3803362db4e171bfb48ed0058}\label{structWindow_a189814c3803362db4e171bfb48ed0058} 
+\index{Window@{Window}!ui\_texture@{ui\_texture}}
+\index{ui\_texture@{ui\_texture}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{ui\_texture}{ui\_texture}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} Window\+::ui\+\_\+texture}
+
+\doxylink{classTexture}{Texture} map for UI elements. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{window_8h}{window.\+h}}\end{DoxyCompactItemize}

@@ -3,14 +3,13 @@
 #include "storage/node.h"
 #include "io/shader.h"
 #include "render/render.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
 #include "window.h"
 #include "gui/frame.h"
 #include "io/input.h"
 
-class RadioButton @promote extends Button {
+class RadioButton : public Button {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;
@@ -19,9 +18,9 @@ class RadioButton @promote extends Button {
         this->object = frame;
         this->type = __type__; 
         SUPER(initialize_node);
-        METHOD(this, init_frame);
-        METHOD(this, init_button);
-        METHOD(this, init_radiobutton);
+        this::init_frame();
+        this::init_button();
+        this::init_radiobutton();
     }
 
     void init_radiobutton() {
@@ -31,13 +30,12 @@ class RadioButton @promote extends Button {
         radiobutton->checked = NULL;
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load(FILE *file) {
         IGNORE(file);
-        METHOD_TYPE(this, __type__, constructor);
+        this->type = __type__;
+        this::constructor();
         Frame *frame = (Frame *) this->object;
         frame->scale[0] = 48.0f;
         frame->scale[1] = 48.0f;
@@ -52,8 +50,8 @@ class RadioButton @promote extends Button {
         fprintf(file, "%s", classManager.class_names[this->type]);
     }
 
-    void is_radiobutton(bool *result) {
-        *result = true;
+    bool is_radiobutton() {
+        return true;
     }
 
     void free() {

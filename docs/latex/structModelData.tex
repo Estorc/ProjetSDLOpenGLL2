@@ -1,0 +1,68 @@
+\doxysection{Model\+Data Struct Reference}
+\hypertarget{structModelData}{}\label{structModelData}\index{ModelData@{ModelData}}
+
+
+Structure representing the data of a 3D model.  
+
+
+
+
+{\ttfamily \#include $<$model.\+h$>$}
+
+
+
+Collaboration diagram for Model\+Data\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{structModelData__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structModelData_a8eb6a8bbabf16efee10efc6862c6b94b}{materials}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{structModelData_aa5e049e9f3df26c25b288c1821646c21}{materials\+Count}}
+\item 
+\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structModelData_abed85b0c0f0a25e5775f7b824a6a8e2e}{objects}}
+\item 
+\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{structModelData_a9290344f1ed0b3327b6f937aa46694f1}{length}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure representing the data of a 3D model. 
+
+This structure holds the materials and objects that make up a 3D model. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structModelData_a9290344f1ed0b3327b6f937aa46694f1}\label{structModelData_a9290344f1ed0b3327b6f937aa46694f1} 
+\index{ModelData@{ModelData}!length@{length}}
+\index{length@{length}!ModelData@{ModelData}}
+\doxysubsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Model\+Data\+::length}
+
+Number of objects \Hypertarget{structModelData_a8eb6a8bbabf16efee10efc6862c6b94b}\label{structModelData_a8eb6a8bbabf16efee10efc6862c6b94b} 
+\index{ModelData@{ModelData}!materials@{materials}}
+\index{materials@{materials}!ModelData@{ModelData}}
+\doxysubsubsection{\texorpdfstring{materials}{materials}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMaterial}{Material}}\texorpdfstring{$\ast$}{*} Model\+Data\+::materials}
+
+Array of materials \Hypertarget{structModelData_aa5e049e9f3df26c25b288c1821646c21}\label{structModelData_aa5e049e9f3df26c25b288c1821646c21} 
+\index{ModelData@{ModelData}!materialsCount@{materialsCount}}
+\index{materialsCount@{materialsCount}!ModelData@{ModelData}}
+\doxysubsubsection{\texorpdfstring{materialsCount}{materialsCount}}
+{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Model\+Data\+::materials\+Count}
+
+Number of materials \Hypertarget{structModelData_abed85b0c0f0a25e5775f7b824a6a8e2e}\label{structModelData_abed85b0c0f0a25e5775f7b824a6a8e2e} 
+\index{ModelData@{ModelData}!objects@{objects}}
+\index{objects@{objects}!ModelData@{ModelData}}
+\doxysubsubsection{\texorpdfstring{objects}{objects}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}}\texorpdfstring{$\ast$}{*} Model\+Data\+::objects}
+
+Array of model objects 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/io/\mbox{\hyperlink{model_8h}{model.\+h}}\end{DoxyCompactItemize}

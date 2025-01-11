@@ -1,0 +1,56 @@
+Avancer le tuto OpenGL
+
+RIG https://learnopengl.com/Guest-Articles/2020/Skeletal-Animation
+
+SSAO https://learnopengl.com/Advanced-Lighting/SSAO
+
+PBR https://learnopengl.com/PBR/Theory
+
+
+
+
+
+Améliorer le torque
+
+Save and load settings
+
+
+Peut être taille partout pour les frames
+
+Edit Editor
+
+
+Optimiser le chargement des modèles/mesh, ect.
+
+Make parallax Color is vec1 and not vec3
+
+
+
+Gérer les "petites" fuites
+
+
+Frustum Culling https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling
+
+TF SDL qu'est-ce que tu fous à manger mes FPS ?!!
+
+
+Désactiver le binding des ombres si désactivé
+
+
+Delete draw sprite ect...
+
+
+Docs :
+
+Settings
+enum NodeFlags
+classes
+Review docs
+
+Classes :
+
+Transform functions in class methods
+(maybe .h headers)
+
+Ajouter preprocesseur de type :
+Trouver une solution pour permettre de donner le type au préprocesseur

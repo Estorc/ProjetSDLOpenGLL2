@@ -25,6 +25,7 @@ typedef struct Settings {
     bool cast_shadows;
     bool window_fullscreen;
     u16 resolution;
+    bool show_collision_boxes;
 } Settings;
 
 void get_resolution(int *width, int *height);

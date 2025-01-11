@@ -1,0 +1,32 @@
+<map id="Button" name="Button">
+<area shape="rect" id="Node000001" title="Represents a button." alt="" coords="211,7,276,33"/>
+<area shape="rect" id="Node000002" href="$classFrame.html" title="Represents a frame." alt="" coords="267,97,329,123"/>
+<area shape="poly" id="edge11_Node000002_Node000001" title=" " alt="" coords="251,45,263,72,285,95,281,99,258,75,246,47"/>
+<area shape="rect" id="Node000011" href="$classRadioButton.html" title="Represents a radio button." alt="" coords="121,97,224,123"/>
+<area shape="poly" id="edge19_Node000011_Node000001" title=" " alt="" coords="228,45,204,75,185,99,180,95,200,72,224,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="310,84,313,72,310,60,295,44,275,33,278,28,298,40,315,57,318,71,315,85"/>
+<area shape="rect" id="Node000005" href="$structTheme.html" title="Represents a theme." alt="" coords="590,185,657,211"/>
+<area shape="poly" id="edge8_Node000005_Node000002" title=" " alt="" coords="343,109,480,118,547,128,574,135,594,144,612,163,622,184,617,186,607,166,591,149,572,140,546,133,479,123,343,115"/>
+<area shape="rect" id="Node000007" href="$classLabel.html" title="Represents a label." alt="" coords="5,185,63,211"/>
+<area shape="poly" id="edge10_Node000007_Node000002" title=" " alt="" coords="253,122,236,125,191,129,155,129,121,133,81,149,59,167,43,187,39,183,55,163,78,144,119,128,154,124,190,124,235,120,252,117"/>
+<area shape="rect" id="Node000008" href="$classInputArea.html" title="Represents an input area." alt="" coords="90,185,175,211"/>
+<area shape="poly" id="edge13_Node000008_Node000002" title=" " alt="" coords="254,123,204,135,169,149,152,167,140,186,136,184,147,164,166,144,203,130,252,117"/>
+<area shape="rect" id="Node000009" href="$classSelectList.html" title="Represents a selectable list." alt="" coords="217,185,302,211"/>
+<area shape="poly" id="edge15_Node000009_Node000002" title=" " alt="" coords="282,135,275,148,264,186,259,184,270,146,278,133"/>
+<area shape="rect" id="Node000010" href="$classImageFrame.html" title="Represents an image frame." alt="" coords="354,185,458,211"/>
+<area shape="poly" id="edge17_Node000010_Node000002" title=" " alt="" coords="331,128,356,145,397,183,394,187,352,149,328,132"/>
+<area shape="rect" id="Node000003" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="727,7,783,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="714,32,330,105,329,100,713,27"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="798,10,806,13,810,20,801,29,784,31,783,26,799,24,805,20,803,17,796,15"/>
+<area shape="rect" id="Node000004" href="$unionBehaviorParameter.html" title=" " alt="" coords="750,97,897,123"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="750,46,750,60,754,72,766,85,783,95,780,100,763,90,749,75,744,61,745,46"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="809,86,792,60,767,35,771,31,796,57,813,83"/>
+<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="586,182,499,149,407,129,329,117,330,112,408,124,500,144,588,177"/>
+<area shape="rect" id="Node000006" href="$structFont.html" title="Represents a font." alt="" coords="675,97,726,123"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="692,136,673,163,644,187,641,183,669,160,687,133"/>
+<area shape="poly" id="edge9_Node000002_Node000007" title=" " alt="" coords="57,175,82,158,110,144,266,114,267,120,112,149,85,163,60,179"/>
+<area shape="poly" id="edge12_Node000002_Node000008" title=" " alt="" coords="153,174,193,144,230,128,265,116,267,121,232,133,195,149,156,178"/>
+<area shape="poly" id="edge14_Node000002_Node000009" title=" " alt="" coords="268,171,290,122,295,124,273,174"/>
+<area shape="poly" id="edge16_Node000002_Node000010" title=" " alt="" coords="405,172,403,159,397,148,383,135,366,126,329,116,330,111,368,121,386,131,401,145,408,158,410,171"/>
+<area shape="poly" id="edge18_Node000001_Node000011" title=" " alt="" coords="133,92,118,77,116,67,120,57,139,39,162,28,210,19,211,24,164,33,142,44,124,60,121,67,123,74,137,88"/>
+</map>

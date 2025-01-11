@@ -1,0 +1,77 @@
+\doxysection{bodies.\+h}
+\hypertarget{bodies_8h_source}{}\label{bodies_8h_source}\index{src/physics/bodies.h@{src/physics/bodies.h}}
+\mbox{\hyperlink{bodies_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}../math/math\_util.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}../io/model.h"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ BODIES\_H}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ BODIES\_H}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classStaticBody}{StaticBody}}\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ **\mbox{\hyperlink{classStaticBody_a408be5d12123695c0aaf5606229424f4}{collisionsShapes}};\ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classStaticBody_a9d2973c36dc745928707d787afafde2e}{length}};\ }
+\DoxyCodeLine{00028\ \}\ \mbox{\hyperlink{classStaticBody}{StaticBody}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classRigidBody}{RigidBody}}\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ **\mbox{\hyperlink{classRigidBody_a3f1742d7e024aef933df2f1271658820}{collisionsShapes}};\ }
+\DoxyCodeLine{00037\ \ \ \ \ vec3\ \mbox{\hyperlink{classRigidBody_a327eb9b4c4790efb77944e0e1474d3fe}{velocity}};\ }
+\DoxyCodeLine{00038\ \ \ \ \ vec3\ \mbox{\hyperlink{classRigidBody_acfa7c599a0861664ec4e7a3a117a0caa}{gravity}};\ }
+\DoxyCodeLine{00039\ \ \ \ \ vec3\ \mbox{\hyperlink{classRigidBody_a733a02a44389a0a954c627db05a372f1}{angularVelocity}};\ }
+\DoxyCodeLine{00040\ \ \ \ \ vec3\ \mbox{\hyperlink{classRigidBody_ad02d16bc585b090bd6cd76f2aef5f36d}{centerOfMass}};\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classRigidBody_ade21c3a46b04ecff37f578624d54e3bb}{mass}};\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classRigidBody_a424760c36cdad93c9c86d2c28e58589c}{friction}};\ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classRigidBody_ab27c2ab4cda997915f4698886e7fce48}{length}};\ }
+\DoxyCodeLine{00044\ \}\ \mbox{\hyperlink{classRigidBody}{RigidBody}};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classKinematicBody}{KinematicBody}}\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ **\mbox{\hyperlink{classKinematicBody_a19d02f45e67012fe48a8ea2c4fd7e665}{collisionsShapes}};\ }
+\DoxyCodeLine{00053\ \ \ \ \ vec3\ \mbox{\hyperlink{classKinematicBody_a6df89dcb3c0755043974bbb1a5f90746}{velocity}};\ }
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classKinematicBody_ad869823646607bf62ecac40b78751a92}{length}};\ }
+\DoxyCodeLine{00055\ \}\ \mbox{\hyperlink{classKinematicBody}{KinematicBody}};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structPlaneCollisionShape}{PlaneCollisionShape}}\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structPlaneCollisionShape_ae7daedb98652a4a2acc6a7efadbceb5a}{UNUSED}};\ }
+\DoxyCodeLine{00064\ \}\ \mbox{\hyperlink{structPlaneCollisionShape}{PlaneCollisionShape}};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBoxCollisionShape}{BoxCollisionShape}}\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structBoxCollisionShape_a0fa63c479f9692ef730ea75e7d4638bc}{UNUSED}};\ }
+\DoxyCodeLine{00073\ \}\ \mbox{\hyperlink{structBoxCollisionShape}{BoxCollisionShape}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSphereCollisionShape}{SphereCollisionShape}}\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structSphereCollisionShape_af6462a28b39b30d04f2ed9bb099d06d2}{UNUSED}};\ }
+\DoxyCodeLine{00082\ \}\ \mbox{\hyperlink{structSphereCollisionShape}{SphereCollisionShape}};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00089\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMeshCollisionShape}{MeshCollisionShape}}\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gab8341657bd0436f925f30c3e0e8db793}{Vertex}}\ (*\mbox{\hyperlink{structMeshCollisionShape_a2a82687751ba58634f10d701415e9cda}{facesVertex}})[3];\ }
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structMeshCollisionShape_a98464ef9ccbbe3f33f1a0b861d1ec549}{numFaces}};\ }
+\DoxyCodeLine{00092\ \}\ \mbox{\hyperlink{structMeshCollisionShape}{MeshCollisionShape}};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCapsuleCollisionShape}{CapsuleCollisionShape}}\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structCapsuleCollisionShape_a5baf0df7f54705ffdedc55d2eb4511c5}{UNUSED}};\ }
+\DoxyCodeLine{00101\ \}\ \mbox{\hyperlink{structCapsuleCollisionShape}{CapsuleCollisionShape}};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRayCollisionShape}{RayCollisionShape}}\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structRayCollisionShape_a2f8e14b163b3000d7183b02b52a04cd2}{UNUSED}};\ }
+\DoxyCodeLine{00110\ \}\ \mbox{\hyperlink{structRayCollisionShape}{RayCollisionShape}};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00117\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCollisionBuffer}{CollisionBuffer}}\ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ **\mbox{\hyperlink{structCollisionBuffer_a9a137b046c86b3acab3f60701138dece}{collisionsShapes}};\ }
+\DoxyCodeLine{00119\ \ \ \ \ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structCollisionBuffer_a83f9d1a463aaa763712b79ceacf2507d}{length}};\ }
+\DoxyCodeLine{00120\ \ \ \ \ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structCollisionBuffer_a8c4f5336e0154216e34fbcd711b30489}{index}};\ }
+\DoxyCodeLine{00121\ \}\ \mbox{\hyperlink{structCollisionBuffer}{CollisionBuffer}};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{comment}{//\ All\ the\ bodies\ listed\ bellow\ have\ shared\ attributes.\ It\ allows\ the\ compiler\ to\ get\ an\ attribute\ from\ the\ void*\ pointer.}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ GET\_FROM\_BODY\_NODE(node,\ attribute,\ dest)\ \(\backslash\)}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{switch\ (node-\/>type)\ \{\(\backslash\)}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\ \ \ \ case\ CLASS\_TYPE\_STATICBODY:\ \ \ \ \ \ \ \ \ \ \ \ \ \ dest\ =\ \&((StaticBody\ *)\ node-\/>object)-\/>attribute;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ break;\(\backslash\)}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\ \ \ \ case\ CLASS\_TYPE\_RIGIDBODY:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dest\ =\ \&((RigidBody\ *)\ node-\/>object)-\/>attribute;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ break;\(\backslash\)}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\ \ \ \ case\ CLASS\_TYPE\_KINEMATICBODY:\ \ \ \ \ \ \ \ \ \ \ dest\ =\ \&((KinematicBody\ *)\ node-\/>object)-\/>attribute;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ break;\(\backslash\)}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\ \ \ \ default:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dest\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ break;\(\backslash\)}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\};}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

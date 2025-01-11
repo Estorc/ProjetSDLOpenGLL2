@@ -1,0 +1,62 @@
+\doxysection{src/io/gltexture\+\_\+loader.c File Reference}
+\hypertarget{gltexture__loader_8c}{}\label{gltexture__loader_8c}\index{src/io/gltexture\_loader.c@{src/io/gltexture\_loader.c}}
+{\ttfamily \#include "{}../types.\+h"{}}\newline
+{\ttfamily \#include "{}../math/math\+\_\+util.\+h"{}}\newline
+{\ttfamily \#include "{}model.\+h"{}}\newline
+{\ttfamily \#include "{}input.\+h"{}}\newline
+{\ttfamily \#include "{}gltexture\+\_\+loader.\+h"{}}\newline
+{\ttfamily \#include "{}shader.\+h"{}}\newline
+{\ttfamily \#include "{}../memory.\+h"{}}\newline
+Include dependency graph for gltexture\+\_\+loader.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gltexture__loader_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__TextureLoader_ga423969b3bf83826b757323aaf6a1a975}{convert\+\_\+to\+\_\+rgb32f\+\_\+texture}} (SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}rgba\+Surface)
+\begin{DoxyCompactList}\small\item\em Converts an SDL\+\_\+\+Surface with RGBA format to an array of floats representing an RGB32F texture. \end{DoxyCompactList}\item 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__TextureLoader_ga63cbb7972f065dfe4d8a5bfb6690f3b6}{flip\+\_\+y\+\_\+surface}} (SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}surface)
+\begin{DoxyCompactList}\small\item\em Flips an SDL\+\_\+\+Surface vertically (along the Y-\/axis). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{group__TextureLoader_ga538a4617970ed626f3e13f6ac4e075d8}{load\+\_\+texture\+\_\+from\+\_\+path}} (char \texorpdfstring{$\ast$}{*}path, GLenum format, bool y\+Reversed)
+\begin{DoxyCompactList}\small\item\em Loads a texture from a specified file path and creates an Open\+GL texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__TextureLoader_gacf6319b1b2c90bd1af3e8dbdcbf80cb8}{draw\+\_\+text}} (SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}render\+\_\+surface, int x, int y, char \texorpdfstring{$\ast$}{*}text, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, SDL\+\_\+\+Color color, char \texorpdfstring{$\ast$}{*}alignment, int width)
+\begin{DoxyCompactList}\small\item\em Renders text onto an SDL\+\_\+\+Surface at a specified position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gltexture__loader_8c_a2a462a0a4a45821dc469cbb7e85c18be}{draw\+\_\+sprite}} (SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}render\+\_\+surface, int x, int y, char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} color)
+\item 
+int \mbox{\hyperlink{gltexture__loader_8c_ad3da1d54578f570dcf4a8d775f0c9f99}{draw\+\_\+input\+\_\+box}} (SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}render\+\_\+surface, int x, int y, int width, int height, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} color, \mbox{\hyperlink{structInput}{Input}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__InputHandling_gad4db59ccea8946af2bb70f8269e99eeb}{input}})
+\item 
+int \mbox{\hyperlink{gltexture__loader_8c_a30269b10be83f106aeaca9d789eaeb6e}{draw\+\_\+button}} (SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}render\+\_\+surface, int x, int y, int width, int height, char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} color, \mbox{\hyperlink{structInput}{Input}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__InputHandling_gad4db59ccea8946af2bb70f8269e99eeb}{input}})
+\item 
+void \mbox{\hyperlink{gltexture__loader_8c_a5898674b1926da0aae8ca259c38ab9d0}{draw\+\_\+rectangle}} (SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}render\+\_\+surface, int x, int y, int width, int height, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} color)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gltexture__loader_8c_a30269b10be83f106aeaca9d789eaeb6e}\label{gltexture__loader_8c_a30269b10be83f106aeaca9d789eaeb6e} 
+\index{gltexture\_loader.c@{gltexture\_loader.c}!draw\_button@{draw\_button}}
+\index{draw\_button@{draw\_button}!gltexture\_loader.c@{gltexture\_loader.c}}
+\doxysubsubsection{\texorpdfstring{draw\_button()}{draw\_button()}}
+{\footnotesize\ttfamily int draw\+\_\+button (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}}]{render\+\_\+surface,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{color,  }\item[{\mbox{\hyperlink{structInput}{Input}} \texorpdfstring{$\ast$}{*}}]{input }\end{DoxyParamCaption})}
+
+\Hypertarget{gltexture__loader_8c_ad3da1d54578f570dcf4a8d775f0c9f99}\label{gltexture__loader_8c_ad3da1d54578f570dcf4a8d775f0c9f99} 
+\index{gltexture\_loader.c@{gltexture\_loader.c}!draw\_input\_box@{draw\_input\_box}}
+\index{draw\_input\_box@{draw\_input\_box}!gltexture\_loader.c@{gltexture\_loader.c}}
+\doxysubsubsection{\texorpdfstring{draw\_input\_box()}{draw\_input\_box()}}
+{\footnotesize\ttfamily int draw\+\_\+input\+\_\+box (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}}]{render\+\_\+surface,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{color,  }\item[{\mbox{\hyperlink{structInput}{Input}} \texorpdfstring{$\ast$}{*}}]{input }\end{DoxyParamCaption})}
+
+\Hypertarget{gltexture__loader_8c_a5898674b1926da0aae8ca259c38ab9d0}\label{gltexture__loader_8c_a5898674b1926da0aae8ca259c38ab9d0} 
+\index{gltexture\_loader.c@{gltexture\_loader.c}!draw\_rectangle@{draw\_rectangle}}
+\index{draw\_rectangle@{draw\_rectangle}!gltexture\_loader.c@{gltexture\_loader.c}}
+\doxysubsubsection{\texorpdfstring{draw\_rectangle()}{draw\_rectangle()}}
+{\footnotesize\ttfamily void draw\+\_\+rectangle (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}}]{render\+\_\+surface,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{color }\end{DoxyParamCaption})}
+
+\Hypertarget{gltexture__loader_8c_a2a462a0a4a45821dc469cbb7e85c18be}\label{gltexture__loader_8c_a2a462a0a4a45821dc469cbb7e85c18be} 
+\index{gltexture\_loader.c@{gltexture\_loader.c}!draw\_sprite@{draw\_sprite}}
+\index{draw\_sprite@{draw\_sprite}!gltexture\_loader.c@{gltexture\_loader.c}}
+\doxysubsubsection{\texorpdfstring{draw\_sprite()}{draw\_sprite()}}
+{\footnotesize\ttfamily void draw\+\_\+sprite (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}}]{render\+\_\+surface,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{color }\end{DoxyParamCaption})}
+

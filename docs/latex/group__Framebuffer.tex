@@ -1,0 +1,122 @@
+\doxysection{Framebuffer Management}
+\hypertarget{group__Framebuffer}{}\label{group__Framebuffer}\index{Framebuffer Management@{Framebuffer Management}}
+
+
+Functions for managing \doxylink{structMSAA}{MSAA} framebuffers.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMSAA}{MSAA}}
+\begin{DoxyCompactList}\small\item\em A structure to handle Multi-\/\+Sample Anti-\/\+Aliasing (\doxylink{structMSAA}{MSAA}) framebuffers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned int \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}}
+\begin{DoxyCompactList}\small\item\em Alias for an unsigned int representing a \doxylink{classFrame}{Frame} Buffer \doxylink{structObject}{Object}. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}} \mbox{\hyperlink{group__Framebuffer_gab75cdf3b36517627dfe9b6029e00129d}{Frame\+Buffer}}
+\begin{DoxyCompactList}\small\item\em Alias for FBO, representing a \doxylink{classFrame}{Frame} Buffer \doxylink{structObject}{Object}. \end{DoxyCompactList}\item 
+typedef unsigned int \mbox{\hyperlink{group__Framebuffer_ga5ccf15e59bc43f1030c39f6951deb862}{RBO}}
+\begin{DoxyCompactList}\small\item\em Alias for an unsigned int representing a Render Buffer \doxylink{structObject}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__Framebuffer_gaf612536a5e3ec772e9bede8b62b37f92}{create\+\_\+msaa\+\_\+framebuffer}} (\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}msaa)
+\begin{DoxyCompactList}\small\item\em Creates an \doxylink{structMSAA}{MSAA} framebuffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_ga61ecc0fe7012195a1a406b36c766d45c}{free\+\_\+msaa\+\_\+framebuffer}} (\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}msaa)
+\begin{DoxyCompactList}\small\item\em Frees the resources associated with an \doxylink{structMSAA}{MSAA} framebuffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_ga38295e04feba1f829d93bacadffa8394}{resize\+\_\+msaa\+\_\+framebuffer}} (\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}msaa)
+\begin{DoxyCompactList}\small\item\em Resizes an \doxylink{structMSAA}{MSAA} framebuffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions for managing \doxylink{structMSAA}{MSAA} framebuffers. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}\label{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d} 
+\index{Framebuffer Management@{Framebuffer Management}!FBO@{FBO}}
+\index{FBO@{FBO}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{FBO}{FBO}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}}}
+
+
+
+Alias for an unsigned int representing a \doxylink{classFrame}{Frame} Buffer \doxylink{structObject}{Object}. 
+
+\Hypertarget{group__Framebuffer_gab75cdf3b36517627dfe9b6029e00129d}\label{group__Framebuffer_gab75cdf3b36517627dfe9b6029e00129d} 
+\index{Framebuffer Management@{Framebuffer Management}!FrameBuffer@{FrameBuffer}}
+\index{FrameBuffer@{FrameBuffer}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{FrameBuffer}{FrameBuffer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__Framebuffer_gab75cdf3b36517627dfe9b6029e00129d}{Frame\+Buffer}}}
+
+
+
+Alias for FBO, representing a \doxylink{classFrame}{Frame} Buffer \doxylink{structObject}{Object}. 
+
+\Hypertarget{group__Framebuffer_ga5ccf15e59bc43f1030c39f6951deb862}\label{group__Framebuffer_ga5ccf15e59bc43f1030c39f6951deb862} 
+\index{Framebuffer Management@{Framebuffer Management}!RBO@{RBO}}
+\index{RBO@{RBO}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{RBO}{RBO}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__Framebuffer_ga5ccf15e59bc43f1030c39f6951deb862}{RBO}}}
+
+
+
+Alias for an unsigned int representing a Render Buffer \doxylink{structObject}{Object}. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__Framebuffer_gaf612536a5e3ec772e9bede8b62b37f92}\label{group__Framebuffer_gaf612536a5e3ec772e9bede8b62b37f92} 
+\index{Framebuffer Management@{Framebuffer Management}!create\_msaa\_framebuffer@{create\_msaa\_framebuffer}}
+\index{create\_msaa\_framebuffer@{create\_msaa\_framebuffer}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{create\_msaa\_framebuffer()}{create\_msaa\_framebuffer()}}
+{\footnotesize\ttfamily void create\+\_\+msaa\+\_\+framebuffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}}]{msaa }\end{DoxyParamCaption})}
+
+
+
+Creates an \doxylink{structMSAA}{MSAA} framebuffer. 
+
+This function initializes and sets up a multisample anti-\/aliasing (\doxylink{structMSAA}{MSAA}) framebuffer. \doxylink{structMSAA}{MSAA} is used to improve the visual quality of rendered images by reducing aliasing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em msaa} & A pointer to an \doxylink{structMSAA}{MSAA} structure that will hold the framebuffer information. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__Framebuffer_ga61ecc0fe7012195a1a406b36c766d45c}\label{group__Framebuffer_ga61ecc0fe7012195a1a406b36c766d45c} 
+\index{Framebuffer Management@{Framebuffer Management}!free\_msaa\_framebuffer@{free\_msaa\_framebuffer}}
+\index{free\_msaa\_framebuffer@{free\_msaa\_framebuffer}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{free\_msaa\_framebuffer()}{free\_msaa\_framebuffer()}}
+{\footnotesize\ttfamily void free\+\_\+msaa\+\_\+framebuffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}}]{msaa }\end{DoxyParamCaption})}
+
+
+
+Frees the resources associated with an \doxylink{structMSAA}{MSAA} framebuffer. 
+
+This function deallocates and cleans up the resources used by an \doxylink{structMSAA}{MSAA} framebuffer. It should be called when the framebuffer is no longer needed to avoid memory leaks.
+
+
+\begin{DoxyParams}{Parameters}
+{\em msaa} & A pointer to an \doxylink{structMSAA}{MSAA} structure that holds the framebuffer information to be freed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__Framebuffer_ga38295e04feba1f829d93bacadffa8394}\label{group__Framebuffer_ga38295e04feba1f829d93bacadffa8394} 
+\index{Framebuffer Management@{Framebuffer Management}!resize\_msaa\_framebuffer@{resize\_msaa\_framebuffer}}
+\index{resize\_msaa\_framebuffer@{resize\_msaa\_framebuffer}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{resize\_msaa\_framebuffer()}{resize\_msaa\_framebuffer()}}
+{\footnotesize\ttfamily void resize\+\_\+msaa\+\_\+framebuffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}}]{msaa }\end{DoxyParamCaption})}
+
+
+
+Resizes an \doxylink{structMSAA}{MSAA} framebuffer. 
+
+This function adjusts the size of an existing \doxylink{structMSAA}{MSAA} framebuffer to match new dimensions. It is useful when the window or viewport size changes and the framebuffer needs to be updated accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em msaa} & A pointer to an \doxylink{structMSAA}{MSAA} structure that holds the framebuffer information to be resized. \\
+\hline
+\end{DoxyParams}

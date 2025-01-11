@@ -1,14 +1,104 @@
+#pragma once
 #include "../io/input.h"
+#include "../render/lighting.h"
 
 struct Input;
 struct Window;
+struct Node;
 
-float get_velocity_norm(struct Node *node);
-void get_velocity(struct Node *node, vec3 velocity);
-void get_mass(struct Node *node, float *mass);
-void get_center_of_mass(struct Node *node, vec3 com);
-void apply_collision(struct Node *shapeA, struct Node *shapeB, vec3 collisionNormal, vec3 angularNormal, float penetrationDepth);
+#define DEBUG_AREA
+
+/**
+ * @defgroup Physics Physics
+ * @brief Functions and structures for physics and collision detection.
+ * @{
+ */
+
+/**
+ * @struct DistanceNode
+ * @brief Represents a node and its distance.
+ * 
+ * This structure holds a reference to a node and its associated distance.
+ * It is used for sorting and managing nodes based on their distances.
+ */
+
+typedef struct DistanceNode {
+    struct Node *node; /** < Pointer to the node. */
+    float distance; /** < Distance associated with the node. */
+} DistanceNode;
+
+/**
+ * @struct Area
+ * @brief Represents an area with collision shapes and nodes.
+ * 
+ * This structure holds information about an area, including its collision shapes,
+ * collected nodes, and sorted nodes.
+ */
+
+typedef struct Area {
+    struct Node **collisionsShapes; /** < Array of collected nodes with distances. */
+    u8 length; /** < Number of collision shapes. */
+    struct DistanceNode *collectedNodes; /** < Array of collected nodes with distances. */
+    u8 collectedLength; /** < Number of collected nodes. */
+    struct DistanceNode *sortedNodes; /** < Array of sorted nodes with distances. */
+    u8 sortedLength; /** < Number of sorted nodes. */
+} Area;
+
+
+/**
+ * @brief Apply body collision between two shapes.
+ * 
+ * @param shapeA Pointer to the first shape.
+ * @param shapeB Pointer to the second shape.
+ * @param collisionNormal Vector representing the collision normal.
+ * @param angularNormal Vector representing the angular normal.
+ * @param penetrationDepth Depth of penetration during collision.
+ */
+void apply_body_collision(struct Node *shapeA, struct Node *shapeB, vec3 collisionNormal, vec3 angularNormal, float penetrationDepth);
+
+/**
+ * @brief Check collisions for a shape.
+ * 
+ * @param shape Pointer to the shape.
+ */
 void check_collisions(struct Node *shape);
+
+/**
+ * @brief Update the script for a node.
+ * 
+ * @param node Pointer to the node.
+ * @param pos Position vector.
+ * @param rot Rotation vector.
+ * @param scale Scale vector.
+ * @param delta Time delta.
+ * @param input Pointer to the input structure.
+ * @param window Pointer to the window structure.
+ */
 void update_script(struct Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, struct Input *input, struct Window *window);
+
+/**
+ * @brief Update the physics for a node.
+ * 
+ * @param node Pointer to the node.
+ * @param pos Position vector.
+ * @param rot Rotation vector.
+ * @param scale Scale vector.
+ * @param delta Time delta.
+ * @param input Pointer to the input structure.
+ * @param window Pointer to the window structure.
+ * @param lightsCount Array of light counts.
+ * @param active Boolean indicating if the node is active.
+ */
 void update_physics(struct Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, struct Input *input, struct Window *window, u8 lightsCount[LIGHTS_COUNT], bool active);
+
+/**
+ * @brief Update the global position of a node.
+ * 
+ * @param node Pointer to the node.
+ * @param pos Position vector.
+ * @param rot Rotation vector.
+ * @param scale Scale vector.
+ */
 void update_global_position(struct Node *node, vec3 pos, vec3 rot, vec3 scale);
+
+/** @} */ // end of Physics group

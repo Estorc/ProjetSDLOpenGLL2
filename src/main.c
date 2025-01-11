@@ -1,11 +1,4 @@
 #include "types.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_opengl.h>
-#include <SDL2/SDL_mixer.h>
-#include <SDL2/SDL_ttf.h>
-#include <GL/glu.h>
-#include <GL/glext.h>
-#include <stdio.h>
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
@@ -15,12 +8,11 @@
 #include "render/lighting.h"
 #include "window.h"
 #include "io/input.h"
-#include "io/stringio.h"
 #include "io/osio.h"
 #include "render/camera.h"
 #include "io/shader.h"
-#include "utils/skybox.h"
 #include "io/scene_loader.h"
+#include "io/node_loader.h"
 #include "physics/physics.h"
 #include "physics/bodies.h"
 #include "scripts/scripts.h"
@@ -29,6 +21,7 @@
 #include "memory.h"
 #include "buffer.h"
 #include "storage/queue.h"
+#include "utils/scene.h"
 
 #include "classes/classes.h"
 
@@ -50,7 +43,7 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
         else return -1;
     }
 
-
+ 
     char delta_str[50];
     char fps_str[50];
     if (settings.show_fps) {
@@ -79,9 +72,7 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
 
         buffers.collisionBuffer.index = 0;
         buffers.lightingBuffer.index = 0;
-        for (int i = 0; i < LIGHTS_COUNT; i++) {
-            lightsCount[i] = 0;
-        }
+        memset(lightsCount, 0, sizeof(lightsCount));
         update_physics(mainNodeTree.root, (vec3) {0.0, 0.0, 0.0}, (vec3) {0.0, 0.0, 0.0}, (vec3) {1.0, 1.0, 1.0}, fixedTimeStep, &input, window, lightsCount, true);
         window->resized = false;
         accumulator -= fixedTimeStep;
@@ -99,10 +90,11 @@ BufferCollection buffers;
 Queue callQueue = {NULL};
 Tree mainNodeTree;
 Input input;
-Settings settings = {false, true, false, RES_RESPONSIVE};
+Settings settings = {false, true, false, RES_RESPONSIVE, false};
 Window window;
 
 BUILD_CLASS_METHODS_CORRESPONDANCE(classManager);
+
 
 int main(int argc, char *argv[]) {
 
@@ -111,7 +103,6 @@ int main(int argc, char *argv[]) {
     #include "scripts/loading_scripts.h"
 
     if (create_window("Physics Engine Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL, &window) == -1) return -1;
-    
     init_input(&input);
 
 
@@ -160,7 +151,8 @@ int main(int argc, char *argv[]) {
 
     free_buffers();
     free_memory_cache();
-    free_node(mainNodeTree.root);
+    printf("Free nodes!\n");
+    (mainNodeTree.root)::free();
 
     glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
     glDeleteTextures(1, &depthMap.texture);

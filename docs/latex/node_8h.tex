@@ -1,0 +1,55 @@
+\doxysection{src/storage/node.h File Reference}
+\hypertarget{node_8h}{}\label{node_8h}\index{src/storage/node.h@{src/storage/node.h}}
+{\ttfamily \#include "{}../io/shader.\+h"{}}\newline
+{\ttfamily \#include "{}../render/camera.\+h"{}}\newline
+{\ttfamily \#include "{}../physics/bodies.\+h"{}}\newline
+{\ttfamily \#include "{}../scripts/scripts.\+h"{}}\newline
+{\ttfamily \#include "{}../render/framebuffer.\+h"{}}\newline
+Include dependency graph for node.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{node_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{node_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structTree}{Tree}}
+\begin{DoxyCompactList}\small\item\em Represents a tree structure containing nodes, a camera, \doxylink{structMSAA}{MSAA} settings, and scripts. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{classNode}{Node}}
+\begin{DoxyCompactList}\small\item\em Represents a node in the tree structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__NodeFunctions_ga459f59c37b902a28ff3fcfb9a0200850}{NODE\+\_\+\+ACTIVE\+\_\+\+AND\+\_\+\+VISIBLE}}~\mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a60ab1e6cf30478e53bd7bcba32c2c792}{NODE\+\_\+\+ACTIVE}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a579273ea1ad284119327d60ff4dbc4b5}{NODE\+\_\+\+VISIBLE}}
+\item 
+\#define \mbox{\hyperlink{group__NodeFunctions_ga7997ef817b41c1047ed905c912608173}{NODE\+\_\+\+DEFAULT\+\_\+\+FLAGS}}~\mbox{\hyperlink{group__NodeFunctions_ga459f59c37b902a28ff3fcfb9a0200850}{NODE\+\_\+\+ACTIVE\+\_\+\+AND\+\_\+\+VISIBLE}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__NodeFunctions_gae925b777d12c58434a689cce258b57c0}{Node\+Flags}} \{ \newline
+\mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a60ab1e6cf30478e53bd7bcba32c2c792}{NODE\+\_\+\+ACTIVE}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a579273ea1ad284119327d60ff4dbc4b5}{NODE\+\_\+\+VISIBLE}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0ab2fcac4053398589571a32ecd8006451}{NODE\+\_\+\+SCRIPT}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a4c9ec9a67e59ef9acb25ed7b719b5687}{NODE\+\_\+\+LIGHT\+\_\+\+ACTIVE}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3
+, \newline
+\mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a5828f469f2d164bbe0a2ff682a180d3a}{NODE\+\_\+\+UNUSED3}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a81804ec13b8cf9cdc42a6ae1e89066ee}{NODE\+\_\+\+UNUSED4}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 5
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a114b0f86ab1e39a1162d185834e9567f}{NODE\+\_\+\+UNUSED5}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 6
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0acb4410df9bfe0bd0ef7dc83b26fe77ca}{NODE\+\_\+\+EDITOR\+\_\+\+FLAG}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 7
+ \}
+\begin{DoxyCompactList}\small\item\em Flags indicating the state and properties of a node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structTree}{Tree}} \mbox{\hyperlink{group__NodeFunctions_ga190eab39f039817e31f2a8b6b4dbde63}{main\+Node\+Tree}}
+\begin{DoxyCompactList}\small\item\em The main tree structure used in the storage system. \end{DoxyCompactList}\end{DoxyCompactItemize}

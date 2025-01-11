@@ -3,14 +3,12 @@
 #include "storage/node.h"
 #include "io/shader.h"
 #include "render/render.h"
-#include <SDL2/SDL.h>
-#include <limits.h>
-#include <SDL2/SDL_ttf.h>
 #include "window.h"
 #include "gui/frame.h"
 
-class Label @promote extends Frame {
+class Label : public Frame {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;
@@ -20,7 +18,7 @@ class Label @promote extends Frame {
         this->object = frame;
         this->type = __type__; 
         SUPER(initialize_node);
-        METHOD(this, init_frame);
+        this::init_frame();
         frame->label = malloc(sizeof(Label));
         POINTER_CHECK(frame->label);
         frame->relPos[0] = 0.0f;
@@ -35,12 +33,11 @@ class Label @promote extends Frame {
         glGenTextures(1, &frame->contentTexture);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load(FILE *file) {
-        METHOD_TYPE(this, __type__, constructor);
+        this->type = __type__;
+        this::constructor();
         Frame *frame = (Frame *) this->object;
         if (file) {
             fscanf(file, "(%[^,],%c%c)", 

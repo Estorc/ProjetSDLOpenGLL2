@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class PlaneCShape @promote extends CShape {
+class PlaneCShape : public CShape {
     __containerType__ Node *
+    public:
 
     void constructor(struct PlaneCollisionShape *planeCollisionShape) {
         this->object = planeCollisionShape;
@@ -12,9 +13,7 @@ class PlaneCShape @promote extends CShape {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void get_priority(int *priority) {
         *priority = 2;
@@ -24,7 +23,8 @@ class PlaneCShape @promote extends CShape {
         PlaneCollisionShape *planeCollisionShape;
         planeCollisionShape = malloc(sizeof(PlaneCollisionShape));
         POINTER_CHECK(planeCollisionShape);
-        METHOD_TYPE(this, __type__, constructor, planeCollisionShape);
+        this->type = __type__;
+        this::constructor(planeCollisionShape);
     }
 
     void save(FILE *file) {

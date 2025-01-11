@@ -1,8 +1,3 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_opengl.h>
-#include <GL/glu.h>
-#include <GL/glext.h>
 #include "../types.h"
 #include "../math/math_util.h"
 #include "../io/model.h"
@@ -10,22 +5,6 @@
 #include "../storage/node.h"
 #include "../window.h"
 
-
-/**
- * Creates a multisampled framebuffer object (FBO) for rendering and an intermediate framebuffer for post-processing.
- * 
- * @param framebuffer {FBO*} Pointer to the framebuffer object to be created for multisampling.
- * @param intermediateFBO {FBO*} Pointer to the framebuffer object to be created for intermediate post-processing.
- * @param screenTexture {TextureMap*} Pointer to the texture map that will store the color attachment for the intermediate framebuffer.
- * 
- * This function configures two framebuffers:
- * 1. A multisampled framebuffer that uses multisampling for anti-aliasing. It includes a color attachment that is a multisampled texture 
- *    and a renderbuffer for depth and stencil attachments. The multisampling is set to 4 samples.
- * 2. An intermediate framebuffer that contains a regular color attachment texture for post-processing effects.
- * 
- * The function checks the completeness of both framebuffers after their configurations. If any framebuffer is not complete, an error message 
- * is printed to the console.
- */
 
 void create_msaa_framebuffer(MSAA *msaa) {
     int window_width, window_height;

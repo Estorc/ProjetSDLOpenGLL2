@@ -1,0 +1,34 @@
+\doxysection{src/render/render.c File Reference}
+\hypertarget{render_8c}{}\label{render_8c}\index{src/render/render.c@{src/render/render.c}}
+{\ttfamily \#include "{}../types.\+h"{}}\newline
+{\ttfamily \#include "{}../math/math\+\_\+util.\+h"{}}\newline
+{\ttfamily \#include "{}../io/model.\+h"{}}\newline
+{\ttfamily \#include "{}framebuffer.\+h"{}}\newline
+{\ttfamily \#include "{}../storage/node.\+h"{}}\newline
+{\ttfamily \#include "{}depth\+\_\+map.\+h"{}}\newline
+{\ttfamily \#include "{}render.\+h"{}}\newline
+{\ttfamily \#include "{}../window.\+h"{}}\newline
+{\ttfamily \#include "{}camera.\+h"{}}\newline
+{\ttfamily \#include "{}../io/gltexture\+\_\+loader.\+h"{}}\newline
+{\ttfamily \#include "{}lighting.\+h"{}}\newline
+{\ttfamily \#include "{}../buffer.\+h"{}}\newline
+{\ttfamily \#include "{}../classes/classes.\+h"{}}\newline
+{\ttfamily \#include "{}../settings.\+h"{}}\newline
+Include dependency graph for render.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{render_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__RenderFunctions_ga7228f0476961799d9cf59f1d23088dca}{render\+\_\+scene}} (\mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, mat4 model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders)
+\begin{DoxyCompactList}\small\item\em Renders the scene using the specified shader. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RenderFunctions_ga5be131954e4b841d5dbb65b09aee0af0}{draw\+\_\+shadow\+\_\+map}} (\mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}root, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}depth\+Map)
+\begin{DoxyCompactList}\small\item\em Draws the shadow map for the scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RenderFunctions_ga3a40b329a60cbe367e798eecbb95c855}{draw\+\_\+scene}} (\mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}root, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}depth\+Map)
+\begin{DoxyCompactList}\small\item\em Draws the entire scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RenderFunctions_ga93a265287cf95e99d6118358e849e2c6}{draw\+\_\+screen}} (\mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}scene, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}depth\+Map, \mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}msaa, \mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}screen\+Plane)
+\begin{DoxyCompactList}\small\item\em Draws the final screen output. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -3,14 +3,13 @@
 #include "storage/node.h"
 #include "io/shader.h"
 #include "render/render.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
 #include "window.h"
 #include "gui/frame.h"
 #include "io/input.h"
 
-class InputArea @promote extends Frame {
+class InputArea : public Frame {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;
@@ -20,7 +19,7 @@ class InputArea @promote extends Frame {
         this->object = frame;
         this->type = __type__; 
         SUPER(initialize_node);
-        METHOD(this, init_frame);
+        this::init_frame();
         frame->relPos[0] = 0.0f;
         frame->relPos[1] = 0.0f;
         frame->scale[0] = 100.0f;
@@ -35,12 +34,11 @@ class InputArea @promote extends Frame {
         glGenTextures(1, &frame->contentTexture);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load(FILE *file) {
-        METHOD_TYPE(this, __type__, constructor);
+        this->type = __type__;
+        this::constructor();
         Frame *frame = (Frame *) this->object;
         if (file) {
             fscanf(file, "(%[^,],%c%c)", 
@@ -75,7 +73,7 @@ class InputArea @promote extends Frame {
         if (inputArea->state == BUTTON_STATE_PRESSED) {
             if (input.text_input) {
                 sprintf(inputArea->text, "%s", input.inputBuffer);
-                METHOD(this, refresh);
+                this::refresh();
             }
             if (input.released_keys & KEY_ENTER || ((input.mouse.released_button == SDL_BUTTON_LEFT || input.mouse.pressed_button == SDL_BUTTON_LEFT) && !(input.mouse.x > x &&
                 input.mouse.x < x+w &&

@@ -1,0 +1,27 @@
+\doxysection{camera.\+h}
+\hypertarget{camera_8h_source}{}\label{camera_8h_source}\index{src/render/camera.h@{src/render/camera.h}}
+\mbox{\hyperlink{camera_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}../types.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}../math/math\_util.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../io/shader.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ CAMERA\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ CAMERA\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structWorldShaders}{WorldShaders}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classCamera}{Camera}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ vec3\ \mbox{\hyperlink{classCamera_a58f8b51664251b5c0f59be0e0a87e754}{pos}};\ }
+\DoxyCodeLine{00024\ \ \ \ \ vec3\ \mbox{\hyperlink{classCamera_a1456c80b084814b7811c8fe3d797021d}{rot}};\ }
+\DoxyCodeLine{00025\ \}\ \mbox{\hyperlink{classCamera}{Camera}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Camera_ga8251d5473e00feb6f2181942b89e654d}{init\_camera}}(\mbox{\hyperlink{classCamera}{Camera}}\ *c);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Camera_gadd86e5f49d6695d5497c08e3de4207af}{camera\_projection}}(\mbox{\hyperlink{classCamera}{Camera}}\ *c,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structWorldShaders}{WorldShaders}}\ *shaders);}
+\DoxyCodeLine{00050\ }
+ \textcolor{comment}{// end of Camera group}\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

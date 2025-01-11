@@ -1,35 +1,5 @@
 #include "../types.h"
-#include "stringio.h"
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
 
-
-/**
- * Reads the entire contents of a text file into a dynamically allocated string.
- *
- * @param path {const char *} The path to the file to be read. This should be a 
- *                            null-terminated string representing the file's 
- *                            location in the filesystem.
- * @return {char *} A pointer to a dynamically allocated string containing the 
- *                  contents of the file. The string is null-terminated. If 
- *                  the file could not be opened or read, returns NULL.
- * 
- * This function opens a file in read mode and reads its contents character by 
- * character. It dynamically allocates memory for the string and expands the 
- * buffer as needed until the end of the file is reached. The final string 
- * is null-terminated, making it suitable for use with standard string functions.
- *
- * Important Notes:
- * - The caller is responsible for freeing the memory allocated for the string 
- *   returned by this function to avoid memory leaks.
- * - If the file does not exist or cannot be opened, the function will return 
- *   NULL.
- * - The function assumes the file is a text file and reads characters until 
- *   the end of the file is reached. 
- * - It is recommended to check the return value for NULL to handle errors 
- *   appropriately.
- */
 
 char * read_file(const char * path) {
     FILE * file = fopen(path, "r");

@@ -1,0 +1,11 @@
+<map id="src/physics/bodies.h" name="src/physics/bodies.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="77,5,230,31"/>
+<area shape="rect" id="Node000002" href="$math__util_8h.html" title=" " alt="" coords="5,79,152,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,33,103,71,99,67,140,29"/>
+<area shape="rect" id="Node000003" href="$model_8h.html" title="Defines structures and functions for handling 3D models and their properties." alt="" coords="177,79,279,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="167,29,208,67,204,71,163,33"/>
+<area shape="rect" id="Node000004" href="$obj__loader_8h.html" title=" " alt="" coords="113,152,215,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="219,106,185,144,181,140,215,103"/>
+<area shape="rect" id="Node000005" href="$mtl__loader_8h.html" title=" " alt="" coords="239,152,342,177"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="240,103,273,140,269,143,236,106"/>
+</map>

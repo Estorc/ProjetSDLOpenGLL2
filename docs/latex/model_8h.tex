@@ -1,0 +1,107 @@
+\doxysection{src/io/model.h File Reference}
+\hypertarget{model_8h}{}\label{model_8h}\index{src/io/model.h@{src/io/model.h}}
+
+
+Defines structures and functions for handling 3D models and their properties.  
+
+
+{\ttfamily \#include "{}obj\+\_\+loader.\+h"{}}\newline
+{\ttfamily \#include "{}mtl\+\_\+loader.\+h"{}}\newline
+Include dependency graph for model.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{model_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMaterial}{Material}}
+\begin{DoxyCompactList}\small\item\em Structure representing a material with various properties. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structFace}{Face}}
+\begin{DoxyCompactList}\small\item\em Structure representing a face of a 3D model. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}}
+\begin{DoxyCompactList}\small\item\em Structure representing the data of a 3D model object. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structModelData}{Model\+Data}}
+\begin{DoxyCompactList}\small\item\em Structure representing the data of a 3D model. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{classModel}{Model}}
+\begin{DoxyCompactList}\small\item\em Structure representing a 3D model. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{classTexturedMesh}{Textured\+Mesh}}
+\begin{DoxyCompactList}\small\item\em Structure representing a textured mesh. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{classMesh}{Mesh}}
+\begin{DoxyCompactList}\small\item\em Structure representing a mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__ModelHandling_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\+\_\+\+VERTEX\+\_\+\+PER\+\_\+\+FACE}}~10
+\begin{DoxyCompactList}\small\item\em Maximum number of vertices per face. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned int \mbox{\hyperlink{group__ModelHandling_gaad5c885aa493ac48e59f4deeed82ca38}{VBO}}
+\begin{DoxyCompactList}\small\item\em Alias for unsigned int representing a Vertex Buffer \doxylink{structObject}{Object}. \end{DoxyCompactList}\item 
+typedef unsigned int \mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}}
+\begin{DoxyCompactList}\small\item\em Alias for unsigned int representing a Vertex Array \doxylink{structObject}{Object}. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{group__ModelHandling_gaad5c885aa493ac48e59f4deeed82ca38}{VBO}} \mbox{\hyperlink{group__ModelHandling_gaddb0a8c0f0a8d1baff3e033eb099a83b}{Vertex\+Buffer}}
+\begin{DoxyCompactList}\small\item\em Alias for VBO. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}} \mbox{\hyperlink{group__ModelHandling_ga715110c10f770e339f863e38540533bc}{Vertex\+Array}}
+\begin{DoxyCompactList}\small\item\em Alias for VAO. \end{DoxyCompactList}\item 
+typedef float \mbox{\hyperlink{group__ModelHandling_gab8341657bd0436f925f30c3e0e8db793}{Vertex}}\mbox{[}15\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array of 15 floats representing a vertex. \end{DoxyCompactList}\item 
+typedef vec3 \mbox{\hyperlink{group__ModelHandling_gabb5b863a4c7a7cc7d18a288c908b9f0b}{Normal}}
+\begin{DoxyCompactList}\small\item\em Alias for vec3 representing a normal vector. \end{DoxyCompactList}\item 
+typedef vec2 \mbox{\hyperlink{group__ModelHandling_ga035e3505138fdf49eb7ebdcfc5d5a1fc}{Texture\+Vertex}}
+\begin{DoxyCompactList}\small\item\em Alias for vec2 representing a texture vertex. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}}
+\begin{DoxyCompactList}\small\item\em Alias for u32 representing a texture map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__ModelHandling_ga74a3753dc733cc27e7b37ab4fcc4f20e}{Material\+Properties}} \{ \newline
+\mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ead834f3918cf0decc98e4c3724cee546b}{DIFFUSE\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
+, \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eaa070856d072f24a2b62e593655510368}{SPECULAR\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
+, \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eacefd7489137b1445bcfc571a4542d7f7}{AMBIENT\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
+, \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea3950bd94c957f7171dff8a613f384304}{EMISSION\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
+, \newline
+\mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea3427aa6606175c4b8bdb127197b13055}{PARALLAX\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
+, \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eac309d743533ed702fd0eb1873f50f095}{ROUGHNESS\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
+, \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eae2da96e9f97fe956180214c733275544}{SHEEN\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
+, \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea5db1778c4563ef8d8d7e6deede1c5b18}{METALLIC\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
+, \newline
+\mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eaee07e6793bc65f0cf0726c9aaff5cc5a}{CLEARCOAT\+\_\+\+THICKNESS\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
+, \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea6aef513b1b7051333e9e9ef238719e01}{CLEARCOAT\+\_\+\+ROUGHNESS\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
+, \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea75494dc25c0069e6ae336c414fd3d36e}{NORMAL\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
+, \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea17dfc85b152da0de03562080c2714308}{REFLECTION\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
+, \newline
+\mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea7752e3a397e9f76b816271441a5bb62e}{ANISOTROPY\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
+, \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea13d5654e68552ce7c9cb81d014634549}{ANISOTROPY\+\_\+\+ROTATION\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
+, \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea521b3e3857784f7f57eb57f08cdc8fe3}{MATERIAL\+\_\+\+PROPERTY\+\_\+\+COUNT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum representing different material properties. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__ModelHandling_ga829dc978e29d88ada1059ea4ca6c4cd3}{Model\+Flags}} \{ \newline
+\mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3a2b30ff95d88165619069049a2d63dd5b}{MODEL\+\_\+\+FLAG\+\_\+\+NONE}} = 0
+, \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3aed9e0d5515a86c37bb824798402143f5}{MODEL\+\_\+\+FLAG\+\_\+\+GLOW}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3a8f6e16e84592882a0a15e84621315c9e}{MODEL\+\_\+\+FLAG\+\_\+\+UNUSED1}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1
+, \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3a4dfe55474925099f083370a199f52f07}{MODEL\+\_\+\+FLAG\+\_\+\+UNUSED2}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+, \newline
+\mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3aefc89c58c71ec4d600b1a88ce28ba2a3}{MODEL\+\_\+\+FLAG\+\_\+\+UNUSED3}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3
+, \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3aa1fdaa6e462cdef530d25276417d66a6}{MODEL\+\_\+\+FLAG\+\_\+\+UNUSED4}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4
+, \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3aeb59a56aca17378fe2c5f18f2163b71b}{MODEL\+\_\+\+FLAG\+\_\+\+UNUSED5}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 5
+, \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3a162b0f65301c7cfc3c16f3b56f7f8ece}{MODEL\+\_\+\+FLAG\+\_\+\+UNUSED6}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 6
+, \newline
+\mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3abf370e3f8593ebca0792404501d959ed}{MODEL\+\_\+\+FLAG\+\_\+\+UNUSED7}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 7
+ \}
+\begin{DoxyCompactList}\small\item\em Enum representing flags for a model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__ModelHandling_ga0a602c942ad0dcdf7d7e19dff265176b}{create\+\_\+textured\+\_\+plane}} (\mbox{\hyperlink{classTexturedMesh}{Textured\+Mesh}} \texorpdfstring{$\ast$}{*}textured\+Mesh, char \texorpdfstring{$\ast$}{*}texture)
+\begin{DoxyCompactList}\small\item\em Creates a textured plane. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ModelHandling_ga24d2b6488ada72779f8d522ee86574e7}{create\+\_\+screen\+\_\+plane}} (\mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh)
+\begin{DoxyCompactList}\small\item\em Creates a screen plane. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines structures and functions for handling 3D models and their properties. 
+

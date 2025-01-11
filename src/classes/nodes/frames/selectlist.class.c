@@ -3,14 +3,13 @@
 #include "storage/node.h"
 #include "io/shader.h"
 #include "render/render.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
 #include "window.h"
 #include "gui/frame.h"
 #include "io/input.h"
 
-class SelectList @promote extends Frame {
+class SelectList : public Frame {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;
@@ -20,7 +19,7 @@ class SelectList @promote extends Frame {
         this->object = frame;
         this->type = __type__; 
         SUPER(initialize_node);
-        METHOD(this, init_frame);
+        this::init_frame();
 
         frame->selectList = malloc(sizeof(SelectList));
         POINTER_CHECK(frame->selectList);
@@ -43,20 +42,19 @@ class SelectList @promote extends Frame {
         glGenTextures(1, &frame->contentTexture);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load(FILE *file) {
         IGNORE(file);
-        METHOD_TYPE(this, __type__, constructor);
+        this->type = __type__;
+        this::constructor();
     }
 
     void refreshOptions() {
         for (int i = 0; i < this->length; i++) {
-            METHOD(this->children[i], free);
+            (this->children[i])::free();
         }
-        METHOD(this, refresh);
+        this::refresh();
         Frame *frame = (Frame *) this->object;
         SelectList *selectList = (SelectList *) frame->selectList;
         this->children = realloc(this->children, sizeof(Node *));
@@ -65,7 +63,7 @@ class SelectList @promote extends Frame {
 
         Node *listFrame = malloc(sizeof(Node));
         POINTER_CHECK(listFrame);
-        METHOD_TYPE(listFrame, CLASS_TYPE_FRAME, constructor);
+        listFrame = new Frame();
         listFrame->flags &= ~NODE_VISIBLE;
         listFrame->flags &= ~NODE_ACTIVE;
         Frame *listFrameFrame = (Frame *) listFrame->object;
@@ -85,7 +83,7 @@ class SelectList @promote extends Frame {
 
         Node *list = malloc(sizeof(Node));
         POINTER_CHECK(list);
-        METHOD_TYPE(list, CLASS_TYPE_CONTROLFRAME, constructor);
+        list = new ControlFrame();
         Frame *listFrameControl = (Frame *) list->object;
         listFrameControl->relPos[0] = 2.0f;
         listFrameControl->relPos[1] = 2.0f;
@@ -102,14 +100,14 @@ class SelectList @promote extends Frame {
         listFrameControl->flags |= OVERFLOW_SCROLL;
         list->children = realloc(list->children, sizeof(Node *) * selectList->count);
 
-        add_child(listFrame, list);
-        add_child(this, listFrame);
+        listFrame::add_child(list);
+        this::add_child(listFrame);
 
         for (int i = 0; i < selectList->count; i++) {
 
             Node *child = malloc(sizeof(Node));
             POINTER_CHECK(child);
-            METHOD_TYPE(child, CLASS_TYPE_CONTROLFRAME, constructor);
+            child = new ControlFrame();
             Frame *childFrame = (Frame *) child->object;
             childFrame->relPos[0] = 0.0f;
             childFrame->relPos[1] = frame->size[1]*i;
@@ -123,27 +121,27 @@ class SelectList @promote extends Frame {
             childFrame->alignment[1] = 't';
             childFrame->theme = frame->theme;
             child->children = realloc(child->children, sizeof(Node *));
-            add_child(list, child);
+            list::add_child(child);
 
             Node *button = malloc(sizeof(Node));
             POINTER_CHECK(button);
-            METHOD_TYPE(button, CLASS_TYPE_BUTTON, constructor);
-            METHOD(button, init_button);
+            button = new Button();
+            button::init_button();
             button->children = realloc(button->children, sizeof(Node *));
 
             Node *label = malloc(sizeof(Node));
             POINTER_CHECK(label);
-            METHOD_TYPE(label, CLASS_TYPE_LABEL, constructor);
+            label = new Label();
             Frame *labelFrame = (Frame *) label->object;
             strcpy(labelFrame->label->text, selectList->options[i]);
             labelFrame->relPos[0] = 5.0f;
             labelFrame->alignment[0] = 'l';
             labelFrame->alignment[1] = 'c';
 
-            add_child(child, button);
-            add_child(button, label);
+            child::add_child(button);
+            button::add_child(label);
         }
-        print_node(this, 0);
+        this::print(0);
     }
 
 
@@ -185,13 +183,11 @@ class SelectList @promote extends Frame {
                         Button *button = (Button *) childFrame->button;
                         if (button->state != BUTTON_STATE_NORMAL) {
                             if (selectList->selected) *selectList->selected = i;
-                            printf("Selected: %d\n", i);
-                            printf("True Selected: %d\n", *selectList->selected);
                             break;
                         }
                     }
                     selectList->state = BUTTON_STATE_NORMAL;
-                    METHOD(this, refresh);
+                    this::refresh();
                 }
         } else {
             if (this->children) {

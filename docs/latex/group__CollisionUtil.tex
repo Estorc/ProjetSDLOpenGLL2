@@ -1,0 +1,149 @@
+\doxysection{Collision Utilities}
+\hypertarget{group__CollisionUtil}{}\label{group__CollisionUtil}\index{Collision Utilities@{Collision Utilities}}
+
+
+Utilities for handling collision detection and response in the physics engine.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__CollisionUtil_gaf2d5738dccc46ab8aea8c19bdbb6ee3d}{project\+\_\+box\+\_\+onto\+\_\+axis}} (const vec3 axis, const vec3 half\+Extents, const mat3 rotation, vec3 box\+Center, float \texorpdfstring{$\ast$}{*}min\+Proj, float \texorpdfstring{$\ast$}{*}max\+Proj)
+\begin{DoxyCompactList}\small\item\em Projects a box onto a given axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CollisionUtil_gaf4dd1bc14bc3d1ba1924dc4b39c642a2}{project\+\_\+capsule\+\_\+onto\+\_\+axis}} (vec3 axis, vec3 capsule\+Start, vec3 capsule\+End, float capsule\+Radius, float \texorpdfstring{$\ast$}{*}min\+Proj, float \texorpdfstring{$\ast$}{*}max\+Proj)
+\begin{DoxyCompactList}\small\item\em Projects a capsule onto a given axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CollisionUtil_ga887c531e537fcc2721fbda07db006867}{closest\+\_\+point\+\_\+on\+\_\+triangle}} (vec3 p, vec3 a, vec3 b, vec3 c, vec3 closest\+Point)
+\begin{DoxyCompactList}\small\item\em Finds the closest point on a triangle to a given point. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__CollisionUtil_gae7bef81b9525080c3b948836aa82dc88}{projections\+\_\+overlap}} (float minA, float maxA, float minB, float maxB)
+\begin{DoxyCompactList}\small\item\em Checks if two projections overlap. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group__CollisionUtil_ga4aae0c429a4146e14becc2528d3accb8}{compute\+\_\+overlap}} (float minA, float maxA, float minB, float maxB)
+\begin{DoxyCompactList}\small\item\em Computes the overlap between two projections. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utilities for handling collision detection and response in the physics engine. 
+
+This file contains functions and definitions that assist in detecting and responding to collisions between objects in the physics simulation. It provides essential utilities to ensure accurate and efficient collision handling. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__CollisionUtil_ga887c531e537fcc2721fbda07db006867}\label{group__CollisionUtil_ga887c531e537fcc2721fbda07db006867} 
+\index{Collision Utilities@{Collision Utilities}!closest\_point\_on\_triangle@{closest\_point\_on\_triangle}}
+\index{closest\_point\_on\_triangle@{closest\_point\_on\_triangle}!Collision Utilities@{Collision Utilities}}
+\doxysubsubsection{\texorpdfstring{closest\_point\_on\_triangle()}{closest\_point\_on\_triangle()}}
+{\footnotesize\ttfamily void closest\+\_\+point\+\_\+on\+\_\+triangle (\begin{DoxyParamCaption}\item[{vec3}]{p,  }\item[{vec3}]{a,  }\item[{vec3}]{b,  }\item[{vec3}]{c,  }\item[{vec3}]{closest\+Point }\end{DoxyParamCaption})}
+
+
+
+Finds the closest point on a triangle to a given point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The point to find the closest point to. \\
+\hline
+{\em a} & The first vertex of the triangle. \\
+\hline
+{\em b} & The second vertex of the triangle. \\
+\hline
+{\em c} & The third vertex of the triangle. \\
+\hline
+{\em closest\+Point} & Pointer to store the closest point on the triangle. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__CollisionUtil_ga4aae0c429a4146e14becc2528d3accb8}\label{group__CollisionUtil_ga4aae0c429a4146e14becc2528d3accb8} 
+\index{Collision Utilities@{Collision Utilities}!compute\_overlap@{compute\_overlap}}
+\index{compute\_overlap@{compute\_overlap}!Collision Utilities@{Collision Utilities}}
+\doxysubsubsection{\texorpdfstring{compute\_overlap()}{compute\_overlap()}}
+{\footnotesize\ttfamily float compute\+\_\+overlap (\begin{DoxyParamCaption}\item[{float}]{minA,  }\item[{float}]{maxA,  }\item[{float}]{minB,  }\item[{float}]{maxB }\end{DoxyParamCaption})}
+
+
+
+Computes the overlap between two projections. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em minA} & The minimum value of the first projection. \\
+\hline
+{\em maxA} & The maximum value of the first projection. \\
+\hline
+{\em minB} & The minimum value of the second projection. \\
+\hline
+{\em maxB} & The maximum value of the second projection. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The amount of overlap between the two projections. 
+\end{DoxyReturn}
+\Hypertarget{group__CollisionUtil_gaf2d5738dccc46ab8aea8c19bdbb6ee3d}\label{group__CollisionUtil_gaf2d5738dccc46ab8aea8c19bdbb6ee3d} 
+\index{Collision Utilities@{Collision Utilities}!project\_box\_onto\_axis@{project\_box\_onto\_axis}}
+\index{project\_box\_onto\_axis@{project\_box\_onto\_axis}!Collision Utilities@{Collision Utilities}}
+\doxysubsubsection{\texorpdfstring{project\_box\_onto\_axis()}{project\_box\_onto\_axis()}}
+{\footnotesize\ttfamily void project\+\_\+box\+\_\+onto\+\_\+axis (\begin{DoxyParamCaption}\item[{const vec3}]{axis,  }\item[{const vec3}]{half\+Extents,  }\item[{const mat3}]{rotation,  }\item[{vec3}]{box\+Center,  }\item[{float \texorpdfstring{$\ast$}{*}}]{min\+Proj,  }\item[{float \texorpdfstring{$\ast$}{*}}]{max\+Proj }\end{DoxyParamCaption})}
+
+
+
+Projects a box onto a given axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em axis} & The axis to project onto. \\
+\hline
+{\em half\+Extents} & The half extents of the box. \\
+\hline
+{\em rotation} & The rotation matrix of the box. \\
+\hline
+{\em box\+Center} & The center of the box. \\
+\hline
+{\em min\+Proj} & Pointer to store the minimum projection value. \\
+\hline
+{\em max\+Proj} & Pointer to store the maximum projection value. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__CollisionUtil_gaf4dd1bc14bc3d1ba1924dc4b39c642a2}\label{group__CollisionUtil_gaf4dd1bc14bc3d1ba1924dc4b39c642a2} 
+\index{Collision Utilities@{Collision Utilities}!project\_capsule\_onto\_axis@{project\_capsule\_onto\_axis}}
+\index{project\_capsule\_onto\_axis@{project\_capsule\_onto\_axis}!Collision Utilities@{Collision Utilities}}
+\doxysubsubsection{\texorpdfstring{project\_capsule\_onto\_axis()}{project\_capsule\_onto\_axis()}}
+{\footnotesize\ttfamily void project\+\_\+capsule\+\_\+onto\+\_\+axis (\begin{DoxyParamCaption}\item[{vec3}]{axis,  }\item[{vec3}]{capsule\+Start,  }\item[{vec3}]{capsule\+End,  }\item[{float}]{capsule\+Radius,  }\item[{float \texorpdfstring{$\ast$}{*}}]{min\+Proj,  }\item[{float \texorpdfstring{$\ast$}{*}}]{max\+Proj }\end{DoxyParamCaption})}
+
+
+
+Projects a capsule onto a given axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em axis} & The axis to project onto. \\
+\hline
+{\em capsule\+Start} & The start point of the capsule. \\
+\hline
+{\em capsule\+End} & The end point of the capsule. \\
+\hline
+{\em capsule\+Radius} & The radius of the capsule. \\
+\hline
+{\em min\+Proj} & Pointer to store the minimum projection value. \\
+\hline
+{\em max\+Proj} & Pointer to store the maximum projection value. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__CollisionUtil_gae7bef81b9525080c3b948836aa82dc88}\label{group__CollisionUtil_gae7bef81b9525080c3b948836aa82dc88} 
+\index{Collision Utilities@{Collision Utilities}!projections\_overlap@{projections\_overlap}}
+\index{projections\_overlap@{projections\_overlap}!Collision Utilities@{Collision Utilities}}
+\doxysubsubsection{\texorpdfstring{projections\_overlap()}{projections\_overlap()}}
+{\footnotesize\ttfamily bool projections\+\_\+overlap (\begin{DoxyParamCaption}\item[{float}]{minA,  }\item[{float}]{maxA,  }\item[{float}]{minB,  }\item[{float}]{maxB }\end{DoxyParamCaption})}
+
+
+
+Checks if two projections overlap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em minA} & The minimum value of the first projection. \\
+\hline
+{\em maxA} & The maximum value of the first projection. \\
+\hline
+{\em minB} & The minimum value of the second projection. \\
+\hline
+{\em maxB} & The maximum value of the second projection. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the projections overlap, false otherwise. 
+\end{DoxyReturn}

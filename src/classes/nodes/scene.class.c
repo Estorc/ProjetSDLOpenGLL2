@@ -4,27 +4,27 @@
 #include "io/scene_loader.h"
 #include "render/framebuffer.h"
 
-class Scene @promote extends Node {
+class Scene : public Node {
     __containerType__ Node *
+    public:
 
     void constructor() {
         this->type = __type__;
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load(FILE *file, Camera **c, Script *scripts) {
-        METHOD_TYPE(this, __type__, constructor);
+        this->type = __type__;
+        this::constructor();
         char path[256];
         if (file) {
             fscanf(file,"(%s)\n", 
                 path);
         }
         this->children = realloc(this->children, sizeof(Node *));
-        add_child(this, load_scene(path, c, scripts));
+        this::add_child(load_scene(path, c, scripts));
     }
 
     void save(FILE *file) {

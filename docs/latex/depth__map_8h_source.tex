@@ -1,0 +1,27 @@
+\doxysection{depth\+\_\+map.\+h}
+\hypertarget{depth__map_8h_source}{}\label{depth__map_8h_source}\index{src/render/depth\_map.h@{src/render/depth\_map.h}}
+\mbox{\hyperlink{depth__map_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}../io/model.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{framebuffer_8h}{framebuffer.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ DEPTH\_MAP\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ DEPTH\_MAP\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ SHADOW\_WIDTH\ 1024}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ SHADOW\_HEIGHT\ 1024}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ MAX\_SHADOW\ 30}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structWorldShaders}{WorldShaders}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDepthMap}{DepthMap}}\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}}\ \mbox{\hyperlink{structDepthMap_a9c637c06d0643f13863e225b7c06928b}{frameBuffer}};\ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ \mbox{\hyperlink{structDepthMap_a1bd1fa2d9e63d28a12067577865ed072}{texture}};\ }
+\DoxyCodeLine{00029\ \ \ \ \ GLuint\ \mbox{\hyperlink{structDepthMap_a6da686afaa0d4c63c8c5e9afd6b04975}{ubo}};\ }
+\DoxyCodeLine{00030\ \}\ \mbox{\hyperlink{structDepthMap}{DepthMap}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__DepthMap_ga51a7d0ce85272f7c6ea353b880f64c4c}{create\_depthmap}}(\mbox{\hyperlink{structDepthMap}{DepthMap}}\ *depthMap,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structWorldShaders}{WorldShaders}}\ *shaders);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

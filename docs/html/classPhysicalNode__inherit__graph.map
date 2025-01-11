@@ -1,0 +1,15 @@
+<map id="PhysicalNode" name="PhysicalNode">
+<area shape="rect" id="Node000001" title=" " alt="" coords="101,79,212,104"/>
+<area shape="rect" id="Node000003" href="$classArea.html" title="Represents an area with collision shapes and nodes." alt="" coords="92,152,144,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,118,127,153,122,151,141,115"/>
+<area shape="rect" id="Node000004" href="$classBody.html" title=" " alt="" coords="168,152,223,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="172,115,191,151,187,153,167,118"/>
+<area shape="rect" id="Node000002" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="129,5,185,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,44,159,79,154,79,154,44"/>
+<area shape="rect" id="Node000005" href="$classKinematicBody.html" title="Represents a kinematic body in the physics simulation." alt="" coords="5,225,127,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="164,186,88,227,86,223,161,182"/>
+<area shape="rect" id="Node000006" href="$classRigidBody.html" title="Represents a rigid body in the physics simulation." alt="" coords="151,225,239,251"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="198,191,198,225,193,225,193,191"/>
+<area shape="rect" id="Node000007" href="$classStaticBody.html" title="Represents a static body in the physics simulation." alt="" coords="264,225,356,251"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="227,182,293,223,290,227,224,187"/>
+</map>

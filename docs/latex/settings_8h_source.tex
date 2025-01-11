@@ -1,0 +1,40 @@
+\doxysection{settings.\+h}
+\hypertarget{settings_8h_source}{}\label{settings_8h_source}\index{src/settings.h@{src/settings.h}}
+\mbox{\hyperlink{settings_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SETTINGS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SETTINGS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9ef}{Resolutions}}\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa0d7a1cb3c06783cd15c2ad10356d6830}{RES\_RESPONSIVE}},}
+\DoxyCodeLine{00006\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa08c13351f7fdf58aef77f225349175f2}{RES\_NATIVE}},}
+\DoxyCodeLine{00007\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa6b9b4ec1554a3f826da283d4f804244a}{RES\_640x480}},}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efabec0be3a6a6d9cac934ddbc1d4b9d48e}{RES\_800x600}},}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efaa2ec022f17635b0fe4037e6023dc4570}{RES\_1024x768}},}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa06be0e81ce733553bd744f111705cc43}{RES\_1280x720}},}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa412770d35f264e3f063ef03d9e4ff2d4}{RES\_1280x800}},}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa70a647801a8300743e682580a35928af}{RES\_1280x1024}},}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efab0931765053879248f1a41b536d78f4d}{RES\_1366x768}},}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efabb11014bcfa638acb8e03f84569f57e6}{RES\_1440x900}},}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa13ac2bac59fa14d9877feeeb9b47b622}{RES\_1600x900}},}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa4d2c94a986074b86b881bf4164b257c7}{RES\_1680x1050}},}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa783be63a76960420fe2cb5fbf5f1dec1}{RES\_1920x1080}},}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa2fbd1b3c6a5b063a1469b6f965ffc038}{RES\_1920x1200}},}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efae6ac75ac0fb5df490ca7a594342b6953}{RES\_2560x1440}},}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa66eea0bb6a1b24324219e614469bb56a}{RES\_COUNT}},}
+\DoxyCodeLine{00021\ \}\ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9ef}{Resolutions}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSettings}{Settings}}\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structSettings_a8a0a93423fb282d6cdffaa57b4a18105}{show\_fps}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structSettings_a6eeb3bce280b655b264a5485bc98131d}{cast\_shadows}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structSettings_ae523e7e0ac8d0cb194a02821d9862b39}{window\_fullscreen}};}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{types_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}}\ \mbox{\hyperlink{structSettings_aa3b5564804fddda4f4fd467035f55d34}{resolution}};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structSettings_aadaec3227cfed84e96156877945a241c}{show\_collision\_boxes}};}
+\DoxyCodeLine{00029\ \}\ \mbox{\hyperlink{structSettings}{Settings}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{settings_8h_a83719dddafc8daecb7d78fb02ca88489}{get\_resolution}}(\textcolor{keywordtype}{int}\ *width,\ \textcolor{keywordtype}{int}\ *height);}
+\DoxyCodeLine{00032\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{settings_8h_a4d81d52800c54d117089aabbce556be6}{resolutionsText}}[\mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa66eea0bb6a1b24324219e614469bb56a}{RES\_COUNT}}][256];}
+\DoxyCodeLine{00033\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structSettings}{Settings}}\ \mbox{\hyperlink{settings_8h_a19276c778f3034b94881cf1f8614dbb2}{settings}};}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class Camera @promote extends Node {
+class Camera : public Node {
     __containerType__ Node *
+    public:
 
     void constructor(struct Camera *camera) {
         this->object = camera;
@@ -12,8 +13,12 @@ class Camera @promote extends Node {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
+    void update(vec3 *pos, vec3 *rot, vec3 *scale) {
+        Camera *camera = (Camera *) this->object;
+
+        this::update_global_position(pos, rot, scale);
+        glm_vec3_negate_to(*pos, camera->pos);
+        glm_vec3_negate_to(*rot, camera->rot);
     }
 
     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
@@ -27,15 +32,16 @@ class Camera @promote extends Node {
             fscanf(file,"(%d)", &active_camera);
             if (active_camera) {
                 if (c) *c = cam;
-                else if (editor) editor->params[5].node = this;
+                else if (editor) editor->attribute[5].node = this;
             }
         }
-        METHOD_TYPE(this, __type__, constructor, cam);
+        this->type = __type__;
+        this::constructor(cam);
     }
 
     void save(FILE *file, Node *editor) {
         fprintf(file, "%s", classManager.class_names[this->type]);
-        if (editor) fprintf(file, "(%d)", !!(editor->params[5].node == this));
+        if (editor) fprintf(file, "(%d)", !!(editor->attribute[5].node == this));
         else fprintf(file, "(%d)", 0);
     }
 

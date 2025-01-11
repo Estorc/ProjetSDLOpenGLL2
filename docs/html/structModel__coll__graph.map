@@ -1,0 +1,12 @@
+<map id="Model" name="Model">
+<area shape="rect" id="Node000001" title=" " alt="" coords="21,269,83,295"/>
+<area shape="rect" id="Node000002" href="$structModelData.html" title=" " alt="" coords="5,181,99,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,221,55,269,49,269,49,221"/>
+<area shape="rect" id="Node000003" href="$structMaterial.html" title=" " alt="" coords="15,5,91,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="52,44,45,93,47,142,52,181,47,181,41,142,40,93,46,44"/>
+<area shape="rect" id="Node000004" href="$structModelObjectData.html" title=" " alt="" coords="122,93,257,119"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="78,37,119,67,164,91,162,96,116,72,75,42"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="161,128,72,183,69,179,158,124"/>
+<area shape="rect" id="Node000005" href="$structFace.html" title=" " alt="" coords="164,5,215,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="192,45,192,93,187,93,187,45"/>
+</map>

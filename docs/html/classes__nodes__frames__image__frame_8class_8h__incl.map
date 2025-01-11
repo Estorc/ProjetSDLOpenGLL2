@@ -1,0 +1,17 @@
+<map id="src/__processed__/classes_nodes_frames_image_frame.class.h" name="src/__processed__/classes_nodes_frames_image_frame.class.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="461,5,725,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,175,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="473,48,177,94,176,89,472,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="199,93,325,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="514,48,324,93,323,88,513,43"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="350,93,505,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="554,48,465,90,463,85,552,43"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="529,93,657,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="595,46,595,79,590,79,590,46"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="681,93,837,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="634,43,724,85,721,90,631,48"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="861,93,980,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="672,43,860,88,859,93,671,48"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="1004,93,1136,119"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="707,43,991,89,990,94,707,48"/>
+</map>

@@ -3,14 +3,13 @@
 #include "storage/node.h"
 #include "io/shader.h"
 #include "render/render.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
 #include "window.h"
 #include "gui/frame.h"
 #include "io/input.h"
 
-class Button @promote extends Frame {
+class Button : public Frame {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;
@@ -20,7 +19,7 @@ class Button @promote extends Frame {
         this->object = frame;
         this->type = __type__; 
         SUPER(initialize_node);
-        METHOD(this, init_frame);
+        this::init_frame();
     }
 
     void init_button() {
@@ -38,14 +37,13 @@ class Button @promote extends Frame {
         frame->unit[3] = '%';
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load(FILE *file) {
         IGNORE(file);
-        METHOD_TYPE(this, __type__, constructor);
-        METHOD(this, init_button);
+        this->type = __type__;
+        this::constructor();
+        this::init_button();
     }
 
     void update() {

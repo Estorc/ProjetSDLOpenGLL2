@@ -152,6 +152,9 @@ vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir) {
     return currentTexCoords;
 }
 
+#define BIAS 0.0003
+#define SHADOW_ATTENUATION 6.0
+
 float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir, int index)
 {
     // perform perspective divide
@@ -163,7 +166,7 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir, int 
     // get depth of current fragment from light's perspective
     float currentDepth = projCoords.z;
     // check whether current frag pos is in shadow
-    float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.05);  
+    float bias = max(BIAS * (1.0 - dot(normal, lightDir)), BIAS);  
 
     float shadow = 0.0;
     vec2 texelSize = 1.0 / textureSize(shadowMap, 0).xy;
@@ -175,7 +178,7 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir, int 
             shadow += currentDepth - bias > pcfDepth ? 1.0 : 0.0;        
         }    
     }
-    shadow /= 9.0;
+    shadow /= SHADOW_ATTENUATION;
 
     if(projCoords.z > 1.0)
         shadow = 0.0;
@@ -202,10 +205,10 @@ void main()
         tex = texture(diffuseMap, texCoords);
         if (tex.a < 0.1)
             discard;
-        color = tex.rgb;
     } else {
-        color = material.diffuse;
+        tex = vec4(material.diffuse, 1.0);
     }
+    color = tex.rgb;
 
 
     vec3 normal = fs_in.Normal;
@@ -222,24 +225,24 @@ void main()
     for(int i = 0; i < dirLightsNum && i < DIR_LIGHTS_MAX; i++) {
         float shadow;
         if (shadowCastActive) shadow = ShadowCalculation(dirLightSpaceMatrix[i] * vec4(fs_in.FragPos, 1.0), normal, dirLights[i].position, dirLights[i].index);
-        result += CalcDirLight(dirLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? shadow : 0.0);
+        result += CalcDirLight(dirLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? min(shadow, 1.0) : 0.0);
     }
     // phase 2: point lights
     for(int i = 0; i < pointLightsNum && i < POINT_LIGHTS_MAX; i++) {
         float shadow = 0.0;
         if (shadowCastActive) for (int j = 0; j < 6; j++)
             shadow += ShadowCalculation(pointLightSpaceMatrix[i*6+j] * vec4(fs_in.FragPos, 1.0), normal, pointLights[i].position, pointLights[i].index+j);
-        result += CalcPointLight(pointLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? shadow : 0.0);  
+        result += CalcPointLight(pointLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? min(shadow, 1.0) : 0.0);  
     }  
     // phase 3: spot light
     for(int i = 0; i < spotLightsNum && i < SPOT_LIGHTS_MAX; i++) {
         float shadow;
         if (shadowCastActive) shadow = ShadowCalculation(spotLightSpaceMatrix[i] * vec4(fs_in.FragPos, 1.0), normal, spotLights[i].position, spotLights[i].index);
-        result += CalcSpotLight(spotLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? shadow : 0.0);
+        result += CalcSpotLight(spotLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? min(shadow, 1.0) : 0.0);
     }  
     
 
-    float gamma = 2.2;
+    float gamma = 1.8;
     FragColor = vec4(result, 1.0) * tex;
     FragColor.rgb = pow(FragColor.rgb, vec3(1.0/gamma));
     //vec3 debugColor = tangentViewDir * 0.5 + 0.5; // Map [-1, 1] range to [0, 1]

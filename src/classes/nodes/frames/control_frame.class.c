@@ -3,13 +3,12 @@
 #include "storage/node.h"
 #include "io/shader.h"
 #include "render/render.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
 #include "window.h"
 #include "gui/frame.h"
 
-class ControlFrame @promote extends Frame {
+class ControlFrame : public Frame {
     __containerType__ Node *
+    public:
 
     void constructor() {
         Frame *frame;
@@ -19,15 +18,14 @@ class ControlFrame @promote extends Frame {
         this->object = frame;
         this->type = __type__; 
         SUPER(initialize_node);
-        METHOD(this, init_frame);
+        this::init_frame();
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load(FILE *file) {
-        METHOD_TYPE(this, __type__, constructor);
+        this->type = __type__;
+        this::constructor();
         Frame *frame = (Frame *) this->object;
         if (file) {
             fscanf(file, "(%g%c,%g%c,%g%c,%g%c,%c%c)", 
@@ -43,7 +41,7 @@ class ControlFrame @promote extends Frame {
 
     void render() {
         Frame *frame = (Frame *) this->object;
-        if (frame->flags & FRAME_NEEDS_REFRESH) METHOD(this, refresh);
+        if (frame->flags & FRAME_NEEDS_REFRESH) this::refresh();
     }
 
     void save(FILE *file, Node *editor) {

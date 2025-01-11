@@ -1,0 +1,12 @@
+<map id="ModelCache" name="ModelCache">
+<area shape="rect" id="Node000001" title="Structure to cache models." alt="" coords="5,269,108,295"/>
+<area shape="rect" id="Node000002" href="$structModelData.html" title="Structure representing the data of a 3D model." alt="" coords="10,181,103,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,221,59,269,54,269,54,221"/>
+<area shape="rect" id="Node000003" href="$structMaterial.html" title="Structure representing a material with various properties." alt="" coords="20,5,96,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="56,44,50,93,51,142,57,181,52,181,46,142,45,93,51,44"/>
+<area shape="rect" id="Node000004" href="$structModelObjectData.html" title="Structure representing the data of a 3D model object." alt="" coords="127,93,261,119"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="83,37,123,67,169,91,166,96,121,72,80,42"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="165,128,77,183,74,179,163,124"/>
+<area shape="rect" id="Node000005" href="$structFace.html" title="Structure representing a face of a 3D model." alt="" coords="169,5,219,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="197,45,197,93,191,93,191,45"/>
+</map>

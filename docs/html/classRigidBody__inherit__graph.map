@@ -1,0 +1,9 @@
+<map id="RigidBody" name="RigidBody">
+<area shape="rect" id="Node000001" title="Represents a rigid body in the physics simulation." alt="" coords="17,225,105,251"/>
+<area shape="rect" id="Node000002" href="$classBody.html" title=" " alt="" coords="33,152,88,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,191,63,225,58,225,58,191"/>
+<area shape="rect" id="Node000003" href="$classPhysicalNode.html" title=" " alt="" coords="5,79,116,104"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="63,118,63,152,58,152,58,118"/>
+<area shape="rect" id="Node000004" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="33,5,89,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="63,44,63,79,58,79,58,44"/>
+</map>

@@ -1,44 +1,49 @@
 NEW_SCRIPT(player)
-	PARAMS_COUNT(1);
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(1);
 
-	bool *menu_open = &node->params[0].b;
+	bool *menu_open = &this->attribute[0].b;
 
-	if (input->released_keys & KEY_MENU) {
+	if (input.released_keys & KEY_MENU) {
 		*menu_open = !(*menu_open);
 	}
 
-	KinematicBody *player = (KinematicBody*) node->object;
+	KinematicBody *player = (KinematicBody*) this->object;
 
 	f32 vel = 0.05f;
-	if (input->active_keys & KEY_SHIFT) vel = 0.2f;
+	if (input.active_keys & KEY_SHIFT) vel = 0.2f;
 	vel *= delta * 100.0;
 
 
-	Camera *c = (Camera*) node->children[0]->object;
+	Camera *c = (Camera*) this->children[0]->object;
+
+	vec3 dir = {0.0f, 0.0f, -1.0f};
+	glm_vec3_rotate(dir, to_radians(c->rot[1]), (vec3){0.0f, 1.0f, 0.0f});
+	dir[0] = -dir[0];
 
 	vec3 appliedVelocity;
 	glm_vec3_zero(appliedVelocity);
 
 	if (!*menu_open) {
 		
-		if (input->active_keys & KEY_LEFT) {
-			appliedVelocity[0] += -c->dir[2] * vel;
-			appliedVelocity[2] += c->dir[0] * vel;
+		if (input.active_keys & KEY_LEFT) {
+			appliedVelocity[0] += dir[2] * vel;
+			appliedVelocity[2] -= dir[0] * vel;
 		};
-		if (input->active_keys & KEY_RIGHT) {
-			appliedVelocity[0] -= -c->dir[2] * vel;
-			appliedVelocity[2] -= c->dir[0] * vel;
+		if (input.active_keys & KEY_RIGHT) {
+			appliedVelocity[0] -= dir[2] * vel;
+			appliedVelocity[2] += dir[0] * vel;
 		};
-		if (input->active_keys & KEY_UP) {
-			appliedVelocity[0] -= c->dir[0] * vel;
-			appliedVelocity[2] -= c->dir[2] * vel;
+		if (input.active_keys & KEY_UP) {
+			appliedVelocity[0] += dir[0] * vel;
+			appliedVelocity[2] += dir[2] * vel;
 		};
-		if (input->active_keys & KEY_DOWN) {
-			appliedVelocity[0] += c->dir[0] * vel;
-			appliedVelocity[2] += c->dir[2] * vel;
+		if (input.active_keys & KEY_DOWN) {
+			appliedVelocity[0] -= dir[0] * vel;
+			appliedVelocity[2] -= dir[2] * vel;
 		};
 
-		if (input->pressed_keys & KEY_JUMP) {
+		if (input.pressed_keys & KEY_JUMP) {
 			player->velocity[1] = 0.2f;
 		};
 
@@ -56,7 +61,80 @@ NEW_SCRIPT(player)
 
 	player->velocity[1] -= 0.5*delta;
 
-    //if (input->active_keys & KEY_JUMP) c->targetPos[1] += vel;
-	//if (input->active_keys & KEY_CROUCH) c->targetPos[1] -= vel;
+    //if (input.active_keys & KEY_JUMP) c->targetPos[1] += vel;
+	//if (input.active_keys & KEY_CROUCH) c->targetPos[1] -= vel;
 
 END_SCRIPT(player)
+
+
+
+NEW_SCRIPT(player_chess)
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(1);
+
+	bool *menu_open = &this->attribute[0].b;
+
+	if (input.released_keys & KEY_MENU) {
+		*menu_open = !(*menu_open);
+	}
+
+	KinematicBody *player = (KinematicBody*) this->object;
+
+	f32 vel = 0.05f;
+	if (input.active_keys & KEY_SHIFT) vel = 0.2f;
+	vel *= delta * 100.0;
+
+
+	Camera *c = (Camera*) this->children[0]->object;
+
+	vec3 dir = {0.0f, 0.0f, -1.0f};
+	glm_vec3_rotate(dir, to_radians(c->rot[1]), (vec3){0.0f, 1.0f, 0.0f});
+	dir[0] = -dir[0];
+
+	vec3 appliedVelocity;
+	glm_vec3_zero(appliedVelocity);
+	player->velocity[1] = 0.0f;
+
+	if (!*menu_open) {
+		
+		if (input.active_keys & KEY_LEFT) {
+			appliedVelocity[0] += dir[2] * vel;
+			appliedVelocity[2] -= dir[0] * vel;
+		};
+		if (input.active_keys & KEY_RIGHT) {
+			appliedVelocity[0] -= dir[2] * vel;
+			appliedVelocity[2] += dir[0] * vel;
+		};
+		if (input.active_keys & KEY_UP) {
+			appliedVelocity[0] += dir[0] * vel;
+			appliedVelocity[2] += dir[2] * vel;
+		};
+		if (input.active_keys & KEY_DOWN) {
+			appliedVelocity[0] -= dir[0] * vel;
+			appliedVelocity[2] -= dir[2] * vel;
+		};
+
+		if (input.active_keys & KEY_JUMP) {
+			player->velocity[1] = 0.2f;
+		};
+
+		if (input.active_keys & KEY_CROUCH) {
+			player->velocity[1] = -0.2f;
+		};
+
+	}
+
+	if (appliedVelocity[0]) {
+		player->velocity[0] += (appliedVelocity[0] - player->velocity[0]) / 20.0;
+	} else
+		player->velocity[0] += (-player->velocity[0])/20.0;
+
+	if (appliedVelocity[2]) {
+		player->velocity[2] += (appliedVelocity[2] - player->velocity[2]) / 20.0;
+	} else
+		player->velocity[2] += (-player->velocity[2])/20.0;
+
+    //if (input.active_keys & KEY_JUMP) c->targetPos[1] += vel;
+	//if (input.active_keys & KEY_CROUCH) c->targetPos[1] -= vel;
+
+END_SCRIPT(player_chess)

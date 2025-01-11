@@ -1,5 +1,4 @@
-#include <stdlib.h>
-#include <stdbool.h>
+#include "../types.h"
 #include "stack.h"
 
 void stack_push(Stack *stack, void *data) {

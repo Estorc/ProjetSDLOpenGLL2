@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class Mesh @promote extends Node {
+class Mesh : public Node {
     __containerType__ Node *
+    public:
 
     void constructor(struct Mesh *mesh) {
         this->object = mesh;
@@ -12,16 +13,15 @@ class Mesh @promote extends Node {
         SUPER(initialize_node);
     }
 
-    void cast(void ** data) {
-        IGNORE(data);
-    }
+    
 
     void load() {
         Mesh *mesh;
         mesh = malloc(sizeof(Mesh));
         POINTER_CHECK(mesh);
         create_screen_plane(mesh);
-        METHOD_TYPE(this, __type__, constructor, mesh);
+        this->type = __type__;
+        this::constructor(mesh);
     }
 
     void save(FILE *file) {

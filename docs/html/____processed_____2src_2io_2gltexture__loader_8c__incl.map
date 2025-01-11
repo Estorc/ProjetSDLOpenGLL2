@@ -1,0 +1,21 @@
+<map id="src/__processed__/src/io/gltexture_loader.c" name="src/__processed__/src/io/gltexture_loader.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="333,5,496,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,88,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="334,47,102,96,101,90,333,41"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="112,93,259,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="361,48,233,91,231,86,359,43"/>
+<area shape="rect" id="Node000004" href="$model_8h.html" title="Defines structures and functions for handling 3D models and their properties." alt="" coords="283,93,357,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="393,48,347,86,343,82,390,43"/>
+<area shape="rect" id="Node000007" href="$input_8h.html" title=" " alt="" coords="381,93,448,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="417,46,417,79,412,79,412,46"/>
+<area shape="rect" id="Node000008" href="$gltexture__loader_8h.html" title=" " alt="" coords="473,93,613,119"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="447,43,514,84,511,88,444,48"/>
+<area shape="rect" id="Node000009" href="$shader_8h.html" title=" " alt="" coords="637,93,715,119"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="478,43,625,87,624,92,476,48"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="739,93,837,119"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="497,41,725,89,724,94,496,46"/>
+<area shape="rect" id="Node000005" href="$obj__loader_8h.html" title=" " alt="" coords="205,167,307,192"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="311,121,277,158,273,155,307,117"/>
+<area shape="rect" id="Node000006" href="$mtl__loader_8h.html" title=" " alt="" coords="331,167,434,192"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="332,117,365,154,361,158,328,121"/>
+</map>

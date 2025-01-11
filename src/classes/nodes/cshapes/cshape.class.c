@@ -3,8 +3,9 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
-class CShape @promote extends Node {
+class CShape : public Node {
     __containerType__ Node *
+    public:
 
     void is_cshape(bool *cshape) {
         (*cshape) = true;
