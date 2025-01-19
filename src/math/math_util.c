@@ -22,7 +22,7 @@ f32 frsqrt(f32 number) {
  */
 
 f32 to_radians(f32 angle) {
-  return angle*(PI/180);
+  return angle*(PI/180.0f);
 }
 
 
@@ -32,5 +32,5 @@ f32 to_radians(f32 angle) {
  */
 
 f32 to_degrees(f32 angle) {
-  return angle*(180/PI);
+  return angle*(180.0f/PI);
 }

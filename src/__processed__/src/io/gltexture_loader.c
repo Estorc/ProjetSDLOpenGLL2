@@ -19,16 +19,19 @@ float * convert_to_rgb32f_texture(SDL_Surface *rgbaSurface) {
     float* textureData = (float*)malloc(3 * width * height * sizeof(float));
 
     // Convert each pixel to floating point
+    Uint32 pixel;
+    Uint8 r, g, b;
+    float inv255 = 1.0f / 255.0f;
     for (int i = 0; i < width * height; ++i) {
-        Uint32 pixel = pixels[i];
-        Uint8 r = (pixel >> 24) & 0xFF;
-        Uint8 g = (pixel >> 16) & 0xFF;
-        Uint8 b = (pixel >> 8) & 0xFF;
+        pixel = pixels[i];
+        r = (pixel >> 24) & 0xFF;
+        g = (pixel >> 16) & 0xFF;
+        b = (pixel >> 8) & 0xFF;
 
         // Convert to floating point [0, 1]
-        textureData[i * 3 + 0] = r / 255.0f;
-        textureData[i * 3 + 1] = g / 255.0f;
-        textureData[i * 3 + 2] = b / 255.0f;
+        textureData[i * 3 + 0] = r * inv255;
+        textureData[i * 3 + 1] = g * inv255;
+        textureData[i * 3 + 2] = b * inv255;
     }
     return textureData;
 }

@@ -134,21 +134,21 @@ int load_mtl(char *path, char *filename, Material **materials) {
             POINTER_CHECK(fullPath);
             strcat(strcpy(fullPath, path), textureFilename);
             if (!strcmp(textureType, "Kd"))
-                (*materials)[mi].textureMaps[DIFFUSE_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_SRGB_ALPHA, true);
+                (*materials)[mi].textureMaps[DIFFUSE_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_SRGB8_ALPHA8, true);
             if (!strcmp(textureType, "Ks"))
-                (*materials)[mi].textureMaps[SPECULAR_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_SRGB_ALPHA, true);
+                (*materials)[mi].textureMaps[SPECULAR_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_SRGB8, true);
             if (!strcmp(textureType, "Ke"))
-                (*materials)[mi].textureMaps[EMISSION_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_SRGB_ALPHA, true);
+                (*materials)[mi].textureMaps[EMISSION_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_SRGB8, true);
             if (!strcmp(textureType, "Px"))
-                (*materials)[mi].textureMaps[PARALLAX_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F, true);
+                (*materials)[mi].textureMaps[PARALLAX_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_R16, true);
             if (!strcmp(textureType, "Pr"))
-                (*materials)[mi].textureMaps[ROUGHNESS_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F, true);
+                (*materials)[mi].textureMaps[ROUGHNESS_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_R16, true);
             if (!strcmp(textureType, "Pm"))
-                (*materials)[mi].textureMaps[METALLIC_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F, true);
+                (*materials)[mi].textureMaps[METALLIC_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_R16, true);
             if (!strcmp(textureType, "Ps"))
-                (*materials)[mi].textureMaps[SHEEN_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F, true);
+                (*materials)[mi].textureMaps[SHEEN_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_R16, true);
             if (!strcmp(textureType, "Bump"))
-                (*materials)[mi].textureMaps[NORMAL_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB32F, true);
+                (*materials)[mi].textureMaps[NORMAL_MATERIAL_PROPERTY] = load_texture_from_path(fullPath, GL_RGB8, true);
             free(fullPath);
 
             break;
