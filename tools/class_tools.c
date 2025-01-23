@@ -394,7 +394,7 @@ int main(int argc, char ** argv) {
 			Class current_class;
 
 			fprintf(processed_file, "#include <stdarg.h>\n");
-			fprintf(processed_file, "#include \"../types.h\"\n");
+			fprintf(processed_file, "#include \"../raptiquax.h\"\n");
 			fprintf(processed_file, "#include \"../classes/classes.h\"\n");
 
 			do {

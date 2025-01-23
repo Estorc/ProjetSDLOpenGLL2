@@ -1,5 +1,5 @@
 #line 1 "src/render/depth_map.c"
-#include "../types.h"
+#include "../raptiquax.h"
 #include "../math/math_util.h"
 #include "../io/shader.h"
 #include "render.h"

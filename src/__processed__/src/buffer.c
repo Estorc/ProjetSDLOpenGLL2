@@ -1,5 +1,5 @@
 #line 1 "src/buffer.c"
-#include "types.h"
+#include "raptiquax.h"
 #include "math/math_util.h"
 #include "physics/bodies.h"
 #include "render/lighting.h"

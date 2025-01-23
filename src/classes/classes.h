@@ -1,6 +1,6 @@
 #pragma once
 #include "import_class.h"
-#include "../types.h"
+#include "../raptiquax.h"
 
 /**
  * @brief Defines the Object structure and macros for method invocation in a class hierarchy.

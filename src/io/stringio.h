@@ -27,6 +27,7 @@
  * 
  * @param path The path to the file to be read.
  * @return A pointer to the dynamically allocated string containing the file contents.
+ * @note The caller is responsible for freeing the allocated memory.
  */
 char * read_file(const char * path);
 
@@ -39,8 +40,36 @@ char * read_file(const char * path);
  * 
  * @param fullpath The full file path from which to extract the folder path.
  * @return A pointer to the dynamically allocated string containing the folder path.
+ * @note The caller is responsible for freeing the allocated memory.
  */
-char * get_folder_path(char * fullpath);
+char * get_folder_path(const char * fullpath);
+
+/**
+ * @brief Converts backslashes in a path to forward slashes.
+ * 
+ * This function takes a path string and converts any backslashes to forward
+ * slashes. The returned string is dynamically allocated, and the caller is
+ * responsible for freeing the allocated memory.
+ * 
+ * @param path The path to convert.
+ * @return A pointer to the dynamically allocated string containing the converted path.
+ * @note The caller is responsible for freeing the allocated memory.
+ */
+char * convert_path(const char * path);
+
+/**
+ * @brief Concatenates two file paths.
+ * 
+ * This function concatenates two file paths, adding a path separator between
+ * them if necessary. The returned string is dynamically allocated, and the
+ * caller is responsible for freeing the allocated memory.
+ * 
+ * @param path1 The first part of the path.
+ * @param path2 The second part of the path.
+ * @return A pointer to the dynamically allocated string containing the concatenated path.
+ * @note The caller is responsible for freeing the allocated memory.
+ */
+char * concat_path(const char * path1, const char * path2);
 
 /**
  * @brief Finds the index of a string in a list of strings.

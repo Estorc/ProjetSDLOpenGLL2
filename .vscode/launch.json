@@ -45,6 +45,26 @@
                 }
             ],
             "miDebuggerArgs": "-ex 'set pagination off'",  // Optional, to prevent `gdb` paging
+        },
+        {
+            "name": "Debug FBX",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/test/fbx_test",
+            "args": ["editor"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb", // or "lldb" or "cppvsdbg" (Windows)
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "miDebuggerArgs": "-ex 'set pagination off'",  // Optional, to prevent `gdb` paging
         }
     ]
 }

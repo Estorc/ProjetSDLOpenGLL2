@@ -44,13 +44,19 @@ NEWLINE := $(shell printf "\n")
 # Object Files path
 
 BUILD_DIR := bin
+TEST_DIR := test
 PROCESSED_CLASS_DIR := src/__processed__
+
+LIBS += lib/ufbx/ufbx.o
 
 MODULES += src/classes/classes.o
 
+MODULES += src/io/model_loaders/obj_loader.o
+MODULES += src/io/model_loaders/fbx_loader.o
+MODULES += src/io/model_loaders/mtl_loader.o
+MODULES += src/io/model_loaders/model_loader.o
+
 MODULES += src/io/gltexture_loader.o
-MODULES += src/io/obj_loader.o
-MODULES += src/io/mtl_loader.o
 MODULES += src/io/scene_loader.o
 MODULES += src/io/node_loader.o
 MODULES += src/io/model.o
@@ -79,11 +85,13 @@ MODULES += src/gui/frame.o
 MODULES += src/storage/stack.o
 MODULES += src/storage/queue.o
 
+MODULES += src/raptiquax.o
 MODULES += src/memory.o
 MODULES += src/buffer.o
 MODULES += src/window.o
 MODULES += src/settings.o
-MODULES += src/main.o
+
+MAIN=src/main.o
 
 RELEASE_MODULES = $(addprefix $(BUILD_DIR)/,${MODULES})
 DEBUG_MODULES = $(addprefix $(BUILD_DIR)/debug/,${MODULES})
@@ -137,11 +145,11 @@ launch:
 	@${BUILD_DIR}/release/app
 
 
-release: generate_header init_build ${RELEASE_MODULES}
+release: generate_header init_build ${RELEASE_MODULES} $(BUILD_DIR)/${MAIN} ${LIBS}
 	@printf "${STEP_COL}===================== Begin linking. ====================${NC}\n"
 	@printf "${ACT_COL}Linking app...${NC}\n"
 	@mkdir -p ${BUILD_DIR}/release
-	@${GCC} -o ${BUILD_DIR}/release/app ${SCRIPTS_COUNT} ${RELEASE_MODULES} ${LFLAGS} ${WFLAGS}
+	@${GCC} -o ${BUILD_DIR}/release/app ${SCRIPTS_COUNT} ${RELEASE_MODULES} $(BUILD_DIR)/${MAIN} ${LIBS} ${LFLAGS} ${WFLAGS}
 
 	@printf "${ACT_COL}Copying assets...${NC}\n"
 	@rsync -rupE assets ${BUILD_DIR}/release/
@@ -152,12 +160,11 @@ release: generate_header init_build ${RELEASE_MODULES}
 
 	@printf "${STEP_COL}============= ${SUCCESS_COL}Successfully build the app!${NC}${STEP_COL} =============${NC}\n"
 
-debug: generate_header init_build ${DEBUG_MODULES}
-	@printf "${GCC}\n"
+debug: generate_header init_build ${DEBUG_MODULES} $(BUILD_DIR)/debug/${MAIN} ${LIBS}
 	@printf "${STEP_COL}===================== Begin debug linking. ====================${NC}\n"
 	@printf "${ACT_COL}Linking debug app...${NC}\n"
 	@mkdir -p ${BUILD_DIR}/debug
-	@${GCC} -o ${BUILD_DIR}/debug/app -g -O0 ${SCRIPTS_COUNT} ${DEBUG_MODULES} ${LFLAGS} ${WFLAGS}
+	@${GCC} -o ${BUILD_DIR}/debug/app -g -O0 ${SCRIPTS_COUNT} ${DEBUG_MODULES} $(BUILD_DIR)/debug/${MAIN} ${LIBS} ${LFLAGS} ${WFLAGS}
 
 	@printf "${ACT_COL}Copying assets...${NC}\n"
 	@rsync -rupE assets ${BUILD_DIR}/debug/
@@ -174,6 +181,23 @@ tools:
 	@${GCC} -o tools/class_tools tools/class_tools.c ${WFLAGS} -Wno-format-truncation
 	@${GCC} -o tools/node_tools tools/node_tools.c ${WFLAGS}
 	@printf "${STEP_COL}============= ${NC}${SUCCESS_COL}Successfully build the tools!${NC}${STEP_COL} =============${NC}\n"
+
+
+${TEST_DIR}/%: ${TEST_DIR}/%.o ${DEBUG_MODULES} ${LIBS}
+	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
+	@${GCC} -g -O0 -o $@ $^ ${LFLAGS} ${WFLAGS}
+	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}$@${NC}\n"
+
+${TEST_DIR}/%.o: ${TEST_DIR}/%.c
+	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
+	@${GCC} -c $< -o $@ ${CFLAGS} ${LFLAGS} ${WFLAGS}
+	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}$@${NC}\n"
+
+
+%.o: %.c
+	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
+	@${GCC} -c $< -o $@ ${CFLAGS} ${LFLAGS} ${WFLAGS}
+	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}$@${NC}\n"
 
 # Release objects constructor
 ${BUILD_DIR}/%.o: %.c
@@ -213,5 +237,7 @@ clean:
 	@printf "${SUCCESS_COL}Successfully clear the build!${NC}\n"
 
 .PHONY: all build debug tools generate_header
+-include $(BUILD_DIR)/$(MAIN:.o=.d)
+-include $(BUILD_DIR)/debug/$(MAIN:.o=.d)
 -include $(RELEASE_MODULES:.o=.d)
 -include $(DEBUG_MODULES:.o=.d)

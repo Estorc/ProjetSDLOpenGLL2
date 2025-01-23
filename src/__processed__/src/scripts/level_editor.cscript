@@ -13,7 +13,7 @@ void draw_model_input(int *id, int x, int y, Window *window, Node *node, Model *
             printf("%s\n", path);
             FILE * file = fopen(path, "r");
             if (file) {
-                load_obj_model(path, &(*model)->data);
+                load_model(path, &(*model)->data);
                 fclose(file);
             }
         }

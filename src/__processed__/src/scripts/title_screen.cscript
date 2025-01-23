@@ -22,7 +22,7 @@ NEW_SCRIPT(play_game_button)
 
 	if ((*button->checked)) {
 		
-		prepare_change_scene("assets/scenes/fpschess.scene");
+		prepare_change_scene("assets/scenes/scene_test.scene");
 		*button->checked = false;
 	}
 

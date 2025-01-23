@@ -1,5 +1,5 @@
 #line 1 "src/io/shader.c"
-#include "../types.h"
+#include "../raptiquax.h"
 #include "../math/math_util.h"
 #include "shader.h"
 #include "model.h"

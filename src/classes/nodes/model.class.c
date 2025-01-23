@@ -26,7 +26,7 @@ class Model : public Node {
         if (file) {
             char path[100];
             fscanf(file,"(%100[^)])", path);
-            load_obj_model(path, &model->data);
+            load_model(path, &model->data);
         } else {
             model->data = NULL;
         }
@@ -85,6 +85,7 @@ class Model : public Node {
                 glUniform3fv(glGetUniformLocation(activeShader, "material.diffuse"), 1, data->objects[j].materials[k]->flatColors[DIFFUSE_MATERIAL_PROPERTY]);
                 glUniform1fv(glGetUniformLocation(activeShader, "material.parallax"), 1, data->objects[j].materials[k]->flatColors[PARALLAX_MATERIAL_PROPERTY]);
                 glUniform1fv(glGetUniformLocation(activeShader, "material.shininess"), 1, &data->objects[j].materials[k]->specularExp);
+                
                 if (data->objects[j].materials[k]->textureMaps[DIFFUSE_MATERIAL_PROPERTY]) {
                     set_shader_int(activeShader, "diffuseMapActive", 1); 
                     glActiveTexture(GL_TEXTURE0);

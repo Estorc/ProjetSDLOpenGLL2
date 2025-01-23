@@ -1,5 +1,5 @@
 #line 1 "src/math/math_util.c"
-#include "../types.h"
+#include "../raptiquax.h"
 #include "math_util.h"
 
 /**

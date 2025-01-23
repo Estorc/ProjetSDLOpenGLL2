@@ -1,4 +1,4 @@
-#include "types.h"
+#include "raptiquax.h"
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
@@ -83,17 +83,6 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
 
     return 0;
 }
-
-
-MemoryCaches memoryCaches;
-BufferCollection buffers;
-Queue callQueue = {NULL};
-Tree mainNodeTree;
-Input input;
-Settings settings = {false, true, false, RES_RESPONSIVE, false};
-Window window;
-
-BUILD_CLASS_METHODS_CORRESPONDANCE(classManager);
 
 
 int main(int argc, char *argv[]) {

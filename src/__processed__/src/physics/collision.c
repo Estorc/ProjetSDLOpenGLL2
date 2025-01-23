@@ -1,5 +1,5 @@
 #line 1 "src/physics/collision.c"
-#include "../types.h"
+#include "../raptiquax.h"
 #include "../math/math_util.h"
 #include "../io/model.h"
 #include "../render/framebuffer.h"
@@ -612,7 +612,7 @@ bool check_collision_sphere_with_mesh(Node *shapeA, Node *shapeB) {
     for (int i = 0; i < mesh->numFaces; ++i) {
         vec3 face[3];
         for (int j = 0; j < 3; ++j) {
-            glm_vec3_copy(mesh->facesVertex[i][j], face[j]);
+            glm_vec3_copy(mesh->facesVertex[j+i*3], face[j]);
             glm_vec3_mul(face[j], meshShape->globalScale, face[j]);
             glm_mat4_mulv3(meshRotation, face[j], 1.0f, face[j]);
             glm_vec3_add(face[j], meshShape->globalPos, face[j]);

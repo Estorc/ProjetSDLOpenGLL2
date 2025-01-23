@@ -1,5 +1,5 @@
 #line 1 "src/storage/stack.c"
-#include "../types.h"
+#include "../raptiquax.h"
 #include "stack.h"
 
 void stack_push(Stack *stack, void *data) {

@@ -86,11 +86,18 @@
         "stringio.h": "c",
         "glext.h": "c",
         "math.h": "c",
-        "glu.h": "c"
+        "glu.h": "c",
+        "ufbx.h": "c",
+        "osio.h": "c",
+        "node_loader.h": "c",
+        "raptiquax.h": "c",
+        "mtl_loader.h": "c",
+        "fbx_loader.h": "c",
+        "model_loader.h": "c"
     },
     "files.exclude": {
-        "bin/": false,
-        "lib/": true,
+        "bin/": true,
+        "lib/": false,
         "src/__processed__/": true,
         "docs/html/": true,
         "docs/latex/": true,

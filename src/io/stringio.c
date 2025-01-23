@@ -1,4 +1,4 @@
-#include "../types.h"
+#include "../raptiquax.h"
 
 
 char * read_file(const char * path) {
@@ -19,7 +19,7 @@ char * read_file(const char * path) {
     return s;
 }
 
-char * get_folder_path(char * fullpath) {
+char * get_folder_path(const char * fullpath) {
     char * path = malloc(sizeof(char) * (strlen(fullpath) + 1));
     strcpy(path, fullpath);
     int slash_count = 0;
@@ -29,6 +29,20 @@ char * get_folder_path(char * fullpath) {
         return path;
     }
     for (char * ptr = path; slash_count; ptr++) if (*ptr == '/' || *ptr == '\\') if (!(--slash_count) && *(ptr+1)) *(ptr+1) = 0;
+    return path;
+}
+
+char * convert_path(const char * path) {
+    char * converted = malloc(sizeof(char) * (strlen(path) + 1));
+    strcpy(converted, path);
+    for (char * ptr = converted; *ptr; ptr++) if (*ptr == '\\') *ptr = '/';
+    return converted;
+}
+
+char * concat_path(const char * path1, const char * path2) {
+    char * path = malloc(sizeof(char) * (strlen(path1) + strlen(path2) + 1));
+    strcpy(path, path1);
+    strcat(path, path2);
     return path;
 }
 

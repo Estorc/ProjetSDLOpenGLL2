@@ -1,5 +1,5 @@
 #line 1 "src/settings.c"
-#include "types.h"
+#include "raptiquax.h"
 #include "settings.h"
 #include "math/math_util.h"
 #include "io/model.h"

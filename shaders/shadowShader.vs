@@ -24,15 +24,19 @@ uniform vec3 viewPos;
 
 void main()
 {
-    vs_out.FragPos = vec3(model * vec4(aPos, 1.0));
-    vs_out.Normal = transpose(inverse(mat3(model))) * aNormal;
+
+    vec4 tPos = vec4(aPos,1.0);
+    vec3 tNormal = aNormal;
+
+    vs_out.FragPos = vec3(model * tPos);
+    vs_out.Normal = transpose(inverse(mat3(model))) * tNormal;
     vs_out.TexCoords = aTexCoords;
 
 
-    gl_Position = projection * view * model * vec4(aPos, 1.0);
+    gl_Position = projection * view * model * tPos;
     vec3 T = normalize(mat3(model) * aTangent);
     vec3 B = normalize(mat3(model) * aBitangent);
-    vec3 N = normalize(transpose(inverse(mat3(model))) * aNormal);
+    vec3 N = normalize(transpose(inverse(mat3(model))) * tNormal);
     vs_out.TBN = transpose(mat3(T, B, N));
     vs_out.viewPos = viewPos;
     vs_out.TangentViewPos  = vs_out.TBN * viewPos;

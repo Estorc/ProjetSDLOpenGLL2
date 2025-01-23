@@ -88,7 +88,7 @@ typedef struct SphereCollisionShape {
  * A mesh collision shape is a complex shape defined by a mesh of vertices.
  */
 typedef struct MeshCollisionShape {
-    Vertex (*facesVertex)[3]; /**< Array of faces, each defined by three vertices. */
+    Vertex *facesVertex; /**< Array of faces, each defined by three vertices. */
     u32 numFaces; /**< Number of faces in the mesh. */
 } MeshCollisionShape;
 

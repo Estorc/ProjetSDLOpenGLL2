@@ -1,6 +1,6 @@
 #line 1 "src/__processed__/classes_nodes_model.class.c"
 #include <stdarg.h>
-#include "../types.h"
+#include "../raptiquax.h"
 #include "../classes/classes.h"
 #include "../math/math_util.h"
 #include "../io/model.h"
@@ -28,7 +28,7 @@ void __class_method_model_load(void * __retValueVP__, va_list args) {Node * this
         if (file) {
             char path[100];
             fscanf(file,"(%100[^)])", path);
-            load_obj_model(path, &model->data);
+            load_model(path, &model->data);
         } else {
             model->data = NULL;
         }
@@ -90,6 +90,7 @@ void __class_method_model_render(void * __retValueVP__, va_list args) {Node * th
                 glUniform3fv(glGetUniformLocation(activeShader, "material.diffuse"), 1, data->objects[j].materials[k]->flatColors[DIFFUSE_MATERIAL_PROPERTY]);
                 glUniform1fv(glGetUniformLocation(activeShader, "material.parallax"), 1, data->objects[j].materials[k]->flatColors[PARALLAX_MATERIAL_PROPERTY]);
                 glUniform1fv(glGetUniformLocation(activeShader, "material.shininess"), 1, &data->objects[j].materials[k]->specularExp);
+                
                 if (data->objects[j].materials[k]->textureMaps[DIFFUSE_MATERIAL_PROPERTY]) {
                     set_shader_int(activeShader, "diffuseMapActive", 1); 
                     glActiveTexture(GL_TEXTURE0);
@@ -139,7 +140,7 @@ void __class_method_model_render(void * __retValueVP__, va_list args) {Node * th
 
 }
 
-#line 137 "src/classes/nodes/model.class.c"
+#line 138 "src/classes/nodes/model.class.c"
 void __class_method_model_free(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         // See src/memory.c for the implementation of free_models
         for (int i = 0; i < this->length; i++) {

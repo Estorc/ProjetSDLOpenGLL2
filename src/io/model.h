@@ -21,13 +21,6 @@
  * @{
  */
 
-
-/**
- * @def MAX_VERTEX_PER_FACE
- * @brief Maximum number of vertices per face.
- */
-#define MAX_VERTEX_PER_FACE 10
-
 /**
  * @typedef VBO
  * @brief Alias for unsigned int representing a Vertex Buffer Object.
@@ -52,23 +45,37 @@ typedef VBO VertexBuffer;
  */
 typedef VAO VertexArray;
 
+typedef enum VertexAttribute {
+    VERTEX_ATTRIBUTE_POSITION_X,
+    VERTEX_ATTRIBUTE_POSITION_Y,
+    VERTEX_ATTRIBUTE_POSITION_Z,
+    VERTEX_ATTRIBUTE_NORMAL_X,
+    VERTEX_ATTRIBUTE_NORMAL_Y,
+    VERTEX_ATTRIBUTE_NORMAL_Z,
+    VERTEX_ATTRIBUTE_TEXTURE_U,
+    VERTEX_ATTRIBUTE_TEXTURE_V,
+    VERTEX_ATTRIBUTE_TANGENT_X,
+    VERTEX_ATTRIBUTE_TANGENT_Y,
+    VERTEX_ATTRIBUTE_TANGENT_Z,
+    VERTEX_ATTRIBUTE_BITANGENT_X,
+    VERTEX_ATTRIBUTE_BITANGENT_Y,
+    VERTEX_ATTRIBUTE_BITANGENT_Z,
+    /*VERTEX_ATTRIBUTE_BONE_ID_1,
+    VERTEX_ATTRIBUTE_BONE_ID_2,
+    VERTEX_ATTRIBUTE_BONE_ID_3,
+    VERTEX_ATTRIBUTE_BONE_ID_4,
+    VERTEX_ATTRIBUTE_BONE_WEIGHT_1,
+    VERTEX_ATTRIBUTE_BONE_WEIGHT_2,
+    VERTEX_ATTRIBUTE_BONE_WEIGHT_3,
+    VERTEX_ATTRIBUTE_BONE_WEIGHT_4,*/
+    VERTEX_ATTRIBUTE_COUNT
+} VertexAttribute;
+
 /**
  * @typedef Vertex
- * @brief Array of 15 floats representing a vertex.
+ * @brief Array of VERTEX_ATTRIBUTE_COUNT floats representing a vertex.
  */
-typedef float Vertex[15];
-
-/**
- * @typedef Normal
- * @brief Alias for vec3 representing a normal vector.
- */
-typedef vec3 Normal;
-
-/**
- * @typedef TextureVertex
- * @brief Alias for vec2 representing a texture vertex.
- */
-typedef vec2 TextureVertex;
+typedef float Vertex[VERTEX_ATTRIBUTE_COUNT];
 
 /**
  * @typedef TextureMap
@@ -119,39 +126,72 @@ typedef struct Material {
 } Material;
 
 /**
- * @struct Face
- * @brief Structure representing a face of a 3D model.
- * 
- * This structure holds the indices of vertices, normals, and texture vertices that make up a face.
- */
-typedef struct Face {
-    int vertex[MAX_VERTEX_PER_FACE];        /**< Indices of vertices */
-    int normals[MAX_VERTEX_PER_FACE];       /**< Indices of normals */
-    int textureVertex[MAX_VERTEX_PER_FACE]; /**< Indices of texture vertices */
-    u8 length;                              /**< Number of vertices in the face */
-} Face;
-
-/**
  * @struct ModelObjectData
  * @brief Structure representing the data of a 3D model object.
  * 
  * This structure holds the vertices, normals, texture vertices, faces, and other properties of a model object.
  */
-typedef struct ModelObjectData {
-    Vertex *vertex;                         /**< Array of vertices */
-    Normal *normals;                        /**< Array of normals */
-    TextureVertex *textureVertex;           /**< Array of texture vertices */
-    Vertex (*facesVertex)[3];               /**< Array of vertex indices for faces */
-    Face *faces;                            /**< Array of faces */
-    u32 *textures;                          /**< Array of texture IDs */
-    u8 smoothShading;                       /**< Smooth shading flag */
+typedef struct ModelObjectData ModelObjectData;
+struct ModelObjectData {
+    Vertex *facesVertex;                    /**< Array of vertex indices for faces */
     u32 length;                             /**< Length of the object data */
-    VAO VAO;                                /**< Vertex Array Object */
     Material **materials;                   /**< Array of pointers to materials */
-    u32 *materialsLength;                   /**< Array of material lengths */
+    u32 *materialsLength;                   /**< Array of material lengths */ //The numbers of faces before switching material
     u8 materialsCount;                      /**< Number of materials */
+    VAO VAO;                                /**< Vertex Array Object */
     GLuint *displayLists;                   /**< Array of display lists */
-} ModelObjectData;
+};
+
+
+/**
+ * @struct ModelKeyframe
+ * @brief Structure representing the data of a 3D model keyframe.
+ * 
+ * This structure holds the transformation matrix and time of a keyframe.
+ */
+
+typedef struct ModelKeyframe {
+    union {
+        vec3 value;                         /**< Value of the keyframe */
+        versor r_value;                     /**< Rotation of the keyframe */
+    };
+    f32 time;                               /**< Time of the keyframe */
+} ModelKeyframe;
+
+/**
+ * @struct Bone
+ * @brief Structure representing a bone in a 3D model.
+ * 
+ * This structure holds the name, parent, and children of a bone in a 3D model.
+ */
+
+typedef struct Bone {
+    char name[128];                         /**< Name of the bone */
+    mat4 offsetMatrix;                      /**< Offset matrix */
+    mat4 transform;                         /**< Transformation matrix */
+    ModelKeyframe *translationKeyframes;    /**< Array of translation keyframes */
+    u32 translationKeyframesCount;          /**< Number of translation keyframes */
+    ModelKeyframe *rotationKeyframes;       /**< Array of rotation keyframes */
+    u32 rotationKeyframesCount;             /**< Number of rotation keyframes */
+    ModelKeyframe *scaleKeyframes;          /**< Array of scale keyframes */
+    u32 scaleKeyframesCount;                /**< Number of scale keyframes */
+    u32 index;                              /**< Index of the bone */
+} Bone;
+
+/**
+ * @struct ModelAnimation
+ * @brief Structure representing the data of a 3D model animation.
+ * 
+ * This structure holds the keyframes and other properties of a model animation.
+ */
+
+typedef struct ModelAnimation ModelAnimation;
+struct ModelAnimation {
+    char name[128];                         /**< Name of the animation */
+    u32 length;                             /**< Length of the animation */
+    Bone *targets;                          /**< Array of targets */
+    u32 targetsCount;                       /**< Number of targets */
+};
 
 /**
  * @struct ModelData
@@ -159,12 +199,15 @@ typedef struct ModelObjectData {
  * 
  * This structure holds the materials and objects that make up a 3D model.
  */
-typedef struct ModelData {
-    Material *materials;                    /**< Array of materials */
-    u8 materialsCount;                      /**< Number of materials */
+typedef struct ModelData ModelData;
+struct ModelData {
+    Material *materials;                    /**< Array of materials */ //UNUSED
+    u8 materialsCount;                      /**< Number of materials */ //UNUSED
     ModelObjectData *objects;               /**< Array of model objects */
     u8 length;                              /**< Number of objects */
-} ModelData;
+    //ModelAnimation *animations;             /**< Array of model animations */
+    u8 animationsCount;                     /**< Number of animations */
+};
 
 /**
  * @enum ModelFlags
@@ -240,7 +283,6 @@ void create_screen_plane(Mesh *mesh);
 /** @} */ // end of ModelHandling
 
 
-#include "obj_loader.h"
-#include "mtl_loader.h"
+#include "model_loaders/model_loader.h"
 
 #endif

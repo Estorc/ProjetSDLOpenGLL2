@@ -25,7 +25,7 @@ class MeshCShape : public CShape {
         if (file) {
             char path[100];
             fscanf(file,"(%100[^)])", path);
-            load_obj_model(path, &model->data);
+            load_model(path, &model->data);
         }
         MeshCollisionShape *meshCollisionShape;
         meshCollisionShape = malloc(sizeof(MeshCollisionShape));

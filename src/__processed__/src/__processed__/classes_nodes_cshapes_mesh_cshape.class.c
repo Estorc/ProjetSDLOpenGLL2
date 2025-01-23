@@ -1,6 +1,6 @@
 #line 1 "src/__processed__/classes_nodes_cshapes_mesh_cshape.class.c"
 #include <stdarg.h>
-#include "../types.h"
+#include "../raptiquax.h"
 #include "../classes/classes.h"
 #include "../math/math_util.h"
 #include "../io/model.h"
@@ -28,7 +28,7 @@ void __class_method_meshcshape_load(void * __retValueVP__, va_list args) {Node *
         if (file) {
             char path[100];
             fscanf(file,"(%100[^)])", path);
-            load_obj_model(path, &model->data);
+            load_model(path, &model->data);
         }
         MeshCollisionShape *meshCollisionShape;
         meshCollisionShape = malloc(sizeof(MeshCollisionShape));

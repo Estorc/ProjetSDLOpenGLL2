@@ -1,6 +1,6 @@
 #line 1 "src/__processed__/classes_nodes_skybox.class.c"
 #include <stdarg.h>
-#include "../types.h"
+#include "../raptiquax.h"
 #include "../classes/classes.h"
 #include "../math/math_util.h"
 #include "../io/model.h"
