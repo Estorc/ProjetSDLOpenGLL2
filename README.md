@@ -1,6 +1,6 @@
 # ProjetSDLOpenGLL2
 
-##Présentation du projet :
+## Présentation du projet :
 
 - Jeu d'horreur prenant place au bâtiment informatique Claude Chappe
 - Le personnage doit récupérer des objets câchés à plusieurs endroits en se déplaçant dans le bâtiment, tout en essayant de survivre au(x) monstre(s) présent(s).
@@ -36,6 +36,7 @@ git pull                # Permet de récupérer les dernières mises à jour du 
 ### Envoyer les changements :
 ```git
 git commit -a           # Prépare le commit (utilisez "git commit -am uncommented" pour passer le commentaire).
+git commit -m           # Prépare le commit (utilisez "git commit -am uncommented" pour passer le commentaire).
 git push -u origin main # Permet d'envoyer les changements locaux au git.
 ```
 
