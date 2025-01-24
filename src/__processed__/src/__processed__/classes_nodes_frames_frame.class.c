@@ -258,7 +258,7 @@ void __class_method_frame_render(void * __retValueVP__, va_list args) {Node * th
 
             set_shader_vec2(shaders->gui, "pixelPosition", frame->absPos);
             set_shader_vec4(shaders->gui, "overflow", frame->overflow);
-            set_shader_float(shaders->gui, "time", SDL_GetTicks64());
+            set_shader_float(shaders->gui, "time", SDL_GetTicks());
             
             set_shader_int(shaders->gui, "background", 0);
             set_shader_int(shaders->gui, "content", 1);

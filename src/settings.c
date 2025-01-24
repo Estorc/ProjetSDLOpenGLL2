@@ -25,12 +25,12 @@ const char resolutionsText[RES_COUNT][256] = {
 
 
 void get_resolution(int *width, int *height) {
+    SDL_Rect rect;
     switch (settings.resolution) {
         case RES_RESPONSIVE:
             SDL_GetWindowSize(window.sdl_window, width, height);
             break;
         case RES_NATIVE:
-            SDL_Rect rect;
             SDL_GetDisplayBounds(0, &rect);
             *width = rect.w;
             *height = rect.h;
