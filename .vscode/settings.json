@@ -93,11 +93,12 @@
         "raptiquax.h": "c",
         "mtl_loader.h": "c",
         "fbx_loader.h": "c",
-        "model_loader.h": "c"
+        "model_loader.h": "c",
+        "scene.h": "c"
     },
     "files.exclude": {
         "bin/": true,
-        "lib/": false,
+        "lib/": true,
         "src/__processed__/": true,
         "docs/html/": true,
         "docs/latex/": true,

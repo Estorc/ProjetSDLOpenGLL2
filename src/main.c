@@ -94,7 +94,7 @@ int main(int argc, char *argv[]) {
     if (create_window("Physics Engine Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL, &window) == -1) return -1;
     init_input(&input);
 
-
+    
     // TODO: Transform this in singletons
 
     WorldShaders defaultShaders = {
