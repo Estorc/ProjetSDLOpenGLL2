@@ -15,8 +15,11 @@
 - SDL2 TTF
 
 ## Installation
+### Dependencies
+Debian based distro: ``sudo apt install build-essential kdialog libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev``
+Arch based distro: ``pacman -S --needed base-devel kdialog sdl2 sdl2_image sdl2_ttf sdl2_mixer``
+### Clone repository
 ```sh
-sudo apt install build-essential kdialog libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
 cd <EMPLACEMENT_DU_PROJET>
 git clone https://github.com/Estorc/ProjetSDLOpenGLL2.git
 ```
