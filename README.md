@@ -1,5 +1,13 @@
 # ProjetSDLOpenGLL2
 
+##Présentation du projet :
+
+- Jeu d'horreur prenant place au bâtiment informatique Claude Chappe
+- Le personnage doit récupérer des objets câchés à plusieurs endroits en se déplaçant dans le bâtiment, tout en essayant de survivre au(x) monstre(s) présent(s).
+- Le jeu est en 3D, affiché grâce à un moteur 3D basé sur OPENGL
+- Les modèles et textures sont modélisés sur Blender
+- Les musiques et bruitages audios sont créés sur FL STUDIO 21
+
 ## Librairies
 - KDialog
 - SDL2
@@ -30,3 +38,4 @@ git pull                # Permet de récupérer les dernières mises à jour du 
 git commit -a           # Prépare le commit (utilisez "git commit -am uncommented" pour passer le commentaire).
 git push -u origin main # Permet d'envoyer les changements locaux au git.
 ```
+
