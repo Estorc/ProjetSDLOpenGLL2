@@ -821,6 +821,7 @@ void draw_node_editing(Window *window, Node *node, Input *input, TTF_Font *font)
 
 
 NEW_SCRIPT(scene_editor_init)
+#ifdef DEBUG
 	SET_ATTRIBUTES_COUNT(6);
 	int *selectedNodeType = &this->attribute[4].i;
 
@@ -829,6 +830,7 @@ NEW_SCRIPT(scene_editor_init)
 	char str[150];
 	sprintf(str, " < %s > ", classManager.class_names[*selectedNodeType]);
 	(this->children[3]->children[1]->children[0])::set_text(str);
+#endif
 END_SCRIPT(scene_editor_init)
 
 
