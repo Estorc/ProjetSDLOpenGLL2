@@ -913,6 +913,7 @@ END_SCRIPT(scene_editor)
 
 
 NEW_SCRIPT(scene_editor_btn_load)
+#ifdef DEBUG
 	GET_READY_PARAMETERS();
 	SET_ATTRIBUTES_COUNT(1);
 	bool *active = &this->attribute[0].b;
@@ -925,9 +926,11 @@ NEW_SCRIPT(scene_editor_btn_load)
 		draw_node_tree(mainNodeTree.root->children[2], 0);
 		*button->checked = false;
 	}
+#endif
 END_SCRIPT(scene_editor_btn_load)
 
 NEW_SCRIPT(scene_editor_btn_camera)
+#ifdef DEBUG
 	GET_READY_PARAMETERS();
 	SET_ATTRIBUTES_COUNT(1);
 	bool *active = &this->attribute[0].b;
@@ -942,4 +945,5 @@ NEW_SCRIPT(scene_editor_btn_camera)
 		mainNodeTree.root->children[3]->flags &= ~NODE_ACTIVE;
 		*button->checked = false;
 	}
+#endif
 END_SCRIPT(scene_editor_btn_camera)
