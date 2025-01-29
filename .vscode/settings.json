@@ -98,8 +98,8 @@
     },
     "files.exclude": {
         "bin/": true,
-        "lib/": true,
-        "src/__processed__/": true,
+        "lib/": false,
+        "src/__processed__/": false,
         "docs/html/": true,
         "docs/latex/": true,
     },

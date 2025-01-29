@@ -55,6 +55,7 @@ void __class_method_frame_init_frame(void * __retValueVP__, va_list args) {Node 
         frame->flags = 0;
         frame->flags |= FRAME_VISIBLE;
         frame->flags |= FRAME_NEEDS_REFRESH;
+        frame->flags |= FRAME_NEEDS_INIT;
         frame->contentTexture = 0;
         frame->contentSurface = NULL;
         frame->theme = NULL;
@@ -63,7 +64,7 @@ void __class_method_frame_init_frame(void * __retValueVP__, va_list args) {Node 
         glm_vec2_zero(frame->scrollTarget);
 }
 
-#line 63 "src/classes/nodes/frames/frame.class.c"
+#line 64 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_load(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         this->type = __type__;
         call_method_0(METHOD(constructor,this));
@@ -100,7 +101,7 @@ void __class_method_frame_load(void * __retValueVP__, va_list args) {Node * this
         }
 }
 
-#line 99 "src/classes/nodes/frames/frame.class.c"
+#line 100 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_refresh(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
 
         int window_width, window_height;
@@ -199,7 +200,7 @@ void __class_method_frame_refresh(void * __retValueVP__, va_list args) {Node * t
         frame->flags &= ~FRAME_NEEDS_REFRESH;
 }
 
-#line 197 "src/classes/nodes/frames/frame.class.c"
+#line 198 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_refreshContent(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         Frame *frame = (Frame *) this->object;
         glBindTexture(GL_TEXTURE_2D, frame->contentTexture);
@@ -208,7 +209,7 @@ void __class_method_frame_refreshContent(void * __retValueVP__, va_list args) {N
         glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-#line 205 "src/classes/nodes/frames/frame.class.c"
+#line 206 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_update(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         Frame *frame = (Frame *) this->object;
         if (frame->flags & OVERFLOW_SCROLL) {
@@ -223,7 +224,7 @@ void __class_method_frame_update(void * __retValueVP__, va_list args) {Node * th
 }
 
 
-#line 219 "src/classes/nodes/frames/frame.class.c"
+#line 220 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_draw_frame(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         VAO vao;
         call_method_0(METHOD(get_vao,this,&vao));
@@ -239,12 +240,12 @@ void __class_method_frame_draw_frame(void * __retValueVP__, va_list args) {Node 
 
     static VBO _vbo = 0;
     static VAO _vao = 0;
-#line 234 "src/classes/nodes/frames/frame.class.c"
+#line 235 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_render(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);mat4 * modelMatrix = va_arg(args, mat4 *);Shader  activeShader = va_arg(args, Shader );WorldShaders * shaders = va_arg(args, WorldShaders *);(void)this;
         IGNORE(modelMatrix);
         Frame *frame = (Frame *) this->object;
-        if (frame->flags & FRAME_NEEDS_REFRESH) call_method_0(METHOD(refresh,this));
-        if (frame->flags & FRAME_VISIBLE && activeShader != shaders->depth) {
+        if (frame->flags & FRAME_NEEDS_REFRESH || frame->flags & FRAME_NEEDS_INIT) call_method_0(METHOD(refresh,this));
+        if (frame->flags & FRAME_VISIBLE && activeShader != shaders->depth && !(frame->flags & FRAME_NEEDS_INIT)) {
             IGNORE(activeShader);
             Frame *frame = (Frame *) this->object;
             use_shader(shaders->gui);
@@ -311,9 +312,10 @@ void __class_method_frame_render(void * __retValueVP__, va_list args) {Node * th
             set_shader_mat4(shaders->gui, "model", modelMatrix);
             call_method_0(METHOD(draw_frame,this));
         }
+        frame->flags &= ~FRAME_NEEDS_INIT;
 }
 
-#line 307 "src/classes/nodes/frames/frame.class.c"
+#line 309 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_save(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);Node * editor = va_arg(args, Node *);(void)this;
         Frame *frame = (Frame *) this->object;
         IGNORE(editor);
@@ -344,7 +346,7 @@ void __class_method_frame_save(void * __retValueVP__, va_list args) {Node * this
         }
 }
 
-#line 337 "src/classes/nodes/frames/frame.class.c"
+#line 339 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_get_vao(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);VAO * vao = va_arg(args, VAO *);(void)this;
         if (!_vao) {
             float quadVertices[] = {
@@ -372,27 +374,27 @@ void __class_method_frame_get_vao(void * __retValueVP__, va_list args) {Node * t
 }
 
 
-#line 364 "src/classes/nodes/frames/frame.class.c"
+#line 366 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_is_gui_element(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);bool * result = va_arg(args, bool *);(void)this;
         *result = true;
 }
 
-#line 368 "src/classes/nodes/frames/frame.class.c"
+#line 370 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_is_button(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);bool * result = va_arg(args, bool *);(void)this;
         *result = false;
 }
 
-#line 372 "src/classes/nodes/frames/frame.class.c"
+#line 374 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_is_input_area(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);bool * result = va_arg(args, bool *);(void)this;
         *result = false;
 }
 
-#line 376 "src/classes/nodes/frames/frame.class.c"
+#line 378 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_is_selectlist(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);bool * result = va_arg(args, bool *);(void)this;
         *result = false;
 }
 
-#line 380 "src/classes/nodes/frames/frame.class.c"
+#line 382 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_is_checkbox(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);bool * result = va_arg(args, bool *);(void)this;
         *result = false;
 }
@@ -405,12 +407,12 @@ bool call_method_2(void (*func)(void *, va_list), ...) {
     va_end(args);
     return value;
 }
-#line 384 "src/classes/nodes/frames/frame.class.c"
+#line 386 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_is_radiobutton(void * __retValueVP__, va_list args) {bool * __retValueP__ = (bool *) __retValueVP__;Node * this = va_arg(args, Node *);(void)this;
         *__retValueP__ = false;return;
 }
 
-#line 388 "src/classes/nodes/frames/frame.class.c"
+#line 390 "src/classes/nodes/frames/frame.class.c"
 void __class_method_frame_free(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         Frame *frame = (Frame *) this->object;
         if (frame->flags & FRAME_CONTENT) {

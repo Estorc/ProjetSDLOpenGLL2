@@ -206,7 +206,7 @@ void update_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Inp
         call_method_0(METHOD(update,node,newPos, newRot, newScale, delta, lightsCount));
     } else {
         active = false;
-        call_method_0(METHOD(update_global_position,node,pos, rot, scale));
+        call_method_0(METHOD(update_global_position,node,newPos, newRot, newScale));
     }
 
     for (int i = 0; i < node->length; i++)

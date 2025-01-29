@@ -118,7 +118,8 @@ WFLAGS += -Wno-implicit-function-declaration
 
 LOADING_SCRIPT_HEADER := src/scripts/loading_scripts.h
 NEW_SCRIPT_SYMBOL := NEW_SCRIPT
-SCRIPTS_PATHS := $(wildcard src/scripts/*.cscript)
+SCRIPTS_PATHS := $(wildcard src/scripts/**/*.cscript)
+SCRIPTS_PATHS += $(wildcard src/scripts/*.cscript)
 SCRIPTS_FILES := $(notdir $(SCRIPTS_PATHS))
 SCRIPTS_COUNT := -D SCRIPTS_COUNT=$(shell grep -o '\b$(NEW_SCRIPT_SYMBOL)\b' $(SCRIPTS_PATHS) | wc -l)
 

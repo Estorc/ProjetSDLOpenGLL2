@@ -130,6 +130,7 @@ typedef enum FrameFlags {
     OVERFLOW_SCROLL = 1 << 3, /**< Frame content can be scrolled. */
     OVERFLOW_VISIBLE = 1 << 4, /**< Frame content overflow is visible. */
     FRAME_VISIBLE = 1 << 5, /**< Frame is visible. */
+    FRAME_NEEDS_INIT = 1 << 6, /**< Frame needs to be initialized. */
 } FrameFlags;
 
 /**

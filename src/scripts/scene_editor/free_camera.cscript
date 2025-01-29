@@ -1,0 +1,61 @@
+NEW_SCRIPT(free_camera)
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(9);
+
+	int *movable = &this->attribute[0].i;
+	int *active = &this->attribute[1].i;
+	float *targetRot = &this->attribute[2].f;
+	float *targetPos = &this->attribute[2+3].f;
+
+	if (input.released_keys & KEY_MENU && *movable && *active) {
+		*movable = 0;
+		mainNodeTree.root->children[3]->flags |= NODE_ACTIVE | NODE_VISIBLE;
+	}
+
+
+	Camera *c = (Camera*) this->object;
+
+	vec3 dir = {0.0f, 0.0f, -1.0f};
+	glm_vec3_rotate(dir, to_radians(c->rot[1]), (vec3){0.0f, 1.0f, 0.0f});
+	dir[0] = -dir[0];
+
+	if (glm_vec3_norm2(targetPos) == 0) glm_vec3_copy(this->pos, targetPos);
+	if (glm_vec3_norm2(targetRot) == 0) glm_vec3_copy(this->rot, targetRot);
+
+	if (*movable) {
+		
+		targetRot[1] -= fmod((f32) (input.mouse.x - input.mouse.lastX) * delta * 100.0, 360.0);
+		targetRot[0] += fmod((f32) (input.mouse.lastY - input.mouse.y) * delta * 100.0, 360.0);
+		targetRot[0] = CLAMP(-90,targetRot[0],90);
+
+		f32 vel = 0.05f;
+		if (input.active_keys & KEY_SHIFT) vel = 0.3f;
+		vel *= delta * 100.0;
+		f32 forwardVel = 0.0f;
+		
+		if (input.active_keys & KEY_LEFT) {
+			targetPos[0] += dir[2] * vel;
+			targetPos[2] -= dir[0] * vel;
+		};
+		if (input.active_keys & KEY_RIGHT) {
+			targetPos[0] -= dir[2] * vel;
+			targetPos[2] += dir[0] * vel;
+		};
+
+		if (input.active_keys & KEY_JUMP) targetPos[1] += vel;
+		if (input.active_keys & KEY_CROUCH) targetPos[1] -= vel;
+
+		if (input.active_keys & KEY_UP) forwardVel += vel;
+		if (input.active_keys & KEY_DOWN) forwardVel -= vel;
+
+		targetPos[0] += dir[0] * forwardVel;
+		targetPos[1] += dir[1] * forwardVel;
+		targetPos[2] += dir[2] * forwardVel;
+	}
+
+	if (*active) {
+		Vec3fApproach(this->rot, targetRot, (0.1/delta));
+		Vec3fApproach(this->pos, targetPos, (0.1/delta));
+	}
+	
+END_SCRIPT(free_camera)

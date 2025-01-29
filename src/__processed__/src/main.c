@@ -123,10 +123,16 @@ int main(int argc, char *argv[]) {
     Mix_PlayMusic(music, 1);
 
     #ifdef DEBUG
-    if (argc >= 2 && !strcmp(argv[1], "editor")) mainNodeTree.root = load_scene("assets/scenes/editor.scene", &mainNodeTree.camera, mainNodeTree.scripts);
+    if (argc >= 2) {
+        printf("test\n");
+        char scene[256] = "assets/scenes/";
+        strcat(scene, argv[1]);
+        strcat(scene, ".scene");
+        mainNodeTree.root = load_scene(scene, &mainNodeTree.camera, mainNodeTree.scripts);
+    }
     else 
     #endif
-    mainNodeTree.root = load_scene("assets/scenes/boot.scene", &mainNodeTree.camera, mainNodeTree.scripts);
+    mainNodeTree.root = load_scene(BOOT_SCENE, &mainNodeTree.camera, mainNodeTree.scripts);
 
     while (update(&window, &defaultShaders, &depthMap, &mainNodeTree.msaa, &screenPlane) >= 0);
 

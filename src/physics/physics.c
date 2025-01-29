@@ -205,7 +205,7 @@ void update_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Inp
         node::update(newPos, newRot, newScale, delta, lightsCount);
     } else {
         active = false;
-        node::update_global_position(pos, rot, scale);
+        node::update_global_position(newPos, newRot, newScale);
     }
 
     for (int i = 0; i < node->length; i++)

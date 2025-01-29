@@ -60,14 +60,14 @@ typedef enum VertexAttribute {
     VERTEX_ATTRIBUTE_BITANGENT_X,
     VERTEX_ATTRIBUTE_BITANGENT_Y,
     VERTEX_ATTRIBUTE_BITANGENT_Z,
-    /*VERTEX_ATTRIBUTE_BONE_ID_1,
+    VERTEX_ATTRIBUTE_BONE_ID_1,
     VERTEX_ATTRIBUTE_BONE_ID_2,
     VERTEX_ATTRIBUTE_BONE_ID_3,
     VERTEX_ATTRIBUTE_BONE_ID_4,
     VERTEX_ATTRIBUTE_BONE_WEIGHT_1,
     VERTEX_ATTRIBUTE_BONE_WEIGHT_2,
     VERTEX_ATTRIBUTE_BONE_WEIGHT_3,
-    VERTEX_ATTRIBUTE_BONE_WEIGHT_4,*/
+    VERTEX_ATTRIBUTE_BONE_WEIGHT_4,
     VERTEX_ATTRIBUTE_COUNT
 } VertexAttribute;
 
@@ -205,7 +205,7 @@ struct ModelData {
     u8 materialsCount;                      /**< Number of materials */ //UNUSED
     ModelObjectData *objects;               /**< Array of model objects */
     u8 length;                              /**< Number of objects */
-    //ModelAnimation *animations;             /**< Array of model animations */
+    ModelAnimation *animations;             /**< Array of model animations */
     u8 animationsCount;                     /**< Number of animations */
 };
 

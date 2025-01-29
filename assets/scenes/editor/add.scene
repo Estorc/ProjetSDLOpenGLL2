@@ -1,0 +1,4 @@
+ControlFrame(2w,10p,96w,50p,lt):1
+ControlFrame(0p,0p,32p,32p,lt):1
+Button:1
+ImageFrame(0w,0h,100w,100h,lc,assets/textures/editor/plus-square.png)

@@ -8,6 +8,17 @@
 
 #define MAX_WEIGHTS 4
 
+typedef struct skin_vertex {
+	int bone_index[MAX_WEIGHTS];
+	float bone_weight[MAX_WEIGHTS];
+} skin_vertex;
+
+static inline void copy_ufbxmat4_to_cglmmat4(ufbx_real a[12], float (*dest)[4]) {
+    for (int i = 0; i < 16; i++) {
+        dest[i/4][i%4] = a[i];
+    }
+}
+
 static inline void copy_ufbxvec4_to_cglmvec4(ufbx_quat a, float * dest) {
     dest[0] = a.x;
     dest[1] = a.y;
@@ -39,35 +50,36 @@ static inline void load_material_texture(const char * folder_path, const ufbx_te
     free(raw_relative_path);
 }
 
-/*static void convert_skin_deformer(ufbx_skin_deformer *skin, ModelObjectData *model)
+static void convert_skin_deformer(ufbx_skin_deformer *skin, skin_vertex *mesh_skin_vertices)
 {
+
+    printf("Skin vertices: %zu\n", skin->vertices.count);
     for (size_t i = 0; i < skin->vertices.count; i++) {
         ufbx_skin_vertex skin_vertex = skin->vertices.data[i];
-        Vertex *v = &model->facesVertex[i];
 
         for (size_t j = 0; j < MAX_WEIGHTS; j++) {
             if (j < skin_vertex.num_weights) {
                 ufbx_skin_weight weight = skin->weights.data[skin_vertex.weight_begin+j];
-                (*v)[VERTEX_ATTRIBUTE_BONE_ID_1 + j] = weight.cluster_index;
-                (*v)[VERTEX_ATTRIBUTE_BONE_WEIGHT_1 + j] = weight.weight;
+                mesh_skin_vertices[i].bone_index[j] = weight.cluster_index;
+                mesh_skin_vertices[i].bone_weight[j] = weight.weight;
             } else {
-                (*v)[VERTEX_ATTRIBUTE_BONE_ID_1 + j] = -1;
-                (*v)[VERTEX_ATTRIBUTE_BONE_WEIGHT_1 + j] = 0.0f;
+                mesh_skin_vertices[i].bone_index[j] = -1;
+                mesh_skin_vertices[i].bone_weight[j] = 0.0f;
             }
         }
 
         // Normalize weights if there are less than MAX_WEIGHTS
         float total_weight = 0.0f;
         for (size_t j = 0; j < MAX_WEIGHTS; j++) {
-            total_weight += (*v)[VERTEX_ATTRIBUTE_BONE_WEIGHT_1 + j];
+            total_weight += mesh_skin_vertices[i].bone_index[j];
         }
         if (total_weight > 0.0f) {
             for (size_t j = 0; j < MAX_WEIGHTS; j++) {
-                (*v)[VERTEX_ATTRIBUTE_BONE_WEIGHT_1 + j] /= total_weight;
+                mesh_skin_vertices[i].bone_weight[j] /= total_weight;
             }
         }
     }
-}*/
+}
 
 static void convert_material_part(const char * folder_path, ufbx_material *material, Material **dest_material_ptr)
 {
@@ -107,12 +119,13 @@ static void convert_material_part(const char * folder_path, ufbx_material *mater
 }
 
 
-static void convert_mesh_part(ufbx_mesh *mesh, ufbx_mesh_part *part, ModelObjectData *model)
+static void convert_mesh_part(ufbx_mesh *mesh, ufbx_mesh_part *part, ModelObjectData *model, skin_vertex *mesh_skin_vertices)
 {
 
     size_t num_triangles = part->num_triangles;
     size_t vertices_shift = model->length;
     size_t num_vertices = vertices_shift;
+    printf ("Num triangles: %zu\n", num_triangles);
     model->facesVertex = realloc(model->facesVertex, (num_triangles * 3 + vertices_shift) * sizeof(Vertex));
 
     // Reserve space for the maximum triangle indices.
@@ -137,6 +150,9 @@ static void convert_mesh_part(ufbx_mesh *mesh, ufbx_mesh_part *part, ModelObject
                 copy_ufbxvec3_to_cglmvec3(ufbx_get_vertex_vec3(&mesh->vertex_position, index),    (*v)+VERTEX_ATTRIBUTE_POSITION_X);
                 copy_ufbxvec3_to_cglmvec3(ufbx_get_vertex_vec3(&mesh->vertex_normal, index),      (*v)+VERTEX_ATTRIBUTE_NORMAL_X);
                 copy_ufbxvec2_to_cglmvec2(ufbx_get_vertex_vec2(&mesh->vertex_uv, index),          (*v)+VERTEX_ATTRIBUTE_TEXTURE_U);
+
+				memcpy((*v)+VERTEX_ATTRIBUTE_BONE_ID_1, mesh_skin_vertices[mesh->vertex_indices.data[index]].bone_index, sizeof(int)*MAX_WEIGHTS);
+                memcpy((*v)+VERTEX_ATTRIBUTE_BONE_WEIGHT_1, mesh_skin_vertices[mesh->vertex_indices.data[index]].bone_weight, sizeof(float)*MAX_WEIGHTS);
 
             }
             vec2 deltaUV1;
@@ -180,7 +196,7 @@ static void convert_mesh_part(ufbx_mesh *mesh, ufbx_mesh_part *part, ModelObject
 }
 
 
-/*void bake_animation(ufbx_scene *scene, ufbx_anim *anim, ModelAnimation *model_anim)
+void bake_animation(ufbx_scene *scene, ufbx_anim *anim, ModelAnimation *model_anim)
 {
     ufbx_baked_anim *bake = ufbx_bake_anim(scene, anim, NULL, NULL);
     assert(bake);
@@ -196,6 +212,8 @@ static void convert_mesh_part(ufbx_mesh *mesh, ufbx_mesh_part *part, ModelObject
 
         ufbx_baked_node *bake_node = &bake->nodes.data[i];
         ufbx_node *scene_node = scene->nodes.data[bake_node->typed_id];
+
+        copy_ufbxmat4_to_cglmmat4(ufbx_transform_to_matrix(&scene_node->local_transform).v, bone->offsetMatrix);
 
         bone->translationKeyframesCount = bake_node->translation_keys.count;
         bone->rotationKeyframesCount = bake_node->rotation_keys.count;
@@ -242,7 +260,7 @@ void bake_animations(ufbx_scene *scene, ModelData *model)
         strcpy(model->animations[i].name, stack->name.data);
         bake_animation(scene, stack->anim, &model->animations[i]);
     }
-}*/
+}
 
 
 int load_fbx_armature(const ufbx_node *node, ModelData *model, int index) {
@@ -284,19 +302,21 @@ int load_fbx_model(const char *path, ModelData *model) {
             object->materialsCount = 0;
             object->materialsLength = NULL;
             object->facesVertex = NULL;
+            skin_vertex *mesh_skin_vertices = malloc(sizeof(skin_vertex)*node->mesh->num_vertices);
+            for (int i = 0; i < node->mesh->skin_deformers.count; i++) {
+                convert_skin_deformer(node->mesh->skin_deformers.data[i], mesh_skin_vertices);
+            }
             for (int i = 0; i < node->mesh->material_parts.count; i++) {
                 convert_material_part(folder_path, node->mesh->materials.data[i], &object->materials[i]);
-                convert_mesh_part(node->mesh, &node->mesh->material_parts.data[i], object);
-            }
-            /*for (int i = 0; i < node->mesh->skin_deformers.count; i++) {
-                convert_skin_deformer(node->mesh->skin_deformers.data[i], object);
+                convert_mesh_part(node->mesh, &node->mesh->material_parts.data[i], object, mesh_skin_vertices);
             }
             for (int i = 0; i < object->length; i++) {
                 for (int j = 0; j < 4; j++) {
-                    if (object->facesVertex[i][VERTEX_ATTRIBUTE_BONE_ID_1 + j] > 100.0f) 
-                        printf("Vertex %d: %f\n", i, object->facesVertex[i][VERTEX_ATTRIBUTE_BONE_ID_1 + j]);
+                    int test;
+                    memcpy(&test, &object->facesVertex[i][VERTEX_ATTRIBUTE_BONE_ID_1 + j], sizeof(int));
+                    printf("%d ", test);
                 }
-            }*/
+            }
             object->length /= 3;
             printf("-> mesh with %zu faces\n", node->mesh->faces.count);
         } else if (node->bone) {
@@ -307,7 +327,7 @@ int load_fbx_model(const char *path, ModelData *model) {
         }
     }
 
-    //bake_animations(scene, model);
+    bake_animations(scene, model);
 
     free(folder_path);
     ufbx_free_scene(scene);
