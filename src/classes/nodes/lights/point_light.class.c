@@ -24,8 +24,6 @@ class PointLight : public Light {
 
         this::update_global_position(pos, rot, scale);
 
-        printf("Point light position: %f, %f, %f\n", this->globalPos[0], this->globalPos[1], this->globalPos[2]);
-
         const char uniforms[8][20] = {
             "].position",
             "].ambient",

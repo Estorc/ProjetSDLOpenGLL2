@@ -97,12 +97,10 @@ void draw_node_tree(Node *node, int level) {
 	Node * gui_tree = mainNodeTree.root->children[3]->children[0];
 
 	static int y;
-	static Node *root;
 	bool condition;
 	int x = 4;
 	if (level == 0) {
 		y = 4;
-		root = node;
 		for (int i = 0; i < gui_tree->length; i++) {
 			call_method_0(METHOD(free,(gui_tree->children[i])));
 		}
@@ -161,7 +159,6 @@ void draw_node_tree(Node *node, int level) {
 	call_method_0(METHOD(is_body,node,&condition));
     if (condition) {
 		call_method_0(METHOD(get_collisions_shapes,node,&shapes, &length));
-		printf("%d\n", *length);
 		for (int i = 0; i < *length; i++) {
         	draw_node_tree((*shapes)[i], level+1);
     	}
@@ -1014,7 +1011,6 @@ NEW_SCRIPT(scene_editor_btn_remove_node)
 	SET_ATTRIBUTES_COUNT(2);
 	bool *active = &this->attribute[0].b;
 	Node *node = this->attribute[1].node;
-	int *selectedNodeType = &mainNodeTree.root->attribute[4].i;
 	Frame *frame = (Frame*) this->object;
 	Button *button = (Button*) frame->button;
 
