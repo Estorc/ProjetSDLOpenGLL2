@@ -16,10 +16,10 @@ class StaticBody : public Body {
         SUPER(initialize_node);
     }
 
-    void get_collisions_shapes(Node ***shapes, u8 *length) {
+    void get_collisions_shapes(Node ****shapes, u8 **length) {
         StaticBody *staticBody = (StaticBody *) this->object;
-        *length = staticBody->length;
-        *shapes = staticBody->collisionsShapes;
+        *length = &staticBody->length;
+        *shapes = &staticBody->collisionsShapes;
     }
 
     void update(vec3 *pos, vec3 *rot, vec3 *scale) {

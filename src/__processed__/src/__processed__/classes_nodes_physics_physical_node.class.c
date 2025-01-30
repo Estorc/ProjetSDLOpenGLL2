@@ -12,12 +12,12 @@
 static unsigned __type__ __attribute__((unused)) = CLASS_TYPE_PHYSICALNODE;
 #line 13 "src/classes/nodes/physics/physical_node.class.c"
 void __class_method_physicalnode_free(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
-        u8 length;
-        Node **shapes;
+        u8 *length;
+        Node ***shapes;
         call_method_0(METHOD(get_collisions_shapes,this,&shapes, &length));
-        for (int j = 0; j < length; j++) {
-            free(shapes[j]);
+        for (int j = 0; j < *length; j++) {
+            free((*shapes)[j]);
         }
-        free(shapes);
+        free((*shapes));
         SUPER(free);
 }

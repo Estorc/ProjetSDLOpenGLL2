@@ -17,10 +17,10 @@ void __class_method_rigidbody_constructor(void * __retValueVP__, va_list args) {
 }
 
 #line 19 "src/classes/nodes/physics/bodies/rigid_body.class.c"
-void __class_method_rigidbody_get_collisions_shapes(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node *** shapes = va_arg(args, Node ***);u8 * length = va_arg(args, u8 *);(void)this;
+void __class_method_rigidbody_get_collisions_shapes(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node **** shapes = va_arg(args, Node ****);u8 ** length = va_arg(args, u8 **);(void)this;
         RigidBody *rigidBody = (RigidBody *) this->object;
-        *length = rigidBody->length;
-        *shapes = rigidBody->collisionsShapes;
+        *length = &rigidBody->length;
+        *shapes = &rigidBody->collisionsShapes;
 }
 
 #line 25 "src/classes/nodes/physics/bodies/rigid_body.class.c"

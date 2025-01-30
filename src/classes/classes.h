@@ -59,7 +59,7 @@ void call_method_0(void (*func)(void *, va_list), ...);
 #define SUPER(method_name, ...) call_method_0(classManager.methodsCorrespondance.method_name[classManager.extends[__type__]], this, ##__VA_ARGS__)
 
 /**
- * @def METHOD_TYPE(obj, default_type, method_name, ...)
+ * @def METHOD_TYPE(default_type, method_name, obj, ...)
  * @brief Invokes a method with a specified default type.
  * 
  * This macro is used to invoke a method on an object with a specified default type.

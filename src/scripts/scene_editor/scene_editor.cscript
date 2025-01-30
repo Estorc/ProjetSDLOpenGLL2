@@ -40,6 +40,8 @@ Node * create_add_button(Node * node, int x, int y) {
 		Frame * frame = (Frame *)button->object;
 		frame->relPos[0] = x;
 		frame->relPos[1] = y;
+		MALLOC_ATTRIBUTE(button->children[0]->children[0], 2);
+		button->children[0]->children[0]->attribute[1].node = node;
 		fclose(file);
 		return button;
 	}
@@ -70,6 +72,11 @@ Node * create_node_button(Node *node, int x, int y, int level, int index) {
 			} else {
 				Frame *child = (Frame *) button->children[i]->object;
 				child->relPos[0] = i*32;
+				if (i+1 < button->length) {
+					Node *tmpNode = button->children[i]->children[0];
+					MALLOC_ATTRIBUTE(tmpNode, 2);
+					tmpNode->attribute[1].node = node;
+				}
 			}
 		}
 		frame->relPos[0] = x;
@@ -79,9 +86,6 @@ Node * create_node_button(Node *node, int x, int y, int level, int index) {
 	}
 	return NULL;
 }
-
-
-
 
 
 void draw_node_tree(Node *node, int level) {
@@ -104,7 +108,6 @@ void draw_node_tree(Node *node, int level) {
 		gui_tree->children = NULL;
 		gui_tree->length = 0;
 	}
-	int *selectedNodeType = &root->parent->attribute[4].i;
 
     x *= level;
 	x += 4;
@@ -152,14 +155,16 @@ void draw_node_tree(Node *node, int level) {
 	if (node != root) draw_text(window->ui_surface, x + 16 + 32, y+4, classManager.class_names[node->type], font, (SDL_Color) {255, 255, 255, 255}, "lt", -1);
 	else draw_text(window->ui_surface, x + 16 + 32, y+4, "Root", font, (SDL_Color) {255, 255, 255, 255}, "lt", -1);*/
 
-	u8 *collisionsLength;
-	Node ***collisionsShapes;
-	GET_FROM_BODY_NODE(node, length, collisionsLength);
-	GET_FROM_BODY_NODE(node, collisionsShapes, collisionsShapes);
+	u8 *length;
+	Node ***shapes;
 	node::is_body(&condition);
-    if (condition) for (int i = 0; i < *collisionsLength; i++) {
-        draw_node_tree((*collisionsShapes)[i], level+1);
-    }
+    if (condition) {
+		node::get_collisions_shapes(&shapes, &length);
+		printf("%d\n", *length);
+		for (int i = 0; i < *length; i++) {
+        	draw_node_tree((*shapes)[i], level+1);
+    	}
+	}
     for (int i = 0; i < node->length; i++) {
         draw_node_tree(node->children[i], level+1);
     }
@@ -225,6 +230,11 @@ if (draw_button(window->ui_surface, (level+1)*16 + 16, y, 32, 32, "assets/textur
 	}*/
 
 
+}
+
+
+void draw_node_tree_wrapper() {
+	draw_node_tree(mainNodeTree.root->children[2], 0);
 }
 
 
@@ -844,7 +854,7 @@ NEW_SCRIPT(scene_editor)
 	get_resolution(&window_width, &window_height);
 
 	int *scrollY = &this->attribute[0].i;
-	int *menu = &this->attribute[1].i;
+	//int *menu = &this->attribute[1].i;
 	//Node *selectedNode = node->params[2].node;
 	//int *selectedInputBox = &node->params[3].i;
 	int *selectedNodeType = &this->attribute[4].i;
@@ -949,3 +959,72 @@ NEW_SCRIPT(scene_editor_btn_camera)
 	}
 #endif
 END_SCRIPT(scene_editor_btn_camera)
+
+
+
+
+
+
+NEW_SCRIPT(scene_editor_btn_add_node)
+#ifdef DEBUG
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(2);
+	bool *active = &this->attribute[0].b;
+	Node *node = this->attribute[1].node;
+	int *selectedNodeType = &mainNodeTree.root->attribute[4].i;
+	Frame *frame = (Frame*) this->object;
+	Button *button = (Button*) frame->button;
+
+	if (!button->checked) button->checked = active;
+	if ((*button->checked)) {
+		bool condition;
+		call_method_0(METHOD_TYPE(*selectedNodeType, is_cshape, NULL, &condition));
+		if (condition) {
+			node::is_body(&condition);
+			if (condition) {
+				Node *new_node;
+				new_node = malloc(sizeof(Node));
+				POINTER_CHECK(new_node);
+
+				malloc_node(new_node, *selectedNodeType, 0, 0, 0, 0);
+				node::add_shape_and_realloc(new_node);
+				queue_push(&callQueue, draw_node_tree_wrapper);
+			}
+		} else {
+			Node *new_node;
+			new_node = malloc(sizeof(Node));
+			POINTER_CHECK(new_node);
+
+			malloc_node(new_node, *selectedNodeType, 0, 0, 0, 0);
+			node::add_child_and_realloc(new_node);
+			buffers.collisionBuffer.collisionsShapes = realloc(buffers.collisionBuffer.collisionsShapes, sizeof(Node *) * buffers.collisionBuffer.length);
+			buffers.lightingBuffer.lightings = realloc(buffers.lightingBuffer.lightings, sizeof(Node *) * buffers.lightingBuffer.length);
+			queue_push(&callQueue, draw_node_tree_wrapper);
+		}
+		*active = false;
+	}
+#endif
+END_SCRIPT(scene_editor_btn_add_node)
+
+
+NEW_SCRIPT(scene_editor_btn_remove_node)
+#ifdef DEBUG
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(2);
+	bool *active = &this->attribute[0].b;
+	Node *node = this->attribute[1].node;
+	int *selectedNodeType = &mainNodeTree.root->attribute[4].i;
+	Frame *frame = (Frame*) this->object;
+	Button *button = (Button*) frame->button;
+
+	if (!button->checked) button->checked = active;
+	if ((*button->checked)) {
+		bool condition;
+		node::is_cshape(&condition);
+		if (condition) (node->parent)::remove_shape_and_free_and_realloc(node);
+		else (node->parent)::remove_child_and_free_and_realloc(node);
+		*active = false;
+		queue_push(&callQueue, draw_node_tree_wrapper);
+	}
+#endif
+END_SCRIPT(scene_editor_btn_remove_node)

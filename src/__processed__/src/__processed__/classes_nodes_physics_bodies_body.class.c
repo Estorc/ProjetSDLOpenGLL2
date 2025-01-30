@@ -28,10 +28,10 @@ void __class_method_body_apply_impulse(void * __retValueVP__, va_list args) {Nod
 
 #line 27 "src/classes/nodes/physics/bodies/body.class.c"
 void __class_method_body_add_shape(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node * child = va_arg(args, Node *);(void)this;
-        u8 length;
-        Node **shapes;
+        u8 *length;
+        Node ***shapes;
         call_method_0(METHOD(get_collisions_shapes,this,&shapes, &length));
-        shapes[length++] = child;
+        (*shapes)[(*length)++] = child;
         child->parent = this;
         
 }
@@ -45,12 +45,12 @@ void __class_method_body_add_shape(void * __retValueVP__, va_list args) {Node * 
 
 #line 43 "src/classes/nodes/physics/bodies/body.class.c"
 void __class_method_body_add_shape_and_realloc(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node * child = va_arg(args, Node *);(void)this;
-        u8 length;
-        Node **shapes;
+        u8 *length;
+        Node ***shapes;
         call_method_0(METHOD(get_collisions_shapes,this,&shapes, &length));
-        shapes = realloc(shapes, sizeof(Node *) * (length+1));
-        POINTER_CHECK(shapes);
-        shapes[length++] = child;
+        (*shapes) = realloc((*shapes), sizeof(Node *) * ((*length)+1));
+        POINTER_CHECK((*shapes));
+        (*shapes)[(*length)++] = child;
         child->parent = this;
 }
 
@@ -63,12 +63,12 @@ void __class_method_body_add_shape_and_realloc(void * __retValueVP__, va_list ar
 
 #line 60 "src/classes/nodes/physics/bodies/body.class.c"
 void __class_method_body_remove_shape(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node * child = va_arg(args, Node *);(void)this;
-        u8 length;
-        Node **shapes;
+        u8 *length;
+        Node ***shapes;
         call_method_0(METHOD(get_collisions_shapes,this,&shapes, &length));
-        for (Node **rightCursor, **leftCursor = rightCursor = shapes; rightCursor < shapes + length; leftCursor++, rightCursor++) {
+        for (Node **rightCursor, **leftCursor = rightCursor = (*shapes); rightCursor < (*shapes) + (*length); leftCursor++, rightCursor++) {
             if (child == *rightCursor) rightCursor++;
-            if (leftCursor != rightCursor && rightCursor < shapes + length) *leftCursor = *rightCursor;
+            if (leftCursor != rightCursor && rightCursor < (*shapes) + (*length)) *leftCursor = *rightCursor;
         }
 }
 
@@ -81,14 +81,14 @@ void __class_method_body_remove_shape(void * __retValueVP__, va_list args) {Node
 
 #line 77 "src/classes/nodes/physics/bodies/body.class.c"
 void __class_method_body_remove_shape_and_realloc(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node * child = va_arg(args, Node *);(void)this;
-        u8 length;
-        Node **shapes;
+        u8 *length;
+        Node ***shapes;
         call_method_0(METHOD(get_collisions_shapes,this,&shapes, &length));
-        for (Node **rightCursor, **leftCursor = rightCursor = shapes; rightCursor < shapes + length; leftCursor++, rightCursor++) {
+        for (Node **rightCursor, **leftCursor = rightCursor = (*shapes); rightCursor < (*shapes) + (*length); leftCursor++, rightCursor++) {
             if (child == *rightCursor) rightCursor++;
-            if (leftCursor != rightCursor && rightCursor < shapes + length) *leftCursor = *rightCursor;
+            if (leftCursor != rightCursor && rightCursor < (*shapes) + (*length)) *leftCursor = *rightCursor;
         }
-        shapes = realloc(shapes, sizeof(Node *) * (--length));
+        (*shapes) = realloc((*shapes), sizeof(Node *) * (--(*length)));
         //POINTER_CHECK((*shapes));
 }
 
@@ -101,12 +101,12 @@ void __class_method_body_remove_shape_and_realloc(void * __retValueVP__, va_list
 
 #line 96 "src/classes/nodes/physics/bodies/body.class.c"
 void __class_method_body_remove_shape_and_free(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node * child = va_arg(args, Node *);(void)this;
-        u8 length;
-        Node **shapes;
+        u8 *length;
+        Node ***shapes;
         call_method_0(METHOD(get_collisions_shapes,this,&shapes, &length));
-        for (Node **rightCursor, **leftCursor = rightCursor = shapes; rightCursor < shapes + length; leftCursor++, rightCursor++) {
+        for (Node **rightCursor, **leftCursor = rightCursor = (*shapes); rightCursor < (*shapes) + (*length); leftCursor++, rightCursor++) {
             if (child == *rightCursor) call_method_0(METHOD(free,(*rightCursor))), rightCursor++;
-            if (leftCursor != rightCursor && rightCursor < shapes + length) *leftCursor = *rightCursor;
+            if (leftCursor != rightCursor && rightCursor < (*shapes) + (*length)) *leftCursor = *rightCursor;
         }
 }
 
@@ -119,17 +119,17 @@ void __class_method_body_remove_shape_and_free(void * __retValueVP__, va_list ar
 
 #line 113 "src/classes/nodes/physics/bodies/body.class.c"
 void __class_method_body_remove_shape_and_free_and_realloc(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node * child = va_arg(args, Node *);(void)this;
-        u8 length;
-        Node **shapes;
+        u8 *length;
+        Node ***shapes;
         call_method_0(METHOD(get_collisions_shapes,this,&shapes, &length));
-        for (Node **rightCursor, **leftCursor = rightCursor = shapes; rightCursor < shapes + length; leftCursor++, rightCursor++) {
+        for (Node **rightCursor, **leftCursor = rightCursor = (*shapes); rightCursor < (*shapes) + (*length); leftCursor++, rightCursor++) {
             if (child == *rightCursor) {
                 call_method_0(METHOD(free,(*rightCursor)));
                 rightCursor++;
             }
-            if (leftCursor != rightCursor && rightCursor < shapes + length) *leftCursor = *rightCursor;
+            if (leftCursor != rightCursor && rightCursor < (*shapes) + (*length)) *leftCursor = *rightCursor;
         }
-        shapes = realloc(shapes, sizeof(Node *) * (--length));
+        (*shapes) = realloc((*shapes), sizeof(Node *) * (--(*length)));
         //POINTER_CHECK((*shapes));
 }
 

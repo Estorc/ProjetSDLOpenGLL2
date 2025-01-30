@@ -16,10 +16,10 @@ class RigidBody : public Body {
         SUPER(initialize_node);
     }
 
-    void get_collisions_shapes(Node ***shapes, u8 *length) {
+    void get_collisions_shapes(Node ****shapes, u8 **length) {
         RigidBody *rigidBody = (RigidBody *) this->object;
-        *length = rigidBody->length;
-        *shapes = rigidBody->collisionsShapes;
+        *length = &rigidBody->length;
+        *shapes = &rigidBody->collisionsShapes;
     }
 
     void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta) {

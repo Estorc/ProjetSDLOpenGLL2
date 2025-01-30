@@ -11,13 +11,13 @@ class PhysicalNode : public Node {
     public:
 
     void free() {
-        u8 length;
-        Node **shapes;
+        u8 *length;
+        Node ***shapes;
         this::get_collisions_shapes(&shapes, &length);
-        for (int j = 0; j < length; j++) {
-            free(shapes[j]);
+        for (int j = 0; j < *length; j++) {
+            free((*shapes)[j]);
         }
-        free(shapes);
+        free((*shapes));
         SUPER(free);
     }
 }

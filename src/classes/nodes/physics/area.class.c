@@ -85,10 +85,10 @@ class Area : public PhysicalNode {
         buffers.collisionBuffer.index += area->length;
     }
 
-    void get_collisions_shapes(Node ***shapes, u8 *length) {
+    void get_collisions_shapes(Node ****shapes, u8 **length) {
         Area *area = (Area *) this->object;
-        *length = area->length;
-        *shapes = area->collisionsShapes;
+        *length = &area->length;
+        *shapes = &area->collisionsShapes;
     }
 
     void get_node_collection(DistanceNode **nodes, u8 *length) {
