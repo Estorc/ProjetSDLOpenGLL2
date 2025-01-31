@@ -9,11 +9,12 @@
 
 ## Présentation du projet :
 
-- Jeu d'horreur prenant place au bâtiment informatique Claude Chappe
-- Le personnage doit récupérer des objets câchés à plusieurs endroits en se déplaçant dans le bâtiment, tout en essayant de survivre au(x) monstre(s) présent(s).
-- Le jeu est en 3D, affiché grâce à un moteur 3D basé sur OPENGL
-- Les modèles et textures sont modélisés sur Blender
-- Les musiques et bruitages audios sont créés sur FL STUDIO 21
+- Claude Chappe : L’Infernale Malédiction des Ombres Silencieuses, est un jeu d'horreur en première personne prenant place au bâtiment informatique Claude Chappe de la ville du Mans, ou les terrifiants professeurs tentent d'empêcher le joueur de collecter les bonnes notes qui permettront au joueur de passer sa licence, et peut-être même son MASTER (y arriverez vous ????) (impossible).
+
+- Le personnage doit récupérer les notes câchés à plusieurs endroits en se déplaçant dans le bâtiment, tout en essayant de survivre au(x) monstre(s) présent(s).
+- Le jeu est en 3D, affiché grâce à un moteur 3D basé sur OPENGL, codé en C.
+- Les modèles et textures sont modélisés sur Blender.
+- Les musiques et bruitages audios sont créés sur FL STUDIO 21.
 
 ## Librairies
 - KDialog
