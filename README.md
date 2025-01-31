@@ -23,7 +23,8 @@ Arch based distro: ``pacman -S --needed base-devel kdialog sdl2 sdl2_image sdl2_
 cd <EMPLACEMENT_DU_PROJET>
 git clone https://github.com/Estorc/ProjetSDLOpenGLL2.git
 ```
-
+## Erreurs détectées pour l'instant
+La caméra ne peut pas tourner à l'infini, elle finit par bloquer.
 ## Compilation
 ```
 make            # Construit le projet avec la configuration par défaut.
