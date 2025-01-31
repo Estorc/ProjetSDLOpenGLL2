@@ -1,26 +1,25 @@
 # ProjetSDLOpenGLL2
 
-## Contexte :
+## Context:
 
-- Ce projet est un travail de groupe dans le cadre de la 2ème année de licence Informatique de l'université du Mans, consistant à créer un jeu, en codant exclusivement en langage C, avec SDL/OPENGL d'autorisés seulement (pas de moteurs graphiques déjà existants tel que Unity par exemple). Nous avons décidé de créer un jeu d'horreur en 3D (voir description ci-dessous).
-- La durée initiale du projet donnée par les professeurs est d'environ deux mois, commençant le 26 janvier, terminant fin avril. Mais nous avons prit de l'avance en commençant de notre côté plusieurs choses, tel que le moteur 3D ainsi que tous les modèles 3D et textures. 
+- This project is a group assignment for the 2nd year of the Computer Science degree at the University of Le Mans. The objective is to create a game coded exclusively in C, with only SDL/OpenGL allowed (no pre-existing game engines like Unity).
+- The initial project duration set by the professors is approximately two months, starting on January 26th and ending in late April. However, we have taken the initiative to start early, working on elements such as the 3D engine, models, and textures.
 
-## Equipe :
+## Team :
 
 - Loup (Estorc)
 - Lucien (Mimar)
 - Ekrem (Ekamyl)
 - Medhi (MH-le-D2)
 
-## Présentation du projet :
+## Project Overview:
 
-- Claude Chappe : L’Infernale Malédiction des Ombres Silencieuses, est un jeu d'horreur en première personne prenant place au bâtiment informatique Claude Chappe de la ville du Mans, ou les terrifiants professeurs tentent d'empêcher le joueur de collecter les bonnes notes qui permettront au joueur de passer sa licence, et peut-être même son MASTER (y arriverez vous ????) (impossible).
-
-- Le personnage doit récupérer les notes câchés à plusieurs endroits en se déplaçant dans le bâtiment, tout en essayant de survivre au(x) monstre(s) présent(s).
-- Le jeu est en 3D, affiché grâce à un moteur 3D basé sur OPENGL, codé en C.
-- Les modèles et textures sont modélisés sur Blender.
-- Les musiques et bruitages audios sont créés sur FL STUDIO 21.
-
+- Claude Chappe: The Infernal Curse of the Silent Shadows is a first-person horror game set in the Claude Chappe computer science building in Le Mans. In this eerie setting, terrifying professors attempt to prevent the player from collecting the right grades, which are necessary to pass their degree—and maybe even their Master’s! (Will you succeed?? Impossible).
+- The player must find hidden grades scattered throughout the building while evading the lurking monsters.
+- The game is 3D, displayed through a custom 3D engine based on OpenGL, fully coded in C. It was strongly inspired by Godot.
+- 3D models and textures are created in Blender.
+- Music and sound effects are composed using FL Studio 21.
+- 
 ## Librairies
 - KDialog
 - SDL2
