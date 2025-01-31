@@ -1,5 +1,10 @@
 # ProjetSDLOpenGLL2
 
+## Contexte :
+
+- Ce projet est un travail de groupe dans le cadre de la 2ème année de licence Informatique de l'université du Mans, consistant à créer un jeu, en codant exclusivement en langage C, avec SDL/OPENGL d'autorisés seulement (pas de moteurs graphiques déjà existants tel que Unity par exemple). Nous avons décidé de créer un jeu d'horreur en 3D (voir description ci-dessous).
+- La durée initiale du projet donnée par les professeurs est d'environ deux mois, commençant le 26 janvier, terminant fin avril. Mais nous avons prit de l'avance en commençant de notre côté plusieurs choses, tel que le moteur 3D ainsi que tous les modèles 3D et textures. 
+
 ## Equipe :
 
 - Loup (Estorc)
