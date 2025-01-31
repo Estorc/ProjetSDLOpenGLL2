@@ -12,6 +12,6 @@ NEW_SCRIPT(camera)
 		targetRot[0] = CLAMP(-90,targetRot[0],90);
 	}
 
-	Vec3fApproach(this->rot, targetRot, (0.1/delta));
+	Vec3fApproach(this->rot, targetRot, (0.1/delta)); 
 
 END_SCRIPT(camera)

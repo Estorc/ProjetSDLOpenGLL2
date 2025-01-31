@@ -1,10 +1,10 @@
 // Auto-generated scripts loading header file
 #include "../__processed__/src/scripts/scene_editor/free_camera.cscript"
 #include "../__processed__/src/scripts/scene_editor/scene_editor.cscript"
-#include "../__processed__/src/scripts/camera.cscript"
 #include "../__processed__/src/scripts/flashlight.cscript"
-#include "../__processed__/src/scripts/menu.cscript"
-#include "../__processed__/src/scripts/pinball.cscript"
+#include "../__processed__/src/scripts/camera.cscript"
 #include "../__processed__/src/scripts/player.cscript"
+#include "../__processed__/src/scripts/menu.cscript"
 #include "../__processed__/src/scripts/settings.cscript"
 #include "../__processed__/src/scripts/title_screen.cscript"
+#include "../__processed__/src/scripts/pinball.cscript"
