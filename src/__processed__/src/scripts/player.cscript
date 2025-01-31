@@ -1,4 +1,6 @@
 #line 1 "src/scripts/player.cscript"
+#include "raptiquax.h"
+
 NEW_SCRIPT(player)
 	GET_READY_PARAMETERS();
 	SET_ATTRIBUTES_COUNT(1);

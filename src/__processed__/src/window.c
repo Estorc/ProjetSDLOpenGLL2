@@ -50,7 +50,7 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
       VSYNC = 1
     };
 
-    #ifdef DEBUG
+    #ifdef DEBUG_GL
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG); 
     #endif
     SDL_GL_SetSwapInterval(VSYNC);
@@ -77,7 +77,7 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
 
 
 
-    #ifdef DEBUG
+    #ifdef DEBUG_GL
     printf("OpenGL Version: %s\n", glGetString(GL_VERSION));
     printf("GLSL Version: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
     printf("OpenGL Renderer: %s\n", glGetString(GL_RENDERER));
