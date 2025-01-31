@@ -47,8 +47,16 @@ void __class_method_label_load(void * __retValueVP__, va_list args) {Node * this
         }
 }
 
+#line 48 "src/classes/nodes/frames/label.class.c"
+void __class_method_label_set_text(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);char *  str = va_arg(args, char * );(void)this;
+        Frame *frame = (Frame *) this->object;
+        Label *label = (Label *) frame->label;
+        strcpy(label->text, str);
+        frame->flags |= FRAME_NEEDS_REFRESH;
+}
 
-#line 49 "src/classes/nodes/frames/label.class.c"
+
+#line 56 "src/classes/nodes/frames/label.class.c"
 void __class_method_label_refresh(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         SUPER(refresh);
         Frame *frame = (Frame *) this->object;
@@ -64,12 +72,12 @@ void __class_method_label_refresh(void * __retValueVP__, va_list args) {Node * t
 }
 
 
-#line 64 "src/classes/nodes/frames/label.class.c"
+#line 71 "src/classes/nodes/frames/label.class.c"
 void __class_method_label_render(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);mat4 * modelMatrix = va_arg(args, mat4 *);Shader  activeShader = va_arg(args, Shader );WorldShaders * shaders = va_arg(args, WorldShaders *);(void)this;
         SUPER(render, modelMatrix, activeShader, shaders);
 }
 
-#line 68 "src/classes/nodes/frames/label.class.c"
+#line 75 "src/classes/nodes/frames/label.class.c"
 void __class_method_label_save(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);Node * editor = va_arg(args, Node *);(void)this;
         Frame *frame = (Frame *) this->object;
         IGNORE(editor);
@@ -78,7 +86,7 @@ void __class_method_label_save(void * __retValueVP__, va_list args) {Node * this
         frame->label->text, frame->alignment[0], frame->alignment[1]);
 }
  
-#line 76 "src/classes/nodes/frames/label.class.c"
+#line 83 "src/classes/nodes/frames/label.class.c"
 void __class_method_label_free(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         Frame *frame = (Frame *) this->object;
         Label *label = (Label *) frame->label;

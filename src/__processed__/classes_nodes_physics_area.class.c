@@ -90,10 +90,10 @@ void __class_method_area_update(void * __retValueVP__, va_list args) {Node * thi
 }
 
 #line 88 "src/classes/nodes/physics/area.class.c"
-void __class_method_area_get_collisions_shapes(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node *** shapes = va_arg(args, Node ***);u8 * length = va_arg(args, u8 *);(void)this;
+void __class_method_area_get_collisions_shapes(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node **** shapes = va_arg(args, Node ****);u8 ** length = va_arg(args, u8 **);(void)this;
         Area *area = (Area *) this->object;
-        *length = area->length;
-        *shapes = area->collisionsShapes;
+        *length = &area->length;
+        *shapes = &area->collisionsShapes;
 }
 
 #line 94 "src/classes/nodes/physics/area.class.c"

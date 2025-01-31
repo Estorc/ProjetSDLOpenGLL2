@@ -24,10 +24,10 @@ void __class_method_kinematicbody_get_length(void * __retValueVP__, va_list args
 }
 
 #line 24 "src/classes/nodes/physics/bodies/kinematic_body.class.c"
-void __class_method_kinematicbody_get_collisions_shapes(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node *** shapes = va_arg(args, Node ***);u8 * length = va_arg(args, u8 *);(void)this;
+void __class_method_kinematicbody_get_collisions_shapes(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node **** shapes = va_arg(args, Node ****);u8 ** length = va_arg(args, u8 **);(void)this;
         KinematicBody *kinematicBody = (KinematicBody *) this->object;
-        *length = kinematicBody->length;
-        *shapes = kinematicBody->collisionsShapes;
+        *length = &kinematicBody->length;
+        *shapes = &kinematicBody->collisionsShapes;
 }
 
 #line 30 "src/classes/nodes/physics/bodies/kinematic_body.class.c"

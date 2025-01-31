@@ -1,0 +1,7 @@
+Node{NULL,level_editor,NULL}:6
+Camera(1){NULL,free_camera,NULL}
+Node:3
+Model(assets/models/collisionShapes/box.obj)[v0]
+Model(assets/models/collisionShapes/plane.obj)[v0]
+Model(assets/models/collisionShapes/sphere.obj)[v0]
+Node[a0]:0

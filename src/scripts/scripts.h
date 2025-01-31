@@ -4,12 +4,13 @@ struct Window;
 #define NODE_FUNC_RETURN void
 #define GET_READY_PARAMETERS() float delta = (float) GET_PARAMETER(double); (void) delta
 #define GET_PARAMETER(type) va_arg(args, type)
-#define SET_ATTRIBUTES_COUNT(x) if (!this->attribute) { \
-		                    this->attribute = malloc(sizeof(BehaviorAttribute) * x); \
-		                    POINTER_CHECK(this->attribute); \
-                            this->attributes_count = x; \
-                            for (int i = 0; i < x; i++) memset(&this->attribute[i], 0, sizeof(union BehaviorAttribute)); \
-	                    }
+#define MALLOC_ATTRIBUTE(node, x) if (!node->attribute) { \
+                                    node->attribute = malloc(sizeof(BehaviorAttribute) * x); \
+                                    POINTER_CHECK(node->attribute); \
+                                    node->attributes_count = x; \
+                                    for (int i = 0; i < x; i++) memset(&node->attribute[i], 0, sizeof(union BehaviorAttribute)); \
+                                }
+#define SET_ATTRIBUTES_COUNT(x) MALLOC_ATTRIBUTE(this, x)
 
 #define NEW_SCRIPT(script_name) NODE_FUNC_RETURN script_name(NODE_FUNC_PARAMS) {
 #define END_SCRIPT(script_name) }; mainNodeTree.scripts[mainNodeTree.scriptIndex].name = #script_name, mainNodeTree.scripts[mainNodeTree.scriptIndex++].script = script_name;

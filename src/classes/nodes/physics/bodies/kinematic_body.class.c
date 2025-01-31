@@ -21,10 +21,10 @@ class KinematicBody : public Body {
         *length = kinematicBody->length;
     }
 
-    void get_collisions_shapes(Node ***shapes, u8 *length) {
+    void get_collisions_shapes(Node ****shapes, u8 **length) {
         KinematicBody *kinematicBody = (KinematicBody *) this->object;
-        *length = kinematicBody->length;
-        *shapes = kinematicBody->collisionsShapes;
+        *length = &kinematicBody->length;
+        *shapes = &kinematicBody->collisionsShapes;
     }
 
     void update(vec3 *pos, vec3 *rot, vec3 *scale) {

@@ -74,6 +74,22 @@ class Model : public Node {
 
         this::precompile_display_lists();
 
+        if (data->animationsCount > 0) {
+            set_shader_int(activeShader, "haveBone", 1);
+            mat4 boneMatrix;
+            char uniformName[100] = "finalBonesMatrices[xxx]";
+            for (int i = 1; i < data->animations[0].targetsCount; i++) {
+                glm_quat_mat4(data->animations[0].targets[i].rotationKeyframes[0].r_value, boneMatrix);
+                glm_translate(boneMatrix, data->animations[0].targets[i].translationKeyframes[0].value);
+                glm_scale(boneMatrix, data->animations[0].targets[i].scaleKeyframes[0].value);
+                //glm_mat4_copy(data->animations[0].targets[i].offsetMatrix, boneMatrix);
+                //glm_quat_rotate(boneMatrix, data->animations[0].targets[i].rotationKeyframes[1].r_value, boneMatrix);
+                sprintf(uniformName, "finalBonesMatrices[%d]", i-1);
+                set_shader_mat4(activeShader, uniformName, &boneMatrix);
+            }
+            set_shader_int(activeShader, "haveBone", 1);
+        } else set_shader_int(activeShader, "haveBone", 0);
+
         int modelLoc = glGetUniformLocation(activeShader, "model");
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, *modelMatrix);
         for (int j = 0; j < data->length; j++) {

@@ -6,6 +6,8 @@ enum ReturnSymbol {
     NO_ERROR,
 };
 
+#define BOOT_SCENE "assets/scenes/boot.scene"
+
 #define IGNORE(x) (void)x;
 #ifdef DEBUG
 #include <signal.h>

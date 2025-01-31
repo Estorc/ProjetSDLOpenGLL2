@@ -52,6 +52,7 @@ class Frame : public Node {
         frame->flags = 0;
         frame->flags |= FRAME_VISIBLE;
         frame->flags |= FRAME_NEEDS_REFRESH;
+        frame->flags |= FRAME_NEEDS_INIT;
         frame->contentTexture = 0;
         frame->contentSurface = NULL;
         frame->theme = NULL;
@@ -234,8 +235,8 @@ class Frame : public Node {
     void render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
         IGNORE(modelMatrix);
         Frame *frame = (Frame *) this->object;
-        if (frame->flags & FRAME_NEEDS_REFRESH) this::refresh();
-        if (frame->flags & FRAME_VISIBLE && activeShader != shaders->depth) {
+        if (frame->flags & FRAME_NEEDS_REFRESH || frame->flags & FRAME_NEEDS_INIT) this::refresh();
+        if (frame->flags & FRAME_VISIBLE && activeShader != shaders->depth && !(frame->flags & FRAME_NEEDS_INIT)) {
             IGNORE(activeShader);
             Frame *frame = (Frame *) this->object;
             use_shader(shaders->gui);
@@ -302,6 +303,7 @@ class Frame : public Node {
             set_shader_mat4(shaders->gui, "model", modelMatrix);
             this::draw_frame();
         }
+        frame->flags &= ~FRAME_NEEDS_INIT;
     }
 
     void save(FILE *file, Node *editor) {

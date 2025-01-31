@@ -1,7 +1,21 @@
-Node{NULL,level_editor,NULL}:6
+Node{scene_editor_init,scene_editor,NULL}:4
 Camera(1){NULL,free_camera,NULL}
 Node:3
 Model(assets/models/collisionShapes/box.obj)[v0]
 Model(assets/models/collisionShapes/plane.obj)[v0]
 Model(assets/models/collisionShapes/sphere.obj)[v0]
 Node[a0]:0
+Node:3
+Frame(0w,0h,40w,100h,lcs,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Black.ttf,18,#ffffffff]):0
+Frame(-5w,-5h,40w,100p,rbn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Black.ttf,30,#ffffffff]):1
+Label(< Placeholder >,cc)
+Frame(0w,0h,64p,192p,rtn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Black.ttf,18,#ffffffff]):3
+ControlFrame(0w,0h,33h,100w,lt):1
+Button{NULL,scene_editor_btn_camera,NULL}:1
+ImageFrame(0w,0h,32p,32p,cc,assets/textures/editor/camera.png)
+ControlFrame(0w,33h,33h,100w,lt):1
+Button{NULL,scene_editor_btn_load,NULL}:1
+ImageFrame(0w,0h,32p,32p,cc,assets/textures/editor/folder.png)
+ControlFrame(0w,66h,33h,100w,lt):1
+Button:1
+ImageFrame(0w,0h,32p,32p,cc,assets/textures/editor/save.png)

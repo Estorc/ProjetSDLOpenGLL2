@@ -9,6 +9,7 @@
 #include "../src/gui/frame.h"
 void __class_method_label_constructor(void * __retValueVP__, va_list args);
 void __class_method_label_load(void * __retValueVP__, va_list args);
+void __class_method_label_set_text(void * __retValueVP__, va_list args);
 void __class_method_label_refresh(void * __retValueVP__, va_list args);
 void __class_method_label_render(void * __retValueVP__, va_list args);
 void __class_method_label_save(void * __retValueVP__, va_list args);
