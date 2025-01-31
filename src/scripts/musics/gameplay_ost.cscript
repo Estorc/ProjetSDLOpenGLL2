@@ -1,0 +1,34 @@
+NEW_SCRIPT(gameplay_ost)
+
+
+    static Mix_Music *current_music = NULL;
+
+    GET_READY_PARAMETERS();
+    SET_ATTRIBUTES_COUNT(1);
+
+    const char *music_path = "/info/etu/l2info/l195557/ProjetSDLOpenGLL2/assets/audio/musics/Gameplay (loop).mp3";
+
+    if (Mix_OpenAudio(48000, AUDIO_S16SYS, 2, 2048) < 0) {
+        printf("Erreur d'initialisation de l'audio : %s\n", Mix_GetError());
+        return;
+    }
+
+    if (current_music != NULL) {
+        Mix_HaltMusic();
+        Mix_FreeMusic(current_music);
+        current_music = NULL;
+    }
+
+    current_music = Mix_LoadMUS(music_path);
+    if (!current_music) {
+        printf("Erreur de chargement de la musique : %s\n", Mix_GetError());
+        return;
+    }
+
+    Mix_PlayMusic(current_music, -1);
+
+END_SCRIPT(gameplay_ost)
+
+
+
+

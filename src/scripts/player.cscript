@@ -60,7 +60,7 @@ NEW_SCRIPT(player)
 	player->velocity[1] -= 0.5*delta;
 
 	if(this->pos[1] <= -5){
-		printf("Game over\n");
+		prepare_change_scene("assets/scenes/gameover.scene");
 	}
 
     //if (input.active_keys & KEY_JUMP) c->targetPos[1] += vel;

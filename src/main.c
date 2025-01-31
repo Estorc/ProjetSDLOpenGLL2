@@ -1,4 +1,5 @@
 #include "raptiquax.h"
+#include "SDL_mixer.h"
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
@@ -117,9 +118,11 @@ int main(int argc, char *argv[]) {
     
     init_buffers();
 
+    /*
     Mix_OpenAudio(48000, AUDIO_S16SYS, 2, 2048);
-    Mix_Music *music = Mix_LoadMUS("assets/audio/musics/test.mp3");
+    Mix_Music *music = Mix_LoadMUS("assets/audio/musics/Menu (launch) theme 2.mp3");
     Mix_PlayMusic(music, 1);
+    */
 
     #ifdef DEBUG
     if (argc >= 2) {
@@ -135,7 +138,7 @@ int main(int argc, char *argv[]) {
 
     while (update(&window, &defaultShaders, &depthMap, &mainNodeTree.msaa, &screenPlane) >= 0);
 
-    Mix_FreeMusic(music);
+    //Mix_FreeMusic(music);
 
     if (!queue_is_empty(&callQueue)) {
         queue_free(&callQueue);

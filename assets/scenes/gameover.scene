@@ -1,4 +1,4 @@
-Node[m0,0,0r0,0,0s1,1,1a1v1]{menu_ost, NULL, NULL}:13
+Node[m0,0,0r0,0,0s1,1,1a1v1]{load_music, NULL, NULL}:13
 RigidBody(0,0,0,0,0,0,0,-1,0,5,0.99,0,0,0,1)
 SphereCShape[m0,0,0r0,0,0s1,1,1a1v1]
 [m0,100,0r0,0,0s1,1,1a1v1]:1
@@ -34,14 +34,11 @@ BoxCShape[m0,1,0r0,0,0s5,1,5a1v1]
 Model(assets/models/Deku Tree/untitled.obj)[m0,0,0r0,0,0s0.01,0.01,0.01a1v1]
 SpotLight(5,5,5,50,50,50,50,50,50,1,0.09,0.03,2,0.5)[m5,1,20r0,90,0s1,1,1a1v1]
 Frame(0w,10h,60w,10h,ctn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):1
-Label(Claude Chappe's Curse,cc)
+Label(GAME OVER,cc)
 Frame(0w,20h,60w,20h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):3
-Frame(2w,0h,30w,90h,lcn):1
+Frame(4w,0h,30w,90h,lcn):1
 Button{NULL,play_game_button,NULL}:1
-Label(Jouer,cc)
-Frame(0w,0h,30w,90h,ccn):1
-Button{NULL,settings_game_button,NULL}:1
-Label(Options,cc)
-Frame(-2w,0h,30w,90h,rcn):1
+Label(Rejouer,cc)
+Frame(-4w,0h,30w,90h,rcn):1
 Button{NULL,quit_game_button,NULL}:1
 Label(Quitter,cc)

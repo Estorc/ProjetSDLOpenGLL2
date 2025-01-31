@@ -1,4 +1,4 @@
-Node[m0,0,0r0,0,0s1,1,1a1v1]:15
+Node[m0,0,0r0,0,0s1,1,1a1v1]{gameplay_ost, NULL, NULL}:15
 RigidBody(0,0,0,0,0,0,0,-1,0,5,0.99,0,0,0,1)
 SphereCShape[m0,0,0r0,0,0s1,1,1a1v1]
 [m0,100,0r0,0,0s1,1,1a1v1]:1
