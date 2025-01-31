@@ -1,5 +1,12 @@
 # ProjetSDLOpenGLL2
 
+## Equipe :
+
+- Loup (Estorc)
+- Lucien (Mimar)
+- Ekrem (Ekamyl)
+- Medhi (MH-le-D2)
+
 ## Présentation du projet :
 
 - Jeu d'horreur prenant place au bâtiment informatique Claude Chappe
