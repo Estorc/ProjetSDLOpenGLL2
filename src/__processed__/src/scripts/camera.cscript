@@ -8,8 +8,8 @@ NEW_SCRIPT(camera)
 	if (glm_vec3_norm2(targetRot) == 0) glm_vec3_copy(this->rot, targetRot);
 
 	if (!this->parent->attribute[0].b) {
-		targetRot[1] -= fmod((f32) (input.mouse.x - input.mouse.lastX) * delta * 100.0, 360.0);
-		targetRot[0] += fmod((f32) (input.mouse.lastY - input.mouse.y) * delta * 100.0, 360.0);
+		targetRot[1] -= fmod((f32) (input.mouse.x - input.mouse.lastX) * delta * 100.0, 370.0);
+		targetRot[0] += fmod((f32) (input.mouse.lastY - input.mouse.y) * delta * 100.0, 370.0);
 		targetRot[0] = CLAMP(-90,targetRot[0],90);
 	}
 
