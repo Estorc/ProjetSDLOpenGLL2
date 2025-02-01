@@ -1,0 +1,7 @@
+ControlFrame(0w,10p,96w,50p,ct):2
+ControlFrame(-20w,0p,32p,32p,cc):1
+Button{NULL,scene_editor_btn_active,NULL}:1
+ImageFrame(0w,0h,100w,100h,lc,assets/textures/editor/active.png)
+ControlFrame(20w,0p,32p,32p,cc):1
+Button{NULL,scene_editor_btn_visible,NULL}:1
+ImageFrame(0w,0h,100w,100h,lc,assets/textures/editor/eye.png)

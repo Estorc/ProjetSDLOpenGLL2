@@ -9,6 +9,7 @@
 #include "../src/buffer.h"
 void __class_method_spotlight_constructor(void * __retValueVP__, va_list args);
 void __class_method_spotlight_update(void * __retValueVP__, va_list args);
+void __class_method_spotlight_get_settings_data(void * __retValueVP__, va_list args);
 void __class_method_spotlight_load(void * __retValueVP__, va_list args);
 void __class_method_spotlight_save(void * __retValueVP__, va_list args);
 void __class_method_spotlight_configure_lighting(void * __retValueVP__, va_list args);

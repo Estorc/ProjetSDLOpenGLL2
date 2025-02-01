@@ -54,11 +54,20 @@ void __class_method_imageframe_load(void * __retValueVP__, va_list args) {Node *
 
 
 #line 55 "src/classes/nodes/frames/image_frame.class.c"
+void __class_method_imageframe_set_image(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);char * path = va_arg(args, char *);(void)this;
+        Frame *frame = (Frame *) this->object;
+        strcpy(frame->imageFrame->path, path);
+        frame->contentTexture = load_texture_from_path(path, GL_SRGB_ALPHA, false);
+        frame->flags |= FRAME_CONTENT;
+}
+
+
+#line 63 "src/classes/nodes/frames/image_frame.class.c"
 void __class_method_imageframe_render(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);mat4 * modelMatrix = va_arg(args, mat4 *);Shader  activeShader = va_arg(args, Shader );WorldShaders * shaders = va_arg(args, WorldShaders *);(void)this;
         SUPER(render, modelMatrix, activeShader, shaders);
 }
 
-#line 59 "src/classes/nodes/frames/image_frame.class.c"
+#line 67 "src/classes/nodes/frames/image_frame.class.c"
 void __class_method_imageframe_save(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);Node * editor = va_arg(args, Node *);(void)this;
         Frame *frame = (Frame *) this->object;
         IGNORE(editor);
@@ -67,7 +76,7 @@ void __class_method_imageframe_save(void * __retValueVP__, va_list args) {Node *
         frame->label->text, frame->alignment[0], frame->alignment[1]);
 }
  
-#line 67 "src/classes/nodes/frames/image_frame.class.c"
+#line 75 "src/classes/nodes/frames/image_frame.class.c"
 void __class_method_imageframe_free(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         Frame *frame = (Frame *) this->object;
         ImageFrame *imageFrame = (ImageFrame *) frame->imageFrame;

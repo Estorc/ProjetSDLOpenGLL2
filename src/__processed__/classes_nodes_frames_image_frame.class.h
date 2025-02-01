@@ -9,6 +9,7 @@
 #include "../src/gui/frame.h"
 void __class_method_imageframe_constructor(void * __retValueVP__, va_list args);
 void __class_method_imageframe_load(void * __retValueVP__, va_list args);
+void __class_method_imageframe_set_image(void * __retValueVP__, va_list args);
 void __class_method_imageframe_render(void * __retValueVP__, va_list args);
 void __class_method_imageframe_save(void * __retValueVP__, va_list args);
 void __class_method_imageframe_free(void * __retValueVP__, va_list args);

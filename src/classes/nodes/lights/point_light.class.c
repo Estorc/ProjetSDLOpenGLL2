@@ -58,6 +58,25 @@ class PointLight : public Light {
         lightsCount[POINT_LIGHT]++;
     }    
 
+
+
+
+    void get_settings_data(void *** ptr, int * length) {
+        SUPER(get_settings_data, ptr, length);
+        PointLight *pointLight = (PointLight *) this->object;
+        void *data[] = {
+            "rgb", "Ambient : ", &pointLight->ambient,
+            "rgb", "Diffuse : ", &pointLight->diffuse,
+            "rgb", "Specular : ", &pointLight->specular,
+            "float", "Constant : ", &pointLight->constant,
+            "float", "Linear : ", &pointLight->linear,
+            "float", "Quadratic : ", &pointLight->quadratic
+        };
+        *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
+        memcpy(*ptr + (*length), data, sizeof(data));
+        *length += sizeof(data)/sizeof(void *);
+    }
+
     void load(FILE *file) {
         PointLight *pointLight;
         pointLight = malloc(sizeof(PointLight));

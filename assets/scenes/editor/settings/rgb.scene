@@ -1,0 +1,18 @@
+ControlFrame(0w,10p,96w,50p,ct):4
+ControlFrame(0w,0p,25w,32p,lt):1
+Label(Color:, cc)
+ControlFrame(25w,0p,25w,32p,lt):2
+ControlFrame(0p,0p,20w,32p,lt):1
+Label(R:, cc)
+ControlFrame(20w,0p,80w,32p,lt):1
+InputArea(R,cc){NULL,float_input_area,NULL}
+ControlFrame(50w,0p,25w,32p,lt):2
+ControlFrame(0p,0p,20w,32p,lt):1
+Label(G:, cc)
+ControlFrame(20w,0p,80w,32p,lt):1
+InputArea(G,cc){NULL,float_input_area,NULL}
+ControlFrame(75w,0p,25w,32p,lt):2
+ControlFrame(0p,0p,20w,32p,lt):1
+Label(B:, cc)
+ControlFrame(20w,0p,80w,32p,lt):1
+InputArea(B,cc){NULL,float_input_area,NULL}

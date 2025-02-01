@@ -2,6 +2,111 @@
 #ifdef DEBUG
 
 
+void load_settings(Node *node) {
+
+	Node * settingsRoot = mainNodeTree.root->children[4]->children[0];
+
+	for (int i = 0; i < settingsRoot->length; i++) {
+		call_method_0(METHOD(free,(settingsRoot->children[i])));
+	}
+	settingsRoot->children = NULL;
+	settingsRoot->length = 0;
+
+	void **data = NULL;
+	int length = 0;
+
+	call_method_0(METHOD(get_settings_data,node,&data, &length));
+	const char* settingt = (const char*) data[0];
+	printf("%d\n", length);
+	for (int j = 0; j < length;) {
+		const char* setting = (const char*) data[j++];
+		const char* settingName = data[j++];
+		if (strcmp(setting, "model") == 0) {
+			FILE * file = fopen("assets/scenes/editor/settings/model.scene", "r");
+			if (file) {
+				Node *settingNode = load_node(file, NULL, mainNodeTree.scripts, NULL);
+				Frame *settingFrame = (Frame*) settingNode->object;
+				settingFrame->relPos[1] += j*16;
+				call_method_0(METHOD(set_text,(settingNode->children[0]->children[0]),settingName));
+				ModelData **modelData = data[j++];
+
+				MALLOC_ATTRIBUTE(settingNode->children[1], 2);
+				settingNode->children[1]->attribute[1].p = modelData;
+
+				call_method_0(METHOD(add_child_and_realloc,settingsRoot,settingNode));
+				fclose(file);
+			}
+		}
+		if (strcmp(setting, "vec3") == 0) {
+			FILE * file = fopen("assets/scenes/editor/settings/vec3.scene", "r");
+			if (file) {
+				Node *settingNode = load_node(file, NULL, mainNodeTree.scripts, NULL);
+				Frame *settingFrame = (Frame*) settingNode->object;
+				settingFrame->relPos[1] += j*16;
+				call_method_0(METHOD(set_text,(settingNode->children[0]->children[0]),settingName));
+				vec3 *vector = data[j++];
+				for (int k = 0; k < 3; k++) {
+					Node *dimNode = settingNode->children[1+k]->children[1]->children[0];
+					MALLOC_ATTRIBUTE(dimNode, 2);
+					dimNode->attribute[1].p = &((*vector)[k]);
+				}
+				call_method_0(METHOD(add_child_and_realloc,settingsRoot,settingNode));
+				fclose(file);
+			}
+		}
+		if (strcmp(setting, "rgb") == 0) {
+			FILE * file = fopen("assets/scenes/editor/settings/rgb.scene", "r");
+			if (file) {
+				Node *settingNode = load_node(file, NULL, mainNodeTree.scripts, NULL);
+				Frame *settingFrame = (Frame*) settingNode->object;
+				settingFrame->relPos[1] += j*16;
+				call_method_0(METHOD(set_text,(settingNode->children[0]->children[0]),settingName));
+				vec3 *vector = data[j++];
+				for (int k = 0; k < 3; k++) {
+					Node *dimNode = settingNode->children[1+k]->children[1]->children[0];
+					MALLOC_ATTRIBUTE(dimNode, 2);
+					dimNode->attribute[1].p = &((*vector)[k]);
+				}
+				call_method_0(METHOD(add_child_and_realloc,settingsRoot,settingNode));
+				fclose(file);
+			}
+		}
+		if (strcmp(setting, "float") == 0) {
+			FILE * file = fopen("assets/scenes/editor/settings/float.scene", "r");
+			if (file) {
+				Node *settingNode = load_node(file, NULL, mainNodeTree.scripts, NULL);
+				Frame *settingFrame = (Frame*) settingNode->object;
+				settingFrame->relPos[1] += j*16;
+				call_method_0(METHOD(set_text,(settingNode->children[0]->children[0]),settingName));
+				float *value = data[j++];
+				Node *dimNode = settingNode->children[1]->children[1]->children[0];
+				MALLOC_ATTRIBUTE(dimNode, 2);
+				dimNode->attribute[1].p = value;
+				call_method_0(METHOD(add_child_and_realloc,settingsRoot,settingNode));
+				fclose(file);
+			}
+		}
+		if (strcmp(setting, "node-flags") == 0) {
+			FILE * file = fopen("assets/scenes/editor/settings/node-flags.scene", "r");
+			if (file) {
+				Node *settingNode = load_node(file, NULL, mainNodeTree.scripts, NULL);
+				Frame *settingFrame = (Frame*) settingNode->object;
+				settingFrame->relPos[1] += j*16;
+				MALLOC_ATTRIBUTE(settingNode->children[0]->children[0], 2);
+				settingNode->children[0]->children[0]->attribute[1].p = node;
+				MALLOC_ATTRIBUTE(settingNode->children[1]->children[0], 2);
+				settingNode->children[1]->children[0]->attribute[1].p = node;
+				call_method_0(METHOD(add_child_and_realloc,settingsRoot,settingNode));
+				fclose(file);
+			}
+		}
+	}
+
+	free(data);
+
+}
+
+
 void load_node_tree(FILE * file, Node *node) {
 
 	Node *loadedScene = load_node(file, 0, mainNodeTree.scripts, node->parent);
@@ -18,7 +123,7 @@ void load_node_tree(FILE * file, Node *node) {
 void load_menu(Node *node) {
 
 	char path[200];
-	if (osio_open_file(path, "\"Scene File(*.scene)\"") == -1) {
+	if (osio_open_file(path, "../../assets/scenes", "\"Scene File(*.scene)\"") == -1) {
 		node->parent->attribute[1].i = 0;
 		node->parent->attribute[3].i = 0;
 	}
@@ -246,7 +351,7 @@ void draw_model_input(int *id, int x, int y, Window *window, Node *node, Model *
 
     if (draw_button(window->ui_surface, x+800-48, y, 32, 32, "assets/textures/editor/folder.png", 0xffffffff, input)) {
         char path[200];
-        if (osio_open_file(path, "\"Object 3d Model File(*.obj)\"") == 0) {
+        if (osio_open_file(path, "assets/models", "\"Object 3d Model File(*.obj)\"") == 0) {
             absolute_path_to_relative(path);
             printf("%s\n", path);
             FILE * file = fopen(path, "r");
@@ -272,7 +377,7 @@ void draw_texture_input(int *id, int x, int y, Window *window, Node *node, Textu
 
     if (draw_button(window->ui_surface, x+800-48, y, 32, 32, "assets/textures/editor/folder.png", 0xffffffff, input)) {
         char path[200];
-        if (osio_open_file(path, "\"image/png image/bmp image/jpeg\"") == 0) {
+        if (osio_open_file(path, "assets", "\"image/png image/bmp image/jpeg\"") == 0) {
             absolute_path_to_relative(path);
             FILE * file = fopen(path, "r");
             if (file) {
@@ -299,7 +404,7 @@ void draw_cubemap_input(int *id, int x, int y, Window *window, Node *node, Textu
     if (draw_button(window->ui_surface, x+800-48, y, 32, 32, "assets/textures/editor/folder.png", 0xffffffff, input)) {
         char path[6][200];
         int res = 0;
-        for (int i = 0; i < 6; i++) res |= osio_open_file(path[i], "\"image/png image/bmp image/jpeg\"");
+        for (int i = 0; i < 6; i++) res |= osio_open_file(path[i], "assets", "\"image/png image/bmp image/jpeg\"");
         if (res == 0) {
             for (int i = 0; i < 6; i++) absolute_path_to_relative(path[i]);
             (*texture) = load_cubemap(path);
@@ -675,7 +780,7 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
 void save_menu(Window *window, Node *node, Input *input, TTF_Font *font) {
 
 	char path[200];
-	if (osio_save_file(path, "\"Scene File(*.scene)\"") == -1) {
+	if (osio_save_file(path, "../../assets/scenes", "\"Scene File(*.scene)\"") == -1) {
 		node->parent->params[1].i = 0;
 		node->parent->params[3].i = 0;
 	}
@@ -1025,3 +1130,164 @@ NEW_SCRIPT(scene_editor_btn_remove_node)
 	}
 #endif
 END_SCRIPT(scene_editor_btn_remove_node)
+
+
+NEW_SCRIPT(scene_editor_btn_edit_node)
+#ifdef DEBUG
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(2);
+	bool *active = &this->attribute[0].b;
+	Node *node = this->attribute[1].node;
+	Frame *frame = (Frame*) this->object;
+	Button *button = (Button*) frame->button;
+
+	if (!button->checked) button->checked = active;
+	if ((*button->checked)) {
+		mainNodeTree.root->children[3]->flags &= ~NODE_VISIBLE;
+		mainNodeTree.root->children[3]->flags &= ~NODE_ACTIVE;
+		mainNodeTree.root->children[4]->flags |= NODE_VISIBLE;
+		mainNodeTree.root->children[4]->flags |= NODE_ACTIVE;
+		window.resized = true;
+		
+		load_settings(node);
+		*button->checked = false;
+	}
+#endif
+END_SCRIPT(scene_editor_btn_edit_node)
+
+NEW_SCRIPT(scene_editor_edit_mode)
+#ifdef DEBUG
+	if (input.released_keys & KEY_MENU) {
+		mainNodeTree.root->children[3]->flags |= NODE_VISIBLE;
+		mainNodeTree.root->children[3]->flags |= NODE_ACTIVE;
+		mainNodeTree.root->children[4]->flags &= ~NODE_VISIBLE;
+		mainNodeTree.root->children[4]->flags &= ~NODE_ACTIVE;
+		call_method_0(METHOD(refresh,(mainNodeTree.root->children[3]->children[0])));
+		window.resized = true;
+	}
+#endif
+END_SCRIPT(scene_editor_edit_mode)
+
+NEW_SCRIPT(path_input_init)
+#ifdef DEBUG
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(2);
+	bool *active = &this->attribute[0].b;
+	ModelData **modelData = this->attribute[1].p;
+	Node *labelNode = this->children[0]->children[0];
+
+    for (int i = 0; i < memoryCaches.modelsCount; i++) {
+        if (memoryCaches.modelCache[i].model == *modelData) {
+			call_method_0(METHOD(set_text,labelNode,memoryCaches.modelCache[i].modelName));
+            break;
+        }
+    }
+#endif
+END_SCRIPT(path_input_init)
+
+
+NEW_SCRIPT(path_input)
+#ifdef DEBUG
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(2);
+	bool *active = &this->attribute[0].b;
+	ModelData **modelData = this->attribute[1].p;
+	Node *labelNode = this->children[0]->children[0];
+	Button *button = (Button*) ((Frame*) this->children[1]->children[0]->object)->button;
+
+	if (!button->checked) button->checked = active;
+	if ((*button->checked)) {
+
+        char path[200];
+        if (osio_open_file(path, "assets/models", "\"Object 3d Model File(*.obj)\"") == 0) {
+            absolute_path_to_relative(path);
+            FILE * file = fopen(path, "r");
+            if (file) {
+                load_model(path, modelData);
+                fclose(file);
+            }
+        }
+
+		for (int i = 0; i < memoryCaches.modelsCount; i++) {
+			if (memoryCaches.modelCache[i].model == *modelData) {
+				call_method_0(METHOD(set_text,labelNode,memoryCaches.modelCache[i].modelName));
+				break;
+			}
+		}
+		*button->checked = false;
+	}
+#endif
+END_SCRIPT(path_input)
+
+NEW_SCRIPT(float_input_area)
+#ifdef DEBUG
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(2);
+	int *lastState = &this->attribute[0].i;
+	float *value = this->attribute[1].p;
+	Frame *frame = (Frame*) this->object;
+	InputArea *inputArea = (InputArea*) frame->inputArea;
+
+	if (!(inputArea->state & BUTTON_STATE_PRESSED) && inputArea->text[0] == 0) {
+		sprintf(inputArea->text, "%g", *value);
+		frame->flags |= FRAME_NEEDS_REFRESH;
+	}
+	if (inputArea->state & BUTTON_STATE_PRESSED && inputArea->text[0] != 0) {
+		*value = atof(inputArea->text);
+	}
+	if (!(inputArea->state & BUTTON_STATE_PRESSED) && (*lastState & BUTTON_STATE_PRESSED)) {
+		*value = atof(inputArea->text);
+		sprintf(inputArea->text, "%g", *value);
+		frame->flags |= FRAME_NEEDS_REFRESH;
+	}
+	*lastState = inputArea->state;
+#endif
+END_SCRIPT(float_input_area)
+
+
+NEW_SCRIPT(scene_editor_btn_active)
+#ifdef DEBUG
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(2);
+	bool *active = &this->attribute[0].b;
+	Node *node = this->attribute[1].node;
+	Frame *frame = (Frame*) this->object;
+	Button *button = (Button*) frame->button;
+
+	if (!button->checked) button->checked = active;
+	if ((*button->checked)) {
+		node->flags ^= NODE_ACTIVE;
+		if (node->flags & NODE_ACTIVE) {
+			call_method_0(METHOD(set_image,(this->children[0]),"assets/textures/editor/active.png"));
+		} else {
+			call_method_0(METHOD(set_image,(this->children[0]),"assets/textures/editor/unactive.png"));
+		}
+
+		*button->checked = false;
+	}
+#endif
+END_SCRIPT(scene_editor_btn_active)
+
+
+NEW_SCRIPT(scene_editor_btn_visible)
+#ifdef DEBUG
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(2);
+	bool *active = &this->attribute[0].b;
+	Node *node = this->attribute[1].node;
+	Frame *frame = (Frame*) this->object;
+	Button *button = (Button*) frame->button;
+
+	if (!button->checked) button->checked = active;
+	if ((*button->checked)) {
+		node->flags ^= NODE_VISIBLE;
+		if (node->flags & NODE_VISIBLE) {
+			call_method_0(METHOD(set_image,(this->children[0]),"assets/textures/editor/eye.png"));
+		} else {
+			call_method_0(METHOD(set_image,(this->children[0]),"assets/textures/editor/eye-off.png"));
+		}
+
+		*button->checked = false;
+	}
+#endif
+END_SCRIPT(scene_editor_btn_visible)

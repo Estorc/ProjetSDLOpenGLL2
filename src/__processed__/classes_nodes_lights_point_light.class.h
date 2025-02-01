@@ -9,6 +9,7 @@
 #include "../src/buffer.h"
 void __class_method_pointlight_constructor(void * __retValueVP__, va_list args);
 void __class_method_pointlight_update(void * __retValueVP__, va_list args);
+void __class_method_pointlight_get_settings_data(void * __retValueVP__, va_list args);
 void __class_method_pointlight_load(void * __retValueVP__, va_list args);
 void __class_method_pointlight_save(void * __retValueVP__, va_list args);
 void __class_method_pointlight_configure_lighting(void * __retValueVP__, va_list args);

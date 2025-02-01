@@ -1,0 +1,18 @@
+ControlFrame(0w,10p,96w,50p,ct):4
+ControlFrame(0w,0p,25w,32p,lt):1
+Label(Vec3:, cc)
+ControlFrame(25w,0p,25w,32p,lt):2
+ControlFrame(0p,0p,20w,32p,lt):1
+Label(X:, cc)
+ControlFrame(20w,0p,80w,32p,lt):1
+InputArea(X,cc){NULL,float_input_area,NULL}
+ControlFrame(50w,0p,25w,32p,lt):2
+ControlFrame(0p,0p,20w,32p,lt):1
+Label(Y:, cc)
+ControlFrame(20w,0p,80w,32p,lt):1
+InputArea(Y,cc){NULL,float_input_area,NULL}
+ControlFrame(75w,0p,25w,32p,lt):2
+ControlFrame(0p,0p,20w,32p,lt):1
+Label(Z:, cc)
+ControlFrame(20w,0p,80w,32p,lt):1
+InputArea(Z,cc){NULL,float_input_area,NULL}

@@ -6,6 +6,7 @@
 #include "../src/storage/node.h"
 void __class_method_camera_constructor(void * __retValueVP__, va_list args);
 void __class_method_camera_update(void * __retValueVP__, va_list args);
+void __class_method_camera_get_settings_data(void * __retValueVP__, va_list args);
 void __class_method_camera_load(void * __retValueVP__, va_list args);
 void __class_method_camera_save(void * __retValueVP__, va_list args);
 #endif

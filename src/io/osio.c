@@ -2,14 +2,16 @@
 #include "stringio.h"
 #include <stdlib.h>
 #include <unistd.h>
-#define ZENITY
+#define KDIALOG
 
 #ifdef KDIALOG
-int osio_save_file(char *path, char *filter) {
+int osio_save_file(char *path, char *relativePath, char *filter) {
     path[0] = 0;
-    char *cmd = "/bin/kdialog --getsavefilename . ";
-    char *fullcmd = malloc(sizeof(cmd) * (strlen(cmd)+1) + sizeof(filter) * (strlen(filter)+1));
-    fullcmd = strcat(strcpy(fullcmd, cmd), filter);
+    char *cmd = "/bin/kdialog --getsavefilename $PWD/";
+    char *fullcmd = malloc(sizeof(cmd) * (strlen(cmd)+1) + sizeof(relativePath) * (strlen(relativePath)+1) + sizeof(filter) * (strlen(filter)+1));
+    fullcmd = strcat(strcpy(fullcmd, cmd), relativePath);
+    fullcmd = strcat(fullcmd, " ");
+    fullcmd = strcat(fullcmd, filter);
 	FILE * fp = popen(fullcmd, "r");
 	if (!fp) {
 		printf("Failed to run command\n");
@@ -27,11 +29,13 @@ int osio_save_file(char *path, char *filter) {
     return 0;
 }
 
-int osio_open_file(char *path, char *filter) {
+int osio_open_file(char *path, char *relativePath, char *filter) {
     path[0] = 0;
-    char *cmd = "/bin/kdialog --getopenfilename . ";
-    char *fullcmd = malloc(sizeof(cmd) * (strlen(cmd)+1) + sizeof(filter) * (strlen(filter)+1));
-    fullcmd = strcat(strcpy(fullcmd, cmd), filter);
+    char *cmd = "/bin/kdialog --getopenfilename $PWD/";
+    char *fullcmd = malloc(sizeof(cmd) * (strlen(cmd)+1) + sizeof(relativePath) * (strlen(relativePath)+1) + sizeof(filter) * (strlen(filter)+1));
+    fullcmd = strcat(strcpy(fullcmd, cmd), relativePath);
+    fullcmd = strcat(fullcmd, " ");
+    fullcmd = strcat(fullcmd, filter);
 	FILE * fp = popen(fullcmd, "r");
 	if (!fp) {
 		printf("Failed to run command\n");
@@ -65,9 +69,9 @@ int osio_print_error(char *msg) {
 #endif
 
 #ifdef ZENITY
-int osio_save_file(char *path, char *filter) {
+int osio_save_file(char *path, char *relativePath, char *filter) {
     path[0] = 0;
-    char *cmd = "/bin/zenity --file-selection --save . ";
+    char *cmd = "/bin/zenity --file-selection --save /home/estorc/ProjetSDLOpenGLL2 ";
     char *fullcmd = malloc(sizeof(cmd) * (strlen(cmd)+1) + sizeof(filter) * (strlen(filter)+1));
     fullcmd = strcat(strcpy(fullcmd, cmd), filter);
 	FILE * fp = popen(fullcmd, "r");
@@ -87,9 +91,9 @@ int osio_save_file(char *path, char *filter) {
     return 0;
 }
 
-int osio_open_file(char *path, char *filter) {
+int osio_open_file(char *path, char *relativePath, char *filter) {
     path[0] = 0;
-    char *cmd = "/bin/zenity --file-selection . ";
+    char *cmd = "/bin/zenity --file-selection /home/estorc/ProjetSDLOpenGLL2 ";
     char *fullcmd = malloc(sizeof(cmd) * (strlen(cmd)+1) + sizeof(filter) * (strlen(filter)+1));
     fullcmd = strcat(strcpy(fullcmd, cmd), filter);
 	FILE * fp = popen(fullcmd, "r");

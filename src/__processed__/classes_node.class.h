@@ -8,6 +8,7 @@ int call_method_1(void (*func)(void *, va_list), ...);
 void __class_method_node_constructor(void * __retValueVP__, va_list args);
 void __class_method_node_initialize_node(void * __retValueVP__, va_list args);
 void __class_method_node_get_glow_shader(void * __retValueVP__, va_list args);
+void __class_method_node_get_settings_data(void * __retValueVP__, va_list args);
 void __class_method_node_load(void * __retValueVP__, va_list args);
 void __class_method_node_save(void * __retValueVP__, va_list args);
 void __class_method_node_prepare_render(void * __retValueVP__, va_list args);

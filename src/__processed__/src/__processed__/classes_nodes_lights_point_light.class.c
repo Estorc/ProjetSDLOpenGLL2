@@ -60,7 +60,27 @@ void __class_method_pointlight_update(void * __retValueVP__, va_list args) {Node
         lightsCount[POINT_LIGHT]++;
 }
 
-#line 61 "src/classes/nodes/lights/point_light.class.c"
+
+
+
+#line 64 "src/classes/nodes/lights/point_light.class.c"
+void __class_method_pointlight_get_settings_data(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);void ***  ptr = va_arg(args, void *** );int *  length = va_arg(args, int * );(void)this;
+        SUPER(get_settings_data, ptr, length);
+        PointLight *pointLight = (PointLight *) this->object;
+        void *data[] = {
+            "rgb", "Ambient : ", &pointLight->ambient,
+            "rgb", "Diffuse : ", &pointLight->diffuse,
+            "rgb", "Specular : ", &pointLight->specular,
+            "float", "Constant : ", &pointLight->constant,
+            "float", "Linear : ", &pointLight->linear,
+            "float", "Quadratic : ", &pointLight->quadratic
+        };
+        *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
+        memcpy(*ptr + (*length), data, sizeof(data));
+        *length += sizeof(data)/sizeof(void *);
+}
+
+#line 80 "src/classes/nodes/lights/point_light.class.c"
 void __class_method_pointlight_load(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         PointLight *pointLight;
         pointLight = malloc(sizeof(PointLight));
@@ -90,7 +110,7 @@ void __class_method_pointlight_load(void * __retValueVP__, va_list args) {Node *
         this->flags |= NODE_EDITOR_FLAG;
 }
 
-#line 90 "src/classes/nodes/lights/point_light.class.c"
+#line 109 "src/classes/nodes/lights/point_light.class.c"
 void __class_method_pointlight_save(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         fprintf(file, "%s", classManager.class_names[this->type]);
         PointLight *pointLight = (PointLight*) this->object;
@@ -115,7 +135,7 @@ void __class_method_pointlight_save(void * __retValueVP__, va_list args) {Node *
      * @param pointLightId The ID of the point light.
      */
 
-#line 114 "src/classes/nodes/lights/point_light.class.c"
+#line 133 "src/classes/nodes/lights/point_light.class.c"
 void __class_method_pointlight_configure_lighting(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Camera * c = va_arg(args, Camera *);WorldShaders * shaders = va_arg(args, WorldShaders *);u8 * lightsCount = va_arg(args, u8 *);int  pointLightId = va_arg(args, int );(void)this;
 
         IGNORE(c);

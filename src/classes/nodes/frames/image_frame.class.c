@@ -52,6 +52,14 @@ class ImageFrame : public Frame {
     }
 
 
+    void set_image(char *path) {
+        Frame *frame = (Frame *) this->object;
+        strcpy(frame->imageFrame->path, path);
+        frame->contentTexture = load_texture_from_path(path, GL_SRGB_ALPHA, false);
+        frame->flags |= FRAME_CONTENT;
+    }
+
+
     void render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
         SUPER(render, modelMatrix, activeShader, shaders);
     }

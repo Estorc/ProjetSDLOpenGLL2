@@ -21,6 +21,17 @@ class Camera : public Node {
         glm_vec3_negate_to(*rot, camera->rot);
     }
 
+    void get_settings_data(void *** ptr, int * length) {
+        SUPER(get_settings_data, ptr, length);
+        Camera *camera = (Camera *) this->object;
+        void *data[] = {
+            "camera", "Active : "
+        };
+        *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
+        memcpy(*ptr + (*length), data, sizeof(data));
+        *length += sizeof(data)/sizeof(void *);
+    }
+
     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
         IGNORE(scripts);
         Camera *cam;

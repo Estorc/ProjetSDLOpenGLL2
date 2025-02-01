@@ -7,6 +7,7 @@
 #include "../src/memory.h"
 #include "../src/render/render.h"
 void __class_method_model_constructor(void * __retValueVP__, va_list args);
+void __class_method_model_get_settings_data(void * __retValueVP__, va_list args);
 void __class_method_model_load(void * __retValueVP__, va_list args);
 void __class_method_model_save(void * __retValueVP__, va_list args);
 void __class_method_model_precompile_display_lists(void * __retValueVP__, va_list args);

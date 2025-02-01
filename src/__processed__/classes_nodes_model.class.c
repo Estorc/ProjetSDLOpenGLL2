@@ -21,6 +21,18 @@ void __class_method_model_constructor(void * __retValueVP__, va_list args) {Node
     
 
 #line 23 "src/classes/nodes/model.class.c"
+void __class_method_model_get_settings_data(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);void ***  ptr = va_arg(args, void *** );int *  length = va_arg(args, int * );(void)this;
+        SUPER(get_settings_data, ptr, length);
+        Model *model = (Model *) this->object;
+        void *data[] = {
+            "model", "Model : ", &model->data,
+        };
+        *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
+        memcpy(*ptr + (*length), data, sizeof(data));
+        *length += sizeof(data)/sizeof(void *);
+}
+
+#line 34 "src/classes/nodes/model.class.c"
 void __class_method_model_load(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         Model *model;
         model = malloc(sizeof(Model));
@@ -35,7 +47,7 @@ void __class_method_model_load(void * __retValueVP__, va_list args) {Node * this
         this::constructor(model);
 }
 
-#line 37 "src/classes/nodes/model.class.c"
+#line 48 "src/classes/nodes/model.class.c"
 void __class_method_model_save(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         fprintf(file, "%s", classManager.class_names[this->type]);
         Model *model = (Model*) this->object;
@@ -47,7 +59,7 @@ void __class_method_model_save(void * __retValueVP__, va_list args) {Node * this
         }
 }
 
-#line 48 "src/classes/nodes/model.class.c"
+#line 59 "src/classes/nodes/model.class.c"
 void __class_method_model_precompile_display_lists(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         Model *model = (Model *) this->object;
         ModelData *data = model->data;
@@ -69,7 +81,7 @@ void __class_method_model_precompile_display_lists(void * __retValueVP__, va_lis
         glBindVertexArray(0);
 }
 
-#line 69 "src/classes/nodes/model.class.c"
+#line 80 "src/classes/nodes/model.class.c"
 void __class_method_model_render(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);mat4 * modelMatrix = va_arg(args, mat4 *);Shader  activeShader = va_arg(args, Shader );(void)this;
         Model *model = (Model *) this->object;
         ModelData *data = model->data;
@@ -155,7 +167,7 @@ void __class_method_model_render(void * __retValueVP__, va_list args) {Node * th
 
 }
 
-#line 154 "src/classes/nodes/model.class.c"
+#line 165 "src/classes/nodes/model.class.c"
 void __class_method_model_free(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         // See src/memory.c for the implementation of free_models
         for (int i = 0; i < this->length; i++) {

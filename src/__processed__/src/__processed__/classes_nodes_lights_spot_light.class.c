@@ -72,7 +72,28 @@ void __class_method_spotlight_update(void * __retValueVP__, va_list args) {Node 
         lightsCount[SPOT_LIGHT]++;
 }
 
-#line 73 "src/classes/nodes/lights/spot_light.class.c"
+
+
+#line 75 "src/classes/nodes/lights/spot_light.class.c"
+void __class_method_spotlight_get_settings_data(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);void ***  ptr = va_arg(args, void *** );int *  length = va_arg(args, int * );(void)this;
+        SUPER(get_settings_data, ptr, length);
+        SpotLight *spotLight = (SpotLight *) this->object;
+        void *data[] = {
+            "rgb", "Ambient : ", &spotLight->ambient,
+            "rgb", "Diffuse : ", &spotLight->diffuse,
+            "rgb", "Specular : ", &spotLight->specular,
+            "float", "Constant : ", &spotLight->constant,
+            "float", "Linear : ", &spotLight->linear,
+            "float", "Quadratic : ", &spotLight->quadratic,
+            "float", "CutOff : ", &spotLight->cutOff,
+            "float", "OuterCutOff : ", &spotLight->outerCutOff
+        };
+        *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
+        memcpy(*ptr + (*length), data, sizeof(data));
+        *length += sizeof(data)/sizeof(void *);
+}
+
+#line 93 "src/classes/nodes/lights/spot_light.class.c"
 void __class_method_spotlight_load(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         SpotLight *spotLight;
         spotLight = malloc(sizeof(SpotLight));
@@ -106,7 +127,7 @@ void __class_method_spotlight_load(void * __retValueVP__, va_list args) {Node * 
         this->flags |= NODE_EDITOR_FLAG;
 }
 
-#line 106 "src/classes/nodes/lights/spot_light.class.c"
+#line 126 "src/classes/nodes/lights/spot_light.class.c"
 void __class_method_spotlight_save(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         fprintf(file, "%s", classManager.class_names[this->type]);
         SpotLight *spotLight = (SpotLight*) this->object;
@@ -133,7 +154,7 @@ void __class_method_spotlight_save(void * __retValueVP__, va_list args) {Node * 
      * @param lightsCount The number of lights in the scene.
      */
 
-#line 132 "src/classes/nodes/lights/spot_light.class.c"
+#line 152 "src/classes/nodes/lights/spot_light.class.c"
 void __class_method_spotlight_configure_lighting(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Camera * c = va_arg(args, Camera *);WorldShaders * shaders = va_arg(args, WorldShaders *);u8 * lightsCount = va_arg(args, u8 *);(void)this;
 
         IGNORE(c);

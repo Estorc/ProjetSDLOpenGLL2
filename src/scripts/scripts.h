@@ -22,6 +22,7 @@ typedef union BehaviorAttribute {
     int i;
     float f;
     bool b;
+    void *p;
     struct Node *node;
 } BehaviorAttribute;
 

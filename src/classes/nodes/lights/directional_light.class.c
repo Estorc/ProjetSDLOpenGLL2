@@ -67,6 +67,24 @@ class DirectionalLight : public Light {
         lightsCount[DIRECTIONAL_LIGHT]++;
     }   
 
+
+
+    void get_settings_data(void *** ptr, int * length) {
+        SUPER(get_settings_data, ptr, length);
+        DirectionalLight *directionalLight = (DirectionalLight*) this->object;
+        void *data[] = {
+            "rgb", "Ambient : ", &directionalLight->ambient,
+            "rgb", "Diffuse : ", &directionalLight->diffuse,
+            "rgb", "Specular : ", &directionalLight->specular,
+            "float", "Constant : ", &directionalLight->constant,
+            "float", "Linear : ", &directionalLight->linear,
+            "float", "Quadratic : ", &directionalLight->quadratic
+        };
+        *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
+        memcpy(*ptr + (*length), data, sizeof(data));
+        *length += sizeof(data)/sizeof(void *);
+    }
+
     void load(FILE *file) {
         DirectionalLight *directionalLight;
         directionalLight = malloc(sizeof(DirectionalLight));

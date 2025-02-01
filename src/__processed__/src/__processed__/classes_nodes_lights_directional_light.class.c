@@ -69,7 +69,26 @@ void __class_method_directionallight_update(void * __retValueVP__, va_list args)
         lightsCount[DIRECTIONAL_LIGHT]++;
 }
 
-#line 70 "src/classes/nodes/lights/directional_light.class.c"
+
+
+#line 72 "src/classes/nodes/lights/directional_light.class.c"
+void __class_method_directionallight_get_settings_data(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);void ***  ptr = va_arg(args, void *** );int *  length = va_arg(args, int * );(void)this;
+        SUPER(get_settings_data, ptr, length);
+        DirectionalLight *directionalLight = (DirectionalLight*) this->object;
+        void *data[] = {
+            "rgb", "Ambient : ", &directionalLight->ambient,
+            "rgb", "Diffuse : ", &directionalLight->diffuse,
+            "rgb", "Specular : ", &directionalLight->specular,
+            "float", "Constant : ", &directionalLight->constant,
+            "float", "Linear : ", &directionalLight->linear,
+            "float", "Quadratic : ", &directionalLight->quadratic
+        };
+        *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
+        memcpy(*ptr + (*length), data, sizeof(data));
+        *length += sizeof(data)/sizeof(void *);
+}
+
+#line 88 "src/classes/nodes/lights/directional_light.class.c"
 void __class_method_directionallight_load(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         DirectionalLight *directionalLight;
         directionalLight = malloc(sizeof(DirectionalLight));
@@ -99,7 +118,7 @@ void __class_method_directionallight_load(void * __retValueVP__, va_list args) {
         this->flags |= NODE_EDITOR_FLAG;
 }
 
-#line 99 "src/classes/nodes/lights/directional_light.class.c"
+#line 117 "src/classes/nodes/lights/directional_light.class.c"
 void __class_method_directionallight_save(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         fprintf(file, "%s", classManager.class_names[this->type]);
         DirectionalLight *directionalLight = (DirectionalLight*) this->object;
@@ -125,7 +144,7 @@ void __class_method_directionallight_save(void * __retValueVP__, va_list args) {
      * @note This function is called by the render loop to configure the lighting for the specified camera.
      */
 
-#line 124 "src/classes/nodes/lights/directional_light.class.c"
+#line 142 "src/classes/nodes/lights/directional_light.class.c"
 void __class_method_directionallight_configure_lighting(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Camera * c = va_arg(args, Camera *);WorldShaders * shaders = va_arg(args, WorldShaders *);u8 * lightsCount = va_arg(args, u8 *);(void)this;
 
         // Lights and shadows

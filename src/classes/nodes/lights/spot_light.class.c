@@ -70,6 +70,26 @@ class SpotLight : public Light {
         lightsCount[SPOT_LIGHT]++;
     }   
 
+
+
+    void get_settings_data(void *** ptr, int * length) {
+        SUPER(get_settings_data, ptr, length);
+        SpotLight *spotLight = (SpotLight *) this->object;
+        void *data[] = {
+            "rgb", "Ambient : ", &spotLight->ambient,
+            "rgb", "Diffuse : ", &spotLight->diffuse,
+            "rgb", "Specular : ", &spotLight->specular,
+            "float", "Constant : ", &spotLight->constant,
+            "float", "Linear : ", &spotLight->linear,
+            "float", "Quadratic : ", &spotLight->quadratic,
+            "float", "CutOff : ", &spotLight->cutOff,
+            "float", "OuterCutOff : ", &spotLight->outerCutOff
+        };
+        *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
+        memcpy(*ptr + (*length), data, sizeof(data));
+        *length += sizeof(data)/sizeof(void *);
+    }
+
     void load(FILE *file) {
         SpotLight *spotLight;
         spotLight = malloc(sizeof(SpotLight));

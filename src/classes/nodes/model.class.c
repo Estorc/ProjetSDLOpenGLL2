@@ -20,6 +20,17 @@ class Model : public Node {
 
     
 
+    void get_settings_data(void *** ptr, int * length) {
+        SUPER(get_settings_data, ptr, length);
+        Model *model = (Model *) this->object;
+        void *data[] = {
+            "model", "Model : ", &model->data,
+        };
+        *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
+        memcpy(*ptr + (*length), data, sizeof(data));
+        *length += sizeof(data)/sizeof(void *);
+    }
+
     void load(FILE *file) {
         Model *model;
         model = malloc(sizeof(Model));

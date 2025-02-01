@@ -9,6 +9,7 @@
 #include "../src/buffer.h"
 void __class_method_directionallight_constructor(void * __retValueVP__, va_list args);
 void __class_method_directionallight_update(void * __retValueVP__, va_list args);
+void __class_method_directionallight_get_settings_data(void * __retValueVP__, va_list args);
 void __class_method_directionallight_load(void * __retValueVP__, va_list args);
 void __class_method_directionallight_save(void * __retValueVP__, va_list args);
 void __class_method_directionallight_configure_lighting(void * __retValueVP__, va_list args);

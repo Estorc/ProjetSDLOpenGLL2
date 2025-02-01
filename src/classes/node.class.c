@@ -36,6 +36,18 @@ class Node {
 
     
 
+    void get_settings_data(void *** ptr, int * length) {
+        void *data[] = {
+            "vec3", "Position : ", &this->pos,
+            "vec3", "Rotation : ", &this->rot,
+            "vec3", "Scale : ", &this->scale,
+            "node-flags"
+        };
+        *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
+        memcpy(*ptr + (*length), data, sizeof(data));
+        *length += sizeof(data)/sizeof(void *);
+    }
+
     void load() {
         this->type = __type__;
         this::constructor();

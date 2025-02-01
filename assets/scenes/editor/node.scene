@@ -3,7 +3,7 @@ ControlFrame(0p,0p,32p,32p,lt):1
 Button{NULL,scene_editor_btn_remove_node,NULL}:1
 ImageFrame(0w,0h,100w,100h,lc,assets/textures/editor/minus-square.png)
 ControlFrame(0p,0p,32p,32p,lt):1
-Button:1
+Button{NULL,scene_editor_btn_edit_node,NULL}:1
 ImageFrame(0w,0h,100w,100h,lc,assets/textures/editor/edit.png)
 ControlFrame(0p,0p,32p,32p,lt):1
 Button:1

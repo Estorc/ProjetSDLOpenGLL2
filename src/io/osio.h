@@ -26,7 +26,7 @@
  * @param filter The filter to apply when saving the file.
  * @return int Returns 0 on success, or a non-zero error code on failure.
  */
-int osio_save_file(char *path, char *filter);
+int osio_save_file(char *path, char *relativePath, char *filter);
 
 /**
  * @brief Opens a file from the specified path with a given filter.
@@ -37,10 +37,11 @@ int osio_save_file(char *path, char *filter);
  * criteria.
  * 
  * @param path The path from where the file should be opened.
+ * @param relativePath The relative path to the file.
  * @param filter The filter to apply when opening the file.
  * @return int Returns 0 on success, or a non-zero error code on failure.
  */
-int osio_open_file(char *path, char *filter);
+int osio_open_file(char *path, char *relativePath, char *filter);
 
 /**
  * @brief Prints an error message to the standard error output.

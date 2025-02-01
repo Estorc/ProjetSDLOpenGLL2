@@ -1,0 +1,8 @@
+ControlFrame(0w,10p,96w,50p,ct):2
+ControlFrame(0w,0p,25w,32p,lt):1
+Label(Float:, cc)
+ControlFrame(25w,0p,75w,32p,lt):2
+ControlFrame(0p,0p,20w,32p,lt):1
+Label(Value:, cc)
+ControlFrame(20w,0p,80w,32p,lt):1
+InputArea(Value,cc){NULL,float_input_area,NULL}
