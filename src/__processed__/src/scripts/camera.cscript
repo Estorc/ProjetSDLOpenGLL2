@@ -1,4 +1,9 @@
 #line 1 "src/scripts/camera.cscript"
+#include "../raptiquax.h"
+#include "../math/math_util.h"
+#include "../storage/node.h"
+#include "../scripts/scripts.h"
+
 NEW_SCRIPT(camera)
 	GET_READY_PARAMETERS();
 	SET_ATTRIBUTES_COUNT(3);

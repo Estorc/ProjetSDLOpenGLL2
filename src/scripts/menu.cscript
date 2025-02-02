@@ -1,3 +1,9 @@
+#include "../raptiquax.h"
+#include "../io/input.h"
+#include "../storage/node.h"
+#include "../gui/frame.h"
+#include "../utils/scene.h"
+
 NEW_SCRIPT(open_close_menu)
 	GET_READY_PARAMETERS();
     if (input.released_keys & KEY_MENU) {

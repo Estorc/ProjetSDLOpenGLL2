@@ -18,6 +18,18 @@ void __class_method_texturedmesh_constructor(void * __retValueVP__, va_list args
     
 
 #line 19 "src/classes/nodes/textured_mesh.class.c"
+void __class_method_texturedmesh_get_settings_data(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);void ***  ptr = va_arg(args, void *** );int *  length = va_arg(args, int * );(void)this;
+        SUPER(get_settings_data, ptr, length);
+        TextureMap texture = ((TexturedMesh*) this->object)->texture;
+        void *data[] = {
+            "texture", "Texture : ", &texture,
+        };
+        *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
+        memcpy(*ptr + (*length), data, sizeof(data));
+        *length += sizeof(data)/sizeof(void *);
+}
+
+#line 30 "src/classes/nodes/textured_mesh.class.c"
 void __class_method_texturedmesh_load(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         TexturedMesh *texturedMesh;
         texturedMesh = malloc(sizeof(TexturedMesh));
@@ -33,7 +45,7 @@ void __class_method_texturedmesh_load(void * __retValueVP__, va_list args) {Node
         call_method_0(METHOD(constructor,this,texturedMesh));
 }
 
-#line 34 "src/classes/nodes/textured_mesh.class.c"
+#line 45 "src/classes/nodes/textured_mesh.class.c"
 void __class_method_texturedmesh_save(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         fprintf(file, "%s", classManager.class_names[this->type]);
         TextureMap texture = ((TexturedMesh*) this->object)->texture;
@@ -46,7 +58,7 @@ void __class_method_texturedmesh_save(void * __retValueVP__, va_list args) {Node
 }
 
 
-#line 46 "src/classes/nodes/textured_mesh.class.c"
+#line 57 "src/classes/nodes/textured_mesh.class.c"
 void __class_method_texturedmesh_render(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);mat4 * modelMatrix = va_arg(args, mat4 *);Shader  activeShader = va_arg(args, Shader );(void)this;
         vec3 defaultColor = {0.5f, 0.5f, 0.5f};
         glUniform3fv(glGetUniformLocation(activeShader, "material.ambient"), 1, &defaultColor);

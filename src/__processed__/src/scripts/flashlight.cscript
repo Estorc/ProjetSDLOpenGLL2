@@ -1,4 +1,10 @@
 #line 1 "src/scripts/flashlight.cscript"
+#include "../raptiquax.h"
+#include "../io/input.h"
+#include "../storage/node.h"
+#include "../math/math_util.h"
+#include "../utils/scene.h"
+
 NEW_SCRIPT(flashlight)
 	GET_READY_PARAMETERS();
 	SET_ATTRIBUTES_COUNT(3);

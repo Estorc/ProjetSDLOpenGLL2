@@ -160,6 +160,7 @@ class Skybox : public Node {
 
     }
 
+
     void load(FILE *file) {
         TexturedMesh *texturedMesh;
         texturedMesh = malloc(sizeof(TexturedMesh));

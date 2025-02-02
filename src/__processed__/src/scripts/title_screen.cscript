@@ -1,4 +1,12 @@
 #line 1 "src/scripts/title_screen.cscript"
+#include "../raptiquax.h"
+#include "../math/math_util.h"
+#include "../storage/node.h"
+#include "../render/camera.h"
+#include "../gui/frame.h"
+#include "../storage/queue.h"
+#include "../utils/scene.h"
+
 NEW_SCRIPT(title_screen_camera)
 	GET_READY_PARAMETERS();
 

@@ -40,24 +40,32 @@ void __class_method_node_get_glow_shader(void * __retValueVP__, va_list args) {N
 
 #line 39 "src/classes/node.class.c"
 void __class_method_node_get_settings_data(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);void ***  ptr = va_arg(args, void *** );int *  length = va_arg(args, int * );(void)this;
+
+        if (!this->behavior) {
+            printf("Behavior is null\n");
+            this->behavior = realloc(this->behavior, sizeof(Behavior));     // Ensure that the behavior array is initialized
+            memset(this->behavior, 0, sizeof(Behavior));                    // for editor use.
+            this->flags |= NODE_SCRIPT;
+        }
+
         void *data[] = {
             "vec3", "Position : ", &this->pos,
             "vec3", "Rotation : ", &this->rot,
             "vec3", "Scale : ", &this->scale,
-            "node-flags"
+            "node-flags", &(*this->behavior)[BEHAVIOR_SCRIPT_READY], &(*this->behavior)[BEHAVIOR_SCRIPT_UPDATE], &(*this->behavior)[BEHAVIOR_SCRIPT_SIGNAL]
         };
         *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
         memcpy(*ptr + (*length), data, sizeof(data));
         *length += sizeof(data)/sizeof(void *);
 }
 
-#line 51 "src/classes/node.class.c"
+#line 59 "src/classes/node.class.c"
 void __class_method_node_load(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         this->type = __type__;
         this::constructor();
 }
 
-#line 56 "src/classes/node.class.c"
+#line 64 "src/classes/node.class.c"
 void __class_method_node_save(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         fprintf(file, "%s", classManager.class_names[this->type]);
 }
@@ -72,7 +80,7 @@ void __class_method_node_save(void * __retValueVP__, va_list args) {Node * this 
      * @param activeShader The shader to be used for rendering.
      */
 
-#line 70 "src/classes/node.class.c"
+#line 78 "src/classes/node.class.c"
 void __class_method_node_prepare_render(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);mat4 * modelMatrix = va_arg(args, mat4 *);Shader  activeShader = va_arg(args, Shader );(void)this;
         
         set_shader_int(activeShader, "diffuseMapActive", 0);
@@ -86,12 +94,12 @@ void __class_method_node_prepare_render(void * __retValueVP__, va_list args) {No
         glm_scale(*modelMatrix, (vec3){this->scale[0], this->scale[1], this->scale[2]});
 }
 
-#line 83 "src/classes/node.class.c"
+#line 91 "src/classes/node.class.c"
 void __class_method_node_render(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         //
 }
 
-#line 87 "src/classes/node.class.c"
+#line 95 "src/classes/node.class.c"
 void __class_method_node_update_global_position(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);vec3 * pos = va_arg(args, vec3 *);vec3 * rot = va_arg(args, vec3 *);vec3 * scale = va_arg(args, vec3 *);(void)this;
         vec3 nodePos;
         glm_vec3_copy(this->pos, nodePos);
@@ -111,12 +119,12 @@ void __class_method_node_update_global_position(void * __retValueVP__, va_list a
         glm_vec3_copy(*scale, this->globalScale);
 }
 
-#line 106 "src/classes/node.class.c"
+#line 114 "src/classes/node.class.c"
 void __class_method_node_update(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);vec3 * pos = va_arg(args, vec3 *);vec3 * rot = va_arg(args, vec3 *);vec3 * scale = va_arg(args, vec3 *);(void)this;
         this::update_global_position(pos, rot, scale);
 }
 
-#line 110 "src/classes/node.class.c"
+#line 118 "src/classes/node.class.c"
 void __class_method_node_free(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         for (int i = 0; i < this->length; i++) {
             (this->children[i])::free();
@@ -127,22 +135,22 @@ void __class_method_node_free(void * __retValueVP__, va_list args) {Node * this 
         free(this);
 }
 
-#line 120 "src/classes/node.class.c"
+#line 128 "src/classes/node.class.c"
 void __class_method_node_is_cshape(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);bool * cshape = va_arg(args, bool *);(void)this;
         *cshape = false;
 }
 
-#line 124 "src/classes/node.class.c"
+#line 132 "src/classes/node.class.c"
 void __class_method_node_is_body(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);bool * body = va_arg(args, bool *);(void)this;
         *body = false;
 }
 
-#line 128 "src/classes/node.class.c"
+#line 136 "src/classes/node.class.c"
 void __class_method_node_is_area(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);bool * area = va_arg(args, bool *);(void)this;
         *area = false;
 }
 
-#line 132 "src/classes/node.class.c"
+#line 140 "src/classes/node.class.c"
 void __class_method_node_is_gui_element(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);bool * result = va_arg(args, bool *);(void)this;
         *result = false;
 }
@@ -156,7 +164,7 @@ void __class_method_node_is_gui_element(void * __retValueVP__, va_list args) {No
      * @param child The child node to be added.
      */
 
-#line 145 "src/classes/node.class.c"
+#line 153 "src/classes/node.class.c"
 void __class_method_node_add_child(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node * child = va_arg(args, Node *);(void)this;
         
         this->children[this->length++] = child;
@@ -173,7 +181,7 @@ void __class_method_node_add_child(void * __retValueVP__, va_list args) {Node * 
      * @param child The child node to be added.
      */
 
-#line 161 "src/classes/node.class.c"
+#line 169 "src/classes/node.class.c"
 void __class_method_node_add_child_and_realloc(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node * child = va_arg(args, Node *);(void)this;
         this->children = realloc(this->children, sizeof(Node *) * (this->length+1));
         POINTER_CHECK(this->children);
@@ -190,7 +198,7 @@ void __class_method_node_add_child_and_realloc(void * __retValueVP__, va_list ar
      * @param child The child node to be removed.
      */
 
-#line 177 "src/classes/node.class.c"
+#line 185 "src/classes/node.class.c"
 void __class_method_node_remove_child(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node * child = va_arg(args, Node *);(void)this;
         for (Node **rightCursor, **leftCursor = rightCursor = this->children; rightCursor < this->children + this->length; leftCursor++, rightCursor++) {
             if (child == *rightCursor) rightCursor++;
@@ -207,7 +215,7 @@ void __class_method_node_remove_child(void * __retValueVP__, va_list args) {Node
      * @param child The child node to be removed.
      */
 
-#line 193 "src/classes/node.class.c"
+#line 201 "src/classes/node.class.c"
 void __class_method_node_remove_child_and_realloc(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node * child = va_arg(args, Node *);(void)this;
         for (Node **rightCursor, **leftCursor = rightCursor = this->children; rightCursor < this->children + this->length; leftCursor++, rightCursor++) {
             if (child == *rightCursor) rightCursor++;
@@ -226,7 +234,7 @@ void __class_method_node_remove_child_and_realloc(void * __retValueVP__, va_list
      * @param child The child node to be removed and freed.
      */
 
-#line 211 "src/classes/node.class.c"
+#line 219 "src/classes/node.class.c"
 void __class_method_node_remove_child_and_free(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node * child = va_arg(args, Node *);(void)this;
         for (Node **rightCursor, **leftCursor = rightCursor = this->children; rightCursor < this->children + this->length; leftCursor++, rightCursor++) {
             if (child == *rightCursor) (*rightCursor)::free(), rightCursor++;
@@ -244,7 +252,7 @@ void __class_method_node_remove_child_and_free(void * __retValueVP__, va_list ar
      * @param child The child node to be removed and freed.
      */
 
-#line 228 "src/classes/node.class.c"
+#line 236 "src/classes/node.class.c"
 void __class_method_node_remove_child_and_free_and_realloc(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Node * child = va_arg(args, Node *);(void)this;
         for (Node **rightCursor, **leftCursor = rightCursor = this->children; rightCursor < this->children + this->length; leftCursor++, rightCursor++) {
             if (child == *rightCursor) {
@@ -276,7 +284,7 @@ int call_method_1(void (*func)(void *, va_list), ...) {
     va_end(args);
     return value;
 }
-#line 251 "src/classes/node.class.c"
+#line 259 "src/classes/node.class.c"
 void __class_method_node_index_of_child(void * __retValueVP__, va_list args) {int * __retValueP__ = (int *) __retValueVP__;Node * this = va_arg(args, Node *);Node * child = va_arg(args, Node *);(void)this;
         for (int i = 0; i < this->length; i++) {
             if (child == this->children[i]) *__retValueP__ = i;return;
@@ -294,7 +302,7 @@ void __class_method_node_index_of_child(void * __retValueVP__, va_list args) {in
      * @param level The level of indentation for printing.
      */
 
-#line 268 "src/classes/node.class.c"
+#line 276 "src/classes/node.class.c"
 void __class_method_node_print(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);int  level = va_arg(args, int );(void)this;
         #ifdef DEBUG
         for (int i = 0; i < level; i++) printf("\t");
@@ -317,17 +325,17 @@ void __class_method_node_print(void * __retValueVP__, va_list args) {Node * this
 }
 
 
-#line 290 "src/classes/node.class.c"
+#line 298 "src/classes/node.class.c"
 void __class_method_node_emit_ready(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         if (this->flags & NODE_SCRIPT && (*this->behavior)[BEHAVIOR_SCRIPT_READY]) (*this->behavior)[BEHAVIOR_SCRIPT_READY](this, args);
 }
 
-#line 294 "src/classes/node.class.c"
+#line 302 "src/classes/node.class.c"
 void __class_method_node_emit_update(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         if (this->flags & NODE_SCRIPT && (*this->behavior)[BEHAVIOR_SCRIPT_UPDATE]) (*this->behavior)[BEHAVIOR_SCRIPT_UPDATE](this, args);
 }
 
-#line 298 "src/classes/node.class.c"
+#line 306 "src/classes/node.class.c"
 void __class_method_node_emit_signal(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         if (this->flags & NODE_SCRIPT && (*this->behavior)[BEHAVIOR_SCRIPT_SIGNAL]) (*this->behavior)[BEHAVIOR_SCRIPT_SIGNAL](this, args);
 }

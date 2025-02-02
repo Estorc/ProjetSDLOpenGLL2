@@ -65,6 +65,31 @@
                 }
             ],
             "miDebuggerArgs": "-ex 'set pagination off'",  // Optional, to prevent `gdb` paging
+        },
+        {
+            "name": "Debug Current File",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",  // Use the dynamically created executable
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",  // Use "gdb" for Linux/macOS or "lldb" for macOS
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "C/C++: gcc build active file",  // The task to compile the current file
+            "miDebuggerPath": "/usr/bin/gdb",  // GDB path on Linux (change if necessary)
+            "logging": {
+                "engineLogging": false
+            },
+            "showDisplayString": true
         }
     ]
 }

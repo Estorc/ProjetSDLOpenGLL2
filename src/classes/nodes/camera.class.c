@@ -23,7 +23,6 @@ class Camera : public Node {
 
     void get_settings_data(void *** ptr, int * length) {
         SUPER(get_settings_data, ptr, length);
-        Camera *camera = (Camera *) this->object;
         void *data[] = {
             "camera", "Active : "
         };

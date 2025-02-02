@@ -25,7 +25,6 @@ void __class_method_camera_update(void * __retValueVP__, va_list args) {Node * t
 #line 24 "src/classes/nodes/camera.class.c"
 void __class_method_camera_get_settings_data(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);void ***  ptr = va_arg(args, void *** );int *  length = va_arg(args, int * );(void)this;
         SUPER(get_settings_data, ptr, length);
-        Camera *camera = (Camera *) this->object;
         void *data[] = {
             "camera", "Active : "
         };
@@ -34,7 +33,7 @@ void __class_method_camera_get_settings_data(void * __retValueVP__, va_list args
         *length += sizeof(data)/sizeof(void *);
 }
 
-#line 35 "src/classes/nodes/camera.class.c"
+#line 34 "src/classes/nodes/camera.class.c"
 void __class_method_camera_load(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);Camera ** c = va_arg(args, Camera **);Script * scripts = va_arg(args, Script *);Node * editor = va_arg(args, Node *);(void)this;
         IGNORE(scripts);
         Camera *cam;
@@ -53,7 +52,7 @@ void __class_method_camera_load(void * __retValueVP__, va_list args) {Node * thi
         this::constructor(cam);
 }
 
-#line 53 "src/classes/nodes/camera.class.c"
+#line 52 "src/classes/nodes/camera.class.c"
 void __class_method_camera_save(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);Node * editor = va_arg(args, Node *);(void)this;
         fprintf(file, "%s", classManager.class_names[this->type]);
         if (editor) fprintf(file, "(%d)", !!(editor->attribute[5].node == this));

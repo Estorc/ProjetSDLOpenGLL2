@@ -6,6 +6,7 @@
 #include "../src/storage/node.h"
 #include "../src/memory.h"
 void __class_method_texturedmesh_constructor(void * __retValueVP__, va_list args);
+void __class_method_texturedmesh_get_settings_data(void * __retValueVP__, va_list args);
 void __class_method_texturedmesh_load(void * __retValueVP__, va_list args);
 void __class_method_texturedmesh_save(void * __retValueVP__, va_list args);
 void __class_method_texturedmesh_render(void * __retValueVP__, va_list args);

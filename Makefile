@@ -43,6 +43,13 @@ NEWLINE := $(shell printf "\n")
 
 # Object Files path
 
+PYTHON = python3
+PIP = pip
+PYTHON_REQUIREMENTS = ./lib/python_requirements.txt
+VENV_DIR = .venv
+VENV_PYTHON = $(VENV_DIR)/bin/python
+VENV_PIP = $(VENV_DIR)/bin/pip
+
 BUILD_DIR := bin
 TEST_DIR := test
 PROCESSED_CLASS_DIR := src/__processed__
@@ -120,8 +127,11 @@ LOADING_SCRIPT_HEADER := src/scripts/loading_scripts.h
 NEW_SCRIPT_SYMBOL := NEW_SCRIPT
 SCRIPTS_PATHS := $(wildcard src/scripts/**/*.cscript)
 SCRIPTS_PATHS += $(wildcard src/scripts/*.cscript)
-SCRIPTS_FILES := $(notdir $(SCRIPTS_PATHS))
+SCRIPTS_MODULES := $(SCRIPTS_PATHS:.cscript=.o)
 SCRIPTS_COUNT := -D SCRIPTS_COUNT=$(shell grep -o '\b$(NEW_SCRIPT_SYMBOL)\b' $(SCRIPTS_PATHS) | wc -l)
+
+RELEASE_MODULES := $(RELEASE_MODULES) $(addprefix $(BUILD_DIR)/,${SCRIPTS_MODULES})
+DEBUG_MODULES := $(DEBUG_MODULES) $(addprefix $(BUILD_DIR)/debug/,${SCRIPTS_MODULES})
 
 CLASS_TOOLS := $(shell tools/class_tools)
 CLASSES_MODULES := $(wildcard $(PROCESSED_CLASS_DIR)/*.class.c)
@@ -146,7 +156,7 @@ launch:
 	@${BUILD_DIR}/release/app
 
 
-release: generate_header init_build ${RELEASE_MODULES} $(BUILD_DIR)/${MAIN} ${LIBS}
+release: init_build ${RELEASE_MODULES} $(BUILD_DIR)/${MAIN} ${LIBS} ${SCRIPTS_PATHS}
 	@printf "${STEP_COL}===================== Begin linking. ====================${NC}\n"
 	@printf "${ACT_COL}Linking app...${NC}\n"
 	@mkdir -p ${BUILD_DIR}/release
@@ -161,7 +171,7 @@ release: generate_header init_build ${RELEASE_MODULES} $(BUILD_DIR)/${MAIN} ${LI
 
 	@printf "${STEP_COL}============= ${SUCCESS_COL}Successfully build the app!${NC}${STEP_COL} =============${NC}\n"
 
-debug: generate_header init_build ${DEBUG_MODULES} $(BUILD_DIR)/debug/${MAIN} ${LIBS}
+debug: init_build ${DEBUG_MODULES} $(BUILD_DIR)/debug/${MAIN} ${LIBS} ${SCRIPTS_PATHS}
 	@printf "${STEP_COL}===================== Begin debug linking. ====================${NC}\n"
 	@printf "${ACT_COL}Linking debug app...${NC}\n"
 	@mkdir -p ${BUILD_DIR}/debug
@@ -200,11 +210,16 @@ ${TEST_DIR}/%.o: ${TEST_DIR}/%.c
 	@${GCC} -c $< -o $@ ${CFLAGS} ${LFLAGS} ${WFLAGS}
 	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}$@${NC}\n"
 
+
+# Ensure that header files are ignored to prevent errors
+%.h:
+	@printf "${ACT_COL}Ignoring $@${NC}\n"
+
 # Release objects constructor
 ${BUILD_DIR}/%.o: %.c
 	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}...\n"
 	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
-	@python3 ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
+	@$(VENV_PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
 
 	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
 	@mkdir -p ${BUILD_DIR}/${dir $*}
@@ -215,19 +230,46 @@ ${BUILD_DIR}/%.o: %.c
 ${BUILD_DIR}/debug/%.o: %.c
 	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}...\n"
 	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
-	@python3 ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
+	@$(VENV_PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
 
 	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
 	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
 	@${GCC} -c ${PROCESSED_CLASS_DIR}/$< -g -o ${BUILD_DIR}/debug/$*.o -I$(dir $*) -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
 	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}\n"
 
-# @python3 ./tools/preprocessor_pipeline.py $$file/${dir $<}
+
+
+
+
+
+# Release objects constructor
+${BUILD_DIR}/%.o: %.cscript
+	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}...\n"
+	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
+	@$(VENV_PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
+
+	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
+	@mkdir -p ${BUILD_DIR}/${dir $*}
+	@${GCC} -x c -c ${PROCESSED_CLASS_DIR}/$< -o ${BUILD_DIR}/$*.o -I$(dir $*) ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/$*.o${NC}\n"
+
+# Debug objects constructor
+${BUILD_DIR}/debug/%.o: %.cscript
+	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}...\n"
+	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
+	@$(VENV_PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
+
+	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
+	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
+	@${GCC} -x c -c ${PROCESSED_CLASS_DIR}/$< -g -o ${BUILD_DIR}/debug/$*.o -I$(dir $*) -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}\n"
+
+# @$(VENV_PYTHON) ./tools/preprocessor_pipeline.py $$file/${dir $<}
 generate_header:
 	@printf "Generate loading scripts header...\n"
 	@echo "// Auto-generated scripts loading header file" > $(LOADING_SCRIPT_HEADER)
 	@for file in $(SCRIPTS_PATHS); do \
-		python3 ./tools/preprocessor_pipeline.py $$file ${PROCESSED_CLASS_DIR}/$$(dirname $$file); \
+		$(VENV_PYTHON) ./tools/preprocessor_pipeline.py $$file ${PROCESSED_CLASS_DIR}/$$(dirname $$file); \
 		echo "#include \"../__processed__/$$file\"" >> $(LOADING_SCRIPT_HEADER); \
 	done
 
@@ -237,7 +279,38 @@ clean:
 	@rm -rf ${BUILD_DIR}
 	@printf "${SUCCESS_COL}Successfully clear the build!${NC}\n"
 
-.PHONY: all build debug tools generate_header
+
+# Default target to install libraries
+install: check-env venv
+	@printf "${ACT_COL}Install python requirements...${NC}\n"
+	@$(VENV_PIP) install -r $(PYTHON_REQUIREMENTS)
+	@printf "${SUCCESS_COL}Successfully install python requirements!${NC}\n"
+
+# Install a specific library into the virtual environment
+install-lib: check-env venv
+	@$(VENV_PIP) install $(LIBRARY_NAME)
+
+# Ensure that the environment is not externally-managed
+check-env:
+	@if [ -z "$(shell $(PIP) --version &>/dev/null)" ]; then \
+		echo "Error: pip is not installed. Please install pip."; \
+		exit 1; \
+	elif [ -f "/usr/lib/python$(shell $(PYTHON) -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')" ]; then \
+		echo "Warning: You're using a system-managed Python environment. Installing packages globally may cause conflicts."; \
+		echo "Consider using a virtual environment for your project."; \
+		exit 1; \
+	fi
+
+# Create the virtual environment if not already present
+venv:
+	@if [ ! -d "$(VENV_DIR)" ]; then \
+		echo "Creating virtual environment..."; \
+		$(PYTHON) -m venv $(VENV_DIR); \
+	fi
+
+
+
+.PHONY: all build debug tools generate_header install clean
 -include $(BUILD_DIR)/$(MAIN:.o=.d)
 -include $(BUILD_DIR)/debug/$(MAIN:.o=.d)
 -include $(RELEASE_MODULES:.o=.d)

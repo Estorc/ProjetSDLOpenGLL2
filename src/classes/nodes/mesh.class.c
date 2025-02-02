@@ -13,7 +13,6 @@ class Mesh : public Node {
         SUPER(initialize_node);
     }
 
-    
 
     void load() {
         Mesh *mesh;

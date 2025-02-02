@@ -1,0 +1,62 @@
+#line 1 "src/scripts/scene_editor/script_input.cscript"
+#include "../../raptiquax.h"
+#include "../../math/math_util.h"
+#include "../../io/model.h"
+#include "../../storage/node.h"
+#include "../../render/framebuffer.h"
+#include "../../gui/frame.h"
+#include "../../scripts/scripts.h"
+#include "../../io/input.h"
+
+NEW_SCRIPT(script_input_area_init)
+#ifdef DEBUG
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(2);
+	ScriptFunc *func = this->attribute[1].p;
+	Frame *frame = (Frame*) this->object;
+	InputArea *inputArea = (InputArea*) frame->inputArea;
+
+	char scriptname[100] = "";
+	printf("Script: %p\n", (func));
+	for (int i = 0; i < SCRIPTS_COUNT; i++) {
+		if (mainNodeTree.scripts[i].script == (*func)) {
+			strcpy(scriptname, mainNodeTree.scripts[i].name);
+			break;
+		}
+			
+	}
+	sprintf(inputArea->text, "%s", scriptname);
+	frame->flags |= FRAME_NEEDS_REFRESH;
+#endif
+END_SCRIPT(script_input_area_init)
+
+
+NEW_SCRIPT(script_input_area)
+#ifdef DEBUG
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(2);
+	int *lastState = &this->attribute[0].i;
+	ScriptFunc *func = this->attribute[1].p;
+	Frame *frame = (Frame*) this->object;
+	InputArea *inputArea = (InputArea*) frame->inputArea;
+
+	if (!(inputArea->state & BUTTON_STATE_PRESSED) && (*lastState & BUTTON_STATE_PRESSED)) {
+		bool found = false;
+		for (int j = 0; j < SCRIPTS_COUNT; j++) {
+			if (!strcmp(mainNodeTree.scripts[j].name, inputArea->text)) {
+				printf("Script found: %s\n", inputArea->text);
+				printf("Script found: %s\n", mainNodeTree.scripts[j].name);
+				(*func) = mainNodeTree.scripts[j].script;
+				found = true;
+				break;
+			}
+		}
+		if (!found) {
+			(*func) = NULL;
+			sprintf(inputArea->text, "%s", "");
+			frame->flags |= FRAME_NEEDS_REFRESH;
+		}
+	}
+	*lastState = inputArea->state;
+#endif
+END_SCRIPT(script_input_area)

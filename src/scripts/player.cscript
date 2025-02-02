@@ -1,4 +1,9 @@
-#include "raptiquax.h"
+#include "../raptiquax.h"
+#include "../io/input.h"
+#include "../render/camera.h"
+#include "../storage/node.h"
+#include "../physics/bodies.h"
+#include "../scripts/scripts.h"
 
 NEW_SCRIPT(player)
 	GET_READY_PARAMETERS();

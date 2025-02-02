@@ -37,11 +37,19 @@ class Node {
     
 
     void get_settings_data(void *** ptr, int * length) {
+
+        if (!this->behavior) {
+            printf("Behavior is null\n");
+            this->behavior = realloc(this->behavior, sizeof(Behavior));     // Ensure that the behavior array is initialized
+            memset(this->behavior, 0, sizeof(Behavior));                    // for editor use.
+            this->flags |= NODE_SCRIPT;
+        }
+
         void *data[] = {
             "vec3", "Position : ", &this->pos,
             "vec3", "Rotation : ", &this->rot,
             "vec3", "Scale : ", &this->scale,
-            "node-flags"
+            "node-flags", &(*this->behavior)[BEHAVIOR_SCRIPT_READY], &(*this->behavior)[BEHAVIOR_SCRIPT_UPDATE], &(*this->behavior)[BEHAVIOR_SCRIPT_SIGNAL]
         };
         *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
         memcpy(*ptr + (*length), data, sizeof(data));

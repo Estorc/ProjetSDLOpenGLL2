@@ -1,5 +1,6 @@
 #include "../io/input.h"
 struct Window;
+
 #define NODE_FUNC_PARAMS struct Node *this, va_list args
 #define NODE_FUNC_RETURN void
 #define GET_READY_PARAMETERS() float delta = (float) GET_PARAMETER(double); (void) delta
@@ -13,7 +14,7 @@ struct Window;
 #define SET_ATTRIBUTES_COUNT(x) MALLOC_ATTRIBUTE(this, x)
 
 #define NEW_SCRIPT(script_name) NODE_FUNC_RETURN script_name(NODE_FUNC_PARAMS) {
-#define END_SCRIPT(script_name) }; mainNodeTree.scripts[mainNodeTree.scriptIndex].name = #script_name, mainNodeTree.scripts[mainNodeTree.scriptIndex++].script = script_name;
+#define END_SCRIPT(script_name) }; static __attribute__((constructor)) void __anon_ctor_##script_name(void) {mainNodeTree.scripts[mainNodeTree.scriptIndex].name = #script_name, mainNodeTree.scripts[mainNodeTree.scriptIndex++].script = script_name;}
 
 #ifndef SCRIPTS_H
 #define SCRIPTS_H
@@ -26,8 +27,10 @@ typedef union BehaviorAttribute {
     struct Node *node;
 } BehaviorAttribute;
 
+typedef NODE_FUNC_RETURN (*ScriptFunc)(NODE_FUNC_PARAMS);
+
 typedef struct Script {
-    NODE_FUNC_RETURN (*script)(NODE_FUNC_PARAMS);
+    ScriptFunc script;
     char * name;
 } Script;
 
@@ -38,6 +41,6 @@ typedef enum BehaviorScripts {
     BEHAVIOR_SCRIPT_COUNT,
 } BehaviorScripts;
 
-typedef NODE_FUNC_RETURN (*Behavior[BEHAVIOR_SCRIPT_COUNT])(NODE_FUNC_PARAMS);
+typedef ScriptFunc Behavior[BEHAVIOR_SCRIPT_COUNT];
 
 #endif

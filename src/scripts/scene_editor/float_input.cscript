@@ -1,0 +1,33 @@
+#include "../../raptiquax.h"
+#include "../../math/math_util.h"
+#include "../../io/model.h"
+#include "../../storage/node.h"
+#include "../../render/framebuffer.h"
+#include "../../gui/frame.h"
+#include "../../io/input.h"
+#include "../../scripts/scripts.h"
+
+NEW_SCRIPT(float_input_area)
+#ifdef DEBUG
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(2);
+	int *lastState = &this->attribute[0].i;
+	float *value = this->attribute[1].p;
+	Frame *frame = (Frame*) this->object;
+	InputArea *inputArea = (InputArea*) frame->inputArea;
+
+	if (!(inputArea->state & BUTTON_STATE_PRESSED) && inputArea->text[0] == 0) {
+		sprintf(inputArea->text, "%g", *value);
+		frame->flags |= FRAME_NEEDS_REFRESH;
+	}
+	if (inputArea->state & BUTTON_STATE_PRESSED && inputArea->text[0] != 0) {
+		*value = atof(inputArea->text);
+	}
+	if (!(inputArea->state & BUTTON_STATE_PRESSED) && (*lastState & BUTTON_STATE_PRESSED)) {
+		*value = atof(inputArea->text);
+		sprintf(inputArea->text, "%g", *value);
+		frame->flags |= FRAME_NEEDS_REFRESH;
+	}
+	*lastState = inputArea->state;
+#endif
+END_SCRIPT(float_input_area)

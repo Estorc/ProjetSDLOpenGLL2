@@ -43,6 +43,66 @@ time_t getFileCreationTime(char *path) {
 #define CLASS_SIZE 100
 #define TYPE_SIZE 100
 
+
+
+
+#define BUFFER_SIZE 4096  // Read in 4KB chunks for efficiency
+
+int compareFiles(FILE *fp1, FILE *fp2) {
+    if (!fp1 || !fp2) {
+        perror("Invalid file pointers");
+        return -1; // Error: NULL file pointers
+    }
+
+    // Reopen files in binary mode
+    fp1 = freopen(NULL, "rb", fp1);
+    fp2 = freopen(NULL, "rb", fp2);
+
+    if (!fp1 || !fp2) {
+        perror("Failed to reopen files in binary mode");
+        return -1;
+    }
+
+    unsigned char buffer1[BUFFER_SIZE], buffer2[BUFFER_SIZE];
+    size_t bytesRead1, bytesRead2;
+
+    do {
+        bytesRead1 = fread(buffer1, 1, BUFFER_SIZE, fp1);
+        bytesRead2 = fread(buffer2, 1, BUFFER_SIZE, fp2);
+
+        if (bytesRead1 != bytesRead2 || memcmp(buffer1, buffer2, bytesRead1) != 0) {
+            printf("Files are different\n");
+            return 1; // Files are different
+        }
+    } while (bytesRead1 > 0);
+
+    printf("Files are identical\n");
+    return 0; // Files are identical
+}
+
+
+int copyFile(FILE *src, FILE *dest) {
+    if (!src || !dest) {
+        perror("Invalid file pointers");
+        return -1;
+    }
+
+    src = freopen(NULL, "rb", src);
+    dest = freopen(NULL, "wb", dest);
+
+    char buffer[BUFFER_SIZE];
+    size_t bytesRead;
+
+    while ((bytesRead = fread(buffer, 1, BUFFER_SIZE, src)) > 0) {
+        fwrite(buffer, 1, bytesRead, dest);
+    }
+
+    return 0;  // Success
+}
+
+
+
+
 typedef struct Argument {
 	char name[NAME_SIZE];
 	char type[TYPE_SIZE];
@@ -314,7 +374,7 @@ int main(int argc, char ** argv) {
 		perror("scandir");
 		return 1;
 	} else {
-		ImportStruct import_struct = {0};
+		static ImportStruct import_struct = {0};
 		import_struct.filepath = malloc(n * sizeof(char[PATH_SIZE]));
 		import_struct.srcfilepath = malloc(n * sizeof(char[PATH_SIZE]));
 		// declare void because it is the default return type
@@ -322,6 +382,7 @@ int main(int argc, char ** argv) {
 		strcpy(import_struct.type[0], "void");
 		FILE * source_file;
 		FILE * processed_file;
+		FILE * temp_processed_header_file;
 		FILE * processed_header_file;
 		bool need_rewriting_imports = false;
 		char lwname[NAME_SIZE];
@@ -338,7 +399,6 @@ int main(int argc, char ** argv) {
 			}
 
 			time_t lastEditTime = getFileCreationTime(filepath);
-			printf("Processing file %s -> ", filepath);
 			strcpy(import_struct.srcfilepath[i], filepath);
 
 			filepath = realloc(filepath, strlen(namelist[i]->d_name) + strlen(SRC_PATH) + strlen(PROCESSED_PREFIX) + 1);
@@ -352,25 +412,23 @@ int main(int argc, char ** argv) {
 			lastProcessedTime = getFileCreationTime(filepath);
 
 			if (lastEditTime < lastProcessedTime) {
-				printf("(Already processed) ");
 				processed_file = fopen("/dev/null", "w");
-				processed_header_file = fopen("/dev/null", "w");
+				processed_header_file = NULL;
 				if (processed_file == NULL) {
 					perror("Error opening /dev/null");
 					return 1;
 				}
 				filepath[strlen(filepath) - 1] = 'h';
 			} else {
-				need_rewriting_imports = true;
 				processed_file = fopen(filepath, "w");
-				printf("%s, ", filepath);
+				printf("Processing file -> %s\n", filepath);
 				filepath[strlen(filepath) - 1] = 'h';
-				processed_header_file = fopen(filepath, "w");
-				printf("%s\n", filepath);
+				processed_header_file = fopen(filepath, "r");
 			}
 
+			temp_processed_header_file = tmpfile();
+
 			strcpy(import_struct.filepath[i], filepath + strlen(SRC_PATH));
-			printf("%s\n", import_struct.filepath[i]);
 
 			size_t filename_len = strspn(namelist[i]->d_name, INSTRUCTION_CHARSET);
 			char filename[100];
@@ -378,8 +436,8 @@ int main(int argc, char ** argv) {
 			filename[filename_len] = '\0';
 			uppercase_string(filename);
 			
-			fprintf(processed_header_file, "#ifndef %s%s_H\n", PROCESSED_HEADER_PREFIX, filename);
-			fprintf(processed_header_file, "#define %s%s_H\n", PROCESSED_HEADER_PREFIX, filename);
+			fprintf(temp_processed_header_file, "#ifndef %s%s_H\n", PROCESSED_HEADER_PREFIX, filename);
+			fprintf(temp_processed_header_file, "#define %s%s_H\n", PROCESSED_HEADER_PREFIX, filename);
 
 			free(filepath);
 			
@@ -423,7 +481,7 @@ int main(int argc, char ** argv) {
 							brace_count = 0;
 
 							for (size_t i = 0; i < current_class.methods_count; i++) {
-								fprintf(processed_header_file, "void %s%s_%s(void * %s, va_list args);\n", PROCESSED_METHOD_PREFIX, lwname, current_class.methods[i].name, RETURN_VOID_POINTER);
+								fprintf(temp_processed_header_file, "void %s%s_%s(void * %s, va_list args);\n", PROCESSED_METHOD_PREFIX, lwname, current_class.methods[i].name, RETURN_VOID_POINTER);
 
 								int index;
 								if ((index = find_string_index(current_class.methods[i].name, import_struct.unique_method_name, import_struct.unique_method_count)) == -1) {
@@ -493,7 +551,7 @@ int main(int argc, char ** argv) {
 								if (type_index == -1) {
 									strcpy(import_struct.type[import_struct.type_count], current_method->type);
 									type_index = import_struct.type_count;
-									create_caller_function(current_method->type, type_index, processed_file, processed_header_file);
+									create_caller_function(current_method->type, type_index, processed_file, temp_processed_header_file);
 									import_struct.type_count++;
 								}
 								import_struct.correponding_method_type_index[current_class.methods_count][import_struct.class_count-1] = type_index;
@@ -521,7 +579,7 @@ int main(int argc, char ** argv) {
 					if (strstr(line, "#")) {
 						if (strstr(line, "#include \"")) {
 							fprintf(processed_file, "#include \"../%s", line + strlen("#include \""));	// ../ because we are in the __processed__ directory
-							fprintf(processed_header_file, "#include \"../src/%s", line + strlen("#include \"")); // ../src because we are in the __processed__ directory
+							fprintf(temp_processed_header_file, "#include \"../src/%s", line + strlen("#include \"")); // ../src because we are in the __processed__ directory
 						} else {
 							fprintf(processed_file, "%s", line);
 						}
@@ -555,10 +613,20 @@ int main(int argc, char ** argv) {
 
 
 			} while (!feof(source_file));
-			fprintf(processed_header_file, "#endif\n");
+			fprintf(temp_processed_header_file, "#endif\n");
+
+			rewind(temp_processed_header_file);
+			if (processed_header_file != NULL && compareFiles(temp_processed_header_file, processed_header_file)) {
+				printf("Changes detected in header file\n");
+				rewind(temp_processed_header_file);
+				copyFile(temp_processed_header_file, processed_header_file);
+				need_rewriting_imports = true;
+			}
+
 			fclose(source_file);
 			fclose(processed_file);
-			fclose(processed_header_file);
+			fclose(temp_processed_header_file);
+			if (processed_header_file != NULL) fclose(processed_header_file);
 		}
 		if (need_rewriting_imports) {
 

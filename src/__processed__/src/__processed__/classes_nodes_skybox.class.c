@@ -171,7 +171,8 @@ void __class_method_skybox_create_skybox(void * __retValueVP__, va_list args) {N
 
 }
 
-#line 163 "src/classes/nodes/skybox.class.c"
+
+#line 164 "src/classes/nodes/skybox.class.c"
 void __class_method_skybox_load(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         TexturedMesh *texturedMesh;
         texturedMesh = malloc(sizeof(TexturedMesh));
@@ -194,7 +195,7 @@ void __class_method_skybox_load(void * __retValueVP__, va_list args) {Node * thi
         call_method_0(METHOD(constructor,this,texturedMesh));
 }
 
-#line 185 "src/classes/nodes/skybox.class.c"
+#line 186 "src/classes/nodes/skybox.class.c"
 void __class_method_skybox_save(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         fprintf(file, "%s", classManager.class_names[this->type]);
         TextureMap texture = ((TexturedMesh*) this->object)->texture;
@@ -214,7 +215,7 @@ void __class_method_skybox_save(void * __retValueVP__, va_list args) {Node * thi
 }
 
 
-#line 204 "src/classes/nodes/skybox.class.c"
+#line 205 "src/classes/nodes/skybox.class.c"
 void __class_method_skybox_render(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);mat4 * modelMatrix = va_arg(args, mat4 *);Shader  activeShader = va_arg(args, Shader );WorldShaders * shaders = va_arg(args, WorldShaders *);(void)this;
         IGNORE(activeShader);
         

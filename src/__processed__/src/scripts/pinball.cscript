@@ -1,4 +1,10 @@
 #line 1 "src/scripts/pinball.cscript"
+#include "../raptiquax.h"
+#include "../io/input.h"
+#include "../storage/node.h"
+#include "../physics/bodies.h"
+#include "../scripts/scripts.h"
+
 NEW_SCRIPT(pinball_ball)
 	GET_READY_PARAMETERS();
 	SET_ATTRIBUTES_COUNT(1);

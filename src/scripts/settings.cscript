@@ -1,3 +1,14 @@
+#include "../raptiquax.h"
+#include "../math/math_util.h"
+#include "../io/model.h"
+#include "../storage/node.h"
+#include "../settings.h"
+#include "../window.h"
+#include "../gui/frame.h"
+#include "../storage/queue.h"
+#include "../scripts/scripts.h"
+#include "../classes/classes.h"
+
 NEW_SCRIPT(st_show_fps)
 	GET_READY_PARAMETERS();
     Frame *frame = (Frame*) this->object;

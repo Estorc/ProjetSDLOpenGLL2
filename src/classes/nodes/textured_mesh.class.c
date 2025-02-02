@@ -16,6 +16,17 @@ class TexturedMesh : public Node {
 
     
 
+    void get_settings_data(void *** ptr, int * length) {
+        SUPER(get_settings_data, ptr, length);
+        TextureMap texture = ((TexturedMesh*) this->object)->texture;
+        void *data[] = {
+            "texture", "Texture : ", &texture,
+        };
+        *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
+        memcpy(*ptr + (*length), data, sizeof(data));
+        *length += sizeof(data)/sizeof(void *);
+    }
+
     void load(FILE *file) {
         TexturedMesh *texturedMesh;
         texturedMesh = malloc(sizeof(TexturedMesh));
