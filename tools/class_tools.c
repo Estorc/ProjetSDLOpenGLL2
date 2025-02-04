@@ -8,6 +8,116 @@
 #include <time.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#ifdef __windows__
+
+#define VOID_FILE "NUL"
+#include <windows.h>
+#include <direct.h>
+#define mkdir(path, mode) _mkdir(path)
+
+ssize_t readlink_windows(const char *path, char *buf, size_t bufsize) {
+    HANDLE hFile = CreateFileA(path, GENERIC_READ, FILE_SHARE_READ, NULL,
+                               OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS, NULL);
+    if (hFile == INVALID_HANDLE_VALUE) {
+        return -1;
+    }
+
+    DWORD size = GetFinalPathNameByHandleA(hFile, buf, (DWORD)bufsize, FILE_NAME_NORMALIZED);
+    CloseHandle(hFile);
+
+    if (size == 0 || size >= bufsize) {
+        return -1; // Erreur ou buffer trop petit
+    }
+
+    return (ssize_t)size;
+}
+
+#define readlink(path, buf, bufsize) readlink_windows(path, buf, bufsize)
+
+// Définition des types de fichiers (comme Linux)
+#define DT_UNKNOWN  0
+#define DT_REG      8
+#define DT_DIR      4
+
+struct dirent_win {
+    char d_name[MAX_PATH];
+    unsigned char d_type;  // Ajout du type de fichier
+};
+
+typedef struct dirent_win dirent_t;
+
+int scandir_windows(const char *dirpath, dirent_t ***namelist,
+                    int (*filter)(const dirent_t *),
+                    int (*compar)(const dirent_t **, const dirent_t **)) {
+    WIN32_FIND_DATAA findFileData;
+    HANDLE hFind;
+    char searchPath[MAX_PATH];
+
+    snprintf(searchPath, MAX_PATH, "%s\\*", dirpath);
+    hFind = FindFirstFileA(searchPath, &findFileData);
+    if (hFind == INVALID_HANDLE_VALUE) {
+        return -1;
+    }
+
+    dirent_t **list = NULL;
+    int count = 0;
+
+    do {
+        dirent_t *entry = malloc(sizeof(dirent_t));
+        if (!entry) {
+            perror("malloc");
+            break;
+        }
+        strncpy(entry->d_name, findFileData.cFileName, MAX_PATH);
+
+        // Déterminer le type de fichier
+        if (findFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
+            entry->d_type = DT_DIR;
+        } else {
+            entry->d_type = DT_REG;
+        }
+
+        if (!filter || filter(entry)) {
+            list = realloc(list, (count + 1) * sizeof(dirent_t *));
+            if (!list) {
+                perror("realloc");
+                free(entry);
+                break;
+            }
+            list[count++] = entry;
+        } else {
+            free(entry);
+        }
+    } while (FindNextFileA(hFind, &findFileData) != 0);
+
+    FindClose(hFind);
+
+    if (compar) {
+        qsort(list, count, sizeof(dirent_t *),
+              (int (*)(const void *, const void *))compar);
+    }
+
+    *namelist = list;
+    return count;
+}
+
+
+#define scandir(dirpath, namelist, filter, compar) scandir_windows(dirpath, namelist, filter, compar)
+
+
+int alphasort_portable(const dirent_t **a, const dirent_t **b) {
+    return strcmp((*a)->d_name, (*b)->d_name);
+}
+
+#define alphasort alphasort_portable
+
+
+#else
+
+#define VOID_FILE "/dev/null"
+typedef struct dirent dirent_t;
+
+#endif
 
 time_t getFileCreationTime(char *path) {
     struct stat attr;
@@ -54,15 +164,6 @@ int compareFiles(FILE *fp1, FILE *fp2) {
         return -1; // Error: NULL file pointers
     }
 
-    // Reopen files in binary mode
-    fp1 = freopen(NULL, "rb", fp1);
-    fp2 = freopen(NULL, "rb", fp2);
-
-    if (!fp1 || !fp2) {
-        perror("Failed to reopen files in binary mode");
-        return -1;
-    }
-
     unsigned char buffer1[BUFFER_SIZE], buffer2[BUFFER_SIZE];
     size_t bytesRead1, bytesRead2;
 
@@ -86,9 +187,6 @@ int copyFile(FILE *src, FILE *dest) {
         perror("Invalid file pointers");
         return -1;
     }
-
-    src = freopen(NULL, "rb", src);
-    dest = freopen(NULL, "wb", dest);
 
     char buffer[BUFFER_SIZE];
     size_t bytesRead;
@@ -323,9 +421,9 @@ bool get_class_name(char *line, Class *class) {
 	return false;
 }
 
-void recursive_scan(char *path, char *base_path, struct dirent ***namelist, int (*filter)(const struct dirent *entry), int *n) {
+void recursive_scan(char *path, char *base_path, dirent_t ***namelist, int (*filter)(const dirent_t *entry), int *n) {
 	if (base_path == NULL) base_path = path;
-	struct dirent **local_namelist;
+	dirent_t **local_namelist;
 	int local_n = scandir(path, &local_namelist, filter, alphasort);
 	if (local_n < 0) {
 		perror("scandir");
@@ -339,9 +437,9 @@ void recursive_scan(char *path, char *base_path, struct dirent ***namelist, int 
 			recursive_scan(new_path, base_path, namelist, filter, n);
 		} else {
 			char *new_path = path + strlen(base_path);
-			*namelist = realloc(*namelist, (*n + 1) * sizeof(struct dirent *));
-			(*namelist)[*n] = malloc(sizeof(struct dirent));
-			memcpy((*namelist)[*n], local_namelist[i], sizeof(struct dirent));
+			*namelist = realloc(*namelist, (*n + 1) * sizeof(dirent_t *));
+			(*namelist)[*n] = malloc(sizeof(dirent_t));
+			memcpy((*namelist)[*n], local_namelist[i], sizeof(dirent_t));
 			if (strlen(new_path))
 				snprintf((*namelist)[*n]->d_name, sizeof((*namelist)[*n]->d_name), "%s/%s", new_path + 1, local_namelist[i]->d_name);
 			else
@@ -356,10 +454,10 @@ void recursive_scan(char *path, char *base_path, struct dirent ***namelist, int 
 
 int main(int argc, char ** argv) {
 
-	update_cwd();
-	struct dirent **namelist;
+	//update_cwd();
+	dirent_t **namelist = NULL;
 	int n = 0;
-	int filter(const struct dirent *entry) {
+	int filter(const dirent_t *entry) {
 		return (strstr(entry->d_name, ".class.c") != NULL && !strstr(entry->d_name, PROCESSED_PREFIX)) || (entry->d_type == DT_DIR && entry->d_name[0] != '.' && entry->d_name[0] != '_');
 	}
 
@@ -374,6 +472,7 @@ int main(int argc, char ** argv) {
 		perror("scandir");
 		return 1;
 	} else {
+		printf("Found %d files\n", n);
 		static ImportStruct import_struct = {0};
 		import_struct.filepath = malloc(n * sizeof(char[PATH_SIZE]));
 		import_struct.srcfilepath = malloc(n * sizeof(char[PATH_SIZE]));
@@ -412,24 +511,36 @@ int main(int argc, char ** argv) {
 			lastProcessedTime = getFileCreationTime(filepath);
 
 			if (lastEditTime < lastProcessedTime) {
-				processed_file = fopen("/dev/null", "w");
+				processed_file = fopen(VOID_FILE, "w+b");
 				processed_header_file = NULL;
 				if (processed_file == NULL) {
-					perror("Error opening /dev/null");
 					return 1;
 				}
 				filepath[strlen(filepath) - 1] = 'h';
 			} else {
-				processed_file = fopen(filepath, "w");
+				processed_file = fopen(filepath, "w+b");
 				printf("Processing file -> %s\n", filepath);
 				filepath[strlen(filepath) - 1] = 'h';
-				processed_header_file = fopen(filepath, "r");
+				processed_header_file = fopen(filepath, "r+b");
 				if (!processed_header_file) {
-					processed_header_file = fopen(filepath, "w");	
+					processed_header_file = fopen(filepath, "w+b");	
 				}
 			}
 
+			#ifdef __windows__
+
+			char tempPath[MAX_PATH];
+			char tempFile[MAX_PATH];
+
+			GetTempPathA(MAX_PATH, tempPath);  // Obtenir le répertoire temporaire
+			GetTempFileNameA(tempPath, "tmp", 0, tempFile);  // Créer un fichier temporaire
+
+			printf("Fichier temporaire : %s\n", tempFile);
+
+			temp_processed_header_file = fopen(tempFile, "w+b");
+			#else
 			temp_processed_header_file = tmpfile();
+			#endif
 
 			strcpy(import_struct.filepath[i], filepath + strlen(SRC_PATH));
 
@@ -438,6 +549,7 @@ int main(int argc, char ** argv) {
 			strncpy(filename, namelist[i]->d_name, filename_len);
 			filename[filename_len] = '\0';
 			uppercase_string(filename);
+
 			
 			fprintf(temp_processed_header_file, "#ifndef %s%s_H\n", PROCESSED_HEADER_PREFIX, filename);
 			fprintf(temp_processed_header_file, "#define %s%s_H\n", PROCESSED_HEADER_PREFIX, filename);

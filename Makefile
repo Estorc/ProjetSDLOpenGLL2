@@ -103,6 +103,7 @@ MAIN=src/main.o
 RELEASE_MODULES = $(addprefix $(BUILD_DIR)/,${MODULES})
 DEBUG_MODULES = $(addprefix $(BUILD_DIR)/debug/,${MODULES})
 
+
 # ===============================================================
 
 # Flags
@@ -121,6 +122,12 @@ LFLAGS += -lGLX
 
 WFLAGS += -Wall
 WFLAGS += -Wno-implicit-function-declaration
+
+ifeq ($(OS),Windows_NT) 
+DFLAGS += -D__windows__
+else
+DFLAGS += -D__linux__
+endif
 
 
 LOADING_SCRIPT_HEADER := src/scripts/loading_scripts.h
@@ -189,25 +196,25 @@ debug: init_build ${DEBUG_MODULES} $(BUILD_DIR)/debug/${MAIN} ${LIBS} ${SCRIPTS_
 tools:
 	@printf "${STEP_COL}===================== Begin build tools. ====================\n"
 	@printf "${ACT_COL}Build tools...${NC}\n"
-	@${GCC} -o tools/class_tools tools/class_tools.c ${WFLAGS} -Wno-format-truncation
-	@${GCC} -o tools/node_tools tools/node_tools.c ${WFLAGS}
+	@${GCC} -o tools/class_tools tools/class_tools.c ${DFLAGS} ${WFLAGS} -Wno-format-truncation
+	@${GCC} -o tools/node_tools tools/node_tools.c ${DFLAGS} ${WFLAGS}
 	@printf "${STEP_COL}============= ${NC}${SUCCESS_COL}Successfully build the tools!${NC}${STEP_COL} =============${NC}\n"
 
 
 ${TEST_DIR}/%: ${TEST_DIR}/%.o ${DEBUG_MODULES} ${LIBS}
 	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
-	@${GCC} -g -O0 -o $@ $^ ${LFLAGS} ${WFLAGS}
+	@${GCC} -g -O0 -o $@ $^ ${DFLAGS} ${LFLAGS} ${WFLAGS}
 	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}$@${NC}\n"
 
 ${TEST_DIR}/%.o: ${TEST_DIR}/%.c
 	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
-	@${GCC} -c $< -o $@ ${CFLAGS} ${LFLAGS} ${WFLAGS}
+	@${GCC} -c $< -o $@ ${DFLAGS} ${CFLAGS} ${LFLAGS} ${WFLAGS}
 	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}$@${NC}\n"
 
 
 %.o: %.c
 	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
-	@${GCC} -c $< -o $@ ${CFLAGS} ${LFLAGS} ${WFLAGS}
+	@${GCC} -c $< -o $@ ${DFLAGS} ${CFLAGS} ${LFLAGS} ${WFLAGS}
 	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}$@${NC}\n"
 
 
@@ -223,7 +230,7 @@ ${BUILD_DIR}/%.o: %.c
 
 	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
 	@mkdir -p ${BUILD_DIR}/${dir $*}
-	@${GCC} -c ${PROCESSED_CLASS_DIR}/$< -o ${BUILD_DIR}/$*.o -I$(dir $*) ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@${GCC} -c ${PROCESSED_CLASS_DIR}/$< -o ${BUILD_DIR}/$*.o -I$(dir $*) ${DFLAGS} ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
 	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/$*.o${NC}\n"
 
 # Debug objects constructor
@@ -234,7 +241,7 @@ ${BUILD_DIR}/debug/%.o: %.c
 
 	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
 	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
-	@${GCC} -c ${PROCESSED_CLASS_DIR}/$< -g -o ${BUILD_DIR}/debug/$*.o -I$(dir $*) -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@${GCC} -c ${PROCESSED_CLASS_DIR}/$< -g -o ${BUILD_DIR}/debug/$*.o -I$(dir $*) -DDEBUG ${DFLAGS} ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
 	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}\n"
 
 
@@ -250,7 +257,7 @@ ${BUILD_DIR}/%.o: %.cscript
 
 	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
 	@mkdir -p ${BUILD_DIR}/${dir $*}
-	@${GCC} -x c -c ${PROCESSED_CLASS_DIR}/$< -o ${BUILD_DIR}/$*.o -I$(dir $*) ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@${GCC} -x c -c ${PROCESSED_CLASS_DIR}/$< -o ${BUILD_DIR}/$*.o -I$(dir $*) ${DFLAGS} ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
 	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/$*.o${NC}\n"
 
 # Debug objects constructor
@@ -261,7 +268,7 @@ ${BUILD_DIR}/debug/%.o: %.cscript
 
 	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
 	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
-	@${GCC} -x c -c ${PROCESSED_CLASS_DIR}/$< -g -o ${BUILD_DIR}/debug/$*.o -I$(dir $*) -DDEBUG ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
+	@${GCC} -x c -c ${PROCESSED_CLASS_DIR}/$< -g -o ${BUILD_DIR}/debug/$*.o -I$(dir $*) -DDEBUG ${DFLAGS} ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
 	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}\n"
 
 # @$(VENV_PYTHON) ./tools/preprocessor_pipeline.py $$file/${dir $<}
