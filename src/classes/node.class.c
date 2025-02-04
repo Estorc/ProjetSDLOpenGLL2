@@ -39,7 +39,7 @@ class Node {
     void get_settings_data(void *** ptr, int * length) {
 
         if (!this->behavior) {
-            printf("Behavior is null\n");
+            PRINT_INFO("Behavior is null\n");
             this->behavior = realloc(this->behavior, sizeof(Behavior));     // Ensure that the behavior array is initialized
             memset(this->behavior, 0, sizeof(Behavior));                    // for editor use.
             this->flags |= NODE_SCRIPT;
@@ -275,8 +275,11 @@ class Node {
 
     void print(int level) {
         #ifdef DEBUG
-        for (int i = 0; i < level; i++) printf("\t");
-        printf(" - [%s] (%s) %c%c%c%c%c %d children:\n", 
+        char tabs[level+1];
+        for (int i = 0; i < level; i++) tabs[i] = '\t';
+        tabs[level] = 0;
+        PRINT_INFO("%s - [%s] (%s) %c%c%c%c%c %d children:\n", 
+                tabs,
         
                 classManager.class_names[this->type],
                 "NodeName",

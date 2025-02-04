@@ -8,4 +8,5 @@ void __class_method_capsulecshape_constructor(void * __retValueVP__, va_list arg
 void __class_method_capsulecshape_get_priority(void * __retValueVP__, va_list args);
 void __class_method_capsulecshape_load(void * __retValueVP__, va_list args);
 void __class_method_capsulecshape_save(void * __retValueVP__, va_list args);
+void __class_method_capsulecshape_get_model(void * __retValueVP__, va_list args);
 #endif

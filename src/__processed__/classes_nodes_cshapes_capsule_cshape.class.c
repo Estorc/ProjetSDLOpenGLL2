@@ -34,7 +34,14 @@ void __class_method_capsulecshape_save(void * __retValueVP__, va_list args) {Nod
         fprintf(file, "%s", classManager.class_names[this->type]);
 }
 
-
+    static Model _model = {0};
+#line 35 "src/classes/nodes/cshapes/capsule_cshape.class.c"
+void __class_method_capsulecshape_get_model(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);Model ** model = va_arg(args, Model **);(void)this;
+        if (!_model.data) {
+            load_model("assets/models/collisionShapes/sphere.obj", &_model.data);
+        }
+        *model = &_model;
+}
 
 
     

@@ -31,7 +31,13 @@ class PlaneCShape : public CShape {
         fprintf(file, "%s", classManager.class_names[this->type]);
     }
 
-
+    static Model _model = {0};
+    void get_model(Model **model) {
+        if (!_model.data) {
+            load_model("assets/models/collisionShapes/plane.obj", &_model.data);
+        }
+        *model = &_model;
+    }
 
 
     

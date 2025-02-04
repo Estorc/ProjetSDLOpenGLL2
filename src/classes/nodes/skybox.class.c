@@ -38,9 +38,7 @@ class Skybox : public Node {
                 !strcmp(memoryCaches.cubeMapCache[i].textureName[3], faces[3]) &&
                 !strcmp(memoryCaches.cubeMapCache[i].textureName[4], faces[4]) &&
                 !strcmp(memoryCaches.cubeMapCache[i].textureName[5], faces[5])) {
-                #ifdef DEBUG
-                    printf("Cube Map loaded from cache!\n");
-                #endif
+                PRINT_INFO("Cube Map loaded from cache!\n");
                 return memoryCaches.cubeMapCache[i].cubeMap;
             }
         }
@@ -60,7 +58,7 @@ class Skybox : public Node {
                 );
                 SDL_FreeSurface(textureSurface);
             } else {
-                printf("Cubemap tex failed to load at path: %s\n", faces[i]);
+                PRINT_WARNING("Cubemap tex failed to load at path: %s\n", faces[i]);
                 SDL_FreeSurface(textureSurface);
                 success = 0;
             }

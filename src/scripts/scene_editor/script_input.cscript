@@ -16,7 +16,7 @@ NEW_SCRIPT(script_input_area_init)
 	InputArea *inputArea = (InputArea*) frame->inputArea;
 
 	char scriptname[100] = "";
-	printf("Script: %p\n", (func));
+	PRINT_INFO("Script: %p\n", (func));
 	for (int i = 0; i < SCRIPTS_COUNT; i++) {
 		if (mainNodeTree.scripts[i].script == (*func)) {
 			strcpy(scriptname, mainNodeTree.scripts[i].name);
@@ -43,8 +43,7 @@ NEW_SCRIPT(script_input_area)
 		bool found = false;
 		for (int j = 0; j < SCRIPTS_COUNT; j++) {
 			if (!strcmp(mainNodeTree.scripts[j].name, inputArea->text)) {
-				printf("Script found: %s\n", inputArea->text);
-				printf("Script found: %s\n", mainNodeTree.scripts[j].name);
+				PRINT_INFO("Script found: %s\n", mainNodeTree.scripts[j].name);
 				(*func) = mainNodeTree.scripts[j].script;
 				found = true;
 				break;

@@ -66,10 +66,10 @@ void __class_method_area_update(void * __retValueVP__, va_list args) {Node * thi
         #ifdef DEBUG
         #ifdef DEBUG_AREA
         if (area->sortedLength) {
-            printf("Collected %d nodes:\n", area->sortedLength);
+            PRINT_INFO("Collected %d nodes:\n", area->sortedLength);
         }
         for (int i = 0; i < area->sortedLength; i++) {
-            printf("Node %d: %f\n", i, area->sortedNodes[i].distance);
+            PRINT_INFO("Node %d: %f\n", i, area->sortedNodes[i].distance);
         }
         #endif
         #endif

@@ -14,18 +14,18 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
     window->time = 0.0f;
     window->lastTime = 0.0f;
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
-        printf("Failed to initialize the SDL2 library\n");
+        PRINT_ERROR("Failed to initialize the SDL2 library\n");
         return -1;
     }
 
     if (TTF_Init() < 0) {
-        printf("Failed to initialize the SDL2 TTF library\n");
+        PRINT_ERROR("Failed to initialize the SDL2 TTF library\n");
         return -1;
     }
 
     if (Mix_Init(flags) < 0) {
-        printf("Could not initialize mixer\n");
-        printf("Mix_Init: %s\n", Mix_GetError());
+        PRINT_ERROR("Could not initialize mixer\n");
+        PRINT_ERROR("Mix_Init: %s\n", Mix_GetError());
         return -1;
     }
 
@@ -59,7 +59,7 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
 
 
     if(!window->sdl_window) {
-        printf("Failed to create window: %s\n", SDL_GetError());
+        PRINT_ERROR("Failed to create window: %s\n", SDL_GetError());
         return -1;
     }
 
@@ -69,7 +69,7 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
 	refresh_ui(window);
 
     if(!window->surface) {
-        printf("Failed to get the surface from the window\n");
+        PRINT_ERROR("Failed to get the surface from the window\n");
         return -1;
     }
     glEnable(GL_DEPTH_TEST);
@@ -77,17 +77,17 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
 
 
     #ifdef DEBUG_GL
-    printf("OpenGL Version: %s\n", glGetString(GL_VERSION));
-    printf("GLSL Version: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
-    printf("OpenGL Renderer: %s\n", glGetString(GL_RENDERER));
+    PRINT_INFO("OpenGL Version: %s\n", glGetString(GL_VERSION));
+    PRINT_INFO("GLSL Version: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
+    PRINT_INFO("OpenGL Renderer: %s\n", glGetString(GL_RENDERER));
 
     void APIENTRY openglDebugCallback(GLenum source, GLenum type, GLuint id,
                                     GLenum severity, GLsizei length,
                                     const GLchar* message, const void* userParam) {
-        fprintf(stderr, "[OpenGL Debug] (%d): %s\n", id, message);
+        PRINT_ERROR("[OpenGL Debug] (%d): %s\n", id, message);
 
         if (severity == GL_DEBUG_SEVERITY_HIGH) {
-            fprintf(stderr, "SEVERITY: HIGH. Terminating!\n");
+            PRINT_ERROR("SEVERITY: HIGH. Terminating!\n");
             abort(); // Stop execution if severity is high
         }
     }
@@ -140,5 +140,5 @@ void free_window(Window *window) {
     SDL_FreeSurface(window->ui_surface);
     SDL_DestroyWindow(window->sdl_window);
     glDeleteTextures(1, &window->ui_texture);
-    printf("Free window!\n");
+    PRINT_INFO("Free window!\n");
 }

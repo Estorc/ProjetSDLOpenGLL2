@@ -43,7 +43,7 @@ void __class_method_node_get_glow_shader(void * __retValueVP__, va_list args) {N
 void __class_method_node_get_settings_data(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);void ***  ptr = va_arg(args, void *** );int *  length = va_arg(args, int * );(void)this;
 
         if (!this->behavior) {
-            printf("Behavior is null\n");
+            PRINT_INFO("Behavior is null\n");
             this->behavior = realloc(this->behavior, sizeof(Behavior));     // Ensure that the behavior array is initialized
             memset(this->behavior, 0, sizeof(Behavior));                    // for editor use.
             this->flags |= NODE_SCRIPT;
@@ -306,8 +306,11 @@ void __class_method_node_index_of_child(void * __retValueVP__, va_list args) {in
 #line 276 "src/classes/node.class.c"
 void __class_method_node_print(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);int  level = va_arg(args, int );(void)this;
         #ifdef DEBUG
-        for (int i = 0; i < level; i++) printf("\t");
-        printf(" - [%s] (%s) %c%c%c%c%c %d children:\n", 
+        char tabs[level+1];
+        for (int i = 0; i < level; i++) tabs[i] = '\t';
+        tabs[level] = 0;
+        PRINT_INFO("%s - [%s] (%s) %c%c%c%c%c %d children:\n", 
+                tabs,
         
                 classManager.class_names[this->type],
                 "NodeName",
@@ -326,17 +329,17 @@ void __class_method_node_print(void * __retValueVP__, va_list args) {Node * this
 }
 
 
-#line 298 "src/classes/node.class.c"
+#line 301 "src/classes/node.class.c"
 void __class_method_node_emit_ready(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         if (this->flags & NODE_SCRIPT && (*this->behavior)[BEHAVIOR_SCRIPT_READY]) (*this->behavior)[BEHAVIOR_SCRIPT_READY](this, args);
 }
 
-#line 302 "src/classes/node.class.c"
+#line 305 "src/classes/node.class.c"
 void __class_method_node_emit_update(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         if (this->flags & NODE_SCRIPT && (*this->behavior)[BEHAVIOR_SCRIPT_UPDATE]) (*this->behavior)[BEHAVIOR_SCRIPT_UPDATE](this, args);
 }
 
-#line 306 "src/classes/node.class.c"
+#line 309 "src/classes/node.class.c"
 void __class_method_node_emit_signal(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);(void)this;
         if (this->flags & NODE_SCRIPT && (*this->behavior)[BEHAVIOR_SCRIPT_SIGNAL]) (*this->behavior)[BEHAVIOR_SCRIPT_SIGNAL](this, args);
 }

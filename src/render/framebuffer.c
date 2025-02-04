@@ -10,13 +10,13 @@ void create_msaa_framebuffer(MSAA *msaa) {
     int window_width, window_height;
     get_resolution(&window_width, &window_height);
     if (window_width <= 0 || window_height <= 0) {
-        printf("Invalid window dimensions: width=%d, height=%d\n", window_width, window_height);
+        PRINT_WARNING("Invalid window dimensions: width=%d, height=%d\n", window_width, window_height);
         return;
     }
 
-    printf("Creating MSAA framebuffer\n");
-    printf("Window width: %d\n", window_width);
-    printf("Window height: %d\n", window_height);
+    PRINT_INFO("Creating MSAA framebuffer\n");
+    PRINT_INFO("Window width: %d\n", window_width);
+    PRINT_INFO("Window height: %d\n", window_height);
 
     // configure MSAA framebuffer
     // --------------------------
@@ -36,7 +36,7 @@ void create_msaa_framebuffer(MSAA *msaa) {
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, msaa->rbo);
 
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
-        printf("ERROR::FRAMEBUFFER:: Framebuffer is not complete!\n");
+        PRINT_ERROR("ERROR::FRAMEBUFFER:: Framebuffer is not complete!\n");
         glDeleteFramebuffers(1, &msaa->framebuffer);
         glDeleteRenderbuffers(1, &msaa->rbo);
         glDeleteTextures(1, &msaa->textureColorBufferMultiSampled);
@@ -57,7 +57,7 @@ void create_msaa_framebuffer(MSAA *msaa) {
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, msaa->screenTexture, 0);
 
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
-        printf("ERROR::FRAMEBUFFER:: Intermediate framebuffer is not complete!\n");
+        PRINT_ERROR("ERROR::FRAMEBUFFER:: Intermediate framebuffer is not complete!\n");
         glDeleteFramebuffers(1, &msaa->intermediateFBO);
         glDeleteTextures(1, &msaa->screenTexture);
         return;

@@ -65,7 +65,7 @@ int load_model(const char *path, ModelData ** modelPtr) {
     for (int i = 0; i < memoryCaches.modelsCount; i++) {
         if (!strcmp(memoryCaches.modelCache[i].modelName, path)) {
             #ifdef DEBUG
-                printf("Model loaded from cache!\n");
+                PRINT_INFO("Model loaded from cache!\n");
             #endif
             (*modelPtr) = memoryCaches.modelCache[i].model;
             return 0;

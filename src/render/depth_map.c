@@ -29,7 +29,7 @@ void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
     glGetActiveUniformBlockiv(shaders->render, blockIndex, GL_UNIFORM_BLOCK_BINDING, &actualBinding);
 
     if (actualBinding != bindingPoint) {
-        printf("Error: Uniform block binding point mismatch!");
+        PRINT_ERROR("Error: Uniform block binding point mismatch!");
     }
 
 

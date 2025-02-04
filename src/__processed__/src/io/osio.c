@@ -1,6 +1,7 @@
 #line 1 "src/io/osio.c"
 #include <stdio.h>
 #include "stringio.h"
+#include "../term/enhanced_print.h"
 #include <stdlib.h>
 #include <unistd.h>
 #define KDIALOG
@@ -15,7 +16,7 @@ int osio_save_file(char *path, char *relativePath, char *filter) {
     fullcmd = strcat(fullcmd, filter);
 	FILE * fp = popen(fullcmd, "r");
 	if (!fp) {
-		printf("Failed to run command\n");
+		PRINT_ERROR("Failed to run command\n");
 		return -1;
 	}
     char *in = malloc(sizeof(path) * (strlen(path)+1));
@@ -24,7 +25,7 @@ int osio_save_file(char *path, char *relativePath, char *filter) {
     };
     path[strlen(path)-1] = 0;
     free(in);
-    printf("%s\n", path);
+    PRINT_ERROR("%s\n", path);
     free(fullcmd);
 	pclose(fp);
     return 0;
@@ -39,7 +40,7 @@ int osio_open_file(char *path, char *relativePath, char *filter) {
     fullcmd = strcat(fullcmd, filter);
 	FILE * fp = popen(fullcmd, "r");
 	if (!fp) {
-		printf("Failed to run command\n");
+		PRINT_ERROR("Failed to run command\n");
 		return -1;
 	}
     char *in = malloc(sizeof(path) * (strlen(path)+1));
@@ -60,7 +61,7 @@ int osio_print_error(char *msg) {
     FILE * fp = popen(fullcmd, "r");
     free(fullcmd);
     if (!fp) {
-        printf("Failed to run command\n");
+        PRINT_ERROR("Failed to run command\n");
         return -1;
     }
     pclose(fp);
@@ -77,7 +78,7 @@ int osio_save_file(char *path, char *relativePath, char *filter) {
     fullcmd = strcat(strcpy(fullcmd, cmd), filter);
 	FILE * fp = popen(fullcmd, "r");
 	if (!fp) {
-		printf("Failed to run command\n");
+		PRINT_ERROR("Failed to run command\n");
 		return -1;
 	}
     char *in = malloc(sizeof(path) * (strlen(path)+1));
@@ -86,7 +87,7 @@ int osio_save_file(char *path, char *relativePath, char *filter) {
     };
     path[strlen(path)-1] = 0;
     free(in);
-    printf("%s\n", path);
+    PRINT_ERROR("%s\n", path);
     free(fullcmd);
 	pclose(fp);
     return 0;
@@ -99,7 +100,7 @@ int osio_open_file(char *path, char *relativePath, char *filter) {
     fullcmd = strcat(strcpy(fullcmd, cmd), filter);
 	FILE * fp = popen(fullcmd, "r");
 	if (!fp) {
-		printf("Failed to run command\n");
+		PRINT_ERROR("Failed to run command\n");
 		return -1;
 	}
     char *in = malloc(sizeof(path) * (strlen(path)+1));
@@ -120,7 +121,7 @@ int osio_print_error(char *msg) {
     FILE * fp = popen(fullcmd, "r");
     free(fullcmd);
     if (!fp) {
-        printf("Failed to run command\n");
+        PRINT_ERROR("Failed to run command\n");
         return -1;
     }
     pclose(fp);
@@ -146,7 +147,7 @@ int update_cwd() {
     if (last_slash != NULL) {
         *last_slash = '\0'; // Remove the executable name to get the directory.
     } else {
-        fprintf(stderr, "Error: Unable to determine directory of executable\n");
+        PRINT_ERROR("Error: Unable to determine directory of executable\n");
         return -1;
     }
 
@@ -160,7 +161,7 @@ int update_cwd() {
     char cwd[1024];
     if (getcwd(cwd, sizeof(cwd)) != NULL) {
         #ifdef DEBUG
-        printf("Current working directory: %s\n", cwd);
+        PRINT_INFO("Current working directory: %s\n", cwd);
         #endif
     } else {
         perror("getcwd failed");
@@ -173,13 +174,13 @@ int absolute_path_to_relative(char *path) {
     char *str = malloc(sizeof(path) * (strlen(path)+1));
     strcpy(str, path);
     if (getcwd(cwd, sizeof(cwd)) != NULL) {
-        printf("%s\n", cwd);
+        PRINT_INFO("%s\n", cwd);
         char *strcp = str;
         for (char *rpath = cwd;*rpath && *strcp; rpath++, strcp++);
         strcpy(path, ++strcp);
         free(str);
     } else {
-        printf("Getcwd error!");
+        PRINT_ERROR("Getcwd error!");
         return -1;
     }
     return 0;

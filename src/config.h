@@ -8,6 +8,8 @@ enum ReturnSymbol {
 
 #define BOOT_SCENE "assets/scenes/boot.scene"
 
+
+#include "term/enhanced_print.h"
 #define IGNORE(x) (void)x;
 #ifdef DEBUG
 #include <signal.h>

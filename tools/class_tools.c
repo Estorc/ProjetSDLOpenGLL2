@@ -424,6 +424,9 @@ int main(int argc, char ** argv) {
 				printf("Processing file -> %s\n", filepath);
 				filepath[strlen(filepath) - 1] = 'h';
 				processed_header_file = fopen(filepath, "r");
+				if (!processed_header_file) {
+					processed_header_file = fopen(filepath, "w");	
+				}
 			}
 
 			temp_processed_header_file = tmpfile();
@@ -467,15 +470,17 @@ int main(int argc, char ** argv) {
 					if (strstr(line, "{")) brace_count++;
 					if (strstr(line, "}") != NULL) {
 						brace_count--;
-						in_class = in_method || in_static_method;
+						in_class = in_method || in_static_method || (brace_count > -1);
 						if (!brace_count && in_static_method) {
 							in_static_method = false;
 							fprintf(processed_file, "}\n");
+							continue;
 						}
 						if (!brace_count && in_method) {
 							current_class.methods_count++;
 							in_method = false;
 							fprintf(processed_file, "}\n");
+							continue;
 						}
 						if (!in_class) {
 							brace_count = 0;
@@ -496,9 +501,8 @@ int main(int argc, char ** argv) {
 								sprintf(import_struct.corresponding_method[index][import_struct.class_count-1], "%s%s_%s", PROCESSED_METHOD_PREFIX, lwname, current_class.methods[i].name);
 							}
 
-						}
-						if (!in_method && !in_static_method) {
 							continue;
+
 						}
 					}
 

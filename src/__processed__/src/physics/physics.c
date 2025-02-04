@@ -175,8 +175,8 @@ void check_collisions(Node *shape) {
                 condition = check_collision_ray_with_ray;
             break;
             default:
-                printf("ERROR: Collision code not found.\n");
-                printf("Collision code: %d\n", get_collision_code(shapeA, shapeB));
+                PRINT_ERROR("ERROR: Collision code not found.\n");
+                PRINT_ERROR("Collision code: %d\n", get_collision_code(shapeA, shapeB));
             break;
         }
 

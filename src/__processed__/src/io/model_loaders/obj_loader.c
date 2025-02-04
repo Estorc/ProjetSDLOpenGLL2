@@ -41,9 +41,7 @@ int load_obj_model(const char *path, ModelData *model) {
     LoadingModelBuffer *buffer = malloc(sizeof(LoadingModelBuffer));
 
     int selectedMaterialId;
-    #ifdef DEBUG
-        printf("Loading model %s\n", path);
-    #endif
+    PRINT_INFO("Loading model %s\n", path);
     FILE * file = fopen(path, "r");
     POINTER_CHECK(file);
 

@@ -8,4 +8,5 @@ void __class_method_spherecshape_constructor(void * __retValueVP__, va_list args
 void __class_method_spherecshape_get_priority(void * __retValueVP__, va_list args);
 void __class_method_spherecshape_load(void * __retValueVP__, va_list args);
 void __class_method_spherecshape_save(void * __retValueVP__, va_list args);
+void __class_method_spherecshape_get_model(void * __retValueVP__, va_list args);
 #endif

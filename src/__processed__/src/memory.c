@@ -19,7 +19,7 @@ void init_memory_cache() {
 void free_shaders() {
     free(memoryCaches.shaderCache);
     memoryCaches.shadersCount = 0;
-    printf("Free shaders!\n");
+    PRINT_INFO("Free shaders!\n");
 }
 
 void free_models() {
@@ -41,7 +41,7 @@ void free_models() {
     }
     free(memoryCaches.modelCache);
     memoryCaches.modelsCount = 0;
-    printf("Free models!\n");
+    PRINT_INFO("Free models!\n");
 }
 
 void free_textures() {
@@ -51,7 +51,7 @@ void free_textures() {
     }
     free(memoryCaches.textureCache);
     memoryCaches.texturesCount = 0;
-    printf("Free textures!\n");
+    PRINT_INFO("Free textures!\n");
 }
 
 void free_cubemaps() {
@@ -61,7 +61,7 @@ void free_cubemaps() {
     }
     free(memoryCaches.cubeMapCache);
     memoryCaches.cubeMapCount = 0;
-    printf("Free cubemaps!\n");
+    PRINT_INFO("Free cubemaps!\n");
 }
 
 void free_memory_cache() {

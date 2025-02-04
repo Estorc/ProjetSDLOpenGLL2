@@ -122,7 +122,6 @@ int main(int argc, char *argv[]) {
 
     #ifdef DEBUG
     if (argc >= 2) {
-        printf("test\n");
         char scene[256] = "assets/scenes/";
         strcat(scene, argv[1]);
         strcat(scene, ".scene");
@@ -138,21 +137,21 @@ int main(int argc, char *argv[]) {
 
     if (!queue_is_empty(&callQueue)) {
         queue_free(&callQueue);
-        printf("Free call queue!\n");
+        PRINT_INFO("Free call queue!\n");
     }
 
     free_msaa_framebuffer(&mainNodeTree.msaa);
 
     free_buffers();
     free_memory_cache();
-    printf("Free nodes!\n");
+    PRINT_INFO("Free nodes!\n");
     (mainNodeTree.root)::free();
 
     glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
     glDeleteTextures(1, &depthMap.texture);
     glDeleteFramebuffers(1, &depthMap.frameBuffer);
     glDeleteBuffers(1, &depthMap.ubo);
-    printf("Free depth map!\n");
+    PRINT_INFO("Free depth map!\n");
 
     free_window(&window);
     SDL_Quit();

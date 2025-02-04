@@ -156,7 +156,7 @@ void __class_method_selectlist_refresh(void * __retValueVP__, va_list args) {Nod
         if (frame->contentSurface) SDL_FreeSurface(frame->contentSurface);
         frame->contentSurface = SDL_CreateRGBSurface(0,frame->size[0],frame->size[1],32,0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000);
         if (!frame->contentSurface) {
-            printf("Error creating surface: %s\n", SDL_GetError());
+            PRINT_ERROR("Error creating surface: %s\n", SDL_GetError());
         }
         if (selectList->selected && selectList->options[*selectList->selected][0]) draw_text(frame->contentSurface, 0, 0, selectList->options[*selectList->selected], frame->theme->font.font, frame->theme->textColor, frame->alignment, -1);
         else if (selectList->options[0][0]) draw_text(frame->contentSurface, 0, 0, selectList->options[0], frame->theme->font.font, (SDL_Color) {frame->theme->textColor.r, frame->theme->textColor.g, frame->theme->textColor.b, frame->theme->textColor.a*0.8}, frame->alignment, -1);

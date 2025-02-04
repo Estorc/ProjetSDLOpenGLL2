@@ -43,7 +43,7 @@ static inline void load_material_texture(const char * folder_path, const ufbx_te
     char * raw_relative_path;
     raw_relative_path = convert_path(texture->relative_filename.data);
     texture_path = concat_path(folder_path, raw_relative_path);
-    printf("Loading texture: %s\n", texture_path);
+    PRINT_INFO("Loading texture: %s\n", texture_path);
     dest_material->textureMaps[property] = load_texture_from_path(texture_path, format, true);
     free(texture_path);
     free(raw_relative_path);
@@ -52,7 +52,7 @@ static inline void load_material_texture(const char * folder_path, const ufbx_te
 static void convert_skin_deformer(ufbx_skin_deformer *skin, skin_vertex *mesh_skin_vertices)
 {
 
-    printf("Skin vertices: %zu\n", skin->vertices.count);
+    PRINT_INFO("Skin vertices: %zu\n", skin->vertices.count);
     for (size_t i = 0; i < skin->vertices.count; i++) {
         ufbx_skin_vertex skin_vertex = skin->vertices.data[i];
 
@@ -124,7 +124,7 @@ static void convert_mesh_part(ufbx_mesh *mesh, ufbx_mesh_part *part, ModelObject
     size_t num_triangles = part->num_triangles;
     size_t vertices_shift = model->length;
     size_t num_vertices = vertices_shift;
-    printf ("Num triangles: %zu\n", num_triangles);
+    PRINT_INFO("Num triangles: %zu\n", num_triangles);
     model->facesVertex = realloc(model->facesVertex, (num_triangles * 3 + vertices_shift) * sizeof(Vertex));
 
     // Reserve space for the maximum triangle indices.
@@ -145,7 +145,7 @@ static void convert_mesh_part(ufbx_mesh *mesh, ufbx_mesh_part *part, ModelObject
 
                 Vertex *v = &model->facesVertex[num_vertices++];
 
-                //printf("%d, %d\n", index, v->indices.count);
+                //PRINT_INFO("%d, %d\n", index, v->indices.count);
                 copy_ufbxvec3_to_cglmvec3(ufbx_get_vertex_vec3(&mesh->vertex_position, index),    (*v)+VERTEX_ATTRIBUTE_POSITION_X);
                 copy_ufbxvec3_to_cglmvec3(ufbx_get_vertex_vec3(&mesh->vertex_normal, index),      (*v)+VERTEX_ATTRIBUTE_NORMAL_X);
                 copy_ufbxvec2_to_cglmvec2(ufbx_get_vertex_vec2(&mesh->vertex_uv, index),          (*v)+VERTEX_ATTRIBUTE_TEXTURE_U);
@@ -200,7 +200,7 @@ void bake_animation(ufbx_scene *scene, ufbx_anim *anim, ModelAnimation *model_an
     ufbx_baked_anim *bake = ufbx_bake_anim(scene, anim, NULL, NULL);
     assert(bake);
     
-    printf("  duration: %f\n", bake->playback_duration);
+    PRINT_INFO("  duration: %f\n", bake->playback_duration);
     model_anim->length = bake->playback_duration;
     model_anim->targetsCount = bake->nodes.count;
     model_anim->targets = malloc(sizeof(Bone) * bake->nodes.count);
@@ -238,10 +238,10 @@ void bake_animation(ufbx_scene *scene, ufbx_anim *anim, ModelAnimation *model_an
         bone->index = bake_node->typed_id;
 
 
-        printf("  node %s:\n", scene_node->name.data);
-        printf("    translation: %zu keys\n", bake_node->translation_keys.count);
-        printf("    rotation: %zu keys\n", bake_node->rotation_keys.count);
-        printf("    scale: %zu keys\n", bake_node->scale_keys.count);
+        PRINT_INFO("  node %s:\n", scene_node->name.data);
+        PRINT_INFO("    translation: %zu keys\n", bake_node->translation_keys.count);
+        PRINT_INFO("    rotation: %zu keys\n", bake_node->rotation_keys.count);
+        PRINT_INFO("    scale: %zu keys\n", bake_node->scale_keys.count);
     }
 
     ufbx_free_baked_anim(bake);
@@ -255,7 +255,7 @@ void bake_animations(ufbx_scene *scene, ModelData *model)
         model->animationsCount++;
         model->animations = realloc(model->animations, model->animationsCount * sizeof(ModelAnimation));
         ufbx_anim_stack *stack = scene->anim_stacks.data[i];
-        printf("stack %s:\n", stack->name.data);
+        PRINT_INFO("stack %s:\n", stack->name.data);
         strcpy(model->animations[i].name, stack->name.data);
         bake_animation(scene, stack->anim, &model->animations[i]);
     }
@@ -266,7 +266,7 @@ int load_fbx_armature(const ufbx_node *node, ModelData *model, int index) {
     for (size_t j = 0; j < node->children.count; j++) {
         ufbx_node *child = node->children.data[j];
         for (int i = 0; i < index; i++) printf(" ");
-        printf(" -> child: %s\n", child->name.data);
+        PRINT_INFO(" -> child: %s\n", child->name.data);
         load_fbx_armature(child, model, index+1);
     }
     return 0;
@@ -280,7 +280,7 @@ int load_fbx_model(const char *path, ModelData *model) {
     char * folder_path = get_folder_path(path);
     ufbx_scene *scene = ufbx_load_file(path, &opts, &error);
     if (!scene) {
-        fprintf(stderr, "Failed to load: %s\n", error.description.data);
+        PRINT_ERROR("Failed to load: %s\n", error.description.data);
         exit(1);
     }
 
@@ -291,7 +291,7 @@ int load_fbx_model(const char *path, ModelData *model) {
         ufbx_node *node = scene->nodes.data[i];
         if (node->is_root || !node->parent->is_root) continue;
 
-        printf("Object: %s\n", node->name.data);
+        PRINT_INFO("Object: %s\n", node->name.data);
         if (node->mesh) {
             model->objects = malloc(sizeof(ModelObjectData));
             model->length = 1;
@@ -313,15 +313,15 @@ int load_fbx_model(const char *path, ModelData *model) {
                 for (int j = 0; j < 4; j++) {
                     int test;
                     memcpy(&test, &object->facesVertex[i][VERTEX_ATTRIBUTE_BONE_ID_1 + j], sizeof(int));
-                    printf("%d ", test);
+                    PRINT_INFO("%d ", test);
                 }
             }
             object->length /= 3;
-            printf("-> mesh with %zu faces\n", node->mesh->faces.count);
+            PRINT_INFO("-> mesh with %zu faces\n", node->mesh->faces.count);
         } else if (node->bone) {
-            printf("-> bone \"%s\"\n", node->bone->name.data);
+            PRINT_INFO("-> bone \"%s\"\n", node->bone->name.data);
         } else {
-            printf("-> armature \"%s\"\n", node->name.data);
+            PRINT_INFO("-> armature \"%s\"\n", node->name.data);
             load_fbx_armature(node, model, 1);
         }
     }

@@ -47,9 +47,7 @@ void __class_method_skybox_load_cubemap(void * __retValueVP__, va_list args) {Te
                 !strcmp(memoryCaches.cubeMapCache[i].textureName[3], faces[3]) &&
                 !strcmp(memoryCaches.cubeMapCache[i].textureName[4], faces[4]) &&
                 !strcmp(memoryCaches.cubeMapCache[i].textureName[5], faces[5])) {
-                #ifdef DEBUG
-                    printf("Cube Map loaded from cache!\n");
-                #endif
+                PRINT_INFO("Cube Map loaded from cache!\n");
                 *__retValueP__ = memoryCaches.cubeMapCache[i].cubeMap;return;
             }
         }
@@ -69,7 +67,7 @@ void __class_method_skybox_load_cubemap(void * __retValueVP__, va_list args) {Te
                 );
                 SDL_FreeSurface(textureSurface);
             } else {
-                printf("Cubemap tex failed to load at path: %s\n", faces[i]);
+                PRINT_WARNING("Cubemap tex failed to load at path: %s\n", faces[i]);
                 SDL_FreeSurface(textureSurface);
                 success = 0;
             }
@@ -102,7 +100,7 @@ void __class_method_skybox_load_cubemap(void * __retValueVP__, va_list args) {Te
      * @note Each file path in the skyboxTexture array should not exceed 200 characters.
      */
 
-#line 96 "src/classes/nodes/skybox.class.c"
+#line 94 "src/classes/nodes/skybox.class.c"
 void __class_method_skybox_create_skybox(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);TexturedMesh * texturedMesh = va_arg(args, TexturedMesh *);char (* skyboxTexture)[100] = va_arg(args, char (*)[100]);(void)this;
 
         VBO skyboxVBO;
@@ -171,7 +169,7 @@ void __class_method_skybox_create_skybox(void * __retValueVP__, va_list args) {N
 }
 
 
-#line 164 "src/classes/nodes/skybox.class.c"
+#line 162 "src/classes/nodes/skybox.class.c"
 void __class_method_skybox_load(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         TexturedMesh *texturedMesh;
         texturedMesh = malloc(sizeof(TexturedMesh));
@@ -194,7 +192,7 @@ void __class_method_skybox_load(void * __retValueVP__, va_list args) {Node * thi
         this::constructor(texturedMesh);
 }
 
-#line 186 "src/classes/nodes/skybox.class.c"
+#line 184 "src/classes/nodes/skybox.class.c"
 void __class_method_skybox_save(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);FILE * file = va_arg(args, FILE *);(void)this;
         fprintf(file, "%s", classManager.class_names[this->type]);
         TextureMap texture = ((TexturedMesh*) this->object)->texture;
@@ -214,7 +212,7 @@ void __class_method_skybox_save(void * __retValueVP__, va_list args) {Node * thi
 }
 
 
-#line 205 "src/classes/nodes/skybox.class.c"
+#line 203 "src/classes/nodes/skybox.class.c"
 void __class_method_skybox_render(void * __retValueVP__, va_list args) {Node * this = va_arg(args, Node *);mat4 * modelMatrix = va_arg(args, mat4 *);Shader  activeShader = va_arg(args, Shader );WorldShaders * shaders = va_arg(args, WorldShaders *);(void)this;
         IGNORE(activeShader);
         

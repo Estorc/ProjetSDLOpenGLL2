@@ -52,7 +52,7 @@ TextureMap load_texture_from_path(char * path, GLenum format, bool yReversed) {
     for (int i = 0; i < memoryCaches.texturesCount; i++) {
         if (!strcmp(memoryCaches.textureCache[i].textureName, path)) {
             #ifdef DEBUG
-                printf("Texture loaded from cache!\n");
+                PRINT_INFO("Texture loaded from cache!\n");
             #endif
             return memoryCaches.textureCache[i].textureMap;
         }
@@ -61,7 +61,7 @@ TextureMap load_texture_from_path(char * path, GLenum format, bool yReversed) {
     TextureMap texture = 0;
 
     if (!textureSurface) {
-        printf("Failed to load texture : %s\n", SDL_GetError());
+        PRINT_ERROR("Failed to load texture : %s\n", SDL_GetError());
         return 0;
     }
 
@@ -90,7 +90,7 @@ TextureMap load_texture_from_path(char * path, GLenum format, bool yReversed) {
     }
     
     if (!formattedSurface) {
-        printf("Failed to convert surface: %s\n", SDL_GetError());
+        PRINT_ERROR("Failed to convert surface: %s\n", SDL_GetError());
         return 0;
     }
 
@@ -125,7 +125,7 @@ void draw_text(SDL_Surface *render_surface, int x, int y, char *text, TTF_Font *
 
     surface = TTF_RenderUTF8_Blended_Wrapped(font, text, color, (width == -1) ? INT_MAX : width);
     if (!surface) {
-        printf("Failed to render text: %s\n", TTF_GetError());
+        PRINT_ERROR("Failed to render text: %s\n", TTF_GetError());
         return;
     }
     switch (alignment[0]) {
@@ -173,7 +173,7 @@ void draw_sprite(SDL_Surface *render_surface, int x, int y, char * path, u32 col
         SDL_SetSurfaceAlphaMod(textureSurface, (color & 0xff000000) >> 24);
         SDL_BlitSurface(textureSurface, NULL, render_surface, &spriteLocation);
     } else
-        printf("Failed to load texture : %s\n", SDL_GetError());
+        PRINT_ERROR("Failed to load texture : %s\n", SDL_GetError());
 
     SDL_FreeSurface(textureSurface);
 }

@@ -1,6 +1,8 @@
 #ifndef MODEL_H
 #define MODEL_H
 
+#include "shader.h"
+
 
 /*
  * To ensure MTL files are loaded correctly, the following rules must be followed:
@@ -279,6 +281,9 @@ void create_textured_plane(TexturedMesh *texturedMesh, char *texture);
  * @param mesh Pointer to the Mesh structure to be initialized.
  */
 void create_screen_plane(Mesh *mesh);
+
+
+void render_model(mat4 *modelMatrix, Shader activeShader, Model *model);
 
 /** @} */ // end of ModelHandling
 

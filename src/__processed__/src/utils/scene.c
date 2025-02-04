@@ -20,8 +20,8 @@ void change_scene() {
     Script *scripts = (Script *) queue_pop(&callQueue);
     call_method_0(METHOD(free,(*root)));
     (*root) = load_scene(path, camera, scripts);
-    printf("Scene changed to %s\n", path);
-    printf("Root: %p\n", *root);
+    PRINT_INFO("Scene changed to %s\n", path);
+    PRINT_INFO("Root: %p\n", *root);
 }
 
 void prepare_change_scene(char *path) {

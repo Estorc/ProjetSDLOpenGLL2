@@ -10,14 +10,14 @@ Shader create_shader(char* vertexPath, char* fragmentPath) {
         if (!strcmp(memoryCaches.shaderCache[i].shaderName[0], vertexPath) &&
             !strcmp(memoryCaches.shaderCache[i].shaderName[1], fragmentPath)) {
             #ifdef DEBUG
-                printf("Shader loaded from cache!\n");
+                PRINT_INFO("Shader loaded from cache!\n");
             #endif
             return memoryCaches.shaderCache[i].shader;
         }
     }
 
     #ifdef DEBUG
-        printf("Compiling shader: %s, %s\n", vertexPath, fragmentPath);
+        PRINT_INFO("Compiling shader: %s, %s\n", vertexPath, fragmentPath);
     #endif
 
     Shader vertex, fragment;
@@ -34,7 +34,7 @@ Shader create_shader(char* vertexPath, char* fragmentPath) {
     if(!success)
     {
         glGetShaderInfoLog(vertex, 512, NULL, infoLog);
-        printf("ERROR::SHADER::VERTEX::COMPILATION_FAILED\n%s",infoLog);
+        PRINT_ERROR("ERROR::SHADER::VERTEX::COMPILATION_FAILED\n%s",infoLog);
     };
 
     fragment = glCreateShader(GL_FRAGMENT_SHADER);
@@ -44,7 +44,7 @@ Shader create_shader(char* vertexPath, char* fragmentPath) {
     if(!success)
     {
         glGetShaderInfoLog(fragment, 512, NULL, infoLog);
-        printf("ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n%s",infoLog);
+        PRINT_ERROR("ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n%s",infoLog);
     };
 
     Shader ID = glCreateProgram();
@@ -56,7 +56,7 @@ Shader create_shader(char* vertexPath, char* fragmentPath) {
     if(!success)
     {
         glGetProgramInfoLog(ID, 512, NULL, infoLog);
-        printf("ERROR::SHADER::PROGRAM::LINKING_FAILED\n%s",infoLog);
+        PRINT_ERROR("ERROR::SHADER::PROGRAM::LINKING_FAILED\n%s",infoLog);
     }
     
     // supprime les shaders qui sont maintenant liés dans le programme et qui ne sont plus nécessaires
