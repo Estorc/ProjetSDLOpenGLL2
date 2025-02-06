@@ -5,6 +5,9 @@
 
 #define SHADOW_WIDTH 1024
 #define SHADOW_HEIGHT 1024
+#define NUM_DIRECTIONAL_LIGHTS 10
+#define NUM_POINT_LIGHTS 12
+#define NUM_SPOT_LIGHTS 10
 #define MAX_SHADOW 30
 
 struct WorldShaders;

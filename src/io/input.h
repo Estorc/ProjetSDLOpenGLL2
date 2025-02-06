@@ -72,6 +72,8 @@ typedef struct Mouse {
     s32 y; /**< The current y-coordinate of the mouse. */
     s32 lastX; /**< The last x-coordinate of the mouse. */
     s32 lastY; /**< The last y-coordinate of the mouse. */
+    s32 dx; /**< The horizontal movement of the mouse. */
+    s32 dy; /**< The vertical movement of the mouse. */
 
     s8 scroll_x; /**< The horizontal scroll movement of the mouse. */
     s8 scroll_y; /**< The vertical scroll movement of the mouse. */

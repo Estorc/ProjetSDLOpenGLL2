@@ -31,8 +31,8 @@ NEW_SCRIPT(free_camera)
 
 	if (*movable) {
 		
-		targetRot[1] -= fmod((f32) (input.mouse.x - input.mouse.lastX) * delta * 100.0, 360.0);
-		targetRot[0] += fmod((f32) (input.mouse.lastY - input.mouse.y) * delta * 100.0, 360.0);
+		targetRot[1] -= fmod((f32) (input.mouse.dx) * delta * 100.0, 360.0);
+		targetRot[0] -= fmod((f32) (input.mouse.dy) * delta * 100.0, 360.0);
 		targetRot[0] = CLAMP(-90,targetRot[0],90);
 
 		f32 vel = 0.05f;

@@ -181,7 +181,7 @@ class PointLight : public Light {
         glm_vec3_sub(lightPos, directions[pointLightId], lightB);
         glm_lookat(lightPos, lightB, upVectors[pointLightId], lightView);
 
-        storageBufferIndex = (lightsCount[POINT_LIGHT]*6+pointLightId)*sizeof(mat4)+100*sizeof(mat4);
+        storageBufferIndex = (lightsCount[POINT_LIGHT]*6+pointLightId)*sizeof(mat4)+(NUM_DIRECTIONAL_LIGHTS)*sizeof(mat4);
         if (pointLightId == 5) lightsCount[POINT_LIGHT]++;
 
 

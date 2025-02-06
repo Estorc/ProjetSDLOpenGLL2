@@ -29,7 +29,7 @@ NEW_SCRIPT(play_game_button)
 
 	if ((*button->checked)) {
 		
-		prepare_change_scene("assets/scenes/scene_test.scene");
+		prepare_change_scene("assets/scenes/fpschess.scene");
 		*button->checked = false;
 	}
 
@@ -49,7 +49,7 @@ NEW_SCRIPT(settings_game_button)
 
 	if ((*button->checked)) {
 		
-		prepare_change_scene("assets/scenes/settings.scene");
+		prepare_change_scene("assets/scenes/settings/main.scene");
 		*button->checked = false;
 	}
 

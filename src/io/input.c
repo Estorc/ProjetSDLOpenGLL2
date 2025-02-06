@@ -16,6 +16,10 @@ void init_input(Input *input) {
     input->pressed_keys = 0;
     input->mouse.x = 0;
     input->mouse.y = 0;
+
+    input->mouse.dx = 0;
+    input->mouse.dy = 0;
+
     input->mouse.pressed_button = 0;
     input->mouse.released_button = 0;
     input->mouse.active_button = 0;
@@ -24,6 +28,8 @@ void init_input(Input *input) {
 
 
 int update_input(Input *input) {
+    input->mouse.dx = 0;
+    input->mouse.dy = 0;
     input->mouse.scroll_x = 0;
     input->mouse.scroll_y = 0;
     input->mouse.lastX = input->mouse.x;
@@ -150,6 +156,9 @@ int update_input(Input *input) {
 
 				input->mouse.x = event.motion.x / (float)window_width * res_width;
 				input->mouse.y = event.motion.y / (float)window_height * res_height;
+
+                input->mouse.dx = event.motion.xrel;
+                input->mouse.dy = event.motion.yrel;
                 break;
             case SDL_MOUSEBUTTONDOWN:
                 input->mouse.pressed_button = event.button.button;

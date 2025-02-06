@@ -186,7 +186,7 @@ class SpotLight : public Light {
         glm_rotate(lightView, to_radians(rot[2]), (vec3){0.0f, 0.0f, 1.0f});
         glm_translate(lightView, (vec3){pos[0], pos[1], pos[2]});
 
-        storageBufferIndex = lightsCount[SPOT_LIGHT]*sizeof(mat4)+200*sizeof(mat4);
+        storageBufferIndex = lightsCount[SPOT_LIGHT]*sizeof(mat4)+(NUM_DIRECTIONAL_LIGHTS+NUM_POINT_LIGHTS)*sizeof(mat4);
         lightsCount[SPOT_LIGHT]++;
 
 

@@ -14,7 +14,7 @@ struct Window;
 #define SET_ATTRIBUTES_COUNT(x) MALLOC_ATTRIBUTE(this, x)
 
 #define NEW_SCRIPT(script_name) NODE_FUNC_RETURN script_name(NODE_FUNC_PARAMS) {
-#define END_SCRIPT(script_name) }; static __attribute__((constructor)) void __anon_ctor_##script_name(void) {mainNodeTree.scripts[mainNodeTree.scriptIndex].name = #script_name, mainNodeTree.scripts[mainNodeTree.scriptIndex++].script = script_name;}
+#define END_SCRIPT(script_name) }; static __attribute__((constructor)) void __anon_ctor_##script_name(void) {mainNodeTree.scripts[mainNodeTree.scriptIndex].name = #script_name, mainNodeTree.scripts[mainNodeTree.scriptIndex++].script = script_name; PRINT_INFO("Script %s loaded!\n", #script_name);}
 
 #ifndef SCRIPTS_H
 #define SCRIPTS_H

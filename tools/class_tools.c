@@ -408,7 +408,8 @@ int get_class_method(char *line, Method *method) {
 }
 
 bool get_class_name(char *line, Class *class) {
-	char *expr_pos = strstr(line, CLASS_PREFIX);
+	char *expr_pos = line + strspn(line, " ");
+	if (expr_pos != strstr(expr_pos, CLASS_PREFIX)) return false;
 	if (expr_pos) {
 		size_t expr_len = strlen(line);
 		expr_pos += strlen(CLASS_PREFIX);

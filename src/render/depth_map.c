@@ -8,9 +8,9 @@
 void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
 
     // Allocate enough space for your matrices
-    size_t numDirectionalLights = 100;
-    size_t numPointLights = 100;
-    size_t numSpotLights = 100;
+    size_t numDirectionalLights = NUM_DIRECTIONAL_LIGHTS;
+    size_t numPointLights = NUM_POINT_LIGHTS;
+    size_t numSpotLights = NUM_SPOT_LIGHTS;
 
     glGenBuffers(1, &depthMap->ubo);
     glBindBuffer(GL_UNIFORM_BUFFER, depthMap->ubo);
@@ -29,7 +29,7 @@ void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
     glGetActiveUniformBlockiv(shaders->render, blockIndex, GL_UNIFORM_BLOCK_BINDING, &actualBinding);
 
     if (actualBinding != bindingPoint) {
-        PRINT_ERROR("Error: Uniform block binding point mismatch!");
+        PRINT_ERROR("Error: Uniform block binding point mismatch!\n");
     }
 
 

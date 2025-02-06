@@ -33,7 +33,7 @@ Shader create_shader(char* vertexPath, char* fragmentPath) {
     if(!success)
     {
         glGetShaderInfoLog(vertex, 512, NULL, infoLog);
-        PRINT_ERROR("ERROR::SHADER::VERTEX::COMPILATION_FAILED\n%s",infoLog);
+        PRINT_ERROR("ERROR::SHADER::VERTEX::COMPILATION_FAILED\n%s\n",infoLog);
     };
 
     fragment = glCreateShader(GL_FRAGMENT_SHADER);
@@ -43,7 +43,7 @@ Shader create_shader(char* vertexPath, char* fragmentPath) {
     if(!success)
     {
         glGetShaderInfoLog(fragment, 512, NULL, infoLog);
-        PRINT_ERROR("ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n%s",infoLog);
+        PRINT_ERROR("ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n%s\n",infoLog);
     };
 
     Shader ID = glCreateProgram();
@@ -55,7 +55,7 @@ Shader create_shader(char* vertexPath, char* fragmentPath) {
     if(!success)
     {
         glGetProgramInfoLog(ID, 512, NULL, infoLog);
-        PRINT_ERROR("ERROR::SHADER::PROGRAM::LINKING_FAILED\n%s",infoLog);
+        PRINT_ERROR("ERROR::SHADER::PROGRAM::LINKING_FAILED\n%s\n",infoLog);
     }
     
     // supprime les shaders qui sont maintenant liés dans le programme et qui ne sont plus nécessaires

@@ -9,6 +9,34 @@
 #include "../scripts/scripts.h"
 #include "../classes/classes.h"
 
+
+NEW_SCRIPT(settings_go_to_main)
+    SET_ATTRIBUTES_COUNT(1);
+    Frame *frame = (Frame*) this->object;
+    Button *button = (Button*) frame->button;
+    if (!button->checked) button->checked = &this->attribute[0].b;
+    if (*button->checked)
+        prepare_change_scene("assets/scenes/settings/main.scene");
+END_SCRIPT(settings_go_to_main)
+
+NEW_SCRIPT(settings_go_to_graphics)
+    SET_ATTRIBUTES_COUNT(1);
+    Frame *frame = (Frame*) this->object;
+    Button *button = (Button*) frame->button;
+    if (!button->checked) button->checked = &this->attribute[0].b;
+    if (*button->checked)
+        prepare_change_scene("assets/scenes/settings/graphics.scene");
+END_SCRIPT(settings_go_to_graphics)
+
+NEW_SCRIPT(settings_go_to_audio)
+    SET_ATTRIBUTES_COUNT(1);
+    Frame *frame = (Frame*) this->object;
+    Button *button = (Button*) frame->button;
+    if (!button->checked) button->checked = &this->attribute[0].b;
+    if (*button->checked)
+        prepare_change_scene("assets/scenes/settings/audio.scene");
+END_SCRIPT(settings_go_to_audio)
+
 NEW_SCRIPT(st_show_fps)
 	GET_READY_PARAMETERS();
     Frame *frame = (Frame*) this->object;

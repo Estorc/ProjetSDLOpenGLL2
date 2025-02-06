@@ -53,9 +53,9 @@ struct SpotLight {
     int index;     
 };
 
-#define DIR_LIGHTS_MAX 100
-#define POINT_LIGHTS_MAX 100
-#define SPOT_LIGHTS_MAX 100
+#define DIR_LIGHTS_MAX 10
+#define POINT_LIGHTS_MAX 12
+#define SPOT_LIGHTS_MAX 10
 
 layout(std140) uniform LightMatrices {
     mat4 dirLightSpaceMatrix[DIR_LIGHTS_MAX];
@@ -242,7 +242,7 @@ void main()
     }  
     
 
-    float gamma = 1.8;
+    float gamma = 1.2;
     FragColor = vec4(result, 1.0) * tex;
     FragColor.rgb = pow(FragColor.rgb, vec3(1.0/gamma));
     //vec3 debugColor = tangentViewDir * 0.5 + 0.5; // Map [-1, 1] range to [0, 1]

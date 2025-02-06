@@ -1,3 +1,22 @@
+/**
+ * @file
+ * @brief This file defines the implementation of static bodies in the physics engine.
+ *
+ * This file contains the implementation of static bodies used in the physics engine.
+ * Static bodies are objects that do not move and are used to represent immovable objects
+ * in the simulation, such as walls or floors. The code provides functions to initialize,
+ * update, and manage these static bodies within the physics engine.
+ * 
+ * Detailed description:
+ * The static body class includes functions for creating and initializing static bodies,
+ * setting their properties, and integrating them into the broader physics simulation.
+ * These bodies are essential for defining the environment and boundaries within which
+ * dynamic bodies interact.
+ * 
+ * @author Loup Picault
+ * @date 2023-10-31
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"

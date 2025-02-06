@@ -1,0 +1,16 @@
+Node[m0,0,0r0,0,0s1,1,1a1v1]:1
+Frame(0w,0h,100w,100h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):2
+Frame(0w,0h,100w,80h,ctn):0
+Frame(0w,0h,100w,20h,cbn):4
+Frame(0.5w,0h,24w,90h,lcn):1
+Button{NULL,settings_go_to_main,NULL}:1
+Label(Main,cc)
+Frame(-12.5w,0h,24w,90h,ccn):1
+Button{NULL,settings_go_to_audio,NULL}:1
+Label(Audio,cc)
+Frame(12.5w,0h,24w,90h,ccn):1
+Button{NULL,settings_go_to_graphics,NULL}:1
+Label(Graphics,cc)
+Frame(-0.5w,0h,24w,90h,rcn):1
+Button{NULL,return_to_main_menu,NULL}:1
+Label(Quitter,cc)
