@@ -1,3 +1,19 @@
+/**
+ * @file
+ * @brief This file contains the implementation of the SpotLight class.
+ *
+ * This source file contains the implementation details for the SpotLight class,
+ * which is used to manage and manipulate spotlights in an OpenGL context. The
+ * SpotLight class provides functionalities to set up, configure, and control
+ * spotlights, including their position, direction, and lighting properties.
+ *
+ * The code is designed to integrate with an SDL and OpenGL based rendering
+ * engine, allowing for dynamic lighting effects in 3D scenes.
+ *
+ * @author Loup Picault
+ * @date 2023-10-20
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
@@ -18,7 +34,7 @@ class SpotLight : public Light {
     }
 
     void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta, u8 *lightsCount) {
-        IGNORE(delta);
+        UNUSED(delta);
         if (!(this->flags & NODE_LIGHT_ACTIVE)) return;
         SpotLight *spotLight = (SpotLight *) this->object;
 
@@ -151,7 +167,7 @@ class SpotLight : public Light {
 
     void configure_lighting(Camera *c, WorldShaders *shaders, u8 *lightsCount) {
 
-        IGNORE(c);
+        UNUSED(c);
         // Lights and shadows
         mat4 lightProjection;
         mat4 lightView = GLM_MAT4_IDENTITY_INIT;

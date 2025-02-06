@@ -1,3 +1,19 @@
+/**
+ * @file
+ * @brief This file defines the implementation of various CShape classes.
+ *
+ * This source file contains the implementation of different shapes used in the project.
+ * It provides the necessary functions to create, manipulate, and render these shapes
+ * using SDL and OpenGL. The shapes include basic geometric forms such as circles,
+ * rectangles, and polygons.
+ *
+ * It is designed to facilitate the creation and management of shapes within the
+ * graphical application, ensuring efficient rendering and interaction.
+ *
+ * @author Loup Picault
+ * @date 2023-10-25
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"

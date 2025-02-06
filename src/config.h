@@ -1,16 +1,18 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#ifndef __windows__
 enum ReturnSymbol {
     CLOSE_PROGRAM = -1,
     NO_ERROR,
 };
+#endif
 
 #define BOOT_SCENE "assets/scenes/boot.scene"
 
 
 #include "term/enhanced_print.h"
-#define IGNORE(x) (void)x;
+#define UNUSED(x) (void)x;
 #ifdef DEBUG
 #include <signal.h>
 #define BREAKPOINT printf("Breakpoint in %s at line %d\n", __FILE__, __LINE__), raise(SIGTRAP)

@@ -1,3 +1,14 @@
+/**
+ * @file
+ * @brief This file contains the implementation of the scene class.
+ * 
+ * This file provides the functionality for managing and rendering scenes
+ * in the application, including scene initialization, updating, and cleanup.
+ * 
+ * @author Loup Picault
+ * @date October 27, 2023
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"
@@ -36,7 +47,7 @@ class Scene : public Node {
         int modelLoc = glGetUniformLocation(activeShader, "model");
         Mesh *mesh = (Mesh *)this->object;
 
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, modelMatrix);
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, (const GLfloat *) modelMatrix);
 
         glBindVertexArray(mesh->VAO);
 

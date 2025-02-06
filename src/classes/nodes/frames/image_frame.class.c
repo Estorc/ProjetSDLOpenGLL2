@@ -1,3 +1,19 @@
+/**
+ * @file
+ * @brief This file contains the implementation of the ImageFrame class.
+ *
+ * This file contains the implementation of the ImageFrame class, which is used
+ * to handle and manipulate image frames within the application. The ImageFrame
+ * class provides functionalities to load, display, and manage image data in
+ * the context of the SDL and OpenGL framework.
+ *
+ * It is used for rendering image frames in the graphical user interface and
+ * performing operations related to image processing and display.
+ *
+ * @author Loup Picault
+ * @date 2023-10-20
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"
@@ -66,7 +82,7 @@ class ImageFrame : public Frame {
 
     void save(FILE *file, Node *editor) {
         Frame *frame = (Frame *) this->object;
-        IGNORE(editor);
+        UNUSED(editor);
         fprintf(file, "%s", classManager.class_names[this->type]);
         fprintf(file, "(%s,%c%c)", 
         frame->label->text, frame->alignment[0], frame->alignment[1]);

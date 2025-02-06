@@ -1,3 +1,15 @@
+/**
+ * @file textured_mesh.class.c
+ * @author Loup Picault
+ * @date 2023-10-25
+ * @brief This file contains the implementation of the TexturedMesh class.
+ *
+ * The TexturedMesh class is responsible for handling 3D mesh objects with textures.
+ * It includes functionalities for loading, rendering, and managing textured meshes
+ * within an OpenGL context. This class is a part of the larger project aimed at 
+ * creating a 3D graphics application using SDL and OpenGL.
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
@@ -56,16 +68,16 @@ class TexturedMesh : public Node {
 
     void render(mat4 *modelMatrix, Shader activeShader) {
         vec3 defaultColor = {0.5f, 0.5f, 0.5f};
-        glUniform3fv(glGetUniformLocation(activeShader, "material.ambient"), 1, &defaultColor);
-        glUniform3fv(glGetUniformLocation(activeShader, "material.specular"), 1, &defaultColor);
-        glUniform3fv(glGetUniformLocation(activeShader, "material.diffuse"), 1, &defaultColor);
-        glUniform1f(glGetUniformLocation(activeShader, "material.parallax"), 1, 0.5f);
+        glUniform3fv(glGetUniformLocation(activeShader, "material.ambient"), 1, (const GLfloat *) &defaultColor);
+        glUniform3fv(glGetUniformLocation(activeShader, "material.specular"), 1, (const GLfloat *) &defaultColor);
+        glUniform3fv(glGetUniformLocation(activeShader, "material.diffuse"), 1, (const GLfloat *) &defaultColor);
+        glUniform1f(glGetUniformLocation(activeShader, "material.parallax"), 0.5f);
 
         set_shader_int(activeShader, "diffuseMapActive", 1);
         int modelLoc = glGetUniformLocation(activeShader, "model");
         TexturedMesh *texturedMesh = (TexturedMesh *)this->object;
 
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, modelMatrix);
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, (const GLfloat *) modelMatrix);
         // render Cube
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texturedMesh->texture);

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zenity_0',['ZENITY',['../osio_8c.html#aec0249dd00faa70eea2d10807956e97e',1,'osio.c']]]
+  ['white_0',['WHITE',['../color_8h.html#a87b537f5fa5c109d3c05c13d6b18f382',1,'color.h']]]
 ];

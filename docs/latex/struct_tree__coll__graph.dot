@@ -1,0 +1,21 @@
+digraph "Tree"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [id="Node000001",label="Tree",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Represents a tree structure containing nodes, a camera, MSAA settings, and scripts."];
+  Node2 -> Node1 [id="edge9_Node000001_Node000002",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" root",fontcolor="grey" ];
+  Node2 [id="Node000002",label="Node",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_node.html",tooltip="Represents a node in the tree structure."];
+  Node2 -> Node2 [id="edge10_Node000002_Node000002",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" children\nparent",fontcolor="grey" ];
+  Node3 -> Node2 [id="edge11_Node000002_Node000003",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" attribute",fontcolor="grey" ];
+  Node3 [id="Node000003",label="BehaviorAttribute",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$union_behavior_attribute.html",tooltip=" "];
+  Node2 -> Node3 [id="edge12_Node000003_Node000002",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" node",fontcolor="grey" ];
+  Node4 -> Node1 [id="edge13_Node000001_Node000004",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" camera",fontcolor="grey" ];
+  Node4 [id="Node000004",label="Camera",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_camera.html",tooltip="A structure to represent a camera with position and rotation in 3D space."];
+  Node2 -> Node4 [id="edge14_Node000004_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 -> Node1 [id="edge15_Node000001_Node000005",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" msaa",fontcolor="grey" ];
+  Node5 [id="Node000005",label="MSAA",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$struct_m_s_a_a.html",tooltip="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers."];
+  Node6 -> Node1 [id="edge16_Node000001_Node000006",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" scripts",fontcolor="grey" ];
+  Node6 [id="Node000006",label="Script",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$struct_script.html",tooltip=" "];
+}

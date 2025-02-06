@@ -1,0 +1,99 @@
+\doxysection{Mouse Struct Reference}
+\hypertarget{struct_mouse}{}\label{struct_mouse}\index{Mouse@{Mouse}}
+
+
+Structure to store mouse state.  
+
+
+
+
+{\ttfamily \#include $<$input.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af0938d8dd13b4f7a595e78aacafd3323}{s32}} \mbox{\hyperlink{struct_mouse_ae5987a7a09e7194f65e9f32ab43bb419}{x}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af0938d8dd13b4f7a595e78aacafd3323}{s32}} \mbox{\hyperlink{struct_mouse_aa648426bb888fe94db00332fb5e76353}{y}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af0938d8dd13b4f7a595e78aacafd3323}{s32}} \mbox{\hyperlink{struct_mouse_a785ea358af1f6b8608052634b17f4b8b}{lastX}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af0938d8dd13b4f7a595e78aacafd3323}{s32}} \mbox{\hyperlink{struct_mouse_a0e7981e5f86770f558e94e8c1b8f91b2}{lastY}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a543c9bcb4e7b83b40dd6ae7a024a63d2}{s8}} \mbox{\hyperlink{struct_mouse_a11e4fa171279fb235f87a3f8980703fd}{scroll\+\_\+x}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a543c9bcb4e7b83b40dd6ae7a024a63d2}{s8}} \mbox{\hyperlink{struct_mouse_a8a927d4f2b11fff012159a707ed6ab13}{scroll\+\_\+y}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{struct_mouse_a2c6252aa86f43e627f71dd94c49b634a}{pressed\+\_\+button}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{struct_mouse_a45d842f54f3e2fff8f447d2e797bb954}{active\+\_\+button}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{struct_mouse_a57c5c2bea78566cb048aedddd987493e}{released\+\_\+button}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure to store mouse state. 
+
+This structure holds the current and last positions of the mouse, scroll wheel movements, and the states of mouse buttons. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_mouse_a45d842f54f3e2fff8f447d2e797bb954}\index{Mouse@{Mouse}!active\_button@{active\_button}}
+\index{active\_button@{active\_button}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{active\_button}{active\_button}}
+{\footnotesize\ttfamily \label{struct_mouse_a45d842f54f3e2fff8f447d2e797bb954} 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Mouse\+::active\+\_\+button}
+
+Bitfield representing currently active mouse buttons. \Hypertarget{struct_mouse_a785ea358af1f6b8608052634b17f4b8b}\index{Mouse@{Mouse}!lastX@{lastX}}
+\index{lastX@{lastX}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{lastX}{lastX}}
+{\footnotesize\ttfamily \label{struct_mouse_a785ea358af1f6b8608052634b17f4b8b} 
+\mbox{\hyperlink{raptiquax_8h_af0938d8dd13b4f7a595e78aacafd3323}{s32}} Mouse\+::lastX}
+
+The last x-\/coordinate of the mouse. \Hypertarget{struct_mouse_a0e7981e5f86770f558e94e8c1b8f91b2}\index{Mouse@{Mouse}!lastY@{lastY}}
+\index{lastY@{lastY}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{lastY}{lastY}}
+{\footnotesize\ttfamily \label{struct_mouse_a0e7981e5f86770f558e94e8c1b8f91b2} 
+\mbox{\hyperlink{raptiquax_8h_af0938d8dd13b4f7a595e78aacafd3323}{s32}} Mouse\+::lastY}
+
+The last y-\/coordinate of the mouse. \Hypertarget{struct_mouse_a2c6252aa86f43e627f71dd94c49b634a}\index{Mouse@{Mouse}!pressed\_button@{pressed\_button}}
+\index{pressed\_button@{pressed\_button}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{pressed\_button}{pressed\_button}}
+{\footnotesize\ttfamily \label{struct_mouse_a2c6252aa86f43e627f71dd94c49b634a} 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Mouse\+::pressed\+\_\+button}
+
+Bitfield representing mouse buttons that were pressed. \Hypertarget{struct_mouse_a57c5c2bea78566cb048aedddd987493e}\index{Mouse@{Mouse}!released\_button@{released\_button}}
+\index{released\_button@{released\_button}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{released\_button}{released\_button}}
+{\footnotesize\ttfamily \label{struct_mouse_a57c5c2bea78566cb048aedddd987493e} 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Mouse\+::released\+\_\+button}
+
+Bitfield representing mouse buttons that were released. \Hypertarget{struct_mouse_a11e4fa171279fb235f87a3f8980703fd}\index{Mouse@{Mouse}!scroll\_x@{scroll\_x}}
+\index{scroll\_x@{scroll\_x}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{scroll\_x}{scroll\_x}}
+{\footnotesize\ttfamily \label{struct_mouse_a11e4fa171279fb235f87a3f8980703fd} 
+\mbox{\hyperlink{raptiquax_8h_a543c9bcb4e7b83b40dd6ae7a024a63d2}{s8}} Mouse\+::scroll\+\_\+x}
+
+The horizontal scroll movement of the mouse. \Hypertarget{struct_mouse_a8a927d4f2b11fff012159a707ed6ab13}\index{Mouse@{Mouse}!scroll\_y@{scroll\_y}}
+\index{scroll\_y@{scroll\_y}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{scroll\_y}{scroll\_y}}
+{\footnotesize\ttfamily \label{struct_mouse_a8a927d4f2b11fff012159a707ed6ab13} 
+\mbox{\hyperlink{raptiquax_8h_a543c9bcb4e7b83b40dd6ae7a024a63d2}{s8}} Mouse\+::scroll\+\_\+y}
+
+The vertical scroll movement of the mouse. \Hypertarget{struct_mouse_ae5987a7a09e7194f65e9f32ab43bb419}\index{Mouse@{Mouse}!x@{x}}
+\index{x@{x}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{struct_mouse_ae5987a7a09e7194f65e9f32ab43bb419} 
+\mbox{\hyperlink{raptiquax_8h_af0938d8dd13b4f7a595e78aacafd3323}{s32}} Mouse\+::x}
+
+The current x-\/coordinate of the mouse. \Hypertarget{struct_mouse_aa648426bb888fe94db00332fb5e76353}\index{Mouse@{Mouse}!y@{y}}
+\index{y@{y}!Mouse@{Mouse}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily \label{struct_mouse_aa648426bb888fe94db00332fb5e76353} 
+\mbox{\hyperlink{raptiquax_8h_af0938d8dd13b4f7a595e78aacafd3323}{s32}} Mouse\+::y}
+
+The current y-\/coordinate of the mouse. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/io/\mbox{\hyperlink{input_8h}{input.\+h}}\end{DoxyCompactItemize}

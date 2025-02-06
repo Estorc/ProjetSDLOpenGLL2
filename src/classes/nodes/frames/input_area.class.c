@@ -1,3 +1,19 @@
+/**
+ * @file
+ * @brief This file defines the InputArea class and its associated methods.
+ *
+ * This source file contains the implementation of the InputArea class, which is used
+ * to handle user input within a specific area of the application. It provides methods
+ * for initializing, updating, and rendering the input area, as well as handling
+ * user interactions such as keyboard and mouse events.
+ *
+ * The InputArea class is designed to be a part of a larger application that uses SDL
+ * and OpenGL for rendering and user interface management.
+ *
+ * @author Loup Picault
+ * @date 2023-10-20
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"
@@ -106,7 +122,7 @@ class InputArea : public Frame {
     }
 
     void save(FILE *file, Node *editor) {
-        IGNORE(editor);
+        UNUSED(editor);
         fprintf(file, "%s", classManager.class_names[this->type]);
     }
 

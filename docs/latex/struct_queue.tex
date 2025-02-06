@@ -1,0 +1,47 @@
+\doxysection{Queue Struct Reference}
+\hypertarget{struct_queue}{}\label{struct_queue}\index{Queue@{Queue}}
+
+
+A node in the queue.  
+
+
+
+
+{\ttfamily \#include $<$queue.\+h$>$}
+
+
+
+Collaboration diagram for Queue\+:
+% FIG 0
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_queue}{Queue}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_queue_ad24d8a7c7ac3f464928f019d7cc94abd}{next}}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_queue_aebf5af56d0bf90578085ff93cbce8203}{data}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A node in the queue. 
+
+This structure represents a node in the queue. Each node contains a pointer to the next node in the queue and a pointer to the data stored in the node. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_queue_aebf5af56d0bf90578085ff93cbce8203}\index{Queue@{Queue}!data@{data}}
+\index{data@{data}!Queue@{Queue}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily \label{struct_queue_aebf5af56d0bf90578085ff93cbce8203} 
+void\texorpdfstring{$\ast$}{*} Queue\+::data}
+
+Pointer to the data stored in the node. \Hypertarget{struct_queue_ad24d8a7c7ac3f464928f019d7cc94abd}\index{Queue@{Queue}!next@{next}}
+\index{next@{next}!Queue@{Queue}}
+\doxysubsubsection{\texorpdfstring{next}{next}}
+{\footnotesize\ttfamily \label{struct_queue_ad24d8a7c7ac3f464928f019d7cc94abd} 
+struct \mbox{\hyperlink{struct_queue}{Queue}}\texorpdfstring{$\ast$}{*} Queue\+::next}
+
+Pointer to the next node in the queue. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/storage/\mbox{\hyperlink{queue_8h}{queue.\+h}}\end{DoxyCompactItemize}

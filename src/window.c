@@ -13,6 +13,7 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
     window->startTime = get_time_in_seconds();
     window->time = 0.0f;
     window->lastTime = 0.0f;
+
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
         PRINT_ERROR("Failed to initialize the SDL2 library\n");
         return -1;
@@ -56,6 +57,16 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
 
     window->sdl_window = SDL_CreateWindow(title, x, y, width, height, flags);
     window->opengl_ctx = SDL_GL_CreateContext(window->sdl_window);
+
+
+    #ifdef __windows__
+
+    if (glewInit() != GLEW_OK) {
+        PRINT_ERROR("Failed to initialize GLEW\n");
+        return -1;
+    }
+
+    #endif
 
 
     if(!window->sdl_window) {

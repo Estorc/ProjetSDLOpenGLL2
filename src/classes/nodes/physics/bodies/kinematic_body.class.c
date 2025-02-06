@@ -1,3 +1,19 @@
+/**
+ * @file
+ * @brief This file defines the implementation of kinematic bodies for the physics engine.
+ *
+ * This source file contains the implementation of kinematic bodies, which are used in the physics engine
+ * to represent objects that move according to predefined paths or velocities, but are not affected by forces
+ * like gravity or collisions. These bodies are essential for creating predictable and controlled movements
+ * in the simulation.
+ *
+ * The kinematic bodies are designed to interact with other physical entities in the simulation, providing
+ * a way to animate objects or create complex motion patterns without the need for dynamic physics calculations.
+ *
+ * @author Loup Picault
+ * @date 2023-10-20
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
@@ -83,7 +99,7 @@ class KinematicBody : public Body {
 
 
     void apply_impulse(float *impulse, float *torque, float *correction) {
-        IGNORE(torque);
+        UNUSED(torque);
         KinematicBody *kinematicBody = (KinematicBody *) this->object;
 
         // Change velocity

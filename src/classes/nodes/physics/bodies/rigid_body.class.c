@@ -1,3 +1,17 @@
+/**
+ * @file
+ * @brief This source file defines the implementation of rigid body physics for the project.
+ *
+ * This source file contains the implementation of the RigidBody class, which is responsible for
+ * handling the physics calculations and properties of rigid bodies in the simulation. It includes
+ * functions for updating the state of the rigid bodies, applying forces, and handling collisions.
+ * The primary use case of this code is to provide realistic physics behavior for objects in the
+ * simulation.
+ *
+ * @author Loup Picault
+ * @date 2023-10-30
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"

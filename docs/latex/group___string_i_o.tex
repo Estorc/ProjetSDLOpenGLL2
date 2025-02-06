@@ -1,0 +1,187 @@
+\doxysection{String and File I/O Utilities}
+\hypertarget{group___string_i_o}{}\label{group___string_i_o}\index{String and File I/O Utilities@{String and File I/O Utilities}}
+
+
+Utility functions for string and file operations.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___string_i_o_ga1e0205abb275b15436fa03c89899e4bb}{read\+\_\+file}} (const char \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Reads the contents of a file into a string. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___string_i_o_ga5c0319e26f420cd9750b2ecbec8b50a3}{get\+\_\+folder\+\_\+path}} (const char \texorpdfstring{$\ast$}{*}fullpath)
+\begin{DoxyCompactList}\small\item\em Extracts the folder path from a full file path. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___string_i_o_ga1d25b14b036624d6e8a205b10c3afa54}{convert\+\_\+path}} (const char \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Converts backslashes in a path to forward slashes. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___string_i_o_gab2e99bc76bbf988bfb786dc04be63e4d}{concat\+\_\+path}} (const char \texorpdfstring{$\ast$}{*}path1, const char \texorpdfstring{$\ast$}{*}path2)
+\begin{DoxyCompactList}\small\item\em Concatenates two file paths. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___string_i_o_ga5983fae6615beba7c359451e573f0984}{find\+\_\+string\+\_\+index}} (char \texorpdfstring{$\ast$}{*}str, const char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}str\+\_\+list, int list\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Finds the index of a string in a list of strings. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___string_i_o_ga2726b5bf448b63de929eece392ae8e70}{is\+\_\+utf8\+\_\+start\+\_\+byte}} (unsigned char c)
+\begin{DoxyCompactList}\small\item\em Checks if a byte is a valid UTF-\/8 start byte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___string_i_o_gaba7a0b4a178c6cb2fa43a9f14162835e}{remove\+\_\+last\+\_\+utf8\+\_\+char}} (char \texorpdfstring{$\ast$}{*}input\+Buffer)
+\begin{DoxyCompactList}\small\item\em Removes the last UTF-\/8 character from a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utility functions for string and file operations. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group___string_i_o_gab2e99bc76bbf988bfb786dc04be63e4d}\index{String and File I/O Utilities@{String and File I/O Utilities}!concat\_path@{concat\_path}}
+\index{concat\_path@{concat\_path}!String and File I/O Utilities@{String and File I/O Utilities}}
+\doxysubsubsection{\texorpdfstring{concat\_path()}{concat\_path()}}
+{\footnotesize\ttfamily \label{group___string_i_o_gab2e99bc76bbf988bfb786dc04be63e4d} 
+char \texorpdfstring{$\ast$}{*} concat\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path1}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{path2}{}\end{DoxyParamCaption})}
+
+
+
+Concatenates two file paths. 
+
+This function concatenates two file paths, adding a path separator between them if necessary. The returned string is dynamically allocated, and the caller is responsible for freeing the allocated memory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path1} & The first part of the path. \\
+\hline
+{\em path2} & The second part of the path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated string containing the concatenated path. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The caller is responsible for freeing the allocated memory. 
+\end{DoxyNote}
+\Hypertarget{group___string_i_o_ga1d25b14b036624d6e8a205b10c3afa54}\index{String and File I/O Utilities@{String and File I/O Utilities}!convert\_path@{convert\_path}}
+\index{convert\_path@{convert\_path}!String and File I/O Utilities@{String and File I/O Utilities}}
+\doxysubsubsection{\texorpdfstring{convert\_path()}{convert\_path()}}
+{\footnotesize\ttfamily \label{group___string_i_o_ga1d25b14b036624d6e8a205b10c3afa54} 
+char \texorpdfstring{$\ast$}{*} convert\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Converts backslashes in a path to forward slashes. 
+
+This function takes a path string and converts any backslashes to forward slashes. The returned string is dynamically allocated, and the caller is responsible for freeing the allocated memory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated string containing the converted path. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The caller is responsible for freeing the allocated memory. 
+\end{DoxyNote}
+\Hypertarget{group___string_i_o_ga5983fae6615beba7c359451e573f0984}\index{String and File I/O Utilities@{String and File I/O Utilities}!find\_string\_index@{find\_string\_index}}
+\index{find\_string\_index@{find\_string\_index}!String and File I/O Utilities@{String and File I/O Utilities}}
+\doxysubsubsection{\texorpdfstring{find\_string\_index()}{find\_string\_index()}}
+{\footnotesize\ttfamily \label{group___string_i_o_ga5983fae6615beba7c359451e573f0984} 
+int find\+\_\+string\+\_\+index (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{const char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{str\+\_\+list}{, }\item[{int}]{list\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Finds the index of a string in a list of strings. 
+
+This function searches for a given string in a list of strings and returns the index of the first occurrence. If the string is not found, the function returns -\/1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string to search for. \\
+\hline
+{\em str\+\_\+list} & The list of strings to search within. \\
+\hline
+{\em list\+\_\+size} & The number of strings in the list. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the first occurrence of the string, or -\/1 if not found. 
+\end{DoxyReturn}
+\Hypertarget{group___string_i_o_ga5c0319e26f420cd9750b2ecbec8b50a3}\index{String and File I/O Utilities@{String and File I/O Utilities}!get\_folder\_path@{get\_folder\_path}}
+\index{get\_folder\_path@{get\_folder\_path}!String and File I/O Utilities@{String and File I/O Utilities}}
+\doxysubsubsection{\texorpdfstring{get\_folder\_path()}{get\_folder\_path()}}
+{\footnotesize\ttfamily \label{group___string_i_o_ga5c0319e26f420cd9750b2ecbec8b50a3} 
+char \texorpdfstring{$\ast$}{*} get\+\_\+folder\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{fullpath}{}\end{DoxyParamCaption})}
+
+
+
+Extracts the folder path from a full file path. 
+
+This function takes a full file path and returns the folder path portion of it. The returned string is dynamically allocated, and the caller is responsible for freeing the allocated memory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fullpath} & The full file path from which to extract the folder path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated string containing the folder path. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The caller is responsible for freeing the allocated memory. 
+\end{DoxyNote}
+\Hypertarget{group___string_i_o_ga2726b5bf448b63de929eece392ae8e70}\index{String and File I/O Utilities@{String and File I/O Utilities}!is\_utf8\_start\_byte@{is\_utf8\_start\_byte}}
+\index{is\_utf8\_start\_byte@{is\_utf8\_start\_byte}!String and File I/O Utilities@{String and File I/O Utilities}}
+\doxysubsubsection{\texorpdfstring{is\_utf8\_start\_byte()}{is\_utf8\_start\_byte()}}
+{\footnotesize\ttfamily \label{group___string_i_o_ga2726b5bf448b63de929eece392ae8e70} 
+int is\+\_\+utf8\+\_\+start\+\_\+byte (\begin{DoxyParamCaption}\item[{unsigned char}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a byte is a valid UTF-\/8 start byte. 
+
+This function determines whether a given byte is a valid start byte for a UTF-\/8 encoded character. A valid start byte is any byte that can begin a multi-\/byte UTF-\/8 character.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & The byte to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the byte is a valid UTF-\/8 start byte, 0 otherwise. 
+\end{DoxyReturn}
+\Hypertarget{group___string_i_o_ga1e0205abb275b15436fa03c89899e4bb}\index{String and File I/O Utilities@{String and File I/O Utilities}!read\_file@{read\_file}}
+\index{read\_file@{read\_file}!String and File I/O Utilities@{String and File I/O Utilities}}
+\doxysubsubsection{\texorpdfstring{read\_file()}{read\_file()}}
+{\footnotesize\ttfamily \label{group___string_i_o_ga1e0205abb275b15436fa03c89899e4bb} 
+char \texorpdfstring{$\ast$}{*} read\+\_\+file (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Reads the contents of a file into a string. 
+
+This function opens the file specified by the given path, reads its contents, and returns them as a dynamically allocated string. The caller is responsible for freeing the allocated memory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to the file to be read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated string containing the file contents. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The caller is responsible for freeing the allocated memory. 
+\end{DoxyNote}
+\Hypertarget{group___string_i_o_gaba7a0b4a178c6cb2fa43a9f14162835e}\index{String and File I/O Utilities@{String and File I/O Utilities}!remove\_last\_utf8\_char@{remove\_last\_utf8\_char}}
+\index{remove\_last\_utf8\_char@{remove\_last\_utf8\_char}!String and File I/O Utilities@{String and File I/O Utilities}}
+\doxysubsubsection{\texorpdfstring{remove\_last\_utf8\_char()}{remove\_last\_utf8\_char()}}
+{\footnotesize\ttfamily \label{group___string_i_o_gaba7a0b4a178c6cb2fa43a9f14162835e} 
+void remove\+\_\+last\+\_\+utf8\+\_\+char (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{input\+Buffer}{}\end{DoxyParamCaption})}
+
+
+
+Removes the last UTF-\/8 character from a string. 
+
+This function removes the last UTF-\/8 encoded character from the given input buffer. It correctly handles multi-\/byte UTF-\/8 characters and adjusts the string length accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Buffer} & The string from which to remove the last UTF-\/8 character. \\
+\hline
+\end{DoxyParams}

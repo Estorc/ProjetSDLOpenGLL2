@@ -3,39 +3,42 @@
 \mbox{\hyperlink{physics_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}../io/input.h"{}}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../render/lighting.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{input_8h}{../io/input.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{lighting_8h}{../render/lighting.h}}"{}}}
 \DoxyCodeLine{00004\ }
-\DoxyCodeLine{00005\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structInput}{Input}};}
-\DoxyCodeLine{00006\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structWindow}{Window}};}
-\DoxyCodeLine{00007\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}};}
+\DoxyCodeLine{00005\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_input}{Input}};}
+\DoxyCodeLine{00006\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_window}{Window}};}
+\DoxyCodeLine{00007\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_node}{Node}};}
 \DoxyCodeLine{00008\ }
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ DEBUG\_AREA}}
 \DoxyCodeLine{00010\ }
-\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDistanceNode}{DistanceNode}}\ \{}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ *\mbox{\hyperlink{structDistanceNode_ab690354eda1603aecd6c94e4eabb12e0}{node}};\ }
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structDistanceNode_a699e233d8f147cb68ee9efffbaec65ce}{distance}};\ }
-\DoxyCodeLine{00028\ \}\ \mbox{\hyperlink{structDistanceNode}{DistanceNode}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_distance_node}{DistanceNode}}\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_node}{Node}}\ *\mbox{\hyperlink{struct_distance_node_ab690354eda1603aecd6c94e4eabb12e0}{node}};\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_distance_node_a699e233d8f147cb68ee9efffbaec65ce}{distance}};\ }
+\DoxyCodeLine{00028\ \}\ \mbox{\hyperlink{struct_distance_node}{DistanceNode}};}
 \DoxyCodeLine{00029\ }
-\DoxyCodeLine{00038\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classArea}{Area}}\ \{}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ **\mbox{\hyperlink{classArea_a81fbd9797b9458beeda0fd4853596687}{collisionsShapes}};\ }
-\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classArea_ad6881cbeab01152d62749a7a34d0aa40}{length}};\ }
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDistanceNode}{DistanceNode}}\ *\mbox{\hyperlink{classArea_a403fa7c79284f5e84a6ef040fef940c4}{collectedNodes}};\ }
-\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classArea_a4ac92812b2d2345583064a41c2012edf}{collectedLength}};\ }
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDistanceNode}{DistanceNode}}\ *\mbox{\hyperlink{classArea_a25d8d0a6ed915c1efb0387ef932328e9}{sortedNodes}};\ }
-\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classArea_a50962fdaccc582aa583886eff2e09fa3}{sortedLength}};\ }
-\DoxyCodeLine{00045\ \}\ \mbox{\hyperlink{classArea}{Area}};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_area}{Area}}\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_node}{Node}}\ **\mbox{\hyperlink{class_area_a81fbd9797b9458beeda0fd4853596687}{collisionsShapes}};\ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{class_area_ad6881cbeab01152d62749a7a34d0aa40}{length}};\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_distance_node}{DistanceNode}}\ *\mbox{\hyperlink{class_area_a403fa7c79284f5e84a6ef040fef940c4}{collectedNodes}};\ }
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{class_area_a4ac92812b2d2345583064a41c2012edf}{collectedLength}};\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_distance_node}{DistanceNode}}\ *\mbox{\hyperlink{class_area_a25d8d0a6ed915c1efb0387ef932328e9}{sortedNodes}};\ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{class_area_a50962fdaccc582aa583886eff2e09fa3}{sortedLength}};\ }
+\DoxyCodeLine{00045\ \}\ \mbox{\hyperlink{class_area}{Area}};}
 \DoxyCodeLine{00046\ }
 \DoxyCodeLine{00047\ }
-\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Physics_ga78adcf314a76aa3c6eaef77753143947}{apply\_body\_collision}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{classNode}{Node}}\ *shapeA,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{classNode}{Node}}\ *shapeB,\ vec3\ collisionNormal,\ vec3\ angularNormal,\ \textcolor{keywordtype}{float}\ penetrationDepth);}
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___physics_ga78adcf314a76aa3c6eaef77753143947}{apply\_body\_collision}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{class_node}{Node}}\ *shapeA,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_node}{Node}}\ *shapeB,\ vec3\ collisionNormal,\ vec3\ angularNormal,\ \textcolor{keywordtype}{float}\ penetrationDepth);}
 \DoxyCodeLine{00058\ }
-\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Physics_gafcff17acd8a0fae789362da90940abc5}{check\_collisions}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{classNode}{Node}}\ *shape);}
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___physics_gafcff17acd8a0fae789362da90940abc5}{check\_collisions}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{class_node}{Node}}\ *shape);}
 \DoxyCodeLine{00065\ }
-\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Physics_ga01dec48dd72d35747fd75272fe16c978}{update\_script}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{classNode}{Node}}\ *\mbox{\hyperlink{structDistanceNode_ab690354eda1603aecd6c94e4eabb12e0}{node}},\ vec3\ pos,\ vec3\ rot,\ vec3\ scale,\ \textcolor{keywordtype}{float}\ delta,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structInput}{Input}}\ *\mbox{\hyperlink{group__InputHandling_gad4db59ccea8946af2bb70f8269e99eeb}{input}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structWindow}{Window}}\ *\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}});}
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___physics_ga01dec48dd72d35747fd75272fe16c978}{update\_script}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{class_node}{Node}}\ *\mbox{\hyperlink{struct_distance_node_ab690354eda1603aecd6c94e4eabb12e0}{node}},\ vec3\ pos,\ vec3\ rot,\ vec3\ scale,\ \textcolor{keywordtype}{float}\ delta,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_input}{Input}}\ *\mbox{\hyperlink{group___input_handling_gad4db59ccea8946af2bb70f8269e99eeb}{input}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_window}{Window}}\ *\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}});}
 \DoxyCodeLine{00078\ }
-\DoxyCodeLine{00092\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Physics_gad78ccbcf4f39c0e4a4ce555badd55f0c}{update\_physics}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{classNode}{Node}}\ *\mbox{\hyperlink{structDistanceNode_ab690354eda1603aecd6c94e4eabb12e0}{node}},\ vec3\ pos,\ vec3\ rot,\ vec3\ scale,\ \textcolor{keywordtype}{float}\ delta,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structInput}{Input}}\ *\mbox{\hyperlink{group__InputHandling_gad4db59ccea8946af2bb70f8269e99eeb}{input}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structWindow}{Window}}\ *\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}},\ \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ lightsCount[\mbox{\hyperlink{group__Lighting_gga8c6cae46dbb41ab5d86c6df0879fb24ea5277e3bbd4a68494273b73c7df8815c4}{LIGHTS\_COUNT}}],\ \textcolor{keywordtype}{bool}\ active);}
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___physics_gad78ccbcf4f39c0e4a4ce555badd55f0c}{update\_physics}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{class_node}{Node}}\ *\mbox{\hyperlink{struct_distance_node_ab690354eda1603aecd6c94e4eabb12e0}{node}},\ vec3\ pos,\ vec3\ rot,\ vec3\ scale,\ \textcolor{keywordtype}{float}\ delta,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_input}{Input}}\ *\mbox{\hyperlink{group___input_handling_gad4db59ccea8946af2bb70f8269e99eeb}{input}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_window}{Window}}\ *\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}},\ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ lightsCount[\mbox{\hyperlink{group___lighting_gga8c6cae46dbb41ab5d86c6df0879fb24ea5277e3bbd4a68494273b73c7df8815c4}{LIGHTS\_COUNT}}],\ \textcolor{keywordtype}{bool}\ active);}
 \DoxyCodeLine{00093\ }
-\DoxyCodeLine{00102\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Physics_gad643de832d63de0fe574fe854ba8df82}{update\_global\_position}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{classNode}{Node}}\ *\mbox{\hyperlink{structDistanceNode_ab690354eda1603aecd6c94e4eabb12e0}{node}},\ vec3\ pos,\ vec3\ rot,\ vec3\ scale);}
-\DoxyCodeLine{00103\ }
- \textcolor{comment}{// end of Physics group
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___physics_gad643de832d63de0fe574fe854ba8df82}{update\_global\_position}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{class_node}{Node}}\ *\mbox{\hyperlink{struct_distance_node_ab690354eda1603aecd6c94e4eabb12e0}{node}},\ vec3\ pos,\ vec3\ rot,\ vec3\ scale);}
+\DoxyCodeLine{00103\ \ \textcolor{comment}{//\ end\ of\ Physics\ group}}
+
 \end{DoxyCode}

@@ -1,108 +1,162 @@
-\doxysection{src/render/color.h File Reference}
-\hypertarget{color_8h}{}\label{color_8h}\index{src/render/color.h@{src/render/color.h}}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{color_8h__dep__incl}
-\end{center}
-\end{figure}
-\doxysubsubsection*{Classes}
-\begin{DoxyCompactItemize}
-\item 
-struct \mbox{\hyperlink{structColRGBA}{Col\+RGBA}}
-\item 
-struct \mbox{\hyperlink{structColRGB}{Col\+RGB}}
-\end{DoxyCompactItemize}
+\doxysection{src/term/color.h File Reference}
+\hypertarget{color_8h}{}\label{color_8h}\index{src/term/color.h@{src/term/color.h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{color_8h_a9cbbf5bc5e31a350c78498a25112bd43}{get\+\_\+hex\+\_\+color}}(x)~\mbox{\hyperlink{color_8c_afad5d53ab2e5ba07959ce45e8ab8006a}{get\+\_\+color}}((x$>$$>$24)\&0xff, (x$>$$>$16)\&0xff, (x$>$$>$8)\&8, x\&0xff)
+\#define \mbox{\hyperlink{color_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}}~"{}\textbackslash{}x1b\mbox{[}0m"{}
 \item 
-\#define \mbox{\hyperlink{color_8h_a0001bb274845f9238d2de1bf0ba776dd}{gl\+Color\+RGBA}}(x)~gl\+Color4f(x.\+r, x.\+g, x.\+b, x.\+a)
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Typedefs}
-\begin{DoxyCompactItemize}
+\#define \mbox{\hyperlink{color_8h_a7b3b25cba33b07c303f3060fe41887f6}{BLACK}}~"{}\textbackslash{}x1b\mbox{[}30m"{}
 \item 
-typedef struct \mbox{\hyperlink{structColRGBA}{Col\+RGBA}} \mbox{\hyperlink{color_8h_a9b3f6c6d6b647cb8e60a754aa5064007}{Col\+RGBA}}
+\#define \mbox{\hyperlink{color_8h_a8d23feea868a983c8c2b661e1e16972f}{RED}}~"{}\textbackslash{}x1b\mbox{[}31m"{}
 \item 
-typedef struct \mbox{\hyperlink{structColRGB}{Col\+RGB}} \mbox{\hyperlink{color_8h_abae49311a309e8ffe8d159680ad073ed}{Col\+RGB}}
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Functions}
-\begin{DoxyCompactItemize}
+\#define \mbox{\hyperlink{color_8h_acfbc006ea433ad708fdee3e82996e721}{GREEN}}~"{}\textbackslash{}x1b\mbox{[}32m"{}
 \item 
-\mbox{\hyperlink{structColRGBA}{Col\+RGBA}} \mbox{\hyperlink{color_8h_afad5d53ab2e5ba07959ce45e8ab8006a}{get\+\_\+color}} (\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} r, \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} g, \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} b, \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} a)
+\#define \mbox{\hyperlink{color_8h_abf681265909adf3d3e8116c93c0ba179}{YELLOW}}~"{}\textbackslash{}x1b\mbox{[}33m"{}
 \item 
-void \mbox{\hyperlink{color_8h_a13c0dd39bc2cb8840b77f4ca9f6c4623}{darken\+\_\+color}} (\mbox{\hyperlink{structColRGBA}{Col\+RGBA}} \texorpdfstring{$\ast$}{*}col, \mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} rate)
+\#define \mbox{\hyperlink{color_8h_a79d10e672abb49ad63eeaa8aaef57c38}{BLUE}}~"{}\textbackslash{}x1b\mbox{[}34m"{}
+\item 
+\#define \mbox{\hyperlink{color_8h_a6f699060902f800f12aaae150f3a708e}{MAGENTA}}~"{}\textbackslash{}x1b\mbox{[}35m"{}
+\item 
+\#define \mbox{\hyperlink{color_8h_ad243f93c16bc4c1d3e0a13b84421d760}{CYAN}}~"{}\textbackslash{}x1b\mbox{[}36m"{}
+\item 
+\#define \mbox{\hyperlink{color_8h_a87b537f5fa5c109d3c05c13d6b18f382}{WHITE}}~"{}\textbackslash{}x1b\mbox{[}37m"{}
+\item 
+\#define \mbox{\hyperlink{color_8h_adce122f566c88a1eceeb79a635afa964}{GREY}}~"{}\textbackslash{}x1b\mbox{[}90m"{}
+\item 
+\#define \mbox{\hyperlink{color_8h_a7b6e436cdd428f9257bbc177197b81e7}{BOLD\+\_\+\+BLACK}}~"{}\textbackslash{}x1b\mbox{[}1;30m"{}
+\item 
+\#define \mbox{\hyperlink{color_8h_a58f9401d546703859ab9c8720c61ee9e}{BOLD\+\_\+\+RED}}~"{}\textbackslash{}x1b\mbox{[}1;31m"{}
+\item 
+\#define \mbox{\hyperlink{color_8h_a08800e737f550f758120b8e717789a56}{BOLD\+\_\+\+GREEN}}~"{}\textbackslash{}x1b\mbox{[}1;32m"{}
+\item 
+\#define \mbox{\hyperlink{color_8h_a1657fd9211b5650e98b0ebd377a74e47}{BOLD\+\_\+\+YELLOW}}~"{}\textbackslash{}x1b\mbox{[}1;33m"{}
+\item 
+\#define \mbox{\hyperlink{color_8h_a085159bf5578cb27037b75eda75b3b83}{BOLD\+\_\+\+BLUE}}~"{}\textbackslash{}x1b\mbox{[}1;34m"{}
+\item 
+\#define \mbox{\hyperlink{color_8h_a0533bbc2534a2c8075e060896c9bd2d8}{BOLD\+\_\+\+MAGENTA}}~"{}\textbackslash{}x1b\mbox{[}1;35m"{}
+\item 
+\#define \mbox{\hyperlink{color_8h_a62f05b1e00666a7e59003a86c1ca68d6}{BOLD\+\_\+\+CYAN}}~"{}\textbackslash{}x1b\mbox{[}1;36m"{}
+\item 
+\#define \mbox{\hyperlink{color_8h_a9489fe820b5e8eb3cbd187a2d0813004}{BOLD\+\_\+\+WHITE}}~"{}\textbackslash{}x1b\mbox{[}1;37m"{}
+\item 
+\#define \mbox{\hyperlink{color_8h_aba599c2e5af454d3094f2215808705dd}{BOLD\+\_\+\+GREY}}~"{}\textbackslash{}x1b\mbox{[}1;90m"{}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{color_8h_a9cbbf5bc5e31a350c78498a25112bd43}\label{color_8h_a9cbbf5bc5e31a350c78498a25112bd43} 
-\index{color.h@{color.h}!get\_hex\_color@{get\_hex\_color}}
-\index{get\_hex\_color@{get\_hex\_color}!color.h@{color.h}}
-\doxysubsubsection{\texorpdfstring{get\_hex\_color}{get\_hex\_color}}
-{\footnotesize\ttfamily \#define get\+\_\+hex\+\_\+color(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~\mbox{\hyperlink{color_8c_afad5d53ab2e5ba07959ce45e8ab8006a}{get\+\_\+color}}((x$>$$>$24)\&0xff, (x$>$$>$16)\&0xff, (x$>$$>$8)\&8, x\&0xff)}
+\Hypertarget{color_8h_a7b3b25cba33b07c303f3060fe41887f6}\index{color.h@{color.h}!BLACK@{BLACK}}
+\index{BLACK@{BLACK}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{BLACK}{BLACK}}
+{\footnotesize\ttfamily \label{color_8h_a7b3b25cba33b07c303f3060fe41887f6} 
+\#define BLACK~"{}\textbackslash{}x1b\mbox{[}30m"{}}
 
-\Hypertarget{color_8h_a0001bb274845f9238d2de1bf0ba776dd}\label{color_8h_a0001bb274845f9238d2de1bf0ba776dd} 
-\index{color.h@{color.h}!glColorRGBA@{glColorRGBA}}
-\index{glColorRGBA@{glColorRGBA}!color.h@{color.h}}
-\doxysubsubsection{\texorpdfstring{glColorRGBA}{glColorRGBA}}
-{\footnotesize\ttfamily \#define gl\+Color\+RGBA(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~gl\+Color4f(x.\+r, x.\+g, x.\+b, x.\+a)}
+\Hypertarget{color_8h_a79d10e672abb49ad63eeaa8aaef57c38}\index{color.h@{color.h}!BLUE@{BLUE}}
+\index{BLUE@{BLUE}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{BLUE}{BLUE}}
+{\footnotesize\ttfamily \label{color_8h_a79d10e672abb49ad63eeaa8aaef57c38} 
+\#define BLUE~"{}\textbackslash{}x1b\mbox{[}34m"{}}
 
+\Hypertarget{color_8h_a7b6e436cdd428f9257bbc177197b81e7}\index{color.h@{color.h}!BOLD\_BLACK@{BOLD\_BLACK}}
+\index{BOLD\_BLACK@{BOLD\_BLACK}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{BOLD\_BLACK}{BOLD\_BLACK}}
+{\footnotesize\ttfamily \label{color_8h_a7b6e436cdd428f9257bbc177197b81e7} 
+\#define BOLD\+\_\+\+BLACK~"{}\textbackslash{}x1b\mbox{[}1;30m"{}}
 
+\Hypertarget{color_8h_a085159bf5578cb27037b75eda75b3b83}\index{color.h@{color.h}!BOLD\_BLUE@{BOLD\_BLUE}}
+\index{BOLD\_BLUE@{BOLD\_BLUE}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{BOLD\_BLUE}{BOLD\_BLUE}}
+{\footnotesize\ttfamily \label{color_8h_a085159bf5578cb27037b75eda75b3b83} 
+\#define BOLD\+\_\+\+BLUE~"{}\textbackslash{}x1b\mbox{[}1;34m"{}}
 
-\doxysubsection{Typedef Documentation}
-\Hypertarget{color_8h_abae49311a309e8ffe8d159680ad073ed}\label{color_8h_abae49311a309e8ffe8d159680ad073ed} 
-\index{color.h@{color.h}!ColRGB@{ColRGB}}
-\index{ColRGB@{ColRGB}!color.h@{color.h}}
-\doxysubsubsection{\texorpdfstring{ColRGB}{ColRGB}}
-{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structColRGB}{Col\+RGB}} \mbox{\hyperlink{structColRGB}{Col\+RGB}}}
+\Hypertarget{color_8h_a62f05b1e00666a7e59003a86c1ca68d6}\index{color.h@{color.h}!BOLD\_CYAN@{BOLD\_CYAN}}
+\index{BOLD\_CYAN@{BOLD\_CYAN}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{BOLD\_CYAN}{BOLD\_CYAN}}
+{\footnotesize\ttfamily \label{color_8h_a62f05b1e00666a7e59003a86c1ca68d6} 
+\#define BOLD\+\_\+\+CYAN~"{}\textbackslash{}x1b\mbox{[}1;36m"{}}
 
-\Hypertarget{color_8h_a9b3f6c6d6b647cb8e60a754aa5064007}\label{color_8h_a9b3f6c6d6b647cb8e60a754aa5064007} 
-\index{color.h@{color.h}!ColRGBA@{ColRGBA}}
-\index{ColRGBA@{ColRGBA}!color.h@{color.h}}
-\doxysubsubsection{\texorpdfstring{ColRGBA}{ColRGBA}}
-{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structColRGBA}{Col\+RGBA}} \mbox{\hyperlink{structColRGBA}{Col\+RGBA}}}
+\Hypertarget{color_8h_a08800e737f550f758120b8e717789a56}\index{color.h@{color.h}!BOLD\_GREEN@{BOLD\_GREEN}}
+\index{BOLD\_GREEN@{BOLD\_GREEN}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{BOLD\_GREEN}{BOLD\_GREEN}}
+{\footnotesize\ttfamily \label{color_8h_a08800e737f550f758120b8e717789a56} 
+\#define BOLD\+\_\+\+GREEN~"{}\textbackslash{}x1b\mbox{[}1;32m"{}}
 
+\Hypertarget{color_8h_aba599c2e5af454d3094f2215808705dd}\index{color.h@{color.h}!BOLD\_GREY@{BOLD\_GREY}}
+\index{BOLD\_GREY@{BOLD\_GREY}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{BOLD\_GREY}{BOLD\_GREY}}
+{\footnotesize\ttfamily \label{color_8h_aba599c2e5af454d3094f2215808705dd} 
+\#define BOLD\+\_\+\+GREY~"{}\textbackslash{}x1b\mbox{[}1;90m"{}}
 
+\Hypertarget{color_8h_a0533bbc2534a2c8075e060896c9bd2d8}\index{color.h@{color.h}!BOLD\_MAGENTA@{BOLD\_MAGENTA}}
+\index{BOLD\_MAGENTA@{BOLD\_MAGENTA}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{BOLD\_MAGENTA}{BOLD\_MAGENTA}}
+{\footnotesize\ttfamily \label{color_8h_a0533bbc2534a2c8075e060896c9bd2d8} 
+\#define BOLD\+\_\+\+MAGENTA~"{}\textbackslash{}x1b\mbox{[}1;35m"{}}
 
-\doxysubsection{Function Documentation}
-\Hypertarget{color_8h_a13c0dd39bc2cb8840b77f4ca9f6c4623}\label{color_8h_a13c0dd39bc2cb8840b77f4ca9f6c4623} 
-\index{color.h@{color.h}!darken\_color@{darken\_color}}
-\index{darken\_color@{darken\_color}!color.h@{color.h}}
-\doxysubsubsection{\texorpdfstring{darken\_color()}{darken\_color()}}
-{\footnotesize\ttfamily void darken\+\_\+color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structColRGBA}{Col\+RGBA}} \texorpdfstring{$\ast$}{*}}]{col,  }\item[{\mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{rate }\end{DoxyParamCaption})}
+\Hypertarget{color_8h_a58f9401d546703859ab9c8720c61ee9e}\index{color.h@{color.h}!BOLD\_RED@{BOLD\_RED}}
+\index{BOLD\_RED@{BOLD\_RED}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{BOLD\_RED}{BOLD\_RED}}
+{\footnotesize\ttfamily \label{color_8h_a58f9401d546703859ab9c8720c61ee9e} 
+\#define BOLD\+\_\+\+RED~"{}\textbackslash{}x1b\mbox{[}1;31m"{}}
 
-Darkens a given color by multiplying its RGB components with a specified rate.
+\Hypertarget{color_8h_a9489fe820b5e8eb3cbd187a2d0813004}\index{color.h@{color.h}!BOLD\_WHITE@{BOLD\_WHITE}}
+\index{BOLD\_WHITE@{BOLD\_WHITE}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{BOLD\_WHITE}{BOLD\_WHITE}}
+{\footnotesize\ttfamily \label{color_8h_a9489fe820b5e8eb3cbd187a2d0813004} 
+\#define BOLD\+\_\+\+WHITE~"{}\textbackslash{}x1b\mbox{[}1;37m"{}}
 
+\Hypertarget{color_8h_a1657fd9211b5650e98b0ebd377a74e47}\index{color.h@{color.h}!BOLD\_YELLOW@{BOLD\_YELLOW}}
+\index{BOLD\_YELLOW@{BOLD\_YELLOW}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{BOLD\_YELLOW}{BOLD\_YELLOW}}
+{\footnotesize\ttfamily \label{color_8h_a1657fd9211b5650e98b0ebd377a74e47} 
+\#define BOLD\+\_\+\+YELLOW~"{}\textbackslash{}x1b\mbox{[}1;33m"{}}
 
-\begin{DoxyParams}{Parameters}
-{\em col} & \{Col\+RGBA\texorpdfstring{$\ast$}{*}\} Pointer to the \doxylink{structColRGBA}{Col\+RGBA} structure representing the color to be darkened. \\
-\hline
-{\em rate} & \{f32\} The rate by which to darken the color. A value between 0.\+0 and 1.\+0 will darken the color, where 0.\+0 results in black and 1.\+0 leaves the color unchanged.\\
-\hline
-\end{DoxyParams}
-This function takes a pointer to a \doxylink{structColRGBA}{Col\+RGBA} structure and modifies its RGB components by multiplying each component (red, green, and blue) by the specified rate. The alpha component remains unchanged. This is useful for achieving darker shades of the original color while preserving its transparency. \Hypertarget{color_8h_afad5d53ab2e5ba07959ce45e8ab8006a}\label{color_8h_afad5d53ab2e5ba07959ce45e8ab8006a} 
-\index{color.h@{color.h}!get\_color@{get\_color}}
-\index{get\_color@{get\_color}!color.h@{color.h}}
-\doxysubsubsection{\texorpdfstring{get\_color()}{get\_color()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structColRGBA}{Col\+RGBA}} get\+\_\+color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}}]{r,  }\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}}]{g,  }\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}}]{b,  }\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}}]{a }\end{DoxyParamCaption})}
+\Hypertarget{color_8h_ad243f93c16bc4c1d3e0a13b84421d760}\index{color.h@{color.h}!CYAN@{CYAN}}
+\index{CYAN@{CYAN}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{CYAN}{CYAN}}
+{\footnotesize\ttfamily \label{color_8h_ad243f93c16bc4c1d3e0a13b84421d760} 
+\#define CYAN~"{}\textbackslash{}x1b\mbox{[}36m"{}}
 
-Converts RGBA color components from 0-\/255 range to a normalized floating-\/point format.
+\Hypertarget{color_8h_acfbc006ea433ad708fdee3e82996e721}\index{color.h@{color.h}!GREEN@{GREEN}}
+\index{GREEN@{GREEN}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{GREEN}{GREEN}}
+{\footnotesize\ttfamily \label{color_8h_acfbc006ea433ad708fdee3e82996e721} 
+\#define GREEN~"{}\textbackslash{}x1b\mbox{[}32m"{}}
 
+\Hypertarget{color_8h_adce122f566c88a1eceeb79a635afa964}\index{color.h@{color.h}!GREY@{GREY}}
+\index{GREY@{GREY}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{GREY}{GREY}}
+{\footnotesize\ttfamily \label{color_8h_adce122f566c88a1eceeb79a635afa964} 
+\#define GREY~"{}\textbackslash{}x1b\mbox{[}90m"{}}
 
-\begin{DoxyParams}{Parameters}
-{\em r} & \{u8\} Red component of the color (0-\/255). \\
-\hline
-{\em g} & \{u8\} Green component of the color (0-\/255). \\
-\hline
-{\em b} & \{u8\} Blue component of the color (0-\/255). \\
-\hline
-{\em a} & \{u8\} Alpha component of the color (0-\/255).\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\{\doxylink{structColRGBA}{Col\+RGBA}\} A \doxylink{structColRGBA}{Col\+RGBA} structure containing the normalized color components, where each component is in the range \mbox{[}0.\+0, 1.\+0\mbox{]}.
-\end{DoxyReturn}
-This function takes the red, green, blue, and alpha components of a color, which are typically represented as unsigned 8-\/bit integers (0-\/255), and converts them into a normalized format (0.\+0-\/1.\+0) suitable for rendering in graphics applications. The function creates a \doxylink{structColRGBA}{Col\+RGBA} structure that contains the converted color values and returns it. 
+\Hypertarget{color_8h_a6f699060902f800f12aaae150f3a708e}\index{color.h@{color.h}!MAGENTA@{MAGENTA}}
+\index{MAGENTA@{MAGENTA}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{MAGENTA}{MAGENTA}}
+{\footnotesize\ttfamily \label{color_8h_a6f699060902f800f12aaae150f3a708e} 
+\#define MAGENTA~"{}\textbackslash{}x1b\mbox{[}35m"{}}
+
+\Hypertarget{color_8h_a8d23feea868a983c8c2b661e1e16972f}\index{color.h@{color.h}!RED@{RED}}
+\index{RED@{RED}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{RED}{RED}}
+{\footnotesize\ttfamily \label{color_8h_a8d23feea868a983c8c2b661e1e16972f} 
+\#define RED~"{}\textbackslash{}x1b\mbox{[}31m"{}}
+
+\Hypertarget{color_8h_ab702106cf3b3e96750b6845ded4e0299}\index{color.h@{color.h}!RESET@{RESET}}
+\index{RESET@{RESET}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{RESET}{RESET}}
+{\footnotesize\ttfamily \label{color_8h_ab702106cf3b3e96750b6845ded4e0299} 
+\#define RESET~"{}\textbackslash{}x1b\mbox{[}0m"{}}
+
+\Hypertarget{color_8h_a87b537f5fa5c109d3c05c13d6b18f382}\index{color.h@{color.h}!WHITE@{WHITE}}
+\index{WHITE@{WHITE}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{WHITE}{WHITE}}
+{\footnotesize\ttfamily \label{color_8h_a87b537f5fa5c109d3c05c13d6b18f382} 
+\#define WHITE~"{}\textbackslash{}x1b\mbox{[}37m"{}}
+
+\Hypertarget{color_8h_abf681265909adf3d3e8116c93c0ba179}\index{color.h@{color.h}!YELLOW@{YELLOW}}
+\index{YELLOW@{YELLOW}!color.h@{color.h}}
+\doxysubsubsection{\texorpdfstring{YELLOW}{YELLOW}}
+{\footnotesize\ttfamily \label{color_8h_abf681265909adf3d3e8116c93c0ba179} 
+\#define YELLOW~"{}\textbackslash{}x1b\mbox{[}33m"{}}
+

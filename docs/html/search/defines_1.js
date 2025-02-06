@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['debug_5farea_0',['DEBUG_AREA',['../physics_8h.html#ae7e40c503d7e0fb53e7b878de2feb176',1,'physics.h']]]
+  ['cyan_0',['CYAN',['../color_8h.html#ad243f93c16bc4c1d3e0a13b84421d760',1,'color.h']]]
 ];

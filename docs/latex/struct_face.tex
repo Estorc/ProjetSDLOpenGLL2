@@ -1,0 +1,59 @@
+\doxysection{Face Struct Reference}
+\hypertarget{struct_face}{}\label{struct_face}\index{Face@{Face}}
+
+
+Structure representing a face of a 3D model.  
+
+
+
+
+{\ttfamily \#include $<$obj\+\_\+loader.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_face_a1172248468cc8f99ca3f268afd45e301}{vertex}} \mbox{[}\mbox{\hyperlink{group___obj_loader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\+\_\+\+VERTEX\+\_\+\+PER\+\_\+\+FACE}}\mbox{]}
+\item 
+int \mbox{\hyperlink{struct_face_af7ac3badebf6a913e880fed8f327c115}{normals}} \mbox{[}\mbox{\hyperlink{group___obj_loader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\+\_\+\+VERTEX\+\_\+\+PER\+\_\+\+FACE}}\mbox{]}
+\item 
+int \mbox{\hyperlink{struct_face_afe9fb91d164312de484f987ab088ae50}{texture\+Vertex}} \mbox{[}\mbox{\hyperlink{group___obj_loader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\+\_\+\+VERTEX\+\_\+\+PER\+\_\+\+FACE}}\mbox{]}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{struct_face_ad8660f1df79e1a97a34365fab4e5b6f1}{length}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure representing a face of a 3D model. 
+
+This structure holds the indices of vertices, normals, and texture vertices that make up a face. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_face_ad8660f1df79e1a97a34365fab4e5b6f1}\index{Face@{Face}!length@{length}}
+\index{length@{length}!Face@{Face}}
+\doxysubsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily \label{struct_face_ad8660f1df79e1a97a34365fab4e5b6f1} 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Face\+::length}
+
+Number of vertices in the face \Hypertarget{struct_face_af7ac3badebf6a913e880fed8f327c115}\index{Face@{Face}!normals@{normals}}
+\index{normals@{normals}!Face@{Face}}
+\doxysubsubsection{\texorpdfstring{normals}{normals}}
+{\footnotesize\ttfamily \label{struct_face_af7ac3badebf6a913e880fed8f327c115} 
+int Face\+::normals\mbox{[}\mbox{\hyperlink{group___obj_loader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\+\_\+\+VERTEX\+\_\+\+PER\+\_\+\+FACE}}\mbox{]}}
+
+Indices of normals \Hypertarget{struct_face_afe9fb91d164312de484f987ab088ae50}\index{Face@{Face}!textureVertex@{textureVertex}}
+\index{textureVertex@{textureVertex}!Face@{Face}}
+\doxysubsubsection{\texorpdfstring{textureVertex}{textureVertex}}
+{\footnotesize\ttfamily \label{struct_face_afe9fb91d164312de484f987ab088ae50} 
+int Face\+::texture\+Vertex\mbox{[}\mbox{\hyperlink{group___obj_loader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\+\_\+\+VERTEX\+\_\+\+PER\+\_\+\+FACE}}\mbox{]}}
+
+Indices of texture vertices \Hypertarget{struct_face_a1172248468cc8f99ca3f268afd45e301}\index{Face@{Face}!vertex@{vertex}}
+\index{vertex@{vertex}!Face@{Face}}
+\doxysubsubsection{\texorpdfstring{vertex}{vertex}}
+{\footnotesize\ttfamily \label{struct_face_a1172248468cc8f99ca3f268afd45e301} 
+int Face\+::vertex\mbox{[}\mbox{\hyperlink{group___obj_loader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\+\_\+\+VERTEX\+\_\+\+PER\+\_\+\+FACE}}\mbox{]}}
+
+Indices of vertices 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/io/model\+\_\+loaders/\mbox{\hyperlink{obj__loader_8h}{obj\+\_\+loader.\+h}}\end{DoxyCompactItemize}

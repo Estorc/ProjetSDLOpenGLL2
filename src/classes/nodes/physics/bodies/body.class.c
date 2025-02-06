@@ -1,3 +1,18 @@
+/**
+ * @file
+ * @brief This file defines the body class for the physics engine.
+ *
+ * This file contains the implementation of the body class, which is used to represent physical bodies
+ * in the physics engine. It includes functions for initializing, updating, and managing the state of
+ * physical bodies within the simulation.
+ *
+ * It is used for handling the physical properties and behaviors of objects in the simulation, such as
+ * position, velocity, and collision detection.
+ *
+ * @author Loup Picault
+ * @date 2023-10-20
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"

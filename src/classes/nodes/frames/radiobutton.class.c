@@ -1,3 +1,15 @@
+/**
+ * @file radiobutton.class.c
+ * @brief Implementation of the RadioButton class.
+ *
+ * This source file contains the implementation of the RadioButton class, which is used to create and manage radio button UI elements in the application. The RadioButton class provides functionality to handle user interactions, rendering, and state management of radio buttons.
+ *
+ * This file is part of the larger project that integrates SDL and OpenGL for rendering graphical user interfaces.
+ *
+ * @author Loup Picault
+ * @date 2023-10-20
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"
@@ -33,7 +45,7 @@ class RadioButton : public Button {
     
 
     void load(FILE *file) {
-        IGNORE(file);
+        UNUSED(file);
         this->type = __type__;
         this::constructor();
         Frame *frame = (Frame *) this->object;
@@ -46,7 +58,7 @@ class RadioButton : public Button {
     }
 
     void save(FILE *file, Node *editor) {
-        IGNORE(editor);
+        UNUSED(editor);
         fprintf(file, "%s", classManager.class_names[this->type]);
     }
 

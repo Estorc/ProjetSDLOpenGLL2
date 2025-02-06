@@ -3,6 +3,11 @@
 #include "../term/enhanced_print.h"
 #include <stdlib.h>
 #include <unistd.h>
+
+#ifdef __windows__
+#include <windows.h>
+#endif
+
 #define KDIALOG
 
 #ifdef KDIALOG
@@ -133,16 +138,27 @@ int update_cwd() {
     char exe_path[1024]; // Buffer to store the executable path.
 
     // Read the symbolic link /proc/self/exe to get the full path of the executable.
+    #ifdef __linux__
     ssize_t len = readlink("/proc/self/exe", exe_path, sizeof(exe_path) - 1);
+    #elif __windows__
+    DWORD len = GetModuleFileName(NULL, exe_path, MAX_PATH);
+    if (len == 0) {
+        PRINT_ERROR("GetModuleFileName failed\n");
+        return -1;
+    }
+    #endif
     if (len == -1) {
         perror("readlink failed");
         return -1;
     }
 
     exe_path[len] = '\0'; // Null-terminate the path.
-
     // Extract the directory from the full path.
+    #ifdef __linux__
     char *last_slash = strrchr(exe_path, '/');
+    #elif __windows__
+    char *last_slash = strrchr(exe_path, '\\');
+    #endif
     if (last_slash != NULL) {
         *last_slash = '\0'; // Remove the executable name to get the directory.
     } else {

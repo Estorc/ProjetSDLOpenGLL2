@@ -1,3 +1,22 @@
+/**
+ * @file
+ * @brief This file defines the Label class and its associated functions.
+ *
+ * This file contains the implementation of the Label class, which is used to create and manage text labels
+ * within the application. It includes functions for initializing, rendering, and updating label properties.
+ * 
+ * The Label class is part of the nodes/frames module and is essential for displaying text information
+ * in the graphical user interface.
+ *
+ * Additional details:
+ * - The Label class supports various text styles and alignments.
+ * - It integrates with the SDL and OpenGL libraries for rendering.
+ * - The class provides methods to handle dynamic text updates.
+ *
+ * @author Loup Picault
+ * @date 2023-10-10
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"
@@ -74,7 +93,7 @@ class Label : public Frame {
 
     void save(FILE *file, Node *editor) {
         Frame *frame = (Frame *) this->object;
-        IGNORE(editor);
+        UNUSED(editor);
         fprintf(file, "%s", classManager.class_names[this->type]);
         fprintf(file, "(%s,%c%c)", 
         frame->label->text, frame->alignment[0], frame->alignment[1]);

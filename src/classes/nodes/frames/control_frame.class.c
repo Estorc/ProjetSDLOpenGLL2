@@ -1,3 +1,16 @@
+/**
+ * @file
+ * @brief This file defines the implementation of the control frame class.
+ *
+ * This source file contains the implementation details for the control frame class,
+ * which is responsible for managing and rendering control frames within the application.
+ * It includes functions for initializing, updating, and rendering control frames,
+ * as well as handling user input and interactions.
+ *
+ * @author Loup Picault
+ * @date October 6, 2023
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"
@@ -46,7 +59,7 @@ class ControlFrame : public Frame {
 
     void save(FILE *file, Node *editor) {
         Frame *frame = (Frame *) this->object;
-        IGNORE(editor);
+        UNUSED(editor);
         fprintf(file, "%s", classManager.class_names[this->type]);
 
         fprintf(file, "(%g%c,%g%c,%g%c,%g%c,%c%c)", 

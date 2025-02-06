@@ -1,3 +1,15 @@
+/**
+ * @file
+ * @brief This file contains the implementation of the Skybox class.
+ *
+ * This file contains the implementation details for the Skybox class, which is used to create and manage a skybox in an OpenGL context. The skybox is a technique used to create the illusion of distant three-dimensional surroundings in a 3D scene.
+ *
+ * It is used for rendering a skybox in an OpenGL application, providing a background that surrounds the entire scene.
+ *
+ * @author Loup Picault
+ * @date October 20, 2023
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
@@ -201,7 +213,7 @@ class Skybox : public Node {
 
 
     void render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
-        IGNORE(activeShader);
+        UNUSED(activeShader);
         
         glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
 
@@ -210,7 +222,7 @@ class Skybox : public Node {
         int modelLoc = glGetUniformLocation(shader, "model");
         TexturedMesh *texturedMesh = (TexturedMesh *)this->object;
 
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, modelMatrix);
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, (const GLfloat *) modelMatrix);
         // render Cube
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_CUBE_MAP, texturedMesh->texture);

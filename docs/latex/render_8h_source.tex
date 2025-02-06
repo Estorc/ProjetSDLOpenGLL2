@@ -5,30 +5,32 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ RENDER\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ RENDER\_H}}
 \DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structWindow}{Window}};}
-\DoxyCodeLine{00005\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDepthMap}{DepthMap}};}
-\DoxyCodeLine{00006\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classCamera}{Camera}};}
-\DoxyCodeLine{00007\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}};}
-\DoxyCodeLine{00008\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMSAA}{MSAA}};}
-\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classMesh}{Mesh}};}
+\DoxyCodeLine{00004\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_window}{Window}};}
+\DoxyCodeLine{00005\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_depth_map}{DepthMap}};}
+\DoxyCodeLine{00006\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_camera}{Camera}};}
+\DoxyCodeLine{00007\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_node}{Node}};}
+\DoxyCodeLine{00008\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_m_s_a_a}{MSAA}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_mesh}{Mesh}};}
 \DoxyCodeLine{00010\ }
-\DoxyCodeLine{00026\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structWorldShaders}{WorldShaders}}\ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ \mbox{\hyperlink{structWorldShaders_a971e5d33d21e06476fdf895c3e63cb88}{render}};\ }
-\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ \mbox{\hyperlink{structWorldShaders_a1dd7dbad44b318567d8c0c59b873d5a9}{depth}};\ }
-\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ \mbox{\hyperlink{structWorldShaders_a9c1798ff27dec6ced2d60c39f2e30b8d}{screen}};\ }
-\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ \mbox{\hyperlink{structWorldShaders_a3285649792624418d2464287ce5e57fb}{skybox}};\ }
-\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ \mbox{\hyperlink{structWorldShaders_a92889bafce33339104ccfc29db9d1522}{gui}};\ }
-\DoxyCodeLine{00032\ \}\ \mbox{\hyperlink{structWorldShaders}{WorldShaders}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_world_shaders}{WorldShaders}}\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}}\ \mbox{\hyperlink{struct_world_shaders_a971e5d33d21e06476fdf895c3e63cb88}{render}};\ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}}\ \mbox{\hyperlink{struct_world_shaders_a1dd7dbad44b318567d8c0c59b873d5a9}{depth}};\ }
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}}\ \mbox{\hyperlink{struct_world_shaders_a9c1798ff27dec6ced2d60c39f2e30b8d}{screen}};\ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}}\ \mbox{\hyperlink{struct_world_shaders_a3285649792624418d2464287ce5e57fb}{skybox}};\ }
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}}\ \mbox{\hyperlink{struct_world_shaders_a92889bafce33339104ccfc29db9d1522}{gui}};\ }
+\DoxyCodeLine{00032\ \}\ \mbox{\hyperlink{struct_world_shaders}{WorldShaders}};}
 \DoxyCodeLine{00033\ }
 \DoxyCodeLine{00034\ }
-\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__RenderFunctions_ga7228f0476961799d9cf59f1d23088dca}{render\_scene}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structWindow}{Window}}\ *\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{classNode}{Node}}\ *node,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{classCamera}{Camera}}\ *c,\ mat4\ modelMatrix,\ \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ activeShader,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structWorldShaders}{WorldShaders}}\ *shaders);}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___render_functions_ga7228f0476961799d9cf59f1d23088dca}{render\_scene}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_window}{Window}}\ *\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_node}{Node}}\ *node,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_camera}{Camera}}\ *c,\ mat4\ modelMatrix,\ \mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}}\ activeShader,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_world_shaders}{WorldShaders}}\ *shaders);}
 \DoxyCodeLine{00050\ }
-\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__RenderFunctions_ga5be131954e4b841d5dbb65b09aee0af0}{draw\_shadow\_map}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structWindow}{Window}}\ *\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{classNode}{Node}}\ *root,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{classCamera}{Camera}}\ *c,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structWorldShaders}{WorldShaders}}\ *shaders,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structDepthMap}{DepthMap}}\ *depthMap);}
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___render_functions_ga5be131954e4b841d5dbb65b09aee0af0}{draw\_shadow\_map}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_window}{Window}}\ *\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_node}{Node}}\ *root,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_camera}{Camera}}\ *c,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_world_shaders}{WorldShaders}}\ *shaders,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_depth_map}{DepthMap}}\ *depthMap);}
 \DoxyCodeLine{00065\ }
-\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__RenderFunctions_ga3a40b329a60cbe367e798eecbb95c855}{draw\_scene}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structWindow}{Window}}\ *\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{classNode}{Node}}\ *root,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{classCamera}{Camera}}\ *c,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structWorldShaders}{WorldShaders}}\ *shaders,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structDepthMap}{DepthMap}}\ *depthMap);}
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___render_functions_ga3a40b329a60cbe367e798eecbb95c855}{draw\_scene}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_window}{Window}}\ *\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_node}{Node}}\ *root,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_camera}{Camera}}\ *c,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_world_shaders}{WorldShaders}}\ *shaders,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_depth_map}{DepthMap}}\ *depthMap);}
 \DoxyCodeLine{00079\ }
-\DoxyCodeLine{00095\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__RenderFunctions_ga93a265287cf95e99d6118358e849e2c6}{draw\_screen}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structWindow}{Window}}\ *\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{classNode}{Node}}\ *scene,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{classCamera}{Camera}}\ *c,\ \mbox{\hyperlink{structWorldShaders}{WorldShaders}}\ *shaders,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structDepthMap}{DepthMap}}\ *depthMap,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structMSAA}{MSAA}}\ *msaa,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{classMesh}{Mesh}}\ *screenPlane);}
-\DoxyCodeLine{00096\ }
- \textcolor{comment}{// end of RenderFunctions group}\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___render_functions_ga93a265287cf95e99d6118358e849e2c6}{draw\_screen}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_window}{Window}}\ *\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_node}{Node}}\ *scene,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_camera}{Camera}}\ *c,\ \mbox{\hyperlink{struct_world_shaders}{WorldShaders}}\ *shaders,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_depth_map}{DepthMap}}\ *depthMap,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_m_s_a_a}{MSAA}}\ *msaa,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_mesh}{Mesh}}\ *screenPlane);}
+\DoxyCodeLine{00096\ \ \textcolor{comment}{//\ end\ of\ RenderFunctions\ group}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

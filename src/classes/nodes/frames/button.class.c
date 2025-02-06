@@ -1,3 +1,19 @@
+/**
+ * @file button.class.c
+ * @brief This file defines the Button class and its associated methods.
+ *
+ * This source file contains the implementation of the Button class, which is used
+ * to create and manage button elements within the application. The Button class
+ * provides functionalities such as rendering the button, handling user interactions,
+ * and triggering events when the button is clicked.
+ *
+ * The Button class is a crucial component for creating interactive user interfaces
+ * in the application, allowing users to perform actions through button clicks.
+ *
+ * @author Loup Picault
+ * @date 2023-10-31
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"
@@ -40,7 +56,7 @@ class Button : public Frame {
     
 
     void load(FILE *file) {
-        IGNORE(file);
+        UNUSED(file);
         this->type = __type__;
         this::constructor();
         this::init_button();
@@ -87,7 +103,7 @@ class Button : public Frame {
     }
 
     void save(FILE *file, Node *editor) {
-        IGNORE(editor);
+        UNUSED(editor);
         fprintf(file, "%s", classManager.class_names[this->type]);
     }
 

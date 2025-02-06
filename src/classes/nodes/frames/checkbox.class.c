@@ -1,3 +1,19 @@
+/**
+ * @file checkbox.class.c
+ * @brief Implementation of the Checkbox class for the GUI framework.
+ *
+ * This source file contains the implementation of the Checkbox class, which is a part of the GUI framework
+ * used in the project. The Checkbox class provides functionality to create and manage checkbox elements
+ * within the graphical user interface. It handles rendering, state management, and user interaction
+ * for checkboxes.
+ *
+ * This file is used for creating interactive checkbox components that can be used in various parts of the
+ * application to allow users to make binary choices.
+ *
+ * @author Loup Picault
+ * @date 2023-10-25
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"
@@ -25,7 +41,7 @@ class CheckBox : public Button {
     
 
     void load(FILE *file) {
-        IGNORE(file);
+        UNUSED(file);
         this->type = __type__;
         this::constructor();
         this::init_button();
@@ -39,7 +55,7 @@ class CheckBox : public Button {
     }
 
     void save(FILE *file, Node *editor) {
-        IGNORE(editor);
+        UNUSED(editor);
         fprintf(file, "%s", classManager.class_names[this->type]);
     }
 

@@ -152,7 +152,7 @@ int main(int argc, char *argv[]) {
     glDeleteFramebuffers(1, &depthMap.frameBuffer);
     glDeleteBuffers(1, &depthMap.ubo);
     PRINT_INFO("Free depth map!\n");
-
+    
     free_window(&window);
     SDL_Quit();
     return 0;

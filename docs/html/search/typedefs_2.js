@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['normal_0',['Normal',['../group__ModelHandling.html#gabb5b863a4c7a7cc7d18a288c908b9f0b',1,'model.h']]]
+  ['normal_0',['Normal',['../group___obj_loader.html#ga61ad7a469496e30dbfb0a434e8c9545b',1,'obj_loader.h']]]
 ];

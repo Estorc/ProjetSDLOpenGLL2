@@ -27,7 +27,7 @@ Shader create_shader(char* vertexPath, char* fragmentPath) {
     char* fShaderCode = read_file(fragmentPath);
 
     vertex = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertex, 1, &vShaderCode, NULL);
+    glShaderSource(vertex, 1, (const GLchar * const*) &vShaderCode, NULL);
     glCompileShader(vertex);
     glGetShaderiv(vertex, GL_COMPILE_STATUS, &success);
     if(!success)
@@ -37,7 +37,7 @@ Shader create_shader(char* vertexPath, char* fragmentPath) {
     };
 
     fragment = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragment, 1, &fShaderCode, NULL);
+    glShaderSource(fragment, 1, (const GLchar * const*) &fShaderCode, NULL);
     glCompileShader(fragment);
     glGetShaderiv(fragment, GL_COMPILE_STATUS, &success);
     if(!success)
@@ -100,5 +100,5 @@ void set_shader_vec4(Shader ID, char *name, vec4 value) {
 }
 
 void set_shader_mat4(Shader ID, char *name, mat4 *value) {
-    glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, value);
+    glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, (const GLfloat *) value);
 }

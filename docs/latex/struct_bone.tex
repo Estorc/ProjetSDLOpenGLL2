@@ -1,0 +1,111 @@
+\doxysection{Bone Struct Reference}
+\hypertarget{struct_bone}{}\label{struct_bone}\index{Bone@{Bone}}
+
+
+Structure representing a bone in a 3D model.  
+
+
+
+
+{\ttfamily \#include $<$model.\+h$>$}
+
+
+
+Collaboration diagram for Bone\+:
+% FIG 0
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{struct_bone_a5308bf49086d4115802d73c9f3607b28}{name}} \mbox{[}128\mbox{]}
+\item 
+mat4 \mbox{\hyperlink{struct_bone_a842ad02b3b17a412a3fd505081c186db}{offset\+Matrix}}
+\item 
+mat4 \mbox{\hyperlink{struct_bone_a24c5bc5cfeb022d82677b5f786d74ff2}{transform}}
+\item 
+\mbox{\hyperlink{struct_model_keyframe}{Model\+Keyframe}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_bone_a8fc4280358595cc391fa8c64609056e2}{translation\+Keyframes}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \mbox{\hyperlink{struct_bone_abac3427db0bb36027eabf6bbb369d5c9}{translation\+Keyframes\+Count}}
+\item 
+\mbox{\hyperlink{struct_model_keyframe}{Model\+Keyframe}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_bone_ac6ecb224cad690a2f581543469583081}{rotation\+Keyframes}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \mbox{\hyperlink{struct_bone_a96474088473819d6d942c593b482fefa}{rotation\+Keyframes\+Count}}
+\item 
+\mbox{\hyperlink{struct_model_keyframe}{Model\+Keyframe}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_bone_a2df40db652d6f984ee572e5ab1a9a7f9}{scale\+Keyframes}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \mbox{\hyperlink{struct_bone_ac37b59cc86bfb8b3d30693ed8f18d61c}{scale\+Keyframes\+Count}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \mbox{\hyperlink{struct_bone_ad888628f07c03e6e52766345890b205c}{index}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure representing a bone in a 3D model. 
+
+This structure holds the name, parent, and children of a bone in a 3D model. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_bone_ad888628f07c03e6e52766345890b205c}\index{Bone@{Bone}!index@{index}}
+\index{index@{index}!Bone@{Bone}}
+\doxysubsubsection{\texorpdfstring{index}{index}}
+{\footnotesize\ttfamily \label{struct_bone_ad888628f07c03e6e52766345890b205c} 
+\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} Bone\+::index}
+
+Index of the bone \Hypertarget{struct_bone_a5308bf49086d4115802d73c9f3607b28}\index{Bone@{Bone}!name@{name}}
+\index{name@{name}!Bone@{Bone}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{struct_bone_a5308bf49086d4115802d73c9f3607b28} 
+char Bone\+::name\mbox{[}128\mbox{]}}
+
+Name of the bone \Hypertarget{struct_bone_a842ad02b3b17a412a3fd505081c186db}\index{Bone@{Bone}!offsetMatrix@{offsetMatrix}}
+\index{offsetMatrix@{offsetMatrix}!Bone@{Bone}}
+\doxysubsubsection{\texorpdfstring{offsetMatrix}{offsetMatrix}}
+{\footnotesize\ttfamily \label{struct_bone_a842ad02b3b17a412a3fd505081c186db} 
+mat4 Bone\+::offset\+Matrix}
+
+Offset matrix \Hypertarget{struct_bone_ac6ecb224cad690a2f581543469583081}\index{Bone@{Bone}!rotationKeyframes@{rotationKeyframes}}
+\index{rotationKeyframes@{rotationKeyframes}!Bone@{Bone}}
+\doxysubsubsection{\texorpdfstring{rotationKeyframes}{rotationKeyframes}}
+{\footnotesize\ttfamily \label{struct_bone_ac6ecb224cad690a2f581543469583081} 
+\mbox{\hyperlink{struct_model_keyframe}{Model\+Keyframe}}\texorpdfstring{$\ast$}{*} Bone\+::rotation\+Keyframes}
+
+Array of rotation keyframes \Hypertarget{struct_bone_a96474088473819d6d942c593b482fefa}\index{Bone@{Bone}!rotationKeyframesCount@{rotationKeyframesCount}}
+\index{rotationKeyframesCount@{rotationKeyframesCount}!Bone@{Bone}}
+\doxysubsubsection{\texorpdfstring{rotationKeyframesCount}{rotationKeyframesCount}}
+{\footnotesize\ttfamily \label{struct_bone_a96474088473819d6d942c593b482fefa} 
+\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} Bone\+::rotation\+Keyframes\+Count}
+
+Number of rotation keyframes \Hypertarget{struct_bone_a2df40db652d6f984ee572e5ab1a9a7f9}\index{Bone@{Bone}!scaleKeyframes@{scaleKeyframes}}
+\index{scaleKeyframes@{scaleKeyframes}!Bone@{Bone}}
+\doxysubsubsection{\texorpdfstring{scaleKeyframes}{scaleKeyframes}}
+{\footnotesize\ttfamily \label{struct_bone_a2df40db652d6f984ee572e5ab1a9a7f9} 
+\mbox{\hyperlink{struct_model_keyframe}{Model\+Keyframe}}\texorpdfstring{$\ast$}{*} Bone\+::scale\+Keyframes}
+
+Array of scale keyframes \Hypertarget{struct_bone_ac37b59cc86bfb8b3d30693ed8f18d61c}\index{Bone@{Bone}!scaleKeyframesCount@{scaleKeyframesCount}}
+\index{scaleKeyframesCount@{scaleKeyframesCount}!Bone@{Bone}}
+\doxysubsubsection{\texorpdfstring{scaleKeyframesCount}{scaleKeyframesCount}}
+{\footnotesize\ttfamily \label{struct_bone_ac37b59cc86bfb8b3d30693ed8f18d61c} 
+\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} Bone\+::scale\+Keyframes\+Count}
+
+Number of scale keyframes \Hypertarget{struct_bone_a24c5bc5cfeb022d82677b5f786d74ff2}\index{Bone@{Bone}!transform@{transform}}
+\index{transform@{transform}!Bone@{Bone}}
+\doxysubsubsection{\texorpdfstring{transform}{transform}}
+{\footnotesize\ttfamily \label{struct_bone_a24c5bc5cfeb022d82677b5f786d74ff2} 
+mat4 Bone\+::transform}
+
+Transformation matrix \Hypertarget{struct_bone_a8fc4280358595cc391fa8c64609056e2}\index{Bone@{Bone}!translationKeyframes@{translationKeyframes}}
+\index{translationKeyframes@{translationKeyframes}!Bone@{Bone}}
+\doxysubsubsection{\texorpdfstring{translationKeyframes}{translationKeyframes}}
+{\footnotesize\ttfamily \label{struct_bone_a8fc4280358595cc391fa8c64609056e2} 
+\mbox{\hyperlink{struct_model_keyframe}{Model\+Keyframe}}\texorpdfstring{$\ast$}{*} Bone\+::translation\+Keyframes}
+
+Array of translation keyframes \Hypertarget{struct_bone_abac3427db0bb36027eabf6bbb369d5c9}\index{Bone@{Bone}!translationKeyframesCount@{translationKeyframesCount}}
+\index{translationKeyframesCount@{translationKeyframesCount}!Bone@{Bone}}
+\doxysubsubsection{\texorpdfstring{translationKeyframesCount}{translationKeyframesCount}}
+{\footnotesize\ttfamily \label{struct_bone_abac3427db0bb36027eabf6bbb369d5c9} 
+\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} Bone\+::translation\+Keyframes\+Count}
+
+Number of translation keyframes 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/io/\mbox{\hyperlink{model_8h}{model.\+h}}\end{DoxyCompactItemize}

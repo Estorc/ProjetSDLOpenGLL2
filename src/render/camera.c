@@ -35,8 +35,8 @@ void camera_projection(Camera *c, WorldShaders *shaders) {
 
     for (int i = 0; i < memoryCaches.shadersCount; i++) {
         use_shader(memoryCaches.shaderCache[i].shader);
-        glUniformMatrix4fv(glGetUniformLocation(memoryCaches.shaderCache[i].shader, "projection"), 1, GL_FALSE, &projection);
-        glUniformMatrix4fv(glGetUniformLocation(memoryCaches.shaderCache[i].shader, "view"), 1, GL_FALSE, &view);
-        glUniform3fv(glGetUniformLocation(memoryCaches.shaderCache[i].shader, "viewPos"), 1, &viewPos);
+        glUniformMatrix4fv(glGetUniformLocation(memoryCaches.shaderCache[i].shader, "projection"), 1, GL_FALSE, (const GLfloat *) &projection);
+        glUniformMatrix4fv(glGetUniformLocation(memoryCaches.shaderCache[i].shader, "view"), 1, GL_FALSE, (const GLfloat *) &view);
+        glUniform3fv(glGetUniformLocation(memoryCaches.shaderCache[i].shader, "viewPos"), 1, (const GLfloat *) &viewPos);
     }
 }

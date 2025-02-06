@@ -1,3 +1,19 @@
+/**
+ * @file
+ * @brief This file contains the implementation of the Camera class.
+ *
+ * This source file provides the functionality for managing and manipulating
+ * camera objects within the application. It includes functions for setting
+ * camera parameters, updating the camera's position and orientation, and
+ * handling camera-related transformations.
+ *
+ * The Camera class is essential for rendering scenes from different viewpoints
+ * and is used extensively in the graphics rendering pipeline.
+ *
+ * @author Loup Picault
+ * @date 2023-10-31
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
@@ -32,7 +48,7 @@ class Camera : public Node {
     }
 
     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
-        IGNORE(scripts);
+        UNUSED(scripts);
         Camera *cam;
         cam = malloc(sizeof(Camera));
         POINTER_CHECK(cam);

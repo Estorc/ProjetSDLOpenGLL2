@@ -1,0 +1,70 @@
+\doxysection{Node Loader}
+\hypertarget{group___node_loader}{}\label{group___node_loader}\index{Node Loader@{Node Loader}}
+
+
+Functions for loading and saving nodes.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___node_loader_gae4a14d7e7a38b0e9d99c338fe9ee060e}{malloc\+\_\+node}} (\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}node, int node\+Type, FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{class_camera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{struct_script}{Script}} scripts\mbox{[}SCRIPTS\+\_\+\+COUNT\mbox{]}, \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}editor)
+\begin{DoxyCompactList}\small\item\em Allocates memory for a node and initializes it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___node_loader_ga930ce06b98b45fb3cef57f5a2e3c91dd}{node\+\_\+tree\+\_\+to\+\_\+file}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}editor)
+\begin{DoxyCompactList}\small\item\em Writes the node tree to a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions for loading and saving nodes. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group___node_loader_gae4a14d7e7a38b0e9d99c338fe9ee060e}\index{Node Loader@{Node Loader}!malloc\_node@{malloc\_node}}
+\index{malloc\_node@{malloc\_node}!Node Loader@{Node Loader}}
+\doxysubsubsection{\texorpdfstring{malloc\_node()}{malloc\_node()}}
+{\footnotesize\ttfamily \label{group___node_loader_gae4a14d7e7a38b0e9d99c338fe9ee060e} 
+void malloc\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{int}]{node\+Type}{, }\item[{FILE \texorpdfstring{$\ast$}{*}}]{file}{, }\item[{\mbox{\hyperlink{class_camera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{c}{, }\item[{\mbox{\hyperlink{struct_script}{Script}}}]{scripts}{\mbox{[}\+SCRIPTS\+\_\+\+COUNT\mbox{]}, }\item[{\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}}]{editor}{}\end{DoxyParamCaption})}
+
+
+
+Allocates memory for a node and initializes it. 
+
+This function allocates memory for a node and initializes it based on the provided node type. It also reads additional data from the given file and sets up the camera and scripts.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Pointer to the node to be allocated and initialized. \\
+\hline
+{\em node\+Type} & The type of the node to be created. \\
+\hline
+{\em file} & Pointer to the file from which additional data is read. \\
+\hline
+{\em c} & Pointer to the camera array to be set up. \\
+\hline
+{\em scripts} & Array of scripts to be initialized. \\
+\hline
+{\em editor} & Pointer to the editor node. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___node_loader_ga930ce06b98b45fb3cef57f5a2e3c91dd}\index{Node Loader@{Node Loader}!node\_tree\_to\_file@{node\_tree\_to\_file}}
+\index{node\_tree\_to\_file@{node\_tree\_to\_file}!Node Loader@{Node Loader}}
+\doxysubsubsection{\texorpdfstring{node\_tree\_to\_file()}{node\_tree\_to\_file()}}
+{\footnotesize\ttfamily \label{group___node_loader_ga930ce06b98b45fb3cef57f5a2e3c91dd} 
+void node\+\_\+tree\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file}{, }\item[{\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}}]{editor}{}\end{DoxyParamCaption})}
+
+
+
+Writes the node tree to a file. 
+
+This function traverses the node tree and writes its structure and data to the specified file. It includes the editor node in the output.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Pointer to the file where the node tree will be written. \\
+\hline
+{\em node} & Pointer to the root node of the tree to be written. \\
+\hline
+{\em editor} & Pointer to the editor node to be included in the output. \\
+\hline
+\end{DoxyParams}

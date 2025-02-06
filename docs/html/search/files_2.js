@@ -11,7 +11,8 @@ var searchData=
   ['collision_2eh_8',['collision.h',['../collision_8h.html',1,'']]],
   ['collision_5futil_2ec_9',['collision_util.c',['../collision__util_8c.html',1,'']]],
   ['collision_5futil_2eh_10',['collision_util.h',['../collision__util_8h.html',1,'']]],
-  ['config_2eh_11',['config.h',['../config_8h.html',1,'']]],
-  ['control_5fframe_2eclass_2ec_12',['control_frame.class.c',['../control__frame_8class_8c.html',1,'']]],
-  ['cshape_2eclass_2ec_13',['cshape.class.c',['../cshape_8class_8c.html',1,'']]]
+  ['color_2eh_11',['color.h',['../color_8h.html',1,'']]],
+  ['config_2eh_12',['config.h',['../config_8h.html',1,'']]],
+  ['control_5fframe_2eclass_2ec_13',['control_frame.class.c',['../control__frame_8class_8c.html',1,'']]],
+  ['cshape_2eclass_2ec_14',['cshape.class.c',['../cshape_8class_8c.html',1,'']]]
 ];

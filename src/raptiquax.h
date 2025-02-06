@@ -1,3 +1,7 @@
+#ifdef __windows__
+#include <GL/glew.h>  // Include before OpenGL functions
+#endif
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>

@@ -1,0 +1,212 @@
+\doxysection{Light Class Reference}
+\hypertarget{class_light}{}\label{class_light}\index{Light@{Light}}
+
+
+Inheritance diagram for Light\+:
+% FIG 0
+
+
+Collaboration diagram for Light\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_light_a5d5340f3f260f4bdf363c49fc4b9332b}{init\+\_\+light}} ()
+\item 
+void \mbox{\hyperlink{class_light_abf14e6e019fdd300a6280c7d914acf6f}{render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix)
+\item 
+void \mbox{\hyperlink{class_light_a0478fb3eaf6a6292d76c26e9bdf54859}{init\+\_\+vao}} ()
+\item 
+void \mbox{\hyperlink{class_light_ad320015420df7a99607d56c025fb776b}{configure\+\_\+lighting}} (\mbox{\hyperlink{struct_world_shaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, mat4 \texorpdfstring{$\ast$}{*}light\+View, mat4 \texorpdfstring{$\ast$}{*}light\+Projection, int storage\+Buffer\+Index)
+\begin{DoxyCompactList}\small\item\em Configures the lighting for the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_node}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_node_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}} ()
+\item 
+void \mbox{\hyperlink{class_node_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
+\item 
+void \mbox{\hyperlink{class_node_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group___node_functions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+\item 
+void \mbox{\hyperlink{class_node_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group___node_functions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
+\item 
+void \mbox{\hyperlink{class_node_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
+\item 
+void \mbox{\hyperlink{class_node_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
+\item 
+void \mbox{\hyperlink{class_node_ab05e54fc6a226fe70d274e46e9ced07a}{prepare\+\_\+render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}} active\+Shader)
+\begin{DoxyCompactList}\small\item\em Renders a node using the specified model matrix and shader. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_ab93a6f41e02422a21c44227c0355382a}{render}} ()
+\item 
+void \mbox{\hyperlink{class_node_a2621112ec04d166f9ec376eba06f3bbb}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group___node_functions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group___node_functions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group___node_functions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\item 
+void \mbox{\hyperlink{class_node_a500a682914a24af188bd9eb79ba2aaae}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group___node_functions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group___node_functions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group___node_functions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\item 
+void \mbox{\hyperlink{class_node_acda79ab291312990e96552767c577a3d}{free}} ()
+\item 
+void \mbox{\hyperlink{class_node_ae2ee01789b301b3c0323473dbe968283}{is\+\_\+cshape}} (bool \texorpdfstring{$\ast$}{*}cshape)
+\item 
+void \mbox{\hyperlink{class_node_a75c27b8cf028ae9509b20ad7392c49f8}{is\+\_\+body}} (bool \texorpdfstring{$\ast$}{*}body)
+\item 
+void \mbox{\hyperlink{class_node_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
+\item 
+void \mbox{\hyperlink{class_node_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
+\item 
+void \mbox{\hyperlink{class_node_a42da38ee8e0a621e438e14b94c0e381e}{add\+\_\+child}} (\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child node to a parent node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_a8e6b8cc31d9259fcf89b21c180954996}{add\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child node to a parent node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_ae86bdc267280b50e822501c7e74194f3}{remove\+\_\+child}} (\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_ac78c1a018c6fac8fe8bd9f413190273f}{remove\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_a33127e7928f75bccce339aafce1fe44b}{remove\+\_\+child\+\_\+and\+\_\+free}} (\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node and frees the memory of the child node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_af08ebf5c3bb8542c012107606b88391b}{remove\+\_\+child\+\_\+and\+\_\+free\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node, frees the memory of the child node, and reallocates memory if necessary. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_node_af99346e2725916df2fbe2e4af7a2d51c}{index\+\_\+of\+\_\+child}} (\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Retrieves the index of a child node in a parent node\textquotesingle{}s children array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_aef2f74d45bec672840433aff6abe0d45}{print}} (int level)
+\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_a846d06ed1f7a5ac618fbfef10881230f}{emit\+\_\+ready}} (...)
+\item 
+void \mbox{\hyperlink{class_node_a3e7054036adfcf19c240b48a7f353f83}{emit\+\_\+update}} (...)
+\item 
+void \mbox{\hyperlink{class_node_a0a3256bf578114f603b9407814638a2f}{emit\+\_\+signal}} (...)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{group___model_handling_ga39cb0021ea168181a8fe7c12bc18eb92}{VBO}} \mbox{\hyperlink{class_light_a90acb42629933de1782cacc87cd7f3ab}{vbo}} = 0
+\item 
+static \mbox{\hyperlink{group___model_handling_ga8c19ebcccdb657c785eb1cf1b0c5223c}{VAO}} \mbox{\hyperlink{class_light_aa95c079830da85a842ea323329212c30}{vao}} = 0
+\item 
+static \mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}} \mbox{\hyperlink{class_light_aebd427f80d693ffb69c973f9e3243b94}{billboard\+Shader}} = 0
+\item 
+static \mbox{\hyperlink{group___model_handling_ga9efea9b7fc3085f1062d9148aa012307}{Texture\+Map}} \mbox{\hyperlink{class_light_a3a09b00d149bd839db4f9e590ab385cb}{light\+Point\+Texture}} = 0
+\item 
+static \mbox{\hyperlink{group___model_handling_ga9efea9b7fc3085f1062d9148aa012307}{Texture\+Map}} \mbox{\hyperlink{class_light_a7417dc99e235b7f775b5f80810cca6fc}{directional\+Light\+Texture}} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{class_node}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}} \mbox{\hyperlink{class_node_a44e2ccb5f2209f6367f33a3c712f0eb1}{glow\+Shader}} = 0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_node}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___node_functions_ga9cf70c2b354e11c49130331da4519864}{object}}
+\item 
+struct \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___node_functions_ga3d857c2fdb25634fe92ca32ff006c233}{children}}
+\item 
+struct \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___node_functions_ga34f3ab9670c7b70dad8905359a243c92}{parent}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group___node_functions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group___node_functions_ga670b66a39fdb438336be47a9cb68a516}{type}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group___node_functions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
+\item 
+vec3 \mbox{\hyperlink{group___node_functions_ga19f2506921f0378b62b4200d0f674411}{pos}}
+\item 
+vec3 \mbox{\hyperlink{group___node_functions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}
+\item 
+vec3 \mbox{\hyperlink{group___node_functions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}}
+\item 
+vec3 \mbox{\hyperlink{group___node_functions_ga1cf2ef86297b1bdfed11d030c0ed3dd2}{global\+Pos}}
+\item 
+vec3 \mbox{\hyperlink{group___node_functions_ga16edb124722f7491fa3d41573b2fec8a}{global\+Rot}}
+\item 
+vec3 \mbox{\hyperlink{group___node_functions_ga1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
+\item 
+\mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___node_functions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
+\item 
+\mbox{\hyperlink{union_behavior_attribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___node_functions_gafa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group___node_functions_gab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
+\item 
+\mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}} \mbox{\hyperlink{group___node_functions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_light_ad320015420df7a99607d56c025fb776b}\index{Light@{Light}!configure\_lighting@{configure\_lighting}}
+\index{configure\_lighting@{configure\_lighting}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{configure\_lighting()}{configure\_lighting()}}
+{\footnotesize\ttfamily \label{class_light_ad320015420df7a99607d56c025fb776b} 
+void Light\+::configure\+\_\+lighting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_world_shaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders}{, }\item[{mat4 \texorpdfstring{$\ast$}{*}}]{light\+View}{, }\item[{mat4 \texorpdfstring{$\ast$}{*}}]{light\+Projection}{, }\item[{int}]{storage\+Buffer\+Index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Configures the lighting for the scene. 
+
+This function configures the lighting for the scene by setting the light properties in the shader.
+
+
+\begin{DoxyParams}{Parameters}
+{\em shaders} & The shaders to be used for rendering. \\
+\hline
+{\em light\+View} & The view matrix for the light. \\
+\hline
+{\em light\+Projection} & The projection matrix for the light. \\
+\hline
+{\em storage\+Buffer\+Index} & The index of the storage buffer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_light_a5d5340f3f260f4bdf363c49fc4b9332b}\index{Light@{Light}!init\_light@{init\_light}}
+\index{init\_light@{init\_light}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{init\_light()}{init\_light()}}
+{\footnotesize\ttfamily \label{class_light_a5d5340f3f260f4bdf363c49fc4b9332b} 
+void Light\+::init\+\_\+light (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_light_a0478fb3eaf6a6292d76c26e9bdf54859}\index{Light@{Light}!init\_vao@{init\_vao}}
+\index{init\_vao@{init\_vao}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{init\_vao()}{init\_vao()}}
+{\footnotesize\ttfamily \label{class_light_a0478fb3eaf6a6292d76c26e9bdf54859} 
+void Light\+::init\+\_\+vao (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_light_abf14e6e019fdd300a6280c7d914acf6f}\index{Light@{Light}!render@{render}}
+\index{render@{render}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{class_light_abf14e6e019fdd300a6280c7d914acf6f} 
+void Light\+::render (\begin{DoxyParamCaption}\item[{mat4 \texorpdfstring{$\ast$}{*}}]{model\+Matrix}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_light_aebd427f80d693ffb69c973f9e3243b94}\index{Light@{Light}!billboardShader@{billboardShader}}
+\index{billboardShader@{billboardShader}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{billboardShader}{billboardShader}}
+{\footnotesize\ttfamily \label{class_light_aebd427f80d693ffb69c973f9e3243b94} 
+\mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}} Light\+::billboard\+Shader = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_light_a7417dc99e235b7f775b5f80810cca6fc}\index{Light@{Light}!directionalLightTexture@{directionalLightTexture}}
+\index{directionalLightTexture@{directionalLightTexture}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{directionalLightTexture}{directionalLightTexture}}
+{\footnotesize\ttfamily \label{class_light_a7417dc99e235b7f775b5f80810cca6fc} 
+\mbox{\hyperlink{group___model_handling_ga9efea9b7fc3085f1062d9148aa012307}{Texture\+Map}} Light\+::directional\+Light\+Texture = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_light_a3a09b00d149bd839db4f9e590ab385cb}\index{Light@{Light}!lightPointTexture@{lightPointTexture}}
+\index{lightPointTexture@{lightPointTexture}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{lightPointTexture}{lightPointTexture}}
+{\footnotesize\ttfamily \label{class_light_a3a09b00d149bd839db4f9e590ab385cb} 
+\mbox{\hyperlink{group___model_handling_ga9efea9b7fc3085f1062d9148aa012307}{Texture\+Map}} Light\+::light\+Point\+Texture = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_light_aa95c079830da85a842ea323329212c30}\index{Light@{Light}!vao@{vao}}
+\index{vao@{vao}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{vao}{vao}}
+{\footnotesize\ttfamily \label{class_light_aa95c079830da85a842ea323329212c30} 
+\mbox{\hyperlink{group___model_handling_ga8c19ebcccdb657c785eb1cf1b0c5223c}{VAO}} Light\+::vao = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_light_a90acb42629933de1782cacc87cd7f3ab}\index{Light@{Light}!vbo@{vbo}}
+\index{vbo@{vbo}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{vbo}{vbo}}
+{\footnotesize\ttfamily \label{class_light_a90acb42629933de1782cacc87cd7f3ab} 
+\mbox{\hyperlink{group___model_handling_ga39cb0021ea168181a8fe7c12bc18eb92}{VBO}} Light\+::vbo = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/classes/nodes/lights/\mbox{\hyperlink{light_8class_8c}{light.\+class.\+c}}\end{DoxyCompactItemize}

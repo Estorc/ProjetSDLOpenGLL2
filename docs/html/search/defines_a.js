@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['zenity_0',['ZENITY',['../osio_8c.html#aec0249dd00faa70eea2d10807956e97e',1,'osio.c']]]
+  ['red_0',['RED',['../color_8h.html#a8d23feea868a983c8c2b661e1e16972f',1,'color.h']]],
+  ['reset_1',['RESET',['../color_8h.html#ab702106cf3b3e96750b6845ded4e0299',1,'color.h']]]
 ];

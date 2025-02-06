@@ -1,3 +1,15 @@
+/**
+ * @file
+ * @brief This file contains the implementation of the model class.
+ * 
+ * This source file contains the implementation of the model class, which is used
+ * to represent and manage 3D models in the application. It includes functions for
+ * loading, rendering, and manipulating 3D models.
+ * 
+ * @author Loup Picault
+ * @date October 11, 2023
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"

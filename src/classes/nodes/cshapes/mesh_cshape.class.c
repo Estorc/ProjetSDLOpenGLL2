@@ -1,3 +1,23 @@
+/**
+ * @file
+ * @brief This file defines the implementation of mesh shapes for the project.
+ *
+ * This source file contains the implementation of various mesh shapes used in the project.
+ * It provides the necessary functions and data structures to create, manipulate, and render
+ * mesh shapes within the SDL and OpenGL context.
+ *
+ * The main features include:
+ * - Creation of different mesh shapes
+ * - Functions to manipulate mesh vertices and indices
+ * - Rendering functions to display the mesh shapes using OpenGL
+ *
+ * This file is a crucial part of the graphics rendering pipeline, ensuring that mesh shapes
+ * are correctly created and displayed in the application.
+ *
+ * @author Loup Picault
+ * @date 2023-10-25
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"

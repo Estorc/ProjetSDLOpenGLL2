@@ -1,3 +1,24 @@
+/**
+ * @file
+ * @brief This file contains the implementation of the light class for the project.
+ *
+ * This source file provides the functionality for managing different types of lights
+ * within the application. It includes the necessary functions to create, update, and
+ * manipulate light objects, which are essential for rendering scenes with proper lighting
+ * effects in the SDL and OpenGL environment.
+ *
+ * The light class is designed to handle various light properties such as position, color,
+ * intensity, and type (e.g., directional, point, spotlights). It ensures that the lights
+ * are correctly integrated into the rendering pipeline, allowing for realistic and dynamic
+ * lighting in the 3D scenes.
+ *
+ * This file is a crucial part of the project as it directly impacts the visual quality and
+ * realism of the rendered scenes by providing the necessary tools to work with lighting.
+ *
+ * @author Loup Picault
+ * @date 2023-10-24
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
@@ -31,7 +52,7 @@ class Light : public Node {
         
         int modelLoc = glGetUniformLocation(billboardShader, "model");
 
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, modelMatrix);
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, (const GLfloat *) modelMatrix);
 
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -84,6 +105,6 @@ class Light : public Node {
         use_shader(shaders->render);
         glBufferSubData(GL_UNIFORM_BUFFER, storageBufferIndex, sizeof(mat4), &lightSpaceMatrix);
         use_shader(shaders->depth);
-        glUniformMatrix4fv(glGetUniformLocation(shaders->depth, "lightSpaceMatrix"), 1, GL_FALSE, &lightSpaceMatrix);
+        glUniformMatrix4fv(glGetUniformLocation(shaders->depth, "lightSpaceMatrix"), 1, GL_FALSE, (const GLfloat *) &lightSpaceMatrix);
     }
 }

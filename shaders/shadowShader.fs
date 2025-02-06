@@ -223,7 +223,7 @@ void main()
     vec3 result = vec3(0);
     // phase 1: directional lighting
     for(int i = 0; i < dirLightsNum && i < DIR_LIGHTS_MAX; i++) {
-        float shadow;
+        float shadow = 0.0;
         if (shadowCastActive) shadow = ShadowCalculation(dirLightSpaceMatrix[i] * vec4(fs_in.FragPos, 1.0), normal, dirLights[i].position, dirLights[i].index);
         result += CalcDirLight(dirLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? min(shadow, 1.0) : 0.0);
     }
@@ -236,7 +236,7 @@ void main()
     }  
     // phase 3: spot light
     for(int i = 0; i < spotLightsNum && i < SPOT_LIGHTS_MAX; i++) {
-        float shadow;
+        float shadow = 0.0;
         if (shadowCastActive) shadow = ShadowCalculation(spotLightSpaceMatrix[i] * vec4(fs_in.FragPos, 1.0), normal, spotLights[i].position, spotLights[i].index);
         result += CalcSpotLight(spotLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? min(shadow, 1.0) : 0.0);
     }  

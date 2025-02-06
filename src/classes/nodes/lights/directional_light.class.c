@@ -1,3 +1,16 @@
+/**
+ * @file
+ * @brief This file contains the implementation of the directional light class.
+ *
+ * This source file contains the implementation details for the directional light class used in the project.
+ * It is designed to handle the properties and behaviors of directional lights in the rendering engine.
+ * The directional light class is responsible for setting up light direction, intensity, and other related parameters
+ * to simulate directional lighting in the scene.
+ *
+ * @author Loup Picault
+ * @date 2023-10-31
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
@@ -18,7 +31,7 @@ class DirectionalLight : public Light {
     }
 
     void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta, u8 *lightsCount) {
-        IGNORE(delta);
+        UNUSED(delta);
         if (!(this->flags & NODE_LIGHT_ACTIVE)) return;
         DirectionalLight *directionalLight = (DirectionalLight *) this->object;
 

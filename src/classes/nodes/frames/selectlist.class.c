@@ -1,3 +1,15 @@
+/**
+ * @file
+ * @brief This file implements the functionality for a selectable list frame in the application.
+ *
+ * This source file contains the implementation of a selectable list frame, which is used to
+ * display and manage a list of selectable items within the application. It provides the necessary
+ * functions to create, update, and handle user interactions with the list.
+ *
+ * @author Loup Picault
+ * @date October 6, 2023
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"
@@ -45,7 +57,7 @@ class SelectList : public Frame {
     
 
     void load(FILE *file) {
-        IGNORE(file);
+        UNUSED(file);
         this->type = __type__;
         this::constructor();
     }
@@ -217,7 +229,7 @@ class SelectList : public Frame {
     }
 
     void save(FILE *file, Node *editor) {
-        IGNORE(editor);
+        UNUSED(editor);
         fprintf(file, "%s", classManager.class_names[this->type]);
     }
 

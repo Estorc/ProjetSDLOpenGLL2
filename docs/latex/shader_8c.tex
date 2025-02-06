@@ -1,42 +1,37 @@
 \doxysection{src/io/shader.c File Reference}
 \hypertarget{shader_8c}{}\label{shader_8c}\index{src/io/shader.c@{src/io/shader.c}}
-{\ttfamily \#include "{}../types.\+h"{}}\newline
+{\ttfamily \#include "{}../raptiquax.\+h"{}}\newline
 {\ttfamily \#include "{}../math/math\+\_\+util.\+h"{}}\newline
 {\ttfamily \#include "{}shader.\+h"{}}\newline
 {\ttfamily \#include "{}model.\+h"{}}\newline
 {\ttfamily \#include "{}../memory.\+h"{}}\newline
-Include dependency graph for shader.\+c\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{shader_8c__incl}
-\end{center}
-\end{figure}
+Include dependency graph for shader.\+c\+:
+% FIG 0
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__ShaderManagement_ga8c5722406ee9544fe6a6fdab7e87a1c0}{create\+\_\+shader}} (char \texorpdfstring{$\ast$}{*}vertex\+Path, char \texorpdfstring{$\ast$}{*}fragment\+Path)
+\mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}} \mbox{\hyperlink{group___shader_management_ga8c5722406ee9544fe6a6fdab7e87a1c0}{create\+\_\+shader}} (char \texorpdfstring{$\ast$}{*}vertex\+Path, char \texorpdfstring{$\ast$}{*}fragment\+Path)
 \begin{DoxyCompactList}\small\item\em Creates a shader program from vertex and fragment shader files. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ShaderManagement_ga1117f5894f4b4abe13e41cfc8109ddbe}{use\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID)
+void \mbox{\hyperlink{group___shader_management_ga1117f5894f4b4abe13e41cfc8109ddbe}{use\+\_\+shader}} (\mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}} ID)
 \begin{DoxyCompactList}\small\item\em Uses the specified shader program. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ShaderManagement_gaafee5005fc182fefb7fab74fa868631c}{set\+\_\+shader\+\_\+int}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, int value)
+void \mbox{\hyperlink{group___shader_management_gaafee5005fc182fefb7fab74fa868631c}{set\+\_\+shader\+\_\+int}} (\mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, int value)
 \begin{DoxyCompactList}\small\item\em Sets an integer uniform in the shader program. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{shader_8c_a8ae49c8b7b1d4d3c6523f82a4a7516a0}{set\+\_\+shader\+\_\+float}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, \mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} value)
+void \mbox{\hyperlink{shader_8c_a8ae49c8b7b1d4d3c6523f82a4a7516a0}{set\+\_\+shader\+\_\+float}} (\mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} value)
 \item 
-void \mbox{\hyperlink{group__ShaderManagement_ga4ddd55e651817701c9e65c3006d84f06}{set\+\_\+shader\+\_\+vec2}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec2 value)
+void \mbox{\hyperlink{group___shader_management_ga4ddd55e651817701c9e65c3006d84f06}{set\+\_\+shader\+\_\+vec2}} (\mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec2 value)
 \begin{DoxyCompactList}\small\item\em Sets a vec2 uniform in the shader program. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ShaderManagement_gabe939b6bc86c802ec4514fb3c7a916c0}{set\+\_\+shader\+\_\+vec3}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec3 value)
+void \mbox{\hyperlink{group___shader_management_gabe939b6bc86c802ec4514fb3c7a916c0}{set\+\_\+shader\+\_\+vec3}} (\mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec3 value)
 \begin{DoxyCompactList}\small\item\em Sets a vec3 uniform in the shader program. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ShaderManagement_ga225dc3d3319fe8c8cc67bb58cdea93d2}{set\+\_\+shader\+\_\+vec4}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec4 value)
+void \mbox{\hyperlink{group___shader_management_ga225dc3d3319fe8c8cc67bb58cdea93d2}{set\+\_\+shader\+\_\+vec4}} (\mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec4 value)
 \begin{DoxyCompactList}\small\item\em Sets a vec4 uniform in the shader program. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ShaderManagement_gaaed666bd75a0e319dbacab5ed2191291}{set\+\_\+shader\+\_\+mat4}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, mat4 \texorpdfstring{$\ast$}{*}value)
+void \mbox{\hyperlink{group___shader_management_gaaed666bd75a0e319dbacab5ed2191291}{set\+\_\+shader\+\_\+mat4}} (\mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, mat4 \texorpdfstring{$\ast$}{*}value)
 \begin{DoxyCompactList}\small\item\em Sets a mat4 uniform in the shader program. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{shader_8c_a8ae49c8b7b1d4d3c6523f82a4a7516a0}\label{shader_8c_a8ae49c8b7b1d4d3c6523f82a4a7516a0} 
-\index{shader.c@{shader.c}!set\_shader\_float@{set\_shader\_float}}
+\Hypertarget{shader_8c_a8ae49c8b7b1d4d3c6523f82a4a7516a0}\index{shader.c@{shader.c}!set\_shader\_float@{set\_shader\_float}}
 \index{set\_shader\_float@{set\_shader\_float}!shader.c@{shader.c}}
 \doxysubsubsection{\texorpdfstring{set\_shader\_float()}{set\_shader\_float()}}
-{\footnotesize\ttfamily void set\+\_\+shader\+\_\+float (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{\mbox{\hyperlink{types_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{shader_8c_a8ae49c8b7b1d4d3c6523f82a4a7516a0} 
+void set\+\_\+shader\+\_\+float (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group___shader_management_ga628acddf9216b5e00424607a3f76ccde}{Shader}}}]{ID}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{\mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{value}{}\end{DoxyParamCaption})}
 

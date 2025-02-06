@@ -1,0 +1,59 @@
+\doxysection{Bodies}
+\hypertarget{group___bodies_group}{}\label{group___bodies_group}\index{Bodies@{Bodies}}
+
+
+Represents a node in the physics simulation.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{class_static_body}{Static\+Body}}
+\begin{DoxyCompactList}\small\item\em Represents a static body in the physics simulation. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{class_rigid_body}{Rigid\+Body}}
+\begin{DoxyCompactList}\small\item\em Represents a rigid body in the physics simulation. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{class_kinematic_body}{Kinematic\+Body}}
+\begin{DoxyCompactList}\small\item\em Represents a kinematic body in the physics simulation. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_plane_collision_shape}{Plane\+Collision\+Shape}}
+\begin{DoxyCompactList}\small\item\em Represents a plane collision shape. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_box_collision_shape}{Box\+Collision\+Shape}}
+\begin{DoxyCompactList}\small\item\em Represents a box collision shape. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_sphere_collision_shape}{Sphere\+Collision\+Shape}}
+\begin{DoxyCompactList}\small\item\em Represents a sphere collision shape. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_mesh_collision_shape}{Mesh\+Collision\+Shape}}
+\begin{DoxyCompactList}\small\item\em Represents a mesh collision shape. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_capsule_collision_shape}{Capsule\+Collision\+Shape}}
+\begin{DoxyCompactList}\small\item\em Represents a capsule collision shape. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_ray_collision_shape}{Ray\+Collision\+Shape}}
+\begin{DoxyCompactList}\small\item\em Represents a ray collision shape. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_collision_buffer}{Collision\+Buffer}}
+\begin{DoxyCompactList}\small\item\em Represents a buffer for collision shapes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___bodies_group_gaee92f42cc80ce048ea337169c64cbba8}{GET\+\_\+\+FROM\+\_\+\+BODY\+\_\+\+NODE}}(node,  attribute,  dest)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a node in the physics simulation. 
+
+A node is a generic object that can be used to represent different types of bodies in the physics simulation, such as static bodies, rigid bodies, and kinematic bodies. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group___bodies_group_gaee92f42cc80ce048ea337169c64cbba8}\index{Bodies@{Bodies}!GET\_FROM\_BODY\_NODE@{GET\_FROM\_BODY\_NODE}}
+\index{GET\_FROM\_BODY\_NODE@{GET\_FROM\_BODY\_NODE}!Bodies@{Bodies}}
+\doxysubsubsection{\texorpdfstring{GET\_FROM\_BODY\_NODE}{GET\_FROM\_BODY\_NODE}}
+{\footnotesize\ttfamily \label{group___bodies_group_gaee92f42cc80ce048ea337169c64cbba8} 
+\#define GET\+\_\+\+FROM\+\_\+\+BODY\+\_\+\+NODE(\begin{DoxyParamCaption}\item[{}]{node}{, }\item[{}]{attribute}{, }\item[{}]{dest}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{switch}\ (node-\/>type)\ \{\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{case}\ CLASS\_TYPE\_STATICBODY:\ \ \ \ \ \ \ \ \ \ \ \ \ \ dest\ =\ \&((\mbox{\hyperlink{class_static_body}{StaticBody}}\ *)\ node-\/>object)-\/>attribute;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{case}\ CLASS\_TYPE\_RIGIDBODY:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dest\ =\ \&((\mbox{\hyperlink{class_rigid_body}{RigidBody}}\ *)\ node-\/>object)-\/>attribute;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{case}\ CLASS\_TYPE\_KINEMATICBODY:\ \ \ \ \ \ \ \ \ \ \ dest\ =\ \&((\mbox{\hyperlink{class_kinematic_body}{KinematicBody}}\ *)\ node-\/>object)-\/>attribute;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dest\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\(\backslash\)}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}

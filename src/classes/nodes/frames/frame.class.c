@@ -1,3 +1,16 @@
+/**
+ * @file
+ * @brief This file defines the implementation of frame-related functionalities.
+ *
+ * This file contains the implementation of various functions and structures
+ * that are used to manage and manipulate frames within the application.
+ * It is used in the context of handling graphical frames in an SDL and OpenGL
+ * based project.
+ *
+ * @author Loup Picault
+ * @date 2023-10-03
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"
@@ -233,11 +246,11 @@ class Frame : public Node {
     static VBO _vbo = 0;
     static VAO _vao = 0;
     void render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
-        IGNORE(modelMatrix);
+        UNUSED(modelMatrix);
         Frame *frame = (Frame *) this->object;
         if (frame->flags & FRAME_NEEDS_REFRESH || frame->flags & FRAME_NEEDS_INIT) this::refresh();
         if (frame->flags & FRAME_VISIBLE && activeShader != shaders->depth && !(frame->flags & FRAME_NEEDS_INIT)) {
-            IGNORE(activeShader);
+            UNUSED(activeShader);
             Frame *frame = (Frame *) this->object;
             use_shader(shaders->gui);
 
@@ -308,7 +321,7 @@ class Frame : public Node {
 
     void save(FILE *file, Node *editor) {
         Frame *frame = (Frame *) this->object;
-        IGNORE(editor);
+        UNUSED(editor);
         fprintf(file, "%s", classManager.class_names[this->type]);
 
         fprintf(file, "(%g%c,%g%c,%g%c,%g%c,%c%c%c", 

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['window_0',['Window',['../structWindow.html',1,'']]],
-  ['worldshaders_1',['WorldShaders',['../structWorldShaders.html',1,'']]]
+  ['window_0',['Window',['../struct_window.html',1,'']]],
+  ['worldshaders_1',['WorldShaders',['../struct_world_shaders.html',1,'']]]
 ];

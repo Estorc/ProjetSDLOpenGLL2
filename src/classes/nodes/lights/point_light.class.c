@@ -1,3 +1,19 @@
+/**
+ * @file
+ * @brief This file contains the implementation of the PointLight class.
+ *
+ * This source file contains the implementation details for the PointLight class,
+ * which is used to represent a point light source in a 3D scene. The PointLight
+ * class provides functionalities to set up and manage the properties of a point
+ * light, such as its position, color, intensity, and attenuation factors.
+ *
+ * The PointLight class is designed to be used in conjunction with OpenGL to
+ * render realistic lighting effects in a 3D environment.
+ *
+ * @author Loup Picault
+ * @date 2023-10-10
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
@@ -18,7 +34,7 @@ class PointLight : public Light {
     }
 
     void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta, u8 *lightsCount) {
-        IGNORE(delta);
+        UNUSED(delta);
         if (!(this->flags & NODE_LIGHT_ACTIVE)) return;
         PointLight *pointLight = (PointLight *) this->object;
 
@@ -132,7 +148,7 @@ class PointLight : public Light {
 
     void configure_lighting(Camera *c, WorldShaders *shaders, u8 *lightsCount, int pointLightId) {
 
-        IGNORE(c);
+        UNUSED(c);
         // Lights and shadows
         mat4 lightProjection;
         mat4 lightView = GLM_MAT4_IDENTITY_INIT;

@@ -1,6 +1,6 @@
 \doxysection{src/main.c File Reference}
 \hypertarget{main_8c}{}\label{main_8c}\index{src/main.c@{src/main.c}}
-{\ttfamily \#include "{}types.\+h"{}}\newline
+{\ttfamily \#include "{}raptiquax.\+h"{}}\newline
 {\ttfamily \#include "{}math/math\+\_\+util.\+h"{}}\newline
 {\ttfamily \#include "{}io/model.\+h"{}}\newline
 {\ttfamily \#include "{}render/framebuffer.\+h"{}}\newline
@@ -25,20 +25,12 @@
 {\ttfamily \#include "{}storage/queue.\+h"{}}\newline
 {\ttfamily \#include "{}utils/scene.\+h"{}}\newline
 {\ttfamily \#include "{}classes/classes.\+h"{}}\newline
-{\ttfamily \#include "{}scripts/loading\+\_\+scripts.\+h"{}}\newline
-Include dependency graph for main.\+c\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{main_8c__incl}
-\end{center}
-\end{figure}
+Include dependency graph for main.\+c\+:
+% FIG 0
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{main_8c_a24cc69090d2d703aabdac0303346d9f3}{update}} (\mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}depth\+Map, \mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}msaa, \mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}screen\+Plane)
-\item 
-\mbox{\hyperlink{main_8c_ab01cc8a801208fc6e4feba0b279cb51f}{BUILD\+\_\+\+CLASS\+\_\+\+METHODS\+\_\+\+CORRESPONDANCE}} (class\+Manager)
+int \mbox{\hyperlink{main_8c_a24cc69090d2d703aabdac0303346d9f3}{update}} (\mbox{\hyperlink{struct_window}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, \mbox{\hyperlink{struct_world_shaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{struct_depth_map}{Depth\+Map}} \texorpdfstring{$\ast$}{*}depth\+Map, \mbox{\hyperlink{struct_m_s_a_a}{MSAA}} \texorpdfstring{$\ast$}{*}msaa, \mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}screen\+Plane)
 \item 
 int \mbox{\hyperlink{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
 \end{DoxyCompactItemize}
@@ -50,72 +42,40 @@ float \mbox{\hyperlink{main_8c_a46eb7da1d21fab45d611c90e42c1eae8}{accumulator}} 
 const float \mbox{\hyperlink{main_8c_aab448a3ef4a7ca016d51a2ebd0a755af}{fixed\+Time\+Step}} = 0.\+0167f
 \item 
 float \mbox{\hyperlink{main_8c_a4f50e96f11c68d45dc109185efe011ad}{fps}} = 0.\+0f
-\item 
-\mbox{\hyperlink{structMemoryCaches}{Memory\+Caches}} \mbox{\hyperlink{group__MemoryCache_gac20453e81d80b4c155cbf48f8f58d1e0}{memory\+Caches}}
-\begin{DoxyCompactList}\small\item\em External variable representing the memory caches. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structBufferCollection}{Buffer\+Collection}} \mbox{\hyperlink{group__BufferManagement_ga15103761ec2954f4ee4ed82ce67679dd}{buffers}}
-\begin{DoxyCompactList}\small\item\em Global buffer collection. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structQueue}{Queue}} \mbox{\hyperlink{group__Queue_ga21f461b0e7b9af12b5debef744844c53}{call\+Queue}} = \{NULL\}
-\begin{DoxyCompactList}\small\item\em External queue instance. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structTree}{Tree}} \mbox{\hyperlink{group__NodeFunctions_ga190eab39f039817e31f2a8b6b4dbde63}{main\+Node\+Tree}}
-\begin{DoxyCompactList}\small\item\em The main tree structure used in the storage system. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structInput}{Input}} \mbox{\hyperlink{group__InputHandling_gad4db59ccea8946af2bb70f8269e99eeb}{input}}
-\begin{DoxyCompactList}\small\item\em External declaration of the \doxylink{structInput}{Input} structure. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structSettings}{Settings}} \mbox{\hyperlink{main_8c_a19276c778f3034b94881cf1f8614dbb2}{settings}} = \{false, true, false, \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa0d7a1cb3c06783cd15c2ad10356d6830}{RES\+\_\+\+RESPONSIVE}}, false\}
-\item 
-\mbox{\hyperlink{structWindow}{Window}} \mbox{\hyperlink{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{main_8c_ab01cc8a801208fc6e4feba0b279cb51f}\label{main_8c_ab01cc8a801208fc6e4feba0b279cb51f} 
-\index{main.c@{main.c}!BUILD\_CLASS\_METHODS\_CORRESPONDANCE@{BUILD\_CLASS\_METHODS\_CORRESPONDANCE}}
-\index{BUILD\_CLASS\_METHODS\_CORRESPONDANCE@{BUILD\_CLASS\_METHODS\_CORRESPONDANCE}!main.c@{main.c}}
-\doxysubsubsection{\texorpdfstring{BUILD\_CLASS\_METHODS\_CORRESPONDANCE()}{BUILD\_CLASS\_METHODS\_CORRESPONDANCE()}}
-{\footnotesize\ttfamily BUILD\+\_\+\+CLASS\+\_\+\+METHODS\+\_\+\+CORRESPONDANCE (\begin{DoxyParamCaption}\item[{class\+Manager}]{ }\end{DoxyParamCaption})}
-
-\Hypertarget{main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8c_a0ddf1224851353fc92bfbff6f499fa97} 
-\index{main.c@{main.c}!main@{main}}
+\Hypertarget{main_8c_a0ddf1224851353fc92bfbff6f499fa97}\index{main.c@{main.c}!main@{main}}
 \index{main@{main}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
-{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{main_8c_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
 
-\Hypertarget{main_8c_a24cc69090d2d703aabdac0303346d9f3}\label{main_8c_a24cc69090d2d703aabdac0303346d9f3} 
-\index{main.c@{main.c}!update@{update}}
+\Hypertarget{main_8c_a24cc69090d2d703aabdac0303346d9f3}\index{main.c@{main.c}!update@{update}}
 \index{update@{update}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily int update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders,  }\item[{\mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}}]{depth\+Map,  }\item[{\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}}]{msaa,  }\item[{\mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{screen\+Plane }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{main_8c_a24cc69090d2d703aabdac0303346d9f3} 
+int update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_window}{Window}} \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{\mbox{\hyperlink{struct_world_shaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders}{, }\item[{\mbox{\hyperlink{struct_depth_map}{Depth\+Map}} \texorpdfstring{$\ast$}{*}}]{depth\+Map}{, }\item[{\mbox{\hyperlink{struct_m_s_a_a}{MSAA}} \texorpdfstring{$\ast$}{*}}]{msaa}{, }\item[{\mbox{\hyperlink{class_mesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{screen\+Plane}{}\end{DoxyParamCaption})}
 
 
 
 \doxysubsection{Variable Documentation}
-\Hypertarget{main_8c_a46eb7da1d21fab45d611c90e42c1eae8}\label{main_8c_a46eb7da1d21fab45d611c90e42c1eae8} 
-\index{main.c@{main.c}!accumulator@{accumulator}}
+\Hypertarget{main_8c_a46eb7da1d21fab45d611c90e42c1eae8}\index{main.c@{main.c}!accumulator@{accumulator}}
 \index{accumulator@{accumulator}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{accumulator}{accumulator}}
-{\footnotesize\ttfamily float accumulator = 0.\+0f}
+{\footnotesize\ttfamily \label{main_8c_a46eb7da1d21fab45d611c90e42c1eae8} 
+float accumulator = 0.\+0f}
 
-\Hypertarget{main_8c_aab448a3ef4a7ca016d51a2ebd0a755af}\label{main_8c_aab448a3ef4a7ca016d51a2ebd0a755af} 
-\index{main.c@{main.c}!fixedTimeStep@{fixedTimeStep}}
+\Hypertarget{main_8c_aab448a3ef4a7ca016d51a2ebd0a755af}\index{main.c@{main.c}!fixedTimeStep@{fixedTimeStep}}
 \index{fixedTimeStep@{fixedTimeStep}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{fixedTimeStep}{fixedTimeStep}}
-{\footnotesize\ttfamily const float fixed\+Time\+Step = 0.\+0167f}
+{\footnotesize\ttfamily \label{main_8c_aab448a3ef4a7ca016d51a2ebd0a755af} 
+const float fixed\+Time\+Step = 0.\+0167f}
 
-\Hypertarget{main_8c_a4f50e96f11c68d45dc109185efe011ad}\label{main_8c_a4f50e96f11c68d45dc109185efe011ad} 
-\index{main.c@{main.c}!fps@{fps}}
+\Hypertarget{main_8c_a4f50e96f11c68d45dc109185efe011ad}\index{main.c@{main.c}!fps@{fps}}
 \index{fps@{fps}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{fps}{fps}}
-{\footnotesize\ttfamily float fps = 0.\+0f}
-
-\Hypertarget{main_8c_a19276c778f3034b94881cf1f8614dbb2}\label{main_8c_a19276c778f3034b94881cf1f8614dbb2} 
-\index{main.c@{main.c}!settings@{settings}}
-\index{settings@{settings}!main.c@{main.c}}
-\doxysubsubsection{\texorpdfstring{settings}{settings}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structSettings}{Settings}} settings = \{false, true, false, \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa0d7a1cb3c06783cd15c2ad10356d6830}{RES\+\_\+\+RESPONSIVE}}, false\}}
-
-\Hypertarget{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}\label{main_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0} 
-\index{main.c@{main.c}!window@{window}}
-\index{window@{window}!main.c@{main.c}}
-\doxysubsubsection{\texorpdfstring{window}{window}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structWindow}{Window}} window}
+{\footnotesize\ttfamily \label{main_8c_a4f50e96f11c68d45dc109185efe011ad} 
+float fps = 0.\+0f}
 

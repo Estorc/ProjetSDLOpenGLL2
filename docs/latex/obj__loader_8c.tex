@@ -1,25 +1,19 @@
-\doxysection{src/io/obj\+\_\+loader.c File Reference}
-\hypertarget{obj__loader_8c}{}\label{obj__loader_8c}\index{src/io/obj\_loader.c@{src/io/obj\_loader.c}}
-{\ttfamily \#include "{}../types.\+h"{}}\newline
-{\ttfamily \#include "{}../math/math\+\_\+util.\+h"{}}\newline
-{\ttfamily \#include "{}model.\+h"{}}\newline
-{\ttfamily \#include "{}shader.\+h"{}}\newline
-{\ttfamily \#include "{}../memory.\+h"{}}\newline
-Include dependency graph for obj\+\_\+loader.\+c\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{obj__loader_8c__incl}
-\end{center}
-\end{figure}
+\doxysection{src/io/model\+\_\+loaders/obj\+\_\+loader.c File Reference}
+\hypertarget{obj__loader_8c}{}\label{obj__loader_8c}\index{src/io/model\_loaders/obj\_loader.c@{src/io/model\_loaders/obj\_loader.c}}
+{\ttfamily \#include "{}../../raptiquax.\+h"{}}\newline
+{\ttfamily \#include "{}../../math/math\+\_\+util.\+h"{}}\newline
+{\ttfamily \#include "{}../model.\+h"{}}\newline
+{\ttfamily \#include "{}../shader.\+h"{}}\newline
+{\ttfamily \#include "{}obj\+\_\+loader.\+h"{}}\newline
+{\ttfamily \#include "{}../../memory.\+h"{}}\newline
+Include dependency graph for obj\+\_\+loader.\+c\+:
+% FIG 0
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{group__ObjLoader_ga91137495694c076b1f1f5212e0b83f67}{malloc\+\_\+obj}} (\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vim, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} fim, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vnim, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vtim)
-\begin{DoxyCompactList}\small\item\em Allocates memory for an \doxylink{structModelObjectData}{Model\+Object\+Data}\textquotesingle{}s vertex, face, normal, and texture data. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ObjLoader_gaea15e76da7fb4c45393b68d2a5d0936e}{create\+\_\+obj\+\_\+vao}} (\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj)
-\begin{DoxyCompactList}\small\item\em Creates and initializes a Vertex Array \doxylink{structObject}{Object} (VAO) for a given 3D object, including the necessary vertex buffer data. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ObjLoader_gab4932d6a4b8e09e504d475d464f4d43c}{close\+\_\+realloc\+\_\+obj}} (\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vi, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} fi, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vni, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vti)
-\begin{DoxyCompactList}\small\item\em Cleans up and reallocates the memory for the vertex data and faces of a 3D object, and generates the Vertex Array \doxylink{structObject}{Object} (VAO) for rendering. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{group__ObjLoader_gab9a1546acd8b600802264c99c343ba28}{load\+\_\+obj\+\_\+model}} (char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}model\+Ptr)
+int \mbox{\hyperlink{group___obj_loader_ga5a4ede319c6c281e805f900f33a7451b}{malloc\+\_\+obj}} (\mbox{\hyperlink{struct_model_object_data}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{struct_loading_model_buffer}{Loading\+Model\+Buffer}} \texorpdfstring{$\ast$}{*}buffer, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vim, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} fim, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vnim, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vtim)
+\begin{DoxyCompactList}\small\item\em Allocates memory for an \doxylink{struct_model_object_data}{Model\+Object\+Data}\textquotesingle{}s vertex, face, normal, and texture data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___obj_loader_ga183823564439c36d87aac604a9063c59}{close\+\_\+realloc\+\_\+obj}} (\mbox{\hyperlink{struct_model_object_data}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{struct_loading_model_buffer}{Loading\+Model\+Buffer}} \texorpdfstring{$\ast$}{*}buffer, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vi, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} fi, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vni, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vti)
+\begin{DoxyCompactList}\small\item\em Cleans up and reallocates the memory for the vertex data and faces of a 3D object, and generates the \doxylink{group___model_handling_ga1442228863e7dc88866eea321b3a738f}{Vertex} Array \doxylink{struct_object}{Object} (\doxylink{group___model_handling_ga8c19ebcccdb657c785eb1cf1b0c5223c}{VAO}) for rendering. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___obj_loader_gad1c67a7fd502c28832fa5cf248696814}{load\+\_\+obj\+\_\+model}} (const char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{struct_model_data}{Model\+Data}} \texorpdfstring{$\ast$}{*}model)
 \begin{DoxyCompactList}\small\item\em Loads a 3D model from an OBJ file, including its associated materials, vertices, normals, and texture coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -1,3 +1,21 @@
+/**
+ * @file
+ * @brief This file handles the physics area nodes in the project.
+ *
+ * This file contains the implementation of the physics area nodes, which are used to define and manage
+ * physical areas within the application. These nodes are responsible for handling various physical
+ * interactions and properties within their defined areas.
+ * 
+ * Detailed description:
+ * The code in this file includes functions and data structures necessary for creating, updating, and
+ * managing physics areas. It ensures that the physical properties and interactions within these areas
+ * are accurately simulated and maintained throughout the application's lifecycle.
+ * 
+ * @date 2023-10-25
+ * 
+ * @author Loup Picault
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"

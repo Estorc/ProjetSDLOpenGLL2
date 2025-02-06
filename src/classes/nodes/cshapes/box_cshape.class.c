@@ -1,3 +1,21 @@
+/**
+ * @file
+ * @brief This source file defines the BoxCShape class and its associated methods.
+ *
+ * This source file contains the implementation of the BoxCShape class, which is used
+ * to represent and manipulate box-shaped collision shapes in the application. It provides
+ * functionalities for creating, initializing, and managing box collision shapes, as well as
+ * handling their interactions within the physics engine.
+ *
+ * The BoxCShape class is designed to be used in conjunction with other collision shapes
+ * and physics entities to simulate realistic physical interactions in a 2D or 3D environment.
+ * It is a crucial component of the physics simulation system, enabling accurate collision
+ * detection and response for box-shaped objects.
+ *
+ * @author Loup Picault
+ * @date 2023-10-06
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"

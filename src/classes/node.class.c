@@ -1,3 +1,16 @@
+/**
+ * @file node.class.c
+ * @brief Implementation of the node class for the ProjetSDLOpenGLL2 project.
+ *
+ * This file contains the implementation details of the node class, including
+ * its main functionalities, methods, and any associated data structures.
+ * The node class is a fundamental component of the ProjetSDLOpenGLL2 project,
+ * providing essential features and operations required by the project.
+ *
+ * @author Loup Picault
+ * @date 2023-10-20
+ */
+
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"

@@ -54,12 +54,16 @@ BUILD_DIR := bin
 TEST_DIR := test
 PROCESSED_CLASS_DIR := src/__processed__
 
+ifneq ($(OS),Windows_NT)
 LIBS += lib/ufbx/ufbx.o
+endif
 
 MODULES += src/classes/classes.o
 
-MODULES += src/io/model_loaders/obj_loader.o
+ifneq ($(OS),Windows_NT)
 MODULES += src/io/model_loaders/fbx_loader.o
+endif
+MODULES += src/io/model_loaders/obj_loader.o
 MODULES += src/io/model_loaders/mtl_loader.o
 MODULES += src/io/model_loaders/model_loader.o
 
@@ -116,9 +120,16 @@ LFLAGS += -Ilib
 LFLAGS += -lSDL2_image
 LFLAGS += -lSDL2_ttf
 LFLAGS += -lSDL2_mixer
+ifeq ($(OS),Windows_NT)
+LFLAGS += -lglew32
+LFLAGS += -lopengl32
+LFLAGS += -lavif
+LFLAGS += -mconsole
+else
 LFLAGS += -lGL
 LFLAGS += -lGLU
 LFLAGS += -lGLX
+endif
 
 WFLAGS += -Wall
 WFLAGS += -Wno-implicit-function-declaration
@@ -140,7 +151,11 @@ SCRIPTS_COUNT := -D SCRIPTS_COUNT=$(shell grep -o '\b$(NEW_SCRIPT_SYMBOL)\b' $(S
 RELEASE_MODULES := $(RELEASE_MODULES) $(addprefix $(BUILD_DIR)/,${SCRIPTS_MODULES})
 DEBUG_MODULES := $(DEBUG_MODULES) $(addprefix $(BUILD_DIR)/debug/,${SCRIPTS_MODULES})
 
+ifeq ($(OS),Windows_NT) 
+CLASS_TOOLS := $(shell tools/class_tools.exe)
+else
 CLASS_TOOLS := $(shell tools/class_tools)
+endif
 CLASSES_MODULES := $(wildcard $(PROCESSED_CLASS_DIR)/*.class.c)
 CLASSES_MODULES := $(patsubst %.class.c, %.class.o, $(CLASSES_MODULES))
 
@@ -299,7 +314,7 @@ install-lib: check-env venv
 
 # Ensure that the environment is not externally-managed
 check-env:
-	@if [ -z "$(shell $(PIP) --version &>/dev/null)" ]; then \
+	@if ! which pip &>/dev/null; then \
 		echo "Error: pip is not installed. Please install pip."; \
 		exit 1; \
 	elif [ -f "/usr/lib/python$(shell $(PYTHON) -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')" ]; then \
@@ -316,8 +331,14 @@ venv:
 	fi
 
 
+docs:
+	@printf "${ACT_COL}Generate documentation...${NC}\n"
+	@doxygen Doxyfile
+	@printf "${SUCCESS_COL}Documentation generated!${NC}\n"
 
-.PHONY: all build debug tools generate_header install clean
+
+
+.PHONY: all build debug tools generate_header install clean docs
 -include $(BUILD_DIR)/$(MAIN:.o=.d)
 -include $(BUILD_DIR)/debug/$(MAIN:.o=.d)
 -include $(RELEASE_MODULES:.o=.d)

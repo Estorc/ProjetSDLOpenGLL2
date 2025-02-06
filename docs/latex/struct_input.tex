@@ -1,0 +1,79 @@
+\doxysection{Input Struct Reference}
+\hypertarget{struct_input}{}\label{struct_input}\index{Input@{Input}}
+
+
+Structure to store input state.  
+
+
+
+
+{\ttfamily \#include $<$input.\+h$>$}
+
+
+
+Collaboration diagram for Input\+:
+% FIG 0
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{struct_input_aace579899ad6ffde6db9a20dec15d0f6}{active\+\_\+keys}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{struct_input_ab54371d47eadcd883ea043948a82de8d}{pressed\+\_\+keys}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{struct_input_a4e6a3f41845bb6124d2dfe02645a3afd}{released\+\_\+keys}}
+\item 
+bool \mbox{\hyperlink{struct_input_a0022f695cb110c0fdfa7b04ff0c422cd}{text\+\_\+input}}
+\item 
+char \mbox{\hyperlink{struct_input_a95307f96874196b3ed1bb52c2617f5f7}{input\+Buffer}} \mbox{[}100\mbox{]}
+\item 
+\mbox{\hyperlink{struct_mouse}{Mouse}} \mbox{\hyperlink{struct_input_aa550a7cbd9bd67b21bfb40eca7d190c5}{mouse}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure to store input state. 
+
+This structure holds the states of keys and mouse, as well as text input buffer. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_input_aace579899ad6ffde6db9a20dec15d0f6}\index{Input@{Input}!active\_keys@{active\_keys}}
+\index{active\_keys@{active\_keys}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{active\_keys}{active\_keys}}
+{\footnotesize\ttfamily \label{struct_input_aace579899ad6ffde6db9a20dec15d0f6} 
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} Input\+::active\+\_\+keys}
+
+Bitfield representing currently active keys. \Hypertarget{struct_input_a95307f96874196b3ed1bb52c2617f5f7}\index{Input@{Input}!inputBuffer@{inputBuffer}}
+\index{inputBuffer@{inputBuffer}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{inputBuffer}{inputBuffer}}
+{\footnotesize\ttfamily \label{struct_input_a95307f96874196b3ed1bb52c2617f5f7} 
+char Input\+::input\+Buffer\mbox{[}100\mbox{]}}
+
+Buffer for text input. \Hypertarget{struct_input_aa550a7cbd9bd67b21bfb40eca7d190c5}\index{Input@{Input}!mouse@{mouse}}
+\index{mouse@{mouse}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{mouse}{mouse}}
+{\footnotesize\ttfamily \label{struct_input_aa550a7cbd9bd67b21bfb40eca7d190c5} 
+\mbox{\hyperlink{struct_mouse}{Mouse}} Input\+::mouse}
+
+\doxylink{struct_mouse}{Mouse} state. \Hypertarget{struct_input_ab54371d47eadcd883ea043948a82de8d}\index{Input@{Input}!pressed\_keys@{pressed\_keys}}
+\index{pressed\_keys@{pressed\_keys}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{pressed\_keys}{pressed\_keys}}
+{\footnotesize\ttfamily \label{struct_input_ab54371d47eadcd883ea043948a82de8d} 
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} Input\+::pressed\+\_\+keys}
+
+Bitfield representing keys that were pressed. \Hypertarget{struct_input_a4e6a3f41845bb6124d2dfe02645a3afd}\index{Input@{Input}!released\_keys@{released\_keys}}
+\index{released\_keys@{released\_keys}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{released\_keys}{released\_keys}}
+{\footnotesize\ttfamily \label{struct_input_a4e6a3f41845bb6124d2dfe02645a3afd} 
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} Input\+::released\+\_\+keys}
+
+Bitfield representing keys that were released. \Hypertarget{struct_input_a0022f695cb110c0fdfa7b04ff0c422cd}\index{Input@{Input}!text\_input@{text\_input}}
+\index{text\_input@{text\_input}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{text\_input}{text\_input}}
+{\footnotesize\ttfamily \label{struct_input_a0022f695cb110c0fdfa7b04ff0c422cd} 
+bool Input\+::text\+\_\+input}
+
+Flag indicating text input. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/io/\mbox{\hyperlink{input_8h}{input.\+h}}\end{DoxyCompactItemize}

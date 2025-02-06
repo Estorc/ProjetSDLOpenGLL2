@@ -1,18 +1,28 @@
 \doxysection{src/classes/nodes/framebuffer.class.\+c File Reference}
 \hypertarget{framebuffer_8class_8c}{}\label{framebuffer_8class_8c}\index{src/classes/nodes/framebuffer.class.c@{src/classes/nodes/framebuffer.class.c}}
+
+
+\doxylink{class_framebuffer}{Framebuffer} class implementation.  
+
+
 {\ttfamily \#include "{}math/math\+\_\+util.\+h"{}}\newline
 {\ttfamily \#include "{}io/model.\+h"{}}\newline
 {\ttfamily \#include "{}render/framebuffer.\+h"{}}\newline
 {\ttfamily \#include "{}storage/node.\+h"{}}\newline
-Include dependency graph for framebuffer.\+class.\+c\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{framebuffer_8class_8c__incl}
-\end{center}
-\end{figure}
+Include dependency graph for framebuffer.\+class.\+c\+:
+% FIG 0
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \mbox{\hyperlink{classFramebuffer}{Framebuffer}}
+class \mbox{\hyperlink{class_framebuffer}{Framebuffer}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_framebuffer}{Framebuffer} class implementation. 
+
+This file contains the implementation of the framebuffer class, which is used to manage framebuffer objects in an Open\+GL context. It provides functions to create, bind, unbind, and delete framebuffer objects, as well as to attach textures and renderbuffers to them.
+
+Detailed description\+: The framebuffer class is essential for off-\/screen rendering in Open\+GL. It allows rendering to textures and renderbuffers instead of directly to the screen. This is useful for various advanced rendering techniques such as shadow mapping, post-\/processing effects, and more. The class ensures proper management of framebuffer resources and provides a convenient interface for their usage.
+
+Author\+: Loup Picault Date\+: 2023-\/10-\/06 
