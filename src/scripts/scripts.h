@@ -14,7 +14,7 @@ struct Window;
 #define SET_ATTRIBUTES_COUNT(x) MALLOC_ATTRIBUTE(this, x)
 
 #define NEW_SCRIPT(script_name) NODE_FUNC_RETURN script_name(NODE_FUNC_PARAMS) {
-#define END_SCRIPT(script_name) }; static __attribute__((constructor)) void __anon_ctor_##script_name(void) {mainNodeTree.scripts[mainNodeTree.scriptIndex].name = #script_name, mainNodeTree.scripts[mainNodeTree.scriptIndex++].script = script_name; PRINT_INFO("Script %s loaded!\n", #script_name);}
+#define END_SCRIPT(script_name) }; static __attribute__((constructor)) void __anon_ctor_##script_name(void) {mainNodeTree.scripts[__scriptIndex__].name = #script_name, mainNodeTree.scripts[__scriptIndex__++].script = script_name; PRINT_INFO("Script %s loaded in %d!\n", #script_name, __scriptIndex__);}
 
 #ifndef SCRIPTS_H
 #define SCRIPTS_H
@@ -42,5 +42,6 @@ typedef enum BehaviorScripts {
 } BehaviorScripts;
 
 typedef ScriptFunc Behavior[BEHAVIOR_SCRIPT_COUNT];
+extern int __scriptIndex__;
 
 #endif

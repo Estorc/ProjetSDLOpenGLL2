@@ -28,7 +28,7 @@
 MemoryCaches memoryCaches;
 BufferCollection buffers;
 Queue callQueue = {NULL};
-Tree mainNodeTree;
+Tree mainNodeTree = {0};
 Input input;
 Settings settings = {false, true, false, RES_RESPONSIVE, false};
 Window window;

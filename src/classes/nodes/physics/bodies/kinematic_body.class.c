@@ -43,18 +43,24 @@ class KinematicBody : public Body {
         *shapes = &kinematicBody->collisionsShapes;
     }
 
+    void update_global_position(vec3 *pos, vec3 *rot, vec3 *scale) {
+        SUPER(update_global_position, pos, rot, scale);
+        KinematicBody *kinematicBody = (KinematicBody *) this->object;
+        for (int i = 0; i < kinematicBody->length; i++) {
+            (kinematicBody->collisionsShapes[i])::update_global_position(pos, rot, scale);
+            glm_vec3_copy(this->globalPos, *pos);
+            glm_vec3_copy(this->globalRot, *rot);
+            glm_vec3_copy(this->globalScale, *scale);
+        }
+    }
+
     void update(vec3 *pos, vec3 *rot, vec3 *scale) {
         KinematicBody *kinematicBody = (KinematicBody *) this->object;
 
         glm_vec3_add(this->pos, kinematicBody->velocity, this->pos);
         this::update_global_position(pos, rot, scale);
 
-
         for (int i = 0; i < kinematicBody->length; i++) {
-            (kinematicBody->collisionsShapes[i])::update_global_position(*pos, *rot, *scale);
-            glm_vec3_copy(this->globalPos, *pos);
-            glm_vec3_copy(this->globalRot, *rot);
-            glm_vec3_copy(this->globalScale, *scale);
             check_collisions(kinematicBody->collisionsShapes[i]);
         }
         memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], kinematicBody->collisionsShapes, kinematicBody->length * sizeof(kinematicBody->collisionsShapes[0]));
@@ -150,8 +156,7 @@ class KinematicBody : public Body {
      * @param com Output vector to store the center of mass.
      */
 
-    void get_center_of_mass(vec3 *com) {
-        RigidBody *rigidBody = (RigidBody *) this->object;
-        glm_vec3_copy(rigidBody->centerOfMass, *com);
+    void get_center_of_mass(float *com) {
+        glm_vec3_zero(com);
     }
 }

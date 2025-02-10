@@ -555,7 +555,6 @@ int main(int argc, char ** argv) {
 			fprintf(temp_processed_header_file, "#ifndef %s%s_H\n", PROCESSED_HEADER_PREFIX, filename);
 			fprintf(temp_processed_header_file, "#define %s%s_H\n", PROCESSED_HEADER_PREFIX, filename);
 
-			free(filepath);
 			
 			char line[LINE_SIZE];
 			bool in_class = false;
@@ -629,13 +628,13 @@ int main(int argc, char ** argv) {
 							fprintf(processed_file, "%s", text);
 							text = return_pos;
 							text += strlen("return ");
-							fprintf(processed_file, "*%s = ", RETURN_POINTER);
+							fprintf(processed_file, "{*%s = ", RETURN_POINTER);
 							in_return = true;
 						}
 						if (in_return) {
 							while (*text) {
 								if (*text == ';') {
-									fprintf(processed_file, ";return;\n");
+									fprintf(processed_file, ";return;}\n");
 									in_return = false;
 									break;
 								} else fputc(*text, processed_file);
@@ -736,9 +735,15 @@ int main(int argc, char ** argv) {
 			if (processed_header_file != NULL && compareFiles(temp_processed_header_file, processed_header_file)) {
 				printf("Changes detected in header file\n");
 				rewind(temp_processed_header_file);
+				processed_header_file = freopen(filepath, "wb", processed_header_file);
 				copyFile(temp_processed_header_file, processed_header_file);
+				#ifdef __windows__
+				fclose(temp_processed_header_file);
+				#endif
+				
 				need_rewriting_imports = true;
 			}
+			free(filepath);
 
 			fclose(source_file);
 			fclose(processed_file);

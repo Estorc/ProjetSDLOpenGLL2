@@ -36,6 +36,58 @@ class RigidBody : public Body {
         *shapes = &rigidBody->collisionsShapes;
     }
 
+    void update_global_position(vec3 *pos, vec3 *rot, vec3 *scale) {
+        SUPER(update_global_position, pos, rot, scale);
+        RigidBody *rigidBody = (RigidBody *) this->object;
+        for (int i = 0; i < rigidBody->length; i++) {
+            (rigidBody->collisionsShapes[i])::update_global_position(pos, rot, scale);
+            glm_vec3_copy(this->globalPos, *pos);
+            glm_vec3_copy(this->globalRot, *rot);
+            glm_vec3_copy(this->globalScale, *scale);
+        }
+    }
+
+    void apply_torque(float *torque) {
+        RigidBody *rigidBody = (RigidBody *) this->object;
+        // Apply torque
+
+        // 1. Compute local inertia tensor (example for a box)
+        mat3 localInertiaTensor;
+        float height = 1.6f;
+        float width = 0.5f;
+        float depth = 0.5f;
+        float height2 = sqr(height);
+        float width2 = sqr(width);
+        float depth2 = sqr(depth);
+        localInertiaTensor[0][0] = (1.0f / 12.0f) * rigidBody->mass * (height2 + depth2);
+        localInertiaTensor[1][1] = (1.0f / 12.0f) * rigidBody->mass * (width2 + depth2);
+        localInertiaTensor[2][2] = (1.0f / 12.0f) * rigidBody->mass * (width2 + height2);
+
+
+        // 2. Get rotation matrix
+        mat3 rotationMatrix;
+        mat4 rotationMatrix4;
+        vec3 radiansRot;
+        glm_vec3_scale(this->globalRot, PI/180.0f, radiansRot);
+        glm_euler(radiansRot, rotationMatrix4);
+        glm_mat4_pick3(rotationMatrix4, rotationMatrix);
+
+        // 3. Transform to world space
+        mat3 worldInertiaTensor;
+        glm_mat3_mul(rotationMatrix, localInertiaTensor, worldInertiaTensor);
+        glm_mat3_transpose(worldInertiaTensor);
+
+        // 4. Compute inverse inertia tensor
+        mat3 inverseInertiaTensor;
+        glm_mat3_inv(worldInertiaTensor, inverseInertiaTensor);
+
+        // 5. Apply torque to get angular acceleration
+        glm_mat3_mulv(inverseInertiaTensor, torque, torque);
+
+        glm_vec3_scale(torque, 3.0f, torque);
+        glm_vec3_add(rigidBody->angularVelocity, torque, rigidBody->angularVelocity);
+    }
+
     void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta) {
         RigidBody *rigidBody = (RigidBody *) this->object;
 
@@ -45,17 +97,20 @@ class RigidBody : public Body {
         glm_vec3_scale(rigidBody->velocity, rigidBody->friction * (1.0-delta), rigidBody->velocity);
         glm_vec3_add(this->pos, rigidBody->velocity, this->pos);
 
-        glm_vec3_scale(rigidBody->angularVelocity, rigidBody->friction * (1.0-delta), rigidBody->angularVelocity);
+
+        glm_vec3_scale(rigidBody->angularVelocity, 0.98f, rigidBody->angularVelocity);
+        if (glm_vec3_norm2(rigidBody->angularVelocity) < 0.01f) 
+            glm_vec3_zero(rigidBody->angularVelocity);
+
+
+        vec3 degreeAngularVelocity;
+        glm_vec3_scale(rigidBody->angularVelocity, delta, degreeAngularVelocity);
+        glm_vec3_scale(degreeAngularVelocity, 180.0f/PI, degreeAngularVelocity);
         glm_vec3_add(this->rot, rigidBody->angularVelocity, this->rot);
 
         this::update_global_position(pos, rot, scale);
 
-
         for (int i = 0; i < rigidBody->length; i++) {
-            (rigidBody->collisionsShapes[i])::update_global_position(*pos, *rot, *scale);
-            glm_vec3_copy(this->globalPos, *pos);
-            glm_vec3_copy(this->globalRot, *rot);
-            glm_vec3_copy(this->globalScale, *scale);
             check_collisions(rigidBody->collisionsShapes[i]);
         }
         memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], rigidBody->collisionsShapes, rigidBody->length * sizeof(rigidBody->collisionsShapes[0]));
@@ -113,7 +168,7 @@ class RigidBody : public Body {
         collisionsLength);
     }
 
-    void apply_impulse(float *impulse, float *torque, float *correction, float *momentOfInertia) {
+    void apply_impulse(float *impulse, float *torque, float *correction) {
         RigidBody *rigidBody = (RigidBody *) this->object;
 
         // Change velocity
@@ -121,13 +176,12 @@ class RigidBody : public Body {
 
         // Move shape A out of shape B
         glm_vec3_sub(this->pos, correction, this->pos);
+        glm_vec3_sub(this->globalPos, correction, this->globalPos);
         for (int i = 0; i < rigidBody->length; i++) {
             glm_vec3_sub(rigidBody->collisionsShapes[i]->globalPos, correction, rigidBody->collisionsShapes[i]->globalPos);
         }
 
-        // Apply torque
-        glm_vec3_scale(torque, *momentOfInertia*50.0f, torque);
-        glm_vec3_add(rigidBody->angularVelocity, torque, rigidBody->angularVelocity);
+        this::apply_torque(torque);
     }
 
     /**

@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include "stringio.h"
-#include "../term/enhanced_print.h"
+#include "../term/term.h"
 #include <stdlib.h>
 #include <unistd.h>
+#include "osio.h"
 
 #ifdef __windows__
 #include <windows.h>
@@ -40,10 +41,57 @@ int osio_open_file(char *path, char *relativePath, char *filter) {
     ofn.Flags = OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST;
 
     if (GetOpenFileName(&ofn)) {
-        printf("Fichier sélectionné : %s\n", szFile);
+        path[0] = 0;
         strcat(path, szFile);
+        free(converted_filter);
+        update_cwd();
         return 0;
     } else {
+        free(converted_filter);
+        printf("Sélection annulée.\n");
+        return -1;
+    }
+}
+
+
+int osio_save_file(char *path, char *relativePath, char *filter) {
+    OPENFILENAME ofn;       // Structure de sélection de fichier
+    char szFile[MAX_PATH] = {0};  // Stocke le chemin du fichier sélectionné
+
+    ZeroMemory(&ofn, sizeof(ofn));
+    ofn.lStructSize = sizeof(ofn);
+    ofn.hwndOwner = NULL;  // Pas de fenêtre parent
+    
+    char * converted_filter = malloc(sizeof(filter) * (strlen(filter) + 1));
+    strcpy(converted_filter, filter+1);
+
+    printf("%s\n", converted_filter);
+    char * parenthesis_pos = NULL;
+    do {
+        parenthesis_pos = strchr(converted_filter, '"');
+        if (!parenthesis_pos)
+            parenthesis_pos = strchr(converted_filter, ')');
+        if (!parenthesis_pos)
+            parenthesis_pos = strchr(converted_filter, '(');
+        if (parenthesis_pos)
+            *parenthesis_pos = '\0';
+    } while(parenthesis_pos);
+
+    printf("%s\n", converted_filter);
+    
+    ofn.lpstrFilter = converted_filter; // Filtre de fichier
+    ofn.lpstrFile = szFile;
+    ofn.nMaxFile = MAX_PATH;
+    ofn.Flags = 0;
+
+    if (GetSaveFileName(&ofn)) {
+        path[0] = 0;
+        strcat(path, szFile);
+        free(converted_filter);
+        update_cwd();
+        return 0;
+    } else {
+        free(converted_filter);
         printf("Sélection annulée.\n");
         return -1;
     }

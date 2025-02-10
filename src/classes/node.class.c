@@ -111,9 +111,11 @@ class Node {
 
         glm_vec3_mul(nodePos, *scale, nodePos);
 
-        glm_vec3_rotate(nodePos, to_radians((*rot)[0]), (vec3){1.0f, 0.0f, 0.0f});
-        glm_vec3_rotate(nodePos, to_radians((*rot)[1]), (vec3){0.0f, 1.0f, 0.0f});
-        glm_vec3_rotate(nodePos, to_radians((*rot)[2]), (vec3){0.0f, 0.0f, 1.0f});
+        mat4 rotationMatrix;
+        vec3 radiansRot;
+        glm_vec3_scale(*rot, PI/180.0f, radiansRot);
+        glm_euler(radiansRot, rotationMatrix);
+        glm_vec3_rotate_m4(rotationMatrix, nodePos, nodePos);
 
         glm_vec3_add(*pos, nodePos, *pos);
 

@@ -332,7 +332,7 @@ class Frame : public Node {
             frame->alignment[0], frame->alignment[1],
             (frame->flags & OVERFLOW_SCROLL) ? 's' : (frame->flags & OVERFLOW_VISIBLE) ? 'v' : 'n');
         if (frame->theme && frame->theme->parent == frame) {
-            fprintf(file, "[");
+            fprintf(file, ",[");
             TextureMap texture = frame->theme->windowSkin;
             for (int i = 0; i < memoryCaches.texturesCount; i++) {
                 if (memoryCaches.textureCache[i].textureMap == texture) {

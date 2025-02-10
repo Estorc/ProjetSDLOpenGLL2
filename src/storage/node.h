@@ -43,7 +43,6 @@ typedef struct Tree {
     struct Camera *camera; /**< The camera associated with the tree. */
     struct MSAA msaa; /**< The MSAA settings for the tree. */
     Script scripts[SCRIPTS_COUNT]; /**< The scripts associated with the tree. */
-    u8 scriptIndex; /**< The index of the current script. */
 } Tree;
 
 /**

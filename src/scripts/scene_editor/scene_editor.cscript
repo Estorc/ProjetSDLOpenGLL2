@@ -57,7 +57,7 @@ void load_settings(Node *node) {
 				for (int k = 0; k < 3; k++) {
 					Node *dimNode = settingNode->children[1+k]->children[1]->children[0];
 					MALLOC_ATTRIBUTE(dimNode, 2);
-					dimNode->attribute[1].p = &((*vector)[k]);
+					dimNode->attribute[1].p = (*vector) + k;
 				}
 				settingsRoot::add_child_and_realloc(settingNode);
 				fclose(file);
@@ -143,8 +143,10 @@ void load_menu(Node *node) {
 
 	char path[200];
 	if (osio_open_file(path, "../../assets/scenes", "\"Scene File(*.scene)\"") == -1) {
+		PRINT_ERROR("Failed to open file\n");
 		node->parent->attribute[1].i = 0;
 		node->parent->attribute[3].i = 0;
+		return;
 	}
 
 	FILE * file = fopen(path, "r");
@@ -155,6 +157,84 @@ void load_menu(Node *node) {
 	node->parent->attribute[1].i = 0;
 	node->parent->attribute[3].i = 0;
 
+
+};
+
+void save_node_tree(FILE * file, Node *node) {
+
+	node_tree_to_file(file, node, mainNodeTree.root);
+    bool condition;
+	u8 *length;
+	Node ***shapes;
+	node::is_body(&condition);
+    if (condition) {
+		node::get_collisions_shapes(&shapes, &length);
+		fprintf(file, "\n");
+		for (int i = 0; i < *length; i++) {
+			save_node_tree(file, (*shapes)[i]);
+		}
+	}
+
+	char attributes[200];
+	attributes[0] = 0;
+	if (node->pos[0] || node->pos[1] || node->pos[2]) 
+		sprintf(attributes + strlen(attributes), "m%g,%g,%g", node->pos[0], node->pos[1], node->pos[2]);
+	if (node->rot[0] || node->rot[1] || node->rot[2]) 
+		sprintf(attributes + strlen(attributes), "r%g,%g,%g", node->rot[0], node->rot[1], node->rot[2]);
+	if (node->scale[0] != 1 || node->scale[1] != 1 || node->scale[2] != 1) 
+		sprintf(attributes + strlen(attributes), "s%g,%g,%g", node->scale[0], node->scale[1], node->scale[2]);
+	if (!(node->flags & NODE_ACTIVE))
+		sprintf(attributes + strlen(attributes), "a0");
+	if (!(node->flags & NODE_VISIBLE))
+		sprintf(attributes + strlen(attributes), "v0");
+	if (attributes[0]) fprintf(file, "[%s]", attributes);
+
+
+	char scripts[350];
+	scripts[0] = 0;
+	if (node->flags & NODE_SCRIPT) {
+		fprintf(file, "{");
+		for (int j = 0; j < BEHAVIOR_SCRIPT_COUNT; j++) {
+			char scriptname[100] = "NULL";
+			for (int i = 0; i < SCRIPTS_COUNT; i++) {
+				if (mainNodeTree.scripts[i].script == (*node->behavior)[j]) {
+					strcpy(scriptname, mainNodeTree.scripts[i].name);
+					break;
+				}
+					
+			}
+			sprintf(scripts + strlen(scripts), "%s%c", scriptname, j+1 == BEHAVIOR_SCRIPT_COUNT ? '}' : ',');
+		}
+	}
+	if (strcmp(scripts, "{NULL,NULL,NULL}")) fprintf(file, "%s", scripts);
+	if (node->length) fprintf(file, ":%d", node->length);
+	fprintf(file, "\n");
+    for (int i = 0; i < node->length; i++) {
+        save_node_tree(file, node->children[i]);
+    }
+
+}
+
+void save_menu(Node *node) {
+
+	char path[200];
+	if (osio_save_file(path, "../../assets/scenes", "\"Scene File(*.scene)\"") == -1) {
+		node->parent->attribute[1].i = 0;
+		node->parent->attribute[3].i = 0;
+	}
+
+	if (path[0]) {
+		if (!strstr(path, ".scene")) strcat(path, ".scene");
+		FILE * file = fopen(path, "w");
+		if (file) {
+			node->flags |= NODE_ACTIVE;
+			save_node_tree(file, node);
+			node->flags &= ~NODE_ACTIVE;
+			fclose(file);
+		}
+	}
+	node->parent->attribute[1].i = 0;
+	node->parent->attribute[3].i = 0;
 
 };
 
@@ -180,16 +260,17 @@ Node * create_node_button(Node *node, int x, int y, int level, int index) {
 		(button->children[6]->children[0])::set_text(classManager.class_names[node->type]);
 		Frame * frame = (Frame *)button->object;
 		bool condition;
-		button::is_cshape(&condition);
+		node::is_cshape(&condition);
+		PRINT_INFO("%d\n", index);
 		for (int i = 0, j = 0; i < button->length; i++, j++) {
 			bool skip = false;
 			switch (j) {
 				case 0:
 				case 1: if (!level) skip = true; break;
-				case 2: if (index || condition) skip = true; break;
-				case 3: if (index + 1 == node->parent->length || !level || condition) skip = true; break;
-				case 4: if (index + 1 == node->parent->length || !level || condition) skip = true; break;
-				case 5: if (level < 2 || condition) skip = true; break;
+				case 2: if (!index || !level || condition) skip = true; break;
+				case 3: if ((index + 1 >= node->parent->length) || !level || condition) skip = true; break;
+				case 4: if ((index + 1 >= node->parent->length) || !level || condition) skip = true; break;
+				case 5: if (level <= 1 || condition) skip = true; break;
 			}
 			if (skip) {
 				button::remove_child_and_free_and_realloc(button->children[i]);
@@ -796,31 +877,6 @@ int draw_node_params(int x, int y, Window *window, Node *editor, Input *input, T
 }
 
 
-void save_menu(Window *window, Node *node, Input *input, TTF_Font *font) {
-
-	char path[200];
-	if (osio_save_file(path, "../../assets/scenes", "\"Scene File(*.scene)\"") == -1) {
-		node->parent->params[1].i = 0;
-		node->parent->params[3].i = 0;
-	}
-
-	if (path[0]) {
-		if (!strstr(path, ".scene")) strcat(path, ".scene");
-		FILE * file = fopen(path, "w");
-		if (file) {
-			node->flags |= NODE_ACTIVE;
-			save_node_tree(file, window, node, node->parent, input, font);
-			fprintf(file, "Viewport:1\nFramebuffer");
-			node->flags &= ~NODE_ACTIVE;
-			fclose(file);
-		}
-	}
-	node->parent->params[1].i = 0;
-	node->parent->params[3].i = 0;
-
-};
-
-
 void draw_node_settings(Window *window, Node *node, Input *input, TTF_Font *font) {
 
 	int window_width, window_height;
@@ -1063,6 +1119,22 @@ NEW_SCRIPT(scene_editor_btn_load)
 #endif
 END_SCRIPT(scene_editor_btn_load)
 
+NEW_SCRIPT(scene_editor_btn_save)
+#ifdef DEBUG
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(1);
+	bool *active = &this->attribute[0].b;
+	Frame *frame = (Frame*) this->object;
+	Button *button = (Button*) frame->button;
+
+	if (!button->checked) button->checked = active;
+	if ((*button->checked)) {
+		save_menu(mainNodeTree.root->children[2]);
+		*button->checked = false;
+	}
+#endif
+END_SCRIPT(scene_editor_btn_save)
+
 NEW_SCRIPT(scene_editor_btn_camera)
 #ifdef DEBUG
 	GET_READY_PARAMETERS();
@@ -1073,6 +1145,7 @@ NEW_SCRIPT(scene_editor_btn_camera)
 
 	if (!button->checked) button->checked = active;
 	if ((*button->checked)) {
+		SDL_SetRelativeMouseMode(SDL_TRUE);
 		mainNodeTree.root->children[0]->attribute[0].i = 1;
 		mainNodeTree.root->children[0]->attribute[1].i = 1;
 		mainNodeTree.root->children[3]->flags &= ~NODE_VISIBLE;

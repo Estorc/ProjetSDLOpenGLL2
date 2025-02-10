@@ -38,6 +38,7 @@ typedef struct RigidBody {
     vec3 velocity; /**< Current velocity of the rigid body. */
     vec3 gravity; /**< Gravity affecting the rigid body. */
     vec3 angularVelocity; /**< Angular velocity of the rigid body. */
+    vec3 angularAcceleration; /**< Angular acceleration of the rigid body. */
     vec3 centerOfMass; /**< Center of mass of the rigid body. */
     float mass; /**< Mass of the rigid body. */
     float friction; /**< Friction coefficient of the rigid body. */

@@ -41,16 +41,23 @@ class StaticBody : public Body {
         *shapes = &staticBody->collisionsShapes;
     }
 
+    void update_global_position(vec3 *pos, vec3 *rot, vec3 *scale) {
+        SUPER(update_global_position, pos, rot, scale);
+        StaticBody *staticBody = (StaticBody *) this->object;
+        for (int i = 0; i < staticBody->length; i++) {
+            (staticBody->collisionsShapes[i])::update_global_position(pos, rot, scale);
+            glm_vec3_copy(this->globalPos, *pos);
+            glm_vec3_copy(this->globalRot, *rot);
+            glm_vec3_copy(this->globalScale, *scale);
+        }
+    }
+
     void update(vec3 *pos, vec3 *rot, vec3 *scale) {
         StaticBody *staticBody = (StaticBody *) this->object;
 
         this::update_global_position(pos, rot, scale);
 
         for (int i = 0; i < staticBody->length; i++) {
-            (staticBody->collisionsShapes[i])::update_global_position(pos, rot, scale);
-            glm_vec3_copy(this->globalPos, *pos);
-            glm_vec3_copy(this->globalRot, *rot);
-            glm_vec3_copy(this->globalScale, *scale);
             check_collisions(staticBody->collisionsShapes[i]);
         }
         memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], staticBody->collisionsShapes, staticBody->length * sizeof(staticBody->collisionsShapes[0]));
@@ -129,8 +136,8 @@ class StaticBody : public Body {
      * @param com Output vector to store the center of mass.
      */
 
-    void get_center_of_mass(vec3 *com) {
-        glm_vec3_zero(*com);
+    void get_center_of_mass(float *com) {
+        glm_vec3_zero(com);
     }
 
 

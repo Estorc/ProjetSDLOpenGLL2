@@ -15,6 +15,7 @@ NEW_SCRIPT(free_camera)
 	float *targetPos = &this->attribute[2+3].f;
 
 	if (input.released_keys & KEY_MENU && *movable && *active) {
+		SDL_SetRelativeMouseMode(SDL_FALSE);
 		*movable = 0;
 		mainNodeTree.root->children[3]->flags |= NODE_ACTIVE | NODE_VISIBLE;
 	}

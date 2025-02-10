@@ -40,6 +40,22 @@ class CShape : public Node {
     }
 
 
+    void prepare_render(mat4 *modelMatrix, Shader activeShader) {
+        
+        set_shader_int(activeShader, "diffuseMapActive", 0);
+        set_shader_int(activeShader, "normalMapActive", 0);
+        set_shader_int(activeShader, "parallaxMapActive", 0);
+
+        glm_mat4_identity(*modelMatrix);
+        
+        glm_translate(*modelMatrix, (vec3){this->globalPos[0], this->globalPos[1], this->globalPos[2]});
+        glm_rotate(*modelMatrix, to_radians(this->globalRot[0]), (vec3){1.0f, 0.0f, 0.0f});
+        glm_rotate(*modelMatrix, to_radians(this->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
+        glm_rotate(*modelMatrix, to_radians(this->globalRot[2]), (vec3){0.0f, 0.0f, 1.0f});
+        glm_scale(*modelMatrix, (vec3){this->globalScale[0], this->globalScale[1], this->globalScale[2]});
+    }
+
+
     void render(mat4 *modelMatrix, Shader activeShader) {
         Model *model;
         this::get_model(&model);

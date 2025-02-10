@@ -1,0 +1,18 @@
+# Blender 4.0.1 MTL File: 'FPS_Chess_Models3.blend'
+# www.blender.org
+
+newmtl Steel_Glossy
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 2
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd Steel Glossy_BaseColor.jpg
+map_Pm Steel Glossy_Metallic.jpg
+map_Ks Steel Glossy_SpecularLevel.jpg
+map_Pr Steel Glossy_Roughness.jpg
+map_d Steel Glossy_Opacity.jpg
+map_Bump -bm 1.000000 Steel Glossy_Normal.jpg

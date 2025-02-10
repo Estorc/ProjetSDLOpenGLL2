@@ -26,27 +26,27 @@
  */
 
 enum CollisionsCode {
-    CTEST_BOX_WITH_BOX              = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_BOXCSHAPE << 8, /** < Collision between two box shapes. */
-    CTEST_BOX_WITH_SPHERE           = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_SPHERECSHAPE << 8, /** < Collision between a box and a sphere. */
-    CTEST_BOX_WITH_PLANE            = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_PLANECSHAPE << 8, /** < Collision between a box and a plane. */
-    CTEST_BOX_WITH_CAPSULE          = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_CAPSULECSHAPE << 8, /** < Collision between a box and a capsule. */
-    CTEST_BOX_WITH_MESH             = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_MESHCSHAPE << 8, /** < Collision between a box and a mesh. */
-    CTEST_BOX_WITH_RAY              = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_RAYCSHAPE << 8, /** < Collision between a box and a ray. */
-    CTEST_SPHERE_WITH_SPHERE        = CLASS_TYPE_SPHERECSHAPE | CLASS_TYPE_SPHERECSHAPE << 8, /** < Collision between two sphere shapes. */
-    CTEST_SPHERE_WITH_PLANE         = CLASS_TYPE_SPHERECSHAPE | CLASS_TYPE_PLANECSHAPE << 8, /** < Collision between a sphere and a plane. */
-    CTEST_SPHERE_WITH_CAPSULE       = CLASS_TYPE_SPHERECSHAPE | CLASS_TYPE_CAPSULECSHAPE << 8, /** < Collision between a sphere and a capsule. */
-    CTEST_SPHERE_WITH_MESH          = CLASS_TYPE_SPHERECSHAPE | CLASS_TYPE_MESHCSHAPE << 8, /** < Collision between a sphere and a mesh. */
-    CTEST_SPHERE_WITH_RAY           = CLASS_TYPE_SPHERECSHAPE | CLASS_TYPE_RAYCSHAPE << 8, /** < Collision between a sphere and a ray. */
-    CTEST_PLANE_WITH_PLANE          = CLASS_TYPE_PLANECSHAPE | CLASS_TYPE_PLANECSHAPE << 8, /** < Collision between two plane shapes. */
-    CTEST_PLANE_WITH_CAPSULE        = CLASS_TYPE_PLANECSHAPE | CLASS_TYPE_CAPSULECSHAPE << 8, /** < Collision between a plane and a capsule. */
-    CTEST_PLANE_WITH_MESH           = CLASS_TYPE_PLANECSHAPE | CLASS_TYPE_MESHCSHAPE << 8, /** < Collision between a plane and a mesh. */
-    CTEST_PLANE_WITH_RAY            = CLASS_TYPE_PLANECSHAPE | CLASS_TYPE_RAYCSHAPE << 8, /** < Collision between a plane and a ray. */
-    CTEST_CAPSULE_WITH_CAPSULE      = CLASS_TYPE_CAPSULECSHAPE | CLASS_TYPE_CAPSULECSHAPE << 8, /** < Collision between two capsule shapes. */
-    CTEST_CAPSULE_WITH_MESH         = CLASS_TYPE_CAPSULECSHAPE | CLASS_TYPE_MESHCSHAPE << 8, /** < Collision between a capsule and a mesh. */
-    CTEST_CAPSULE_WITH_RAY          = CLASS_TYPE_CAPSULECSHAPE | CLASS_TYPE_RAYCSHAPE << 8, /** < Collision between a capsule and a ray. */
-    CTEST_MESH_WITH_MESH            = CLASS_TYPE_MESHCSHAPE | CLASS_TYPE_MESHCSHAPE << 8, /** < Collision between two mesh shapes. */
-    CTEST_MESH_WITH_RAY             = CLASS_TYPE_MESHCSHAPE | CLASS_TYPE_RAYCSHAPE << 8, /** < Collision between a mesh and a ray. */
-    CTEST_RAY_WITH_RAY              = CLASS_TYPE_RAYCSHAPE | CLASS_TYPE_RAYCSHAPE << 8, /** < Collision between two ray shapes. */
+    CTEST_BOX_WITH_BOX              = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_BOXCSHAPE << 8, /**< Collision between two box shapes. */
+    CTEST_BOX_WITH_SPHERE           = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_SPHERECSHAPE << 8, /**< Collision between a box and a sphere. */
+    CTEST_BOX_WITH_PLANE            = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_PLANECSHAPE << 8, /**< Collision between a box and a plane. */
+    CTEST_BOX_WITH_CAPSULE          = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_CAPSULECSHAPE << 8, /**< Collision between a box and a capsule. */
+    CTEST_BOX_WITH_MESH             = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_MESHCSHAPE << 8, /**< Collision between a box and a mesh. */
+    CTEST_BOX_WITH_RAY              = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_RAYCSHAPE << 8, /**< Collision between a box and a ray. */
+    CTEST_SPHERE_WITH_SPHERE        = CLASS_TYPE_SPHERECSHAPE | CLASS_TYPE_SPHERECSHAPE << 8, /**< Collision between two sphere shapes. */
+    CTEST_SPHERE_WITH_PLANE         = CLASS_TYPE_SPHERECSHAPE | CLASS_TYPE_PLANECSHAPE << 8, /**< Collision between a sphere and a plane. */
+    CTEST_SPHERE_WITH_CAPSULE       = CLASS_TYPE_SPHERECSHAPE | CLASS_TYPE_CAPSULECSHAPE << 8, /**< Collision between a sphere and a capsule. */
+    CTEST_SPHERE_WITH_MESH          = CLASS_TYPE_SPHERECSHAPE | CLASS_TYPE_MESHCSHAPE << 8, /**< Collision between a sphere and a mesh. */
+    CTEST_SPHERE_WITH_RAY           = CLASS_TYPE_SPHERECSHAPE | CLASS_TYPE_RAYCSHAPE << 8, /**< Collision between a sphere and a ray. */
+    CTEST_PLANE_WITH_PLANE          = CLASS_TYPE_PLANECSHAPE | CLASS_TYPE_PLANECSHAPE << 8, /**< Collision between two plane shapes. */
+    CTEST_PLANE_WITH_CAPSULE        = CLASS_TYPE_PLANECSHAPE | CLASS_TYPE_CAPSULECSHAPE << 8, /**< Collision between a plane and a capsule. */
+    CTEST_PLANE_WITH_MESH           = CLASS_TYPE_PLANECSHAPE | CLASS_TYPE_MESHCSHAPE << 8, /**< Collision between a plane and a mesh. */
+    CTEST_PLANE_WITH_RAY            = CLASS_TYPE_PLANECSHAPE | CLASS_TYPE_RAYCSHAPE << 8, /**< Collision between a plane and a ray. */
+    CTEST_CAPSULE_WITH_CAPSULE      = CLASS_TYPE_CAPSULECSHAPE | CLASS_TYPE_CAPSULECSHAPE << 8, /**< Collision between two capsule shapes. */
+    CTEST_CAPSULE_WITH_MESH         = CLASS_TYPE_CAPSULECSHAPE | CLASS_TYPE_MESHCSHAPE << 8, /**< Collision between a capsule and a mesh. */
+    CTEST_CAPSULE_WITH_RAY          = CLASS_TYPE_CAPSULECSHAPE | CLASS_TYPE_RAYCSHAPE << 8, /**< Collision between a capsule and a ray. */
+    CTEST_MESH_WITH_MESH            = CLASS_TYPE_MESHCSHAPE | CLASS_TYPE_MESHCSHAPE << 8, /**< Collision between two mesh shapes. */
+    CTEST_MESH_WITH_RAY             = CLASS_TYPE_MESHCSHAPE | CLASS_TYPE_RAYCSHAPE << 8, /**< Collision between a mesh and a ray. */
+    CTEST_RAY_WITH_RAY              = CLASS_TYPE_RAYCSHAPE | CLASS_TYPE_RAYCSHAPE << 8, /**< Collision between two ray shapes. */
 };
 
 

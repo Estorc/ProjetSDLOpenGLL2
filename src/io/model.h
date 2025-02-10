@@ -9,7 +9,7 @@
  * - The MTL file must be in the same directory as the OBJ file.
  * - The MTL file must have the same name as the OBJ file.
  * - The MTL file must have the extension ".mtl".
- * - The MTL file must not contain this regex string: "(-s \d* \d* \d* *)*(-bm \d*\.*\d* )*""
+ * - The MTL file must not contain this regex string: "(-s \d* \d* \d* *)*(-bm \d*\.*\d* )*"
  */
 
 /**

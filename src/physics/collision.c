@@ -28,12 +28,12 @@ unsigned int get_collision_code(Node *shapeA, Node *shapeB) {
 }
 
 
-void apply_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 angularNormal, float penetrationDepth) {
+void apply_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 impactPoint, float penetrationDepth) {
     bool conditionA, conditionB;
     (shapeA->parent)::is_body(&conditionA);
     (shapeB->parent)::is_body(&conditionB);
     if (conditionA && conditionB)
-        apply_body_collision(shapeA, shapeB, collisionNormal, angularNormal, penetrationDepth);
+        apply_body_collision(shapeA, shapeB, collisionNormal, impactPoint, penetrationDepth);
     (shapeA->parent)::is_area(&conditionA);
     if (conditionA)
         (shapeA->parent)::collect_node(shapeB->parent, penetrationDepth);
@@ -48,7 +48,7 @@ void apply_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 angu
 // Main SAT algorithm for box-box collision detection
 bool check_collision_box_with_box(Node *boxB, Node *boxA) {
     vec3 collisionNormal;
-    vec3 angularNormal;
+    vec3 impactPoint;
     float penetrationDepth;
 
     // Check if rotated and adapt to
@@ -98,7 +98,7 @@ bool check_collision_box_with_box(Node *boxB, Node *boxA) {
             penetrationDepth = overlapZ;
         }
 
-        glm_vec3_copy(collisionNormal, angularNormal);
+        glm_vec3_copy(collisionNormal, impactPoint);
 
         return true; // Collision detected
 
@@ -184,15 +184,20 @@ bool check_collision_box_with_box(Node *boxB, Node *boxA) {
         // Step 6: If we reach here, a collision has occurred
         if (collisionDetected) {
             glm_vec3_copy(bestAxis, collisionNormal);
-            glm_vec3_copy(bestAxis, angularNormal);
+
             penetrationDepth = minOverlap;
+
+            // Compute the impact point
+            vec3 scaledNormal;
+            glm_vec3_scale(collisionNormal, penetrationDepth, scaledNormal);
+            glm_vec3_add(boxA->globalPos, scaledNormal, impactPoint);
 
             // Adjust the normal direction if necessary
             if (glm_vec3_dot(translation, collisionNormal) > 0) {
                 glm_vec3_negate(collisionNormal);  // Flip the normal if it's pointing the wrong way
             }
 
-            apply_collision(boxB, boxA, collisionNormal, angularNormal, penetrationDepth);
+            apply_collision(boxB, boxA, collisionNormal, impactPoint, penetrationDepth);
             return true;  // Collision detected
         }
 
@@ -206,7 +211,7 @@ bool check_collision_box_with_box(Node *boxB, Node *boxA) {
 
 bool check_collision_box_with_sphere(Node *shapeA, Node *shapeB) {
     vec3 collisionNormal;
-    vec3 angularNormal;
+    vec3 impactPoint;
     float penetrationDepth;
     Node *boxShape;
     Node *sphereShape;
@@ -222,7 +227,7 @@ bool check_collision_box_with_sphere(Node *shapeA, Node *shapeB) {
     }
 
     // Get sphere properties
-    float radius = sphereShape->scale[0];
+    float radius = sphereShape->globalScale[0];
 
     // Get cube properties
     vec3 cubeHalfExtents;
@@ -274,9 +279,11 @@ bool check_collision_box_with_sphere(Node *shapeA, Node *shapeB) {
 
         glm_vec3_rotate_m4(cubeRotation, collisionNormal, collisionNormal);
 
-        glm_vec3_copy(collisionNormal, angularNormal);
+        // Calculate the impact point
+        glm_vec3_scale(collisionNormal, radius, impactPoint);
+        glm_vec3_add(sphereShape->globalPos, impactPoint, impactPoint);
 
-        apply_collision(shapeA, shapeB, collisionNormal, angularNormal, penetrationDepth);
+        apply_collision(shapeA, shapeB, collisionNormal, impactPoint, penetrationDepth);
         return 1;  // Collision detected
     }
 
@@ -287,7 +294,7 @@ bool check_collision_box_with_sphere(Node *shapeA, Node *shapeB) {
 
 bool check_collision_box_with_plane(Node *shapeA, Node *shapeB) {
     vec3 collisionNormal;
-    vec3 angularNormal;
+    vec3 impactPoint;
     float penetrationDepth;
     Node *boxShape;
     Node *planeShape;
@@ -315,6 +322,9 @@ bool check_collision_box_with_plane(Node *shapeA, Node *shapeB) {
 
     // Get plane properties
     vec3 planeNormal = {0.0, 1.0, 0.0};
+    glm_vec3_rotate(planeNormal, to_radians(planeShape->globalRot[0]), (vec3){1.0f, 0.0f, 0.0f});
+    glm_vec3_rotate(planeNormal, to_radians(planeShape->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
+    glm_vec3_rotate(planeNormal, to_radians(planeShape->globalRot[2]), (vec3){0.0f, 0.0f, 1.0f});
     float planeDistance = glm_vec3_dot(planeNormal, planeShape->globalPos);  // Distance from origin to the plane along the normal
 
     // Step 1: Define the 8 local vertices of the cube (before rotation/translation)
@@ -364,9 +374,11 @@ bool check_collision_box_with_plane(Node *shapeA, Node *shapeB) {
         shapeB::get_priority(&priorityB);
         if (priorityA < priorityB) glm_vec3_negate(collisionNormal);
         glm_vec3_normalize(collisionNormal);
-        glm_vec3_copy(collisionNormal, angularNormal);
+        // Calculate the impact point
+        glm_vec3_scale(collisionNormal, penetrationDepth, impactPoint);
+        glm_vec3_add(boxShape->globalPos, impactPoint, impactPoint);
 
-        apply_collision(shapeA, shapeB, collisionNormal, angularNormal, penetrationDepth);
+        apply_collision(shapeA, shapeB, collisionNormal, impactPoint, penetrationDepth);
         return 1;  // Collision detected
     }
 
@@ -489,11 +501,11 @@ bool check_collision_box_with_ray(struct Node *shapeA, struct Node *shapeB) {
 
 bool check_collision_sphere_with_sphere(Node *shapeA, Node *shapeB) {
     vec3 collisionNormal;
-    vec3 angularNormal;
+    vec3 impactPoint;
     float penetrationDepth;
 
-    float radiusA = shapeA->scale[0];
-    float radiusB = shapeB->scale[0];
+    float radiusA = shapeA->globalScale[0];
+    float radiusB = shapeB->globalScale[0];
 
     float distance = radiusA + radiusB;
     if (glm_vec3_distance2(shapeA->globalPos, shapeB->globalPos) < sqr(distance)) {
@@ -507,9 +519,11 @@ bool check_collision_sphere_with_sphere(Node *shapeA, Node *shapeB) {
         // Calculate the collision normal (direction of the force)
         glm_vec3_sub(shapeB->globalPos, shapeA->globalPos, collisionNormal);
         glm_vec3_normalize(collisionNormal);
-        glm_vec3_copy(collisionNormal, angularNormal);
+        // Calculate the impact point
+        glm_vec3_scale(collisionNormal, radiusB, impactPoint);
+        glm_vec3_add(shapeB->globalPos, impactPoint, impactPoint);
 
-        apply_collision(shapeA, shapeB, collisionNormal, angularNormal, penetrationDepth);
+        apply_collision(shapeA, shapeB, collisionNormal, impactPoint, penetrationDepth);
         return 1;
     }
 
@@ -526,7 +540,7 @@ bool check_collision_sphere_with_sphere(Node *shapeA, Node *shapeB) {
 
 bool check_collision_sphere_with_plane(Node *shapeA, Node *shapeB) {
     vec3 collisionNormal;
-    vec3 angularNormal;
+    vec3 impactPoint;
     float penetrationDepth;
     Node *sphereShape;
     Node *planeShape;
@@ -542,9 +556,12 @@ bool check_collision_sphere_with_plane(Node *shapeA, Node *shapeB) {
         planeShape = shapeA;
     }
 
-    float radius = sphereShape->scale[0];
+    float radius = sphereShape->globalScale[0];
 
     vec3 planeNormal = {0.0, 1.0, 0.0};
+    glm_vec3_rotate(planeNormal, to_radians(planeShape->globalRot[0]), (vec3){1.0f, 0.0f, 0.0f});
+    glm_vec3_rotate(planeNormal, to_radians(planeShape->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
+    glm_vec3_rotate(planeNormal, to_radians(planeShape->globalRot[2]), (vec3){0.0f, 0.0f, 1.0f});
     float planeDistance = glm_vec3_dot(planeNormal, planeShape->globalPos);  // Distance from origin to the plane along the normal
 
     float distanceFromPlane = glm_vec3_dot(planeNormal, sphereShape->globalPos) - planeDistance;
@@ -563,9 +580,12 @@ bool check_collision_sphere_with_plane(Node *shapeA, Node *shapeB) {
         shapeB::get_priority(&priorityB);
         if (priorityA < priorityB) glm_vec3_negate(collisionNormal);
         glm_vec3_normalize(collisionNormal);
-        glm_vec3_copy(collisionNormal, angularNormal);
 
-        apply_collision(shapeA, shapeB, collisionNormal, angularNormal, penetrationDepth);
+        // Calculate the impact point
+        glm_vec3_scale(collisionNormal, radius - absDistanceFromPlane, impactPoint);
+        glm_vec3_add(sphereShape->globalPos, impactPoint, impactPoint);
+
+        apply_collision(shapeA, shapeB, collisionNormal, impactPoint, penetrationDepth);
         return 1;
     }
 

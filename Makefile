@@ -96,6 +96,10 @@ MODULES += src/gui/frame.o
 MODULES += src/storage/stack.o
 MODULES += src/storage/queue.o
 
+MODULES += src/scripts/scripts.o
+
+MODULES += src/term/term.o
+
 MODULES += src/raptiquax.o
 MODULES += src/memory.o
 MODULES += src/buffer.o

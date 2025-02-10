@@ -17,7 +17,7 @@ ControlFrame(0w,25h,25h,100w,lt):1
 Button{NULL,scene_editor_btn_load,NULL}:1
 ImageFrame(0w,0h,32p,32p,cc,assets/textures/editor/folder.png)
 ControlFrame(0w,50h,25h,100w,lt):1
-Button:1
+Button{NULL,scene_editor_btn_save,NULL}:1
 ImageFrame(0w,0h,32p,32p,cc,assets/textures/editor/save.png)
 ControlFrame(0w,75h,25h,100w,lt):1
 Button{NULL,scene_editor_btn_show_collisions,NULL}:1
