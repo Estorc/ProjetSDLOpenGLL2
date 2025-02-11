@@ -38,9 +38,11 @@ git clone https://github.com/Estorc/ProjetSDLOpenGLL2.git
 
 ## Compilation
 ```
-make            # Construit le projet avec la configuration par défaut.
-make debug      # Construit le projet avec la configuration de déboggage.
+make install    # Installe toutes les librairies nécessaires.
 make tools      # Construit les outils de compilation.
+make            # Construit le projet avec la configuration par défaut.
+make clear      # Efface tous les fichiers du build.
+make debug      # Construit le projet avec la configuration de déboggage.
 ```
 
 ## GIT
