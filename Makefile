@@ -75,6 +75,7 @@ MODULES += src/io/input.o
 MODULES += src/io/stringio.o
 MODULES += src/io/shader.o
 MODULES += src/io/osio.o
+MODULES += src/io/audio.o
 
 MODULES += src/math/math_util.o
 

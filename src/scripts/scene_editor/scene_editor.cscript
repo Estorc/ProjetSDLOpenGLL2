@@ -196,7 +196,7 @@ void save_node_tree(FILE * file, Node *node) {
 		fprintf(file, "{");
 		for (int j = 0; j < BEHAVIOR_SCRIPT_COUNT; j++) {
 			char scriptname[100] = "NULL";
-			for (int i = 0; i < SCRIPTS_COUNT; i++) {
+			for (int i = 0; i < __scriptIndex__; i++) {
 				if (mainNodeTree.scripts[i].script == (*node->behavior)[j]) {
 					strcpy(scriptname, mainNodeTree.scripts[i].name);
 					break;
@@ -672,7 +672,7 @@ void save_node_tree(FILE * file, Window *window, Node *node, Node *editor, Input
 
 	if (node->flags & NODE_SCRIPT) {
 		char scriptname[100] = "None";
-		for (int i = 0; i < SCRIPTS_COUNT; i++) {
+		for (int i = 0; i < __scriptIndex__; i++) {
 			if (mainNodeTree.scripts[i].script == (*node->behavior)[BEHAVIOR_SCRIPT_UPDATE]) {
 				strcpy(scriptname, mainNodeTree.scripts[i].name);
 				break;
@@ -917,7 +917,7 @@ void draw_node_editing(Window *window, Node *node, Input *input, TTF_Font *font)
 	int collisionShapeID = update_scene_for_node_editing(window, node, input, font);
 
 	char scriptname[100] = "None";
-	for (int i = 0; i < SCRIPTS_COUNT; i++) {
+	for (int i = 0; i < __scriptIndex__; i++) {
 		if (mainNodeTree.scripts[i].script == (*selectedNode->behavior)[BEHAVIOR_SCRIPT_UPDATE]) {
 			strcpy(scriptname, mainNodeTree.scripts[i].name);
 			break;
@@ -990,7 +990,7 @@ void draw_node_editing(Window *window, Node *node, Input *input, TTF_Font *font)
 				selectedNode->flags &= ~NODE_SCRIPT;
 				(*selectedNode->behavior)[BEHAVIOR_SCRIPT_UPDATE] = NULL;
 			}
-			else for (int i = 0; i < SCRIPTS_COUNT; i++) {
+			else for (int i = 0; i < __scriptIndex__; i++) {
 				if (!strcmp(mainNodeTree.scripts[i].name, scriptname)) {
 					selectedNode->flags |= NODE_SCRIPT;
 					(*selectedNode->behavior)[BEHAVIOR_SCRIPT_UPDATE] = mainNodeTree.scripts[i].script;
@@ -1053,49 +1053,6 @@ NEW_SCRIPT(scene_editor)
 		sprintf(str, " < %s > ", classManager.class_names[*selectedNodeType]);
 		(this->children[3]->children[1]->children[0])::set_text(str);
 	}
-	
-	/*switch (*menu) {
-		case 0:
-			if (node->children[0]->params) {
-				node->children[0]->params[0].i = 0;
-				node->children[0]->params[1].i = 1;
-			}
-			draw_node_tree(window, node->children[2], 0, input, font);
-			break;
-		case 1:
-			if (node->children[0]->params) {
-				node->children[0]->params[0].i = 0;
-				node->children[0]->params[1].i = 0;
-			}
-			draw_node_editing(window, node, input, font);
-			break;
-		case 2:
-			if (node->children[0]->params) {
-				node->children[0]->params[0].i = 1;
-				node->children[0]->params[1].i = 1;
-			}
-			draw_rectangle(window->ui_surface, window_width-64-8, 32-8, 48, 48, 0xff555555);
-			if (draw_button(window->ui_surface, window_width-64, 32, 32, 32, "assets/textures/editor/corner-left-up.png", 0xffffffff, input)) {
-				node->params[1].i = 0;
-			}
-			break;
-		case 3:
-			//FILE * file = fopen("assets/scenes/new_scene.scene", "w");
-			save_menu(window, node->children[2], input, font);
-			//fclose(file);
-			break;
-		case 4:
-			load_menu(window, node->children[2], input, font);
-			break;
-		case 5:
-			if (node->children[0]->params) {
-				node->children[0]->params[0].i = 0;
-				node->children[0]->params[1].i = 0;
-			}
-			draw_node_settings(window, node, input, font);
-			break;
-
-	}*/
 #endif
 
 END_SCRIPT(scene_editor)

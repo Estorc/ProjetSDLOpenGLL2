@@ -15,10 +15,26 @@ void init_memory_cache() {
     memoryCaches.shadersCount = 0;
 }
 
-void free_shaders() {
-    free(memoryCaches.shaderCache);
-    memoryCaches.shadersCount = 0;
-    PRINT_INFO("Free shaders!\n");
+ModelData * get_model_from_cache(const char *name) {
+    for (int i = 0; i < memoryCaches.modelsCount; i++) {
+        if (!strcmp(memoryCaches.modelCache[i].modelName, name)) {
+            #ifdef DEBUG
+                PRINT_INFO("Model loaded from cache!\n");
+            #endif
+            return memoryCaches.modelCache[i].model;
+        }
+    }
+    return NULL;
+}
+
+void add_model_to_cache(const char *name, ModelData *model) {
+    memoryCaches.modelCache = realloc(memoryCaches.modelCache, sizeof(ModelCache) * (memoryCaches.modelsCount + 1));
+    memoryCaches.modelCache[memoryCaches.modelsCount].model = model;
+    strcpy(memoryCaches.modelCache[memoryCaches.modelsCount].modelName, name);
+    memoryCaches.modelsCount++;
+    #ifdef DEBUG
+        PRINT_INFO("Model added to cache!\n");
+    #endif
 }
 
 void free_models() {
@@ -43,6 +59,83 @@ void free_models() {
     PRINT_INFO("Free models!\n");
 }
 
+
+Mix_Music * get_mix_music_from_cache(const char *name) {
+    for (int i = 0; i < memoryCaches.musicCount; i++) {
+        if (!strcmp(memoryCaches.musicCache[i].musicName, name)) {
+            #ifdef DEBUG
+                PRINT_INFO("Mix Music loaded from cache!\n");
+            #endif
+            return memoryCaches.musicCache[i].music;
+        }
+    }
+    return NULL;
+}
+
+void add_mix_music_to_cache(const char *name, Mix_Music *music) {
+    memoryCaches.musicCache = realloc(memoryCaches.musicCache, sizeof(MixMusicCache) * (memoryCaches.musicCount + 1));
+    memoryCaches.musicCache[memoryCaches.musicCount].music = music;
+    strcpy(memoryCaches.musicCache[memoryCaches.musicCount].musicName, name);
+    memoryCaches.musicCount++;
+    #ifdef DEBUG
+        PRINT_INFO("Mix Music added to cache!\n");
+    #endif
+}
+
+void free_musics() {
+    Mix_HaltMusic();
+    for (int i = 0; i < memoryCaches.musicCount; i++) {
+        Mix_Music * music = memoryCaches.musicCache[i].music;
+        if (music) {
+            Mix_FreeMusic(music);
+        }
+    }
+    free(memoryCaches.musicCache);
+    memoryCaches.musicCount = 0;
+    PRINT_INFO("Free musics!\n");
+}
+
+
+Mix_Chunk * get_mix_chunk_from_cache(const char *name) {
+    for (int i = 0; i < memoryCaches.chunkCount; i++) {
+        if (!strcmp(memoryCaches.chunkCache[i].chunkName, name)) {
+            #ifdef DEBUG
+                PRINT_INFO("Mix Chunk loaded from cache!\n");
+            #endif
+            return memoryCaches.chunkCache[i].chunk;
+        }
+    }
+    return NULL;
+}
+
+void add_mix_chunk_to_cache(const char *name, Mix_Chunk *chunk) {
+    memoryCaches.chunkCache = realloc(memoryCaches.chunkCache, sizeof(MixChunkCache) * (memoryCaches.chunkCount + 1));
+    memoryCaches.chunkCache[memoryCaches.chunkCount].chunk = chunk;
+    strcpy(memoryCaches.chunkCache[memoryCaches.chunkCount].chunkName, name);
+    memoryCaches.chunkCount++;
+    #ifdef DEBUG
+        PRINT_INFO("Mix Chunk added to cache!\n");
+    #endif
+}
+
+void free_chunks() {
+    for (int i = 0; i < memoryCaches.chunkCount; i++) {
+        Mix_Chunk * chunk = memoryCaches.chunkCache[i].chunk;
+        if (chunk) {
+            Mix_FreeChunk(chunk);
+        }
+    }
+    free(memoryCaches.chunkCache);
+    memoryCaches.chunkCount = 0;
+    PRINT_INFO("Free chunks!\n");
+}
+
+void free_shaders() {
+    free(memoryCaches.shaderCache);
+    memoryCaches.shadersCount = 0;
+    PRINT_INFO("Free shaders!\n");
+}
+
 void free_textures() {
     for (int i = 0; i < memoryCaches.texturesCount; i++) {
         TextureMap texture = memoryCaches.textureCache[i].textureMap;
@@ -64,6 +157,8 @@ void free_cubemaps() {
 }
 
 void free_memory_cache() {
+    free_chunks();
+    free_musics();
     free_models();
     free_textures();
     free_cubemaps();

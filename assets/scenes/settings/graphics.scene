@@ -3,12 +3,12 @@ Frame(0w,0h,100w,100h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Or
 Frame(0w,0h,100w,80h,ctn):3
 ControlFrame(2w,10p,96w,50p,lt):2
 ControlFrame(0w,0h,10w,100h,lt):1
-CheckBox{NULL,st_cast_shadows,NULL}
+CheckBox{st_cast_shadows_init,NULL,st_signal}
 ControlFrame(10w,0h,90w,100h,lt):1
 Label(Projeter les ombres,lc)
 ControlFrame(2w,65p,96w,50p,lt):2
 ControlFrame(0w,0h,10w,100h,lt):1
-CheckBox{NULL,st_fullscreen,NULL}
+CheckBox{st_fullscreen_init,NULL,st_fullscreen_signal}
 ControlFrame(10w,0h,90w,100h,lt):1
 Label(Mode plein écran,lc)
 ControlFrame(2w,120p,96w,50p,lt):2
@@ -18,14 +18,14 @@ ControlFrame(50w,0h,50w,100h,lt):1
 SelectList{NULL,st_res,NULL}
 Frame(0w,0h,100w,20h,cbn):4
 Frame(0.5w,0h,24w,90h,lcn):1
-Button{NULL,settings_go_to_main,NULL}:1
+Button{NULL,NULL,settings_go_to_main}:1
 Label(Main,cc)
 Frame(-12.5w,0h,24w,90h,ccn):1
-Button{NULL,settings_go_to_audio,NULL}:1
+Button{NULL,NULL,settings_go_to_audio}:1
 Label(Audio,cc)
 Frame(12.5w,0h,24w,90h,ccn):1
-Button{NULL,settings_go_to_graphics,NULL}:1
+Button{NULL,NULL,settings_go_to_graphics}:1
 Label(Graphics,cc)
 Frame(-0.5w,0h,24w,90h,rcn):1
-Button{NULL,return_to_main_menu,NULL}:1
+Button{NULL,NULL,return_to_main_menu}:1
 Label(Quitter,cc)

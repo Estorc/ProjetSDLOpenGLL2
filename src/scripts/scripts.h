@@ -1,9 +1,11 @@
 #include "../io/input.h"
+#include "signals.h"
 struct Window;
 
 #define NODE_FUNC_PARAMS struct Node *this, va_list args
 #define NODE_FUNC_RETURN void
 #define GET_READY_PARAMETERS() float delta = (float) GET_PARAMETER(double); (void) delta
+#define GET_SIGNAL() Signal signal = (Signal) GET_PARAMETER(int); (void) signal
 #define GET_PARAMETER(type) va_arg(args, type)
 #define MALLOC_ATTRIBUTE(node, x) if (!node->attribute) { \
                                     node->attribute = malloc(sizeof(BehaviorAttribute) * x); \
@@ -14,7 +16,13 @@ struct Window;
 #define SET_ATTRIBUTES_COUNT(x) MALLOC_ATTRIBUTE(this, x)
 
 #define NEW_SCRIPT(script_name) NODE_FUNC_RETURN script_name(NODE_FUNC_PARAMS) {
-#define END_SCRIPT(script_name) }; static __attribute__((constructor)) void __anon_ctor_##script_name(void) {mainNodeTree.scripts[__scriptIndex__].name = #script_name, mainNodeTree.scripts[__scriptIndex__++].script = script_name; PRINT_INFO("Script %s loaded in %d!\n", #script_name, __scriptIndex__);}
+#define END_SCRIPT(script_name) }; \
+static __attribute__((constructor)) void __anon_ctor_##script_name(void) {\
+    mainNodeTree.scripts = realloc(mainNodeTree.scripts, sizeof(Script) * (__scriptIndex__ + 1));\
+    mainNodeTree.scripts[__scriptIndex__].name = #script_name;\
+    mainNodeTree.scripts[__scriptIndex__++].script = script_name;\
+    PRINT_INFO("Script %s loaded in %d!\n", #script_name, __scriptIndex__);\
+}
 
 #ifndef SCRIPTS_H
 #define SCRIPTS_H

@@ -13,6 +13,8 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
     window->startTime = get_time_in_seconds();
     window->time = 0.0f;
     window->lastTime = 0.0f;
+    glm_vec4_zero(window->fadeColor);
+    window->fadeColor[3] = 1.0f;
 
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
         PRINT_ERROR("Failed to initialize the SDL2 library\n");

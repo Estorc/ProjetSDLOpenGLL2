@@ -73,12 +73,13 @@ class Button : public Frame {
         if (button->state == BUTTON_STATE_PRESSED) {
             if (input.mouse.released_button == SDL_BUTTON_LEFT) {
                 button->state = BUTTON_STATE_NORMAL;
-                if (button->checked &&
-                    input.mouse.x > x &&
+                if (input.mouse.x > x &&
                     input.mouse.x < x+w &&
                     input.mouse.y > y &&
-                    input.mouse.y < y+h)
-                    *button->checked = !(*button->checked);
+                    input.mouse.y < y+h) {
+                    if (button->checked) *button->checked = !(*button->checked);
+                    this::emit_signal(SIGNAL_BUTTON_CLICKED);
+                }
             }
         } else {
             if (input.mouse.x > x &&
@@ -86,7 +87,10 @@ class Button : public Frame {
                 input.mouse.y > y &&
                 input.mouse.y < y+h) {
 
-                button->state = BUTTON_STATE_HOVERED;
+                if (button->state != BUTTON_STATE_HOVERED) {
+                    this::emit_signal(SIGNAL_BUTTON_HOVERED);
+                    button->state = BUTTON_STATE_HOVERED;
+                }
 
                 if (input.mouse.pressed_button == SDL_BUTTON_LEFT)
                     button->state = BUTTON_STATE_PRESSED;

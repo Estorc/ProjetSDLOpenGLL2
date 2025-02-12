@@ -61,15 +61,8 @@ static inline void create_obj_vao(ModelObjectData *obj) {
 
 
 int load_model(const char *path, ModelData ** modelPtr) {
-    for (int i = 0; i < memoryCaches.modelsCount; i++) {
-        if (!strcmp(memoryCaches.modelCache[i].modelName, path)) {
-            #ifdef DEBUG
-                PRINT_INFO("Model loaded from cache!\n");
-            #endif
-            (*modelPtr) = memoryCaches.modelCache[i].model;
-            return 0;
-        }
-    }
+    *modelPtr = get_model_from_cache(path);
+    if (*modelPtr) return 0;
 
     ModelData *model = *modelPtr = malloc(sizeof(ModelData));
     POINTER_CHECK(model);
@@ -94,8 +87,6 @@ int load_model(const char *path, ModelData ** modelPtr) {
         POINTER_CHECK(obj->displayLists);
         memset(obj->displayLists, 0, sizeof(GLuint) * obj->materialsCount);
     }
-    memoryCaches.modelCache = realloc(memoryCaches.modelCache, sizeof (ModelCache) * (++memoryCaches.modelsCount));
-    memoryCaches.modelCache[memoryCaches.modelsCount-1].model = model;
-    strcpy(memoryCaches.modelCache[memoryCaches.modelsCount-1].modelName, path);
+    add_model_to_cache(path, model);
     return 0;
 }

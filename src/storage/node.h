@@ -42,7 +42,7 @@ typedef struct Tree {
     struct Node *root; /**< The root node of the tree structure. */
     struct Camera *camera; /**< The camera associated with the tree. */
     struct MSAA msaa; /**< The MSAA settings for the tree. */
-    Script scripts[SCRIPTS_COUNT]; /**< The scripts associated with the tree. */
+    Script *scripts; /**< The scripts associated with the tree. */
 } Tree;
 
 /**

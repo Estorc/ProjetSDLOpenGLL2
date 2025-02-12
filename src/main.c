@@ -25,6 +25,8 @@
 
 #include "classes/classes.h"
 
+#define BOOT_SCENE "assets/scenes/claude_chappe/boot.scene"
+
 float accumulator = 0.0f;
 const float fixedTimeStep = 0.0167f;
 float fps = 0.0f;
@@ -117,8 +119,6 @@ int main(int argc, char *argv[]) {
     init_buffers();
 
     Mix_OpenAudio(48000, AUDIO_S16SYS, 2, 2048);
-    Mix_Music *music = Mix_LoadMUS("assets/audio/musics/test.mp3");
-    Mix_PlayMusic(music, 1);
 
     #ifdef DEBUG
     if (argc >= 2) {
@@ -133,12 +133,14 @@ int main(int argc, char *argv[]) {
 
     while (update(&window, &defaultShaders, &depthMap, &mainNodeTree.msaa, &screenPlane) >= 0);
 
-    Mix_FreeMusic(music);
-
     if (!queue_is_empty(&callQueue)) {
         queue_free(&callQueue);
         PRINT_INFO("Free call queue!\n");
     }
+
+
+    PRINT_INFO("Free scripts!\n");
+    free(mainNodeTree.scripts);
 
     free_msaa_framebuffer(&mainNodeTree.msaa);
 

@@ -13,19 +13,16 @@ NEW_SCRIPT(open_close_menu)
 END_SCRIPT(open_close_menu)
 
 NEW_SCRIPT(return_to_main_menu)
-	GET_READY_PARAMETERS();
-	SET_ATTRIBUTES_COUNT(1);
-
-	bool *active = &this->attribute[0].b;
-
-	Frame *frame = (Frame*) this->object;
-	Button *button = (Button*) frame->button;
-
-	if (!button->checked) button->checked = active;
-
-	if ((*button->checked)) {
-		
-		prepare_change_scene("assets/scenes/boot.scene");
-		*button->checked = false;
+	GET_SIGNAL();	
+	switch (signal) {
+		case SIGNAL_BUTTON_CLICKED:
+			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+			prepare_change_scene("assets/scenes/claude_chappe/boot.scene");
+			break;
+		case SIGNAL_BUTTON_HOVERED:
+			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+			break;
+		default:
+			break;
 	}
 END_SCRIPT(return_to_main_menu)

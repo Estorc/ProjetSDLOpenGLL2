@@ -8,8 +8,6 @@ enum ReturnSymbol {
 };
 #endif
 
-#define BOOT_SCENE "assets/scenes/boot.scene"
-
 
 #include "term/term.h"
 #define UNUSED(x) (void)x;

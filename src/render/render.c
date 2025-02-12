@@ -119,6 +119,7 @@ void draw_screen(Window *window, Node *scene, Camera *c, WorldShaders *shaders, 
     glBindTexture(GL_TEXTURE_2D, window->ui_texture); // use the now resolved color attachment as the quad's texture
     set_shader_int(shaders->screen, "screenTexture", 0);
     set_shader_int(shaders->screen, "UITexture", 1);
+    set_shader_vec4(shaders->screen, "fadeColor", window->fadeColor);
 
 
     SDL_GetWindowSize(window->sdl_window, &window_width, &window_height);

@@ -26,6 +26,7 @@ typedef struct Window {
     float startTime; /**< Time when the window was created or initialized. */
     float time; /**< Current time since the window was created or initialized. */
     float lastTime; /**< Time of the last frame update. */
+    vec4 fadeColor; /**< Color used for fading the screen. */
     bool resized; /**< Flag indicating if the window has been resized. */
 } Window;
 

@@ -19,7 +19,7 @@
  * @param scripts Array of scripts to be initialized.
  * @param editor Pointer to the editor node.
  */
-void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, Script scripts[SCRIPTS_COUNT], Node *editor);
+void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, Script *scripts, Node *editor);
 
 /**
  * @brief Writes the node tree to a file.

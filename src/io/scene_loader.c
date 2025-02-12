@@ -100,7 +100,7 @@ Node *load_node(FILE *file, Camera **c, Script *scripts, Node *editor) {
                 for (int i = 0; i < BEHAVIOR_SCRIPT_COUNT; i++) {
                     if (i == BEHAVIOR_SCRIPT_COUNT-1) fscanf(file, "%100[^}]}", scriptname[i]);
                     else fscanf(file, "%100[^,],", scriptname[i]);
-                    for (int j = 0; j < SCRIPTS_COUNT; j++) {
+                    for (int j = 0; j < __scriptIndex__; j++) {
                         if (!strcmp(scripts[j].name, scriptname[i])) {
                             node->flags |= NODE_SCRIPT;
                             (*behavior)[i] = scripts[j].script;
