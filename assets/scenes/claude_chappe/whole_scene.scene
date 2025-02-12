@@ -1,6 +1,6 @@
 Node:5
 PointLight(0,0,0,2,2,3,1,1,2,1,0.09,0.032)[m-21,10,-7]{NULL,NULL,NULL}
-Model(assets\models\ClaudeChappe\mapJeuSDLvv1.obj){NULL,NULL,NULL}
+Model(assets\models\ClaudeChappe\mapJeuSDLv2.obj){NULL,NULL,NULL}
 StaticBody(1)
 PlaneCShape[m0,0,0r0,0,0s1,1,1a1v1]
 [m0,0,0r0,0,0s1,1,1a1v1]

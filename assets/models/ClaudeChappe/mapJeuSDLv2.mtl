@@ -13,6 +13,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd 4K_tiling_19_basecolor.jpg
 map_Pm 4K_tiling_19_metallic.jpg
 map_Pr 4K_tiling_19_roughness.jpg
 
@@ -45,7 +46,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
-map_Bump -bm 0.500000 DefaultMaterial_Normal.jpg
+map_Bump DefaultMaterial_Normal.jpg
 
 newmtl Material.001
 Kd 0.800000 0.800000 0.800000
@@ -156,7 +157,7 @@ anisor 0.000000
 map_Kd plastic02_diffuse.jpg
 map_Pm plastic_metallic.jpg
 map_Ks plastic_specular.jpg
-map_Bump -bm 1.000000 plastic_normal_opengl.jpg
+map_Bump plastic_normal_opengl.jpg
 
 newmtl Plastic_white_material
 Ke 0.000000 0.000000 0.000000
@@ -172,7 +173,7 @@ anisor 0.000000
 map_Kd plastic07_diffuse.jpg
 map_Pm plastic_metallic.jpg
 map_Ks plastic_specular.jpg
-map_Bump -bm 1.000000 plastic_normal_opengl.jpg
+map_Bump plastic_normal_opengl.jpg
 
 newmtl Plastic_yellow_material
 Ke 0.000000 0.000000 0.000000
@@ -188,7 +189,7 @@ anisor 0.000000
 map_Kd plastic05_diffuse.jpg
 map_Pm plastic_metallic.jpg
 map_Ks plastic_specular.jpg
-map_Bump -bm 1.000000 plastic_normal_opengl.jpg
+map_Bump plastic_normal_opengl.jpg
 
 newmtl Procedural_pearl_red_painted_plastic
 Kd 0.703470 0.002091 0.000000
@@ -229,7 +230,7 @@ aniso 0.000000
 anisor 0.000000
 map_Kd wood-79_diffuse.jpg
 map_Pr wood-79_smooth.jpg
-map_Bump -bm 0.100000 wood-79_normal.jpg
+map_Bump wood-79_normal.jpg
 
 newmtl Wood.001
 Ks 0.500000 0.500000 0.500000
@@ -258,8 +259,8 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
-map_Kd -s 3 3 3 wood-5-dark_diffuse.jpg
-map_Pr -s 3 3 3 wood-5_smooth.jpg
+map_Kd wood-5-dark_diffuse.jpg
+map_Pr wood-5_smooth.jpg
 
 newmtl plastic_bleu
 Ks 0.500000 0.500000 0.500000
@@ -275,7 +276,7 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 map_Kd PM-T1_Plastic_Finish_basecolor_Blue.jpg
-map_Bump -bm 0.690000 PM-T1_Plastic_Finish_normal.jpg
+map_Bump PM-T1_Plastic_Finish_normal.jpg
 
 newmtl plastic_bleu_azur
 Kd 0.403891 0.696484 0.679558
