@@ -11,7 +11,7 @@ if len(sys.argv) != 3:
 input_file = sys.argv[1]
 output_dir = sys.argv[2]
 
-json_file = "./tools/import_class.json"
+json_file = "./tools/import_classes.json"
 
 # Read the JSON file into a dictionary
 try:

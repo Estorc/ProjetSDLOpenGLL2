@@ -16,7 +16,7 @@
 #include "../classes/classes.h"
 
 void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, Script *scripts, Node *editor) {
-    node::nodeType::constructor(NULL);
+    node->type = nodeType;
     node::load(file, c, scripts, editor);
 }
 

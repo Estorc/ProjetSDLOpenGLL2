@@ -55,6 +55,21 @@ int find_string_index(char *str, const char **str_list, int list_size) {
 	return -1; // Return -1 if the string is not found
 }
 
+char * format_escaped_newlines(char *str) {
+    char *src = str;
+    char *dst = str;
+    while (*src) {
+        if (*src == '\\' && *(src + 1) == 'n') {
+            *dst++ = '\n';
+            src += 2;
+        } else {
+            *dst++ = *src++;
+        }
+    }
+    *dst = '\0';
+    return str;
+}
+
 // Function to check if a byte is the start of a UTF-8 character (i.e., 0xC0 or above).
 int is_utf8_start_byte(unsigned char c) {
     return (c & 0xC0) != 0x80;  // Check if it's not a continuation byte (0x80-0xBF).

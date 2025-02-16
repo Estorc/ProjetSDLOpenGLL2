@@ -229,6 +229,19 @@ void update_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Inp
         node::update_global_position(newPos, newRot, newScale);
     }
 
+    bool is_render_target = false;
+    node::is_render_target(&is_render_target);
+    RenderTarget *lastRenderTarget = mainNodeTree.renderTarget;
+    if (is_render_target) {
+        RenderTarget *renderTarget = (RenderTarget *) node->object;
+        mainNodeTree.renderTarget = renderTarget;
+    }
+
     for (int i = 0; i < node->length; i++)
         update_physics(node->children[i], newPos, newRot, newScale, delta, input, window, lightsCount, active);
+
+    if (is_render_target) {
+        mainNodeTree.renderTarget = lastRenderTarget;
+    }
+
 }

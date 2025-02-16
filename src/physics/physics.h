@@ -15,17 +15,17 @@ struct Node;
  */
 
 /**
- * @struct DistanceNode
- * @brief Represents a node and its distance.
+ * @struct CollectedNode
+ * @brief Represents a node collected by an area.
  * 
- * This structure holds a reference to a node and its associated distance.
+ * This structure holds a reference to a node and associated informations.
  * It is used for sorting and managing nodes based on their distances.
  */
-
-typedef struct DistanceNode {
+typedef struct CollectedNode {
     struct Node *node; /** < Pointer to the node. */
     float distance; /** < Distance associated with the node. */
-} DistanceNode;
+    vec3 impactPoint; /** < Impact point associated with the node. */
+} CollectedNode;
 
 /**
  * @struct Area
@@ -34,13 +34,12 @@ typedef struct DistanceNode {
  * This structure holds information about an area, including its collision shapes,
  * collected nodes, and sorted nodes.
  */
-
 typedef struct Area {
     struct Node **collisionsShapes; /** < Array of collected nodes with distances. */
     u8 length; /** < Number of collision shapes. */
-    struct DistanceNode *collectedNodes; /** < Array of collected nodes with distances. */
+    struct CollectedNode *collectedNodes; /** < Array of collected nodes with distances. */
     u8 collectedLength; /** < Number of collected nodes. */
-    struct DistanceNode *sortedNodes; /** < Array of sorted nodes with distances. */
+    struct CollectedNode *sortedNodes; /** < Array of sorted nodes with distances. */
     u8 sortedLength; /** < Number of sorted nodes. */
 } Area;
 

@@ -36,10 +36,10 @@ void apply_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 impa
         apply_body_collision(shapeA, shapeB, collisionNormal, impactPoint, penetrationDepth);
     (shapeA->parent)::is_area(&conditionA);
     if (conditionA)
-        (shapeA->parent)::collect_node(shapeB->parent, penetrationDepth);
+        (shapeA->parent)::collect_node(shapeB->parent, penetrationDepth, impactPoint);
     (shapeB->parent)::is_area(&conditionB);
     if (conditionB)
-        (shapeB->parent)::collect_node(shapeA->parent, penetrationDepth);
+        (shapeB->parent)::collect_node(shapeA->parent, penetrationDepth, impactPoint);
     
 }
 
@@ -486,7 +486,7 @@ bool check_collision_box_with_ray(struct Node *shapeA, struct Node *shapeB) {
 
     glm_vec3_rotate_m4(cubeRotation, collisionNormal, collisionNormal);
 
-    apply_collision(shapeA, shapeB, collisionNormal, collisionNormal, tMin);
+    apply_collision(shapeA, shapeB, collisionNormal, collisionPoint, tMin);
     return 1;  // Collision detected
 }
 
@@ -737,7 +737,7 @@ bool check_collision_sphere_with_ray(struct Node *shapeA, struct Node *shapeB) {
         glm_vec3_sub(collisionPoint, sphereCenter, collisionNormal);
         glm_vec3_normalize(collisionNormal);
         
-        apply_collision(shapeA, shapeB, collisionNormal, collisionNormal, t);
+        apply_collision(shapeA, shapeB, collisionNormal, collisionPoint, t);
         return 1;  // Collision detected
     }
 }

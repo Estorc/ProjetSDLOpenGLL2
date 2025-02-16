@@ -9,6 +9,8 @@
  * @date October 27, 2023
  */
 
+#include "raptiquax.h"
+#include "classes/classes.h"
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"

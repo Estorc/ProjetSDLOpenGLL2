@@ -11,6 +11,8 @@
  * @date 2023-10-20
  */
 
+#include "raptiquax.h"
+#include "classes/classes.h"
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
@@ -150,6 +152,10 @@ class Node {
 
     void is_area(bool *area) {
         *area = false;
+    }
+
+    void is_render_target(bool *render_target) {
+        *render_target = false;
     }
 
     void is_gui_element(bool *result) {

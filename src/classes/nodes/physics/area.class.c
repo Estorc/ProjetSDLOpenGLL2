@@ -16,6 +16,8 @@
  * @author Loup Picault
  */
 
+#include "raptiquax.h"
+#include "classes/classes.h"
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"
@@ -36,19 +38,20 @@ class Area : public PhysicalNode {
         if (area) {
             area->collectedLength = 0;
             area->sortedLength = 0;
-            area->collectedNodes = malloc(buffers.collisionBuffer.length * sizeof(DistanceNode));
+            area->collectedNodes = malloc(buffers.collisionBuffer.length * sizeof(CollectedNode));
             POINTER_CHECK(area->collectedNodes);
-            area->sortedNodes = malloc(buffers.collisionBuffer.length * sizeof(DistanceNode));
+            area->sortedNodes = malloc(buffers.collisionBuffer.length * sizeof(CollectedNode));
             POINTER_CHECK(area->sortedNodes);
         }
     }
 
-    void collect_node(Node * node, double distance) {
+    void collect_node(Node * node, double distance, float *impactPoint) {
         Area *area = (Area *) this->object;
-        area->collectedNodes = realloc(area->collectedNodes, sizeof(DistanceNode) * (area->collectedLength + 1));
+        area->collectedNodes = realloc(area->collectedNodes, sizeof(CollectedNode) * (area->collectedLength + 1));
         POINTER_CHECK(area->collectedNodes);
         area->collectedNodes[area->collectedLength].node = node;
         area->collectedNodes[area->collectedLength].distance = distance;
+        glm_vec3_copy(impactPoint, area->collectedNodes[area->collectedLength].impactPoint);
         area->collectedLength++;
     }
 
@@ -57,8 +60,8 @@ class Area : public PhysicalNode {
     }
 
     static int compare_distance_nodes(const void *a, const void *b) {
-        DistanceNode *nodeA = (DistanceNode *)a;
-        DistanceNode *nodeB = (DistanceNode *)b;
+        CollectedNode *nodeA = (CollectedNode *)a;
+        CollectedNode *nodeB = (CollectedNode *)b;
         if (nodeA->distance < nodeB->distance) return -1;
         if (nodeA->distance > nodeB->distance) return 1;
         return 0;
@@ -67,8 +70,8 @@ class Area : public PhysicalNode {
     void sort_nodes() {
         Area *area = (Area *) this->object;
 
-        qsort(area->collectedNodes, area->collectedLength, sizeof(DistanceNode), compare_distance_nodes);
-        memcpy(area->sortedNodes, area->collectedNodes, area->collectedLength * sizeof(DistanceNode));
+        qsort(area->collectedNodes, area->collectedLength, sizeof(CollectedNode), compare_distance_nodes);
+        memcpy(area->sortedNodes, area->collectedNodes, area->collectedLength * sizeof(CollectedNode));
         area->sortedLength = area->collectedLength;
     }
 
@@ -82,13 +85,14 @@ class Area : public PhysicalNode {
             PRINT_INFO("Collected %d nodes:\n", area->sortedLength);
         }
         for (int i = 0; i < area->sortedLength; i++) {
-            PRINT_INFO("Node %d: %f\n", i, area->sortedNodes[i].distance);
+            (area->sortedNodes[i].node)::emit_signal(SIGNAL_AREA_COLLISION, this, area->sortedNodes[i].distance, area->sortedNodes[i].impactPoint);
+            PRINT_INFO("Node %d: Distance[%.2f] | ImpactPoint[%.2f,%.2f,%.2f]\n", i, area->sortedNodes[i].distance, area->sortedNodes[i].impactPoint[0], area->sortedNodes[i].impactPoint[1], area->sortedNodes[i].impactPoint[2]);
         }
         #endif
         #endif
 
         area->collectedLength = 0;
-        area->collectedNodes = realloc(area->collectedNodes, buffers.collisionBuffer.length * sizeof(DistanceNode));
+        area->collectedNodes = realloc(area->collectedNodes, buffers.collisionBuffer.length * sizeof(CollectedNode));
 
         this::update_global_position(pos, rot, scale);
 
@@ -109,7 +113,7 @@ class Area : public PhysicalNode {
         *shapes = &area->collisionsShapes;
     }
 
-    void get_node_collection(DistanceNode **nodes, u8 *length) {
+    void get_node_collection(CollectedNode **nodes, u8 *length) {
         Area *area = (Area *) this->object;
         *length = area->collectedLength;
         *nodes = area->collectedNodes;

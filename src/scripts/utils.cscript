@@ -1,0 +1,16 @@
+#include "../raptiquax.h"
+#include "../math/math_util.h"
+#include "../storage/node.h"
+#include "../render/camera.h"
+#include "../gui/frame.h"
+#include "../storage/queue.h"
+#include "../utils/scene.h"
+#include "../io/audio.h"
+#include "../render/lighting.h"
+#include "../buffer.h"
+#include "../window.h"
+#include "../scripts/scripts.h"
+
+NEW_SCRIPT(script_no_fade_init)
+    window.fadeColor[3] = 0.0f;
+END_SCRIPT(script_no_fade_init)

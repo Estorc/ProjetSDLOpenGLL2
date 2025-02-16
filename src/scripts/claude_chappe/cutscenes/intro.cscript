@@ -1,0 +1,80 @@
+#include "../../../raptiquax.h"
+#include "../../../math/math_util.h"
+#include "../../../storage/node.h"
+#include "../../../render/camera.h"
+#include "../../../gui/frame.h"
+#include "../../../storage/queue.h"
+#include "../../../utils/scene.h"
+#include "../../../io/audio.h"
+#include "../../../render/lighting.h"
+#include "../../../buffer.h"
+#include "../../../window.h"
+
+NEW_SCRIPT(script_cc_intro_init)
+    Frame * frame = this->children[0]->children[0]->children[2]->children[0]->object;
+    SET_ATTRIBUTES_COUNT(2);
+    this->attribute[1].i = strlen(frame->label->text);
+
+    frame->label->displayLength = 0;
+    play_music("assets/audio/musics/intro_music.mp3", MIX_MAX_VOLUME, -1);
+    SDL_SetRelativeMouseMode(SDL_TRUE);
+END_SCRIPT(script_cc_intro_init)
+
+NEW_SCRIPT(script_cc_intro_update)
+    Frame * frame = this->children[0]->children[0]->children[2]->children[0]->object;
+
+    if (frame->label->displayLength < this->attribute[1].i) {
+        if (this->attribute[0].i % 2 == 0) {
+            frame->label->displayLength++;
+            frame->flags |= FRAME_NEEDS_REFRESH;
+        }
+        if (this->attribute[0].i % 5 == 0) {
+            char sfx[] = "assets/audio/sfx/text/default?.wav";
+            sfx[29] = (rand()%4+1) + '0';
+            play_sfx(sfx, 80, 0);
+        }
+        this->attribute[0].i++;
+    }
+    if (window.fadeColor[3] > 0.0f)
+        window.fadeColor[3] -= 0.01f;
+END_SCRIPT(script_cc_intro_update)
+
+
+NEW_SCRIPT(script_cc_intro_btn)
+    GET_SIGNAL();	
+    switch (signal) {
+        case SIGNAL_BUTTON_CLICKED:
+            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            prepare_change_scene("assets/scenes/claude_chappe/whole_scene.scene");
+            SDL_SetRelativeMouseMode(SDL_FALSE);
+            break;
+        case SIGNAL_BUTTON_HOVERED:
+            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            break;
+        default:
+            break;
+    }
+END_SCRIPT(script_cc_intro_btn)
+
+NEW_SCRIPT(script_cc_intro_screen_init)
+    SET_ATTRIBUTES_COUNT(1);
+    this->attribute[0].p = mainNodeTree.root->children[0]->object;
+    RenderTarget *renderTarget = this->attribute[0].p;
+    TexturedMesh *texturedMesh = this->children[0]->object;
+    texturedMesh->texture = renderTarget->texture;
+END_SCRIPT(script_cc_intro_screen_init)
+
+NEW_SCRIPT(script_cc_intro_screen_signal)
+    GET_SIGNAL();
+    switch (signal) {
+        case SIGNAL_AREA_COLLISION:
+            GET_AREA_SIGNAL_PARAMETERS();
+            RenderTarget *renderTarget = this->attribute[0].p;
+            renderTarget->mouse.x = (float) (impactPoint[0]/49.4f+0.5f) * renderTarget->w;
+            renderTarget->mouse.y = (float) (1.0f-(impactPoint[1]/24.6f+0.5f)) * renderTarget->h;
+            PRINT_INFO("Mouse: %d, %d", renderTarget->mouse.x, renderTarget->mouse.y);
+            break;
+        default:
+            break;
+    }
+END_SCRIPT(script_cc_intro_screen_signal)

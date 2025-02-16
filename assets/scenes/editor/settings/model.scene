@@ -1,9 +1,9 @@
 ControlFrame(0w,10p,96w,50p,ct):2
 ControlFrame(0w,0p,25w,32p,lt):1
-Label(Model:,lc)
+Label("Model:",lc)
 ControlFrame(25w,0p,75w,32p,lt){model_input_init,model_input,NULL}:2
 ControlFrame(0p,0p,100w,32p,lt):1
-Label(None,lc)
+Label("None",lc)
 ControlFrame(0p,0p,32p,32p,rt):1
 Button{NULL,NULL,NULL}:1
 ImageFrame(0w,0h,100w,100h,lc,assets/textures/editor/folder.png)

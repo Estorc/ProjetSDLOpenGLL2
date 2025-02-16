@@ -120,37 +120,58 @@ TextureMap load_texture_from_path(char * path, GLenum format, bool yReversed) {
 }
 
 
-void draw_text(SDL_Surface *render_surface, int x, int y, char *text, TTF_Font *font, SDL_Color color, char *alignment, int width) {
+void draw_text(SDL_Surface *render_surface, int x, int y, const char *text, TTF_Font *font, SDL_Color color, char *alignment, int width) {
     SDL_Surface *surface;
 
-    surface = TTF_RenderUTF8_Blended_Wrapped(font, text, color, (width == -1) ? INT_MAX : width);
-    if (!surface) {
-        PRINT_ERROR("Failed to render text: %s\n", TTF_GetError());
-        return;
+    char *buffer = malloc(strlen(text) + 1);
+    buffer[0] = 0;
+    strcpy(buffer, text);
+    char *line = buffer;
+    char *nl_pos;
+
+    while (line) {
+        if (!(*line)) line++;
+        nl_pos = strchr(line, '\n');
+        if (nl_pos) *nl_pos = 0;
+        int dx, dy;
+        if (*line) {
+            surface = TTF_RenderUTF8_Blended_Wrapped(font, line, color, (width == -1) ? INT_MAX : width);
+            if (!surface) {
+                PRINT_ERROR("Failed to render text: %s\n", TTF_GetError());
+                return;
+            }
+            switch (alignment[0]) {
+                case 'l':
+                    dx = x;
+                    break;
+                case 'r':
+                    dx = x + render_surface->w-surface->w;
+                    break;
+                case 'c':
+                    dx = x + (render_surface->w-surface->w) / 2;
+                    break;
+            }
+            switch (alignment[1]) {
+                case 't':
+                    dy = y;
+                    break;
+                case 'b':
+                    dy = y + render_surface->h-surface->h;
+                    break;
+                case 'c':
+                    dy = y + (render_surface->h-surface->h) / 2;
+                    break;
+            }
+            SDL_Rect textLocation = { dx, dy, 0, 0 };
+            y += surface->h;
+            SDL_BlitSurface(surface, NULL, render_surface, &textLocation);
+            SDL_FreeSurface(surface);
+        } else {
+            y += TTF_FontHeight(font);
+        }
+        line = nl_pos;
     }
-    switch (alignment[0]) {
-        case 'l':
-            break;
-        case 'r':
-            x += render_surface->w-surface->w;
-            break;
-        case 'c':
-            x += (render_surface->w-surface->w) / 2;
-            break;
-    }
-    switch (alignment[1]) {
-        case 't':
-            break;
-        case 'b':
-            y += render_surface->h-surface->h;
-            break;
-        case 'c':
-            y += (render_surface->h-surface->h) / 2;
-            break;
-    }
-    SDL_Rect textLocation = { x, y, 0, 0 };
-    SDL_BlitSurface(surface, NULL, render_surface, &textLocation);
-    SDL_FreeSurface(surface);
+    free(buffer);
 }
 
 

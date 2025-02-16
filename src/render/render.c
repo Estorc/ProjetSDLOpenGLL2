@@ -16,7 +16,21 @@
 
 void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
 
+    
     if (node->flags & NODE_VISIBLE) {
+
+        GLint currentFBO;
+        bool is_render_target = false;
+        node::is_render_target(&is_render_target);
+        RenderTarget *lastRenderTarget = mainNodeTree.renderTarget;
+        if (is_render_target) {
+            glGetIntegerv(GL_FRAMEBUFFER_BINDING, &currentFBO);
+            RenderTarget *renderTarget = (RenderTarget *) node->object;
+            mainNodeTree.renderTarget = renderTarget;
+            glBindFramebuffer(GL_FRAMEBUFFER, renderTarget->fbo);
+            glViewport(0, 0, renderTarget->w, renderTarget->h); // Make sure viewport matches FBO size
+        }
+        
         mat4 nodeModelMatrix = GLM_MAT4_IDENTITY_INIT;
         glm_mat4_mul(nodeModelMatrix, modelMatrix, nodeModelMatrix);
         use_shader(activeShader);
@@ -36,6 +50,15 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
                     render_scene(window, (*shapes)[i], c, nodeModelMatrix, activeShader, shaders);
                 }
             }
+        }
+
+        if (is_render_target) {
+            mainNodeTree.renderTarget = lastRenderTarget;
+            int window_width, window_height;
+            get_resolution(&window_width, &window_height);
+
+            glBindFramebuffer(GL_FRAMEBUFFER, currentFBO);
+            glViewport(0, 0, window_width, window_height);
         }
     }
 

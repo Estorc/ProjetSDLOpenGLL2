@@ -148,8 +148,7 @@ endif
 
 LOADING_SCRIPT_HEADER := src/scripts/loading_scripts.h
 NEW_SCRIPT_SYMBOL := NEW_SCRIPT
-SCRIPTS_PATHS := $(wildcard src/scripts/**/*.cscript)
-SCRIPTS_PATHS += $(wildcard src/scripts/*.cscript)
+SCRIPTS_PATHS := $(shell find src/scripts -type f -name "*.cscript")
 SCRIPTS_MODULES := $(SCRIPTS_PATHS:.cscript=.o)
 SCRIPTS_COUNT := -D SCRIPTS_COUNT=$(shell grep -o '\b$(NEW_SCRIPT_SYMBOL)\b' $(SCRIPTS_PATHS) | wc -l)
 
@@ -216,8 +215,7 @@ debug: init_build ${DEBUG_MODULES} $(BUILD_DIR)/debug/${MAIN} ${LIBS} ${SCRIPTS_
 tools:
 	@printf "${STEP_COL}===================== Begin build tools. ====================\n"
 	@printf "${ACT_COL}Build tools...${NC}\n"
-	@${GCC} -o tools/class_tools tools/class_tools.c ${DFLAGS} ${WFLAGS} -Wno-format-truncation
-	@${GCC} -o tools/node_tools tools/node_tools.c ${DFLAGS} ${WFLAGS}
+	@${GCC} -o tools/class_tools tools/class_tools.c ${DFLAGS} ${WFLAGS} -Wno-format
 	@printf "${STEP_COL}============= ${NC}${SUCCESS_COL}Successfully build the tools!${NC}${STEP_COL} =============${NC}\n"
 
 

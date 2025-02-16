@@ -65,7 +65,6 @@ void main()
         if (pressed || checked)
             backgroundColor = texture(background, vec2((fragCoord.x)/8.1+5.0/8.0, -(fragCoord.y)/8.1-6.0/8.0));
     } else {
-        if (backgroundEnabled) backgroundColor = texture(background, vec2((fragCoord.x)/2.1-0.99, -(fragCoord.y)/2.1-1.01));
         if (hovered)
             backgroundColor = texture(background, vec2((fragCoord.x)/4.1+0.5, -(fragCoord.y)/4.1+0.501)) * abs(sin(time/250.0))/1.5;
         if (pressed || checked)
@@ -83,13 +82,15 @@ void main()
                 layerCoord.y = (-mod(pixelCoord.y + mod(CHUNK_SIZE - pixelSize.y, CHUNK_SIZE), CHUNK_SIZE) + FRAME_BOTTOM)/pixelSize.y * PIXEL_SCALE_Y;
             bgLayerColor = texture(background, layerCoord);
 
-
+            if (backgroundEnabled && backgroundColor.a < 0.1) backgroundColor = texture(background, vec2(layerCoord.x-0.5, layerCoord.y));
             backgroundColor = mix(backgroundColor, bgLayerColor, bgLayerColor.a);
         }
     }
 
     if (contentEnabled)
         contentColor = texture(content, fragCoord);
-    fragColor = mix(backgroundColor, contentColor, contentColor.a);
+    vec4 premultipliedContent = vec4(contentColor.rgb * contentColor.a, contentColor.a);
+    vec4 premultipliedBackground = vec4(backgroundColor.rgb * (1.0 - contentColor.a), backgroundColor.a);
+    fragColor = premultipliedContent + premultipliedBackground;
     //fragColor = vec4(fragCoord.x, fragCoord.y, 0.0, 1.0);
 } 

@@ -1,6 +1,8 @@
 #ifndef FRAMEBUFFER_H
 #define FRAMEBUFFER_H
 
+#include "../io/input.h"
+
 /**
  * @brief Functions for managing MSAA framebuffers.
  * @defgroup Framebuffer Framebuffer Management
@@ -24,6 +26,24 @@ typedef FBO FrameBuffer;
  * @brief Alias for an unsigned int representing a Render Buffer Object.
  */
 typedef unsigned int RBO;
+
+
+/**
+ * @struct RenderTarget
+ * @brief A structure to handle render targets.
+ * 
+ * This structure contains the necessary components to manage render targets,
+ * including the framebuffer and texture map.
+ * 
+ * @note The render target is used to render to a texture instead of the screen.
+ */
+typedef struct RenderTarget {
+    FBO fbo;
+    TextureMap texture;
+    int w;
+    int h;
+    Mouse mouse;
+} RenderTarget;
 
 /**
  * @struct MSAA

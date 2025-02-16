@@ -1,5 +1,6 @@
 #pragma once
-#include "import_class.h"
+#include "classes_types.h"
+#include "import_classes.h"
 #include "../raptiquax.h"
 
 /**

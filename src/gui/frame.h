@@ -77,7 +77,8 @@ typedef struct SelectList {
  * This structure holds the text of a label.
  */
 typedef struct Label {
-    char text[256]; /**< Text of the label. */
+    char *text; /**< Text of the label. */
+    int displayLength; /**< Number of characters to display. */
 } Label;
 
 /**

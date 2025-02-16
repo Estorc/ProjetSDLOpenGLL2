@@ -14,6 +14,8 @@
  * @date 2023-10-31
  */
 
+#include "raptiquax.h"
+#include "classes/classes.h"
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"
@@ -65,34 +67,38 @@ class Button : public Frame {
     void update() {
         Frame *frame = (Frame *) this->object;
         Button *button = (Button *) frame->button;
+        Mouse *mouse = &input.mouse;
+        if (mainNodeTree.renderTarget) {
+            mouse = &mainNodeTree.renderTarget->mouse;
+        }
         float x,y,w,h;
         x = frame->absPos[0];
         y = frame->absPos[1];
         w = frame->size[0];
         h = frame->size[1];
         if (button->state == BUTTON_STATE_PRESSED) {
-            if (input.mouse.released_button == SDL_BUTTON_LEFT) {
+            if (mouse->released_button == SDL_BUTTON_LEFT) {
                 button->state = BUTTON_STATE_NORMAL;
-                if (input.mouse.x > x &&
-                    input.mouse.x < x+w &&
-                    input.mouse.y > y &&
-                    input.mouse.y < y+h) {
+                if (mouse->x > x &&
+                    mouse->x < x+w &&
+                    mouse->y > y &&
+                    mouse->y < y+h) {
                     if (button->checked) *button->checked = !(*button->checked);
                     this::emit_signal(SIGNAL_BUTTON_CLICKED);
                 }
             }
         } else {
-            if (input.mouse.x > x &&
-                input.mouse.x < x+w &&
-                input.mouse.y > y &&
-                input.mouse.y < y+h) {
+            if (mouse->x > x &&
+                mouse->x < x+w &&
+                mouse->y > y &&
+                mouse->y < y+h) {
 
                 if (button->state != BUTTON_STATE_HOVERED) {
                     this::emit_signal(SIGNAL_BUTTON_HOVERED);
                     button->state = BUTTON_STATE_HOVERED;
                 }
 
-                if (input.mouse.pressed_button == SDL_BUTTON_LEFT)
+                if (mouse->pressed_button == SDL_BUTTON_LEFT)
                     button->state = BUTTON_STATE_PRESSED;
 
             } else {

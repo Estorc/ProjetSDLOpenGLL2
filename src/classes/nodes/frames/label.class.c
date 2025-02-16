@@ -17,6 +17,8 @@
  * @date 2023-10-10
  */
 
+#include "raptiquax.h"
+#include "classes/classes.h"
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"
@@ -40,6 +42,7 @@ class Label : public Frame {
         this::init_frame();
         frame->label = malloc(sizeof(Label));
         POINTER_CHECK(frame->label);
+        frame->label->displayLength = -1;
         frame->relPos[0] = 0.0f;
         frame->relPos[1] = 0.0f;
         frame->scale[0] = 100.0f;
@@ -48,6 +51,7 @@ class Label : public Frame {
         frame->unit[1] = '%';
         frame->unit[2] = '%';
         frame->unit[3] = '%';
+        frame->label->text = NULL;
         frame->flags |= FRAME_CONTENT;
         glGenTextures(1, &frame->contentTexture);
     }
@@ -59,8 +63,13 @@ class Label : public Frame {
         this::constructor();
         Frame *frame = (Frame *) this->object;
         if (file) {
-            fscanf(file, "(%[^,],%c%c)", 
-            frame->label->text, &frame->alignment[0], &frame->alignment[1]);
+            static char text[2048]; // In static to prevent stack overflow
+            fscanf(file, "(\"%[^\"]\",%c%c)", 
+            text, &frame->alignment[0], &frame->alignment[1]);
+            format_escaped_newlines(text);
+            frame->label->text = malloc(strlen(text) + 1);
+            POINTER_CHECK(frame->label->text);
+            strcpy(frame->label->text, text);
         }
     }
 
@@ -82,7 +91,17 @@ class Label : public Frame {
         if (!frame->contentSurface) {
             PRINT_ERROR("Error creating surface: %s\n", SDL_GetError());
         }
-        if (label->text[0]) draw_text(frame->contentSurface, 0, 0, label->text, frame->theme->font.font, frame->theme->textColor, frame->alignment, -1);
+        if (label->text[0]) {
+            char deletedChar;
+            if (label->displayLength >= 0) {
+                deletedChar = label->text[label->displayLength];
+                label->text[label->displayLength] = '\0';
+            }
+            draw_text(frame->contentSurface, 0, 0, label->text, frame->theme->font.font, frame->theme->textColor, frame->alignment, (int) frame->size[0]);
+            if (label->displayLength >= 0) {
+                label->text[label->displayLength] = deletedChar;
+            }
+        }
         SUPER(refreshContent);
     }
 
@@ -102,6 +121,7 @@ class Label : public Frame {
     void free() {
         Frame *frame = (Frame *) this->object;
         Label *label = (Label *) frame->label;
+        free(label->text);
         free(label);
         SUPER(free);
     }

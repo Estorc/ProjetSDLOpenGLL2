@@ -10,6 +10,8 @@
  * @date October 6, 2023
  */
 
+#include "raptiquax.h"
+#include "classes/classes.h"
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"
@@ -145,6 +147,7 @@ class SelectList : public Frame {
             POINTER_CHECK(label);
             label = new Label();
             Frame *labelFrame = (Frame *) label->object;
+            labelFrame->label->text = malloc(strlen(selectList->options[i]) + 1);
             strcpy(labelFrame->label->text, selectList->options[i]);
             labelFrame->relPos[0] = 5.0f;
             labelFrame->alignment[0] = 'l';
@@ -176,6 +179,10 @@ class SelectList : public Frame {
     void update() {
         Frame *frame = (Frame *) this->object;
         SelectList *selectList = (SelectList *) frame->selectList;
+        Mouse *mouse = &input.mouse;
+        if (mainNodeTree.renderTarget) {
+            mouse = &mainNodeTree.renderTarget->mouse;
+        }
         float x,y,w,h;
         x = frame->absPos[0];
         y = frame->absPos[1];
@@ -186,10 +193,10 @@ class SelectList : public Frame {
                 this->children[0]->flags |= NODE_VISIBLE;
                 this->children[0]->flags |= NODE_ACTIVE;
             }
-            if (input.released_keys & KEY_ENTER || ((input.mouse.released_button == SDL_BUTTON_LEFT || input.mouse.pressed_button == SDL_BUTTON_LEFT) && !(input.mouse.x > x &&
-                input.mouse.x < x+w &&
-                input.mouse.y > y &&
-                input.mouse.y < y+h))) {
+            if (input.released_keys & KEY_ENTER || ((mouse->released_button == SDL_BUTTON_LEFT || mouse->pressed_button == SDL_BUTTON_LEFT) && !(mouse->x > x &&
+                mouse->x < x+w &&
+                mouse->y > y &&
+                mouse->y < y+h))) {
                     for (int i = 0; i < this->children[0]->children[0]->length; i++) {
                         Frame *childFrame = (Frame *) this->children[0]->children[0]->children[i]->children[0]->object;
                         Button *button = (Button *) childFrame->button;
@@ -206,14 +213,14 @@ class SelectList : public Frame {
                 this->children[0]->flags &= ~NODE_VISIBLE;
                 this->children[0]->flags &= ~NODE_ACTIVE;
             }
-            if (input.mouse.x > x &&
-                input.mouse.x < x+w &&
-                input.mouse.y > y &&
-                input.mouse.y < y+h) {
+            if (mouse->x > x &&
+                mouse->x < x+w &&
+                mouse->y > y &&
+                mouse->y < y+h) {
                 
                 selectList->state = BUTTON_STATE_HOVERED;
 
-                if (input.mouse.pressed_button == SDL_BUTTON_LEFT) {
+                if (mouse->pressed_button == SDL_BUTTON_LEFT) {
                     selectList->state = BUTTON_STATE_PRESSED;
                 }
 

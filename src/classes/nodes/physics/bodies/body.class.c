@@ -13,6 +13,8 @@
  * @date 2023-10-20
  */
 
+#include "raptiquax.h"
+#include "classes/classes.h"
 #include "math/math_util.h"
 #include "io/model.h"
 #include "render/framebuffer.h"

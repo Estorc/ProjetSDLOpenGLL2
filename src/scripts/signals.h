@@ -21,6 +21,7 @@
 typedef enum Signal {
     SIGNAL_BUTTON_HOVERED,
     SIGNAL_BUTTON_CLICKED,
+    SIGNAL_AREA_COLLISION,
     SIGNAL_COUNT,
 } Signal;
 

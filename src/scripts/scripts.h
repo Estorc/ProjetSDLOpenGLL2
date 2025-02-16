@@ -7,6 +7,7 @@ struct Window;
 #define GET_READY_PARAMETERS() float delta = (float) GET_PARAMETER(double); (void) delta
 #define GET_SIGNAL() Signal signal = (Signal) GET_PARAMETER(int); (void) signal
 #define GET_PARAMETER(type) va_arg(args, type)
+#define GET_AREA_SIGNAL_PARAMETERS() Node *other = (Node *) GET_PARAMETER(Node *); float distance = (float) GET_PARAMETER(double); float *impactPoint = (float *) GET_PARAMETER(float *); (void) other; (void) distance; (void) impactPoint
 #define MALLOC_ATTRIBUTE(node, x) if (!node->attribute) { \
                                     node->attribute = malloc(sizeof(BehaviorAttribute) * x); \
                                     POINTER_CHECK(node->attribute); \

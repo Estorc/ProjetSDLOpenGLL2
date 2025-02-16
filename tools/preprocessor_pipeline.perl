@@ -11,7 +11,7 @@ if (@ARGV != 2) {
 my $input_file = $ARGV[0];
 my $output_dir = $ARGV[1];
 
-my $json_file = "./tools/import_class.json";
+my $json_file = "./tools/import_classes.json";
 my $json_text = do {
     open my $fh, "<", $json_file or die "Could not open $json_file: $!";
     local $/;

@@ -86,6 +86,18 @@ char * concat_path(const char * path1, const char * path2);
 int find_string_index(char *str, const char **str_list, int list_size);
 
 /**
+ * @brief Formats escaped newlines in a string.
+ * 
+ * This function replaces escaped newline sequences in a string with actual
+ * newline characters. It modifies the input string in place.
+ * 
+ * @param str The string to format.
+ * @return A pointer to the modified string.
+ * @note This function modifies the input string in place.
+ */
+char * format_escaped_newlines(char *str);
+
+/**
  * @brief Checks if a byte is a valid UTF-8 start byte.
  * 
  * This function determines whether a given byte is a valid start byte for

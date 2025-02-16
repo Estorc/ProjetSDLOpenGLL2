@@ -1,3 +1,5 @@
+#pragma once
+
 #ifdef __windows__
 #include <GL/glew.h>  // Include before OpenGL functions
 #endif
@@ -24,6 +26,20 @@
  * @file raptiquax.h
  * @brief This file contains type definitions for fixed-width integer types and floating-point types.
  */
+
+
+/**
+ * @brief The main structure that holds all the data and state of the engine.
+ * 
+ * This structure holds all the data and state of the engine, including memory caches,
+ * buffers, the call queue, the main node tree, input data, settings, and the window.
+ * 
+ * @note This structure is used as a singleton to hold the global state of the engine.
+ * It use pointers to the actual data structures to avoid including too much headers in there.
+ */
+
+ // extern RaptiquaX_t RaptiquaX;
+
 
 /**
  * @def u8

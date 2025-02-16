@@ -8,7 +8,7 @@ KinematicBody(0,0,0,2)
 SphereCShape[m0,0,0r0,0,0s1,1,1a1v1]
 SphereCShape[m0,-2,0r0,0,0s1,1,1a1v1]
 [m0,2,10r0,0,0s1,1,1a1v1]{NULL,player,NULL}:2
-Camera(1)[m0,0,0r0,0,0s1,1,1a1v1]{NULL,camera,NULL}:1
+Camera(1)[m0,0,0r0,0,0s1,1,1a1v1]{NULL,script_cc_camera_player,NULL}:1
 Area(1)
 RayCShape
 :0
@@ -19,4 +19,4 @@ Frame(0w,0h,60w,80h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbi
 Frame(5h,5h,90h,90h,lts):1
 Frame(5w,1h,90w,18h,ltn):1
 Button{NULL,NULL,return_to_main_menu}:1
-Label(Retour au menu,cc)
+Label("Retour au menu",cc)

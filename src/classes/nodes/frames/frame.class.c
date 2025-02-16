@@ -11,6 +11,8 @@
  * @date 2023-10-03
  */
 
+#include "raptiquax.h"
+#include "classes/classes.h"
 #include "math/math_util.h"
 #include "io/model.h"
 #include "storage/node.h"
@@ -114,9 +116,18 @@ class Frame : public Node {
 
         int window_width, window_height;
         get_resolution(&window_width, &window_height);
+        if (mainNodeTree.renderTarget) {
+            window_width = mainNodeTree.renderTarget->w;
+            window_height = mainNodeTree.renderTarget->h;
+        }
         vec2 containerSize = {window_width, window_height};
         Frame *frame = (Frame *) this->object;
         vec2 scroll = {0.0f, 0.0f};
+
+        if (frame->theme && frame->theme->parent == frame) {
+            TTF_CloseFont(frame->theme->font.font);
+            frame->theme->font.font = TTF_OpenFont(frame->theme->font.path, frame->theme->font.size * ((float) window_width / 800.0f) * (1.33 / ((float) window_width / window_height)));
+        }
 
         glm_vec4_copy((vec4) {0.0f, 0.0f, containerSize[0], containerSize[1]}, frame->overflow);
 

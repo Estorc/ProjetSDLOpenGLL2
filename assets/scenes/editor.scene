@@ -8,7 +8,7 @@ Node[a0]:0
 Node:3
 Frame(0w,0h,40w,100h,lcs,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Black.ttf,18,#ffffffff]):0
 Frame(-5w,-5h,40w,100p,rbn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Black.ttf,30,#ffffffff]):1
-Label(< Placeholder >,cc)
+Label("< Placeholder >",cc)
 Frame(0w,0h,64p,256p,rtn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Black.ttf,18,#ffffffff]):4
 ControlFrame(0w,0h,25h,100w,lt):1
 Button{NULL,scene_editor_btn_camera,NULL}:1

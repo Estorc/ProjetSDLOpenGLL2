@@ -1013,6 +1013,7 @@ NEW_SCRIPT(scene_editor_init)
 	SET_ATTRIBUTES_COUNT(6);
 	int *selectedNodeType = &this->attribute[4].i;
 
+	window.fadeColor[3] = 0.0;
 	draw_node_tree(this->children[2], 0);
 
 	char str[150];

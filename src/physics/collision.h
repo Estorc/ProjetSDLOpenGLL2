@@ -24,7 +24,6 @@
  * The lower 8 bits represent the first shape type, and the upper 8 bits
  * represent the second shape type.
  */
-
 enum CollisionsCode {
     CTEST_BOX_WITH_BOX              = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_BOXCSHAPE << 8, /**< Collision between two box shapes. */
     CTEST_BOX_WITH_SPHERE           = CLASS_TYPE_BOXCSHAPE | CLASS_TYPE_SPHERECSHAPE << 8, /**< Collision between a box and a sphere. */
@@ -59,7 +58,6 @@ enum CollisionsCode {
  * @param shapeB Pointer to the second shape's Node structure.
  * @return unsigned int Collision code representing the type of collision.
  */
-
 unsigned int get_collision_code(struct Node *shapeA, struct Node *shapeB);
 
 
@@ -69,11 +67,10 @@ unsigned int get_collision_code(struct Node *shapeA, struct Node *shapeB);
  * @param shapeA Pointer to the first shape's Node structure.
  * @param shapeB Pointer to the second shape's Node structure.
  * @param collisionNormal Vector representing the collision normal.
- * @param angularNormal Vector representing the angular normal.
+ * @param impactPoint Vector representing the impact point.
  * @param penetrationDepth Depth of penetration between the two shapes.
  */
-
-void apply_collision(struct Node *shapeA, struct Node *shapeB, vec3 collisionNormal, vec3 angularNormal, float penetrationDepth);
+void apply_collision(struct Node *shapeA, struct Node *shapeB, vec3 collisionNormal, vec3 impactPoint, float penetrationDepth);
 
 
 

@@ -1048,7 +1048,7 @@ RECURSIVE              = TRUE
 # run.
 
 EXCLUDE                = ./src/classes/__processed__/ \
-                         ./src/classes/import_class.h
+                         ./src/classes/import_classes.h
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
