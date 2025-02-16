@@ -2,398 +2,305 @@
 # www.blender.org
 
 newmtl Brown_Ceramic_Floor_Tile
-Kd 0.800000 0.800000 0.800000
+Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-map_Pm 4K_tiling_19_metallic.jpg
-map_Pr 4K_tiling_19_roughness.jpg
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/4K_tiling_19_basecolor.jpg
+map_Ns C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/4K_tiling_19_roughness.jpg
+map_refl C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/4K_tiling_19_metallic.jpg
+map_Bump -bm 0.100000 C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/4K_tiling_19_normal.jpg
 
 newmtl Cement
+Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 2.000000
 d 1.000000
 illum 2
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-map_Kd bronze_basecolor.jpg
-map_Pr bronze_roughness.jpg
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/bronze_basecolor.jpg
+map_Ns C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/bronze_roughness.jpg
 
 newmtl Dark_metal
+Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 3
-Pm 1.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-map_Kd plane_divided_DefaultMaterial_BaseColor.jpg
-map_Pr plane_divided_DefaultMaterial_Roughness.jpg
-map_Bump -bm 1.000000 plane_divided_DefaultMaterial_Normal.jpg
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plane_divided_DefaultMaterial_BaseColor.jpg
+map_Ns C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plane_divided_DefaultMaterial_Roughness.jpg
+map_Bump -bm 1.000000 C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plane_divided_DefaultMaterial_Normal.jpg
 
 newmtl Material.001
-Kd 0.800000 0.800000 0.800000
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
-Ni 1.000000
+Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.400000
-Pm 0.000000
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/affiche_festival.PNG
 
 newmtl Material.002
-Kd 0.800000 0.800000 0.800000
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
-Ni 1.000000
+Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.400000
-Pm 0.000000
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plan.PNG
 
 newmtl Material.003
-Kd 0.800000 0.800000 0.800000
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
-Ni 1.000000
+Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.400000
-Pm 0.000000
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plan_evac.PNG
 
 newmtl Material.004
-Kd 0.800000 0.800000 0.800000
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
-Ni 1.000000
+Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.400000
-Pm 0.000000
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/consignes_urgence.PNG
 
 newmtl Material.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Kd 0.169391 0.025218 0.002780
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.500000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
 
 newmtl Material.006
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
 Kd 0.000000 0.000000 0.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-Pr 1.000000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
 
 newmtl Material.007
-Kd 0.800000 0.800000 0.800000
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
-Ni 1.000000
+Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.400000
-Pm 0.000000
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/mini_plan.PNG
 
 newmtl Metal_Vent_Slats
+Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-map_Kd metal-37_diffuse.jpg
-map_Pm metal-37_metal.jpg
-map_Pr metal-37_roughness.jpg
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/metal-37_diffuse.jpg
+map_Ns C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/metal-37_roughness.jpg
+map_refl C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/metal-37_metal.jpg
 
 newmtl Plastic_dark_green_material
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.500000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-map_Kd plastic02_diffuse.jpg
-map_Pm plastic_metallic.jpg
-map_Ks plastic_specular.jpg
-map_Bump -bm 1.000000 plastic_normal_opengl.jpg
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plastic02_diffuse.jpg
+map_Ks C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plastic_specular.jpg
+map_refl C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plastic_metallic.jpg
+map_Bump -bm 1.000000 C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plastic_normal_opengl.jpg
 
 newmtl Plastic_white_material
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.500000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-map_Kd plastic07_diffuse.jpg
-map_Pm plastic_metallic.jpg
-map_Ks plastic_specular.jpg
-map_Bump -bm 1.000000 plastic_normal_opengl.jpg
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plastic07_diffuse.jpg
+map_Ks C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plastic_specular.jpg
+map_refl C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plastic_metallic.jpg
+map_Bump -bm 1.000000 C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plastic_normal_opengl.jpg
 
 newmtl Plastic_yellow_material
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.500000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-map_Kd plastic05_diffuse.jpg
-map_Pm plastic_metallic.jpg
-map_Ks plastic_specular.jpg
-map_Bump -bm 1.000000 plastic_normal_opengl.jpg
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plastic05_diffuse.jpg
+map_Ks C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plastic_specular.jpg
+map_refl C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plastic_metallic.jpg
+map_Bump -bm 1.000000 C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/plastic_normal_opengl.jpg
 
 newmtl Procedural_Wood
+Ns 360.000000
+Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-Pr 0.400000
-Pm 0.000000
 
 newmtl Procedural_pearl_red_painted_plastic
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Kd 0.703470 0.002091 0.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-Pr 0.500000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.000000
-aniso 0.000000
-anisor 0.000000
+
+newmtl STONE
+Ns 171.095062
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/stone_C.jpg
+map_Bump -bm 1.000000 C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/stone_N.jpg
 
 newmtl Tree_leaves
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.500000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-map_Kd MorusAlba_1_basecolor-4K.png
-map_Bump -bm 1.000000 MorusAlba_1_normal-4K.png
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/MorusAlba_1_basecolor-4K.png
+map_Bump -bm 1.000000 C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/MorusAlba_1_normal-4K.png
 
 newmtl Wood
+Ka 0.245634 0.245634 0.245634
 Ks 0.200000 0.200000 0.200000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 3
-Pm 0.245634
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-map_Kd wood-79_diffuse.jpg
-map_Pr wood-79_smooth.jpg
-map_Bump -bm 0.100000 wood-79_normal.jpg
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/wood-79_diffuse.jpg
+map_Ns C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/wood-79_smooth.jpg
+map_Bump -bm 0.100000 C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/wood-79_normal.jpg
 
 newmtl Wood.001
+Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-map_Kd Wood057_2K_Color.jpg
-map_Pr Wood057_2K_Roughness.jpg
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/Wood057_2K_Color.jpg
+map_Ns C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/Wood057_2K_Roughness.jpg
 
 newmtl Wood.120
+Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-map_Kd -s 3 3 3 wood-5-dark_diffuse.jpg
-map_Pr -s 3 3 3 wood-5_smooth.jpg
+map_Kd -s 3 3 3 C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/wood-5-dark_diffuse.jpg
+map_Ns -s 3 3 3 C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/wood-5_smooth.jpg
 
 newmtl plastic_bleu
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.500000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-map_Kd PM-T1_Plastic_Finish_basecolor_Blue.jpg
-map_Bump -bm 0.690000 PM-T1_Plastic_Finish_normal.jpg
+map_Kd C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/PM-T1_Plastic_Finish_basecolor_Blue.jpg
+map_Bump -bm 0.690000 C:/Users/Utilisateur/Desktop/Blender/Projets perso/PROJET SDL LICENCE/textures/PM-T1_Plastic_Finish_normal.jpg
 
 newmtl plastic_bleu_azur
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Kd 0.403891 0.696484 0.679558
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-Pr 0.500000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.000000
-aniso 0.000000
-anisor 0.000000
 
 newmtl plastic_bleu_foncé_amphi
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Kd 0.000778 0.004342 0.046442
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.500000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
 
 newmtl plastic_gris
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Kd 0.046442 0.046442 0.046442
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.500000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
 
 newmtl plastic_marron
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Kd 0.139385 0.033017 0.010785
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-Pr 0.500000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.000000
-aniso 0.000000
-anisor 0.000000
 
 newmtl plastic_noir
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Kd 0.000000 0.000000 0.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.500000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
 
 newmtl plastic_rose
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Kd 0.665270 0.229283 0.363619
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-Pr 0.500000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.000000
-aniso 0.000000
-anisor 0.000000
 
 newmtl texture_porte
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
 Kd 0.088724 0.088724 0.088724
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-Pr 0.500000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
