@@ -1,0 +1,34 @@
+# Blender 4.0.1 MTL File: 'chapper.blend'
+# www.blender.org
+
+newmtl Robot_M
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd Robot_M_Base_color.jpg
+map_Pm Robot_M_Metallic.jpg
+map_Pr Robot_M_Roughness.jpg
+map_Bump -bm 1.000000 Robot_M_Normal_GL.jpg
+
+newmtl radio
+Ks 0.400000 0.400000 0.400000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd radio_BaseColor.jpg
+map_Pm radio_Metallic.jpg
+map_Pr radio_Roughness.jpg
+map_Bump -bm 1.000000 radio_Normal.jpg
