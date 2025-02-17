@@ -1,7 +1,10 @@
-#pragma once
+#ifndef CLASSES_H
+#define CLASSES_H
 #include "classes_types.h"
 #include "import_classes.h"
 #include "../raptiquax.h"
+
+extern const struct ClassManager classManager;
 
 /**
  * @brief Defines the Object structure and macros for method invocation in a class hierarchy.
@@ -91,3 +94,4 @@ void call_method_0(void (*func)(void *, va_list), ...);
 #define METHOD(method_name, obj, ...) classManager.methodsCorrespondance.method_name[obj->type], obj, ##__VA_ARGS__
 
 /** @} */
+#endif

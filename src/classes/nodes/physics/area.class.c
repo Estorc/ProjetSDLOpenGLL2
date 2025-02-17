@@ -126,7 +126,7 @@ class Area : public PhysicalNode {
         int children_count = 0;
         POINTER_CHECK(area);
         if (file)
-            fscanf(file,"(%d)\n", &children_count);
+            fscanf(file,"(%hd,%d)\n", &area->signal_id, &children_count);
         this->type = __type__;
         this::constructor(area);
 
@@ -145,7 +145,7 @@ class Area : public PhysicalNode {
         fprintf(file, "%s", classManager.class_names[this->type]);
         Area *area = (Area*) this->object;
         u8 collisionsLength = area->length;
-        fprintf(file, "(%d)", collisionsLength);
+        fprintf(file, "(%d,%d)", area->signal_id, collisionsLength);
     }
 
 }

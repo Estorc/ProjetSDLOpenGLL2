@@ -1,0 +1,21 @@
+#include "../../../raptiquax.h"
+#include "../../../math/math_util.h"
+#include "../../../storage/node.h"
+#include "../../../render/camera.h"
+#include "../../../gui/frame.h"
+#include "../../../storage/queue.h"
+#include "../../../utils/scene.h"
+#include "../../../io/audio.h"
+#include "../../../render/lighting.h"
+#include "../../../buffer.h"
+#include "../../../window.h"
+#include "../../../scripts/scripts.h"
+
+
+NEW_SCRIPT(script_cc_chapper_init)
+    play_music("assets/audio/musics/maquette_music_chapper.mp3", MIX_MAX_VOLUME, -1);
+END_SCRIPT(script_cc_chapper_init)
+
+NEW_SCRIPT(script_cc_chapper_saw)
+    this->rot[1] += 8.0f;
+END_SCRIPT(script_cc_chapper_saw)

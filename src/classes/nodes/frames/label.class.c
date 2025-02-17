@@ -76,6 +76,7 @@ class Label : public Frame {
     void set_text(char * str) {
         Frame *frame = (Frame *) this->object;
         Label *label = (Label *) frame->label;
+        label->text = realloc(label->text, strlen(str) + 1);
         strcpy(label->text, str);
         frame->flags |= FRAME_NEEDS_REFRESH;
     }

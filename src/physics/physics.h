@@ -41,6 +41,7 @@ typedef struct Area {
     u8 collectedLength; /** < Number of collected nodes. */
     struct CollectedNode *sortedNodes; /** < Array of sorted nodes with distances. */
     u8 sortedLength; /** < Number of sorted nodes. */
+    u16 signal_id; /** < Signal ID for the area. */
 } Area;
 
 

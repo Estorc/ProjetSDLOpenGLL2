@@ -14,3 +14,15 @@
 NEW_SCRIPT(script_no_fade_init)
     window.fadeColor[3] = 0.0f;
 END_SCRIPT(script_no_fade_init)
+
+NEW_SCRIPT(script_rotate_x)
+    this->rot[0] += 0.5f;
+END_SCRIPT(script_rotate_x)
+
+NEW_SCRIPT(script_rotate_y)
+    this->rot[1] += 0.5f;
+END_SCRIPT(script_rotate_y)
+
+NEW_SCRIPT(script_rotate_z)
+    this->rot[2] += 0.5f;
+END_SCRIPT(script_rotate_z)
