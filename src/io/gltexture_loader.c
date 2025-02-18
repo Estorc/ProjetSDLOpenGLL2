@@ -61,7 +61,7 @@ TextureMap load_texture_from_path(char * path, GLenum format, bool yReversed) {
     TextureMap texture = 0;
 
     if (!textureSurface) {
-        PRINT_ERROR("Failed to load texture : %s\n", SDL_GetError());
+        PRINT_ERROR("Failed to load texture %s : %s\n", path, SDL_GetError());
         return 0;
     }
 

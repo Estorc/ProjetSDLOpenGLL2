@@ -432,8 +432,8 @@ aniso 0.000000
 anisor 0.000000
 map_Kd tv_02_tv_out_BaseColor.jpg
 map_Pm tv_02_tv_out_Metallic.jpg
-map_Pr tv_02_tv_out_Roughness.exr
-map_Bump tv_02_tv_out_Normal.exr
+map_Pr tv_02_tv_out_Roughness.png
+map_Bump tv_02_tv_out_Normal.png
 
 newmtl tv_screen
 Ks 0.500000 0.500000 0.500000
@@ -448,8 +448,8 @@ aniso 0.000000
 anisor 0.000000
 map_Kd tv_02_tv_screen_BaseColor.jpg
 map_Pm tv_02_tv_screen_Metallic.jpg
-map_Pr tv_02_tv_screen_Roughness.exr
-map_Bump tv_02_tv_screen_Normal.exr
+map_Pr tv_02_tv_screen_Roughness.png
+map_Bump tv_02_tv_screen_Normal.png
 
 newmtl white_paint
 Kd 0.800000 0.800000 0.800000

@@ -69,17 +69,23 @@ class TexturedMesh : public Node {
 
 
     void render(mat4 *modelMatrix, Shader activeShader) {
+        TexturedMesh *texturedMesh = (TexturedMesh*) this->object;
         vec3 defaultColor = {0.5f, 0.5f, 0.5f};
-        glUniform3fv(glGetUniformLocation(activeShader, "material.ambient"), 1, (const GLfloat *) &defaultColor);
-        glUniform3fv(glGetUniformLocation(activeShader, "material.specular"), 1, (const GLfloat *) &defaultColor);
-        glUniform3fv(glGetUniformLocation(activeShader, "material.diffuse"), 1, (const GLfloat *) &defaultColor);
-        glUniform1f(glGetUniformLocation(activeShader, "material.parallax"), 0.5f);
+        set_shader_vec3(activeShader, "material.ambient", defaultColor);
+        set_shader_vec3(activeShader, "material.specular", defaultColor);
+        set_shader_vec3(activeShader, "material.diffuse", defaultColor);
+        set_shader_float(activeShader, "material.parallax", 0.5f);
+
+        set_shader_float(activeShader, "material.metallic", 0.0f);
+        set_shader_float(activeShader, "material.roughness", 0.5f);
+
+        set_shader_int(activeShader, "normalMapActive", 0);
+        set_shader_int(activeShader, "metallicMapActive", 0);
+        set_shader_int(activeShader, "roughnessMapActive", 0);
 
         set_shader_int(activeShader, "diffuseMapActive", 1);
-        int modelLoc = glGetUniformLocation(activeShader, "model");
-        TexturedMesh *texturedMesh = (TexturedMesh *)this->object;
 
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, (const GLfloat *) modelMatrix);
+        set_shader_mat4(activeShader, "model", modelMatrix);
         // render Cube
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texturedMesh->texture);

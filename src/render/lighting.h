@@ -42,9 +42,8 @@ enum Lightings {
  */
 
 typedef struct PointLight {
-    vec3 ambient; /**< Ambient component of the light. */
-    vec3 diffuse; /**< Diffuse component of the light. */
-    vec3 specular; /**< Specular component of the light. */
+    vec3 color; /**< Color component of the light. */
+    float bias; /**< Bias factor for the light. */
     float constant; /**< Constant attenuation factor for the light. */
     float linear; /**< Linear attenuation factor for the light. */
     float quadratic; /**< Quadratic attenuation factor for the light. */
@@ -61,9 +60,8 @@ typedef struct PointLight {
  */
 
 typedef struct DirectionalLight {
-    vec3 ambient; /**< Ambient component of the light. */
-    vec3 diffuse; /**< Diffuse component of the light. */
-    vec3 specular; /**< Specular component of the light. */
+    vec3 color; /**< Color component of the light. */
+    float bias; /**< Bias factor for the light. */
     float constant; /**< Constant attenuation factor for the light. */
     float linear; /**< Linear attenuation factor for the light. */
     float quadratic; /**< Quadratic attenuation factor for the light. */
@@ -80,9 +78,8 @@ typedef struct DirectionalLight {
  */
 
 typedef struct SpotLight {
-    vec3 ambient; /**< Ambient component of the light. */
-    vec3 diffuse; /**< Diffuse component of the light. */
-    vec3 specular; /**< Specular component of the light. */
+    vec3 color; /**< Color component of the light. */
+    float bias; /**< Bias factor for the light. */
     float constant; /**< Constant attenuation factor for the light. */
     float linear; /**< Linear attenuation factor for the light. */
     float quadratic; /**< Quadratic attenuation factor for the light. */

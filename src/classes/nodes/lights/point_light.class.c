@@ -42,20 +42,19 @@ class PointLight : public Light {
 
         this::update_global_position(pos, rot, scale);
 
-        const char uniforms[8][20] = {
+        const char uniforms[7][20] = {
             "].position",
-            "].ambient",
-            "].diffuse",
-            "].specular",
+            "].color",
+            "].bias",
             "].constant",
             "].linear",
             "].quadratic",
             "].index"
         };
 
-        char uniformsName[8][50];
+        char uniformsName[7][50];
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 7; i++) {
             strcpy(uniformsName[i], "pointLights[");
             sprintf(uniformsName[i] + strlen(uniformsName[i]), "%d", lightsCount[POINT_LIGHT]);
             strcat(uniformsName[i], uniforms[i]);
@@ -64,13 +63,12 @@ class PointLight : public Light {
         for (int i = 0; i < memoryCaches.shadersCount; i++) {
             use_shader(memoryCaches.shaderCache[i].shader);
             set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[0], this->globalPos);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], pointLight->ambient);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[2], pointLight->diffuse);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[3], pointLight->specular);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[4], pointLight->constant);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], pointLight->linear);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], pointLight->quadratic);
-            set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[7], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
+            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], pointLight->color);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[2], pointLight->bias);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[3], pointLight->constant);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[4], pointLight->linear);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], pointLight->quadratic);
+            set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[6], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
         }
         buffers.lightingBuffer.lightings[buffers.lightingBuffer.index++] = this;
         lightsCount[POINT_LIGHT]++;
@@ -83,9 +81,8 @@ class PointLight : public Light {
         SUPER(get_settings_data, ptr, length);
         PointLight *pointLight = (PointLight *) this->object;
         void *data[] = {
-            "rgb", "Ambient : ", &pointLight->ambient,
-            "rgb", "Diffuse : ", &pointLight->diffuse,
-            "rgb", "Specular : ", &pointLight->specular,
+            "rgb", "Color : ", &pointLight->color,
+            "float", "Bias : ", &pointLight->bias,
             "float", "Constant : ", &pointLight->constant,
             "float", "Linear : ", &pointLight->linear,
             "float", "Quadratic : ", &pointLight->quadratic
@@ -101,18 +98,16 @@ class PointLight : public Light {
         POINTER_CHECK(pointLight);
 
         if (file) {
-            fscanf(file,"(%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g)\n", 
-                &pointLight->ambient[0], &pointLight->ambient[1], &pointLight->ambient[2], 
-                &pointLight->diffuse[0], &pointLight->diffuse[1], &pointLight->diffuse[2], 
-                &pointLight->specular[0], &pointLight->specular[1], &pointLight->specular[2],
+            fscanf(file,"(%g,%g,%g,%g,%g,%g,%g)\n", 
+                &pointLight->color[0], &pointLight->color[1], &pointLight->color[2], 
+                &pointLight->bias,
                 &pointLight->constant,
                 &pointLight->linear,
                 &pointLight->quadratic
                 );
         } else {
-            glm_vec3_zero(pointLight->ambient);
-            glm_vec3_copy(GLM_VEC3_ONE, pointLight->diffuse);
-            glm_vec3_copy(GLM_VEC3_ONE, pointLight->specular);
+            glm_vec3_one(pointLight->color);
+            pointLight->bias = 0.005f;
             pointLight->constant = 1.0f;
             pointLight->linear = 0.09f;
             pointLight->quadratic = 0.032f;
@@ -127,10 +122,9 @@ class PointLight : public Light {
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         PointLight *pointLight = (PointLight*) this->object;
-        fprintf(file, "(%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g)",
-            pointLight->ambient[0], pointLight->ambient[1], pointLight->ambient[2], 
-            pointLight->diffuse[0], pointLight->diffuse[1], pointLight->diffuse[2], 
-            pointLight->specular[0], pointLight->specular[1], pointLight->specular[2],
+        fprintf(file, "(%g,%g,%g,%g,%g,%g,%g)",
+            pointLight->color[0], pointLight->color[1], pointLight->color[2], 
+            pointLight->bias,
             pointLight->constant,
             pointLight->linear,
             pointLight->quadratic

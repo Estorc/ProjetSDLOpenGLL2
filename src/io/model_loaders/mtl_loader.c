@@ -39,6 +39,7 @@ int load_mtl(char *path, char *filename, Material **materials) {
                 glm_vec3_copy((vec3) {0.5f, 0.5f, 0.5f}, (*materials)[mi].flatColors[i]);
                 (*materials)[mi].textureMaps[i] = 0;
             }
+            glm_vec3_zero((*materials)[mi].flatColors[METALLIC_MATERIAL_PROPERTY]);
             break;
         case 'N': ;
             symbol = getc(file);
