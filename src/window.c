@@ -33,6 +33,8 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
     }
 
     // Disable deprecated functions
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     // Use double-buffering
     enum {
@@ -87,12 +89,11 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
     }
     glEnable(GL_DEPTH_TEST);
 
-
-
-    #ifdef DEBUG_GL
     PRINT_INFO("OpenGL Version: %s\n", glGetString(GL_VERSION));
     PRINT_INFO("GLSL Version: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
     PRINT_INFO("OpenGL Renderer: %s\n", glGetString(GL_RENDERER));
+
+    #ifdef DEBUG_GL
 
     void APIENTRY openglDebugCallback(GLenum source, GLenum type, GLuint id,
                                     GLenum severity, GLsizei length,
