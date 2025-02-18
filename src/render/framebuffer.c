@@ -30,9 +30,10 @@ void create_msaa_framebuffer(MSAA *msaa) {
     GLint srgbCapable = 0;
     SDL_GL_GetAttribute(SDL_GL_FRAMEBUFFER_SRGB_CAPABLE, &srgbCapable);
     
+    glEnable(GL_FRAMEBUFFER_SRGB);  // Enable sRGB framebuffer correction
+
     if (srgbCapable) {
         printf("sRGB framebuffer is supported!\n");
-        glEnable(GL_FRAMEBUFFER_SRGB);  // Enable sRGB framebuffer correction
         glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_SRGB, window_width, window_height, GL_TRUE);
     } else {
         printf("sRGB framebuffer is NOT supported.\n");
