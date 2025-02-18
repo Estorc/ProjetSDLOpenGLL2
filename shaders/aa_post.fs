@@ -17,6 +17,8 @@ uniform vec2 iResolution;
 void main()
 {
     vec3 col = texture(screenTexture,fragCoord).rgb;
+    col = pow(col, vec3(1.0/1.2));  
+    
     vec4 hud = texture(UITexture,vec2(fragCoord.x, -fragCoord.y));
     col = mix(col, hud.rgb, hud.a);
     
