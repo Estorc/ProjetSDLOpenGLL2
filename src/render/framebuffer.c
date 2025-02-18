@@ -6,7 +6,9 @@
 #include "../window.h"
 
 
+
 void create_msaa_framebuffer(MSAA *msaa) {
+    glEnable(GL_FRAMEBUFFER_SRGB); 
     int window_width, window_height;
     get_resolution(&window_width, &window_height);
     if (window_width <= 0 || window_height <= 0) {

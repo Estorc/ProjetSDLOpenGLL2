@@ -741,7 +741,6 @@ int main(int argc, char ** argv) {
 				rewind(temp_processed_header_file);
 				processed_header_file = freopen(filepath, "wb", processed_header_file);
 				copyFile(temp_processed_header_file, processed_header_file);
-				fclose(temp_processed_header_file);
 				
 				need_rewriting_imports = true;
 			}

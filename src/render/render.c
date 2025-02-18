@@ -115,7 +115,6 @@ void draw_screen(Window *window, Node *scene, Camera *c, WorldShaders *shaders, 
     get_resolution(&window_width, &window_height);
 
     glEnable(GL_TEXTURE_2D);
-    glEnable(GL_FRAMEBUFFER_SRGB); 
     glEnable(GL_MULTISAMPLE);  
     glEnable(GL_DEPTH_TEST);
 
