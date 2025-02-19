@@ -6,8 +6,6 @@ struct Input;
 struct Window;
 struct Node;
 
-#define DEBUG_AREA
-
 /**
  * @defgroup Physics Physics
  * @brief Functions and structures for physics and collision detection.

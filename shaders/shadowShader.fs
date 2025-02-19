@@ -22,6 +22,7 @@ struct DirLight {
     vec3 position;
     vec3 direction;
 
+    float size;
     float bias;
 	
     vec3 color;
@@ -31,6 +32,7 @@ struct DirLight {
 struct PointLight {
     vec3 position;
 
+    float size;
     float bias;
     
     float constant;
@@ -47,6 +49,7 @@ struct SpotLight {
     float cutOff;
     float outerCutOff;
 
+    float size;
     float bias;
   
     float constant;
@@ -111,16 +114,16 @@ vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir, flo
 
 
 
-float DistributionGGX(vec3 N, vec3 H, float roughness)
+float DistributionGGX(vec3 N, vec3 H, float roughness, float size)
 {
-    float a      = roughness*roughness;
+    float a      = roughness*roughness+size/100.0; // Automatize this value
     float a2     = a*a;
     float NdotH  = max(dot(N, H), 0.0);
     float NdotH2 = NdotH*NdotH;
 	
     float num   = a2;
     float denom = (NdotH2 * (a2 - 1.0) + 1.0);
-    denom = denom * denom;
+    denom = pow(denom, 2.0+size/10.0);
 	
     return num / denom;
 }
@@ -143,6 +146,10 @@ float GeometrySmith(vec3 N, vec3 V, vec3 L, float roughness)
     float ggx1  = GeometrySchlickGGX(NdotL, roughness);
 	
     return ggx1 * ggx2;
+}
+
+float FresnelSchlickF0(float ior) {
+    return pow((ior - 1.0) / (ior + 1.0), 2.0);
 }
 
 vec3 fresnelSchlick(float cosTheta, vec3 F0)
@@ -251,6 +258,7 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir, int 
 void main()
 {    
 
+    F0 = vec3(FresnelSchlickF0(material.shininess));
     vec3 viewDir = normalize(fs_in.viewPos - fs_in.FragPos);
     vec2 texCoords;
     vec3 tangentViewDir = normalize(fs_in.TangentViewPos - fs_in.TangentFragPos);
@@ -341,7 +349,7 @@ vec3 CalcDirLight(DirLight light, vec3 N /* aka Normal */, vec3 fragPos, vec3 V 
     // combine results
     vec3 radiance = light.color;
     
-    float NDF = DistributionGGX(N, H, roughness);        
+    float NDF = DistributionGGX(N, H, roughness, light.size);        
     float G   = GeometrySmith(N, V, L, roughness);      
     vec3 F    = fresnelSchlick(max(dot(H, V), 0.0), F0);  
 
@@ -368,7 +376,7 @@ vec3 CalcPointLight(PointLight light, vec3 N /* aka Normal */, vec3 fragPos, vec
     float attenuation = 1.0 / (light.constant + light.linear * distance + max(light.quadratic, 0.032) * (distance * distance));    
     vec3 radiance = light.color * attenuation;
 
-    float NDF = DistributionGGX(N, H, roughness);        
+    float NDF = DistributionGGX(N, H, roughness, light.size);        
     float G   = GeometrySmith(N, V, L, roughness);      
     vec3 F    = fresnelSchlick(max(dot(H, V), 0.0), F0);  
 
@@ -400,7 +408,7 @@ vec3 CalcSpotLight(SpotLight light, vec3 N /* aka Normal */, vec3 fragPos, vec3 
 
     vec3 radiance = light.color * intensity * attenuation;
 
-    float NDF = DistributionGGX(N, H, roughness);        
+    float NDF = DistributionGGX(N, H, roughness, light.size);        
     float G   = GeometrySmith(N, V, L, roughness);      
     vec3 F    = fresnelSchlick(max(dot(H, V), 0.0), F0);  
 

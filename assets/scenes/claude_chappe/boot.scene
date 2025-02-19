@@ -27,12 +27,12 @@ PlaneCShape[m0,0,0r0,0,0s1,1,1a1v1]
 [m0,0,0r0,0,0s1,1,1a1v1]:1
 TexturedMesh(assets/textures/texture.png)[m0,0,0r180,0,0s5,5,5a1v1]
 Skybox(assets/textures/skybox/right.jpg,assets/textures/skybox/left.jpg,assets/textures/skybox/top.jpg,assets/textures/skybox/bottom.jpg,assets/textures/skybox/front.jpg,assets/textures/skybox/back.jpg)[m0,0,0r0,0,0s1,1,1a1v1]
-PointLight(0,0,1,0.003,1,0.09,0.032)[m5,2,0r0,0,0s1,1,1a1v1]
+PointLight(0,0,1,0.003,0,1,0.09,0.032)[m5,2,0r0,0,0s1,1,1a1v1]
 RigidBody(0,0,0,0,0,0,0,-1,0,100,0.98,0,0,0,1)
 BoxCShape[m0,1,0r0,0,0s5,1,5a1v1]
 [m20,0,0r0,0,0s1,1,1a1v1]:1
 Model(assets/models/Deku Tree/untitled.obj)[m0,0,0r0,0,0s0.01,0.01,0.01a1v1]
-SpotLight(50,50,50,0.003,1,0.09,0.03,2,0.5)[m5,1,20r0,90,0s1,1,1a1v1]
+SpotLight(50,50,50,0.003,0,1,0.09,0.03,2,0.5)[m5,1,20r0,90,0s1,1,1a1v1]
 Frame(0w,10h,60w,10h,ctn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):1
 Label("Claude Chappe's Curse",cc)
 Frame(0w,20h,60w,20h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):3

@@ -103,6 +103,8 @@ void draw_scene(Window *window, Node *root, Camera *c, WorldShaders *shaders, De
     set_shader_int(shaders->render, "normalMap", 1);
     set_shader_int(shaders->render, "parallaxMap", 2);
     set_shader_int(shaders->render, "shadowMap", 3);
+    set_shader_int(shaders->render, "metallicMap", 4);
+    set_shader_int(shaders->render, "roughnessMap", 5);
     set_shader_int(shaders->render, "shadowCastActive", settings.cast_shadows);
 
     mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;

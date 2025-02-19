@@ -30,6 +30,7 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 map_Kd Hi-Res Metal Radial-Brushed 2000.A2jpg.jpg
+map_Pr Hi-Res Metal Radial-Brushed 2000.A2jRoug.jpg
 
 newmtl Material.013
 Kd 0.087298 0.072102 0.039432
@@ -45,3 +46,4 @@ Pc 0.154545
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Pr Hi-Res Metal Radial-Brushed 2000.A2jRoug.jpg

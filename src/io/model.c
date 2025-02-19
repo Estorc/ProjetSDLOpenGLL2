@@ -200,7 +200,7 @@ void render_model(mat4 *modelMatrix, Shader shader, Model *model) {
             set_shader_float(shader, "material.parallax", data->objects[j].materials[k]->flatColors[PARALLAX_MATERIAL_PROPERTY][0]);
             set_shader_float(shader, "material.metallic", data->objects[j].materials[k]->flatColors[METALLIC_MATERIAL_PROPERTY][0]);
             set_shader_float(shader, "material.roughness", data->objects[j].materials[k]->flatColors[ROUGHNESS_MATERIAL_PROPERTY][0]);
-            set_shader_float(shader, "material.shininess", data->objects[j].materials[k]->specularExp);
+            set_shader_float(shader, "material.shininess", data->objects[j].materials[k]->opticalDensity);
 
             if (data->objects[j].materials[k]->textureMaps[DIFFUSE_MATERIAL_PROPERTY]) {
                 set_shader_int(shader, "diffuseMapActive", 1); 
@@ -225,14 +225,14 @@ void render_model(mat4 *modelMatrix, Shader shader, Model *model) {
             }
             if (data->objects[j].materials[k]->textureMaps[METALLIC_MATERIAL_PROPERTY]) {
                 set_shader_int(shader, "metallicMapActive", 1);
-                glActiveTexture(GL_TEXTURE3);
+                glActiveTexture(GL_TEXTURE4);
                 glBindTexture(GL_TEXTURE_2D, data->objects[j].materials[k]->textureMaps[METALLIC_MATERIAL_PROPERTY]);
             } else {
                 set_shader_int(shader, "metallicMapActive", 0);
             }
             if (data->objects[j].materials[k]->textureMaps[ROUGHNESS_MATERIAL_PROPERTY]) {
                 set_shader_int(shader, "roughnessMapActive", 1);
-                glActiveTexture(GL_TEXTURE4);
+                glActiveTexture(GL_TEXTURE5);
                 glBindTexture(GL_TEXTURE_2D, data->objects[j].materials[k]->textureMaps[ROUGHNESS_MATERIAL_PROPERTY]);
             } else {
                 set_shader_int(shader, "roughnessMapActive", 0);

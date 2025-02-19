@@ -15,4 +15,4 @@ map_Pm Steel Glossy_Metallic.jpg
 map_Ks Steel Glossy_SpecularLevel.jpg
 map_Pr Steel Glossy_Roughness.jpg
 map_d Steel Glossy_Opacity.jpg
-map_Bump -bm 1.000000 Steel Glossy_Normal.jpg
+map_Bump Steel Glossy_Normal.jpg

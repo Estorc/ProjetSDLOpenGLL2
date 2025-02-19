@@ -42,11 +42,12 @@ class SpotLight : public Light {
 
         this::update_global_position(pos, rot, scale);
 
-        const char uniforms[10][20] = {
+        const char uniforms[11][20] = {
             "].position",
             "].direction",
             "].color",
             "].bias",
+            "].size",
             "].constant",
             "].linear",
             "].quadratic",
@@ -55,9 +56,9 @@ class SpotLight : public Light {
             "].index"
         };
 
-        char uniformsName[10][50];
+        char uniformsName[11][50];
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 11; i++) {
             strcpy(uniformsName[i], "spotLights[");
             sprintf(uniformsName[i] + strlen(uniformsName[i]), "%d", lightsCount[SPOT_LIGHT]);
             strcat(uniformsName[i], uniforms[i]);
@@ -74,12 +75,13 @@ class SpotLight : public Light {
             set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], dir);
             set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[2], spotLight->color);
             set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[3], spotLight->bias);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[4], spotLight->constant);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], spotLight->linear);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], spotLight->quadratic);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[7], spotLight->cutOff);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[8], spotLight->outerCutOff);
-            set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[9], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[4], spotLight->size);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], spotLight->constant);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], spotLight->linear);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[7], spotLight->quadratic);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[8], spotLight->cutOff);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[9], spotLight->outerCutOff);
+            set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[10], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
         }
 
         buffers.lightingBuffer.lightings[buffers.lightingBuffer.index++] = this;
@@ -94,6 +96,7 @@ class SpotLight : public Light {
         void *data[] = {
             "rgb", "Color : ", &spotLight->color,
             "float", "Bias : ", &spotLight->bias,
+            "float", "Size : ", &spotLight->size,
             "float", "Constant : ", &spotLight->constant,
             "float", "Linear : ", &spotLight->linear,
             "float", "Quadratic : ", &spotLight->quadratic,
@@ -111,9 +114,10 @@ class SpotLight : public Light {
         POINTER_CHECK(spotLight);
 
         if (file) {
-            fscanf(file,"(%g,%g,%g,%g,%g,%g,%g,%g,%g)\n", 
+            fscanf(file,"(%g,%g,%g,%g,%g,%g,%g,%g,%g,%g)\n", 
                 &spotLight->color[0], &spotLight->color[1], &spotLight->color[2], 
                 &spotLight->bias,
+                &spotLight->size,
                 &spotLight->constant,
                 &spotLight->linear,
                 &spotLight->quadratic,
@@ -123,6 +127,7 @@ class SpotLight : public Light {
         } else {
             glm_vec3_one(spotLight->color);
             spotLight->bias = 0.005f;
+            spotLight->size = 0.0f;
             spotLight->constant = 1.0f;
             spotLight->linear = 0.09f;
             spotLight->quadratic = 0.032f;
@@ -139,9 +144,10 @@ class SpotLight : public Light {
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         SpotLight *spotLight = (SpotLight*) this->object;
-        fprintf(file, "(%g,%g,%g,%g,%g,%g,%g,%g,%g)",
+        fprintf(file, "(%g,%g,%g,%g,%g,%g,%g,%g,%g,%g)",
             spotLight->color[0], spotLight->color[1], spotLight->color[2], 
             spotLight->bias,
+            spotLight->size,
             spotLight->constant,
             spotLight->linear,
             spotLight->quadratic,

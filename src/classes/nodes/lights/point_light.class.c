@@ -42,19 +42,20 @@ class PointLight : public Light {
 
         this::update_global_position(pos, rot, scale);
 
-        const char uniforms[7][20] = {
+        const char uniforms[8][20] = {
             "].position",
             "].color",
             "].bias",
+            "].size"
             "].constant",
             "].linear",
             "].quadratic",
             "].index"
         };
 
-        char uniformsName[7][50];
+        char uniformsName[8][50];
 
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 8; i++) {
             strcpy(uniformsName[i], "pointLights[");
             sprintf(uniformsName[i] + strlen(uniformsName[i]), "%d", lightsCount[POINT_LIGHT]);
             strcat(uniformsName[i], uniforms[i]);
@@ -65,10 +66,11 @@ class PointLight : public Light {
             set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[0], this->globalPos);
             set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], pointLight->color);
             set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[2], pointLight->bias);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[3], pointLight->constant);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[4], pointLight->linear);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], pointLight->quadratic);
-            set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[6], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[3], pointLight->size);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[4], pointLight->constant);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], pointLight->linear);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], pointLight->quadratic);
+            set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[7], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
         }
         buffers.lightingBuffer.lightings[buffers.lightingBuffer.index++] = this;
         lightsCount[POINT_LIGHT]++;
@@ -83,6 +85,7 @@ class PointLight : public Light {
         void *data[] = {
             "rgb", "Color : ", &pointLight->color,
             "float", "Bias : ", &pointLight->bias,
+            "float", "Size : ", &pointLight->size,
             "float", "Constant : ", &pointLight->constant,
             "float", "Linear : ", &pointLight->linear,
             "float", "Quadratic : ", &pointLight->quadratic
@@ -98,9 +101,10 @@ class PointLight : public Light {
         POINTER_CHECK(pointLight);
 
         if (file) {
-            fscanf(file,"(%g,%g,%g,%g,%g,%g,%g)\n", 
+            fscanf(file,"(%g,%g,%g,%g,%g,%g,%g,%g)\n", 
                 &pointLight->color[0], &pointLight->color[1], &pointLight->color[2], 
                 &pointLight->bias,
+                &pointLight->size,
                 &pointLight->constant,
                 &pointLight->linear,
                 &pointLight->quadratic
@@ -108,6 +112,7 @@ class PointLight : public Light {
         } else {
             glm_vec3_one(pointLight->color);
             pointLight->bias = 0.005f;
+            pointLight->size = 0.0f;
             pointLight->constant = 1.0f;
             pointLight->linear = 0.09f;
             pointLight->quadratic = 0.032f;
@@ -122,9 +127,10 @@ class PointLight : public Light {
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         PointLight *pointLight = (PointLight*) this->object;
-        fprintf(file, "(%g,%g,%g,%g,%g,%g,%g)",
+        fprintf(file, "(%g,%g,%g,%g,%g,%g,%g,%g)",
             pointLight->color[0], pointLight->color[1], pointLight->color[2], 
             pointLight->bias,
+            pointLight->size,
             pointLight->constant,
             pointLight->linear,
             pointLight->quadratic

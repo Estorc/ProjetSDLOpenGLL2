@@ -39,20 +39,21 @@ class DirectionalLight : public Light {
 
         this::update_global_position(pos, rot, scale);
 
-        const char uniforms[8][20] = {
+        const char uniforms[9][20] = {
             "].position",
             "].direction",
             "].color",
             "].bias",
+            "].size",
             "].constant",
             "].linear",
             "].quadratic",
             "].index"
         };
 
-        char uniformsName[8][50];
+        char uniformsName[9][50];
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 9; i++) {
             strcpy(uniformsName[i], "dirLights[");
             sprintf(uniformsName[i] + strlen(uniformsName[i]), "%d", lightsCount[DIRECTIONAL_LIGHT]);
             strcat(uniformsName[i], uniforms[i]);
@@ -70,10 +71,11 @@ class DirectionalLight : public Light {
             set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], dir);
             set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[2], directionalLight->color);
             set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[3], directionalLight->bias);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[4], directionalLight->constant);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], directionalLight->linear);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], directionalLight->quadratic);
-            set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[7], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[4], directionalLight->size);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], directionalLight->constant);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], directionalLight->linear);
+            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[7], directionalLight->quadratic);
+            set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[8], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
         }
 
         buffers.lightingBuffer.lightings[buffers.lightingBuffer.index++] = this;
@@ -88,6 +90,7 @@ class DirectionalLight : public Light {
         void *data[] = {
             "rgb", "Color : ", &directionalLight->color,
             "float", "Bias : ", &directionalLight->bias,
+            "float", "Size : ", &directionalLight->size,
             "float", "Constant : ", &directionalLight->constant,
             "float", "Linear : ", &directionalLight->linear,
             "float", "Quadratic : ", &directionalLight->quadratic
@@ -103,9 +106,10 @@ class DirectionalLight : public Light {
         POINTER_CHECK(directionalLight);
 
         if (file) {
-            fscanf(file,"(%g,%g,%g,%g,%g,%g,%g)\n", 
+            fscanf(file,"(%g,%g,%g,%g,%g,%g,%g,%g)\n", 
                 &directionalLight->color[0], &directionalLight->color[1], &directionalLight->color[2], 
                 &directionalLight->bias,
+                &directionalLight->size,
                 &directionalLight->constant,
                 &directionalLight->linear,
                 &directionalLight->quadratic
@@ -113,6 +117,7 @@ class DirectionalLight : public Light {
         } else {
             glm_vec3_one(directionalLight->color);
             directionalLight->bias = 0.005f;
+            directionalLight->size = 0.0f;
             directionalLight->constant = 1.0f;
             directionalLight->linear = 0.09f;
             directionalLight->quadratic = 0.032f;
@@ -127,9 +132,10 @@ class DirectionalLight : public Light {
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         DirectionalLight *directionalLight = (DirectionalLight*) this->object;
-        fprintf(file, "(%g,%g,%g,%g,%g,%g,%g)",
+        fprintf(file, "(%g,%g,%g,%g,%g,%g,%g,%g)",
             directionalLight->color[0], directionalLight->color[1], directionalLight->color[2], 
             directionalLight->bias,
+            directionalLight->size,
             directionalLight->constant,
             directionalLight->linear,
             directionalLight->quadratic

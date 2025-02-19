@@ -75,6 +75,8 @@ class Area : public PhysicalNode {
         area->sortedLength = area->collectedLength;
     }
 
+    //#define DEBUG_AREA
+
     void update(float *pos, float *rot, float *scale) {
         Area *area = (Area *) this->object;
 
@@ -84,12 +86,17 @@ class Area : public PhysicalNode {
         if (area->sortedLength) {
             PRINT_INFO("Collected %d nodes:\n", area->sortedLength);
         }
+        #endif
+        #endif
         for (int i = 0; i < area->sortedLength; i++) {
-            (area->sortedNodes[i].node)::emit_signal(SIGNAL_AREA_COLLISION, this, area->sortedNodes[i].distance, area->sortedNodes[i].impactPoint);
+            (area->sortedNodes[i].node)::emit_signal(SIGNAL_AREA_COLLISION, area->signal_id, this, area->sortedNodes[i].distance, area->sortedNodes[i].impactPoint);
+            #ifdef DEBUG
+            #ifdef DEBUG_AREA
             PRINT_INFO("Node %d: Distance[%.2f] | ImpactPoint[%.2f,%.2f,%.2f]\n", i, area->sortedNodes[i].distance, area->sortedNodes[i].impactPoint[0], area->sortedNodes[i].impactPoint[1], area->sortedNodes[i].impactPoint[2]);
+            #endif
+            #endif
         }
-        #endif
-        #endif
+
 
         area->collectedLength = 0;
         area->collectedNodes = realloc(area->collectedNodes, buffers.collisionBuffer.length * sizeof(CollectedNode));

@@ -1,0 +1,20 @@
+Node:5
+PointLight(5,5,5,0.003,0,1,0.09,0.032)[m-22,10,-8]{NULL,NULL,NULL}
+Model(assets/models/ClaudeChappe/mapJeuSDLv2.obj)
+StaticBody(1)
+PlaneCShape
+
+KinematicBody(0,0,0,2)
+SphereCShape
+SphereCShape[m0,-2,0]
+[m0,2,10]{NULL,player,NULL}:2
+Camera(1){NULL,script_cc_camera_player,NULL}:1
+Area(0,1)
+SpotLight(50,50,50,0.03,0,1,0.09,0.03,1,0.95){NULL,flashlight,NULL}
+Node{NULL,open_close_menu,NULL}:1
+Node[a0v0]:1
+Frame(0w,0h,60w,80h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):1
+Frame(5h,5h,90h,90h,lts):1
+Frame(5w,1h,90w,18h,ltn):1
+Button{NULL,NULL,return_to_main_menu}:1
+Label(Retour au menu,cc)

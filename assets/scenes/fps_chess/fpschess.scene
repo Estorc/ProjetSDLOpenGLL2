@@ -1,11 +1,11 @@
 Node:18
 Skybox(assets/textures/skybox/right.jpg,assets/textures/skybox/left.jpg,assets/textures/skybox/top.jpg,assets/textures/skybox/bottom.jpg,assets/textures/skybox/front.jpg,assets/textures/skybox/back.jpg)
-SpotLight(20,25,30,0.0006,1,0.09,0.032,2,0)[m40,40,0r0,-90,0]
-SpotLight(20,25,30,0.0006,1,0.09,0.032,2,0)[m51,30,8r0,90,0]
-SpotLight(20,25,30,0.0006,1,0.09,0.032,2,0)[m51,30,-8r0,90,0]
-SpotLight(20,25,30,0.0006,1,0.09,0.032,2,0)[m51,50,8r0,90,0]
-SpotLight(20,25,30,0.0006,1,0.09,0.032,2,0)[m51,50,-8r0,90,0]
-SpotLight(300,200,150,0.0008,1,0.09,0.032,2,0.5)[m0,42,0r-90,0,0]
+SpotLight(20,25,30,0.0006,5,1,0.09,0.032,2,0)[m51,30,8r0,90,0]
+SpotLight(20,25,30,0.0006,5,1,0.09,0.032,2,0)[m51,30,-8r0,90,0]
+SpotLight(20,25,30,0.0006,5,1,0.09,0.032,2,0)[m51,50,8r0,90,0]
+SpotLight(20,25,30,0.0006,5,1,0.09,0.032,2,0)[m51,50,-8r0,90,0]
+SpotLight(20,25,30,0.0006,-5,1,0.09,0.032,2,0)[m40,40,0r0,-90,0]
+SpotLight(500,250,175,0.0008,0,1,0.09,0.032,2,0.5)[m0,42,0r-90,0,0]
 Model(assets/models/FPSChess/FPS_Chess_Models2.obj)[s5,5,5]
 StaticBody(38)
 BoxCShape[m0,14.25,0s7.35,0.3,6.75]

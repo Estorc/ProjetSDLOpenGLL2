@@ -7,9 +7,11 @@
 
 NEW_SCRIPT(player)
 	GET_READY_PARAMETERS();
-	SET_ATTRIBUTES_COUNT(1);
+	SET_ATTRIBUTES_COUNT(2);
 
 	bool *menu_open = &this->attribute[0].b;
+	bool *stopped = &this->attribute[1].b;
+	if (*stopped) return;
 
 	if (input.released_keys & KEY_MENU) {
 		*menu_open = !(*menu_open);
@@ -76,4 +78,33 @@ NEW_SCRIPT(player)
 END_SCRIPT(player)
 
 
-
+NEW_SCRIPT(script_cc_player_signal)
+	KinematicBody *player = (KinematicBody*) this->object;
+	bool *menu_open = &this->attribute[0].b;
+	bool *stopped = &this->attribute[1].b;
+	if (*stopped) return;
+	GET_SIGNAL();
+	switch(signal) {
+		case SIGNAL_AREA_COLLISION:
+			PRINT_INFO("Collision with area\n");
+			GET_AREA_SIGNAL_PARAMETERS();
+			PRINT_INFO("%d\n", sigId);
+			switch (sigId)
+			{
+			case 5:
+				play_sfx("assets/audio/sfx/chapper_kill.wav", MIX_MAX_VOLUME, 0);
+				*stopped = true;
+				*menu_open = true;
+				glm_vec3_zero(player->velocity);
+				other->parent->attribute[3].i = 2;
+				other->parent->attribute[4].node = this->children[0];
+				break;
+			
+			default:
+				break;
+			}
+			break;
+		default:
+			break;
+	}
+END_SCRIPT(script_cc_player_signal)
