@@ -5,11 +5,11 @@
 #include <unistd.h>
 #include "osio.h"
 
-#ifdef __windows__
+#ifdef _WIN32
 #include <windows.h>
 #endif
 
-#ifdef __windows__
+#ifdef _WIN32
 int osio_open_file(char *path, char *relativePath, char *filter) {
     OPENFILENAME ofn;       // Structure de sélection de fichier
     char szFile[MAX_PATH] = {0};  // Stocke le chemin du fichier sélectionné
@@ -230,7 +230,7 @@ int update_cwd() {
     // Read the symbolic link /proc/self/exe to get the full path of the executable.
     #ifdef __linux__
     ssize_t len = readlink("/proc/self/exe", exe_path, sizeof(exe_path) - 1);
-    #elif __windows__
+    #elif _WIN32
     DWORD len = GetModuleFileName(NULL, exe_path, MAX_PATH);
     if (len == 0) {
         PRINT_ERROR("GetModuleFileName failed\n");
@@ -246,7 +246,7 @@ int update_cwd() {
     // Extract the directory from the full path.
     #ifdef __linux__
     char *last_slash = strrchr(exe_path, '/');
-    #elif __windows__
+    #elif _WIN32
     char *last_slash = strrchr(exe_path, '\\');
     #endif
     if (last_slash != NULL) {

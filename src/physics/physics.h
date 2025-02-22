@@ -36,9 +36,7 @@ typedef struct Area {
     struct Node **collisionsShapes; /** < Array of collected nodes with distances. */
     u8 length; /** < Number of collision shapes. */
     struct CollectedNode *collectedNodes; /** < Array of collected nodes with distances. */
-    u8 collectedLength; /** < Number of collected nodes. */
-    struct CollectedNode *sortedNodes; /** < Array of sorted nodes with distances. */
-    u8 sortedLength; /** < Number of sorted nodes. */
+    u32 collectedLength; /** < Number of collected nodes. */
     u16 signal_id; /** < Signal ID for the area. */
 } Area;
 

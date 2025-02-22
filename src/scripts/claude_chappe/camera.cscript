@@ -15,7 +15,7 @@ NEW_SCRIPT(script_cc_camera_intro)
 	targetRot[0] -= fmod((f32) (input.mouse.dy) * delta * 30.0, 360.0);
 	targetRot[0] = CLAMP(-90,targetRot[0],90);
 
-	Vec3fApproach(this->rot, targetRot, (0.1/delta));
+	vec3_approach(this->rot, targetRot, (0.1/delta));
 
 END_SCRIPT(script_cc_camera_intro)
 
@@ -35,6 +35,6 @@ NEW_SCRIPT(script_cc_camera_player)
 
 	}
 
-	Vec3fApproach(this->rot, targetRot, (0.1/delta));
+	vec3_approach(this->rot, targetRot, (0.1/delta));
 
 END_SCRIPT(script_cc_camera_player)

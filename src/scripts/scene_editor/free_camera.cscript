@@ -62,8 +62,8 @@ NEW_SCRIPT(free_camera)
 	}
 
 	if (*active) {
-		Vec3fApproach(this->rot, targetRot, (0.1/delta));
-		Vec3fApproach(this->pos, targetPos, (0.1/delta));
+		vec3_approach(this->rot, targetRot, (0.1/delta));
+		vec3_approach(this->pos, targetPos, (0.1/delta));
 	}
 	
 END_SCRIPT(free_camera)

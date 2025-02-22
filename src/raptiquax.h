@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef __windows__
+#ifdef _WIN32
 #include <GL/glew.h>  // Include before OpenGL functions
 #endif
 

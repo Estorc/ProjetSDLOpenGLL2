@@ -8,7 +8,7 @@
 #include <time.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#ifdef __windows__
+#ifdef _WIN32
 
 #define VOID_FILE "NUL"
 #include <windows.h>
@@ -201,7 +201,7 @@ int copyFile(FILE *src, FILE *dest) {
 
 
 FILE * createTempFile() {
-	#ifdef __windows__
+	#ifdef _WIN32
 
 	char tempPath[MAX_PATH];
 	char tempFile[MAX_PATH];

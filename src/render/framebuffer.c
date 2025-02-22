@@ -28,13 +28,11 @@ void create_msaa_framebuffer(MSAA *msaa) {
     glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, msaa->textureColorBufferMultiSampled);
 
     GLint srgbCapable = 0;
-    SDL_GL_GetAttribute(SDL_GL_FRAMEBUFFER_SRGB_CAPABLE, &srgbCapable);
-    
-    glEnable(GL_FRAMEBUFFER_SRGB);  // Enable sRGB framebuffer correction
+    SDL_GL_GetAttribute(GL_ARB_framebuffer_sRGB, &srgbCapable);
 
     if (srgbCapable) {
         PRINT_INFO("sRGB framebuffer is supported!\n");
-        glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_SRGB, window_width, window_height, GL_TRUE);
+        glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_SRGB8, window_width, window_height, GL_TRUE);
     } else {
         PRINT_WARNING("sRGB framebuffer is NOT supported.\n");
         glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB, window_width, window_height, GL_TRUE);

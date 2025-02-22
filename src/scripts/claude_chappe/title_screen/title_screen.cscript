@@ -43,7 +43,7 @@ NEW_SCRIPT(play_game_button)
 			if (input.active_keys & KEY_SHIFT) {
 				prepare_change_scene("assets/scenes/fps_chess/fpschess.scene");
 			}
-			Mix_FadeOutMusic(1000);
+			fade_out_music(1000);
 			mainNodeTree.root->attribute[0].b = true;
 			mainNodeTree.root->children[12]->flags &= ~NODE_ACTIVE;
 			break;

@@ -1,0 +1,401 @@
+#include "../../raptiquax.h"
+#include "../../math/math_util.h"
+#include "../../storage/node.h"
+#include "../../scripts/scripts.h"
+
+#include "../../classes/classes.h"
+
+
+typedef enum ChessPiece {
+    FC_EMPTY,
+    FC_PAWN,
+    FC_ROOK,
+    FC_KNIGHT,
+    FC_BISHOP,
+    FC_QUEEN,
+    FC_KING
+} ChessPiece;
+
+typedef enum ChessPieceColor {
+    FC_WHITE = 1 << 4,
+    FC_BLACK = 2 << 4
+} ChessPieceColor;
+
+typedef enum ChessPieceFlags {
+    FC_HOVERED = 1 << 6,
+    FC_SELECTED = 1 << 7,
+    FC_ATTACKED = 1 << 8,
+    FC_MOVED = 1 << 9,
+} ChessPieceFlags;
+
+typedef enum MovementState {
+    FC_FORBIDDEN,
+    FC_VALID_MOVE,
+    FC_ATTACKING,
+    FC_CASTLING,
+} MovementState;
+
+
+static inline void move_piece(Node *** board, Node **p1, int index) {
+    Node ** p2 = &(*board)[index];
+    PRINT_INFO("Moving piece\n");
+    (*p1)->attribute[1].i = index;
+    (*p1)->attribute[0].i |= FC_MOVED;
+    Node * tempPiece = *p1;
+    *p1 = *p2;
+    *p2 = tempPiece;
+}
+
+static inline bool has_moved(Node **board, int x, int y) {
+    return board[y*8+x]->attribute[0].i & FC_MOVED;
+}
+
+static inline bool is_type(Node **board, int x, int y, int type) {
+    return (board[y*8+x]->attribute[0].i & 0b1111) == type;
+}
+
+
+static inline bool is_enemy(Node **board, int x, int y, int flags) {
+    return (board[y*8+x]->attribute[0].i & 0b110000) != (flags & 0b110000);
+}
+
+
+static inline bool is_cell_empty(Node **board, int x, int y) {
+    PRINT_INFO("Checking cell %d %d\n", x, y);
+    PRINT_INFO("Piece: %d\n", board[y*8+x]->attribute[0].i & 0b1111);
+    return (board[y*8+x]->attribute[0].i & 0b1111) == FC_EMPTY;
+}
+
+static inline int move_or_eat(Node **board, int x, int y, int flags) {
+    if (is_cell_empty(board, x, y)) {
+        return FC_VALID_MOVE;
+    } else if (is_enemy(board, x, y, flags)) {
+        return FC_ATTACKING;
+    }
+    return FC_FORBIDDEN;
+}
+
+
+static inline int is_move_valid(Node ***board, int flags, int ox, int oy, int dx, int dy) {
+    int sign = (flags & 0b110000) == FC_WHITE ? 1 : -1;
+    switch (flags & 0b1111)
+    {
+    case FC_PAWN:
+        if (ox != dx) {
+            if (abs(ox - dx) != 1 || (dy - oy) * sign != 1) {
+                return FC_FORBIDDEN;
+            }
+            if (is_enemy(*board, dx, dy, flags)) {
+                return FC_ATTACKING;
+            }
+            return FC_FORBIDDEN;
+        }
+        if (flags & FC_MOVED) {
+            if ((dy - oy) * sign != 1) {
+                return FC_FORBIDDEN;
+            }
+        } else {
+            if ((dy - oy) * sign > 2) {
+                return FC_FORBIDDEN;
+            }
+            if ((dy - oy) * sign == 2) {
+                if (!is_cell_empty(*board, ox, oy + sign)) {
+                    return FC_FORBIDDEN;
+                }
+            }
+        }
+        return is_cell_empty(*board, dx, dy) ? FC_VALID_MOVE : FC_FORBIDDEN;
+    case FC_ROOK:
+        if (ox != dx && oy != dy) {
+            return FC_FORBIDDEN;
+        }
+        int o, d, dir;
+        if (ox == dx) {
+            o = oy;
+            d = dy;
+        } else {
+            o = ox;
+            d = dx;
+        }
+        dir = o < d ? 1 : -1;
+        for (int i = o + dir; i != d; i += dir) {
+            if (!is_cell_empty(*board, (ox == dx) ? ox : i, (oy == dy) ? oy : i)) {
+                return FC_FORBIDDEN;
+            }
+        }
+        return move_or_eat(*board, dx, dy, flags);
+    case FC_KNIGHT:
+        if (abs(ox - dx) == 2 && abs(oy - dy) == 1) {
+            return move_or_eat(*board, dx, dy, flags);
+        } else if (abs(ox - dx) == 1 && abs(oy - dy) == 2) {
+            return move_or_eat(*board, dx, dy, flags);
+        }
+        return FC_FORBIDDEN;
+    case FC_BISHOP:
+        if (abs(ox - dx) != abs(oy - dy)) {
+            return FC_FORBIDDEN;
+        }
+        int xdir = ox < dx ? 1 : -1;
+        int ydir = oy < dy ? 1 : -1;
+        int dist = abs(ox - dx);
+        for (int i = 1; i < dist; i++) {
+            if (!is_cell_empty(*board, ox + i*xdir, oy + i*ydir)) {
+                return FC_FORBIDDEN;
+            }
+        }
+        return move_or_eat(*board, dx, dy, flags);
+
+    case FC_QUEEN:
+        if (ox == dx || oy == dy) {
+            return is_move_valid(board, FC_ROOK | (flags & ~0b1111), ox, oy, dx, dy);
+        } else {
+            return is_move_valid(board, FC_BISHOP | (flags & ~0b1111), ox, oy, dx, dy);
+        }
+
+    case FC_KING:
+
+        /// Castling
+
+        if (abs(ox - dx) == 2 && oy == dy) {
+            if (flags & move_or_eat(*board, dx, dy, flags) || flags & FC_MOVED) {
+                return FC_FORBIDDEN;
+            }
+            int rox, rdx;
+            if (dx - ox == 2) {
+                rox = 7;
+                rdx = 5;
+            } else if (dx - ox == -2) {
+                rox = 0;
+                rdx = 3;
+            }
+            if (is_type(*board, rox, oy, FC_ROOK) && 
+                !has_moved(*board, rox, oy) &&
+                !is_enemy(*board, rox, oy, flags) &&
+                is_move_valid(board, FC_ROOK, rox, oy, rdx, dy) == FC_VALID_MOVE) 
+            {
+                move_piece(board, &(*board)[oy*8+rox], oy*8+rdx);
+                return FC_CASTLING;
+            }
+            return FC_FORBIDDEN;
+        }
+
+        /// Normal move
+
+        if (abs(ox - dx) <= 1 && abs(oy - dy) <= 1) {
+            return move_or_eat(*board, dx, dy, flags);
+        }
+        return FC_FORBIDDEN;
+
+
+    default:
+        return FC_FORBIDDEN;
+    }
+}
+
+static inline void set_pawn_skin(Node *pawn, int flags) {
+    char skinPath[100] = "assets/models/FPSChess/Pieces/";
+    Model *skin = pawn->object;
+    if ((flags & 0b110000) == FC_WHITE) {
+        strcat(skinPath, "G");
+    } else {
+        strcat(skinPath, "S");
+    }
+    switch (flags & 0b1111) {
+        case FC_PAWN:
+            strcat(skinPath, "Pawn");
+            break;
+        case FC_ROOK:
+            strcat(skinPath, "Rook");
+            break;
+        case FC_KNIGHT:
+            strcat(skinPath, "Knight");
+            break;
+        case FC_BISHOP:
+            strcat(skinPath, "Bishop");
+            break;
+        case FC_QUEEN:
+            strcat(skinPath, "Queen");
+            break;
+        case FC_KING:
+            strcat(skinPath, "King");
+            break;
+        default:
+            break;
+    }
+    strcat(skinPath, ".obj");
+    if ((flags & 0b1111) == FC_EMPTY) {
+        pawn->flags &= ~NODE_VISIBLE;
+        return;
+    }
+    load_model(skinPath, &skin->data);
+}
+
+static const int classic_chessboard[64] = {
+    FC_ROOK | FC_WHITE, FC_KNIGHT | FC_WHITE, FC_BISHOP | FC_WHITE, FC_QUEEN | FC_WHITE, FC_KING | FC_WHITE, FC_BISHOP | FC_WHITE, FC_KNIGHT | FC_WHITE, FC_ROOK | FC_WHITE,
+    FC_PAWN | FC_WHITE, FC_PAWN | FC_WHITE, FC_PAWN | FC_WHITE, FC_PAWN | FC_WHITE, FC_PAWN | FC_WHITE, FC_PAWN | FC_WHITE, FC_PAWN | FC_WHITE, FC_PAWN | FC_WHITE,
+    FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY,
+    FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY,
+    FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY,
+    FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY, FC_EMPTY,
+    FC_PAWN | FC_BLACK, FC_PAWN | FC_BLACK, FC_PAWN | FC_BLACK, FC_PAWN | FC_BLACK, FC_PAWN | FC_BLACK, FC_PAWN | FC_BLACK, FC_PAWN | FC_BLACK, FC_PAWN | FC_BLACK,
+    FC_ROOK | FC_BLACK, FC_KNIGHT | FC_BLACK, FC_BISHOP | FC_BLACK, FC_QUEEN | FC_BLACK, FC_KING | FC_BLACK, FC_BISHOP | FC_BLACK, FC_KNIGHT | FC_BLACK, FC_ROOK | FC_BLACK
+};
+
+static ChessPieceColor player_color = FC_BLACK;
+
+NEW_SCRIPT(script_fc_chessboard_player_init)
+    SDL_SetRelativeMouseMode(SDL_TRUE);
+    if (player_color == FC_BLACK) {
+        this->pos[0] *= -1.0f;
+        this->rot[1] = 180.0f;
+    }
+END_SCRIPT(script_fc_chessboard_player_init)
+
+NEW_SCRIPT(script_fc_chessboard_init)
+    SET_ATTRIBUTES_COUNT((8*8+4));
+    this->attribute[8*8].p = this->parent->children[(this->parent)::(int)index_of_child(this)+1];
+    bool *isHovered = &this->attribute[8*8+3].b;
+    *isHovered = true;
+    Node *chessboard = this->attribute[8*8].p;
+    
+    for (int i = 0; i < 8*8; i++) {
+        FILE * file = fopen("assets/scenes/fps_chess/pieces/node_piece.scene", "r");
+        if (file) {
+            Node *piece = load_node(file, NULL, mainNodeTree.scripts, NULL);
+            MALLOC_ATTRIBUTE(piece, 2);
+            this->attribute[i].node = piece;
+            piece->attribute[0].i = classic_chessboard[i];
+            piece->attribute[1].i = i;
+            piece->pos[0] = -(((i/8)/8.0f - 0.5f)*8.6f + 0.5f);
+            piece->pos[2] = ((i%8)/8.0f - 0.5f)*8.6f + 0.5f;
+            set_pawn_skin(piece->children[0], piece->attribute[0].i);
+            chessboard::add_child_and_realloc(piece);
+            fclose(file);
+        }
+        buffers.collisionBuffer.collisionsShapes = realloc(buffers.collisionBuffer.collisionsShapes, sizeof(Node *) * buffers.collisionBuffer.length);
+        buffers.lightingBuffer.lightings = realloc(buffers.lightingBuffer.lightings, sizeof(Node *) * buffers.lightingBuffer.length);
+    }
+    play_music("assets/audio/musics/fps_chess_idle.mp3", MIX_MAX_VOLUME, -1);
+END_SCRIPT(script_fc_chessboard_init)
+
+
+NEW_SCRIPT(script_fc_chessboard_signal)
+    Node ** chessboard = this->attribute[8*8].node->children;
+    int * lastHovered = &this->attribute[8*8+1].i;
+    int * lastSelected = &this->attribute[8*8+2].i;
+    bool * isHovered = &this->attribute[8*8+3].b;
+    *isHovered = true;
+    GET_SIGNAL();
+    switch (signal) {
+        case SIGNAL_AREA_COLLISION:
+            GET_AREA_SIGNAL_PARAMETERS();
+            int x,y;
+            x = 7-(int)((impactPoint[2]/8.6f-0.5f)*-8.0f);
+            y = (int)((impactPoint[0]/8.6f-0.5f)*-8.0f);
+            //PRINT_INFO("X: %d, Y: %d\n", x, y);
+            if (x >= 0 && x < 8 && y >= 0 && y < 8) {
+                int index = y*8+x;
+                Node *selectedPiece = chessboard[*lastSelected];
+                if (selectedPiece && selectedPiece->attribute[0].i & FC_SELECTED) {
+                    float_approach(&selectedPiece->pos[0], -(((index/8)/8.0f - 0.5f)*8.6f + 0.5f), 0.1f);
+                    float_approach(&selectedPiece->pos[2], ((index%8)/8.0f - 0.5f)*8.6f + 0.5f, 0.1f);
+                }
+                Node **piece = &chessboard[index];
+                if (*piece) {
+                    if (input.mouse.released_button == SDL_BUTTON_LEFT) {
+                        Node **lastSelectPiece = &chessboard[*lastSelected];
+                        if (!((*lastSelectPiece)->attribute[0].i & FC_SELECTED)) lastSelectPiece = NULL;
+                        if (*lastSelected != index) {
+                            if (lastSelectPiece) {
+                                (*lastSelectPiece)->attribute[0].i &= ~FC_SELECTED;
+                            }
+                        }
+                        if ((chessboard[index]->attribute[0].i & 0b110000) == player_color && (chessboard[index]->attribute[0].i & 0b1111) != FC_EMPTY) {
+                            play_sfx("assets/audio/sfx/take_piece.wav", MIX_MAX_VOLUME, 0);
+                            (*piece)->attribute[0].i ^= FC_SELECTED;
+                            *lastSelected = index;
+                        } else {
+                            MovementState state = is_move_valid(&chessboard, selectedPiece->attribute[0].i, (*lastSelected)%8, (*lastSelected)/8, index%8, index/8);
+                            if (state == FC_VALID_MOVE || state == FC_CASTLING) {
+                                play_sfx("assets/audio/sfx/place_piece.wav", MIX_MAX_VOLUME, 0);
+                                if (lastSelectPiece) {
+                                    move_piece(&chessboard, lastSelectPiece, index);
+                                }
+                            }
+                            if (state == FC_ATTACKING) {
+                                PRINT_WARNING("Attacking\n");
+                            }
+                        }
+                    }
+                    (*piece)->attribute[0].i |= FC_HOVERED;
+                }
+                if (*lastHovered != index) {
+                    if (chessboard[*lastSelected]->attribute[0].i & FC_SELECTED || !is_type(chessboard, index%8, index/8, FC_EMPTY)) {
+                        play_sfx("assets/audio/sfx/dragslide.wav", 60, 0);
+                    }
+                    piece = &chessboard[*lastHovered];
+                    if (*piece) {
+                        (*piece)->attribute[0].i &= ~FC_HOVERED;
+                    }
+                }
+                *lastHovered = index;
+            } else {
+                if (*lastHovered != -1) {
+                    Node *piece = chessboard[*lastHovered];
+                    if (piece) {
+                        piece->attribute[0].i &= ~FC_HOVERED;
+                    }
+                }
+            }
+            
+            break;
+        default:
+            break;
+    }
+END_SCRIPT(script_fc_chessboard_signal)
+
+
+NEW_SCRIPT(script_fc_chessboard_update)
+    Node *chessboard = this->attribute[8*8].p;
+    int * lastHovered = &this->attribute[8*8+1].i;
+    int * lastSelected = &this->attribute[8*8+2].i;
+    bool * isHovered = &this->attribute[8*8+3].b;
+    if (!(*isHovered) && *lastHovered != -1) {
+        Node *piece = chessboard->children[*lastHovered];
+        if (piece) {
+            piece->attribute[0].i &= ~FC_HOVERED;
+        }
+        piece = chessboard->children[*lastSelected];
+        if (piece && input.mouse.released_button == SDL_BUTTON_LEFT) {
+            piece->attribute[0].i &= ~FC_SELECTED;
+        }
+    }
+    *isHovered = false;
+    if (window.fadeColor[3] > 0.0f)
+        window.fadeColor[3] -= 0.01f;
+END_SCRIPT(script_fc_chessboard_update)
+
+
+NEW_SCRIPT(script_fc_board_piece)
+    GET_READY_PARAMETERS();
+    SET_ATTRIBUTES_COUNT(2);
+    int flags = this->attribute[0].i;
+    int index = this->attribute[1].i;
+    if (flags & FC_SELECTED) {
+        float_approach(&this->pos[1], 0.7f, 0.1f);
+        float_approach(&this->scale[0], 1.2f, 0.1f);
+        float_approach(&this->scale[1], 1.2f, 0.1f);
+        float_approach(&this->scale[2], 1.2f, 0.1f);
+    } else {
+        float_approach(&this->scale[0], 1.0f, 0.1f);
+        float_approach(&this->scale[1], 1.0f, 0.1f);
+        float_approach(&this->scale[2], 1.0f, 0.1f);
+        if (flags & FC_HOVERED) {
+            float_approach(&this->pos[1], 0.3f, 0.1f);
+        } else {
+            float_approach(&this->pos[1], 0.0f, 0.1f);
+            float_approach(&this->pos[0], -(((index/8)/8.0f - 0.5f)*8.6f + 0.5f), 0.1f);
+            float_approach(&this->pos[2], ((index%8)/8.0f - 0.5f)*8.6f + 0.5f, 0.1f);
+        }
+    }
+END_SCRIPT(script_fc_board_piece)

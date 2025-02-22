@@ -58,7 +58,13 @@ ifneq ($(OS),Windows_NT)
 LIBS += lib/ufbx/ufbx.o
 endif
 
+MODULES += src/math/math_util.o
+
 MODULES += src/classes/classes.o
+
+MODULES += src/io/socket/client.o
+MODULES += src/io/socket/server.o
+MODULES += src/io/socket/network_utils.o
 
 ifneq ($(OS),Windows_NT)
 MODULES += src/io/model_loaders/fbx_loader.o
@@ -76,8 +82,6 @@ MODULES += src/io/stringio.o
 MODULES += src/io/shader.o
 MODULES += src/io/osio.o
 MODULES += src/io/audio.o
-
-MODULES += src/math/math_util.o
 
 MODULES += src/render/lighting.o
 MODULES += src/render/render.o
@@ -129,6 +133,7 @@ ifeq ($(OS),Windows_NT)
 LFLAGS += -lglew32
 LFLAGS += -lopengl32
 LFLAGS += -lavif
+LFLAGS += -lws2_32
 LFLAGS += -mconsole
 else
 LFLAGS += -lGL
@@ -138,12 +143,6 @@ endif
 
 WFLAGS += -Wall
 WFLAGS += -Wno-implicit-function-declaration
-
-ifeq ($(OS),Windows_NT) 
-DFLAGS += -D__windows__
-else
-DFLAGS += -D__linux__
-endif
 
 
 LOADING_SCRIPT_HEADER := src/scripts/loading_scripts.h

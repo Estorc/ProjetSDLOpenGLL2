@@ -1,4 +1,4 @@
-Node:5
+Node{script_cc_level_init,NULL,NULL}:5
 PointLight(0,0,0,0.003,0,1,0.09,0.032)[m-21,10,-7]{NULL,NULL,NULL}
 Model(assets/models/ClaudeChappe/mapJeuSDLv2.obj){NULL,NULL,NULL}
 StaticBody(1)

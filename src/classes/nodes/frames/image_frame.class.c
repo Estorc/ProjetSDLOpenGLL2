@@ -65,6 +65,13 @@ class ImageFrame : public Frame {
                 &frame->alignment[0], &frame->alignment[1],
                 frame->imageFrame->path);
             frame->contentTexture = load_texture_from_path(frame->imageFrame->path, GL_SRGB_ALPHA, false);
+            GLint width, height;
+            glBindTexture(GL_TEXTURE_2D, frame->contentTexture);
+            glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &width);
+            glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &height);
+            glBindTexture(GL_TEXTURE_2D, 0);
+            frame->contentSize[0] = width;
+            frame->contentSize[1] = height;
             frame->flags |= FRAME_CONTENT;
         }
     }

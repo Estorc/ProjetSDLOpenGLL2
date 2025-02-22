@@ -1,4 +1,4 @@
-Node{script_cc_intro_init,script_cc_intro_update,NULL}:2
+Node{script_cc_intro_init,script_cc_intro_update,NULL}:3
 RenderTarget(1920,1080):1
 Frame(0%,0%,100%,100%,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Alef-Bold.ttf,18,#ffffffff]):3
 ImageFrame(0%,0%,100%,100%,cc,assets/textures/pictures/intro_computer_bg.jpg)
@@ -14,14 +14,15 @@ La situation ressemble à un scénario de science-fiction dystopique, mais elle 
 Frame(-2w,-2w,30%,10%,rbn):1
 Button{NULL,NULL,script_cc_intro_btn}:1
 Label("Continuer",cc)
+Node
 Node:10
+Model(assets/models/FPSChess/FPS_Chess_Models2.obj)[s5,5,5]
 SpotLight(20,25,30,0.003,0,1,0.09,0.032,2,0)[m40,40,0r0,-90,0]
 SpotLight(20,25,30,0.003,0,1,0.09,0.032,2,0)[m51,30,8r0,90,0]
 SpotLight(20,25,30,0.003,0,1,0.09,0.032,2,0)[m51,30,-8r0,90,0]
 SpotLight(20,25,30,0.003,0,1,0.09,0.032,2,0)[m51,50,8r0,90,0]
 SpotLight(20,25,30,0.003,0,1,0.09,0.032,2,0)[m51,50,-8r0,90,0]
 SpotLight(300,200,150,0.003,0,1,0.09,0.032,2,0.5)[m0,42,0r-90,0,0]
-Model(assets/models/FPSChess/FPS_Chess_Models2.obj)[s5,5,5]
 KinematicBody(0,0,0,0)
 [m0,20,10]:1
 Camera(1){NULL,script_cc_camera_intro,NULL}:1

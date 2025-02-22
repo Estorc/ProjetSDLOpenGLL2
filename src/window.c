@@ -63,7 +63,7 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
     window->opengl_ctx = SDL_GL_CreateContext(window->sdl_window);
 
 
-    #ifdef __windows__
+    #ifdef _WIN32
 
     if (glewInit() != GLEW_OK) {
         PRINT_ERROR("Failed to initialize GLEW\n");

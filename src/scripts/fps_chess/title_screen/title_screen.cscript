@@ -1,0 +1,86 @@
+#include "../../../raptiquax.h"
+#include "../../../math/math_util.h"
+#include "../../../storage/node.h"
+#include "../../../render/camera.h"
+#include "../../../gui/frame.h"
+#include "../../../storage/queue.h"
+#include "../../../utils/scene.h"
+#include "../../../io/audio.h"
+#include "../../../render/lighting.h"
+#include "../../../buffer.h"
+#include "../../../window.h"
+#include "../../../io/socket/socket.h"
+
+NEW_SCRIPT(script_fc_title_screen_init)
+	SET_ATTRIBUTES_COUNT(1);
+	this->attribute[0].b = false;
+	play_music("assets/audio/musics/fps_chess_idle.mp3", MIX_MAX_VOLUME, -1);
+END_SCRIPT(script_fc_title_screen_init)
+
+NEW_SCRIPT(script_fc_title_screen_camera)
+	GET_READY_PARAMETERS();
+
+	if (mainNodeTree.root->attribute[0].b) {
+		window.fadeColor[3] += 0.01f;
+		if (window.fadeColor[3] >= 1.0f)
+			prepare_change_scene("assets/scenes/fps_chess/play_room_normal.scene");
+	} else {
+		if (window.fadeColor[3] > 0.0f)
+			window.fadeColor[3] -= 0.01f;
+	}
+	this->rot[1] += 0.7f;
+	const float distance = 25.0f;
+	glm_vec3_copy((vec3) {sin(to_radians(this->rot[1]))*distance, 5.0f, cos(to_radians(this->rot[1]))*distance}, this->pos);
+
+END_SCRIPT(script_fc_title_screen_camera)
+
+
+NEW_SCRIPT(script_fc_play_game_button)
+	GET_SIGNAL();	
+	switch (signal) {
+		case SIGNAL_BUTTON_CLICKED:
+			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            //((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
+			mainNodeTree.root->attribute[0].b = true;
+			mainNodeTree.root->children[11]->flags &= ~NODE_ACTIVE;
+			break;
+		case SIGNAL_BUTTON_HOVERED:
+			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+			break;
+		default:
+			break;
+	}
+END_SCRIPT(script_fc_play_game_button)
+
+
+NEW_SCRIPT(script_fc_settings_game_button)
+	GET_SIGNAL();	
+	switch (signal) {
+		case SIGNAL_BUTTON_CLICKED:
+			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+			window.fadeColor[3] = 0.0f;
+			prepare_change_scene("assets/scenes/settings/main.scene");
+			break;
+		case SIGNAL_BUTTON_HOVERED:
+			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+			break;
+		default:
+			break;
+	}
+END_SCRIPT(script_fc_settings_game_button)
+
+
+NEW_SCRIPT(script_fc_quit_game_button)
+	GET_SIGNAL();	
+	switch (signal) {
+		case SIGNAL_BUTTON_CLICKED:
+			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+			queue_push(&callQueue, NULL);
+			break;
+		case SIGNAL_BUTTON_HOVERED:
+			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+			break;
+		default:
+			break;
+	}
+END_SCRIPT(script_fc_quit_game_button)

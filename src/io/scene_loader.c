@@ -28,10 +28,6 @@ Node *load_node(FILE *file, Camera **c, Script *scripts, Node *editor) {
 
     malloc_node(node, find_string_index(symbol, (const char **) classManager.class_names, CLASS_TYPE_COUNT), file, c, scripts, editor);
     
-
-    #ifdef DEBUG
-    //node::print(0);
-    #endif
     char paramSymbol;
     do {
         

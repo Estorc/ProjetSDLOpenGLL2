@@ -12,10 +12,19 @@ NEW_SCRIPT(flashlight)
 
 
     if (input.pressed_keys & KEY_F) {
+		play_sfx("assets/audio/sfx/flashlight-toggle.wav", MIX_MAX_VOLUME, 0);
         this->flags ^= NODE_LIGHT_ACTIVE;
     }
 
 	glm_vec3_copy(this->parent->children[0]->rot, targetRot);
-	Vec3fApproach(this->rot, targetRot, (0.1/delta));
+	glm_vec3_add(targetRot, (vec3){
+		sinf(SDL_GetTicks()/1000.0f)*5.0f,
+		cosf(SDL_GetTicks()/1000.0f)*5.0f,
+		sinf(SDL_GetTicks()/1000.0f)*5.0f
+	}, targetRot);
+	this->pos[1] = 0.75f;
+	this->pos[0] = sinf(to_radians(this->parent->children[0]->rot[1]) + PI/2.0f)*0.75f;
+	this->pos[2] = cosf(to_radians(this->parent->children[0]->rot[1]) + PI/2.0f)*0.75f;
+	vec3_approach(this->rot, targetRot, (0.1/delta));
 
 END_SCRIPT(flashlight)

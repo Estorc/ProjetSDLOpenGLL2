@@ -45,8 +45,10 @@ typedef struct WorldShaders {
  * @param modelMatrix The model matrix for transforming the node.
  * @param activeShader The shader program to use for rendering.
  * @param shaders Pointer to the WorldShaders structure containing shader programs.
+ * @param viewportWidth The width of the viewport.
+ * @param viewportHeight The height of the viewport.
  */
-void render_scene(struct Window *window, struct Node *node, struct Camera *c, mat4 modelMatrix, Shader activeShader, struct WorldShaders *shaders);
+void render_scene(struct Window *window, struct Node *node, struct Camera *c, mat4 modelMatrix, Shader activeShader, struct WorldShaders *shaders, int viewportWidth, int viewportHeight);
 
 /**
  * @brief Draws the shadow map for the scene.

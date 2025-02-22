@@ -37,11 +37,8 @@ class Area : public PhysicalNode {
         SUPER(initialize_node);
         if (area) {
             area->collectedLength = 0;
-            area->sortedLength = 0;
             area->collectedNodes = malloc(buffers.collisionBuffer.length * sizeof(CollectedNode));
             POINTER_CHECK(area->collectedNodes);
-            area->sortedNodes = malloc(buffers.collisionBuffer.length * sizeof(CollectedNode));
-            POINTER_CHECK(area->sortedNodes);
         }
     }
 
@@ -71,8 +68,6 @@ class Area : public PhysicalNode {
         Area *area = (Area *) this->object;
 
         qsort(area->collectedNodes, area->collectedLength, sizeof(CollectedNode), compare_distance_nodes);
-        memcpy(area->sortedNodes, area->collectedNodes, area->collectedLength * sizeof(CollectedNode));
-        area->sortedLength = area->collectedLength;
     }
 
     //#define DEBUG_AREA
@@ -83,23 +78,24 @@ class Area : public PhysicalNode {
         this::sort_nodes();
         #ifdef DEBUG
         #ifdef DEBUG_AREA
-        if (area->sortedLength) {
-            PRINT_INFO("Collected %d nodes:\n", area->sortedLength);
+        if (area->collectedLength) {
+            PRINT_INFO("Collected %d nodes:\n", area->collectedLength);
         }
         #endif
         #endif
-        for (int i = 0; i < area->sortedLength; i++) {
-            (area->sortedNodes[i].node)::emit_signal(SIGNAL_AREA_COLLISION, area->signal_id, this, area->sortedNodes[i].distance, area->sortedNodes[i].impactPoint);
+        for (int i = 0; i < area->collectedLength; i++) {
+            (area->collectedNodes[i].node)::emit_signal(SIGNAL_AREA_COLLISION, area->signal_id, this, area->collectedNodes[i].distance, area->collectedNodes[i].impactPoint);
             #ifdef DEBUG
             #ifdef DEBUG_AREA
-            PRINT_INFO("Node %d: Distance[%.2f] | ImpactPoint[%.2f,%.2f,%.2f]\n", i, area->sortedNodes[i].distance, area->sortedNodes[i].impactPoint[0], area->sortedNodes[i].impactPoint[1], area->sortedNodes[i].impactPoint[2]);
+            PRINT_INFO("Node %d: Distance[%.2f] | ImpactPoint[%.2f,%.2f,%.2f]\n", i, area->collectedNodes[i].distance, area->collectedNodes[i].impactPoint[0], area->collectedNodes[i].impactPoint[1], area->collectedNodes[i].impactPoint[2]);
             #endif
             #endif
         }
 
 
         area->collectedLength = 0;
-        area->collectedNodes = realloc(area->collectedNodes, buffers.collisionBuffer.length * sizeof(CollectedNode));
+        free(area->collectedNodes);
+        area->collectedNodes = NULL;
 
         this::update_global_position(pos, rot, scale);
 

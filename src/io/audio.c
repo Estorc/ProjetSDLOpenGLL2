@@ -34,3 +34,8 @@ void play_music(const char * const path, const int volume, const int loops) {
     Mix_VolumeMusic(volume);
     Mix_PlayMusic(current_music, loops);
 }
+
+void fade_out_music(const int ms) {
+    Mix_FadeOutMusic(ms);
+    current_music = NULL;
+}

@@ -14,7 +14,7 @@
 #include "../settings.h"
 
 
-void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
+void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shader activeShader, WorldShaders *shaders, int viewportWidth, int viewportHeight) {
 
     
     if (node->flags & NODE_VISIBLE) {
@@ -37,7 +37,7 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
         node::prepare_render(nodeModelMatrix, activeShader, shaders);
         node::render(nodeModelMatrix, activeShader, shaders);
         for (int i = 0; i < node->length; i++) {
-            render_scene(window, node->children[i], c, nodeModelMatrix, activeShader, shaders);
+            render_scene(window, node->children[i], c, nodeModelMatrix, activeShader, shaders, viewportWidth, viewportHeight);
         }
         if (settings.show_collision_boxes) {
             bool is_body = false;
@@ -47,18 +47,15 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
                 Node ***shapes;
                 node::get_collisions_shapes(&shapes, &length);
                 for (int i = 0; i < *length; i++) {
-                    render_scene(window, (*shapes)[i], c, nodeModelMatrix, activeShader, shaders);
+                    render_scene(window, (*shapes)[i], c, nodeModelMatrix, activeShader, shaders, viewportWidth, viewportHeight);
                 }
             }
         }
 
         if (is_render_target) {
             mainNodeTree.renderTarget = lastRenderTarget;
-            int window_width, window_height;
-            get_resolution(&window_width, &window_height);
-
             glBindFramebuffer(GL_FRAMEBUFFER, currentFBO);
-            glViewport(0, 0, window_width, window_height);
+            glViewport(0, 0, viewportWidth, viewportHeight);
         }
     }
 
@@ -76,7 +73,7 @@ void draw_shadow_map(Window *window, Node *root, Camera *c, WorldShaders *shader
         glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthMap->texture, 0, index);
         glClear(GL_DEPTH_BUFFER_BIT);
         mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
-        render_scene(window, root, c, modelMatrix, shaders->depth, shaders);
+        render_scene(window, root, c, modelMatrix, shaders->depth, shaders, SHADOW_WIDTH, SHADOW_HEIGHT);
         if (buffers.lightingBuffer.lightings[i]->type == CLASS_TYPE_POINTLIGHT && pl < 5) {
             i--;
             pl++;
@@ -108,7 +105,7 @@ void draw_scene(Window *window, Node *root, Camera *c, WorldShaders *shaders, De
     set_shader_int(shaders->render, "shadowCastActive", settings.cast_shadows);
 
     mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
-    render_scene(window, root, c, modelMatrix, shaders->render, shaders);
+    render_scene(window, root, c, modelMatrix, shaders->render, shaders, window_width, window_height);
 }
 
 void draw_screen(Window *window, Node *scene, Camera *c, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa, Mesh *screenPlane) {
@@ -117,6 +114,7 @@ void draw_screen(Window *window, Node *scene, Camera *c, WorldShaders *shaders, 
     get_resolution(&window_width, &window_height);
 
     glEnable(GL_TEXTURE_2D);
+    glEnable(GL_FRAMEBUFFER_SRGB);  // Enable sRGB framebuffer correction
     glEnable(GL_MULTISAMPLE);  
     glEnable(GL_DEPTH_TEST);
 
