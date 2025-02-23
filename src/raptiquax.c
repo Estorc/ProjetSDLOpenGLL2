@@ -32,5 +32,6 @@ Tree mainNodeTree = {0};
 Input input;
 Settings settings = {false, true, false, RES_RESPONSIVE, false};
 Window window;
-
 BUILD_CLASS_METHODS_CORRESPONDANCE(classManager);
+
+struct RaptiquaX_t Game = {&memoryCaches, &buffers, &callQueue, &mainNodeTree, &input, &settings, &window, &classManager};

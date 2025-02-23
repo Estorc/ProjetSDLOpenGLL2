@@ -43,6 +43,8 @@ void *input_server(void *arg) {
             ping = 0;
             char * msg = strtok(msg_buffer, "|");
             for (;msg;msg = strtok(NULL, "|")) {
+                if (!strchr(msg, '|'))
+                    break;
                 if (lg == 0) {
                     PRINT_INFO("Server disconnected\n");
                     quit = 1;

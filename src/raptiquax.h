@@ -28,6 +28,14 @@
  */
 
 
+struct MemoryCaches;
+struct BufferCollection;
+struct Queue;
+struct Tree;
+struct Input;
+struct Settings;
+struct Window;
+
 /**
  * @brief The main structure that holds all the data and state of the engine.
  * 
@@ -37,8 +45,18 @@
  * @note This structure is used as a singleton to hold the global state of the engine.
  * It use pointers to the actual data structures to avoid including too much headers in there.
  */
+struct RaptiquaX_t {
+    struct MemoryCaches * const memoryCaches;  /**< The memory caches of the engine. */
+    struct BufferCollection * const buffers;  /**< The buffer collection of the engine. */
+    struct Queue * const callQueue;  /**< The call queue of the engine. */
+    struct Tree * const mainNodeTree;  /**< The main node tree of the engine. */
+    struct Input * const input;  /**< The input data of the engine. */
+    struct Settings * const settings;  /**< The settings of the engine. */
+    struct Window * const window;  /**< The window of the engine. */
+    const struct ClassManager * const classManager;  /**< The class manager of the engine. */
+};
 
- // extern RaptiquaX_t RaptiquaX;
+ extern struct RaptiquaX_t RaptiquaX;
 
 
 /**
