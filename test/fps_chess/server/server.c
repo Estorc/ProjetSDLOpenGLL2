@@ -91,12 +91,17 @@ static void load_config() {
 static inline void send_message(struct client *client, const char *message) {
     PRINT_SERVER_INFO("Try sending message to client %s\n", client->info.name);
     int len = strlen(message) + 1;
+    PRINT_INFO("Got len %d\n", len);
     char *buffer = malloc(sizeof(char) * len);
+    PRINT_INFO("Buffer allocated\n");
     strcpy(buffer, message);
+    PRINT_INFO("Message copied\n");
     buffer[strlen(message)] = '|';
+    PRINT_INFO("Message ended\n");
     send(client->socket, buffer, len, 0);
+    PRINT_INFO("Message sent\n");
     free(buffer);
-    PRINT_SERVER_INFO("Message sent!\n");
+    PRINT_SERVER_INFO("Message free!\n");
 }
 
 
