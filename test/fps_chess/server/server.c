@@ -97,7 +97,7 @@ static inline int receive_message(struct client *client, char **buffer, int size
     int lg = socket_request_receive(&client->listener, client->socket, *buffer, size, timeout, flags);
     if (lg != -1 && client->incoming_buffer && *client->incoming_buffer) {
         int len = strlen(client->incoming_buffer) + 1 + size;
-        char *final_buffer = malloc(*buffer, sizeof(char) * len);  
+        char *final_buffer = malloc(sizeof(char) * len);  
         strcpy(final_buffer, client->incoming_buffer);
         strcat(final_buffer, *buffer);
         free(*buffer);

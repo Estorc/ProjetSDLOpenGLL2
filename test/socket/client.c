@@ -17,7 +17,7 @@ static int get_message(struct socket_request_listener *request_listener, int soc
     int lg = socket_request_receive(request_listener, sock, *buffer, size, timeout, 0);
     if (lg != -1 && incoming_buffer && *incoming_buffer) {
         int len = strlen(incoming_buffer) + 1 + size;
-        char *final_buffer = malloc(*buffer, sizeof(char) * len);  
+        char *final_buffer = malloc(sizeof(char) * len);  
         strcpy(final_buffer, incoming_buffer);
         strcat(final_buffer, *buffer);
         free(*buffer);
