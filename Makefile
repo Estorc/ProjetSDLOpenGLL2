@@ -44,7 +44,12 @@ NEWLINE := $(shell printf "\n")
 # Object Files path
 
 PYTHON = python3
-PIP = pip
+PIP = $(shell which pip)
+ifeq ($(PIP),)
+	HAVE_PIP = 0
+else
+	HAVE_PIP = 1
+endif
 PYTHON_REQUIREMENTS = ./lib/python_requirements.txt
 VENV_DIR = .venv
 VENV_PYTHON = $(VENV_DIR)/bin/python
@@ -317,7 +322,7 @@ install-lib: check-env venv
 
 # Ensure that the environment is not externally-managed
 check-env:
-	@if ! which pip &>/dev/null; then \
+	@if [ $(HAVE_PIP) = "0" ]; then \
 		echo "Error: pip is not installed. Please install pip."; \
 		exit 1; \
 	elif [ -f "/usr/lib/python$(shell $(PYTHON) -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')" ]; then \

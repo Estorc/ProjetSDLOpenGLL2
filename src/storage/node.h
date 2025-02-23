@@ -51,7 +51,6 @@ typedef struct Tree {
  * @struct Node
  * @brief Represents a node in the tree structure.
  */
-
 typedef struct Node {
     void *object; /**< A pointer to an object associated with the node. */
     struct Node **children; /**< An array of child nodes. */
