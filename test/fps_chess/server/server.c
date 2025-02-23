@@ -1,6 +1,7 @@
 #include "../../../src/io/socket/socket.h"
 #include "../../../src/storage/hash.h"
 #include "../../../src/raptiquax.h"
+#include <errno.h>
 
 struct client_info {
     char *name;
