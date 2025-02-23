@@ -5,7 +5,7 @@
 #define PORT 30000
 char buffer[512];
 char buffer_stack[512][512];
-char *incoming_buffer;
+char *incoming_buffer = NULL;
 int buffer_stack_index = 0;
 int quit = 0;
 int ping = 0;
@@ -31,7 +31,7 @@ void *input_server(void *arg) {
     char * msg_buffer = NULL;
     struct socket_request_listener request_listener = create_socket_request_listener(server_sock);
     while (!quit) {
-        int lg = get_message(&request_listener, server_sock, &msg_buffer, 512, 1);
+        int lg = get_message(&request_listener, server_sock, &msg_buffer, 512, 1000);
         if (lg == -1) {
             ping++;
             if (ping > 100) {
@@ -42,7 +42,7 @@ void *input_server(void *arg) {
         while (lg != -1) {
             ping = 0;
             char * msg = strtok(msg_buffer, "|");
-            for (;msg;msg = strtok(NULL, "|")) {
+            for (;msg; msg = strtok(NULL, "|")) {
                 if (lg == 0) {
                     PRINT_INFO("Server disconnected\n");
                     quit = 1;
@@ -52,16 +52,18 @@ void *input_server(void *arg) {
                     if (buffer_stack_index) {
                         strcpy(buffer, buffer_stack[buffer_stack_index - 1]);
                         buffer_stack_index--;
-                        send(server_sock, buffer, strlen(buffer), 0);
+                        int len = strlen(buffer) + 1;
+                        buffer[len - 1] = '|';
+                        send(server_sock, buffer, len, 0);
                     } else
-                        send(server_sock, "PONG", 5, 0);
+                        send(server_sock, "PONG|", 5, 0);
                 } else {
                     PRINT_INFO("Received %d bytes\n", lg);
                     PRINT_SERVER_INFO("%s\n", msg);
                 }
             }
             incoming_buffer = strdup(msg);
-            lg = get_message(&request_listener, server_sock, &msg_buffer, 512, 1);
+            lg = get_message(&request_listener, server_sock, &msg_buffer, 512, 1000);
         }
     }
     free(msg_buffer);
@@ -70,7 +72,7 @@ void *input_server(void *arg) {
 
 void *output_server(void *arg) {
     while (!quit) {
-        fgets(buffer, 512, stdin);
+        fgets(buffer, 511, stdin);
         strcpy(buffer_stack[buffer_stack_index], buffer);
         buffer_stack_index++;
     }
