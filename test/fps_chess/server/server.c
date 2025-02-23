@@ -306,8 +306,9 @@ int main(int argc, char **argv) {
             char *args;
             if (lg != -1) {
                 client->ping = 0;
-                if (command("PONG", buffer, &args));
-                else if (client->authorized) {
+                if (command("PONG", buffer, &args)) {
+                    PRINT_SERVER_INFO("Client pong!\n");
+                } else if (client->authorized) {
                     PRINT_INFO("Received %d bytes\n", lg);
                     if (command("LOGIN", buffer, &args)) {
                         PRINT_SERVER_INFO("Client login : %s\n", args);
