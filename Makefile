@@ -226,7 +226,7 @@ ${TEST_DIR}/%: ${TEST_DIR}/%.o ${DEBUG_MODULES} ${LIBS}
 
 ${TEST_DIR}/%.o: ${TEST_DIR}/%.c
 	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
-	@${GCC} -c $< -o $@ ${DFLAGS} ${CFLAGS} ${LFLAGS} ${WFLAGS}
+	@${GCC} -g -O0 -c $< -o $@ ${DFLAGS} ${CFLAGS} ${LFLAGS} ${WFLAGS}
 	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}$@${NC}\n"
 
 

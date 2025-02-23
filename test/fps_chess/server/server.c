@@ -89,10 +89,11 @@ static void load_config() {
 
 
 static inline void send_message(struct client *client, const char *message) {
-    static char buffer[512];
-    memset(buffer, 0, 512);
+    int len = strlen(message) + 1;
+    char *buffer = malloc(sizeof(char) * len);
     strcpy(buffer, message);
-    send(client->socket, buffer, 512, 0);
+    buffer[strlen(message)] = '|';
+    send(client->socket, buffer, len, 0);
 }
 
 
