@@ -3,6 +3,14 @@
 #ifndef STRINGIO_H
 #define STRINGIO_H
 
+#ifdef _WIN32
+#define strtok_s strtok_s
+#define strtok_r strtok_s
+#else
+#define strtok_s strtok_r
+#define strtok_r strtok_r
+#endif
+
 /**
  * @file stringio.h
  * @brief Provides utility functions for string and file operations.
