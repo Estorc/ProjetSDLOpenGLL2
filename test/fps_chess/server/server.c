@@ -26,6 +26,7 @@ static int MAX_CLIENTS;
 static int MAX_PARTY_CLIENTS;
 static int PORT;
 static int MAX_PING;
+static int TIMEOUT;
 static char * SERVER_NAME;
 static char * PASSWORD;
 
@@ -42,6 +43,7 @@ const char default_config[] =
 "port=30000\n"
 "password=lobby\n"
 "max-ping=100\n";
+"timeout=1000\n";
 
 struct client *clients;
 char buffer[512];
@@ -80,6 +82,8 @@ static void load_config() {
             PASSWORD = strdup(value);
         } else if (strcmp(key, "max-ping") == 0) {
             MAX_PING = atoi(value);
+        } else if (strcmp(key, "timeout") == 0) {
+            TIMEOUT = atoi(value);
         }
     }
     free(config_content);
@@ -275,6 +279,7 @@ int main(int argc, char **argv) {
     PRINT_SERVER_INFO("Password: %s\n", PASSWORD);
     PRINT_SERVER_INFO("Max ping: %d\n", MAX_PING);
     PRINT_SERVER_INFO("Max party clients: %d\n", MAX_PARTY_CLIENTS);
+    PRINT_SERVER_INFO("Timeout: %d\n", TIMEOUT);
 
 
     clients = malloc(sizeof(struct client) * MAX_CLIENTS);
@@ -290,7 +295,7 @@ int main(int argc, char **argv) {
 
     int exit = 0;
     while (!exit) {
-        int client_sock = socket_request_listen(&request_listener, server_sock, 1);
+        int client_sock = socket_request_listen(&request_listener, server_sock, TIMEOUT);
         if (client_sock) {
             PRINT_SERVER_INFO("Received connexion!\n");
             for (int i = 0; i <= MAX_CLIENTS; i++) {
@@ -316,7 +321,7 @@ int main(int argc, char **argv) {
             if (client->socket == 0) {
                 continue;
             }
-            int lg = socket_request_receive(&client->listener, client->socket, buffer, 512, 1);
+            int lg = socket_request_receive(&client->listener, client->socket, buffer, 512, TIMEOUT);
             char *args;
             if (lg != -1) {
                 client->ping = 0;
