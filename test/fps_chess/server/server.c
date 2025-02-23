@@ -111,6 +111,7 @@ static inline int receive_message(struct client *client, char **buffer, int size
 
 
 static inline void send_message(struct client *client, const char *message) {
+    printf("Sending message : %s\n", message);
     int len = strlen(message) + 1;
     char *buffer = malloc(sizeof(char) * len);
     strcpy(buffer, message);
@@ -121,6 +122,7 @@ static inline void send_message(struct client *client, const char *message) {
         PRINT_ERROR("Failed to send message\n");
     }
     free(buffer);
+    printf("Message sent!\n");
 }
 
 
