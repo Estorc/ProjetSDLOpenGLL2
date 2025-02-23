@@ -89,11 +89,13 @@ static void load_config() {
 
 
 static inline void send_message(struct client *client, const char *message) {
+    PRINT_SERVER_INFO("Sending message to client %s\n", client->info.name);
     int len = strlen(message) + 1;
     char *buffer = malloc(sizeof(char) * len);
     strcpy(buffer, message);
     buffer[strlen(message)] = '|';
     send(client->socket, buffer, len, 0);
+    free(buffer);
 }
 
 
@@ -261,6 +263,8 @@ int main(int argc, char **argv) {
     PRINT_SERVER_INFO("Max clients: %d\n", MAX_CLIENTS);
     PRINT_SERVER_INFO("Port: %d\n", PORT);
     PRINT_SERVER_INFO("Password: %s\n", PASSWORD);
+    PRINT_SERVER_INFO("Max ping: %d\n", MAX_PING);
+    PRINT_SERVER_INFO("Max party clients: %d\n", MAX_PARTY_CLIENTS);
 
 
     clients = malloc(sizeof(struct client) * MAX_CLIENTS);
