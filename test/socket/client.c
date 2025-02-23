@@ -3,7 +3,7 @@
 #include <pthread.h>
 
 #define PORT 30000
-#define MAX_PING 10000
+#define MAX_PING 1000000
 char buffer[512];
 char buffer_stack[512][512];
 char *incoming_buffer = NULL;
@@ -66,9 +66,14 @@ void *input_server(void *arg) {
                         buffer_stack_index--;
                         int len = strlen(buffer) + 1;
                         buffer[len - 1] = '|';
-                        send(server_sock, buffer, len, 0);
-                    } else
+                        if (buffer[0] == '$') {
+                            send(server_sock, "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).|", 615, 0);
+                        } else {
+                            send(server_sock, buffer, len, 0);
+                        }
+                    } else {
                         send(server_sock, "PONG|", 5, 0);
+                    }
                 } else {
                     PRINT_INFO("Received %d bytes\n", lg);
                     PRINT_SERVER_INFO("%s\n", msg);

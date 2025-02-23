@@ -431,33 +431,33 @@ int main(int argc, char **argv) {
                         } else if (command("G_MSG", msg, &args)) {
                             msg[lg-1] = 0;
                             PRINT_SERVER_INFO("%s send message : '%s'\n", client->info.name, msg + 6);
-                            char * message = strdup(msg + 6);
-                            sprintf(buffer, "%s->%s", client->info.name, message);
-                            free(message);
+                            char * message = malloc(sizeof(char) * (strlen(msg + 6) + 1 + strlen(client->info.name) + 3));
+                            sprintf(message, "%s : %s", client->info.name, msg + 6);
                             for (int j = 0; j < MAX_CLIENTS; j++) {
                                 if (clients[j].socket && clients[j].authorized) {
-                                    send_message(&clients[j], buffer);
+                                    send_message(&clients[j], message);
                                 }
                             }
+                            free(message);
                         } else {
                             msg[lg-1] = 0;
                             PRINT_SERVER_INFO("%s send message : '%s'\n", client->info.name, msg);
-                            char * message = strdup(msg);
-                            sprintf(buffer, "%s->%s", client->info.name, message);
-                            free(message);
+                            char * message = malloc(sizeof(char) * (strlen(msg) + 1 + strlen(client->info.name) + 3));
+                            sprintf(message, "%s : %s", client->info.name, msg);
                             if (client->party) {
                                 for (int j = 0; j < MAX_PARTY_CLIENTS; j++) {
                                     if (client->party->clients[j]) {
-                                        send_message(client->party->clients[j], buffer);
+                                        send_message(client->party->clients[j], message);
                                     }
                                 }
                             } else {
                                 for (int j = 0; j < MAX_CLIENTS; j++) {
                                     if (clients[j].socket && clients[j].authorized) {
-                                        send_message(&clients[j], buffer);
+                                        send_message(&clients[j], message);
                                     }
                                 }
                             }
+                            free(message);
                         }
                     } else {
                         if (strncmp(PASSWORD, msg, strlen(PASSWORD)) == 0) {
