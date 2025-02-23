@@ -14,7 +14,7 @@ int ping = 0;
 static int get_message(struct socket_request_listener *request_listener, int sock, char **buffer, int size, int timeout) {
     free(*buffer);
     *buffer = malloc(sizeof(char) * size);
-    int lg = socket_request_receive(request_listener, sock, *buffer, size, timeout);
+    int lg = socket_request_receive(request_listener, sock, *buffer, size, timeout, 0);
     if (lg != -1 && incoming_buffer && *incoming_buffer) {
         int len = strlen(incoming_buffer) + 1 + size;
         *buffer = realloc(*buffer, sizeof(char) * len);  
@@ -43,8 +43,6 @@ void *input_server(void *arg) {
             ping = 0;
             char * msg = strtok(msg_buffer, "|");
             for (;msg;msg = strtok(NULL, "|")) {
-                if (!strchr(msg, '|'))
-                    break;
                 if (lg == 0) {
                     PRINT_INFO("Server disconnected\n");
                     quit = 1;

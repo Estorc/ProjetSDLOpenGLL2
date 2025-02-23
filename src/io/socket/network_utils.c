@@ -57,7 +57,7 @@ int socket_request_listen(struct socket_request_listener * listener, int server_
 }
 
 
-int socket_request_receive(struct socket_request_listener * listener, int client_sock, char * buffer, int size, int timeout) {
+int socket_request_receive(struct socket_request_listener * listener, int client_sock, char * buffer, int size, int timeout, int flags) {
     fd_set tmpfds = listener->readfds;
     listener->timeout.tv_usec = timeout;
     int ready = select(client_sock + 1, &tmpfds, NULL, NULL, &listener->timeout);
@@ -69,7 +69,7 @@ int socket_request_receive(struct socket_request_listener * listener, int client
 
     if (FD_ISSET(client_sock, &tmpfds)) {
         memset(buffer, 0, size);
-        int lg = recv(client_sock, buffer, size, 0);
+        int lg = recv(client_sock, buffer, size, flags);
         return lg;
     }
     return -1;

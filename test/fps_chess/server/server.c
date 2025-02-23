@@ -100,7 +100,7 @@ static inline void send_message(struct client *client, const char *message) {
     PRINT_INFO("Buffer allocated\n");
     strcpy(buffer, message);
     PRINT_INFO("Message copied\n");
-    buffer[strlen(message)] = '|';
+    buffer[len-1] = '|';
     PRINT_INFO("Message ended\n");
     int bytes_sent = send(client->socket, buffer, len, 0);
     if (bytes_sent == -1) {
@@ -321,7 +321,7 @@ int main(int argc, char **argv) {
             if (client->socket == 0) {
                 continue;
             }
-            int lg = socket_request_receive(&client->listener, client->socket, buffer, 512, TIMEOUT);
+            int lg = socket_request_receive(&client->listener, client->socket, buffer, 512, TIMEOUT, 0);
             char *args;
             if (lg != -1) {
                 client->ping = 0;
