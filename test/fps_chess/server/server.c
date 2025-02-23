@@ -468,6 +468,8 @@ int main(int argc, char **argv) {
                 }
 
                 if (client->socket) {
+                    printf("%p\n", msg);
+                    printf("%s\n", msg);
                     printf("Buffering\n");
                     if (client->incoming_buffer) {
                         free(client->incoming_buffer);
