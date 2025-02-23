@@ -3,6 +3,7 @@
 #include <pthread.h>
 
 #define PORT 30000
+#define MAX_PING 10000
 char buffer[512];
 char buffer_stack[512][512];
 char *incoming_buffer = NULL;
@@ -37,15 +38,23 @@ void *input_server(void *arg) {
         int lg = get_message(&request_listener, server_sock, &msg_buffer, 512, 1000);
         if (lg == -1) {
             ping++;
-            if (ping > 100) {
+            if (ping > MAX_PING) {
                 PRINT_CLIENT_INFO("Ping timeout\n");
                 quit = 1;
             }
         }
         while (lg != -1) {
             ping = 0;
+            bool incomplete_message = (msg_buffer[strlen(msg_buffer) - 1] != '|');
             char * msg = strtok(msg_buffer, "|");
-            for (;msg; msg = strtok(NULL, "|")) {
+            char * next_msg;
+            while (msg) {
+                next_msg = strtok(NULL, "|");
+                if (!next_msg && incomplete_message) {
+                    break;
+                }
+
+
                 if (lg == 0) {
                     PRINT_INFO("Server disconnected\n");
                     quit = 1;
@@ -64,6 +73,8 @@ void *input_server(void *arg) {
                     PRINT_INFO("Received %d bytes\n", lg);
                     PRINT_SERVER_INFO("%s\n", msg);
                 }
+
+                msg = next_msg;
             }
             incoming_buffer = strdup(msg);
             lg = get_message(&request_listener, server_sock, &msg_buffer, 512, 1000);

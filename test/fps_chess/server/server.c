@@ -342,6 +342,7 @@ int main(int argc, char **argv) {
             char *msg;
             char *next_msg;
             int lg = receive_message(client, &msg_buffer, 512, TIMEOUT, 0);
+            bool incomplete_message = (msg_buffer[strlen(msg_buffer) - 1] != '|');
             if (lg == -1) {
                 client->ping++;
                 if (client->ping > MAX_PING) {
@@ -358,7 +359,7 @@ int main(int argc, char **argv) {
                 while (msg && client->socket) {
 
                     next_msg = strtok_s(NULL, "|", &context);
-                    if (!next_msg) {
+                    if (!next_msg && incomplete_message) {
                         break;
                     }
 
