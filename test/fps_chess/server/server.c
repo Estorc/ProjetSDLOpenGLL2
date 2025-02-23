@@ -17,6 +17,7 @@ struct party {
 struct client {
     int socket;
     bool authorized;
+    time_t last_ping_time;
     int ping;
     char *incoming_buffer;
     struct party *party;
@@ -28,6 +29,7 @@ static int MAX_CLIENTS;
 static int MAX_PARTY_CLIENTS;
 static int PORT;
 static int MAX_PING;
+static int PING_INTERVAL = 1;
 static int TIMEOUT;
 static char * SERVER_NAME;
 static char * PASSWORD;
@@ -44,7 +46,7 @@ const char default_config[] =
 "max-party-clients=2\n"
 "port=30000\n"
 "password=lobby\n"
-"max-ping=100\n"
+"max-ping=5\n"
 "timeout=8000\n";
 
 struct client *clients;
@@ -267,6 +269,7 @@ static inline void init_client(struct client *client, int socket) {
     PRINT_SERVER_INFO("Initializing client\n");
     client->socket = socket;
     client->authorized = false;
+    client->last_ping_time = time(NULL);
     client->listener = create_socket_request_listener(socket);
     client->info.name = strdup("Anonymous");
 }
@@ -352,12 +355,15 @@ int main(int argc, char **argv) {
             int lg = receive_message(client, &msg_buffer, 512, TIMEOUT, 0);
             bool incomplete_message = (msg_buffer[strlen(msg_buffer) - 1] != '|');
             if (lg == -1) {
-                client->ping++;
-                if (client->ping > MAX_PING) {
-                    PRINT_CLIENT_INFO("Ping timeout\n");
-                    kill_client(client);
-                } else {
-                    send_message(client, "PING");
+                if (time(NULL) > client->last_ping_time * PING_INTERVAL) {
+                    client->last_ping_time = time(NULL);
+                    client->ping++;
+                    if (client->ping > MAX_PING) {
+                        PRINT_CLIENT_INFO("Ping timeout\n");
+                        kill_client(client);
+                    } else {
+                        send_message(client, "PING");
+                    }
                 }
             }
             while (lg != -1 && client->socket) {

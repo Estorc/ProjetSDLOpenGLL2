@@ -3,12 +3,13 @@
 #include <pthread.h>
 
 #define PORT 30000
-#define MAX_PING 1000000
+#define MAX_PING 10
 char buffer[512];
 char buffer_stack[512][512];
 char *incoming_buffer = NULL;
 int buffer_stack_index = 0;
 int quit = 0;
+time_t last_ping_time;
 int ping = 0;
 
 
@@ -37,10 +38,13 @@ void *input_server(void *arg) {
     while (!quit) {
         int lg = get_message(&request_listener, server_sock, &msg_buffer, 512, 1000);
         if (lg == -1) {
-            ping++;
-            if (ping > MAX_PING) {
-                PRINT_CLIENT_INFO("Ping timeout\n");
-                quit = 1;
+            if (time(NULL) > last_ping_time * 1) {
+                last_ping_time = time(NULL);
+                ping++;
+                if (ping > MAX_PING) {
+                    PRINT_CLIENT_INFO("Ping timeout\n");
+                    quit = 1;
+                }
             }
         }
         while (lg != -1) {
@@ -60,20 +64,19 @@ void *input_server(void *arg) {
                     quit = 1;
                     break;
                 }
-                if (strcmp(msg, "PING") == 0) {
-                    if (buffer_stack_index) {
-                        strcpy(buffer, buffer_stack[buffer_stack_index - 1]);
-                        buffer_stack_index--;
-                        int len = strlen(buffer) + 1;
-                        buffer[len - 1] = '|';
-                        if (buffer[0] == '$') {
-                            send(server_sock, "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).||", 616, 0);
-                        } else {
-                            send(server_sock, buffer, len, 0);
-                        }
+                if (buffer_stack_index) {
+                    strcpy(buffer, buffer_stack[buffer_stack_index - 1]);
+                    buffer_stack_index--;
+                    int len = strlen(buffer) + 1;
+                    buffer[len - 1] = '|';
+                    if (buffer[0] == '$') {
+                        send(server_sock, "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).|", 614, 0);
                     } else {
-                        send(server_sock, "PONG|", 5, 0);
+                        send(server_sock, buffer, len, 0);
                     }
+                }
+                if (strcmp(msg, "PING") == 0) {
+                        send(server_sock, "PONG|", 5, 0);
                 } else {
                     PRINT_INFO("Received %d bytes\n", lg);
                     PRINT_SERVER_INFO("%s\n", msg);
@@ -99,6 +102,7 @@ void *output_server(void *arg) {
 }
 
 int main(int argc, char **argv) {
+    last_ping_time = time(NULL);
     initiate_socket();
 
     printf("Enter server name: ");
