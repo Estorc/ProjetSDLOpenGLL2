@@ -3,6 +3,8 @@
 #include "../../../src/raptiquax.h"
 #include <errno.h>
 
+static void kill_client(struct client *client);
+
 struct client_info {
     char *name;
     char *avatar_raw_data;
