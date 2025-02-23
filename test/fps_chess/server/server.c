@@ -97,8 +97,11 @@ static inline int receive_message(struct client *client, char **buffer, int size
     int lg = socket_request_receive(&client->listener, client->socket, *buffer, size, timeout, flags);
     if (lg != -1 && client->incoming_buffer && *client->incoming_buffer) {
         int len = strlen(client->incoming_buffer) + 1 + size;
-        *buffer = realloc(*buffer, sizeof(char) * len);  
-        strcat(*buffer, client->incoming_buffer);
+        char *final_buffer = malloc(*buffer, sizeof(char) * len);  
+        strcpy(final_buffer, client->incoming_buffer);
+        strcat(final_buffer, *buffer);
+        free(*buffer);
+        *buffer = final_buffer;
         free(client->incoming_buffer);
         client->incoming_buffer = NULL;
         return len;
@@ -108,7 +111,6 @@ static inline int receive_message(struct client *client, char **buffer, int size
 
 
 static inline void send_message(struct client *client, const char *message) {
-    printf("Try to send\n");
     int len = strlen(message) + 1;
     char *buffer = malloc(sizeof(char) * len);
     strcpy(buffer, message);
@@ -119,7 +121,6 @@ static inline void send_message(struct client *client, const char *message) {
         PRINT_ERROR("Failed to send message\n");
     }
     free(buffer);
-    printf("Sent !\n");
 }
 
 
@@ -339,6 +340,7 @@ int main(int argc, char **argv) {
             char *context;
             char *msg_buffer = NULL;
             char *msg;
+            char *next_msg;
             int lg = receive_message(client, &msg_buffer, 512, TIMEOUT, 0);
             if (lg == -1) {
                 client->ping++;
@@ -353,7 +355,12 @@ int main(int argc, char **argv) {
                 printf("Received %s\n", msg_buffer);
                 client->ping = 0;
                 msg = strtok_s(msg_buffer, "|", &context);
-                for (;msg && client->socket; msg = strtok_s(NULL, "|", &context)) {
+                while (msg && client->socket) {
+
+                    next_msg = strtok_s(NULL, "|", &context);
+                    if (!next_msg) {
+                        break;
+                    }
 
                     if (command("PONG", msg, &args)) {
                         PRINT_SERVER_INFO("Client pong!\n");
@@ -465,19 +472,12 @@ int main(int argc, char **argv) {
                         }
                     }
 
+                    msg = next_msg;
                 }
 
                 if (client->socket) {
-                    printf("%p\n", msg);
-                    printf("%s\n", msg);
-                    printf("Buffering\n");
-                    if (client->incoming_buffer) {
-                        free(client->incoming_buffer);
-                        client->incoming_buffer = NULL;
-                    }
                     client->incoming_buffer = strdup(msg);
                     lg = receive_message(client, &msg_buffer, 512, TIMEOUT, 0);
-                    printf("Buffered\n");
                 }
             }
         }
