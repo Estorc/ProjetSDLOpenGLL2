@@ -411,7 +411,7 @@ int main(int argc, char **argv) {
                     PRINT_CLIENT_INFO("Ping timeout\n");
                     kill_client(client);
                 } else {
-                    send(client->socket, "PING", 5, 0);
+                    send(client->socket, "PING", 4, 0);
                 }
             }
         }
