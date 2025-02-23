@@ -117,8 +117,13 @@ static inline void send_message(struct client *client, const char *message) {
     buffer[len-1] = '|';
     int bytes_sent = send(client->socket, buffer, len, MSG_NOSIGNAL);
     if (bytes_sent == -1) {
-        perror("send failed");
-        PRINT_ERROR("Failed to send message\n");
+        if (errno == EPIPE || errno == ECONNRESET) {
+            PRINT_ERROR("Connection lost, closing socket\n");
+            kill_client(client);
+        } else {
+            perror("send failed");
+            PRINT_ERROR("Failed to send message\n");
+        }
     }
     free(buffer);
 }
