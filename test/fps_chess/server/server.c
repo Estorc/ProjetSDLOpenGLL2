@@ -315,22 +315,27 @@ int main(int argc, char **argv) {
                         if (party_list[0] == 0) {
                             send(client->socket, "No party available", 18, 0);
                         } else {
-                            send(client->socket, party_list, strlen(party_list), 0);
+                            strcpy(buffer, party_list);
+                            send(client->socket, buffer, 512, 0);
                         }
                         free(party_list);
                     } else if (command("EXIT_PARTY", buffer, &args)) {
                         if (client->party) {
                             exit_party(client);
-                            send(client->socket, "Exited party!", 13, 0);
+                            strcpy(buffer, "Exited party!");
+                            send(client->socket, buffer, 512, 0);
                         } else {
-                            send(client->socket, "No party to exit!", 17, 0);
+                            strcpy(buffer, "No party to exit!");
+                            send(client->socket, buffer, 512, 0);
                         }
                     } else if (command("JOIN_PARTY", buffer, &args)) {
                         join_party(client, atoi(args));
                         if (client->party) {
-                            send(client->socket, "Joined party!", 13, 0);
+                            strcpy(buffer, "Joined party!");
+                            send(client->socket, buffer, 512, 0);
                         } else {
-                            send(client->socket, "Party full or unavailable!", 16, 0);
+                            strcpy(buffer, "Party full or unavailable!");
+                            send(client->socket, buffer, 512, 0);
                         }
                     } else if (command("RENAME_PARTY", buffer, &args)) {
                         if (client->party) {
@@ -338,7 +343,8 @@ int main(int argc, char **argv) {
                             client->party->name = strdup(args);
                             send(client->socket, "Party renamed to %s", 512, 0);
                         } else {
-                            send(client->socket, "No party to rename!", 18, 0);
+                            strcpy(buffer, "No party to rename!");
+                            send(client->socket, buffer, 512, 0);
                         }
                     } else if (command("PARTY_SET_DATA", buffer, &args)) {
                         if (client->party) {
@@ -347,7 +353,8 @@ int main(int argc, char **argv) {
                             table_insert_raw(client->party->data, key, strdup(value));
                             send(client->socket, "Data set!", 9, 0);
                         } else {
-                            send(client->socket, "No party to set data!", 21, 0);
+                            strcpy(buffer, "No party to set data!");
+                            send(client->socket, buffer, 512, 0);
                         }
                     } else if (command("PARTY_GET_DATA", buffer, &args)) {
                         if (client->party) {
@@ -358,7 +365,8 @@ int main(int argc, char **argv) {
                                 send(client->socket, "Data not found!", 15, 0);
                             }
                         } else {
-                            send(client->socket, "No party to get data!", 21, 0);
+                            strcpy(buffer, "No party to get data!");
+                            send(client->socket, buffer, 512, 0);
                         }
                     } else if (lg == 0) {
                         PRINT_CLIENT_INFO("deconnected\n");
@@ -398,10 +406,12 @@ int main(int argc, char **argv) {
                     if (strncmp(PASSWORD, buffer, strlen(PASSWORD)) == 0) {
                         PRINT_SERVER_INFO("Client authorized!\n");
                         client->authorized = true;
-                        send(client->socket, "AUTHORIZED", 10, 0);
+                        strcpy(buffer, "AUTHORIZED");
+                        send(client->socket, buffer, 10, 0);
                     } else {
                         PRINT_SERVER_INFO("Client not authorized!\n");
-                        send(client->socket, "NOT AUTHORIZED", 14, 0);
+                        strcpy(buffer, "NOT AUTHORIZED");
+                        send(client->socket, buffer, 512, 0);
                         kill_client(client);
                     }
                 }
@@ -411,7 +421,8 @@ int main(int argc, char **argv) {
                     PRINT_CLIENT_INFO("Ping timeout\n");
                     kill_client(client);
                 } else {
-                    send(client->socket, "PING", 512, 0);
+                    strcpy(buffer, "PING");
+                    send(client->socket, buffer, 512, 0);
                 }
             }
         }
