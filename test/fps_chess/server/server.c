@@ -3,8 +3,6 @@
 #include "../../../src/raptiquax.h"
 #include <errno.h>
 
-static void kill_client(struct client *client);
-
 struct client_info {
     char *name;
     char *avatar_raw_data;
@@ -51,6 +49,8 @@ const char default_config[] =
 
 struct client *clients;
 char buffer[512];
+
+static void kill_client(struct client *client);
 
 static void load_config() {
     FILE * config = fopen("server-config.cfg", "r");
