@@ -42,7 +42,7 @@ const char default_config[] =
 "max-party-clients=2\n"
 "port=30000\n"
 "password=lobby\n"
-"max-ping=100\n";
+"max-ping=100\n"
 "timeout=1000\n";
 
 struct client *clients;
