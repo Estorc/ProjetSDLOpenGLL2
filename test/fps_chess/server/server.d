@@ -1,4 +1,5 @@
-test/socket/client.o: test/socket/client.c lib/../src/io/socket/socket.h \
+test/fps_chess/server/server.o: test/fps_chess/server/server.c \
+ test/fps_chess/server/../../../src/io/socket/socket.h \
  C:/msys64/mingw64/include/winsock2.h \
  C:/msys64/mingw64/include/_mingw_unicode.h \
  C:/msys64/mingw64/include/windows.h C:/msys64/mingw64/include/_mingw.h \
@@ -239,10 +240,14 @@ test/socket/client.o: test/socket/client.c lib/../src/io/socket/socket.h \
  C:/msys64/mingw64/include/qos.h C:/msys64/mingw64/include/ws2tcpip.h \
  C:/msys64/mingw64/include/ws2ipdef.h C:/msys64/mingw64/include/in6addr.h \
  C:/msys64/mingw64/include/psdk_inc/_ip_mreq1.h \
- C:/msys64/mingw64/include/mstcpip.h lib/../src/io/socket/server.h \
- lib/../src/io/socket/client.h lib/../src/io/socket/network_utils.h \
- lib/../src/raptiquax.h C:/msys64/mingw64/include/GL/glew.h \
- C:/msys64/mingw64/include/inttypes.h \
+ C:/msys64/mingw64/include/mstcpip.h \
+ test/fps_chess/server/../../../src/io/socket/server.h \
+ test/fps_chess/server/../../../src/io/socket/client.h \
+ test/fps_chess/server/../../../src/io/socket/network_utils.h \
+ test/fps_chess/server/../../../src/storage/hash.h \
+ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdbool.h \
+ test/fps_chess/server/../../../src/raptiquax.h \
+ C:/msys64/mingw64/include/GL/glew.h C:/msys64/mingw64/include/inttypes.h \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdint.h \
  C:/msys64/mingw64/include/stdint.h C:/msys64/mingw64/include/GL/glu.h \
  C:/msys64/mingw64/include/GL/gl.h C:/msys64/mingw64/include/stdio.h \
@@ -250,7 +255,6 @@ test/socket/client.o: test/socket/client.c lib/../src/io/socket/socket.h \
  C:/msys64/mingw64/include/_mingw_off_t.h \
  C:/msys64/mingw64/include/swprintf.inl \
  C:/msys64/mingw64/include/sec_api/stdio_s.h \
- C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdbool.h \
  C:/msys64/mingw64/include/SDL2/SDL.h \
  C:/msys64/mingw64/include/SDL2/SDL_main.h \
  C:/msys64/mingw64/include/SDL2/SDL_stdinc.h \
@@ -343,12 +347,8 @@ test/socket/client.o: test/socket/client.c lib/../src/io/socket/socket.h \
  lib/cglm/clipspace/project_no.h lib/cglm/clipspace/../vec3.h \
  lib/cglm/clipspace/../vec4.h lib/cglm/sphere.h lib/cglm/ease.h \
  lib/cglm/curve.h lib/cglm/bezier.h lib/cglm/ray.h lib/cglm/affine2d.h \
- lib/../src/io/stringio.h lib/../src/config.h lib/../src/term/term.h \
- lib/../src/term/enhanced_print.h lib/../src/term/color.h \
- C:/msys64/mingw64/include/pthread.h C:/msys64/mingw64/include/signal.h \
- C:/msys64/mingw64/include/pthread_signal.h \
- C:/msys64/mingw64/include/time.h C:/msys64/mingw64/include/sys/timeb.h \
- C:/msys64/mingw64/include/sec_api/sys/timeb_s.h \
- C:/msys64/mingw64/include/pthread_time.h \
- C:/msys64/mingw64/include/pthread_compat.h \
- C:/msys64/mingw64/include/pthread_unistd.h
+ test/fps_chess/server/../../../src/io/stringio.h \
+ test/fps_chess/server/../../../src/config.h \
+ test/fps_chess/server/../../../src/term/term.h \
+ test/fps_chess/server/../../../src/term/enhanced_print.h \
+ test/fps_chess/server/../../../src/term/color.h

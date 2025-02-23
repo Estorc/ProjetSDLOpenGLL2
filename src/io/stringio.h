@@ -21,6 +21,20 @@
 /**
  * @brief Reads the contents of a file into a string.
  * 
+ * This function reads the contents of a file that is already open and
+ * returns them as a dynamically allocated string. The caller is responsible
+ * for freeing the allocated memory.
+ * 
+ * @param file The file to read from.
+ * @return A pointer to the dynamically allocated string containing the file contents.
+ * @note The caller is responsible for freeing the allocated memory.
+ * @note The file must be open and readable.
+ */
+ char * read_filef(FILE * file);
+
+/**
+ * @brief Reads the contents of a file into a string.
+ * 
  * This function opens the file specified by the given path, reads its
  * contents, and returns them as a dynamically allocated string. The caller
  * is responsible for freeing the allocated memory.

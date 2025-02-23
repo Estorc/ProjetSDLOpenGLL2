@@ -10,6 +10,7 @@
 #include "../../../buffer.h"
 #include "../../../window.h"
 #include "../../../io/socket/socket.h"
+#include "../../../classes/classes.h"
 
 NEW_SCRIPT(script_fc_title_screen_init)
 	SET_ATTRIBUTES_COUNT(1);
@@ -41,8 +42,10 @@ NEW_SCRIPT(script_fc_play_game_button)
 		case SIGNAL_BUTTON_CLICKED:
 			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
             //((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
-			mainNodeTree.root->attribute[0].b = true;
-			mainNodeTree.root->children[11]->flags &= ~NODE_ACTIVE;
+			//mainNodeTree.root->attribute[0].b = true;
+			mainNodeTree.root->children[11]->children[1]->flags &= ~NODE_ACTIVE;
+			mainNodeTree.root->children[11]->children[2]->flags |= NODE_ACTIVE;
+			mainNodeTree.root->children[11]->children[2]->flags |= NODE_VISIBLE;
 			break;
 		case SIGNAL_BUTTON_HOVERED:
 			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
@@ -51,6 +54,66 @@ NEW_SCRIPT(script_fc_play_game_button)
 			break;
 	}
 END_SCRIPT(script_fc_play_game_button)
+
+
+NEW_SCRIPT(script_fc_join_game_button)
+GET_SIGNAL();	
+switch (signal) {
+	case SIGNAL_BUTTON_CLICKED:
+		play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+		//((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
+		//mainNodeTree.root->attribute[0].b = true;
+		mainNodeTree.root->children[11]->children[2]->flags &= ~NODE_VISIBLE;
+		mainNodeTree.root->children[11]->children[3]->flags &= ~NODE_VISIBLE;
+		mainNodeTree.root->children[11]->children[3]->flags &= ~NODE_ACTIVE;
+		mainNodeTree.root->attribute[0].b = true;
+		break;
+	case SIGNAL_BUTTON_HOVERED:
+		play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+		break;
+	default:
+		break;
+}
+END_SCRIPT(script_fc_join_game_button)
+
+NEW_SCRIPT(script_fc_join_menu_game_button)
+GET_SIGNAL();	
+switch (signal) {
+	case SIGNAL_BUTTON_CLICKED:
+		play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+		//((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
+		//mainNodeTree.root->attribute[0].b = true;
+		mainNodeTree.root->children[11]->children[2]->flags &= ~NODE_ACTIVE;
+		mainNodeTree.root->children[11]->children[3]->flags |= NODE_ACTIVE;
+		mainNodeTree.root->children[11]->children[3]->flags |= NODE_VISIBLE;
+		break;
+	case SIGNAL_BUTTON_HOVERED:
+		play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+		break;
+	default:
+		break;
+}
+END_SCRIPT(script_fc_join_menu_game_button)
+
+NEW_SCRIPT(script_fc_exit_menu)
+	GET_SIGNAL();	
+	switch (signal) {
+		case SIGNAL_BUTTON_CLICKED:
+			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+			//((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
+			//mainNodeTree.root->attribute[0].b = true;
+			int id = (this->parent->parent->parent->parent)::(int)index_of_child(this->parent->parent->parent);
+			this->parent->parent->parent->parent->children[id-1]->flags |= NODE_ACTIVE;
+			this->parent->parent->parent->parent->children[id]->flags &= ~NODE_ACTIVE;
+			this->parent->parent->parent->parent->children[id]->flags &= ~NODE_VISIBLE;
+			break;
+		case SIGNAL_BUTTON_HOVERED:
+			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+			break;
+		default:
+			break;
+	}
+END_SCRIPT(script_fc_exit_menu)
 
 
 NEW_SCRIPT(script_fc_settings_game_button)

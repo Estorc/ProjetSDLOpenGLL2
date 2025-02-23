@@ -100,6 +100,7 @@ MODULES += src/gui/frame.o
 
 MODULES += src/storage/stack.o
 MODULES += src/storage/queue.o
+MODULES += src/storage/hash.o
 
 MODULES += src/scripts/scripts.o
 
