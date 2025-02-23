@@ -2,7 +2,6 @@
 #include "../src/raptiquax.h"
 #include <pthread.h>
 
-#define SERVER_NAME "pluscorp.fr"
 #define PORT 30000
 char buffer[512];
 char buffer_stack[512][512];
@@ -56,6 +55,10 @@ void *output_server(void *arg) {
 int main(int argc, char **argv) {
     initiate_socket();
 
+    printf("Enter server name: ");
+    char SERVER_NAME[256] = {0};
+    scanf("%s", SERVER_NAME);
+    getc(stdin);
     int server_sock = connect_socket_server(SERVER_NAME, PORT);
     PRINT_CLIENT_INFO("Connected to server!\n");
 

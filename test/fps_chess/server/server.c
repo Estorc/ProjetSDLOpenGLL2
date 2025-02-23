@@ -88,6 +88,14 @@ static void load_config() {
 }
 
 
+static inline void send_message(struct client *client, const char *message) {
+    static char buffer[512];
+    memset(buffer, 0, 512);
+    strcpy(buffer, message);
+    send(client->socket, buffer, 512, 0);
+}
+
+
 static inline bool command(const char *cmd, char *str, char **args) {
     int len = strlen(cmd);
     if (strncmp(cmd, str, len) == 0) {
@@ -304,69 +312,61 @@ int main(int argc, char **argv) {
                         PRINT_SERVER_INFO("Client login : %s\n", args);
                         free(client->info.name);
                         client->info.name = strdup(args);
-                        strcpy(buffer, "Logged!");
-                        send(client->socket, buffer, 512, 0);
+                        send_message(client, "Logged in!");
                     } else if (command("CREATE_PARTY", buffer, &args)) {
                         create_party(client, args);
                         sprintf(buffer, "Party %s created!", args);
-                        send(client->socket, buffer, 512, 0);
+                        send_message(client, buffer);
                     } else if (command("LIST_PARTY", buffer, &args)) {
                         char * party_list = list_party();
                         if (party_list[0] == 0) {
-                            send(client->socket, "No party available", 18, 0);
+                            send_message(client, "No party available!");
                         } else {
-                            strcpy(buffer, party_list);
-                            send(client->socket, buffer, 512, 0);
+                            send_message(client, party_list);
                         }
                         free(party_list);
                     } else if (command("EXIT_PARTY", buffer, &args)) {
                         if (client->party) {
                             exit_party(client);
-                            strcpy(buffer, "Exited party!");
-                            send(client->socket, buffer, 512, 0);
+                            send_message(client, "Exited party!");
                         } else {
-                            strcpy(buffer, "No party to exit!");
-                            send(client->socket, buffer, 512, 0);
+                            send_message(client, "No party to exit!");
                         }
                     } else if (command("JOIN_PARTY", buffer, &args)) {
                         join_party(client, atoi(args));
                         if (client->party) {
-                            strcpy(buffer, "Joined party!");
-                            send(client->socket, buffer, 512, 0);
+                            send_message(client, "Joined party!");
                         } else {
-                            strcpy(buffer, "Party full or unavailable!");
-                            send(client->socket, buffer, 512, 0);
+                            send_message(client, "Failed to join party!");
                         }
                     } else if (command("RENAME_PARTY", buffer, &args)) {
                         if (client->party) {
                             free(client->party->name);
                             client->party->name = strdup(args);
-                            send(client->socket, "Party renamed to %s", 512, 0);
+                            sprintf(buffer, "Party renamed to %s", args);
+                            send_message(client, buffer);
                         } else {
-                            strcpy(buffer, "No party to rename!");
-                            send(client->socket, buffer, 512, 0);
+                            send_message(client, "No party to rename!");
                         }
                     } else if (command("PARTY_SET_DATA", buffer, &args)) {
                         if (client->party) {
                             char *key = strtok(args, "=");
                             char *value = strtok(NULL, "=");
                             table_insert_raw(client->party->data, key, strdup(value));
-                            send(client->socket, "Data set!", 9, 0);
+                            send_message(client, "Data set!");
                         } else {
-                            strcpy(buffer, "No party to set data!");
-                            send(client->socket, buffer, 512, 0);
+                            send_message(client, "No party to set data!");
                         }
                     } else if (command("PARTY_GET_DATA", buffer, &args)) {
                         if (client->party) {
                             char *value = table_get(client->party->data, args);
                             if (value) {
-                                send(client->socket, value, strlen(value), 0);
+                                send_message(client, value);
                             } else {
-                                send(client->socket, "Data not found!", 15, 0);
+                                send_message(client, "Data not found!");
                             }
                         } else {
-                            strcpy(buffer, "No party to get data!");
-                            send(client->socket, buffer, 512, 0);
+                            send_message(client, "No party to get data!");
                         }
                     } else if (lg == 0) {
                         PRINT_CLIENT_INFO("deconnected\n");
@@ -379,7 +379,7 @@ int main(int argc, char **argv) {
                         free(message);
                         for (int j = 0; j < MAX_CLIENTS; j++) {
                             if (clients[j].socket && clients[j].authorized) {
-                                send(clients[j].socket, buffer, 512, 0);
+                                send_message(&clients[j], buffer);
                             }
                         }
                     } else {
@@ -391,13 +391,13 @@ int main(int argc, char **argv) {
                         if (client->party) {
                             for (int j = 0; j < MAX_PARTY_CLIENTS; j++) {
                                 if (client->party->clients[j]) {
-                                    send(client->party->clients[j]->socket, buffer, 512, 0);
+                                    send_message(client->party->clients[j], buffer);
                                 }
                             }
                         } else {
                             for (int j = 0; j < MAX_CLIENTS; j++) {
                                 if (clients[j].socket && clients[j].authorized) {
-                                    send(clients[j].socket, buffer, 512, 0);
+                                    send_message(&clients[j], buffer);
                                 }
                             }
                         }
@@ -406,12 +406,10 @@ int main(int argc, char **argv) {
                     if (strncmp(PASSWORD, buffer, strlen(PASSWORD)) == 0) {
                         PRINT_SERVER_INFO("Client authorized!\n");
                         client->authorized = true;
-                        strcpy(buffer, "AUTHORIZED");
-                        send(client->socket, buffer, 10, 0);
+                        send_message(client, "AUTHORIZED");
                     } else {
                         PRINT_SERVER_INFO("Client not authorized!\n");
-                        strcpy(buffer, "NOT AUTHORIZED");
-                        send(client->socket, buffer, 512, 0);
+                        send_message(client, "NOT AUTHORIZED");
                         kill_client(client);
                     }
                 }
@@ -421,8 +419,7 @@ int main(int argc, char **argv) {
                     PRINT_CLIENT_INFO("Ping timeout\n");
                     kill_client(client);
                 } else {
-                    strcpy(buffer, "PING");
-                    send(client->socket, buffer, 512, 0);
+                    send_message(client, "PING");
                 }
             }
         }
