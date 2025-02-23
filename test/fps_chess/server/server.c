@@ -44,7 +44,7 @@ const char default_config[] =
 "port=30000\n"
 "password=lobby\n"
 "max-ping=100\n"
-"timeout=1000\n";
+"timeout=8000\n";
 
 struct client *clients;
 char buffer[512];
@@ -353,7 +353,6 @@ int main(int argc, char **argv) {
                 }
             }
             while (lg != -1 && client->socket) {
-                printf("Received %s\n", msg_buffer);
                 client->ping = 0;
                 msg = strtok_s(msg_buffer, "|", &context);
                 while (msg && client->socket) {
@@ -363,9 +362,8 @@ int main(int argc, char **argv) {
                         break;
                     }
 
-                    if (command("PONG", msg, &args)) {
-                        PRINT_SERVER_INFO("Client pong!\n");
-                    } else if (client->authorized) {
+                    if (command("PONG", msg, &args));
+                    else if (client->authorized) {
                         PRINT_INFO("Received %d bytes\n", lg);
                         if (command("LOGIN", msg, &args)) {
                             PRINT_SERVER_INFO("Client login : %s\n", args);
