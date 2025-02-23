@@ -468,8 +468,14 @@ int main(int argc, char **argv) {
                 }
 
                 if (client->socket) {
+                    printf("Buffering\n");
+                    if (client->incoming_buffer) {
+                        free(client->incoming_buffer);
+                        client->incoming_buffer = NULL;
+                    }
                     client->incoming_buffer = strdup(msg);
                     lg = receive_message(client, &msg_buffer, 512, TIMEOUT, 0);
+                    printf("Buffered\n");
                 }
             }
         }
