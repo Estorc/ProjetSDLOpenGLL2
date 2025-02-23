@@ -93,23 +93,16 @@ static void load_config() {
 
 
 static inline void send_message(struct client *client, const char *message) {
-    PRINT_SERVER_INFO("Try sending message to client %s\n", client->info.name);
     int len = strlen(message) + 1;
-    PRINT_INFO("Got len %d\n", len);
     char *buffer = malloc(sizeof(char) * len);
-    PRINT_INFO("Buffer allocated\n");
     strcpy(buffer, message);
-    PRINT_INFO("Message copied\n");
     buffer[len-1] = '|';
-    PRINT_INFO("Message ended\n");
     int bytes_sent = send(client->socket, buffer, len, 0);
     if (bytes_sent == -1) {
         perror("send failed");
         PRINT_ERROR("Failed to send message\n");
     }
-    PRINT_INFO("Message sent\n");
     free(buffer);
-    PRINT_SERVER_INFO("Message free!\n");
 }
 
 
@@ -430,6 +423,7 @@ int main(int argc, char **argv) {
                         send_message(client, "AUTHORIZED");
                     } else {
                         PRINT_SERVER_INFO("Client not authorized!\n");
+                        PRINT_INFO("Received %s\n", buffer);
                         send_message(client, "NOT AUTHORIZED");
                         kill_client(client);
                     }
