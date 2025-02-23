@@ -98,7 +98,11 @@ static inline void send_message(struct client *client, const char *message) {
     PRINT_INFO("Message copied\n");
     buffer[strlen(message)] = '|';
     PRINT_INFO("Message ended\n");
-    send(client->socket, buffer, len, 0);
+    int bytes_sent = send(client->socket, buffer, len, 0);
+    if (bytes_sent == -1) {
+        perror("send failed");
+        PRINT_ERROR("Failed to send message\n");
+    }
     PRINT_INFO("Message sent\n");
     free(buffer);
     PRINT_SERVER_INFO("Message free!\n");
