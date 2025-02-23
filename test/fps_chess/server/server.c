@@ -477,7 +477,7 @@ int main(int argc, char **argv) {
                 }
 
                 if (client->socket) {
-                    client->incoming_buffer = strdup(msg);
+                    if (msg) client->incoming_buffer = strdup(msg);
                     lg = receive_message(client, &msg_buffer, 512, TIMEOUT, 0);
                 }
             }
