@@ -111,18 +111,16 @@ static inline int receive_message(struct client *client, char **buffer, int size
 
 
 static inline void send_message(struct client *client, const char *message) {
-    printf("Sending message : %s\n", message);
     int len = strlen(message) + 1;
     char *buffer = malloc(sizeof(char) * len);
     strcpy(buffer, message);
     buffer[len-1] = '|';
-    int bytes_sent = send(client->socket, buffer, len, 0);
+    int bytes_sent = send(client->socket, buffer, len, MSG_NOSIGNAL);
     if (bytes_sent == -1) {
         perror("send failed");
         PRINT_ERROR("Failed to send message\n");
     }
     free(buffer);
-    printf("Message sent!\n");
 }
 
 
