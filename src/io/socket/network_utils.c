@@ -1,7 +1,7 @@
 #include "../../raptiquax.h"
 #include "socket.h"
 
-#include MIN(x,y) (x > y ? y : x)
+#define MIN(x,y) x < y ? x : y
 
 #pragma region LOW LEVEL
 
@@ -131,7 +131,7 @@ int send_message(int socket, const char *message, int flags) {
     size_t message_length = strlen(message);
     size_t bytes_sent = 0;
     while (bytes_sent < message_length) {
-        ssize_t result = send(socket, message + bytes_sent, MIN(512, message_length), flags);
+        ssize_t result = send(socket, message + bytes_sent, min(512, message_length), flags);
         if (result == -1) {
             perror("Send failed");
             return -1; // Error occurred
