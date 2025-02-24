@@ -102,6 +102,8 @@ static inline void send_message_with_separator(struct client *client, const char
     char *buffer = malloc(sizeof(char) * len);
     strcpy(buffer, message);
     buffer[len-1] = '|';
+    buffer[len] = 0;
+    printf("Sending message : %s\n", buffer);
     int bytes_sent = send_message(client->socket, buffer, MSG_NOSIGNAL);
     if (bytes_sent == -1) {
         if (errno == EPIPE || errno == ECONNRESET) {
