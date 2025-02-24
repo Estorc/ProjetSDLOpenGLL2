@@ -67,9 +67,9 @@ class Button : public Frame {
     void update() {
         Frame *frame = (Frame *) this->object;
         Button *button = (Button *) frame->button;
-        Mouse *mouse = &input.mouse;
-        if (mainNodeTree.renderTarget) {
-            mouse = &mainNodeTree.renderTarget->mouse;
+        Mouse *mouse = &Game.input->mouse;
+        if (Game.renderTarget) {
+            mouse = &Game.renderTarget->mouse;
         }
         float x,y,w,h;
         x = frame->absPos[0];
@@ -105,7 +105,7 @@ class Button : public Frame {
                 button->state = BUTTON_STATE_NORMAL;
             }
         }
-        if (window.resized) frame->flags |= FRAME_NEEDS_REFRESH;
+        if (Game.window->resized) frame->flags |= FRAME_NEEDS_REFRESH;
     }
 
     void is_button(bool *result) {

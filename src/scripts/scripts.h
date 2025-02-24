@@ -19,9 +19,9 @@ struct Window;
 #define NEW_SCRIPT(script_name) NODE_FUNC_RETURN script_name(NODE_FUNC_PARAMS) {
 #define END_SCRIPT(script_name) }; \
 static __attribute__((constructor)) void __anon_ctor_##script_name(void) {\
-    mainNodeTree.scripts = realloc(mainNodeTree.scripts, sizeof(Script) * (__scriptIndex__ + 1));\
-    mainNodeTree.scripts[__scriptIndex__].name = #script_name;\
-    mainNodeTree.scripts[__scriptIndex__++].script = script_name;\
+    Game.scripts = realloc(Game.scripts, sizeof(Script) * (__scriptIndex__ + 1));\
+    Game.scripts[__scriptIndex__].name = #script_name;\
+    Game.scripts[__scriptIndex__++].script = script_name;\
     PRINT_INFO("Script %s loaded in %d!\n", #script_name, __scriptIndex__);\
 }
 

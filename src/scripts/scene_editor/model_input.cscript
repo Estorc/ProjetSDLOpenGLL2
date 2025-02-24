@@ -13,9 +13,9 @@ NEW_SCRIPT(model_input_init)
 	ModelData **modelData = this->attribute[1].p;
 	Node *labelNode = this->children[0]->children[0];
 
-    for (int i = 0; i < memoryCaches.modelsCount; i++) {
-        if (memoryCaches.modelCache[i].model == *modelData) {
-			labelNode::set_text(memoryCaches.modelCache[i].modelName);
+    for (int i = 0; i < Game.memoryCaches->modelsCount; i++) {
+        if (Game.memoryCaches->modelCache[i].model == *modelData) {
+			labelNode::set_text(Game.memoryCaches->modelCache[i].modelName);
             break;
         }
     }
@@ -45,9 +45,9 @@ NEW_SCRIPT(model_input)
             }
         }
 
-		for (int i = 0; i < memoryCaches.modelsCount; i++) {
-			if (memoryCaches.modelCache[i].model == *modelData) {
-				labelNode::set_text(memoryCaches.modelCache[i].modelName);
+		for (int i = 0; i < Game.memoryCaches->modelsCount; i++) {
+			if (Game.memoryCaches->modelCache[i].model == *modelData) {
+				labelNode::set_text(Game.memoryCaches->modelCache[i].modelName);
 				break;
 			}
 		}

@@ -3,7 +3,7 @@
 
 /**
  * @file buffer.h
- * @brief Functions for initializing and freeing buffers.
+ * @brief Functions for initializing and freeing Game.buffers->
  * 
  * This file contains the declarations of functions used to initialize
  * and free buffers in the project.
@@ -11,7 +11,7 @@
 
 /**
  * @defgroup BufferManagement Buffer Management
- * @brief Functions for managing buffers.
+ * @brief Functions for managing Game.buffers->
  * @{
  */
 
@@ -29,13 +29,7 @@ typedef struct BufferCollection {
 } BufferCollection;
 
 /**
- * @brief Global buffer collection.
- */
-
-extern BufferCollection buffers;
-
-/**
- * @brief Initializes the buffers.
+ * @brief Initializes the Game.buffers->
  * 
  * This function sets up the necessary buffers for the application.
  * It should be called before any buffer operations are performed.
@@ -43,9 +37,9 @@ extern BufferCollection buffers;
 void init_buffers();
 
 /**
- * @brief Frees the buffers.
+ * @brief Frees the Game.buffers->
  * 
- * This function releases the resources allocated for the buffers.
+ * This function releases the resources allocated for the Game.buffers->
  * It should be called when buffer operations are no longer needed.
  */
 void free_buffers();

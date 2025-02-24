@@ -179,9 +179,9 @@ class SelectList : public Frame {
     void update() {
         Frame *frame = (Frame *) this->object;
         SelectList *selectList = (SelectList *) frame->selectList;
-        Mouse *mouse = &input.mouse;
-        if (mainNodeTree.renderTarget) {
-            mouse = &mainNodeTree.renderTarget->mouse;
+        Mouse *mouse = &Game.input->mouse;
+        if (Game.renderTarget) {
+            mouse = &Game.renderTarget->mouse;
         }
         float x,y,w,h;
         x = frame->absPos[0];
@@ -193,7 +193,7 @@ class SelectList : public Frame {
                 this->children[0]->flags |= NODE_VISIBLE;
                 this->children[0]->flags |= NODE_ACTIVE;
             }
-            if (input.released_keys & KEY_ENTER || ((mouse->released_button == SDL_BUTTON_LEFT || mouse->pressed_button == SDL_BUTTON_LEFT) && !(mouse->x > x &&
+            if (Game.input->released_keys & KEY_ENTER || ((mouse->released_button == SDL_BUTTON_LEFT || mouse->pressed_button == SDL_BUTTON_LEFT) && !(mouse->x > x &&
                 mouse->x < x+w &&
                 mouse->y > y &&
                 mouse->y < y+h))) {
@@ -228,7 +228,7 @@ class SelectList : public Frame {
                 selectList->state = BUTTON_STATE_NORMAL;
             }
         }
-        if (window.resized) frame->flags |= FRAME_NEEDS_REFRESH;
+        if (Game.window->resized) frame->flags |= FRAME_NEEDS_REFRESH;
     }
 
     void is_selectlist(bool *result) {

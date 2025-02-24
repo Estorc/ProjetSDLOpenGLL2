@@ -207,6 +207,9 @@ FILE * createTempFile() {
 	char tempFile[MAX_PATH];
 
 	GetTempPathA(MAX_PATH, tempPath);  // Obtenir le répertoire temporaire
+
+	printf("Chemin temporaire : %s\n", tempPath);
+
 	GetTempFileNameA(tempPath, "tmp", 0, tempFile);  // Créer un fichier temporaire
 
 	printf("Fichier temporaire : %s\n", tempFile);

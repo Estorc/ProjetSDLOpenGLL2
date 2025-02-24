@@ -19,6 +19,12 @@ struct socket_request_listener {
     struct timeval timeout;
 };
 
+struct peer {
+    int socket;
+    struct socket_request_listener listener;
+    char *incoming_buffer;
+};
+
 #include "server.h"
 #include "client.h"
 #include "network_utils.h"

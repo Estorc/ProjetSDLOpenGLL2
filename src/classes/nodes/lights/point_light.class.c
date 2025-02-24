@@ -61,18 +61,18 @@ class PointLight : public Light {
             strcat(uniformsName[i], uniforms[i]);
         }
 
-        for (int i = 0; i < memoryCaches.shadersCount; i++) {
-            use_shader(memoryCaches.shaderCache[i].shader);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[0], this->globalPos);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], pointLight->color);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[2], pointLight->bias);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[3], pointLight->size);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[4], pointLight->constant);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], pointLight->linear);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], pointLight->quadratic);
-            set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[7], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
+        for (int i = 0; i < Game.memoryCaches->shadersCount; i++) {
+            use_shader(Game.memoryCaches->shaderCache[i].shader);
+            set_shader_vec3(Game.memoryCaches->shaderCache[i].shader, uniformsName[0], this->globalPos);
+            set_shader_vec3(Game.memoryCaches->shaderCache[i].shader, uniformsName[1], pointLight->color);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[2], pointLight->bias);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[3], pointLight->size);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[4], pointLight->constant);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[5], pointLight->linear);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[6], pointLight->quadratic);
+            set_shader_int(Game.memoryCaches->shaderCache[i].shader, uniformsName[7], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
         }
-        buffers.lightingBuffer.lightings[buffers.lightingBuffer.index++] = this;
+        Game.buffers->lightingBuffer.lightings[Game.buffers->lightingBuffer.index++] = this;
         lightsCount[POINT_LIGHT]++;
     }    
 
@@ -118,7 +118,7 @@ class PointLight : public Light {
             pointLight->quadratic = 0.032f;
         }
 
-        buffers.lightingBuffer.length++;
+        Game.buffers->lightingBuffer.length++;
         this->type = __type__;
         this::constructor(pointLight);
         this->flags |= NODE_EDITOR_FLAG;

@@ -22,11 +22,11 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
         GLint currentFBO;
         bool is_render_target = false;
         node::is_render_target(&is_render_target);
-        RenderTarget *lastRenderTarget = mainNodeTree.renderTarget;
+        RenderTarget *lastRenderTarget = Game.renderTarget;
         if (is_render_target) {
             glGetIntegerv(GL_FRAMEBUFFER_BINDING, &currentFBO);
             RenderTarget *renderTarget = (RenderTarget *) node->object;
-            mainNodeTree.renderTarget = renderTarget;
+            Game.renderTarget = renderTarget;
             glBindFramebuffer(GL_FRAMEBUFFER, renderTarget->fbo);
             glViewport(0, 0, renderTarget->w, renderTarget->h); // Make sure viewport matches FBO size
         }
@@ -39,7 +39,7 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
         for (int i = 0; i < node->length; i++) {
             render_scene(window, node->children[i], c, nodeModelMatrix, activeShader, shaders, viewportWidth, viewportHeight);
         }
-        if (settings.show_collision_boxes) {
+        if (Game.settings->show_collision_boxes) {
             bool is_body = false;
             node::is_body((&is_body));
             if (is_body) {
@@ -53,7 +53,7 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
         }
 
         if (is_render_target) {
-            mainNodeTree.renderTarget = lastRenderTarget;
+            Game.renderTarget = lastRenderTarget;
             glBindFramebuffer(GL_FRAMEBUFFER, currentFBO);
             glViewport(0, 0, viewportWidth, viewportHeight);
         }
@@ -63,18 +63,18 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
 
 void draw_shadow_map(Window *window, Node *root, Camera *c, WorldShaders *shaders, DepthMap *depthMap) {
     // Draw shadow map (render scene with depth map shader)
-    if (!settings.cast_shadows) return;
+    if (!Game.settings->cast_shadows) return;
     glCullFace(GL_FRONT);
     glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
     glBindFramebuffer(GL_FRAMEBUFFER, depthMap->frameBuffer);
     u8 lightsCount[LIGHTS_COUNT] = {0};
-    for (int i = 0, index = 0, pl = 0; i < buffers.lightingBuffer.index; i++, index++) {
-        (buffers.lightingBuffer.lightings[i])::configure_lighting(c,shaders, lightsCount, pl);
+    for (int i = 0, index = 0, pl = 0; i < Game.buffers->lightingBuffer.index; i++, index++) {
+        (Game.buffers->lightingBuffer.lightings[i])::configure_lighting(c,shaders, lightsCount, pl);
         glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthMap->texture, 0, index);
         glClear(GL_DEPTH_BUFFER_BIT);
         mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
         render_scene(window, root, c, modelMatrix, shaders->depth, shaders, SHADOW_WIDTH, SHADOW_HEIGHT);
-        if (buffers.lightingBuffer.lightings[i]->type == CLASS_TYPE_POINTLIGHT && pl < 5) {
+        if (Game.buffers->lightingBuffer.lightings[i]->type == CLASS_TYPE_POINTLIGHT && pl < 5) {
             i--;
             pl++;
         } else pl = 0;
@@ -102,7 +102,7 @@ void draw_scene(Window *window, Node *root, Camera *c, WorldShaders *shaders, De
     set_shader_int(shaders->render, "shadowMap", 3);
     set_shader_int(shaders->render, "metallicMap", 4);
     set_shader_int(shaders->render, "roughnessMap", 5);
-    set_shader_int(shaders->render, "shadowCastActive", settings.cast_shadows);
+    set_shader_int(shaders->render, "shadowCastActive", Game.settings->cast_shadows);
 
     mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
     render_scene(window, root, c, modelMatrix, shaders->render, shaders, window_width, window_height);

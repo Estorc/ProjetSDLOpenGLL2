@@ -1,6 +1,9 @@
 #include "../../raptiquax.h"
 #include "socket.h"
 
+
+#pragma region LOW LEVEL
+
 struct sockaddr_in get_address(const char * name, int port) {
     struct sockaddr_in server_addr;
     struct hostent *serveur_info;
@@ -41,3 +44,12 @@ int connect_socket_server(const char * name, int port) {
     }
     return sock;
 }
+
+
+int create_client(const char * name, int port) {
+    return connect_socket_server(name, port);
+}
+
+
+
+#pragma region HIGH LEVEL

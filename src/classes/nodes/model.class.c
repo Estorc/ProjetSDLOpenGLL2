@@ -62,9 +62,9 @@ class Model : public Node {
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         Model *model = (Model*) this->object;
-        for (int i = 0; i < memoryCaches.modelsCount; i++) {
-            if (memoryCaches.modelCache[i].model == model->data) {
-                fprintf(file, "(%s)", memoryCaches.modelCache[i].modelName);
+        for (int i = 0; i < Game.memoryCaches->modelsCount; i++) {
+            if (Game.memoryCaches->modelCache[i].model == model->data) {
+                fprintf(file, "(%s)", Game.memoryCaches->modelCache[i].modelName);
                 break;
             }
         }

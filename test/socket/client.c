@@ -92,6 +92,7 @@ void *input_server(void *arg) {
 void *output_server(void *arg) {
     while (!quit) {
         fgets(buffer, 511, stdin);
+        buffer[strlen(buffer) - 1] = 0;
         strcpy(buffer_stack[buffer_stack_index], buffer);
         buffer_stack_index++;
     }

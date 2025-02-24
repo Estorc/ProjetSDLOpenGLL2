@@ -12,7 +12,7 @@
 #include "../scripts/scripts.h"
 
 NEW_SCRIPT(script_no_fade_init)
-    window.fadeColor[3] = 0.0f;
+    Game.window->fadeColor[3] = 0.0f;
 END_SCRIPT(script_no_fade_init)
 
 NEW_SCRIPT(script_rotate_x)

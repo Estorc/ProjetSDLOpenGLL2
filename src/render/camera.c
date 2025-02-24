@@ -33,10 +33,10 @@ void camera_projection(Camera *c, WorldShaders *shaders) {
     vec3 viewPos;
     glm_vec3_negate_to(c->pos, viewPos);
 
-    for (int i = 0; i < memoryCaches.shadersCount; i++) {
-        use_shader(memoryCaches.shaderCache[i].shader);
-        glUniformMatrix4fv(glGetUniformLocation(memoryCaches.shaderCache[i].shader, "projection"), 1, GL_FALSE, (const GLfloat *) &projection);
-        glUniformMatrix4fv(glGetUniformLocation(memoryCaches.shaderCache[i].shader, "view"), 1, GL_FALSE, (const GLfloat *) &view);
-        glUniform3fv(glGetUniformLocation(memoryCaches.shaderCache[i].shader, "viewPos"), 1, (const GLfloat *) &viewPos);
+    for (int i = 0; i < Game.memoryCaches->shadersCount; i++) {
+        use_shader(Game.memoryCaches->shaderCache[i].shader);
+        glUniformMatrix4fv(glGetUniformLocation(Game.memoryCaches->shaderCache[i].shader, "projection"), 1, GL_FALSE, (const GLfloat *) &projection);
+        glUniformMatrix4fv(glGetUniformLocation(Game.memoryCaches->shaderCache[i].shader, "view"), 1, GL_FALSE, (const GLfloat *) &view);
+        glUniform3fv(glGetUniformLocation(Game.memoryCaches->shaderCache[i].shader, "viewPos"), 1, (const GLfloat *) &viewPos);
     }
 }

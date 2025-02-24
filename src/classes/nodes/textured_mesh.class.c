@@ -59,9 +59,9 @@ class TexturedMesh : public Node {
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         TextureMap texture = ((TexturedMesh*) this->object)->texture;
-        for (int i = 0; i < memoryCaches.texturesCount; i++) {
-            if (memoryCaches.textureCache[i].textureMap == texture) {
-                fprintf(file, "(%s)", memoryCaches.textureCache[i].textureName);
+        for (int i = 0; i < Game.memoryCaches->texturesCount; i++) {
+            if (Game.memoryCaches->textureCache[i].textureMap == texture) {
+                fprintf(file, "(%s)", Game.memoryCaches->textureCache[i].textureName);
                 break;
             }
         }

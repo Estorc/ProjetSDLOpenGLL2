@@ -62,8 +62,8 @@ class StaticBody : public Body {
         for (int i = 0; i < staticBody->length; i++) {
             check_collisions(staticBody->collisionsShapes[i]);
         }
-        memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], staticBody->collisionsShapes, staticBody->length * sizeof(staticBody->collisionsShapes[0]));
-        buffers.collisionBuffer.index += staticBody->length;
+        memcpy(&Game.buffers->collisionBuffer.collisionsShapes[Game.buffers->collisionBuffer.index], staticBody->collisionsShapes, staticBody->length * sizeof(staticBody->collisionsShapes[0]));
+        Game.buffers->collisionBuffer.index += staticBody->length;
     }
 
     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
@@ -85,7 +85,7 @@ class StaticBody : public Body {
         this::constructor(staticBody);
 
         staticBody->collisionsShapes = malloc(sizeof(Node *) * children_count);
-        buffers.collisionBuffer.length += children_count;
+        Game.buffers->collisionBuffer.length += children_count;
         POINTER_CHECK(staticBody->collisionsShapes);
         
         for (int i = 0; i < children_count; i++) {

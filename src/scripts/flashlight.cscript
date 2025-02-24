@@ -11,7 +11,7 @@ NEW_SCRIPT(flashlight)
 	float *targetRot = &this->attribute[0].f;
 
 
-    if (input.pressed_keys & KEY_F) {
+    if (Game.input->pressed_keys & KEY_F) {
 		play_sfx("assets/audio/sfx/flashlight-toggle.wav", MIX_MAX_VOLUME, 0);
         this->flags ^= NODE_LIGHT_ACTIVE;
     }

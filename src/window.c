@@ -143,10 +143,10 @@ void update_window(Window *window, Node *scene, Camera *c, WorldShaders *shaders
 void refresh_resolution() {
     int window_width, window_height;
     get_resolution(&window_width, &window_height);
-    SDL_FreeSurface(window.ui_surface);
-    window.ui_surface = SDL_CreateRGBSurface(0,window_width,window_height,32,0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000);
-    resize_msaa_framebuffer(&mainNodeTree.msaa);
-    window.resized = true;
+    SDL_FreeSurface(Game.window->ui_surface);
+    Game.window->ui_surface = SDL_CreateRGBSurface(0,window_width,window_height,32,0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000);
+    resize_msaa_framebuffer(Game.msaa);
+    Game.window->resized = true;
 }
 
 

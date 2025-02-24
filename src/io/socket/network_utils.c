@@ -1,6 +1,8 @@
 #include "../../raptiquax.h"
 #include "socket.h"
 
+#pragma region LOW LEVEL
+
 int initiate_socket() {
     #ifdef _WIN32
         WSADATA wsa;
@@ -73,4 +75,52 @@ int socket_request_receive(struct socket_request_listener * listener, int client
         return lg;
     }
     return -1;
+}
+
+#pragma region HIGH LEVEL
+
+int receive_message(void *p, char **buffer, int size, int timeout, int flags) {
+
+    struct peer *peer = (struct peer *)p;
+
+    free(*buffer);
+    *buffer = malloc(sizeof(char) * size);
+    int bytes_received = socket_request_receive(&peer->listener, peer->socket, *buffer, size, timeout, flags);
+    if (bytes_received != -1) {
+        if (peer->incoming_buffer && *peer->incoming_buffer) {
+            bytes_received += strlen(peer->incoming_buffer);
+            char *final_buffer = malloc(sizeof(char) * bytes_received);  
+            strcpy(final_buffer, peer->incoming_buffer);
+            strcat(final_buffer, *buffer);
+            free(*buffer);
+            *buffer = final_buffer;
+            free(peer->incoming_buffer);
+            peer->incoming_buffer = NULL;
+        }
+        char * last_msg = strrchr(*buffer, MSG_TERMINATOR);
+        if (!last_msg) {
+            free(peer->incoming_buffer);
+            peer->incoming_buffer = strdup(*buffer);
+            *buffer[0] = 0;
+        } else if (last_msg[1] != 0) {
+            free(peer->incoming_buffer);
+            peer->incoming_buffer = strdup(last_msg + 1);
+            last_msg[1] = 0;
+        }
+    }
+    return bytes_received;
+}
+
+
+int read_messages(int bytes_received, char *msg_buffer, void * p, int (*callback)(int, char *, void *)) {
+    char *context;
+    char *msg = strtok_r(msg_buffer, "|", &context);
+
+    for (; msg; msg = strtok_r(NULL, "|", &context)) {
+        if (callback(bytes_received, msg, p)) {
+            return 1;
+        }
+    }
+
+    return 0;
 }

@@ -114,10 +114,10 @@ Node *load_node(FILE *file, Camera **c, Script *scripts, Node *editor) {
 
 
 Node *load_scene(char *path, Camera **c, Script *scripts) {
-    buffers.collisionBuffer.length = 0;
-    buffers.lightingBuffer.length = 0;
-    buffers.collisionBuffer.index = 0;
-    buffers.lightingBuffer.index = 0;
+    Game.buffers->collisionBuffer.length = 0;
+    Game.buffers->lightingBuffer.length = 0;
+    Game.buffers->collisionBuffer.index = 0;
+    Game.buffers->lightingBuffer.index = 0;
     FILE * file = fopen(path, "r");
 
     if (!file) return NULL;
@@ -131,10 +131,10 @@ Node *load_scene(char *path, Camera **c, Script *scripts) {
     root->parent = NULL;
     root::print(0);
 
-    buffers.collisionBuffer.collisionsShapes = realloc(buffers.collisionBuffer.collisionsShapes, sizeof(Node *) * buffers.collisionBuffer.length);
+    Game.buffers->collisionBuffer.collisionsShapes = realloc(Game.buffers->collisionBuffer.collisionsShapes, sizeof(Node *) * Game.buffers->collisionBuffer.length);
     // Check if the memory allocation was successful
 
-    buffers.lightingBuffer.lightings = realloc(buffers.lightingBuffer.lightings, sizeof(Node *) * buffers.lightingBuffer.length);
+    Game.buffers->lightingBuffer.lightings = realloc(Game.buffers->lightingBuffer.lightings, sizeof(Node *) * Game.buffers->lightingBuffer.length);
     // Check if the memory allocation was successful
 
     fclose(file);

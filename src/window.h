@@ -61,7 +61,7 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
 void refresh_resolution();
 
 /**
- * @brief Updates the window by rendering the scene and swapping the buffers.
+ * @brief Updates the window by rendering the scene and swapping the Game.buffers->
  * 
  * @param window Pointer to the Window structure containing 
  *               the window's state and timing information.
@@ -98,5 +98,4 @@ void free_window(Window *window);
 
 /** @} */ // end of WindowManagement group
 
-extern Window window;
 #endif

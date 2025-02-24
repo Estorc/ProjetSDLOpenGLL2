@@ -150,7 +150,7 @@ int update_input(Input *input) {
                     input->mouse.lastY = event.motion.y;
                 }
                 int window_width, window_height;
-                SDL_GetWindowSize(window.sdl_window, &window_width, &window_height);
+                SDL_GetWindowSize(Game.window->sdl_window, &window_width, &window_height);
                 int res_width, res_height;
                 get_resolution(&res_width, &res_height);
 

@@ -41,10 +41,6 @@ struct RenderTarget;
 
 typedef struct Tree {
     struct Node *root; /**< The root node of the tree structure. */
-    struct Camera *camera; /**< The camera associated with the tree. */
-    struct MSAA msaa; /**< The MSAA settings for the tree. */
-    struct RenderTarget *renderTarget; /**< The render target for the tree. */
-    Script *scripts; /**< The scripts associated with the tree. */
 } Tree;
 
 /**
@@ -93,15 +89,5 @@ enum NodeFlags {
 
 #define NODE_ACTIVE_AND_VISIBLE NODE_ACTIVE | NODE_VISIBLE // 0000 0011
 #define NODE_DEFAULT_FLAGS NODE_ACTIVE_AND_VISIBLE // 0000 0011
-
-
-
-/**
- * @brief The main tree structure used in the storage system.
- *
- * This external variable represents the primary tree structure that is
- * utilized for storing and managing nodes within the system.
- */
-extern Tree mainNodeTree;
 
 #endif

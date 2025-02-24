@@ -11,8 +11,8 @@ NEW_SCRIPT(script_cc_camera_intro)
 
 	if (glm_vec3_norm2(targetRot) == 0) glm_vec3_copy(this->rot, targetRot);
 
-	targetRot[1] -= fmod((f32) (input.mouse.dx) * delta * 30.0, 360.0);
-	targetRot[0] -= fmod((f32) (input.mouse.dy) * delta * 30.0, 360.0);
+	targetRot[1] -= fmod((f32) (Game.input->mouse.dx) * delta * 30.0, 360.0);
+	targetRot[0] -= fmod((f32) (Game.input->mouse.dy) * delta * 30.0, 360.0);
 	targetRot[0] = CLAMP(-90,targetRot[0],90);
 
 	vec3_approach(this->rot, targetRot, (0.1/delta));
@@ -29,8 +29,8 @@ NEW_SCRIPT(script_cc_camera_player)
 
 		if (glm_vec3_norm2(targetRot) == 0) glm_vec3_copy(this->rot, targetRot);
 
-		targetRot[1] -= fmod((f32) (input.mouse.dx) * delta * 100.0, 360.0);
-		targetRot[0] -= fmod((f32) (input.mouse.dy) * delta * 100.0, 360.0);
+		targetRot[1] -= fmod((f32) (Game.input->mouse.dx) * delta * 100.0, 360.0);
+		targetRot[0] -= fmod((f32) (Game.input->mouse.dy) * delta * 100.0, 360.0);
 		targetRot[0] = CLAMP(-90,targetRot[0],90);
 
 	}

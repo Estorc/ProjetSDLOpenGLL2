@@ -37,7 +37,7 @@ class Area : public PhysicalNode {
         SUPER(initialize_node);
         if (area) {
             area->collectedLength = 0;
-            area->collectedNodes = malloc(buffers.collisionBuffer.length * sizeof(CollectedNode));
+            area->collectedNodes = malloc(Game.buffers->collisionBuffer.length * sizeof(CollectedNode));
             POINTER_CHECK(area->collectedNodes);
         }
     }
@@ -106,8 +106,8 @@ class Area : public PhysicalNode {
             glm_vec3_copy(this->globalScale, scale);
             check_collisions(area->collisionsShapes[i]);
         }
-        memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], area->collisionsShapes, area->length * sizeof(area->collisionsShapes[0]));
-        buffers.collisionBuffer.index += area->length;
+        memcpy(&Game.buffers->collisionBuffer.collisionsShapes[Game.buffers->collisionBuffer.index], area->collisionsShapes, area->length * sizeof(area->collisionsShapes[0]));
+        Game.buffers->collisionBuffer.index += area->length;
     }
 
     void get_collisions_shapes(Node ****shapes, u8 **length) {
@@ -134,7 +134,7 @@ class Area : public PhysicalNode {
         this::constructor(area);
 
         area->collisionsShapes = malloc(sizeof(Node *) * children_count);
-        buffers.collisionBuffer.length += children_count;
+        Game.buffers->collisionBuffer.length += children_count;
         POINTER_CHECK(area->collisionsShapes);
         
         for (int i = 0; i < children_count; i++) {

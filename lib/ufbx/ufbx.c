@@ -8704,21 +8704,21 @@ static bool ufbxi_deflate_task_fn(ufbxi_task *task)
 	ufbxi_deflate_task *t = (ufbxi_deflate_task*)task->data;
 
 	ufbx_inflate_input input; // ufbxi_uninit
-	input.total_size = t->encoded_size;
-	input.data = t->encoded_data;
-	input.data_size = t->encoded_size;
-	input.no_header = false;
-	input.no_checksum = false;
-	input.internal_fast_bits = 0;
-	input.progress_cb.fn = NULL;
-	input.progress_cb.user = NULL;
-	input.progress_size_before = 0;
-	input.progress_size_after = 0;
-	input.progress_interval_hint = 0;
-	input.buffer = NULL;
-	input.buffer_size = 0;
-	input.read_fn = NULL;
-	input.read_user = NULL;
+	Game.input->total_size = t->encoded_size;
+	Game.input->data = t->encoded_data;
+	Game.input->data_size = t->encoded_size;
+	Game.input->no_header = false;
+	Game.input->no_checksum = false;
+	Game.input->internal_fast_bits = 0;
+	Game.input->progress_cb.fn = NULL;
+	Game.input->progress_cb.user = NULL;
+	Game.input->progress_size_before = 0;
+	Game.input->progress_size_after = 0;
+	Game.input->progress_interval_hint = 0;
+	Game.input->buffer = NULL;
+	Game.input->buffer_size = 0;
+	Game.input->read_fn = NULL;
+	Game.input->read_user = NULL;
 
 	size_t decoded_data_size = t->src_elem_size * t->array_size;
 	ptrdiff_t res = ufbx_inflate(t->decoded_data, decoded_data_size, &input, t->inflate_retain);
@@ -8957,24 +8957,24 @@ ufbxi_nodiscard ufbxi_noinline static int ufbxi_binary_parse_node(ufbxi_context 
 
 				// Inflate the data from the user-provided IO buffer / read callbacks
 				ufbx_inflate_input input;
-				input.total_size = encoded_size;
-				input.data = uc->data;
-				input.data_size = uc->data_size;
-				input.no_header = false;
-				input.no_checksum = false;
-				input.internal_fast_bits = 0;
+				Game.input->total_size = encoded_size;
+				Game.input->data = uc->data;
+				Game.input->data_size = uc->data_size;
+				Game.input->no_header = false;
+				Game.input->no_checksum = false;
+				Game.input->internal_fast_bits = 0;
 
 				if (uc->opts.progress_cb.fn) {
-					input.progress_cb = uc->opts.progress_cb;
-					input.progress_size_before = arr_begin;
-					input.progress_size_after = uc->progress_bytes_total - arr_end;
-					input.progress_interval_hint = uc->progress_interval;
+					Game.input->progress_cb = uc->opts.progress_cb;
+					Game.input->progress_size_before = arr_begin;
+					Game.input->progress_size_after = uc->progress_bytes_total - arr_end;
+					Game.input->progress_interval_hint = uc->progress_interval;
 				} else {
-					input.progress_cb.fn = NULL;
-					input.progress_cb.user = NULL;
-					input.progress_size_before = 0;
-					input.progress_size_after = 0;
-					input.progress_interval_hint = 0;
+					Game.input->progress_cb.fn = NULL;
+					Game.input->progress_cb.user = NULL;
+					Game.input->progress_size_before = 0;
+					Game.input->progress_size_after = 0;
+					Game.input->progress_interval_hint = 0;
 				}
 
 				// If the encoded array is larger than the data we have currently buffered
@@ -8985,19 +8985,19 @@ ufbxi_nodiscard ufbxi_noinline static int ufbxi_binary_parse_node(ufbxi_context 
 				// usual (given that we clear the `uc->data/_size` buffer below).
 				// NOTE: We _cannot_ share `read_buffer` if we plan to read later from it
 				// as `ufbx_inflate()` overwrites parts of it with zeroes.
-				if (encoded_size > input.data_size) {
-					input.buffer = uc->read_buffer;
-					input.buffer_size = uc->read_buffer_size;
-					input.read_fn = uc->read_fn;
-					input.read_user = uc->read_user;
-					uc->data_offset += encoded_size - input.data_size;
-					uc->data += input.data_size;
+				if (encoded_size > Game.input->data_size) {
+					Game.input->buffer = uc->read_buffer;
+					Game.input->buffer_size = uc->read_buffer_size;
+					Game.input->read_fn = uc->read_fn;
+					Game.input->read_user = uc->read_user;
+					uc->data_offset += encoded_size - Game.input->data_size;
+					uc->data += Game.input->data_size;
 					uc->data_size = 0;
 				} else {
-					input.buffer = NULL;
-					input.buffer_size = 0;
-					input.read_fn = NULL;
-					input.read_user = NULL;
+					Game.input->buffer = NULL;
+					Game.input->buffer_size = 0;
+					Game.input->read_fn = NULL;
+					Game.input->read_user = NULL;
 					uc->data += encoded_size;
 					uc->data_size -= encoded_size;
 					ufbxi_check(ufbxi_resume_progress(uc));
@@ -28721,14 +28721,14 @@ static ufbxi_noinline int ufbxi_subdivide_attrib(ufbxi_subdivide_context *sc, uf
 	ufbx_assert(attrib->value_reals >= 2 && attrib->value_reals <= 4);
 
 	ufbxi_subdivide_layer_input input; // ufbxi_uninit
-	input.sum_fn = ufbxi_real_sum_fns[attrib->value_reals - 1];
-	input.sum_user = NULL;
-	input.values = attrib->values.data;
-	input.indices = attrib->indices.data;
-	input.stride = attrib->value_reals * sizeof(ufbx_real);
-	input.boundary = boundary;
-	input.check_split_data = check_split_data;
-	input.ignore_indices = false;
+	Game.input->sum_fn = ufbxi_real_sum_fns[attrib->value_reals - 1];
+	Game.input->sum_user = NULL;
+	Game.input->values = attrib->values.data;
+	Game.input->indices = attrib->indices.data;
+	Game.input->stride = attrib->value_reals * sizeof(ufbx_real);
+	Game.input->boundary = boundary;
+	Game.input->check_split_data = check_split_data;
+	Game.input->ignore_indices = false;
 
 	ufbxi_subdivide_layer_output output; // ufbxi_uninit
 	ufbxi_check_err(&sc->error, ufbxi_subdivide_layer(sc, &output, &input));
@@ -28804,14 +28804,14 @@ static ufbxi_noinline int ufbxi_subdivide_weights(ufbxi_subdivide_context *sc, u
 	ufbxi_check_err(&sc->error, src);
 
 	ufbxi_subdivide_layer_input input; // ufbxi_uninit
-	input.sum_fn = ufbxi_subdivide_sum_vertex_weights;
-	input.sum_user = sc;
-	input.values = src;
-	input.indices = sc->src_mesh.vertex_indices.data;
-	input.stride = sizeof(ufbxi_subdivision_vertex_weights);
-	input.boundary = sc->opts.boundary;
-	input.check_split_data = false;
-	input.ignore_indices = true;
+	Game.input->sum_fn = ufbxi_subdivide_sum_vertex_weights;
+	Game.input->sum_user = sc;
+	Game.input->values = src;
+	Game.input->indices = sc->src_mesh.vertex_indices.data;
+	Game.input->stride = sizeof(ufbxi_subdivision_vertex_weights);
+	Game.input->boundary = sc->opts.boundary;
+	Game.input->check_split_data = false;
+	Game.input->ignore_indices = true;
 
 	sc->total_weights = 0;
 

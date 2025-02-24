@@ -71,11 +71,4 @@ void *queue_pop(Queue *queue);
  */
 void queue_free(Queue *queue);
 
-/**
- * @brief External queue instance.
- *
- * This is an external instance of a queue that can be used globally.
- */
-extern Queue callQueue;
-
 /** @} */ // end of Queue group

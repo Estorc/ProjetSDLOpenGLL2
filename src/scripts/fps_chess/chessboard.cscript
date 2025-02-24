@@ -261,7 +261,7 @@ NEW_SCRIPT(script_fc_chessboard_init)
     for (int i = 0; i < 8*8; i++) {
         FILE * file = fopen("assets/scenes/fps_chess/pieces/node_piece.scene", "r");
         if (file) {
-            Node *piece = load_node(file, NULL, mainNodeTree.scripts, NULL);
+            Node *piece = load_node(file, NULL, Game.scripts, NULL);
             MALLOC_ATTRIBUTE(piece, 2);
             this->attribute[i].node = piece;
             piece->attribute[0].i = classic_chessboard[i];
@@ -272,8 +272,8 @@ NEW_SCRIPT(script_fc_chessboard_init)
             chessboard::add_child_and_realloc(piece);
             fclose(file);
         }
-        buffers.collisionBuffer.collisionsShapes = realloc(buffers.collisionBuffer.collisionsShapes, sizeof(Node *) * buffers.collisionBuffer.length);
-        buffers.lightingBuffer.lightings = realloc(buffers.lightingBuffer.lightings, sizeof(Node *) * buffers.lightingBuffer.length);
+        Game.buffers->collisionBuffer.collisionsShapes = realloc(Game.buffers->collisionBuffer.collisionsShapes, sizeof(Node *) * Game.buffers->collisionBuffer.length);
+        Game.buffers->lightingBuffer.lightings = realloc(Game.buffers->lightingBuffer.lightings, sizeof(Node *) * Game.buffers->lightingBuffer.length);
     }
     play_music("assets/audio/musics/fps_chess_idle.mp3", MIX_MAX_VOLUME, -1);
 END_SCRIPT(script_fc_chessboard_init)
@@ -302,7 +302,7 @@ NEW_SCRIPT(script_fc_chessboard_signal)
                 }
                 Node **piece = &chessboard[index];
                 if (*piece) {
-                    if (input.mouse.released_button == SDL_BUTTON_LEFT) {
+                    if (Game.input->mouse.released_button == SDL_BUTTON_LEFT) {
                         Node **lastSelectPiece = &chessboard[*lastSelected];
                         if (!((*lastSelectPiece)->attribute[0].i & FC_SELECTED)) lastSelectPiece = NULL;
                         if (*lastSelected != index) {
@@ -366,13 +366,13 @@ NEW_SCRIPT(script_fc_chessboard_update)
             piece->attribute[0].i &= ~FC_HOVERED;
         }
         piece = chessboard->children[*lastSelected];
-        if (piece && input.mouse.released_button == SDL_BUTTON_LEFT) {
+        if (piece && Game.input->mouse.released_button == SDL_BUTTON_LEFT) {
             piece->attribute[0].i &= ~FC_SELECTED;
         }
     }
     *isHovered = false;
-    if (window.fadeColor[3] > 0.0f)
-        window.fadeColor[3] -= 0.01f;
+    if (Game.window->fadeColor[3] > 0.0f)
+        Game.window->fadeColor[3] -= 0.01f;
 END_SCRIPT(script_fc_chessboard_update)
 
 

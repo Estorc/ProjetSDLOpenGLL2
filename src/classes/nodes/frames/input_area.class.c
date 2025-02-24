@@ -89,34 +89,34 @@ class InputArea : public Frame {
         w = frame->size[0];
         h = frame->size[1];
         if (inputArea->state == BUTTON_STATE_PRESSED) {
-            if (input.text_input) {
-                sprintf(inputArea->text, "%s", input.inputBuffer);
+            if (Game.input->text_input) {
+                sprintf(inputArea->text, "%s", Game.input->inputBuffer);
                 this::refresh();
             }
-            if (input.released_keys & KEY_ENTER || ((input.mouse.released_button == SDL_BUTTON_LEFT || input.mouse.pressed_button == SDL_BUTTON_LEFT) && !(input.mouse.x > x &&
-                input.mouse.x < x+w &&
-                input.mouse.y > y &&
-                input.mouse.y < y+h)))
+            if (Game.input->released_keys & KEY_ENTER || ((Game.input->mouse.released_button == SDL_BUTTON_LEFT || Game.input->mouse.pressed_button == SDL_BUTTON_LEFT) && !(Game.input->mouse.x > x &&
+                Game.input->mouse.x < x+w &&
+                Game.input->mouse.y > y &&
+                Game.input->mouse.y < y+h)))
                 inputArea->state = BUTTON_STATE_NORMAL;
         } else {
-            if (input.mouse.x > x &&
-                input.mouse.x < x+w &&
-                input.mouse.y > y &&
-                input.mouse.y < y+h) {
+            if (Game.input->mouse.x > x &&
+                Game.input->mouse.x < x+w &&
+                Game.input->mouse.y > y &&
+                Game.input->mouse.y < y+h) {
 
                 inputArea->state = BUTTON_STATE_HOVERED;
 
-                if (input.mouse.pressed_button == SDL_BUTTON_LEFT) {
+                if (Game.input->mouse.pressed_button == SDL_BUTTON_LEFT) {
                     inputArea->state = BUTTON_STATE_PRESSED;
                     SDL_StartTextInput();
-                    strcpy(input.inputBuffer, inputArea->text);
+                    strcpy(Game.input->inputBuffer, inputArea->text);
                 }
 
             } else {
                 inputArea->state = BUTTON_STATE_NORMAL;
             }
         }
-        if (window.resized) frame->flags |= FRAME_NEEDS_REFRESH;
+        if (Game.window->resized) frame->flags |= FRAME_NEEDS_REFRESH;
     }
 
     void is_input_area(bool *result) {

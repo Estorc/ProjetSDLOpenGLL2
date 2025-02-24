@@ -21,13 +21,13 @@ END_SCRIPT(script_fc_title_screen_init)
 NEW_SCRIPT(script_fc_title_screen_camera)
 	GET_READY_PARAMETERS();
 
-	if (mainNodeTree.root->attribute[0].b) {
-		window.fadeColor[3] += 0.01f;
-		if (window.fadeColor[3] >= 1.0f)
+	if (Game.mainTree->root->attribute[0].b) {
+		Game.window->fadeColor[3] += 0.01f;
+		if (Game.window->fadeColor[3] >= 1.0f)
 			prepare_change_scene("assets/scenes/fps_chess/play_room_normal.scene");
 	} else {
-		if (window.fadeColor[3] > 0.0f)
-			window.fadeColor[3] -= 0.01f;
+		if (Game.window->fadeColor[3] > 0.0f)
+			Game.window->fadeColor[3] -= 0.01f;
 	}
 	this->rot[1] += 0.7f;
 	const float distance = 25.0f;
@@ -42,10 +42,10 @@ NEW_SCRIPT(script_fc_play_game_button)
 		case SIGNAL_BUTTON_CLICKED:
 			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
             //((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
-			//mainNodeTree.root->attribute[0].b = true;
-			mainNodeTree.root->children[11]->children[1]->flags &= ~NODE_ACTIVE;
-			mainNodeTree.root->children[11]->children[2]->flags |= NODE_ACTIVE;
-			mainNodeTree.root->children[11]->children[2]->flags |= NODE_VISIBLE;
+			//Game.mainTree->root->attribute[0].b = true;
+			Game.mainTree->root->children[11]->children[1]->flags &= ~NODE_ACTIVE;
+			Game.mainTree->root->children[11]->children[2]->flags |= NODE_ACTIVE;
+			Game.mainTree->root->children[11]->children[2]->flags |= NODE_VISIBLE;
 			break;
 		case SIGNAL_BUTTON_HOVERED:
 			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
@@ -62,11 +62,11 @@ switch (signal) {
 	case SIGNAL_BUTTON_CLICKED:
 		play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
 		//((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
-		//mainNodeTree.root->attribute[0].b = true;
-		mainNodeTree.root->children[11]->children[2]->flags &= ~NODE_VISIBLE;
-		mainNodeTree.root->children[11]->children[3]->flags &= ~NODE_VISIBLE;
-		mainNodeTree.root->children[11]->children[3]->flags &= ~NODE_ACTIVE;
-		mainNodeTree.root->attribute[0].b = true;
+		//Game.mainTree->root->attribute[0].b = true;
+		Game.mainTree->root->children[11]->children[2]->flags &= ~NODE_VISIBLE;
+		Game.mainTree->root->children[11]->children[3]->flags &= ~NODE_VISIBLE;
+		Game.mainTree->root->children[11]->children[3]->flags &= ~NODE_ACTIVE;
+		Game.mainTree->root->attribute[0].b = true;
 		break;
 	case SIGNAL_BUTTON_HOVERED:
 		play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
@@ -82,10 +82,10 @@ switch (signal) {
 	case SIGNAL_BUTTON_CLICKED:
 		play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
 		//((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
-		//mainNodeTree.root->attribute[0].b = true;
-		mainNodeTree.root->children[11]->children[2]->flags &= ~NODE_ACTIVE;
-		mainNodeTree.root->children[11]->children[3]->flags |= NODE_ACTIVE;
-		mainNodeTree.root->children[11]->children[3]->flags |= NODE_VISIBLE;
+		//Game.mainTree->root->attribute[0].b = true;
+		Game.mainTree->root->children[11]->children[2]->flags &= ~NODE_ACTIVE;
+		Game.mainTree->root->children[11]->children[3]->flags |= NODE_ACTIVE;
+		Game.mainTree->root->children[11]->children[3]->flags |= NODE_VISIBLE;
 		break;
 	case SIGNAL_BUTTON_HOVERED:
 		play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
@@ -101,7 +101,7 @@ NEW_SCRIPT(script_fc_exit_menu)
 		case SIGNAL_BUTTON_CLICKED:
 			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
 			//((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
-			//mainNodeTree.root->attribute[0].b = true;
+			//Game.mainTree->root->attribute[0].b = true;
 			int id = (this->parent->parent->parent->parent)::(int)index_of_child(this->parent->parent->parent);
 			this->parent->parent->parent->parent->children[id-1]->flags |= NODE_ACTIVE;
 			this->parent->parent->parent->parent->children[id]->flags &= ~NODE_ACTIVE;
@@ -121,7 +121,7 @@ NEW_SCRIPT(script_fc_settings_game_button)
 	switch (signal) {
 		case SIGNAL_BUTTON_CLICKED:
 			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
-			window.fadeColor[3] = 0.0f;
+			Game.window->fadeColor[3] = 0.0f;
 			prepare_change_scene("assets/scenes/settings/main.scene");
 			break;
 		case SIGNAL_BUTTON_HOVERED:
@@ -138,7 +138,7 @@ NEW_SCRIPT(script_fc_quit_game_button)
 	switch (signal) {
 		case SIGNAL_BUTTON_CLICKED:
 			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
-			queue_push(&callQueue, NULL);
+			queue_push(Game.callQueue, NULL);
 			break;
 		case SIGNAL_BUTTON_HOVERED:
 			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);

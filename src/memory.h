@@ -108,11 +108,6 @@ typedef struct MemoryCaches {
 } MemoryCaches;
 
 /**
- * @brief External variable representing the memory caches.
- */
-extern MemoryCaches memoryCaches;
-
-/**
  * @brief Initializes the memory cache.
  * 
  * This function sets up the memory cache for use in the project.

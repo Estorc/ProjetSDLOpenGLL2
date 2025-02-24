@@ -116,9 +116,9 @@ class Frame : public Node {
 
         int window_width, window_height;
         get_resolution(&window_width, &window_height);
-        if (mainNodeTree.renderTarget) {
-            window_width = mainNodeTree.renderTarget->w;
-            window_height = mainNodeTree.renderTarget->h;
+        if (Game.renderTarget) {
+            window_width = Game.renderTarget->w;
+            window_height = Game.renderTarget->h;
         }
         vec2 containerSize = {window_width, window_height};
         Frame *frame = (Frame *) this->object;
@@ -237,14 +237,14 @@ class Frame : public Node {
     void update() {
         Frame *frame = (Frame *) this->object;
         if (frame->flags & OVERFLOW_SCROLL) {
-            frame->scrollTarget[1] -= input.mouse.scroll_y/8.0f;
+            frame->scrollTarget[1] -= Game.input->mouse.scroll_y/8.0f;
             if (frame->scrollTarget[1] < 0.0f) frame->scrollTarget[1] = 0.0f;
             if (frame->scrollTarget[1] > frame->contentSize[1] - 1.0f) frame->scrollTarget[1] = frame->contentSize[1] - 1.0f;
             frame->scroll[1] += (frame->scrollTarget[1] - frame->scroll[1]) * 0.5f;
             if (fabs(frame->scrollTarget[1] - frame->scroll[1]) <= 0.01f) frame->scroll[1] = frame->scrollTarget[1]; // Prevents never-ending scrolling
-            if (input.mouse.scroll_y || frame->scrollTarget[1] != frame->scroll[1]) frame->flags |= FRAME_NEEDS_REFRESH;
+            if (Game.input->mouse.scroll_y || frame->scrollTarget[1] != frame->scroll[1]) frame->flags |= FRAME_NEEDS_REFRESH;
         }
-        if (window.resized) frame->flags |= FRAME_NEEDS_REFRESH;
+        if (Game.window->resized) frame->flags |= FRAME_NEEDS_REFRESH;
     }
 
 
@@ -352,9 +352,9 @@ class Frame : public Node {
         if (frame->theme && frame->theme->parent == frame) {
             fprintf(file, ",[");
             TextureMap texture = frame->theme->windowSkin;
-            for (int i = 0; i < memoryCaches.texturesCount; i++) {
-                if (memoryCaches.textureCache[i].textureMap == texture) {
-                    fprintf(file, "%s,", memoryCaches.textureCache[i].textureName);
+            for (int i = 0; i < Game.memoryCaches->texturesCount; i++) {
+                if (Game.memoryCaches->textureCache[i].textureMap == texture) {
+                    fprintf(file, "%s,", Game.memoryCaches->textureCache[i].textureName);
                     break;
                 }
             }

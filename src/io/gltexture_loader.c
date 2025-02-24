@@ -49,12 +49,12 @@ SDL_Surface * flip_y_surface(SDL_Surface *surface) {
 
 TextureMap load_texture_from_path(char * path, GLenum format, bool yReversed) {
 
-    for (int i = 0; i < memoryCaches.texturesCount; i++) {
-        if (!strcmp(memoryCaches.textureCache[i].textureName, path)) {
+    for (int i = 0; i < Game.memoryCaches->texturesCount; i++) {
+        if (!strcmp(Game.memoryCaches->textureCache[i].textureName, path)) {
             #ifdef DEBUG
                 PRINT_INFO("Texture loaded from cache!\n");
             #endif
-            return memoryCaches.textureCache[i].textureMap;
+            return Game.memoryCaches->textureCache[i].textureMap;
         }
     }
     SDL_Surface* textureSurface = IMG_Load(path);
@@ -107,9 +107,9 @@ TextureMap load_texture_from_path(char * path, GLenum format, bool yReversed) {
     glGenerateMipmap(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 0);
 
-    memoryCaches.textureCache = realloc(memoryCaches.textureCache, sizeof (TextureCache) * (++memoryCaches.texturesCount));
-    memoryCaches.textureCache[memoryCaches.texturesCount-1].textureMap = texture;
-    strcpy(memoryCaches.textureCache[memoryCaches.texturesCount-1].textureName, path);
+    Game.memoryCaches->textureCache = realloc(Game.memoryCaches->textureCache, sizeof (TextureCache) * (++Game.memoryCaches->texturesCount));
+    Game.memoryCaches->textureCache[Game.memoryCaches->texturesCount-1].textureMap = texture;
+    strcpy(Game.memoryCaches->textureCache[Game.memoryCaches->texturesCount-1].textureName, path);
     
 
     if (yReversed) SDL_FreeSurface(correctedSurface);

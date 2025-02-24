@@ -69,22 +69,22 @@ class SpotLight : public Light {
         glm_vec3_rotate(dir, to_radians(this->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
         glm_vec3_rotate(dir, to_radians(this->globalRot[2]), (vec3){0.0f, 0.0f, 1.0f});
 
-        for (int i = 0; i < memoryCaches.shadersCount; i++) {
-            use_shader(memoryCaches.shaderCache[i].shader);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[0], this->globalPos);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], dir);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[2], spotLight->color);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[3], spotLight->bias);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[4], spotLight->size);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], spotLight->constant);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], spotLight->linear);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[7], spotLight->quadratic);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[8], spotLight->cutOff);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[9], spotLight->outerCutOff);
-            set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[10], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
+        for (int i = 0; i < Game.memoryCaches->shadersCount; i++) {
+            use_shader(Game.memoryCaches->shaderCache[i].shader);
+            set_shader_vec3(Game.memoryCaches->shaderCache[i].shader, uniformsName[0], this->globalPos);
+            set_shader_vec3(Game.memoryCaches->shaderCache[i].shader, uniformsName[1], dir);
+            set_shader_vec3(Game.memoryCaches->shaderCache[i].shader, uniformsName[2], spotLight->color);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[3], spotLight->bias);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[4], spotLight->size);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[5], spotLight->constant);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[6], spotLight->linear);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[7], spotLight->quadratic);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[8], spotLight->cutOff);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[9], spotLight->outerCutOff);
+            set_shader_int(Game.memoryCaches->shaderCache[i].shader, uniformsName[10], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
         }
 
-        buffers.lightingBuffer.lightings[buffers.lightingBuffer.index++] = this;
+        Game.buffers->lightingBuffer.lightings[Game.buffers->lightingBuffer.index++] = this;
         lightsCount[SPOT_LIGHT]++;
     }   
 
@@ -135,7 +135,7 @@ class SpotLight : public Light {
             spotLight->outerCutOff = 50.0f;
         }
 
-        buffers.lightingBuffer.length++;
+        Game.buffers->lightingBuffer.length++;
         this->type = __type__;
         this::constructor(spotLight);
         this->flags |= NODE_EDITOR_FLAG;

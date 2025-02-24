@@ -1,6 +1,8 @@
 #include "../../raptiquax.h"
 #include "socket.h"
 
+#pragma region LOW LEVEL
+
 struct sockaddr_in create_address(int port) {
     struct sockaddr_in server_addr;
     memset(&server_addr, 0, sizeof(server_addr));
@@ -38,3 +40,5 @@ int listen_socket(int sock) {
     }
     return 0;
 }
+
+#pragma region HIGH LEVEL

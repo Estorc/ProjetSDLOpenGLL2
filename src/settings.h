@@ -30,5 +30,4 @@ typedef struct Settings {
 
 void get_resolution(int *width, int *height);
 extern const char resolutionsText[RES_COUNT][256];
-extern Settings settings;
 #endif

@@ -72,19 +72,19 @@ END_SCRIPT(st_signal)
 NEW_SCRIPT(st_show_fps_init)
     Frame *frame = (Frame*) this->object;
     Button *button = (Button*) frame->button;
-    button->checked = &settings.show_fps;
+    button->checked = &Game.settings->show_fps;
 END_SCRIPT(st_show_fps_init)
 
 NEW_SCRIPT(st_cast_shadows_init)
     Frame *frame = (Frame*) this->object;
     Button *button = (Button*) frame->button;
-    button->checked = &settings.cast_shadows;
+    button->checked = &Game.settings->cast_shadows;
 END_SCRIPT(st_cast_shadows_init)
 
 NEW_SCRIPT(st_fullscreen_init)
     Frame *frame = (Frame*) this->object;
     Button *button = (Button*) frame->button;
-    button->checked = &settings.window_fullscreen;
+    button->checked = &Game.settings->window_fullscreen;
 END_SCRIPT(st_fullscreen_init)
 
 NEW_SCRIPT(st_fullscreen_signal)
@@ -92,10 +92,10 @@ NEW_SCRIPT(st_fullscreen_signal)
     switch (signal) {
         case SIGNAL_BUTTON_CLICKED:
             play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
-            if (settings.window_fullscreen) {
-                SDL_SetWindowFullscreen(window.sdl_window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+            if (Game.settings->window_fullscreen) {
+                SDL_SetWindowFullscreen(Game.window->sdl_window, SDL_WINDOW_FULLSCREEN_DESKTOP);
             } else {
-                SDL_SetWindowFullscreen(window.sdl_window, 0);
+                SDL_SetWindowFullscreen(Game.window->sdl_window, 0);
             }
             break;
         case SIGNAL_BUTTON_HOVERED:
@@ -113,14 +113,14 @@ NEW_SCRIPT(st_res)
 
     Frame *frame = (Frame*) this->object;
     SelectList *selectList = frame->selectList;
-    selectList->selected = &settings.resolution;
+    selectList->selected = &Game.settings->resolution;
     if (selectList->count == 1 && !(frame->flags & FRAME_NEEDS_REFRESH)) {
         selectList->options = (char (*)[256]) resolutionsText;
         selectList->count = RES_COUNT;
         this::refreshOptions();
     }
-    if (*oldRes != settings.resolution) {
-        queue_push(&callQueue, refresh_resolution);
+    if (*oldRes != Game.settings->resolution) {
+        queue_push(Game.callQueue, refresh_resolution);
     }
-    *oldRes = settings.resolution;
+    *oldRes = Game.settings->resolution;
 END_SCRIPT(st_res)
