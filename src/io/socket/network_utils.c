@@ -126,18 +126,15 @@ int read_messages(int bytes_received, char *msg_buffer, void * p, int (*callback
 }
 
 int send_message(int socket, const char *message, int flags) {
-    pthread_mutex_lock(&send_mutex);
     size_t message_length = strlen(message);
     size_t bytes_sent = 0;
     while (bytes_sent < message_length) {
         ssize_t result = send(socket, message + bytes_sent, min(512, message_length), flags);
         if (result == -1) {
             perror("Send failed");
-            pthread_mutex_unlock(&send_mutex);
             return -1; // Error occurred
         }
         bytes_sent += result;
     }
-    pthread_mutex_unlock(&send_mutex);
     return 0; // Success
 }
