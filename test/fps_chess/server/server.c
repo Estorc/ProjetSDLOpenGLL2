@@ -97,12 +97,12 @@ static void load_config() {
 }
 
 
-static inline void send_message(struct client *client, const char *message) {
+static inline void send_message_with_separator(struct client *client, const char *message) {
     int len = strlen(message) + 1;
     char *buffer = malloc(sizeof(char) * len);
     strcpy(buffer, message);
     buffer[len-1] = '|';
-    int bytes_sent = send(client->socket, buffer, len, MSG_NOSIGNAL);
+    int bytes_sent = send_message(client->socket, buffer, MSG_NOSIGNAL);
     if (bytes_sent == -1) {
         if (errno == EPIPE || errno == ECONNRESET) {
             PRINT_ERROR("Connection lost, closing socket\n");
@@ -288,61 +288,61 @@ int handle_message(int bytes_received, char *msg, void * p) {
             PRINT_SERVER_INFO("Client login : %s\n", args);
             free(client->info.name);
             client->info.name = strdup(args);
-            send_message(client, "Logged in!");
+            send_message_with_separator(client, "Logged in!");
         } else if (command("CREATE_PARTY", msg, &args)) {
             create_party(client, args);
             sprintf(buffer, "Party %s created!", args);
-            send_message(client, buffer);
+            send_message_with_separator(client, buffer);
         } else if (command("LIST_PARTY", msg, &args)) {
             char * party_list = list_party();
             if (party_list[0] == 0) {
-                send_message(client, "No party available!");
+                send_message_with_separator(client, "No party available!");
             } else {
-                send_message(client, party_list);
+                send_message_with_separator(client, party_list);
             }
             free(party_list);
         } else if (command("EXIT_PARTY", msg, &args)) {
             if (client->party) {
                 exit_party(client);
-                send_message(client, "Exited party!");
+                send_message_with_separator(client, "Exited party!");
             } else {
-                send_message(client, "No party to exit!");
+                send_message_with_separator(client, "No party to exit!");
             }
         } else if (command("JOIN_PARTY", msg, &args)) {
             join_party(client, atoi(args));
             if (client->party) {
-                send_message(client, "Joined party!");
+                send_message_with_separator(client, "Joined party!");
             } else {
-                send_message(client, "Failed to join party!");
+                send_message_with_separator(client, "Failed to join party!");
             }
         } else if (command("RENAME_PARTY", msg, &args)) {
             if (client->party) {
                 free(client->party->name);
                 client->party->name = strdup(args);
                 sprintf(buffer, "Party renamed to %s", args);
-                send_message(client, buffer);
+                send_message_with_separator(client, buffer);
             } else {
-                send_message(client, "No party to rename!");
+                send_message_with_separator(client, "No party to rename!");
             }
         } else if (command("PARTY_SET_DATA", msg, &args)) {
             if (client->party) {
                 char *key = strtok(args, "=");
                 char *value = strtok(NULL, "=");
                 table_insert_raw(client->party->data, key, strdup(value));
-                send_message(client, "Data set!");
+                send_message_with_separator(client, "Data set!");
             } else {
-                send_message(client, "No party to set data!");
+                send_message_with_separator(client, "No party to set data!");
             }
         } else if (command("PARTY_GET_DATA", msg, &args)) {
             if (client->party) {
                 char *value = table_get(client->party->data, args);
                 if (value) {
-                    send_message(client, value);
+                    send_message_with_separator(client, value);
                 } else {
-                    send_message(client, "Data not found!");
+                    send_message_with_separator(client, "Data not found!");
                 }
             } else {
-                send_message(client, "No party to get data!");
+                send_message_with_separator(client, "No party to get data!");
             }
         } else if (bytes_received == 0) {
             PRINT_CLIENT_INFO("deconnected\n");
@@ -354,7 +354,7 @@ int handle_message(int bytes_received, char *msg, void * p) {
             sprintf(message, "%s : %s", client->info.name, msg + 6);
             for (int j = 0; j < MAX_CLIENTS; j++) {
                 if (clients[j].socket && clients[j].authorized) {
-                    send_message(&clients[j], message);
+                    send_message_with_separator(&clients[j], message);
                 }
             }
             free(message);
@@ -366,13 +366,13 @@ int handle_message(int bytes_received, char *msg, void * p) {
             if (client->party) {
                 for (int j = 0; j < MAX_PARTY_CLIENTS; j++) {
                     if (client->party->clients[j]) {
-                        send_message(client->party->clients[j], message);
+                        send_message_with_separator(client->party->clients[j], message);
                     }
                 }
             } else {
                 for (int j = 0; j < MAX_CLIENTS; j++) {
                     if (clients[j].socket && clients[j].authorized) {
-                        send_message(&clients[j], message);
+                        send_message_with_separator(&clients[j], message);
                     }
                 }
             }
@@ -382,10 +382,10 @@ int handle_message(int bytes_received, char *msg, void * p) {
         if (strncmp(PASSWORD, msg, strlen(PASSWORD)) == 0) {
             PRINT_SERVER_INFO("Client authorized!\n");
             client->authorized = true;
-            send_message(client, "AUTHORIZED");
+            send_message_with_separator(client, "AUTHORIZED");
         } else {
             PRINT_SERVER_INFO("Client not authorized!\n");
-            send_message(client, "NOT AUTHORIZED");
+            send_message_with_separator(client, "NOT AUTHORIZED");
             kill_client(client);
         }
     }
@@ -454,7 +454,7 @@ int main(int argc, char **argv) {
                     PRINT_CLIENT_INFO("Ping timeout\n");
                     kill_client(client);
                 } else {
-                    send_message(client, "PING");
+                    send_message_with_separator(client, "PING");
                 }
             }
             if (bytes_received != -1 && client->socket) {
