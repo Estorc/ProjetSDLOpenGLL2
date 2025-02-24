@@ -84,12 +84,12 @@ int receive_message(void *p, char **buffer, int size, int timeout, int flags) {
     struct peer *peer = (struct peer *)p;
 
     free(*buffer);
-    *buffer = malloc(sizeof(char) * size);
+    *buffer = malloc(sizeof(char) * size + 1);
     int bytes_received = socket_request_receive(&peer->listener, peer->socket, *buffer, size, timeout, flags);
     if (bytes_received != -1) {
         if (peer->incoming_buffer && *peer->incoming_buffer) {
             bytes_received += strlen(peer->incoming_buffer);
-            char *final_buffer = malloc(sizeof(char) * bytes_received);  
+            char *final_buffer = malloc(sizeof(char) * bytes_received + 1);  
             strcpy(final_buffer, peer->incoming_buffer);
             strcat(final_buffer, *buffer);
             free(*buffer);
@@ -101,7 +101,7 @@ int receive_message(void *p, char **buffer, int size, int timeout, int flags) {
         if (!last_msg) {
             free(peer->incoming_buffer);
             peer->incoming_buffer = strdup(*buffer);
-            *buffer[0] = 0;
+            (*buffer)[0] = 0;
         } else if (last_msg[1] != 0) {
             free(peer->incoming_buffer);
             peer->incoming_buffer = strdup(last_msg + 1);

@@ -2,11 +2,30 @@
 #include "../src/raptiquax.h"
 #include <pthread.h>
 
+pthread_mutex_t send_mutex = PTHREAD_MUTEX_INITIALIZER;
+
 #define PORT 30000
 #define MAX_PING 1000000
 
 int quit = 0;
 int ping = 0;
+
+int send_message(int socket, const char *message, int flags) {
+    pthread_mutex_lock(&send_mutex);
+    size_t message_length = strlen(message);
+    size_t bytes_sent = 0;
+    while (bytes_sent < message_length) {
+        ssize_t result = send(socket, message + bytes_sent, min(512, message_length), flags);
+        if (result == -1) {
+            perror("Send failed");
+            pthread_mutex_unlock(&send_mutex);
+            return -1; // Error occurred
+        }
+        bytes_sent += result;
+    }
+    pthread_mutex_unlock(&send_mutex);
+    return 0; // Success
+}
 
 
 int handle_message(int bytes_received, char *msg, void * p) {
@@ -60,9 +79,9 @@ void *output_server(void *arg) {
         buffer[len - 2] = '|';
         buffer[len - 1] = 0;
         if (buffer[0] == '$') {
-            send(peer->socket, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id erat sem. In hac habitasse platea dictumst. Vivamus eu tempus ligula. Praesent odio neque, sodales quis enim at, porttitor aliquet nisi. Donec eleifend nulla nec sapien luctus, pulvinar faucibus libero efficitur. Aenean ac metus sed libero finibus ultricies. Proin in dui sit amet ligula venenatis rutrum. Vivamus nec nisl tortor. Nunc aliquet convallis ligula, quis aliquam mauris mattis id. Pellentesque dapibus vitae erat nec sollicitudin. Nullam volutpat rutrum elit, aliquet sodales ante lobortis vitae. Aenean sodales, elit vitae hendrerit gravida, enim dui aliquet libero, eu feugiat tellus leo tincidunt dolor. Sed tristique sit amet magna interdum pellentesque. Donec fermentum consectetur bibendum. Maecenas id risus quis ante dignissim suscipit. Quisque volutpat leo vitae elit hendrerit rutrum. Etiam consequat, mauris at condimentum mollis, libero magna ultrices nisi, ut eleifend quam sapien sed metus. Nullam gravida tempus varius. Vivamus efficitur tempus euismod. Mauris ut dolor et justo bibendum imperdiet. Nulla viverra ex nunc, vel sagittis nulla sollicitudin ut. Aliquam sagittis venenatis volutpat. Aenean tortor lectus, rhoncus sed mauris sit amet, rutrum cursus sapien. Pellentesque in velit nec turpis hendrerit luctus id quis justo. Donec quam ipsum, posuere interdum mattis ut, laoreet non est. Proin quis accumsan ante. Sed laoreet, sem at mollis vulputate, nisi est dignissim orci, quis pellentesque odio nisl in mi. Vivamus justo sem, ultricies vel fringilla et, aliquam et nibh. Vivamus non sagittis purus. Ut semper eu sem nec ornare. Aliquam nec tincidunt est. Donec ornare finibus mi, sit amet pellentesque lacus ullamcorper a. Cras ut dignissim ipsum, dignissim blandit justo. Morbi egestas augue non ante tincidunt placerat. Curabitur at porta tellus. Nam laoreet nunc quis felis mollis aliquet. Aenean aliquet, arcu in facilisis suscipit, orci quam condimentum mi, a commodo nisl elit dictum tortor. Aliquam vitae laoreet sem, eget maximus est. Donec consectetur ipsum eget orci varius, quis sodales turpis laoreet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque scelerisque turpis pharetra lectus accumsan, at ultricies arcu fermentum. In nec orci mi. Duis eu elit maximus, porttitor justo non, vulputate diam. Quisque ipsum massa, posuere vel lorem vitae, dignissim blandit erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Curabitur tincidunt massa interdum sollicitudin lobortis. Aenean malesuada ex vitae risus dignissim interdum. Aliquam aliquam pharetra erat id ultricies. Donec vel mollis ipsum. Aliquam erat volutpat. Nunc mattis arcu lorem, non porttitor libero malesuada nec. Sed suscipit rutrum velit. In lectus tortor, tincidunt nec est sed, iaculis condimentum justo. Donec pretium tortor vitae lorem tincidunt finibus. Sed non dui ac magna rutrum eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus.|", 3054, 0);
+            send_message(peer->socket, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id erat sem. In hac habitasse platea dictumst. Vivamus eu tempus ligula. Praesent odio neque, sodales quis enim at, porttitor aliquet nisi. Donec eleifend nulla nec sapien luctus, pulvinar faucibus libero efficitur. Aenean ac metus sed libero finibus ultricies. Proin in dui sit amet ligula venenatis rutrum. Vivamus nec nisl tortor. Nunc aliquet convallis ligula, quis aliquam mauris mattis id. Pellentesque dapibus vitae erat nec sollicitudin. Nullam volutpat rutrum elit, aliquet sodales ante lobortis vitae. Aenean sodales, elit vitae hendrerit gravida, enim dui aliquet libero, eu feugiat tellus leo tincidunt dolor. Sed tristique sit amet magna interdum pellentesque. Donec fermentum consectetur bibendum. Maecenas id risus quis ante dignissim suscipit. Quisque volutpat leo vitae elit hendrerit rutrum. Etiam consequat, mauris at condimentum mollis, libero magna ultrices nisi, ut eleifend quam sapien sed metus. Nullam gravida tempus varius. Vivamus efficitur tempus euismod. Mauris ut dolor et justo bibendum imperdiet. Nulla viverra ex nunc, vel sagittis nulla sollicitudin ut. Aliquam sagittis venenatis volutpat. Aenean tortor lectus, rhoncus sed mauris sit amet, rutrum cursus sapien. Pellentesque in velit nec turpis hendrerit luctus id quis justo. Donec quam ipsum, posuere interdum mattis ut, laoreet non est. Proin quis accumsan ante. Sed laoreet, sem at mollis vulputate, nisi est dignissim orci, quis pellentesque odio nisl in mi. Vivamus justo sem, ultricies vel fringilla et, aliquam et nibh. Vivamus non sagittis purus. Ut semper eu sem nec ornare. Aliquam nec tincidunt est. Donec ornare finibus mi, sit amet pellentesque lacus ullamcorper a. Cras ut dignissim ipsum, dignissim blandit justo. Morbi egestas augue non ante tincidunt placerat. Curabitur at porta tellus. Nam laoreet nunc quis felis mollis aliquet. Aenean aliquet, arcu in facilisis suscipit, orci quam condimentum mi, a commodo nisl elit dictum tortor. Aliquam vitae laoreet sem, eget maximus est. Donec consectetur ipsum eget orci varius, quis sodales turpis laoreet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque scelerisque turpis pharetra lectus accumsan, at ultricies arcu fermentum. In nec orci mi. Duis eu elit maximus, porttitor justo non, vulputate diam. Quisque ipsum massa, posuere vel lorem vitae, dignissim blandit erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Curabitur tincidunt massa interdum sollicitudin lobortis. Aenean malesuada ex vitae risus dignissim interdum. Aliquam aliquam pharetra erat id ultricies. Donec vel mollis ipsum. Aliquam erat volutpat. Nunc mattis arcu lorem, non porttitor libero malesuada nec. Sed suscipit rutrum velit. In lectus tortor, tincidunt nec est sed, iaculis condimentum justo. Donec pretium tortor vitae lorem tincidunt finibus. Sed non dui ac magna rutrum eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus.|", 0);
         } else {
-            send(peer->socket, buffer, len, 0);
+            send_message(peer->socket, buffer, 0);
         }
     }
     return NULL;
