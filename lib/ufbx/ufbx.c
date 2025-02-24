@@ -830,7 +830,7 @@ ufbx_static_assert(sizeof_f64, sizeof(double) == 8);
 
 // -- Version
 
-#define UFBX_SOURCE_VERSION ufbx_pack_version(0, 16, 0)
+#define UFBX_SOURCE_VERSION ufbx_pack_version(0, 17, 0)
 ufbx_abi_data_def const uint32_t ufbx_source_version = UFBX_SOURCE_VERSION;
 
 ufbx_static_assert(source_header_version, UFBX_SOURCE_VERSION/1000u == UFBX_HEADER_VERSION/1000u);
@@ -6438,6 +6438,8 @@ typedef struct {
 	bool parse_threaded;
 	ufbxi_thread_pool thread_pool;
 
+	uint8_t *base64_table;
+
 } ufbxi_context;
 
 static ufbxi_noinline int ufbxi_fail_imp(ufbxi_context *uc, const char *cond, const char *func, uint32_t line)
@@ -8704,21 +8706,21 @@ static bool ufbxi_deflate_task_fn(ufbxi_task *task)
 	ufbxi_deflate_task *t = (ufbxi_deflate_task*)task->data;
 
 	ufbx_inflate_input input; // ufbxi_uninit
-	Game.input->total_size = t->encoded_size;
-	Game.input->data = t->encoded_data;
-	Game.input->data_size = t->encoded_size;
-	Game.input->no_header = false;
-	Game.input->no_checksum = false;
-	Game.input->internal_fast_bits = 0;
-	Game.input->progress_cb.fn = NULL;
-	Game.input->progress_cb.user = NULL;
-	Game.input->progress_size_before = 0;
-	Game.input->progress_size_after = 0;
-	Game.input->progress_interval_hint = 0;
-	Game.input->buffer = NULL;
-	Game.input->buffer_size = 0;
-	Game.input->read_fn = NULL;
-	Game.input->read_user = NULL;
+	input.total_size = t->encoded_size;
+	input.data = t->encoded_data;
+	input.data_size = t->encoded_size;
+	input.no_header = false;
+	input.no_checksum = false;
+	input.internal_fast_bits = 0;
+	input.progress_cb.fn = NULL;
+	input.progress_cb.user = NULL;
+	input.progress_size_before = 0;
+	input.progress_size_after = 0;
+	input.progress_interval_hint = 0;
+	input.buffer = NULL;
+	input.buffer_size = 0;
+	input.read_fn = NULL;
+	input.read_user = NULL;
 
 	size_t decoded_data_size = t->src_elem_size * t->array_size;
 	ptrdiff_t res = ufbx_inflate(t->decoded_data, decoded_data_size, &input, t->inflate_retain);
@@ -8957,24 +8959,24 @@ ufbxi_nodiscard ufbxi_noinline static int ufbxi_binary_parse_node(ufbxi_context 
 
 				// Inflate the data from the user-provided IO buffer / read callbacks
 				ufbx_inflate_input input;
-				Game.input->total_size = encoded_size;
-				Game.input->data = uc->data;
-				Game.input->data_size = uc->data_size;
-				Game.input->no_header = false;
-				Game.input->no_checksum = false;
-				Game.input->internal_fast_bits = 0;
+				input.total_size = encoded_size;
+				input.data = uc->data;
+				input.data_size = uc->data_size;
+				input.no_header = false;
+				input.no_checksum = false;
+				input.internal_fast_bits = 0;
 
 				if (uc->opts.progress_cb.fn) {
-					Game.input->progress_cb = uc->opts.progress_cb;
-					Game.input->progress_size_before = arr_begin;
-					Game.input->progress_size_after = uc->progress_bytes_total - arr_end;
-					Game.input->progress_interval_hint = uc->progress_interval;
+					input.progress_cb = uc->opts.progress_cb;
+					input.progress_size_before = arr_begin;
+					input.progress_size_after = uc->progress_bytes_total - arr_end;
+					input.progress_interval_hint = uc->progress_interval;
 				} else {
-					Game.input->progress_cb.fn = NULL;
-					Game.input->progress_cb.user = NULL;
-					Game.input->progress_size_before = 0;
-					Game.input->progress_size_after = 0;
-					Game.input->progress_interval_hint = 0;
+					input.progress_cb.fn = NULL;
+					input.progress_cb.user = NULL;
+					input.progress_size_before = 0;
+					input.progress_size_after = 0;
+					input.progress_interval_hint = 0;
 				}
 
 				// If the encoded array is larger than the data we have currently buffered
@@ -8985,19 +8987,19 @@ ufbxi_nodiscard ufbxi_noinline static int ufbxi_binary_parse_node(ufbxi_context 
 				// usual (given that we clear the `uc->data/_size` buffer below).
 				// NOTE: We _cannot_ share `read_buffer` if we plan to read later from it
 				// as `ufbx_inflate()` overwrites parts of it with zeroes.
-				if (encoded_size > Game.input->data_size) {
-					Game.input->buffer = uc->read_buffer;
-					Game.input->buffer_size = uc->read_buffer_size;
-					Game.input->read_fn = uc->read_fn;
-					Game.input->read_user = uc->read_user;
-					uc->data_offset += encoded_size - Game.input->data_size;
-					uc->data += Game.input->data_size;
+				if (encoded_size > input.data_size) {
+					input.buffer = uc->read_buffer;
+					input.buffer_size = uc->read_buffer_size;
+					input.read_fn = uc->read_fn;
+					input.read_user = uc->read_user;
+					uc->data_offset += encoded_size - input.data_size;
+					uc->data += input.data_size;
 					uc->data_size = 0;
 				} else {
-					Game.input->buffer = NULL;
-					Game.input->buffer_size = 0;
-					Game.input->read_fn = NULL;
-					Game.input->read_user = NULL;
+					input.buffer = NULL;
+					input.buffer_size = 0;
+					input.read_fn = NULL;
+					input.read_user = NULL;
 					uc->data += encoded_size;
 					uc->data_size -= encoded_size;
 					ufbxi_check(ufbxi_resume_progress(uc));
@@ -10009,6 +10011,66 @@ ufbxi_nodiscard static ufbxi_noinline int ufbxi_ascii_read_float_array(ufbxi_con
 	return 1;
 }
 
+ufbxi_noinline static int ufbxi_setup_base64(ufbxi_context *uc)
+{
+	uint8_t *table = ufbxi_push(&uc->tmp, uint8_t, 256);
+	ufbxi_check(table);
+	uc->base64_table = table;
+
+	memset(table, 0x80, 256);
+	ufbxi_nounroll for (char c = 'A'; c <= 'Z'; c++) table[(size_t)c] = (uint8_t)(c - 'A');
+	ufbxi_nounroll for (char c = 'a'; c <= 'z'; c++) table[(size_t)c] = (uint8_t)(26 + (c - 'a'));
+	ufbxi_nounroll for (char c = '0'; c <= '9'; c++) table[(size_t)c] = (uint8_t)(52 + (c - '0'));
+	table[(size_t)'+'] = 62;
+	table[(size_t)'/'] = 63;
+	table[(size_t)'='] = 0x40;
+
+	return 1;
+}
+
+ufbxi_noinline static int ufbxi_decode_base64(ufbxi_context *uc, ufbx_string *p_result, const char *src, size_t src_length, bool *p_failed)
+{
+	if (!uc->base64_table) ufbxi_check(ufbxi_setup_base64(uc));
+
+	uint8_t *table = uc->base64_table;
+	uint32_t error_mask = 0, pad_error = 0;
+
+	char *p = (char*)p_result->data;
+	for (size_t i = 0; i + 4 <= src_length; i += 4) {
+		uint32_t a = table[(size_t)(uint8_t)src[i + 0]];
+		uint32_t b = table[(size_t)(uint8_t)src[i + 1]];
+		uint32_t c = table[(size_t)(uint8_t)src[i + 2]];
+		uint32_t d = table[(size_t)(uint8_t)src[i + 3]];
+		pad_error = error_mask;
+		error_mask |= a | b | c | d;
+
+		p[0] = (char)(uint8_t)(a << 2 | b >> 4);
+		p[1] = (char)(uint8_t)(b << 4 | c >> 2);
+		p[2] = (char)(uint8_t)(c << 6 | d);
+		p += 3;
+	}
+
+	if (src_length >= 4) {
+		const char *end = src + src_length - 4;
+		uint32_t padding = 0;
+		padding |= end[0] == '=' ? 0x8 : 0x0;
+		padding |= end[1] == '=' ? 0x4 : 0x0;
+		padding |= end[2] == '=' ? 0x2 : 0x0;
+		padding |= end[3] == '=' ? 0x1 : 0x0;
+		if (padding <= 0x1) p -= padding; // "xxx=" or "xxxx"
+		else if (padding == 0x3) p -= 2;  // "xx=="
+		else pad_error |= 0x40;           // anything else
+	}
+
+	if (((error_mask & 0x80) != 0 || (pad_error & 0x40) != 0 || src_length % 4 != 0) && !*p_failed) {
+		ufbxi_check(ufbxi_warnf(UFBX_WARNING_BAD_BASE64_CONTENT, "Ignored bad base64 embedded content"));
+		*p_failed = true;
+	}
+
+	p_result->length = ufbxi_to_size(p - p_result->data);
+	return 1;
+}
+
 // Recursion limited by check at the start
 ufbxi_nodiscard ufbxi_noinline static int ufbxi_ascii_parse_node(ufbxi_context *uc, uint32_t depth, ufbxi_parse_state parent_state, bool *p_end, ufbxi_buf *tmp_buf, bool recursive)
 	ufbxi_recursive_function(int, ufbxi_ascii_parse_node, (uc, depth, parent_state, p_end, tmp_buf, recursive), UFBXI_MAX_NODE_DEPTH + 1,
@@ -10054,6 +10116,7 @@ ufbxi_nodiscard ufbxi_noinline static int ufbxi_ascii_parse_node(ufbxi_context *
 	int arr_type = 0;
 	ufbxi_buf *arr_buf = NULL;
 	size_t arr_elem_size = 0;
+	bool arr_error = false;
 
 	// Check if the values of the node we're parsing currently should be
 	// treated as an array.
@@ -10134,13 +10197,16 @@ ufbxi_nodiscard ufbxi_noinline static int ufbxi_ascii_parse_node(ufbxi_context *
 					bool raw = arr_type == 's';
 					ufbx_string *v = ufbxi_push(&uc->tmp_stack, ufbx_string, 1);
 					ufbxi_check(v);
-					v->data = tok->str_data;
-					v->length = tok->str_len;
 					if (arr_type == 'C') {
 						ufbxi_buf *buf = uc->opts.retain_dom ? &uc->result : tmp_buf;
-						v->data = ufbxi_push_copy(buf, char, v->length, v->data);
+						size_t capacity = tok->str_len / 4 * 3 + 3;
+						v->data = ufbxi_push(buf, char, capacity);
 						ufbxi_check(v->data);
+						ufbxi_check(ufbxi_decode_base64(uc, v, tok->str_data, tok->str_len, &arr_error));
+						ufbx_assert(v->length <= capacity);
 					} else {
+						v->data = tok->str_data;
+						v->length = tok->str_len;
 						ufbxi_check(ufbxi_push_string_place_str(&uc->string_pool, v, raw));
 					}
 				} else {
@@ -10324,6 +10390,10 @@ ufbxi_nodiscard ufbxi_noinline static int ufbxi_ascii_parse_node(ufbxi_context *
 				if (num_values > 0) {
 					ufbxi_pop_size(&uc->tmp_stack, arr_elem_size, num_values, arr_data, false);
 				}
+			} else if (arr_error) {
+				ufbxi_pop_size(&uc->tmp_stack, arr_elem_size, num_values, NULL, false);
+				num_values = 0;
+				arr_data = (void*)ufbxi_zero_size_buffer;
 			} else {
 				arr_data = ufbxi_push_pop_size(arr_buf, &uc->tmp_stack, arr_elem_size, num_values);
 			}
@@ -11454,28 +11524,6 @@ ufbxi_nodiscard static ufbxi_noinline int ufbxi_load_maps(ufbxi_context *uc)
 
 // -- Reading the parsed data
 
-ufbxi_noinline static void ufbxi_decode_base64(char *dst, const char *src, size_t src_length)
-{
-	uint8_t table[256] = { 0 };
-	for (char c = 'A'; c <= 'Z'; c++) table[(size_t)c] = (uint8_t)(c - 'A');
-	for (char c = 'a'; c <= 'z'; c++) table[(size_t)c] = (uint8_t)(26 + (c - 'a'));
-	for (char c = '0'; c <= '9'; c++) table[(size_t)c] = (uint8_t)(52 + (c - '0'));
-	table[(size_t)'+'] = 62;
-	table[(size_t)'/'] = 63;
-
-	for (size_t i = 0; i + 4 <= src_length; i += 4) {
-		uint32_t a = table[(size_t)(uint8_t)src[i + 0]];
-		uint32_t b = table[(size_t)(uint8_t)src[i + 1]];
-		uint32_t c = table[(size_t)(uint8_t)src[i + 2]];
-		uint32_t d = table[(size_t)(uint8_t)src[i + 3]];
-
-		dst[0] = (char)(uint8_t)(a << 2 | b >> 4);
-		dst[1] = (char)(uint8_t)(b << 4 | c >> 2);
-		dst[2] = (char)(uint8_t)(c << 6 | d);
-		dst += 3;
-	}
-}
-
 ufbxi_nodiscard ufbxi_noinline static int ufbxi_read_embedded_blob(ufbxi_context *uc, ufbx_blob *dst_blob, ufbxi_node *node)
 {
 	if (!node) return 1;
@@ -11485,15 +11533,15 @@ ufbxi_nodiscard ufbxi_noinline static int ufbxi_read_embedded_blob(ufbxi_context
 		ufbx_string content;
 		size_t num_parts = content_arr->size;
 		ufbx_string *parts = (ufbx_string*)content_arr->data;
-		if (num_parts == 1) {
+
+		if (num_parts == 1 && !uc->from_ascii) {
 			content = parts[0];
 		} else {
 			size_t total_size = 0;
 			ufbxi_for(ufbx_string, part, parts, num_parts) {
 				total_size += part->length;
 			}
-			ufbxi_buf *dst_buf = uc->from_ascii ? &uc->tmp_parse : &uc->result;
-			char *dst = ufbxi_push(dst_buf, char, total_size);
+			char *dst = ufbxi_push(&uc->result, char, total_size);
 			ufbxi_check(dst);
 			content.data = dst;
 			content.length = total_size;
@@ -11503,23 +11551,8 @@ ufbxi_nodiscard ufbxi_noinline static int ufbxi_read_embedded_blob(ufbxi_context
 			}
 		}
 
-		if (uc->from_ascii) {
-			if (content.length % 4 == 0) {
-				size_t padding = 0;
-				while (padding < 2 && padding < content.length && content.data[content.length - 1 - padding] == '=') {
-					padding++;
-				}
-
-				dst_blob->size = content.length / 4 * 3 - padding;
-				dst_blob->data = ufbxi_push(&uc->result, char, dst_blob->size + 3);
-				ufbxi_check(dst_blob->data);
-
-				ufbxi_decode_base64((char*)dst_blob->data, content.data, content.length);
-			}
-		} else {
-			dst_blob->data = content.data;
-			dst_blob->size = content.length;
-		}
+		dst_blob->data = content.data;
+		dst_blob->size = content.length;
 	}
 
 	return 1;
@@ -28721,14 +28754,14 @@ static ufbxi_noinline int ufbxi_subdivide_attrib(ufbxi_subdivide_context *sc, uf
 	ufbx_assert(attrib->value_reals >= 2 && attrib->value_reals <= 4);
 
 	ufbxi_subdivide_layer_input input; // ufbxi_uninit
-	Game.input->sum_fn = ufbxi_real_sum_fns[attrib->value_reals - 1];
-	Game.input->sum_user = NULL;
-	Game.input->values = attrib->values.data;
-	Game.input->indices = attrib->indices.data;
-	Game.input->stride = attrib->value_reals * sizeof(ufbx_real);
-	Game.input->boundary = boundary;
-	Game.input->check_split_data = check_split_data;
-	Game.input->ignore_indices = false;
+	input.sum_fn = ufbxi_real_sum_fns[attrib->value_reals - 1];
+	input.sum_user = NULL;
+	input.values = attrib->values.data;
+	input.indices = attrib->indices.data;
+	input.stride = attrib->value_reals * sizeof(ufbx_real);
+	input.boundary = boundary;
+	input.check_split_data = check_split_data;
+	input.ignore_indices = false;
 
 	ufbxi_subdivide_layer_output output; // ufbxi_uninit
 	ufbxi_check_err(&sc->error, ufbxi_subdivide_layer(sc, &output, &input));
@@ -28804,14 +28837,14 @@ static ufbxi_noinline int ufbxi_subdivide_weights(ufbxi_subdivide_context *sc, u
 	ufbxi_check_err(&sc->error, src);
 
 	ufbxi_subdivide_layer_input input; // ufbxi_uninit
-	Game.input->sum_fn = ufbxi_subdivide_sum_vertex_weights;
-	Game.input->sum_user = sc;
-	Game.input->values = src;
-	Game.input->indices = sc->src_mesh.vertex_indices.data;
-	Game.input->stride = sizeof(ufbxi_subdivision_vertex_weights);
-	Game.input->boundary = sc->opts.boundary;
-	Game.input->check_split_data = false;
-	Game.input->ignore_indices = true;
+	input.sum_fn = ufbxi_subdivide_sum_vertex_weights;
+	input.sum_user = sc;
+	input.values = src;
+	input.indices = sc->src_mesh.vertex_indices.data;
+	input.stride = sizeof(ufbxi_subdivision_vertex_weights);
+	input.boundary = sc->opts.boundary;
+	input.check_split_data = false;
+	input.ignore_indices = true;
 
 	sc->total_weights = 0;
 
