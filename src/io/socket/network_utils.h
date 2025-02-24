@@ -15,3 +15,4 @@ int socket_request_receive(struct socket_request_listener * listener, int client
 #pragma region HIGH LEVEL
 int receive_message(void *peer, char **buffer, int size, int timeout, int flags);
 int read_messages(int bytes_received, char *msg_buffer, void * p, int (*callback)(int, char *, void *));
+int send_message(int socket, const char *message, int flags);
