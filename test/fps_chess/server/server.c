@@ -98,22 +98,8 @@ static void load_config() {
 
 
 static inline void send_message_with_separator(struct client *client, const char *message) {
-    int len = strlen(message) + 2;
-    char *buffer = malloc(sizeof(char) * len);
-    strcpy(buffer, message);
-    buffer[len-2] = '|';
-    buffer[len-1] = 0;
-    int bytes_sent = send_message(client->socket, buffer, MSG_NOSIGNAL);
-    if (bytes_sent == -1) {
-        if (errno == EPIPE || errno == ECONNRESET) {
-            PRINT_ERROR("Connection lost, closing socket\n");
-            kill_client(client);
-        } else {
-            perror("send failed");
-            PRINT_ERROR("Failed to send message\n");
-        }
-    }
-    free(buffer);
+    int bytes_sent = send_message(client->socket, message, MSG_NOSIGNAL);
+    if (bytes_sent && (errno == EPIPE || errno == ECONNRESET)) kill_client(client);
 }
 
 
@@ -345,7 +331,7 @@ int handle_message(int bytes_received, char *msg, void * p) {
             } else {
                 send_message_with_separator(client, "No party to get data!");
             }
-        } else if (bytes_received == 0) {
+        } else if (bytes_received == 0 || command("EXIT", msg, &args)) {
             PRINT_CLIENT_INFO("deconnected\n");
             kill_client(client);
         } else if (command("G_MSG", msg, &args)) {

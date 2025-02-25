@@ -12,7 +12,7 @@ typedef struct Entry {
 } Entry;
 
 // Define the HashTable struct
-typedef struct {
+typedef struct HashTable {
     Entry **table;
     int size;
     int capacity;

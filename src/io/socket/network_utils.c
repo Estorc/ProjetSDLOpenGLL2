@@ -86,14 +86,14 @@ int receive_message(void *p, char **buffer, int size, int timeout, int flags) {
     struct peer *peer = (struct peer *)p;
 
     free(*buffer);
-    *buffer = malloc(sizeof(char) * size + 1);
+    *buffer = malloc(sizeof(char) * (size + 1));
     int bytes_received = socket_request_receive(&peer->listener, peer->socket, *buffer, size, timeout, flags);
     if (bytes_received != -1) {
         if (peer->incoming_buffer && *peer->incoming_buffer) {
             bytes_received += strlen(peer->incoming_buffer);
-            char *final_buffer = malloc(sizeof(char) * bytes_received + 1);  
+            char *final_buffer = malloc(sizeof(char) * (bytes_received + 1));  
             strcpy(final_buffer, peer->incoming_buffer);
-            strcat(final_buffer, *buffer);
+            strncat(final_buffer, *buffer, 512);
             free(*buffer);
             *buffer = final_buffer;
             free(peer->incoming_buffer);
@@ -110,6 +110,7 @@ int receive_message(void *p, char **buffer, int size, int timeout, int flags) {
             last_msg[1] = 0;
         }
     }
+
     return bytes_received;
 }
 
@@ -133,10 +134,21 @@ int send_message(int socket, const char *message, int flags) {
     while (bytes_sent < message_length) {
         ssize_t result = send(socket, message + bytes_sent, MIN(512, message_length), flags);
         if (result == -1) {
-            perror("Send failed");
-            return -1; // Error occurred
+            switch (errno) {
+                case EPIPE:
+                case ECONNRESET:
+                    PRINT_ERROR("Connection lost, closing socket\n");
+                    break;
+                case 0:
+                    break;
+                default:
+                    perror("send failed");
+                    PRINT_ERROR("Failed to send message\n");
+            }
+            return -1;
         }
         bytes_sent += result;
     }
+    send(socket, "|", 1, flags);
     return 0; // Success
 }
