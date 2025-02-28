@@ -110,6 +110,7 @@ int receive_message(void *p, char **buffer, int size, int timeout, int flags) {
     *buffer = malloc(sizeof(char) * (size + 1));
     int bytes_received = socket_request_receive(&peer->listener, peer->socket, *buffer, size, timeout, flags);
     if (bytes_received != -1) {
+        printf("%s\n", *buffer);
         if (peer->incoming_buffer && *peer->incoming_buffer) {
             bytes_received += strlen(peer->incoming_buffer);
             char *final_buffer = malloc(sizeof(char) * (bytes_received + 2));  
