@@ -145,7 +145,7 @@ int read_messages(int bytes_received, char *msg_buffer, void * p) {
     for (; msg; msg = strtok_r(NULL, "|", &context)) {
         for (int i = 0; i < peer->handler_count; i++) {
             if (peer->handlers[i]->msg == NULL || strncmp(peer->handlers[i]->msg, msg, strlen(peer->handlers[i]->msg)) == 0) {
-                if (peer->handlers[i]->callback(bytes_received, msg, p, peer->handlers[i]->data)) {
+                if (peer->handlers[i]->callback(strlen(msg), msg, p, peer->handlers[i]->data)) {
                     return 1;
                 }
                 if (peer->handlers[i]->lifespan > 0) {

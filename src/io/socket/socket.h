@@ -40,7 +40,7 @@ struct peer {
  */
 struct message_handler {
     char *msg;
-    int (*callback)(int bytes_received, char *msg, void * p, void ** data);
+    int (*callback)(int msglen, char *msg, void * p, void ** data);
     int lifespan;
     void ** data;
 };
