@@ -106,10 +106,8 @@ void free_peer(struct peer *peer) {
 int receive_message(void *p, char **buffer, int size, int timeout, int flags) {
 
     struct peer *peer = (struct peer *)p;
-    free(*buffer);
-    printf("size: %d\n", size);
+    if (*buffer) free(*buffer);
     *buffer = malloc(sizeof(char) * (size + 1));
-    printf("Successfully allocated buffer\n");
     int bytes_received = socket_request_receive(&peer->listener, peer->socket, *buffer, size, timeout, flags);
     if (bytes_received != -1) {
         if (peer->incoming_buffer && *peer->incoming_buffer) {
