@@ -359,7 +359,7 @@ int handle_message(int bytes_received, char *msg, void * p, void ** data) {
         } else if (command("G_MSG", msg, &args)) {
             msg[bytes_received-1] = 0;
             PRINT_SERVER_INFO("%s send message : '%s'\n", client->info.name, msg + 6);
-            char * message = malloc(sizeof(char) * (strlen(msg + 6) + strlen(client->info.name) + 9));
+            char * message = malloc(sizeof(char) * (strlen(msg + 6) + strlen(client->info.name) + 10));
             sprintf(message, "G_MSG \"%s\":%s", client->info.name, msg + 6);
             for (int j = 0; j < MAX_CLIENTS; j++) {
                 if (clients[j].socket && clients[j].authorized && clients[j].socket != client->socket) {
@@ -370,7 +370,7 @@ int handle_message(int bytes_received, char *msg, void * p, void ** data) {
         } else {
             msg[bytes_received-1] = 0;
             PRINT_SERVER_INFO("%s send message : '%s'\n", client->info.name, msg);
-            char * message = malloc(sizeof(char) * (strlen(msg) + strlen(client->info.name) + 9));
+            char * message = malloc(sizeof(char) * (strlen(msg) + strlen(client->info.name) + 10));
             sprintf(message, "%c_MSG \"%s\":%s", client->party ? 'P':'G', client->info.name, msg);
             if (client->party) {
                 for (int j = 0; j < MAX_PARTY_CLIENTS; j++) {
