@@ -9,7 +9,7 @@ SpotLight(500,250,175,0.0008,0,1,0.09,0.032,2,0.5)[m0,42,0r-90,0,0]
 Model(assets/models/FPSChess/FPS_Chess_Models2.obj)[s5,5,5]
 Node[m0,18,0]:1
 Camera(1)[r-15,0,0]{NULL,script_fc_title_screen_camera,NULL}
-Node{script_fc_chessboard_init,NULL,NULL}
+Node{script_fc_fake_chessboard_init,NULL,NULL}
 Node[m0,15.3,0]
 Node:3
 ImageFrame(2%,2%,50w,0a,lt,assets/textures/fps_chess/logo.png)

@@ -55,7 +55,7 @@ static void *input_server(void *arg) {
 void split_user_from_content(char *msg, char **user, char **content) {
     strtok(msg, "\"");
     *user = strtok(NULL, "\"");
-    *content = strtok(NULL, "\"");
+    *content = strtok(NULL, "\"") + 1;
 }
 
 
