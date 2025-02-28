@@ -107,8 +107,6 @@ int receive_message(void *p, char **buffer, int size, int timeout, int flags) {
 
     struct peer *peer = (struct peer *)p;
     if (*buffer) free(*buffer);
-    printf("Test :\n");
-    printf("%p\n", *buffer);
     *buffer = malloc(sizeof(char) * (size + 1));
     int bytes_received = socket_request_receive(&peer->listener, peer->socket, *buffer, size, timeout, flags);
     if (bytes_received != -1) {

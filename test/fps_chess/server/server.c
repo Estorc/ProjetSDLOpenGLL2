@@ -370,7 +370,7 @@ int handle_message(int bytes_received, char *msg, void * p, void ** data) {
         } else {
             msg[bytes_received-1] = 0;
             PRINT_SERVER_INFO("%s send message : '%s'\n", client->info.name, msg);
-            char * message = malloc(sizeof(char) * (strlen(msg) + 1 + strlen(client->info.name) + 3));
+            char * message = malloc(sizeof(char) * (strlen(msg) + strlen(client->info.name) + 5));
             sprintf(message, "%s : %s", client->info.name, msg);
             if (client->party) {
                 for (int j = 0; j < MAX_PARTY_CLIENTS; j++) {
@@ -407,6 +407,8 @@ static inline void init_client(struct client *client, int socket) {
     client->authorized = false;
     client->listener = create_socket_request_listener(socket);
     client->info.name = strdup("Anonymous");
+    client->handlers = NULL;
+    client->handler_count = 0;
     add_message_handler(client, NULL, handle_message, -1, 0, NULL);
 }
 
