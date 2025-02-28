@@ -209,6 +209,7 @@ void remove_message_handling(void *p, char *msg) {
 
 void add_message_handler(void *p, char *msg, int (*callback)(int, char *, void *, void **), int lifespan, int argc, void **data) {
     struct peer *peer = (struct peer *)p;
+    if (!peer) return;
     struct message_handler *handler = malloc(sizeof(struct message_handler));
     if (msg == NULL) {
         handler->msg = NULL;

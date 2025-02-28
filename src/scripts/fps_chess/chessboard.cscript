@@ -249,6 +249,7 @@ static const int classic_chessboard[64] = {
 };
 
 static ChessPieceColor player_color = FC_UNKNOWN;
+static ChessPieceColor current_player = FC_WHITE;
 
 int get_player_color_callback(int bytes_received, char *msg, void * p, void ** data) {
     PRINT_CLIENT_INFO("Getting player color\n");
@@ -275,19 +276,41 @@ NEW_SCRIPT(script_fc_chessboard_player_init)
 
 END_SCRIPT(script_fc_chessboard_player_init)
 
+int get_chessboard_state(int bytes_received, char *msg, void * p, void ** data) {
+    Node *chessboard = data[0];
+    msg += strlen("P_MSG");
+    char *user;
+    char *content;
+    split_user_from_content(msg, &user, &content);
+
+    if (strncmp("CHESSBOARD_UPDATE", content, 17) == 0) {
+        strtok(content, " ");
+        for (int i = 0; i < 8*8; i++) {
+            int index = atoi(strtok(NULL, " "));
+            int flags = atoi(strtok(NULL, " "));
+            chessboard->children[i]->attribute[0].i = flags;
+            chessboard->children[i]->attribute[1].i = index;
+        }
+    }
+    return 0;
+}
+
 NEW_SCRIPT(script_fc_chessboard_init)
-    SET_ATTRIBUTES_COUNT((8*8+4));
-    this->attribute[8*8].p = this->parent->children[(this->parent)::(int)index_of_child(this)+1];
-    bool *isHovered = &this->attribute[8*8+3].b;
+    SET_ATTRIBUTES_COUNT((4));
+    this->attribute[0].p = this->parent->children[(this->parent)::(int)index_of_child(this)+1];
+    bool *isHovered = &this->attribute[3].b;
     *isHovered = true;
-    Node *chessboard = this->attribute[8*8].p;
+    Node *chessboard = this->attribute[0].p;
+
+    struct peer *peer = table_get(Game.storage, "socket::server");
+    if (peer)
+        add_message_handler(peer, "P_MSG", get_chessboard_state, -1, 1, (void *[]) {chessboard});
     
     for (int i = 0; i < 8*8; i++) {
         FILE * file = fopen("assets/scenes/fps_chess/pieces/node_piece.scene", "r");
         if (file) {
             Node *piece = load_node(file, NULL, Game.scripts, NULL);
             MALLOC_ATTRIBUTE(piece, 2);
-            this->attribute[i].node = piece;
             piece->attribute[0].i = classic_chessboard[i];
             piece->attribute[1].i = i;
             piece->pos[0] = -(((i/8)/8.0f - 0.5f)*8.6f + 0.5f);
@@ -304,11 +327,11 @@ END_SCRIPT(script_fc_chessboard_init)
 
 
 NEW_SCRIPT(script_fc_chessboard_signal)
-    if (player_color == FC_UNKNOWN) return;
-    Node ** chessboard = this->attribute[8*8].node->children;
-    int * lastHovered = &this->attribute[8*8+1].i;
-    int * lastSelected = &this->attribute[8*8+2].i;
-    bool * isHovered = &this->attribute[8*8+3].b;
+    if (player_color != current_player) return;
+    Node ** chessboard = this->attribute[0].node->children;
+    int * lastHovered = &this->attribute[1].i;
+    int * lastSelected = &this->attribute[2].i;
+    bool * isHovered = &this->attribute[3].b;
     *isHovered = true;
     GET_SIGNAL();
     switch (signal) {
@@ -384,10 +407,10 @@ END_SCRIPT(script_fc_chessboard_signal)
 
 NEW_SCRIPT(script_fc_chessboard_update)
     if (player_color == FC_UNKNOWN) return;
-    Node *chessboard = this->attribute[8*8].p;
-    int * lastHovered = &this->attribute[8*8+1].i;
-    int * lastSelected = &this->attribute[8*8+2].i;
-    bool * isHovered = &this->attribute[8*8+3].b;
+    Node *chessboard = this->attribute[0].p;
+    int * lastHovered = &this->attribute[1].i;
+    int * lastSelected = &this->attribute[2].i;
+    bool * isHovered = &this->attribute[3].b;
     if (!(*isHovered) && *lastHovered != -1) {
         Node *piece = chessboard->children[*lastHovered];
         if (piece) {
@@ -398,13 +421,23 @@ NEW_SCRIPT(script_fc_chessboard_update)
             piece->attribute[0].i &= ~FC_SELECTED;
         }
     }
+
+    struct peer *peer = table_get(Game.storage, "socket::server");
+    char buffer[1024] = "CHESSBOARD_UPDATE";
+    int buffer_pos = strlen(buffer);
+    for (int i = 0; i < 8*8; i++) {
+        sprintf(buffer + buffer_pos, " %d %d", chessboard->children[i]->attribute[1].i, chessboard->children[i]->attribute[0].i);
+        buffer_pos += strlen(buffer + buffer_pos);
+    }
+    send_message(peer->socket, buffer, 0);
+
     *isHovered = false;
     if (Game.window->fadeColor[3] > 0.0f)
         Game.window->fadeColor[3] -= 0.01f;
 END_SCRIPT(script_fc_chessboard_update)
 
 
-NEW_SCRIPT(script_fc_board_piece)
+NEW_SCRIPT(script_fc_board_piece_update)
     GET_READY_PARAMETERS();
     SET_ATTRIBUTES_COUNT(2);
     int flags = this->attribute[0].i;
@@ -426,4 +459,4 @@ NEW_SCRIPT(script_fc_board_piece)
             float_approach(&this->pos[2], ((index%8)/8.0f - 0.5f)*8.6f + 0.5f, 0.1f);
         }
     }
-END_SCRIPT(script_fc_board_piece)
+END_SCRIPT(script_fc_board_piece_update)

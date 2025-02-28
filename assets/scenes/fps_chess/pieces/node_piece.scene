@@ -1,2 +1,2 @@
-Node{NULL,script_fc_board_piece,NULL}:1
+Node{NULL,script_fc_board_piece_update,NULL}:1
 Model(assets/models/FPSChess/Pieces/GPawn.obj)[s5,5,5]

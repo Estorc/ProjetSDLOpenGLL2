@@ -360,9 +360,9 @@ int handle_message(int bytes_received, char *msg, void * p, void ** data) {
             msg[bytes_received-1] = 0;
             PRINT_SERVER_INFO("%s send message : '%s'\n", client->info.name, msg + 6);
             char * message = malloc(sizeof(char) * (strlen(msg + 6) + strlen(client->info.name) + 9));
-            sprintf(message, "G_MSG\"%s\":%s", client->info.name, msg + 6);
+            sprintf(message, "G_MSG \"%s\":%s", client->info.name, msg + 6);
             for (int j = 0; j < MAX_CLIENTS; j++) {
-                if (clients[j].socket && clients[j].authorized) {
+                if (clients[j].socket && clients[j].authorized && clients[j] != client) {
                     send_message_with_separator(&clients[j], message);
                 }
             }
@@ -371,16 +371,16 @@ int handle_message(int bytes_received, char *msg, void * p, void ** data) {
             msg[bytes_received-1] = 0;
             PRINT_SERVER_INFO("%s send message : '%s'\n", client->info.name, msg);
             char * message = malloc(sizeof(char) * (strlen(msg) + strlen(client->info.name) + 9));
-            sprintf(message, "%c_MSG\"%s\":%s", client->party ? 'P':'G', client->info.name, msg);
+            sprintf(message, "%c_MSG \"%s\":%s", client->party ? 'P':'G', client->info.name, msg);
             if (client->party) {
                 for (int j = 0; j < MAX_PARTY_CLIENTS; j++) {
-                    if (client->party->clients[j]) {
+                    if (client->party->clients[j] && client->party->clients[j] != client) {
                         send_message_with_separator(client->party->clients[j], message);
                     }
                 }
             } else {
                 for (int j = 0; j < MAX_CLIENTS; j++) {
-                    if (clients[j].socket && clients[j].authorized) {
+                    if (clients[j].socket && clients[j].authorized && clients[j] != client) {
                         send_message_with_separator(&clients[j], message);
                     }
                 }
