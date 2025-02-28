@@ -119,7 +119,6 @@ int osio_save_file(char *path, char *relativePath, char *filter) {
     };
     path[strlen(path)-1] = 0;
     free(in);
-    PRINT_ERROR("%s\n", path);
     free(fullcmd);
 	pclose(fp);
     return 0;
