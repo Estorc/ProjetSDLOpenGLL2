@@ -479,6 +479,7 @@ int main(int argc, char **argv) {
                 client->ping = 0;
                 read_messages(bytes_received, msg_buffer, client);
             }
+            free(msg_buffer);
         }
     }
 
