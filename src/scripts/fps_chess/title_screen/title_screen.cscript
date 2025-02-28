@@ -12,6 +12,11 @@
 #include "../../../io/socket/socket.h"
 #include "../../../classes/classes.h"
 
+#include "../../../storage/hash.h"
+
+
+#include "../client.h"
+
 NEW_SCRIPT(script_fc_title_screen_init)
 	SET_ATTRIBUTES_COUNT(1);
 	this->attribute[0].b = false;
@@ -24,7 +29,7 @@ NEW_SCRIPT(script_fc_title_screen_camera)
 	if (Game.mainTree->root->attribute[0].b) {
 		Game.window->fadeColor[3] += 0.01f;
 		if (Game.window->fadeColor[3] >= 1.0f)
-			prepare_change_scene("assets/scenes/fps_chess/play_room_normal.scene");
+			prepare_change_scene("assets/scenes/fps_chess/server_party.scene");
 	} else {
 		if (Game.window->fadeColor[3] > 0.0f)
 			Game.window->fadeColor[3] -= 0.01f;
@@ -63,9 +68,25 @@ switch (signal) {
 		play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
 		//((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
 		//Game.mainTree->root->attribute[0].b = true;
+		Frame *frame = this->parent->parent->children[1]->children[0]->object;
+
+
+		initiate_socket();
+		int server_sock = connect_socket_server(frame->inputArea->text, 30000);
+		if (server_sock == -1) {
+			PRINT_ERROR("Unable to connect to server\n");
+			return;
+		}
+		launch_client(server_sock);
+
+		struct peer *peer = table_get(Game.storage, "socket::server");
+
+		send_message(peer->socket, "lobby", 0);
+		send_message(peer->socket, "Hello world!", 0);
+
+
 		Game.mainTree->root->children[11]->children[2]->flags &= ~NODE_VISIBLE;
-		Game.mainTree->root->children[11]->children[3]->flags &= ~NODE_VISIBLE;
-		Game.mainTree->root->children[11]->children[3]->flags &= ~NODE_ACTIVE;
+		Game.mainTree->root->children[11]->children[2]->flags &= ~NODE_ACTIVE;
 		Game.mainTree->root->attribute[0].b = true;
 		break;
 	case SIGNAL_BUTTON_HOVERED:
@@ -75,25 +96,6 @@ switch (signal) {
 		break;
 }
 END_SCRIPT(script_fc_join_game_button)
-
-NEW_SCRIPT(script_fc_join_menu_game_button)
-GET_SIGNAL();	
-switch (signal) {
-	case SIGNAL_BUTTON_CLICKED:
-		play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
-		//((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
-		//Game.mainTree->root->attribute[0].b = true;
-		Game.mainTree->root->children[11]->children[2]->flags &= ~NODE_ACTIVE;
-		Game.mainTree->root->children[11]->children[3]->flags |= NODE_ACTIVE;
-		Game.mainTree->root->children[11]->children[3]->flags |= NODE_VISIBLE;
-		break;
-	case SIGNAL_BUTTON_HOVERED:
-		play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
-		break;
-	default:
-		break;
-}
-END_SCRIPT(script_fc_join_menu_game_button)
 
 NEW_SCRIPT(script_fc_exit_menu)
 	GET_SIGNAL();	

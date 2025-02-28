@@ -107,6 +107,10 @@ int main(int argc, char **argv) {
     scanf("%s", SERVER_NAME);
     getc(stdin);
     int server_sock = connect_socket_server(SERVER_NAME, PORT);
+    if (server_sock == -1) {
+        PRINT_ERROR("Unable to connect to server\n");
+        return -1;
+    }
     PRINT_CLIENT_INFO("Connected to server!\n");
 
     /* envoie de données et reception */

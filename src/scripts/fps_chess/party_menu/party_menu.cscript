@@ -1,0 +1,173 @@
+#include "../../../raptiquax.h"
+#include "../../../math/math_util.h"
+#include "../../../storage/node.h"
+#include "../../../render/camera.h"
+#include "../../../gui/frame.h"
+#include "../../../storage/queue.h"
+#include "../../../utils/scene.h"
+#include "../../../io/audio.h"
+#include "../../../render/lighting.h"
+#include "../../../buffer.h"
+#include "../../../window.h"
+#include "../../../io/socket/socket.h"
+#include "../../../classes/classes.h"
+
+#include "../../../storage/hash.h"
+#include "../client.h"
+#include <pthread.h>
+
+
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
+static void get_party_list() {
+
+    for (int i = 0; i < Game.mainTree->root->children[11]->children[0]->children[0]->children[0]->length; i++) {
+        free(Game.mainTree->root->children[11]->children[0]->children[0]->children[0]->children[i]);
+    }
+    Game.mainTree->root->children[11]->children[0]->children[0]->children[0]->length = 0;
+
+    char *msg = queue_pop(Game.callQueue);
+    
+    char *context;
+    strtok_r(msg, "\n", &context);
+
+    char *token = strtok_r(NULL, "\n", &context);
+    int players = 0;
+    int y = 2;
+    Node *partyNode;
+    for (; token && strcmp(token, "PARTY_LIST_END"); token = strtok_r(NULL, "\n", &context)) {
+        switch (token[0]) {
+            case 'P':
+            
+                FILE * file = fopen("assets/scenes/fps_chess/menus/party.scene", "r");
+                if (file) {
+                    partyNode = load_node(file, NULL, Game.scripts, NULL);
+                    ((Frame *) partyNode->object)->relPos[1] += y;
+
+                    int id = atoi(strtok(token, "="));
+                    char *name = strtok(NULL, "=");
+
+                    (partyNode->children[0]->children[0])::set_text(name);
+
+                    (Game.mainTree->root->children[11]->children[0]->children[0]->children[0])::add_child_and_realloc(partyNode);
+                    fclose(file);
+                    y += 60;
+                }
+
+                players = 0;
+                PRINT_INFO("Party: %s\n", token + 1);
+                break;
+            case 'C':
+                players++;
+                char buffer[16];
+                sprintf(buffer, "%d/2", players);
+                (partyNode->children[1]->children[0])::set_text(buffer);
+                PRINT_INFO("Client: %s\n", token + 1);
+                break;
+        }
+    }
+    (Game.mainTree->root)::print(0);
+}
+
+
+static int get_party_list_wrapper(int bytes_received, char *msg, void *p, void **data) {
+
+    queue_push(Game.callQueue, get_party_list);
+    queue_push(Game.callQueue, strdup(msg));
+
+    return 0;
+}
+
+NEW_SCRIPT(script_fc_party_menu_init)
+	SET_ATTRIBUTES_COUNT(1);
+	this->attribute[0].b = false;
+	play_music("assets/audio/musics/fps_chess_idle.mp3", MIX_MAX_VOLUME, -1);
+
+    struct peer *peer = table_get(Game.storage, "socket::server");
+
+    add_message_handler(peer, "PARTY_LIST", get_party_list_wrapper, 1, 0, NULL);
+    send_message(peer->socket, "LIST_PARTY", 0);
+
+    
+END_SCRIPT(script_fc_party_menu_init)
+
+NEW_SCRIPT(script_fc_party_menu_camera)
+	GET_READY_PARAMETERS();
+
+	if (Game.mainTree->root->attribute[0].b) {
+		Game.window->fadeColor[3] += 0.01f;
+		if (Game.window->fadeColor[3] >= 1.0f)
+			prepare_change_scene("assets/scenes/fps_chess/play_room_normal.scene");
+	} else {
+		if (Game.window->fadeColor[3] > 0.0f)
+			Game.window->fadeColor[3] -= 0.01f;
+	}
+	this->rot[1] += 0.7f;
+	const float distance = 25.0f;
+	glm_vec3_copy((vec3) {sin(to_radians(this->rot[1]))*distance, 5.0f, cos(to_radians(this->rot[1]))*distance}, this->pos);
+
+END_SCRIPT(script_fc_party_menu_camera)
+
+NEW_SCRIPT(script_fc_create_party_button)
+GET_SIGNAL();	
+switch (signal) {
+	case SIGNAL_BUTTON_CLICKED:
+		play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+		//((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
+		//Game.mainTree->root->attribute[0].b = true;
+		Frame *frame = this->parent->parent->children[1]->children[0]->object;
+
+		create_party(frame->inputArea->text);
+
+
+		Game.mainTree->root->children[11]->children[1]->flags &= ~NODE_VISIBLE;
+		Game.mainTree->root->children[11]->children[1]->flags &= ~NODE_ACTIVE;
+        Game.mainTree->root->children[11]->children[0]->flags &= ~NODE_ACTIVE;
+		Game.mainTree->root->attribute[0].b = true;
+		break;
+	case SIGNAL_BUTTON_HOVERED:
+		play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+		break;
+	default:
+		break;
+}
+END_SCRIPT(script_fc_create_party_button)
+
+
+
+NEW_SCRIPT(script_fc_refresh_party_button)
+GET_SIGNAL();	
+switch (signal) {
+	case SIGNAL_BUTTON_CLICKED:
+		play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+        struct peer *peer = table_get(Game.storage, "socket::server");
+        add_message_handler(peer, "PARTY_LIST", get_party_list_wrapper, 1, 0, NULL);
+        send_message(peer->socket, "LIST_PARTY", 0);
+		break;
+	case SIGNAL_BUTTON_HOVERED:
+		play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+		break;
+	default:
+		break;
+}
+END_SCRIPT(script_fc_refresh_party_button)
+
+
+NEW_SCRIPT(script_fc_create_party_menu_button)
+	GET_SIGNAL();	
+	switch (signal) {
+		case SIGNAL_BUTTON_CLICKED:
+			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            //((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
+			//Game.mainTree->root->attribute[0].b = true;
+			Game.mainTree->root->children[11]->children[0]->flags &= ~NODE_ACTIVE;
+			Game.mainTree->root->children[11]->children[1]->flags |= NODE_ACTIVE;
+			Game.mainTree->root->children[11]->children[1]->flags |= NODE_VISIBLE;
+			break;
+		case SIGNAL_BUTTON_HOVERED:
+			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+			break;
+		default:
+			break;
+	}
+END_SCRIPT(script_fc_create_party_menu_button)

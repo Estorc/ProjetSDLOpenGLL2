@@ -11,7 +11,7 @@ int quit = 0;
 int ping = 0;
 
 
-int handle_message(int bytes_received, char *msg, void * p) {
+int handle_message(int bytes_received, char *msg, void * p, void ** data) {
     struct peer *peer = (struct peer *)p;
     if (strcmp(msg, "PING") == 0) {
         send_message(peer->socket, "PONG", 0);
@@ -23,9 +23,11 @@ int handle_message(int bytes_received, char *msg, void * p) {
 }
 
 
-void *input_server(void *arg) {
+static void *input_server(void *arg) {
     struct peer *peer = (struct peer *)arg;
     char *msg_buffer = NULL;
+
+    add_message_handler(peer, NULL, handle_message, -1, 0, NULL);
 
     while (!quit) {
         int bytes_received = receive_message(peer, &msg_buffer, 512, 1000, 0);
@@ -45,7 +47,7 @@ void *input_server(void *arg) {
             break;
         }
 
-        read_messages(bytes_received, msg_buffer, peer, handle_message);
+        read_messages(bytes_received, msg_buffer, peer);
 
     }
 
@@ -53,7 +55,7 @@ void *input_server(void *arg) {
     return NULL;
 }
 
-void *output_server(void *arg) {
+static void *output_server(void *arg) {
     struct peer *peer = (struct peer *)arg;
     while (!quit) {
         char buffer[512];
@@ -77,16 +79,20 @@ int main(int argc, char **argv) {
     scanf("%s", SERVER_NAME);
     getc(stdin);
     int server_sock = connect_socket_server(SERVER_NAME, PORT);
+    if (server_sock == -1) {
+        PRINT_ERROR("Unable to connect to server\n");
+        return -1;
+    }
     PRINT_CLIENT_INFO("Connected to server!\n");
 
     /* envoie de données et reception */
 
     pthread_t input_thread, ping_thread;
 
-    struct peer peer = {server_sock, create_socket_request_listener(server_sock), NULL};
+    struct peer *peer = create_peer(server_sock);
 
-    pthread_create(&ping_thread, NULL, input_server, &peer);
-    pthread_create(&input_thread, NULL, output_server, &peer);
+    pthread_create(&ping_thread, NULL, input_server, peer);
+    pthread_create(&input_thread, NULL, output_server, peer);
 
     pthread_detach(input_thread);
     pthread_detach(ping_thread);
@@ -97,6 +103,8 @@ int main(int argc, char **argv) {
     printf("test\n");
 
     while(!quit);
+
+    free_peer(peer);
 
     close_socket(server_sock);
 

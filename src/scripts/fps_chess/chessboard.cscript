@@ -3,7 +3,13 @@
 #include "../../storage/node.h"
 #include "../../scripts/scripts.h"
 
+#include "../../io/socket/socket.h"
 #include "../../classes/classes.h"
+
+#include "../../storage/hash.h"
+
+
+#include "client.h"
 
 
 typedef enum ChessPiece {
@@ -17,6 +23,7 @@ typedef enum ChessPiece {
 } ChessPiece;
 
 typedef enum ChessPieceColor {
+    FC_UNKNOWN = 0,
     FC_WHITE = 1 << 4,
     FC_BLACK = 2 << 4
 } ChessPieceColor;
@@ -241,14 +248,31 @@ static const int classic_chessboard[64] = {
     FC_ROOK | FC_BLACK, FC_KNIGHT | FC_BLACK, FC_BISHOP | FC_BLACK, FC_QUEEN | FC_BLACK, FC_KING | FC_BLACK, FC_BISHOP | FC_BLACK, FC_KNIGHT | FC_BLACK, FC_ROOK | FC_BLACK
 };
 
-static ChessPieceColor player_color = FC_BLACK;
+static ChessPieceColor player_color = FC_UNKNOWN;
 
-NEW_SCRIPT(script_fc_chessboard_player_init)
-    SDL_SetRelativeMouseMode(SDL_TRUE);
+int get_player_color_callback(int bytes_received, char *msg, void * p, void ** data) {
+    PRINT_CLIENT_INFO("Getting player color\n");
+    Node *this = data[0];
+    msg += strlen("PARTY_GET_SELF_INDEX");
+    if (atoi(msg) == 0) {
+        player_color = FC_WHITE;
+    } else {
+        player_color = FC_BLACK;
+    }
     if (player_color == FC_BLACK) {
         this->pos[0] *= -1.0f;
         this->rot[1] = 180.0f;
     }
+    return 0;
+}
+
+NEW_SCRIPT(script_fc_chessboard_player_init)
+    SDL_SetRelativeMouseMode(SDL_TRUE);
+    struct peer *peer = table_get(Game.storage, "socket::server");
+
+    add_message_handler(peer, "PARTY_GET_SELF_INDEX", get_player_color_callback, 1, 1, (void *[]) {this});
+    send_message(peer->socket, "PARTY_GET_SELF_INDEX", 0);
+
 END_SCRIPT(script_fc_chessboard_player_init)
 
 NEW_SCRIPT(script_fc_chessboard_init)
@@ -280,6 +304,7 @@ END_SCRIPT(script_fc_chessboard_init)
 
 
 NEW_SCRIPT(script_fc_chessboard_signal)
+    if (player_color == FC_UNKNOWN) return;
     Node ** chessboard = this->attribute[8*8].node->children;
     int * lastHovered = &this->attribute[8*8+1].i;
     int * lastSelected = &this->attribute[8*8+2].i;
@@ -356,6 +381,7 @@ END_SCRIPT(script_fc_chessboard_signal)
 
 
 NEW_SCRIPT(script_fc_chessboard_update)
+    if (player_color == FC_UNKNOWN) return;
     Node *chessboard = this->attribute[8*8].p;
     int * lastHovered = &this->attribute[8*8+1].i;
     int * lastSelected = &this->attribute[8*8+2].i;

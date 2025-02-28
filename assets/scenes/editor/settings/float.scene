@@ -1,5 +1,5 @@
-ControlFrame(0w,10p,96w,50p,ct):2
-ControlFrame(0w,0p,25w,32p,lt):1
+ControlFrame(0w,10p,96w,50p,ctn):2
+ControlFrame(0w,0p,25w,32p,ltn):1
 Label("Float:",lc)
-ControlFrame(25w,0p,75w,32p,lt):1
+ControlFrame(25w,0p,75w,32p,ltn):1
 InputArea(Value,cc){NULL,float_input_area,NULL}

@@ -5,14 +5,14 @@ ControlFrame(25w,0p,25w,32p,ltn):2
 ControlFrame(0p,0p,20w,32p,ltn):1
 Label("X:",lc)
 ControlFrame(20w,0p,80w,32p,ltn):1
-InputArea(X,cc){NULL,float_input_area,NULL}
+InputArea(X,cc)
 ControlFrame(50w,0p,25w,32p,ltn):2
 ControlFrame(0p,0p,20w,32p,ltn):1
 Label("Y:",lc)
 ControlFrame(20w,0p,80w,32p,ltn):1
-InputArea(Y,cc){NULL,float_input_area,NULL}
+InputArea(Y,cc)
 ControlFrame(75w,0p,25w,32p,ltn):2
 ControlFrame(0p,0p,20w,32p,ltn):1
 Label("Z:",lc)
 ControlFrame(20w,0p,80w,32p,ltn):1
-InputArea(Z,cc){NULL,float_input_area,NULL}
+InputArea(Z,cc)

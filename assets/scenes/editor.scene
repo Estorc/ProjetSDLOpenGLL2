@@ -10,16 +10,16 @@ Frame(0w,0h,40w,100h,lcs,[assets/textures/windowskin/Window.png,assets/fonts/Orb
 Frame(-5w,-5h,40w,100p,rbn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Black.ttf,30,#ffffffff]):1
 Label("< Placeholder >",cc)
 Frame(0w,0h,64p,256p,rtn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Black.ttf,18,#ffffffff]):4
-ControlFrame(0w,0h,25h,100w,lt):1
+ControlFrame(0w,0h,25h,100w,ltn):1
 Button{NULL,scene_editor_btn_camera,NULL}:1
 ImageFrame(0w,0h,32p,32p,cc,assets/textures/editor/camera.png)
-ControlFrame(0w,25h,25h,100w,lt):1
+ControlFrame(0w,25h,25h,100w,ltn):1
 Button{NULL,scene_editor_btn_load,NULL}:1
 ImageFrame(0w,0h,32p,32p,cc,assets/textures/editor/folder.png)
-ControlFrame(0w,50h,25h,100w,lt):1
+ControlFrame(0w,50h,25h,100w,ltn):1
 Button{NULL,scene_editor_btn_save,NULL}:1
 ImageFrame(0w,0h,32p,32p,cc,assets/textures/editor/save.png)
-ControlFrame(0w,75h,25h,100w,lt):1
+ControlFrame(0w,75h,25h,100w,ltn):1
 Button{NULL,scene_editor_btn_show_collisions,NULL}:1
 ImageFrame(0w,0h,32p,32p,cc,assets/textures/editor/active.png)
 Node[a0v0]{NULL,scene_editor_edit_mode,NULL}:1

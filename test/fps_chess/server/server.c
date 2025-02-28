@@ -18,9 +18,11 @@ struct client {
     int socket;
     struct socket_request_listener listener;
     char *incoming_buffer;
-    
-    bool authorized;
     int ping;
+    struct message_handler **handlers;
+    int handler_count;
+
+    bool authorized;
     struct party *party;
     struct client_info info;
 };
@@ -114,6 +116,16 @@ static inline bool command(const char *cmd, char *str, char **args) {
 }
 
 
+
+static inline int get_client_id_of_party(struct party *party, struct client *client) {
+    for (int i = 0; i < MAX_PARTY_CLIENTS; i++) {
+        if (party->clients[i] == client) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 static inline bool is_first_client_of_party(struct client *client, struct party *party) {
     return party->clients[0] == client;
 }
@@ -139,9 +151,10 @@ static char * list_party() {
     char *party_list = malloc(party_list_size);
     char field[256];
     party_list[0] = 0;
+    sprintf(party_list, "PARTY_LIST\n");
     for (int i = 0; i < MAX_CLIENTS; i++) {
         if (clients[i].socket && clients[i].party && is_first_client_of_party(&clients[i], clients[i].party)) {
-            sprintf(field, "\nParty %d - %s\n", i, clients[i].party->name);
+            sprintf(field, "P%d=%s\n", i, clients[i].party->name);
             if (strlen(party_list) + strlen(field) + 1 > party_list_size) {
                 party_list_size <<= 1;
                 party_list = realloc(party_list, party_list_size);
@@ -149,7 +162,7 @@ static char * list_party() {
             strcat(party_list, field);
             for (int j = 0; j < MAX_PARTY_CLIENTS; j++) {
                 if (clients[i].party->clients[j]) {
-                    sprintf(field, "Client %d : %s\n", j, clients[i].party->clients[j]->info.name);
+                    sprintf(field, "C%d=%s\n", j, clients[i].party->clients[j]->info.name);
                     if (strlen(party_list) + strlen(field) + 1 > party_list_size) {
                         party_list_size <<= 1;
                         party_list = realloc(party_list, party_list_size);
@@ -159,6 +172,12 @@ static char * list_party() {
             }
         }
     }
+    sprintf(field, "PARTY_LIST_END\n");
+    if (strlen(party_list) + strlen(field) + 1 > party_list_size) {
+        party_list_size <<= 1;
+        party_list = realloc(party_list, party_list_size);
+    }
+    strcat(party_list, field);
     PRINT_SERVER_INFO("Party list : %s\n", party_list);
     return party_list;
 }
@@ -234,15 +253,6 @@ static void create_party(struct client *client, const char *name) {
 }
 
 
-static inline void init_client(struct client *client, int socket) {
-    PRINT_SERVER_INFO("Initializing client\n");
-    client->socket = socket;
-    client->authorized = false;
-    client->listener = create_socket_request_listener(socket);
-    client->info.name = strdup("Anonymous");
-}
-
-
 static void kill_client(struct client *client) {
     PRINT_SERVER_INFO("Killing client\n");
     if (client->party) {
@@ -259,13 +269,18 @@ static void kill_client(struct client *client) {
     if (client->incoming_buffer) {
         free(client->incoming_buffer);
     }
+    for (int i = 0; i < client->handler_count; i++) {
+        free(client->handlers[i]->msg);
+        free(client->handlers[i]);
+    }
+    free(client->handlers);
     memset(client, 0, sizeof(*client));
 }
 
 
 
 
-int handle_message(int bytes_received, char *msg, void * p) {
+int handle_message(int bytes_received, char *msg, void * p, void ** data) {
     struct client *client = (struct client *)p;
     char *args;
     if (command("PONG", msg, &args));
@@ -331,6 +346,13 @@ int handle_message(int bytes_received, char *msg, void * p) {
             } else {
                 send_message_with_separator(client, "No party to get data!");
             }
+        } else if (command("PARTY_GET_SELF_INDEX", msg, &args)) {
+            if (client->party) {
+                sprintf(buffer, "PARTY_GET_SELF_INDEX %d", get_client_id_of_party(client->party, client));
+                send_message_with_separator(client, buffer);
+            } else {
+                send_message_with_separator(client, "No party to set data!");
+            }
         } else if (bytes_received == 0 || command("EXIT", msg, &args)) {
             PRINT_CLIENT_INFO("deconnected\n");
             kill_client(client);
@@ -377,6 +399,15 @@ int handle_message(int bytes_received, char *msg, void * p) {
         }
     }
     return 0;
+}
+
+static inline void init_client(struct client *client, int socket) {
+    PRINT_SERVER_INFO("Initializing client\n");
+    client->socket = socket;
+    client->authorized = false;
+    client->listener = create_socket_request_listener(socket);
+    client->info.name = strdup("Anonymous");
+    add_message_handler(client, NULL, handle_message, -1, 0, NULL);
 }
 
 
@@ -446,7 +477,7 @@ int main(int argc, char **argv) {
             }
             if (bytes_received != -1 && client->socket) {
                 client->ping = 0;
-                read_messages(bytes_received, msg_buffer, client, handle_message);
+                read_messages(bytes_received, msg_buffer, client);
             }
         }
     }

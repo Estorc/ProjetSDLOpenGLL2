@@ -23,6 +23,26 @@ struct peer {
     int socket;
     struct socket_request_listener listener;
     char *incoming_buffer;
+    int ping;
+    struct message_handler **handlers;
+    int handler_count;
+};
+
+/**
+ * @struct message_handler
+ * @brief Structure to handle messages
+ * 
+ * @param msg The message to handle
+ * @param callback The callback to call when the message is received
+ * @param lifespan The number of time the message can be received
+ * @param data The data to pass to the callback
+ * 
+ */
+struct message_handler {
+    char *msg;
+    int (*callback)(int bytes_received, char *msg, void * p, void ** data);
+    int lifespan;
+    void ** data;
 };
 
 #include "server.h"

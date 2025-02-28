@@ -1,4 +1,4 @@
-Node:18
+Node{script_no_fade_init,NULL,NULL}:18
 Skybox(assets/textures/skybox/right.jpg,assets/textures/skybox/left.jpg,assets/textures/skybox/top.jpg,assets/textures/skybox/bottom.jpg,assets/textures/skybox/front.jpg,assets/textures/skybox/back.jpg)
 SpotLight(20,25,30,0.0006,5,1,0.09,0.032,2,0)[m51,30,8r0,90,0]
 SpotLight(20,25,30,0.0006,5,1,0.09,0.032,2,0)[m51,30,-8r0,90,0]
