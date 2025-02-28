@@ -68,12 +68,14 @@ NEW_SCRIPT(script_cc_intro_screen_signal)
     GET_SIGNAL();
     switch (signal) {
         case SIGNAL_AREA_COLLISION:
+        {
             GET_AREA_SIGNAL_PARAMETERS();
             RenderTarget *renderTarget = this->attribute[0].p;
             renderTarget->mouse.x = (float) (impactPoint[0]/49.4f+0.5f) * renderTarget->w;
             renderTarget->mouse.y = (float) (1.0f-(impactPoint[1]/24.6f+0.5f)) * renderTarget->h;
             PRINT_INFO("Mouse: %d, %d", renderTarget->mouse.x, renderTarget->mouse.y);
             break;
+        }
         default:
             break;
     }

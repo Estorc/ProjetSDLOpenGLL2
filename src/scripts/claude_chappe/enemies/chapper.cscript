@@ -47,6 +47,7 @@ NEW_SCRIPT(script_cc_chapper_update)
     float *realPos = &this->attribute[0].f;
     ChapperState *state = (ChapperState *) &this->attribute[3];
     Node *camera = this->attribute[4].node;
+    float *targetRot;
     switch (*state)
     {
     case CHAPPER_STATE_IDLE:
@@ -63,7 +64,7 @@ NEW_SCRIPT(script_cc_chapper_update)
         break;
 
     case CHAPPER_STATE_ATTACK:
-        float *targetRot = &camera->attribute[0].f;
+        targetRot = &camera->attribute[0].f;
         ((KinematicBody *) camera->parent->object)->velocity[1] = -0.1f;
         targetRot[0] = 32.0f; // 40.0f
         targetRot[1] = atan2f(camera->globalPos[0] - this->globalPos[0], camera->globalPos[2] - this->globalPos[2]) * (180.0f / PI);

@@ -60,6 +60,13 @@ void create_party(const char *name) {
     send_message(peer->socket, buffer, 0);
 }
 
+void join_party(int id) {
+    struct peer *peer = table_get(Game.storage, "socket::server");
+    char buffer[256];
+    sprintf(buffer, "JOIN_PARTY %d", id);
+    send_message(peer->socket, buffer, 0);
+}
+
 void launch_client(int socket) {
     struct peer *peer = create_peer(socket);
 

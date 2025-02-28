@@ -51,9 +51,6 @@ else
 	HAVE_PIP = 1
 endif
 PYTHON_REQUIREMENTS = ./lib/python_requirements.txt
-VENV_DIR = .venv
-VENV_PYTHON = $(VENV_DIR)/bin/python
-VENV_PIP = $(VENV_DIR)/bin/pip
 
 BUILD_DIR := bin
 TEST_DIR := test
@@ -135,6 +132,7 @@ LFLAGS += -Ilib
 LFLAGS += -lSDL2_image
 LFLAGS += -lSDL2_ttf
 LFLAGS += -lSDL2_mixer
+LFLAGS += -pthread
 ifeq ($(OS),Windows_NT)
 LFLAGS += -lglew32
 LFLAGS += -lopengl32
@@ -249,7 +247,7 @@ ${TEST_DIR}/%.o: ${TEST_DIR}/%.c
 ${BUILD_DIR}/%.o: %.c
 	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}...\n"
 	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
-	@$(VENV_PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
+	@$(PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
 
 	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
 	@mkdir -p ${BUILD_DIR}/${dir $*}
@@ -260,7 +258,7 @@ ${BUILD_DIR}/%.o: %.c
 ${BUILD_DIR}/debug/%.o: %.c
 	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}...\n"
 	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
-	@$(VENV_PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
+	@$(PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
 
 	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
 	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
@@ -276,7 +274,7 @@ ${BUILD_DIR}/debug/%.o: %.c
 ${BUILD_DIR}/%.o: %.cscript
 	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}...\n"
 	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
-	@$(VENV_PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
+	@$(PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
 
 	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
 	@mkdir -p ${BUILD_DIR}/${dir $*}
@@ -287,19 +285,19 @@ ${BUILD_DIR}/%.o: %.cscript
 ${BUILD_DIR}/debug/%.o: %.cscript
 	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}...\n"
 	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
-	@$(VENV_PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
+	@$(PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
 
 	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
 	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
 	@${GCC} -x c -c ${PROCESSED_CLASS_DIR}/$< -g -o ${BUILD_DIR}/debug/$*.o -I$(dir $*) -DDEBUG ${DFLAGS} ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
 	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}\n"
 
-# @$(VENV_PYTHON) ./tools/preprocessor_pipeline.py $$file/${dir $<}
+# @$(PYTHON) ./tools/preprocessor_pipeline.py $$file/${dir $<}
 generate_header:
 	@printf "Generate loading scripts header...\n"
 	@echo "// Auto-generated scripts loading header file" > $(LOADING_SCRIPT_HEADER)
 	@for file in $(SCRIPTS_PATHS); do \
-		$(VENV_PYTHON) ./tools/preprocessor_pipeline.py $$file ${PROCESSED_CLASS_DIR}/$$(dirname $$file); \
+		$(PYTHON) ./tools/preprocessor_pipeline.py $$file ${PROCESSED_CLASS_DIR}/$$(dirname $$file); \
 		echo "#include \"../__processed__/$$file\"" >> $(LOADING_SCRIPT_HEADER); \
 	done
 
@@ -311,17 +309,13 @@ clean:
 
 
 # Default target to install libraries
-install: check-env venv
+install: check-python
 	@printf "${ACT_COL}Install python requirements...${NC}\n"
-	@$(VENV_PIP) install -r $(PYTHON_REQUIREMENTS)
+	@$(PIP) install -r $(PYTHON_REQUIREMENTS)
 	@printf "${SUCCESS_COL}Successfully install python requirements!${NC}\n"
 
-# Install a specific library into the virtual environment
-install-lib: check-env venv
-	@$(VENV_PIP) install $(LIBRARY_NAME)
-
 # Ensure that the environment is not externally-managed
-check-env:
+check-python:
 	@if [ $(HAVE_PIP) = "0" ]; then \
 		echo "Error: pip is not installed. Please install pip."; \
 		exit 1; \
@@ -330,14 +324,6 @@ check-env:
 		echo "Consider using a virtual environment for your project."; \
 		exit 1; \
 	fi
-
-# Create the virtual environment if not already present
-venv:
-	@if [ ! -d "$(VENV_DIR)" ]; then \
-		echo "Creating virtual environment..."; \
-		$(PYTHON) -m venv $(VENV_DIR); \
-	fi
-
 
 docs:
 	@printf "${ACT_COL}Generate documentation...${NC}\n"

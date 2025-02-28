@@ -97,7 +97,7 @@ uniform PointLight pointLights[POINT_LIGHTS_MAX];
 uniform SpotLight spotLights[SPOT_LIGHTS_MAX];
 
 const float PI = 3.14159265359;
-const int SHADOW_QUALITY = 1;
+const int SHADOW_QUALITY = 0;
 
 float metallic = 0.0;
 float roughness = 0.5;
@@ -237,6 +237,7 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir, int 
     float bias = max(lightBias * (1.0 - dot(normal, lightDir)), lightBias);  
 
     float shadow = 0.0;
+    if (SHADOW_QUALITY == 0) return currentDepth - bias > texture(shadowMap, vec3(projCoords.xy, index)).r ? 1.0 : 0.0; 
     vec2 texelSize = 1.0 / textureSize(shadowMap, 0).xy;
     for(int x = -SHADOW_QUALITY; x <= SHADOW_QUALITY; ++x)
     {
