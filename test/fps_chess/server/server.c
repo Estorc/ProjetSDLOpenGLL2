@@ -407,8 +407,6 @@ static inline void init_client(struct client *client, int socket) {
     client->authorized = false;
     client->listener = create_socket_request_listener(socket);
     client->info.name = strdup("Anonymous");
-    client->handlers = NULL;
-    client->handler_count = 0;
     add_message_handler(client, NULL, handle_message, -1, 0, NULL);
 }
 
