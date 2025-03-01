@@ -361,7 +361,7 @@ bool check_collision_box_with_plane(Node *shapeA, Node *shapeB) {
     }
 
     // If we find a vertex on each side, the cube intersects the plane
-    if (positiveSide && negativeSide) {
+    if (negativeSide) {
 
         // Calculate the penetrationDepth
         (penetrationDepth) = -(minDistanceToPlane);
@@ -567,7 +567,7 @@ bool check_collision_sphere_with_plane(Node *shapeA, Node *shapeB) {
     float distanceFromPlane = glm_vec3_dot(planeNormal, sphereShape->globalPos) - planeDistance;
     float absDistanceFromPlane = fabs(distanceFromPlane);
 
-    if (absDistanceFromPlane <= radius) {
+    if (distanceFromPlane <= radius) {
 
         // Calculate the penetrationDepth
         (penetrationDepth) = -(distanceFromPlane - radius);

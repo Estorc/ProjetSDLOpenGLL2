@@ -6,8 +6,6 @@ static ChessPieceColor current_player = FC_WHITE;
 static Node *enemy = NULL;
 static Node *player = NULL;
 
-static struct timespec last_time = {0, 0};
-
 #define SMOOTH_RATE 4.0f
 
 double timespec_diff(struct timespec *start, struct timespec *end) {
@@ -25,6 +23,15 @@ static int get_chessboard_state(int bytes_received, char *msg, void * p, void **
     if (strncmp("MOVE_PLAYER", content, 11) == 0) {
         content += 11;
         sscanf(content, "%g %g %g %g %g %g", &enemy->attribute[0].f, &enemy->attribute[1].f, &enemy->attribute[2].f, &enemy->attribute[3].f, &enemy->attribute[4].f, &enemy->attribute[5].f);
+    } else if (strncmp("UPDATE_PIECE", content, 12) == 0) {
+        content += 12;
+        int piece_id;
+        sscanf(content, "%d", &piece_id);
+        if (piece_id < chessboard->length) {
+            Node *piece = chessboard->children[piece_id];
+            RigidBody *piece_body = piece->object;
+            sscanf(content, "%d %g %g %g %g %g %g %g %g %g %g %g %g", &piece_id, &piece->pos[0], &piece->pos[1], &piece->pos[2], &piece_body->velocity[0], &piece_body->velocity[1], &piece_body->velocity[2], &piece_body->angularVelocity[0], &piece_body->angularVelocity[1], &piece_body->angularVelocity[2], &piece->rot[0], &piece->rot[1], &piece->rot[2]);
+        }
     }
     free(protected_msg);
     return 0;
@@ -48,15 +55,17 @@ NEW_SCRIPT(script_fc_fight_chessboard_init)
                 if (i == enemy_id) {
                     enemy = piece;
                     MALLOC_ATTRIBUTE(piece, 6);
+                    piece->pos[1] = this->pos[1];
+                    (this->parent)::add_child_and_realloc(piece);
                 } else {
                     MALLOC_ATTRIBUTE(piece, 2);
+                    this::add_child_and_realloc(piece);
                 }
                 piece->attribute[0].i = flags;
                 piece->attribute[1].i = i;
                 piece->pos[0] = -(((i/8)/8.0f - 0.5f)*8.6f + 0.5f);
                 piece->pos[2] = ((i%8)/8.0f - 0.5f)*8.6f + 0.5f;
                 set_piece_skin(piece->children[0], piece->attribute[0].i);
-                this::add_child_and_realloc(piece);
                 fclose(file);
             }
             Game.buffers->collisionBuffer.collisionsShapes = realloc(Game.buffers->collisionBuffer.collisionsShapes, sizeof(Node *) * Game.buffers->collisionBuffer.length);
@@ -67,6 +76,37 @@ NEW_SCRIPT(script_fc_fight_chessboard_init)
     if (peer)
         add_message_handler(peer, "P_MSG", get_chessboard_state, -1, 1, (void *[]) {this});
 END_SCRIPT(script_fc_fight_chessboard_init)
+
+
+NEW_SCRIPT(script_fc_fight_chessboard_update)
+
+    static int selected_piece = 0;
+    static struct timespec last_time = {0, 0};
+    struct timespec current_time;
+    if (clock_gettime(CLOCK_REALTIME, &current_time) == -1) {
+        perror("clock_gettime");
+    }
+    if (timespec_diff(&last_time, &current_time) > 0.03) {
+
+        last_time = current_time;
+
+        int player_id = GET_RAW(int, table_get(Game.storage, "fc_chessboard::player_id"));
+        int enemy_id = GET_RAW(int, table_get(Game.storage, "fc_chessboard::enemy_id"));
+
+        if (player_id < enemy_id) {
+            struct peer *peer = table_get(Game.storage, "socket::server");
+            char buffer[256];
+            
+            Node * piece = this->children[selected_piece];
+            RigidBody * piece_body = piece->object;
+            
+            sprintf(buffer, "UPDATE_PIECE %d %g %g %g %g %g %g %.2g %.2g %.2g %.1g %.1g %.1g", selected_piece++, piece->pos[0], piece->pos[1], piece->pos[2], piece_body->velocity[0], piece_body->velocity[1], piece_body->velocity[2], piece_body->angularVelocity[0], piece_body->angularVelocity[1], piece_body->angularVelocity[2], piece->rot[0], piece->rot[1], piece->rot[2]);
+            send_message(peer->socket, buffer, 0);
+            if (selected_piece >= this->length) selected_piece = 0;
+        }
+    }
+
+END_SCRIPT(script_fc_fight_chessboard_update)
 
 NEW_SCRIPT(fs_fight_player_init)
 
@@ -139,6 +179,7 @@ NEW_SCRIPT(fs_fight_player_update)
 
 	player->velocity[1] -= 0.5*delta;
 
+    static struct timespec last_time = {0, 0};
     struct timespec current_time;
     if (clock_gettime(CLOCK_REALTIME, &current_time) == -1) {
         perror("clock_gettime");

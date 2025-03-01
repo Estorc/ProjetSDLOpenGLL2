@@ -12,8 +12,8 @@ static int handle_message(int bytes_received, char *msg, void * p, void ** data)
     if (strcmp(msg, "PING") == 0) {
         send_message(peer->socket, "PONG", 0);
     } else {
-        PRINT_INFO("Received %d bytes\n", bytes_received);
-        PRINT_SERVER_INFO("%s\n", msg);
+        //PRINT_INFO("Received %d bytes\n", bytes_received);
+        //PRINT_SERVER_INFO("%s\n", msg);
     }
     return 0;
 }
