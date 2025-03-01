@@ -99,16 +99,10 @@ class RigidBody : public Body {
         glm_vec3_scale(rigidBody->velocity, rigidBody->friction * (1.0-delta), rigidBody->velocity);
         glm_vec3_add(this->pos, rigidBody->velocity, this->pos);
 
+
         glm_vec3_scale(rigidBody->angularVelocity, 0.98f, rigidBody->angularVelocity);
         if (glm_vec3_norm2(rigidBody->angularVelocity) < 0.01f) 
             glm_vec3_zero(rigidBody->angularVelocity);
-
-        // Limit angular velocity to prevent it from getting too high
-        float maxAngularVelocity = 10.0f; // Define a maximum angular velocity
-        if (glm_vec3_norm(rigidBody->angularVelocity) > maxAngularVelocity) {
-            glm_vec3_normalize(rigidBody->angularVelocity);
-            glm_vec3_scale(rigidBody->angularVelocity, maxAngularVelocity, rigidBody->angularVelocity);
-        }
 
 
         vec3 degreeAngularVelocity;
