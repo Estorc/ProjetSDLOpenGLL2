@@ -1,9 +1,0 @@
-<map id="LightingBuffer" name="LightingBuffer">
-<area shape="rect" id="Node000001" title="Buffer structure to manage an array of lighting nodes." alt="" coords="5,97,119,123"/>
-<area shape="rect" id="Node000002" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="126,7,182,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,37,97,47,81,60,71,79,66,98,61,96,66,77,77,57,94,43,112,32"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="197,10,205,13,209,20,200,29,183,31,182,26,198,24,203,20,201,17,195,15"/>
-<area shape="rect" id="Node000003" href="$unionBehaviorParameter.html" title=" " alt="" coords="146,97,293,123"/>
-<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="149,46,148,60,152,72,165,85,181,95,178,100,161,89,148,75,143,61,144,46"/>
-<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="206,86,191,60,166,35,170,31,195,57,211,83"/>
-</map>

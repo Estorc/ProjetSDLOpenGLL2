@@ -55,6 +55,8 @@ Entry * table_insert(HashTable *table, const char *key, void *value) {
     Entry *entry = table->table[index];
     while (entry) {
         if (strcmp(entry->key, key) == 0) {
+            entry->needs_free = true;
+            free(entry->value);
             entry->value = value;
             return entry;
         }
@@ -100,6 +102,9 @@ void table_remove(HashTable *table, const char *key) {
                 prev->next = entry->next;
             } else {
                 table->table[index] = entry->next;
+            }
+            if (entry->needs_free) {
+                free(entry->value);
             }
             free(entry->key);
             free(entry);

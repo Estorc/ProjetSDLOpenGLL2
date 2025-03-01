@@ -1,9 +1,0 @@
-<map id="Light" name="Light">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,97,60,123"/>
-<area shape="rect" id="Node000002" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="62,7,118,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,45,63,60,41,99,36,96,58,57,70,42"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="133,10,141,13,145,20,136,29,119,31,118,26,134,24,139,20,137,17,131,15"/>
-<area shape="rect" id="Node000003" href="$unionBehaviorParameter.html" title=" " alt="" coords="85,97,231,123"/>
-<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="85,46,84,60,88,72,101,85,117,95,115,100,97,90,84,75,79,61,79,46"/>
-<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="143,86,127,60,102,35,106,31,131,57,148,83"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="Texture" name="Texture">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,97,76,123"/>
-<area shape="rect" id="Node000002" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="78,7,134,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,45,79,60,51,99,47,95,75,57,86,42"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="149,10,157,13,161,20,152,29,135,31,134,26,150,24,155,20,153,17,147,15"/>
-<area shape="rect" id="Node000003" href="$unionBehaviorParameter.html" title=" " alt="" coords="101,97,247,123"/>
-<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="101,46,100,60,104,72,117,85,133,95,131,100,113,90,100,75,95,61,95,46"/>
-<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="159,86,143,60,118,35,122,31,147,57,164,83"/>
-</map>

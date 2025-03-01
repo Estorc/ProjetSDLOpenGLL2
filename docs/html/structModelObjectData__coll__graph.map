@@ -1,7 +1,0 @@
-<map id="ModelObjectData" name="ModelObjectData">
-<area shape="rect" id="Node000001" title="Structure representing the data of a 3D model object." alt="" coords="7,93,142,119"/>
-<area shape="rect" id="Node000002" href="$structFace.html" title="Structure representing a face of a 3D model." alt="" coords="5,5,56,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="41,43,52,68,67,91,63,94,47,71,36,45"/>
-<area shape="rect" id="Node000003" href="$structMaterial.html" title="Structure representing a material with various properties." alt="" coords="81,5,157,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="109,44,83,94,78,92,104,42"/>
-</map>

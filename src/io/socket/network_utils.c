@@ -200,7 +200,7 @@ void remove_message_handler_by_index(void *p, int i) {
 void remove_message_handling(void *p, char *msg) {
     struct peer *peer = (struct peer *)p;
     for (int i = 0; i < peer->handler_count; i++) {
-        if (peer->handlers[i]->msg == NULL || strcmp(peer->handlers[i]->msg, msg) == 0) {
+        if ((peer->handlers[i]->msg == NULL && msg == NULL) || (peer->handlers[i]->msg && strcmp(peer->handlers[i]->msg, msg) == 0)) {
             remove_message_handler_by_index(peer, i);
         }
     }

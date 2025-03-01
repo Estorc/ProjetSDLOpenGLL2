@@ -1,5 +1,5 @@
 RigidBody(0,0,0,0,0,0,0,-1,0,50,0.99,0,0.8,0,2)
 SphereCShape[m0,0.5,0s0.5,0.5,0.5]
-SphereCShape[m0,1.35,0s0.3,0.3,0.3]{NULL,NULL,NULL}
+SphereCShape[m0,1.35,0s0.3,0.3,0.3]
 :1
 Model(assets/models/FPSChess/Pieces/GPawn.obj)[s5,5,5]
