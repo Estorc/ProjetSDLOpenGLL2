@@ -1,10 +1,18 @@
 Node[m0,0,0r0,0,0s1,1,1a1v1]:1
 Frame(0w,0h,100w,100h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):2
-Frame(0w,0h,100w,80h,ctn):1
+Frame(0w,0h,100w,80h,ctn):3
 ControlFrame(2w,10p,96w,50p,ltv):2
 Label("Volume général :",lc)
 Frame(0w,100h,50w,10p,ltv):1
-Slider(0,100,50):0
+Slider(0,1){NULL,st_general_volume,NULL}:0
+ControlFrame(2w,70p,96w,50p,ltv):2
+Label("Volume musique :",lc)
+Frame(0w,100h,50w,10p,ltv):1
+Slider(0,1){NULL,st_music_volume,NULL}:0
+ControlFrame(2w,130p,96w,50p,ltv):2
+Label("Volume sfx :",lc)
+Frame(0w,100h,50w,10p,ltv):1
+Slider(0,1){NULL,st_sfx_volume,NULL}:0
 Frame(0w,0h,100w,20h,cbn):4
 Frame(0.5w,0h,24w,90h,lcn):1
 Button{NULL,NULL,settings_go_to_main}:1

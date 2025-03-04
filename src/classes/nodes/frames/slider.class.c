@@ -40,9 +40,10 @@ class Slider : public Button {
         Frame *frame = (Frame *) this->object;
         frame->slider = malloc(sizeof(Slider));
         Slider *slider = frame->slider;
-        slider->value = slider->max;
+        slider->checked = NULL;
+        slider->value = NULL;
         slider->min = 0.0f;
-        slider->max = 100.0f;
+        slider->max = 1.0f;
     }
 
     
@@ -60,8 +61,8 @@ class Slider : public Button {
         frame->alignment[1] = 'c';
         if (file) {
             static char text[2048]; // In static to prevent stack overflow
-            fscanf(file, "(%g,%g,%g)", 
-            &frame->slider->min, &frame->slider->max, &frame->slider->value);
+            fscanf(file, "(%g,%g)", 
+            &frame->slider->min, &frame->slider->max);
             format_escaped_newlines(text);
             frame->label->text = malloc(strlen(text) + 1);
             POINTER_CHECK(frame->label->text);
@@ -72,8 +73,8 @@ class Slider : public Button {
     void save(FILE *file, Node *editor) {
         UNUSED(editor);
         Frame *frame = (Frame *) this->object;
-        fprintf(file, "%s(%g,%g,%g)", classManager.class_names[this->type],
-        frame->slider->min, frame->slider->max, frame->slider->value);
+        fprintf(file, "%s(%g,%g)", classManager.class_names[this->type],
+        frame->slider->min, frame->slider->max);
     }
 
     bool is_radiobutton() {
@@ -83,9 +84,19 @@ class Slider : public Button {
     void update() {
         Frame * frame = this->object;
         Frame * parentFrame = this->parent->object;
-        this->pos[0] = -this->parent->globalScale[0] + this->parent->globalScale[0] * 2.0f * ((SDL_GetTicks()%2000)/2000.0f);
-        frame->absPos[0] = parentFrame->absPos[0] + parentFrame->size[0] * ((SDL_GetTicks()%2000)/2000.0f) - frame->size[0]/2;
+
         SUPER(update);
+        if (frame->slider->state == BUTTON_STATE_PRESSED) {
+            float w = parentFrame->size[0];
+            float value = (Game.input->mouse.x - parentFrame->absPos[0]) / w;
+            *frame->slider->value = frame->slider->min + (frame->slider->max - frame->slider->min) * value;
+            *frame->slider->value = CLAMP(frame->slider->min, *frame->slider->value, frame->slider->max);
+        }
+        float percent = *frame->slider->value / frame->slider->max;
+        if (frame->slider->state != BUTTON_STATE_PRESSED) {
+            frame->absPos[0] = parentFrame->absPos[0] + parentFrame->size[0] * percent - frame->size[0]/2;
+        }
+        this->pos[0] = -this->parent->globalScale[0] + this->parent->globalScale[0] * 2.0f * percent;
     }
 
     void free() {

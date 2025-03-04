@@ -46,8 +46,8 @@ typedef struct RadioButton {
 
 typedef struct Slider {
     ButtonState state; /**< Current state of the button. */
-    bool *checked; /**< Pointer to the checked state of the button. */
-    float value;
+    bool *checked; /**< For alignement purpose. */
+    float *value;
     float min;
     float max;
 } Slider;

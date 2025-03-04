@@ -156,7 +156,6 @@ class SelectList : public Frame {
             child::add_child(button);
             button::add_child(label);
         }
-        this::print(0);
     }
 
 

@@ -57,6 +57,43 @@ NEW_SCRIPT(settings_go_to_audio)
     }
 END_SCRIPT(settings_go_to_audio)
 
+NEW_SCRIPT(st_general_volume)
+    GET_READY_PARAMETERS();
+    SET_ATTRIBUTES_COUNT(1);
+    float *oldVolume = &this->attribute[0].f;
+
+    Frame *frame = (Frame*) this->object;
+    Slider *slider = frame->slider;
+    slider->value = &Game.settings->master_volume;
+    if (*oldVolume != Game.settings->master_volume) {
+        refresh_music_volume();
+    }
+    *oldVolume = Game.settings->master_volume;
+END_SCRIPT(st_general_volume)
+
+NEW_SCRIPT(st_music_volume)
+    GET_READY_PARAMETERS();
+    SET_ATTRIBUTES_COUNT(1);
+    float *oldVolume = &this->attribute[0].f;
+
+    Frame *frame = (Frame*) this->object;
+    Slider *slider = frame->slider;
+    slider->value = &Game.settings->music_volume;
+    if (*oldVolume != Game.settings->music_volume) {
+        refresh_music_volume();
+    }
+    *oldVolume = Game.settings->music_volume;
+END_SCRIPT(st_music_volume)
+
+NEW_SCRIPT(st_sfx_volume)
+    GET_READY_PARAMETERS();
+    SET_ATTRIBUTES_COUNT(1);
+
+    Frame *frame = (Frame*) this->object;
+    Slider *slider = frame->slider;
+    slider->value = &Game.settings->sfx_volume;
+END_SCRIPT(st_sfx_volume)
+
 NEW_SCRIPT(st_signal)
     GET_SIGNAL();	
     switch (signal) {

@@ -26,6 +26,9 @@ typedef struct Settings {
     bool window_fullscreen;
     u16 resolution;
     bool show_collision_boxes;
+    float master_volume;
+    float music_volume;
+    float sfx_volume;
 } Settings;
 
 void get_resolution(int *width, int *height);

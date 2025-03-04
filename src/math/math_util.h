@@ -129,8 +129,8 @@ f32 to_degrees(f32 angle);
  * If the value is greater than the maximum, it returns the maximum. 
  * Otherwise, it returns the value itself.
  * 
- * @param x The value to be clamped.
- * @param y The minimum allowable value.
+ * @param x The minimum allowable value.
+ * @param y The value to be clamped.
  * @param z The maximum allowable value.
  * @return The clamped value.
  */
