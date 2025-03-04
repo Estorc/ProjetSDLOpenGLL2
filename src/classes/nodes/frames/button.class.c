@@ -119,8 +119,7 @@ class Button : public Frame {
 
     void free() {
         Frame *frame = (Frame *) this->object;
-        Button *button = (Button *) frame->button;
-        free(button);
+        free(frame->button);
         SUPER(free);
     }
  

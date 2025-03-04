@@ -39,6 +39,9 @@ class Node {
         glm_vec3_zero(this->pos);
         glm_vec3_zero(this->rot);
         glm_vec3_one(this->scale);
+        glm_vec3_zero(this->globalPos);
+        glm_vec3_zero(this->globalRot);
+        glm_vec3_one(this->globalScale);
     }
 
     static Shader glowShader = 0;

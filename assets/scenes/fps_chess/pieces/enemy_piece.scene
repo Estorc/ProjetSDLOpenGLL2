@@ -1,5 +1,5 @@
 KinematicBody(0,0,0,2)
 SphereCShape[m0,0.5,0s0.5,0.5,0.5]
 SphereCShape[m0,1.35,0s0.3,0.3,0.3]
-{NULL,fs_enemy_update,NULL}:1
+{NULL,fs_enemy_update,fs_enemy_signal}:1
 Model(assets/models/FPSChess/Pieces/GPawn.obj)[s5,5,5]

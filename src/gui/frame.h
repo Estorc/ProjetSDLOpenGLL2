@@ -38,9 +38,19 @@ typedef struct ImageFrame {
  * This structure holds information about a radio button, including its checked state and ID.
  */
 typedef struct RadioButton {
+    ButtonState state; /**< Current state of the button. */
     u16 *checked; /**< Pointer to the checked state of the radio button. */
     u16 id;       /**< ID of the radio button. */
 } RadioButton;
+
+
+typedef struct Slider {
+    ButtonState state; /**< Current state of the button. */
+    bool *checked; /**< Pointer to the checked state of the button. */
+    float value;
+    float min;
+    float max;
+} Slider;
 
 /**
  * @struct Button
@@ -50,11 +60,8 @@ typedef struct RadioButton {
  * It can also represent a radio button.
  */
 typedef struct Button {
-    bool *checked; /**< Pointer to the checked state of the button. */
-    union {
-        RadioButton *radiobutton; /**< Pointer to a RadioButton structure if the button is a radio button. */
-    };
     ButtonState state; /**< Current state of the button. */
+    bool *checked; /**< Pointer to the checked state of the button. */
 } Button;
 
 /**
@@ -160,6 +167,8 @@ typedef struct Frame {
         InputArea *inputArea; /**< Pointer to an InputArea structure if the frame contains an input area. */
         SelectList *selectList; /**< Pointer to a SelectList structure if the frame contains a select list. */
         ImageFrame *imageFrame; /**< Pointer to an ImageFrame structure if the frame contains an image frame. */
+        RadioButton *radiobutton; /**< Pointer to a RadioButton structure if the frame contains a radio button. */
+        Slider *slider; /**< Pointer to a Slider structure if the frame contains a slider. */
     };
     FrameFlags flags; /**< Flags specifying properties of the frame. */
 } Frame;

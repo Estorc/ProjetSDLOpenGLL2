@@ -1,8 +1,5 @@
 #include "../chessboard.h"
 
-static ChessPieceColor player_color = FC_UNKNOWN;
-static ChessPieceColor current_player = FC_WHITE;
-
 static Node *enemy = NULL;
 static Node *player = NULL;
 
@@ -54,8 +51,9 @@ NEW_SCRIPT(script_fc_fight_chessboard_init)
                 Node *piece = load_node(file, NULL, Game.scripts, NULL);
                 if (i == enemy_id) {
                     enemy = piece;
-                    MALLOC_ATTRIBUTE(piece, 6);
+                    MALLOC_ATTRIBUTE(piece, 7);
                     piece->pos[1] = this->pos[1];
+                    piece->attribute[6].i = 100;
                     (this->parent)::add_child_and_realloc(piece);
                 } else {
                     MALLOC_ATTRIBUTE(piece, 2);
@@ -196,14 +194,47 @@ END_SCRIPT(fs_fight_player_update)
 
 
 NEW_SCRIPT(fs_enemy_update)
-    if (this->attribute[0].f == 0 && this->attribute[1].f == 0 && this->attribute[2].f == 0) return;
-
-    this->pos[0] += (this->attribute[0].f - this->globalPos[0])/SMOOTH_RATE;
-    this->pos[1] += (this->attribute[1].f - this->globalPos[1])/SMOOTH_RATE;
-    this->pos[2] += (this->attribute[2].f - this->globalPos[2])/SMOOTH_RATE;
 
     KinematicBody *body = this->object;
-    body->velocity[0] += (this->attribute[3].f - body->velocity[0])/SMOOTH_RATE;
-    body->velocity[1] += (this->attribute[4].f - body->velocity[1])/SMOOTH_RATE;
-    body->velocity[2] += (this->attribute[5].f - body->velocity[2])/SMOOTH_RATE;
+
+    if (fabs(this->attribute[0].f) > 1e-4 && this->globalPos[0]) this->pos[0] += (this->attribute[0].f - this->globalPos[0])/SMOOTH_RATE;
+    if (fabs(this->attribute[1].f) > 1e-4 && this->globalPos[1]) this->pos[1] += (this->attribute[1].f - this->globalPos[1])/SMOOTH_RATE;
+    if (fabs(this->attribute[2].f) > 1e-4 && this->globalPos[2]) this->pos[2] += (this->attribute[2].f - this->globalPos[2])/SMOOTH_RATE;
+
+    if (fabs(this->attribute[3].f) > 1e-4) body->velocity[0] += (this->attribute[3].f - body->velocity[0])/SMOOTH_RATE;
+    if (fabs(this->attribute[4].f) > 1e-4) body->velocity[1] += (this->attribute[4].f - body->velocity[1])/SMOOTH_RATE;
+    if (fabs(this->attribute[5].f) > 1e-4) body->velocity[2] += (this->attribute[5].f - body->velocity[2])/SMOOTH_RATE;
+
+    if (glm_vec3_isnan(this->pos) || glm_vec3_isinf(this->pos)) {
+        this->pos[0] = this->attribute[0].f;
+        this->pos[1] = this->attribute[1].f;
+        this->pos[2] = this->attribute[2].f;
+    }
+
+    if (glm_vec3_isnan(body->velocity) || glm_vec3_isinf(body->velocity)) {
+        body->velocity[0] = this->attribute[3].f;
+        body->velocity[1] = this->attribute[4].f;
+        body->velocity[2] = this->attribute[5].f;
+    }
+
 END_SCRIPT(fs_enemy_update)
+
+
+NEW_SCRIPT(fs_enemy_signal)
+    int *health = &this->attribute[6].i;
+    GET_SIGNAL();
+    switch (signal) {
+        case SIGNAL_AREA_COLLISION:
+        {
+            GET_AREA_SIGNAL_PARAMETERS();
+            PRINT_INFO("Offset: %d\n", offset);
+            if (offset <= 1 && Game.input->mouse.pressed_button == SDL_BUTTON_LEFT) {
+                *health -= 10;
+                PRINT_INFO("Health: %d\n", *health);
+            }
+        }
+            break;
+        default:
+            break;
+    }
+END_SCRIPT(fs_enemy_signal)

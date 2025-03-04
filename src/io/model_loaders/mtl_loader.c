@@ -8,7 +8,11 @@ int load_mtl(char *path, char *filename, Material **materials) {
     char *fullPath = malloc(strlen(path) + 1 + strlen(filename) + 1);
     POINTER_CHECK(fullPath);
     FILE * file = fopen(strcat(strcpy(fullPath, path), filename), "r");
-    POINTER_CHECK(file);
+    if (!file) {
+        PRINT_ERROR("MTL : %s doesn't exist!", fullPath);
+        free(fullPath);
+        return -1;
+    }
     free(fullPath);
 
     u8 mi = -1, mim = 2;

@@ -84,7 +84,7 @@ class Area : public PhysicalNode {
         #endif
         #endif
         for (int i = 0; i < area->collectedLength; i++) {
-            (area->collectedNodes[i].node)::emit_signal(SIGNAL_AREA_COLLISION, area->signal_id, this, area->collectedNodes[i].distance, area->collectedNodes[i].impactPoint);
+            (area->collectedNodes[i].node)::emit_signal(SIGNAL_AREA_COLLISION, area->signal_id, this, area->collectedNodes[i].distance, area->collectedNodes[i].impactPoint, i);
             #ifdef DEBUG
             #ifdef DEBUG_AREA
             PRINT_INFO("Node %d: Distance[%.2f] | ImpactPoint[%.2f,%.2f,%.2f]\n", i, area->collectedNodes[i].distance, area->collectedNodes[i].impactPoint[0], area->collectedNodes[i].impactPoint[1], area->collectedNodes[i].impactPoint[2]);
@@ -148,7 +148,7 @@ class Area : public PhysicalNode {
         fprintf(file, "%s", classManager.class_names[this->type]);
         Area *area = (Area*) this->object;
         u8 collisionsLength = area->length;
-        fprintf(file, "(%d,%d)", area->signal_id, collisionsLength);
+        fprintf(file, "(%hd,%d)", area->signal_id, collisionsLength);
     }
 
 }

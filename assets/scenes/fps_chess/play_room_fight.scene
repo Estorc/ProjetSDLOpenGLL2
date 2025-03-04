@@ -84,12 +84,16 @@ BoxCShape[m52,65.75,0s0.5,0.7,15]
 BoxCShape[m52,44.75,15.25s0.5,21,0.7]
 BoxCShape[m52,44.75,-15.25s0.5,21,0.7]
 
+Node:2
 Node[m0,15.3,0]{script_fc_fight_chessboard_init,script_fc_fight_chessboard_update,NULL}:0
 KinematicBody(0,0,0,2)
 SphereCShape[m0,0.5,0s0.5,0.5,0.5]
 SphereCShape[m0,1.35,0s0.3,0.3,0.3]{NULL,NULL,NULL}
 [m0,15.3,0]{fs_fight_player_init,fs_fight_player_update,NULL}:1
-Camera(1)[m0,1.35,0]{NULL,script_cc_camera_player,NULL}
+Camera(1)[m0,1.35,0]{NULL,script_cc_camera_player,NULL}:1
+Area(0,1)
+RayCShape
+:0
 Node{NULL,open_close_menu,NULL}:1
 Node[a0v0]:1
 Frame(0w,0h,60w,80h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):1
@@ -97,3 +101,4 @@ Frame(5h,5h,90h,90h,lts):1
 Frame(5w,1h,90w,18h,ltn):1
 Button{NULL,NULL,return_to_main_menu}:1
 Label("Retour au menu",cc)
+ImageFrame(0%,0%,48p,48p,cc,assets/textures/cursor.png)

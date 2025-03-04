@@ -17,5 +17,5 @@ Frame(12.5w,0h,24w,90h,ccn):1
 Button{NULL,NULL,settings_go_to_graphics}:1
 Label("Graphics",cc)
 Frame(-0.5w,0h,24w,90h,rcn):1
-Button{NULL,NULL,return_to_main_menu}:1
+Button{NULL,NULL,settings_return_to_main_menu}:1
 Label("Quitter",cc)

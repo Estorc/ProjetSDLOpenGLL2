@@ -298,7 +298,7 @@ class Frame : public Node {
             } else set_shader_int(shaders->gui, "isCheckBox", 0);
 
             if (this::(bool)is_radiobutton()) {
-                RadioButton *radiobutton = frame->button->radiobutton;
+                RadioButton *radiobutton = frame->radiobutton;
                 set_shader_int(shaders->gui, "isRadioButton", 1);
                 if (radiobutton->checked) set_shader_int(shaders->gui, "checked", !!(*radiobutton->checked & radiobutton->id));
             } else set_shader_int(shaders->gui, "isRadioButton", 0);

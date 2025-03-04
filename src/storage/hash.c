@@ -55,8 +55,7 @@ Entry * table_insert(HashTable *table, const char *key, void *value) {
     Entry *entry = table->table[index];
     while (entry) {
         if (strcmp(entry->key, key) == 0) {
-            entry->needs_free = true;
-            free(entry->value);
+            if (entry->needs_free) free(entry->value);
             entry->value = value;
             return entry;
         }

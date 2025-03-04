@@ -1,6 +1,10 @@
 Node[m0,0,0r0,0,0s1,1,1a1v1]:1
 Frame(0w,0h,100w,100h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):2
-Frame(0w,0h,100w,80h,ctn):0
+Frame(0w,0h,100w,80h,ctn):1
+ControlFrame(2w,10p,96w,50p,ltv):2
+Label("Volume général :",lc)
+Frame(0w,100h,50w,10p,ltv):1
+Slider(0,100,50):0
 Frame(0w,0h,100w,20h,cbn):4
 Frame(0.5w,0h,24w,90h,lcn):1
 Button{NULL,NULL,settings_go_to_main}:1
@@ -12,5 +16,5 @@ Frame(12.5w,0h,24w,90h,ccn):1
 Button{NULL,NULL,settings_go_to_graphics}:1
 Label("Graphics",cc)
 Frame(-0.5w,0h,24w,90h,rcn):1
-Button{NULL,NULL,return_to_main_menu}:1
+Button{NULL,NULL,settings_return_to_main_menu}:1
 Label("Quitter",cc)

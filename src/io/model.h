@@ -206,7 +206,7 @@ struct ModelData {
     Material *materials;                    /**< Array of materials */ //UNUSED
     u8 materialsCount;                      /**< Number of materials */ //UNUSED
     ModelObjectData *objects;               /**< Array of model objects */
-    u8 length;                              /**< Number of objects */
+    u32 length;                              /**< Number of objects */
     ModelAnimation *animations;             /**< Array of model animations */
     u8 animationsCount;                     /**< Number of animations */
 };

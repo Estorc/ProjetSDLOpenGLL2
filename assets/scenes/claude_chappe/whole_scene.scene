@@ -1,9 +1,6 @@
 Node{script_cc_level_init,NULL,NULL}:5
 PointLight(0,0,0,0.003,0,1,0.09,0.032)[m-21,10,-7]{NULL,NULL,NULL}
 Model(assets/models/ClaudeChappe/mapJeuSDLv2.obj){NULL,NULL,NULL}
-StaticBody(1)
-PlaneCShape[m0,0,0r0,0,0s1,1,1a1v1]
-[m0,0,0r0,0,0s1,1,1a1v1]
 KinematicBody(0,0,0,2)
 SphereCShape[m0,0,0r0,0,0s1,1,1a1v1]
 SphereCShape[m0,-2,0r0,0,0s1,1,1a1v1]

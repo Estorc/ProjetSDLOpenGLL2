@@ -21,7 +21,7 @@
 #include "gui/frame.h"
 #include "io/input.h"
 
-class RadioButton : public Button {
+class Slider : public Button {
     __containerType__ Node *
     public:
 
@@ -33,14 +33,16 @@ class RadioButton : public Button {
         this->type = __type__; 
         SUPER(initialize_node);
         this::init_frame();
-        this::init_radiobutton();
+        this::init_slider();
     }
 
-    void init_radiobutton() {
+    void init_slider() {
         Frame *frame = (Frame *) this->object;
-        frame->radiobutton = malloc(sizeof(RadioButton));
-        RadioButton *radiobutton = frame->radiobutton;
-        radiobutton->checked = NULL;
+        frame->slider = malloc(sizeof(Slider));
+        Slider *slider = frame->slider;
+        slider->value = slider->max;
+        slider->min = 0.0f;
+        slider->max = 100.0f;
     }
 
     
@@ -50,21 +52,40 @@ class RadioButton : public Button {
         this->type = __type__;
         this::constructor();
         Frame *frame = (Frame *) this->object;
-        frame->scale[0] = 48.0f;
-        frame->scale[1] = 48.0f;
+        frame->scale[0] = 24.0f;
+        frame->scale[1] = 24.0f;
         frame->unit[2] = 'p';
         frame->unit[3] = 'p';
         frame->alignment[0] = 'c';
         frame->alignment[1] = 'c';
+        if (file) {
+            static char text[2048]; // In static to prevent stack overflow
+            fscanf(file, "(%g,%g,%g)", 
+            &frame->slider->min, &frame->slider->max, &frame->slider->value);
+            format_escaped_newlines(text);
+            frame->label->text = malloc(strlen(text) + 1);
+            POINTER_CHECK(frame->label->text);
+            strcpy(frame->label->text, text);
+        }
     }
 
     void save(FILE *file, Node *editor) {
         UNUSED(editor);
-        fprintf(file, "%s", classManager.class_names[this->type]);
+        Frame *frame = (Frame *) this->object;
+        fprintf(file, "%s(%g,%g,%g)", classManager.class_names[this->type],
+        frame->slider->min, frame->slider->max, frame->slider->value);
     }
 
     bool is_radiobutton() {
         return true;
+    }
+
+    void update() {
+        Frame * frame = this->object;
+        Frame * parentFrame = this->parent->object;
+        this->pos[0] = -this->parent->globalScale[0] + this->parent->globalScale[0] * 2.0f * ((SDL_GetTicks()%2000)/2000.0f);
+        frame->absPos[0] = parentFrame->absPos[0] + parentFrame->size[0] * ((SDL_GetTicks()%2000)/2000.0f) - frame->size[0]/2;
+        SUPER(update);
     }
 
     void free() {
