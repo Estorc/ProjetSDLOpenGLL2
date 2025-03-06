@@ -1,6 +1,7 @@
 #include "../raptiquax.h"
 #include "../memory.h"
 #include "../settings.h"
+#include "audio.h"
 
 static Mix_Music * current_music = NULL;
 static int current_music_volume = 0;

@@ -22,6 +22,7 @@ struct WorldShaders;
 typedef struct Camera {
     vec3 pos; /**< Position of the camera. */
     vec3 rot; /**< Rotation of the camera. */
+    float fov; /**< Field of view of the camera. */
 } Camera;
 
 /**

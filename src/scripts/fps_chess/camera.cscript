@@ -1,0 +1,32 @@
+#include "../../raptiquax.h"
+#include "../../math/math_util.h"
+#include "../../storage/node.h"
+#include "../../scripts/scripts.h"
+#include "../../settings.h"
+
+NEW_SCRIPT(script_fc_camera_player)
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(3);
+
+	Camera *c = this->object;
+	float *targetRot = &this->attribute[0].f;
+
+	if (!this->parent->attribute[0].b) {
+
+		if (glm_vec3_norm2(targetRot) == 0) glm_vec3_copy(this->rot, targetRot);
+
+		targetRot[1] -= fmod((f32) (Game.input->mouse.dx) * delta * 100.0, 360.0);
+		targetRot[0] -= fmod((f32) (Game.input->mouse.dy) * delta * 100.0, 360.0);
+		targetRot[0] = CLAMP(-90,targetRot[0],90);
+
+	}
+
+	vec3_approach(this->rot, targetRot, (0.1/delta));
+
+	if (Game.input->mouse.active_button == SDL_BUTTON_RIGHT) {
+		float_approach(&c->fov, PI/20.0f, 1.0f/10.0f);
+	} else {
+		float_approach(&c->fov, Game.settings->fov, 1.0f/10.0f);
+	}
+
+END_SCRIPT(script_fc_camera_player)

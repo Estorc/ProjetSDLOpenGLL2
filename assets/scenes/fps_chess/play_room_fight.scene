@@ -90,7 +90,7 @@ KinematicBody(0,0,0,2)
 SphereCShape[m0,0.5,0s0.5,0.5,0.5]
 SphereCShape[m0,1.35,0s0.3,0.3,0.3]{NULL,NULL,NULL}
 [m0,15.3,0]{fs_fight_player_init,fs_fight_player_update,NULL}:1
-Camera(1)[m0,1.35,0]{NULL,script_cc_camera_player,NULL}:1
+Camera(1)[m0,1.35,0]{NULL,script_fc_camera_player,NULL}:1
 Area(0,1)
 RayCShape
 :0

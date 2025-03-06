@@ -20,6 +20,7 @@
 #include "io/model.h"
 #include "render/framebuffer.h"
 #include "storage/node.h"
+#include "settings.h"
 
 class Camera : public Node {
     __containerType__ Node *
@@ -65,6 +66,7 @@ class Camera : public Node {
         }
         this->type = __type__;
         this::constructor(cam);
+        cam->fov = Game.settings->fov;
     }
 
     void save(FILE *file, Node *editor) {

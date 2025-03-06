@@ -28,7 +28,7 @@ void camera_projection(Camera *c, WorldShaders *shaders) {
     glm_translate(view, (vec3){c->pos[0], c->pos[1], c->pos[2]});
 
     mat4 projection = GLM_MAT4_IDENTITY_INIT;
-    glm_perspective(PI/4, (float)window_width/(float)window_height, 0.1f, 300.0f, projection);
+    glm_perspective(c->fov, (float)window_width/(float)window_height, 0.1f, 300.0f, projection);
 
     vec3 viewPos;
     glm_vec3_negate_to(c->pos, viewPos);

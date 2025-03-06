@@ -1,11 +1,15 @@
 Node[m0,0,0r0,0,0s1,1,1a1v1]:1
 Frame(0w,0h,100w,100h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):2
-Frame(0w,0h,100w,80h,ctn):1
+Frame(0w,0h,100w,80h,ctn):2
 ControlFrame(2w,10p,96w,50p,ltn):2
 ControlFrame(0w,0h,10w,100h,ltn):1
 CheckBox{st_show_fps_init,NULL,st_signal}
 ControlFrame(10w,0h,90w,100h,ltn):1
 Label("Afficher les FPS",lc)
+ControlFrame(2w,70p,96w,50p,ltv):2
+Label("Field of view :",lc)
+Frame(0w,100h,50w,10p,ltv):1
+Slider(0.5,2.0){NULL,st_fov,NULL}:0
 Frame(0w,0h,100w,20h,cbn):4
 Frame(0.5w,0h,24w,90h,lcn):1
 Button{NULL,NULL,settings_go_to_main}:1
