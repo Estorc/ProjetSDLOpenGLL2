@@ -31,7 +31,7 @@ BufferCollection buffers;
 Queue callQueue = {NULL};
 Tree mainTree = {0};
 Input input;
-Settings settings = {false, true, false, RES_RESPONSIVE, false, 1, 1, 1, PI/4.0f};
+Settings settings = {false, true, false, RES_RESPONSIVE, false, 1, 1, 1};
 Window window;
 MSAA msaa;
 

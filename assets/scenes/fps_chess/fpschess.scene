@@ -248,7 +248,7 @@ Model(assets/models/FPSChess/Pieces/SRook.obj)[s5,5,5]
 KinematicBody(0,0,0,1)
 SphereCShape
 [m0,0,10]{NULL,player,NULL}:1
-Camera(1){NULL,script_fc_camera_player,NULL}
+Camera(1){NULL,script_cc_camera_player,NULL}
 Node{NULL,open_close_menu,NULL}:1
 Node[a0v0]:1
 Frame(0w,0h,60w,80h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):1
