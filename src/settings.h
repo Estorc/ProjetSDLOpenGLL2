@@ -29,7 +29,6 @@ typedef struct Settings {
     float master_volume;
     float music_volume;
     float sfx_volume;
-    float fov;
 } Settings;
 
 void get_resolution(int *width, int *height);

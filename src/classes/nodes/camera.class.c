@@ -20,7 +20,6 @@
 #include "io/model.h"
 #include "render/framebuffer.h"
 #include "storage/node.h"
-#include "settings.h"
 
 class Camera : public Node {
     __containerType__ Node *
@@ -69,6 +68,25 @@ class Camera : public Node {
         memcpy(*ptr + (*length), data, sizeof(data));
         *length += sizeof(data)/sizeof(void *);
     }
+
+    void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
+        UNUSED(scripts);
+        Camera *cam;
+        cam = malloc(sizeof(Camera));
+        POINTER_CHECK(cam);
+        init_camera(cam);
+        if (file) {
+            int active_camera;
+            fscanf(file,"(%d)", &active_camera);
+            if (active_camera) {
+                if (c) *c = cam;
+                else if (editor) editor->attribute[5].node = this;
+            }
+        }
+        this->type = __type__;
+        this::constructor(cam);
+    }
+
 
     void save(FILE *file, Node *editor) {
         fprintf(file, "%s", classManager.class_names[this->type]);

@@ -86,6 +86,9 @@ NEW_SCRIPT(st_music_volume)
 END_SCRIPT(st_music_volume)
 
 NEW_SCRIPT(st_sfx_volume)
+    GET_READY_PARAMETERS();
+    SET_ATTRIBUTES_COUNT(1);
+
     Frame *frame = (Frame*) this->object;
     Slider *slider = frame->slider;
     slider->value = &Game.settings->sfx_volume;
