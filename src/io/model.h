@@ -204,7 +204,7 @@ struct ModelAnimation {
 typedef struct ModelData ModelData;
 struct ModelData {
     Material *materials;                    /**< Array of materials */ //UNUSED
-    u8 materialsCount;                      /**< Number of materials */ //UNUSED
+    u32 materialsCount;                      /**< Number of materials */ //UNUSED
     ModelObjectData *objects;               /**< Array of model objects */
     u32 length;                              /**< Number of objects */
     ModelAnimation *animations;             /**< Array of model animations */

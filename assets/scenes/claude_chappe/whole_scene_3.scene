@@ -7,7 +7,7 @@ PlaneCShape
 KinematicBody(0,0,0,2)
 SphereCShape
 SphereCShape[m0,-2,0]
-[m0,2,10]{NULL,player,NULL}:2
+[m0,2,10]{NULL,script_cc_player_update,NULL}:2
 Camera(1){NULL,script_cc_camera_player,NULL}:1
 Area(0,0)
 {NULL,open_close_menu,NULL}:1

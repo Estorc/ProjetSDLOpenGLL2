@@ -129,7 +129,7 @@ Node *load_scene(char *path, Camera **c, Script *scripts) {
         return NULL;
     }
     root->parent = NULL;
-    //root::print(0);
+    root::print(0);
 
     Game.buffers->collisionBuffer.collisionsShapes = realloc(Game.buffers->collisionBuffer.collisionsShapes, sizeof(Node *) * Game.buffers->collisionBuffer.length);
     // Check if the memory allocation was successful

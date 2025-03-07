@@ -4,7 +4,7 @@ Model(assets/models/ClaudeChappe/mapJeuSDLv2.obj){NULL,NULL,NULL}
 KinematicBody(0,0,0,2)
 SphereCShape[m0,0,0r0,0,0s1,1,1a1v1]
 SphereCShape[m0,-2,0r0,0,0s1,1,1a1v1]
-[m0,2,10r0,0,0s1,1,1a1v1]{NULL,player,NULL}:2
+[m0,2,10r0,0,0s1,1,1a1v1]{NULL,script_cc_player_update,NULL}:2
 Camera(1)[m0,0,0r0,0,0s1,1,1a1v1]{NULL,script_cc_camera_player,NULL}:1
 Area(0,1)
 RayCShape
