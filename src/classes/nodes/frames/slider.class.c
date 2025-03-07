@@ -95,7 +95,7 @@ class Slider : public Button {
             *frame->slider->value = frame->slider->min + (frame->slider->max - frame->slider->min) * value;
             *frame->slider->value = CLAMP(frame->slider->min, *frame->slider->value, frame->slider->max);
         }
-        float percent = *frame->slider->value / frame->slider->max;
+        float percent = (*frame->slider->value - frame->slider->min) / (frame->slider->max - frame->slider->min);
         if (frame->slider->state != BUTTON_STATE_PRESSED) {
             frame->absPos[0] = parentFrame->absPos[0] + parentFrame->size[0] * percent - frame->size[0]/2;
         }
