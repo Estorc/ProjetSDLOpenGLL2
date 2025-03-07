@@ -7,12 +7,14 @@
 #include "../memory.h"
 #include "../storage/node.h"
 #include "../window.h"
+#include "../settings.h"
 
 
 void init_camera(Camera *c) {
 
     glm_vec3_zero(c->pos);
     glm_vec3_zero(c->rot);
+    c->fov = Game.settings->fov;
 
 }
 

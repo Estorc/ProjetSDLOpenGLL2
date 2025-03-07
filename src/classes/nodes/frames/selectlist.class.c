@@ -26,12 +26,13 @@ class SelectList : public Frame {
     public:
 
     void constructor() {
+        this->type = __type__; 
+
         Frame *frame;
         frame = malloc(sizeof(Frame));
         POINTER_CHECK(frame);
 
         this->object = frame;
-        this->type = __type__; 
         SUPER(initialize_node);
         this::init_frame();
 
@@ -58,9 +59,7 @@ class SelectList : public Frame {
 
     
 
-    void load(FILE *file) {
-        UNUSED(file);
-        this->type = __type__;
+    void load() {
         this::constructor();
     }
 
@@ -77,38 +76,18 @@ class SelectList : public Frame {
 
         Node *listFrame = malloc(sizeof(Node));
         POINTER_CHECK(listFrame);
-        listFrame = new Frame();
+        listFrame = new Frame(0.0f, '%', 100.0f, '%', 100.0f, '%', 600.0f, '%', 'l', 't', 'c', 'c', 'n', frame->theme);
         listFrame->flags &= ~NODE_VISIBLE;
         listFrame->flags &= ~NODE_ACTIVE;
-        Frame *listFrameFrame = (Frame *) listFrame->object;
-        listFrameFrame->relPos[0] = 0.0f;
-        listFrameFrame->relPos[1] = 100.0f;
-        listFrameFrame->scale[0] = 100.0f;
-        listFrameFrame->scale[1] = 600.0f;
-        listFrameFrame->unit[0] = '%';
-        listFrameFrame->unit[1] = '%';
-        listFrameFrame->unit[2] = '%';
-        listFrameFrame->unit[3] = '%';
-        listFrameFrame->alignment[0] = 'l';
-        listFrameFrame->alignment[1] = 't';
+        Frame *listFrameFrame = listFrame->object;
         listFrameFrame->theme = frame->theme;
         listFrameFrame->flags |= FRAME_BACKGROUND;
         listFrame->children = realloc(listFrame->children, sizeof(Node *));
 
         Node *list = malloc(sizeof(Node));
         POINTER_CHECK(list);
-        list = new ControlFrame();
-        Frame *listFrameControl = (Frame *) list->object;
-        listFrameControl->relPos[0] = 2.0f;
-        listFrameControl->relPos[1] = 2.0f;
-        listFrameControl->scale[0] = 96.0f;
-        listFrameControl->scale[1] = 96.0f;
-        listFrameControl->unit[0] = '%';
-        listFrameControl->unit[1] = '%';
-        listFrameControl->unit[2] = '%';
-        listFrameControl->unit[3] = '%';
-        listFrameControl->alignment[0] = 'l';
-        listFrameControl->alignment[1] = 't';
+        list = new ControlFrame(2.0f, '%', 2.0f, '%', 96.0f, '%', 96.0f, '%', 'l', 't', 'c', 'c', 'n');
+        Frame *listFrameControl = list->object;
         listFrameControl->theme = frame->theme;
         listFrameControl->flags |= FRAME_BACKGROUND;
         listFrameControl->flags |= OVERFLOW_SCROLL;
@@ -121,18 +100,8 @@ class SelectList : public Frame {
 
             Node *child = malloc(sizeof(Node));
             POINTER_CHECK(child);
-            child = new ControlFrame();
+            child = new ControlFrame(0.0f, '%', frame->size[1]*i, 'p', 100.0f, '%', frame->size[1], 'p', 'l', 't', 'c', 'c', 'n');
             Frame *childFrame = (Frame *) child->object;
-            childFrame->relPos[0] = 0.0f;
-            childFrame->relPos[1] = frame->size[1]*i;
-            childFrame->scale[0] = 100.0f;
-            childFrame->scale[1] = frame->size[1];
-            childFrame->unit[0] = '%';
-            childFrame->unit[1] = 'p';
-            childFrame->unit[2] = '%';
-            childFrame->unit[3] = 'p';
-            childFrame->alignment[0] = 'l';
-            childFrame->alignment[1] = 't';
             childFrame->theme = frame->theme;
             child->children = realloc(child->children, sizeof(Node *));
             list::add_child(child);
@@ -145,13 +114,9 @@ class SelectList : public Frame {
 
             Node *label = malloc(sizeof(Node));
             POINTER_CHECK(label);
-            label = new Label();
+            label = new Label(selectList->options[i], 'l', 'c');
             Frame *labelFrame = (Frame *) label->object;
-            labelFrame->label->text = malloc(strlen(selectList->options[i]) + 1);
-            strcpy(labelFrame->label->text, selectList->options[i]);
             labelFrame->relPos[0] = 5.0f;
-            labelFrame->alignment[0] = 'l';
-            labelFrame->alignment[1] = 'c';
 
             child::add_child(button);
             button::add_child(label);

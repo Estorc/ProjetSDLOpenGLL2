@@ -23,13 +23,7 @@ class Skybox : public Node {
     __containerType__ Node *
     public:
 
-    void constructor(struct TexturedMesh *texturedMesh) {
-        this->object = texturedMesh;
-        this->type = __type__;
-        SUPER(initialize_node);
-    }
 
-    
     /**
      * @brief Loads a cubemap texture from 6 individual texture faces.
      * 
@@ -43,7 +37,7 @@ class Skybox : public Node {
      * @return TextureMap The loaded cubemap texture.
      */
 
-    TextureMap load_cubemap(char (*faces)[100]) {
+     TextureMap load_cubemap(char (*faces)[100]) {
 
         for (int i = 0; i < Game.memoryCaches->cubeMapCount; i++) {
             if (!strcmp(Game.memoryCaches->cubeMapCache[i].textureName[0], faces[0]) &&
@@ -173,10 +167,22 @@ class Skybox : public Node {
     }
 
 
-    void load(FILE *file) {
+
+
+    void constructor(const char (*path)[100]) {
+        this->type = __type__;
+
         TexturedMesh *texturedMesh;
         texturedMesh = malloc(sizeof(TexturedMesh));
         POINTER_CHECK(texturedMesh);
+        this::create_skybox(texturedMesh, path);
+
+        this->object = texturedMesh;
+        SUPER(initialize_node);
+    }
+
+
+    void load(FILE *file) {
         char path[6][100];
         if (file) {
             fscanf(file,"(%100[^,],%100[^,],%100[^,],%100[^,],%100[^,],%100[^)])", 
@@ -190,9 +196,7 @@ class Skybox : public Node {
         } else {
             path[0][0] = path[1][0] = path[2][0] = path[3][0] = path[4][0] = path[5][0] = 0;
         }
-        this::create_skybox(texturedMesh, &path);
-        this->type = __type__;
-        this::constructor(texturedMesh);
+        this::constructor(&path);
     }
 
     void save(FILE *file) {

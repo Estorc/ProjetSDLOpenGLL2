@@ -61,6 +61,13 @@ static inline void create_obj_vao(ModelObjectData *obj) {
 
 
 int load_model(const char *path, ModelData ** modelPtr) {
+
+    if (!path || !path[0]) {
+        PRINT_ERROR("Invalid model path: %s\n", path);
+        *modelPtr = NULL;
+        return -1;
+    }
+
     *modelPtr = get_model_from_cache(path);
     if (*modelPtr) return 0;
 

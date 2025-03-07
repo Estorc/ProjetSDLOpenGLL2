@@ -42,7 +42,7 @@
  * pointed to by `texturedMesh`.
  */
 
-void create_textured_plane(TexturedMesh *texturedMesh, char *texture) {
+void create_textured_plane(TexturedMesh *texturedMesh, const char *texture) {
 
     VBO meshVBO;
     VAO meshVAO;

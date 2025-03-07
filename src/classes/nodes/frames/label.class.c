@@ -31,13 +31,14 @@ class Label : public Frame {
     __containerType__ Node *
     public:
 
-    void constructor() {
+    void constructor(char *text, int ha, int va) {
+        this->type = __type__; 
+
         Frame *frame;
         frame = malloc(sizeof(Frame));
         POINTER_CHECK(frame);
 
         this->object = frame;
-        this->type = __type__; 
         SUPER(initialize_node);
         this::init_frame();
         frame->label = malloc(sizeof(Label));
@@ -54,23 +55,26 @@ class Label : public Frame {
         frame->label->text = NULL;
         frame->flags |= FRAME_CONTENT;
         glGenTextures(1, &frame->contentTexture);
+
+        frame->label->text = malloc(strlen(text) + 1);
+        POINTER_CHECK(frame->label->text);
+        strcpy(frame->label->text, text);
+
+        frame->alignment[0] = ha;
+        frame->alignment[1] = va;
     }
 
     
 
     void load(FILE *file) {
-        this->type = __type__;
-        this::constructor();
-        Frame *frame = (Frame *) this->object;
+        static char text[2048]; // In static to prevent stack overflow
+        char alignment[2];
         if (file) {
-            static char text[2048]; // In static to prevent stack overflow
             fscanf(file, "(\"%[^\"]\",%c%c)", 
-            text, &frame->alignment[0], &frame->alignment[1]);
+            text, &alignment[0], &alignment[1]);
             format_escaped_newlines(text);
-            frame->label->text = malloc(strlen(text) + 1);
-            POINTER_CHECK(frame->label->text);
-            strcpy(frame->label->text, text);
         }
+        this::constructor(text, alignment[0], alignment[1]);
     }
 
     void set_text(char * str) {

@@ -29,13 +29,14 @@ class InputArea : public Frame {
     __containerType__ Node *
     public:
 
-    void constructor() {
+    void constructor(char *defaultText, int ha, int va) {
+        this->type = __type__; 
+
         Frame *frame;
         frame = malloc(sizeof(Frame));
         POINTER_CHECK(frame);
 
         this->object = frame;
-        this->type = __type__; 
         SUPER(initialize_node);
         this::init_frame();
         frame->relPos[0] = 0.0f;
@@ -50,19 +51,22 @@ class InputArea : public Frame {
         frame->inputArea = malloc(sizeof(InputArea));
         POINTER_CHECK(frame->inputArea);
         glGenTextures(1, &frame->contentTexture);
+        strcpy(frame->inputArea->defaultText, defaultText);
+        frame->inputArea->text[0] = 0;
+        frame->alignment[0] = ha;
+        frame->alignment[1] = va;
     }
 
     
 
     void load(FILE *file) {
-        this->type = __type__;
-        this::constructor();
-        Frame *frame = (Frame *) this->object;
+        char defaultText[100];
+        char alignment[2];
         if (file) {
             fscanf(file, "(%[^,],%c%c)", 
-            frame->inputArea->defaultText, &frame->alignment[0], &frame->alignment[1]);
-            frame->inputArea->text[0] = '\0';
+            defaultText, &alignment[0], &alignment[1]);
         }
+        this::constructor(defaultText, alignment[0], alignment[1]);
     }
 
     void refresh() {

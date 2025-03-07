@@ -25,15 +25,31 @@ class Slider : public Button {
     __containerType__ Node *
     public:
 
-    void constructor() {
+    void constructor(double min, double max) {
+        this->type = __type__; 
+        
         Frame *frame;
         frame = malloc(sizeof(Frame));
         POINTER_CHECK(frame);
         this->object = frame;
-        this->type = __type__; 
         SUPER(initialize_node);
         this::init_frame();
         this::init_slider();
+
+        frame->relPos[0] = 0.0f;
+        frame->relPos[1] = 0.0f;
+        frame->unit[0] = '%';
+        frame->unit[1] = '%';
+
+        frame->scale[0] = 24.0f;
+        frame->scale[1] = 24.0f;
+        frame->unit[2] = 'p';
+        frame->unit[3] = 'p';
+        frame->alignment[0] = 'c';
+        frame->alignment[1] = 'c';
+
+        frame->slider->min = min;
+        frame->slider->max = max;
     }
 
     void init_slider() {
@@ -49,25 +65,12 @@ class Slider : public Button {
     
 
     void load(FILE *file) {
-        UNUSED(file);
-        this->type = __type__;
-        this::constructor();
-        Frame *frame = (Frame *) this->object;
-        frame->scale[0] = 24.0f;
-        frame->scale[1] = 24.0f;
-        frame->unit[2] = 'p';
-        frame->unit[3] = 'p';
-        frame->alignment[0] = 'c';
-        frame->alignment[1] = 'c';
+        float min, max;
         if (file) {
-            static char text[2048]; // In static to prevent stack overflow
             fscanf(file, "(%g,%g)", 
-            &frame->slider->min, &frame->slider->max);
-            format_escaped_newlines(text);
-            frame->label->text = malloc(strlen(text) + 1);
-            POINTER_CHECK(frame->label->text);
-            strcpy(frame->label->text, text);
+            &min, &max);
         }
+        this::constructor(min, max);
     }
 
     void save(FILE *file, Node *editor) {

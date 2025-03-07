@@ -2,3 +2,4 @@
 /bin/*
 /.venv/*
 /src/__processed__/*
+*.blend*

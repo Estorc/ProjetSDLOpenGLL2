@@ -47,7 +47,7 @@ SDL_Surface * flip_y_surface(SDL_Surface *surface) {
 }
 
 
-TextureMap load_texture_from_path(char * path, GLenum format, bool yReversed) {
+TextureMap load_texture_from_path(const char * path, GLenum format, bool yReversed) {
 
     for (int i = 0; i < Game.memoryCaches->texturesCount; i++) {
         if (!strcmp(Game.memoryCaches->textureCache[i].textureName, path)) {

@@ -29,9 +29,22 @@ class MeshCShape : public CShape {
     __containerType__ Node *
     public:
 
-    void constructor(struct MeshCollisionShape *meshCollisionShape) {
-        this->object = meshCollisionShape;
+    void constructor(const char *path) {
         this->type = __type__;
+
+        Model *model;
+        model = malloc(sizeof(Model));
+        POINTER_CHECK(model);
+        load_model(path, &model->data);
+
+        MeshCollisionShape *meshCollisionShape;
+        meshCollisionShape = malloc(sizeof(MeshCollisionShape));
+        POINTER_CHECK(meshCollisionShape);
+        meshCollisionShape->facesVertex = model->data->objects[0].facesVertex;
+        meshCollisionShape->numFaces = model->data->objects[0].length;
+
+
+        this->object = meshCollisionShape;
         SUPER(initialize_node);
     }
 
@@ -42,20 +55,11 @@ class MeshCShape : public CShape {
     }
 
     void load(FILE *file) {
-        Model *model;
-        model = malloc(sizeof(Model));
+        char path[100];
         if (file) {
-            char path[100];
             fscanf(file,"(%100[^)])", path);
-            load_model(path, &model->data);
         }
-        MeshCollisionShape *meshCollisionShape;
-        meshCollisionShape = malloc(sizeof(MeshCollisionShape));
-        meshCollisionShape->facesVertex = model->data->objects[0].facesVertex;
-        meshCollisionShape->numFaces = model->data->objects[0].length;
-        POINTER_CHECK(meshCollisionShape);
-        this->type = __type__;
-        this::constructor(meshCollisionShape);
+        this::constructor(path);
     }
 
     void save(FILE *file) {

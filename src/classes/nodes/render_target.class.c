@@ -31,10 +31,11 @@ class RenderTarget : public Node {
 
     void constructor(int width, int height) {
 
+        this->type = __type__;
+
         RenderTarget *renderTarget = malloc(sizeof(RenderTarget));
 
         this->object = renderTarget;
-        this->type = __type__;
 
         renderTarget->w = width;
         renderTarget->h = height;

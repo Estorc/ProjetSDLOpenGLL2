@@ -31,14 +31,39 @@ class Area : public PhysicalNode {
     __containerType__ Node *
     public:
 
-    void constructor(struct Area *area) {
-        this->object = area;
+    void constructor(int signal_id) {
         this->type = __type__;
+
+        Area *area;
+        area = malloc(sizeof(Area));
+        POINTER_CHECK(area);
+        area->length = 0;
+        area->collectedLength = 0;
+        area->collectedNodes = malloc(Game.buffers->collisionBuffer.length * sizeof(CollectedNode));
+        POINTER_CHECK(area->collectedNodes);
+        area->signal_id = signal_id;
+
+        this->object = area;
         SUPER(initialize_node);
-        if (area) {
-            area->collectedLength = 0;
-            area->collectedNodes = malloc(Game.buffers->collisionBuffer.length * sizeof(CollectedNode));
-            POINTER_CHECK(area->collectedNodes);
+    }
+
+    void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
+        int signal_id = 0;
+        int children_count = 0;
+        if (file)
+            fscanf(file,"(%d,%d)\n", &signal_id, &children_count);
+        this::constructor(signal_id);
+
+        Area *area = this->object;
+
+        area->collisionsShapes = malloc(sizeof(Node *) * children_count);
+        Game.buffers->collisionBuffer.length += children_count;
+        POINTER_CHECK(area->collisionsShapes);
+        
+        for (int i = 0; i < children_count; i++) {
+            Node *child = load_node(file, c, scripts, editor);
+            area->collisionsShapes[area->length++] = child;
+            child->parent = this;
         }
     }
 
@@ -120,28 +145,6 @@ class Area : public PhysicalNode {
         Area *area = (Area *) this->object;
         *length = area->collectedLength;
         *nodes = area->collectedNodes;
-    }
-
-    void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
-        Area *area;
-        area = malloc(sizeof(Area));
-        area->length = 0;
-        int children_count = 0;
-        POINTER_CHECK(area);
-        if (file)
-            fscanf(file,"(%hd,%d)\n", &area->signal_id, &children_count);
-        this->type = __type__;
-        this::constructor(area);
-
-        area->collisionsShapes = malloc(sizeof(Node *) * children_count);
-        Game.buffers->collisionBuffer.length += children_count;
-        POINTER_CHECK(area->collisionsShapes);
-        
-        for (int i = 0; i < children_count; i++) {
-            Node *child = load_node(file, c, scripts, editor);
-            area->collisionsShapes[area->length++] = child;
-            child->parent = this;
-        }
     }
 
     void save(FILE *file) {

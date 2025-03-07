@@ -28,43 +28,33 @@ class ImageFrame : public Frame {
     __containerType__ Node *
     public:
 
-    void constructor() {
+    void constructor(double x, int xu, double y, int yu, double w, int wu, double h, int hu, int ha, int va, char *imagePath) {
+        this->type = __type__; 
+
         Frame *frame;
         frame = malloc(sizeof(Frame));
         POINTER_CHECK(frame);
 
         this->object = frame;
-        this->type = __type__; 
         SUPER(initialize_node);
         this::init_frame();
         frame->imageFrame = malloc(sizeof(ImageFrame));
         POINTER_CHECK(frame->imageFrame);
         frame->flags &= ~FRAME_BACKGROUND;
-        frame->relPos[0] = 0.0f;
-        frame->relPos[1] = 0.0f;
-        frame->scale[0] = 100.0f;
-        frame->scale[1] = 100.0f;
-        frame->unit[0] = '%';
-        frame->unit[1] = '%';
-        frame->unit[2] = '%';
-        frame->unit[3] = '%';
-    }
 
-    
+        frame->relPos[0] = x;
+        frame->relPos[1] = y;
+        frame->scale[0] = w;
+        frame->scale[1] = h;
+        frame->unit[0] = xu;
+        frame->unit[1] = yu;
+        frame->unit[2] = wu;
+        frame->unit[3] = hu;
+        frame->alignment[0] = ha;
+        frame->alignment[1] = va;
 
-    void load(FILE *file) {
-        this->type = __type__;
-        this::constructor();
-        Frame *frame = (Frame *) this->object;
-        if (file) {
-            fscanf(file, "(%g%c,%g%c,%g%c,%g%c,%c%c, %[^)])", 
-                &frame->relPos[0],&frame->unit[0], 
-                &frame->relPos[1],&frame->unit[1], 
-                &frame->scale[0],&frame->unit[2], 
-                &frame->scale[1],&frame->unit[3], 
-                &frame->alignment[0], &frame->alignment[1],
-                frame->imageFrame->path);
-            frame->contentTexture = load_texture_from_path(frame->imageFrame->path, GL_SRGB_ALPHA, false);
+        if (imagePath && *imagePath) {
+            frame->contentTexture = load_texture_from_path(imagePath, GL_SRGB_ALPHA, false);
             GLint width, height;
             glBindTexture(GL_TEXTURE_2D, frame->contentTexture);
             glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &width);
@@ -74,6 +64,24 @@ class ImageFrame : public Frame {
             frame->contentSize[1] = height;
             frame->flags |= FRAME_CONTENT;
         }
+    }
+
+    
+
+    void load(FILE *file) {
+        float relPos[2], scale[2];
+        char unit[4], alignment[2];
+        char imagePath[256] = "";
+        if (file) {
+            fscanf(file, "(%g%c,%g%c,%g%c,%g%c,%c%c, %[^)])", 
+                &relPos[0],&unit[0], 
+                &relPos[1],&unit[1], 
+                &scale[0],&unit[2], 
+                &scale[1],&unit[3], 
+                &alignment[0], &alignment[1],
+                imagePath);
+        }
+        this::constructor(relPos[0], unit[0], relPos[1], unit[1], scale[0], unit[2], scale[1], unit[3], alignment[0], alignment[1], imagePath);
     }
 
 

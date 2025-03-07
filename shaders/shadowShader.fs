@@ -97,7 +97,7 @@ uniform PointLight pointLights[POINT_LIGHTS_MAX];
 uniform SpotLight spotLights[SPOT_LIGHTS_MAX];
 
 const float PI = 3.14159265359;
-const int SHADOW_QUALITY = 0;
+const int SHADOW_QUALITY = 1;
 
 float metallic = 0.0;
 float roughness = 0.5;

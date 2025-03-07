@@ -23,8 +23,8 @@ class Node {
     public:
 
     void constructor() {
-        this->object = NULL;
         this->type = __type__;
+        this->object = NULL;
         this::initialize_node();
     }
  
@@ -75,7 +75,6 @@ class Node {
     }
 
     void load() {
-        this->type = __type__;
         this::constructor();
     }
 

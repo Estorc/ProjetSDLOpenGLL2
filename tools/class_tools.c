@@ -357,7 +357,7 @@ int get_method_args(char *args, Argument *arg) {
 		arg_end++;
 		if (*arg_end == ',' || *arg_end == '\0') {
 			while (*arg_start == ' ') arg_start++;
-			char argstr[100];
+			static char argstr[1024];
 			strncpy(argstr, arg_start, arg_end - arg_start);
 			argstr[arg_end - arg_start] = '\0';
 
@@ -398,7 +398,7 @@ int get_class_method(char *line, Method *method) {
 		if (func_end && func_end > expr_pos) {
 			size_t expr_len = expr_pos - line;
 			size_t func_args_len = func_end - (expr_pos+1);
-			char func_args[100];
+			static char func_args[1024];
 			strncpy(func_args, expr_pos+1, func_args_len);
 			func_args[func_args_len] = '\0';
 

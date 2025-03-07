@@ -30,14 +30,16 @@ class Button : public Frame {
     public:
 
     void constructor() {
+        this->type = __type__; 
+
         Frame *frame;
         frame = malloc(sizeof(Frame));
         POINTER_CHECK(frame);
 
         this->object = frame;
-        this->type = __type__; 
         SUPER(initialize_node);
         this::init_frame();
+        this::init_button();
     }
 
     void init_button() {
@@ -57,11 +59,8 @@ class Button : public Frame {
 
     
 
-    void load(FILE *file) {
-        UNUSED(file);
-        this->type = __type__;
+    void load() {
         this::constructor();
-        this::init_button();
     }
 
     void update() {
@@ -77,7 +76,7 @@ class Button : public Frame {
         w = frame->size[0];
         h = frame->size[1];
         if (button->state == BUTTON_STATE_PRESSED) {
-            if (mouse->released_button == SDL_BUTTON_LEFT) {
+            if (mouse->active_button != SDL_BUTTON_LEFT) {
                 button->state = BUTTON_STATE_NORMAL;
                 if (mouse->x > x &&
                     mouse->x < x+w &&

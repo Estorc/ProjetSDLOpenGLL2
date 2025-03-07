@@ -22,9 +22,15 @@ class TexturedMesh : public Node {
     __containerType__ Node *
     public:
 
-    void constructor(struct TexturedMesh *texturedMesh) {
-        this->object = texturedMesh;
+    void constructor(const char *path) {
         this->type = __type__;
+
+        TexturedMesh *texturedMesh;
+        texturedMesh = malloc(sizeof(TexturedMesh));
+        POINTER_CHECK(texturedMesh);
+        create_textured_plane(texturedMesh, path);
+
+        this->object = texturedMesh;
         SUPER(initialize_node);
     }
 
@@ -42,18 +48,13 @@ class TexturedMesh : public Node {
     }
 
     void load(FILE *file) {
-        TexturedMesh *texturedMesh;
-        texturedMesh = malloc(sizeof(TexturedMesh));
-        POINTER_CHECK(texturedMesh);
         char path[100];
         if (file) {
             fscanf(file,"(%100[^)])", path);
         } else {
             path[0] = 0;
         }
-        create_textured_plane(texturedMesh, path);
-        this->type = __type__;
-        this::constructor(texturedMesh);
+        this::constructor(path);
     }
 
     void save(FILE *file) {

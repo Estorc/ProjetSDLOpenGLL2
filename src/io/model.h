@@ -271,7 +271,7 @@ typedef struct Mesh {
  * @param texturedMesh Pointer to the TexturedMesh structure to be initialized.
  * @param texture Path to the texture file.
  */
-void create_textured_plane(TexturedMesh *texturedMesh, char *texture);
+void create_textured_plane(TexturedMesh *texturedMesh, const char *texture);
 
 /**
  * @brief Creates a screen plane.

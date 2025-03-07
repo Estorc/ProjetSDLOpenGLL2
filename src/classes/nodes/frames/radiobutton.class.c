@@ -26,14 +26,21 @@ class RadioButton : public Button {
     public:
 
     void constructor() {
+        this->type = __type__; 
+
         Frame *frame;
         frame = malloc(sizeof(Frame));
         POINTER_CHECK(frame);
         this->object = frame;
-        this->type = __type__; 
         SUPER(initialize_node);
         this::init_frame();
         this::init_radiobutton();
+        frame->scale[0] = 48.0f;
+        frame->scale[1] = 48.0f;
+        frame->unit[2] = 'p';
+        frame->unit[3] = 'p';
+        frame->alignment[0] = 'c';
+        frame->alignment[1] = 'c';
     }
 
     void init_radiobutton() {
@@ -45,17 +52,8 @@ class RadioButton : public Button {
 
     
 
-    void load(FILE *file) {
-        UNUSED(file);
-        this->type = __type__;
+    void load() {
         this::constructor();
-        Frame *frame = (Frame *) this->object;
-        frame->scale[0] = 48.0f;
-        frame->scale[1] = 48.0f;
-        frame->unit[2] = 'p';
-        frame->unit[3] = 'p';
-        frame->alignment[0] = 'c';
-        frame->alignment[1] = 'c';
     }
 
     void save(FILE *file, Node *editor) {

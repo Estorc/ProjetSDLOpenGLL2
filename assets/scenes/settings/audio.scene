@@ -1,4 +1,9 @@
-Node[m0,0,0r0,0,0s1,1,1a1v1]:1
+Node[m0,0,0r0,0,0s1,1,1a1v1]:2
+Node:4
+Skybox(assets/textures/skybox/right.jpg,assets/textures/skybox/left.jpg,assets/textures/skybox/top.jpg,assets/textures/skybox/bottom.jpg,assets/textures/skybox/front.jpg,assets/textures/skybox/back.jpg)
+PointLight(60,50,40,0.001,0,1,0.09,0.032)[m-10,6,9]
+Model(assets/models/settings_bg/settings_bg.obj)[s5,5,5]
+Camera(1){NULL,st_camera,NULL}[m0,3,5]
 Frame(0w,0h,100w,100h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):2
 Frame(0w,0h,100w,80h,ctn):3
 ControlFrame(2w,10p,96w,50p,ltv):2

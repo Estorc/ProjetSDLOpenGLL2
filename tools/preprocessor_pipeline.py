@@ -135,9 +135,10 @@ try:
                                 new_line += f"call_method_0(METHOD({method_name},{class_name}{attribute}))"
                             index += len(match.group(0))
                             continue
-                        match = regex.match(r"^([a-zA-Z_][\da-zA-Z_]*||\([^)]*\)) *= *new +([a-zA-Z_][\da-zA-Z_]*)\(([^)]*)\)", remaining_line)
+                        match = regex.match(r"^([a-zA-Z_][\da-zA-Z_]*||\([^)]*\)) *= *new +([a-zA-Z_][\da-zA-Z_]*)(\((?:[^()]+|(?3))*+\))", remaining_line)
                         if match:
                             class_name, class_type, attribute = match.groups()
+                            attribute = attribute[1:-1] # Remove parentheses
                             if attribute: attribute = ","+attribute
                             if class_type in json_data["type_associations"]:
                                 type_caller = json_data["type_caller"][class_type][json_data["method_index"]["constructor"]]

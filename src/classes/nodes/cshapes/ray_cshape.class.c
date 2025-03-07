@@ -22,9 +22,14 @@ class RayCShape : public CShape {
     __containerType__ Node *
     public:
 
-    void constructor(struct RayCollisionShape *rayCollisionShape) {
-        this->object = rayCollisionShape;
+    void constructor() {
         this->type = __type__;
+
+        RayCollisionShape *rayCollisionShape;
+        rayCollisionShape = malloc(sizeof(RayCollisionShape));
+        POINTER_CHECK(rayCollisionShape);
+
+        this->object = rayCollisionShape;
         SUPER(initialize_node);
     }
 
@@ -35,11 +40,7 @@ class RayCShape : public CShape {
     }
 
     void load() {
-        RayCollisionShape *rayCollisionShape;
-        rayCollisionShape = malloc(sizeof(RayCollisionShape));
-        POINTER_CHECK(rayCollisionShape);
-        this->type = __type__;
-        this::constructor(rayCollisionShape);
+        this::constructor();
     }
 
     void save(FILE *file) {

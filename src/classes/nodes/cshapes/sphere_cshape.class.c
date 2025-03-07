@@ -27,9 +27,14 @@ class SphereCShape : public CShape {
     __containerType__ Node *
     public:
 
-    void constructor(struct SphereCollisionShape *sphereCollisionShape) {
-        this->object = sphereCollisionShape;
+    void constructor() {
         this->type = __type__;
+
+        SphereCollisionShape *sphereCollisionShape;
+        sphereCollisionShape = malloc(sizeof(SphereCollisionShape));
+        POINTER_CHECK(sphereCollisionShape);
+
+        this->object = sphereCollisionShape;
         SUPER(initialize_node);
     }
 
@@ -40,11 +45,7 @@ class SphereCShape : public CShape {
     }
 
     void load() {
-        SphereCollisionShape *sphereCollisionShape;
-        sphereCollisionShape = malloc(sizeof(SphereCollisionShape));
-        POINTER_CHECK(sphereCollisionShape);
-        this->type = __type__;
-        this::constructor(sphereCollisionShape);
+        this::constructor();
     }
 
     void save(FILE *file) {

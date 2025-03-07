@@ -97,6 +97,11 @@ NEW_SCRIPT(st_fov)
     slider->value = &Game.settings->fov;
 END_SCRIPT(st_fov)
 
+NEW_SCRIPT(st_camera)
+    Camera * camera = this->object;
+    camera->fov = Game.settings->fov;
+END_SCRIPT(st_camera)
+
 NEW_SCRIPT(st_signal)
     GET_SIGNAL();	
     switch (signal) {

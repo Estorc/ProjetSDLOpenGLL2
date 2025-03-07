@@ -26,10 +26,30 @@ class Camera : public Node {
     __containerType__ Node *
     public:
 
-    void constructor(struct Camera *camera) {
-        this->object = camera;
+    void constructor() {
         this->type = __type__;
+
+        Camera *cam;
+        cam = malloc(sizeof(Camera));
+        POINTER_CHECK(cam);
+        init_camera(cam);
+
+        this->object = cam;
         SUPER(initialize_node);
+    }
+
+    void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
+        UNUSED(scripts);
+        this::constructor();
+        Camera *cam = this->object;
+        if (file) {
+            int active_camera;
+            fscanf(file,"(%d)", &active_camera);
+            if (active_camera) {
+                if (c) *c = cam;
+                else if (editor) editor->attribute[5].node = this;
+            }
+        }
     }
 
     void update(vec3 *pos, vec3 *rot, vec3 *scale) {
@@ -48,25 +68,6 @@ class Camera : public Node {
         *ptr = realloc(*ptr, (*length)*sizeof(void *) + sizeof(data));
         memcpy(*ptr + (*length), data, sizeof(data));
         *length += sizeof(data)/sizeof(void *);
-    }
-
-    void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
-        UNUSED(scripts);
-        Camera *cam;
-        cam = malloc(sizeof(Camera));
-        POINTER_CHECK(cam);
-        init_camera(cam);
-        if (file) {
-            int active_camera;
-            fscanf(file,"(%d)", &active_camera);
-            if (active_camera) {
-                if (c) *c = cam;
-                else if (editor) editor->attribute[5].node = this;
-            }
-        }
-        this->type = __type__;
-        this::constructor(cam);
-        cam->fov = Game.settings->fov;
     }
 
     void save(FILE *file, Node *editor) {

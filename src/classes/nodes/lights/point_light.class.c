@@ -46,7 +46,7 @@ class PointLight : public Light {
             "].position",
             "].color",
             "].bias",
-            "].size"
+            "].size",
             "].constant",
             "].linear",
             "].quadratic",
@@ -158,7 +158,7 @@ class PointLight : public Light {
         size_t storageBufferIndex;
 
         f32 near_plane = 1.0f, far_plane = 8000.0f;
-        glm_perspective(to_radians(90.0f), SHADOW_WIDTH/SHADOW_HEIGHT, near_plane, far_plane, lightProjection);
+        glm_perspective(PI/2.0f, SHADOW_WIDTH/SHADOW_HEIGHT, near_plane, far_plane, lightProjection);
 
         vec3 directions[6] = {
             { 1.0f, 0.0f, 0.0f},

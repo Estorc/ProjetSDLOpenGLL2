@@ -23,21 +23,21 @@ class Scene : public Node {
 
     void constructor() {
         this->type = __type__;
+
         SUPER(initialize_node);
     }
 
     
 
     void load(FILE *file, Camera **c, Script *scripts) {
-        this->type = __type__;
-        this::constructor();
         char path[256];
+        this::constructor(path);
         if (file) {
             fscanf(file,"(%s)\n", 
                 path);
+            this->children = realloc(this->children, sizeof(Node *));
+            this::add_child(load_scene(path, c, scripts));
         }
-        this->children = realloc(this->children, sizeof(Node *));
-        this::add_child(load_scene(path, c, scripts));
     }
 
     void save(FILE *file) {
