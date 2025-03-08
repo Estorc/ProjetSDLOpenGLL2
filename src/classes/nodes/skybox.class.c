@@ -62,7 +62,7 @@ class Skybox : public Node {
 
             if (textureSurface) {
                 glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 
-                            0, GL_RGB, textureSurface->w, textureSurface->h, 0, GL_RGB, GL_UNSIGNED_BYTE, textureSurface->pixels
+                            0, GL_SRGB, textureSurface->w, textureSurface->h, 0, GL_RGB, GL_UNSIGNED_BYTE, textureSurface->pixels
                 );
                 SDL_FreeSurface(textureSurface);
             } else {
