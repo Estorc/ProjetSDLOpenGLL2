@@ -1,5 +1,6 @@
 /.vscode/*
 /bin/*
+/obj/*
 /.venv/*
 /src/__processed__/*
 *.blend*
