@@ -42,10 +42,6 @@ void free_models() {
         ModelData *model = Game.memoryCaches->modelCache[i].model;
         if (model) {
             for (int j = 0; j < model->length; j++) {
-                for (int k = 0; k < model->objects[j].materialsCount; k++) {
-                    glDeleteLists(model->objects[j].displayLists[k], 1);
-                }
-                free(model->objects[j].displayLists);
                 glDeleteVertexArrays(1, &model->objects[j].VAO);
                 free(model->objects[j].materials);
                 free(model->objects[j].materialsLength);

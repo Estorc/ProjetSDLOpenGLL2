@@ -154,7 +154,7 @@ class DirectionalLight : public Light {
      * @note This function is called by the render loop to configure the lighting for the specified camera.
      */
 
-    void configure_lighting(Camera *c, WorldShaders *shaders, u8 *lightsCount) {
+    void configure_lighting(Camera *c, WorldShaders *shaders, DepthMap *depthMap, u8 *lightsCount) {
 
         // Lights and shadows
         mat4 lightProjection;
@@ -177,12 +177,12 @@ class DirectionalLight : public Light {
         glm_vec3_sub(lightPos, lightFront, lightB);
         glm_lookat(lightPos, lightB, lightUp, lightView);
 
-        storageBufferIndex = lightsCount[DIRECTIONAL_LIGHT]*sizeof(mat4)+0*sizeof(mat4);
+        storageBufferIndex = lightsCount[DIRECTIONAL_LIGHT];
         lightsCount[DIRECTIONAL_LIGHT]++;
 
 
 
-        SUPER(configure_lighting, shaders, lightView, lightProjection, storageBufferIndex);
+        SUPER(configure_lighting, shaders, lightView, lightProjection, storageBufferIndex, depthMap);
     }
     
 }

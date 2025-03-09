@@ -141,7 +141,6 @@ struct ModelObjectData {
     u32 *materialsLength;                   /**< Array of material lengths */ //The numbers of faces before switching material
     u32 materialsCount;                     /**< Number of materials */
     VAO VAO;                                /**< Vertex Array Object */
-    GLuint *displayLists;                   /**< Array of display lists */
 };
 
 

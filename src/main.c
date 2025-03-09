@@ -155,7 +155,8 @@ int main(int argc, char *argv[]) {
     glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
     glDeleteTextures(1, &depthMap.texture);
     glDeleteFramebuffers(1, &depthMap.frameBuffer);
-    glDeleteBuffers(1, &depthMap.ubo);
+    glDeleteBuffers(1, &depthMap.tbo);
+    glDeleteTextures(1, &depthMap.matrixTexture);
     PRINT_INFO("Free depth map!\n");
 
     table_free(Game.storage);

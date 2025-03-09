@@ -99,14 +99,25 @@ class Light : public Node {
      * @param storageBufferIndex The index of the storage buffer.
      */
 
-    void configure_lighting(WorldShaders *shaders, mat4 *lightView, mat4 *lightProjection, int storageBufferIndex) {
+    void configure_lighting(WorldShaders *shaders, mat4 *lightView, mat4 *lightProjection, int storageBufferIndex, DepthMap *depthMap) {
         mat4 lightSpaceMatrix;
         glm_mat4_mul(*lightProjection, *lightView, lightSpaceMatrix);
 
-        // Cast shadow direction (render scene from light's point of view)
+        if (depthMap->tbo == 0) {
+            PRINT_ERROR("Error: depthMap->tbo is not initialized!");
+        }        
+
+        glBindBuffer(GL_TEXTURE_BUFFER, depthMap->tbo);
+
+        mat4* mappedBuffer = (mat4*)glMapBuffer(GL_TEXTURE_BUFFER, GL_WRITE_ONLY);
+        glm_mat4_copy(lightSpaceMatrix, mappedBuffer[storageBufferIndex]);
+        glUnmapBuffer(GL_TEXTURE_BUFFER);
+        glActiveTexture(GL_TEXTURE9); // Use texture unit 0
+        glBindTexture(GL_TEXTURE_BUFFER, depthMap->matrixTexture);
+        glBindBuffer(GL_TEXTURE_BUFFER, 0);
         use_shader(shaders->render);
-        glBufferSubData(GL_UNIFORM_BUFFER, storageBufferIndex, sizeof(mat4), &lightSpaceMatrix);
+        set_shader_int(shaders->render, "lightMatrixBuffer", 9);
         use_shader(shaders->depth);
-        glUniformMatrix4fv(glGetUniformLocation(shaders->depth, "lightSpaceMatrix"), 1, GL_FALSE, (const GLfloat *) &lightSpaceMatrix);
+        set_shader_mat4(shaders->depth, "lightSpaceMatrix", &lightSpaceMatrix);
     }
 }

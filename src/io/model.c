@@ -146,30 +146,11 @@ void create_screen_plane(Mesh *mesh) {
 
 
 
-void precompile_display_lists(Model *model) {
-    ModelData *data = model->data;
-    if (data->objects[0].displayLists[0]) return;
-    PRINT_INFO("Precompiling display lists...\n");
-    for (int j = 0; j < data->length; j++) {
-        u32 objectPosition = 0;
-        glBindVertexArray(data->objects[j].VAO);
-        for (int k = 0; k < data->objects[j].materialsCount; k++) {
-            data->objects[j].displayLists[k] = glGenLists(1);
-            glNewList(data->objects[j].displayLists[k], GL_COMPILE);
-            glDrawArrays(GL_TRIANGLES, objectPosition, data->objects[j].materialsLength[k] * 3);
-            objectPosition += data->objects[j].materialsLength[k] * 3;
-            glEndList();
-        }
-    }
-    glBindVertexArray(0);
-}
 
 void render_model(mat4 *modelMatrix, Shader shader, Model *model) {
     ModelData *data = model->data;
 
     if (!data) return;
-
-    //precompile_display_lists(model);
 
     if (data->animationsCount > 0) {
         set_shader_int(shader, "haveBone", 1);
@@ -244,25 +225,6 @@ void render_model(mat4 *modelMatrix, Shader shader, Model *model) {
         }
     }
     glBindVertexArray(0);
-
-    /*if (model->flags & MODEL_FLAG_GLOW) {
-        Shader glowShader;
-        this::get_glow_shader(&glowShader);
-        use_shader(glowShader);
-
-        int modelLoc = glGetUniformLocation(glowShader, "model");
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, *modelMatrix);
-        set_shader_float(glowShader, "outlineWidth", 1.0f/this->globalScale[0]);
-                    
-        glEnable(GL_CULL_FACE);
-        glCullFace(GL_FRONT);
-        for (int j = 0; j < data->length; j++) {
-            for (int k = 0; k < data->objects[j].materialsCount; k++) {
-                glCallList(data->objects[j].displayLists[k]);
-            }
-        }
-        glDisable(GL_CULL_FACE);
-    }*/
 
 
 }

@@ -90,9 +90,6 @@ int load_model(const char *path, ModelData ** modelPtr) {
     for (int i = 0; i < model->length; i++) {
         ModelObjectData *obj = &model->objects[i];
         create_obj_vao(obj);
-        obj->displayLists = malloc(sizeof(GLuint) * obj->materialsCount);
-        POINTER_CHECK(obj->displayLists);
-        memset(obj->displayLists, 0, sizeof(GLuint) * obj->materialsCount);
     }
     add_model_to_cache(path, model);
     return 0;

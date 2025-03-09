@@ -1,0 +1,8 @@
+[ERROR] [OpenGL Debug] (131185): Buffer detailed info: Buffer object 2 (bound to GL_ARRAY_BUFFER_ARB, usage hint is GL_STATIC_DRAW) will use VIDEO memory as the source for buffer object operations.
+[ERROR] [OpenGL Debug] (131185): Buffer detailed info: Buffer object 3 (bound to GL_ARRAY_BUFFER_ARB, usage hint is GL_STATIC_DRAW) will use VIDEO memory as the source for buffer object operations.
+[ERROR] [OpenGL Debug] (131185): Buffer detailed info: Buffer object 4 (bound to GL_ARRAY_BUFFER_ARB, usage hint is GL_STATIC_DRAW) will use VIDEO memory as the source for buffer object operations.
+[ERROR] [OpenGL Debug] (131185): Buffer detailed info: Buffer object 5 (bound to GL_ARRAY_BUFFER_ARB, usage hint is GL_STATIC_DRAW) will use VIDEO memory as the source for buffer object operations.
+[ERROR] [OpenGL Debug] (131185): Buffer detailed info: Buffer object 6 (bound to GL_ARRAY_BUFFER_ARB, usage hint is GL_STATIC_DRAW) will use VIDEO memory as the source for buffer object operations.
+[ERROR] [OpenGL Debug] (131185): Buffer detailed info: Buffer object 7 (bound to GL_ARRAY_BUFFER_ARB, usage hint is GL_STATIC_DRAW) will use VIDEO memory as the source for buffer object operations.
+[ERROR] [OpenGL Debug] (1280): GL_INVALID_ENUM error generated. Cannot enable <cap> in the current profile.
+[ERROR] SEVERITY: HIGH. Terminating!

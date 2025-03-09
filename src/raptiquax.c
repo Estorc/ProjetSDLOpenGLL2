@@ -31,7 +31,22 @@ BufferCollection buffers;
 Queue callQueue = {NULL};
 Tree mainTree = {0};
 Input input;
-Settings settings = {false, true, false, RES_RESPONSIVE, false, 1, 1, 1, PI/4.0f};
+Settings settings = {
+    .show_fps = false, 
+    .cast_shadows = true, 
+    .window_fullscreen = false, 
+    .resolution = RES_RESPONSIVE, 
+    .show_collision_boxes = false, 
+    .master_volume = 1, 
+    .music_volume = 1, 
+    .sfx_volume = 1, 
+    .fov = PI/4.0f,
+    .shadow_resolution = 2048,
+    .shadow_quality = 6,
+    .texture_quality = 1,
+    .antialiasing = true,
+    .vsync = true
+};
 Window window;
 MSAA msaa;
 

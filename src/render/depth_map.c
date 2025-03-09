@@ -9,28 +9,21 @@ void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
 
     // Allocate enough space for your matrices
     size_t numDirectionalLights = NUM_DIRECTIONAL_LIGHTS;
-    size_t numPointLights = NUM_POINT_LIGHTS;
+    size_t numPointLights = NUM_POINT_LIGHTS*6;
     size_t numSpotLights = NUM_SPOT_LIGHTS;
 
-    glGenBuffers(1, &depthMap->ubo);
-    glBindBuffer(GL_UNIFORM_BUFFER, depthMap->ubo);
+    glGenBuffers(1, &depthMap->tbo);
+    glBindBuffer(GL_TEXTURE_BUFFER, depthMap->tbo);
 
     size_t bufferSize = sizeof(mat4) * (numDirectionalLights + numPointLights + numSpotLights);
-    glBufferData(GL_UNIFORM_BUFFER, bufferSize, NULL, GL_DYNAMIC_DRAW);
+    glBufferData(GL_TEXTURE_BUFFER, bufferSize, NULL, GL_DYNAMIC_DRAW);
 
-    GLint bindingPoint = 0;
-    glBindBufferBase(GL_UNIFORM_BUFFER, bindingPoint, depthMap->ubo);
+    glGenTextures(1, &depthMap->matrixTexture);
+    glBindTexture(GL_TEXTURE_BUFFER, depthMap->matrixTexture);
+    glTexBuffer(GL_TEXTURE_BUFFER, GL_RGBA32F, depthMap->tbo);
 
-    GLuint blockIndex = glGetUniformBlockIndex(shaders->render, "LightMatrices");
-    glUniformBlockBinding(shaders->render, blockIndex, bindingPoint);
-
-
-    GLint actualBinding;
-    glGetActiveUniformBlockiv(shaders->render, blockIndex, GL_UNIFORM_BLOCK_BINDING, &actualBinding);
-
-    if (actualBinding != bindingPoint) {
-        PRINT_ERROR("Error: Uniform block binding point mismatch!\n");
-    }
+    glBindTexture(GL_TEXTURE_BUFFER, 0);
+    glBindBuffer(GL_TEXTURE_BUFFER, 0);
 
 
 
@@ -38,8 +31,10 @@ void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
     glGenTextures(1, &depthMap->texture);
     // Disable binding if settings do not allow shadows
     glBindTexture(GL_TEXTURE_2D_ARRAY, depthMap->texture);
-    glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_DEPTH_COMPONENT, 
-                SHADOW_WIDTH, SHADOW_HEIGHT, MAX_SHADOW, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_SHORT, NULL);
+    glTexStorage3D(GL_TEXTURE_2D_ARRAY, 1, GL_DEPTH_COMPONENT16,
+                Game.settings->shadow_resolution, 
+                Game.settings->shadow_resolution,
+                numDirectionalLights + numPointLights + numSpotLights);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER); 
@@ -48,6 +43,11 @@ void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_COMPARE_FUNC, GL_LEQUAL);
     float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
     glTexParameterfv(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_BORDER_COLOR, borderColor);  
+
+    use_shader(shaders->render);
+    glActiveTexture(GL_TEXTURE3);
+    glBindTexture(GL_TEXTURE_2D_ARRAY, depthMap->texture);
+    use_shader(0);
 
     glBindFramebuffer(GL_FRAMEBUFFER, depthMap->frameBuffer);
     glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthMap->texture, 0, 0);

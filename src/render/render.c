@@ -63,17 +63,19 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
 
 void draw_shadow_map(Window *window, Node *root, Camera *c, WorldShaders *shaders, DepthMap *depthMap) {
     // Draw shadow map (render scene with depth map shader)
+    static int render_cpt = 0;
+    if (render_cpt++ > 5) return;
     if (!Game.settings->cast_shadows) return;
     glCullFace(GL_FRONT);
-    glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
+    glViewport(0, 0, Game.settings->shadow_resolution, Game.settings->shadow_resolution);
     glBindFramebuffer(GL_FRAMEBUFFER, depthMap->frameBuffer);
     u8 lightsCount[LIGHTS_COUNT] = {0};
     for (int i = 0, index = 0, pl = 0; i < Game.buffers->lightingBuffer.index; i++, index++) {
-        (Game.buffers->lightingBuffer.lightings[i])::configure_lighting(c,shaders, lightsCount, pl);
+        (Game.buffers->lightingBuffer.lightings[i])::configure_lighting(c, shaders, depthMap, lightsCount, pl);
         glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthMap->texture, 0, index);
         glClear(GL_DEPTH_BUFFER_BIT);
         mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
-        render_scene(window, root, c, modelMatrix, shaders->depth, shaders, SHADOW_WIDTH, SHADOW_HEIGHT);
+        render_scene(window, root, c, modelMatrix, shaders->depth, shaders, Game.settings->shadow_resolution, Game.settings->shadow_resolution);
         if (Game.buffers->lightingBuffer.lightings[i]->type == CLASS_TYPE_POINTLIGHT && pl < 5) {
             i--;
             pl++;
@@ -94,8 +96,6 @@ void draw_scene(Window *window, Node *root, Camera *c, WorldShaders *shaders, De
     glViewport(0, 0, window_width, window_height);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     use_shader(shaders->render);
-    glActiveTexture(GL_TEXTURE3);
-    glBindTexture(GL_TEXTURE_2D_ARRAY, depthMap->texture);
     set_shader_int(shaders->render, "diffuseMap", 0);
     set_shader_int(shaders->render, "normalMap", 1);
     set_shader_int(shaders->render, "parallaxMap", 2);
@@ -103,6 +103,7 @@ void draw_scene(Window *window, Node *root, Camera *c, WorldShaders *shaders, De
     set_shader_int(shaders->render, "metallicMap", 4);
     set_shader_int(shaders->render, "roughnessMap", 5);
     set_shader_int(shaders->render, "shadowCastActive", Game.settings->cast_shadows);
+    set_shader_int(shaders->render, "shadowQuality", Game.settings->shadow_quality);
 
     mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
     render_scene(window, root, c, modelMatrix, shaders->render, shaders, window_width, window_height);
@@ -113,7 +114,6 @@ void draw_screen(Window *window, Node *scene, Camera *c, WorldShaders *shaders, 
     int window_width, window_height;
     get_resolution(&window_width, &window_height);
 
-    glEnable(GL_TEXTURE_2D);
     glEnable(GL_FRAMEBUFFER_SRGB);  // Enable sRGB framebuffer correction
     glEnable(GL_MULTISAMPLE);  
     glEnable(GL_DEPTH_TEST);

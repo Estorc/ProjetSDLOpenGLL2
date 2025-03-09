@@ -9,6 +9,73 @@
 #include "render/render.h"
 #include "window.h"
 
+#ifdef DEBUG
+#define DEBUG_GL
+#endif
+
+#ifdef DEBUG_GL
+
+#ifdef _WIN32
+    #define APIENTRY __stdcall
+#endif
+
+
+void APIENTRY openglDebugCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam) {
+    
+    #ifndef ENABLE_OPENGL_NOTIFICATIONS
+    if (severity == GL_DEBUG_SEVERITY_NOTIFICATION) {
+        return;
+    }
+    #endif
+    
+    const char* sourceStr = NULL;
+    const char* typeStr = NULL;
+    const char* severityStr = NULL;
+
+    // Convert the enums to strings for more detailed information
+    switch (source) {
+        case GL_DEBUG_SOURCE_API: sourceStr = "API"; break;
+        case GL_DEBUG_SOURCE_WINDOW_SYSTEM: sourceStr = "Window System"; break;
+        case GL_DEBUG_SOURCE_SHADER_COMPILER: sourceStr = "Shader Compiler"; break;
+        case GL_DEBUG_SOURCE_THIRD_PARTY: sourceStr = "Third Party"; break;
+        case GL_DEBUG_SOURCE_APPLICATION: sourceStr = "Application"; break;
+        case GL_DEBUG_SOURCE_OTHER: sourceStr = "Other"; break;
+        default: sourceStr = "Unknown"; break;
+    }
+
+    switch (type) {
+        case GL_DEBUG_TYPE_ERROR: typeStr = "Error"; break;
+        case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR: typeStr = "Deprecated Behavior"; break;
+        case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR: typeStr = "Undefined Behavior"; break;
+        case GL_DEBUG_TYPE_PORTABILITY: typeStr = "Portability"; break;
+        case GL_DEBUG_TYPE_PERFORMANCE: typeStr = "Performance"; break;
+        case GL_DEBUG_TYPE_OTHER: typeStr = "Other"; break;
+        default: typeStr = "Unknown"; break;
+    }
+
+    switch (severity) {
+        case GL_DEBUG_SEVERITY_HIGH: severityStr = "High"; break;
+        case GL_DEBUG_SEVERITY_MEDIUM: severityStr = "Medium"; break;
+        case GL_DEBUG_SEVERITY_LOW: severityStr = "Low"; break;
+        case GL_DEBUG_SEVERITY_NOTIFICATION: severityStr = "Notification"; break;
+        default: severityStr = "Unknown"; break;
+    }
+
+    // Output the debug message with additional information like file and line number
+    if (type != GL_DEBUG_TYPE_ERROR) {
+        PRINT_WARNING("[OpenGL Debug] (%d) Source: %s, Type: %s, Severity: %s\nMessage: %s\n", id, sourceStr, typeStr, severityStr, message);
+    } else {
+        PRINT_ERROR("[OpenGL Debug] (%d) Source: %s, Type: %s, Severity: %s\nMessage: %s\n", id, sourceStr, typeStr, severityStr, message);
+    }
+
+    if (severity == GL_DEBUG_SEVERITY_HIGH) {
+    PRINT_ERROR("SEVERITY: HIGH. Terminating!\n");
+    abort(); // Stop execution if severity is high
+    }
+}
+
+#endif
+
 s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Window *window) {
     window->startTime = get_time_in_seconds();
     window->time = 0.0f;
@@ -94,17 +161,6 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
     PRINT_INFO("OpenGL Renderer: %s\n", glGetString(GL_RENDERER));
 
     #ifdef DEBUG_GL
-
-    void APIENTRY openglDebugCallback(GLenum source, GLenum type, GLuint id,
-                                    GLenum severity, GLsizei length,
-                                    const GLchar* message, const void* userParam) {
-        PRINT_ERROR("[OpenGL Debug] (%d): %s\n", id, message);
-
-        if (severity == GL_DEBUG_SEVERITY_HIGH) {
-            PRINT_ERROR("SEVERITY: HIGH. Terminating!\n");
-            abort(); // Stop execution if severity is high
-        }
-    }
 
         // Enable OpenGL Debugging
     glEnable(GL_DEBUG_OUTPUT);

@@ -30,6 +30,11 @@ typedef struct Settings {
     float music_volume;
     float sfx_volume;
     float fov;
+    int shadow_resolution;
+    int shadow_quality;
+    int texture_quality;
+    bool antialiasing;
+    bool vsync;
 } Settings;
 
 void get_resolution(int *width, int *height);

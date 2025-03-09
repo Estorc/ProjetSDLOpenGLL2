@@ -148,7 +148,7 @@ class PointLight : public Light {
      * @param pointLightId The ID of the point light.
      */
 
-    void configure_lighting(Camera *c, WorldShaders *shaders, u8 *lightsCount, int pointLightId) {
+    void configure_lighting(Camera *c, WorldShaders *shaders, DepthMap *depthMap, u8 *lightsCount, int pointLightId) {
 
         UNUSED(c);
         // Lights and shadows
@@ -158,7 +158,7 @@ class PointLight : public Light {
         size_t storageBufferIndex;
 
         f32 near_plane = 1.0f, far_plane = 8000.0f;
-        glm_perspective(PI/2.0f, SHADOW_WIDTH/SHADOW_HEIGHT, near_plane, far_plane, lightProjection);
+        glm_perspective(PI/2.0f, 1.0f, near_plane, far_plane, lightProjection);
 
         vec3 directions[6] = {
             { 1.0f, 0.0f, 0.0f},
@@ -183,11 +183,11 @@ class PointLight : public Light {
         glm_vec3_sub(lightPos, directions[pointLightId], lightB);
         glm_lookat(lightPos, lightB, upVectors[pointLightId], lightView);
 
-        storageBufferIndex = (lightsCount[POINT_LIGHT]*6+pointLightId)*sizeof(mat4)+(NUM_DIRECTIONAL_LIGHTS)*sizeof(mat4);
+        storageBufferIndex = (lightsCount[POINT_LIGHT]*6+pointLightId)+(NUM_DIRECTIONAL_LIGHTS);
         if (pointLightId == 5) lightsCount[POINT_LIGHT]++;
 
 
-        SUPER(configure_lighting, shaders, lightView, lightProjection, storageBufferIndex);
+        SUPER(configure_lighting, shaders, lightView, lightProjection, storageBufferIndex, depthMap);
     }
 
     

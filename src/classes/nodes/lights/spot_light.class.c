@@ -167,7 +167,7 @@ class SpotLight : public Light {
      * @param lightsCount The number of lights in the scene.
      */
 
-    void configure_lighting(Camera *c, WorldShaders *shaders, u8 *lightsCount) {
+    void configure_lighting(Camera *c, WorldShaders *shaders, DepthMap *depthMap, u8 *lightsCount) {
 
         UNUSED(c);
         // Lights and shadows
@@ -177,7 +177,7 @@ class SpotLight : public Light {
         size_t storageBufferIndex;
 
         f32 near_plane = 1.0f, far_plane = 200.0f;
-        glm_perspective(to_radians(90.0f), SHADOW_WIDTH/SHADOW_HEIGHT, near_plane, far_plane, lightProjection);
+        glm_perspective(to_radians(90.0f), 1.0f, near_plane, far_plane, lightProjection);
 
         vec3 rot, pos;
         glm_vec3_negate_to(this->globalPos, pos);
@@ -188,11 +188,11 @@ class SpotLight : public Light {
         glm_rotate(lightView, to_radians(rot[2]), (vec3){0.0f, 0.0f, 1.0f});
         glm_translate(lightView, (vec3){pos[0], pos[1], pos[2]});
 
-        storageBufferIndex = lightsCount[SPOT_LIGHT]*sizeof(mat4)+(NUM_DIRECTIONAL_LIGHTS+NUM_POINT_LIGHTS)*sizeof(mat4);
+        storageBufferIndex = lightsCount[SPOT_LIGHT]+(NUM_DIRECTIONAL_LIGHTS+NUM_POINT_LIGHTS*6);
         lightsCount[SPOT_LIGHT]++;
 
 
-        SUPER(configure_lighting, shaders, lightView, lightProjection, storageBufferIndex);
+        SUPER(configure_lighting, shaders, lightView, lightProjection, storageBufferIndex, depthMap);
     }
 
     

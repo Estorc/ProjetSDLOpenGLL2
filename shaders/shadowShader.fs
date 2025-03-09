@@ -1,4 +1,4 @@
-#version 330 core
+#version 430 core
 out vec4 FragColor;
 
 struct Material {
@@ -16,7 +16,8 @@ uniform sampler2D normalMap;
 uniform sampler2D parallaxMap;
 uniform sampler2D metallicMap;
 uniform sampler2D roughnessMap;
-uniform sampler2DArray shadowMap;
+uniform sampler2DArrayShadow shadowMap;
+uniform samplerBuffer lightMatrixBuffer;
 
 struct DirLight {
     vec3 position;
@@ -61,14 +62,8 @@ struct SpotLight {
 };
 
 #define DIR_LIGHTS_MAX 10
-#define POINT_LIGHTS_MAX 12
+#define POINT_LIGHTS_MAX 10
 #define SPOT_LIGHTS_MAX 10
-
-layout(std140) uniform LightMatrices {
-    mat4 dirLightSpaceMatrix[DIR_LIGHTS_MAX];
-    mat4 pointLightSpaceMatrix[POINT_LIGHTS_MAX];
-    mat4 spotLightSpaceMatrix[SPOT_LIGHTS_MAX];
-};
 
 in VS_OUT {
     vec3 FragPos;
@@ -83,6 +78,7 @@ in VS_OUT {
 uniform int pointLightsNum;
 uniform int dirLightsNum;
 uniform int spotLightsNum;
+uniform int shadowQuality;
 
 uniform bool diffuseMapActive;
 uniform bool normalMapActive;
@@ -97,7 +93,7 @@ uniform PointLight pointLights[POINT_LIGHTS_MAX];
 uniform SpotLight spotLights[SPOT_LIGHTS_MAX];
 
 const float PI = 3.14159265359;
-const int SHADOW_QUALITY = 1;
+const float SHADOW_QUALITY_THRESHOLD = 4.0;
 
 float metallic = 0.0;
 float roughness = 0.5;
@@ -222,36 +218,32 @@ vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir) {
 }
 
 
-
-float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir, int index, float lightBias)
-{
+float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir, int index, float lightBias, float distanceFromCamera, vec2 texelSize) {
+    
     // perform perspective divide
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
     // transform to [0,1] range
     projCoords = projCoords * 0.5 + 0.5;
-    // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
-    float closestDepth = texture(shadowMap, vec3(projCoords.xy, index)).r; 
+
+    if (projCoords.z > 1.0 || projCoords.z < 0.0)
+        return 0.0;
+
     // get depth of current fragment from light's perspective
-    float currentDepth = projCoords.z;
     // check whether current frag pos is in shadow
     float bias = max(lightBias * (1.0 - dot(normal, lightDir)), lightBias); 
     bias *= (1.0 / (1.0 + length(fragPosLightSpace.xyz))); 
 
+    int shadowQualityAdjusted = max(shadowQuality - int(distanceFromCamera / SHADOW_QUALITY_THRESHOLD),0);
+
+    if (shadowQualityAdjusted == 0) return 1.0 - texture(shadowMap, vec4(projCoords.xy, index, projCoords.z - bias)); 
+
     float shadow = 0.0;
-    if (SHADOW_QUALITY == 0) return currentDepth - bias > texture(shadowMap, vec3(projCoords.xy, index)).r ? 1.0 : 0.0; 
-    vec2 texelSize = 1.0 / textureSize(shadowMap, 0).xy;
-    for(int x = -SHADOW_QUALITY; x <= SHADOW_QUALITY; ++x)
-    {
-        for(int y = -SHADOW_QUALITY; y <= SHADOW_QUALITY; ++y)
-        {
-            float pcfDepth = texture(shadowMap, vec3(vec2(projCoords.xy + vec2(x, y) * texelSize), index)).r; 
-            shadow += currentDepth - bias > pcfDepth ? 1.0 : 0.0;        
+    for(int x = -shadowQualityAdjusted; x <= shadowQualityAdjusted; ++x) {
+        for(int y = -shadowQualityAdjusted; y <= shadowQualityAdjusted; ++y) {
+            shadow += 1.0 - texture(shadowMap, vec4(vec2(projCoords.xy + vec2(x, y) * texelSize), index, projCoords.z - bias)); 
         }    
     }
-    shadow /= (float(SHADOW_QUALITY)*1.25)*(float(SHADOW_QUALITY)*1.25);
-
-    if(projCoords.z > 1.0)
-        shadow = 0.0;
+    shadow /= float(shadowQualityAdjusted * 2 + 1) * float(shadowQualityAdjusted * 2 + 1); // Apromixation for performance and quality
 
     return shadow;
 }
@@ -260,10 +252,12 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir, int 
 void main()
 {    
 
+    float distanceFromCamera = length(fs_in.FragPos - fs_in.viewPos);
     F0 = vec3(FresnelSchlickF0(material.shininess));
     vec3 viewDir = normalize(fs_in.viewPos - fs_in.FragPos);
     vec2 texCoords;
     vec3 tangentViewDir = normalize(fs_in.TangentViewPos - fs_in.TangentFragPos);
+    vec2 shadowMapTexelSize = 1.0 / textureSize(shadowMap, 0).xy;
 
     if (parallaxMapActive) {
         texCoords = ParallaxMapping(fs_in.TexCoords,  tangentViewDir);
@@ -311,20 +305,45 @@ void main()
     // phase 1: directional lighting
     for(int i = 0; i < dirLightsNum && i < DIR_LIGHTS_MAX; i++) {
         float shadow = 0.0;
-        if (shadowCastActive) shadow = ShadowCalculation(dirLightSpaceMatrix[i] * vec4(fs_in.FragPos, 1.0), normal, dirLights[i].position, dirLights[i].index, dirLights[i].bias);
+
+        mat4 lightMatrix = mat4(
+            texelFetch(lightMatrixBuffer, i * 4 + 0 + 0),
+            texelFetch(lightMatrixBuffer, i * 4 + 1 + 0),
+            texelFetch(lightMatrixBuffer, i * 4 + 2 + 0),
+            texelFetch(lightMatrixBuffer, i * 4 + 3 + 0)
+        );
+
+        if (shadowCastActive) shadow = ShadowCalculation(lightMatrix * vec4(fs_in.FragPos, 1.0), normal, dirLights[i].position, dirLights[i].index, dirLights[i].bias, distanceFromCamera, shadowMapTexelSize);
         Lo += CalcDirLight(dirLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? min(shadow, 1.0) : 0.0);
     }
     // phase 2: point lights
     for(int i = 0; i < pointLightsNum && i < POINT_LIGHTS_MAX; i++) {
         float shadow = 0.0;
-        if (shadowCastActive) for (int j = 0; j < 6; j++)
-            shadow += ShadowCalculation(pointLightSpaceMatrix[i*6+j] * vec4(fs_in.FragPos, 1.0), normal, pointLights[i].position, pointLights[i].index+j, pointLights[i].bias);
+
+        if (shadowCastActive) for (int j = 0; j < 6; j++) {
+
+            mat4 lightMatrix = mat4(
+                texelFetch(lightMatrixBuffer, (i * 6 + j) * 4 + 0 + DIR_LIGHTS_MAX * 4),
+                texelFetch(lightMatrixBuffer, (i * 6 + j) * 4 + 1 + DIR_LIGHTS_MAX * 4),
+                texelFetch(lightMatrixBuffer, (i * 6 + j) * 4 + 2 + DIR_LIGHTS_MAX * 4),
+                texelFetch(lightMatrixBuffer, (i * 6 + j) * 4 + 3 + DIR_LIGHTS_MAX * 4)
+            );
+            shadow += ShadowCalculation(lightMatrix * vec4(fs_in.FragPos, 1.0), normal, pointLights[i].position, pointLights[i].index+j, pointLights[i].bias, distanceFromCamera, shadowMapTexelSize);
+        }
         Lo += CalcPointLight(pointLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? min(shadow, 1.0) : 0.0);  
     }  
     // phase 3: spot light
     for(int i = 0; i < spotLightsNum && i < SPOT_LIGHTS_MAX; i++) {
         float shadow = 0.0;
-        if (shadowCastActive) shadow = ShadowCalculation(spotLightSpaceMatrix[i] * vec4(fs_in.FragPos, 1.0), normal, spotLights[i].position, spotLights[i].index, spotLights[i].bias);
+
+        mat4 lightMatrix = mat4(
+            texelFetch(lightMatrixBuffer, i * 4 + 0 + (DIR_LIGHTS_MAX + POINT_LIGHTS_MAX*6) * 4),
+            texelFetch(lightMatrixBuffer, i * 4 + 1 + (DIR_LIGHTS_MAX + POINT_LIGHTS_MAX*6) * 4),
+            texelFetch(lightMatrixBuffer, i * 4 + 2 + (DIR_LIGHTS_MAX + POINT_LIGHTS_MAX*6) * 4),
+            texelFetch(lightMatrixBuffer, i * 4 + 3 + (DIR_LIGHTS_MAX + POINT_LIGHTS_MAX*6) * 4)
+        );
+
+        if (shadowCastActive) shadow = ShadowCalculation(lightMatrix * vec4(fs_in.FragPos, 1.0), normal, spotLights[i].position, spotLights[i].index, spotLights[i].bias, distanceFromCamera, shadowMapTexelSize);
         Lo += CalcSpotLight(spotLights[i], normal, fs_in.FragPos, viewDir, (shadowCastActive) ? min(shadow, 1.0) : 0.0);
     }  
     

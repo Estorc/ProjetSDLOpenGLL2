@@ -52,8 +52,15 @@ else
 endif
 PYTHON_REQUIREMENTS = ./lib/python_requirements.txt
 
+KEEP_TEMP_FILES = 0
+
 BUILD_DIR := bin
+OBJ_DIR := obj
 TEST_DIR := test
+
+RELEASE_DIR := release
+DEBUG_DIR := debug
+
 PROCESSED_CLASS_DIR := src/__processed__
 
 ifneq ($(OS),Windows_NT)
@@ -115,9 +122,10 @@ MODULES += src/window.o
 MODULES += src/settings.o
 
 MAIN=src/main.o
+APP_NAME=app
 
-RELEASE_MODULES = $(addprefix $(BUILD_DIR)/,${MODULES})
-DEBUG_MODULES = $(addprefix $(BUILD_DIR)/debug/,${MODULES})
+RELEASE_MODULES = $(addprefix $(OBJ_DIR)/$(RELEASE_DIR)/,${MODULES})
+DEBUG_MODULES = $(addprefix $(OBJ_DIR)/$(DEBUG_DIR)/,${MODULES})
 
 
 # ===============================================================
@@ -153,10 +161,9 @@ LOADING_SCRIPT_HEADER := src/scripts/loading_scripts.h
 NEW_SCRIPT_SYMBOL := NEW_SCRIPT
 SCRIPTS_PATHS := $(shell find src/scripts -type f -name "*.cscript")
 SCRIPTS_MODULES := $(SCRIPTS_PATHS:.cscript=.o)
-SCRIPTS_COUNT := -D SCRIPTS_COUNT=$(shell grep -o '\b$(NEW_SCRIPT_SYMBOL)\b' $(SCRIPTS_PATHS) | wc -l)
 
-RELEASE_MODULES := $(RELEASE_MODULES) $(addprefix $(BUILD_DIR)/,${SCRIPTS_MODULES})
-DEBUG_MODULES := $(DEBUG_MODULES) $(addprefix $(BUILD_DIR)/debug/,${SCRIPTS_MODULES})
+RELEASE_MODULES := $(RELEASE_MODULES) $(addprefix $(OBJ_DIR)/$(RELEASE_DIR)/,${SCRIPTS_MODULES})
+DEBUG_MODULES := $(DEBUG_MODULES) $(addprefix $(OBJ_DIR)/$(DEBUG_DIR)/,${SCRIPTS_MODULES})
 
 ifeq ($(OS),Windows_NT) 
 CLASS_TOOLS := $(shell tools/class_tools.exe)
@@ -166,8 +173,8 @@ endif
 CLASSES_MODULES := $(wildcard $(PROCESSED_CLASS_DIR)/*.class.c)
 CLASSES_MODULES := $(patsubst %.class.c, %.class.o, $(CLASSES_MODULES))
 
-RELEASE_MODULES := $(RELEASE_MODULES) $(addprefix $(BUILD_DIR)/,${CLASSES_MODULES})
-DEBUG_MODULES := $(DEBUG_MODULES) $(addprefix $(BUILD_DIR)/debug/,${CLASSES_MODULES})
+RELEASE_MODULES := $(RELEASE_MODULES) $(addprefix $(OBJ_DIR)/$(RELEASE_DIR)/,${CLASSES_MODULES})
+DEBUG_MODULES := $(DEBUG_MODULES) $(addprefix $(OBJ_DIR)/$(DEBUG_DIR)/,${CLASSES_MODULES})
 
 GCC = gcc
 
@@ -175,136 +182,98 @@ GCC = gcc
 
 # Targets
 
-all:release launch
-
-init_build:
+define init_build
 	@printf "${STEP_COL}===================== Begin build. ====================${NC}\n"
+endef
 
-launch:
-	@printf "${STEP_COL}=================== Launch the app... =================${NC}\n"
-	@${BUILD_DIR}/release/app
+define launch
+	@printf "${STEP_COL}=================== Launch ${1}... =================${NC}\n"
+	@${1}
+endef
+
+define build_executable
+	@mkdir -p ${1}
+	@printf "${ACT_COL}Linking ${FILE_COL}\"${APP_NAME}\"${NC}...\n"
+	@${GCC} -o ${1}/${APP_NAME} $^ ${LFLAGS} ${WFLAGS} ${2}
+
+	@if [ ${3} = "copy_assets" ]; then \
+		printf "${ACT_COL}Copying assets...${NC}\n"; \
+		rsync -rupE assets ${1}/; \
+		printf "${SUCCESS_COL}Assets copied!${NC}\n"; \
+		printf "${ACT_COL}Copying shaders...${NC}\n"; \
+		rsync -rupE shaders ${1}/; \
+		printf "${SUCCESS_COL}Shaders copied!${NC}\n"; \
+	fi
+
+	@printf "${STEP_COL}============= ${SUCCESS_COL}Build successful!${NC}${STEP_COL} =============${NC}\n"
+endef
+
+# Function to handle common preprocessing and compilation
+define build_object
+	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC} => ${FILE_COL}\"${dir $<}~${notdir $<}\"${NC}...\n"
+	@$(PYTHON) ./tools/preprocessor_pipeline.py $< ${dir $<}
+
+	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
+	@mkdir -p ${OBJ_DIR}/${1}/${dir $*}
+	@${GCC} -x c -c ${PROCESSED_CLASS_DIR}/$< -o ${OBJ_DIR}/${1}/$*.o -I$(dir $*) ${DFLAGS} ${CFLAGS} ${LFLAGS} ${WFLAGS} ${2}
+	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${OBJ_DIR}/${1}/$*.o${NC}\n"
+
+	@if [ KEEP_TEMP_FILES = 0 ]; then \
+		rm -rf ${dir $<}~${notdir $<}; \
+	fi
+endef
+
+all:release
+
+release: ${RELEASE_MODULES} $(OBJ_DIR)/$(RELEASE_DIR)/${MAIN} ${LIBS}
+	$(call init_build)
+	$(call build_executable, ${BUILD_DIR}/$(RELEASE_DIR), ,copy_assets)
+	$(call launch, ${BUILD_DIR}/$(RELEASE_DIR)/$(APP_NAME))
+
+debug: ${DEBUG_MODULES} $(OBJ_DIR)/$(DEBUG_DIR)/${MAIN} ${LIBS}
+	$(call init_build)
+	$(call build_executable, ${BUILD_DIR}/$(DEBUG_DIR), -g -O0,copy_assets)
+
+${TEST_DIR}/%: ${TEST_DIR}/%.o ${DEBUG_MODULES} ${LIBS}
+	$(call build_object, ${OBJ_DIR}/$(TEST_DIR), , )
 
 
-release: init_build ${RELEASE_MODULES} $(BUILD_DIR)/${MAIN} ${LIBS} ${SCRIPTS_PATHS}
-	@printf "${STEP_COL}===================== Begin linking. ====================${NC}\n"
-	@printf "${ACT_COL}Linking app...${NC}\n"
-	@mkdir -p ${BUILD_DIR}/release
-	@${GCC} -o ${BUILD_DIR}/release/app ${SCRIPTS_COUNT} ${RELEASE_MODULES} $(BUILD_DIR)/${MAIN} ${LIBS} ${LFLAGS} ${WFLAGS}
+# === Objects constructors ===
 
-	@printf "${ACT_COL}Copying assets...${NC}\n"
-	@rsync -rupE assets ${BUILD_DIR}/release/
-	@printf "${SUCCESS_COL}Assets copied!${NC}\n"
-	@printf "${ACT_COL}Copying shaders...${NC}\n"
-	@rsync -rupE shaders ${BUILD_DIR}/release/
-	@printf "${SUCCESS_COL}Shaders copied!${NC}\n"
 
-	@printf "${STEP_COL}============= ${SUCCESS_COL}Successfully build the app!${NC}${STEP_COL} =============${NC}\n"
+%.o: %.c
+	$(call build_executable,,, )
 
-debug: init_build ${DEBUG_MODULES} $(BUILD_DIR)/debug/${MAIN} ${LIBS} ${SCRIPTS_PATHS}
-	@printf "${STEP_COL}===================== Begin debug linking. ====================${NC}\n"
-	@printf "${ACT_COL}Linking debug app...${NC}\n"
-	@mkdir -p ${BUILD_DIR}/debug
-	@${GCC} -o ${BUILD_DIR}/debug/app -g -O0 ${SCRIPTS_COUNT} ${DEBUG_MODULES} $(BUILD_DIR)/debug/${MAIN} ${LIBS} ${LFLAGS} ${WFLAGS}
+${OBJ_DIR}/${TEST_DIR}/%.o: %.c
+	$(call build_executable, $(TEST_DIR), -g -O0, )
 
-	@printf "${ACT_COL}Copying assets...${NC}\n"
-	@rsync -rupE assets ${BUILD_DIR}/debug/
-	@printf "${SUCCESS_COL}Assets copied!${NC}\n"
-	@printf "${ACT_COL}Copying shaders...${NC}\n"
-	@rsync -rupE shaders ${BUILD_DIR}/debug/
-	@printf "${SUCCESS_COL}Shaders copied!${NC}\n"
+# Release objects constructor for .c files
+${OBJ_DIR}/$(RELEASE_DIR)/%.o: %.c
+	$(call build_object,$(RELEASE_DIR), )
 
-	@printf "${STEP_COL}============= ${SUCCESS_COL}Successfully build the debug app!${NC}${STEP_COL} =============${NC}\n"
+# Debug objects constructor for .c files
+${OBJ_DIR}/$(DEBUG_DIR)/%.o: %.c
+	$(call build_object,$(DEBUG_DIR), -g -DDEBUG)
+
+# Release objects constructor for .cscript files
+${OBJ_DIR}/$(RELEASE_DIR)/%.o: %.cscript
+	$(call build_object,$(RELEASE_DIR), )
+
+# Debug objects constructor for .cscript files
+${OBJ_DIR}/$(DEBUG_DIR)/%.o: %.cscript
+	$(call build_object,$(DEBUG_DIR), -g -DDEBUG)
 
 tools:
 	@printf "${STEP_COL}===================== Begin build tools. ====================\n"
 	@printf "${ACT_COL}Build tools...${NC}\n"
 	@${GCC} -o tools/class_tools tools/class_tools.c ${DFLAGS} ${WFLAGS} -Wno-format
-	@printf "${STEP_COL}============= ${NC}${SUCCESS_COL}Successfully build the tools!${NC}${STEP_COL} =============${NC}\n"
-
-
-${TEST_DIR}/%: ${TEST_DIR}/%.o ${DEBUG_MODULES} ${LIBS}
-	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
-	@${GCC} -g -O0 -o $@ $^ ${DFLAGS} ${LFLAGS} ${WFLAGS}
-	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}$@${NC}\n"
-
-${TEST_DIR}/%.o: ${TEST_DIR}/%.c
-	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
-	@${GCC} -g -O0 -c $< -o $@ ${DFLAGS} ${CFLAGS} ${LFLAGS} ${WFLAGS}
-	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}$@${NC}\n"
-
-
-%.o: %.c
-	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
-	@${GCC} -c $< -o $@ ${DFLAGS} ${CFLAGS} ${LFLAGS} ${WFLAGS}
-	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}$@${NC}\n"
-
-
-# Ensure that header files are ignored to prevent errors
-%.h:
-	@printf "${ACT_COL}Ignoring $@${NC}\n"
-
-# Release objects constructor
-${BUILD_DIR}/%.o: %.c
-	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}...\n"
-	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
-	@$(PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
-
-	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
-	@mkdir -p ${BUILD_DIR}/${dir $*}
-	@${GCC} -c ${PROCESSED_CLASS_DIR}/$< -o ${BUILD_DIR}/$*.o -I$(dir $*) ${DFLAGS} ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
-	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/$*.o${NC}\n"
-
-# Debug objects constructor
-${BUILD_DIR}/debug/%.o: %.c
-	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}...\n"
-	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
-	@$(PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
-
-	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
-	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
-	@${GCC} -c ${PROCESSED_CLASS_DIR}/$< -g -o ${BUILD_DIR}/debug/$*.o -I$(dir $*) -DDEBUG ${DFLAGS} ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
-	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}\n"
-
-
-
-
-
-
-# Release objects constructor
-${BUILD_DIR}/%.o: %.cscript
-	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}...\n"
-	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
-	@$(PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
-
-	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
-	@mkdir -p ${BUILD_DIR}/${dir $*}
-	@${GCC} -x c -c ${PROCESSED_CLASS_DIR}/$< -o ${BUILD_DIR}/$*.o -I$(dir $*) ${DFLAGS} ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
-	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/$*.o${NC}\n"
-
-# Debug objects constructor
-${BUILD_DIR}/debug/%.o: %.cscript
-	@printf "${ACT_COL}Preprocessing ${FILE_COL}\"$<\"${NC}...\n"
-	@mkdir -p ${PROCESSED_CLASS_DIR}/${dir $<}
-	@$(PYTHON) ./tools/preprocessor_pipeline.py $< ${PROCESSED_CLASS_DIR}/${dir $<}
-
-	@printf "${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...\n"
-	@mkdir -p ${BUILD_DIR}/debug/${dir $*}
-	@${GCC} -x c -c ${PROCESSED_CLASS_DIR}/$< -g -o ${BUILD_DIR}/debug/$*.o -I$(dir $*) -DDEBUG ${DFLAGS} ${CFLAGS} ${SCRIPTS_COUNT} ${LFLAGS} ${WFLAGS}
-	@printf "${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${BUILD_DIR}/debug/$*.o${NC}\n"
-
-# @$(PYTHON) ./tools/preprocessor_pipeline.py $$file/${dir $<}
-generate_header:
-	@printf "Generate loading scripts header...\n"
-	@echo "// Auto-generated scripts loading header file" > $(LOADING_SCRIPT_HEADER)
-	@for file in $(SCRIPTS_PATHS); do \
-		$(PYTHON) ./tools/preprocessor_pipeline.py $$file ${PROCESSED_CLASS_DIR}/$$(dirname $$file); \
-		echo "#include \"../__processed__/$$file\"" >> $(LOADING_SCRIPT_HEADER); \
-	done
+	@printf "${STEP_COL}============= ${SUCCESS_COL}Successfully build the tools!${STEP_COL} =============${NC}\n"
 
 clean:
 	@printf "${ACT_COL}Clear the build...${NC}\n"
 	@rm -rf ${PROCESSED_CLASS_DIR}
 	@rm -rf ${BUILD_DIR}
+	@rm -rf ${OBJ_DIR}
 	@printf "${SUCCESS_COL}Successfully clear the build!${NC}\n"
 
 
@@ -332,7 +301,13 @@ docs:
 
 
 
-.PHONY: all build debug tools generate_header install clean docs
+# Ensure that header files are ignored to prevent errors
+%.h:
+	@printf "${ACT_COL}Ignoring $@${NC}\n"
+
+
+
+.PHONY: all build debug tools install clean docs
 -include $(BUILD_DIR)/$(MAIN:.o=.d)
 -include $(BUILD_DIR)/debug/$(MAIN:.o=.d)
 -include $(RELEASE_MODULES:.o=.d)
