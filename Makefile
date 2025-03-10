@@ -3,7 +3,15 @@
 # ===============================================================
 
 all:install tools release
+
+# Configs
+
+include mk/dirs.mk
+
+# Build
+
 include mk/build.mk
+include mk/tools.mk
 
 # ===============================================================
 
@@ -13,8 +21,8 @@ include mk/utils.mk
 include mk/enhanced_term.mk
 include mk/python.mk
 include mk/config.mk
-include mk/dirs.mk
 include mk/docs.mk
+include mk/clean.mk
 
 # ===============================================================
 
@@ -30,7 +38,6 @@ include mk/modules.mk
 include mk/libs.mk
 include mk/scripts.mk
 include mk/classes.mk
-include mk/tools.mk
 
 $(call register_modules, ${MODULES})
 $(call register_modules, ${SCRIPTS_MODULES})
@@ -52,7 +59,7 @@ release: prebuild ${RELEASE_MODULES} ${LIBS}
 debug: prebuild ${DEBUG_MODULES} ${LIBS}
 	$(call build_executable, ${BUILD_DIR}/$(DEBUG_DIR), -g -DDEBUG -O0,copy_assets)
 
-${TEST_DIR}/%: ${TEST_DIR}/%.o ${DEBUG_MODULES} ${LIBS}
+${TEST_DIR}/%: prebuild ${TEST_DIR}/%.o ${DEBUG_MODULES} ${LIBS}
 	$(call build_executable, ${OBJ_DIR}/$(TEST_DIR), , )
 
 # === Objects ===
@@ -82,10 +89,10 @@ ${OBJ_DIR}/$(DEBUG_DIR)/%.o: %.cscript
 tools: prebuildtools ${TOOLS}
 	$(call end_build_tools)
 
-clear:
+clear: prebuild
 	$(call clean)
 
-clean:
+clean: prebuild
 	$(call clean)
 
 # Default target to install libraries

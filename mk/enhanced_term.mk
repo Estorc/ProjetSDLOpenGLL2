@@ -32,7 +32,30 @@ ACT_COL=\033[0;${FG_BLUE};${BG_DEFAULT}m
 STEP_COL=\033[0;${FG_DEFAULT};${BG_DEFAULT};${BOLD}m
 FILE_COL=\033[0;${FG_ORANGE};${BG_DEFAULT};${ITALIC}m
 SUCCESS_COL=\033[0;${FG_GREEN};${BG_DEFAULT};${BOLD}m
+ERROR_COL=\033[0;${FG_RED};${BG_DEFAULT};${BOLD}m
 
 PRINT=@printf
 
 NEWLINE := $(shell printf "\n")
+
+
+define PRINT_SEPARATOR
+	WIDTH=$$(tput cols); \
+	MESSAGE="$(1)"; \
+	PLAIN_MSG=$$(echo "$$MESSAGE" | sed 's/\\033\[[0-9;]*m//g'); \
+	MSG_LEN=$$(echo "$$PLAIN_MSG" | wc -c); \
+	PAD=$$(( (WIDTH - MSG_LEN - 1) / 2 )); \
+	PADDING=$$(printf '=%.0s' $$(seq 1 $$PAD)); \
+	printf "${STEP_COL}%s $$MESSAGE ${STEP_COL}%s${NC}\n" "$$PADDING" "$$PADDING";
+endef
+
+
+define PRINT_CENTERED
+	WIDTH=$$(tput cols); \
+	MESSAGE="$(1)"; \
+	PLAIN_MSG=$$(echo "$$MESSAGE" | sed 's/\\033\[[0-9;]*m//g'); \
+	MSG_LEN=$$(echo "$$PLAIN_MSG" | wc -c); \
+	PAD=$$(( (WIDTH - MSG_LEN - 1) / 2 )); \
+	PADDING=$$(printf ' %.0s' $$(seq 1 $$PAD)); \
+	printf "%s $$MESSAGE %s${NC}\n" "$$PADDING" "$$PADDING"
+endef
