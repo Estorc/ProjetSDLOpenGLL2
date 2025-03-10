@@ -1,4 +1,4 @@
-obj/debug/src/classes/classes.o: src/__processed__/src/classes/classes.c \
+obj/debug/src/classes/classes.o: src/classes/classes.c \
  src/classes/../raptiquax.h C:/msys64/mingw64/include/GL/glew.h \
  C:/msys64/mingw64/include/inttypes.h C:/msys64/mingw64/include/crtdefs.h \
  C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \

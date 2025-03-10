@@ -1,5 +1,5 @@
 obj/debug/src/scripts/fps_chess/client.o: \
- src/__processed__/src/scripts/fps_chess/client.cscript \
+ src/scripts/fps_chess/client.cscript \
  src/scripts/fps_chess/../../../src/io/socket/socket.h \
  C:/msys64/mingw64/include/winsock2.h \
  C:/msys64/mingw64/include/_mingw_unicode.h \

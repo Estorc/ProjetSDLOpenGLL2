@@ -1,4 +1,4 @@
-obj/debug/src/io/scene_loader.o: src/__processed__/src/io/scene_loader.c \
+obj/debug/src/io/scene_loader.o: src/io/scene_loader.c \
  src/io/../raptiquax.h C:/msys64/mingw64/include/GL/glew.h \
  C:/msys64/mingw64/include/inttypes.h C:/msys64/mingw64/include/crtdefs.h \
  C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \
@@ -246,10 +246,10 @@ obj/debug/src/io/scene_loader.o: src/__processed__/src/io/scene_loader.c \
  src/io/../storage/../render/framebuffer.h src/io/../render/render.h \
  src/io/../window.h src/io/input.h src/io/../render/camera.h \
  src/io/../render/../math/math_util.h src/io/../render/../io/shader.h \
- src/io/shader.h src/io/../render/depth_map.h \
- src/io/../render/../io/model.h src/io/../render/framebuffer.h \
- src/io/node_loader.h src/io/../buffer.h src/io/../classes/classes.h \
- src/io/../classes/classes_types.h src/io/../classes/import_classes.h \
+ src/io/../render/depth_map.h src/io/../render/../io/model.h \
+ src/io/../render/framebuffer.h src/io/node_loader.h src/io/../buffer.h \
+ src/io/../classes/classes.h src/io/../classes/classes_types.h \
+ src/io/../classes/import_classes.h \
  src/io/../classes/../__processed__/classes_node.class.h \
  lib/../src/classes/classes.h lib/../src/math/math_util.h \
  lib/../src/io/model.h lib/../src/render/framebuffer.h \

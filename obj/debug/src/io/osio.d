@@ -1,5 +1,4 @@
-obj/debug/src/io/osio.o: src/__processed__/src/io/osio.c \
- C:/msys64/mingw64/include/stdio.h \
+obj/debug/src/io/osio.o: src/io/osio.c C:/msys64/mingw64/include/stdio.h \
  C:/msys64/mingw64/include/corecrt_stdio_config.h \
  C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \
  C:/msys64/mingw64/include/_mingw_mac.h \

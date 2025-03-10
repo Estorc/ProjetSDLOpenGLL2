@@ -1,4 +1,4 @@
-obj/debug/src/buffer.o: src/__processed__/src/buffer.c src/raptiquax.h \
+obj/debug/src/buffer.o: src/buffer.c src/raptiquax.h \
  C:/msys64/mingw64/include/GL/glew.h C:/msys64/mingw64/include/inttypes.h \
  C:/msys64/mingw64/include/crtdefs.h C:/msys64/mingw64/include/corecrt.h \
  C:/msys64/mingw64/include/_mingw.h \

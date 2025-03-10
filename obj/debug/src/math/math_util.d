@@ -1,4 +1,4 @@
-obj/debug/src/math/math_util.o: src/__processed__/src/math/math_util.c \
+obj/debug/src/math/math_util.o: src/math/math_util.c \
  src/math/../raptiquax.h C:/msys64/mingw64/include/GL/glew.h \
  C:/msys64/mingw64/include/inttypes.h C:/msys64/mingw64/include/crtdefs.h \
  C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \

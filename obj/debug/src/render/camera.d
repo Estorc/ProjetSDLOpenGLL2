@@ -1,4 +1,4 @@
-obj/debug/src/render/camera.o: src/__processed__/src/render/camera.c \
+obj/debug/src/render/camera.o: src/render/camera.c \
  src/render/../raptiquax.h C:/msys64/mingw64/include/GL/glew.h \
  C:/msys64/mingw64/include/inttypes.h C:/msys64/mingw64/include/crtdefs.h \
  C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \
@@ -229,14 +229,12 @@ obj/debug/src/render/camera.o: src/__processed__/src/render/camera.c \
  src/render/../term/color.h C:/msys64/mingw64/include/signal.h \
  C:/msys64/mingw64/include/pthread_signal.h src/render/camera.h \
  src/render/../math/math_util.h src/render/../io/shader.h \
- src/render/render.h src/render/../math/math_util.h \
- src/render/../io/model.h src/render/../io/shader.h \
+ src/render/render.h src/render/../io/model.h src/render/../io/shader.h \
  src/render/../io/model_loaders/model_loader.h \
  src/render/../io/model_loaders/obj_loader.h \
  src/render/../io/model_loaders/mtl_loader.h \
- src/render/../io/model_loaders/fbx_loader.h src/render/../io/shader.h \
- src/render/../memory.h src/render/../storage/node.h \
- src/render/../storage/../io/shader.h \
+ src/render/../io/model_loaders/fbx_loader.h src/render/../memory.h \
+ src/render/../storage/node.h src/render/../storage/../io/shader.h \
  src/render/../storage/../render/camera.h \
  src/render/../storage/../render/../math/math_util.h \
  src/render/../storage/../render/../io/shader.h \

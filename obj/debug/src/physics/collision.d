@@ -1,8 +1,7 @@
-obj/debug/src/physics/collision.o: \
- src/__processed__/src/physics/collision.c src/physics/../raptiquax.h \
- C:/msys64/mingw64/include/GL/glew.h C:/msys64/mingw64/include/inttypes.h \
- C:/msys64/mingw64/include/crtdefs.h C:/msys64/mingw64/include/corecrt.h \
- C:/msys64/mingw64/include/_mingw.h \
+obj/debug/src/physics/collision.o: src/physics/collision.c \
+ src/physics/../raptiquax.h C:/msys64/mingw64/include/GL/glew.h \
+ C:/msys64/mingw64/include/inttypes.h C:/msys64/mingw64/include/crtdefs.h \
+ C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \
  C:/msys64/mingw64/include/_mingw_mac.h \
  C:/msys64/mingw64/include/_mingw_secapi.h \
  C:/msys64/mingw64/include/vadefs.h \
@@ -310,5 +309,4 @@ obj/debug/src/physics/collision.o: \
  src/physics/../classes/../__processed__/classes_nodes_texture.class.h \
  src/physics/../classes/../__processed__/classes_nodes_textured_mesh.class.h \
  src/physics/../memory.h src/physics/../buffer.h src/physics/bodies.h \
- src/physics/../math/math_util.h src/physics/../io/model.h \
  src/physics/collision.h src/physics/collision_util.h

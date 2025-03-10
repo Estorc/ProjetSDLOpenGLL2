@@ -63,8 +63,6 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
 
 void draw_shadow_map(Window *window, Node *root, Camera *c, WorldShaders *shaders, DepthMap *depthMap) {
     // Draw shadow map (render scene with depth map shader)
-    static int render_cpt = 0;
-    if (render_cpt++ > 5) return;
     if (!Game.settings->cast_shadows) return;
     glCullFace(GL_FRONT);
     glViewport(0, 0, Game.settings->shadow_resolution, Game.settings->shadow_resolution);

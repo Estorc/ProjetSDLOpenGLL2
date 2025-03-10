@@ -1,7 +1,7 @@
-obj/debug/src/io/model.o: src/__processed__/src/io/model.c \
- src/io/../raptiquax.h C:/msys64/mingw64/include/GL/glew.h \
- C:/msys64/mingw64/include/inttypes.h C:/msys64/mingw64/include/crtdefs.h \
- C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \
+obj/debug/src/io/model.o: src/io/model.c src/io/../raptiquax.h \
+ C:/msys64/mingw64/include/GL/glew.h C:/msys64/mingw64/include/inttypes.h \
+ C:/msys64/mingw64/include/crtdefs.h C:/msys64/mingw64/include/corecrt.h \
+ C:/msys64/mingw64/include/_mingw.h \
  C:/msys64/mingw64/include/_mingw_mac.h \
  C:/msys64/mingw64/include/_mingw_secapi.h \
  C:/msys64/mingw64/include/vadefs.h \

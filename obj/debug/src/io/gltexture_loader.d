@@ -1,8 +1,7 @@
-obj/debug/src/io/gltexture_loader.o: \
- src/__processed__/src/io/gltexture_loader.c src/io/../raptiquax.h \
- C:/msys64/mingw64/include/GL/glew.h C:/msys64/mingw64/include/inttypes.h \
- C:/msys64/mingw64/include/crtdefs.h C:/msys64/mingw64/include/corecrt.h \
- C:/msys64/mingw64/include/_mingw.h \
+obj/debug/src/io/gltexture_loader.o: src/io/gltexture_loader.c \
+ src/io/../raptiquax.h C:/msys64/mingw64/include/GL/glew.h \
+ C:/msys64/mingw64/include/inttypes.h C:/msys64/mingw64/include/crtdefs.h \
+ C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \
  C:/msys64/mingw64/include/_mingw_mac.h \
  C:/msys64/mingw64/include/_mingw_secapi.h \
  C:/msys64/mingw64/include/vadefs.h \
@@ -232,4 +231,4 @@ obj/debug/src/io/gltexture_loader.o: \
  src/io/model.h src/io/shader.h src/io/model_loaders/model_loader.h \
  src/io/model_loaders/obj_loader.h src/io/model_loaders/mtl_loader.h \
  src/io/model_loaders/fbx_loader.h src/io/input.h \
- src/io/gltexture_loader.h src/io/shader.h src/io/../memory.h
+ src/io/gltexture_loader.h src/io/../memory.h

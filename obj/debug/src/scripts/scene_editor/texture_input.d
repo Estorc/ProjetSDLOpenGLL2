@@ -1,5 +1,5 @@
 obj/debug/src/scripts/scene_editor/texture_input.o: \
- src/__processed__/src/scripts/scene_editor/texture_input.cscript \
+ src/scripts/scene_editor/texture_input.cscript \
  src/scripts/scene_editor/../../raptiquax.h \
  C:/msys64/mingw64/include/GL/glew.h C:/msys64/mingw64/include/inttypes.h \
  C:/msys64/mingw64/include/crtdefs.h C:/msys64/mingw64/include/corecrt.h \

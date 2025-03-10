@@ -1,1 +1,1 @@
-obj/debug/src/gui/frame.o: src/__processed__/src/gui/frame.c
+obj/debug/src/gui/frame.o: src/gui/frame.c

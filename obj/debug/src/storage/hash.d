@@ -1,4 +1,4 @@
-obj/debug/src/storage/hash.o: src/__processed__/src/storage/hash.c \
+obj/debug/src/storage/hash.o: src/storage/hash.c \
  C:/msys64/mingw64/include/stdio.h \
  C:/msys64/mingw64/include/corecrt_stdio_config.h \
  C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \

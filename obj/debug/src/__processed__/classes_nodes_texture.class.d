@@ -1,5 +1,5 @@
 obj/debug/src/__processed__/classes_nodes_texture.class.o: \
- src/__processed__/src/__processed__/classes_nodes_texture.class.c \
+ src/__processed__/classes_nodes_texture.class.c \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdarg.h \
  C:/msys64/mingw64/include/stdarg.h \
  C:/msys64/mingw64/include/_mingw_stdarg.h \

@@ -1,8 +1,7 @@
-obj/debug/src/render/depth_map.o: \
- src/__processed__/src/render/depth_map.c src/render/../raptiquax.h \
- C:/msys64/mingw64/include/GL/glew.h C:/msys64/mingw64/include/inttypes.h \
- C:/msys64/mingw64/include/crtdefs.h C:/msys64/mingw64/include/corecrt.h \
- C:/msys64/mingw64/include/_mingw.h \
+obj/debug/src/render/depth_map.o: src/render/depth_map.c \
+ src/render/../raptiquax.h C:/msys64/mingw64/include/GL/glew.h \
+ C:/msys64/mingw64/include/inttypes.h C:/msys64/mingw64/include/crtdefs.h \
+ C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \
  C:/msys64/mingw64/include/_mingw_mac.h \
  C:/msys64/mingw64/include/_mingw_secapi.h \
  C:/msys64/mingw64/include/vadefs.h \

@@ -1,5 +1,5 @@
 obj/debug/src/io/model_loaders/mtl_loader.o: \
- src/__processed__/src/io/model_loaders/mtl_loader.c \
+ src/io/model_loaders/mtl_loader.c \
  src/io/model_loaders/../../raptiquax.h \
  C:/msys64/mingw64/include/GL/glew.h C:/msys64/mingw64/include/inttypes.h \
  C:/msys64/mingw64/include/crtdefs.h C:/msys64/mingw64/include/corecrt.h \

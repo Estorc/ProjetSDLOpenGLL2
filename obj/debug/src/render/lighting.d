@@ -1,4 +1,4 @@
-obj/debug/src/render/lighting.o: src/__processed__/src/render/lighting.c \
+obj/debug/src/render/lighting.o: src/render/lighting.c \
  src/render/../raptiquax.h C:/msys64/mingw64/include/GL/glew.h \
  C:/msys64/mingw64/include/inttypes.h C:/msys64/mingw64/include/crtdefs.h \
  C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \
@@ -245,11 +245,9 @@ obj/debug/src/render/lighting.o: src/__processed__/src/render/lighting.c \
  src/render/../storage/../scripts/../io/input.h \
  src/render/../storage/../scripts/signals.h \
  src/render/../storage/../render/framebuffer.h src/render/../window.h \
- src/render/camera.h src/render/../math/math_util.h \
- src/render/../io/shader.h src/render/render.h src/render/../memory.h \
- src/render/lighting.h src/render/depth_map.h src/render/../io/model.h \
- src/render/framebuffer.h src/render/../classes/classes.h \
- src/render/../classes/classes_types.h \
+ src/render/camera.h src/render/../io/shader.h src/render/render.h \
+ src/render/../memory.h src/render/lighting.h src/render/depth_map.h \
+ src/render/../classes/classes.h src/render/../classes/classes_types.h \
  src/render/../classes/import_classes.h \
  src/render/../classes/../__processed__/classes_node.class.h \
  lib/../src/classes/classes.h lib/../src/math/math_util.h \

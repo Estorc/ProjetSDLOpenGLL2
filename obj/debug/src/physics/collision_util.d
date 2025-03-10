@@ -1,5 +1,4 @@
-obj/debug/src/physics/collision_util.o: \
- src/__processed__/src/physics/collision_util.c \
+obj/debug/src/physics/collision_util.o: src/physics/collision_util.c \
  src/physics/../raptiquax.h C:/msys64/mingw64/include/GL/glew.h \
  C:/msys64/mingw64/include/inttypes.h C:/msys64/mingw64/include/crtdefs.h \
  C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \
@@ -251,6 +250,4 @@ obj/debug/src/physics/collision_util.o: \
  src/physics/../render/../io/shader.h src/physics/../render/depth_map.h \
  src/physics/../render/../io/model.h src/physics/../render/framebuffer.h \
  src/physics/../render/lighting.h src/physics/../io/gltexture_loader.h \
- src/physics/physics.h src/physics/../io/input.h \
- src/physics/../render/lighting.h src/physics/bodies.h \
- src/physics/../math/math_util.h src/physics/../io/model.h
+ src/physics/physics.h src/physics/../io/input.h src/physics/bodies.h

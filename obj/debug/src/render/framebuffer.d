@@ -1,8 +1,7 @@
-obj/debug/src/render/framebuffer.o: \
- src/__processed__/src/render/framebuffer.c src/render/../raptiquax.h \
- C:/msys64/mingw64/include/GL/glew.h C:/msys64/mingw64/include/inttypes.h \
- C:/msys64/mingw64/include/crtdefs.h C:/msys64/mingw64/include/corecrt.h \
- C:/msys64/mingw64/include/_mingw.h \
+obj/debug/src/render/framebuffer.o: src/render/framebuffer.c \
+ src/render/../raptiquax.h C:/msys64/mingw64/include/GL/glew.h \
+ C:/msys64/mingw64/include/inttypes.h C:/msys64/mingw64/include/crtdefs.h \
+ C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \
  C:/msys64/mingw64/include/_mingw_mac.h \
  C:/msys64/mingw64/include/_mingw_secapi.h \
  C:/msys64/mingw64/include/vadefs.h \

@@ -1,5 +1,5 @@
 obj/debug/src/scripts/fps_chess/camera.o: \
- src/__processed__/src/scripts/fps_chess/camera.cscript \
+ src/scripts/fps_chess/camera.cscript \
  src/scripts/fps_chess/../../raptiquax.h \
  C:/msys64/mingw64/include/GL/glew.h C:/msys64/mingw64/include/inttypes.h \
  C:/msys64/mingw64/include/crtdefs.h C:/msys64/mingw64/include/corecrt.h \

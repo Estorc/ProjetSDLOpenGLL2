@@ -1,5 +1,5 @@
-obj/debug/src/utils/time.o: src/__processed__/src/utils/time.c \
- src/utils/time.h C:/msys64/mingw64/include/SDL2/SDL.h \
+obj/debug/src/utils/time.o: src/utils/time.c src/utils/time.h \
+ C:/msys64/mingw64/include/SDL2/SDL.h \
  C:/msys64/mingw64/include/SDL2/SDL_main.h \
  C:/msys64/mingw64/include/SDL2/SDL_stdinc.h \
  C:/msys64/mingw64/include/SDL2/SDL_config.h \

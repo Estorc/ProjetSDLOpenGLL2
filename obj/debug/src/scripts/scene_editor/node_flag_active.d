@@ -1,5 +1,5 @@
 obj/debug/src/scripts/scene_editor/node_flag_active.o: \
- src/__processed__/src/scripts/scene_editor/node_flag_active.cscript \
+ src/scripts/scene_editor/node_flag_active.cscript \
  src/scripts/scene_editor/../../raptiquax.h \
  C:/msys64/mingw64/include/GL/glew.h C:/msys64/mingw64/include/inttypes.h \
  C:/msys64/mingw64/include/crtdefs.h C:/msys64/mingw64/include/corecrt.h \

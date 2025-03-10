@@ -1,7 +1,7 @@
-obj/debug/src/io/shader.o: src/__processed__/src/io/shader.c \
- src/io/../raptiquax.h C:/msys64/mingw64/include/GL/glew.h \
- C:/msys64/mingw64/include/inttypes.h C:/msys64/mingw64/include/crtdefs.h \
- C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \
+obj/debug/src/io/shader.o: src/io/shader.c src/io/../raptiquax.h \
+ C:/msys64/mingw64/include/GL/glew.h C:/msys64/mingw64/include/inttypes.h \
+ C:/msys64/mingw64/include/crtdefs.h C:/msys64/mingw64/include/corecrt.h \
+ C:/msys64/mingw64/include/_mingw.h \
  C:/msys64/mingw64/include/_mingw_mac.h \
  C:/msys64/mingw64/include/_mingw_secapi.h \
  C:/msys64/mingw64/include/vadefs.h \
@@ -228,7 +228,6 @@ obj/debug/src/io/shader.o: src/__processed__/src/io/shader.c \
  src/io/../term/enhanced_print.h src/io/../term/color.h \
  C:/msys64/mingw64/include/signal.h \
  C:/msys64/mingw64/include/pthread_signal.h src/io/../math/math_util.h \
- src/io/shader.h src/io/model.h src/io/shader.h \
- src/io/model_loaders/model_loader.h src/io/model_loaders/obj_loader.h \
- src/io/model_loaders/mtl_loader.h src/io/model_loaders/fbx_loader.h \
- src/io/../memory.h
+ src/io/shader.h src/io/model.h src/io/model_loaders/model_loader.h \
+ src/io/model_loaders/obj_loader.h src/io/model_loaders/mtl_loader.h \
+ src/io/model_loaders/fbx_loader.h src/io/../memory.h

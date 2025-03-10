@@ -1,4 +1,4 @@
-obj/debug/src/scripts/menu.o: src/__processed__/src/scripts/menu.cscript \
+obj/debug/src/scripts/menu.o: src/scripts/menu.cscript \
  src/scripts/../raptiquax.h C:/msys64/mingw64/include/GL/glew.h \
  C:/msys64/mingw64/include/inttypes.h C:/msys64/mingw64/include/crtdefs.h \
  C:/msys64/mingw64/include/corecrt.h C:/msys64/mingw64/include/_mingw.h \

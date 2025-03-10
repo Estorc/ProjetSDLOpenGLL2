@@ -1,5 +1,5 @@
 obj/debug/src/scripts/claude_chappe/level.o: \
- src/__processed__/src/scripts/claude_chappe/level.cscript \
+ src/scripts/claude_chappe/level.cscript \
  src/scripts/claude_chappe/../../raptiquax.h \
  C:/msys64/mingw64/include/GL/glew.h C:/msys64/mingw64/include/inttypes.h \
  C:/msys64/mingw64/include/crtdefs.h C:/msys64/mingw64/include/corecrt.h \
