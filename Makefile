@@ -50,7 +50,7 @@ release: prebuild ${RELEASE_MODULES} ${LIBS}
 	$(call launch,${BUILD_DIR}/$(RELEASE_DIR)/$(APP_NAME))
 
 debug: prebuild ${DEBUG_MODULES} ${LIBS}
-	$(call build_executable, ${BUILD_DIR}/$(DEBUG_DIR), -g -O0,copy_assets)
+	$(call build_executable, ${BUILD_DIR}/$(DEBUG_DIR), -g -DDEBUG -O0,copy_assets)
 
 ${TEST_DIR}/%: ${TEST_DIR}/%.o ${DEBUG_MODULES} ${LIBS}
 	$(call build_executable, ${OBJ_DIR}/$(TEST_DIR), , )
@@ -61,7 +61,7 @@ ${TEST_DIR}/%: ${TEST_DIR}/%.o ${DEBUG_MODULES} ${LIBS}
 	$(call build_executable,,, )
 
 ${OBJ_DIR}/${TEST_DIR}/%.o: %.c
-	$(call build_object, $(TEST_DIR), -g -O0, )
+	$(call build_object,$(TEST_DIR), -g -DDEBUG)
 
 # Release objects constructor for .c files
 ${OBJ_DIR}/$(RELEASE_DIR)/%.o: %.c

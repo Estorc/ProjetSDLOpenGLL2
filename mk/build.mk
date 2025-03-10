@@ -5,7 +5,7 @@ prebuild:
 
 define register_modules
 	$(eval RELEASE_MODULES := $(RELEASE_MODULES) $(addprefix $(OBJ_DIR)/$(RELEASE_DIR)/,${1}))
-	$(eval DEBUG_MODULES := $(DEBUG_MODULES) $(addprefix $(OBJ_DIR)/$(RELEASE_DIR)/,${1}))
+	$(eval DEBUG_MODULES := $(DEBUG_MODULES) $(addprefix $(OBJ_DIR)/$(DEBUG_DIR)/,${1}))
 endef
 
 define launch
