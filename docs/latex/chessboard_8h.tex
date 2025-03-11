@@ -1,0 +1,171 @@
+\doxysection{src/scripts/fps\+\_\+chess/chessboard.h File Reference}
+\hypertarget{chessboard_8h}{}\label{chessboard_8h}\index{src/scripts/fps\_chess/chessboard.h@{src/scripts/fps\_chess/chessboard.h}}
+{\ttfamily \#include "{}../../raptiquax.\+h"{}}\newline
+{\ttfamily \#include "{}../../math/math\+\_\+util.\+h"{}}\newline
+{\ttfamily \#include "{}../../storage/node.\+h"{}}\newline
+{\ttfamily \#include "{}../../scripts/scripts.\+h"{}}\newline
+{\ttfamily \#include "{}../../io/socket/socket.\+h"{}}\newline
+{\ttfamily \#include "{}../../classes/classes.\+h"{}}\newline
+{\ttfamily \#include "{}../../storage/hash.\+h"{}}\newline
+{\ttfamily \#include "{}../../storage/raw.\+h"{}}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include "{}client.\+h"{}}\newline
+Include dependency graph for chessboard.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{chessboard_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36c}{Chess\+Piece}} \{ \newline
+\mbox{\hyperlink{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36ca23345a51cd5da77f71f9d5ec3247d26d}{FC\+\_\+\+EMPTY}}
+, \mbox{\hyperlink{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36ca2592c2dc1801956bd69d5e4cbef83a66}{FC\+\_\+\+PAWN}}
+, \mbox{\hyperlink{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36ca1b50a08e95ebd1928fd762eefc2e7dfc}{FC\+\_\+\+ROOK}}
+, \mbox{\hyperlink{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36cada841b791cc5d4f2aac87dc8e524aeae}{FC\+\_\+\+KNIGHT}}
+, \newline
+\mbox{\hyperlink{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36cab37fd2d2814f4b09195657f61e032680}{FC\+\_\+\+BISHOP}}
+, \mbox{\hyperlink{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36cac0ab7680dc96e0195abd113eaaa77204}{FC\+\_\+\+QUEEN}}
+, \mbox{\hyperlink{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36cafd18334d0f30a680695ad6ffa982fd7f}{FC\+\_\+\+KING}}
+ \}
+\item 
+enum \mbox{\hyperlink{chessboard_8h_a5c09a8a4be12f4579faf78e90cc97576}{Chess\+Piece\+Color}} \{ \mbox{\hyperlink{chessboard_8h_a5c09a8a4be12f4579faf78e90cc97576a997ce7a9f2783fa63a80b923301ddbf6}{FC\+\_\+\+UNKNOWN}} = 0
+, \mbox{\hyperlink{chessboard_8h_a5c09a8a4be12f4579faf78e90cc97576abd1e6de09a6e918f2a9dd1bf2c8425df}{FC\+\_\+\+WHITE}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4
+, \mbox{\hyperlink{chessboard_8h_a5c09a8a4be12f4579faf78e90cc97576abddd535d5b96ddf4bf7c44d7a45c1a3d}{FC\+\_\+\+BLACK}} = 2 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4
+ \}
+\item 
+enum \mbox{\hyperlink{chessboard_8h_a0060253a25959527ebc719a2bc931ee2}{Chess\+Piece\+Flags}} \{ \mbox{\hyperlink{chessboard_8h_a0060253a25959527ebc719a2bc931ee2af2a1213df3a31c53afa7c0d9d905d191}{FC\+\_\+\+HOVERED}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 6
+, \mbox{\hyperlink{chessboard_8h_a0060253a25959527ebc719a2bc931ee2af2463c40dee920a70c4d9d80cc663677}{FC\+\_\+\+SELECTED}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 7
+, \mbox{\hyperlink{chessboard_8h_a0060253a25959527ebc719a2bc931ee2a18bec648a8173f0852cfb20892984317}{FC\+\_\+\+ATTACKED}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 8
+, \mbox{\hyperlink{chessboard_8h_a0060253a25959527ebc719a2bc931ee2a86fa83ebc48c112bd46beed610a8c2c6}{FC\+\_\+\+MOVED}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 9
+ \}
+\item 
+enum \mbox{\hyperlink{chessboard_8h_ab5e9a2252870710908096f54ecb89c4a}{Movement\+State}} \{ \mbox{\hyperlink{chessboard_8h_ab5e9a2252870710908096f54ecb89c4aaeaced460bdf5f681d398cd299e292aa3}{FC\+\_\+\+FORBIDDEN}}
+, \mbox{\hyperlink{chessboard_8h_ab5e9a2252870710908096f54ecb89c4aa021e35c690ea1bc6e713aca180253bd6}{FC\+\_\+\+VALID\+\_\+\+MOVE}}
+, \mbox{\hyperlink{chessboard_8h_ab5e9a2252870710908096f54ecb89c4aa9c59ebf17ce2412ce868a7287c97b2f3}{FC\+\_\+\+ATTACKING}}
+, \mbox{\hyperlink{chessboard_8h_ab5e9a2252870710908096f54ecb89c4aaa1ef4d34b5f42226b6465eb1891a0865}{FC\+\_\+\+CASTLING}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{chessboard_8h_ae9a9460ceb6150588419fad2669b298c}{set\+\_\+piece\+\_\+skin}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}piece, int flags)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36c}\label{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36c} 
+\index{chessboard.h@{chessboard.h}!ChessPiece@{ChessPiece}}
+\index{ChessPiece@{ChessPiece}!chessboard.h@{chessboard.h}}
+\doxysubsubsection{\texorpdfstring{ChessPiece}{ChessPiece}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36c}{Chess\+Piece}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_EMPTY@{FC\_EMPTY}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_EMPTY@{FC\_EMPTY}}}\Hypertarget{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36ca23345a51cd5da77f71f9d5ec3247d26d}\label{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36ca23345a51cd5da77f71f9d5ec3247d26d} 
+FC\+\_\+\+EMPTY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_PAWN@{FC\_PAWN}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_PAWN@{FC\_PAWN}}}\Hypertarget{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36ca2592c2dc1801956bd69d5e4cbef83a66}\label{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36ca2592c2dc1801956bd69d5e4cbef83a66} 
+FC\+\_\+\+PAWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_ROOK@{FC\_ROOK}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_ROOK@{FC\_ROOK}}}\Hypertarget{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36ca1b50a08e95ebd1928fd762eefc2e7dfc}\label{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36ca1b50a08e95ebd1928fd762eefc2e7dfc} 
+FC\+\_\+\+ROOK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_KNIGHT@{FC\_KNIGHT}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_KNIGHT@{FC\_KNIGHT}}}\Hypertarget{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36cada841b791cc5d4f2aac87dc8e524aeae}\label{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36cada841b791cc5d4f2aac87dc8e524aeae} 
+FC\+\_\+\+KNIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_BISHOP@{FC\_BISHOP}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_BISHOP@{FC\_BISHOP}}}\Hypertarget{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36cab37fd2d2814f4b09195657f61e032680}\label{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36cab37fd2d2814f4b09195657f61e032680} 
+FC\+\_\+\+BISHOP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_QUEEN@{FC\_QUEEN}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_QUEEN@{FC\_QUEEN}}}\Hypertarget{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36cac0ab7680dc96e0195abd113eaaa77204}\label{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36cac0ab7680dc96e0195abd113eaaa77204} 
+FC\+\_\+\+QUEEN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_KING@{FC\_KING}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_KING@{FC\_KING}}}\Hypertarget{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36cafd18334d0f30a680695ad6ffa982fd7f}\label{chessboard_8h_a816c3b98024f7f1c4f47c78e1b84e36cafd18334d0f30a680695ad6ffa982fd7f} 
+FC\+\_\+\+KING&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{chessboard_8h_a5c09a8a4be12f4579faf78e90cc97576}\label{chessboard_8h_a5c09a8a4be12f4579faf78e90cc97576} 
+\index{chessboard.h@{chessboard.h}!ChessPieceColor@{ChessPieceColor}}
+\index{ChessPieceColor@{ChessPieceColor}!chessboard.h@{chessboard.h}}
+\doxysubsubsection{\texorpdfstring{ChessPieceColor}{ChessPieceColor}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{chessboard_8h_a5c09a8a4be12f4579faf78e90cc97576}{Chess\+Piece\+Color}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_UNKNOWN@{FC\_UNKNOWN}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_UNKNOWN@{FC\_UNKNOWN}}}\Hypertarget{chessboard_8h_a5c09a8a4be12f4579faf78e90cc97576a997ce7a9f2783fa63a80b923301ddbf6}\label{chessboard_8h_a5c09a8a4be12f4579faf78e90cc97576a997ce7a9f2783fa63a80b923301ddbf6} 
+FC\+\_\+\+UNKNOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_WHITE@{FC\_WHITE}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_WHITE@{FC\_WHITE}}}\Hypertarget{chessboard_8h_a5c09a8a4be12f4579faf78e90cc97576abd1e6de09a6e918f2a9dd1bf2c8425df}\label{chessboard_8h_a5c09a8a4be12f4579faf78e90cc97576abd1e6de09a6e918f2a9dd1bf2c8425df} 
+FC\+\_\+\+WHITE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_BLACK@{FC\_BLACK}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_BLACK@{FC\_BLACK}}}\Hypertarget{chessboard_8h_a5c09a8a4be12f4579faf78e90cc97576abddd535d5b96ddf4bf7c44d7a45c1a3d}\label{chessboard_8h_a5c09a8a4be12f4579faf78e90cc97576abddd535d5b96ddf4bf7c44d7a45c1a3d} 
+FC\+\_\+\+BLACK&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{chessboard_8h_a0060253a25959527ebc719a2bc931ee2}\label{chessboard_8h_a0060253a25959527ebc719a2bc931ee2} 
+\index{chessboard.h@{chessboard.h}!ChessPieceFlags@{ChessPieceFlags}}
+\index{ChessPieceFlags@{ChessPieceFlags}!chessboard.h@{chessboard.h}}
+\doxysubsubsection{\texorpdfstring{ChessPieceFlags}{ChessPieceFlags}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{chessboard_8h_a0060253a25959527ebc719a2bc931ee2}{Chess\+Piece\+Flags}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_HOVERED@{FC\_HOVERED}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_HOVERED@{FC\_HOVERED}}}\Hypertarget{chessboard_8h_a0060253a25959527ebc719a2bc931ee2af2a1213df3a31c53afa7c0d9d905d191}\label{chessboard_8h_a0060253a25959527ebc719a2bc931ee2af2a1213df3a31c53afa7c0d9d905d191} 
+FC\+\_\+\+HOVERED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_SELECTED@{FC\_SELECTED}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_SELECTED@{FC\_SELECTED}}}\Hypertarget{chessboard_8h_a0060253a25959527ebc719a2bc931ee2af2463c40dee920a70c4d9d80cc663677}\label{chessboard_8h_a0060253a25959527ebc719a2bc931ee2af2463c40dee920a70c4d9d80cc663677} 
+FC\+\_\+\+SELECTED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_ATTACKED@{FC\_ATTACKED}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_ATTACKED@{FC\_ATTACKED}}}\Hypertarget{chessboard_8h_a0060253a25959527ebc719a2bc931ee2a18bec648a8173f0852cfb20892984317}\label{chessboard_8h_a0060253a25959527ebc719a2bc931ee2a18bec648a8173f0852cfb20892984317} 
+FC\+\_\+\+ATTACKED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_MOVED@{FC\_MOVED}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_MOVED@{FC\_MOVED}}}\Hypertarget{chessboard_8h_a0060253a25959527ebc719a2bc931ee2a86fa83ebc48c112bd46beed610a8c2c6}\label{chessboard_8h_a0060253a25959527ebc719a2bc931ee2a86fa83ebc48c112bd46beed610a8c2c6} 
+FC\+\_\+\+MOVED&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{chessboard_8h_ab5e9a2252870710908096f54ecb89c4a}\label{chessboard_8h_ab5e9a2252870710908096f54ecb89c4a} 
+\index{chessboard.h@{chessboard.h}!MovementState@{MovementState}}
+\index{MovementState@{MovementState}!chessboard.h@{chessboard.h}}
+\doxysubsubsection{\texorpdfstring{MovementState}{MovementState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{chessboard_8h_ab5e9a2252870710908096f54ecb89c4a}{Movement\+State}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_FORBIDDEN@{FC\_FORBIDDEN}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_FORBIDDEN@{FC\_FORBIDDEN}}}\Hypertarget{chessboard_8h_ab5e9a2252870710908096f54ecb89c4aaeaced460bdf5f681d398cd299e292aa3}\label{chessboard_8h_ab5e9a2252870710908096f54ecb89c4aaeaced460bdf5f681d398cd299e292aa3} 
+FC\+\_\+\+FORBIDDEN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_VALID\_MOVE@{FC\_VALID\_MOVE}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_VALID\_MOVE@{FC\_VALID\_MOVE}}}\Hypertarget{chessboard_8h_ab5e9a2252870710908096f54ecb89c4aa021e35c690ea1bc6e713aca180253bd6}\label{chessboard_8h_ab5e9a2252870710908096f54ecb89c4aa021e35c690ea1bc6e713aca180253bd6} 
+FC\+\_\+\+VALID\+\_\+\+MOVE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_ATTACKING@{FC\_ATTACKING}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_ATTACKING@{FC\_ATTACKING}}}\Hypertarget{chessboard_8h_ab5e9a2252870710908096f54ecb89c4aa9c59ebf17ce2412ce868a7287c97b2f3}\label{chessboard_8h_ab5e9a2252870710908096f54ecb89c4aa9c59ebf17ce2412ce868a7287c97b2f3} 
+FC\+\_\+\+ATTACKING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FC\_CASTLING@{FC\_CASTLING}!chessboard.h@{chessboard.h}}\index{chessboard.h@{chessboard.h}!FC\_CASTLING@{FC\_CASTLING}}}\Hypertarget{chessboard_8h_ab5e9a2252870710908096f54ecb89c4aaa1ef4d34b5f42226b6465eb1891a0865}\label{chessboard_8h_ab5e9a2252870710908096f54ecb89c4aaa1ef4d34b5f42226b6465eb1891a0865} 
+FC\+\_\+\+CASTLING&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{chessboard_8h_ae9a9460ceb6150588419fad2669b298c}\label{chessboard_8h_ae9a9460ceb6150588419fad2669b298c} 
+\index{chessboard.h@{chessboard.h}!set\_piece\_skin@{set\_piece\_skin}}
+\index{set\_piece\_skin@{set\_piece\_skin}!chessboard.h@{chessboard.h}}
+\doxysubsubsection{\texorpdfstring{set\_piece\_skin()}{set\_piece\_skin()}}
+{\footnotesize\ttfamily void set\+\_\+piece\+\_\+skin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{piece,  }\item[{int}]{flags }\end{DoxyParamCaption})}
+

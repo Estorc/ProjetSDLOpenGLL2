@@ -1,0 +1,46 @@
+\doxysection{socket.\+h}
+\hypertarget{socket_8h_source}{}\label{socket_8h_source}\index{src/io/socket/socket.h@{src/io/socket/socket.h}}
+\mbox{\hyperlink{socket_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <winsock2.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <ws2tcpip.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ comment(lib,\ "{}ws2\_32.lib"{})\ \ }\textcolor{comment}{//\ Link\ with\ Winsock\ library}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ CLOSESOCKET\ closesocket\ \ }\textcolor{comment}{//\ Windows\ uses\ closesocket()\ instead\ of\ close()}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <sys/select.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <sys/socket.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <netinet/in.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <arpa/inet.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <netdb.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ CLOSESOCKET\ close}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsocket__request__listener}{socket\_request\_listener}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ fd\_set\ \mbox{\hyperlink{structsocket__request__listener_ac2c6f7a039f5d52bdb121da49e38534f}{readfds}};}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{struct\ }timeval\ \mbox{\hyperlink{structsocket__request__listener_af4e6820fa5ad4dbe471808b47d43ec05}{timeout}};}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structpeer}{peer}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structpeer_aabb18ce7dc7a63a95f4c09998d985f19}{socket}};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsocket__request__listener}{socket\_request\_listener}}\ \mbox{\hyperlink{structpeer_a231b0c785c044676ff6a9f25d9533171}{listener}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structpeer_a552ecaf1ddcbee53c0f9adfcc71a2ecf}{incoming\_buffer}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structpeer_aa7cc8ce1e6f96584b324ace98d25c567}{ping}};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmessage__handler}{message\_handler}}\ **\mbox{\hyperlink{structpeer_a38cce95c59d81f3136144afe2189a6b8}{handlers}};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structpeer_a9aeb7d91e8fbc4b1000fd4eeaa423da8}{handler\_count}};}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmessage__handler}{message\_handler}}\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structmessage__handler_a8b7683d78d01c82bf02a34c79ef574e8}{msg}};}
+\DoxyCodeLine{00043\ \ \ \ \ int\ (*\mbox{\hyperlink{structmessage__handler_af99eb5fd284f410ebf21654e38dbc4af}{callback}})(\textcolor{keywordtype}{int}\ msglen,\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structmessage__handler_a8b7683d78d01c82bf02a34c79ef574e8}{msg}},\ \textcolor{keywordtype}{void}\ *\ p,\ \textcolor{keywordtype}{void}\ **\ \mbox{\hyperlink{structmessage__handler_a6cc1e4b2d4553a00d653da7a37107aea}{data}});}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structmessage__handler_a3223c8ab7f9f7bb2e674a2b62a102aa1}{lifespan}};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ **\ \mbox{\hyperlink{structmessage__handler_a6cc1e4b2d4553a00d653da7a37107aea}{data}};}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{server_8h}{server.h}}"{}}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{scripts_2fps__chess_2client_8h}{client.h}}"{}}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{network__utils_8h}{network\_utils.h}}"{}}}
+
+\end{DoxyCode}

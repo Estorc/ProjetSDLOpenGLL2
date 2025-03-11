@@ -1,0 +1,62 @@
+\doxysection{scripts.\+h}
+\hypertarget{scripts_8h_source}{}\label{scripts_8h_source}\index{src/scripts/scripts.h@{src/scripts/scripts.h}}
+\mbox{\hyperlink{scripts_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}../io/input.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{signals_8h}{signals.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structWindow}{Window}};}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ NODE\_FUNC\_PARAMS\ struct\ Node\ *this,\ va\_list\ args}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ NODE\_FUNC\_RETURN\ void}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ GET\_READY\_PARAMETERS()\ float\ delta\ =\ (float)\ GET\_PARAMETER(double);\ (void)\ delta}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ GET\_SIGNAL()\ Signal\ signal\ =\ (Signal)\ GET\_PARAMETER(int);\ (void)\ signal}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ GET\_PARAMETER(type)\ va\_arg(args,\ type)}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ GET\_AREA\_SIGNAL\_PARAMETERS()\ int\ sigId\ =\ GET\_PARAMETER(int);\ Node\ *other\ =\ (Node\ *)\ GET\_PARAMETER(Node\ *);\ float\ distance\ =\ (float)\ GET\_PARAMETER(double);\ float\ *impactPoint\ =\ (float\ *)\ GET\_PARAMETER(float\ *);\ int\ offset\ =\ GET\_PARAMETER(int);\ (void)\ sigId;\ (void)\ other;\ (void)\ distance;\ (void)\ impactPoint;\ (void)\ offset;}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ MALLOC\_ATTRIBUTE(node,\ x)\ if\ (!node-\/>attribute)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ node-\/>attribute\ =\ malloc(sizeof(BehaviorAttribute)\ *\ x);\ \(\backslash\)}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ POINTER\_CHECK(node-\/>attribute);\ \(\backslash\)}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ node-\/>attributes\_count\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for\ (int\ i\ =\ 0;\ i\ <\ x;\ i++)\ memset(\&node-\/>attribute[i],\ 0,\ sizeof(union\ BehaviorAttribute));\ \(\backslash\)}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ SET\_ATTRIBUTES\_COUNT(x)\ MALLOC\_ATTRIBUTE(this,\ x)}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ NEW\_SCRIPT(script\_name)\ NODE\_FUNC\_RETURN\ script\_name(NODE\_FUNC\_PARAMS)\ \{}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ END\_SCRIPT(script\_name)\ \};\ \(\backslash\)}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{static\ \_\_attribute\_\_((constructor))\ void\ \_\_anon\_ctor\_\#\#script\_name(void)\ \{\(\backslash\)}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\ \ \ \ Game.scripts\ =\ realloc(Game.scripts,\ sizeof(Script)\ *\ (\_\_scriptIndex\_\_\ +\ 1));\(\backslash\)}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ Game.scripts[\_\_scriptIndex\_\_].name\ =\ \#script\_name;\(\backslash\)}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ Game.scripts[\_\_scriptIndex\_\_++].script\ =\ script\_name;\(\backslash\)}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ PRINT\_INFO("{}Script\ \%s\ loaded\ in\ \%d!\(\backslash\)n"{},\ \#script\_name,\ \_\_scriptIndex\_\_);\(\backslash\)}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\}}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifndef\ SCRIPTS\_H}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ SCRIPTS\_H}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\mbox{\hyperlink{unionBehaviorAttribute}{BehaviorAttribute}}\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{unionBehaviorAttribute_a3fa7fd6f8165665bcdd85d4ccfc50459}{i}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{unionBehaviorAttribute_a521107d0cc8ac4c6fc011173d1562466}{f}};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{unionBehaviorAttribute_a3ecaf664b66006d185e839fc3e499ddf}{b}};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{unionBehaviorAttribute_ace6771b71f031624b4fa7345a20dacdc}{p}};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ *\mbox{\hyperlink{unionBehaviorAttribute_a50669aec06276310fd491f39a820dd8d}{node}};}
+\DoxyCodeLine{00037\ \}\ \mbox{\hyperlink{unionBehaviorAttribute}{BehaviorAttribute}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}{NODE\_FUNC\_RETURN}}\ (*\mbox{\hyperlink{scripts_8h_ac020245962afe481cfa36fabbb2816f6}{ScriptFunc}})(\mbox{\hyperlink{scripts_8h_a974cce8e58a6368403c267f9c3a87735}{NODE\_FUNC\_PARAMS}});}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structScript}{Script}}\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{scripts_8h_ac020245962afe481cfa36fabbb2816f6}{ScriptFunc}}\ \mbox{\hyperlink{structScript_a8ebb4084e2de1a387cb1fe527d49e4e7}{script}};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{char}\ *\ \mbox{\hyperlink{structScript_a0a0c95e8768aa2b629e06637aeb2876e}{name}};}
+\DoxyCodeLine{00044\ \}\ \mbox{\hyperlink{structScript}{Script}};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dce}{BehaviorScripts}}\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dcea3b3f46718a5654c73ce66a0598b95c3b}{BEHAVIOR\_SCRIPT\_READY}},}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dceaa83501e0d766b4d51cf23afd35ec5d13}{BEHAVIOR\_SCRIPT\_UPDATE}},}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dcea14e2dd7810c43e265390ddd9e51cd337}{BEHAVIOR\_SCRIPT\_SIGNAL}},}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dceaf4deb964fef817f01b86d7487ab15d3a}{BEHAVIOR\_SCRIPT\_COUNT}},}
+\DoxyCodeLine{00051\ \}\ \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dce}{BehaviorScripts}};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{scripts_8h_ac020245962afe481cfa36fabbb2816f6}{ScriptFunc}}\ \mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}}[\mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dceaf4deb964fef817f01b86d7487ab15d3a}{BEHAVIOR\_SCRIPT\_COUNT}}];}
+\DoxyCodeLine{00054\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\_\_scriptIndex\_\_}};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

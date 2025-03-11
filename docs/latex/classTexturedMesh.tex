@@ -1,0 +1,214 @@
+\doxysection{Textured\+Mesh Struct Reference}
+\hypertarget{classTexturedMesh}{}\label{classTexturedMesh}\index{TexturedMesh@{TexturedMesh}}
+
+
+Structure representing a textured mesh.  
+
+
+
+
+{\ttfamily \#include $<$model.\+h$>$}
+
+
+
+Inheritance diagram for Textured\+Mesh\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=165pt]{classTexturedMesh__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Textured\+Mesh\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{classTexturedMesh__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classTexturedMesh_aabae9490174ea620700941b385a137db}{constructor}} (const char \texorpdfstring{$\ast$}{*}path)
+\item 
+void \mbox{\hyperlink{classTexturedMesh_a83acaa5212615f3764d4552452f9b60a}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classTexturedMesh_aca5c26bca1d7a7255356e6e015ade0a7}{length}})
+\item 
+void \mbox{\hyperlink{classTexturedMesh_a4095cc7391962caf8bd7bf441a1df2a4}{load}} (FILE \texorpdfstring{$\ast$}{*}file)
+\item 
+void \mbox{\hyperlink{classTexturedMesh_abd8795881f2eaefd72f13491c52d50c7}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
+\item 
+void \mbox{\hyperlink{classTexturedMesh_ab8b815cf50acfd1ef5726f7f29c6028d}{render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}} ()
+\item 
+void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
+\item 
+void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+\item 
+void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
+\item 
+void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
+\item 
+void \mbox{\hyperlink{classNode_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
+\item 
+void \mbox{\hyperlink{classNode_ab05e54fc6a226fe70d274e46e9ced07a}{prepare\+\_\+render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+\begin{DoxyCompactList}\small\item\em Renders a node using the specified model matrix and shader. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ab93a6f41e02422a21c44227c0355382a}{render}} ()
+\item 
+void \mbox{\hyperlink{classNode_a2621112ec04d166f9ec376eba06f3bbb}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\item 
+void \mbox{\hyperlink{classNode_a500a682914a24af188bd9eb79ba2aaae}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\item 
+void \mbox{\hyperlink{classNode_acda79ab291312990e96552767c577a3d}{free}} ()
+\item 
+void \mbox{\hyperlink{classNode_ae2ee01789b301b3c0323473dbe968283}{is\+\_\+cshape}} (bool \texorpdfstring{$\ast$}{*}cshape)
+\item 
+void \mbox{\hyperlink{classNode_a75c27b8cf028ae9509b20ad7392c49f8}{is\+\_\+body}} (bool \texorpdfstring{$\ast$}{*}body)
+\item 
+void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
+\item 
+void \mbox{\hyperlink{classNode_a743d883f14521da8f8c62608ce65f7ee}{is\+\_\+render\+\_\+target}} (bool \texorpdfstring{$\ast$}{*}render\+\_\+target)
+\item 
+void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
+\item 
+void \mbox{\hyperlink{classNode_a42da38ee8e0a621e438e14b94c0e381e}{add\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child node to a parent node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a8e6b8cc31d9259fcf89b21c180954996}{add\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child node to a parent node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ae86bdc267280b50e822501c7e74194f3}{remove\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ac78c1a018c6fac8fe8bd9f413190273f}{remove\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a33127e7928f75bccce339aafce1fe44b}{remove\+\_\+child\+\_\+and\+\_\+free}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node and frees the memory of the child node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_af08ebf5c3bb8542c012107606b88391b}{remove\+\_\+child\+\_\+and\+\_\+free\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node, frees the memory of the child node, and reallocates memory if necessary. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNode_af99346e2725916df2fbe2e4af7a2d51c}{index\+\_\+of\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Retrieves the index of a child node in a parent node\textquotesingle{}s children array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_aef2f74d45bec672840433aff6abe0d45}{print}} (int level)
+\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a846d06ed1f7a5ac618fbfef10881230f}{emit\+\_\+ready}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a3e7054036adfcf19c240b48a7f353f83}{emit\+\_\+update}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a0a3256bf578114f603b9407814638a2f}{emit\+\_\+signal}} (...)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}} \mbox{\hyperlink{classTexturedMesh_a05be35182381ceb6df60e98385cc8985}{VAO}}
+\item 
+\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{classTexturedMesh_a742c1788ac3e1b070c003b408936f8b8}{texture}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classTexturedMesh_aca5c26bca1d7a7255356e6e015ade0a7}{length}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga9cf70c2b354e11c49130331da4519864}{object}}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga3d857c2fdb25634fe92ca32ff006c233}{children}}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{parent}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga1cf2ef86297b1bdfed11d030c0ed3dd2}{global\+Pos}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{global\+Rot}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
+\item 
+\mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
+\item 
+\mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_gab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
+\item 
+\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a44e2ccb5f2209f6367f33a3c712f0eb1}{glow\+Shader}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure representing a textured mesh. 
+
+This structure holds the Vertex Array \doxylink{structObject}{Object} (VAO) and texture map of a textured mesh. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTexturedMesh_aabae9490174ea620700941b385a137db}\label{classTexturedMesh_aabae9490174ea620700941b385a137db} 
+\index{TexturedMesh@{TexturedMesh}!constructor@{constructor}}
+\index{constructor@{constructor}!TexturedMesh@{TexturedMesh}}
+\doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
+{\footnotesize\ttfamily void Textured\+Mesh\+::constructor (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classTexturedMesh_a83acaa5212615f3764d4552452f9b60a}\label{classTexturedMesh_a83acaa5212615f3764d4552452f9b60a} 
+\index{TexturedMesh@{TexturedMesh}!get\_settings\_data@{get\_settings\_data}}
+\index{get\_settings\_data@{get\_settings\_data}!TexturedMesh@{TexturedMesh}}
+\doxysubsubsection{\texorpdfstring{get\_settings\_data()}{get\_settings\_data()}}
+{\footnotesize\ttfamily void Textured\+Mesh\+::get\+\_\+settings\+\_\+data (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{ptr,  }\item[{int \texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classTexturedMesh_a4095cc7391962caf8bd7bf441a1df2a4}\label{classTexturedMesh_a4095cc7391962caf8bd7bf441a1df2a4} 
+\index{TexturedMesh@{TexturedMesh}!load@{load}}
+\index{load@{load}!TexturedMesh@{TexturedMesh}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Textured\+Mesh\+::load (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classTexturedMesh_ab8b815cf50acfd1ef5726f7f29c6028d}\label{classTexturedMesh_ab8b815cf50acfd1ef5726f7f29c6028d} 
+\index{TexturedMesh@{TexturedMesh}!render@{render}}
+\index{render@{render}!TexturedMesh@{TexturedMesh}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Textured\+Mesh\+::render (\begin{DoxyParamCaption}\item[{mat4 \texorpdfstring{$\ast$}{*}}]{model\+Matrix,  }\item[{\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{active\+Shader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classTexturedMesh_abd8795881f2eaefd72f13491c52d50c7}\label{classTexturedMesh_abd8795881f2eaefd72f13491c52d50c7} 
+\index{TexturedMesh@{TexturedMesh}!save@{save}}
+\index{save@{save}!TexturedMesh@{TexturedMesh}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Textured\+Mesh\+::save (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classTexturedMesh_aca5c26bca1d7a7255356e6e015ade0a7}\label{classTexturedMesh_aca5c26bca1d7a7255356e6e015ade0a7} 
+\index{TexturedMesh@{TexturedMesh}!length@{length}}
+\index{length@{length}!TexturedMesh@{TexturedMesh}}
+\doxysubsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Textured\+Mesh\+::length}
+
+Length of the textured mesh \Hypertarget{classTexturedMesh_a742c1788ac3e1b070c003b408936f8b8}\label{classTexturedMesh_a742c1788ac3e1b070c003b408936f8b8} 
+\index{TexturedMesh@{TexturedMesh}!texture@{texture}}
+\index{texture@{texture}!TexturedMesh@{TexturedMesh}}
+\doxysubsubsection{\texorpdfstring{texture}{texture}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} Textured\+Mesh\+::texture}
+
+\doxylink{classTexture}{Texture} map \Hypertarget{classTexturedMesh_a05be35182381ceb6df60e98385cc8985}\label{classTexturedMesh_a05be35182381ceb6df60e98385cc8985} 
+\index{TexturedMesh@{TexturedMesh}!VAO@{VAO}}
+\index{VAO@{VAO}!TexturedMesh@{TexturedMesh}}
+\doxysubsubsection{\texorpdfstring{VAO}{VAO}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}} Textured\+Mesh\+::\+VAO}
+
+Vertex Array \doxylink{structObject}{Object} 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/classes/nodes/\mbox{\hyperlink{textured__mesh_8class_8c}{textured\+\_\+mesh.\+class.\+c}}\item 
+src/io/\mbox{\hyperlink{model_8h}{model.\+h}}\end{DoxyCompactItemize}

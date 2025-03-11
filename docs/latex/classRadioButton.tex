@@ -1,0 +1,336 @@
+\doxysection{Radio\+Button Struct Reference}
+\hypertarget{classRadioButton}{}\label{classRadioButton}\index{RadioButton@{RadioButton}}
+
+
+Represents a radio button.  
+
+
+
+
+{\ttfamily \#include $<$frame.\+h$>$}
+
+
+
+Inheritance diagram for Radio\+Button\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classRadioButton__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Radio\+Button\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRadioButton__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classRadioButton_a14a5ebd5667ad87d01396cbd12c5f260}{constructor}} ()
+\item 
+void \mbox{\hyperlink{classRadioButton_acceb8029c527d3dcdd98739ab9c6a36a}{init\+\_\+radiobutton}} ()
+\item 
+void \mbox{\hyperlink{classRadioButton_a7ae422904ea7878cf7a5a28e9a1413b3}{load}} ()
+\item 
+void \mbox{\hyperlink{classRadioButton_a9f8bda29201c7e02e2cb26ef0bf08c7c}{save}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
+\item 
+bool \mbox{\hyperlink{classRadioButton_acfe35afe097c7d715b500f79c22e577d}{is\+\_\+radiobutton}} ()
+\item 
+void \mbox{\hyperlink{classRadioButton_a9e68124cd6ae566d3ee26eb12cffec44}{free}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classButton}{Button}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classButton_ac590f08873fdfcbc76b203171aadf530}{constructor}} ()
+\item 
+void \mbox{\hyperlink{classButton_afe7db9fd361d87d121fbfa5d425a50fd}{init\+\_\+button}} ()
+\item 
+void \mbox{\hyperlink{classButton_a342ba542d3f35a1de033005f545aeac2}{load}} ()
+\item 
+void \mbox{\hyperlink{classButton_ad8e030c1c8846d43f3126047d4a3667f}{update}} ()
+\item 
+void \mbox{\hyperlink{classButton_acc4fa030c3f1cb537d9e9f4b09b7ec8b}{is\+\_\+button}} (bool \texorpdfstring{$\ast$}{*}result)
+\item 
+void \mbox{\hyperlink{classButton_ab41307fda195e079834761523277b9b4}{save}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
+\item 
+void \mbox{\hyperlink{classButton_ab31b0993b959cf9863eb2cf22a7ae18b}{free}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classFrame}{Frame}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classFrame_a05a82bdf164991c7d314824757e984fa}{constructor}} (double x, int xu, double y, int yu, double w, int wu, double h, int hu, int ha, int va, int \mbox{\hyperlink{classFrame_acfe3b3c81c5ddcd7e9dd6a5f64dcdac8}{scroll}}, \mbox{\hyperlink{structTheme}{Theme}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classFrame_aa5e1c43a4d9d3a9967ab33152edf6e7c}{theme}})
+\item 
+void \mbox{\hyperlink{classFrame_a63712e22a5897b4bcc3f26383b9f7205}{handle\+\_\+dimension\+\_\+unit}} (float \texorpdfstring{$\ast$}{*}src, float \texorpdfstring{$\ast$}{*}dest, int vertical, double \mbox{\hyperlink{classFrame_a36dd59da3f2cbfda319a393453490763}{size}}, int \mbox{\hyperlink{classFrame_ad6253ac65e55108bc8a0e8a29fa5ae65}{unit}}, double container\+Width, double container\+Height)
+\item 
+void \mbox{\hyperlink{classFrame_a7836ed00314cfe053fd99cbedf0d559c}{init\+\_\+frame}} ()
+\item 
+void \mbox{\hyperlink{classFrame_ad16ec9c61e633e2443896750365c4b92}{load}} (FILE \texorpdfstring{$\ast$}{*}file)
+\item 
+void \mbox{\hyperlink{classFrame_ae9b5d661830d80bea63f85e9fda5db70}{refresh}} ()
+\item 
+void \mbox{\hyperlink{classFrame_a12287f1efce6749a58bd644a7e7ba48c}{refresh\+Content}} ()
+\item 
+void \mbox{\hyperlink{classFrame_a31aee47f16abb8322dd96860a4363fda}{update}} ()
+\item 
+void \mbox{\hyperlink{classFrame_ac06c37a1e7b56d157790834f77a9ae1b}{draw\+\_\+frame}} ()
+\item 
+void \mbox{\hyperlink{classFrame_a7fd49c5db1ad23f4c8a7e125fffef349}{render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders)
+\item 
+void \mbox{\hyperlink{classFrame_ac97d563c45c120aa754e6b5f711eab76}{save}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
+\item 
+void \mbox{\hyperlink{classFrame_a91247a8e7d98756096081cc49886b275}{get\+\_\+vao}} (\mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}} \texorpdfstring{$\ast$}{*}vao)
+\item 
+void \mbox{\hyperlink{classFrame_ae347f52b5eec84baec216be95aaf1d54}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
+\item 
+void \mbox{\hyperlink{classFrame_ac4507b501cf44a0243e9d7ad3861a6b2}{is\+\_\+button}} (bool \texorpdfstring{$\ast$}{*}result)
+\item 
+void \mbox{\hyperlink{classFrame_af21a08e158231857c2ace344aa0bbc3f}{is\+\_\+input\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}result)
+\item 
+void \mbox{\hyperlink{classFrame_a47bc156dd1830b987ac9d33f2e7d2b09}{is\+\_\+selectlist}} (bool \texorpdfstring{$\ast$}{*}result)
+\item 
+void \mbox{\hyperlink{classFrame_a5673929d98a9f43102e4ed87de3b891f}{is\+\_\+checkbox}} (bool \texorpdfstring{$\ast$}{*}result)
+\item 
+bool \mbox{\hyperlink{classFrame_a3dbeceb0c4fdb37d0fc3a187bf901e01}{is\+\_\+radiobutton}} ()
+\item 
+void \mbox{\hyperlink{classFrame_ab12c4bab3ad539606c5f79e303d4129c}{free}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}} ()
+\item 
+void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
+\item 
+void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+\item 
+void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
+\item 
+void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
+\item 
+void \mbox{\hyperlink{classNode_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
+\item 
+void \mbox{\hyperlink{classNode_ab05e54fc6a226fe70d274e46e9ced07a}{prepare\+\_\+render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+\begin{DoxyCompactList}\small\item\em Renders a node using the specified model matrix and shader. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ab93a6f41e02422a21c44227c0355382a}{render}} ()
+\item 
+void \mbox{\hyperlink{classNode_a2621112ec04d166f9ec376eba06f3bbb}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\item 
+void \mbox{\hyperlink{classNode_a500a682914a24af188bd9eb79ba2aaae}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\item 
+void \mbox{\hyperlink{classNode_acda79ab291312990e96552767c577a3d}{free}} ()
+\item 
+void \mbox{\hyperlink{classNode_ae2ee01789b301b3c0323473dbe968283}{is\+\_\+cshape}} (bool \texorpdfstring{$\ast$}{*}cshape)
+\item 
+void \mbox{\hyperlink{classNode_a75c27b8cf028ae9509b20ad7392c49f8}{is\+\_\+body}} (bool \texorpdfstring{$\ast$}{*}body)
+\item 
+void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
+\item 
+void \mbox{\hyperlink{classNode_a743d883f14521da8f8c62608ce65f7ee}{is\+\_\+render\+\_\+target}} (bool \texorpdfstring{$\ast$}{*}render\+\_\+target)
+\item 
+void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
+\item 
+void \mbox{\hyperlink{classNode_a42da38ee8e0a621e438e14b94c0e381e}{add\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child node to a parent node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a8e6b8cc31d9259fcf89b21c180954996}{add\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Adds a child node to a parent node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ae86bdc267280b50e822501c7e74194f3}{remove\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_ac78c1a018c6fac8fe8bd9f413190273f}{remove\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a33127e7928f75bccce339aafce1fe44b}{remove\+\_\+child\+\_\+and\+\_\+free}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node and frees the memory of the child node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_af08ebf5c3bb8542c012107606b88391b}{remove\+\_\+child\+\_\+and\+\_\+free\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Removes a child node from a parent node, frees the memory of the child node, and reallocates memory if necessary. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNode_af99346e2725916df2fbe2e4af7a2d51c}{index\+\_\+of\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Retrieves the index of a child node in a parent node\textquotesingle{}s children array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_aef2f74d45bec672840433aff6abe0d45}{print}} (int level)
+\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a846d06ed1f7a5ac618fbfef10881230f}{emit\+\_\+ready}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a3e7054036adfcf19c240b48a7f353f83}{emit\+\_\+update}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a0a3256bf578114f603b9407814638a2f}{emit\+\_\+signal}} (...)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{frame_8h_aa46074d34fe2d6631c6bd9dc74633657}{Button\+State}} \mbox{\hyperlink{classRadioButton_a66f78b316c80f9c871eb23dc3b69497f}{state}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRadioButton_ad71225448aeaaf84af566afc67be604a}{checked}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{classRadioButton_a665807675f00c03f5e5dba9b2b6e8632}{id}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classButton}{Button}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{frame_8h_aa46074d34fe2d6631c6bd9dc74633657}{Button\+State}} \mbox{\hyperlink{classButton_ae823b05599aa1650bdc496c0d377c106}{state}}
+\item 
+bool \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classButton_a59869bbd81f4aed84f42dda707478850}{checked}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classFrame}{Frame}}}
+\begin{DoxyCompactItemize}
+\item 
+vec4 \mbox{\hyperlink{classFrame_a26597ca9417001184f7d396ffd7a62a5}{overflow}}
+\item 
+vec2 \mbox{\hyperlink{classFrame_a2e8e68ab0a57dfbf0da528a2f550baf1}{rel\+Pos}}
+\item 
+vec2 \mbox{\hyperlink{classFrame_adcc62e4c474cef06a0fdab595c902130}{abs\+Pos}}
+\item 
+vec2 \mbox{\hyperlink{classFrame_ae6dbd59911baad85ee3d7256f852dc0e}{scale}}
+\item 
+vec2 \mbox{\hyperlink{classFrame_a36dd59da3f2cbfda319a393453490763}{size}}
+\item 
+vec2 \mbox{\hyperlink{classFrame_a2cd98714f3456bde30243e80e7c0020b}{content\+Size}}
+\item 
+vec2 \mbox{\hyperlink{classFrame_acfe3b3c81c5ddcd7e9dd6a5f64dcdac8}{scroll}}
+\item 
+vec2 \mbox{\hyperlink{classFrame_af6768acc3d877c29ba711198e793faa3}{scroll\+Target}}
+\item 
+char \mbox{\hyperlink{classFrame_ad6253ac65e55108bc8a0e8a29fa5ae65}{unit}} \mbox{[}4\mbox{]}
+\item 
+char \mbox{\hyperlink{classFrame_ad829b69a571935c59030b746e605f605}{alignment}} \mbox{[}2\mbox{]}
+\item 
+\mbox{\hyperlink{structTheme}{Theme}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFrame_aa5e1c43a4d9d3a9967ab33152edf6e7c}{theme}}
+\item 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFrame_a5a33045cc663b18b0dd11aee9f6443f9}{content\+Surface}}
+\item 
+\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{classFrame_a4aaadcfce8050772cd652119f68a9cef}{content\+Texture}}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\mbox{\hyperlink{classLabel}{Label}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFrame_a957f3bbbcce14ec308fe917c8f1ef9b4}{label}}\\
+\>\mbox{\hyperlink{classButton}{Button}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFrame_a70a04f65510e34c64be4fdf642cf716f}{button}}\\
+\>\mbox{\hyperlink{classInputArea}{InputArea}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFrame_a3cb42a8726bc2378ab38edb199ff02e3}{inputArea}}\\
+\>\mbox{\hyperlink{classSelectList}{SelectList}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFrame_ae3e1724ea344a830f7214e2e41e42cf2}{selectList}}\\
+\>\mbox{\hyperlink{classImageFrame}{ImageFrame}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFrame_ae8fb5e1575de3713ec025de837742406}{imageFrame}}\\
+\>\mbox{\hyperlink{classRadioButton}{RadioButton}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFrame_ab4c84d5e73473baa8a8e0e250d929427}{radiobutton}}\\
+\>\mbox{\hyperlink{classSlider}{Slider}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFrame_ac0d239f66c57afe30b13f9c88f0097f1}{slider}}\\
+\}; \\
+
+\end{tabbing}\item 
+\mbox{\hyperlink{frame_8h_a885df608db65e29c399b42f68ef201a0}{Frame\+Flags}} \mbox{\hyperlink{classFrame_af4ef763070b4043171c29d714437e539}{flags}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga9cf70c2b354e11c49130331da4519864}{object}}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga3d857c2fdb25634fe92ca32ff006c233}{children}}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{parent}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga1cf2ef86297b1bdfed11d030c0ed3dd2}{global\+Pos}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{global\+Rot}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
+\item 
+\mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
+\item 
+\mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_gab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
+\item 
+\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classFrame}{Frame}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{group__ModelHandling_gaad5c885aa493ac48e59f4deeed82ca38}{VBO}} \mbox{\hyperlink{classFrame_a770bd2917ab92f61e83a739b02121e45}{\+\_\+vbo}} = 0
+\item 
+static \mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}} \mbox{\hyperlink{classFrame_a69ba26f9aacfec9606de2d5a6c59e6a9}{\+\_\+vao}} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a44e2ccb5f2209f6367f33a3c712f0eb1}{glow\+Shader}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a radio button. 
+
+This structure holds information about a radio button, including its checked state and ID. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRadioButton_a14a5ebd5667ad87d01396cbd12c5f260}\label{classRadioButton_a14a5ebd5667ad87d01396cbd12c5f260} 
+\index{RadioButton@{RadioButton}!constructor@{constructor}}
+\index{constructor@{constructor}!RadioButton@{RadioButton}}
+\doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
+{\footnotesize\ttfamily void Radio\+Button\+::constructor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classRadioButton_a9e68124cd6ae566d3ee26eb12cffec44}\label{classRadioButton_a9e68124cd6ae566d3ee26eb12cffec44} 
+\index{RadioButton@{RadioButton}!free@{free}}
+\index{free@{free}!RadioButton@{RadioButton}}
+\doxysubsubsection{\texorpdfstring{free()}{free()}}
+{\footnotesize\ttfamily void Radio\+Button\+::free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classRadioButton_acceb8029c527d3dcdd98739ab9c6a36a}\label{classRadioButton_acceb8029c527d3dcdd98739ab9c6a36a} 
+\index{RadioButton@{RadioButton}!init\_radiobutton@{init\_radiobutton}}
+\index{init\_radiobutton@{init\_radiobutton}!RadioButton@{RadioButton}}
+\doxysubsubsection{\texorpdfstring{init\_radiobutton()}{init\_radiobutton()}}
+{\footnotesize\ttfamily void Radio\+Button\+::init\+\_\+radiobutton (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classRadioButton_acfe35afe097c7d715b500f79c22e577d}\label{classRadioButton_acfe35afe097c7d715b500f79c22e577d} 
+\index{RadioButton@{RadioButton}!is\_radiobutton@{is\_radiobutton}}
+\index{is\_radiobutton@{is\_radiobutton}!RadioButton@{RadioButton}}
+\doxysubsubsection{\texorpdfstring{is\_radiobutton()}{is\_radiobutton()}}
+{\footnotesize\ttfamily bool Radio\+Button\+::is\+\_\+radiobutton (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classRadioButton_a7ae422904ea7878cf7a5a28e9a1413b3}\label{classRadioButton_a7ae422904ea7878cf7a5a28e9a1413b3} 
+\index{RadioButton@{RadioButton}!load@{load}}
+\index{load@{load}!RadioButton@{RadioButton}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Radio\+Button\+::load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classRadioButton_a9f8bda29201c7e02e2cb26ef0bf08c7c}\label{classRadioButton_a9f8bda29201c7e02e2cb26ef0bf08c7c} 
+\index{RadioButton@{RadioButton}!save@{save}}
+\index{save@{save}!RadioButton@{RadioButton}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Radio\+Button\+::save (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file,  }\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{editor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classRadioButton_ad71225448aeaaf84af566afc67be604a}\label{classRadioButton_ad71225448aeaaf84af566afc67be604a} 
+\index{RadioButton@{RadioButton}!checked@{checked}}
+\index{checked@{checked}!RadioButton@{RadioButton}}
+\doxysubsubsection{\texorpdfstring{checked}{checked}}
+{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}}\texorpdfstring{$\ast$}{*} Radio\+Button\+::checked}
+
+Pointer to the checked state of the radio button. \Hypertarget{classRadioButton_a665807675f00c03f5e5dba9b2b6e8632}\label{classRadioButton_a665807675f00c03f5e5dba9b2b6e8632} 
+\index{RadioButton@{RadioButton}!id@{id}}
+\index{id@{id}!RadioButton@{RadioButton}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} Radio\+Button\+::id}
+
+ID of the radio button. \Hypertarget{classRadioButton_a66f78b316c80f9c871eb23dc3b69497f}\label{classRadioButton_a66f78b316c80f9c871eb23dc3b69497f} 
+\index{RadioButton@{RadioButton}!state@{state}}
+\index{state@{state}!RadioButton@{RadioButton}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{frame_8h_aa46074d34fe2d6631c6bd9dc74633657}{Button\+State}} Radio\+Button\+::state}
+
+Current state of the button. 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/classes/nodes/frames/\mbox{\hyperlink{radiobutton_8class_8c}{radiobutton.\+class.\+c}}\item 
+src/gui/\mbox{\hyperlink{frame_8h}{frame.\+h}}\end{DoxyCompactItemize}

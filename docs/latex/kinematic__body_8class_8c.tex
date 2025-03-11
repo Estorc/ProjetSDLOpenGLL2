@@ -1,0 +1,43 @@
+\doxysection{src/classes/nodes/physics/bodies/kinematic\+\_\+body.class.\+c File Reference}
+\hypertarget{kinematic__body_8class_8c}{}\label{kinematic__body_8class_8c}\index{src/classes/nodes/physics/bodies/kinematic\_body.class.c@{src/classes/nodes/physics/bodies/kinematic\_body.class.c}}
+
+
+This file defines the implementation of kinematic bodies for the physics engine.  
+
+
+{\ttfamily \#include "{}raptiquax.\+h"{}}\newline
+{\ttfamily \#include "{}classes/classes.\+h"{}}\newline
+{\ttfamily \#include "{}math/math\+\_\+util.\+h"{}}\newline
+{\ttfamily \#include "{}io/model.\+h"{}}\newline
+{\ttfamily \#include "{}render/framebuffer.\+h"{}}\newline
+{\ttfamily \#include "{}storage/node.\+h"{}}\newline
+{\ttfamily \#include "{}io/scene\+\_\+loader.\+h"{}}\newline
+{\ttfamily \#include "{}render/lighting.\+h"{}}\newline
+{\ttfamily \#include "{}buffer.\+h"{}}\newline
+Include dependency graph for kinematic\+\_\+body.\+class.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kinematic__body_8class_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{classKinematicBody}{Kinematic\+Body}}
+\begin{DoxyCompactList}\small\item\em Represents a kinematic body in the physics simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file defines the implementation of kinematic bodies for the physics engine. 
+
+This source file contains the implementation of kinematic bodies, which are used in the physics engine to represent objects that move according to predefined paths or velocities, but are not affected by forces like gravity or collisions. These bodies are essential for creating predictable and controlled movements in the simulation.
+
+The kinematic bodies are designed to interact with other physical entities in the simulation, providing a way to animate objects or create complex motion patterns without the need for dynamic physics calculations.
+
+\begin{DoxyAuthor}{Author}
+Loup Picault 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/10-\/20 
+\end{DoxyDate}

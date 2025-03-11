@@ -72,7 +72,7 @@ ${OBJ_DIR}/${TEST_DIR}/%.o: %.c
 
 # Release objects constructor for .c files
 ${OBJ_DIR}/$(RELEASE_DIR)/%.o: %.c
-	$(call build_object,$(RELEASE_DIR), )
+	$(call build_object,$(RELEASE_DIR), -O3)
 
 # Debug objects constructor for .c files
 ${OBJ_DIR}/$(DEBUG_DIR)/%.o: %.c

@@ -1,0 +1,9 @@
+<map id="Scene" name="Scene">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,97,67,123"/>
+<area shape="rect" id="Node000002" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="64,7,120,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,45,65,60,44,99,39,96,60,57,72,42"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="135,10,143,13,147,20,138,29,121,31,120,26,136,24,141,20,139,17,133,15"/>
+<area shape="rect" id="Node000003" href="$unionBehaviorAttribute.html" title=" " alt="" coords="91,97,229,123"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="87,46,86,60,90,72,103,85,119,95,117,100,99,90,86,75,81,61,81,46"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="145,86,129,60,104,35,108,31,133,57,150,83"/>
+</map>

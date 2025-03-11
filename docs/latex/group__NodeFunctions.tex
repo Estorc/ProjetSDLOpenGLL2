@@ -1,0 +1,246 @@
+\doxysection{Node Data Structure}
+\hypertarget{group__NodeFunctions}{}\label{group__NodeFunctions}\index{Node Data Structure@{Node Data Structure}}
+
+
+Functions for managing and rendering nodes in the scene graph.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structTree}{Tree}}
+\begin{DoxyCompactList}\small\item\em Represents a tree structure containing nodes, a camera, \doxylink{structMSAA}{MSAA} settings, and scripts. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{classNode}{Node}}
+\begin{DoxyCompactList}\small\item\em Represents a node in the tree structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__NodeFunctions_ga459f59c37b902a28ff3fcfb9a0200850}{NODE\+\_\+\+ACTIVE\+\_\+\+AND\+\_\+\+VISIBLE}}~\mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a60ab1e6cf30478e53bd7bcba32c2c792}{NODE\+\_\+\+ACTIVE}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a579273ea1ad284119327d60ff4dbc4b5}{NODE\+\_\+\+VISIBLE}}
+\item 
+\#define \mbox{\hyperlink{group__NodeFunctions_ga7997ef817b41c1047ed905c912608173}{NODE\+\_\+\+DEFAULT\+\_\+\+FLAGS}}~\mbox{\hyperlink{group__NodeFunctions_ga459f59c37b902a28ff3fcfb9a0200850}{NODE\+\_\+\+ACTIVE\+\_\+\+AND\+\_\+\+VISIBLE}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__NodeFunctions_gae925b777d12c58434a689cce258b57c0}{Node\+Flags}} \{ \newline
+\mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a60ab1e6cf30478e53bd7bcba32c2c792}{NODE\+\_\+\+ACTIVE}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a579273ea1ad284119327d60ff4dbc4b5}{NODE\+\_\+\+VISIBLE}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0ab2fcac4053398589571a32ecd8006451}{NODE\+\_\+\+SCRIPT}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a4c9ec9a67e59ef9acb25ed7b719b5687}{NODE\+\_\+\+LIGHT\+\_\+\+ACTIVE}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3
+, \newline
+\mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0ad195f4e0acd4e3573ed2ed82ddd0a036}{NODE\+\_\+\+INITIALIZED}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a81804ec13b8cf9cdc42a6ae1e89066ee}{NODE\+\_\+\+UNUSED4}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 5
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a114b0f86ab1e39a1162d185834e9567f}{NODE\+\_\+\+UNUSED5}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 6
+, \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0acb4410df9bfe0bd0ef7dc83b26fe77ca}{NODE\+\_\+\+EDITOR\+\_\+\+FLAG}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 7
+ \}
+\begin{DoxyCompactList}\small\item\em Flags indicating the state and properties of a node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga5406b91a30624b42976b4f87d3362081}{Tree\+::root}}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga9cf70c2b354e11c49130331da4519864}{Node\+::object}}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga3d857c2fdb25634fe92ca32ff006c233}{Node\+::children}}
+\item 
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{Node\+::parent}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{Node\+::length}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{Node\+::type}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{Node\+::flags}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{Node\+::pos}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{Node\+::rot}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{Node\+::scale}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga1cf2ef86297b1bdfed11d030c0ed3dd2}{Node\+::global\+Pos}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{Node\+::global\+Rot}}
+\item 
+vec3 \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{Node\+::global\+Scale}}
+\item 
+\mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{Node\+::behavior}}
+\item 
+\mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafa50314ea6ca719d2fcbbdaa33dd052a}{Node\+::attribute}}
+\item 
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_gab9c00a78e2cb89d68c1d9a251c870444}{Node\+::attributes\+\_\+count}}
+\item 
+\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{Node\+::shader}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions for managing and rendering nodes in the scene graph. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group__NodeFunctions_ga459f59c37b902a28ff3fcfb9a0200850}\label{group__NodeFunctions_ga459f59c37b902a28ff3fcfb9a0200850} 
+\index{Node Data Structure@{Node Data Structure}!NODE\_ACTIVE\_AND\_VISIBLE@{NODE\_ACTIVE\_AND\_VISIBLE}}
+\index{NODE\_ACTIVE\_AND\_VISIBLE@{NODE\_ACTIVE\_AND\_VISIBLE}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{NODE\_ACTIVE\_AND\_VISIBLE}{NODE\_ACTIVE\_AND\_VISIBLE}}
+{\footnotesize\ttfamily \#define NODE\+\_\+\+ACTIVE\+\_\+\+AND\+\_\+\+VISIBLE~\mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a60ab1e6cf30478e53bd7bcba32c2c792}{NODE\+\_\+\+ACTIVE}} \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a579273ea1ad284119327d60ff4dbc4b5}{NODE\+\_\+\+VISIBLE}}}
+
+\Hypertarget{group__NodeFunctions_ga7997ef817b41c1047ed905c912608173}\label{group__NodeFunctions_ga7997ef817b41c1047ed905c912608173} 
+\index{Node Data Structure@{Node Data Structure}!NODE\_DEFAULT\_FLAGS@{NODE\_DEFAULT\_FLAGS}}
+\index{NODE\_DEFAULT\_FLAGS@{NODE\_DEFAULT\_FLAGS}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{NODE\_DEFAULT\_FLAGS}{NODE\_DEFAULT\_FLAGS}}
+{\footnotesize\ttfamily \#define NODE\+\_\+\+DEFAULT\+\_\+\+FLAGS~\mbox{\hyperlink{group__NodeFunctions_ga459f59c37b902a28ff3fcfb9a0200850}{NODE\+\_\+\+ACTIVE\+\_\+\+AND\+\_\+\+VISIBLE}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{group__NodeFunctions_gae925b777d12c58434a689cce258b57c0}\label{group__NodeFunctions_gae925b777d12c58434a689cce258b57c0} 
+\index{Node Data Structure@{Node Data Structure}!NodeFlags@{NodeFlags}}
+\index{NodeFlags@{NodeFlags}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{NodeFlags}{NodeFlags}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__NodeFunctions_gae925b777d12c58434a689cce258b57c0}{Node\+Flags}}}
+
+
+
+Flags indicating the state and properties of a node. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NODE\_ACTIVE@{NODE\_ACTIVE}!Node Data Structure@{Node Data Structure}}\index{Node Data Structure@{Node Data Structure}!NODE\_ACTIVE@{NODE\_ACTIVE}}}\Hypertarget{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a60ab1e6cf30478e53bd7bcba32c2c792}\label{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a60ab1e6cf30478e53bd7bcba32c2c792} 
+NODE\+\_\+\+ACTIVE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NODE\_VISIBLE@{NODE\_VISIBLE}!Node Data Structure@{Node Data Structure}}\index{Node Data Structure@{Node Data Structure}!NODE\_VISIBLE@{NODE\_VISIBLE}}}\Hypertarget{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a579273ea1ad284119327d60ff4dbc4b5}\label{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a579273ea1ad284119327d60ff4dbc4b5} 
+NODE\+\_\+\+VISIBLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NODE\_SCRIPT@{NODE\_SCRIPT}!Node Data Structure@{Node Data Structure}}\index{Node Data Structure@{Node Data Structure}!NODE\_SCRIPT@{NODE\_SCRIPT}}}\Hypertarget{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0ab2fcac4053398589571a32ecd8006451}\label{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0ab2fcac4053398589571a32ecd8006451} 
+NODE\+\_\+\+SCRIPT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NODE\_LIGHT\_ACTIVE@{NODE\_LIGHT\_ACTIVE}!Node Data Structure@{Node Data Structure}}\index{Node Data Structure@{Node Data Structure}!NODE\_LIGHT\_ACTIVE@{NODE\_LIGHT\_ACTIVE}}}\Hypertarget{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a4c9ec9a67e59ef9acb25ed7b719b5687}\label{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a4c9ec9a67e59ef9acb25ed7b719b5687} 
+NODE\+\_\+\+LIGHT\+\_\+\+ACTIVE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NODE\_INITIALIZED@{NODE\_INITIALIZED}!Node Data Structure@{Node Data Structure}}\index{Node Data Structure@{Node Data Structure}!NODE\_INITIALIZED@{NODE\_INITIALIZED}}}\Hypertarget{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0ad195f4e0acd4e3573ed2ed82ddd0a036}\label{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0ad195f4e0acd4e3573ed2ed82ddd0a036} 
+NODE\+\_\+\+INITIALIZED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NODE\_UNUSED4@{NODE\_UNUSED4}!Node Data Structure@{Node Data Structure}}\index{Node Data Structure@{Node Data Structure}!NODE\_UNUSED4@{NODE\_UNUSED4}}}\Hypertarget{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a81804ec13b8cf9cdc42a6ae1e89066ee}\label{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a81804ec13b8cf9cdc42a6ae1e89066ee} 
+NODE\+\_\+\+UNUSED4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NODE\_UNUSED5@{NODE\_UNUSED5}!Node Data Structure@{Node Data Structure}}\index{Node Data Structure@{Node Data Structure}!NODE\_UNUSED5@{NODE\_UNUSED5}}}\Hypertarget{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a114b0f86ab1e39a1162d185834e9567f}\label{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a114b0f86ab1e39a1162d185834e9567f} 
+NODE\+\_\+\+UNUSED5&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NODE\_EDITOR\_FLAG@{NODE\_EDITOR\_FLAG}!Node Data Structure@{Node Data Structure}}\index{Node Data Structure@{Node Data Structure}!NODE\_EDITOR\_FLAG@{NODE\_EDITOR\_FLAG}}}\Hypertarget{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0acb4410df9bfe0bd0ef7dc83b26fe77ca}\label{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0acb4410df9bfe0bd0ef7dc83b26fe77ca} 
+NODE\+\_\+\+EDITOR\+\_\+\+FLAG&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{group__NodeFunctions_gafa50314ea6ca719d2fcbbdaa33dd052a}\label{group__NodeFunctions_gafa50314ea6ca719d2fcbbdaa33dd052a} 
+\index{Node Data Structure@{Node Data Structure}!attribute@{attribute}}
+\index{attribute@{attribute}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{attribute}{attribute}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}}\texorpdfstring{$\ast$}{*} Node\+::attribute}
+
+The parameters associated with the behavior. \Hypertarget{group__NodeFunctions_gab9c00a78e2cb89d68c1d9a251c870444}\label{group__NodeFunctions_gab9c00a78e2cb89d68c1d9a251c870444} 
+\index{Node Data Structure@{Node Data Structure}!attributes\_count@{attributes\_count}}
+\index{attributes\_count@{attributes\_count}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{attributes\_count}{attributes\_count}}
+{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Node\+::attributes\+\_\+count}
+
+The number of parameters associated with the behavior. \Hypertarget{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}\label{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26} 
+\index{Node Data Structure@{Node Data Structure}!behavior@{behavior}}
+\index{behavior@{behavior}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{behavior}{behavior}}
+{\footnotesize\ttfamily \mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}}\texorpdfstring{$\ast$}{*} Node\+::behavior}
+
+The behavior associated with the node. \Hypertarget{group__NodeFunctions_ga3d857c2fdb25634fe92ca32ff006c233}\label{group__NodeFunctions_ga3d857c2fdb25634fe92ca32ff006c233} 
+\index{Node Data Structure@{Node Data Structure}!children@{children}}
+\index{children@{children}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{children}{children}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{classNode}{Node}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Node\+::children}
+
+An array of child nodes. \Hypertarget{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}\label{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0} 
+\index{Node Data Structure@{Node Data Structure}!flags@{flags}}
+\index{flags@{flags}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Node\+::flags}
+
+Flags indicating the state and properties of the node. \Hypertarget{group__NodeFunctions_ga1cf2ef86297b1bdfed11d030c0ed3dd2}\label{group__NodeFunctions_ga1cf2ef86297b1bdfed11d030c0ed3dd2} 
+\index{Node Data Structure@{Node Data Structure}!globalPos@{globalPos}}
+\index{globalPos@{globalPos}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{globalPos}{globalPos}}
+{\footnotesize\ttfamily vec3 Node\+::global\+Pos}
+
+The global position of the node. \Hypertarget{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}\label{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a} 
+\index{Node Data Structure@{Node Data Structure}!globalRot@{globalRot}}
+\index{globalRot@{globalRot}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{globalRot}{globalRot}}
+{\footnotesize\ttfamily vec3 Node\+::global\+Rot}
+
+The global rotation of the node. \Hypertarget{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}\label{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc} 
+\index{Node Data Structure@{Node Data Structure}!globalScale@{globalScale}}
+\index{globalScale@{globalScale}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{globalScale}{globalScale}}
+{\footnotesize\ttfamily vec3 Node\+::global\+Scale}
+
+The global scale of the node. \Hypertarget{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}\label{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531} 
+\index{Node Data Structure@{Node Data Structure}!length@{length}}
+\index{length@{length}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} Node\+::length}
+
+The number of child nodes. \Hypertarget{group__NodeFunctions_ga9cf70c2b354e11c49130331da4519864}\label{group__NodeFunctions_ga9cf70c2b354e11c49130331da4519864} 
+\index{Node Data Structure@{Node Data Structure}!object@{object}}
+\index{object@{object}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{object}{object}}
+{\footnotesize\ttfamily void\texorpdfstring{$\ast$}{*} Node\+::object}
+
+A pointer to an object associated with the node. \Hypertarget{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}\label{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92} 
+\index{Node Data Structure@{Node Data Structure}!parent@{parent}}
+\index{parent@{parent}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{parent}{parent}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{classNode}{Node}}\texorpdfstring{$\ast$}{*} Node\+::parent}
+
+A pointer to the parent node. \Hypertarget{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}\label{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411} 
+\index{Node Data Structure@{Node Data Structure}!pos@{pos}}
+\index{pos@{pos}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{pos}{pos}}
+{\footnotesize\ttfamily vec3 Node\+::pos}
+
+The position of the node. \Hypertarget{group__NodeFunctions_ga5406b91a30624b42976b4f87d3362081}\label{group__NodeFunctions_ga5406b91a30624b42976b4f87d3362081} 
+\index{Node Data Structure@{Node Data Structure}!root@{root}}
+\index{root@{root}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{root}{root}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{classNode}{Node}}\texorpdfstring{$\ast$}{*} Tree\+::root}
+
+The root node of the tree structure. \Hypertarget{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}\label{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066} 
+\index{Node Data Structure@{Node Data Structure}!rot@{rot}}
+\index{rot@{rot}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{rot}{rot}}
+{\footnotesize\ttfamily vec3 Node\+::rot}
+
+The rotation of the node. \Hypertarget{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}\label{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685} 
+\index{Node Data Structure@{Node Data Structure}!scale@{scale}}
+\index{scale@{scale}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{scale}{scale}}
+{\footnotesize\ttfamily vec3 Node\+::scale}
+
+The scale of the node. \Hypertarget{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}\label{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3} 
+\index{Node Data Structure@{Node Data Structure}!shader@{shader}}
+\index{shader@{shader}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{shader}{shader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} Node\+::shader}
+
+The shader associated with the node. \Hypertarget{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}\label{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516} 
+\index{Node Data Structure@{Node Data Structure}!type@{type}}
+\index{type@{type}!Node Data Structure@{Node Data Structure}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Node\+::type}
+
+The type of the node. 

@@ -1,0 +1,73 @@
+\doxysection{src/io/audio.c File Reference}
+\hypertarget{audio_8c}{}\label{audio_8c}\index{src/io/audio.c@{src/io/audio.c}}
+{\ttfamily \#include "{}../raptiquax.\+h"{}}\newline
+{\ttfamily \#include "{}../memory.\+h"{}}\newline
+{\ttfamily \#include "{}../settings.\+h"{}}\newline
+{\ttfamily \#include "{}audio.\+h"{}}\newline
+Include dependency graph for audio.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{audio_8c_aed0b0c574c1994f085c0b29b02a06d5a}{play\+\_\+sfx}} (const char \texorpdfstring{$\ast$}{*}const path, const int volume, const int loops)
+\item 
+void \mbox{\hyperlink{audio_8c_ab601c6b9c1088aab010f6db884bbd31d}{play\+\_\+music}} (const char \texorpdfstring{$\ast$}{*}const path, const int volume, const int loops)
+\item 
+void \mbox{\hyperlink{audio_8c_a721333addcbf76cb7147b9b91833e5ef}{refresh\+\_\+music\+\_\+volume}} ()
+\item 
+void \mbox{\hyperlink{audio_8c_a7a312a24cc4857272167d423ed10e78b}{fade\+\_\+out\+\_\+music}} (const int ms)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static Mix\+\_\+\+Music \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{audio_8c_a3a8b333a9cf9923a97f257d0406d7e1f}{current\+\_\+music}} = NULL
+\item 
+static int \mbox{\hyperlink{audio_8c_ae44d95eca82d54247ad6924b29fc4df4}{current\+\_\+music\+\_\+volume}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{audio_8c_a7a312a24cc4857272167d423ed10e78b}\label{audio_8c_a7a312a24cc4857272167d423ed10e78b} 
+\index{audio.c@{audio.c}!fade\_out\_music@{fade\_out\_music}}
+\index{fade\_out\_music@{fade\_out\_music}!audio.c@{audio.c}}
+\doxysubsubsection{\texorpdfstring{fade\_out\_music()}{fade\_out\_music()}}
+{\footnotesize\ttfamily void fade\+\_\+out\+\_\+music (\begin{DoxyParamCaption}\item[{const int}]{ms }\end{DoxyParamCaption})}
+
+\Hypertarget{audio_8c_ab601c6b9c1088aab010f6db884bbd31d}\label{audio_8c_ab601c6b9c1088aab010f6db884bbd31d} 
+\index{audio.c@{audio.c}!play\_music@{play\_music}}
+\index{play\_music@{play\_music}!audio.c@{audio.c}}
+\doxysubsubsection{\texorpdfstring{play\_music()}{play\_music()}}
+{\footnotesize\ttfamily void play\+\_\+music (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{path,  }\item[{const int}]{volume,  }\item[{const int}]{loops }\end{DoxyParamCaption})}
+
+\Hypertarget{audio_8c_aed0b0c574c1994f085c0b29b02a06d5a}\label{audio_8c_aed0b0c574c1994f085c0b29b02a06d5a} 
+\index{audio.c@{audio.c}!play\_sfx@{play\_sfx}}
+\index{play\_sfx@{play\_sfx}!audio.c@{audio.c}}
+\doxysubsubsection{\texorpdfstring{play\_sfx()}{play\_sfx()}}
+{\footnotesize\ttfamily void play\+\_\+sfx (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{path,  }\item[{const int}]{volume,  }\item[{const int}]{loops }\end{DoxyParamCaption})}
+
+\Hypertarget{audio_8c_a721333addcbf76cb7147b9b91833e5ef}\label{audio_8c_a721333addcbf76cb7147b9b91833e5ef} 
+\index{audio.c@{audio.c}!refresh\_music\_volume@{refresh\_music\_volume}}
+\index{refresh\_music\_volume@{refresh\_music\_volume}!audio.c@{audio.c}}
+\doxysubsubsection{\texorpdfstring{refresh\_music\_volume()}{refresh\_music\_volume()}}
+{\footnotesize\ttfamily void refresh\+\_\+music\+\_\+volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{audio_8c_a3a8b333a9cf9923a97f257d0406d7e1f}\label{audio_8c_a3a8b333a9cf9923a97f257d0406d7e1f} 
+\index{audio.c@{audio.c}!current\_music@{current\_music}}
+\index{current\_music@{current\_music}!audio.c@{audio.c}}
+\doxysubsubsection{\texorpdfstring{current\_music}{current\_music}}
+{\footnotesize\ttfamily Mix\+\_\+\+Music\texorpdfstring{$\ast$}{*} current\+\_\+music = NULL\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{audio_8c_ae44d95eca82d54247ad6924b29fc4df4}\label{audio_8c_ae44d95eca82d54247ad6924b29fc4df4} 
+\index{audio.c@{audio.c}!current\_music\_volume@{current\_music\_volume}}
+\index{current\_music\_volume@{current\_music\_volume}!audio.c@{audio.c}}
+\doxysubsubsection{\texorpdfstring{current\_music\_volume}{current\_music\_volume}}
+{\footnotesize\ttfamily int current\+\_\+music\+\_\+volume = 0\hspace{0.3cm}{\ttfamily [static]}}
+

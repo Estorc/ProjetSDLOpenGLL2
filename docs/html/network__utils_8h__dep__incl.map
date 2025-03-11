@@ -1,0 +1,13 @@
+<map id="src/io/socket/network_utils.h" name="src/io/socket/network_utils.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="276,5,436,45"/>
+<area shape="rect" id="Node000002" href="$socket_8h.html" title=" " alt="" coords="275,93,437,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="359,59,359,93,353,93,353,59"/>
+<area shape="rect" id="Node000003" href="$client_8c.html" title=" " alt="" coords="5,174,160,199"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="304,125,123,177,122,171,302,120"/>
+<area shape="rect" id="Node000004" href="$network__utils_8c.html" title=" " alt="" coords="184,167,344,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="334,130,288,169,284,164,330,126"/>
+<area shape="rect" id="Node000005" href="$server_8c.html" title=" " alt="" coords="369,174,527,199"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="382,126,436,172,433,176,378,130"/>
+<area shape="rect" id="Node000006" href="$chessboard_8h.html" title=" " alt="" coords="551,167,707,207"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="410,120,564,164,563,169,408,125"/>
+</map>

@@ -1,0 +1,14 @@
+<map id="BufferCollection" name="BufferCollection">
+<area shape="rect" id="Node000001" title="Structure to hold various buffer collections." alt="" coords="148,185,275,211"/>
+<area shape="rect" id="Node000002" href="$structLightingBuffer.html" title="Buffer structure to manage an array of lighting nodes." alt="" coords="5,97,119,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,127,192,183,190,187,93,132"/>
+<area shape="rect" id="Node000003" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="195,7,251,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="183,34,151,46,119,61,94,80,74,99,70,95,91,76,117,56,149,41,181,29"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="266,10,274,13,278,20,269,29,252,31,251,26,267,24,273,20,271,17,264,15"/>
+<area shape="rect" id="Node000004" href="$unionBehaviorAttribute.html" title=" " alt="" coords="143,97,280,123"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="199,44,188,60,187,69,189,78,201,95,197,98,185,80,182,69,184,58,195,41"/>
+<area shape="rect" id="Node000005" href="$structCollisionBuffer.html" title="Represents a buffer for collision shapes." alt="" coords="305,97,422,123"/>
+<area shape="poly" id="edge7_Node000005_Node000003" title=" " alt="" coords="263,36,299,56,351,95,348,99,297,61,260,41"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="222,84,226,73,227,52,224,33,229,33,232,52,231,74,227,85"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="332,132,233,187,231,183,330,127"/>
+</map>

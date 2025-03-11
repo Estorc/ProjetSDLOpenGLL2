@@ -1,0 +1,27 @@
+<map id="src/gui/frame.h" name="src/gui/frame.h">
+<area shape="rect" id="Node000001" title="GUI Frame and related structures for SDL and OpenGL project." alt="" coords="1197,5,1317,31"/>
+<area shape="rect" id="Node000002" href="$button_8class_8c.html" title="This file defines the Button class and its associated methods." alt="" coords="5,79,192,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1184,23,1010,28,767,37,488,55,204,81,193,83,192,78,204,76,487,49,767,32,1010,22,1184,18"/>
+<area shape="rect" id="Node000003" href="$checkbox_8class_8c.html" title="Implementation of the Checkbox class for the GUI framework." alt="" coords="216,79,403,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1183,25,850,42,634,59,415,81,403,83,403,78,414,76,633,53,850,37,1183,19"/>
+<area shape="rect" id="Node000004" href="$control__frame_8class_8c.html" title="This file defines the implementation of the control frame class." alt="" coords="427,79,613,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1184,27,936,47,626,81,614,83,613,78,625,76,935,42,1183,22"/>
+<area shape="rect" id="Node000005" href="$frame_8class_8c.html" title="This file defines the implementation of frame&#45;related functionalities." alt="" coords="637,79,824,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1184,32,836,81,825,83,824,78,836,76,1183,26"/>
+<area shape="rect" id="Node000006" href="$image__frame_8class_8c.html" title="This file contains the implementation of the ImageFrame class." alt="" coords="848,79,1035,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1199,37,1018,81,1017,76,1198,31"/>
+<area shape="rect" id="Node000007" href="$input__area_8class_8c.html" title="This file defines the InputArea class and its associated methods." alt="" coords="1059,79,1245,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1232,41,1179,81,1176,76,1229,37"/>
+<area shape="rect" id="Node000008" href="$label_8class_8c.html" title="This file defines the Label class and its associated functions." alt="" coords="1269,79,1456,119"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1285,37,1339,76,1336,81,1282,41"/>
+<area shape="rect" id="Node000009" href="$radiobutton_8class_8c.html" title="Implementation of the RadioButton class." alt="" coords="1480,79,1667,119"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1317,31,1498,76,1497,81,1316,37"/>
+<area shape="rect" id="Node000010" href="$selectlist_8class_8c.html" title="This file implements the functionality for a selectable list frame in the application." alt="" coords="1691,79,1877,119"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1331,26,1679,76,1691,78,1690,83,1678,81,1331,32"/>
+<area shape="rect" id="Node000011" href="$slider_8class_8c.html" title=" " alt="" coords="1901,79,2088,119"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1331,22,1579,42,1890,76,1901,78,1901,83,1889,81,1579,47,1331,27"/>
+<area shape="rect" id="Node000012" href="$main_8c.html" title=" " alt="" coords="2113,86,2202,111"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="1331,16,1475,17,1666,25,1883,44,1993,58,2101,76,2127,83,2126,88,2099,81,1992,63,1882,49,1666,31,1474,23,1331,21"/>
+<area shape="rect" id="Node000013" href="$raptiquax_8c.html" title=" " alt="" coords="2226,86,2345,111"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="1331,16,1492,18,1711,27,1962,45,2090,58,2215,76,2248,83,2247,89,2214,81,2089,64,1961,50,1711,32,1491,24,1331,22"/>
+</map>

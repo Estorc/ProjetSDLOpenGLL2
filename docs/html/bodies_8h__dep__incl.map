@@ -1,0 +1,107 @@
+<map id="src/physics/bodies.h" name="src/physics/bodies.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="462,5,615,31"/>
+<area shape="rect" id="Node000002" href="$buffer_8c.html" title=" " alt="" coords="281,79,375,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="493,37,363,81,361,76,491,32"/>
+<area shape="rect" id="Node000003" href="$scene__loader_8c.html" title=" " alt="" coords="5,159,163,185"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="507,40,432,81,411,95,388,107,138,162,137,157,386,101,408,90,429,76,504,35"/>
+<area shape="rect" id="Node000004" href="$main_8c.html" title=" " alt="" coords="187,159,277,185"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="518,42,480,75,432,106,268,162,266,157,429,102,477,70,515,38"/>
+<area shape="rect" id="Node000005" href="$collision_8c.html" title=" " alt="" coords="301,159,464,185"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="529,44,509,75,483,106,444,138,406,161,403,157,441,134,479,102,505,72,524,41"/>
+<area shape="rect" id="Node000006" href="$collision__util_8c.html" title=" " alt="" coords="488,152,640,192"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="545,44,563,151,558,152,540,44"/>
+<area shape="rect" id="Node000007" href="$physics_8c.html" title=" " alt="" coords="665,159,823,185"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="567,37,730,157,727,161,564,41"/>
+<area shape="rect" id="Node000008" href="$raptiquax_8c.html" title=" " alt="" coords="847,159,966,185"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="580,33,880,157,878,162,578,38"/>
+<area shape="rect" id="Node000009" href="$node_8h.html" title=" " alt="" coords="4707,79,4850,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="629,18,4707,86,4707,91,629,24"/>
+<area shape="poly" id="edge47_Node000009_Node000003" title=" " alt="" coords="4694,95,3804,98,2387,107,1653,114,994,124,478,138,296,146,175,155,131,162,130,157,174,149,295,140,478,132,994,119,1653,109,2387,101,3804,93,4694,90"/>
+<area shape="poly" id="edge48_Node000009_Node000004" title=" " alt="" coords="4694,96,2351,112,988,130,519,142,370,148,290,155,262,162,261,157,289,149,369,143,519,136,988,125,2351,107,4693,90"/>
+<area shape="poly" id="edge49_Node000009_Node000005" title=" " alt="" coords="4693,96,3856,99,2535,109,1238,126,758,139,589,146,476,155,431,162,430,157,476,149,588,141,758,134,1238,121,2534,103,3856,94,4693,90"/>
+<area shape="poly" id="edge50_Node000009_Node000006" title=" " alt="" coords="4694,96,3888,99,2621,108,1381,126,922,139,760,146,652,155,641,156,640,151,652,149,759,141,922,134,1381,121,2621,103,3887,94,4694,90"/>
+<area shape="poly" id="edge51_Node000009_Node000007" title=" " alt="" coords="4694,96,3920,100,2711,110,1530,128,1093,140,836,155,792,162,791,157,836,149,1093,135,1530,122,2711,105,3920,94,4694,90"/>
+<area shape="poly" id="edge52_Node000009_Node000008" title=" " alt="" coords="4694,95,3944,98,2781,106,2182,114,1645,124,1226,137,1077,146,979,155,944,162,943,157,978,149,1077,140,1225,132,1645,119,2182,108,2780,101,3944,93,4693,90"/>
+<area shape="rect" id="Node000010" href="$node_8class_8c.html" title="Implementation of the node class for the ProjetSDLOpenGLL2 project." alt="" coords="5878,159,6055,185"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="4864,91,5046,95,5295,104,5579,122,5867,149,5913,157,5912,162,5866,155,5579,127,5295,110,5046,100,4864,96"/>
+<area shape="rect" id="Node000011" href="$camera_8class_8c.html" title="This file contains the implementation of the Camera class." alt="" coords="6080,159,6317,185"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="4864,91,5374,105,5718,123,6068,149,6128,157,6128,162,6068,155,5718,128,5374,111,4864,96"/>
+<area shape="rect" id="Node000012" href="$box__cshape_8class_8c.html" title="This source file defines the BoxCShape class and its associated methods." alt="" coords="6342,152,6535,192"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="4864,89,5114,90,5476,97,5899,115,6116,130,6330,149,6342,151,6341,156,6329,155,6116,135,5898,121,5476,103,5113,96,4864,95"/>
+<area shape="rect" id="Node000013" href="$capsule__cshape_8class_8c.html" title="This file defines the implementation of the capsule shape class." alt="" coords="6559,152,6753,192"/>
+<area shape="poly" id="edge12_Node000009_Node000013" title=" " alt="" coords="4864,91,5696,109,6188,127,6393,137,6548,149,6559,151,6559,156,6548,155,6393,143,6188,132,5696,115,4864,97"/>
+<area shape="rect" id="Node000014" href="$cshape_8class_8c.html" title="This file defines the implementation of various CShape classes." alt="" coords="6777,152,6970,192"/>
+<area shape="poly" id="edge13_Node000009_Node000014" title=" " alt="" coords="4864,91,5797,107,6355,125,6589,136,6766,149,6777,151,6776,156,6765,155,6589,141,6355,130,5797,113,4864,96"/>
+<area shape="rect" id="Node000015" href="$mesh__cshape_8class_8c.html" title="This file defines the implementation of mesh shapes for the project." alt="" coords="6994,152,7187,192"/>
+<area shape="poly" id="edge14_Node000009_Node000015" title=" " alt="" coords="4864,91,5284,95,5897,105,6523,123,6785,135,6983,149,6994,151,6993,156,6982,155,6785,140,6523,128,5897,111,5284,100,4864,96"/>
+<area shape="rect" id="Node000016" href="$plane__cshape_8class_8c.html" title="This file defines the implementation of a plane shape class." alt="" coords="7211,152,7405,192"/>
+<area shape="poly" id="edge15_Node000009_Node000016" title=" " alt="" coords="4864,90,5322,94,5998,103,6691,121,6981,134,7200,149,7211,151,7211,156,7200,155,6981,139,6691,126,5997,109,5322,99,4864,96"/>
+<area shape="rect" id="Node000017" href="$ray__cshape_8class_8c.html" title="This file defines the implementation of ray&#45;casting shapes." alt="" coords="7429,152,7622,192"/>
+<area shape="poly" id="edge16_Node000009_Node000017" title=" " alt="" coords="4864,90,5357,93,6096,102,6857,119,7177,133,7418,149,7429,151,7428,156,7417,155,7176,138,6857,125,6096,107,5357,98,4864,96"/>
+<area shape="rect" id="Node000018" href="$sphere__cshape_8class_8c.html" title="This file contains the implementation of the SphereCShape class." alt="" coords="7646,152,7839,192"/>
+<area shape="poly" id="edge17_Node000009_Node000018" title=" " alt="" coords="4864,90,5393,92,6195,100,7025,117,7373,131,7635,149,7646,151,7645,156,7634,155,7372,137,7024,123,6195,105,5393,97,4864,95"/>
+<area shape="rect" id="Node000019" href="$button_8class_8c.html" title="This file defines the Button class and its associated methods." alt="" coords="7864,152,8051,192"/>
+<area shape="poly" id="edge18_Node000009_Node000019" title=" " alt="" coords="4864,90,5428,91,6294,97,6755,104,7191,115,7568,130,7852,149,7864,151,7864,156,7852,155,7568,135,7191,120,6755,110,6294,103,5428,96,4864,95"/>
+<area shape="rect" id="Node000020" href="$checkbox_8class_8c.html" title="Implementation of the Checkbox class for the GUI framework." alt="" coords="8075,152,8261,192"/>
+<area shape="poly" id="edge19_Node000009_Node000020" title=" " alt="" coords="4864,90,5462,90,6389,96,6884,103,7353,113,7758,129,8063,149,8075,151,8074,156,8062,155,7758,134,7353,119,6884,108,6389,101,5462,95,4864,95"/>
+<area shape="rect" id="Node000021" href="$control__frame_8class_8c.html" title="This file defines the implementation of the control frame class." alt="" coords="8285,152,8472,192"/>
+<area shape="poly" id="edge20_Node000009_Node000021" title=" " alt="" coords="4864,90,5496,89,6484,94,7013,101,7514,112,7947,128,8274,149,8285,151,8285,156,8273,155,7947,133,7514,117,7013,106,6484,99,5496,94,4864,95"/>
+<area shape="rect" id="Node000022" href="$frame_8class_8c.html" title="This file defines the implementation of frame&#45;related functionalities." alt="" coords="8496,152,8683,192"/>
+<area shape="poly" id="edge21_Node000009_Node000022" title=" " alt="" coords="4864,91,6729,108,7835,126,8243,137,8484,149,8496,151,8496,156,8484,155,8243,142,7835,131,6729,113,4864,96"/>
+<area shape="rect" id="Node000023" href="$image__frame_8class_8c.html" title="This file contains the implementation of the ImageFrame class." alt="" coords="8707,152,8893,192"/>
+<area shape="poly" id="edge22_Node000009_Node000023" title=" " alt="" coords="4864,90,6833,107,8006,125,8439,136,8695,149,8707,151,8706,156,8694,155,8439,141,8006,130,6833,112,4864,96"/>
+<area shape="rect" id="Node000024" href="$input__area_8class_8c.html" title="This file defines the InputArea class and its associated methods." alt="" coords="8917,152,9104,192"/>
+<area shape="poly" id="edge23_Node000009_Node000024" title=" " alt="" coords="4864,90,5670,95,6936,106,8176,124,8635,136,8906,149,8917,151,8917,156,8905,155,8635,141,8176,129,6936,111,5670,101,4864,96"/>
+<area shape="rect" id="Node000025" href="$label_8class_8c.html" title="This file defines the Label class and its associated functions." alt="" coords="9128,152,9315,192"/>
+<area shape="poly" id="edge24_Node000009_Node000025" title=" " alt="" coords="4864,90,5707,95,7039,105,8347,123,8831,135,9116,149,9128,151,9128,156,9116,155,8831,140,8347,128,7039,110,5707,100,4864,96"/>
+<area shape="rect" id="Node000026" href="$radiobutton_8class_8c.html" title="Implementation of the RadioButton class." alt="" coords="9339,152,9525,192"/>
+<area shape="poly" id="edge25_Node000009_Node000026" title=" " alt="" coords="4864,90,5744,94,7143,104,8518,122,9027,134,9327,149,9339,151,9338,156,9326,155,9027,140,8518,127,7143,110,5744,100,4864,96"/>
+<area shape="rect" id="Node000027" href="$selectlist_8class_8c.html" title="This file implements the functionality for a selectable list frame in the application." alt="" coords="9549,152,9736,192"/>
+<area shape="poly" id="edge26_Node000009_Node000027" title=" " alt="" coords="4864,90,5780,94,7245,103,8688,121,9223,134,9412,141,9538,149,9549,151,9549,156,9537,155,9412,147,9223,139,8688,127,7245,109,5780,99,4864,96"/>
+<area shape="rect" id="Node000028" href="$slider_8class_8c.html" title=" " alt="" coords="991,152,1177,192"/>
+<area shape="poly" id="edge27_Node000009_Node000028" title=" " alt="" coords="4694,96,2885,114,1817,131,1422,142,1190,155,1178,156,1177,151,1189,149,1422,137,1817,126,2885,108,4694,91"/>
+<area shape="rect" id="Node000029" href="$directional__light_8class_8c.html" title="This file contains the implementation of the directional light class." alt="" coords="1201,152,1380,192"/>
+<area shape="poly" id="edge28_Node000009_Node000029" title=" " alt="" coords="4694,96,2985,114,1981,132,1611,143,1392,155,1380,156,1380,151,1392,149,1610,137,1981,126,2985,109,4694,91"/>
+<area shape="rect" id="Node000030" href="$light_8class_8c.html" title="This file contains the implementation of the light class for the project." alt="" coords="1404,152,1580,192"/>
+<area shape="poly" id="edge29_Node000009_Node000030" title=" " alt="" coords="4694,95,4111,95,3212,100,2732,107,2279,118,1887,134,1592,155,1581,156,1580,151,1592,149,1887,128,2279,113,2732,102,3212,95,4111,89,4694,90"/>
+<area shape="rect" id="Node000031" href="$point__light_8class_8c.html" title="This file contains the implementation of the PointLight class." alt="" coords="1604,152,1780,192"/>
+<area shape="poly" id="edge30_Node000009_Node000031" title=" " alt="" coords="4693,95,4143,96,3302,102,2855,109,2432,120,2067,135,1792,155,1781,156,1780,151,1792,149,2067,130,2432,115,2855,104,3302,97,4142,90,4693,90"/>
+<area shape="rect" id="Node000032" href="$spot__light_8class_8c.html" title="This file contains the implementation of the SpotLight class." alt="" coords="1804,152,1980,192"/>
+<area shape="poly" id="edge31_Node000009_Node000032" title=" " alt="" coords="4694,95,4176,97,3394,104,2978,111,2586,122,2247,136,1992,155,1981,156,1980,151,1992,149,2247,131,2586,116,2978,106,3394,99,4176,91,4694,90"/>
+<area shape="rect" id="Node000033" href="$mesh_8class_8c.html" title="This file defines the implementation of the Mesh class." alt="" coords="2004,159,2228,185"/>
+<area shape="poly" id="edge32_Node000009_Node000033" title=" " alt="" coords="4693,96,4217,100,3507,110,2777,128,2471,140,2240,155,2182,162,2181,157,2240,149,2471,135,2777,123,3507,105,4217,95,4693,91"/>
+<area shape="rect" id="Node000034" href="$model_8class_8c.html" title="This file contains the implementation of the model class." alt="" coords="2252,159,2481,185"/>
+<area shape="poly" id="edge33_Node000009_Node000034" title=" " alt="" coords="4694,96,3623,113,2972,130,2699,141,2494,155,2434,162,2433,157,2493,149,2699,136,2972,125,3623,107,4694,91"/>
+<area shape="rect" id="Node000035" href="$area_8class_8c.html" title="This file handles the physics area nodes in the project." alt="" coords="2505,152,2695,192"/>
+<area shape="poly" id="edge34_Node000009_Node000035" title=" " alt="" coords="4693,96,4295,101,3721,112,3136,129,2892,141,2707,155,2695,156,2694,151,2706,149,2891,135,3136,124,3721,106,4295,96,4693,91"/>
+<area shape="rect" id="Node000036" href="$body_8class_8c.html" title="This file defines the body class for the physics engine." alt="" coords="2719,152,2908,192"/>
+<area shape="poly" id="edge35_Node000009_Node000036" title=" " alt="" coords="4693,96,3820,114,3302,131,3085,142,2922,155,2908,156,2908,151,2921,149,3085,137,3302,126,3820,109,4693,91"/>
+<area shape="rect" id="Node000037" href="$kinematic__body_8class_8c.html" title="This file defines the implementation of kinematic bodies for the physics engine." alt="" coords="2933,152,3155,192"/>
+<area shape="poly" id="edge36_Node000009_Node000037" title=" " alt="" coords="4694,95,4436,97,4059,105,3618,122,3391,137,3168,155,3156,156,3155,151,3168,149,3390,131,3618,117,4059,99,4436,91,4694,90"/>
+<area shape="rect" id="Node000038" href="$rigid__body_8class_8c.html" title="This source file defines the implementation of rigid body physics for the project." alt="" coords="3180,152,3369,192"/>
+<area shape="poly" id="edge37_Node000009_Node000038" title=" " alt="" coords="4693,95,4466,97,4141,105,3764,123,3571,137,3382,155,3370,156,3369,151,3381,149,3571,131,3764,117,4141,100,4466,92,4693,90"/>
+<area shape="rect" id="Node000039" href="$static__body_8class_8c.html" title="This file defines the implementation of static bodies in the physics engine." alt="" coords="3393,152,3588,192"/>
+<area shape="poly" id="edge38_Node000009_Node000039" title=" " alt="" coords="4694,96,4498,100,4227,110,3916,127,3600,155,3589,156,3588,151,3600,149,3915,122,4227,104,4498,95,4693,91"/>
+<area shape="rect" id="Node000040" href="$physical__node_8class_8c.html" title="This file contains the implementation of the PhysicalNode class." alt="" coords="3612,152,3801,192"/>
+<area shape="poly" id="edge39_Node000009_Node000040" title=" " alt="" coords="4694,97,4312,114,4065,130,3815,155,3802,156,3801,151,3814,149,4064,125,4312,108,4693,92"/>
+<area shape="rect" id="Node000041" href="$render__target_8class_8c.html" title="Framebuffer class implementation." alt="" coords="3826,152,4009,192"/>
+<area shape="poly" id="edge40_Node000009_Node000041" title=" " alt="" coords="4694,99,4396,118,4209,134,4022,155,4009,156,4009,151,4021,149,4209,129,4395,113,4693,94"/>
+<area shape="rect" id="Node000042" href="$scene_8class_8c.html" title="This file contains the implementation of the scene class." alt="" coords="4033,159,4260,185"/>
+<area shape="poly" id="edge41_Node000009_Node000042" title=" " alt="" coords="4694,104,4272,155,4221,162,4220,157,4272,149,4693,99"/>
+<area shape="rect" id="Node000043" href="$skybox_8class_8c.html" title="This file contains the implementation of the Skybox class." alt="" coords="4284,159,4519,185"/>
+<area shape="poly" id="edge42_Node000009_Node000043" title=" " alt="" coords="4711,109,4457,162,4456,157,4710,104"/>
+<area shape="rect" id="Node000044" href="$texture_8class_8c.html" title="This file contains the implementation of texture&#45;related functionalities." alt="" coords="4543,159,4777,185"/>
+<area shape="poly" id="edge43_Node000009_Node000044" title=" " alt="" coords="4751,114,4679,161,4676,157,4748,110"/>
+<area shape="rect" id="Node000045" href="$textured__mesh_8class_8c.html" title="This file contains the implementation of the TexturedMesh class." alt="" coords="4801,152,4996,192"/>
+<area shape="poly" id="edge44_Node000009_Node000045" title=" " alt="" coords="4809,109,4871,150,4868,154,4806,114"/>
+<area shape="rect" id="Node000046" href="$input_8c.html" title=" " alt="" coords="5021,159,5126,185"/>
+<area shape="poly" id="edge45_Node000009_Node000046" title=" " alt="" coords="4838,105,5009,149,5035,157,5033,162,5007,155,4836,110"/>
+<area shape="rect" id="Node000047" href="$node__loader_8c.html" title=" " alt="" coords="5150,159,5301,185"/>
+<area shape="poly" id="edge46_Node000009_Node000047" title=" " alt="" coords="4864,103,5139,149,5175,157,5174,162,5138,155,4863,108"/>
+<area shape="rect" id="Node000048" href="$camera_8c.html" title=" " alt="" coords="5325,159,5475,185"/>
+<area shape="poly" id="edge53_Node000009_Node000048" title=" " alt="" coords="4864,97,5070,117,5314,149,5352,157,5351,162,5313,155,5069,122,4864,102"/>
+<area shape="rect" id="Node000049" href="$framebuffer_8c.html" title=" " alt="" coords="5500,159,5679,185"/>
+<area shape="poly" id="edge54_Node000009_Node000049" title=" " alt="" coords="4864,94,5142,113,5315,129,5488,149,5534,157,5533,162,5488,155,5314,134,5142,119,4864,100"/>
+<area shape="rect" id="Node000050" href="$lighting_8c.html" title=" " alt="" coords="5703,159,5854,185"/>
+<area shape="poly" id="edge55_Node000009_Node000050" title=" " alt="" coords="4864,91,5019,96,5225,106,5457,123,5691,149,5732,157,5731,162,5690,155,5457,129,5225,111,5019,102,4864,97"/>
+</map>

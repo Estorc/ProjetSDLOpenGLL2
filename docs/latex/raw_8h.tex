@@ -1,0 +1,31 @@
+\doxysection{src/storage/raw.h File Reference}
+\hypertarget{raw_8h}{}\label{raw_8h}\index{src/storage/raw.h@{src/storage/raw.h}}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{raw_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{raw_8h_a6154ab4bd717caa9740f2780239b6233}{NEW\+\_\+\+RAW}}(type,  value)~    ((type \texorpdfstring{$\ast$}{*}) memcpy(malloc(sizeof(type)), \&(type)\{value\}, sizeof(type)))
+\item 
+\#define \mbox{\hyperlink{raw_8h_a36e402057b28e948d41ada8476bff204}{GET\+\_\+\+RAW}}(type,  value)~    value ? (\texorpdfstring{$\ast$}{*}((type \texorpdfstring{$\ast$}{*}) value)) \+: 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{raw_8h_a36e402057b28e948d41ada8476bff204}\label{raw_8h_a36e402057b28e948d41ada8476bff204} 
+\index{raw.h@{raw.h}!GET\_RAW@{GET\_RAW}}
+\index{GET\_RAW@{GET\_RAW}!raw.h@{raw.h}}
+\doxysubsubsection{\texorpdfstring{GET\_RAW}{GET\_RAW}}
+{\footnotesize\ttfamily \#define GET\+\_\+\+RAW(\begin{DoxyParamCaption}\item[{}]{type,  }\item[{}]{value }\end{DoxyParamCaption})~    value ? (\texorpdfstring{$\ast$}{*}((type \texorpdfstring{$\ast$}{*}) value)) \+: 0}
+
+\Hypertarget{raw_8h_a6154ab4bd717caa9740f2780239b6233}\label{raw_8h_a6154ab4bd717caa9740f2780239b6233} 
+\index{raw.h@{raw.h}!NEW\_RAW@{NEW\_RAW}}
+\index{NEW\_RAW@{NEW\_RAW}!raw.h@{raw.h}}
+\doxysubsubsection{\texorpdfstring{NEW\_RAW}{NEW\_RAW}}
+{\footnotesize\ttfamily \#define NEW\+\_\+\+RAW(\begin{DoxyParamCaption}\item[{}]{type,  }\item[{}]{value }\end{DoxyParamCaption})~    ((type \texorpdfstring{$\ast$}{*}) memcpy(malloc(sizeof(type)), \&(type)\{value\}, sizeof(type)))}
+

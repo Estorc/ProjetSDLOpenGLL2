@@ -1,0 +1,17 @@
+<map id="src/physics/bodies.h" name="src/physics/bodies.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="77,5,230,31"/>
+<area shape="rect" id="Node000002" href="$math__util_8h.html" title=" " alt="" coords="5,79,152,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,33,103,71,99,67,140,29"/>
+<area shape="rect" id="Node000003" href="$model_8h.html" title="Defines structures and functions for handling 3D models and their properties." alt="" coords="177,79,279,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="167,29,208,67,204,71,163,33"/>
+<area shape="rect" id="Node000004" href="$shader_8h.html" title=" " alt="" coords="117,159,195,185"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="219,106,178,151,174,147,215,102"/>
+<area shape="rect" id="Node000005" href="$model__loader_8h.html" title=" " alt="" coords="219,152,381,192"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="241,102,275,140,271,144,237,106"/>
+<area shape="rect" id="Node000006" href="$obj__loader_8h.html" title=" " alt="" coords="123,240,224,265"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="271,194,205,235,202,231,268,190"/>
+<area shape="rect" id="Node000007" href="$mtl__loader_8h.html" title=" " alt="" coords="249,240,351,265"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="303,192,303,226,297,226,297,192"/>
+<area shape="rect" id="Node000008" href="$fbx__loader_8h.html" title=" " alt="" coords="375,240,478,265"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="332,190,398,231,395,235,329,194"/>
+</map>

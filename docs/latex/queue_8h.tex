@@ -1,0 +1,36 @@
+\doxysection{src/storage/queue.h File Reference}
+\hypertarget{queue_8h}{}\label{queue_8h}\index{src/storage/queue.h@{src/storage/queue.h}}
+
+
+\doxylink{structQueue}{Queue} data structure and related operations.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{queue_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structQueue}{Queue}}
+\begin{DoxyCompactList}\small\item\em A node in the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{group__Queue_ga53aa2032235e11113359f4e2aeb06ff0}{queue\+\_\+is\+\_\+empty}} (\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}queue)
+\begin{DoxyCompactList}\small\item\em Checks if the queue is empty. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Queue_ga9c11e93de7c4691d5d5f65378475fd39}{queue\+\_\+push}} (\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}queue, void \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Pushes data onto the queue. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__Queue_gacd49f498a346dfa8fef5c0de8862d41e}{queue\+\_\+pop}} (\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}queue)
+\begin{DoxyCompactList}\small\item\em Pops data from the queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Queue_ga42c7cc8caeb6778234887511db8fba40}{queue\+\_\+free}} (\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}queue)
+\begin{DoxyCompactList}\small\item\em Frees the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{structQueue}{Queue} data structure and related operations. 
+
+This file contains the definition of a simple queue data structure and functions to manipulate it. The queue is implemented as a singly linked list. 

@@ -1,0 +1,9 @@
+<map id="CollectedNode" name="CollectedNode">
+<area shape="rect" id="Node000001" title="Represents a node collected by an area." alt="" coords="5,97,123,123"/>
+<area shape="rect" id="Node000002" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="120,7,176,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,43,99,60,72,99,68,96,95,57,117,38"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="191,10,199,13,203,20,194,29,177,31,176,26,192,24,197,20,195,17,189,15"/>
+<area shape="rect" id="Node000003" href="$unionBehaviorAttribute.html" title=" " alt="" coords="147,97,285,123"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="143,46,142,60,146,72,159,85,175,95,173,100,155,90,142,75,137,61,137,46"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="201,86,185,60,160,35,164,31,189,57,206,83"/>
+</map>

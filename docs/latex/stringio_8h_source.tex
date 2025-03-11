@@ -1,0 +1,39 @@
+\doxysection{stringio.\+h}
+\hypertarget{stringio_8h_source}{}\label{stringio_8h_source}\index{src/io/stringio.h@{src/io/stringio.h}}
+\mbox{\hyperlink{stringio_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ STRINGIO\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ STRINGIO\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ strtok\_s\ strtok\_s}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ strtok\_r\ strtok\_s}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ strtok\_s\ strtok\_r}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ strtok\_r\ strtok\_r}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00041\ \ \textcolor{keywordtype}{char}\ *\ \mbox{\hyperlink{group__StringIO_ga9f99c5cbcf6052c57972f2044ce260ab}{read\_filef}}(FILE\ *\ file);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{char}\ *\ \mbox{\hyperlink{group__StringIO_ga1e0205abb275b15436fa03c89899e4bb}{read\_file}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ path);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{char}\ *\ \mbox{\hyperlink{group__StringIO_ga5c0319e26f420cd9750b2ecbec8b50a3}{get\_folder\_path}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ fullpath);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{char}\ *\ \mbox{\hyperlink{group__StringIO_ga1d25b14b036624d6e8a205b10c3afa54}{convert\_path}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ path);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{char}\ *\ \mbox{\hyperlink{group__StringIO_gab2e99bc76bbf988bfb786dc04be63e4d}{concat\_path}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ path1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ path2);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00108\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__StringIO_ga5983fae6615beba7c359451e573f0984}{find\_string\_index}}(\textcolor{keywordtype}{char}\ *str,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ **str\_list,\ \textcolor{keywordtype}{int}\ list\_size);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00120\ \textcolor{keywordtype}{char}\ *\ \mbox{\hyperlink{group__StringIO_gafafc618ca8738649abb413a58c22486e}{format\_escaped\_newlines}}(\textcolor{keywordtype}{char}\ *str);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00132\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__StringIO_ga2726b5bf448b63de929eece392ae8e70}{is\_utf8\_start\_byte}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00143\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__StringIO_gaba7a0b4a178c6cb2fa43a9f14162835e}{remove\_last\_utf8\_char}}(\textcolor{keywordtype}{char}\ *inputBuffer);}
+\DoxyCodeLine{00144\ }
+ \textcolor{comment}{// end of StringIO group}\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

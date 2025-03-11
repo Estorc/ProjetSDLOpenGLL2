@@ -1,0 +1,27 @@
+<map id="BoxCShape" name="BoxCShape">
+<area shape="rect" id="Node000001" title=" " alt="" coords="118,479,214,504"/>
+<area shape="rect" id="Node000002" href="$classCShape.html" title=" " alt="" coords="5,391,76,416"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,422,150,476,147,481,67,426"/>
+<area shape="rect" id="Node000003" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="79,301,135,326"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="93,338,52,392,47,389,88,335"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="150,303,158,306,162,314,153,323,136,324,135,319,151,318,157,313,155,311,148,308"/>
+<area shape="rect" id="Node000004" href="$unionBehaviorAttribute.html" title=" " alt="" coords="100,391,237,416"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="98,339,96,353,99,365,111,379,128,388,125,393,108,383,94,368,90,353,93,338"/>
+<area shape="rect" id="Node000005" href="$classModel.html" title="Structure representing a 3D model." alt="" coords="261,391,324,416"/>
+<area shape="poly" id="edge7_Node000005_Node000003" title=" " alt="" coords="149,324,218,350,251,369,279,388,276,393,249,373,216,354,148,329"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="154,380,137,354,116,328,120,324,141,350,158,377"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="266,426,185,481,182,476,263,422"/>
+<area shape="rect" id="Node000006" href="$structModelData.html" title="Structure representing the data of a 3D model." alt="" coords="247,301,341,326"/>
+<area shape="poly" id="edge8_Node000005_Node000006" title=" " alt="" coords="296,340,296,390,290,390,291,340"/>
+<area shape="rect" id="Node000007" href="$structMaterial.html" title="Structure representing a material with various properties." alt="" coords="137,123,213,148"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="161,161,145,198,144,217,150,235,169,258,194,276,221,289,248,299,246,304,219,294,191,280,165,262,145,237,139,217,140,197,156,159"/>
+<area shape="rect" id="Node000008" href="$structModelObjectData.html" title="Structure representing the data of a 3D model object." alt="" coords="227,211,361,236"/>
+<area shape="poly" id="edge11_Node000008_Node000007" title=" " alt="" coords="204,154,279,208,276,213,201,158"/>
+<area shape="poly" id="edge10_Node000006_Node000008" title=" " alt="" coords="297,250,297,300,291,300,291,250"/>
+<area shape="rect" id="Node000009" href="$structModelAnimation.html" title="Structure representing the data of a 3D model animation." alt="" coords="385,211,515,236"/>
+<area shape="poly" id="edge12_Node000006_Node000009" title=" " alt="" coords="419,245,316,303,313,298,416,240"/>
+<area shape="rect" id="Node000010" href="$structBone.html" title="Structure representing a bone in a 3D model." alt="" coords="423,123,477,148"/>
+<area shape="poly" id="edge13_Node000009_Node000010" title=" " alt="" coords="453,162,453,210,447,210,447,162"/>
+<area shape="rect" id="Node000011" href="$structModelKeyframe.html" title="Structure representing the data of a 3D model keyframe." alt="" coords="387,5,513,31"/>
+<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="453,44,453,123,447,123,447,44"/>
+</map>

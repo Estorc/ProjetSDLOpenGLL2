@@ -1,0 +1,42 @@
+\doxysection{src/render/framebuffer.h File Reference}
+\hypertarget{framebuffer_8h}{}\label{framebuffer_8h}\index{src/render/framebuffer.h@{src/render/framebuffer.h}}
+{\ttfamily \#include "{}../io/input.\+h"{}}\newline
+Include dependency graph for framebuffer.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{framebuffer_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{framebuffer_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{classRenderTarget}{Render\+Target}}
+\begin{DoxyCompactList}\small\item\em A structure to handle render targets. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structMSAA}{MSAA}}
+\begin{DoxyCompactList}\small\item\em A structure to handle Multi-\/\+Sample Anti-\/\+Aliasing (\doxylink{structMSAA}{MSAA}) framebuffers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned int \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}}
+\begin{DoxyCompactList}\small\item\em Alias for an unsigned int representing a \doxylink{classFrame}{Frame} Buffer \doxylink{structObject}{Object}. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}} \mbox{\hyperlink{group__Framebuffer_gab75cdf3b36517627dfe9b6029e00129d}{Frame\+Buffer}}
+\begin{DoxyCompactList}\small\item\em Alias for FBO, representing a \doxylink{classFrame}{Frame} Buffer \doxylink{structObject}{Object}. \end{DoxyCompactList}\item 
+typedef unsigned int \mbox{\hyperlink{group__Framebuffer_ga5ccf15e59bc43f1030c39f6951deb862}{RBO}}
+\begin{DoxyCompactList}\small\item\em Alias for an unsigned int representing a Render Buffer \doxylink{structObject}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__Framebuffer_gaf612536a5e3ec772e9bede8b62b37f92}{create\+\_\+msaa\+\_\+framebuffer}} (\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}{msaa}})
+\begin{DoxyCompactList}\small\item\em Creates an \doxylink{structMSAA}{MSAA} framebuffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_ga61ecc0fe7012195a1a406b36c766d45c}{free\+\_\+msaa\+\_\+framebuffer}} (\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}{msaa}})
+\begin{DoxyCompactList}\small\item\em Frees the resources associated with an \doxylink{structMSAA}{MSAA} framebuffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_ga38295e04feba1f829d93bacadffa8394}{resize\+\_\+msaa\+\_\+framebuffer}} (\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}{msaa}})
+\begin{DoxyCompactList}\small\item\em Resizes an \doxylink{structMSAA}{MSAA} framebuffer. \end{DoxyCompactList}\end{DoxyCompactItemize}

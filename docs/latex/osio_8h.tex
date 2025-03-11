@@ -1,0 +1,33 @@
+\doxysection{src/io/osio.h File Reference}
+\hypertarget{osio_8h}{}\label{osio_8h}\index{src/io/osio.h@{src/io/osio.h}}
+
+
+File operations and error handling for the project.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{osio_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group__OSIO_ga13b0479e5e15d717ef71927639b2822f}{osio\+\_\+save\+\_\+file}} (char \texorpdfstring{$\ast$}{*}path, char \texorpdfstring{$\ast$}{*}relative\+Path, char \texorpdfstring{$\ast$}{*}filter)
+\begin{DoxyCompactList}\small\item\em Saves a file to the specified path with a given filter. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__OSIO_ga054945d77398e3be399fdb8398d0f4ef}{osio\+\_\+open\+\_\+file}} (char \texorpdfstring{$\ast$}{*}path, char \texorpdfstring{$\ast$}{*}relative\+Path, char \texorpdfstring{$\ast$}{*}filter)
+\begin{DoxyCompactList}\small\item\em Opens a file from the specified path with a given filter. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__OSIO_gadc303caa72b5aed4b43ffa8f34f0375f}{osio\+\_\+print\+\_\+error}} (char \texorpdfstring{$\ast$}{*}msg)
+\begin{DoxyCompactList}\small\item\em Prints an error message to the standard error output. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__OSIO_ga2c057d7941c6df59458be2230e3e7f88}{update\+\_\+cwd}} ()
+\begin{DoxyCompactList}\small\item\em Updates the current working directory. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__OSIO_ga6f9da097d97bc24c4c4bf7b2996331d0}{absolute\+\_\+path\+\_\+to\+\_\+relative}} (char \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Converts an absolute file path to a relative path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File operations and error handling for the project. 
+
+This header file contains declarations for functions that handle file saving, opening, error printing, and path manipulations. 

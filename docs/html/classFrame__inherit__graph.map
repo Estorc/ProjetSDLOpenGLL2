@@ -1,0 +1,23 @@
+<map id="Frame" name="Frame">
+<area shape="rect" id="Node000001" title="Represents a frame." alt="" coords="439,79,501,104"/>
+<area shape="rect" id="Node000003" href="$classButton.html" title="Represents a button." alt="" coords="135,152,200,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="425,105,212,155,201,157,200,152,211,149,424,100"/>
+<area shape="rect" id="Node000007" href="$classControlFrame.html" title=" " alt="" coords="224,152,335,177"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="427,111,311,154,310,149,426,106"/>
+<area shape="rect" id="Node000008" href="$classImageFrame.html" title="Represents an image frame." alt="" coords="359,152,463,177"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="454,116,423,154,419,150,450,113"/>
+<area shape="rect" id="Node000009" href="$classInputArea.html" title="Represents an input area." alt="" coords="487,152,573,177"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="491,113,522,150,518,154,487,116"/>
+<area shape="rect" id="Node000010" href="$classLabel.html" title="Represents a label." alt="" coords="597,152,655,177"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="509,107,602,149,599,154,506,112"/>
+<area shape="rect" id="Node000011" href="$classSelectList.html" title="Represents a selectable list." alt="" coords="679,152,765,177"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="515,103,682,149,681,155,514,108"/>
+<area shape="rect" id="Node000002" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="442,5,498,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="473,44,473,79,467,79,467,44"/>
+<area shape="rect" id="Node000004" href="$classCheckBox.html" title=" " alt="" coords="5,225,92,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="138,187,69,227,67,223,135,182"/>
+<area shape="rect" id="Node000005" href="$classRadioButton.html" title="Represents a radio button." alt="" coords="116,225,219,251"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="170,191,170,225,165,225,165,191"/>
+<area shape="rect" id="Node000006" href="$classSlider.html" title=" " alt="" coords="243,225,302,251"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="197,183,257,223,254,227,194,187"/>
+</map>

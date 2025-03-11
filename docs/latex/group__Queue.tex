@@ -1,0 +1,107 @@
+\doxysection{Queue Data Structure}
+\hypertarget{group__Queue}{}\label{group__Queue}\index{Queue Data Structure@{Queue Data Structure}}
+
+
+A simple queue data structure.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structQueue}{Queue}}
+\begin{DoxyCompactList}\small\item\em A node in the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{group__Queue_ga53aa2032235e11113359f4e2aeb06ff0}{queue\+\_\+is\+\_\+empty}} (\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}queue)
+\begin{DoxyCompactList}\small\item\em Checks if the queue is empty. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Queue_ga9c11e93de7c4691d5d5f65378475fd39}{queue\+\_\+push}} (\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}queue, void \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Pushes data onto the queue. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__Queue_gacd49f498a346dfa8fef5c0de8862d41e}{queue\+\_\+pop}} (\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}queue)
+\begin{DoxyCompactList}\small\item\em Pops data from the queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Queue_ga42c7cc8caeb6778234887511db8fba40}{queue\+\_\+free}} (\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}queue)
+\begin{DoxyCompactList}\small\item\em Frees the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple queue data structure. 
+
+This module provides a simple queue data structure and functions to manipulate it. The queue is implemented as a singly linked list where each node contains a pointer to the next node and a pointer to the data. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__Queue_ga42c7cc8caeb6778234887511db8fba40}\label{group__Queue_ga42c7cc8caeb6778234887511db8fba40} 
+\index{Queue Data Structure@{Queue Data Structure}!queue\_free@{queue\_free}}
+\index{queue\_free@{queue\_free}!Queue Data Structure@{Queue Data Structure}}
+\doxysubsubsection{\texorpdfstring{queue\_free()}{queue\_free()}}
+{\footnotesize\ttfamily void queue\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{queue }\end{DoxyParamCaption})}
+
+
+
+Frees the queue. 
+
+This function frees all the nodes in the queue. The data stored in the nodes is not freed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & Pointer to the queue to be freed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__Queue_ga53aa2032235e11113359f4e2aeb06ff0}\label{group__Queue_ga53aa2032235e11113359f4e2aeb06ff0} 
+\index{Queue Data Structure@{Queue Data Structure}!queue\_is\_empty@{queue\_is\_empty}}
+\index{queue\_is\_empty@{queue\_is\_empty}!Queue Data Structure@{Queue Data Structure}}
+\doxysubsubsection{\texorpdfstring{queue\_is\_empty()}{queue\_is\_empty()}}
+{\footnotesize\ttfamily bool queue\+\_\+is\+\_\+empty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{queue }\end{DoxyParamCaption})}
+
+
+
+Checks if the queue is empty. 
+
+This function checks if the given queue is empty.
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & Pointer to the queue to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the queue is empty, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{group__Queue_gacd49f498a346dfa8fef5c0de8862d41e}\label{group__Queue_gacd49f498a346dfa8fef5c0de8862d41e} 
+\index{Queue Data Structure@{Queue Data Structure}!queue\_pop@{queue\_pop}}
+\index{queue\_pop@{queue\_pop}!Queue Data Structure@{Queue Data Structure}}
+\doxysubsubsection{\texorpdfstring{queue\_pop()}{queue\_pop()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} queue\+\_\+pop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{queue }\end{DoxyParamCaption})}
+
+
+
+Pops data from the queue. 
+
+This function removes the node at the front of the queue and returns the data stored in that node. If the queue is empty, the behavior is undefined.
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & Pointer to the queue to pop data from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the data stored in the node that was removed from the queue. 
+\end{DoxyReturn}
+\Hypertarget{group__Queue_ga9c11e93de7c4691d5d5f65378475fd39}\label{group__Queue_ga9c11e93de7c4691d5d5f65378475fd39} 
+\index{Queue Data Structure@{Queue Data Structure}!queue\_push@{queue\_push}}
+\index{queue\_push@{queue\_push}!Queue Data Structure@{Queue Data Structure}}
+\doxysubsubsection{\texorpdfstring{queue\_push()}{queue\_push()}}
+{\footnotesize\ttfamily void queue\+\_\+push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{queue,  }\item[{void \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Pushes data onto the queue. 
+
+This function adds a new node with the given data to the end of the queue.
+
+
+\begin{DoxyParams}{Parameters}
+{\em queue} & Pointer to the queue to push data onto. \\
+\hline
+{\em data} & Pointer to the data to be added to the queue. \\
+\hline
+\end{DoxyParams}

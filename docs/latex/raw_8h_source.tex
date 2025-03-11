@@ -1,0 +1,12 @@
+\doxysection{raw.\+h}
+\hypertarget{raw_8h_source}{}\label{raw_8h_source}\index{src/storage/raw.h@{src/storage/raw.h}}
+\mbox{\hyperlink{raw_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ NEW\_RAW(type,\ value)\ \(\backslash\)}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\ \ \ \ ((type\ *)\ memcpy(malloc(sizeof(type)),\ \&(type)\{value\},\ sizeof(type)))}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ GET\_RAW(type,\ value)\ \(\backslash\)}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ value\ ?\ (*((type\ *)\ value))\ :\ 0}}
+
+\end{DoxyCode}

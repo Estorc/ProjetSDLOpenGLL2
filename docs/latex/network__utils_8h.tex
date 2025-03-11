@@ -1,0 +1,125 @@
+\doxysection{src/io/socket/network\+\_\+utils.h File Reference}
+\hypertarget{network__utils_8h}{}\label{network__utils_8h}\index{src/io/socket/network\_utils.h@{src/io/socket/network\_utils.h}}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{network__utils_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{network__utils_8h_a22d98471c444d26015e3e9180b244ffb}{MSG\+\_\+\+TERMINATOR}}~\textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{network__utils_8h_acf605ccd92ad4a7e013b0d7375b06abd}{initiate\+\_\+socket}} ()
+\item 
+void \mbox{\hyperlink{network__utils_8h_ac902976d35625b4df4b94f05adb01325}{close\+\_\+socket}} (int sock)
+\item 
+struct \mbox{\hyperlink{structsocket__request__listener}{socket\+\_\+request\+\_\+listener}} \mbox{\hyperlink{network__utils_8h_a138ecaa3d26920f09aa7ffaa2e6cabdc}{create\+\_\+socket\+\_\+request\+\_\+listener}} (int sock)
+\item 
+int \mbox{\hyperlink{network__utils_8h_afe22087da859cfcf574fd050fc54f961}{socket\+\_\+request\+\_\+listen}} (struct \mbox{\hyperlink{structsocket__request__listener}{socket\+\_\+request\+\_\+listener}} \texorpdfstring{$\ast$}{*}listener, int server\+\_\+sock, int timeout)
+\item 
+int \mbox{\hyperlink{network__utils_8h_a05506af18e73fbfe3f6a668573555825}{socket\+\_\+request\+\_\+receive}} (struct \mbox{\hyperlink{structsocket__request__listener}{socket\+\_\+request\+\_\+listener}} \texorpdfstring{$\ast$}{*}listener, int client\+\_\+sock, char \texorpdfstring{$\ast$}{*}buffer, int size, int timeout, int flags)
+\item 
+struct \mbox{\hyperlink{structpeer}{peer}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{network__utils_8h_ad81e13cf1d18c3de7468106623d5aaec}{create\+\_\+peer}} (int socket)
+\item 
+int \mbox{\hyperlink{network__utils_8h_a4da562a4381af026360e407f1927b802}{receive\+\_\+message}} (void \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structpeer}{peer}}, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}buffer, int size, int timeout, int flags)
+\item 
+int \mbox{\hyperlink{network__utils_8h_a9986359c3d46f8576db45d383b9a267f}{read\+\_\+messages}} (int bytes\+\_\+received, char \texorpdfstring{$\ast$}{*}msg\+\_\+buffer, void \texorpdfstring{$\ast$}{*}p)
+\item 
+int \mbox{\hyperlink{network__utils_8h_a0844480fa8f2436a87474b0432e07644}{send\+\_\+message}} (int socket, const char \texorpdfstring{$\ast$}{*}message, int flags)
+\item 
+void \mbox{\hyperlink{network__utils_8h_a81e49c3af43ec4fee7c4544d0dad6d3b}{remove\+\_\+message\+\_\+handler\+\_\+by\+\_\+index}} (void \texorpdfstring{$\ast$}{*}p, int index)
+\item 
+void \mbox{\hyperlink{network__utils_8h_af253bdc748298077cb65b62659426feb}{remove\+\_\+message\+\_\+handling}} (void \texorpdfstring{$\ast$}{*}p, char \texorpdfstring{$\ast$}{*}msg)
+\item 
+void \mbox{\hyperlink{network__utils_8h_a7046a330569733a062e10db837e25bbe}{add\+\_\+message\+\_\+handler}} (void \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structpeer}{peer}}, char \texorpdfstring{$\ast$}{*}msg, int(\texorpdfstring{$\ast$}{*}callback)(int, char \texorpdfstring{$\ast$}{*}, void \texorpdfstring{$\ast$}{*}, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}), int lifespan, int argc, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{network__utils_8h_a22d98471c444d26015e3e9180b244ffb}\label{network__utils_8h_a22d98471c444d26015e3e9180b244ffb} 
+\index{network\_utils.h@{network\_utils.h}!MSG\_TERMINATOR@{MSG\_TERMINATOR}}
+\index{MSG\_TERMINATOR@{MSG\_TERMINATOR}!network\_utils.h@{network\_utils.h}}
+\doxysubsubsection{\texorpdfstring{MSG\_TERMINATOR}{MSG\_TERMINATOR}}
+{\footnotesize\ttfamily \#define MSG\+\_\+\+TERMINATOR~\textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{}}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{network__utils_8h_a7046a330569733a062e10db837e25bbe}\label{network__utils_8h_a7046a330569733a062e10db837e25bbe} 
+\index{network\_utils.h@{network\_utils.h}!add\_message\_handler@{add\_message\_handler}}
+\index{add\_message\_handler@{add\_message\_handler}!network\_utils.h@{network\_utils.h}}
+\doxysubsubsection{\texorpdfstring{add\_message\_handler()}{add\_message\_handler()}}
+{\footnotesize\ttfamily void add\+\_\+message\+\_\+handler (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{peer,  }\item[{char \texorpdfstring{$\ast$}{*}}]{msg,  }\item[{int(\texorpdfstring{$\ast$}{*})(int, char \texorpdfstring{$\ast$}{*}, void \texorpdfstring{$\ast$}{*}, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*})}]{callback,  }\item[{int}]{lifespan,  }\item[{int}]{argc,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+\Hypertarget{network__utils_8h_ac902976d35625b4df4b94f05adb01325}\label{network__utils_8h_ac902976d35625b4df4b94f05adb01325} 
+\index{network\_utils.h@{network\_utils.h}!close\_socket@{close\_socket}}
+\index{close\_socket@{close\_socket}!network\_utils.h@{network\_utils.h}}
+\doxysubsubsection{\texorpdfstring{close\_socket()}{close\_socket()}}
+{\footnotesize\ttfamily void close\+\_\+socket (\begin{DoxyParamCaption}\item[{int}]{sock }\end{DoxyParamCaption})}
+
+\Hypertarget{network__utils_8h_ad81e13cf1d18c3de7468106623d5aaec}\label{network__utils_8h_ad81e13cf1d18c3de7468106623d5aaec} 
+\index{network\_utils.h@{network\_utils.h}!create\_peer@{create\_peer}}
+\index{create\_peer@{create\_peer}!network\_utils.h@{network\_utils.h}}
+\doxysubsubsection{\texorpdfstring{create\_peer()}{create\_peer()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structpeer}{peer}} \texorpdfstring{$\ast$}{*} create\+\_\+peer (\begin{DoxyParamCaption}\item[{int}]{socket }\end{DoxyParamCaption})}
+
+\Hypertarget{network__utils_8h_a138ecaa3d26920f09aa7ffaa2e6cabdc}\label{network__utils_8h_a138ecaa3d26920f09aa7ffaa2e6cabdc} 
+\index{network\_utils.h@{network\_utils.h}!create\_socket\_request\_listener@{create\_socket\_request\_listener}}
+\index{create\_socket\_request\_listener@{create\_socket\_request\_listener}!network\_utils.h@{network\_utils.h}}
+\doxysubsubsection{\texorpdfstring{create\_socket\_request\_listener()}{create\_socket\_request\_listener()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structsocket__request__listener}{socket\+\_\+request\+\_\+listener}} create\+\_\+socket\+\_\+request\+\_\+listener (\begin{DoxyParamCaption}\item[{int}]{sock }\end{DoxyParamCaption})}
+
+\Hypertarget{network__utils_8h_acf605ccd92ad4a7e013b0d7375b06abd}\label{network__utils_8h_acf605ccd92ad4a7e013b0d7375b06abd} 
+\index{network\_utils.h@{network\_utils.h}!initiate\_socket@{initiate\_socket}}
+\index{initiate\_socket@{initiate\_socket}!network\_utils.h@{network\_utils.h}}
+\doxysubsubsection{\texorpdfstring{initiate\_socket()}{initiate\_socket()}}
+{\footnotesize\ttfamily int initiate\+\_\+socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{network__utils_8h_a9986359c3d46f8576db45d383b9a267f}\label{network__utils_8h_a9986359c3d46f8576db45d383b9a267f} 
+\index{network\_utils.h@{network\_utils.h}!read\_messages@{read\_messages}}
+\index{read\_messages@{read\_messages}!network\_utils.h@{network\_utils.h}}
+\doxysubsubsection{\texorpdfstring{read\_messages()}{read\_messages()}}
+{\footnotesize\ttfamily int read\+\_\+messages (\begin{DoxyParamCaption}\item[{int}]{bytes\+\_\+received,  }\item[{char \texorpdfstring{$\ast$}{*}}]{msg\+\_\+buffer,  }\item[{void \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})}
+
+\Hypertarget{network__utils_8h_a4da562a4381af026360e407f1927b802}\label{network__utils_8h_a4da562a4381af026360e407f1927b802} 
+\index{network\_utils.h@{network\_utils.h}!receive\_message@{receive\_message}}
+\index{receive\_message@{receive\_message}!network\_utils.h@{network\_utils.h}}
+\doxysubsubsection{\texorpdfstring{receive\_message()}{receive\_message()}}
+{\footnotesize\ttfamily int receive\+\_\+message (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{peer,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{buffer,  }\item[{int}]{size,  }\item[{int}]{timeout,  }\item[{int}]{flags }\end{DoxyParamCaption})}
+
+\Hypertarget{network__utils_8h_a81e49c3af43ec4fee7c4544d0dad6d3b}\label{network__utils_8h_a81e49c3af43ec4fee7c4544d0dad6d3b} 
+\index{network\_utils.h@{network\_utils.h}!remove\_message\_handler\_by\_index@{remove\_message\_handler\_by\_index}}
+\index{remove\_message\_handler\_by\_index@{remove\_message\_handler\_by\_index}!network\_utils.h@{network\_utils.h}}
+\doxysubsubsection{\texorpdfstring{remove\_message\_handler\_by\_index()}{remove\_message\_handler\_by\_index()}}
+{\footnotesize\ttfamily void remove\+\_\+message\+\_\+handler\+\_\+by\+\_\+index (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{p,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+\Hypertarget{network__utils_8h_af253bdc748298077cb65b62659426feb}\label{network__utils_8h_af253bdc748298077cb65b62659426feb} 
+\index{network\_utils.h@{network\_utils.h}!remove\_message\_handling@{remove\_message\_handling}}
+\index{remove\_message\_handling@{remove\_message\_handling}!network\_utils.h@{network\_utils.h}}
+\doxysubsubsection{\texorpdfstring{remove\_message\_handling()}{remove\_message\_handling()}}
+{\footnotesize\ttfamily void remove\+\_\+message\+\_\+handling (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{p,  }\item[{char \texorpdfstring{$\ast$}{*}}]{msg }\end{DoxyParamCaption})}
+
+\Hypertarget{network__utils_8h_a0844480fa8f2436a87474b0432e07644}\label{network__utils_8h_a0844480fa8f2436a87474b0432e07644} 
+\index{network\_utils.h@{network\_utils.h}!send\_message@{send\_message}}
+\index{send\_message@{send\_message}!network\_utils.h@{network\_utils.h}}
+\doxysubsubsection{\texorpdfstring{send\_message()}{send\_message()}}
+{\footnotesize\ttfamily int send\+\_\+message (\begin{DoxyParamCaption}\item[{int}]{socket,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{message,  }\item[{int}]{flags }\end{DoxyParamCaption})}
+
+\Hypertarget{network__utils_8h_afe22087da859cfcf574fd050fc54f961}\label{network__utils_8h_afe22087da859cfcf574fd050fc54f961} 
+\index{network\_utils.h@{network\_utils.h}!socket\_request\_listen@{socket\_request\_listen}}
+\index{socket\_request\_listen@{socket\_request\_listen}!network\_utils.h@{network\_utils.h}}
+\doxysubsubsection{\texorpdfstring{socket\_request\_listen()}{socket\_request\_listen()}}
+{\footnotesize\ttfamily int socket\+\_\+request\+\_\+listen (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structsocket__request__listener}{socket\+\_\+request\+\_\+listener}} \texorpdfstring{$\ast$}{*}}]{listener,  }\item[{int}]{server\+\_\+sock,  }\item[{int}]{timeout }\end{DoxyParamCaption})}
+
+\Hypertarget{network__utils_8h_a05506af18e73fbfe3f6a668573555825}\label{network__utils_8h_a05506af18e73fbfe3f6a668573555825} 
+\index{network\_utils.h@{network\_utils.h}!socket\_request\_receive@{socket\_request\_receive}}
+\index{socket\_request\_receive@{socket\_request\_receive}!network\_utils.h@{network\_utils.h}}
+\doxysubsubsection{\texorpdfstring{socket\_request\_receive()}{socket\_request\_receive()}}
+{\footnotesize\ttfamily int socket\+\_\+request\+\_\+receive (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structsocket__request__listener}{socket\+\_\+request\+\_\+listener}} \texorpdfstring{$\ast$}{*}}]{listener,  }\item[{int}]{client\+\_\+sock,  }\item[{char \texorpdfstring{$\ast$}{*}}]{buffer,  }\item[{int}]{size,  }\item[{int}]{timeout,  }\item[{int}]{flags }\end{DoxyParamCaption})}
+
