@@ -109,6 +109,17 @@ class Light : public Node {
 
         glBindBuffer(GL_TEXTURE_BUFFER, depthMap->tbo);
 
+        #ifndef _WIN32
+            typedef void* (*glMapBuffer_t)(GLenum target, GLenum access);
+            glMapBuffer_t glMapBuffer = (glMapBuffer_t) SDL_GL_GetProcAddress("glMapBuffer");
+            
+            if (glMapBuffer == NULL) {
+                printf("Failed to load glMapBuffer extension\n");
+                exit(1);
+            }
+        #endif
+
+
         mat4* mappedBuffer = (mat4*)glMapBuffer(GL_TEXTURE_BUFFER, GL_WRITE_ONLY);
         glm_mat4_copy(lightSpaceMatrix, mappedBuffer[storageBufferIndex]);
         glUnmapBuffer(GL_TEXTURE_BUFFER);

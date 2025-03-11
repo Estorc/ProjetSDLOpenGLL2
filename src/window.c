@@ -10,7 +10,7 @@
 #include "window.h"
 
 #ifdef DEBUG
-#define DEBUG_GL
+//#define DEBUG_GL
 #endif
 
 #ifdef DEBUG_GL

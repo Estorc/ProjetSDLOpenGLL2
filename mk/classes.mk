@@ -1,7 +1,7 @@
 ifeq ($(OS),Windows_NT) 
-CLASS_TOOLS := $(shell command -v tools/class_tools.exe)
+CLASS_TOOLS := $(shell which tools/class_tools.exe)
 else
-CLASS_TOOLS := $(shell command -v tools/class_tools)
+CLASS_TOOLS := $(shell which tools/class_tools)
 endif
 
 ifeq ($(CLASS_TOOLS),)

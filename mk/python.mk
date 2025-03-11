@@ -1,5 +1,5 @@
 PYTHON = python3
-PIP = $(shell command -v pip)
+PIP = $(shell which pip)
 ifeq ($(PIP),)
 	HAVE_PIP = 0
 else
