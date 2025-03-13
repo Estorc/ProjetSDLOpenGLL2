@@ -91,6 +91,56 @@ NEW_SCRIPT(st_sfx_volume)
     slider->value = &Game.settings->sfx_volume;
 END_SCRIPT(st_sfx_volume)
 
+NEW_SCRIPT(st_shadows_res)
+    SET_ATTRIBUTES_COUNT(1);
+    float *value = &this->attribute[0].f;
+    Frame *frame = (Frame*) this->object;
+    Slider *slider = frame->slider;
+    slider->value = value;
+    *value = roundf(*value);
+    int oldRes = Game.settings->shadow_resolution;
+    Game.settings->shadow_resolution = (256 << (int) *value);
+
+    if (oldRes != Game.settings->shadow_resolution) {
+        glBindTexture(GL_TEXTURE_2D_ARRAY, Game.depthMap->texture);
+        glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_DEPTH_COMPONENT16,
+            Game.settings->shadow_resolution, Game.settings->shadow_resolution,
+            NUM_DIRECTIONAL_LIGHTS + NUM_POINT_LIGHTS * 6 + NUM_SPOT_LIGHTS, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    }
+END_SCRIPT(st_shadows_res)
+
+NEW_SCRIPT(st_shadows_quality)
+    SET_ATTRIBUTES_COUNT(1);
+    float *value = &this->attribute[0].f;
+    Frame *frame = (Frame*) this->object;
+    Slider *slider = frame->slider;
+    slider->value = value;
+    *value = roundf(*value);
+    Game.settings->shadow_quality = (int) *value;
+END_SCRIPT(st_shadows_quality)
+
+NEW_SCRIPT(st_textures_quality)
+    SET_ATTRIBUTES_COUNT(1);
+    float *value = &this->attribute[0].f;
+    Frame *frame = (Frame*) this->object;
+    Slider *slider = frame->slider;
+    slider->value = value;
+    *value = roundf(*value);
+    Game.settings->texture_quality = (int) *value;
+END_SCRIPT(st_textures_quality)
+
+NEW_SCRIPT(st_msaa_init)
+    Frame *frame = (Frame*) this->object;
+    Button *button = frame->button;
+    button->checked = &Game.settings->antialiasing;
+END_SCRIPT(st_msaa_init)
+
+NEW_SCRIPT(st_vsync_init)
+    Frame *frame = (Frame*) this->object;
+    Button *button = frame->button;
+    button->checked = &Game.settings->vsync;
+END_SCRIPT(st_vsync_init)
+
 NEW_SCRIPT(st_fov)
     Frame *frame = (Frame*) this->object;
     Slider *slider = frame->slider;

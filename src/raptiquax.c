@@ -33,7 +33,7 @@ Tree mainTree = {0};
 Input input;
 Settings settings = {
     .show_fps = false, 
-    .cast_shadows = false, 
+    .cast_shadows = true, 
     .window_fullscreen = false, 
     .resolution = RES_RESPONSIVE, 
     .show_collision_boxes = false, 
@@ -41,14 +41,15 @@ Settings settings = {
     .music_volume = 1, 
     .sfx_volume = 1, 
     .fov = PI/4.0f,
-    .shadow_resolution = 2048,
-    .shadow_quality = 3,
+    .shadow_resolution = 1024,
+    .shadow_quality = 0,
     .texture_quality = 1,
     .antialiasing = true,
     .vsync = true
 };
 Window window;
 MSAA msaa;
+DepthMap depthMap;
 
 
 BUILD_CLASS_METHODS_CORRESPONDANCE(classManager);
@@ -65,5 +66,7 @@ struct RaptiquaX_t Game = {
     NULL,
     &msaa,
     NULL,
-    NULL
+    NULL,
+    NULL,
+    &depthMap
 };

@@ -109,8 +109,7 @@ int main(int argc, char *argv[]) {
         .gui = create_shader(DEFAULT_GUI_SHADER)
     };
 
-    DepthMap depthMap;
-    create_depthmap(&depthMap, &defaultShaders);
+    create_depthmap(Game.depthMap, &defaultShaders);
 
     Mesh screenPlane;
     create_screen_plane(&screenPlane);
@@ -134,7 +133,7 @@ int main(int argc, char *argv[]) {
     #endif
     Game.mainTree->root = load_scene(BOOT_SCENE, &Game.camera, Game.scripts);
 
-    while (update(Game.window, &defaultShaders, &depthMap, Game.msaa, &screenPlane) >= 0);
+    while (update(Game.window, &defaultShaders, Game.depthMap, Game.msaa, &screenPlane) >= 0);
 
     if (!queue_is_empty(Game.callQueue)) {
         queue_free(Game.callQueue);
@@ -153,12 +152,12 @@ int main(int argc, char *argv[]) {
     (Game.mainTree->root)::free();
 
     glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
-    glDeleteTextures(1, &depthMap.texture);
+    glDeleteTextures(1, &Game.depthMap->texture);
     for (int i = 0; i < NUM_DIRECTIONAL_LIGHTS + NUM_POINT_LIGHTS * 6 + NUM_SPOT_LIGHTS; i++) {
-        glDeleteFramebuffers(1, &depthMap.frameBuffer[i]);
+        glDeleteFramebuffers(1, &Game.depthMap->frameBuffer[i]);
     }
-    glDeleteBuffers(1, &depthMap.tbo);
-    glDeleteTextures(1, &depthMap.matrixTexture);
+    glDeleteBuffers(1, &Game.depthMap->tbo);
+    glDeleteTextures(1, &Game.depthMap->matrixTexture);
     PRINT_INFO("Free depth map!\n");
 
     table_free(Game.storage);

@@ -5,7 +5,7 @@ PointLight(60,50,40,0.001,0,1,0.09,0.032)[m-10,6,9]
 Model(assets/models/settings_bg/settings_bg.obj)[s5,5,5]
 Camera(1){NULL,st_camera,NULL}[m0,3,5]
 Frame(0w,0h,100w,100h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):2
-ControlFrame(0w,0h,100w,80h,ctn):3
+ControlFrame(0w,0h,100w,80h,ctn):8
 ControlFrame(2w,10p,96w,50p,ltn):2
 ControlFrame(0w,0h,10w,100h,ltn):1
 CheckBox{st_cast_shadows_init,NULL,st_signal}
@@ -21,6 +21,28 @@ ControlFrame(0w,0h,50w,100h,ltn):1
 Label("Résolution : ",lc)
 ControlFrame(50w,0h,50w,100h,ltn):1
 SelectList{NULL,st_res,NULL}
+ControlFrame(2w,175p,96w,50p,ltv):2
+Label("Résolution des ombres :",lc)
+Frame(0w,100h,50w,10p,ltv):1
+Slider(0.0,4.0){NULL,st_shadows_res,NULL}:0
+ControlFrame(2w,230p,96w,50p,ltv):2
+Label("Qualité des ombres :",lc)
+Frame(0w,100h,50w,10p,ltv):1
+Slider(0.0,10.0){NULL,st_shadows_quality,NULL}:0
+ControlFrame(2w,285p,96w,50p,ltv):2
+Label("Qualité des textures :",lc)
+Frame(0w,100h,50w,10p,ltv):1
+Slider(0.0,4.0){NULL,st_textures_quality,NULL}:0
+ControlFrame(2w,350p,96w,50p,ltn):2
+ControlFrame(0w,0h,10w,100h,ltn):1
+CheckBox{st_msaa_init,NULL,st_signal}
+ControlFrame(10w,0h,90w,100h,lt):1
+Label("MSAA",lc)
+ControlFrame(2w,405p,96w,50p,ltn):2
+ControlFrame(0w,0h,10w,100h,ltn):1
+CheckBox{st_vsync_init,NULL,st_signal}
+ControlFrame(10w,0h,90w,100h,lt):1
+Label("V-Sync",lc)
 Frame(0w,0h,100w,20h,cbn):4
 Frame(0.5w,0h,24w,90h,lcn):1
 Button{NULL,NULL,settings_go_to_main}:1
