@@ -1,7 +1,7 @@
-# Blender 4.0.1 MTL File: 'None'
+# Blender 4.1.1 MTL File: 'mapJeuSDL.blend'
 # www.blender.org
 
-newmtl Brown_Ceramic_Floor_Tile.001
+newmtl Brown_Ceramic_Floor_Tile
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.000000
@@ -15,9 +15,9 @@ anisor 0.000000
 map_Kd 4K_tiling_19_basecolor.jpg
 map_Pm 4K_tiling_19_metallic.jpg
 map_Pr 4K_tiling_19_roughness.jpg
-map_Bump 4K_tiling_19_normal.jpg
+map_Bump -bm 0.100000 4K_tiling_19_normal.jpg
 
-newmtl Cement.001
+newmtl Cement
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 2.000000
@@ -32,7 +32,7 @@ anisor 0.000000
 map_Kd bronze_basecolor.jpg
 map_Pr bronze_roughness.jpg
 
-newmtl Dark_metal.001
+newmtl Dark_metal
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
@@ -46,9 +46,9 @@ aniso 0.000000
 anisor 0.000000
 map_Kd plane_divided_DefaultMaterial_BaseColor.jpg
 map_Pr plane_divided_DefaultMaterial_Roughness.jpg
-map_Bump plane_divided_DefaultMaterial_Normal.jpg
+map_Bump -bm 1.000000 plane_divided_DefaultMaterial_Normal.jpg
 
-newmtl Dark_wood.001
+newmtl Dark_wood
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
@@ -62,9 +62,39 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 map_Kd wood__diffuse.jpg
-map_Bump wood__normal.jpg
+map_Bump -bm 1.000000 wood__normal.jpg
 
-newmtl Material.010
+newmtl Material
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Pr 0.500000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+
+newmtl Material.001
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Pr 0.500000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd affiche_festival.PNG
+
+newmtl Material.002
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
@@ -79,22 +109,22 @@ aniso 0.000000
 anisor 0.000000
 map_Kd plan.PNG
 
-newmtl Material.011
-Kd 0.800000 0.800000 0.800000
-Ks 0.000000 0.000000 0.000000
+newmtl Material.003
+Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
-Ni 1.450000
+Ni 1.500000
 d 1.000000
-illum 1
-Pr 1.000000
+illum 2
+Pr 0.500000
 Pm 0.000000
 Ps 0.000000
 Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd plan_evac.PNG
 
-newmtl Material.012
+newmtl Material.004
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
@@ -109,7 +139,7 @@ aniso 0.000000
 anisor 0.000000
 map_Kd consignes_urgence.PNG
 
-newmtl Material.013
+newmtl Material.005
 Kd 0.169391 0.025218 0.002780
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
@@ -124,22 +154,7 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 
-newmtl Material.014
-Kd 0.800000 0.800000 0.800000
-Ks 0.000000 0.000000 0.000000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 1
-Pr 1.000000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-
-newmtl Material.015
+newmtl Material.006
 Kd 0.000000 0.000000 0.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
@@ -154,7 +169,7 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 
-newmtl Material.016
+newmtl Material.007
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
@@ -169,37 +184,7 @@ aniso 0.000000
 anisor 0.000000
 map_Kd mini_plan.PNG
 
-newmtl Material.017
-Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.500000
-d 1.000000
-illum 2
-Pr 0.500000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-
-newmtl Material.018
-Kd 0.800000 0.800000 0.800000
-Ks 0.000000 0.000000 0.000000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 1
-Pr 1.000000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-
-newmtl Metal_Vent_Slats.001
+newmtl Metal_Vent_Slats
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
@@ -214,7 +199,7 @@ map_Kd metal-37_diffuse.jpg
 map_Pm metal-37_metal.jpg
 map_Pr metal-37_roughness.jpg
 
-newmtl Plastic_dark_green_material.001
+newmtl Plastic_dark_green_material
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
@@ -228,9 +213,9 @@ anisor 0.000000
 map_Kd plastic02_diffuse.jpg
 map_Pm plastic_metallic.jpg
 map_Ks plastic_specular.jpg
-map_Bump plastic_normal_opengl.jpg
+map_Bump -bm 1.000000 plastic_normal_opengl.jpg
 
-newmtl Plastic_white_material.001
+newmtl Plastic_white_material
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
@@ -244,9 +229,9 @@ anisor 0.000000
 map_Kd plastic07_diffuse.jpg
 map_Pm plastic_metallic.jpg
 map_Ks plastic_specular.jpg
-map_Bump plastic_normal_opengl.jpg
+map_Bump -bm 1.000000 plastic_normal_opengl.jpg
 
-newmtl Plastic_yellow_material.001
+newmtl Plastic_yellow_material
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
@@ -260,9 +245,9 @@ anisor 0.000000
 map_Kd plastic05_diffuse.jpg
 map_Pm plastic_metallic.jpg
 map_Ks plastic_specular.jpg
-map_Bump plastic_normal_opengl.jpg
+map_Bump -bm 1.000000 plastic_normal_opengl.jpg
 
-newmtl Procedural_pearl_red_painted_plastic.001
+newmtl Procedural_pearl_red_painted_plastic
 Kd 0.703470 0.002091 0.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
@@ -277,7 +262,7 @@ Pcr 0.000000
 aniso 0.000000
 anisor 0.000000
 
-newmtl Stone.001
+newmtl Stone
 Ks 0.200000 0.200000 0.200000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
@@ -292,7 +277,7 @@ anisor 0.000000
 map_Kd -s 1.5 1.5 1.5 stone-9_diffuse.jpg
 map_Pr -s 1.5 1.5 1.5 stone-9_smooth.jpg
 
-newmtl Tree_leaves.001
+newmtl Tree_leaves
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
@@ -306,9 +291,25 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 map_Kd MorusAlba_1_basecolor-4K.png
-map_Bump MorusAlba_1_normal-4K.png
+map_Bump -bm 1.000000 MorusAlba_1_normal-4K.png
 
-newmtl Wood.003
+newmtl Wet_water_cave_rock_cliff_wall
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Pm rock_metallic.tga
+map_Pr rock_roughness.tga
+map_Bump -bm 0.250000 rock_normal.tga
+
+newmtl Wood
 Ks 0.200000 0.200000 0.200000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
@@ -322,39 +323,9 @@ aniso 0.000000
 anisor 0.000000
 map_Kd wood-79_diffuse.jpg
 map_Pr wood-79_smooth.jpg
-map_Bump wood-79_normal.jpg
+map_Bump -bm 0.100000 wood-79_normal.jpg
 
-newmtl Wood.004
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-map_Kd wood-5-dark_diffuse.jpg
-map_Pr wood-5_smooth.jpg
-
-newmtl Wood.005
-Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.500000
-d 1.000000
-illum 2
-Pr 0.500000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-
-newmtl Wood.006
+newmtl Wood.001
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
@@ -369,7 +340,37 @@ anisor 0.000000
 map_Kd Wood057_2K_Color.jpg
 map_Pr Wood057_2K_Roughness.jpg
 
-newmtl plastic_bleu.001
+newmtl Wood.002
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Pr 0.500000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+
+newmtl Wood.120
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd -s 3 3 3 wood-5-dark_diffuse.jpg
+map_Pr -s 3 3 3 wood-5_smooth.jpg
+
+newmtl plastic_bleu
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
@@ -383,9 +384,9 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 map_Kd PM-T1_Plastic_Finish_basecolor_Blue.jpg
-map_Bump PM-T1_Plastic_Finish_normal.jpg
+map_Bump -bm 0.690000 PM-T1_Plastic_Finish_normal.jpg
 
-newmtl plastic_bleu_azur.001
+newmtl plastic_bleu_azur
 Kd 0.403891 0.696484 0.679558
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
@@ -400,7 +401,7 @@ Pcr 0.000000
 aniso 0.000000
 anisor 0.000000
 
-newmtl plastic_bleu_foncé_amphi.001
+newmtl plastic_bleu_foncé_amphi
 Kd 0.000778 0.004342 0.046442
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
@@ -415,7 +416,7 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 
-newmtl plastic_gris.001
+newmtl plastic_gris
 Kd 0.046442 0.046442 0.046442
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
@@ -430,7 +431,7 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 
-newmtl plastic_marron.001
+newmtl plastic_marron
 Kd 0.139385 0.033017 0.010785
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
@@ -445,7 +446,7 @@ Pcr 0.000000
 aniso 0.000000
 anisor 0.000000
 
-newmtl plastic_noir.001
+newmtl plastic_noir
 Kd 0.000000 0.000000 0.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
@@ -460,7 +461,7 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 
-newmtl plastic_rose.001
+newmtl plastic_rose
 Kd 0.665270 0.229283 0.363619
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
@@ -475,7 +476,7 @@ Pcr 0.000000
 aniso 0.000000
 anisor 0.000000
 
-newmtl texture_porte.001
+newmtl texture_porte
 Kd 0.000000 0.000000 0.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
