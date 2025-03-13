@@ -1,3 +1,58 @@
+CC = gcc
+
+# Dossiers
+INTRO_SRC_DIR = intro-game/src
+INTRO_INCLUDE_DIR = intro-game/include
+ASSETS_DIR = intro-game/assets
+BIN_DIR = intro-game/bin
+
+# Fichiers sources et objets
+SRC_FILES = $(wildcard $(INTRO_SRC_DIR)/*.c)
+OBJ_FILES = $(patsubst $(INTRO_SRC_DIR)/%.c, $(BIN_DIR)/%.o, $(SRC_FILES))
+HEADER_FILES = $(wildcard $(INTRO_INCLUDE_DIR)/*.h)
+
+# Options de compilation
+INTRO_CFLAGS = `sdl2-config --cflags`
+LDFLAGS = `sdl2-config --libs` -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+
+# Options de débogage
+DEBUG_FLAGS = -g
+
+# Nom de l'exécutable
+EXECUTABLE = $(BIN_DIR)/introGame
+
+# Variable pour activer/désactiver le mode débogage
+INTRO_DEBUG = 0
+
+# Si DEBUG est activé, on ajoute les flags de débogage
+ifeq ($(INTRO_DEBUG), 1)
+    CFLAGS += $(DEBUG_FLAGS)
+endif
+
+# Règle par défaut
+intro-game: $(EXECUTABLE)
+
+# Compilation de l'exécutable
+$(EXECUTABLE): $(OBJ_FILES)
+	$(CC) $(OBJ_FILES) $(LDFLAGS) -o $@
+
+# Compilation des fichiers objets
+$(BIN_DIR)/%.o: $(INTRO_SRC_DIR)/%.c $(HEADER_FILES)
+	@mkdir -p $(BIN_DIR)  # Crée le répertoire bin s'il n'existe pas
+	$(CC) $(INTRO_CFLAGS) -c $< -o $@
+
+# Nettoyage
+intro-clean:
+	rm -rf $(BIN_DIR)/*
+
+# Exécution du programme
+intro-exe:
+	./$(EXECUTABLE)
+
+# Cible pour compiler en mode débogage
+intro-debug:
+	$(MAKE) INTRO_DEBUG=1
+
 # ===============================================================
 # ====================     Makefile     =========================
 # ===============================================================
