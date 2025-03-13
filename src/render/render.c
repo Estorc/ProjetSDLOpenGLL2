@@ -63,16 +63,18 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
 
 void draw_shadow_map(Window *window, Node *root, Camera *c, WorldShaders *shaders, DepthMap *depthMap) {
     // Draw shadow map (render scene with depth map shader)
+    static int count = 0;
+    if (0) return;
     if (!Game.settings->cast_shadows) return;
     glCullFace(GL_FRONT);
     glViewport(0, 0, Game.settings->shadow_resolution, Game.settings->shadow_resolution);
-    glBindFramebuffer(GL_FRAMEBUFFER, depthMap->frameBuffer);
     u8 lightsCount[LIGHTS_COUNT] = {0};
+    mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
     for (int i = 0, index = 0, pl = 0; i < Game.buffers->lightingBuffer.index; i++, index++) {
+        glBindFramebuffer(GL_FRAMEBUFFER, depthMap->frameBuffer[index]);
         (Game.buffers->lightingBuffer.lightings[i])::configure_lighting(c, shaders, depthMap, lightsCount, pl);
-        glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthMap->texture, 0, index);
-        glClear(GL_DEPTH_BUFFER_BIT);
-        mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
+        const GLfloat clearDepth = 1.0f;
+        glClearBufferfv(GL_DEPTH, 0, &clearDepth);
         render_scene(window, root, c, modelMatrix, shaders->depth, shaders, Game.settings->shadow_resolution, Game.settings->shadow_resolution);
         if (Game.buffers->lightingBuffer.lightings[i]->type == CLASS_TYPE_POINTLIGHT && pl < 5) {
             i--;

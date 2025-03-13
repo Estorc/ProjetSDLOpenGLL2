@@ -154,7 +154,9 @@ int main(int argc, char *argv[]) {
 
     glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
     glDeleteTextures(1, &depthMap.texture);
-    glDeleteFramebuffers(1, &depthMap.frameBuffer);
+    for (int i = 0; i < NUM_DIRECTIONAL_LIGHTS + NUM_POINT_LIGHTS * 6 + NUM_SPOT_LIGHTS; i++) {
+        glDeleteFramebuffers(1, &depthMap.frameBuffer[i]);
+    }
     glDeleteBuffers(1, &depthMap.tbo);
     glDeleteTextures(1, &depthMap.matrixTexture);
     PRINT_INFO("Free depth map!\n");

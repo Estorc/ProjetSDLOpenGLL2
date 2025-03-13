@@ -347,14 +347,11 @@ bool check_collision_box_with_plane(Node *shapeA, Node *shapeB) {
     }
 
     // Step 3: Check the signed distance of each vertex to the plane
-    bool positiveSide = false;
     bool negativeSide = false;
     float minDistanceToPlane = 0.0f;
     for (int i = 0; i < 8; i++) {
         float distanceToPlane = glm_vec3_dot(planeNormal, globalVertices[i]) - planeDistance;
-        if (distanceToPlane > 0.0f) {
-            positiveSide = true;  // Vertex is on the positive side of the plane
-        } else if (distanceToPlane < 0.0f) {
+        if (distanceToPlane < 0.0f) {
             if (distanceToPlane < minDistanceToPlane) minDistanceToPlane = distanceToPlane;
             negativeSide = true;  // Vertex is on the negative side of the plane
         }

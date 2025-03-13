@@ -26,8 +26,6 @@ void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
     glBindBuffer(GL_TEXTURE_BUFFER, 0);
 
 
-
-    glGenFramebuffers(1, &depthMap->frameBuffer);  
     glGenTextures(1, &depthMap->texture);
     // Disable binding if settings do not allow shadows
     glBindTexture(GL_TEXTURE_2D_ARRAY, depthMap->texture);
@@ -49,9 +47,12 @@ void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
     glBindTexture(GL_TEXTURE_2D_ARRAY, depthMap->texture);
     use_shader(0);
 
-    glBindFramebuffer(GL_FRAMEBUFFER, depthMap->frameBuffer);
-    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthMap->texture, 0, 0);
-    glDrawBuffer(GL_NONE);
-    glReadBuffer(GL_NONE);
+    for (int i = 0; i < numDirectionalLights + numPointLights + numSpotLights; i++) {
+        glGenFramebuffers(1, &depthMap->frameBuffer[i]);  
+        glBindFramebuffer(GL_FRAMEBUFFER, depthMap->frameBuffer[i]);
+        glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthMap->texture, 0, i);
+        glDrawBuffer(GL_NONE);
+        glReadBuffer(GL_NONE);
+    }
     glBindFramebuffer(GL_FRAMEBUFFER, 0); 
 }  

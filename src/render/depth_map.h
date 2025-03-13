@@ -24,7 +24,7 @@ struct WorldShaders;
  * including a frame buffer object (FBO), a texture map, and a texture buffer object (TBO).
  */
 typedef struct DepthMap {
-    FBO frameBuffer; /**< The frame buffer object for the depth map. */
+    FBO frameBuffer[NUM_DIRECTIONAL_LIGHTS + NUM_POINT_LIGHTS * 6 + NUM_SPOT_LIGHTS]; /**< The frame buffer object for the depth map. */
     TextureMap texture; /**< The texture map for the depth map. */
     GLuint tbo; /**< The texture buffer object for the depth map. */
     TextureMap matrixTexture; /**< The texture map for the light matrices. */

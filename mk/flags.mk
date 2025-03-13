@@ -21,3 +21,4 @@ endif
 
 WFLAGS += -Wall
 WFLAGS += -Wno-implicit-function-declaration
+WFLAGS += -Wno-unknown-pragmas

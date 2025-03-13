@@ -33,7 +33,7 @@ Tree mainTree = {0};
 Input input;
 Settings settings = {
     .show_fps = false, 
-    .cast_shadows = true, 
+    .cast_shadows = false, 
     .window_fullscreen = false, 
     .resolution = RES_RESPONSIVE, 
     .show_collision_boxes = false, 
@@ -42,7 +42,7 @@ Settings settings = {
     .sfx_volume = 1, 
     .fov = PI/4.0f,
     .shadow_resolution = 2048,
-    .shadow_quality = 6,
+    .shadow_quality = 3,
     .texture_quality = 1,
     .antialiasing = true,
     .vsync = true

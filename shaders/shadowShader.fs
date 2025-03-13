@@ -235,12 +235,13 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir, int 
 
     int shadowQualityAdjusted = max(shadowQuality - int(distanceFromCamera / SHADOW_QUALITY_THRESHOLD),0);
 
-    if (shadowQualityAdjusted == 0) return 1.0 - texture(shadowMap, vec4(projCoords.xy, index, projCoords.z - bias)); 
+    vec2 uv = (floor(projCoords.xy * texelSize) + 0.5) / texelSize;
+    if (shadowQualityAdjusted == 0) return 1.0 - texture(shadowMap, vec4(uv, index, projCoords.z - bias)); 
 
     float shadow = 0.0;
     for(int x = -shadowQualityAdjusted; x <= shadowQualityAdjusted; ++x) {
         for(int y = -shadowQualityAdjusted; y <= shadowQualityAdjusted; ++y) {
-            shadow += 1.0 - texture(shadowMap, vec4(vec2(projCoords.xy + vec2(x, y) * texelSize), index, projCoords.z - bias)); 
+            shadow += 1.0 - texture(shadowMap, vec4(vec2(uv + vec2(x, y) / texelSize), index, projCoords.z - bias)); 
         }    
     }
     shadow /= float(shadowQualityAdjusted * 2 + 1) * float(shadowQualityAdjusted * 2 + 1); // Apromixation for performance and quality
@@ -257,7 +258,7 @@ void main()
     vec3 viewDir = normalize(fs_in.viewPos - fs_in.FragPos);
     vec2 texCoords;
     vec3 tangentViewDir = normalize(fs_in.TangentViewPos - fs_in.TangentFragPos);
-    vec2 shadowMapTexelSize = 1.0 / textureSize(shadowMap, 0).xy;
+    vec2 shadowMapTexelSize = textureSize(shadowMap, 0).xy;
 
     if (parallaxMapActive) {
         texCoords = ParallaxMapping(fs_in.TexCoords,  tangentViewDir);
