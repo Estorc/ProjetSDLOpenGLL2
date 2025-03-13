@@ -97,7 +97,7 @@ int osio_save_file(char *path, char *relativePath, char *filter) {
     }
 }
 #else
-#define KDIALOG
+#define ZENITY
 #endif
 
 #ifdef KDIALOG
