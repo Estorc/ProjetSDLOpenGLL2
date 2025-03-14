@@ -93,3 +93,24 @@ void get_resolution(int *width, int *height) {
             break;
     }
 }
+
+
+void save_settings() {
+    FILE *file = fopen("settings.dat", "wb");
+    if (file) {
+        fwrite(Game.settings, sizeof(Settings), 1, file);
+        fclose(file);
+    } else {
+        PRINT_ERROR("Failed to save settings\n");
+    }
+}
+
+void load_settings() {
+    FILE *file = fopen("settings.dat", "rb");
+    if (file) {
+        fread(Game.settings, sizeof(Settings), 1, file);
+        fclose(file);
+    } else {
+        PRINT_ERROR("Failed to load settings\n");
+    }
+}

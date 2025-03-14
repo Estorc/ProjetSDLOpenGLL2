@@ -57,46 +57,60 @@ NEW_SCRIPT(settings_go_to_audio)
     }
 END_SCRIPT(settings_go_to_audio)
 
-NEW_SCRIPT(st_general_volume)
-    GET_READY_PARAMETERS();
-    SET_ATTRIBUTES_COUNT(1);
-    float *oldVolume = &this->attribute[0].f;
+NEW_SCRIPT(settings_go_to_keybinds)
+    GET_SIGNAL();	
+    switch (signal) {
+        case SIGNAL_BUTTON_CLICKED:
+            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            prepare_change_scene("assets/scenes/settings/keybinds.scene");
+            break;
+        case SIGNAL_BUTTON_HOVERED:
+            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            break;
+        default:
+            break;
+    }
+END_SCRIPT(settings_go_to_keybinds)
 
-    Frame *frame = (Frame*) this->object;
-    Slider *slider = frame->slider;
-    slider->value = &Game.settings->master_volume;
+NEW_SCRIPT(st_general_volume)
+    float *oldVolume = &this->attribute[0].f;
     if (*oldVolume != Game.settings->master_volume) {
         refresh_music_volume();
     }
     *oldVolume = Game.settings->master_volume;
 END_SCRIPT(st_general_volume)
 
-NEW_SCRIPT(st_music_volume)
-    GET_READY_PARAMETERS();
+NEW_SCRIPT(st_general_volume_init)
     SET_ATTRIBUTES_COUNT(1);
-    float *oldVolume = &this->attribute[0].f;
-
     Frame *frame = (Frame*) this->object;
     Slider *slider = frame->slider;
-    slider->value = &Game.settings->music_volume;
+    slider->value = &Game.settings->master_volume;
+END_SCRIPT(st_general_volume_init)
+
+NEW_SCRIPT(st_music_volume)
+    float *oldVolume = &this->attribute[0].f;
     if (*oldVolume != Game.settings->music_volume) {
         refresh_music_volume();
     }
     *oldVolume = Game.settings->music_volume;
 END_SCRIPT(st_music_volume)
 
-NEW_SCRIPT(st_sfx_volume)
+NEW_SCRIPT(st_music_volume_init)
+    SET_ATTRIBUTES_COUNT(1);
+    Frame *frame = (Frame*) this->object;
+    Slider *slider = frame->slider;
+    slider->value = &Game.settings->music_volume;
+END_SCRIPT(st_music_volume_init)
+
+
+NEW_SCRIPT(st_sfx_volume_init)
     Frame *frame = (Frame*) this->object;
     Slider *slider = frame->slider;
     slider->value = &Game.settings->sfx_volume;
-END_SCRIPT(st_sfx_volume)
+END_SCRIPT(st_sfx_volume_init)
 
 NEW_SCRIPT(st_shadows_res)
-    SET_ATTRIBUTES_COUNT(1);
     float *value = &this->attribute[0].f;
-    Frame *frame = (Frame*) this->object;
-    Slider *slider = frame->slider;
-    slider->value = value;
     *value = roundf(*value);
     int oldRes = Game.settings->shadow_resolution;
     Game.settings->shadow_resolution = (256 << (int) *value);
@@ -109,25 +123,44 @@ NEW_SCRIPT(st_shadows_res)
     }
 END_SCRIPT(st_shadows_res)
 
-NEW_SCRIPT(st_shadows_quality)
+NEW_SCRIPT(st_shadows_res_init)
     SET_ATTRIBUTES_COUNT(1);
     float *value = &this->attribute[0].f;
     Frame *frame = (Frame*) this->object;
     Slider *slider = frame->slider;
     slider->value = value;
+    *value = log2f(Game.settings->shadow_resolution / 256);
+END_SCRIPT(st_shadows_res_init)
+
+NEW_SCRIPT(st_shadows_quality)
+    float *value = &this->attribute[0].f;
     *value = roundf(*value);
     Game.settings->shadow_quality = (int) *value;
 END_SCRIPT(st_shadows_quality)
 
-NEW_SCRIPT(st_textures_quality)
+NEW_SCRIPT(st_shadows_quality_init)
     SET_ATTRIBUTES_COUNT(1);
     float *value = &this->attribute[0].f;
     Frame *frame = (Frame*) this->object;
     Slider *slider = frame->slider;
     slider->value = value;
+    *value = Game.settings->shadow_quality;
+END_SCRIPT(st_shadows_quality_init)
+
+NEW_SCRIPT(st_textures_quality)
+    float *value = &this->attribute[0].f;
     *value = roundf(*value);
     Game.settings->texture_quality = (int) *value;
 END_SCRIPT(st_textures_quality)
+
+NEW_SCRIPT(st_textures_quality_init)
+    SET_ATTRIBUTES_COUNT(1);
+    float *value = &this->attribute[0].f;
+    Frame *frame = (Frame*) this->object;
+    Slider *slider = frame->slider;
+    slider->value = value;
+    *value = Game.settings->texture_quality;
+END_SCRIPT(st_textures_quality_init)
 
 NEW_SCRIPT(st_msaa_init)
     Frame *frame = (Frame*) this->object;
@@ -140,6 +173,25 @@ NEW_SCRIPT(st_vsync_init)
     Button *button = frame->button;
     button->checked = &Game.settings->vsync;
 END_SCRIPT(st_vsync_init)
+
+NEW_SCRIPT(st_vsync_signal)
+    GET_SIGNAL();	
+    switch (signal) {
+        case SIGNAL_BUTTON_CLICKED:
+            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            if (Game.settings->vsync) {
+                SDL_GL_SetSwapInterval(1);
+            } else {
+                SDL_GL_SetSwapInterval(0);
+            }
+            break;
+        case SIGNAL_BUTTON_HOVERED:
+            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            break;
+        default:
+            break;
+    }
+END_SCRIPT(st_vsync_signal)
 
 NEW_SCRIPT(st_fov)
     Frame *frame = (Frame*) this->object;
@@ -237,3 +289,33 @@ NEW_SCRIPT(st_res)
     }
     *oldRes = Game.settings->resolution;
 END_SCRIPT(st_res)
+
+NEW_SCRIPT(st_save)
+    GET_SIGNAL();	
+    switch (signal) {
+        case SIGNAL_BUTTON_CLICKED:
+            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            save_settings();
+            break;
+        case SIGNAL_BUTTON_HOVERED:
+            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            break;
+        default:
+            break;
+    }
+END_SCRIPT(st_save)
+
+NEW_SCRIPT(st_load)
+    GET_SIGNAL();	
+    switch (signal) {
+        case SIGNAL_BUTTON_CLICKED:
+            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            load_settings();
+            break;
+        case SIGNAL_BUTTON_HOVERED:
+            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            break;
+        default:
+            break;
+    }
+END_SCRIPT(st_load)

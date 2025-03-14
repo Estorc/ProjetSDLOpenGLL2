@@ -7,8 +7,24 @@
 #include "../window.h"
 #include "../render/camera.h"
 #include "input.h"
+#include "../settings.h"
 
+void default_input_settings() {
+    Game.settings->keybinds.up = SDLK_z;
+    Game.settings->keybinds.down = SDLK_s;
+    Game.settings->keybinds.left = SDLK_q;
+    Game.settings->keybinds.right = SDLK_d;
 
+    Game.settings->keybinds.jump = SDLK_SPACE;
+    Game.settings->keybinds.crouch = SDLK_LCTRL;
+    Game.settings->keybinds.sprint = SDLK_LSHIFT;
+
+    Game.settings->keybinds.menu = SDLK_ESCAPE;
+    Game.settings->keybinds.flashlight = SDLK_f;
+    Game.settings->keybinds.validate = SDLK_RETURN;
+    Game.settings->keybinds.interact = SDLK_e;
+    Game.settings->keybinds.fullscreen = SDLK_F11;
+}
 
 void init_input(Input *input) {
     input->active_keys = 0;
@@ -24,6 +40,8 @@ void init_input(Input *input) {
     input->mouse.released_button = 0;
     input->mouse.active_button = 0;
     strcpy(input->inputBuffer, "");
+
+    input->locked = false;
 }
 
 
@@ -39,103 +57,50 @@ int update_input(Input *input) {
     input->mouse.pressed_button = 0;
     input->mouse.released_button = 0;
     input->text_input = false;
-	SDL_Event event;
+    if (input->locked) return 0;
+ 	SDL_Event event;
     while( SDL_PollEvent( &event ) ) {
         switch( event.type ){
             /* Look for a keypress */
             case SDL_KEYDOWN:
                 /* Check the SDLKey values and move change the coords */
                 switch( event.key.keysym.sym ){
-					case SDLK_q:
-                    case SDLK_LEFT:
-                        HANDLE_KEY_PRESSED(KEY_LEFT);
-                        break;
-					case SDLK_d:
-                    case SDLK_RIGHT:
-                        HANDLE_KEY_PRESSED(KEY_RIGHT);
-                        break;
-					case SDLK_z:
-                    case SDLK_UP:
-						HANDLE_KEY_PRESSED(KEY_UP);
-                        break;
-					case SDLK_s:
-                    case SDLK_DOWN:
-                        HANDLE_KEY_PRESSED(KEY_DOWN);
-                        break;
-                    case SDLK_SPACE:
-                        HANDLE_KEY_PRESSED(KEY_JUMP);
-                        break;
-                    case SDLK_LSHIFT:
-                        HANDLE_KEY_PRESSED(KEY_SHIFT);
-                        break;
-                    case SDLK_LCTRL:
-                        HANDLE_KEY_PRESSED(KEY_CROUCH);
-                        break;
-                    case SDLK_ESCAPE:
-						HANDLE_KEY_PRESSED(KEY_MENU);
-                        break;
-
-					case SDLK_f:
-						HANDLE_KEY_PRESSED(KEY_F);
-                        break;
-					case SDLK_g:
-						HANDLE_KEY_PRESSED(KEY_G);
-                        break;
-
-					case SDLK_RETURN:
-						HANDLE_KEY_PRESSED(KEY_ENTER);
-                        break;
 					case SDLK_BACKSPACE:
                         remove_last_utf8_char(input->inputBuffer);
                         input->text_input = true;
                         break;
                     default:
+                        HANDLE_KEY_PRESSED(Game.settings->keybinds.left, KEY_LEFT);
+                        HANDLE_KEY_PRESSED(Game.settings->keybinds.right, KEY_RIGHT);
+                        HANDLE_KEY_PRESSED(Game.settings->keybinds.up, KEY_UP);
+                        HANDLE_KEY_PRESSED(Game.settings->keybinds.down, KEY_DOWN);
+                        HANDLE_KEY_PRESSED(Game.settings->keybinds.jump, KEY_JUMP);
+                        HANDLE_KEY_PRESSED(Game.settings->keybinds.sprint, KEY_SPRINT);
+                        HANDLE_KEY_PRESSED(Game.settings->keybinds.crouch, KEY_CROUCH);
+                        HANDLE_KEY_PRESSED(Game.settings->keybinds.menu, KEY_MENU);
+                        HANDLE_KEY_PRESSED(Game.settings->keybinds.flashlight, KEY_FLASHLIGHT);
+                        HANDLE_KEY_PRESSED(Game.settings->keybinds.interact, KEY_INTERACT);
+                        HANDLE_KEY_PRESSED(Game.settings->keybinds.fullscreen, KEY_FULLSCREEN);
+                        HANDLE_KEY_PRESSED(Game.settings->keybinds.validate, KEY_VALIDATE);
                         break;
                 }
                 break;
             case SDL_KEYUP:
                 /* Check the SDLKey values and move change the coords */
                 switch( event.key.keysym.sym ){
-					case SDLK_q:
-                    case SDLK_LEFT:
-                        HANDLE_KEY_RELEASED(KEY_LEFT);
-                        break;
-					case SDLK_d:
-                    case SDLK_RIGHT:
-                        HANDLE_KEY_RELEASED(KEY_RIGHT);
-                        break;
-					case SDLK_z:
-                    case SDLK_UP:
-						HANDLE_KEY_RELEASED(KEY_UP);
-						break;
-					case SDLK_s:
-                    case SDLK_DOWN:
-                        HANDLE_KEY_RELEASED(KEY_DOWN);
-                        break;
-                    case SDLK_SPACE:
-                        HANDLE_KEY_RELEASED(KEY_JUMP);
-                        break;
-                    case SDLK_LSHIFT:
-                        HANDLE_KEY_RELEASED(KEY_SHIFT);
-                        break;
-                    case SDLK_LCTRL:
-                        HANDLE_KEY_RELEASED(KEY_CROUCH);
-                        break;
-                    case SDLK_ESCAPE:
-						HANDLE_KEY_RELEASED(KEY_MENU);
-                        break;
-
-					case SDLK_f:
-						HANDLE_KEY_RELEASED(KEY_F);
-                        break;
-					case SDLK_g:
-						HANDLE_KEY_RELEASED(KEY_G);
-                        break;
-
-					case SDLK_RETURN:
-						HANDLE_KEY_RELEASED(KEY_ENTER);
-                        break;
                     default:
+                        HANDLE_KEY_RELEASED(Game.settings->keybinds.left, KEY_LEFT);
+                        HANDLE_KEY_RELEASED(Game.settings->keybinds.right, KEY_RIGHT);
+                        HANDLE_KEY_RELEASED(Game.settings->keybinds.up, KEY_UP);
+                        HANDLE_KEY_RELEASED(Game.settings->keybinds.down, KEY_DOWN);
+                        HANDLE_KEY_RELEASED(Game.settings->keybinds.jump, KEY_JUMP);
+                        HANDLE_KEY_RELEASED(Game.settings->keybinds.sprint, KEY_SPRINT);
+                        HANDLE_KEY_RELEASED(Game.settings->keybinds.crouch, KEY_CROUCH);
+                        HANDLE_KEY_RELEASED(Game.settings->keybinds.menu, KEY_MENU);
+                        HANDLE_KEY_RELEASED(Game.settings->keybinds.flashlight, KEY_FLASHLIGHT);
+                        HANDLE_KEY_RELEASED(Game.settings->keybinds.interact, KEY_INTERACT);
+                        HANDLE_KEY_RELEASED(Game.settings->keybinds.fullscreen, KEY_FULLSCREEN);
+                        HANDLE_KEY_RELEASED(Game.settings->keybinds.validate, KEY_VALIDATE);
                         break;
                 }
                 break;

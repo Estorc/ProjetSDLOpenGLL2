@@ -33,6 +33,7 @@ MODULES += src/physics/physics.o
 MODULES += src/physics/collision_util.o
 MODULES += src/physics/collision.o
 
+MODULES += src/utils/random.o
 MODULES += src/utils/scene.o
 MODULES += src/utils/time.o
 

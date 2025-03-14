@@ -92,6 +92,10 @@ class Frame : public Node {
         frame->contentTexture = 0;
         frame->contentSurface = NULL;
         frame->theme = NULL;
+        frame->absPos[0] = 0.0f;
+        frame->absPos[1] = 0.0f;
+        frame->size[0] = 0.0f;
+        frame->size[1] = 0.0f;
         glm_vec2_zero(frame->contentSize);
         glm_vec2_zero(frame->scroll);
         glm_vec2_zero(frame->scrollTarget);
@@ -137,6 +141,9 @@ class Frame : public Node {
         Frame *frame = (Frame *) this->object;
         vec2 scroll = {0.0f, 0.0f};
 
+        frame->contentSize[0] = 0.0f;
+        frame->contentSize[1] = 0.0f;
+
         if (frame->theme && frame->theme->parent == frame) {
             TTF_CloseFont(frame->theme->font.font);
             frame->theme->font.font = TTF_OpenFont(frame->theme->font.path, frame->theme->font.size * ((float) window_width / 800.0f) * (1.33 / ((float) window_width / window_height)));
@@ -179,8 +186,8 @@ class Frame : public Node {
             }
         }
 
-        this::handle_dimension_unit(&frame->scale[0], &this->scale[0], false, 0.0f, frame->unit[2], (double) containerSize[0], (double) containerSize[1]);
-        this::handle_dimension_unit(&frame->scale[1], &this->scale[1], true, 0.0f, frame->unit[3], (double) containerSize[0], (double) containerSize[1]);
+        if (frame->unit[2] != '!') this::handle_dimension_unit(&frame->scale[0], &this->scale[0], false, 0.0f, frame->unit[2], (double) containerSize[0], (double) containerSize[1]);
+        if (frame->unit[3] != '!') this::handle_dimension_unit(&frame->scale[1], &this->scale[1], true, 0.0f, frame->unit[3], (double) containerSize[0], (double) containerSize[1]);
         if (frame->unit[2] == 'a') {
             float scale = this->scale[1] * containerSize[1] / frame->contentSize[0];
             this::handle_dimension_unit(&scale, &this->scale[0], false, 0.0f, 'p', (double) containerSize[0], (double) containerSize[1]);
@@ -189,8 +196,8 @@ class Frame : public Node {
             float scale = ((this->scale[0] * containerSize[0]) / frame->contentSize[0]) * frame->contentSize[1];
             this::handle_dimension_unit(&scale, &this->scale[1], true, 0.0f, 'p', (double) containerSize[0], (double) containerSize[1]);
         }
-        this::handle_dimension_unit(&frame->relPos[0], &this->pos[0], false, this->scale[0], frame->unit[0], (double) containerSize[0], (double) containerSize[1]);
-        this::handle_dimension_unit(&frame->relPos[1], &this->pos[1], true, this->scale[1], frame->unit[1], (double) containerSize[0], (double) containerSize[1]);
+        if (frame->unit[0] != '!') this::handle_dimension_unit(&frame->relPos[0], &this->pos[0], false, this->scale[0], frame->unit[0], (double) containerSize[0], (double) containerSize[1]);
+        if (frame->unit[1] != '!') this::handle_dimension_unit(&frame->relPos[1], &this->pos[1], true, this->scale[1], frame->unit[1], (double) containerSize[0], (double) containerSize[1]);
         glm_vec2_add(this->pos, scroll, this->pos);
 
         frame->absPos[0] = this->pos[0];
@@ -257,7 +264,11 @@ class Frame : public Node {
             if (fabs(frame->scrollTarget[1] - frame->scroll[1]) <= 0.01f) frame->scroll[1] = frame->scrollTarget[1]; // Prevents never-ending scrolling
             if (Game.input->mouse.scroll_y || frame->scrollTarget[1] != frame->scroll[1]) frame->flags |= FRAME_NEEDS_REFRESH;
         }
-        if (Game.window->resized) frame->flags |= FRAME_NEEDS_REFRESH;
+    }
+
+    void on_resize() {
+        Frame *frame = (Frame *) this->object;
+        frame->flags |= FRAME_NEEDS_REFRESH;
     }
 
 

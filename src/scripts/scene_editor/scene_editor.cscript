@@ -10,7 +10,7 @@
 #ifdef DEBUG
 
 
-void load_settings(Node *node) {
+static void editor_load_settings(Node *node) {
 
 	Node * settingsRoot = Game.mainTree->root->children[4]->children[0];
 
@@ -898,7 +898,7 @@ void draw_node_settings(Window *window, Node *node, Input *input, TTF_Font *font
 	draw_rectangle(window->ui_surface, x-400, y, 800, 20, 0xff555555);
 	y += 20;
 
-	if (input->pressed_keys & KEY_ENTER)
+	if (input->pressed_keys & KEY_VALIDATE)
 		node->params[3].i = 0;
 
 	if (y < window_height-70) node->params[0].i += ((window_height-70)-y)/20.0;
@@ -984,7 +984,7 @@ void draw_node_editing(Window *window, Node *node, Input *input, TTF_Font *font)
 	} else sprintf(str, "%s", scriptname);
 	draw_text(window->ui_surface, x-230, y, str, font, (SDL_Color) {255, 255, 255, 255}, "lt", -1);
 
-	if (input->pressed_keys & KEY_ENTER) {
+	if (input->pressed_keys & KEY_VALIDATE) {
 		if (node->params[3].i == 10) {
 			if (!strcmp(scriptname, "None")) {
 				selectedNode->flags &= ~NODE_SCRIPT;
@@ -1197,9 +1197,9 @@ NEW_SCRIPT(scene_editor_btn_edit_node)
 		Game.mainTree->root->children[3]->flags &= ~NODE_ACTIVE;
 		Game.mainTree->root->children[4]->flags |= NODE_VISIBLE;
 		Game.mainTree->root->children[4]->flags |= NODE_ACTIVE;
-		Game.window->resized = true;
+		Game.window->flags |= WINDOW_RESIZED;
 		
-		load_settings(node);
+		editor_load_settings(node);
 		*button->checked = false;
 	}
 #endif
@@ -1213,7 +1213,7 @@ NEW_SCRIPT(scene_editor_edit_mode)
 		Game.mainTree->root->children[4]->flags &= ~NODE_VISIBLE;
 		Game.mainTree->root->children[4]->flags &= ~NODE_ACTIVE;
 		(Game.mainTree->root->children[3]->children[0])::refresh();
-		Game.window->resized = true;
+		Game.window->flags |= WINDOW_RESIZED;
 	}
 #endif
 END_SCRIPT(scene_editor_edit_mode)

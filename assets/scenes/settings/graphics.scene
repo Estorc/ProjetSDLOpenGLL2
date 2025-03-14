@@ -24,15 +24,15 @@ SelectList{NULL,st_res,NULL}
 ControlFrame(2w,175p,96w,50p,ltv):2
 Label("Résolution des ombres :",lc)
 Frame(0w,100h,50w,10p,ltv):1
-Slider(0.0,4.0){NULL,st_shadows_res,NULL}:0
+Slider(0.0,4.0){st_shadows_res_init,st_shadows_res,NULL}:0
 ControlFrame(2w,230p,96w,50p,ltv):2
 Label("Qualité des ombres :",lc)
 Frame(0w,100h,50w,10p,ltv):1
-Slider(0.0,10.0){NULL,st_shadows_quality,NULL}:0
+Slider(0.0,10.0){st_shadows_quality_init,st_shadows_quality,NULL}:0
 ControlFrame(2w,285p,96w,50p,ltv):2
 Label("Qualité des textures :",lc)
 Frame(0w,100h,50w,10p,ltv):1
-Slider(0.0,4.0){NULL,st_textures_quality,NULL}:0
+Slider(0.0,4.0){st_textures_quality_init,st_textures_quality,NULL}:0
 ControlFrame(2w,350p,96w,50p,ltn):2
 ControlFrame(0w,0h,10w,100h,ltn):1
 CheckBox{st_msaa_init,NULL,st_signal}
@@ -40,19 +40,7 @@ ControlFrame(10w,0h,90w,100h,lt):1
 Label("MSAA",lc)
 ControlFrame(2w,405p,96w,50p,ltn):2
 ControlFrame(0w,0h,10w,100h,ltn):1
-CheckBox{st_vsync_init,NULL,st_signal}
+CheckBox{st_vsync_init,NULL,st_vsync_signal}
 ControlFrame(10w,0h,90w,100h,lt):1
 Label("V-Sync",lc)
-Frame(0w,0h,100w,20h,cbn):4
-Frame(0.5w,0h,24w,90h,lcn):1
-Button{NULL,NULL,settings_go_to_main}:1
-Label("Main",cc)
-Frame(-12.5w,0h,24w,90h,ccn):1
-Button{NULL,NULL,settings_go_to_audio}:1
-Label("Audio",cc)
-Frame(12.5w,0h,24w,90h,ccn):1
-Button{NULL,NULL,settings_go_to_graphics}:1
-Label("Graphics",cc)
-Frame(-0.5w,0h,24w,90h,rcn):1
-Button{NULL,NULL,settings_return_to_main_menu}:1
-Label("Quitter",cc)
+Scene(assets/scenes/settings/bottom_bar.scene)

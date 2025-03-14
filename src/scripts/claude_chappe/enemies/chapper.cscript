@@ -44,6 +44,7 @@ NEW_SCRIPT(script_cc_chapper_init)
 END_SCRIPT(script_cc_chapper_init)
 
 NEW_SCRIPT(script_cc_chapper_update)
+    GET_READY_PARAMETERS();
     float *realPos = &this->attribute[0].f;
     ChapperState *state = (ChapperState *) &this->attribute[3];
     Node *camera = this->attribute[4].node;
@@ -59,7 +60,7 @@ NEW_SCRIPT(script_cc_chapper_update)
         break;
     
     case CHAPPER_STATE_CHASE:
-        realPos[2] += 0.3f;
+        realPos[2] += 30.0f * delta;
         play_chapper_idle_animation(this, realPos);
         break;
 
@@ -68,23 +69,23 @@ NEW_SCRIPT(script_cc_chapper_update)
         ((KinematicBody *) camera->parent->object)->velocity[1] = -0.1f;
         targetRot[0] = 32.0f; // 40.0f
         targetRot[1] = atan2f(camera->globalPos[0] - this->globalPos[0], camera->globalPos[2] - this->globalPos[2]) * (180.0f / PI);
-        float_approach(&this->rot[1], targetRot[1], 0.1f);
-        float_approach(&this->children[0]->children[0]->children[0]->rot[0], -10.0f, 0.05f);
-        float_approach(&this->children[0]->children[0]->children[0]->children[0]->rot[0], -9.0f, 0.05f);
-        float_approach(&this->children[0]->children[0]->children[0]->children[0]->children[0]->rot[0], 20.0f, 0.05f);
+        float_approach(&this->rot[1], targetRot[1], delta * 10.0f);
+        float_approach(&this->children[0]->children[0]->children[0]->rot[0], -10.0f, delta * 20.0f);
+        float_approach(&this->children[0]->children[0]->children[0]->children[0]->rot[0], -9.0f, delta * 20.0f);
+        float_approach(&this->children[0]->children[0]->children[0]->children[0]->children[0]->rot[0], 20.0f, delta * 20.0f);
         
-        this->pos[0] += (camera->globalPos[0] - this->globalPos[0]) * 0.005f;
-        this->pos[1] += (camera->globalPos[1] - this->globalPos[1]) * 0.005f;
-        this->pos[2] += (camera->globalPos[2] - this->globalPos[2]) * 0.005f;
+        this->pos[0] += (camera->globalPos[0] - this->globalPos[0]) * 0.3f * delta;
+        this->pos[1] += (camera->globalPos[1] - this->globalPos[1]) * 0.3f * delta;
+        this->pos[2] += (camera->globalPos[2] - this->globalPos[2]) * 0.3f * delta;
 
         if (glm_vec3_distance2(this->globalPos, camera->globalPos) < 32.0f) {
             if (Game.window->fadeColor[3] <= 0.0f) Mix_FadeOutMusic(1000);
             if (Game.window->fadeColor[3] < 1.0f) {
-                Game.window->fadeColor[3] += 0.03f;
-                Game.window->fadeColor[0] += 0.01f;
+                Game.window->fadeColor[3] += 3.0f * delta;
+                Game.window->fadeColor[0] += 1.0f * delta;
             }
             if (Game.window->fadeColor[3] >= 1.0f) {
-                Game.window->fadeColor[0] -= 0.01f;
+                Game.window->fadeColor[0] -= 1.0f * delta;
             }
             if (Game.window->fadeColor[0] <= 0.0f) {
                 prepare_change_scene("assets/scenes/claude_chappe/boot.scene");
@@ -103,5 +104,6 @@ NEW_SCRIPT(script_cc_chapper_update)
 END_SCRIPT(script_cc_chapper_update)
 
 NEW_SCRIPT(script_cc_chapper_saw)
-    this->rot[1] += 8.0f;
+    GET_READY_PARAMETERS();
+    this->rot[1] += 450.0f * delta;
 END_SCRIPT(script_cc_chapper_saw)

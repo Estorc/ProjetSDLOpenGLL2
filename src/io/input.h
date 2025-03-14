@@ -21,8 +21,10 @@
  * @param key The key to be handled.
  */
 
-#define HANDLE_KEY_PRESSED(key)     if (!(input->active_keys & key)) input->pressed_keys |= key; \
-                                    input->active_keys |= key;
+#define HANDLE_KEY_PRESSED(_input_id, _key)   if (event.key.keysym.sym == _input_id) { \
+                                                if (!(input->active_keys & _key)) input->pressed_keys |= _key; \
+                                                input->active_keys |= _key; \
+                                            }       
 
 /**
  * @brief Macro to handle key release events.
@@ -33,8 +35,10 @@
  * @param key The key to be handled.
  */
 
-#define HANDLE_KEY_RELEASED(key)    if ((input->active_keys & key)) input->released_keys |= key; \
-                                    input->active_keys &= ~key;
+#define HANDLE_KEY_RELEASED(_input_id, _key)  if (event.key.keysym.sym == _input_id) { \
+                                                if ((input->active_keys & _key)) input->released_keys |= _key; \
+                                                input->active_keys &= ~_key; \
+                                            }
 
 /**
  * @enum Keys
@@ -45,18 +49,19 @@
  */
 
 enum Keys {
-    KEY_UP      = 1 << 0, /**< The up arrow key. */
-    KEY_RIGHT   = 1 << 1, /**< The right arrow key. */
-    KEY_DOWN    = 1 << 2, /**< The down arrow key. */
-    KEY_LEFT    = 1 << 3, /**< The left arrow key. */
-    KEY_JUMP    = 1 << 4, /**< The jump key. */
-    KEY_CROUCH  = 1 << 5, /**< The crouch key. */
-    KEY_MENU    = 1 << 6, /**< The menu key. */
-    KEY_SHIFT   = 1 << 7, /**< The shift key. */
-    KEY_F       = 1 << 8, /**< The F key. */
-    KEY_G       = 1 << 9, /**< The G key. */
-    KEY_ENTER   = 1 << 10, /**< The enter key. */
-    KEY_COUNT, /**< The total number of keys. */
+    KEY_UP          = 1 << 0, /**< The up arrow key. */
+    KEY_RIGHT       = 1 << 1, /**< The right arrow key. */
+    KEY_DOWN        = 1 << 2, /**< The down arrow key. */
+    KEY_LEFT        = 1 << 3, /**< The left arrow key. */
+    KEY_JUMP        = 1 << 4, /**< The jump key. */
+    KEY_CROUCH      = 1 << 5, /**< The crouch key. */
+    KEY_SPRINT      = 1 << 6, /**< The sprint key. */
+    KEY_MENU        = 1 << 7, /**< The menu key. */
+    KEY_FLASHLIGHT  = 1 << 8, /**< The flashlight key. */
+    KEY_VALIDATE    = 1 << 9, /**< The enter key. */
+    KEY_INTERACT    = 1 << 10, /**< The interact key. */
+    KEY_FULLSCREEN  = 1 << 11, /**< The fullscreen key. */
+    KEY_COUNT,      /**< The total number of keys. */
 };
 
 /**
@@ -91,6 +96,7 @@ typedef struct Mouse {
  */
 
 typedef struct Input {
+    bool locked; /**< Flag indicating if input is locked. */
     u16 active_keys; /**< Bitfield representing currently active keys. */
     u16 pressed_keys; /**< Bitfield representing keys that were pressed. */
     u16 released_keys; /**< Bitfield representing keys that were released. */
@@ -98,6 +104,9 @@ typedef struct Input {
     char inputBuffer[100]; /**< Buffer for text input. */
     Mouse mouse; /**< Mouse state. */
 } Input;
+
+
+void default_input_settings();
 
 /**
  * @brief Initializes the input structure.

@@ -1,0 +1,154 @@
+#include "../../raptiquax.h"
+#include "../../math/math_util.h"
+#include "../../io/model.h"
+#include "../../storage/node.h"
+#include "../../settings.h"
+#include "../../window.h"
+#include "../../gui/frame.h"
+#include "../../storage/queue.h"
+#include "../../scripts/scripts.h"
+#include "../../classes/classes.h"
+
+#include "../../storage/hash.h"
+
+NEW_SCRIPT(st_keybind_up_init)
+    SET_ATTRIBUTES_COUNT(1);
+    this->attribute[0].p = &Game.settings->keybinds.up;
+    int * keybind = this->attribute[0].p;
+    (this->children[0])::set_text(SDL_GetKeyName(*keybind));
+END_SCRIPT(st_keybind_up_init)
+
+NEW_SCRIPT(st_keybind_left_init)
+    SET_ATTRIBUTES_COUNT(1);
+    this->attribute[0].p = &Game.settings->keybinds.left;
+    int * keybind = this->attribute[0].p;
+    (this->children[0])::set_text(SDL_GetKeyName(*keybind));
+END_SCRIPT(st_keybind_left_init)
+
+NEW_SCRIPT(st_keybind_right_init)
+    SET_ATTRIBUTES_COUNT(1);
+    this->attribute[0].p = &Game.settings->keybinds.right;
+    int * keybind = this->attribute[0].p;
+    (this->children[0])::set_text(SDL_GetKeyName(*keybind));
+END_SCRIPT(st_keybind_right_init)
+
+NEW_SCRIPT(st_keybind_down_init)
+    SET_ATTRIBUTES_COUNT(1);
+    this->attribute[0].p = &Game.settings->keybinds.down;
+    int * keybind = this->attribute[0].p;
+    (this->children[0])::set_text(SDL_GetKeyName(*keybind));
+END_SCRIPT(st_keybind_down_init)
+
+
+
+
+
+
+NEW_SCRIPT(st_keybind_jump_init)
+    SET_ATTRIBUTES_COUNT(1);
+    this->attribute[0].p = &Game.settings->keybinds.jump;
+    int * keybind = this->attribute[0].p;
+    (this->children[0])::set_text(SDL_GetKeyName(*keybind));
+END_SCRIPT(st_keybind_jump_init)
+
+NEW_SCRIPT(st_keybind_crouch_init)
+    SET_ATTRIBUTES_COUNT(1);
+    this->attribute[0].p = &Game.settings->keybinds.crouch;
+    int * keybind = this->attribute[0].p;
+    (this->children[0])::set_text(SDL_GetKeyName(*keybind));
+END_SCRIPT(st_keybind_crouch_init)
+
+NEW_SCRIPT(st_keybind_sprint_init)
+    SET_ATTRIBUTES_COUNT(1);
+    this->attribute[0].p = &Game.settings->keybinds.sprint;
+    int * keybind = this->attribute[0].p;
+    (this->children[0])::set_text(SDL_GetKeyName(*keybind));
+END_SCRIPT(st_keybind_sprint_init)
+
+NEW_SCRIPT(st_keybind_menu_init)
+    SET_ATTRIBUTES_COUNT(1);
+    this->attribute[0].p = &Game.settings->keybinds.menu;
+    int * keybind = this->attribute[0].p;
+    (this->children[0])::set_text(SDL_GetKeyName(*keybind));
+END_SCRIPT(st_keybind_menu_init)
+
+
+
+
+
+
+NEW_SCRIPT(st_keybind_flashlight_init)
+    SET_ATTRIBUTES_COUNT(1);
+    this->attribute[0].p = &Game.settings->keybinds.flashlight;
+    int * keybind = this->attribute[0].p;
+    (this->children[0])::set_text(SDL_GetKeyName(*keybind));
+END_SCRIPT(st_keybind_flashlight_init)
+
+NEW_SCRIPT(st_keybind_validate_init)
+    SET_ATTRIBUTES_COUNT(1);
+    this->attribute[0].p = &Game.settings->keybinds.validate;
+    int * keybind = this->attribute[0].p;
+    (this->children[0])::set_text(SDL_GetKeyName(*keybind));
+END_SCRIPT(st_keybind_validate_init)
+
+NEW_SCRIPT(st_keybind_interact_init)
+    SET_ATTRIBUTES_COUNT(1);
+    this->attribute[0].p = &Game.settings->keybinds.interact;
+    int * keybind = this->attribute[0].p;
+    (this->children[0])::set_text(SDL_GetKeyName(*keybind));
+END_SCRIPT(st_keybind_interact_init)
+
+NEW_SCRIPT(st_keybind_fullscreen_init)
+    SET_ATTRIBUTES_COUNT(1);
+    this->attribute[0].p = &Game.settings->keybinds.fullscreen;
+    int * keybind = this->attribute[0].p;
+    (this->children[0])::set_text(SDL_GetKeyName(*keybind));
+END_SCRIPT(st_keybind_fullscreen_init)
+
+
+NEW_SCRIPT(st_keybind_signal)
+    GET_SIGNAL();	
+    switch (signal) {
+        case SIGNAL_BUTTON_CLICKED:
+            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            this->parent->parent->parent->flags &= ~NODE_ACTIVE;
+            this->parent->parent->parent->parent->children[0]->flags |= NODE_ACTIVE;
+            this->parent->parent->parent->parent->children[0]->attribute[0].p = this;
+            (this->children[0])::set_text("< En attente >");
+            Game.input->locked = true;
+
+            break;
+        case SIGNAL_BUTTON_HOVERED:
+            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            break;
+        default:
+            break;
+    }
+END_SCRIPT(st_keybind_signal)
+
+NEW_SCRIPT(st_keybind_init)
+    SET_ATTRIBUTES_COUNT(1);
+END_SCRIPT(st_keybind_init)
+
+NEW_SCRIPT(st_keybind_update)
+    SDL_Event event;
+    while( SDL_PollEvent( &event ) ) {
+        switch( event.type ){
+            /* Look for a keypress */
+            case SDL_KEYDOWN:
+                /* Check the SDLKey values and move change the coords */
+                switch( event.key.keysym.sym ) {
+                    default:
+                        int * keybind = this->attribute[0].node->attribute[0].p;
+                        *keybind = event.key.keysym.sym;
+                        (this->attribute[0].node->children[0])::set_text(SDL_GetKeyName(*keybind));
+                        PRINT_INFO("Keybind changed to %s\n", SDL_GetKeyName(*keybind));
+                        this->parent->children[1]->flags |= NODE_ACTIVE;
+                        this->flags &= ~NODE_ACTIVE;
+                        Game.input->locked = false;
+                        break;
+                }
+            break;
+        }
+    }
+END_SCRIPT(st_keybind_update)

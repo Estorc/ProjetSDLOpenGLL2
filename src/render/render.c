@@ -15,14 +15,12 @@
 
 
 void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shader activeShader, WorldShaders *shaders, int viewportWidth, int viewportHeight) {
-
-    
     if (node->flags & NODE_VISIBLE) {
-
         GLint currentFBO;
         bool is_render_target = false;
         node::is_render_target(&is_render_target);
         RenderTarget *lastRenderTarget = Game.renderTarget;
+
         if (is_render_target) {
             glGetIntegerv(GL_FRAMEBUFFER_BINDING, &currentFBO);
             RenderTarget *renderTarget = (RenderTarget *) node->object;
@@ -33,12 +31,15 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
         
         mat4 nodeModelMatrix = GLM_MAT4_IDENTITY_INIT;
         glm_mat4_mul(nodeModelMatrix, modelMatrix, nodeModelMatrix);
+
         use_shader(activeShader);
         node::prepare_render(nodeModelMatrix, activeShader, shaders);
         node::render(nodeModelMatrix, activeShader, shaders);
+
         for (int i = 0; i < node->length; i++) {
             render_scene(window, node->children[i], c, nodeModelMatrix, activeShader, shaders, viewportWidth, viewportHeight);
         }
+
         if (Game.settings->show_collision_boxes) {
             bool is_body = false;
             node::is_body((&is_body));
@@ -120,32 +121,35 @@ void draw_screen(Window *window, Node *scene, Camera *c, WorldShaders *shaders, 
     draw_shadow_map(window,scene,c,shaders,depthMap);
     
 
-    glBindFramebuffer(GL_FRAMEBUFFER, msaa->framebuffer);
+    if (Game.settings->antialiasing)
+        glBindFramebuffer(GL_FRAMEBUFFER, msaa->framebuffer);
     draw_scene(window,scene,c,shaders,depthMap);
-    glBindFramebuffer(GL_READ_FRAMEBUFFER, msaa->framebuffer);
-    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, msaa->intermediateFBO);
-    glBlitFramebuffer(0, 0, window_width, window_height, 0, 0, window_width, window_height, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+    if (Game.settings->antialiasing) {
+        glBindFramebuffer(GL_READ_FRAMEBUFFER, msaa->framebuffer);
+        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, msaa->intermediateFBO);
+        glBlitFramebuffer(0, 0, window_width, window_height, 0, 0, window_width, window_height, GL_COLOR_BUFFER_BIT, GL_NEAREST);
 
 
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-    // Draw screen (render scene in the screen plane)
-    glClear(GL_COLOR_BUFFER_BIT);
-    glDisable(GL_DEPTH_TEST);
-    use_shader(shaders->screen);
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, msaa->screenTexture); // use the now resolved color attachment as the quad's texture
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, window->ui_texture); // use the now resolved color attachment as the quad's texture
-    set_shader_int(shaders->screen, "screenTexture", 0);
-    set_shader_int(shaders->screen, "UITexture", 1);
-    set_shader_vec4(shaders->screen, "fadeColor", window->fadeColor);
+        // Draw screen (render scene in the screen plane)
+        glClear(GL_COLOR_BUFFER_BIT);
+        glDisable(GL_DEPTH_TEST);
+        use_shader(shaders->screen);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, msaa->screenTexture); // use the now resolved color attachment as the quad's texture
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, window->ui_texture); // use the now resolved color attachment as the quad's texture
+        set_shader_int(shaders->screen, "screenTexture", 0);
+        set_shader_int(shaders->screen, "UITexture", 1);
+        set_shader_vec4(shaders->screen, "fadeColor", window->fadeColor);
 
 
-    SDL_GetWindowSize(window->sdl_window, &window_width, &window_height);
-    glViewport(0, 0, window_width, window_height);
-    
-    glBindVertexArray(screenPlane->VAO);
-    glDrawArrays(GL_TRIANGLES, 0, screenPlane->length);
-    glBindVertexArray(0);
+        SDL_GetWindowSize(window->sdl_window, &window_width, &window_height);
+        glViewport(0, 0, window_width, window_height);
+        
+        glBindVertexArray(screenPlane->VAO);
+        glDrawArrays(GL_TRIANGLES, 0, screenPlane->length);
+        glBindVertexArray(0);
+    }
 }

@@ -21,6 +21,7 @@ void change_scene() {
     (*root) = load_scene(path, camera, scripts);
     PRINT_INFO("Scene changed to %s\n", path);
     PRINT_INFO("Root: %p\n", *root);
+    Game.window->flags |= WINDOW_PRERENDER_PASS; // Force a prerender pass to prevent weird rendering bugs
 }
 
 void prepare_change_scene(char *path) {

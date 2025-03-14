@@ -20,6 +20,23 @@ typedef enum Resolutions {
     RES_COUNT,
 } Resolutions;
 
+typedef struct Keybinds {
+    int up;
+    int down;
+    int left;
+    int right;
+
+    int jump;
+    int crouch;
+    int sprint;
+
+    int menu;
+    int flashlight;
+    int validate;
+    int interact;
+    int fullscreen;
+} Keybinds;
+
 typedef struct Settings {
     bool show_fps;
     bool cast_shadows;
@@ -35,8 +52,11 @@ typedef struct Settings {
     int texture_quality;
     bool antialiasing;
     bool vsync;
+    Keybinds keybinds;
 } Settings;
 
 void get_resolution(int *width, int *height);
 extern const char resolutionsText[RES_COUNT][256];
+void save_settings();
+void load_settings();
 #endif

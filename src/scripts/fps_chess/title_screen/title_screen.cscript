@@ -27,14 +27,14 @@ NEW_SCRIPT(script_fc_title_screen_camera)
 	GET_READY_PARAMETERS();
 
 	if (Game.mainTree->root->attribute[0].b) {
-		Game.window->fadeColor[3] += 0.01f;
+		Game.window->fadeColor[3] += 1.0f * delta;
 		if (Game.window->fadeColor[3] >= 1.0f)
 			prepare_change_scene("assets/scenes/fps_chess/server_party.scene");
 	} else {
 		if (Game.window->fadeColor[3] > 0.0f)
-			Game.window->fadeColor[3] -= 0.01f;
+			Game.window->fadeColor[3] -= 1.0f * delta;
 	}
-	this->rot[1] += 0.7f;
+	this->rot[1] += 40.0f * delta;
 	const float distance = 25.0f;
 	glm_vec3_copy((vec3) {sin(to_radians(this->rot[1]))*distance, 5.0f, cos(to_radians(this->rot[1]))*distance}, this->pos);
 

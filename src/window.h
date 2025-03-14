@@ -17,6 +17,13 @@
  * This structure encapsulates the SDL window and its related properties, including
  * the OpenGL context, surfaces for rendering, and timing information.
  */
+
+typedef enum WindowFlags {
+    WINDOW_NO_FLAGS = 0, /**< No flags set. */
+    WINDOW_PRERENDER_PASS = 1 << 0, /**< Flag indicating that the window is in prerender pass. */
+    WINDOW_RESIZED = 1 << 1, /**< Flag indicating that the window has been resized. */
+} WindowFlags;
+
 typedef struct Window {
     SDL_Window *sdl_window; /**< Pointer to the SDL window. */
     SDL_Surface *surface; /**< Main rendering surface. */
@@ -27,7 +34,7 @@ typedef struct Window {
     float time; /**< Current time since the window was created or initialized. */
     float lastTime; /**< Time of the last frame update. */
     vec4 fadeColor; /**< Color used for fading the screen. */
-    bool resized; /**< Flag indicating if the window has been resized. */
+    u8 flags; /**< Flags for window properties. */
 } Window;
 
 struct WorldShaders;

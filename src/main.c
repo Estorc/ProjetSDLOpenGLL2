@@ -23,22 +23,22 @@
 #include "storage/queue.h"
 #include "storage/hash.h"
 #include "utils/scene.h"
+#include "utils/random.h"
 
 #include "classes/classes.h"
 
 #define BOOT_SCENE "assets/scenes/claude_chappe/boot.scene"
 
-float accumulator = 0.0f;
-const float fixedTimeStep = 0.0167f;
-float fps = 0.0f;
-
 int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa, Mesh *screenPlane) {
+    static float accumulator = 0.0f;
+    const float fixedTimeStep = 0.0167f;
+    
     float delta = (window->lastTime) ? window->time - window->lastTime : 0.0;
     const float maxDelta = 0.1f;
     delta = (delta > maxDelta) ? maxDelta : delta;
     accumulator += delta;
 
-    if (accumulator >= fixedTimeStep) SDL_FillRect(window->ui_surface, NULL, 0x000000);
+    //if (accumulator >= fixedTimeStep) SDL_FillRect(window->ui_surface, NULL, 0x000000);
 
     while (!queue_is_empty(Game.callQueue)) {
         void(*call)() = queue_pop(Game.callQueue);
@@ -46,7 +46,9 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
         else return -1;
     }
 
- 
+
+
+    static float fps = 0.0;
     char delta_str[50];
     char fps_str[50];
     if (Game.settings->show_fps) {
@@ -63,6 +65,8 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
         TTF_CloseFont(font);
     }
 
+
+
     u8 lightsCount[LIGHTS_COUNT];
     while (accumulator >= fixedTimeStep) {
         s8 input_result = update_input(Game.input);
@@ -77,11 +81,12 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
         Game.buffers->lightingBuffer.index = 0;
         memset(lightsCount, 0, sizeof(lightsCount));
         update_physics(Game.mainTree->root, (vec3) {0.0, 0.0, 0.0}, (vec3) {0.0, 0.0, 0.0}, (vec3) {1.0, 1.0, 1.0}, fixedTimeStep, Game.input, window, lightsCount, true);
-        window->resized = false;
         accumulator -= fixedTimeStep;
     }
+
+
     set_lightings(lightsCount);
-    refresh_ui(window);
+    //refresh_ui(window);
     update_window(window, Game.mainTree->root, Game.camera, shaders, depthMap, msaa, screenPlane);
 
     return 0;
@@ -91,7 +96,13 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
 int main(int argc, char *argv[]) {
 
     if (update_cwd() == -1) return -1;
+
+    init_random();
     init_memory_cache();
+
+    default_input_settings(&Game.settings->keybinds);
+
+    load_settings();
 
     if (create_window("Physics Engine Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE, Game.window) == -1) return -1;
     init_input(Game.input);

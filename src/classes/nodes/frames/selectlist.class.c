@@ -157,10 +157,15 @@ class SelectList : public Frame {
                 this->children[0]->flags |= NODE_VISIBLE;
                 this->children[0]->flags |= NODE_ACTIVE;
             }
-            if (Game.input->released_keys & KEY_ENTER || ((mouse->released_button == SDL_BUTTON_LEFT || mouse->pressed_button == SDL_BUTTON_LEFT) && !(mouse->x > x &&
+            if (Game.input->released_keys & KEY_VALIDATE || ((mouse->released_button == SDL_BUTTON_LEFT || mouse->pressed_button == SDL_BUTTON_LEFT) &&
+                !(mouse->x > x &&
                 mouse->x < x+w &&
                 mouse->y > y &&
-                mouse->y < y+h))) {
+                mouse->y < y+h &&
+                mouse->x > frame->overflow[0] &&
+                mouse->x < frame->overflow[2] &&
+                mouse->y > frame->overflow[1] &&
+                mouse->y < frame->overflow[3]))) {
                     for (int i = 0; i < this->children[0]->children[0]->length; i++) {
                         Frame *childFrame = (Frame *) this->children[0]->children[0]->children[i]->children[0]->object;
                         Button *button = (Button *) childFrame->button;
@@ -180,7 +185,11 @@ class SelectList : public Frame {
             if (mouse->x > x &&
                 mouse->x < x+w &&
                 mouse->y > y &&
-                mouse->y < y+h) {
+                mouse->y < y+h &&
+                mouse->x > frame->overflow[0] &&
+                mouse->x < frame->overflow[2] &&
+                mouse->y > frame->overflow[1] &&
+                mouse->y < frame->overflow[3]) {
                 
                 selectList->state = BUTTON_STATE_HOVERED;
 
@@ -192,7 +201,6 @@ class SelectList : public Frame {
                 selectList->state = BUTTON_STATE_NORMAL;
             }
         }
-        if (Game.window->resized) frame->flags |= FRAME_NEEDS_REFRESH;
     }
 
     void is_selectlist(bool *result) {

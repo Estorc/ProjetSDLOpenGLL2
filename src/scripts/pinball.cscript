@@ -17,7 +17,7 @@ NEW_SCRIPT(pinball_ball)
 	KinematicBody *player = (KinematicBody*) this->object;
 
 	f32 vel = 0.05f;
-	if (Game.input->active_keys & KEY_SHIFT) vel = 0.2f;
+	if (Game.input->active_keys & KEY_SPRINT) vel = 0.2f;
 	vel *= delta * 100.0;
 
 

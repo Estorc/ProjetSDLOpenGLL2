@@ -162,6 +162,6 @@ SphereCShape[m0,-3,0s0.8,0.8,0.8]
 [m0,4,10]{NULL,script_cc_player_update,NULL}:2
 Camera(1){NULL,script_cc_camera_player,NULL}
 SpotLight(50,50,50,0.03,0,1,0.09,0.03,1,0.95)[m0.75,0.75,-3.27835e-08r4.63492,1.81801,4.63492]{NULL,flashlight,NULL}
-PointLight(3,3,6,0.03,0,1,0.09,0.032)[m-70,5,0]
-PointLight(20,40,100,0.01,0,1,0.09,0.032)[m-40,10,-7]
+PointLight(3,3,6,0.03,0,1,0.09,0.032)[m-70,5,0]{NULL,cc_flickering_light,NULL}
+PointLight(20,40,100,0.01,0,1,0.09,0.032)[m-40,10,-7]{NULL,cc_flickering_light,NULL}
 Skybox(assets/textures/skybox/claude_chappe/graycloud_ft.png,assets/textures/skybox/claude_chappe/graycloud_bk.png,assets/textures/skybox/claude_chappe/graycloud_up.png,assets/textures/skybox/claude_chappe/graycloud_dn.png,assets/textures/skybox/claude_chappe/graycloud_rt.png,assets/textures/skybox/claude_chappe/graycloud_lf.png)[m0,0,0r0,0,0s1,1,1a1v1]

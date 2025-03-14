@@ -19,10 +19,9 @@ NEW_SCRIPT(script_cc_player_update)
 
 	KinematicBody *player = (KinematicBody*) this->object;
 
-	f32 vel = 0.05f;
-	if (Game.input->active_keys & KEY_SHIFT) vel = 0.2f;
-	vel *= delta * 100.0f;
-
+    f32 base_speed = 10.0f;
+    if (Game.input->active_keys & KEY_SPRINT) base_speed = 20.0f;
+    f32 vel = base_speed * 0.016f;  // Scale speed by delta for frame-rate independence
 
 	Camera *c = (Camera*) this->children[0]->object;
 
@@ -34,7 +33,6 @@ NEW_SCRIPT(script_cc_player_update)
 	glm_vec3_zero(appliedVelocity);
 
 	if (!*menu_open) {
-
 		SDL_SetRelativeMouseMode(SDL_TRUE);
 
 		if (Game.input->active_keys & KEY_LEFT) {
@@ -63,10 +61,12 @@ NEW_SCRIPT(script_cc_player_update)
 	else SDL_SetRelativeMouseMode(SDL_FALSE);
 
 		
-	player->velocity[0] += (appliedVelocity[0] - player->velocity[0]) / 20.0;
-	player->velocity[2] += (appliedVelocity[2] - player->velocity[2]) / 20.0;
+    // Smooth velocity adjustment using delta
+    player->velocity[0] += (appliedVelocity[0] - player->velocity[0]) * (delta * 2.0f);
+    player->velocity[2] += (appliedVelocity[2] - player->velocity[2]) * (delta * 2.0f);
 
-	player->velocity[1] -= 0.5*delta;
+    // Apply gravity scaled by delta
+    player->velocity[1] -= 0.5f * delta;
     //if (Game.input->active_keys & KEY_JUMP) c->targetPos[1] += vel;
 	//if (Game.input->active_keys & KEY_CROUCH) c->targetPos[1] -= vel;
 
