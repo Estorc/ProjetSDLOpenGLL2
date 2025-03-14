@@ -22,5 +22,6 @@ typedef struct Desktop_u {
 
 Desktop_t * create_desktop (char * backgroundPath, char * elementSpritesheetPath, char * dataPath, int nbElements) ;
 void destroy_desktop(Desktop_t **desktop) ;
+void destroy_desktop_cb (void * desktop) ;
 int element_update(Desktop_t * desktop, SDL_Event * event) ;
 void move_element (Desktop_t * desktop, SDL_Event * event) ;

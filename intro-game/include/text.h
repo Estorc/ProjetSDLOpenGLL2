@@ -22,3 +22,4 @@ void text_change_hollow (Text_t * text, int boolean, SDL_Color color, TypeHollow
 void text_change_color (Text_t * text, SDL_Color newColor) ;
 void text_change_position (Text_t * text, SDL_Rect newPosition) ; 
 void text_change_type_anim (Text_t * text, TypeTextAnim_t type) ;
+void TTF_CloseFont_cb (void * font) ;

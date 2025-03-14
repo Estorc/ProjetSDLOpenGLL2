@@ -142,6 +142,10 @@ void destroy_desktop(Desktop_t **desktop) {
         printf("[INFO] : Désalocation structure Desktop réussie\n");
     }
 }
+void destroy_desktop_cb (void * desktop) {
+    Desktop_t ** pdesktop = (Desktop_t **)desktop ;
+    destroy_desktop(pdesktop);
+}
 
 
 

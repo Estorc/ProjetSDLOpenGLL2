@@ -8,6 +8,7 @@
 #include "../include/scene.h"
 #include "../include/desktop.h"
 #include "../include/text.h"
+#include "../include/dictionary.h"
 
 
 /**
@@ -28,9 +29,15 @@
  * @warning En cas d'échec de l'allocation mémoire ou du chargement de `desktop`, la fonction retourne `0`.
  */
 void DESKTOP_load(Scene_t *self) {
-
+ 
     if (self == NULL) {
         fprintf(stderr, "Erreur: `self` est NULL\n");
+        return ;
+    }
+
+    self->dict = create_dictionnary() ;
+    if (!existe(self->dict)) {
+        fprintf(stderr, "Erreur création dictionnaire dans DESKTOP\n");
         return ;
     }
 
@@ -109,9 +116,13 @@ void DESKTOP_load(Scene_t *self) {
 
     // Stockage dans `self->data`
     self->data[0] = info ;
+    dict_set(self->dict, "info", info, free_cb);
     self->data[1] = desktop ;
+    dict_set(self->dict, "desktop", desktop, destroy_desktop_cb);
     self->data[2] = font ;
+    dict_set(self->dict, "font", font, TTF_CloseFont_cb);
     self->data[3] = tabText ;
+    // dict_set(self->dict, "tabText", tabText, free_cb);
 
     printf("[INFO] : Chargement des données DESKTOP réussi\n");
 }
@@ -135,42 +146,46 @@ void DESKTOP_unLoad(Scene_t *self) {
         return;
     }
 
+    if (existe(self->data)) {
+        destroy_dictionary(&self->dict);
+    }
+
     if (self->data == NULL) {
         fprintf(stderr, "Aucune donnée à libérer dans `self->data`\n");
         return;
     }
 
-    // Libération de la structure Desktop_t (self->data[1])
-    Desktop_t *desktop = (Desktop_t *)self->data[1] ;
-    if (desktop != NULL) {
-        destroy_desktop(&desktop);
-    }
+    // // Libération de la structure Desktop_t (self->data[1])
+    // Desktop_t *desktop = (Desktop_t *)self->data[1] ;
+    // if (desktop != NULL) {
+    //     destroy_desktop(&desktop);
+    // }
 
-    // Libération du font (self->data[2])
-    TTF_Font * font = (TTF_Font *)self->data[2] ;
-    if (font != NULL) {
-        TTF_CloseFont(font);
-    }
+    // // Libération du font (self->data[2])
+    // TTF_Font * font = (TTF_Font *)self->data[2] ;
+    // if (font != NULL) {
+    //     TTF_CloseFont(font);
+    // }
 
-    // Libération du tableau de text et de ses éléments 
-    InfoScene_t * info = (InfoScene_t *)self->data[0] ;
-    Text_t ** tabText = (Text_t **)self->data[3] ;
-    if (tabText != NULL) {
+    // // Libération du tableau de text et de ses éléments 
+    // InfoScene_t * info = (InfoScene_t *)self->data[0] ;
+    // Text_t ** tabText = (Text_t **)self->data[3] ;
+    // if (tabText != NULL) {
 
-        if (info != NULL) {
-            for (int i = 0; i < info->nbText; i++) {
-                destroy_text(&tabText[i]);
-            }
-        }
-        else {
-            printf("[ERROR] : Libération du tableau de text de DESKTOP impossible car `info` NULL\n");
-        }
-    }
+    //     if (info != NULL) {
+    //         for (int i = 0; i < info->nbText; i++) {
+    //             destroy_text(&tabText[i]);
+    //         }
+    //     }
+    //     else {
+    //         printf("[ERROR] : Libération du tableau de text de DESKTOP impossible car `info` NULL\n");
+    //     }
+    // }
 
-    // Libération de la structure InfoScene_t (self->data[0])
-    if (info != NULL) {
-        free(info);
-    }
+    // // Libération de la structure InfoScene_t (self->data[0])
+    // if (info != NULL) {
+    //     free(info);
+    // }
 
     // Libération du tableau `self->data` et mise à NULL
     free(self->data);

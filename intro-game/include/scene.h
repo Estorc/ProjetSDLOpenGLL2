@@ -8,8 +8,9 @@
 extern SDL_Renderer * renderer ;
 extern GameStatus_t gameStatus ;
 
-typedef struct Camera_u Camera_t ;
+typedef struct Camera_u Camera_t ; 
 typedef struct Player_u Player_t ;
+typedef struct Dictionary_u Dictionary_t ; 
 typedef struct Map_u Map_t ; 
 typedef struct Scene_u Scene_t ;
 typedef struct SceneManager_u SceneManager_t ;
@@ -23,6 +24,7 @@ typedef struct InfoScene_u {
 typedef struct Scene_u {
     char * name ;
     void ** data ;
+    Dictionary_t * dict ;
 
     void (*load) (Scene_t *) ;
     void (*unLoad) (Scene_t *) ;

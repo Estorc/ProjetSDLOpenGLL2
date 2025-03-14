@@ -239,3 +239,10 @@ void text_change_hollow (Text_t * text, int boolean, SDL_Color color, TypeHollow
     anim->hollowColor = color ;
     anim->hollowDir = dir ;
 }
+
+
+void TTF_CloseFont_cb (void * font) {
+    TTF_Font ** pfont = (TTF_Font **)font ;
+    TTF_CloseFont(*pfont);
+    *pfont = NULL ;
+}
