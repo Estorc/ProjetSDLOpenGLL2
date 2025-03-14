@@ -38,7 +38,7 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
     delta = (delta > maxDelta) ? maxDelta : delta;
     accumulator += delta;
 
-    //if (accumulator >= fixedTimeStep) SDL_FillRect(window->ui_surface, NULL, 0x000000);
+    if (accumulator >= fixedTimeStep) SDL_FillRect(window->ui_surface, NULL, 0x000000);
 
     while (!queue_is_empty(Game.callQueue)) {
         void(*call)() = queue_pop(Game.callQueue);
@@ -86,7 +86,7 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
 
 
     set_lightings(lightsCount);
-    //refresh_ui(window);
+    refresh_ui(window);
     update_window(window, Game.mainTree->root, Game.camera, shaders, depthMap, msaa, screenPlane);
 
     return 0;

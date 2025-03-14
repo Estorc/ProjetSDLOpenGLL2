@@ -357,6 +357,7 @@ class Frame : public Node {
 
             set_shader_mat4(shaders->gui, "model", modelMatrix);
             this::draw_frame();
+            use_shader(activeShader);
         }
         frame->flags &= ~FRAME_NEEDS_INIT;
     }

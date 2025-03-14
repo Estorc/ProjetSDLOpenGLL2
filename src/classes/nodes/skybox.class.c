@@ -238,6 +238,7 @@ class Skybox : public Node {
         glBindVertexArray(0);
 
         glDepthFunc(GL_LESS); // set depth function back to default
+        use_shader(activeShader);
     }
 
 }

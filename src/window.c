@@ -202,7 +202,6 @@ void update_window(Window *window, Node *scene, Camera *c, WorldShaders *shaders
     window->lastTime = window->time;
     SDL_GL_SwapWindow(window->sdl_window);
     window->time = get_time_in_seconds() - window->startTime;
-    PRINT_INFO("Frame time: %.4f\n", window->time - window->lastTime);
 
 }
 

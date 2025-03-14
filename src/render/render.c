@@ -30,9 +30,8 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
         }
         
         mat4 nodeModelMatrix = GLM_MAT4_IDENTITY_INIT;
-        glm_mat4_mul(nodeModelMatrix, modelMatrix, nodeModelMatrix);
+        glm_mat4_copy(modelMatrix, nodeModelMatrix);
 
-        use_shader(activeShader);
         node::prepare_render(nodeModelMatrix, activeShader, shaders);
         node::render(nodeModelMatrix, activeShader, shaders);
 
@@ -74,6 +73,7 @@ void draw_shadow_map(Window *window, Node *root, Camera *c, WorldShaders *shader
         (Game.buffers->lightingBuffer.lightings[i])::configure_lighting(c, shaders, depthMap, lightsCount, pl);
         const GLfloat clearDepth = 1.0f;
         glClearBufferfv(GL_DEPTH, 0, &clearDepth);
+        use_shader(shaders->depth);
         render_scene(window, root, c, modelMatrix, shaders->depth, shaders, Game.settings->shadow_resolution, Game.settings->shadow_resolution);
         if (Game.buffers->lightingBuffer.lightings[i]->type == CLASS_TYPE_POINTLIGHT && pl < 5) {
             i--;
@@ -105,6 +105,7 @@ void draw_scene(Window *window, Node *root, Camera *c, WorldShaders *shaders, De
     set_shader_int(shaders->render, "shadowQuality", Game.settings->shadow_quality);
 
     mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
+    use_shader(shaders->render);
     render_scene(window, root, c, modelMatrix, shaders->render, shaders, window_width, window_height);
 }
 
