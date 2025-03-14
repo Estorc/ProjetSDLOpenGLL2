@@ -1,0 +1,16 @@
+#include "../../raptiquax.h"
+#include "../../math/math_util.h"
+#include "../../storage/node.h"
+#include "../../render/camera.h"
+#include "../../gui/frame.h"
+#include "../../storage/queue.h"
+#include "../../utils/scene.h"
+#include "../../io/audio.h"
+#include "../../render/lighting.h"
+#include "../../buffer.h"
+#include "../../window.h"
+
+NEW_SCRIPT(script_cc_level_init)
+    Game.window->fadeColor[3] = 0.0f;
+    play_music("assets/audio/musics/Gameplay (loop).mp3", MIX_MAX_VOLUME, -1);
+END_SCRIPT(script_cc_level_init)

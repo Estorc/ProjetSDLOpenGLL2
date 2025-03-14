@@ -1,0 +1,8 @@
+Frame(2w,2p,86w,58p,ltn):3
+ControlFrame(0w,0p,60w,100h,lcn):1
+Label("party_name",lc)
+ControlFrame(60w,0p,10w,100h,lcn):1
+Label("1/2",cc)
+Frame(72w,2h,28w,96h,lcn):1
+Button{NULL,NULL,script_fc_join_party_button}:1
+Label("Rejoindre",cc)

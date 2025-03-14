@@ -5,16 +5,33 @@
 Functions for loading and managing 3D models from OBJ files.  
 
 
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structFace}{Face}}
+\begin{DoxyCompactList}\small\item\em Structure representing a face of a 3D model. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structLoadingModelBuffer}{Loading\+Model\+Buffer}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__ObjLoader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\+\_\+\+VERTEX\+\_\+\+PER\+\_\+\+FACE}}~10
+\begin{DoxyCompactList}\small\item\em Maximum number of vertices per face. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef vec3 \mbox{\hyperlink{group__ObjLoader_gabb5b863a4c7a7cc7d18a288c908b9f0b}{Normal}}
+\begin{DoxyCompactList}\small\item\em Alias for vec3 representing a normal vector. \end{DoxyCompactList}\item 
+typedef vec2 \mbox{\hyperlink{group__ObjLoader_ga035e3505138fdf49eb7ebdcfc5d5a1fc}{Texture\+Vertex}}
+\begin{DoxyCompactList}\small\item\em Alias for vec2 representing a texture vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{group__ObjLoader_ga91137495694c076b1f1f5212e0b83f67}{malloc\+\_\+obj}} (\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vim, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} fim, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vnim, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vtim)
+int \mbox{\hyperlink{group__ObjLoader_ga5a4ede319c6c281e805f900f33a7451b}{malloc\+\_\+obj}} (\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{structLoadingModelBuffer}{Loading\+Model\+Buffer}} \texorpdfstring{$\ast$}{*}buffer, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vim, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} fim, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vnim, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vtim)
 \begin{DoxyCompactList}\small\item\em Allocates memory for an \doxylink{structModelObjectData}{Model\+Object\+Data}\textquotesingle{}s vertex, face, normal, and texture data. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ObjLoader_gaea15e76da7fb4c45393b68d2a5d0936e}{create\+\_\+obj\+\_\+vao}} (\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj)
-\begin{DoxyCompactList}\small\item\em Creates and initializes a Vertex Array \doxylink{structObject}{Object} (VAO) for a given 3D object, including the necessary vertex buffer data. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ObjLoader_gab4932d6a4b8e09e504d475d464f4d43c}{close\+\_\+realloc\+\_\+obj}} (\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vi, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} fi, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vni, \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vti)
+void \mbox{\hyperlink{group__ObjLoader_ga183823564439c36d87aac604a9063c59}{close\+\_\+realloc\+\_\+obj}} (\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{structLoadingModelBuffer}{Loading\+Model\+Buffer}} \texorpdfstring{$\ast$}{*}buffer, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vi, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} fi, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vni, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vti)
 \begin{DoxyCompactList}\small\item\em Cleans up and reallocates the memory for the vertex data and faces of a 3D object, and generates the Vertex Array \doxylink{structObject}{Object} (VAO) for rendering. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{group__ObjLoader_gab9a1546acd8b600802264c99c343ba28}{load\+\_\+obj\+\_\+model}} (char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}model\+Ptr)
+int \mbox{\hyperlink{group__ObjLoader_gad1c67a7fd502c28832fa5cf248696814}{load\+\_\+obj\+\_\+model}} (const char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}model\+Ptr)
 \begin{DoxyCompactList}\small\item\em Loads a 3D model from an OBJ file, including its associated materials, vertices, normals, and texture coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -23,12 +40,48 @@ Functions for loading and managing 3D models from OBJ files.
 
 
 
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group__ObjLoader_ga505a07845a4c8d45ba2013e9760bd7f0}\label{group__ObjLoader_ga505a07845a4c8d45ba2013e9760bd7f0} 
+\index{OBJ Loader@{OBJ Loader}!MAX\_VERTEX\_PER\_FACE@{MAX\_VERTEX\_PER\_FACE}}
+\index{MAX\_VERTEX\_PER\_FACE@{MAX\_VERTEX\_PER\_FACE}!OBJ Loader@{OBJ Loader}}
+\doxysubsubsection{\texorpdfstring{MAX\_VERTEX\_PER\_FACE}{MAX\_VERTEX\_PER\_FACE}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+VERTEX\+\_\+\+PER\+\_\+\+FACE~10}
+
+
+
+Maximum number of vertices per face. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{group__ObjLoader_gabb5b863a4c7a7cc7d18a288c908b9f0b}\label{group__ObjLoader_gabb5b863a4c7a7cc7d18a288c908b9f0b} 
+\index{OBJ Loader@{OBJ Loader}!Normal@{Normal}}
+\index{Normal@{Normal}!OBJ Loader@{OBJ Loader}}
+\doxysubsubsection{\texorpdfstring{Normal}{Normal}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ObjLoader_gabb5b863a4c7a7cc7d18a288c908b9f0b}{Normal}}}
+
+
+
+Alias for vec3 representing a normal vector. 
+
+\Hypertarget{group__ObjLoader_ga035e3505138fdf49eb7ebdcfc5d5a1fc}\label{group__ObjLoader_ga035e3505138fdf49eb7ebdcfc5d5a1fc} 
+\index{OBJ Loader@{OBJ Loader}!TextureVertex@{TextureVertex}}
+\index{TextureVertex@{TextureVertex}!OBJ Loader@{OBJ Loader}}
+\doxysubsubsection{\texorpdfstring{TextureVertex}{TextureVertex}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ObjLoader_ga035e3505138fdf49eb7ebdcfc5d5a1fc}{Texture\+Vertex}}}
+
+
+
+Alias for vec2 representing a texture vertex. 
+
+
+
 \doxysubsection{Function Documentation}
-\Hypertarget{group__ObjLoader_gab4932d6a4b8e09e504d475d464f4d43c}\label{group__ObjLoader_gab4932d6a4b8e09e504d475d464f4d43c} 
+\Hypertarget{group__ObjLoader_ga183823564439c36d87aac604a9063c59}\label{group__ObjLoader_ga183823564439c36d87aac604a9063c59} 
 \index{OBJ Loader@{OBJ Loader}!close\_realloc\_obj@{close\_realloc\_obj}}
 \index{close\_realloc\_obj@{close\_realloc\_obj}!OBJ Loader@{OBJ Loader}}
 \doxysubsubsection{\texorpdfstring{close\_realloc\_obj()}{close\_realloc\_obj()}}
-{\footnotesize\ttfamily void close\+\_\+realloc\+\_\+obj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}}]{obj,  }\item[{\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{vi,  }\item[{\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{fi,  }\item[{\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{vni,  }\item[{\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{vti }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void close\+\_\+realloc\+\_\+obj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}}]{obj,  }\item[{\mbox{\hyperlink{structLoadingModelBuffer}{Loading\+Model\+Buffer}} \texorpdfstring{$\ast$}{*}}]{buffer,  }\item[{\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{vi,  }\item[{\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{fi,  }\item[{\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{vni,  }\item[{\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{vti }\end{DoxyParamCaption})}
 
 
 
@@ -57,35 +110,11 @@ Important Notes\+:
 \item It is the caller\textquotesingle{}s responsibility to ensure that obj is valid and that vi, fi, vni, and vti are correctly provided to reflect the current state of the object.
 \end{DoxyItemize}
 
-Example Usage\+: close\+\_\+realloc\+\_\+obj(\&object, vi, fi, vni, vti); \Hypertarget{group__ObjLoader_gaea15e76da7fb4c45393b68d2a5d0936e}\label{group__ObjLoader_gaea15e76da7fb4c45393b68d2a5d0936e} 
-\index{OBJ Loader@{OBJ Loader}!create\_obj\_vao@{create\_obj\_vao}}
-\index{create\_obj\_vao@{create\_obj\_vao}!OBJ Loader@{OBJ Loader}}
-\doxysubsubsection{\texorpdfstring{create\_obj\_vao()}{create\_obj\_vao()}}
-{\footnotesize\ttfamily void create\+\_\+obj\+\_\+vao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}}]{obj }\end{DoxyParamCaption})}
-
-
-
-Creates and initializes a Vertex Array \doxylink{structObject}{Object} (VAO) for a given 3D object, including the necessary vertex buffer data. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em obj} & \{Model\+Object\+Data\texorpdfstring{$\ast$}{*}\} A pointer to the \doxylink{structModelObjectData}{Model\+Object\+Data} structure for which the VAO will be created.\\
-\hline
-\end{DoxyParams}
-This function generates a VAO and a Vertex Buffer \doxylink{structObject}{Object} (VBO) for the specified \doxylink{structModelObjectData}{Model\+Object\+Data}. It binds the VBO and uploads vertex data, including positions, normals, texture coordinates, tangents, and bitangents, to the GPU. The function also sets up the vertex attribute pointers to describe the layout of the vertex data in the VBO.
-
-Important Notes\+:
-\begin{DoxyItemize}
-\item The function assumes that the obj-\/\texorpdfstring{$>$}{>}faces\+Vertex array has been populated with valid vertex data prior to calling this function.
-\item The VAO generated by this function is stored in the \doxylink{structModelObjectData}{Model\+Object\+Data} structure, allowing for easy rendering of the object in subsequent draw calls.
-\item Make sure to bind the VAO when rendering this object to ensure the correct vertex data is used.
-\end{DoxyItemize}
-
-Example Usage\+: create\+\_\+obj\+\_\+vao(\&object); \Hypertarget{group__ObjLoader_gab9a1546acd8b600802264c99c343ba28}\label{group__ObjLoader_gab9a1546acd8b600802264c99c343ba28} 
+Example Usage\+: close\+\_\+realloc\+\_\+obj(\&object, vi, fi, vni, vti); \Hypertarget{group__ObjLoader_gad1c67a7fd502c28832fa5cf248696814}\label{group__ObjLoader_gad1c67a7fd502c28832fa5cf248696814} 
 \index{OBJ Loader@{OBJ Loader}!load\_obj\_model@{load\_obj\_model}}
 \index{load\_obj\_model@{load\_obj\_model}!OBJ Loader@{OBJ Loader}}
 \doxysubsubsection{\texorpdfstring{load\_obj\_model()}{load\_obj\_model()}}
-{\footnotesize\ttfamily int load\+\_\+obj\+\_\+model (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{\mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{model\+Ptr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int load\+\_\+obj\+\_\+model (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{\mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}}]{model\+Ptr }\end{DoxyParamCaption})}
 
 
 
@@ -112,11 +141,11 @@ Important Notes\+:
 \item Ensure that sufficient memory is available for the model structure and associated objects, as this function dynamically allocates memory for various arrays within the \doxylink{classModel}{Model} structure.
 \end{DoxyItemize}
 
-Example Usage\+: \doxylink{structModelData}{Model\+Data} model; if (load\+\_\+obj\+\_\+model("{}assets/models/"{}, "{}example.\+obj"{}, \&model) == 0) \{ // Successfully loaded the model \} else \{ // Handle error \} \Hypertarget{group__ObjLoader_ga91137495694c076b1f1f5212e0b83f67}\label{group__ObjLoader_ga91137495694c076b1f1f5212e0b83f67} 
+Example Usage\+: \doxylink{structModelData}{Model\+Data} model; if (load\+\_\+obj\+\_\+model("{}assets/models/"{}, "{}example.\+obj"{}, \&model) == 0) \{ // Successfully loaded the model \} else \{ // Handle error \} \Hypertarget{group__ObjLoader_ga5a4ede319c6c281e805f900f33a7451b}\label{group__ObjLoader_ga5a4ede319c6c281e805f900f33a7451b} 
 \index{OBJ Loader@{OBJ Loader}!malloc\_obj@{malloc\_obj}}
 \index{malloc\_obj@{malloc\_obj}!OBJ Loader@{OBJ Loader}}
 \doxysubsubsection{\texorpdfstring{malloc\_obj()}{malloc\_obj()}}
-{\footnotesize\ttfamily int malloc\+\_\+obj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}}]{obj,  }\item[{\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{vim,  }\item[{\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{fim,  }\item[{\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{vnim,  }\item[{\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{vtim }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int malloc\+\_\+obj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}}]{obj,  }\item[{\mbox{\hyperlink{structLoadingModelBuffer}{Loading\+Model\+Buffer}} \texorpdfstring{$\ast$}{*}}]{buffer,  }\item[{\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{vim,  }\item[{\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{fim,  }\item[{\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{vnim,  }\item[{\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}}]{vtim }\end{DoxyParamCaption})}
 
 
 

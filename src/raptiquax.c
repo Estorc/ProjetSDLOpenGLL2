@@ -21,6 +21,7 @@
 #include "memory.h"
 #include "buffer.h"
 #include "storage/queue.h"
+#include "storage/hash.h"
 #include "utils/scene.h"
 
 #include "classes/classes.h"
@@ -28,9 +29,41 @@
 MemoryCaches memoryCaches;
 BufferCollection buffers;
 Queue callQueue = {NULL};
-Tree mainNodeTree = {0};
+Tree mainTree = {0};
 Input input;
-Settings settings = {false, true, false, RES_RESPONSIVE, false};
+Settings settings = {
+    .show_fps = false, 
+    .cast_shadows = false, 
+    .window_fullscreen = false, 
+    .resolution = RES_RESPONSIVE, 
+    .show_collision_boxes = false, 
+    .master_volume = 1, 
+    .music_volume = 1, 
+    .sfx_volume = 1, 
+    .fov = PI/4.0f,
+    .shadow_resolution = 2048,
+    .shadow_quality = 3,
+    .texture_quality = 1,
+    .antialiasing = true,
+    .vsync = true
+};
 Window window;
+MSAA msaa;
+
 
 BUILD_CLASS_METHODS_CORRESPONDANCE(classManager);
+
+struct RaptiquaX_t Game = {
+    &memoryCaches, 
+    &buffers, 
+    &callQueue, 
+    &mainTree, 
+    &input, 
+    &settings, 
+    &window, 
+    &classManager,
+    NULL,
+    &msaa,
+    NULL,
+    NULL
+};

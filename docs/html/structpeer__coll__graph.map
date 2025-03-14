@@ -1,0 +1,7 @@
+<map id="peer" name="peer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="159,93,209,119"/>
+<area shape="rect" id="Node000002" href="$structsocket__request__listener.html" title=" " alt="" coords="5,5,181,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,38,173,91,170,95,114,42"/>
+<area shape="rect" id="Node000003" href="$structmessage__handler.html" title="Structure to handle messages." alt="" coords="206,5,343,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="254,42,198,95,195,91,251,38"/>
+</map>

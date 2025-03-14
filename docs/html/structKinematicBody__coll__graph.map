@@ -1,9 +1,0 @@
-<map id="KinematicBody" name="KinematicBody">
-<area shape="rect" id="Node000001" title="Represents a kinematic body in the physics simulation." alt="" coords="5,97,127,123"/>
-<area shape="rect" id="Node000002" href="$classNode.html" title=" " alt="" coords="182,7,238,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,27,126,38,105,47,87,60,75,79,70,98,65,96,70,76,83,57,102,43,124,33,168,22"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="253,10,261,13,265,20,256,29,239,31,238,26,254,24,259,20,257,17,251,15"/>
-<area shape="rect" id="Node000003" href="$unionBehaviorParameter.html" title=" " alt="" coords="178,97,325,123"/>
-<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="206,46,205,60,208,72,218,85,231,95,227,99,214,89,204,74,200,60,200,46"/>
-<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="251,84,246,60,237,46,225,35,229,31,241,43,251,58,256,83"/>
-</map>

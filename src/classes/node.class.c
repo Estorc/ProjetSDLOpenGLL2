@@ -23,8 +23,8 @@ class Node {
     public:
 
     void constructor() {
-        this->object = NULL;
         this->type = __type__;
+        this->object = NULL;
         this::initialize_node();
     }
  
@@ -39,6 +39,9 @@ class Node {
         glm_vec3_zero(this->pos);
         glm_vec3_zero(this->rot);
         glm_vec3_one(this->scale);
+        glm_vec3_zero(this->globalPos);
+        glm_vec3_zero(this->globalRot);
+        glm_vec3_one(this->globalScale);
     }
 
     static Shader glowShader = 0;
@@ -72,7 +75,6 @@ class Node {
     }
 
     void load() {
-        this->type = __type__;
         this::constructor();
     }
 

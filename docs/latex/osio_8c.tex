@@ -2,11 +2,17 @@
 \hypertarget{osio_8c}{}\label{osio_8c}\index{src/io/osio.c@{src/io/osio.c}}
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include "{}stringio.\+h"{}}\newline
-{\ttfamily \#include "{}../term/enhanced\+\_\+print.\+h"{}}\newline
+{\ttfamily \#include "{}../term/term.\+h"{}}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$unistd.\+h$>$}\newline
-Include dependency graph for osio.\+c\+:
-% FIG 0
+{\ttfamily \#include "{}osio.\+h"{}}\newline
+Include dependency graph for osio.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{osio_8c__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -15,22 +21,22 @@ Include dependency graph for osio.\+c\+:
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{group___o_s_i_o_ga13b0479e5e15d717ef71927639b2822f}{osio\+\_\+save\+\_\+file}} (char \texorpdfstring{$\ast$}{*}path, char \texorpdfstring{$\ast$}{*}relative\+Path, char \texorpdfstring{$\ast$}{*}filter)
+int \mbox{\hyperlink{group__OSIO_ga13b0479e5e15d717ef71927639b2822f}{osio\+\_\+save\+\_\+file}} (char \texorpdfstring{$\ast$}{*}path, char \texorpdfstring{$\ast$}{*}relative\+Path, char \texorpdfstring{$\ast$}{*}filter)
 \begin{DoxyCompactList}\small\item\em Saves a file to the specified path with a given filter. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{group___o_s_i_o_ga054945d77398e3be399fdb8398d0f4ef}{osio\+\_\+open\+\_\+file}} (char \texorpdfstring{$\ast$}{*}path, char \texorpdfstring{$\ast$}{*}relative\+Path, char \texorpdfstring{$\ast$}{*}filter)
+int \mbox{\hyperlink{group__OSIO_ga054945d77398e3be399fdb8398d0f4ef}{osio\+\_\+open\+\_\+file}} (char \texorpdfstring{$\ast$}{*}path, char \texorpdfstring{$\ast$}{*}relative\+Path, char \texorpdfstring{$\ast$}{*}filter)
 \begin{DoxyCompactList}\small\item\em Opens a file from the specified path with a given filter. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{group___o_s_i_o_gadc303caa72b5aed4b43ffa8f34f0375f}{osio\+\_\+print\+\_\+error}} (char \texorpdfstring{$\ast$}{*}msg)
+int \mbox{\hyperlink{group__OSIO_gadc303caa72b5aed4b43ffa8f34f0375f}{osio\+\_\+print\+\_\+error}} (char \texorpdfstring{$\ast$}{*}msg)
 \begin{DoxyCompactList}\small\item\em Prints an error message to the standard error output. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{group___o_s_i_o_ga2c057d7941c6df59458be2230e3e7f88}{update\+\_\+cwd}} ()
+int \mbox{\hyperlink{group__OSIO_ga2c057d7941c6df59458be2230e3e7f88}{update\+\_\+cwd}} ()
 \begin{DoxyCompactList}\small\item\em Updates the current working directory. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{group___o_s_i_o_ga6f9da097d97bc24c4c4bf7b2996331d0}{absolute\+\_\+path\+\_\+to\+\_\+relative}} (char \texorpdfstring{$\ast$}{*}path)
+int \mbox{\hyperlink{group__OSIO_ga6f9da097d97bc24c4c4bf7b2996331d0}{absolute\+\_\+path\+\_\+to\+\_\+relative}} (char \texorpdfstring{$\ast$}{*}path)
 \begin{DoxyCompactList}\small\item\em Converts an absolute file path to a relative path. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{osio_8c_a479ebacbd09ab3cf2abed7083e40d418}\index{osio.c@{osio.c}!KDIALOG@{KDIALOG}}
+\Hypertarget{osio_8c_a479ebacbd09ab3cf2abed7083e40d418}\label{osio_8c_a479ebacbd09ab3cf2abed7083e40d418} 
+\index{osio.c@{osio.c}!KDIALOG@{KDIALOG}}
 \index{KDIALOG@{KDIALOG}!osio.c@{osio.c}}
 \doxysubsubsection{\texorpdfstring{KDIALOG}{KDIALOG}}
-{\footnotesize\ttfamily \label{osio_8c_a479ebacbd09ab3cf2abed7083e40d418} 
-\#define KDIALOG}
+{\footnotesize\ttfamily \#define KDIALOG}
 

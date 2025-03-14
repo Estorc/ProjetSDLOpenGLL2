@@ -124,9 +124,9 @@ void apply_body_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3
 
 void check_collisions(Node *shape) {
     
-    for (int i = 0; i < buffers.collisionBuffer.index; i++) {
+    for (int i = 0; i < Game.buffers->collisionBuffer.index; i++) {
         Node *shapeA = shape;
-        Node *shapeB = buffers.collisionBuffer.collisionsShapes[i];
+        Node *shapeB = Game.buffers->collisionBuffer.collisionsShapes[i];
 
         bool (*condition)(Node *shapeA, Node *shapeB) = NULL;
 
@@ -231,17 +231,17 @@ void update_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Inp
 
     bool is_render_target = false;
     node::is_render_target(&is_render_target);
-    RenderTarget *lastRenderTarget = mainNodeTree.renderTarget;
+    RenderTarget *lastRenderTarget = Game.renderTarget;
     if (is_render_target) {
         RenderTarget *renderTarget = (RenderTarget *) node->object;
-        mainNodeTree.renderTarget = renderTarget;
+        Game.renderTarget = renderTarget;
     }
 
     for (int i = 0; i < node->length; i++)
         update_physics(node->children[i], newPos, newRot, newScale, delta, input, window, lightsCount, active);
 
     if (is_render_target) {
-        mainNodeTree.renderTarget = lastRenderTarget;
+        Game.renderTarget = lastRenderTarget;
     }
 
 }

@@ -24,7 +24,7 @@ Collaboration diagram for Directional\+Light\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=276pt]{classDirectionalLight__coll__graph}
+\includegraphics[width=269pt]{classDirectionalLight__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -32,13 +32,15 @@ Collaboration diagram for Directional\+Light\+:\nopagebreak
 \item 
 void \mbox{\hyperlink{classDirectionalLight_a4020222306c69146fc81c5a7bd7f37fd}{constructor}} (struct \mbox{\hyperlink{classDirectionalLight}{Directional\+Light}} \texorpdfstring{$\ast$}{*}directional\+Light)
 \item 
-void \mbox{\hyperlink{classDirectionalLight_a54c0194fe606359949adfc38e6d3847f}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}}, double delta, \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}lights\+Count)
+void \mbox{\hyperlink{classDirectionalLight_a54c0194fe606359949adfc38e6d3847f}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}}, double delta, \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}lights\+Count)
+\item 
+void \mbox{\hyperlink{classDirectionalLight_ac8ccb4c1eaae0e9b8a132cbc7f4c282e}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
 \item 
 void \mbox{\hyperlink{classDirectionalLight_a7cf1a221d98f5ba39c5954d2a43190df}{load}} (FILE \texorpdfstring{$\ast$}{*}file)
 \item 
 void \mbox{\hyperlink{classDirectionalLight_a2e75ba84cda8a1aabc2df723504c6eee}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
 \item 
-void \mbox{\hyperlink{classDirectionalLight_af8147577e9041a132e074981db433a9f}{configure\+\_\+lighting}} (\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}lights\+Count)
+void \mbox{\hyperlink{classDirectionalLight_a780d5c5a4b42a1c114ee8fc302400d62}{configure\+\_\+lighting}} (\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}depth\+Map, \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}lights\+Count)
 \begin{DoxyCompactList}\small\item\em Configures the directional lighting for the specified camera. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLight}{Light}}}
 \begin{DoxyCompactItemize}
@@ -49,7 +51,7 @@ void \mbox{\hyperlink{classLight_abf14e6e019fdd300a6280c7d914acf6f}{render}} (ma
 \item 
 void \mbox{\hyperlink{classLight_a0478fb3eaf6a6292d76c26e9bdf54859}{init\+\_\+vao}} ()
 \item 
-void \mbox{\hyperlink{classLight_ad320015420df7a99607d56c025fb776b}{configure\+\_\+lighting}} (\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, mat4 \texorpdfstring{$\ast$}{*}light\+View, mat4 \texorpdfstring{$\ast$}{*}light\+Projection, int storage\+Buffer\+Index)
+void \mbox{\hyperlink{classLight_a54b906034c98c0df4275b2a9de32890d}{configure\+\_\+lighting}} (\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, mat4 \texorpdfstring{$\ast$}{*}light\+View, mat4 \texorpdfstring{$\ast$}{*}light\+Projection, int storage\+Buffer\+Index, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}depth\+Map)
 \begin{DoxyCompactList}\small\item\em Configures the lighting for the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
@@ -59,6 +61,8 @@ void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}}
 void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
 \item 
 void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+\item 
+void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
 \item 
 void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
 \item 
@@ -80,6 +84,8 @@ void \mbox{\hyperlink{classNode_a75c27b8cf028ae9509b20ad7392c49f8}{is\+\_\+body}
 \item 
 void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
 \item 
+void \mbox{\hyperlink{classNode_a743d883f14521da8f8c62608ce65f7ee}{is\+\_\+render\+\_\+target}} (bool \texorpdfstring{$\ast$}{*}render\+\_\+target)
+\item 
 void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
 \item 
 void \mbox{\hyperlink{classNode_a42da38ee8e0a621e438e14b94c0e381e}{add\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
@@ -97,15 +103,21 @@ void \mbox{\hyperlink{classNode_af08ebf5c3bb8542c012107606b88391b}{remove\+\_\+c
 int \mbox{\hyperlink{classNode_af99346e2725916df2fbe2e4af7a2d51c}{index\+\_\+of\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
 \begin{DoxyCompactList}\small\item\em Retrieves the index of a child node in a parent node\textquotesingle{}s children array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_aef2f74d45bec672840433aff6abe0d45}{print}} (int level)
-\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a846d06ed1f7a5ac618fbfef10881230f}{emit\+\_\+ready}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a3e7054036adfcf19c240b48a7f353f83}{emit\+\_\+update}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a0a3256bf578114f603b9407814638a2f}{emit\+\_\+signal}} (...)
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-vec3 \mbox{\hyperlink{classDirectionalLight_a3829e82392bf28e6d34ba7cec5258777}{ambient}}
+vec3 \mbox{\hyperlink{classDirectionalLight_a0fff081764e57e46c7342fc6c6849c1c}{color}}
 \item 
-vec3 \mbox{\hyperlink{classDirectionalLight_ad9848664ed0f3d2cde729ce44688974e}{diffuse}}
+float \mbox{\hyperlink{classDirectionalLight_ab74a595d58c20a08feb4338ef8099e0f}{bias}}
 \item 
-vec3 \mbox{\hyperlink{classDirectionalLight_aa69c9065fe9349643407bdd94b463098}{specular}}
+float \mbox{\hyperlink{classDirectionalLight_adfd0f6dcdd96c32ce4f66fb39cad43d0}{size}}
 \item 
 float \mbox{\hyperlink{classDirectionalLight_ad2a16d94812d6c5a78d702799c428c5d}{constant}}
 \item 
@@ -122,11 +134,11 @@ struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstr
 \item 
 struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{parent}}
 \item 
-\mbox{\hyperlink{types_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
 \item 
 vec3 \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}
 \item 
@@ -140,11 +152,11 @@ vec3 \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{g
 \item 
 vec3 \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
 \item 
-\mbox{\hyperlink{scripts_8h_ab7576c513306b5641c2b903c7d18850f}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
+\mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
 \item 
-\mbox{\hyperlink{unionBehaviorParameter}{Behavior\+Parameter}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gac639490f60bdc872491ffaaea5991ed0}{params}}
+\mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga1411990c75c0b134485d07be7a21e58c}{params\+\_\+count}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_gab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
 \item 
 \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}}
 \end{DoxyCompactItemize}
@@ -175,11 +187,11 @@ Represents a directional light source.
 A directional light emits light in a specific direction, similar to sunlight. This structure contains the properties of a directional light, including ambient, diffuse, and specular components, as well as attenuation factors. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classDirectionalLight_af8147577e9041a132e074981db433a9f}\label{classDirectionalLight_af8147577e9041a132e074981db433a9f} 
+\Hypertarget{classDirectionalLight_a780d5c5a4b42a1c114ee8fc302400d62}\label{classDirectionalLight_a780d5c5a4b42a1c114ee8fc302400d62} 
 \index{DirectionalLight@{DirectionalLight}!configure\_lighting@{configure\_lighting}}
 \index{configure\_lighting@{configure\_lighting}!DirectionalLight@{DirectionalLight}}
 \doxysubsubsection{\texorpdfstring{configure\_lighting()}{configure\_lighting()}}
-{\footnotesize\ttfamily void Directional\+Light\+::configure\+\_\+lighting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders,  }\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{lights\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Directional\+Light\+::configure\+\_\+lighting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders,  }\item[{\mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}}]{depth\+Map,  }\item[{\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{lights\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -205,6 +217,12 @@ This function is called by the render loop to configure the lighting for the spe
 \doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
 {\footnotesize\ttfamily void Directional\+Light\+::constructor (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classDirectionalLight}{Directional\+Light}} \texorpdfstring{$\ast$}{*}}]{directional\+Light }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\Hypertarget{classDirectionalLight_ac8ccb4c1eaae0e9b8a132cbc7f4c282e}\label{classDirectionalLight_ac8ccb4c1eaae0e9b8a132cbc7f4c282e} 
+\index{DirectionalLight@{DirectionalLight}!get\_settings\_data@{get\_settings\_data}}
+\index{get\_settings\_data@{get\_settings\_data}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{get\_settings\_data()}{get\_settings\_data()}}
+{\footnotesize\ttfamily void Directional\+Light\+::get\+\_\+settings\+\_\+data (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{ptr,  }\item[{int \texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 \Hypertarget{classDirectionalLight_a7cf1a221d98f5ba39c5954d2a43190df}\label{classDirectionalLight_a7cf1a221d98f5ba39c5954d2a43190df} 
 \index{DirectionalLight@{DirectionalLight}!load@{load}}
 \index{load@{load}!DirectionalLight@{DirectionalLight}}
@@ -221,30 +239,30 @@ This function is called by the render loop to configure the lighting for the spe
 \index{DirectionalLight@{DirectionalLight}!update@{update}}
 \index{update@{update}!DirectionalLight@{DirectionalLight}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily void Directional\+Light\+::update (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{scale,  }\item[{double}]{delta,  }\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{lights\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Directional\+Light\+::update (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{scale,  }\item[{double}]{delta,  }\item[{\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{lights\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classDirectionalLight_a3829e82392bf28e6d34ba7cec5258777}\label{classDirectionalLight_a3829e82392bf28e6d34ba7cec5258777} 
-\index{DirectionalLight@{DirectionalLight}!ambient@{ambient}}
-\index{ambient@{ambient}!DirectionalLight@{DirectionalLight}}
-\doxysubsubsection{\texorpdfstring{ambient}{ambient}}
-{\footnotesize\ttfamily vec3 Directional\+Light\+::ambient}
+\Hypertarget{classDirectionalLight_ab74a595d58c20a08feb4338ef8099e0f}\label{classDirectionalLight_ab74a595d58c20a08feb4338ef8099e0f} 
+\index{DirectionalLight@{DirectionalLight}!bias@{bias}}
+\index{bias@{bias}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{bias}{bias}}
+{\footnotesize\ttfamily float Directional\+Light\+::bias}
 
-Ambient component of the light. \Hypertarget{classDirectionalLight_ad2a16d94812d6c5a78d702799c428c5d}\label{classDirectionalLight_ad2a16d94812d6c5a78d702799c428c5d} 
+Bias factor for the light. \Hypertarget{classDirectionalLight_a0fff081764e57e46c7342fc6c6849c1c}\label{classDirectionalLight_a0fff081764e57e46c7342fc6c6849c1c} 
+\index{DirectionalLight@{DirectionalLight}!color@{color}}
+\index{color@{color}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily vec3 Directional\+Light\+::color}
+
+Color component of the light. \Hypertarget{classDirectionalLight_ad2a16d94812d6c5a78d702799c428c5d}\label{classDirectionalLight_ad2a16d94812d6c5a78d702799c428c5d} 
 \index{DirectionalLight@{DirectionalLight}!constant@{constant}}
 \index{constant@{constant}!DirectionalLight@{DirectionalLight}}
 \doxysubsubsection{\texorpdfstring{constant}{constant}}
 {\footnotesize\ttfamily float Directional\+Light\+::constant}
 
-Constant attenuation factor for the light. \Hypertarget{classDirectionalLight_ad9848664ed0f3d2cde729ce44688974e}\label{classDirectionalLight_ad9848664ed0f3d2cde729ce44688974e} 
-\index{DirectionalLight@{DirectionalLight}!diffuse@{diffuse}}
-\index{diffuse@{diffuse}!DirectionalLight@{DirectionalLight}}
-\doxysubsubsection{\texorpdfstring{diffuse}{diffuse}}
-{\footnotesize\ttfamily vec3 Directional\+Light\+::diffuse}
-
-Diffuse component of the light. \Hypertarget{classDirectionalLight_ab3945e26901a5cf65649da41808605ba}\label{classDirectionalLight_ab3945e26901a5cf65649da41808605ba} 
+Constant attenuation factor for the light. \Hypertarget{classDirectionalLight_ab3945e26901a5cf65649da41808605ba}\label{classDirectionalLight_ab3945e26901a5cf65649da41808605ba} 
 \index{DirectionalLight@{DirectionalLight}!linear@{linear}}
 \index{linear@{linear}!DirectionalLight@{DirectionalLight}}
 \doxysubsubsection{\texorpdfstring{linear}{linear}}
@@ -256,13 +274,13 @@ Linear attenuation factor for the light. \Hypertarget{classDirectionalLight_aa8c
 \doxysubsubsection{\texorpdfstring{quadratic}{quadratic}}
 {\footnotesize\ttfamily float Directional\+Light\+::quadratic}
 
-Quadratic attenuation factor for the light. \Hypertarget{classDirectionalLight_aa69c9065fe9349643407bdd94b463098}\label{classDirectionalLight_aa69c9065fe9349643407bdd94b463098} 
-\index{DirectionalLight@{DirectionalLight}!specular@{specular}}
-\index{specular@{specular}!DirectionalLight@{DirectionalLight}}
-\doxysubsubsection{\texorpdfstring{specular}{specular}}
-{\footnotesize\ttfamily vec3 Directional\+Light\+::specular}
+Quadratic attenuation factor for the light. \Hypertarget{classDirectionalLight_adfd0f6dcdd96c32ce4f66fb39cad43d0}\label{classDirectionalLight_adfd0f6dcdd96c32ce4f66fb39cad43d0} 
+\index{DirectionalLight@{DirectionalLight}!size@{size}}
+\index{size@{size}!DirectionalLight@{DirectionalLight}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily float Directional\+Light\+::size}
 
-Specular component of the light. 
+Size factor for the light. 
 
 The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

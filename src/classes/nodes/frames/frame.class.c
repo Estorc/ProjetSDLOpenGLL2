@@ -26,15 +26,36 @@ class Frame : public Node {
     __containerType__ Node *
     public:
 
-    void constructor() {
+    void constructor(double x, int xu, double y, int yu, double w, int wu, double h, int hu, int ha, int va, int scroll, Theme *theme) {
+        this->type = __type__;
+
         Frame *frame;
         frame = malloc(sizeof(Frame));
         POINTER_CHECK(frame);
 
         this->object = frame;
-        this->type = __type__; 
         SUPER(initialize_node);
         this::init_frame();
+
+        frame->relPos[0] = x;
+        frame->relPos[1] = y;
+        frame->scale[0] = w;
+        frame->scale[1] = h;
+        frame->unit[0] = xu;
+        frame->unit[1] = yu;
+        frame->unit[2] = wu;
+        frame->unit[3] = hu;
+        frame->alignment[0] = ha;
+        frame->alignment[1] = va;
+
+        frame->flags |= FRAME_BACKGROUND;
+        if (scroll == 's') {
+            frame->flags |= OVERFLOW_SCROLL;
+        } else if (scroll == 'v') {
+            frame->flags |= OVERFLOW_VISIBLE;
+        }
+
+        frame->theme = theme;
     }
 
     
@@ -77,48 +98,40 @@ class Frame : public Node {
     }
 
     void load(FILE *file) {
-        this->type = __type__;
-        this::constructor();
-        Frame *frame = (Frame *) this->object;
+        float relPos[2], scale[2];
+        char unit[4], alignment[2], scroll;
+        char texturePath[256];
+        Theme *theme = NULL;
         if (file) {
-            char scroll;
-            char texturePath[256];
             fscanf(file, "(%g%c,%g%c,%g%c,%g%c,%c%c%c", 
-                &frame->relPos[0],&frame->unit[0], 
-                &frame->relPos[1],&frame->unit[1], 
-                &frame->scale[0],&frame->unit[2], 
-                &frame->scale[1],&frame->unit[3], 
-                &frame->alignment[0], &frame->alignment[1],
+                &relPos[0],&unit[0], 
+                &relPos[1],&unit[1], 
+                &scale[0],&unit[2], 
+                &scale[1],&unit[3], 
+                &alignment[0], &alignment[1],
                 &scroll);
             char c = fgetc(file);
             if (c == ',') {
-                frame->theme = malloc(sizeof(Theme));
-                frame->theme->parent = frame;
+                theme = malloc(sizeof(Theme));
                 fscanf(file, "[%[^,],%[^,],%d,#%2hhx%2hhx%2hhx%2hhx])",	 
                     texturePath,
-                    frame->theme->font.path,
-                    &frame->theme->font.size,
-                    &frame->theme->textColor.r, &frame->theme->textColor.g, &frame->theme->textColor.b, &frame->theme->textColor.a);
-                frame->theme->font.font = TTF_OpenFont(frame->theme->font.path, frame->theme->font.size);
-                frame->theme->windowSkin = load_texture_from_path(texturePath, GL_SRGB_ALPHA, true);
-            }
-
-            frame->flags |= FRAME_BACKGROUND;
-            if (scroll == 's') {
-                frame->flags |= OVERFLOW_SCROLL;
-            } else if (scroll == 'v') {
-                frame->flags |= OVERFLOW_VISIBLE;
+                    theme->font.path,
+                    &theme->font.size,
+                    &theme->textColor.r, &theme->textColor.g, &theme->textColor.b, &theme->textColor.a);
+                theme->font.font = TTF_OpenFont(theme->font.path, theme->font.size);
+                theme->windowSkin = load_texture_from_path(texturePath, GL_SRGB_ALPHA, true);
             }
         }
+        this::constructor(relPos[0], unit[0], relPos[1], unit[1], scale[0], unit[2], scale[1], unit[3], alignment[0], alignment[1], scroll, theme);
     }
 
     void refresh() {
 
         int window_width, window_height;
         get_resolution(&window_width, &window_height);
-        if (mainNodeTree.renderTarget) {
-            window_width = mainNodeTree.renderTarget->w;
-            window_height = mainNodeTree.renderTarget->h;
+        if (Game.renderTarget) {
+            window_width = Game.renderTarget->w;
+            window_height = Game.renderTarget->h;
         }
         vec2 containerSize = {window_width, window_height};
         Frame *frame = (Frame *) this->object;
@@ -168,9 +181,16 @@ class Frame : public Node {
 
         this::handle_dimension_unit(&frame->scale[0], &this->scale[0], false, 0.0f, frame->unit[2], (double) containerSize[0], (double) containerSize[1]);
         this::handle_dimension_unit(&frame->scale[1], &this->scale[1], true, 0.0f, frame->unit[3], (double) containerSize[0], (double) containerSize[1]);
+        if (frame->unit[2] == 'a') {
+            float scale = this->scale[1] * containerSize[1] / frame->contentSize[0];
+            this::handle_dimension_unit(&scale, &this->scale[0], false, 0.0f, 'p', (double) containerSize[0], (double) containerSize[1]);
+        }
+        if (frame->unit[3] == 'a') {
+            float scale = ((this->scale[0] * containerSize[0]) / frame->contentSize[0]) * frame->contentSize[1];
+            this::handle_dimension_unit(&scale, &this->scale[1], true, 0.0f, 'p', (double) containerSize[0], (double) containerSize[1]);
+        }
         this::handle_dimension_unit(&frame->relPos[0], &this->pos[0], false, this->scale[0], frame->unit[0], (double) containerSize[0], (double) containerSize[1]);
         this::handle_dimension_unit(&frame->relPos[1], &this->pos[1], true, this->scale[1], frame->unit[1], (double) containerSize[0], (double) containerSize[1]);
-
         glm_vec2_add(this->pos, scroll, this->pos);
 
         frame->absPos[0] = this->pos[0];
@@ -230,14 +250,14 @@ class Frame : public Node {
     void update() {
         Frame *frame = (Frame *) this->object;
         if (frame->flags & OVERFLOW_SCROLL) {
-            frame->scrollTarget[1] -= input.mouse.scroll_y/8.0f;
+            frame->scrollTarget[1] -= Game.input->mouse.scroll_y/8.0f;
             if (frame->scrollTarget[1] < 0.0f) frame->scrollTarget[1] = 0.0f;
             if (frame->scrollTarget[1] > frame->contentSize[1] - 1.0f) frame->scrollTarget[1] = frame->contentSize[1] - 1.0f;
             frame->scroll[1] += (frame->scrollTarget[1] - frame->scroll[1]) * 0.5f;
             if (fabs(frame->scrollTarget[1] - frame->scroll[1]) <= 0.01f) frame->scroll[1] = frame->scrollTarget[1]; // Prevents never-ending scrolling
-            if (input.mouse.scroll_y || frame->scrollTarget[1] != frame->scroll[1]) frame->flags |= FRAME_NEEDS_REFRESH;
+            if (Game.input->mouse.scroll_y || frame->scrollTarget[1] != frame->scroll[1]) frame->flags |= FRAME_NEEDS_REFRESH;
         }
-        if (window.resized) frame->flags |= FRAME_NEEDS_REFRESH;
+        if (Game.window->resized) frame->flags |= FRAME_NEEDS_REFRESH;
     }
 
 
@@ -291,7 +311,7 @@ class Frame : public Node {
             } else set_shader_int(shaders->gui, "isCheckBox", 0);
 
             if (this::(bool)is_radiobutton()) {
-                RadioButton *radiobutton = frame->button->radiobutton;
+                RadioButton *radiobutton = frame->radiobutton;
                 set_shader_int(shaders->gui, "isRadioButton", 1);
                 if (radiobutton->checked) set_shader_int(shaders->gui, "checked", !!(*radiobutton->checked & radiobutton->id));
             } else set_shader_int(shaders->gui, "isRadioButton", 0);
@@ -345,9 +365,9 @@ class Frame : public Node {
         if (frame->theme && frame->theme->parent == frame) {
             fprintf(file, ",[");
             TextureMap texture = frame->theme->windowSkin;
-            for (int i = 0; i < memoryCaches.texturesCount; i++) {
-                if (memoryCaches.textureCache[i].textureMap == texture) {
-                    fprintf(file, "%s,", memoryCaches.textureCache[i].textureName);
+            for (int i = 0; i < Game.memoryCaches->texturesCount; i++) {
+                if (Game.memoryCaches->textureCache[i].textureMap == texture) {
+                    fprintf(file, "%s,", Game.memoryCaches->textureCache[i].textureName);
                     break;
                 }
             }

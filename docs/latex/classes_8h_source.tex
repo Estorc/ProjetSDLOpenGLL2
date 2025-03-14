@@ -2,29 +2,27 @@
 \hypertarget{classes_8h_source}{}\label{classes_8h_source}\index{src/classes/classes.h@{src/classes/classes.h}}
 \mbox{\hyperlink{classes_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}import\_class.h"{}}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{raptiquax_8h}{../raptiquax.h}}"{}}}
-\DoxyCodeLine{00004\ }
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_object}{Object}}\ \{}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{struct_object_a8cc6ed7117cf960bfbc8b5543b674968}{object}};\ }
-\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{struct_object_a40499f03de9cfbe07831fcf63e8981d5}{type}};\ }
-\DoxyCodeLine{00027\ \}\ \mbox{\hyperlink{struct_object}{Object}};}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___classes_gaa5d13dbe9e2544404028633f7ed3d7cf}{call\_method\_0}}(\textcolor{keywordtype}{void}\ (*func)(\textcolor{keywordtype}{void}\ *,\ va\_list),\ ...);}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ SUPER(method\_name,\ ...)\ call\_method\_0(classManager.methodsCorrespondance.method\_name[classManager.extends[\_\_type\_\_]],\ this,\ \#\#\_\_VA\_ARGS\_\_)}}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ METHOD\_TYPE(default\_type,\ method\_name,\ obj,\ ...)\ classManager.methodsCorrespondance.method\_name[default\_type],\ obj,\ \#\#\_\_VA\_ARGS\_\_}}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ METHOD(method\_name,\ obj,\ ...)\ classManager.methodsCorrespondance.method\_name[obj-\/>type],\ obj,\ \#\#\_\_VA\_ARGS\_\_}}
-\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CLASSES\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CLASSES\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{classes__types_8h}{classes\_types.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}import\_classes.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}../raptiquax.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }ClassManager\ \mbox{\hyperlink{classes_8h_aaee6eab14a0e29493217bce3a0ece1de}{classManager}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structObject}{Object}}\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structObject_a8cc6ed7117cf960bfbc8b5543b674968}{object}};\ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structObject_a40499f03de9cfbe07831fcf63e8981d5}{type}};\ }
+\DoxyCodeLine{00031\ \}\ \mbox{\hyperlink{structObject}{Object}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Classes_gaa5d13dbe9e2544404028633f7ed3d7cf}{call\_method\_0}}(\textcolor{keywordtype}{void}\ (*func)(\textcolor{keywordtype}{void}\ *,\ va\_list),\ ...);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ SUPER(method\_name,\ ...)\ call\_method\_0(classManager.methodsCorrespondance.method\_name[classManager.extends[\_\_type\_\_]],\ this,\ \#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ METHOD\_TYPE(default\_type,\ method\_name,\ obj,\ ...)\ classManager.methodsCorrespondance.method\_name[default\_type],\ obj,\ \#\#\_\_VA\_ARGS\_\_}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#define\ METHOD(method\_name,\ obj,\ ...)\ classManager.methodsCorrespondance.method\_name[obj-\/>type],\ obj,\ \#\#\_\_VA\_ARGS\_\_}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

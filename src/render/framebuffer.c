@@ -6,6 +6,7 @@
 #include "../window.h"
 
 
+
 void create_msaa_framebuffer(MSAA *msaa) {
     int window_width, window_height;
     get_resolution(&window_width, &window_height);
@@ -25,7 +26,18 @@ void create_msaa_framebuffer(MSAA *msaa) {
     // create a multisampled color attachment texture
     glGenTextures(1, &msaa->textureColorBufferMultiSampled);
     glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, msaa->textureColorBufferMultiSampled);
-    glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB, window_width, window_height, GL_TRUE);
+
+    GLint srgbCapable = 0;
+    SDL_GL_GetAttribute(GL_ARB_framebuffer_sRGB, &srgbCapable);
+
+    if (srgbCapable) {
+        PRINT_INFO("sRGB framebuffer is supported!\n");
+        glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_SRGB8, window_width, window_height, GL_TRUE);
+    } else {
+        PRINT_WARNING("sRGB framebuffer is NOT supported.\n");
+        glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB, window_width, window_height, GL_TRUE);
+    }
+
     glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D_MULTISAMPLE, msaa->textureColorBufferMultiSampled, 0);
     // create a (also multisampled) renderbuffer object for depth and stencil attachments

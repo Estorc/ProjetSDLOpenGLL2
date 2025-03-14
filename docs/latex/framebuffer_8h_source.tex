@@ -5,27 +5,37 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FRAMEBUFFER\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FRAMEBUFFER\_H}}
 \DoxyCodeLine{00003\ }
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00014\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___framebuffer_ga9d981d4d85307c4db4cf5dc775179a2d}{FBO}};}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{group___framebuffer_ga9d981d4d85307c4db4cf5dc775179a2d}{FBO}}\ \mbox{\hyperlink{group___framebuffer_ga7878eea212a150b3a07942142caece7a}{FrameBuffer}};}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00026\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___framebuffer_gaf580f204e26aa6498b7df2b86f4e77cb}{RBO}};}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00036\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_m_s_a_a}{MSAA}}\ \{}
-\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{group___framebuffer_ga9d981d4d85307c4db4cf5dc775179a2d}{FBO}}\ \mbox{\hyperlink{struct_m_s_a_a_abf724a2cf62347effbc5d719649dff01}{framebuffer}};\ }
-\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{group___framebuffer_ga9d981d4d85307c4db4cf5dc775179a2d}{FBO}}\ \mbox{\hyperlink{struct_m_s_a_a_a9a95244ad456e6aa2d50425fe8dfee34}{intermediateFBO}};\ }
-\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{group___framebuffer_gaf580f204e26aa6498b7df2b86f4e77cb}{RBO}}\ \mbox{\hyperlink{struct_m_s_a_a_a17b499fb58ee18125e8df2c1872df0f1}{rbo}};\ }
-\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{group___model_handling_ga9efea9b7fc3085f1062d9148aa012307}{TextureMap}}\ \mbox{\hyperlink{struct_m_s_a_a_a883d36587238fc78ac789a78ff317ae7}{textureColorBufferMultiSampled}};\ }
-\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{group___model_handling_ga9efea9b7fc3085f1062d9148aa012307}{TextureMap}}\ \mbox{\hyperlink{struct_m_s_a_a_a0405c57a77662de583e0bba37cc306f2}{screenTexture}};\ }
-\DoxyCodeLine{00042\ \}\ \mbox{\hyperlink{struct_m_s_a_a}{MSAA}};}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___framebuffer_gaf612536a5e3ec772e9bede8b62b37f92}{create\_msaa\_framebuffer}}(\mbox{\hyperlink{struct_m_s_a_a}{MSAA}}\ *msaa);}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00062\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___framebuffer_ga61ecc0fe7012195a1a406b36c766d45c}{free\_msaa\_framebuffer}}(\mbox{\hyperlink{struct_m_s_a_a}{MSAA}}\ *msaa);}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../io/input.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}}\ \mbox{\hyperlink{group__Framebuffer_gab75cdf3b36517627dfe9b6029e00129d}{FrameBuffer}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__Framebuffer_ga5ccf15e59bc43f1030c39f6951deb862}{RBO}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classRenderTarget}{RenderTarget}}\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}}\ \mbox{\hyperlink{classRenderTarget_a7c83ee6077692017f6a3e31593fa1f28}{fbo}};}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ \mbox{\hyperlink{classRenderTarget_a4de4e81e401a807a0978c918f2fb6265}{texture}};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRenderTarget_af3597240c263400d1ec7c99a94eb8e33}{w}};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classRenderTarget_af3d11bfd424cfaa4cdc135a6cca94497}{h}};}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{structMouse}{Mouse}}\ \mbox{\hyperlink{classRenderTarget_a5cc8036c4da7b2841f9867c227445a67}{mouse}};}
+\DoxyCodeLine{00046\ \}\ \mbox{\hyperlink{classRenderTarget}{RenderTarget}};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMSAA}{MSAA}}\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}}\ \mbox{\hyperlink{structMSAA_abf724a2cf62347effbc5d719649dff01}{framebuffer}};\ }
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}}\ \mbox{\hyperlink{structMSAA_a9a95244ad456e6aa2d50425fe8dfee34}{intermediateFBO}};\ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{group__Framebuffer_ga5ccf15e59bc43f1030c39f6951deb862}{RBO}}\ \mbox{\hyperlink{structMSAA_a17b499fb58ee18125e8df2c1872df0f1}{rbo}};\ }
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ \mbox{\hyperlink{structMSAA_a883d36587238fc78ac789a78ff317ae7}{textureColorBufferMultiSampled}};\ }
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ \mbox{\hyperlink{structMSAA_a0405c57a77662de583e0bba37cc306f2}{screenTexture}};\ }
+\DoxyCodeLine{00062\ \}\ \mbox{\hyperlink{structMSAA}{MSAA}};}
 \DoxyCodeLine{00063\ }
-\DoxyCodeLine{00072\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___framebuffer_ga38295e04feba1f829d93bacadffa8394}{resize\_msaa\_framebuffer}}(\mbox{\hyperlink{struct_m_s_a_a}{MSAA}}\ *msaa);}
-\DoxyCodeLine{00073\ \ \textcolor{comment}{//\ end\ of\ Framebuffer\ group}}
-\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Framebuffer_gaf612536a5e3ec772e9bede8b62b37f92}{create\_msaa\_framebuffer}}(\mbox{\hyperlink{structMSAA}{MSAA}}\ *\mbox{\hyperlink{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}{msaa}});}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Framebuffer_ga61ecc0fe7012195a1a406b36c766d45c}{free\_msaa\_framebuffer}}(\mbox{\hyperlink{structMSAA}{MSAA}}\ *\mbox{\hyperlink{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}{msaa}});}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Framebuffer_ga38295e04feba1f829d93bacadffa8394}{resize\_msaa\_framebuffer}}(\mbox{\hyperlink{structMSAA}{MSAA}}\ *\mbox{\hyperlink{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}{msaa}});}
+\DoxyCodeLine{00093\ }
+ \textcolor{comment}{// end of Framebuffer group}\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

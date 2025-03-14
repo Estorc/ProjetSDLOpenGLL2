@@ -8,7 +8,8 @@
 #include <time.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#ifdef __windows__
+
+#ifdef _WIN32
 
 #define VOID_FILE "NUL"
 #include <windows.h>
@@ -201,12 +202,15 @@ int copyFile(FILE *src, FILE *dest) {
 
 
 FILE * createTempFile() {
-	#ifdef __windows__
+	#ifdef _WIN32
 
 	char tempPath[MAX_PATH];
 	char tempFile[MAX_PATH];
 
 	GetTempPathA(MAX_PATH, tempPath);  // Obtenir le répertoire temporaire
+
+	printf("Chemin temporaire : %s\n", tempPath);
+
 	GetTempFileNameA(tempPath, "tmp", 0, tempFile);  // Créer un fichier temporaire
 
 	printf("Fichier temporaire : %s\n", tempFile);
@@ -353,7 +357,7 @@ int get_method_args(char *args, Argument *arg) {
 		arg_end++;
 		if (*arg_end == ',' || *arg_end == '\0') {
 			while (*arg_start == ' ') arg_start++;
-			char argstr[100];
+			static char argstr[1024];
 			strncpy(argstr, arg_start, arg_end - arg_start);
 			argstr[arg_end - arg_start] = '\0';
 
@@ -394,7 +398,7 @@ int get_class_method(char *line, Method *method) {
 		if (func_end && func_end > expr_pos) {
 			size_t expr_len = expr_pos - line;
 			size_t func_args_len = func_end - (expr_pos+1);
-			char func_args[100];
+			static char func_args[1024];
 			strncpy(func_args, expr_pos+1, func_args_len);
 			func_args[func_args_len] = '\0';
 
@@ -741,7 +745,6 @@ int main(int argc, char ** argv) {
 				rewind(temp_processed_header_file);
 				processed_header_file = freopen(filepath, "wb", processed_header_file);
 				copyFile(temp_processed_header_file, processed_header_file);
-				fclose(temp_processed_header_file);
 				
 				need_rewriting_imports = true;
 			}

@@ -34,7 +34,6 @@
  * where performance is critical, and is suitable for scenarios where 
  * the input number is non-negative.
  */
-
 f32 frsqrt(f32 number);
 
 /**
@@ -52,7 +51,6 @@ f32 frsqrt(f32 number);
  * The function returns the equivalent angle in radians, allowing for 
  * easier interpretation and usage in applications where radians are preferred.
  */
-
 f32 to_radians(f32 angle);
 
 /**
@@ -70,7 +68,6 @@ f32 to_radians(f32 angle);
  * The function returns the equivalent angle in degrees, allowing for 
  * easier interpretation and usage in applications where degrees are preferred.
  */
-
 f32 to_degrees(f32 angle);
 
 /**
@@ -132,12 +129,24 @@ f32 to_degrees(f32 angle);
  * If the value is greater than the maximum, it returns the maximum. 
  * Otherwise, it returns the value itself.
  * 
- * @param x The value to be clamped.
- * @param y The minimum allowable value.
+ * @param x The minimum allowable value.
+ * @param y The value to be clamped.
  * @param z The maximum allowable value.
  * @return The clamped value.
  */
 #define CLAMP(x,y,z) (MIN(MAX(x,y),z))
+
+
+/**
+ * @brief Approaches a target float by a given factor.
+ * 
+ * @param a {f32} The float to be approached.
+ * @param b {f32} The target float.
+ * @param t {f32} The approach factor.
+ * 
+ * This macro moves float a towards float b by a factor of t.
+ */
+f32 float_approach(f32 * const origin, const f32 dest, const f32 factor);
 
 /**
  * @brief Approaches a target vector by a given factor.
@@ -148,7 +157,7 @@ f32 to_degrees(f32 angle);
  * 
  * This macro moves vector a towards vector b by a factor of t.
  */
-#define Vec3fApproach(a,b,t) ((a)[0]+=((b)[0]-(a)[0])/t,(a)[1]+=((b)[1]-(a)[1])/t,(a)[2]+=((b)[2]-(a)[2])/t)
+float * vec3_approach(float * origin, float * dest, const f32 factor);
 
 /** @} */
 

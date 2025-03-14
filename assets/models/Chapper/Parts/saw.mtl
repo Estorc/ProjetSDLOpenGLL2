@@ -2,14 +2,19 @@
 # www.blender.org
 
 newmtl Material.009
-Kd 0.800000 0.800000 0.800000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
-Ni 1.000000
+Ni 1.450000
 d 1.000000
 illum 2
-Pr 0.400000
+Pr 0.500000
 Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd Makita.png
 
 newmtl Material.010
 Ks 0.500000 0.500000 0.500000
@@ -25,6 +30,7 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 map_Kd Hi-Res Metal Radial-Brushed 2000.A2jpg.jpg
+map_Pr Hi-Res Metal Radial-Brushed 2000.A2jRoug.jpg
 
 newmtl Material.013
 Kd 0.087298 0.072102 0.039432
@@ -40,3 +46,4 @@ Pc 0.154545
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Pr Hi-Res Metal Radial-Brushed 2000.A2jRoug.jpg

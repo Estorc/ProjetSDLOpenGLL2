@@ -61,7 +61,7 @@ SDL_Surface * flip_y_surface(SDL_Surface *surface);
  * the function returns 0.
  */
 
-TextureMap load_texture_from_path(char * path, GLenum format, bool yReversed);
+TextureMap load_texture_from_path(const char * path, GLenum format, bool yReversed);
 
 /**
  * @brief Renders text onto an SDL_Surface at a specified position.

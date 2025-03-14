@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef __windows__
+#ifdef _WIN32
 #include <GL/glew.h>  // Include before OpenGL functions
 #endif
 
@@ -28,6 +28,19 @@
  */
 
 
+struct MemoryCaches;
+struct BufferCollection;
+struct Queue;
+struct Tree;
+struct Input;
+struct Settings;
+struct Window;
+struct Camera;
+struct RenderTarget;
+struct Script;
+struct ClassManager;
+struct HashTable;
+
 /**
  * @brief The main structure that holds all the data and state of the engine.
  * 
@@ -37,8 +50,23 @@
  * @note This structure is used as a singleton to hold the global state of the engine.
  * It use pointers to the actual data structures to avoid including too much headers in there.
  */
+struct RaptiquaX_t {
+    struct MemoryCaches * const memoryCaches;  /**< The memory caches of the engine. */
+    struct BufferCollection * const buffers;  /**< The buffer collection of the engine. */
+    struct Queue * const callQueue;  /**< The call queue of the engine. */
+    struct Tree * const mainTree;  /**< The main node tree of the engine. */
+    struct Input * const input;  /**< The input data of the engine. */
+    struct Settings * const settings;  /**< The settings of the engine. */
+    struct Window * const window;  /**< The window of the engine. */
+    const struct ClassManager * const classManager;  /**< The class manager of the engine. */
+    struct Camera *camera; /**< The camera actually used. */
+    struct MSAA *msaa; /**< The MSAA settings. */
+    struct RenderTarget *renderTarget; /**< The actual render target. */
+    struct HashTable *storage; /**< Global storage in a Hash Table */
+    struct Script *scripts; /**< The scripts. */
+};
 
- // extern RaptiquaX_t RaptiquaX;
+ extern struct RaptiquaX_t Game;
 
 
 /**

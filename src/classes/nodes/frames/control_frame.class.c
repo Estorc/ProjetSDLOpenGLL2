@@ -25,33 +25,50 @@ class ControlFrame : public Frame {
     __containerType__ Node *
     public:
 
-    void constructor() {
+    void constructor(double x, int xu, double y, int yu, double w, int wu, double h, int hu, int ha, int va, int scroll) {
+        this->type = __type__; 
+
         Frame *frame;
         frame = malloc(sizeof(Frame));
         POINTER_CHECK(frame);
 
         this->object = frame;
-        this->type = __type__; 
         SUPER(initialize_node);
         this::init_frame();
+
+        frame->relPos[0] = x;
+        frame->relPos[1] = y;
+        frame->scale[0] = w;
+        frame->scale[1] = h;
+        frame->unit[0] = xu;
+        frame->unit[1] = yu;
+        frame->unit[2] = wu;
+        frame->unit[3] = hu;
+        frame->alignment[0] = ha;
+        frame->alignment[1] = va;
+
+        if (scroll == 's') {
+            frame->flags |= OVERFLOW_SCROLL;
+        } else if (scroll == 'v') {
+            frame->flags |= OVERFLOW_VISIBLE;
+        }
     }
 
     
 
     void load(FILE *file) {
-        this->type = __type__;
-        this::constructor();
-        Frame *frame = (Frame *) this->object;
+        float relPos[2], scale[2];
+        char unit[4], alignment[2], scroll;
         if (file) {
-            fscanf(file, "(%g%c,%g%c,%g%c,%g%c,%c%c)", 
-                &frame->relPos[0],&frame->unit[0], 
-                &frame->relPos[1],&frame->unit[1], 
-                &frame->scale[0],&frame->unit[2], 
-                &frame->scale[1],&frame->unit[3], 
-                &frame->alignment[0], &frame->alignment[1]);
-
-            frame->flags |= FRAME_BACKGROUND;
+            fscanf(file, "(%g%c,%g%c,%g%c,%g%c,%c%c%c)", 
+                &relPos[0],&unit[0], 
+                &relPos[1],&unit[1], 
+                &scale[0],&unit[2], 
+                &scale[1],&unit[3], 
+                &alignment[0], &alignment[1],
+                &scroll);
         }
+        this::constructor(relPos[0], unit[0], relPos[1], unit[1], scale[0], unit[2], scale[1], unit[3], alignment[0], alignment[1], scroll);
     }
 
     void render() {
@@ -64,12 +81,13 @@ class ControlFrame : public Frame {
         UNUSED(editor);
         fprintf(file, "%s", classManager.class_names[this->type]);
 
-        fprintf(file, "(%g%c,%g%c,%g%c,%g%c,%c%c)", 
+        fprintf(file, "(%g%c,%g%c,%g%c,%g%c,%c%c%c)", 
             frame->relPos[0],frame->unit[0], 
             frame->relPos[1],frame->unit[1], 
             frame->scale[0],frame->unit[2], 
             frame->scale[1],frame->unit[3], 
-            frame->alignment[0], frame->alignment[1]);
+            frame->alignment[0], frame->alignment[1],
+            (frame->flags & OVERFLOW_SCROLL) ? 's' : (frame->flags & OVERFLOW_VISIBLE) ? 'v' : 'n');
     }
     
 }

@@ -24,17 +24,19 @@ Collaboration diagram for Camera\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=264pt]{classCamera__coll__graph}
+\includegraphics[width=256pt]{classCamera__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classCamera_a0f4542960197f9bf63b0fc51712d2e22}{constructor}} (struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}camera)
+void \mbox{\hyperlink{classCamera_a820d262dfb04db3929dfe41c25abe0d0}{constructor}} ()
+\item 
+void \mbox{\hyperlink{classCamera_abe898f96e5db6053561904256126b044}{load}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}scripts, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
 \item 
 void \mbox{\hyperlink{classCamera_a8bf37f95d2e93f14b481426177b39ca1}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classCamera_a58f8b51664251b5c0f59be0e0a87e754}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classCamera_a1456c80b084814b7811c8fe3d797021d}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
 \item 
-void \mbox{\hyperlink{classCamera_abe898f96e5db6053561904256126b044}{load}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}scripts, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
+void \mbox{\hyperlink{classCamera_af45ed0a37b84e98b88d756d96b73df7b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
 \item 
 void \mbox{\hyperlink{classCamera_a61396a083ed2e99485213d5b3ceb9cc0}{save}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
 \end{DoxyCompactItemize}
@@ -46,6 +48,8 @@ void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}}
 void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
 \item 
 void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+\item 
+void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
 \item 
 void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
 \item 
@@ -67,6 +71,8 @@ void \mbox{\hyperlink{classNode_a75c27b8cf028ae9509b20ad7392c49f8}{is\+\_\+body}
 \item 
 void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
 \item 
+void \mbox{\hyperlink{classNode_a743d883f14521da8f8c62608ce65f7ee}{is\+\_\+render\+\_\+target}} (bool \texorpdfstring{$\ast$}{*}render\+\_\+target)
+\item 
 void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
 \item 
 void \mbox{\hyperlink{classNode_a42da38ee8e0a621e438e14b94c0e381e}{add\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
@@ -84,13 +90,21 @@ void \mbox{\hyperlink{classNode_af08ebf5c3bb8542c012107606b88391b}{remove\+\_\+c
 int \mbox{\hyperlink{classNode_af99346e2725916df2fbe2e4af7a2d51c}{index\+\_\+of\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
 \begin{DoxyCompactList}\small\item\em Retrieves the index of a child node in a parent node\textquotesingle{}s children array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_aef2f74d45bec672840433aff6abe0d45}{print}} (int level)
-\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a846d06ed1f7a5ac618fbfef10881230f}{emit\+\_\+ready}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a3e7054036adfcf19c240b48a7f353f83}{emit\+\_\+update}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a0a3256bf578114f603b9407814638a2f}{emit\+\_\+signal}} (...)
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 vec3 \mbox{\hyperlink{classCamera_a58f8b51664251b5c0f59be0e0a87e754}{pos}}
 \item 
 vec3 \mbox{\hyperlink{classCamera_a1456c80b084814b7811c8fe3d797021d}{rot}}
+\item 
+float \mbox{\hyperlink{classCamera_aff7393c9cfbccd7e369091f00008da93}{fov}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
@@ -101,11 +115,11 @@ struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstr
 \item 
 struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{parent}}
 \item 
-\mbox{\hyperlink{types_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
 \item 
 vec3 \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}
 \item 
@@ -119,11 +133,11 @@ vec3 \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{g
 \item 
 vec3 \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
 \item 
-\mbox{\hyperlink{scripts_8h_ab7576c513306b5641c2b903c7d18850f}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
+\mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
 \item 
-\mbox{\hyperlink{unionBehaviorParameter}{Behavior\+Parameter}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gac639490f60bdc872491ffaaea5991ed0}{params}}
+\mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga1411990c75c0b134485d07be7a21e58c}{params\+\_\+count}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_gab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
 \item 
 \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}}
 \end{DoxyCompactItemize}
@@ -139,11 +153,17 @@ static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5e
 A structure to represent a camera with position and rotation in 3D space. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classCamera_a0f4542960197f9bf63b0fc51712d2e22}\label{classCamera_a0f4542960197f9bf63b0fc51712d2e22} 
+\Hypertarget{classCamera_a820d262dfb04db3929dfe41c25abe0d0}\label{classCamera_a820d262dfb04db3929dfe41c25abe0d0} 
 \index{Camera@{Camera}!constructor@{constructor}}
 \index{constructor@{constructor}!Camera@{Camera}}
 \doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
-{\footnotesize\ttfamily void Camera\+::constructor (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}}]{camera }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Camera\+::constructor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classCamera_af45ed0a37b84e98b88d756d96b73df7b}\label{classCamera_af45ed0a37b84e98b88d756d96b73df7b} 
+\index{Camera@{Camera}!get\_settings\_data@{get\_settings\_data}}
+\index{get\_settings\_data@{get\_settings\_data}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{get\_settings\_data()}{get\_settings\_data()}}
+{\footnotesize\ttfamily void Camera\+::get\+\_\+settings\+\_\+data (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{ptr,  }\item[{int \texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classCamera_abe898f96e5db6053561904256126b044}\label{classCamera_abe898f96e5db6053561904256126b044} 
 \index{Camera@{Camera}!load@{load}}
@@ -166,7 +186,13 @@ A structure to represent a camera with position and rotation in 3D space.
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classCamera_a58f8b51664251b5c0f59be0e0a87e754}\label{classCamera_a58f8b51664251b5c0f59be0e0a87e754} 
+\Hypertarget{classCamera_aff7393c9cfbccd7e369091f00008da93}\label{classCamera_aff7393c9cfbccd7e369091f00008da93} 
+\index{Camera@{Camera}!fov@{fov}}
+\index{fov@{fov}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{fov}{fov}}
+{\footnotesize\ttfamily float Camera\+::fov}
+
+Field of view of the camera. \Hypertarget{classCamera_a58f8b51664251b5c0f59be0e0a87e754}\label{classCamera_a58f8b51664251b5c0f59be0e0a87e754} 
 \index{Camera@{Camera}!pos@{pos}}
 \index{pos@{pos}!Camera@{Camera}}
 \doxysubsubsection{\texorpdfstring{pos}{pos}}

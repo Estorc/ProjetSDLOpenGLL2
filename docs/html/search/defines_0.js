@@ -11,6 +11,6 @@ var searchData=
   ['bold_5fred_8',['BOLD_RED',['../color_8h.html#a58f9401d546703859ab9c8720c61ee9e',1,'color.h']]],
   ['bold_5fwhite_9',['BOLD_WHITE',['../color_8h.html#a9489fe820b5e8eb3cbd187a2d0813004',1,'color.h']]],
   ['bold_5fyellow_10',['BOLD_YELLOW',['../color_8h.html#a1657fd9211b5650e98b0ebd377a74e47',1,'color.h']]],
-  ['boot_5fscene_11',['BOOT_SCENE',['../config_8h.html#a29cd995d5546036ce244341225b5b648',1,'config.h']]],
+  ['boot_5fscene_11',['BOOT_SCENE',['../main_8c.html#a29cd995d5546036ce244341225b5b648',1,'main.c']]],
   ['breakpoint_12',['BREAKPOINT',['../config_8h.html#a0409e98ff9aade482fcfc9e67e762a86',1,'config.h']]]
 ];

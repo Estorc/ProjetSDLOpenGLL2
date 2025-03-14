@@ -5,41 +5,68 @@
 Header file for memory management functions and structures.  
 
 
-This graph shows which files directly or indirectly include this file\+:
-% FIG 0
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{memory_8h__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{struct_cube_map_cache}{Cube\+Map\+Cache}}
+struct \mbox{\hyperlink{structCubeMapCache}{Cube\+Map\+Cache}}
 \begin{DoxyCompactList}\small\item\em Structure to cache cube map textures. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{struct_texture_cache}{Texture\+Cache}}
+struct \mbox{\hyperlink{structTextureCache}{Texture\+Cache}}
 \begin{DoxyCompactList}\small\item\em Structure to cache textures. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{struct_model_cache}{Model\+Cache}}
+struct \mbox{\hyperlink{structModelCache}{Model\+Cache}}
 \begin{DoxyCompactList}\small\item\em Structure to cache models. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{struct_shader_cache}{Shader\+Cache}}
+struct \mbox{\hyperlink{structShaderCache}{Shader\+Cache}}
 \begin{DoxyCompactList}\small\item\em Structure to cache shaders. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{struct_memory_caches}{Memory\+Caches}}
+struct \mbox{\hyperlink{structMixMusicCache}{Mix\+Music\+Cache}}
+\begin{DoxyCompactList}\small\item\em Structure to cache music. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structMixChunkCache}{Mix\+Chunk\+Cache}}
+\begin{DoxyCompactList}\small\item\em Structure to cache sound effects. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structMemoryCaches}{Memory\+Caches}}
 \begin{DoxyCompactList}\small\item\em Structure to manage all types of caches. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \mbox{\hyperlink{group__MemoryCache_ga9efea9b7fc3085f1062d9148aa012307}{Texture\+Map}}
+\item 
+typedef unsigned int \mbox{\hyperlink{group__MemoryCache_ga628acddf9216b5e00424607a3f76ccde}{Shader}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{group___memory_cache_gafc915248428e8d076d93d7029a2dcb79}{init\+\_\+memory\+\_\+cache}} ()
+void \mbox{\hyperlink{group__MemoryCache_gafc915248428e8d076d93d7029a2dcb79}{init\+\_\+memory\+\_\+cache}} ()
 \begin{DoxyCompactList}\small\item\em Initializes the memory cache. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group___memory_cache_ga687de09be998a3af723f109e54937e46}{free\+\_\+shaders}} ()
+void \mbox{\hyperlink{group__MemoryCache_ga687de09be998a3af723f109e54937e46}{free\+\_\+shaders}} ()
 \begin{DoxyCompactList}\small\item\em Frees the allocated shaders. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group___memory_cache_gaf7e9da715331648efbb53611a886b7ba}{free\+\_\+models}} ()
+\mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__MemoryCache_ga61ed234c023f30c5c5708cd4cd77c623}{get\+\_\+model\+\_\+from\+\_\+cache}} (const char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Gets a model from the cache. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MemoryCache_ga40b571f1daed50851b292a5c5a0e0881}{add\+\_\+model\+\_\+to\+\_\+cache}} (const char \texorpdfstring{$\ast$}{*}name, \mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}model)
+\begin{DoxyCompactList}\small\item\em Adds a model to the cache. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MemoryCache_gaf7e9da715331648efbb53611a886b7ba}{free\+\_\+models}} ()
 \begin{DoxyCompactList}\small\item\em Frees the allocated models. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group___memory_cache_ga4761da15daadabf43f15b2c2d29eb98b}{free\+\_\+textures}} ()
+Mix\+\_\+\+Music \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__MemoryCache_ga004ded5479b7e0050f7e5decd7743cf1}{get\+\_\+mix\+\_\+music\+\_\+from\+\_\+cache}} (const char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Gets a music from the cache. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MemoryCache_ga09305ad627a28324fd720c408ed2afb9}{add\+\_\+mix\+\_\+music\+\_\+to\+\_\+cache}} (const char \texorpdfstring{$\ast$}{*}name, Mix\+\_\+\+Music \texorpdfstring{$\ast$}{*}music)
+\begin{DoxyCompactList}\small\item\em Adds a music to the cache. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MemoryCache_ga0ffdd61fb2360024ac5cad44334c6ead}{free\+\_\+musics}} ()
+\begin{DoxyCompactList}\small\item\em Frees the allocated music. \end{DoxyCompactList}\item 
+Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__MemoryCache_ga1659300a896c5455fff79f6b2144337b}{get\+\_\+mix\+\_\+chunk\+\_\+from\+\_\+cache}} (const char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Gets a sound effect from the cache. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MemoryCache_gadf72a8ac6da9ce12a4b7264c2747f08f}{add\+\_\+mix\+\_\+chunk\+\_\+to\+\_\+cache}} (const char \texorpdfstring{$\ast$}{*}name, Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*}chunk)
+\begin{DoxyCompactList}\small\item\em Adds a sound effect to the cache. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MemoryCache_ga937ea060506e98cc1859bdec3583852a}{free\+\_\+chunks}} ()
+\begin{DoxyCompactList}\small\item\em Frees the allocated sound effects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MemoryCache_ga4761da15daadabf43f15b2c2d29eb98b}{free\+\_\+textures}} ()
 \begin{DoxyCompactList}\small\item\em Frees the allocated textures. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group___memory_cache_gaa4a40d70edd62e77d572df8a576693b3}{free\+\_\+cubemaps}} ()
+void \mbox{\hyperlink{group__MemoryCache_gaa4a40d70edd62e77d572df8a576693b3}{free\+\_\+cubemaps}} ()
 \begin{DoxyCompactList}\small\item\em Frees the allocated cubemaps. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group___memory_cache_ga188eb3da198efe442aab7756e7f0e838}{free\+\_\+memory\+\_\+cache}} ()
+void \mbox{\hyperlink{group__MemoryCache_ga188eb3da198efe442aab7756e7f0e838}{free\+\_\+memory\+\_\+cache}} ()
 \begin{DoxyCompactList}\small\item\em Frees the entire memory cache. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Variables}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{struct_memory_caches}{Memory\+Caches}} \mbox{\hyperlink{group___memory_cache_gac20453e81d80b4c155cbf48f8f58d1e0}{memory\+Caches}}
-\begin{DoxyCompactList}\small\item\em External variable representing the memory caches. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

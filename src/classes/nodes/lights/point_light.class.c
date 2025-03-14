@@ -44,9 +44,9 @@ class PointLight : public Light {
 
         const char uniforms[8][20] = {
             "].position",
-            "].ambient",
-            "].diffuse",
-            "].specular",
+            "].color",
+            "].bias",
+            "].size",
             "].constant",
             "].linear",
             "].quadratic",
@@ -61,18 +61,18 @@ class PointLight : public Light {
             strcat(uniformsName[i], uniforms[i]);
         }
 
-        for (int i = 0; i < memoryCaches.shadersCount; i++) {
-            use_shader(memoryCaches.shaderCache[i].shader);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[0], this->globalPos);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], pointLight->ambient);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[2], pointLight->diffuse);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[3], pointLight->specular);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[4], pointLight->constant);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], pointLight->linear);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], pointLight->quadratic);
-            set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[7], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
+        for (int i = 0; i < Game.memoryCaches->shadersCount; i++) {
+            use_shader(Game.memoryCaches->shaderCache[i].shader);
+            set_shader_vec3(Game.memoryCaches->shaderCache[i].shader, uniformsName[0], this->globalPos);
+            set_shader_vec3(Game.memoryCaches->shaderCache[i].shader, uniformsName[1], pointLight->color);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[2], pointLight->bias);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[3], pointLight->size);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[4], pointLight->constant);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[5], pointLight->linear);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[6], pointLight->quadratic);
+            set_shader_int(Game.memoryCaches->shaderCache[i].shader, uniformsName[7], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
         }
-        buffers.lightingBuffer.lightings[buffers.lightingBuffer.index++] = this;
+        Game.buffers->lightingBuffer.lightings[Game.buffers->lightingBuffer.index++] = this;
         lightsCount[POINT_LIGHT]++;
     }    
 
@@ -83,9 +83,9 @@ class PointLight : public Light {
         SUPER(get_settings_data, ptr, length);
         PointLight *pointLight = (PointLight *) this->object;
         void *data[] = {
-            "rgb", "Ambient : ", &pointLight->ambient,
-            "rgb", "Diffuse : ", &pointLight->diffuse,
-            "rgb", "Specular : ", &pointLight->specular,
+            "rgb", "Color : ", &pointLight->color,
+            "float", "Bias : ", &pointLight->bias,
+            "float", "Size : ", &pointLight->size,
             "float", "Constant : ", &pointLight->constant,
             "float", "Linear : ", &pointLight->linear,
             "float", "Quadratic : ", &pointLight->quadratic
@@ -101,24 +101,24 @@ class PointLight : public Light {
         POINTER_CHECK(pointLight);
 
         if (file) {
-            fscanf(file,"(%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g)\n", 
-                &pointLight->ambient[0], &pointLight->ambient[1], &pointLight->ambient[2], 
-                &pointLight->diffuse[0], &pointLight->diffuse[1], &pointLight->diffuse[2], 
-                &pointLight->specular[0], &pointLight->specular[1], &pointLight->specular[2],
+            fscanf(file,"(%g,%g,%g,%g,%g,%g,%g,%g)\n", 
+                &pointLight->color[0], &pointLight->color[1], &pointLight->color[2], 
+                &pointLight->bias,
+                &pointLight->size,
                 &pointLight->constant,
                 &pointLight->linear,
                 &pointLight->quadratic
                 );
         } else {
-            glm_vec3_zero(pointLight->ambient);
-            glm_vec3_copy(GLM_VEC3_ONE, pointLight->diffuse);
-            glm_vec3_copy(GLM_VEC3_ONE, pointLight->specular);
+            glm_vec3_one(pointLight->color);
+            pointLight->bias = 0.005f;
+            pointLight->size = 0.0f;
             pointLight->constant = 1.0f;
             pointLight->linear = 0.09f;
             pointLight->quadratic = 0.032f;
         }
 
-        buffers.lightingBuffer.length++;
+        Game.buffers->lightingBuffer.length++;
         this->type = __type__;
         this::constructor(pointLight);
         this->flags |= NODE_EDITOR_FLAG;
@@ -127,10 +127,10 @@ class PointLight : public Light {
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         PointLight *pointLight = (PointLight*) this->object;
-        fprintf(file, "(%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g)",
-            pointLight->ambient[0], pointLight->ambient[1], pointLight->ambient[2], 
-            pointLight->diffuse[0], pointLight->diffuse[1], pointLight->diffuse[2], 
-            pointLight->specular[0], pointLight->specular[1], pointLight->specular[2],
+        fprintf(file, "(%g,%g,%g,%g,%g,%g,%g,%g)",
+            pointLight->color[0], pointLight->color[1], pointLight->color[2], 
+            pointLight->bias,
+            pointLight->size,
             pointLight->constant,
             pointLight->linear,
             pointLight->quadratic
@@ -148,7 +148,7 @@ class PointLight : public Light {
      * @param pointLightId The ID of the point light.
      */
 
-    void configure_lighting(Camera *c, WorldShaders *shaders, u8 *lightsCount, int pointLightId) {
+    void configure_lighting(Camera *c, WorldShaders *shaders, DepthMap *depthMap, u8 *lightsCount, int pointLightId) {
 
         UNUSED(c);
         // Lights and shadows
@@ -158,7 +158,7 @@ class PointLight : public Light {
         size_t storageBufferIndex;
 
         f32 near_plane = 1.0f, far_plane = 8000.0f;
-        glm_perspective(to_radians(90.0f), SHADOW_WIDTH/SHADOW_HEIGHT, near_plane, far_plane, lightProjection);
+        glm_perspective(PI/2.0f, 1.0f, near_plane, far_plane, lightProjection);
 
         vec3 directions[6] = {
             { 1.0f, 0.0f, 0.0f},
@@ -183,11 +183,11 @@ class PointLight : public Light {
         glm_vec3_sub(lightPos, directions[pointLightId], lightB);
         glm_lookat(lightPos, lightB, upVectors[pointLightId], lightView);
 
-        storageBufferIndex = (lightsCount[POINT_LIGHT]*6+pointLightId)*sizeof(mat4)+(NUM_DIRECTIONAL_LIGHTS)*sizeof(mat4);
+        storageBufferIndex = (lightsCount[POINT_LIGHT]*6+pointLightId)+(NUM_DIRECTIONAL_LIGHTS);
         if (pointLightId == 5) lightsCount[POINT_LIGHT]++;
 
 
-        SUPER(configure_lighting, shaders, lightView, lightProjection, storageBufferIndex);
+        SUPER(configure_lighting, shaders, lightView, lightProjection, storageBufferIndex, depthMap);
     }
 
     

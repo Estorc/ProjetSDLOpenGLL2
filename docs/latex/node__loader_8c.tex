@@ -16,12 +16,17 @@
 {\ttfamily \#include "{}../memory.\+h"{}}\newline
 {\ttfamily \#include "{}../buffer.\+h"{}}\newline
 {\ttfamily \#include "{}../classes/classes.\+h"{}}\newline
-Include dependency graph for node\+\_\+loader.\+c\+:
-% FIG 0
+Include dependency graph for node\+\_\+loader.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{node__loader_8c__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{group___node_loader_gae4a14d7e7a38b0e9d99c338fe9ee060e}{malloc\+\_\+node}} (\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}node, int node\+Type, FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{class_camera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{struct_script}{Script}} scripts\mbox{[}SCRIPTS\+\_\+\+COUNT\mbox{]}, \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}editor)
+void \mbox{\hyperlink{group__NodeLoader_gaa2f68fcfede0dc8ee9aeb8bd1ebba4fc}{malloc\+\_\+node}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, int node\+Type, FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}scripts, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
 \begin{DoxyCompactList}\small\item\em Allocates memory for a node and initializes it. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group___node_loader_ga930ce06b98b45fb3cef57f5a2e3c91dd}{node\+\_\+tree\+\_\+to\+\_\+file}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}editor)
+void \mbox{\hyperlink{group__NodeLoader_ga930ce06b98b45fb3cef57f5a2e3c91dd}{node\+\_\+tree\+\_\+to\+\_\+file}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
 \begin{DoxyCompactList}\small\item\em Writes the node tree to a file. \end{DoxyCompactList}\end{DoxyCompactItemize}

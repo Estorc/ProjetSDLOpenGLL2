@@ -31,10 +31,11 @@ class RenderTarget : public Node {
 
     void constructor(int width, int height) {
 
+        this->type = __type__;
+
         RenderTarget *renderTarget = malloc(sizeof(RenderTarget));
 
         this->object = renderTarget;
-        this->type = __type__;
 
         renderTarget->w = width;
         renderTarget->h = height;
@@ -81,14 +82,14 @@ class RenderTarget : public Node {
 
         renderTarget->mouse.lastX = renderTarget->mouse.x;
         renderTarget->mouse.lastY = renderTarget->mouse.y;
-        renderTarget->mouse.dx = input.mouse.dx;
-        renderTarget->mouse.dy = input.mouse.dy;
-        renderTarget->mouse.scroll_x = input.mouse.scroll_x;
-        renderTarget->mouse.scroll_y = input.mouse.scroll_y;
+        renderTarget->mouse.dx = Game.input->mouse.dx;
+        renderTarget->mouse.dy = Game.input->mouse.dy;
+        renderTarget->mouse.scroll_x = Game.input->mouse.scroll_x;
+        renderTarget->mouse.scroll_y = Game.input->mouse.scroll_y;
 
-        renderTarget->mouse.pressed_button = input.mouse.pressed_button;
-        renderTarget->mouse.released_button = input.mouse.released_button;
-        renderTarget->mouse.active_button = input.mouse.active_button;
+        renderTarget->mouse.pressed_button = Game.input->mouse.pressed_button;
+        renderTarget->mouse.released_button = Game.input->mouse.released_button;
+        renderTarget->mouse.active_button = Game.input->mouse.active_button;
     }
 
     

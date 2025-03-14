@@ -1,16 +1,24 @@
 \doxysection{src/config.h File Reference}
 \hypertarget{config_8h}{}\label{config_8h}\index{src/config.h@{src/config.h}}
-{\ttfamily \#include "{}term/enhanced\+\_\+print.\+h"{}}\newline
-Include dependency graph for config.\+h\+:
-% FIG 0
-This graph shows which files directly or indirectly include this file\+:
-% FIG 1
+{\ttfamily \#include "{}term/term.\+h"{}}\newline
+Include dependency graph for config.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{config_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8h__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{config_8h_a29cd995d5546036ce244341225b5b648}{BOOT\+\_\+\+SCENE}}~"{}assets/scenes/boot.\+scene"{}
-\item 
-\#define \mbox{\hyperlink{config_8h_a86d500a34c624c2cae56bc25a31b12f3}{UNUSED}}(x)
+\#define \mbox{\hyperlink{config_8h_a86d500a34c624c2cae56bc25a31b12f3}{UNUSED}}(x)~(void)x;
 \item 
 \#define \mbox{\hyperlink{config_8h_a0409e98ff9aade482fcfc9e67e762a86}{BREAKPOINT}}
 \item 
@@ -26,45 +34,34 @@ enum \mbox{\hyperlink{config_8h_a4db59522f4f07ce6acf8a9a2f435340a}{Return\+Symbo
 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{config_8h_a29cd995d5546036ce244341225b5b648}\index{config.h@{config.h}!BOOT\_SCENE@{BOOT\_SCENE}}
-\index{BOOT\_SCENE@{BOOT\_SCENE}!config.h@{config.h}}
-\doxysubsubsection{\texorpdfstring{BOOT\_SCENE}{BOOT\_SCENE}}
-{\footnotesize\ttfamily \label{config_8h_a29cd995d5546036ce244341225b5b648} 
-\#define BOOT\+\_\+\+SCENE~"{}assets/scenes/boot.\+scene"{}}
-
-\Hypertarget{config_8h_a0409e98ff9aade482fcfc9e67e762a86}\index{config.h@{config.h}!BREAKPOINT@{BREAKPOINT}}
+\Hypertarget{config_8h_a0409e98ff9aade482fcfc9e67e762a86}\label{config_8h_a0409e98ff9aade482fcfc9e67e762a86} 
+\index{config.h@{config.h}!BREAKPOINT@{BREAKPOINT}}
 \index{BREAKPOINT@{BREAKPOINT}!config.h@{config.h}}
 \doxysubsubsection{\texorpdfstring{BREAKPOINT}{BREAKPOINT}}
-{\footnotesize\ttfamily \label{config_8h_a0409e98ff9aade482fcfc9e67e762a86} 
-\#define BREAKPOINT}
+{\footnotesize\ttfamily \#define BREAKPOINT}
 
-\Hypertarget{config_8h_ab691155d5034ba5bf5f91069ddd4fffd}\index{config.h@{config.h}!POINTER\_CHECK@{POINTER\_CHECK}}
+\Hypertarget{config_8h_ab691155d5034ba5bf5f91069ddd4fffd}\label{config_8h_ab691155d5034ba5bf5f91069ddd4fffd} 
+\index{config.h@{config.h}!POINTER\_CHECK@{POINTER\_CHECK}}
 \index{POINTER\_CHECK@{POINTER\_CHECK}!config.h@{config.h}}
 \doxysubsubsection{\texorpdfstring{POINTER\_CHECK}{POINTER\_CHECK}}
-{\footnotesize\ttfamily \label{config_8h_ab691155d5034ba5bf5f91069ddd4fffd} 
-\#define POINTER\+\_\+\+CHECK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define POINTER\+\_\+\+CHECK(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
 
-\Hypertarget{config_8h_a86d500a34c624c2cae56bc25a31b12f3}\index{config.h@{config.h}!UNUSED@{UNUSED}}
+\Hypertarget{config_8h_a86d500a34c624c2cae56bc25a31b12f3}\label{config_8h_a86d500a34c624c2cae56bc25a31b12f3} 
+\index{config.h@{config.h}!UNUSED@{UNUSED}}
 \index{UNUSED@{UNUSED}!config.h@{config.h}}
 \doxysubsubsection{\texorpdfstring{UNUSED}{UNUSED}}
-{\footnotesize\ttfamily \label{config_8h_a86d500a34c624c2cae56bc25a31b12f3} 
-\#define UNUSED(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define UNUSED(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(void)x;}
 
-{\bfseries Value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{(void)x;}
-
-\end{DoxyCode}
 
 
 \doxysubsection{Enumeration Type Documentation}
-\Hypertarget{config_8h_a4db59522f4f07ce6acf8a9a2f435340a}\index{config.h@{config.h}!ReturnSymbol@{ReturnSymbol}}
+\Hypertarget{config_8h_a4db59522f4f07ce6acf8a9a2f435340a}\label{config_8h_a4db59522f4f07ce6acf8a9a2f435340a} 
+\index{config.h@{config.h}!ReturnSymbol@{ReturnSymbol}}
 \index{ReturnSymbol@{ReturnSymbol}!config.h@{config.h}}
 \doxysubsubsection{\texorpdfstring{ReturnSymbol}{ReturnSymbol}}
-{\footnotesize\ttfamily \label{config_8h_a4db59522f4f07ce6acf8a9a2f435340a} 
-enum \mbox{\hyperlink{config_8h_a4db59522f4f07ce6acf8a9a2f435340a}{Return\+Symbol}}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{config_8h_a4db59522f4f07ce6acf8a9a2f435340a}{Return\+Symbol}}}
 
-\begin{DoxyEnumFields}[2]{Enumerator}
+\begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CLOSE\_PROGRAM@{CLOSE\_PROGRAM}!config.h@{config.h}}\index{config.h@{config.h}!CLOSE\_PROGRAM@{CLOSE\_PROGRAM}}}\Hypertarget{config_8h_a4db59522f4f07ce6acf8a9a2f435340aa69508003332e749723160a0af087ad5c}\label{config_8h_a4db59522f4f07ce6acf8a9a2f435340aa69508003332e749723160a0af087ad5c} 
 CLOSE\+\_\+\+PROGRAM&\\
 \hline

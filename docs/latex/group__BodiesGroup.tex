@@ -50,9 +50,9 @@ A node is a generic object that can be used to represent different types of bodi
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keywordflow}{switch}\ (node-\/>type)\ \{\(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{case}\ CLASS\_TYPE\_STATICBODY:\ \ \ \ \ \ \ \ \ \ \ \ \ \ dest\ =\ \&((\mbox{\hyperlink{classStaticBody}{StaticBody}}\ *)\ node-\/>object)-\/>attribute;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{case}\ CLASS\_TYPE\_RIGIDBODY:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dest\ =\ \&((\mbox{\hyperlink{classRigidBody}{RigidBody}}\ *)\ node-\/>object)-\/>attribute;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{case}\ CLASS\_TYPE\_KINEMATICBODY:\ \ \ \ \ \ \ \ \ \ \ dest\ =\ \&((\mbox{\hyperlink{classKinematicBody}{KinematicBody}}\ *)\ node-\/>object)-\/>attribute;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classes__types_8h_a92f93237c843e4b3fff7b7cc4c80f415a0e7e6bc6f627fd2855cb409b8e8a50f4}{CLASS\_TYPE\_STATICBODY}}:\ \ \ \ \ \ \ \ \ \ \ \ \ \ dest\ =\ \&((\mbox{\hyperlink{classStaticBody}{StaticBody}}\ *)\ node-\/>object)-\/>attribute;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classes__types_8h_a92f93237c843e4b3fff7b7cc4c80f415a96837d74bdcd84720042f7e0af776a4d}{CLASS\_TYPE\_RIGIDBODY}}:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dest\ =\ \&((\mbox{\hyperlink{classRigidBody}{RigidBody}}\ *)\ node-\/>object)-\/>attribute;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classes__types_8h_a92f93237c843e4b3fff7b7cc4c80f415a2a757ea80b48ca9a54e7bfb31e0ba1e9}{CLASS\_TYPE\_KINEMATICBODY}}:\ \ \ \ \ \ \ \ \ \ \ dest\ =\ \&((\mbox{\hyperlink{classKinematicBody}{KinematicBody}}\ *)\ node-\/>object)-\/>attribute;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dest\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\(\backslash\)}
 \DoxyCodeLine{\};}
 

@@ -5,26 +5,24 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CONFIG\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CONFIG\_H}}
 \DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ \_\_windows\_\_}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ \_WIN32}}
 \DoxyCodeLine{00005\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{config_8h_a4db59522f4f07ce6acf8a9a2f435340a}{ReturnSymbol}}\ \{}
 \DoxyCodeLine{00006\ \ \ \ \ \mbox{\hyperlink{config_8h_a4db59522f4f07ce6acf8a9a2f435340aa69508003332e749723160a0af087ad5c}{CLOSE\_PROGRAM}}\ =\ -\/1,}
 \DoxyCodeLine{00007\ \ \ \ \ \mbox{\hyperlink{config_8h_a4db59522f4f07ce6acf8a9a2f435340aabf350750d0d4fabd8954c0f1e9bbae94}{NO\_ERROR}},}
 \DoxyCodeLine{00008\ \};}
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#endif}}
 \DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ BOOT\_SCENE\ "{}assets/scenes/boot.scene"{}}}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{enhanced__print_8h}{term/enhanced\_print.h}}"{}}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ UNUSED(x)\ (void)x;}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifdef\ DEBUG}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <signal.h>}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ BREAKPOINT\ printf("{}Breakpoint\ in\ \%s\ at\ line\ \%d\(\backslash\)n"{},\ \_\_FILE\_\_,\ \_\_LINE\_\_),\ raise(SIGTRAP)}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ POINTER\_CHECK(x)\ if\ (!x)\ printf("{}Pointer\ Exception\ in\ \%s\ at\ line\ \%d\(\backslash\)n"{},\ \_\_FILE\_\_,\ \_\_LINE\_\_),\ exit(EXIT\_FAILURE)}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ BREAKPOINT}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ POINTER\_CHECK(x)}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif\ }}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{term_8h}{term/term.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ UNUSED(x)\ (void)x;}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifdef\ DEBUG}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <signal.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ BREAKPOINT\ printf("{}Breakpoint\ in\ \%s\ at\ line\ \%d\(\backslash\)n"{},\ \_\_FILE\_\_,\ \_\_LINE\_\_),\ raise(SIGTRAP)}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ POINTER\_CHECK(x)\ if\ (!x)\ printf("{}Pointer\ Exception\ in\ \%s\ at\ line\ \%d\(\backslash\)n"{},\ \_\_FILE\_\_,\ \_\_LINE\_\_),\ exit(EXIT\_FAILURE)}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ BREAKPOINT}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ POINTER\_CHECK(x)}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#endif\ }}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

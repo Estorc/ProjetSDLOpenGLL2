@@ -1,7 +1,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#ifndef __windows__
+#ifndef _WIN32
 enum ReturnSymbol {
     CLOSE_PROGRAM = -1,
     NO_ERROR,

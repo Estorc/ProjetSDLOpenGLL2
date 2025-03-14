@@ -12,9 +12,95 @@
 #include "../../../scripts/scripts.h"
 
 
+static void play_chapper_idle_animation(Node *this, float *realPos) {
+    this->pos[0] = realPos[0];
+    this->pos[1] = realPos[1] + sinf(SDL_GetTicks()/100.0f) * 0.3f;
+    this->pos[2] = realPos[2];
+    this->rot[1] = sinf(SDL_GetTicks()/100.0f) * 0.3f;
+    this->rot[0] = sinf(SDL_GetTicks()/100.0f) * 0.3f;
+    this->scale[0] = 7.0f + sinf(SDL_GetTicks()/140.0f) * 0.3f;
+    this->scale[1] = 7.0f + sinf(SDL_GetTicks()/140.0f) * 0.3f;
+    this->scale[2] = 7.0f + sinf(SDL_GetTicks()/140.0f) * 0.3f;
+
+    this->children[0]->children[0]->children[0]->rot[0] = 20.0f + sinf(SDL_GetTicks()/100.0f) * 5.0f;
+    this->children[0]->children[0]->children[0]->children[0]->rot[0] = -20.0f + sinf(SDL_GetTicks()/100.0f + PI) * 5.0f;
+}
+
+typedef enum ChapperState {
+    CHAPPER_STATE_IDLE,
+    CHAPPER_STATE_CHASE,
+    CHAPPER_STATE_ATTACK,
+    CHAPPER_STATE_DEATH
+} ChapperState;
+
+
 NEW_SCRIPT(script_cc_chapper_init)
+    SET_ATTRIBUTES_COUNT(5);
+    float *realPos = &this->attribute[0].f;
+    ChapperState *state = (ChapperState *) &this->attribute[3];
+    *state = CHAPPER_STATE_IDLE;
+    glm_vec3_copy(this->pos, realPos);
     play_music("assets/audio/musics/maquette_music_chapper.mp3", MIX_MAX_VOLUME, -1);
 END_SCRIPT(script_cc_chapper_init)
+
+NEW_SCRIPT(script_cc_chapper_update)
+    float *realPos = &this->attribute[0].f;
+    ChapperState *state = (ChapperState *) &this->attribute[3];
+    Node *camera = this->attribute[4].node;
+    float *targetRot;
+    switch (*state)
+    {
+    case CHAPPER_STATE_IDLE:
+        play_chapper_idle_animation(this, realPos);
+        PRINT_INFO("%d\n", SDL_GetTicks());
+        if (SDL_GetTicks() > 7000) {
+            *state = CHAPPER_STATE_CHASE;
+        }
+        break;
+    
+    case CHAPPER_STATE_CHASE:
+        realPos[2] += 0.3f;
+        play_chapper_idle_animation(this, realPos);
+        break;
+
+    case CHAPPER_STATE_ATTACK:
+        targetRot = &camera->attribute[0].f;
+        ((KinematicBody *) camera->parent->object)->velocity[1] = -0.1f;
+        targetRot[0] = 32.0f; // 40.0f
+        targetRot[1] = atan2f(camera->globalPos[0] - this->globalPos[0], camera->globalPos[2] - this->globalPos[2]) * (180.0f / PI);
+        float_approach(&this->rot[1], targetRot[1], 0.1f);
+        float_approach(&this->children[0]->children[0]->children[0]->rot[0], -10.0f, 0.05f);
+        float_approach(&this->children[0]->children[0]->children[0]->children[0]->rot[0], -9.0f, 0.05f);
+        float_approach(&this->children[0]->children[0]->children[0]->children[0]->children[0]->rot[0], 20.0f, 0.05f);
+        
+        this->pos[0] += (camera->globalPos[0] - this->globalPos[0]) * 0.005f;
+        this->pos[1] += (camera->globalPos[1] - this->globalPos[1]) * 0.005f;
+        this->pos[2] += (camera->globalPos[2] - this->globalPos[2]) * 0.005f;
+
+        if (glm_vec3_distance2(this->globalPos, camera->globalPos) < 32.0f) {
+            if (Game.window->fadeColor[3] <= 0.0f) Mix_FadeOutMusic(1000);
+            if (Game.window->fadeColor[3] < 1.0f) {
+                Game.window->fadeColor[3] += 0.03f;
+                Game.window->fadeColor[0] += 0.01f;
+            }
+            if (Game.window->fadeColor[3] >= 1.0f) {
+                Game.window->fadeColor[0] -= 0.01f;
+            }
+            if (Game.window->fadeColor[0] <= 0.0f) {
+                prepare_change_scene("assets/scenes/claude_chappe/boot.scene");
+                SDL_SetRelativeMouseMode(SDL_FALSE);
+            }
+        }
+        break;
+
+    case CHAPPER_STATE_DEATH:
+
+        break;
+
+    default:
+        break;
+    }
+END_SCRIPT(script_cc_chapper_update)
 
 NEW_SCRIPT(script_cc_chapper_saw)
     this->rot[1] += 8.0f;

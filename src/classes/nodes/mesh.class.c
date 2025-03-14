@@ -21,20 +21,21 @@ class Mesh : public Node {
     __containerType__ Node *
     public:
 
-    void constructor(struct Mesh *mesh) {
-        this->object = mesh;
+    void constructor() {
         this->type = __type__;
+
+        Mesh *mesh;
+        mesh = malloc(sizeof(Mesh));
+        POINTER_CHECK(mesh);
+        create_screen_plane(mesh);
+
+        this->object = mesh;
         SUPER(initialize_node);
     }
 
 
     void load() {
-        Mesh *mesh;
-        mesh = malloc(sizeof(Mesh));
-        POINTER_CHECK(mesh);
-        create_screen_plane(mesh);
-        this->type = __type__;
-        this::constructor(mesh);
+        this::constructor();
     }
 
     void save(FILE *file) {

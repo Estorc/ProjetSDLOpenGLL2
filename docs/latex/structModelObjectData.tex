@@ -15,37 +15,23 @@ Collaboration diagram for Model\+Object\+Data\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=200pt]{structModelObjectData__coll__graph}
+\includegraphics[width=181pt]{structModelObjectData__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{group__ModelHandling_gab8341657bd0436f925f30c3e0e8db793}{Vertex}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structModelObjectData_a467e5ac14c42a32e54b8fc70d3787de3}{vertex}}
+\mbox{\hyperlink{group__ModelHandling_ga1351e71110272ccf5e8d661017498adb}{Vertex}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structModelObjectData_a69c6d0bea70653388b26ed33dff8691c}{faces\+Vertex}}
 \item 
-\mbox{\hyperlink{group__ModelHandling_gabb5b863a4c7a7cc7d18a288c908b9f0b}{Normal}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structModelObjectData_aba63d6087e345242d735b17393a446dd}{normals}}
-\item 
-\mbox{\hyperlink{group__ModelHandling_ga035e3505138fdf49eb7ebdcfc5d5a1fc}{Texture\+Vertex}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structModelObjectData_ac0a91f373382f0eeb9e46a54dcca5216}{texture\+Vertex}}
-\item 
-\mbox{\hyperlink{group__ModelHandling_gab8341657bd0436f925f30c3e0e8db793}{Vertex}}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structModelObjectData_a47ca6979ab7d9d55593ef4d2c19846cd}{faces\+Vertex}} )\mbox{[}3\mbox{]}
-\item 
-\mbox{\hyperlink{structFace}{Face}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structModelObjectData_a450688f59ea6736283fc2222d8074d08}{faces}}
-\item 
-\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structModelObjectData_af2a438b58f77fa6c6275fe810b3073a2}{textures}}
-\item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{structModelObjectData_aca36644f425e813bce76223e5974f006}{smooth\+Shading}}
-\item 
-\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \mbox{\hyperlink{structModelObjectData_a741d26a4aff11635d045fd8acc222698}{length}}
-\item 
-\mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}} \mbox{\hyperlink{structModelObjectData_a81a06ba68dc3a3c26e985662f3b1df6d}{VAO}}
+\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \mbox{\hyperlink{structModelObjectData_a741d26a4aff11635d045fd8acc222698}{length}}
 \item 
 \mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structModelObjectData_a8b7b2f25625addb081fc1bdd893ce7c3}{materials}}
 \item 
-\mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structModelObjectData_afbb71cc0d9b5ab37666dc8d1eaadece6}{materials\+Length}}
+\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structModelObjectData_afbb71cc0d9b5ab37666dc8d1eaadece6}{materials\+Length}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{structModelObjectData_a6fe3e95a6688ff26ce6e97b384e5ae92}{materials\+Count}}
+\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \mbox{\hyperlink{structModelObjectData_ad22363430228ae7ef129caadaa3d522f}{materials\+Count}}
 \item 
-GLuint \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structModelObjectData_a1b0b3e5d50a9e645125e13e887e140e1}{display\+Lists}}
+\mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}} \mbox{\hyperlink{structModelObjectData_a81a06ba68dc3a3c26e985662f3b1df6d}{VAO}}
 \end{DoxyCompactItemize}
 
 
@@ -55,29 +41,17 @@ Structure representing the data of a 3D model object.
 This structure holds the vertices, normals, texture vertices, faces, and other properties of a model object. 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{structModelObjectData_a1b0b3e5d50a9e645125e13e887e140e1}\label{structModelObjectData_a1b0b3e5d50a9e645125e13e887e140e1} 
-\index{ModelObjectData@{ModelObjectData}!displayLists@{displayLists}}
-\index{displayLists@{displayLists}!ModelObjectData@{ModelObjectData}}
-\doxysubsubsection{\texorpdfstring{displayLists}{displayLists}}
-{\footnotesize\ttfamily GLuint\texorpdfstring{$\ast$}{*} Model\+Object\+Data\+::display\+Lists}
-
-Array of display lists \Hypertarget{structModelObjectData_a450688f59ea6736283fc2222d8074d08}\label{structModelObjectData_a450688f59ea6736283fc2222d8074d08} 
-\index{ModelObjectData@{ModelObjectData}!faces@{faces}}
-\index{faces@{faces}!ModelObjectData@{ModelObjectData}}
-\doxysubsubsection{\texorpdfstring{faces}{faces}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structFace}{Face}}\texorpdfstring{$\ast$}{*} Model\+Object\+Data\+::faces}
-
-Array of faces \Hypertarget{structModelObjectData_a47ca6979ab7d9d55593ef4d2c19846cd}\label{structModelObjectData_a47ca6979ab7d9d55593ef4d2c19846cd} 
+\Hypertarget{structModelObjectData_a69c6d0bea70653388b26ed33dff8691c}\label{structModelObjectData_a69c6d0bea70653388b26ed33dff8691c} 
 \index{ModelObjectData@{ModelObjectData}!facesVertex@{facesVertex}}
 \index{facesVertex@{facesVertex}!ModelObjectData@{ModelObjectData}}
 \doxysubsubsection{\texorpdfstring{facesVertex}{facesVertex}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gab8341657bd0436f925f30c3e0e8db793}{Vertex}}(\texorpdfstring{$\ast$}{*} Model\+Object\+Data\+::faces\+Vertex)\mbox{[}3\mbox{]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_ga1351e71110272ccf5e8d661017498adb}{Vertex}}\texorpdfstring{$\ast$}{*} Model\+Object\+Data\+::faces\+Vertex}
 
 Array of vertex indices for faces \Hypertarget{structModelObjectData_a741d26a4aff11635d045fd8acc222698}\label{structModelObjectData_a741d26a4aff11635d045fd8acc222698} 
 \index{ModelObjectData@{ModelObjectData}!length@{length}}
 \index{length@{length}!ModelObjectData@{ModelObjectData}}
 \doxysubsubsection{\texorpdfstring{length}{length}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} Model\+Object\+Data\+::length}
+{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} Model\+Object\+Data\+::length}
 
 Length of the object data \Hypertarget{structModelObjectData_a8b7b2f25625addb081fc1bdd893ce7c3}\label{structModelObjectData_a8b7b2f25625addb081fc1bdd893ce7c3} 
 \index{ModelObjectData@{ModelObjectData}!materials@{materials}}
@@ -85,55 +59,25 @@ Length of the object data \Hypertarget{structModelObjectData_a8b7b2f25625addb081
 \doxysubsubsection{\texorpdfstring{materials}{materials}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structMaterial}{Material}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Model\+Object\+Data\+::materials}
 
-Array of pointers to materials \Hypertarget{structModelObjectData_a6fe3e95a6688ff26ce6e97b384e5ae92}\label{structModelObjectData_a6fe3e95a6688ff26ce6e97b384e5ae92} 
+Array of pointers to materials \Hypertarget{structModelObjectData_ad22363430228ae7ef129caadaa3d522f}\label{structModelObjectData_ad22363430228ae7ef129caadaa3d522f} 
 \index{ModelObjectData@{ModelObjectData}!materialsCount@{materialsCount}}
 \index{materialsCount@{materialsCount}!ModelObjectData@{ModelObjectData}}
 \doxysubsubsection{\texorpdfstring{materialsCount}{materialsCount}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Model\+Object\+Data\+::materials\+Count}
+{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} Model\+Object\+Data\+::materials\+Count}
 
 Number of materials \Hypertarget{structModelObjectData_afbb71cc0d9b5ab37666dc8d1eaadece6}\label{structModelObjectData_afbb71cc0d9b5ab37666dc8d1eaadece6} 
 \index{ModelObjectData@{ModelObjectData}!materialsLength@{materialsLength}}
 \index{materialsLength@{materialsLength}!ModelObjectData@{ModelObjectData}}
 \doxysubsubsection{\texorpdfstring{materialsLength}{materialsLength}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\texorpdfstring{$\ast$}{*} Model\+Object\+Data\+::materials\+Length}
+{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\texorpdfstring{$\ast$}{*} Model\+Object\+Data\+::materials\+Length}
 
-Array of material lengths \Hypertarget{structModelObjectData_aba63d6087e345242d735b17393a446dd}\label{structModelObjectData_aba63d6087e345242d735b17393a446dd} 
-\index{ModelObjectData@{ModelObjectData}!normals@{normals}}
-\index{normals@{normals}!ModelObjectData@{ModelObjectData}}
-\doxysubsubsection{\texorpdfstring{normals}{normals}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gabb5b863a4c7a7cc7d18a288c908b9f0b}{Normal}}\texorpdfstring{$\ast$}{*} Model\+Object\+Data\+::normals}
-
-Array of normals \Hypertarget{structModelObjectData_aca36644f425e813bce76223e5974f006}\label{structModelObjectData_aca36644f425e813bce76223e5974f006} 
-\index{ModelObjectData@{ModelObjectData}!smoothShading@{smoothShading}}
-\index{smoothShading@{smoothShading}!ModelObjectData@{ModelObjectData}}
-\doxysubsubsection{\texorpdfstring{smoothShading}{smoothShading}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Model\+Object\+Data\+::smooth\+Shading}
-
-Smooth shading flag \Hypertarget{structModelObjectData_af2a438b58f77fa6c6275fe810b3073a2}\label{structModelObjectData_af2a438b58f77fa6c6275fe810b3073a2} 
-\index{ModelObjectData@{ModelObjectData}!textures@{textures}}
-\index{textures@{textures}!ModelObjectData@{ModelObjectData}}
-\doxysubsubsection{\texorpdfstring{textures}{textures}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\texorpdfstring{$\ast$}{*} Model\+Object\+Data\+::textures}
-
-Array of texture IDs \Hypertarget{structModelObjectData_ac0a91f373382f0eeb9e46a54dcca5216}\label{structModelObjectData_ac0a91f373382f0eeb9e46a54dcca5216} 
-\index{ModelObjectData@{ModelObjectData}!textureVertex@{textureVertex}}
-\index{textureVertex@{textureVertex}!ModelObjectData@{ModelObjectData}}
-\doxysubsubsection{\texorpdfstring{textureVertex}{textureVertex}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_ga035e3505138fdf49eb7ebdcfc5d5a1fc}{Texture\+Vertex}}\texorpdfstring{$\ast$}{*} Model\+Object\+Data\+::texture\+Vertex}
-
-Array of texture vertices \Hypertarget{structModelObjectData_a81a06ba68dc3a3c26e985662f3b1df6d}\label{structModelObjectData_a81a06ba68dc3a3c26e985662f3b1df6d} 
+Array of material lengths \Hypertarget{structModelObjectData_a81a06ba68dc3a3c26e985662f3b1df6d}\label{structModelObjectData_a81a06ba68dc3a3c26e985662f3b1df6d} 
 \index{ModelObjectData@{ModelObjectData}!VAO@{VAO}}
 \index{VAO@{VAO}!ModelObjectData@{ModelObjectData}}
 \doxysubsubsection{\texorpdfstring{VAO}{VAO}}
 {\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}} Model\+Object\+Data\+::\+VAO}
 
-Vertex Array \doxylink{structObject}{Object} \Hypertarget{structModelObjectData_a467e5ac14c42a32e54b8fc70d3787de3}\label{structModelObjectData_a467e5ac14c42a32e54b8fc70d3787de3} 
-\index{ModelObjectData@{ModelObjectData}!vertex@{vertex}}
-\index{vertex@{vertex}!ModelObjectData@{ModelObjectData}}
-\doxysubsubsection{\texorpdfstring{vertex}{vertex}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gab8341657bd0436f925f30c3e0e8db793}{Vertex}}\texorpdfstring{$\ast$}{*} Model\+Object\+Data\+::vertex}
-
-Array of vertices 
+Vertex Array \doxylink{structObject}{Object} 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

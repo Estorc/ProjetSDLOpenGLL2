@@ -6,8 +6,13 @@
 {\ttfamily \#include "{}../../io/model.\+h"{}}\newline
 {\ttfamily \#include "{}../../io/shader.\+h"{}}\newline
 {\ttfamily \#include "{}../../memory.\+h"{}}\newline
-Include dependency graph for fbx\+\_\+loader.\+c\+:
-% FIG 0
+Include dependency graph for fbx\+\_\+loader.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fbx__loader_8c__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -29,103 +34,103 @@ static void \mbox{\hyperlink{fbx__loader_8c_acc8a51ab08df2fd4831285e6a23b75d3}{c
 \item 
 static void \mbox{\hyperlink{fbx__loader_8c_a81015bb6d8b146ee1507ec3b2ba05d1e}{copy\+\_\+ufbxvec2\+\_\+to\+\_\+cglmvec2}} (ufbx\+\_\+vec2 a, float \texorpdfstring{$\ast$}{*}dest)
 \item 
-static void \mbox{\hyperlink{fbx__loader_8c_a6ee44c86e3cf372abfc8e23ac9eff696}{load\+\_\+material\+\_\+texture}} (const char \texorpdfstring{$\ast$}{*}folder\+\_\+path, const ufbx\+\_\+texture \texorpdfstring{$\ast$}{*}texture, \mbox{\hyperlink{struct_material}{Material}} \texorpdfstring{$\ast$}{*}dest\+\_\+material, const \mbox{\hyperlink{group___model_handling_ga74a3753dc733cc27e7b37ab4fcc4f20e}{Material\+Properties}} property, const GLenum format)
+static void \mbox{\hyperlink{fbx__loader_8c_a6ee44c86e3cf372abfc8e23ac9eff696}{load\+\_\+material\+\_\+texture}} (const char \texorpdfstring{$\ast$}{*}folder\+\_\+path, const ufbx\+\_\+texture \texorpdfstring{$\ast$}{*}texture, \mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*}dest\+\_\+material, const \mbox{\hyperlink{group__ModelHandling_ga74a3753dc733cc27e7b37ab4fcc4f20e}{Material\+Properties}} property, const GLenum format)
 \item 
 static void \mbox{\hyperlink{fbx__loader_8c_ac1f80e432ff4263583dddac0345d6e56}{convert\+\_\+skin\+\_\+deformer}} (ufbx\+\_\+skin\+\_\+deformer \texorpdfstring{$\ast$}{*}skin, \mbox{\hyperlink{structskin__vertex}{skin\+\_\+vertex}} \texorpdfstring{$\ast$}{*}mesh\+\_\+skin\+\_\+vertices)
 \item 
-static void \mbox{\hyperlink{fbx__loader_8c_a82cb4f84d2c4a0d762abb44523a817c7}{convert\+\_\+material\+\_\+part}} (const char \texorpdfstring{$\ast$}{*}folder\+\_\+path, ufbx\+\_\+material \texorpdfstring{$\ast$}{*}material, \mbox{\hyperlink{struct_material}{Material}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}dest\+\_\+material\+\_\+ptr)
+static void \mbox{\hyperlink{fbx__loader_8c_a82cb4f84d2c4a0d762abb44523a817c7}{convert\+\_\+material\+\_\+part}} (const char \texorpdfstring{$\ast$}{*}folder\+\_\+path, ufbx\+\_\+material \texorpdfstring{$\ast$}{*}material, \mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}dest\+\_\+material\+\_\+ptr)
 \item 
-static void \mbox{\hyperlink{fbx__loader_8c_ad1f7a47ac07f3024b540f7eb73904341}{convert\+\_\+mesh\+\_\+part}} (ufbx\+\_\+mesh \texorpdfstring{$\ast$}{*}mesh, ufbx\+\_\+mesh\+\_\+part \texorpdfstring{$\ast$}{*}part, \mbox{\hyperlink{struct_model_object_data}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}model, \mbox{\hyperlink{structskin__vertex}{skin\+\_\+vertex}} \texorpdfstring{$\ast$}{*}mesh\+\_\+skin\+\_\+vertices)
+static void \mbox{\hyperlink{fbx__loader_8c_ad1f7a47ac07f3024b540f7eb73904341}{convert\+\_\+mesh\+\_\+part}} (ufbx\+\_\+mesh \texorpdfstring{$\ast$}{*}mesh, ufbx\+\_\+mesh\+\_\+part \texorpdfstring{$\ast$}{*}part, \mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}model, \mbox{\hyperlink{structskin__vertex}{skin\+\_\+vertex}} \texorpdfstring{$\ast$}{*}mesh\+\_\+skin\+\_\+vertices)
 \item 
-void \mbox{\hyperlink{fbx__loader_8c_a083db170977c1b54f91dd014cd35911b}{bake\+\_\+animation}} (ufbx\+\_\+scene \texorpdfstring{$\ast$}{*}scene, ufbx\+\_\+anim \texorpdfstring{$\ast$}{*}anim, \mbox{\hyperlink{struct_model_animation}{Model\+Animation}} \texorpdfstring{$\ast$}{*}model\+\_\+anim)
+void \mbox{\hyperlink{fbx__loader_8c_a083db170977c1b54f91dd014cd35911b}{bake\+\_\+animation}} (ufbx\+\_\+scene \texorpdfstring{$\ast$}{*}scene, ufbx\+\_\+anim \texorpdfstring{$\ast$}{*}anim, \mbox{\hyperlink{structModelAnimation}{Model\+Animation}} \texorpdfstring{$\ast$}{*}model\+\_\+anim)
 \item 
-void \mbox{\hyperlink{fbx__loader_8c_a7c7e57c7caecf1fd715f994ae4601073}{bake\+\_\+animations}} (ufbx\+\_\+scene \texorpdfstring{$\ast$}{*}scene, \mbox{\hyperlink{struct_model_data}{Model\+Data}} \texorpdfstring{$\ast$}{*}model)
+void \mbox{\hyperlink{fbx__loader_8c_a7c7e57c7caecf1fd715f994ae4601073}{bake\+\_\+animations}} (ufbx\+\_\+scene \texorpdfstring{$\ast$}{*}scene, \mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}model)
 \item 
-int \mbox{\hyperlink{fbx__loader_8c_a43efff1a8d13c6ee1cdd7344430b1dfc}{load\+\_\+fbx\+\_\+armature}} (const ufbx\+\_\+node \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{struct_model_data}{Model\+Data}} \texorpdfstring{$\ast$}{*}model, int index)
+int \mbox{\hyperlink{fbx__loader_8c_a43efff1a8d13c6ee1cdd7344430b1dfc}{load\+\_\+fbx\+\_\+armature}} (const ufbx\+\_\+node \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}model, int index)
 \item 
-int \mbox{\hyperlink{fbx__loader_8c_a5588497d4d6e1c6ab2767fd3c9a3d073}{load\+\_\+fbx\+\_\+model}} (const char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{struct_model_data}{Model\+Data}} \texorpdfstring{$\ast$}{*}model)
+int \mbox{\hyperlink{fbx__loader_8c_a5588497d4d6e1c6ab2767fd3c9a3d073}{load\+\_\+fbx\+\_\+model}} (const char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}model)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{fbx__loader_8c_a67b64c4de5e778bbd7c76a3d08131f71}\index{fbx\_loader.c@{fbx\_loader.c}!MAX\_WEIGHTS@{MAX\_WEIGHTS}}
+\Hypertarget{fbx__loader_8c_a67b64c4de5e778bbd7c76a3d08131f71}\label{fbx__loader_8c_a67b64c4de5e778bbd7c76a3d08131f71} 
+\index{fbx\_loader.c@{fbx\_loader.c}!MAX\_WEIGHTS@{MAX\_WEIGHTS}}
 \index{MAX\_WEIGHTS@{MAX\_WEIGHTS}!fbx\_loader.c@{fbx\_loader.c}}
 \doxysubsubsection{\texorpdfstring{MAX\_WEIGHTS}{MAX\_WEIGHTS}}
-{\footnotesize\ttfamily \label{fbx__loader_8c_a67b64c4de5e778bbd7c76a3d08131f71} 
-\#define MAX\+\_\+\+WEIGHTS~4}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+WEIGHTS~4}
 
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{fbx__loader_8c_a083db170977c1b54f91dd014cd35911b}\index{fbx\_loader.c@{fbx\_loader.c}!bake\_animation@{bake\_animation}}
+\Hypertarget{fbx__loader_8c_a083db170977c1b54f91dd014cd35911b}\label{fbx__loader_8c_a083db170977c1b54f91dd014cd35911b} 
+\index{fbx\_loader.c@{fbx\_loader.c}!bake\_animation@{bake\_animation}}
 \index{bake\_animation@{bake\_animation}!fbx\_loader.c@{fbx\_loader.c}}
 \doxysubsubsection{\texorpdfstring{bake\_animation()}{bake\_animation()}}
-{\footnotesize\ttfamily \label{fbx__loader_8c_a083db170977c1b54f91dd014cd35911b} 
-void bake\+\_\+animation (\begin{DoxyParamCaption}\item[{ufbx\+\_\+scene \texorpdfstring{$\ast$}{*}}]{scene}{, }\item[{ufbx\+\_\+anim \texorpdfstring{$\ast$}{*}}]{anim}{, }\item[{\mbox{\hyperlink{struct_model_animation}{Model\+Animation}} \texorpdfstring{$\ast$}{*}}]{model\+\_\+anim}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void bake\+\_\+animation (\begin{DoxyParamCaption}\item[{ufbx\+\_\+scene \texorpdfstring{$\ast$}{*}}]{scene,  }\item[{ufbx\+\_\+anim \texorpdfstring{$\ast$}{*}}]{anim,  }\item[{\mbox{\hyperlink{structModelAnimation}{Model\+Animation}} \texorpdfstring{$\ast$}{*}}]{model\+\_\+anim }\end{DoxyParamCaption})}
 
-\Hypertarget{fbx__loader_8c_a7c7e57c7caecf1fd715f994ae4601073}\index{fbx\_loader.c@{fbx\_loader.c}!bake\_animations@{bake\_animations}}
+\Hypertarget{fbx__loader_8c_a7c7e57c7caecf1fd715f994ae4601073}\label{fbx__loader_8c_a7c7e57c7caecf1fd715f994ae4601073} 
+\index{fbx\_loader.c@{fbx\_loader.c}!bake\_animations@{bake\_animations}}
 \index{bake\_animations@{bake\_animations}!fbx\_loader.c@{fbx\_loader.c}}
 \doxysubsubsection{\texorpdfstring{bake\_animations()}{bake\_animations()}}
-{\footnotesize\ttfamily \label{fbx__loader_8c_a7c7e57c7caecf1fd715f994ae4601073} 
-void bake\+\_\+animations (\begin{DoxyParamCaption}\item[{ufbx\+\_\+scene \texorpdfstring{$\ast$}{*}}]{scene}{, }\item[{\mbox{\hyperlink{struct_model_data}{Model\+Data}} \texorpdfstring{$\ast$}{*}}]{model}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void bake\+\_\+animations (\begin{DoxyParamCaption}\item[{ufbx\+\_\+scene \texorpdfstring{$\ast$}{*}}]{scene,  }\item[{\mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}}]{model }\end{DoxyParamCaption})}
 
-\Hypertarget{fbx__loader_8c_a82cb4f84d2c4a0d762abb44523a817c7}\index{fbx\_loader.c@{fbx\_loader.c}!convert\_material\_part@{convert\_material\_part}}
+\Hypertarget{fbx__loader_8c_a82cb4f84d2c4a0d762abb44523a817c7}\label{fbx__loader_8c_a82cb4f84d2c4a0d762abb44523a817c7} 
+\index{fbx\_loader.c@{fbx\_loader.c}!convert\_material\_part@{convert\_material\_part}}
 \index{convert\_material\_part@{convert\_material\_part}!fbx\_loader.c@{fbx\_loader.c}}
 \doxysubsubsection{\texorpdfstring{convert\_material\_part()}{convert\_material\_part()}}
-{\footnotesize\ttfamily \label{fbx__loader_8c_a82cb4f84d2c4a0d762abb44523a817c7} 
-static void convert\+\_\+material\+\_\+part (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{folder\+\_\+path}{, }\item[{ufbx\+\_\+material \texorpdfstring{$\ast$}{*}}]{material}{, }\item[{\mbox{\hyperlink{struct_material}{Material}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{dest\+\_\+material\+\_\+ptr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static void convert\+\_\+material\+\_\+part (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{folder\+\_\+path,  }\item[{ufbx\+\_\+material \texorpdfstring{$\ast$}{*}}]{material,  }\item[{\mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{dest\+\_\+material\+\_\+ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{fbx__loader_8c_ad1f7a47ac07f3024b540f7eb73904341}\index{fbx\_loader.c@{fbx\_loader.c}!convert\_mesh\_part@{convert\_mesh\_part}}
+\Hypertarget{fbx__loader_8c_ad1f7a47ac07f3024b540f7eb73904341}\label{fbx__loader_8c_ad1f7a47ac07f3024b540f7eb73904341} 
+\index{fbx\_loader.c@{fbx\_loader.c}!convert\_mesh\_part@{convert\_mesh\_part}}
 \index{convert\_mesh\_part@{convert\_mesh\_part}!fbx\_loader.c@{fbx\_loader.c}}
 \doxysubsubsection{\texorpdfstring{convert\_mesh\_part()}{convert\_mesh\_part()}}
-{\footnotesize\ttfamily \label{fbx__loader_8c_ad1f7a47ac07f3024b540f7eb73904341} 
-static void convert\+\_\+mesh\+\_\+part (\begin{DoxyParamCaption}\item[{ufbx\+\_\+mesh \texorpdfstring{$\ast$}{*}}]{mesh}{, }\item[{ufbx\+\_\+mesh\+\_\+part \texorpdfstring{$\ast$}{*}}]{part}{, }\item[{\mbox{\hyperlink{struct_model_object_data}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}}]{model}{, }\item[{\mbox{\hyperlink{structskin__vertex}{skin\+\_\+vertex}} \texorpdfstring{$\ast$}{*}}]{mesh\+\_\+skin\+\_\+vertices}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static void convert\+\_\+mesh\+\_\+part (\begin{DoxyParamCaption}\item[{ufbx\+\_\+mesh \texorpdfstring{$\ast$}{*}}]{mesh,  }\item[{ufbx\+\_\+mesh\+\_\+part \texorpdfstring{$\ast$}{*}}]{part,  }\item[{\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}}]{model,  }\item[{\mbox{\hyperlink{structskin__vertex}{skin\+\_\+vertex}} \texorpdfstring{$\ast$}{*}}]{mesh\+\_\+skin\+\_\+vertices }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{fbx__loader_8c_ac1f80e432ff4263583dddac0345d6e56}\index{fbx\_loader.c@{fbx\_loader.c}!convert\_skin\_deformer@{convert\_skin\_deformer}}
+\Hypertarget{fbx__loader_8c_ac1f80e432ff4263583dddac0345d6e56}\label{fbx__loader_8c_ac1f80e432ff4263583dddac0345d6e56} 
+\index{fbx\_loader.c@{fbx\_loader.c}!convert\_skin\_deformer@{convert\_skin\_deformer}}
 \index{convert\_skin\_deformer@{convert\_skin\_deformer}!fbx\_loader.c@{fbx\_loader.c}}
 \doxysubsubsection{\texorpdfstring{convert\_skin\_deformer()}{convert\_skin\_deformer()}}
-{\footnotesize\ttfamily \label{fbx__loader_8c_ac1f80e432ff4263583dddac0345d6e56} 
-static void convert\+\_\+skin\+\_\+deformer (\begin{DoxyParamCaption}\item[{ufbx\+\_\+skin\+\_\+deformer \texorpdfstring{$\ast$}{*}}]{skin}{, }\item[{\mbox{\hyperlink{structskin__vertex}{skin\+\_\+vertex}} \texorpdfstring{$\ast$}{*}}]{mesh\+\_\+skin\+\_\+vertices}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static void convert\+\_\+skin\+\_\+deformer (\begin{DoxyParamCaption}\item[{ufbx\+\_\+skin\+\_\+deformer \texorpdfstring{$\ast$}{*}}]{skin,  }\item[{\mbox{\hyperlink{structskin__vertex}{skin\+\_\+vertex}} \texorpdfstring{$\ast$}{*}}]{mesh\+\_\+skin\+\_\+vertices }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{fbx__loader_8c_a6dc8248c2091573f5ff3839de97f47be}\index{fbx\_loader.c@{fbx\_loader.c}!copy\_ufbxmat4\_to\_cglmmat4@{copy\_ufbxmat4\_to\_cglmmat4}}
+\Hypertarget{fbx__loader_8c_a6dc8248c2091573f5ff3839de97f47be}\label{fbx__loader_8c_a6dc8248c2091573f5ff3839de97f47be} 
+\index{fbx\_loader.c@{fbx\_loader.c}!copy\_ufbxmat4\_to\_cglmmat4@{copy\_ufbxmat4\_to\_cglmmat4}}
 \index{copy\_ufbxmat4\_to\_cglmmat4@{copy\_ufbxmat4\_to\_cglmmat4}!fbx\_loader.c@{fbx\_loader.c}}
 \doxysubsubsection{\texorpdfstring{copy\_ufbxmat4\_to\_cglmmat4()}{copy\_ufbxmat4\_to\_cglmmat4()}}
-{\footnotesize\ttfamily \label{fbx__loader_8c_a6dc8248c2091573f5ff3839de97f47be} 
-static void copy\+\_\+ufbxmat4\+\_\+to\+\_\+cglmmat4 (\begin{DoxyParamCaption}\item[{ufbx\+\_\+real}]{a}{\mbox{[}12\mbox{]}, }\item[{float(\texorpdfstring{$\ast$}{*})}]{dest}{\mbox{[}4\mbox{]}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+{\footnotesize\ttfamily static void copy\+\_\+ufbxmat4\+\_\+to\+\_\+cglmmat4 (\begin{DoxyParamCaption}\item[{ufbx\+\_\+real}]{a\mbox{[}12\mbox{]},  }\item[{float(\texorpdfstring{$\ast$}{*})}]{dest\mbox{[}4\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
-\Hypertarget{fbx__loader_8c_a81015bb6d8b146ee1507ec3b2ba05d1e}\index{fbx\_loader.c@{fbx\_loader.c}!copy\_ufbxvec2\_to\_cglmvec2@{copy\_ufbxvec2\_to\_cglmvec2}}
+\Hypertarget{fbx__loader_8c_a81015bb6d8b146ee1507ec3b2ba05d1e}\label{fbx__loader_8c_a81015bb6d8b146ee1507ec3b2ba05d1e} 
+\index{fbx\_loader.c@{fbx\_loader.c}!copy\_ufbxvec2\_to\_cglmvec2@{copy\_ufbxvec2\_to\_cglmvec2}}
 \index{copy\_ufbxvec2\_to\_cglmvec2@{copy\_ufbxvec2\_to\_cglmvec2}!fbx\_loader.c@{fbx\_loader.c}}
 \doxysubsubsection{\texorpdfstring{copy\_ufbxvec2\_to\_cglmvec2()}{copy\_ufbxvec2\_to\_cglmvec2()}}
-{\footnotesize\ttfamily \label{fbx__loader_8c_a81015bb6d8b146ee1507ec3b2ba05d1e} 
-static void copy\+\_\+ufbxvec2\+\_\+to\+\_\+cglmvec2 (\begin{DoxyParamCaption}\item[{ufbx\+\_\+vec2}]{a}{, }\item[{float \texorpdfstring{$\ast$}{*}}]{dest}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+{\footnotesize\ttfamily static void copy\+\_\+ufbxvec2\+\_\+to\+\_\+cglmvec2 (\begin{DoxyParamCaption}\item[{ufbx\+\_\+vec2}]{a,  }\item[{float \texorpdfstring{$\ast$}{*}}]{dest }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
-\Hypertarget{fbx__loader_8c_acc8a51ab08df2fd4831285e6a23b75d3}\index{fbx\_loader.c@{fbx\_loader.c}!copy\_ufbxvec3\_to\_cglmvec3@{copy\_ufbxvec3\_to\_cglmvec3}}
+\Hypertarget{fbx__loader_8c_acc8a51ab08df2fd4831285e6a23b75d3}\label{fbx__loader_8c_acc8a51ab08df2fd4831285e6a23b75d3} 
+\index{fbx\_loader.c@{fbx\_loader.c}!copy\_ufbxvec3\_to\_cglmvec3@{copy\_ufbxvec3\_to\_cglmvec3}}
 \index{copy\_ufbxvec3\_to\_cglmvec3@{copy\_ufbxvec3\_to\_cglmvec3}!fbx\_loader.c@{fbx\_loader.c}}
 \doxysubsubsection{\texorpdfstring{copy\_ufbxvec3\_to\_cglmvec3()}{copy\_ufbxvec3\_to\_cglmvec3()}}
-{\footnotesize\ttfamily \label{fbx__loader_8c_acc8a51ab08df2fd4831285e6a23b75d3} 
-static void copy\+\_\+ufbxvec3\+\_\+to\+\_\+cglmvec3 (\begin{DoxyParamCaption}\item[{ufbx\+\_\+vec3}]{a}{, }\item[{float \texorpdfstring{$\ast$}{*}}]{dest}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+{\footnotesize\ttfamily static void copy\+\_\+ufbxvec3\+\_\+to\+\_\+cglmvec3 (\begin{DoxyParamCaption}\item[{ufbx\+\_\+vec3}]{a,  }\item[{float \texorpdfstring{$\ast$}{*}}]{dest }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
-\Hypertarget{fbx__loader_8c_a3904178255a8a0268622d9c8d9c68108}\index{fbx\_loader.c@{fbx\_loader.c}!copy\_ufbxvec4\_to\_cglmvec4@{copy\_ufbxvec4\_to\_cglmvec4}}
+\Hypertarget{fbx__loader_8c_a3904178255a8a0268622d9c8d9c68108}\label{fbx__loader_8c_a3904178255a8a0268622d9c8d9c68108} 
+\index{fbx\_loader.c@{fbx\_loader.c}!copy\_ufbxvec4\_to\_cglmvec4@{copy\_ufbxvec4\_to\_cglmvec4}}
 \index{copy\_ufbxvec4\_to\_cglmvec4@{copy\_ufbxvec4\_to\_cglmvec4}!fbx\_loader.c@{fbx\_loader.c}}
 \doxysubsubsection{\texorpdfstring{copy\_ufbxvec4\_to\_cglmvec4()}{copy\_ufbxvec4\_to\_cglmvec4()}}
-{\footnotesize\ttfamily \label{fbx__loader_8c_a3904178255a8a0268622d9c8d9c68108} 
-static void copy\+\_\+ufbxvec4\+\_\+to\+\_\+cglmvec4 (\begin{DoxyParamCaption}\item[{ufbx\+\_\+quat}]{a}{, }\item[{float \texorpdfstring{$\ast$}{*}}]{dest}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+{\footnotesize\ttfamily static void copy\+\_\+ufbxvec4\+\_\+to\+\_\+cglmvec4 (\begin{DoxyParamCaption}\item[{ufbx\+\_\+quat}]{a,  }\item[{float \texorpdfstring{$\ast$}{*}}]{dest }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
-\Hypertarget{fbx__loader_8c_a43efff1a8d13c6ee1cdd7344430b1dfc}\index{fbx\_loader.c@{fbx\_loader.c}!load\_fbx\_armature@{load\_fbx\_armature}}
+\Hypertarget{fbx__loader_8c_a43efff1a8d13c6ee1cdd7344430b1dfc}\label{fbx__loader_8c_a43efff1a8d13c6ee1cdd7344430b1dfc} 
+\index{fbx\_loader.c@{fbx\_loader.c}!load\_fbx\_armature@{load\_fbx\_armature}}
 \index{load\_fbx\_armature@{load\_fbx\_armature}!fbx\_loader.c@{fbx\_loader.c}}
 \doxysubsubsection{\texorpdfstring{load\_fbx\_armature()}{load\_fbx\_armature()}}
-{\footnotesize\ttfamily \label{fbx__loader_8c_a43efff1a8d13c6ee1cdd7344430b1dfc} 
-int load\+\_\+fbx\+\_\+armature (\begin{DoxyParamCaption}\item[{const ufbx\+\_\+node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{\mbox{\hyperlink{struct_model_data}{Model\+Data}} \texorpdfstring{$\ast$}{*}}]{model}{, }\item[{int}]{index}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int load\+\_\+fbx\+\_\+armature (\begin{DoxyParamCaption}\item[{const ufbx\+\_\+node \texorpdfstring{$\ast$}{*}}]{node,  }\item[{\mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}}]{model,  }\item[{int}]{index }\end{DoxyParamCaption})}
 
-\Hypertarget{fbx__loader_8c_a5588497d4d6e1c6ab2767fd3c9a3d073}\index{fbx\_loader.c@{fbx\_loader.c}!load\_fbx\_model@{load\_fbx\_model}}
+\Hypertarget{fbx__loader_8c_a5588497d4d6e1c6ab2767fd3c9a3d073}\label{fbx__loader_8c_a5588497d4d6e1c6ab2767fd3c9a3d073} 
+\index{fbx\_loader.c@{fbx\_loader.c}!load\_fbx\_model@{load\_fbx\_model}}
 \index{load\_fbx\_model@{load\_fbx\_model}!fbx\_loader.c@{fbx\_loader.c}}
 \doxysubsubsection{\texorpdfstring{load\_fbx\_model()}{load\_fbx\_model()}}
-{\footnotesize\ttfamily \label{fbx__loader_8c_a5588497d4d6e1c6ab2767fd3c9a3d073} 
-int load\+\_\+fbx\+\_\+model (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{, }\item[{\mbox{\hyperlink{struct_model_data}{Model\+Data}} \texorpdfstring{$\ast$}{*}}]{model}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int load\+\_\+fbx\+\_\+model (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{\mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}}]{model }\end{DoxyParamCaption})}
 
-\Hypertarget{fbx__loader_8c_a6ee44c86e3cf372abfc8e23ac9eff696}\index{fbx\_loader.c@{fbx\_loader.c}!load\_material\_texture@{load\_material\_texture}}
+\Hypertarget{fbx__loader_8c_a6ee44c86e3cf372abfc8e23ac9eff696}\label{fbx__loader_8c_a6ee44c86e3cf372abfc8e23ac9eff696} 
+\index{fbx\_loader.c@{fbx\_loader.c}!load\_material\_texture@{load\_material\_texture}}
 \index{load\_material\_texture@{load\_material\_texture}!fbx\_loader.c@{fbx\_loader.c}}
 \doxysubsubsection{\texorpdfstring{load\_material\_texture()}{load\_material\_texture()}}
-{\footnotesize\ttfamily \label{fbx__loader_8c_a6ee44c86e3cf372abfc8e23ac9eff696} 
-static void load\+\_\+material\+\_\+texture (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{folder\+\_\+path}{, }\item[{const ufbx\+\_\+texture \texorpdfstring{$\ast$}{*}}]{texture}{, }\item[{\mbox{\hyperlink{struct_material}{Material}} \texorpdfstring{$\ast$}{*}}]{dest\+\_\+material}{, }\item[{const \mbox{\hyperlink{group___model_handling_ga74a3753dc733cc27e7b37ab4fcc4f20e}{Material\+Properties}}}]{property}{, }\item[{const GLenum}]{format}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+{\footnotesize\ttfamily static void load\+\_\+material\+\_\+texture (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{folder\+\_\+path,  }\item[{const ufbx\+\_\+texture \texorpdfstring{$\ast$}{*}}]{texture,  }\item[{\mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*}}]{dest\+\_\+material,  }\item[{const \mbox{\hyperlink{group__ModelHandling_ga74a3753dc733cc27e7b37ab4fcc4f20e}{Material\+Properties}}}]{property,  }\item[{const GLenum}]{format }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 

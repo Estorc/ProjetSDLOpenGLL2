@@ -23,13 +23,7 @@ class Skybox : public Node {
     __containerType__ Node *
     public:
 
-    void constructor(struct TexturedMesh *texturedMesh) {
-        this->object = texturedMesh;
-        this->type = __type__;
-        SUPER(initialize_node);
-    }
 
-    
     /**
      * @brief Loads a cubemap texture from 6 individual texture faces.
      * 
@@ -43,17 +37,17 @@ class Skybox : public Node {
      * @return TextureMap The loaded cubemap texture.
      */
 
-    TextureMap load_cubemap(char (*faces)[100]) {
+     TextureMap load_cubemap(char (*faces)[100]) {
 
-        for (int i = 0; i < memoryCaches.cubeMapCount; i++) {
-            if (!strcmp(memoryCaches.cubeMapCache[i].textureName[0], faces[0]) &&
-                !strcmp(memoryCaches.cubeMapCache[i].textureName[1], faces[1]) &&
-                !strcmp(memoryCaches.cubeMapCache[i].textureName[2], faces[2]) &&
-                !strcmp(memoryCaches.cubeMapCache[i].textureName[3], faces[3]) &&
-                !strcmp(memoryCaches.cubeMapCache[i].textureName[4], faces[4]) &&
-                !strcmp(memoryCaches.cubeMapCache[i].textureName[5], faces[5])) {
+        for (int i = 0; i < Game.memoryCaches->cubeMapCount; i++) {
+            if (!strcmp(Game.memoryCaches->cubeMapCache[i].textureName[0], faces[0]) &&
+                !strcmp(Game.memoryCaches->cubeMapCache[i].textureName[1], faces[1]) &&
+                !strcmp(Game.memoryCaches->cubeMapCache[i].textureName[2], faces[2]) &&
+                !strcmp(Game.memoryCaches->cubeMapCache[i].textureName[3], faces[3]) &&
+                !strcmp(Game.memoryCaches->cubeMapCache[i].textureName[4], faces[4]) &&
+                !strcmp(Game.memoryCaches->cubeMapCache[i].textureName[5], faces[5])) {
                 PRINT_INFO("Cube Map loaded from cache!\n");
-                return memoryCaches.cubeMapCache[i].cubeMap;
+                return Game.memoryCaches->cubeMapCache[i].cubeMap;
             }
         }
 
@@ -68,7 +62,7 @@ class Skybox : public Node {
 
             if (textureSurface) {
                 glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 
-                            0, GL_RGB, textureSurface->w, textureSurface->h, 0, GL_RGB, GL_UNSIGNED_BYTE, textureSurface->pixels
+                            0, GL_SRGB, textureSurface->w, textureSurface->h, 0, GL_RGB, GL_UNSIGNED_BYTE, textureSurface->pixels
                 );
                 SDL_FreeSurface(textureSurface);
             } else {
@@ -84,10 +78,10 @@ class Skybox : public Node {
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
         if (success) {
-            memoryCaches.cubeMapCache = realloc(memoryCaches.cubeMapCache, sizeof (CubeMapCache) * (++memoryCaches.cubeMapCount));
-            memoryCaches.cubeMapCache[memoryCaches.cubeMapCount-1].cubeMap = textureID;
+            Game.memoryCaches->cubeMapCache = realloc(Game.memoryCaches->cubeMapCache, sizeof (CubeMapCache) * (++Game.memoryCaches->cubeMapCount));
+            Game.memoryCaches->cubeMapCache[Game.memoryCaches->cubeMapCount-1].cubeMap = textureID;
             for (unsigned int i = 0; i < 6; i++) {
-                strcpy(memoryCaches.cubeMapCache[memoryCaches.cubeMapCount-1].textureName[i], faces[i]);
+                strcpy(Game.memoryCaches->cubeMapCache[Game.memoryCaches->cubeMapCount-1].textureName[i], faces[i]);
             }
         }
         return textureID;
@@ -173,10 +167,22 @@ class Skybox : public Node {
     }
 
 
-    void load(FILE *file) {
+
+
+    void constructor(const char (*path)[100]) {
+        this->type = __type__;
+
         TexturedMesh *texturedMesh;
         texturedMesh = malloc(sizeof(TexturedMesh));
         POINTER_CHECK(texturedMesh);
+        this::create_skybox(texturedMesh, path);
+
+        this->object = texturedMesh;
+        SUPER(initialize_node);
+    }
+
+
+    void load(FILE *file) {
         char path[6][100];
         if (file) {
             fscanf(file,"(%100[^,],%100[^,],%100[^,],%100[^,],%100[^,],%100[^)])", 
@@ -190,23 +196,21 @@ class Skybox : public Node {
         } else {
             path[0][0] = path[1][0] = path[2][0] = path[3][0] = path[4][0] = path[5][0] = 0;
         }
-        this::create_skybox(texturedMesh, &path);
-        this->type = __type__;
-        this::constructor(texturedMesh);
+        this::constructor(&path);
     }
 
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         TextureMap texture = ((TexturedMesh*) this->object)->texture;
-        for (int i = 0; i < memoryCaches.cubeMapCount; i++) {
-            if (memoryCaches.cubeMapCache[i].cubeMap == texture) {
+        for (int i = 0; i < Game.memoryCaches->cubeMapCount; i++) {
+            if (Game.memoryCaches->cubeMapCache[i].cubeMap == texture) {
                 fprintf(file, "(%s,%s,%s,%s,%s,%s)",
-                    memoryCaches.cubeMapCache[i].textureName[0],
-                    memoryCaches.cubeMapCache[i].textureName[1],
-                    memoryCaches.cubeMapCache[i].textureName[2],
-                    memoryCaches.cubeMapCache[i].textureName[3],
-                    memoryCaches.cubeMapCache[i].textureName[4],
-                    memoryCaches.cubeMapCache[i].textureName[5]
+                    Game.memoryCaches->cubeMapCache[i].textureName[0],
+                    Game.memoryCaches->cubeMapCache[i].textureName[1],
+                    Game.memoryCaches->cubeMapCache[i].textureName[2],
+                    Game.memoryCaches->cubeMapCache[i].textureName[3],
+                    Game.memoryCaches->cubeMapCache[i].textureName[4],
+                    Game.memoryCaches->cubeMapCache[i].textureName[5]
                 );
                 break;
             }

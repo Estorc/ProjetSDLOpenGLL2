@@ -24,7 +24,7 @@ Collaboration diagram for Point\+Light\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=262pt]{classPointLight__coll__graph}
+\includegraphics[width=254pt]{classPointLight__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -32,13 +32,15 @@ Collaboration diagram for Point\+Light\+:\nopagebreak
 \item 
 void \mbox{\hyperlink{classPointLight_ada6edabf40df7a2c4f06802cc3f11494}{constructor}} (struct \mbox{\hyperlink{classPointLight}{Point\+Light}} \texorpdfstring{$\ast$}{*}point\+Light)
 \item 
-void \mbox{\hyperlink{classPointLight_ae150ea9eb87c9eec2320b6b1fb431f56}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}}, double delta, \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}lights\+Count)
+void \mbox{\hyperlink{classPointLight_ae150ea9eb87c9eec2320b6b1fb431f56}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}}, double delta, \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}lights\+Count)
+\item 
+void \mbox{\hyperlink{classPointLight_af4168e21d26b81cc6fb0e419c1bbba39}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
 \item 
 void \mbox{\hyperlink{classPointLight_a45b731e9c9d4b1112f32d4431aa6ff32}{load}} (FILE \texorpdfstring{$\ast$}{*}file)
 \item 
 void \mbox{\hyperlink{classPointLight_af8321bf0f599fce5d8d4b0dd5c2a92d5}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
 \item 
-void \mbox{\hyperlink{classPointLight_aaf737fe79ad2545e464a3da4b78593b9}{configure\+\_\+lighting}} (\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}lights\+Count, int point\+Light\+Id)
+void \mbox{\hyperlink{classPointLight_aa3ff89801eb8c24be4e776b436009e8b}{configure\+\_\+lighting}} (\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}depth\+Map, \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}lights\+Count, int point\+Light\+Id)
 \begin{DoxyCompactList}\small\item\em Configures the lighting. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLight}{Light}}}
 \begin{DoxyCompactItemize}
@@ -49,7 +51,7 @@ void \mbox{\hyperlink{classLight_abf14e6e019fdd300a6280c7d914acf6f}{render}} (ma
 \item 
 void \mbox{\hyperlink{classLight_a0478fb3eaf6a6292d76c26e9bdf54859}{init\+\_\+vao}} ()
 \item 
-void \mbox{\hyperlink{classLight_ad320015420df7a99607d56c025fb776b}{configure\+\_\+lighting}} (\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, mat4 \texorpdfstring{$\ast$}{*}light\+View, mat4 \texorpdfstring{$\ast$}{*}light\+Projection, int storage\+Buffer\+Index)
+void \mbox{\hyperlink{classLight_a54b906034c98c0df4275b2a9de32890d}{configure\+\_\+lighting}} (\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, mat4 \texorpdfstring{$\ast$}{*}light\+View, mat4 \texorpdfstring{$\ast$}{*}light\+Projection, int storage\+Buffer\+Index, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}depth\+Map)
 \begin{DoxyCompactList}\small\item\em Configures the lighting for the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
@@ -59,6 +61,8 @@ void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}}
 void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
 \item 
 void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+\item 
+void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
 \item 
 void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
 \item 
@@ -80,6 +84,8 @@ void \mbox{\hyperlink{classNode_a75c27b8cf028ae9509b20ad7392c49f8}{is\+\_\+body}
 \item 
 void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
 \item 
+void \mbox{\hyperlink{classNode_a743d883f14521da8f8c62608ce65f7ee}{is\+\_\+render\+\_\+target}} (bool \texorpdfstring{$\ast$}{*}render\+\_\+target)
+\item 
 void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
 \item 
 void \mbox{\hyperlink{classNode_a42da38ee8e0a621e438e14b94c0e381e}{add\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
@@ -97,15 +103,21 @@ void \mbox{\hyperlink{classNode_af08ebf5c3bb8542c012107606b88391b}{remove\+\_\+c
 int \mbox{\hyperlink{classNode_af99346e2725916df2fbe2e4af7a2d51c}{index\+\_\+of\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
 \begin{DoxyCompactList}\small\item\em Retrieves the index of a child node in a parent node\textquotesingle{}s children array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_aef2f74d45bec672840433aff6abe0d45}{print}} (int level)
-\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a846d06ed1f7a5ac618fbfef10881230f}{emit\+\_\+ready}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a3e7054036adfcf19c240b48a7f353f83}{emit\+\_\+update}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a0a3256bf578114f603b9407814638a2f}{emit\+\_\+signal}} (...)
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-vec3 \mbox{\hyperlink{classPointLight_a6902a603032bf1d9a11c9846ec1a03af}{ambient}}
+vec3 \mbox{\hyperlink{classPointLight_ab5b56bbc015365ca09c09b564dbeb7f2}{color}}
 \item 
-vec3 \mbox{\hyperlink{classPointLight_a3b2ed44f5f9dfc10facd2323d6360ae5}{diffuse}}
+float \mbox{\hyperlink{classPointLight_a852f2ee107530919875668160a374d87}{bias}}
 \item 
-vec3 \mbox{\hyperlink{classPointLight_ae23a2bd2de37926b3b5eb327784d7743}{specular}}
+float \mbox{\hyperlink{classPointLight_ab6d17cfc47e0f77e809be1a04933188d}{size}}
 \item 
 float \mbox{\hyperlink{classPointLight_a965104c9c660615ba35721c7aac7c262}{constant}}
 \item 
@@ -122,11 +134,11 @@ struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstr
 \item 
 struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{parent}}
 \item 
-\mbox{\hyperlink{types_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
 \item 
 vec3 \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}
 \item 
@@ -140,11 +152,11 @@ vec3 \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{g
 \item 
 vec3 \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
 \item 
-\mbox{\hyperlink{scripts_8h_ab7576c513306b5641c2b903c7d18850f}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
+\mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
 \item 
-\mbox{\hyperlink{unionBehaviorParameter}{Behavior\+Parameter}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gac639490f60bdc872491ffaaea5991ed0}{params}}
+\mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga1411990c75c0b134485d07be7a21e58c}{params\+\_\+count}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_gab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
 \item 
 \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}}
 \end{DoxyCompactItemize}
@@ -175,11 +187,11 @@ Represents a point light source.
 A point light emits light in all directions from a single point. This structure contains the properties of a point light, including ambient, diffuse, and specular components, as well as attenuation factors. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classPointLight_aaf737fe79ad2545e464a3da4b78593b9}\label{classPointLight_aaf737fe79ad2545e464a3da4b78593b9} 
+\Hypertarget{classPointLight_aa3ff89801eb8c24be4e776b436009e8b}\label{classPointLight_aa3ff89801eb8c24be4e776b436009e8b} 
 \index{PointLight@{PointLight}!configure\_lighting@{configure\_lighting}}
 \index{configure\_lighting@{configure\_lighting}!PointLight@{PointLight}}
 \doxysubsubsection{\texorpdfstring{configure\_lighting()}{configure\_lighting()}}
-{\footnotesize\ttfamily void Point\+Light\+::configure\+\_\+lighting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders,  }\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{lights\+Count,  }\item[{int}]{point\+Light\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Point\+Light\+::configure\+\_\+lighting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders,  }\item[{\mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}}]{depth\+Map,  }\item[{\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{lights\+Count,  }\item[{int}]{point\+Light\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -204,6 +216,12 @@ This function configures the lighting.
 \doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
 {\footnotesize\ttfamily void Point\+Light\+::constructor (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classPointLight}{Point\+Light}} \texorpdfstring{$\ast$}{*}}]{point\+Light }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\Hypertarget{classPointLight_af4168e21d26b81cc6fb0e419c1bbba39}\label{classPointLight_af4168e21d26b81cc6fb0e419c1bbba39} 
+\index{PointLight@{PointLight}!get\_settings\_data@{get\_settings\_data}}
+\index{get\_settings\_data@{get\_settings\_data}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{get\_settings\_data()}{get\_settings\_data()}}
+{\footnotesize\ttfamily void Point\+Light\+::get\+\_\+settings\+\_\+data (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{ptr,  }\item[{int \texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 \Hypertarget{classPointLight_a45b731e9c9d4b1112f32d4431aa6ff32}\label{classPointLight_a45b731e9c9d4b1112f32d4431aa6ff32} 
 \index{PointLight@{PointLight}!load@{load}}
 \index{load@{load}!PointLight@{PointLight}}
@@ -220,30 +238,30 @@ This function configures the lighting.
 \index{PointLight@{PointLight}!update@{update}}
 \index{update@{update}!PointLight@{PointLight}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily void Point\+Light\+::update (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{scale,  }\item[{double}]{delta,  }\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{lights\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Point\+Light\+::update (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{scale,  }\item[{double}]{delta,  }\item[{\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{lights\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classPointLight_a6902a603032bf1d9a11c9846ec1a03af}\label{classPointLight_a6902a603032bf1d9a11c9846ec1a03af} 
-\index{PointLight@{PointLight}!ambient@{ambient}}
-\index{ambient@{ambient}!PointLight@{PointLight}}
-\doxysubsubsection{\texorpdfstring{ambient}{ambient}}
-{\footnotesize\ttfamily vec3 Point\+Light\+::ambient}
+\Hypertarget{classPointLight_a852f2ee107530919875668160a374d87}\label{classPointLight_a852f2ee107530919875668160a374d87} 
+\index{PointLight@{PointLight}!bias@{bias}}
+\index{bias@{bias}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{bias}{bias}}
+{\footnotesize\ttfamily float Point\+Light\+::bias}
 
-Ambient component of the light. \Hypertarget{classPointLight_a965104c9c660615ba35721c7aac7c262}\label{classPointLight_a965104c9c660615ba35721c7aac7c262} 
+Bias factor for the light. \Hypertarget{classPointLight_ab5b56bbc015365ca09c09b564dbeb7f2}\label{classPointLight_ab5b56bbc015365ca09c09b564dbeb7f2} 
+\index{PointLight@{PointLight}!color@{color}}
+\index{color@{color}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily vec3 Point\+Light\+::color}
+
+Color component of the light. \Hypertarget{classPointLight_a965104c9c660615ba35721c7aac7c262}\label{classPointLight_a965104c9c660615ba35721c7aac7c262} 
 \index{PointLight@{PointLight}!constant@{constant}}
 \index{constant@{constant}!PointLight@{PointLight}}
 \doxysubsubsection{\texorpdfstring{constant}{constant}}
 {\footnotesize\ttfamily float Point\+Light\+::constant}
 
-Constant attenuation factor for the light. \Hypertarget{classPointLight_a3b2ed44f5f9dfc10facd2323d6360ae5}\label{classPointLight_a3b2ed44f5f9dfc10facd2323d6360ae5} 
-\index{PointLight@{PointLight}!diffuse@{diffuse}}
-\index{diffuse@{diffuse}!PointLight@{PointLight}}
-\doxysubsubsection{\texorpdfstring{diffuse}{diffuse}}
-{\footnotesize\ttfamily vec3 Point\+Light\+::diffuse}
-
-Diffuse component of the light. \Hypertarget{classPointLight_a491f53e12fd4f689550ea8bfb6d68d19}\label{classPointLight_a491f53e12fd4f689550ea8bfb6d68d19} 
+Constant attenuation factor for the light. \Hypertarget{classPointLight_a491f53e12fd4f689550ea8bfb6d68d19}\label{classPointLight_a491f53e12fd4f689550ea8bfb6d68d19} 
 \index{PointLight@{PointLight}!linear@{linear}}
 \index{linear@{linear}!PointLight@{PointLight}}
 \doxysubsubsection{\texorpdfstring{linear}{linear}}
@@ -255,13 +273,13 @@ Linear attenuation factor for the light. \Hypertarget{classPointLight_a3dba0bf33
 \doxysubsubsection{\texorpdfstring{quadratic}{quadratic}}
 {\footnotesize\ttfamily float Point\+Light\+::quadratic}
 
-Quadratic attenuation factor for the light. \Hypertarget{classPointLight_ae23a2bd2de37926b3b5eb327784d7743}\label{classPointLight_ae23a2bd2de37926b3b5eb327784d7743} 
-\index{PointLight@{PointLight}!specular@{specular}}
-\index{specular@{specular}!PointLight@{PointLight}}
-\doxysubsubsection{\texorpdfstring{specular}{specular}}
-{\footnotesize\ttfamily vec3 Point\+Light\+::specular}
+Quadratic attenuation factor for the light. \Hypertarget{classPointLight_ab6d17cfc47e0f77e809be1a04933188d}\label{classPointLight_ab6d17cfc47e0f77e809be1a04933188d} 
+\index{PointLight@{PointLight}!size@{size}}
+\index{size@{size}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily float Point\+Light\+::size}
 
-Specular component of the light. 
+Size factor for the light. 
 
 The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

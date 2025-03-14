@@ -61,6 +61,13 @@ static inline void create_obj_vao(ModelObjectData *obj) {
 
 
 int load_model(const char *path, ModelData ** modelPtr) {
+
+    if (!path || !path[0]) {
+        PRINT_ERROR("Invalid model path: %s\n", path);
+        *modelPtr = NULL;
+        return -1;
+    }
+
     *modelPtr = get_model_from_cache(path);
     if (*modelPtr) return 0;
 
@@ -72,7 +79,7 @@ int load_model(const char *path, ModelData ** modelPtr) {
     if (path[strlen(path)-1] == 'j') {
         if (load_obj_model(path, model) == -1) return -1;
     } else {
-        #ifdef __windows__
+        #ifdef _WIN32
             PRINT_ERROR("Unsupported model format: %s\n", path);
             return -1;
         #else
@@ -83,9 +90,6 @@ int load_model(const char *path, ModelData ** modelPtr) {
     for (int i = 0; i < model->length; i++) {
         ModelObjectData *obj = &model->objects[i];
         create_obj_vao(obj);
-        obj->displayLists = malloc(sizeof(GLuint) * obj->materialsCount);
-        POINTER_CHECK(obj->displayLists);
-        memset(obj->displayLists, 0, sizeof(GLuint) * obj->materialsCount);
     }
     add_model_to_cache(path, model);
     return 0;

@@ -141,7 +141,6 @@ struct ModelObjectData {
     u32 *materialsLength;                   /**< Array of material lengths */ //The numbers of faces before switching material
     u32 materialsCount;                     /**< Number of materials */
     VAO VAO;                                /**< Vertex Array Object */
-    GLuint *displayLists;                   /**< Array of display lists */
 };
 
 
@@ -204,9 +203,9 @@ struct ModelAnimation {
 typedef struct ModelData ModelData;
 struct ModelData {
     Material *materials;                    /**< Array of materials */ //UNUSED
-    u8 materialsCount;                      /**< Number of materials */ //UNUSED
+    u32 materialsCount;                      /**< Number of materials */ //UNUSED
     ModelObjectData *objects;               /**< Array of model objects */
-    u8 length;                              /**< Number of objects */
+    u32 length;                              /**< Number of objects */
     ModelAnimation *animations;             /**< Array of model animations */
     u8 animationsCount;                     /**< Number of animations */
 };
@@ -271,7 +270,7 @@ typedef struct Mesh {
  * @param texturedMesh Pointer to the TexturedMesh structure to be initialized.
  * @param texture Path to the texture file.
  */
-void create_textured_plane(TexturedMesh *texturedMesh, char *texture);
+void create_textured_plane(TexturedMesh *texturedMesh, const char *texture);
 
 /**
  * @brief Creates a screen plane.

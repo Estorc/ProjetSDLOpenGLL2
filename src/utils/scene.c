@@ -13,10 +13,10 @@
 
 void change_scene() {
 
-    Node **root = (Node **) queue_pop(&callQueue);
-    char *path = (char *) queue_pop(&callQueue);
-    Camera **camera = (Camera **) queue_pop(&callQueue);
-    Script *scripts = (Script *) queue_pop(&callQueue);
+    Node **root = (Node **) queue_pop(Game.callQueue);
+    char *path = (char *) queue_pop(Game.callQueue);
+    Camera **camera = (Camera **) queue_pop(Game.callQueue);
+    Script *scripts = (Script *) queue_pop(Game.callQueue);
     (*root)::free();
     (*root) = load_scene(path, camera, scripts);
     PRINT_INFO("Scene changed to %s\n", path);
@@ -24,9 +24,9 @@ void change_scene() {
 }
 
 void prepare_change_scene(char *path) {
-    queue_push(&callQueue, change_scene);
-    queue_push(&callQueue, &mainNodeTree.root);
-    queue_push(&callQueue, (void *) path);
-    queue_push(&callQueue, &mainNodeTree.camera);
-    queue_push(&callQueue, mainNodeTree.scripts);
+    queue_push(Game.callQueue, change_scene);
+    queue_push(Game.callQueue, &Game.mainTree->root);
+    queue_push(Game.callQueue, (void *) path);
+    queue_push(Game.callQueue, &Game.camera);
+    queue_push(Game.callQueue, Game.scripts);
 }

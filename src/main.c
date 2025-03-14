@@ -21,6 +21,7 @@
 #include "memory.h"
 #include "buffer.h"
 #include "storage/queue.h"
+#include "storage/hash.h"
 #include "utils/scene.h"
 
 #include "classes/classes.h"
@@ -39,8 +40,8 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
 
     if (accumulator >= fixedTimeStep) SDL_FillRect(window->ui_surface, NULL, 0x000000);
 
-    while (!queue_is_empty(&callQueue)) {
-        void(*call)() = queue_pop(&callQueue);
+    while (!queue_is_empty(Game.callQueue)) {
+        void(*call)() = queue_pop(Game.callQueue);
         if (call) call();
         else return -1;
     }
@@ -48,7 +49,7 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
  
     char delta_str[50];
     char fps_str[50];
-    if (settings.show_fps) {
+    if (Game.settings->show_fps) {
         sprintf(delta_str, "DELTA: %.4f", delta);
         if (delta) {
             fps = (fps+(1.0/delta))/2.0;
@@ -64,7 +65,7 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
 
     u8 lightsCount[LIGHTS_COUNT];
     while (accumulator >= fixedTimeStep) {
-        s8 input_result = update_input(&input);
+        s8 input_result = update_input(Game.input);
         if (input_result) {
             if (input_result == -1) return -1;
             if (input_result == 1) {
@@ -72,16 +73,16 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
             }
         }
 
-        buffers.collisionBuffer.index = 0;
-        buffers.lightingBuffer.index = 0;
+        Game.buffers->collisionBuffer.index = 0;
+        Game.buffers->lightingBuffer.index = 0;
         memset(lightsCount, 0, sizeof(lightsCount));
-        update_physics(mainNodeTree.root, (vec3) {0.0, 0.0, 0.0}, (vec3) {0.0, 0.0, 0.0}, (vec3) {1.0, 1.0, 1.0}, fixedTimeStep, &input, window, lightsCount, true);
+        update_physics(Game.mainTree->root, (vec3) {0.0, 0.0, 0.0}, (vec3) {0.0, 0.0, 0.0}, (vec3) {1.0, 1.0, 1.0}, fixedTimeStep, Game.input, window, lightsCount, true);
         window->resized = false;
         accumulator -= fixedTimeStep;
     }
     set_lightings(lightsCount);
     refresh_ui(window);
-    update_window(window, mainNodeTree.root, mainNodeTree.camera, shaders, depthMap, msaa, screenPlane);
+    update_window(window, Game.mainTree->root, Game.camera, shaders, depthMap, msaa, screenPlane);
 
     return 0;
 }
@@ -92,8 +93,10 @@ int main(int argc, char *argv[]) {
     if (update_cwd() == -1) return -1;
     init_memory_cache();
 
-    if (create_window("Physics Engine Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE, &window) == -1) return -1;
-    init_input(&input);
+    if (create_window("Physics Engine Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE, Game.window) == -1) return -1;
+    init_input(Game.input);
+
+    Game.storage = table_create(16);
 
     
     // TODO: Transform this in singletons
@@ -112,7 +115,7 @@ int main(int argc, char *argv[]) {
     Mesh screenPlane;
     create_screen_plane(&screenPlane);
 
-    create_msaa_framebuffer(&mainNodeTree.msaa);
+    create_msaa_framebuffer(Game.msaa);
 
 
     
@@ -125,37 +128,43 @@ int main(int argc, char *argv[]) {
         char scene[256] = "assets/scenes/";
         strcat(scene, argv[1]);
         strcat(scene, ".scene");
-        mainNodeTree.root = load_scene(scene, &mainNodeTree.camera, mainNodeTree.scripts);
+        Game.mainTree->root = load_scene(scene, &Game.camera, Game.scripts);
     }
     else 
     #endif
-    mainNodeTree.root = load_scene(BOOT_SCENE, &mainNodeTree.camera, mainNodeTree.scripts);
+    Game.mainTree->root = load_scene(BOOT_SCENE, &Game.camera, Game.scripts);
 
-    while (update(&window, &defaultShaders, &depthMap, &mainNodeTree.msaa, &screenPlane) >= 0);
+    while (update(Game.window, &defaultShaders, &depthMap, Game.msaa, &screenPlane) >= 0);
 
-    if (!queue_is_empty(&callQueue)) {
-        queue_free(&callQueue);
+    if (!queue_is_empty(Game.callQueue)) {
+        queue_free(Game.callQueue);
         PRINT_INFO("Free call queue!\n");
     }
 
 
     PRINT_INFO("Free scripts!\n");
-    free(mainNodeTree.scripts);
+    free(Game.scripts);
 
-    free_msaa_framebuffer(&mainNodeTree.msaa);
+    free_msaa_framebuffer(Game.msaa);
 
     free_buffers();
     free_memory_cache();
     PRINT_INFO("Free nodes!\n");
-    (mainNodeTree.root)::free();
+    (Game.mainTree->root)::free();
 
     glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
     glDeleteTextures(1, &depthMap.texture);
-    glDeleteFramebuffers(1, &depthMap.frameBuffer);
-    glDeleteBuffers(1, &depthMap.ubo);
+    for (int i = 0; i < NUM_DIRECTIONAL_LIGHTS + NUM_POINT_LIGHTS * 6 + NUM_SPOT_LIGHTS; i++) {
+        glDeleteFramebuffers(1, &depthMap.frameBuffer[i]);
+    }
+    glDeleteBuffers(1, &depthMap.tbo);
+    glDeleteTextures(1, &depthMap.matrixTexture);
     PRINT_INFO("Free depth map!\n");
+
+    table_free(Game.storage);
+    PRINT_INFO("Free storage!\n");
     
-    free_window(&window);
+    free_window(Game.window);
     SDL_Quit();
     return 0;
 }

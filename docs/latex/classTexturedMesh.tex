@@ -24,13 +24,15 @@ Collaboration diagram for Textured\+Mesh\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=294pt]{classTexturedMesh__coll__graph}
+\includegraphics[width=286pt]{classTexturedMesh__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classTexturedMesh_adb094ebd4649278e099991f87bddae0c}{constructor}} (struct \mbox{\hyperlink{classTexturedMesh}{Textured\+Mesh}} \texorpdfstring{$\ast$}{*}textured\+Mesh)
+void \mbox{\hyperlink{classTexturedMesh_aabae9490174ea620700941b385a137db}{constructor}} (const char \texorpdfstring{$\ast$}{*}path)
+\item 
+void \mbox{\hyperlink{classTexturedMesh_a83acaa5212615f3764d4552452f9b60a}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classTexturedMesh_aca5c26bca1d7a7255356e6e015ade0a7}{length}})
 \item 
 void \mbox{\hyperlink{classTexturedMesh_a4095cc7391962caf8bd7bf441a1df2a4}{load}} (FILE \texorpdfstring{$\ast$}{*}file)
 \item 
@@ -46,6 +48,8 @@ void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}}
 void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
 \item 
 void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+\item 
+void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
 \item 
 void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
 \item 
@@ -67,6 +71,8 @@ void \mbox{\hyperlink{classNode_a75c27b8cf028ae9509b20ad7392c49f8}{is\+\_\+body}
 \item 
 void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
 \item 
+void \mbox{\hyperlink{classNode_a743d883f14521da8f8c62608ce65f7ee}{is\+\_\+render\+\_\+target}} (bool \texorpdfstring{$\ast$}{*}render\+\_\+target)
+\item 
 void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
 \item 
 void \mbox{\hyperlink{classNode_a42da38ee8e0a621e438e14b94c0e381e}{add\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
@@ -84,7 +90,13 @@ void \mbox{\hyperlink{classNode_af08ebf5c3bb8542c012107606b88391b}{remove\+\_\+c
 int \mbox{\hyperlink{classNode_af99346e2725916df2fbe2e4af7a2d51c}{index\+\_\+of\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
 \begin{DoxyCompactList}\small\item\em Retrieves the index of a child node in a parent node\textquotesingle{}s children array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_aef2f74d45bec672840433aff6abe0d45}{print}} (int level)
-\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a846d06ed1f7a5ac618fbfef10881230f}{emit\+\_\+ready}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a3e7054036adfcf19c240b48a7f353f83}{emit\+\_\+update}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a0a3256bf578114f603b9407814638a2f}{emit\+\_\+signal}} (...)
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -92,7 +104,7 @@ void \mbox{\hyperlink{classNode_aef2f74d45bec672840433aff6abe0d45}{print}} (int 
 \item 
 \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{classTexturedMesh_a742c1788ac3e1b070c003b408936f8b8}{texture}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classTexturedMesh_aca5c26bca1d7a7255356e6e015ade0a7}{length}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classTexturedMesh_aca5c26bca1d7a7255356e6e015ade0a7}{length}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
@@ -103,11 +115,11 @@ struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstr
 \item 
 struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{parent}}
 \item 
-\mbox{\hyperlink{types_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
 \item 
 vec3 \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}
 \item 
@@ -121,11 +133,11 @@ vec3 \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{g
 \item 
 vec3 \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
 \item 
-\mbox{\hyperlink{scripts_8h_ab7576c513306b5641c2b903c7d18850f}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
+\mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
 \item 
-\mbox{\hyperlink{unionBehaviorParameter}{Behavior\+Parameter}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gac639490f60bdc872491ffaaea5991ed0}{params}}
+\mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga1411990c75c0b134485d07be7a21e58c}{params\+\_\+count}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_gab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
 \item 
 \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}}
 \end{DoxyCompactItemize}
@@ -143,11 +155,17 @@ Structure representing a textured mesh.
 This structure holds the Vertex Array \doxylink{structObject}{Object} (VAO) and texture map of a textured mesh. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classTexturedMesh_adb094ebd4649278e099991f87bddae0c}\label{classTexturedMesh_adb094ebd4649278e099991f87bddae0c} 
+\Hypertarget{classTexturedMesh_aabae9490174ea620700941b385a137db}\label{classTexturedMesh_aabae9490174ea620700941b385a137db} 
 \index{TexturedMesh@{TexturedMesh}!constructor@{constructor}}
 \index{constructor@{constructor}!TexturedMesh@{TexturedMesh}}
 \doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
-{\footnotesize\ttfamily void Textured\+Mesh\+::constructor (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classTexturedMesh}{Textured\+Mesh}} \texorpdfstring{$\ast$}{*}}]{textured\+Mesh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Textured\+Mesh\+::constructor (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classTexturedMesh_a83acaa5212615f3764d4552452f9b60a}\label{classTexturedMesh_a83acaa5212615f3764d4552452f9b60a} 
+\index{TexturedMesh@{TexturedMesh}!get\_settings\_data@{get\_settings\_data}}
+\index{get\_settings\_data@{get\_settings\_data}!TexturedMesh@{TexturedMesh}}
+\doxysubsubsection{\texorpdfstring{get\_settings\_data()}{get\_settings\_data()}}
+{\footnotesize\ttfamily void Textured\+Mesh\+::get\+\_\+settings\+\_\+data (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{ptr,  }\item[{int \texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classTexturedMesh_a4095cc7391962caf8bd7bf441a1df2a4}\label{classTexturedMesh_a4095cc7391962caf8bd7bf441a1df2a4} 
 \index{TexturedMesh@{TexturedMesh}!load@{load}}
@@ -174,7 +192,7 @@ This structure holds the Vertex Array \doxylink{structObject}{Object} (VAO) and 
 \index{TexturedMesh@{TexturedMesh}!length@{length}}
 \index{length@{length}!TexturedMesh@{TexturedMesh}}
 \doxysubsubsection{\texorpdfstring{length}{length}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Textured\+Mesh\+::length}
+{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Textured\+Mesh\+::length}
 
 Length of the textured mesh \Hypertarget{classTexturedMesh_a742c1788ac3e1b070c003b408936f8b8}\label{classTexturedMesh_a742c1788ac3e1b070c003b408936f8b8} 
 \index{TexturedMesh@{TexturedMesh}!texture@{texture}}

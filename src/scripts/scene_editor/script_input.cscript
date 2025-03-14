@@ -18,8 +18,8 @@ NEW_SCRIPT(script_input_area_init)
 	char scriptname[100] = "";
 	PRINT_INFO("Script: %p\n", (func));
 	for (int i = 0; i < __scriptIndex__; i++) {
-		if (mainNodeTree.scripts[i].script == (*func)) {
-			strcpy(scriptname, mainNodeTree.scripts[i].name);
+		if (Game.scripts[i].script == (*func)) {
+			strcpy(scriptname, Game.scripts[i].name);
 			break;
 		}
 			
@@ -42,9 +42,9 @@ NEW_SCRIPT(script_input_area)
 	if (!(inputArea->state & BUTTON_STATE_PRESSED) && (*lastState & BUTTON_STATE_PRESSED)) {
 		bool found = false;
 		for (int j = 0; j < __scriptIndex__; j++) {
-			if (!strcmp(mainNodeTree.scripts[j].name, inputArea->text)) {
-				PRINT_INFO("Script found: %s\n", mainNodeTree.scripts[j].name);
-				(*func) = mainNodeTree.scripts[j].script;
+			if (!strcmp(Game.scripts[j].name, inputArea->text)) {
+				PRINT_INFO("Script found: %s\n", Game.scripts[j].name);
+				(*func) = Game.scripts[j].script;
 				found = true;
 				break;
 			}

@@ -24,7 +24,7 @@ Collaboration diagram for Rigid\+Body\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=344pt]{classRigidBody__coll__graph}
+\includegraphics[width=337pt]{classRigidBody__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -32,7 +32,11 @@ Collaboration diagram for Rigid\+Body\+:\nopagebreak
 \item 
 void \mbox{\hyperlink{classRigidBody_a1ed2e3d153414f62046a74bf9ee65fa9}{constructor}} (struct \mbox{\hyperlink{classRigidBody}{Rigid\+Body}} \texorpdfstring{$\ast$}{*}rigid\+Body)
 \item 
-void \mbox{\hyperlink{classRigidBody_add09bafd5a52bc8f31b9fb33e658dcb1}{get\+\_\+collisions\+\_\+shapes}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shapes, \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classRigidBody_ab27c2ab4cda997915f4698886e7fce48}{length}})
+void \mbox{\hyperlink{classRigidBody_a2c354730b7cf7cd98cbd9724d6b51608}{get\+\_\+collisions\+\_\+shapes}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shapes, \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classRigidBody_ab27c2ab4cda997915f4698886e7fce48}{length}})
+\item 
+void \mbox{\hyperlink{classRigidBody_aa431d1e53955b7bed03752cced5efb50}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\item 
+void \mbox{\hyperlink{classRigidBody_a9f34277ec87d74732dbd0e04820acacf}{apply\+\_\+torque}} (float \texorpdfstring{$\ast$}{*}torque)
 \item 
 void \mbox{\hyperlink{classRigidBody_af219a257ea6ebbbbdd71bac6a5e89473}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}}, double delta)
 \item 
@@ -40,7 +44,7 @@ void \mbox{\hyperlink{classRigidBody_adace645848290af668d2ece589cada86}{load}} (
 \item 
 void \mbox{\hyperlink{classRigidBody_a0f0ae68f52e3235e18501d6d8e985c50}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
 \item 
-void \mbox{\hyperlink{classRigidBody_a0908624b4f232ddebb1a17952ba5b975}{apply\+\_\+impulse}} (float \texorpdfstring{$\ast$}{*}impulse, float \texorpdfstring{$\ast$}{*}torque, float \texorpdfstring{$\ast$}{*}correction, float \texorpdfstring{$\ast$}{*}moment\+Of\+Inertia)
+void \mbox{\hyperlink{classRigidBody_a48fb58cfec2bcbaac99e0bcfc6931bbd}{apply\+\_\+impulse}} (float \texorpdfstring{$\ast$}{*}impulse, float \texorpdfstring{$\ast$}{*}torque, float \texorpdfstring{$\ast$}{*}correction)
 \item 
 float \mbox{\hyperlink{classRigidBody_a299e3f17df9c0003ebe8387ab6bb647a}{get\+\_\+velocity\+\_\+norm}} ()
 \begin{DoxyCompactList}\small\item\em Get the velocity norm of a node. \end{DoxyCompactList}\item 
@@ -68,7 +72,9 @@ void \mbox{\hyperlink{classBody_ab5fbee738511f5a3a9bd7fbbb67e4fec}{remove\+\_\+s
 void \mbox{\hyperlink{classBody_a38cf61e966788a217eb59164e6f19379}{remove\+\_\+shape\+\_\+and\+\_\+free}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
 \begin{DoxyCompactList}\small\item\em Removes a child shape from the specified node and frees the memory allocated for the child shape. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classBody_a204dc154cdb2d9d0ef42d18ea9151ba2}{remove\+\_\+shape\+\_\+and\+\_\+free\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
-\begin{DoxyCompactList}\small\item\em Removes a child shape from the specified node, frees the memory allocated for the child shape, and reallocates memory if necessary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Removes a child shape from the specified node, frees the memory allocated for the child shape, and reallocates memory if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBody_a16b151d42a8c27f9cbe4e1bd38646381}{get\+\_\+collision\+\_\+normal}} (float \texorpdfstring{$\ast$}{*}normal)
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classPhysicalNode}{Physical\+Node}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -82,6 +88,8 @@ void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}}
 void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
 \item 
 void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+\item 
+void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
 \item 
 void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
 \item 
@@ -103,6 +111,8 @@ void \mbox{\hyperlink{classNode_a75c27b8cf028ae9509b20ad7392c49f8}{is\+\_\+body}
 \item 
 void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
 \item 
+void \mbox{\hyperlink{classNode_a743d883f14521da8f8c62608ce65f7ee}{is\+\_\+render\+\_\+target}} (bool \texorpdfstring{$\ast$}{*}render\+\_\+target)
+\item 
 void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
 \item 
 void \mbox{\hyperlink{classNode_a42da38ee8e0a621e438e14b94c0e381e}{add\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
@@ -120,7 +130,13 @@ void \mbox{\hyperlink{classNode_af08ebf5c3bb8542c012107606b88391b}{remove\+\_\+c
 int \mbox{\hyperlink{classNode_af99346e2725916df2fbe2e4af7a2d51c}{index\+\_\+of\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
 \begin{DoxyCompactList}\small\item\em Retrieves the index of a child node in a parent node\textquotesingle{}s children array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_aef2f74d45bec672840433aff6abe0d45}{print}} (int level)
-\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a846d06ed1f7a5ac618fbfef10881230f}{emit\+\_\+ready}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a3e7054036adfcf19c240b48a7f353f83}{emit\+\_\+update}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a0a3256bf578114f603b9407814638a2f}{emit\+\_\+signal}} (...)
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -132,13 +148,15 @@ vec3 \mbox{\hyperlink{classRigidBody_acfa7c599a0861664ec4e7a3a117a0caa}{gravity}
 \item 
 vec3 \mbox{\hyperlink{classRigidBody_a733a02a44389a0a954c627db05a372f1}{angular\+Velocity}}
 \item 
+vec3 \mbox{\hyperlink{classRigidBody_a55fb27554c23325cbe4e753c1b943135}{angular\+Acceleration}}
+\item 
 vec3 \mbox{\hyperlink{classRigidBody_ad02d16bc585b090bd6cd76f2aef5f36d}{center\+Of\+Mass}}
 \item 
 float \mbox{\hyperlink{classRigidBody_ade21c3a46b04ecff37f578624d54e3bb}{mass}}
 \item 
 float \mbox{\hyperlink{classRigidBody_a424760c36cdad93c9c86d2c28e58589c}{friction}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classRigidBody_ab27c2ab4cda997915f4698886e7fce48}{length}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classRigidBody_ab27c2ab4cda997915f4698886e7fce48}{length}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
@@ -149,11 +167,11 @@ struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstr
 \item 
 struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{parent}}
 \item 
-\mbox{\hyperlink{types_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
 \item 
 vec3 \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}
 \item 
@@ -167,11 +185,11 @@ vec3 \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{g
 \item 
 vec3 \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
 \item 
-\mbox{\hyperlink{scripts_8h_ab7576c513306b5641c2b903c7d18850f}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
+\mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
 \item 
-\mbox{\hyperlink{unionBehaviorParameter}{Behavior\+Parameter}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gac639490f60bdc872491ffaaea5991ed0}{params}}
+\mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga1411990c75c0b134485d07be7a21e58c}{params\+\_\+count}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_gab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
 \item 
 \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}}
 \end{DoxyCompactItemize}
@@ -189,11 +207,17 @@ Represents a rigid body in the physics simulation.
 A rigid body can move and is affected by forces and collisions. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classRigidBody_a0908624b4f232ddebb1a17952ba5b975}\label{classRigidBody_a0908624b4f232ddebb1a17952ba5b975} 
+\Hypertarget{classRigidBody_a48fb58cfec2bcbaac99e0bcfc6931bbd}\label{classRigidBody_a48fb58cfec2bcbaac99e0bcfc6931bbd} 
 \index{RigidBody@{RigidBody}!apply\_impulse@{apply\_impulse}}
 \index{apply\_impulse@{apply\_impulse}!RigidBody@{RigidBody}}
 \doxysubsubsection{\texorpdfstring{apply\_impulse()}{apply\_impulse()}}
-{\footnotesize\ttfamily void Rigid\+Body\+::apply\+\_\+impulse (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{impulse,  }\item[{float \texorpdfstring{$\ast$}{*}}]{torque,  }\item[{float \texorpdfstring{$\ast$}{*}}]{correction,  }\item[{float \texorpdfstring{$\ast$}{*}}]{moment\+Of\+Inertia }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Rigid\+Body\+::apply\+\_\+impulse (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{impulse,  }\item[{float \texorpdfstring{$\ast$}{*}}]{torque,  }\item[{float \texorpdfstring{$\ast$}{*}}]{correction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classRigidBody_a9f34277ec87d74732dbd0e04820acacf}\label{classRigidBody_a9f34277ec87d74732dbd0e04820acacf} 
+\index{RigidBody@{RigidBody}!apply\_torque@{apply\_torque}}
+\index{apply\_torque@{apply\_torque}!RigidBody@{RigidBody}}
+\doxysubsubsection{\texorpdfstring{apply\_torque()}{apply\_torque()}}
+{\footnotesize\ttfamily void Rigid\+Body\+::apply\+\_\+torque (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{torque }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classRigidBody_a1ed2e3d153414f62046a74bf9ee65fa9}\label{classRigidBody_a1ed2e3d153414f62046a74bf9ee65fa9} 
 \index{RigidBody@{RigidBody}!constructor@{constructor}}
@@ -216,11 +240,11 @@ Get the center of mass of a node.
 {\em com} & Output vector to store the center of mass. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classRigidBody_add09bafd5a52bc8f31b9fb33e658dcb1}\label{classRigidBody_add09bafd5a52bc8f31b9fb33e658dcb1} 
+\Hypertarget{classRigidBody_a2c354730b7cf7cd98cbd9724d6b51608}\label{classRigidBody_a2c354730b7cf7cd98cbd9724d6b51608} 
 \index{RigidBody@{RigidBody}!get\_collisions\_shapes@{get\_collisions\_shapes}}
 \index{get\_collisions\_shapes@{get\_collisions\_shapes}!RigidBody@{RigidBody}}
 \doxysubsubsection{\texorpdfstring{get\_collisions\_shapes()}{get\_collisions\_shapes()}}
-{\footnotesize\ttfamily void Rigid\+Body\+::get\+\_\+collisions\+\_\+shapes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{shapes,  }\item[{\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Rigid\+Body\+::get\+\_\+collisions\+\_\+shapes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{shapes,  }\item[{\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classRigidBody_a5a5f73f35125f7f1920beae778238a95}\label{classRigidBody_a5a5f73f35125f7f1920beae778238a95} 
 \index{RigidBody@{RigidBody}!get\_mass@{get\_mass}}
@@ -283,10 +307,22 @@ The velocity norm of the node.
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
 {\footnotesize\ttfamily void Rigid\+Body\+::update (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{scale,  }\item[{double}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\Hypertarget{classRigidBody_aa431d1e53955b7bed03752cced5efb50}\label{classRigidBody_aa431d1e53955b7bed03752cced5efb50} 
+\index{RigidBody@{RigidBody}!update\_global\_position@{update\_global\_position}}
+\index{update\_global\_position@{update\_global\_position}!RigidBody@{RigidBody}}
+\doxysubsubsection{\texorpdfstring{update\_global\_position()}{update\_global\_position()}}
+{\footnotesize\ttfamily void Rigid\+Body\+::update\+\_\+global\+\_\+position (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classRigidBody_a733a02a44389a0a954c627db05a372f1}\label{classRigidBody_a733a02a44389a0a954c627db05a372f1} 
+\Hypertarget{classRigidBody_a55fb27554c23325cbe4e753c1b943135}\label{classRigidBody_a55fb27554c23325cbe4e753c1b943135} 
+\index{RigidBody@{RigidBody}!angularAcceleration@{angularAcceleration}}
+\index{angularAcceleration@{angularAcceleration}!RigidBody@{RigidBody}}
+\doxysubsubsection{\texorpdfstring{angularAcceleration}{angularAcceleration}}
+{\footnotesize\ttfamily vec3 Rigid\+Body\+::angular\+Acceleration}
+
+Angular acceleration of the rigid body. \Hypertarget{classRigidBody_a733a02a44389a0a954c627db05a372f1}\label{classRigidBody_a733a02a44389a0a954c627db05a372f1} 
 \index{RigidBody@{RigidBody}!angularVelocity@{angularVelocity}}
 \index{angularVelocity@{angularVelocity}!RigidBody@{RigidBody}}
 \doxysubsubsection{\texorpdfstring{angularVelocity}{angularVelocity}}
@@ -320,7 +356,7 @@ Gravity affecting the rigid body. \Hypertarget{classRigidBody_ab27c2ab4cda997915
 \index{RigidBody@{RigidBody}!length@{length}}
 \index{length@{length}!RigidBody@{RigidBody}}
 \doxysubsubsection{\texorpdfstring{length}{length}}
-{\footnotesize\ttfamily \mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Rigid\+Body\+::length}
+{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Rigid\+Body\+::length}
 
 Number of collision shapes. \Hypertarget{classRigidBody_ade21c3a46b04ecff37f578624d54e3bb}\label{classRigidBody_ade21c3a46b04ecff37f578624d54e3bb} 
 \index{RigidBody@{RigidBody}!mass@{mass}}

@@ -5,13 +5,13 @@
 #include "../memory.h"
 
 Shader create_shader(char* vertexPath, char* fragmentPath) {
-    for (int i = 0; i < memoryCaches.shadersCount; i++) {
-        if (!strcmp(memoryCaches.shaderCache[i].shaderName[0], vertexPath) &&
-            !strcmp(memoryCaches.shaderCache[i].shaderName[1], fragmentPath)) {
+    for (int i = 0; i < Game.memoryCaches->shadersCount; i++) {
+        if (!strcmp(Game.memoryCaches->shaderCache[i].shaderName[0], vertexPath) &&
+            !strcmp(Game.memoryCaches->shaderCache[i].shaderName[1], fragmentPath)) {
             #ifdef DEBUG
                 PRINT_INFO("Shader loaded from cache!\n");
             #endif
-            return memoryCaches.shaderCache[i].shader;
+            return Game.memoryCaches->shaderCache[i].shader;
         }
     }
 
@@ -65,10 +65,10 @@ Shader create_shader(char* vertexPath, char* fragmentPath) {
     free(vShaderCode);
     free(fShaderCode);
 
-    memoryCaches.shaderCache = realloc(memoryCaches.shaderCache, sizeof (ShaderCache) * (++memoryCaches.shadersCount));
-    memoryCaches.shaderCache[memoryCaches.shadersCount-1].shader = ID;
-    strcpy(memoryCaches.shaderCache[memoryCaches.shadersCount-1].shaderName[0], vertexPath);
-    strcpy(memoryCaches.shaderCache[memoryCaches.shadersCount-1].shaderName[1], fragmentPath);
+    Game.memoryCaches->shaderCache = realloc(Game.memoryCaches->shaderCache, sizeof (ShaderCache) * (++Game.memoryCaches->shadersCount));
+    Game.memoryCaches->shaderCache[Game.memoryCaches->shadersCount-1].shader = ID;
+    strcpy(Game.memoryCaches->shaderCache[Game.memoryCaches->shadersCount-1].shaderName[0], vertexPath);
+    strcpy(Game.memoryCaches->shaderCache[Game.memoryCaches->shadersCount-1].shaderName[1], fragmentPath);
 
     return ID;
 

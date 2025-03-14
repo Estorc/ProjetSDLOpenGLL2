@@ -15,7 +15,7 @@ anisor 0.000000
 map_Kd Robot_M_Base_color.jpg
 map_Pm Robot_M_Metallic.jpg
 map_Pr Robot_M_Roughness.jpg
-map_Bump -bm 1.000000 Robot_M_Normal_GL.jpg
+map_Bump Robot_M_Normal_GL.jpg
 
 newmtl radio
 Ks 0.400000 0.400000 0.400000
@@ -31,4 +31,4 @@ anisor 0.000000
 map_Kd radio_BaseColor.jpg
 map_Pm radio_Metallic.jpg
 map_Pr radio_Roughness.jpg
-map_Bump -bm 1.000000 radio_Normal.jpg
+map_Bump radio_Normal.jpg

@@ -4,11 +4,11 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,223,62,261,58,258,94,219"/>
 <area shape="rect" id="Node000003" href="$classPhysicalNode.html" title=" " alt="" coords="75,97,186,123"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="136,137,135,162,125,186,120,184,129,161,131,137"/>
-<area shape="rect" id="Node000004" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="129,7,185,33"/>
-<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="124,42,95,60,64,84,36,113,16,148,11,178,18,209,30,237,43,258,39,261,25,239,13,211,6,178,11,146,32,110,60,80,92,55,121,37"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="152,47,137,98,132,96,147,45"/>
-<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="200,10,208,13,212,20,203,29,186,31,185,26,201,24,207,20,205,17,198,15"/>
-<area shape="rect" id="Node000005" href="$unionBehaviorParameter.html" title=" " alt="" coords="211,97,357,123"/>
-<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="175,43,202,71,224,85,247,95,245,100,221,89,198,75,171,46"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="267,88,241,61,213,44,185,32,187,27,215,39,244,57,271,84"/>
+<area shape="rect" id="Node000004" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="128,7,184,33"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="123,42,94,60,64,84,36,113,16,148,11,178,18,209,30,237,43,258,39,261,25,239,13,211,6,178,11,146,32,110,60,80,91,56,120,37"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="151,47,137,98,131,96,146,45"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="199,10,207,13,211,20,202,29,185,31,184,26,200,24,205,20,203,17,197,15"/>
+<area shape="rect" id="Node000005" href="$unionBehaviorAttribute.html" title=" " alt="" coords="210,97,347,123"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="172,43,198,71,219,85,242,95,240,100,217,89,194,75,168,46"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="262,88,237,61,210,44,183,33,185,28,213,40,240,57,266,84"/>
 </map>

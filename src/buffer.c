@@ -5,12 +5,12 @@
 #include "buffer.h"
 
 void init_buffers() {
-    buffers.collisionBuffer.collisionsShapes = NULL;
-    buffers.lightingBuffer.lightings = NULL;
+    Game.buffers->collisionBuffer.collisionsShapes = NULL;
+    Game.buffers->lightingBuffer.lightings = NULL;
 }
 
 void free_buffers() {
-    free(buffers.collisionBuffer.collisionsShapes);
-    free(buffers.lightingBuffer.lightings);
+    free(Game.buffers->collisionBuffer.collisionsShapes);
+    free(Game.buffers->lightingBuffer.lightings);
     PRINT_INFO("Free buffers!\n");
 }

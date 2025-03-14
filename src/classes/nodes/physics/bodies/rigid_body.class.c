@@ -51,43 +51,43 @@ class RigidBody : public Body {
 
     void apply_torque(float *torque) {
         RigidBody *rigidBody = (RigidBody *) this->object;
-        // Apply torque
 
-        // 1. Compute local inertia tensor (example for a box)
-        mat3 localInertiaTensor;
+        glm_vec3_scale(torque, 4.0f, torque);
+
+        // 1. Compute local inertia tensor (for a box)
+        mat3 localInertiaTensor = GLM_MAT3_IDENTITY_INIT;
         float height = 1.6f;
         float width = 0.5f;
         float depth = 0.5f;
-        float height2 = sqr(height);
-        float width2 = sqr(width);
-        float depth2 = sqr(depth);
-        localInertiaTensor[0][0] = (1.0f / 12.0f) * rigidBody->mass * (height2 + depth2);
-        localInertiaTensor[1][1] = (1.0f / 12.0f) * rigidBody->mass * (width2 + depth2);
-        localInertiaTensor[2][2] = (1.0f / 12.0f) * rigidBody->mass * (width2 + height2);
-
-
-        // 2. Get rotation matrix
-        mat3 rotationMatrix;
+        float massFactor = rigidBody->mass / 12.0f;
+        localInertiaTensor[0][0] = massFactor * (height * height + depth * depth);
+        localInertiaTensor[1][1] = massFactor * (width * width + depth * depth);
+        localInertiaTensor[2][2] = massFactor * (width * width + height * height);
+    
+        // 2. Get rotation matrix directly from object's state
         mat4 rotationMatrix4;
-        vec3 radiansRot;
-        glm_vec3_scale(this->globalRot, PI/180.0f, radiansRot);
-        glm_euler(radiansRot, rotationMatrix4);
+        mat3 rotationMatrix;
+        vec3 euler_angles;
+        glm_vec3_scale(this->globalRot, PI/180.0, euler_angles);
+        glm_euler_xyz(euler_angles, rotationMatrix4); // XYZ order (pitch, yaw, roll)
         glm_mat4_pick3(rotationMatrix4, rotationMatrix);
-
-        // 3. Transform to world space
-        mat3 worldInertiaTensor;
-        glm_mat3_mul(rotationMatrix, localInertiaTensor, worldInertiaTensor);
-        glm_mat3_transpose(worldInertiaTensor);
-
+    
+        // 3. Compute world inertia tensor:
+        mat3 temp, worldInertiaTensor;
+        glm_mat3_mul(rotationMatrix, localInertiaTensor, temp);
+        glm_mat3_transpose(rotationMatrix); // reuse rotationMatrix as transpose to save memory
+        glm_mat3_mul(temp, rotationMatrix, worldInertiaTensor);
+    
         // 4. Compute inverse inertia tensor
         mat3 inverseInertiaTensor;
         glm_mat3_inv(worldInertiaTensor, inverseInertiaTensor);
-
+    
         // 5. Apply torque to get angular acceleration
-        glm_mat3_mulv(inverseInertiaTensor, torque, torque);
-
-        glm_vec3_scale(torque, 3.0f, torque);
-        glm_vec3_add(rigidBody->angularVelocity, torque, rigidBody->angularVelocity);
+        vec3 angularAcceleration;
+        glm_mat3_mulv(inverseInertiaTensor, torque, angularAcceleration);
+    
+        //glm_vec3_scale(angularAcceleration, 3.0f, angularAcceleration); // Apply torque strength factor
+        glm_vec3_add(rigidBody->angularVelocity, angularAcceleration, rigidBody->angularVelocity);
     }
 
     void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta) {
@@ -100,23 +100,32 @@ class RigidBody : public Body {
         glm_vec3_add(this->pos, rigidBody->velocity, this->pos);
 
 
-        glm_vec3_scale(rigidBody->angularVelocity, 0.98f, rigidBody->angularVelocity);
-        if (glm_vec3_norm2(rigidBody->angularVelocity) < 0.01f) 
-            glm_vec3_zero(rigidBody->angularVelocity);
+        glm_vec3_scale(rigidBody->angularVelocity, 0.95f, rigidBody->angularVelocity);
 
+        if (glm_vec3_isnan(rigidBody->angularVelocity)) {
+            glm_vec3_zero(rigidBody->angularVelocity);
+        }
+
+        float angularVelNorm2 = glm_vec3_norm2(rigidBody->angularVelocity);
+        if (angularVelNorm2 < 0.01f) 
+            glm_vec3_zero(rigidBody->angularVelocity);
 
         vec3 degreeAngularVelocity;
         glm_vec3_scale(rigidBody->angularVelocity, delta, degreeAngularVelocity);
         glm_vec3_scale(degreeAngularVelocity, 180.0f/PI, degreeAngularVelocity);
         glm_vec3_add(this->rot, rigidBody->angularVelocity, this->rot);
 
+        this->rot[0] = fmod(this->rot[0], 360.0f);  // Keep the roll angle within [0, 360)
+        this->rot[1] = glm_clamp(this->rot[1], -89.0f, 89.0f);  // Keep the pitch angle in a reasonable range
+        this->rot[2] = fmod(this->rot[2], 360.0f);  // Keep yaw angle within [0, 360)
+
         this::update_global_position(pos, rot, scale);
 
         for (int i = 0; i < rigidBody->length; i++) {
             check_collisions(rigidBody->collisionsShapes[i]);
         }
-        memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], rigidBody->collisionsShapes, rigidBody->length * sizeof(rigidBody->collisionsShapes[0]));
-        buffers.collisionBuffer.index += rigidBody->length;
+        memcpy(&Game.buffers->collisionBuffer.collisionsShapes[Game.buffers->collisionBuffer.index], rigidBody->collisionsShapes, rigidBody->length * sizeof(rigidBody->collisionsShapes[0]));
+        Game.buffers->collisionBuffer.index += rigidBody->length;
     }
 
     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
@@ -146,7 +155,7 @@ class RigidBody : public Body {
         this::constructor(rigidBody);
 
         rigidBody->collisionsShapes = malloc(sizeof(Node *) * children_count);
-        buffers.collisionBuffer.length += children_count;
+        Game.buffers->collisionBuffer.length += children_count;
         POINTER_CHECK(rigidBody->collisionsShapes);
         
         for (int i = 0; i < children_count; i++) {

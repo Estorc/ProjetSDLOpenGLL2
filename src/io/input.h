@@ -120,11 +120,6 @@ void init_input(Input *input);
  */
 int update_input(Input *input);
 
-/**
- * @brief External declaration of the Input structure.
- */
-extern Input input;
-
 /** @} */
 
 #endif

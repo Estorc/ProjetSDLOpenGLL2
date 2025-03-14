@@ -45,9 +45,9 @@ class SpotLight : public Light {
         const char uniforms[11][20] = {
             "].position",
             "].direction",
-            "].ambient",
-            "].diffuse",
-            "].specular",
+            "].color",
+            "].bias",
+            "].size",
             "].constant",
             "].linear",
             "].quadratic",
@@ -69,22 +69,22 @@ class SpotLight : public Light {
         glm_vec3_rotate(dir, to_radians(this->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
         glm_vec3_rotate(dir, to_radians(this->globalRot[2]), (vec3){0.0f, 0.0f, 1.0f});
 
-        for (int i = 0; i < memoryCaches.shadersCount; i++) {
-            use_shader(memoryCaches.shaderCache[i].shader);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[0], this->globalPos);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], dir);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[2], spotLight->ambient);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[3], spotLight->diffuse);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[4], spotLight->specular);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], spotLight->constant);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], spotLight->linear);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[7], spotLight->quadratic);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[8], spotLight->cutOff);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[9], spotLight->outerCutOff);
-            set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[10], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
+        for (int i = 0; i < Game.memoryCaches->shadersCount; i++) {
+            use_shader(Game.memoryCaches->shaderCache[i].shader);
+            set_shader_vec3(Game.memoryCaches->shaderCache[i].shader, uniformsName[0], this->globalPos);
+            set_shader_vec3(Game.memoryCaches->shaderCache[i].shader, uniformsName[1], dir);
+            set_shader_vec3(Game.memoryCaches->shaderCache[i].shader, uniformsName[2], spotLight->color);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[3], spotLight->bias);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[4], spotLight->size);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[5], spotLight->constant);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[6], spotLight->linear);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[7], spotLight->quadratic);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[8], spotLight->cutOff);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[9], spotLight->outerCutOff);
+            set_shader_int(Game.memoryCaches->shaderCache[i].shader, uniformsName[10], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
         }
 
-        buffers.lightingBuffer.lightings[buffers.lightingBuffer.index++] = this;
+        Game.buffers->lightingBuffer.lightings[Game.buffers->lightingBuffer.index++] = this;
         lightsCount[SPOT_LIGHT]++;
     }   
 
@@ -94,9 +94,9 @@ class SpotLight : public Light {
         SUPER(get_settings_data, ptr, length);
         SpotLight *spotLight = (SpotLight *) this->object;
         void *data[] = {
-            "rgb", "Ambient : ", &spotLight->ambient,
-            "rgb", "Diffuse : ", &spotLight->diffuse,
-            "rgb", "Specular : ", &spotLight->specular,
+            "rgb", "Color : ", &spotLight->color,
+            "float", "Bias : ", &spotLight->bias,
+            "float", "Size : ", &spotLight->size,
             "float", "Constant : ", &spotLight->constant,
             "float", "Linear : ", &spotLight->linear,
             "float", "Quadratic : ", &spotLight->quadratic,
@@ -114,10 +114,10 @@ class SpotLight : public Light {
         POINTER_CHECK(spotLight);
 
         if (file) {
-            fscanf(file,"(%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g)\n", 
-                &spotLight->ambient[0], &spotLight->ambient[1], &spotLight->ambient[2], 
-                &spotLight->diffuse[0], &spotLight->diffuse[1], &spotLight->diffuse[2], 
-                &spotLight->specular[0], &spotLight->specular[1], &spotLight->specular[2],
+            fscanf(file,"(%g,%g,%g,%g,%g,%g,%g,%g,%g,%g)\n", 
+                &spotLight->color[0], &spotLight->color[1], &spotLight->color[2], 
+                &spotLight->bias,
+                &spotLight->size,
                 &spotLight->constant,
                 &spotLight->linear,
                 &spotLight->quadratic,
@@ -125,9 +125,9 @@ class SpotLight : public Light {
                 &spotLight->outerCutOff
                 );
         } else {
-            glm_vec3_zero(spotLight->ambient);
-            glm_vec3_copy(GLM_VEC3_ONE, spotLight->diffuse);
-            glm_vec3_copy(GLM_VEC3_ONE, spotLight->specular);
+            glm_vec3_one(spotLight->color);
+            spotLight->bias = 0.005f;
+            spotLight->size = 0.0f;
             spotLight->constant = 1.0f;
             spotLight->linear = 0.09f;
             spotLight->quadratic = 0.032f;
@@ -135,7 +135,7 @@ class SpotLight : public Light {
             spotLight->outerCutOff = 50.0f;
         }
 
-        buffers.lightingBuffer.length++;
+        Game.buffers->lightingBuffer.length++;
         this->type = __type__;
         this::constructor(spotLight);
         this->flags |= NODE_EDITOR_FLAG;
@@ -144,10 +144,10 @@ class SpotLight : public Light {
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         SpotLight *spotLight = (SpotLight*) this->object;
-        fprintf(file, "(%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g)",
-            spotLight->ambient[0], spotLight->ambient[1], spotLight->ambient[2], 
-            spotLight->diffuse[0], spotLight->diffuse[1], spotLight->diffuse[2], 
-            spotLight->specular[0], spotLight->specular[1], spotLight->specular[2],
+        fprintf(file, "(%g,%g,%g,%g,%g,%g,%g,%g,%g,%g)",
+            spotLight->color[0], spotLight->color[1], spotLight->color[2], 
+            spotLight->bias,
+            spotLight->size,
             spotLight->constant,
             spotLight->linear,
             spotLight->quadratic,
@@ -167,7 +167,7 @@ class SpotLight : public Light {
      * @param lightsCount The number of lights in the scene.
      */
 
-    void configure_lighting(Camera *c, WorldShaders *shaders, u8 *lightsCount) {
+    void configure_lighting(Camera *c, WorldShaders *shaders, DepthMap *depthMap, u8 *lightsCount) {
 
         UNUSED(c);
         // Lights and shadows
@@ -177,7 +177,7 @@ class SpotLight : public Light {
         size_t storageBufferIndex;
 
         f32 near_plane = 1.0f, far_plane = 200.0f;
-        glm_perspective(to_radians(90.0f), SHADOW_WIDTH/SHADOW_HEIGHT, near_plane, far_plane, lightProjection);
+        glm_perspective(to_radians(90.0f), 1.0f, near_plane, far_plane, lightProjection);
 
         vec3 rot, pos;
         glm_vec3_negate_to(this->globalPos, pos);
@@ -188,11 +188,11 @@ class SpotLight : public Light {
         glm_rotate(lightView, to_radians(rot[2]), (vec3){0.0f, 0.0f, 1.0f});
         glm_translate(lightView, (vec3){pos[0], pos[1], pos[2]});
 
-        storageBufferIndex = lightsCount[SPOT_LIGHT]*sizeof(mat4)+(NUM_DIRECTIONAL_LIGHTS+NUM_POINT_LIGHTS)*sizeof(mat4);
+        storageBufferIndex = lightsCount[SPOT_LIGHT]+(NUM_DIRECTIONAL_LIGHTS+NUM_POINT_LIGHTS*6);
         lightsCount[SPOT_LIGHT]++;
 
 
-        SUPER(configure_lighting, shaders, lightView, lightProjection, storageBufferIndex);
+        SUPER(configure_lighting, shaders, lightView, lightProjection, storageBufferIndex, depthMap);
     }
 
     

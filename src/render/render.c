@@ -14,7 +14,7 @@
 #include "../settings.h"
 
 
-void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
+void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shader activeShader, WorldShaders *shaders, int viewportWidth, int viewportHeight) {
 
     
     if (node->flags & NODE_VISIBLE) {
@@ -22,11 +22,11 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
         GLint currentFBO;
         bool is_render_target = false;
         node::is_render_target(&is_render_target);
-        RenderTarget *lastRenderTarget = mainNodeTree.renderTarget;
+        RenderTarget *lastRenderTarget = Game.renderTarget;
         if (is_render_target) {
             glGetIntegerv(GL_FRAMEBUFFER_BINDING, &currentFBO);
             RenderTarget *renderTarget = (RenderTarget *) node->object;
-            mainNodeTree.renderTarget = renderTarget;
+            Game.renderTarget = renderTarget;
             glBindFramebuffer(GL_FRAMEBUFFER, renderTarget->fbo);
             glViewport(0, 0, renderTarget->w, renderTarget->h); // Make sure viewport matches FBO size
         }
@@ -37,9 +37,9 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
         node::prepare_render(nodeModelMatrix, activeShader, shaders);
         node::render(nodeModelMatrix, activeShader, shaders);
         for (int i = 0; i < node->length; i++) {
-            render_scene(window, node->children[i], c, nodeModelMatrix, activeShader, shaders);
+            render_scene(window, node->children[i], c, nodeModelMatrix, activeShader, shaders, viewportWidth, viewportHeight);
         }
-        if (settings.show_collision_boxes) {
+        if (Game.settings->show_collision_boxes) {
             bool is_body = false;
             node::is_body((&is_body));
             if (is_body) {
@@ -47,18 +47,15 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
                 Node ***shapes;
                 node::get_collisions_shapes(&shapes, &length);
                 for (int i = 0; i < *length; i++) {
-                    render_scene(window, (*shapes)[i], c, nodeModelMatrix, activeShader, shaders);
+                    render_scene(window, (*shapes)[i], c, nodeModelMatrix, activeShader, shaders, viewportWidth, viewportHeight);
                 }
             }
         }
 
         if (is_render_target) {
-            mainNodeTree.renderTarget = lastRenderTarget;
-            int window_width, window_height;
-            get_resolution(&window_width, &window_height);
-
+            Game.renderTarget = lastRenderTarget;
             glBindFramebuffer(GL_FRAMEBUFFER, currentFBO);
-            glViewport(0, 0, window_width, window_height);
+            glViewport(0, 0, viewportWidth, viewportHeight);
         }
     }
 
@@ -66,18 +63,20 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
 
 void draw_shadow_map(Window *window, Node *root, Camera *c, WorldShaders *shaders, DepthMap *depthMap) {
     // Draw shadow map (render scene with depth map shader)
-    if (!settings.cast_shadows) return;
+    static int count = 0;
+    if (0) return;
+    if (!Game.settings->cast_shadows) return;
     glCullFace(GL_FRONT);
-    glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
-    glBindFramebuffer(GL_FRAMEBUFFER, depthMap->frameBuffer);
+    glViewport(0, 0, Game.settings->shadow_resolution, Game.settings->shadow_resolution);
     u8 lightsCount[LIGHTS_COUNT] = {0};
-    for (int i = 0, index = 0, pl = 0; i < buffers.lightingBuffer.index; i++, index++) {
-        (buffers.lightingBuffer.lightings[i])::configure_lighting(c,shaders, lightsCount, pl);
-        glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthMap->texture, 0, index);
-        glClear(GL_DEPTH_BUFFER_BIT);
-        mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
-        render_scene(window, root, c, modelMatrix, shaders->depth, shaders);
-        if (buffers.lightingBuffer.lightings[i]->type == CLASS_TYPE_POINTLIGHT && pl < 5) {
+    mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
+    for (int i = 0, index = 0, pl = 0; i < Game.buffers->lightingBuffer.index; i++, index++) {
+        glBindFramebuffer(GL_FRAMEBUFFER, depthMap->frameBuffer[index]);
+        (Game.buffers->lightingBuffer.lightings[i])::configure_lighting(c, shaders, depthMap, lightsCount, pl);
+        const GLfloat clearDepth = 1.0f;
+        glClearBufferfv(GL_DEPTH, 0, &clearDepth);
+        render_scene(window, root, c, modelMatrix, shaders->depth, shaders, Game.settings->shadow_resolution, Game.settings->shadow_resolution);
+        if (Game.buffers->lightingBuffer.lightings[i]->type == CLASS_TYPE_POINTLIGHT && pl < 5) {
             i--;
             pl++;
         } else pl = 0;
@@ -97,16 +96,17 @@ void draw_scene(Window *window, Node *root, Camera *c, WorldShaders *shaders, De
     glViewport(0, 0, window_width, window_height);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     use_shader(shaders->render);
-    glActiveTexture(GL_TEXTURE3);
-    glBindTexture(GL_TEXTURE_2D_ARRAY, depthMap->texture);
     set_shader_int(shaders->render, "diffuseMap", 0);
     set_shader_int(shaders->render, "normalMap", 1);
     set_shader_int(shaders->render, "parallaxMap", 2);
     set_shader_int(shaders->render, "shadowMap", 3);
-    set_shader_int(shaders->render, "shadowCastActive", settings.cast_shadows);
+    set_shader_int(shaders->render, "metallicMap", 4);
+    set_shader_int(shaders->render, "roughnessMap", 5);
+    set_shader_int(shaders->render, "shadowCastActive", Game.settings->cast_shadows);
+    set_shader_int(shaders->render, "shadowQuality", Game.settings->shadow_quality);
 
     mat4 modelMatrix = GLM_MAT4_IDENTITY_INIT;
-    render_scene(window, root, c, modelMatrix, shaders->render, shaders);
+    render_scene(window, root, c, modelMatrix, shaders->render, shaders, window_width, window_height);
 }
 
 void draw_screen(Window *window, Node *scene, Camera *c, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa, Mesh *screenPlane) {
@@ -114,8 +114,7 @@ void draw_screen(Window *window, Node *scene, Camera *c, WorldShaders *shaders, 
     int window_width, window_height;
     get_resolution(&window_width, &window_height);
 
-    glEnable(GL_TEXTURE_2D);
-    glEnable(GL_FRAMEBUFFER_SRGB); 
+    glEnable(GL_FRAMEBUFFER_SRGB);  // Enable sRGB framebuffer correction
     glEnable(GL_MULTISAMPLE);  
     glEnable(GL_DEPTH_TEST);
 

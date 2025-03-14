@@ -1,5 +1,21 @@
 #include "../raptiquax.h"
 
+char * read_filef(FILE * file) {
+    int bufferSize = 8, bufferPos = 0;
+    char c;
+    char *s = malloc(sizeof(char) * bufferSize);
+    POINTER_CHECK(s);
+    do {
+        c = getc(file);
+        s[bufferPos++] = c;
+        if (bufferPos >= bufferSize) s = realloc(s, sizeof(char) * (bufferSize <<= 1));
+        POINTER_CHECK(s);
+    } while (c != -1);
+    s = realloc(s, sizeof(char) * (bufferPos + 1));
+    POINTER_CHECK(s);
+    s[bufferPos-1] = 0;
+    return s;
+}
 
 char * read_file(const char * path) {
     FILE * file = fopen(path, "r");

@@ -31,17 +31,39 @@ class Area : public PhysicalNode {
     __containerType__ Node *
     public:
 
-    void constructor(struct Area *area) {
-        this->object = area;
+    void constructor(int signal_id) {
         this->type = __type__;
+
+        Area *area;
+        area = malloc(sizeof(Area));
+        POINTER_CHECK(area);
+        area->length = 0;
+        area->collectedLength = 0;
+        area->collectedNodes = malloc(Game.buffers->collisionBuffer.length * sizeof(CollectedNode));
+        POINTER_CHECK(area->collectedNodes);
+        area->signal_id = signal_id;
+
+        this->object = area;
         SUPER(initialize_node);
-        if (area) {
-            area->collectedLength = 0;
-            area->sortedLength = 0;
-            area->collectedNodes = malloc(buffers.collisionBuffer.length * sizeof(CollectedNode));
-            POINTER_CHECK(area->collectedNodes);
-            area->sortedNodes = malloc(buffers.collisionBuffer.length * sizeof(CollectedNode));
-            POINTER_CHECK(area->sortedNodes);
+    }
+
+    void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
+        int signal_id = 0;
+        int children_count = 0;
+        if (file)
+            fscanf(file,"(%d,%d)\n", &signal_id, &children_count);
+        this::constructor(signal_id);
+
+        Area *area = this->object;
+
+        area->collisionsShapes = malloc(sizeof(Node *) * children_count);
+        Game.buffers->collisionBuffer.length += children_count;
+        POINTER_CHECK(area->collisionsShapes);
+        
+        for (int i = 0; i < children_count; i++) {
+            Node *child = load_node(file, c, scripts, editor);
+            area->collisionsShapes[area->length++] = child;
+            child->parent = this;
         }
     }
 
@@ -71,9 +93,9 @@ class Area : public PhysicalNode {
         Area *area = (Area *) this->object;
 
         qsort(area->collectedNodes, area->collectedLength, sizeof(CollectedNode), compare_distance_nodes);
-        memcpy(area->sortedNodes, area->collectedNodes, area->collectedLength * sizeof(CollectedNode));
-        area->sortedLength = area->collectedLength;
     }
+
+    //#define DEBUG_AREA
 
     void update(float *pos, float *rot, float *scale) {
         Area *area = (Area *) this->object;
@@ -81,18 +103,24 @@ class Area : public PhysicalNode {
         this::sort_nodes();
         #ifdef DEBUG
         #ifdef DEBUG_AREA
-        if (area->sortedLength) {
-            PRINT_INFO("Collected %d nodes:\n", area->sortedLength);
-        }
-        for (int i = 0; i < area->sortedLength; i++) {
-            (area->sortedNodes[i].node)::emit_signal(SIGNAL_AREA_COLLISION, this, area->sortedNodes[i].distance, area->sortedNodes[i].impactPoint);
-            PRINT_INFO("Node %d: Distance[%.2f] | ImpactPoint[%.2f,%.2f,%.2f]\n", i, area->sortedNodes[i].distance, area->sortedNodes[i].impactPoint[0], area->sortedNodes[i].impactPoint[1], area->sortedNodes[i].impactPoint[2]);
+        if (area->collectedLength) {
+            PRINT_INFO("Collected %d nodes:\n", area->collectedLength);
         }
         #endif
         #endif
+        for (int i = 0; i < area->collectedLength; i++) {
+            (area->collectedNodes[i].node)::emit_signal(SIGNAL_AREA_COLLISION, area->signal_id, this, area->collectedNodes[i].distance, area->collectedNodes[i].impactPoint, i);
+            #ifdef DEBUG
+            #ifdef DEBUG_AREA
+            PRINT_INFO("Node %d: Distance[%.2f] | ImpactPoint[%.2f,%.2f,%.2f]\n", i, area->collectedNodes[i].distance, area->collectedNodes[i].impactPoint[0], area->collectedNodes[i].impactPoint[1], area->collectedNodes[i].impactPoint[2]);
+            #endif
+            #endif
+        }
+
 
         area->collectedLength = 0;
-        area->collectedNodes = realloc(area->collectedNodes, buffers.collisionBuffer.length * sizeof(CollectedNode));
+        free(area->collectedNodes);
+        area->collectedNodes = NULL;
 
         this::update_global_position(pos, rot, scale);
 
@@ -103,8 +131,8 @@ class Area : public PhysicalNode {
             glm_vec3_copy(this->globalScale, scale);
             check_collisions(area->collisionsShapes[i]);
         }
-        memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], area->collisionsShapes, area->length * sizeof(area->collisionsShapes[0]));
-        buffers.collisionBuffer.index += area->length;
+        memcpy(&Game.buffers->collisionBuffer.collisionsShapes[Game.buffers->collisionBuffer.index], area->collisionsShapes, area->length * sizeof(area->collisionsShapes[0]));
+        Game.buffers->collisionBuffer.index += area->length;
     }
 
     void get_collisions_shapes(Node ****shapes, u8 **length) {
@@ -119,33 +147,11 @@ class Area : public PhysicalNode {
         *nodes = area->collectedNodes;
     }
 
-    void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
-        Area *area;
-        area = malloc(sizeof(Area));
-        area->length = 0;
-        int children_count = 0;
-        POINTER_CHECK(area);
-        if (file)
-            fscanf(file,"(%hd,%d)\n", &area->signal_id, &children_count);
-        this->type = __type__;
-        this::constructor(area);
-
-        area->collisionsShapes = malloc(sizeof(Node *) * children_count);
-        buffers.collisionBuffer.length += children_count;
-        POINTER_CHECK(area->collisionsShapes);
-        
-        for (int i = 0; i < children_count; i++) {
-            Node *child = load_node(file, c, scripts, editor);
-            area->collisionsShapes[area->length++] = child;
-            child->parent = this;
-        }
-    }
-
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         Area *area = (Area*) this->object;
         u8 collisionsLength = area->length;
-        fprintf(file, "(%d,%d)", area->signal_id, collisionsLength);
+        fprintf(file, "(%hd,%d)", area->signal_id, collisionsLength);
     }
 
 }

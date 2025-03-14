@@ -1,31 +1,33 @@
 <map id="src/render/depth_map.h" name="src/render/depth_map.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1197,5,1373,31"/>
-<area shape="rect" id="Node000002" href="$directional__light_8class_8c.html" title=" " alt="" coords="5,79,184,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1184,23,999,28,753,37,476,55,196,81,184,83,184,78,196,76,475,49,753,32,999,22,1184,18"/>
-<area shape="rect" id="Node000003" href="$light_8class_8c.html" title=" " alt="" coords="208,79,384,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1184,25,834,42,616,58,396,81,385,83,384,78,396,76,615,53,834,36,1184,20"/>
-<area shape="rect" id="Node000004" href="$point__light_8class_8c.html" title=" " alt="" coords="408,79,584,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1184,28,917,47,757,62,596,81,585,83,584,78,596,76,756,57,917,42,1183,22"/>
-<area shape="rect" id="Node000005" href="$spot__light_8class_8c.html" title=" " alt="" coords="608,79,784,119"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1184,32,1003,53,796,81,785,83,784,78,796,76,1002,48,1183,27"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1273,5,1449,31"/>
+<area shape="rect" id="Node000002" href="$directional__light_8class_8c.html" title="This file contains the implementation of the directional light class." alt="" coords="5,79,184,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1260,23,1063,26,799,36,499,53,196,81,184,83,184,78,196,76,499,48,798,30,1063,21,1260,17"/>
+<area shape="rect" id="Node000003" href="$light_8class_8c.html" title="This file contains the implementation of the light class for the project." alt="" coords="208,79,384,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1260,24,879,40,639,57,396,81,385,83,384,78,396,76,638,51,879,35,1260,19"/>
+<area shape="rect" id="Node000004" href="$point__light_8class_8c.html" title="This file contains the implementation of the PointLight class." alt="" coords="408,79,584,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1260,26,962,45,779,61,596,81,585,83,584,78,596,76,779,55,961,40,1260,21"/>
+<area shape="rect" id="Node000005" href="$spot__light_8class_8c.html" title="This file contains the implementation of the SpotLight class." alt="" coords="608,79,784,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="1260,30,1046,51,796,81,785,83,784,78,796,76,1045,45,1259,25"/>
 <area shape="rect" id="Node000006" href="$node__loader_8c.html" title=" " alt="" coords="809,86,959,111"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1210,36,973,81,937,89,936,83,971,76,1209,31"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1265,35,972,81,936,89,935,83,972,76,1264,30"/>
 <area shape="rect" id="Node000007" href="$scene__loader_8c.html" title=" " alt="" coords="984,86,1141,111"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1241,38,1096,88,1094,83,1239,33"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1305,37,1107,89,1105,83,1304,32"/>
 <area shape="rect" id="Node000008" href="$main_8c.html" title=" " alt="" coords="1166,86,1255,111"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1267,42,1224,88,1220,84,1263,39"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1328,39,1234,88,1232,83,1326,35"/>
 <area shape="rect" id="Node000009" href="$collision_8c.html" title=" " alt="" coords="1280,86,1443,111"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1308,39,1352,84,1348,88,1304,42"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1364,44,1364,86,1359,86,1359,44"/>
 <area shape="rect" id="Node000010" href="$collision__util_8c.html" title=" " alt="" coords="1467,79,1619,119"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1336,32,1482,76,1480,81,1335,37"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1401,34,1500,76,1498,81,1399,39"/>
 <area shape="rect" id="Node000011" href="$physics_8c.html" title=" " alt="" coords="1643,86,1802,111"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1370,30,1631,76,1668,83,1667,89,1630,81,1369,36"/>
-<area shape="rect" id="Node000012" href="$depth__map_8c.html" title=" " alt="" coords="1826,86,2001,111"/>
-<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="1387,26,1586,46,1815,76,1858,83,1857,89,1814,81,1585,52,1387,31"/>
-<area shape="rect" id="Node000013" href="$lighting_8c.html" title=" " alt="" coords="2025,86,2175,111"/>
-<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="1388,21,1670,39,1842,54,2014,76,2053,83,2052,89,2013,81,1842,60,1670,44,1387,26"/>
-<area shape="rect" id="Node000014" href="$render_8c.html" title=" " alt="" coords="2199,86,2342,111"/>
-<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="1387,18,1543,23,1743,33,1965,50,2188,76,2227,83,2226,89,2188,81,1965,55,1742,38,1543,28,1387,24"/>
-<area shape="rect" id="Node000015" href="$window_8c.html" title=" " alt="" coords="2366,86,2471,111"/>
-<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="1387,19,1888,38,2158,55,2270,65,2355,76,2386,83,2385,89,2354,81,2269,70,2158,60,1888,44,1387,25"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1428,31,1671,83,1669,89,1427,36"/>
+<area shape="rect" id="Node000012" href="$raptiquax_8c.html" title=" " alt="" coords="1826,86,1945,111"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="1464,26,1629,46,1815,76,1847,83,1845,89,1814,81,1628,51,1463,32"/>
+<area shape="rect" id="Node000013" href="$depth__map_8c.html" title=" " alt="" coords="1969,86,2143,111"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="1463,24,1690,44,1958,76,2001,83,2000,89,1957,81,1690,49,1463,29"/>
+<area shape="rect" id="Node000014" href="$lighting_8c.html" title=" " alt="" coords="2167,86,2318,111"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="1463,20,1774,37,1965,53,2156,76,2196,83,2195,89,2156,81,1964,58,1774,42,1463,25"/>
+<area shape="rect" id="Node000015" href="$render_8c.html" title=" " alt="" coords="2342,86,2485,111"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="1463,18,1629,21,1845,31,2088,48,2331,76,2369,83,2368,89,2330,81,2087,54,1845,36,1629,27,1463,23"/>
+<area shape="rect" id="Node000016" href="$window_8c.html" title=" " alt="" coords="2509,86,2614,111"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="1463,19,1996,37,2286,54,2406,64,2498,76,2528,83,2527,89,2497,81,2406,70,2286,59,1996,42,1463,24"/>
 </map>

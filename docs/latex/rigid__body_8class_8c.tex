@@ -5,6 +5,8 @@
 This source file defines the implementation of rigid body physics for the project.  
 
 
+{\ttfamily \#include "{}raptiquax.\+h"{}}\newline
+{\ttfamily \#include "{}classes/classes.\+h"{}}\newline
 {\ttfamily \#include "{}math/math\+\_\+util.\+h"{}}\newline
 {\ttfamily \#include "{}io/model.\+h"{}}\newline
 {\ttfamily \#include "{}render/framebuffer.\+h"{}}\newline
@@ -12,19 +14,24 @@ This source file defines the implementation of rigid body physics for the projec
 {\ttfamily \#include "{}io/scene\+\_\+loader.\+h"{}}\newline
 {\ttfamily \#include "{}render/lighting.\+h"{}}\newline
 {\ttfamily \#include "{}buffer.\+h"{}}\newline
-Include dependency graph for rigid\+\_\+body.\+class.\+c\+:
-% FIG 0
+Include dependency graph for rigid\+\_\+body.\+class.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rigid__body_8class_8c__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{class_rigid_body}{Rigid\+Body}}
+struct \mbox{\hyperlink{classRigidBody}{Rigid\+Body}}
 \begin{DoxyCompactList}\small\item\em Represents a rigid body in the physics simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 This source file defines the implementation of rigid body physics for the project. 
 
-This source file contains the implementation of the \doxylink{class_rigid_body}{Rigid\+Body} class, which is responsible for handling the physics calculations and properties of rigid bodies in the simulation. It includes functions for updating the state of the rigid bodies, applying forces, and handling collisions. The primary use case of this code is to provide realistic physics behavior for objects in the simulation.
+This source file contains the implementation of the \doxylink{classRigidBody}{Rigid\+Body} class, which is responsible for handling the physics calculations and properties of rigid bodies in the simulation. It includes functions for updating the state of the rigid bodies, applying forces, and handling collisions. The primary use case of this code is to provide realistic physics behavior for objects in the simulation.
 
 \begin{DoxyAuthor}{Author}
 Loup Picault 

@@ -1,0 +1,240 @@
+#include "../chessboard.h"
+
+static Node *enemy = NULL;
+static Node *player = NULL;
+
+#define SMOOTH_RATE 4.0f
+
+double timespec_diff(struct timespec *start, struct timespec *end) {
+    return (end->tv_sec - start->tv_sec) + (end->tv_nsec - start->tv_nsec) / 1e9;
+}
+
+static int get_chessboard_state(int bytes_received, char *msg, void * p, void ** data) {
+    Node *chessboard = data[0];
+    msg += strlen("P_MSG");
+    char *protected_msg = strdup(msg);
+    char *user;
+    char *content;
+    split_user_from_content(protected_msg, &user, &content);
+
+    if (strncmp("MOVE_PLAYER", content, 11) == 0) {
+        content += 11;
+        sscanf(content, "%g %g %g %g %g %g", &enemy->attribute[0].f, &enemy->attribute[1].f, &enemy->attribute[2].f, &enemy->attribute[3].f, &enemy->attribute[4].f, &enemy->attribute[5].f);
+    } else if (strncmp("UPDATE_PIECE", content, 12) == 0) {
+        content += 12;
+        int piece_id;
+        sscanf(content, "%d", &piece_id);
+        if (piece_id < chessboard->length) {
+            Node *piece = chessboard->children[piece_id];
+            RigidBody *piece_body = piece->object;
+            sscanf(content, "%d %g %g %g %g %g %g %g %g %g %g %g %g", &piece_id, &piece->pos[0], &piece->pos[1], &piece->pos[2], &piece_body->velocity[0], &piece_body->velocity[1], &piece_body->velocity[2], &piece_body->angularVelocity[0], &piece_body->angularVelocity[1], &piece_body->angularVelocity[2], &piece->rot[0], &piece->rot[1], &piece->rot[2]);
+        }
+    }
+    free(protected_msg);
+    return 0;
+}
+
+
+NEW_SCRIPT(script_fc_fight_chessboard_init)
+    SET_ATTRIBUTES_COUNT((4));
+
+
+    int player_id = GET_RAW(int, table_get(Game.storage, "fc_chessboard::player_id"));
+    int enemy_id = GET_RAW(int, table_get(Game.storage, "fc_chessboard::enemy_id"));
+    for (int i = 0; i < 8*8; i++) {
+        char buffer[128];
+        sprintf(buffer, "fc_chessboard::piece%d", i);
+        int flags = GET_RAW(int, table_get(Game.storage, buffer));
+        if ((flags & 0b110000) != FC_UNKNOWN && i != player_id) {
+            FILE * file = (i == enemy_id) ? fopen("assets/scenes/fps_chess/pieces/enemy_piece.scene", "r") : fopen("assets/scenes/fps_chess/pieces/rigid_piece.scene", "r");
+            if (file) {
+                Node *piece = load_node(file, NULL, Game.scripts, NULL);
+                if (i == enemy_id) {
+                    enemy = piece;
+                    MALLOC_ATTRIBUTE(piece, 7);
+                    piece->pos[1] = this->pos[1];
+                    piece->attribute[6].i = 100;
+                    (this->parent)::add_child_and_realloc(piece);
+                } else {
+                    MALLOC_ATTRIBUTE(piece, 2);
+                    this::add_child_and_realloc(piece);
+                }
+                piece->attribute[0].i = flags;
+                piece->attribute[1].i = i;
+                piece->pos[0] = -(((i/8)/8.0f - 0.5f)*8.6f + 0.5f);
+                piece->pos[2] = ((i%8)/8.0f - 0.5f)*8.6f + 0.5f;
+                set_piece_skin(piece->children[0], piece->attribute[0].i);
+                fclose(file);
+            }
+            Game.buffers->collisionBuffer.collisionsShapes = realloc(Game.buffers->collisionBuffer.collisionsShapes, sizeof(Node *) * Game.buffers->collisionBuffer.length);
+            Game.buffers->lightingBuffer.lightings = realloc(Game.buffers->lightingBuffer.lightings, sizeof(Node *) * Game.buffers->lightingBuffer.length);
+        }
+    }
+    struct peer *peer = table_get(Game.storage, "socket::server");
+    if (peer)
+        add_message_handler(peer, "P_MSG", get_chessboard_state, -1, 1, (void *[]) {this});
+END_SCRIPT(script_fc_fight_chessboard_init)
+
+
+NEW_SCRIPT(script_fc_fight_chessboard_update)
+
+    static int selected_piece = 0;
+    static struct timespec last_time = {0, 0};
+    struct timespec current_time;
+    if (clock_gettime(CLOCK_REALTIME, &current_time) == -1) {
+        perror("clock_gettime");
+    }
+    if (timespec_diff(&last_time, &current_time) > 0.03) {
+
+        last_time = current_time;
+
+        int player_id = GET_RAW(int, table_get(Game.storage, "fc_chessboard::player_id"));
+        int enemy_id = GET_RAW(int, table_get(Game.storage, "fc_chessboard::enemy_id"));
+
+        if (player_id < enemy_id) {
+            struct peer *peer = table_get(Game.storage, "socket::server");
+            char buffer[256];
+            
+            Node * piece = this->children[selected_piece];
+            RigidBody * piece_body = piece->object;
+            
+            sprintf(buffer, "UPDATE_PIECE %d %g %g %g %g %g %g %.2g %.2g %.2g %.1g %.1g %.1g", selected_piece++, piece->pos[0], piece->pos[1], piece->pos[2], piece_body->velocity[0], piece_body->velocity[1], piece_body->velocity[2], piece_body->angularVelocity[0], piece_body->angularVelocity[1], piece_body->angularVelocity[2], piece->rot[0], piece->rot[1], piece->rot[2]);
+            send_message(peer->socket, buffer, 0);
+            if (selected_piece >= this->length) selected_piece = 0;
+        }
+    }
+
+END_SCRIPT(script_fc_fight_chessboard_update)
+
+NEW_SCRIPT(fs_fight_player_init)
+
+    player = this;
+    int player_id = GET_RAW(int, table_get(Game.storage, "fc_chessboard::player_id"));
+    this->pos[0] = -(((player_id/8)/8.0f - 0.5f)*8.6f + 0.5f);
+    this->pos[2] = ((player_id%8)/8.0f - 0.5f)*8.6f + 0.5f;
+END_SCRIPT(fs_fight_player_init)
+
+NEW_SCRIPT(fs_fight_player_update)
+	GET_READY_PARAMETERS();
+	SET_ATTRIBUTES_COUNT(2);
+
+	bool *menu_open = &this->attribute[0].b;
+	bool *stopped = &this->attribute[1].b;
+	if (*stopped) return;
+
+	if (Game.input->released_keys & KEY_MENU) {
+		*menu_open = !(*menu_open);
+	}
+
+	KinematicBody *player = (KinematicBody*) this->object;
+
+	f32 vel = 0.05f;
+	if (Game.input->active_keys & KEY_SHIFT) vel = 0.2f;
+	vel *= delta * 100.0f;
+
+
+	Camera *c = (Camera*) this->children[0]->object;
+
+	vec3 dir = {0.0f, 0.0f, -1.0f};
+	glm_vec3_rotate(dir, to_radians(c->rot[1]), (vec3){0.0f, 1.0f, 0.0f});
+	dir[0] = -dir[0];
+
+	vec3 appliedVelocity;
+	glm_vec3_zero(appliedVelocity);
+
+	if (!*menu_open) {
+
+		SDL_SetRelativeMouseMode(SDL_TRUE);
+
+		if (Game.input->active_keys & KEY_LEFT) {
+			appliedVelocity[0] += dir[2] * vel;
+			appliedVelocity[2] -= dir[0] * vel;
+		};
+		if (Game.input->active_keys & KEY_RIGHT) {
+			appliedVelocity[0] -= dir[2] * vel;
+			appliedVelocity[2] += dir[0] * vel;
+		};
+		if (Game.input->active_keys & KEY_UP) {
+			appliedVelocity[0] += dir[0] * vel;
+			appliedVelocity[2] += dir[2] * vel;
+		};
+		if (Game.input->active_keys & KEY_DOWN) {
+			appliedVelocity[0] -= dir[0] * vel;
+			appliedVelocity[2] -= dir[2] * vel;
+		};
+
+		if (Game.input->pressed_keys & KEY_JUMP) {
+			player->velocity[1] = 0.2f;
+		};
+
+	}
+
+	else SDL_SetRelativeMouseMode(SDL_FALSE);
+
+		
+	player->velocity[0] += (appliedVelocity[0] - player->velocity[0]) / 20.0;
+	player->velocity[2] += (appliedVelocity[2] - player->velocity[2]) / 20.0;
+
+	player->velocity[1] -= 0.5*delta;
+
+    static struct timespec last_time = {0, 0};
+    struct timespec current_time;
+    if (clock_gettime(CLOCK_REALTIME, &current_time) == -1) {
+        perror("clock_gettime");
+    }
+    if (timespec_diff(&last_time, &current_time) > 0.03) {
+        last_time = current_time;
+        struct peer *peer = table_get(Game.storage, "socket::server");
+        char buffer[128];
+        sprintf(buffer, "MOVE_PLAYER %g %g %g %g %g %g", this->globalPos[0], this->globalPos[1], this->globalPos[2], player->velocity[0], player->velocity[1], player->velocity[2]);
+        send_message(peer->socket, buffer, 0);
+    }
+
+END_SCRIPT(fs_fight_player_update)
+
+
+NEW_SCRIPT(fs_enemy_update)
+
+    KinematicBody *body = this->object;
+
+    if (fabs(this->attribute[0].f) > 1e-4 && this->globalPos[0]) this->pos[0] += (this->attribute[0].f - this->globalPos[0])/SMOOTH_RATE;
+    if (fabs(this->attribute[1].f) > 1e-4 && this->globalPos[1]) this->pos[1] += (this->attribute[1].f - this->globalPos[1])/SMOOTH_RATE;
+    if (fabs(this->attribute[2].f) > 1e-4 && this->globalPos[2]) this->pos[2] += (this->attribute[2].f - this->globalPos[2])/SMOOTH_RATE;
+
+    if (fabs(this->attribute[3].f) > 1e-4) body->velocity[0] += (this->attribute[3].f - body->velocity[0])/SMOOTH_RATE;
+    if (fabs(this->attribute[4].f) > 1e-4) body->velocity[1] += (this->attribute[4].f - body->velocity[1])/SMOOTH_RATE;
+    if (fabs(this->attribute[5].f) > 1e-4) body->velocity[2] += (this->attribute[5].f - body->velocity[2])/SMOOTH_RATE;
+
+    if (glm_vec3_isnan(this->pos) || glm_vec3_isinf(this->pos)) {
+        this->pos[0] = this->attribute[0].f;
+        this->pos[1] = this->attribute[1].f;
+        this->pos[2] = this->attribute[2].f;
+    }
+
+    if (glm_vec3_isnan(body->velocity) || glm_vec3_isinf(body->velocity)) {
+        body->velocity[0] = this->attribute[3].f;
+        body->velocity[1] = this->attribute[4].f;
+        body->velocity[2] = this->attribute[5].f;
+    }
+
+END_SCRIPT(fs_enemy_update)
+
+
+NEW_SCRIPT(fs_enemy_signal)
+    int *health = &this->attribute[6].i;
+    GET_SIGNAL();
+    switch (signal) {
+        case SIGNAL_AREA_COLLISION:
+        {
+            GET_AREA_SIGNAL_PARAMETERS();
+            PRINT_INFO("Offset: %d\n", offset);
+            if (offset <= 1 && Game.input->mouse.pressed_button == SDL_BUTTON_LEFT) {
+                *health -= 10;
+                PRINT_INFO("Health: %d\n", *health);
+            }
+        }
+            break;
+        default:
+            break;
+    }
+END_SCRIPT(fs_enemy_signal)

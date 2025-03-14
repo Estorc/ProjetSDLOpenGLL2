@@ -13,9 +13,9 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 map_Kd Television_01_diff_4k.jpg
-map_Pm Television_01_metallic_4k.exr
+map_Pm Television_01_metallic_4k.png
 map_Pr Television_01_roughness_4k.jpg
-map_Bump -bm 1.000000 Television_01_nor_gl_4k.exr
+map_Bump Television_01_nor_gl_4k.png
 
 newmtl metals
 Ks 0.500000 0.500000 0.500000

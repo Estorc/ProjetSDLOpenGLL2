@@ -30,14 +30,16 @@ class Button : public Frame {
     public:
 
     void constructor() {
+        this->type = __type__; 
+
         Frame *frame;
         frame = malloc(sizeof(Frame));
         POINTER_CHECK(frame);
 
         this->object = frame;
-        this->type = __type__; 
         SUPER(initialize_node);
         this::init_frame();
+        this::init_button();
     }
 
     void init_button() {
@@ -57,19 +59,16 @@ class Button : public Frame {
 
     
 
-    void load(FILE *file) {
-        UNUSED(file);
-        this->type = __type__;
+    void load() {
         this::constructor();
-        this::init_button();
     }
 
     void update() {
         Frame *frame = (Frame *) this->object;
         Button *button = (Button *) frame->button;
-        Mouse *mouse = &input.mouse;
-        if (mainNodeTree.renderTarget) {
-            mouse = &mainNodeTree.renderTarget->mouse;
+        Mouse *mouse = &Game.input->mouse;
+        if (Game.renderTarget) {
+            mouse = &Game.renderTarget->mouse;
         }
         float x,y,w,h;
         x = frame->absPos[0];
@@ -77,7 +76,7 @@ class Button : public Frame {
         w = frame->size[0];
         h = frame->size[1];
         if (button->state == BUTTON_STATE_PRESSED) {
-            if (mouse->released_button == SDL_BUTTON_LEFT) {
+            if (mouse->active_button != SDL_BUTTON_LEFT) {
                 button->state = BUTTON_STATE_NORMAL;
                 if (mouse->x > x &&
                     mouse->x < x+w &&
@@ -105,7 +104,7 @@ class Button : public Frame {
                 button->state = BUTTON_STATE_NORMAL;
             }
         }
-        if (window.resized) frame->flags |= FRAME_NEEDS_REFRESH;
+        if (Game.window->resized) frame->flags |= FRAME_NEEDS_REFRESH;
     }
 
     void is_button(bool *result) {
@@ -119,8 +118,7 @@ class Button : public Frame {
 
     void free() {
         Frame *frame = (Frame *) this->object;
-        Button *button = (Button *) frame->button;
-        free(button);
+        free(frame->button);
         SUPER(free);
     }
  

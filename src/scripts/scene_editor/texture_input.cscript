@@ -15,9 +15,9 @@ NEW_SCRIPT(texture_input_init)
 	TextureMap *texture = this->attribute[1].p;
 	Node *labelNode = this->children[0]->children[0];
 
-    for (int i = 0; i < memoryCaches.modelsCount; i++) {
-        if (memoryCaches.modelCache[i].model == *texture) {
-			labelNode::set_text(memoryCaches.modelCache[i].modelName);
+    for (int i = 0; i < Game.memoryCaches->modelsCount; i++) {
+        if (Game.memoryCaches->modelCache[i].model == *texture) {
+			labelNode::set_text(Game.memoryCaches->modelCache[i].modelName);
             break;
         }
     }*/
@@ -46,9 +46,9 @@ NEW_SCRIPT(texture_input)
             }
         }
 
-		for (int i = 0; i < memoryCaches.modelsCount; i++) {
-			if (memoryCaches.modelCache[i].model == *modelData) {
-				labelNode::set_text(memoryCaches.modelCache[i].modelName);
+		for (int i = 0; i < Game.memoryCaches->modelsCount; i++) {
+			if (Game.memoryCaches->modelCache[i].model == *modelData) {
+				labelNode::set_text(Game.memoryCaches->modelCache[i].modelName);
 				break;
 			}
 		}

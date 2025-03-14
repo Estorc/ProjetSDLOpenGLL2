@@ -1,20 +1,28 @@
 <map id="MemoryCaches" name="MemoryCaches">
-<area shape="rect" id="Node000001" title="Structure to manage all types of caches." alt="" coords="209,357,332,383"/>
-<area shape="rect" id="Node000002" href="$structCubeMapCache.html" title="Structure to cache cube map textures." alt="" coords="5,269,128,295"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,306,87,320,99,331,125,345,153,355,209,365,209,371,151,361,122,350,96,335,83,323,74,308"/>
-<area shape="rect" id="Node000003" href="$structTextureCache.html" title="Structure to cache textures." alt="" coords="153,269,263,295"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,308,216,332,228,345,243,355,240,360,224,349,211,335,204,310"/>
-<area shape="rect" id="Node000004" href="$structModelCache.html" title="Structure to cache models." alt="" coords="287,269,390,295"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="327,308,307,335,285,359,282,355,303,332,322,305"/>
-<area shape="rect" id="Node000005" href="$structModelData.html" title="Structure representing the data of a 3D model." alt="" coords="292,181,385,207"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="341,221,341,269,336,269,336,221"/>
-<area shape="rect" id="Node000006" href="$structMaterial.html" title="Structure representing a material with various properties." alt="" coords="302,5,378,31"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="339,44,333,93,334,142,339,181,334,181,329,142,328,93,333,44"/>
-<area shape="rect" id="Node000007" href="$structModelObjectData.html" title="Structure representing the data of a 3D model object." alt="" coords="409,93,543,119"/>
-<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="365,37,405,67,451,91,448,96,403,72,362,42"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="447,128,359,183,356,179,445,124"/>
-<area shape="rect" id="Node000008" href="$structFace.html" title="Structure representing a face of a 3D model." alt="" coords="451,5,501,31"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="479,45,479,93,473,93,473,45"/>
-<area shape="rect" id="Node000009" href="$structShaderCache.html" title="Structure to cache shaders." alt="" coords="415,269,521,295"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="448,307,408,336,371,351,333,361,332,356,369,346,405,331,445,302"/>
+<area shape="rect" id="Node000001" title="Structure to manage all types of caches." alt="" coords="348,475,471,500"/>
+<area shape="rect" id="Node000002" href="$structCubeMapCache.html" title="Structure to cache cube map textures." alt="" coords="5,387,128,412"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,421,100,436,118,448,160,461,220,470,348,481,348,486,220,475,159,466,116,453,97,440,81,425"/>
+<area shape="rect" id="Node000003" href="$structTextureCache.html" title="Structure to cache textures." alt="" coords="153,387,263,412"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,423,230,437,243,449,267,462,294,471,348,482,347,487,293,477,265,467,240,453,226,440,216,426"/>
+<area shape="rect" id="Node000004" href="$structModelCache.html" title="Structure to cache models." alt="" coords="287,387,390,412"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="340,425,348,449,361,463,377,472,374,477,357,467,343,452,335,426"/>
+<area shape="rect" id="Node000005" href="$structModelData.html" title="Structure representing the data of a 3D model." alt="" coords="292,299,385,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="341,338,341,386,336,386,336,338"/>
+<area shape="rect" id="Node000006" href="$structMaterial.html" title="Structure representing a material with various properties." alt="" coords="182,123,258,148"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="206,161,191,198,190,217,196,235,215,257,239,275,266,288,293,297,291,302,264,293,236,279,211,261,191,237,185,218,186,197,201,159"/>
+<area shape="rect" id="Node000007" href="$structModelObjectData.html" title="Structure representing the data of a 3D model object." alt="" coords="271,211,406,236"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="249,154,324,208,321,213,246,158"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="341,250,341,298,336,298,336,250"/>
+<area shape="rect" id="Node000008" href="$structModelAnimation.html" title="Structure representing the data of a 3D model animation." alt="" coords="430,211,559,236"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="463,245,361,301,359,296,461,240"/>
+<area shape="rect" id="Node000009" href="$structBone.html" title="Structure representing a bone in a 3D model." alt="" coords="467,123,522,148"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="497,162,497,210,492,210,492,162"/>
+<area shape="rect" id="Node000010" href="$structModelKeyframe.html" title="Structure representing the data of a 3D model keyframe." alt="" coords="432,5,557,31"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="497,44,497,123,492,123,492,44"/>
+<area shape="rect" id="Node000011" href="$structShaderCache.html" title="Structure to cache shaders." alt="" coords="415,387,521,412"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="456,425,438,452,421,476,416,473,434,449,452,422"/>
+<area shape="rect" id="Node000012" href="$structMixMusicCache.html" title="Structure to cache music." alt="" coords="546,387,670,412"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="586,423,540,453,505,467,469,477,467,472,503,462,537,448,583,419"/>
+<area shape="rect" id="Node000013" href="$structMixChunkCache.html" title="Structure to cache sound effects." alt="" coords="694,387,821,412"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="727,421,692,438,653,453,558,474,471,485,470,479,557,469,651,448,690,433,725,416"/>
 </map>

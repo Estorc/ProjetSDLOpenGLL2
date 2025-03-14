@@ -42,7 +42,7 @@
  * pointed to by `texturedMesh`.
  */
 
-void create_textured_plane(TexturedMesh *texturedMesh, char *texture) {
+void create_textured_plane(TexturedMesh *texturedMesh, const char *texture) {
 
     VBO meshVBO;
     VAO meshVAO;
@@ -146,30 +146,11 @@ void create_screen_plane(Mesh *mesh) {
 
 
 
-void precompile_display_lists(Model *model) {
-    ModelData *data = model->data;
-    if (data->objects[0].displayLists[0]) return;
-    PRINT_INFO("Precompiling display lists...\n");
-    for (int j = 0; j < data->length; j++) {
-        u32 objectPosition = 0;
-        glBindVertexArray(data->objects[j].VAO);
-        for (int k = 0; k < data->objects[j].materialsCount; k++) {
-            data->objects[j].displayLists[k] = glGenLists(1);
-            glNewList(data->objects[j].displayLists[k], GL_COMPILE);
-            glDrawArrays(GL_TRIANGLES, objectPosition, data->objects[j].materialsLength[k] * 3);
-            objectPosition += data->objects[j].materialsLength[k] * 3;
-            glEndList();
-        }
-    }
-    glBindVertexArray(0);
-}
 
 void render_model(mat4 *modelMatrix, Shader shader, Model *model) {
     ModelData *data = model->data;
 
     if (!data) return;
-
-    //precompile_display_lists(model);
 
     if (data->animationsCount > 0) {
         set_shader_int(shader, "haveBone", 1);
@@ -187,20 +168,21 @@ void render_model(mat4 *modelMatrix, Shader shader, Model *model) {
         set_shader_int(shader, "haveBone", 1);
     } else set_shader_int(shader, "haveBone", 0);
 
-    int modelLoc = glGetUniformLocation(shader, "model");
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, (const GLfloat *) *modelMatrix);
+    set_shader_mat4(shader, "model", modelMatrix);
     for (int j = 0; j < data->length; j++) {
         u32 objectPosition = 0;
         glBindVertexArray(data->objects[j].VAO);
         for (int k = 0; k < data->objects[j].materialsCount; k++) {
             glActiveTexture(GL_TEXTURE0);
 
-            glUniform3fv(glGetUniformLocation(shader, "material.ambient"), 1, data->objects[j].materials[k]->flatColors[AMBIENT_MATERIAL_PROPERTY]);
-            glUniform3fv(glGetUniformLocation(shader, "material.specular"), 1, data->objects[j].materials[k]->flatColors[SPECULAR_MATERIAL_PROPERTY]);
-            glUniform3fv(glGetUniformLocation(shader, "material.diffuse"), 1, data->objects[j].materials[k]->flatColors[DIFFUSE_MATERIAL_PROPERTY]);
-            glUniform1fv(glGetUniformLocation(shader, "material.parallax"), 1, data->objects[j].materials[k]->flatColors[PARALLAX_MATERIAL_PROPERTY]);
-            glUniform1fv(glGetUniformLocation(shader, "material.shininess"), 1, &data->objects[j].materials[k]->specularExp);
-            
+            set_shader_vec3(shader, "material.ambient", data->objects[j].materials[k]->flatColors[AMBIENT_MATERIAL_PROPERTY]);
+            set_shader_vec3(shader, "material.specular", data->objects[j].materials[k]->flatColors[SPECULAR_MATERIAL_PROPERTY]);
+            set_shader_vec3(shader, "material.diffuse", data->objects[j].materials[k]->flatColors[DIFFUSE_MATERIAL_PROPERTY]);
+            set_shader_float(shader, "material.parallax", data->objects[j].materials[k]->flatColors[PARALLAX_MATERIAL_PROPERTY][0]);
+            set_shader_float(shader, "material.metallic", data->objects[j].materials[k]->flatColors[METALLIC_MATERIAL_PROPERTY][0]);
+            set_shader_float(shader, "material.roughness", data->objects[j].materials[k]->flatColors[ROUGHNESS_MATERIAL_PROPERTY][0]);
+            set_shader_float(shader, "material.shininess", data->objects[j].materials[k]->opticalDensity);
+
             if (data->objects[j].materials[k]->textureMaps[DIFFUSE_MATERIAL_PROPERTY]) {
                 set_shader_int(shader, "diffuseMapActive", 1); 
                 glActiveTexture(GL_TEXTURE0);
@@ -222,6 +204,20 @@ void render_model(mat4 *modelMatrix, Shader shader, Model *model) {
             } else {
                 set_shader_int(shader, "parallaxMapActive", 0);
             }
+            if (data->objects[j].materials[k]->textureMaps[METALLIC_MATERIAL_PROPERTY]) {
+                set_shader_int(shader, "metallicMapActive", 1);
+                glActiveTexture(GL_TEXTURE4);
+                glBindTexture(GL_TEXTURE_2D, data->objects[j].materials[k]->textureMaps[METALLIC_MATERIAL_PROPERTY]);
+            } else {
+                set_shader_int(shader, "metallicMapActive", 0);
+            }
+            if (data->objects[j].materials[k]->textureMaps[ROUGHNESS_MATERIAL_PROPERTY]) {
+                set_shader_int(shader, "roughnessMapActive", 1);
+                glActiveTexture(GL_TEXTURE5);
+                glBindTexture(GL_TEXTURE_2D, data->objects[j].materials[k]->textureMaps[ROUGHNESS_MATERIAL_PROPERTY]);
+            } else {
+                set_shader_int(shader, "roughnessMapActive", 0);
+            }
             
             glDrawArrays(GL_TRIANGLES, objectPosition, data->objects[j].materialsLength[k] * 3);
             objectPosition += data->objects[j].materialsLength[k] * 3;
@@ -229,25 +225,6 @@ void render_model(mat4 *modelMatrix, Shader shader, Model *model) {
         }
     }
     glBindVertexArray(0);
-
-    /*if (model->flags & MODEL_FLAG_GLOW) {
-        Shader glowShader;
-        this::get_glow_shader(&glowShader);
-        use_shader(glowShader);
-
-        int modelLoc = glGetUniformLocation(glowShader, "model");
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, *modelMatrix);
-        set_shader_float(glowShader, "outlineWidth", 1.0f/this->globalScale[0]);
-                    
-        glEnable(GL_CULL_FACE);
-        glCullFace(GL_FRONT);
-        for (int j = 0; j < data->length; j++) {
-            for (int k = 0; k < data->objects[j].materialsCount; k++) {
-                glCallList(data->objects[j].displayLists[k]);
-            }
-        }
-        glDisable(GL_CULL_FACE);
-    }*/
 
 
 }

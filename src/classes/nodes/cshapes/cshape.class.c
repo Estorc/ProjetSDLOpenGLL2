@@ -58,7 +58,7 @@ class CShape : public Node {
     }
 
 
-    void render(mat4 *modelMatrix, Shader activeShader) {
+    void render(mat4 *modelMatrix) {
         Model *model;
         this::get_model(&model);
         Shader shader;

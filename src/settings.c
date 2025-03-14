@@ -26,9 +26,9 @@ const char resolutionsText[RES_COUNT][256] = {
 
 void get_resolution(int *width, int *height) {
     SDL_Rect rect;
-    switch (settings.resolution) {
+    switch (Game.settings->resolution) {
         case RES_RESPONSIVE:
-            SDL_GetWindowSize(window.sdl_window, width, height);
+            SDL_GetWindowSize(Game.window->sdl_window, width, height);
             break;
         case RES_NATIVE:
             SDL_GetDisplayBounds(0, &rect);

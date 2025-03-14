@@ -164,7 +164,7 @@ int load_obj_model(const char *path, ModelData *model) {
             break;
         case 'm': ;
             
-            char materialFilename[50];
+            static char materialFilename[512];
             fscanf(file, "%*[^ ] %s\n", (char *) &materialFilename);
             char * material_path = get_folder_path(path);
             if ((mc = load_mtl(material_path, materialFilename, &model->materials)) == -1) return -1;
@@ -173,7 +173,7 @@ int load_obj_model(const char *path, ModelData *model) {
             break;
         case 'u': ;
             
-            char materialName[50];
+            static char materialName[512];
             fscanf(file, "%*[^ ] %[^\n]", (char *) materialName);
             selectedMaterialId = find_material(model->materials, mc, materialName);
             break;
@@ -196,6 +196,7 @@ int load_obj_model(const char *path, ModelData *model) {
             break;
         case '\n': ;
             break;
+        case 's':
         case '#': ;
         default:
             fscanf(file, "%*[^\n]\n");

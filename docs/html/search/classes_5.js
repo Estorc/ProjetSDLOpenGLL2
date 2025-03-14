@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['imageframe_0',['ImageFrame',['../class_image_frame.html',1,'']]],
-  ['input_1',['Input',['../struct_input.html',1,'']]],
-  ['inputarea_2',['InputArea',['../class_input_area.html',1,'']]]
+  ['face_0',['Face',['../structFace.html',1,'']]],
+  ['font_1',['Font',['../structFont.html',1,'']]],
+  ['frame_2',['Frame',['../classFrame.html',1,'']]]
 ];

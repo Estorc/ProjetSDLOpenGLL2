@@ -26,9 +26,17 @@ typedef struct Settings {
     bool window_fullscreen;
     u16 resolution;
     bool show_collision_boxes;
+    float master_volume;
+    float music_volume;
+    float sfx_volume;
+    float fov;
+    int shadow_resolution;
+    int shadow_quality;
+    int texture_quality;
+    bool antialiasing;
+    bool vsync;
 } Settings;
 
 void get_resolution(int *width, int *height);
 extern const char resolutionsText[RES_COUNT][256];
-extern Settings settings;
 #endif

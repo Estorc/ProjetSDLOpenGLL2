@@ -42,9 +42,9 @@ class DirectionalLight : public Light {
         const char uniforms[9][20] = {
             "].position",
             "].direction",
-            "].ambient",
-            "].diffuse",
-            "].specular",
+            "].color",
+            "].bias",
+            "].size",
             "].constant",
             "].linear",
             "].quadratic",
@@ -65,20 +65,20 @@ class DirectionalLight : public Light {
         glm_vec3_rotate(dir, to_radians(this->rot[1]), (vec3){0.0f, 1.0f, 0.0f});
         glm_vec3_rotate(dir, to_radians(this->rot[2]), (vec3){0.0f, 0.0f, 1.0f});
 
-        for (int i = 0; i < memoryCaches.shadersCount; i++) {
-            use_shader(memoryCaches.shaderCache[i].shader);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[0], this->globalPos);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[1], dir);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[2], directionalLight->ambient);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[3], directionalLight->diffuse);
-            set_shader_vec3(memoryCaches.shaderCache[i].shader, uniformsName[4], directionalLight->specular);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[5], directionalLight->constant);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[6], directionalLight->linear);
-            set_shader_float(memoryCaches.shaderCache[i].shader, uniformsName[7], directionalLight->quadratic);
-            set_shader_int(memoryCaches.shaderCache[i].shader, uniformsName[8], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
+        for (int i = 0; i < Game.memoryCaches->shadersCount; i++) {
+            use_shader(Game.memoryCaches->shaderCache[i].shader);
+            set_shader_vec3(Game.memoryCaches->shaderCache[i].shader, uniformsName[0], this->globalPos);
+            set_shader_vec3(Game.memoryCaches->shaderCache[i].shader, uniformsName[1], dir);
+            set_shader_vec3(Game.memoryCaches->shaderCache[i].shader, uniformsName[2], directionalLight->color);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[3], directionalLight->bias);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[4], directionalLight->size);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[5], directionalLight->constant);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[6], directionalLight->linear);
+            set_shader_float(Game.memoryCaches->shaderCache[i].shader, uniformsName[7], directionalLight->quadratic);
+            set_shader_int(Game.memoryCaches->shaderCache[i].shader, uniformsName[8], lightsCount[DIRECTIONAL_LIGHT] + lightsCount[POINT_LIGHT]*6 + lightsCount[SPOT_LIGHT]);
         }
 
-        buffers.lightingBuffer.lightings[buffers.lightingBuffer.index++] = this;
+        Game.buffers->lightingBuffer.lightings[Game.buffers->lightingBuffer.index++] = this;
         lightsCount[DIRECTIONAL_LIGHT]++;
     }   
 
@@ -88,9 +88,9 @@ class DirectionalLight : public Light {
         SUPER(get_settings_data, ptr, length);
         DirectionalLight *directionalLight = (DirectionalLight*) this->object;
         void *data[] = {
-            "rgb", "Ambient : ", &directionalLight->ambient,
-            "rgb", "Diffuse : ", &directionalLight->diffuse,
-            "rgb", "Specular : ", &directionalLight->specular,
+            "rgb", "Color : ", &directionalLight->color,
+            "float", "Bias : ", &directionalLight->bias,
+            "float", "Size : ", &directionalLight->size,
             "float", "Constant : ", &directionalLight->constant,
             "float", "Linear : ", &directionalLight->linear,
             "float", "Quadratic : ", &directionalLight->quadratic
@@ -106,24 +106,24 @@ class DirectionalLight : public Light {
         POINTER_CHECK(directionalLight);
 
         if (file) {
-            fscanf(file,"(%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g)\n", 
-                &directionalLight->ambient[0], &directionalLight->ambient[1], &directionalLight->ambient[2], 
-                &directionalLight->diffuse[0], &directionalLight->diffuse[1], &directionalLight->diffuse[2], 
-                &directionalLight->specular[0], &directionalLight->specular[1], &directionalLight->specular[2],
+            fscanf(file,"(%g,%g,%g,%g,%g,%g,%g,%g)\n", 
+                &directionalLight->color[0], &directionalLight->color[1], &directionalLight->color[2], 
+                &directionalLight->bias,
+                &directionalLight->size,
                 &directionalLight->constant,
                 &directionalLight->linear,
                 &directionalLight->quadratic
                 );
         } else {
-            glm_vec3_zero(directionalLight->ambient);
-            glm_vec3_copy(GLM_VEC3_ONE, directionalLight->diffuse);
-            glm_vec3_copy(GLM_VEC3_ONE, directionalLight->specular);
+            glm_vec3_one(directionalLight->color);
+            directionalLight->bias = 0.005f;
+            directionalLight->size = 0.0f;
             directionalLight->constant = 1.0f;
             directionalLight->linear = 0.09f;
             directionalLight->quadratic = 0.032f;
         }
 
-        buffers.lightingBuffer.length++;
+        Game.buffers->lightingBuffer.length++;
         this->type = __type__;
         this::constructor(directionalLight);
         this->flags |= NODE_EDITOR_FLAG;
@@ -132,10 +132,10 @@ class DirectionalLight : public Light {
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         DirectionalLight *directionalLight = (DirectionalLight*) this->object;
-        fprintf(file, "(%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g)",
-            directionalLight->ambient[0], directionalLight->ambient[1], directionalLight->ambient[2], 
-            directionalLight->diffuse[0], directionalLight->diffuse[1], directionalLight->diffuse[2], 
-            directionalLight->specular[0], directionalLight->specular[1], directionalLight->specular[2],
+        fprintf(file, "(%g,%g,%g,%g,%g,%g,%g,%g)",
+            directionalLight->color[0], directionalLight->color[1], directionalLight->color[2], 
+            directionalLight->bias,
+            directionalLight->size,
             directionalLight->constant,
             directionalLight->linear,
             directionalLight->quadratic
@@ -154,7 +154,7 @@ class DirectionalLight : public Light {
      * @note This function is called by the render loop to configure the lighting for the specified camera.
      */
 
-    void configure_lighting(Camera *c, WorldShaders *shaders, u8 *lightsCount) {
+    void configure_lighting(Camera *c, WorldShaders *shaders, DepthMap *depthMap, u8 *lightsCount) {
 
         // Lights and shadows
         mat4 lightProjection;
@@ -177,12 +177,12 @@ class DirectionalLight : public Light {
         glm_vec3_sub(lightPos, lightFront, lightB);
         glm_lookat(lightPos, lightB, lightUp, lightView);
 
-        storageBufferIndex = lightsCount[DIRECTIONAL_LIGHT]*sizeof(mat4)+0*sizeof(mat4);
+        storageBufferIndex = lightsCount[DIRECTIONAL_LIGHT];
         lightsCount[DIRECTIONAL_LIGHT]++;
 
 
 
-        SUPER(configure_lighting, shaders, lightView, lightProjection, storageBufferIndex);
+        SUPER(configure_lighting, shaders, lightView, lightProjection, storageBufferIndex, depthMap);
     }
     
 }

@@ -8,9 +8,9 @@ Functions for file operations and error handling.
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{group__OSIO_ga1e0dbb3bb1b18d84ab1bafae371457a1}{osio\+\_\+save\+\_\+file}} (char \texorpdfstring{$\ast$}{*}path, char \texorpdfstring{$\ast$}{*}filter)
+int \mbox{\hyperlink{group__OSIO_ga13b0479e5e15d717ef71927639b2822f}{osio\+\_\+save\+\_\+file}} (char \texorpdfstring{$\ast$}{*}path, char \texorpdfstring{$\ast$}{*}relative\+Path, char \texorpdfstring{$\ast$}{*}filter)
 \begin{DoxyCompactList}\small\item\em Saves a file to the specified path with a given filter. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{group__OSIO_ga3aaef1851dc9dcf72e46b7f6d1e34fa3}{osio\+\_\+open\+\_\+file}} (char \texorpdfstring{$\ast$}{*}path, char \texorpdfstring{$\ast$}{*}filter)
+int \mbox{\hyperlink{group__OSIO_ga054945d77398e3be399fdb8398d0f4ef}{osio\+\_\+open\+\_\+file}} (char \texorpdfstring{$\ast$}{*}path, char \texorpdfstring{$\ast$}{*}relative\+Path, char \texorpdfstring{$\ast$}{*}filter)
 \begin{DoxyCompactList}\small\item\em Opens a file from the specified path with a given filter. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{group__OSIO_gadc303caa72b5aed4b43ffa8f34f0375f}{osio\+\_\+print\+\_\+error}} (char \texorpdfstring{$\ast$}{*}msg)
 \begin{DoxyCompactList}\small\item\em Prints an error message to the standard error output. \end{DoxyCompactList}\item 
@@ -46,11 +46,11 @@ This function converts the absolute file path specified by the {\ttfamily path} 
 \begin{DoxyReturn}{Returns}
 int Returns 0 on success, or a non-\/zero error code on failure. 
 \end{DoxyReturn}
-\Hypertarget{group__OSIO_ga3aaef1851dc9dcf72e46b7f6d1e34fa3}\label{group__OSIO_ga3aaef1851dc9dcf72e46b7f6d1e34fa3} 
+\Hypertarget{group__OSIO_ga054945d77398e3be399fdb8398d0f4ef}\label{group__OSIO_ga054945d77398e3be399fdb8398d0f4ef} 
 \index{OSIO File Operations@{OSIO File Operations}!osio\_open\_file@{osio\_open\_file}}
 \index{osio\_open\_file@{osio\_open\_file}!OSIO File Operations@{OSIO File Operations}}
 \doxysubsubsection{\texorpdfstring{osio\_open\_file()}{osio\_open\_file()}}
-{\footnotesize\ttfamily int osio\+\_\+open\+\_\+file (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filter }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int osio\+\_\+open\+\_\+file (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{char \texorpdfstring{$\ast$}{*}}]{relative\+Path,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filter }\end{DoxyParamCaption})}
 
 
 
@@ -61,6 +61,8 @@ This function attempts to open a file from the location specified by the {\ttfam
 
 \begin{DoxyParams}{Parameters}
 {\em path} & The path from where the file should be opened. \\
+\hline
+{\em relative\+Path} & The relative path to the file. \\
 \hline
 {\em filter} & The filter to apply when opening the file. \\
 \hline
@@ -88,11 +90,11 @@ This function prints the error message specified by the {\ttfamily msg} paramete
 \begin{DoxyReturn}{Returns}
 int Returns 0 on success, or a non-\/zero error code on failure. 
 \end{DoxyReturn}
-\Hypertarget{group__OSIO_ga1e0dbb3bb1b18d84ab1bafae371457a1}\label{group__OSIO_ga1e0dbb3bb1b18d84ab1bafae371457a1} 
+\Hypertarget{group__OSIO_ga13b0479e5e15d717ef71927639b2822f}\label{group__OSIO_ga13b0479e5e15d717ef71927639b2822f} 
 \index{OSIO File Operations@{OSIO File Operations}!osio\_save\_file@{osio\_save\_file}}
 \index{osio\_save\_file@{osio\_save\_file}!OSIO File Operations@{OSIO File Operations}}
 \doxysubsubsection{\texorpdfstring{osio\_save\_file()}{osio\_save\_file()}}
-{\footnotesize\ttfamily int osio\+\_\+save\+\_\+file (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filter }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int osio\+\_\+save\+\_\+file (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{char \texorpdfstring{$\ast$}{*}}]{relative\+Path,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filter }\end{DoxyParamCaption})}
 
 
 

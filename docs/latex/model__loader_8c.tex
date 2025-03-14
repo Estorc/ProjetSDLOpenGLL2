@@ -6,45 +6,50 @@
 {\ttfamily \#include "{}../shader.\+h"{}}\newline
 {\ttfamily \#include "{}obj\+\_\+loader.\+h"{}}\newline
 {\ttfamily \#include "{}../../memory.\+h"{}}\newline
-Include dependency graph for model\+\_\+loader.\+c\+:
-% FIG 0
+Include dependency graph for model\+\_\+loader.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{model__loader_8c__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \mbox{\hyperlink{model__loader_8c_afdd6a4c05e4671fe6b1c13a790e583a8}{create\+\_\+obj\+\_\+vao}} (\mbox{\hyperlink{struct_model_object_data}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj)
-\begin{DoxyCompactList}\small\item\em Creates and initializes a \doxylink{group___model_handling_ga1442228863e7dc88866eea321b3a738f}{Vertex} Array \doxylink{struct_object}{Object} (\doxylink{group___model_handling_ga8c19ebcccdb657c785eb1cf1b0c5223c}{VAO}) for a given 3D object, including the necessary vertex buffer data. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{model__loader_8c_ae2bf491d413c687b07da2e22ec5c2bf9}{load\+\_\+model}} (const char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{struct_model_data}{Model\+Data}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}model\+Ptr)
+static void \mbox{\hyperlink{model__loader_8c_afdd6a4c05e4671fe6b1c13a790e583a8}{create\+\_\+obj\+\_\+vao}} (\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj)
+\begin{DoxyCompactList}\small\item\em Creates and initializes a Vertex Array \doxylink{structObject}{Object} (VAO) for a given 3D object, including the necessary vertex buffer data. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{model__loader_8c_ae2bf491d413c687b07da2e22ec5c2bf9}{load\+\_\+model}} (const char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}model\+Ptr)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{model__loader_8c_afdd6a4c05e4671fe6b1c13a790e583a8}\index{model\_loader.c@{model\_loader.c}!create\_obj\_vao@{create\_obj\_vao}}
+\Hypertarget{model__loader_8c_afdd6a4c05e4671fe6b1c13a790e583a8}\label{model__loader_8c_afdd6a4c05e4671fe6b1c13a790e583a8} 
+\index{model\_loader.c@{model\_loader.c}!create\_obj\_vao@{create\_obj\_vao}}
 \index{create\_obj\_vao@{create\_obj\_vao}!model\_loader.c@{model\_loader.c}}
 \doxysubsubsection{\texorpdfstring{create\_obj\_vao()}{create\_obj\_vao()}}
-{\footnotesize\ttfamily \label{model__loader_8c_afdd6a4c05e4671fe6b1c13a790e583a8} 
-static void create\+\_\+obj\+\_\+vao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_model_object_data}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}}]{obj}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+{\footnotesize\ttfamily static void create\+\_\+obj\+\_\+vao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}}]{obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
 
 
-Creates and initializes a \doxylink{group___model_handling_ga1442228863e7dc88866eea321b3a738f}{Vertex} Array \doxylink{struct_object}{Object} (\doxylink{group___model_handling_ga8c19ebcccdb657c785eb1cf1b0c5223c}{VAO}) for a given 3D object, including the necessary vertex buffer data. 
+Creates and initializes a Vertex Array \doxylink{structObject}{Object} (VAO) for a given 3D object, including the necessary vertex buffer data. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em obj} & \{Model\+Object\+Data\texorpdfstring{$\ast$}{*}\} A pointer to the \doxylink{struct_model_object_data}{Model\+Object\+Data} structure for which the \doxylink{group___model_handling_ga8c19ebcccdb657c785eb1cf1b0c5223c}{VAO} will be created.\\
+{\em obj} & \{Model\+Object\+Data\texorpdfstring{$\ast$}{*}\} A pointer to the \doxylink{structModelObjectData}{Model\+Object\+Data} structure for which the VAO will be created.\\
 \hline
 \end{DoxyParams}
-This function generates a \doxylink{group___model_handling_ga8c19ebcccdb657c785eb1cf1b0c5223c}{VAO} and a \doxylink{group___model_handling_ga1442228863e7dc88866eea321b3a738f}{Vertex} Buffer \doxylink{struct_object}{Object} (\doxylink{group___model_handling_ga39cb0021ea168181a8fe7c12bc18eb92}{VBO}) for the specified \doxylink{struct_model_object_data}{Model\+Object\+Data}. It binds the \doxylink{group___model_handling_ga39cb0021ea168181a8fe7c12bc18eb92}{VBO} and uploads vertex data, including positions, normals, texture coordinates, tangents, and bitangents, to the GPU. The function also sets up the vertex attribute pointers to describe the layout of the vertex data in the \doxylink{group___model_handling_ga39cb0021ea168181a8fe7c12bc18eb92}{VBO}.
+This function generates a VAO and a Vertex Buffer \doxylink{structObject}{Object} (VBO) for the specified \doxylink{structModelObjectData}{Model\+Object\+Data}. It binds the VBO and uploads vertex data, including positions, normals, texture coordinates, tangents, and bitangents, to the GPU. The function also sets up the vertex attribute pointers to describe the layout of the vertex data in the VBO.
 
 Important Notes\+:
 \begin{DoxyItemize}
 \item The function assumes that the obj-\/\texorpdfstring{$>$}{>}faces\+Vertex array has been populated with valid vertex data prior to calling this function.
-\item The \doxylink{group___model_handling_ga8c19ebcccdb657c785eb1cf1b0c5223c}{VAO} generated by this function is stored in the \doxylink{struct_model_object_data}{Model\+Object\+Data} structure, allowing for easy rendering of the object in subsequent draw calls.
-\item Make sure to bind the \doxylink{group___model_handling_ga8c19ebcccdb657c785eb1cf1b0c5223c}{VAO} when rendering this object to ensure the correct vertex data is used.
+\item The VAO generated by this function is stored in the \doxylink{structModelObjectData}{Model\+Object\+Data} structure, allowing for easy rendering of the object in subsequent draw calls.
+\item Make sure to bind the VAO when rendering this object to ensure the correct vertex data is used.
 \end{DoxyItemize}
 
-Example Usage\+: create\+\_\+obj\+\_\+vao(\&object); \Hypertarget{model__loader_8c_ae2bf491d413c687b07da2e22ec5c2bf9}\index{model\_loader.c@{model\_loader.c}!load\_model@{load\_model}}
+Example Usage\+: create\+\_\+obj\+\_\+vao(\&object); \Hypertarget{model__loader_8c_ae2bf491d413c687b07da2e22ec5c2bf9}\label{model__loader_8c_ae2bf491d413c687b07da2e22ec5c2bf9} 
+\index{model\_loader.c@{model\_loader.c}!load\_model@{load\_model}}
 \index{load\_model@{load\_model}!model\_loader.c@{model\_loader.c}}
 \doxysubsubsection{\texorpdfstring{load\_model()}{load\_model()}}
-{\footnotesize\ttfamily \label{model__loader_8c_ae2bf491d413c687b07da2e22ec5c2bf9} 
-int load\+\_\+model (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{, }\item[{\mbox{\hyperlink{struct_model_data}{Model\+Data}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{model\+Ptr}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int load\+\_\+model (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{\mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{model\+Ptr }\end{DoxyParamCaption})}
 

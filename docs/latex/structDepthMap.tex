@@ -16,14 +16,16 @@ Represents a depth map used in rendering.
 \item 
 \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{structDepthMap_a1bd1fa2d9e63d28a12067577865ed072}{texture}}
 \item 
-GLuint \mbox{\hyperlink{structDepthMap_a6da686afaa0d4c63c8c5e9afd6b04975}{ubo}}
+GLuint \mbox{\hyperlink{structDepthMap_ac1d7438c7cab13d6dd4b81c89821b749}{tbo}}
+\item 
+\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{structDepthMap_a0745a63209e05ef6ea5c94af4fd2c455}{matrix\+Texture}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Represents a depth map used in rendering. 
 
-This structure encapsulates the necessary components for a depth map, including a frame buffer object (FBO), a texture map, and a uniform buffer object (UBO). 
+This structure encapsulates the necessary components for a depth map, including a frame buffer object (FBO), a texture map, and a texture buffer object (TBO). 
 
 \doxysubsection{Member Data Documentation}
 \Hypertarget{structDepthMap_a9c637c06d0643f13863e225b7c06928b}\label{structDepthMap_a9c637c06d0643f13863e225b7c06928b} 
@@ -32,19 +34,25 @@ This structure encapsulates the necessary components for a depth map, including 
 \doxysubsubsection{\texorpdfstring{frameBuffer}{frameBuffer}}
 {\footnotesize\ttfamily \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}} Depth\+Map\+::frame\+Buffer}
 
-The frame buffer object for the depth map. \Hypertarget{structDepthMap_a1bd1fa2d9e63d28a12067577865ed072}\label{structDepthMap_a1bd1fa2d9e63d28a12067577865ed072} 
+The frame buffer object for the depth map. \Hypertarget{structDepthMap_a0745a63209e05ef6ea5c94af4fd2c455}\label{structDepthMap_a0745a63209e05ef6ea5c94af4fd2c455} 
+\index{DepthMap@{DepthMap}!matrixTexture@{matrixTexture}}
+\index{matrixTexture@{matrixTexture}!DepthMap@{DepthMap}}
+\doxysubsubsection{\texorpdfstring{matrixTexture}{matrixTexture}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} Depth\+Map\+::matrix\+Texture}
+
+The texture map for the light matrices. \Hypertarget{structDepthMap_ac1d7438c7cab13d6dd4b81c89821b749}\label{structDepthMap_ac1d7438c7cab13d6dd4b81c89821b749} 
+\index{DepthMap@{DepthMap}!tbo@{tbo}}
+\index{tbo@{tbo}!DepthMap@{DepthMap}}
+\doxysubsubsection{\texorpdfstring{tbo}{tbo}}
+{\footnotesize\ttfamily GLuint Depth\+Map\+::tbo}
+
+The texture buffer object for the depth map. \Hypertarget{structDepthMap_a1bd1fa2d9e63d28a12067577865ed072}\label{structDepthMap_a1bd1fa2d9e63d28a12067577865ed072} 
 \index{DepthMap@{DepthMap}!texture@{texture}}
 \index{texture@{texture}!DepthMap@{DepthMap}}
 \doxysubsubsection{\texorpdfstring{texture}{texture}}
 {\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} Depth\+Map\+::texture}
 
-The texture map for the depth map. \Hypertarget{structDepthMap_a6da686afaa0d4c63c8c5e9afd6b04975}\label{structDepthMap_a6da686afaa0d4c63c8c5e9afd6b04975} 
-\index{DepthMap@{DepthMap}!ubo@{ubo}}
-\index{ubo@{ubo}!DepthMap@{DepthMap}}
-\doxysubsubsection{\texorpdfstring{ubo}{ubo}}
-{\footnotesize\ttfamily GLuint Depth\+Map\+::ubo}
-
-The uniform buffer object for the depth map. 
+The texture map for the depth map. 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

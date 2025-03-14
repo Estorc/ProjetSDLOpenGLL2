@@ -1,20 +1,25 @@
-Node[m0,0,0r0,0,0s1,1,1a1v1]:1
+Node[m0,0,0r0,0,0s1,1,1a1v1]:2
+Node:4
+Skybox(assets/textures/skybox/right.jpg,assets/textures/skybox/left.jpg,assets/textures/skybox/top.jpg,assets/textures/skybox/bottom.jpg,assets/textures/skybox/front.jpg,assets/textures/skybox/back.jpg)
+PointLight(60,50,40,0.001,0,1,0.09,0.032)[m-10,6,9]
+Model(assets/models/settings_bg/settings_bg.obj)[s5,5,5]
+Camera(1){NULL,st_camera,NULL}[m0,3,5]
 Frame(0w,0h,100w,100h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):2
-Frame(0w,0h,100w,80h,ctn):3
-ControlFrame(2w,10p,96w,50p,lt):2
-ControlFrame(0w,0h,10w,100h,lt):1
+ControlFrame(0w,0h,100w,80h,ctn):3
+ControlFrame(2w,10p,96w,50p,ltn):2
+ControlFrame(0w,0h,10w,100h,ltn):1
 CheckBox{st_cast_shadows_init,NULL,st_signal}
 ControlFrame(10w,0h,90w,100h,lt):1
 Label("Projeter les ombres",lc)
-ControlFrame(2w,65p,96w,50p,lt):2
-ControlFrame(0w,0h,10w,100h,lt):1
+ControlFrame(2w,65p,96w,50p,ltn):2
+ControlFrame(0w,0h,10w,100h,ltn):1
 CheckBox{st_fullscreen_init,NULL,st_fullscreen_signal}
-ControlFrame(10w,0h,90w,100h,lt):1
+ControlFrame(10w,0h,90w,100h,ltn):1
 Label("Mode plein écran",lc)
-ControlFrame(2w,120p,96w,50p,lt):2
-ControlFrame(0w,0h,50w,100h,lt):1
+ControlFrame(2w,120p,96w,50p,ltn):2
+ControlFrame(0w,0h,50w,100h,ltn):1
 Label("Résolution : ",lc)
-ControlFrame(50w,0h,50w,100h,lt):1
+ControlFrame(50w,0h,50w,100h,ltn):1
 SelectList{NULL,st_res,NULL}
 Frame(0w,0h,100w,20h,cbn):4
 Frame(0.5w,0h,24w,90h,lcn):1
@@ -27,5 +32,5 @@ Frame(12.5w,0h,24w,90h,ccn):1
 Button{NULL,NULL,settings_go_to_graphics}:1
 Label("Graphics",cc)
 Frame(-0.5w,0h,24w,90h,rcn):1
-Button{NULL,NULL,return_to_main_menu}:1
+Button{NULL,NULL,settings_return_to_main_menu}:1
 Label("Quitter",cc)

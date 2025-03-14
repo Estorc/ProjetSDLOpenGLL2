@@ -23,16 +23,28 @@ class Model : public Node {
     __containerType__ Node *
     public:
 
-    void constructor(struct Model *model) {
-        this->object = model;
+    void constructor(const char *path) {
         this->type = __type__;
+
+        Model *model;
+        model = malloc(sizeof(Model));
+        load_model(path, &model->data);
+
+        this->object = model;
         SUPER(initialize_node);
         if (model) {
             model->flags = MODEL_FLAG_NONE;
         }
     }
 
-    
+    void load(FILE *file) {
+
+        char path[100] = "";
+        if (file) {
+            fscanf(file,"(%100[^)])", path);
+        }
+        this::constructor(path);
+    }
 
     void get_settings_data(void *** ptr, int * length) {
         SUPER(get_settings_data, ptr, length);
@@ -45,26 +57,12 @@ class Model : public Node {
         *length += sizeof(data)/sizeof(void *);
     }
 
-    void load(FILE *file) {
-        Model *model;
-        model = malloc(sizeof(Model));
-        if (file) {
-            char path[100];
-            fscanf(file,"(%100[^)])", path);
-            load_model(path, &model->data);
-        } else {
-            model->data = NULL;
-        }
-        this->type = __type__;
-        this::constructor(model);
-    }
-
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         Model *model = (Model*) this->object;
-        for (int i = 0; i < memoryCaches.modelsCount; i++) {
-            if (memoryCaches.modelCache[i].model == model->data) {
-                fprintf(file, "(%s)", memoryCaches.modelCache[i].modelName);
+        for (int i = 0; i < Game.memoryCaches->modelsCount; i++) {
+            if (Game.memoryCaches->modelCache[i].model == model->data) {
+                fprintf(file, "(%s)", Game.memoryCaches->modelCache[i].modelName);
                 break;
             }
         }

@@ -1,32 +1,37 @@
 \doxysection{src/io/model\+\_\+loaders/obj\+\_\+loader.h File Reference}
 \hypertarget{obj__loader_8h}{}\label{obj__loader_8h}\index{src/io/model\_loaders/obj\_loader.h@{src/io/model\_loaders/obj\_loader.h}}
-This graph shows which files directly or indirectly include this file\+:
-% FIG 0
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{obj__loader_8h__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{struct_face}{Face}}
+struct \mbox{\hyperlink{structFace}{Face}}
 \begin{DoxyCompactList}\small\item\em Structure representing a face of a 3D model. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{struct_loading_model_buffer}{Loading\+Model\+Buffer}}
+struct \mbox{\hyperlink{structLoadingModelBuffer}{Loading\+Model\+Buffer}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{group___obj_loader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\+\_\+\+VERTEX\+\_\+\+PER\+\_\+\+FACE}}~10
+\#define \mbox{\hyperlink{group__ObjLoader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\+\_\+\+VERTEX\+\_\+\+PER\+\_\+\+FACE}}~10
 \begin{DoxyCompactList}\small\item\em Maximum number of vertices per face. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef vec3 \mbox{\hyperlink{group___obj_loader_ga61ad7a469496e30dbfb0a434e8c9545b}{Normal}}
+typedef vec3 \mbox{\hyperlink{group__ObjLoader_gabb5b863a4c7a7cc7d18a288c908b9f0b}{Normal}}
 \begin{DoxyCompactList}\small\item\em Alias for vec3 representing a normal vector. \end{DoxyCompactList}\item 
-typedef vec2 \mbox{\hyperlink{group___obj_loader_gaad2ec38f49a75b25f408e542072fe088}{Texture\+Vertex}}
+typedef vec2 \mbox{\hyperlink{group__ObjLoader_ga035e3505138fdf49eb7ebdcfc5d5a1fc}{Texture\+Vertex}}
 \begin{DoxyCompactList}\small\item\em Alias for vec2 representing a texture vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{group___obj_loader_ga5a4ede319c6c281e805f900f33a7451b}{malloc\+\_\+obj}} (\mbox{\hyperlink{struct_model_object_data}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{struct_loading_model_buffer}{Loading\+Model\+Buffer}} \texorpdfstring{$\ast$}{*}buffer, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vim, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} fim, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vnim, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vtim)
-\begin{DoxyCompactList}\small\item\em Allocates memory for an \doxylink{struct_model_object_data}{Model\+Object\+Data}\textquotesingle{}s vertex, face, normal, and texture data. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group___obj_loader_ga183823564439c36d87aac604a9063c59}{close\+\_\+realloc\+\_\+obj}} (\mbox{\hyperlink{struct_model_object_data}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{struct_loading_model_buffer}{Loading\+Model\+Buffer}} \texorpdfstring{$\ast$}{*}buffer, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vi, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} fi, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vni, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vti)
-\begin{DoxyCompactList}\small\item\em Cleans up and reallocates the memory for the vertex data and faces of a 3D object, and generates the \doxylink{group___model_handling_ga1442228863e7dc88866eea321b3a738f}{Vertex} Array \doxylink{struct_object}{Object} (\doxylink{group___model_handling_ga8c19ebcccdb657c785eb1cf1b0c5223c}{VAO}) for rendering. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{group___obj_loader_gad1c67a7fd502c28832fa5cf248696814}{load\+\_\+obj\+\_\+model}} (const char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{struct_model_data}{Model\+Data}} \texorpdfstring{$\ast$}{*}model\+Ptr)
+int \mbox{\hyperlink{group__ObjLoader_ga5a4ede319c6c281e805f900f33a7451b}{malloc\+\_\+obj}} (\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{structLoadingModelBuffer}{Loading\+Model\+Buffer}} \texorpdfstring{$\ast$}{*}buffer, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vim, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} fim, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vnim, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vtim)
+\begin{DoxyCompactList}\small\item\em Allocates memory for an \doxylink{structModelObjectData}{Model\+Object\+Data}\textquotesingle{}s vertex, face, normal, and texture data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ObjLoader_ga183823564439c36d87aac604a9063c59}{close\+\_\+realloc\+\_\+obj}} (\mbox{\hyperlink{structModelObjectData}{Model\+Object\+Data}} \texorpdfstring{$\ast$}{*}obj, \mbox{\hyperlink{structLoadingModelBuffer}{Loading\+Model\+Buffer}} \texorpdfstring{$\ast$}{*}buffer, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vi, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} fi, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vni, \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} vti)
+\begin{DoxyCompactList}\small\item\em Cleans up and reallocates the memory for the vertex data and faces of a 3D object, and generates the Vertex Array \doxylink{structObject}{Object} (VAO) for rendering. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__ObjLoader_gad1c67a7fd502c28832fa5cf248696814}{load\+\_\+obj\+\_\+model}} (const char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*}model\+Ptr)
 \begin{DoxyCompactList}\small\item\em Loads a 3D model from an OBJ file, including its associated materials, vertices, normals, and texture coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}

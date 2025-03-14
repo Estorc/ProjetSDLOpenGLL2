@@ -6,7 +6,7 @@
 
 NEW_SCRIPT(open_close_menu)
 	GET_READY_PARAMETERS();
-    if (input.released_keys & KEY_MENU) {
+    if (Game.input->released_keys & KEY_MENU) {
         this->children[0]->flags ^= NODE_ACTIVE | NODE_VISIBLE;
     }
 

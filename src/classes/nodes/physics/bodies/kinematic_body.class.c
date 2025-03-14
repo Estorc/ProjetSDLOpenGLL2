@@ -65,8 +65,8 @@ class KinematicBody : public Body {
         for (int i = 0; i < kinematicBody->length; i++) {
             check_collisions(kinematicBody->collisionsShapes[i]);
         }
-        memcpy(&buffers.collisionBuffer.collisionsShapes[buffers.collisionBuffer.index], kinematicBody->collisionsShapes, kinematicBody->length * sizeof(kinematicBody->collisionsShapes[0]));
-        buffers.collisionBuffer.index += kinematicBody->length;
+        memcpy(&Game.buffers->collisionBuffer.collisionsShapes[Game.buffers->collisionBuffer.index], kinematicBody->collisionsShapes, kinematicBody->length * sizeof(kinematicBody->collisionsShapes[0]));
+        Game.buffers->collisionBuffer.index += kinematicBody->length;
     }
 
     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
@@ -86,7 +86,7 @@ class KinematicBody : public Body {
         this::constructor(kinematicBody);
 
         kinematicBody->collisionsShapes = malloc(sizeof(Node *) * children_count);
-        buffers.collisionBuffer.length += children_count;
+        Game.buffers->collisionBuffer.length += children_count;
         POINTER_CHECK(kinematicBody->collisionsShapes);
         
         for (int i = 0; i < children_count; i++) {

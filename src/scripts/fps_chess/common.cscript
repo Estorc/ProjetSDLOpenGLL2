@@ -1,0 +1,39 @@
+#include "chessboard.h"
+
+void set_piece_skin(Node *piece, int flags) {
+    char skinPath[100] = "assets/models/FPSChess/Pieces/";
+    Model *skin = piece->object;
+    if ((flags & 0b110000) == FC_WHITE) {
+        strcat(skinPath, "G");
+    } else {
+        strcat(skinPath, "S");
+    }
+    switch (flags & 0b1111) {
+        case FC_PAWN:
+            strcat(skinPath, "Pawn");
+            break;
+        case FC_ROOK:
+            strcat(skinPath, "Rook");
+            break;
+        case FC_KNIGHT:
+            strcat(skinPath, "Knight");
+            break;
+        case FC_BISHOP:
+            strcat(skinPath, "Bishop");
+            break;
+        case FC_QUEEN:
+            strcat(skinPath, "Queen");
+            break;
+        case FC_KING:
+            strcat(skinPath, "King");
+            break;
+        default:
+            break;
+    }
+    strcat(skinPath, ".obj");
+    if ((flags & 0b1111) == FC_EMPTY) {
+        piece->flags &= ~NODE_VISIBLE;
+        return;
+    }
+    load_model(skinPath, &skin->data);
+}

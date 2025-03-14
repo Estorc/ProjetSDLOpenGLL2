@@ -2,9 +2,11 @@
 \hypertarget{point__light_8class_8c}{}\label{point__light_8class_8c}\index{src/classes/nodes/lights/point\_light.class.c@{src/classes/nodes/lights/point\_light.class.c}}
 
 
-This file contains the implementation of the \doxylink{class_point_light}{Point\+Light} class.  
+This file contains the implementation of the \doxylink{classPointLight}{Point\+Light} class.  
 
 
+{\ttfamily \#include "{}raptiquax.\+h"{}}\newline
+{\ttfamily \#include "{}classes/classes.\+h"{}}\newline
 {\ttfamily \#include "{}math/math\+\_\+util.\+h"{}}\newline
 {\ttfamily \#include "{}io/model.\+h"{}}\newline
 {\ttfamily \#include "{}render/framebuffer.\+h"{}}\newline
@@ -12,21 +14,26 @@ This file contains the implementation of the \doxylink{class_point_light}{Point\
 {\ttfamily \#include "{}render/lighting.\+h"{}}\newline
 {\ttfamily \#include "{}render/depth\+\_\+map.\+h"{}}\newline
 {\ttfamily \#include "{}buffer.\+h"{}}\newline
-Include dependency graph for point\+\_\+light.\+class.\+c\+:
-% FIG 0
+Include dependency graph for point\+\_\+light.\+class.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{point__light_8class_8c__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{class_point_light}{Point\+Light}}
+struct \mbox{\hyperlink{classPointLight}{Point\+Light}}
 \begin{DoxyCompactList}\small\item\em Represents a point light source. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-This file contains the implementation of the \doxylink{class_point_light}{Point\+Light} class. 
+This file contains the implementation of the \doxylink{classPointLight}{Point\+Light} class. 
 
-This source file contains the implementation details for the \doxylink{class_point_light}{Point\+Light} class, which is used to represent a point light source in a 3D scene. The \doxylink{class_point_light}{Point\+Light} class provides functionalities to set up and manage the properties of a point light, such as its position, color, intensity, and attenuation factors.
+This source file contains the implementation details for the \doxylink{classPointLight}{Point\+Light} class, which is used to represent a point light source in a 3D scene. The \doxylink{classPointLight}{Point\+Light} class provides functionalities to set up and manage the properties of a point light, such as its position, color, intensity, and attenuation factors.
 
-The \doxylink{class_point_light}{Point\+Light} class is designed to be used in conjunction with Open\+GL to render realistic lighting effects in a 3D environment.
+The \doxylink{classPointLight}{Point\+Light} class is designed to be used in conjunction with Open\+GL to render realistic lighting effects in a 3D environment.
 
 \begin{DoxyAuthor}{Author}
 Loup Picault 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['window_20management_0',['Window Management',['../group___window_management.html',1,'']]]
+  ['window_20management_0',['Window Management',['../group__WindowManagement.html',1,'']]]
 ];

@@ -91,7 +91,7 @@ typedef struct {
  * This structure holds caches for cube maps, textures, models, and shaders,
  * along with their respective counts.
  */
-typedef struct {
+typedef struct MemoryCaches {
     CubeMapCache *cubeMapCache; /**< Pointer to the array of cube map caches. */
     int cubeMapCount; /**< Number of cube map caches. */
     TextureCache *textureCache; /**< Pointer to the array of texture caches. */
@@ -106,11 +106,6 @@ typedef struct {
     int chunkCount; /**< Number of sound effect caches. */
 
 } MemoryCaches;
-
-/**
- * @brief External variable representing the memory caches.
- */
-extern MemoryCaches memoryCaches;
 
 /**
  * @brief Initializes the memory cache.

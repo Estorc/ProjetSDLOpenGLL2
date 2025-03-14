@@ -3,6 +3,14 @@
 #ifndef STRINGIO_H
 #define STRINGIO_H
 
+#ifdef _WIN32
+#define strtok_s strtok_s
+#define strtok_r strtok_s
+#else
+#define strtok_s strtok_r
+#define strtok_r strtok_r
+#endif
+
 /**
  * @file stringio.h
  * @brief Provides utility functions for string and file operations.
@@ -17,6 +25,20 @@
  * @brief Utility functions for string and file operations.
  * @{
  */
+
+/**
+ * @brief Reads the contents of a file into a string.
+ * 
+ * This function reads the contents of a file that is already open and
+ * returns them as a dynamically allocated string. The caller is responsible
+ * for freeing the allocated memory.
+ * 
+ * @param file The file to read from.
+ * @return A pointer to the dynamically allocated string containing the file contents.
+ * @note The caller is responsible for freeing the allocated memory.
+ * @note The file must be open and readable.
+ */
+ char * read_filef(FILE * file);
 
 /**
  * @brief Reads the contents of a file into a string.

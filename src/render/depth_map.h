@@ -3,12 +3,9 @@
 #ifndef DEPTH_MAP_H
 #define DEPTH_MAP_H
 
-#define SHADOW_WIDTH 1024
-#define SHADOW_HEIGHT 1024
 #define NUM_DIRECTIONAL_LIGHTS 10
-#define NUM_POINT_LIGHTS 12
+#define NUM_POINT_LIGHTS 10
 #define NUM_SPOT_LIGHTS 10
-#define MAX_SHADOW 30
 
 struct WorldShaders;
 
@@ -24,12 +21,13 @@ struct WorldShaders;
  * @brief Represents a depth map used in rendering.
  *
  * This structure encapsulates the necessary components for a depth map,
- * including a frame buffer object (FBO), a texture map, and a uniform buffer object (UBO).
+ * including a frame buffer object (FBO), a texture map, and a texture buffer object (TBO).
  */
 typedef struct DepthMap {
-    FBO frameBuffer; /**< The frame buffer object for the depth map. */
+    FBO frameBuffer[NUM_DIRECTIONAL_LIGHTS + NUM_POINT_LIGHTS * 6 + NUM_SPOT_LIGHTS]; /**< The frame buffer object for the depth map. */
     TextureMap texture; /**< The texture map for the depth map. */
-    GLuint ubo; /**< The uniform buffer object for the depth map. */
+    GLuint tbo; /**< The texture buffer object for the depth map. */
+    TextureMap matrixTexture; /**< The texture map for the light matrices. */
 } DepthMap;
 
 /**

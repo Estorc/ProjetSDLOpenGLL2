@@ -29,9 +29,14 @@ class CapsuleCShape : public CShape {
     __containerType__ Node *
     public:
 
-    void constructor(struct CapsuleCollisionShape *capsuleCollisionShape) {
-        this->object = capsuleCollisionShape;
+    void constructor() {
         this->type = __type__;
+
+        CapsuleCollisionShape *capsuleCollisionShape;
+        capsuleCollisionShape = malloc(sizeof(CapsuleCollisionShape));
+        POINTER_CHECK(capsuleCollisionShape);
+
+        this->object = capsuleCollisionShape;
         SUPER(initialize_node);
     }
 
@@ -42,11 +47,7 @@ class CapsuleCShape : public CShape {
     }
 
     void load() {
-        CapsuleCollisionShape *capsuleCollisionShape;
-        capsuleCollisionShape = malloc(sizeof(CapsuleCollisionShape));
-        POINTER_CHECK(capsuleCollisionShape);
-        this->type = __type__;
-        this::constructor(capsuleCollisionShape);
+        this::constructor();
     }
 
     void save(FILE *file) {

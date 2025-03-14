@@ -1,15 +1,15 @@
 <map id="Area" name="Area">
-<area shape="rect" id="Node000001" title="Represents an area with collision shapes and nodes." alt="" coords="170,200,222,225"/>
-<area shape="rect" id="Node000002" href="$classPhysicalNode.html" title=" " alt="" coords="141,97,251,123"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,137,199,200,193,200,193,137"/>
-<area shape="rect" id="Node000003" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="253,7,309,33"/>
-<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="240,30,180,40,113,55,53,75,31,87,17,99,8,119,13,137,29,153,54,167,114,190,170,204,169,209,113,195,51,172,26,157,9,139,3,119,12,96,28,82,51,70,111,50,179,35,239,24"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="263,44,209,99,205,95,259,41"/>
-<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="324,10,332,13,336,20,327,29,310,31,309,26,325,24,331,20,329,17,322,15"/>
-<area shape="rect" id="Node000004" href="$unionBehaviorParameter.html" title=" " alt="" coords="276,97,423,123"/>
-<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="276,46,276,60,280,72,292,85,309,95,306,100,289,90,275,75,270,61,271,46"/>
-<area shape="rect" id="Node000005" href="$structDistanceNode.html" title="Represents a node and its distance." alt="" coords="447,97,561,123"/>
-<area shape="poly" id="edge8_Node000005_Node000003" title=" " alt="" coords="323,33,389,56,480,95,478,100,387,61,322,38"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="335,86,318,60,293,35,297,31,322,57,339,83"/>
-<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="457,130,223,205,221,200,455,124"/>
+<area shape="rect" id="Node000001" title="Represents an area with collision shapes and nodes." alt="" coords="169,185,221,211"/>
+<area shape="rect" id="Node000002" href="$classPhysicalNode.html" title=" " alt="" coords="140,97,251,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,137,198,185,193,185,193,137"/>
+<area shape="rect" id="Node000003" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="247,7,303,33"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="234,30,175,40,109,56,51,75,30,87,16,99,8,118,14,134,30,149,54,161,114,180,170,190,169,196,113,185,52,166,27,153,9,137,3,118,12,96,27,82,49,71,108,51,174,35,233,25"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="257,45,208,99,204,95,254,41"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="318,10,326,13,330,20,321,29,304,31,303,26,319,24,325,20,323,17,316,15"/>
+<area shape="rect" id="Node000004" href="$unionBehaviorAttribute.html" title=" " alt="" coords="275,97,412,123"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="270,46,270,60,274,72,286,85,303,95,300,100,283,90,269,75,264,61,265,46"/>
+<area shape="rect" id="Node000005" href="$structCollectedNode.html" title="Represents a node collected by an area." alt="" coords="437,97,554,123"/>
+<area shape="poly" id="edge8_Node000005_Node000003" title=" " alt="" coords="317,31,391,56,475,95,472,100,389,61,315,36"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="329,86,312,60,287,35,291,31,316,57,333,83"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="442,129,222,192,221,187,441,124"/>
 </map>

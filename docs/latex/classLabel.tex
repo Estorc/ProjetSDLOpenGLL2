@@ -30,9 +30,11 @@ Collaboration diagram for Label\+:\nopagebreak
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classLabel_a47f88edaf625e4ae1bb48c8d866d01a6}{constructor}} ()
+void \mbox{\hyperlink{classLabel_a2c3dd9375c2ff02d15417705b824a219}{constructor}} (char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classLabel_a38d80c32d8c9ce2f3b24314d3527998c}{text}}, int ha, int va)
 \item 
 void \mbox{\hyperlink{classLabel_a7e094cc61d4ce7ab08881c60e9c1ae67}{load}} (FILE \texorpdfstring{$\ast$}{*}file)
+\item 
+void \mbox{\hyperlink{classLabel_a5102cd1eeae0ee090f0f5d236936bc15}{set\+\_\+text}} (char \texorpdfstring{$\ast$}{*}str)
 \item 
 void \mbox{\hyperlink{classLabel_ad017cb1fdfa5c5ddcdedcfdf513cd13f}{refresh}} ()
 \item 
@@ -45,7 +47,7 @@ void \mbox{\hyperlink{classLabel_a553b973908f7b55a8feb671e9e1905bd}{free}} ()
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classFrame}{Frame}}}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classFrame_a872bc02296ffe26cb4ca5a96a10597e8}{constructor}} ()
+void \mbox{\hyperlink{classFrame_a05a82bdf164991c7d314824757e984fa}{constructor}} (double x, int xu, double y, int yu, double w, int wu, double h, int hu, int ha, int va, int \mbox{\hyperlink{classFrame_acfe3b3c81c5ddcd7e9dd6a5f64dcdac8}{scroll}}, \mbox{\hyperlink{structTheme}{Theme}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classFrame_aa5e1c43a4d9d3a9967ab33152edf6e7c}{theme}})
 \item 
 void \mbox{\hyperlink{classFrame_a63712e22a5897b4bcc3f26383b9f7205}{handle\+\_\+dimension\+\_\+unit}} (float \texorpdfstring{$\ast$}{*}src, float \texorpdfstring{$\ast$}{*}dest, int vertical, double \mbox{\hyperlink{classFrame_a36dd59da3f2cbfda319a393453490763}{size}}, int \mbox{\hyperlink{classFrame_ad6253ac65e55108bc8a0e8a29fa5ae65}{unit}}, double container\+Width, double container\+Height)
 \item 
@@ -90,6 +92,8 @@ void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\
 \item 
 void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
 \item 
+void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
+\item 
 void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
 \item 
 void \mbox{\hyperlink{classNode_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
@@ -110,6 +114,8 @@ void \mbox{\hyperlink{classNode_a75c27b8cf028ae9509b20ad7392c49f8}{is\+\_\+body}
 \item 
 void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
 \item 
+void \mbox{\hyperlink{classNode_a743d883f14521da8f8c62608ce65f7ee}{is\+\_\+render\+\_\+target}} (bool \texorpdfstring{$\ast$}{*}render\+\_\+target)
+\item 
 void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
 \item 
 void \mbox{\hyperlink{classNode_a42da38ee8e0a621e438e14b94c0e381e}{add\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
@@ -127,11 +133,19 @@ void \mbox{\hyperlink{classNode_af08ebf5c3bb8542c012107606b88391b}{remove\+\_\+c
 int \mbox{\hyperlink{classNode_af99346e2725916df2fbe2e4af7a2d51c}{index\+\_\+of\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
 \begin{DoxyCompactList}\small\item\em Retrieves the index of a child node in a parent node\textquotesingle{}s children array. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_aef2f74d45bec672840433aff6abe0d45}{print}} (int level)
-\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a846d06ed1f7a5ac618fbfef10881230f}{emit\+\_\+ready}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a3e7054036adfcf19c240b48a7f353f83}{emit\+\_\+update}} (...)
+\item 
+void \mbox{\hyperlink{classNode_a0a3256bf578114f603b9407814638a2f}{emit\+\_\+signal}} (...)
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-char \mbox{\hyperlink{classLabel_ad9c47eac523d433bae0b8ca218ac86cc}{text}} \mbox{[}256\mbox{]}
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classLabel_a38d80c32d8c9ce2f3b24314d3527998c}{text}}
+\item 
+int \mbox{\hyperlink{classLabel_ab8e68fb9efb4b361b54e8b6418f865d7}{display\+Length}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classFrame}{Frame}}}
 \begin{DoxyCompactItemize}
@@ -170,6 +184,8 @@ union \{\\
 \>\mbox{\hyperlink{classInputArea}{InputArea}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFrame_a3cb42a8726bc2378ab38edb199ff02e3}{inputArea}}\\
 \>\mbox{\hyperlink{classSelectList}{SelectList}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFrame_ae3e1724ea344a830f7214e2e41e42cf2}{selectList}}\\
 \>\mbox{\hyperlink{classImageFrame}{ImageFrame}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFrame_ae8fb5e1575de3713ec025de837742406}{imageFrame}}\\
+\>\mbox{\hyperlink{classRadioButton}{RadioButton}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFrame_ab4c84d5e73473baa8a8e0e250d929427}{radiobutton}}\\
+\>\mbox{\hyperlink{classSlider}{Slider}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFrame_ac0d239f66c57afe30b13f9c88f0097f1}{slider}}\\
 \}; \\
 
 \end{tabbing}\item 
@@ -184,11 +200,11 @@ struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstr
 \item 
 struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{parent}}
 \item 
-\mbox{\hyperlink{types_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
+\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
 \item 
 vec3 \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}
 \item 
@@ -202,11 +218,11 @@ vec3 \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{g
 \item 
 vec3 \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
 \item 
-\mbox{\hyperlink{scripts_8h_ab7576c513306b5641c2b903c7d18850f}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
+\mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
 \item 
-\mbox{\hyperlink{unionBehaviorParameter}{Behavior\+Parameter}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gac639490f60bdc872491ffaaea5991ed0}{params}}
+\mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
 \item 
-\mbox{\hyperlink{types_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga1411990c75c0b134485d07be7a21e58c}{params\+\_\+count}}
+\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_gab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
 \item 
 \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}}
 \end{DoxyCompactItemize}
@@ -231,11 +247,11 @@ Represents a label.
 This structure holds the text of a label. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classLabel_a47f88edaf625e4ae1bb48c8d866d01a6}\label{classLabel_a47f88edaf625e4ae1bb48c8d866d01a6} 
+\Hypertarget{classLabel_a2c3dd9375c2ff02d15417705b824a219}\label{classLabel_a2c3dd9375c2ff02d15417705b824a219} 
 \index{Label@{Label}!constructor@{constructor}}
 \index{constructor@{constructor}!Label@{Label}}
 \doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
-{\footnotesize\ttfamily void Label\+::constructor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Label\+::constructor (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{int}]{ha,  }\item[{int}]{va }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classLabel_a553b973908f7b55a8feb671e9e1905bd}\label{classLabel_a553b973908f7b55a8feb671e9e1905bd} 
 \index{Label@{Label}!free@{free}}
@@ -267,14 +283,26 @@ This structure holds the text of a label.
 \doxysubsubsection{\texorpdfstring{save()}{save()}}
 {\footnotesize\ttfamily void Label\+::save (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file,  }\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{editor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\Hypertarget{classLabel_a5102cd1eeae0ee090f0f5d236936bc15}\label{classLabel_a5102cd1eeae0ee090f0f5d236936bc15} 
+\index{Label@{Label}!set\_text@{set\_text}}
+\index{set\_text@{set\_text}!Label@{Label}}
+\doxysubsubsection{\texorpdfstring{set\_text()}{set\_text()}}
+{\footnotesize\ttfamily void Label\+::set\+\_\+text (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classLabel_ad9c47eac523d433bae0b8ca218ac86cc}\label{classLabel_ad9c47eac523d433bae0b8ca218ac86cc} 
+\Hypertarget{classLabel_ab8e68fb9efb4b361b54e8b6418f865d7}\label{classLabel_ab8e68fb9efb4b361b54e8b6418f865d7} 
+\index{Label@{Label}!displayLength@{displayLength}}
+\index{displayLength@{displayLength}!Label@{Label}}
+\doxysubsubsection{\texorpdfstring{displayLength}{displayLength}}
+{\footnotesize\ttfamily int Label\+::display\+Length}
+
+Number of characters to display. \Hypertarget{classLabel_a38d80c32d8c9ce2f3b24314d3527998c}\label{classLabel_a38d80c32d8c9ce2f3b24314d3527998c} 
 \index{Label@{Label}!text@{text}}
 \index{text@{text}!Label@{Label}}
 \doxysubsubsection{\texorpdfstring{text}{text}}
-{\footnotesize\ttfamily char Label\+::text\mbox{[}256\mbox{]}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} Label\+::text}
 
 Text of the label. 
 
