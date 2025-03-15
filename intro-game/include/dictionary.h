@@ -9,16 +9,21 @@ typedef struct Entry_u {
     void (*destroy) (void *) ;
     struct Entry_u * next ;
 } Entry_t ;
-
+ 
 typedef struct Dictionary_u {
     Entry_t * tab[TABLE_SIZE] ;
+    int nbEntry ;
+
+    Entry_t * (*item) (struct Dictionary_u * dict, int index) ;
 } Dictionary_t ;
 
 
-void destroy_dictionary(Dictionary_t ** dict) ;
 Dictionary_t * create_dictionnary () ;
+void destroy_dictionary(Dictionary_t ** dict) ;
+void destroy_dictionary_cb (void * dict) ;
 void dict_set(Dictionary_t *dict, const char * key, void * value, void (*destroy) (void *)) ;
 void * dict_get(Dictionary_t *dict, const char *key) ;
+Entry_t * dict_item(Dictionary_t * dict, int index) ;
 void dict_remove(Dictionary_t * dict, const char * key) ;
 unsigned int hash (const char * key) ;
 void free_cb (void * data) ;

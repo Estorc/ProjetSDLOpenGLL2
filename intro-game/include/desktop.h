@@ -6,7 +6,7 @@
 typedef struct DesktopElementt_u {
     SDL_Rect srcrect ;
     SDL_Rect position ;
-    int hidden ;        // TRUE or FALSE 
+    int hidden ;        // TRUE or FALSE  
     int clicked ;       // TRUE or FALSE 
     int dragged ;       // TRUE or FALSE 
 } DesktopElementt_t ; 

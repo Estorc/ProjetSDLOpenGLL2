@@ -77,7 +77,7 @@ Desktop_t * create_desktop(char *backgroundPath, char * elementSpritesheetPath, 
     // Lecture et initialisation des éléments
     for (int i = 0; i < nbElements; i++) {
         if (fscanf(dataFile, " %d;%d;%d;%d;%d;%d;%d;%d", 
-                   &srcX, &srcY, &srcW, &srcH, &dstX, &dstY, &dstW, &dstH) != 8) {
+                   &srcX, &srcY, &srcW, &srcH, &dstX, &dstY, &dstW, &dstH) != 8) { 
             fprintf(stderr, "Erreur de lecture dans %s à l'élément %d\n", dataPath, i);
             break;
         }

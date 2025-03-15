@@ -2,7 +2,7 @@
 
 #include "lib.h"
 
-#define MAX_SCENES 2
+#define MAX_SCENES 4
 #define NB_ELEM_DESKTOP_SCENE 4
 
 extern SDL_Renderer * renderer ;
@@ -18,13 +18,11 @@ typedef struct SceneManager_u SceneManager_t ;
 typedef struct InfoScene_u {
     int len ;       // Taille attribut `data` de la scene 
     int end ;       // Trigger de la fin du jeu, prends valeur TRUE ou FALSE 
-    int nbText ;    // Taille du tableau de text 
 } InfoScene_t ;
 
 typedef struct Scene_u {
     char * name ;
-    void ** data ;
-    Dictionary_t * dict ;
+    Dictionary_t * data ;
 
     void (*load) (Scene_t *) ;
     void (*unLoad) (Scene_t *) ;
@@ -55,6 +53,13 @@ Scene_t * create_scene (char * name, void (*load) (Scene_t *), void (*unLoad) (S
                         void (*handleEvents) (Scene_t *, SDL_Event *, SceneManager_t *), void (*update) (Scene_t *, SceneManager_t *), 
                         void (*render) (Scene_t *));
 void destroy_scene (Scene_t ** scene);
+
+// fonctions manip scene boot
+void BOOT_load (Scene_t * self) ;
+void BOOT_unLoad (Scene_t * self) ;
+void BOOT_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * manager) ;
+void BOOT_update (Scene_t * self, SceneManager_t * manager) ;
+void BOOT_render (Scene_t * self) ; 
 
 // fonctions manip scene desktop
 void DESKTOP_load (Scene_t * self) ;

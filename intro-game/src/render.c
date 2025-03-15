@@ -2,7 +2,7 @@
 #include "../include/main.h"
 #include "../include/texture_loader.h" 
 #include "../include/map.h"
-#include "../include/camera.h"
+#include "../include/camera.h" 
 #include "../include/player.h"
 #include "../include/render.h"
 #include "../include/text.h"

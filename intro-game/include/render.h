@@ -5,7 +5,7 @@
 #include "lib.h"
 #include "player.h"
 #include "map.h"
-#include "camera.h"
+#include "camera.h" 
 #include "desktop.h"
 
 #define TEXT_ANIM_SPEED 6
@@ -46,6 +46,8 @@ typedef struct TextAnim_u {
     SDL_Color hollowColor ;         // Couleur de l'ombre 
     TypeHollow_t hollowDir ;         // Dans quelle direction se dirige l'ombre 
     
+    int width ;                     // largeur de la zone dans laquelle sera rendu le texte 
+
     // Variables propre aux animations 
     #include "common_anim_attributes.h"
 } TextAnim_t ; 

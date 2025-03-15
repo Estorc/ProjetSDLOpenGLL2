@@ -4,6 +4,7 @@
 #include "../include/desktop.h"
 #include "../include/render.h"
 #include "../include/text.h"
+#include "../include/dictionary.h"
 
 
 /**
@@ -11,7 +12,7 @@
  * 
  * Cette fonction alloue dynamiquement une structure `Text_t`, copie le texte fourni,
  * initialise les paramètres d'affichage et configure l'animation associée.
- * 
+ *  
  * @param string   Le texte à afficher.
  * @param font     La police de caractères utilisée.
  * @param color    La couleur du texte.
@@ -19,7 +20,7 @@
  * 
  * @return Un pointeur vers la structure `Text_t` créée, ou NULL en cas d'échec d'allocation.
  */
-Text_t * create_text (const char * string, TTF_Font * font, SDL_Color * color, SDL_Rect * position) {
+Text_t * create_text (const char * string, TTF_Font * font, SDL_Color color, SDL_Rect position) {
 
     // Allocation dynamique de la structure `Text_t`
     Text_t * text = malloc(sizeof(Text_t));
@@ -50,8 +51,8 @@ Text_t * create_text (const char * string, TTF_Font * font, SDL_Color * color, S
 
     // Initialisation des paramètres de l'animation du texte
     text->animation.texture = NULL ;
-    text->animation.textColor = *color;   // Assignation de la couleur du texte
-    text->animation.position = *position; // Position définie par le paramètre
+    text->animation.textColor = color;   // Assignation de la couleur du texte
+    text->animation.position = position; // Position définie par le paramètre
     text->animation.needChange = TRUE ;   // Texture pas à jour au départ
 
     // Initialisation des paramètres d'ombre (désactivée par défaut)
@@ -114,6 +115,10 @@ void destroy_text (Text_t ** text) {
         free(*text);
         *text = NULL; // Évite un pointeur suspendu en mettant `text` à NULL
     }
+}
+void destroy_text_cb (void * text) {
+    Text_t ** ptext = (Text_t **)text ;
+    destroy_text(ptext);
 }
 
 
@@ -178,6 +183,10 @@ void text_update (Text_t * text) {
                 anim->currentFrame++;
             } while (!isalpha(text->string[anim->currentFrame])) ;
             anim->needChange = TRUE; // Indique qu'on doit redessiner la texture
+            printf("l'anim de %s needChange\n", text->string);
+        }
+        else {
+            anim->needChange = FALSE ;
         }
     }
 
@@ -190,7 +199,10 @@ void text_update (Text_t * text) {
             anim->needChange = TRUE;
         }
         else {
+            anim->currentFrame = anim->numFrames ;
             anim->playing = FALSE; // Sinon, on arrête l'animation
+            anim->needChange = FALSE ;
+            printf("passage du playing a false pour %s\n", text->string);
         }
     }
 
@@ -225,6 +237,24 @@ void text_update (Text_t * text) {
         free(buffer);
     }
 }
+void text_dict_update (Dictionary_t * dict, const char * dataPath) {
+    // Vérifie si le text existe 
+    if (!existe(dict)) {
+        return ;
+    }
+
+    for (int i = 0; i < dict->nbEntry; i++) {
+
+        Entry_t * entry = dict->item(dict, i) ;
+        Text_t * text = entry->value ;
+
+        text_update(text);
+
+        if (text->animation.frameCount == 0) {
+            // load_texts_from_file(dataPath, text->font, dict);
+        }
+    }
+}
 
 
 
@@ -245,4 +275,63 @@ void TTF_CloseFont_cb (void * font) {
     TTF_Font ** pfont = (TTF_Font **)font ;
     TTF_CloseFont(*pfont);
     *pfont = NULL ;
+}
+
+
+/**
+ * Insert des donnees text_t dans un dictionnaire a partir d'un fichier csv  
+ */
+int load_texts_from_file (const char * dataPath, TTF_Font * font, Dictionary_t * dict) {
+
+    FILE * file = fopen(dataPath, "r") ;
+    if (!existe(file)) {
+        fprintf(stderr, "Erreur ouverture fichier %s\n", dataPath) ;
+        return ERROR;
+    }
+
+    // Variables pour stocker les données lues
+    int r, g, b, a;
+    int x, y, w, h;
+    int hollow, typeHollow ;
+    int hr, hg, hb, ha;
+    char key[64], string[512];
+    int animated, speed ;
+    char buffer[256];
+
+    // Lecture de la première ligne
+    fgets(buffer, sizeof(buffer), file);
+
+    printf("Lecture fichier : %s\n", dataPath) ;
+
+    // Lecture et initialisation des éléments
+    while (fscanf(file, "%[^;];%[^;];%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d%%", 
+        key, string, &r, &g, &b, &a, &x, &y, &hollow, &hr, &hg, &hb, &ha, &typeHollow, &animated, &speed) == 16) {
+
+        Text_t * text = create_text(string, font, (SDL_Color){r, g, b, a}, (SDL_Rect){x, y, 0, 0}) ;
+        
+        if (!existe(text)) {
+            fprintf(stderr, "Erreur creation du text dans \"%s\"\n", dataPath) ;
+            fclose(file);
+            return ERROR ;
+        } 
+        else {
+            dict_set(dict, key, text, destroy_text_cb);
+        }
+
+        text_change_hollow(text, hollow, (SDL_Color){hr, hg, hb, ha}, typeHollow);
+
+        if (!animated) {
+            text->animation.currentFrame = text->animation.numFrames ;
+            text->animation.loop = FALSE ;
+            text->animation.playing = FALSE ;
+        }
+
+        text->animation.animationSpeed = speed ;
+
+        printf("key : %s, string : %s\n", key, string) ;    
+    }
+
+    fclose(file);
+
+    return NO_ERR ;
 }

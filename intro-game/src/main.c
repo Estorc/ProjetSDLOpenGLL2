@@ -7,6 +7,7 @@
 #include "../include/render.h"
 #include "../include/scene.h"
 #include "../include/desktop.h"
+#include "../include/dictionary.h"
 
 
 int init_systeme ();
@@ -72,11 +73,13 @@ int main(int argc, char* argv[]) {
 
     // initialise le scene manager  
     manager = create_scene_manager() ;
+    Scene_t * bootScene = create_scene("BOOT", BOOT_load, BOOT_unLoad, BOOT_handleEvents, BOOT_update, BOOT_render);
     Scene_t * desktopScene = create_scene("DESKTOP", DESKTOP_load, DESKTOP_unLoad, DESKTOP_handleEvents, DESKTOP_update, DESKTOP_render);
     Scene_t * level1Scene = create_scene("LEVEL1", LEVEL1_load, LEVEL1_unLoad, LEVEL1_handleEvents, LEVEL1_update, LEVEL1_render);
+    push_scene(manager, bootScene);
     push_scene(manager, desktopScene);
     push_scene(manager, level1Scene);
-    request_scene_change(manager, "DESKTOP");
+    request_scene_change(manager, "BOOT");
     change_scene(manager);
     
     // Boucle principale
@@ -88,7 +91,7 @@ int main(int argc, char* argv[]) {
         // Récupère les données nécessaires de la scène actuelle
         int currentIndex = manager->index ;
         Scene_t * currentScene = manager->scenes[currentIndex] ;
-        InfoScene_t * info = (InfoScene_t *)currentScene->data[0] ;
+        InfoScene_t * info = dict_get(currentScene->data, "info") ;
 
         // Joue la scène
         currentScene->handleEvents(currentScene, &event, manager) ;
@@ -132,7 +135,7 @@ void end_frame (uint32_t * timerStart, uint32_t * previousTime) {
 
     uint32_t timerDelay = SDL_GetTicks() - *timerStart;
     if (timerDelay < FRAME_DELAY) {
-        SDL_Delay(FRAME_DELAY - timerDelay);
+        //SDL_Delay(FRAME_DELAY - timerDelay);
     }
 }
 

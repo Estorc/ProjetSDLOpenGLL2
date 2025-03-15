@@ -1,0 +1,9 @@
+key;string;r;g;b;a;x;y;hollow;r;g;b;a;typeHollow;anim;speed
+loading;kilo de merde ;150;30;45;255;100;400;0;150;0;0;255;2;1;3
+cmd1;[    0.000000] Linux version 6.6.10-arch1-1 (linux@archlinux);150;30;45;255;0;0;0;150;0;0;255;2;1;3
+cmd2;[    0.123456] ACPI: Early table checksum verification disabled;150;30;45;255;0;12;0;150;0;0;255;2;1;3
+cmd3;[    0.234567] CPU0: AMD Ryzen 7 5800X (family: 0x19, model: 0x21, stepping: 0x0);150;30;45;255;0;24;0;150;0;0;255;2;1;3
+cmd4;[    0.345678] RAMDISK: Loading kernel modules...;150;30;45;255;0;36;0;150;0;0;255;2;1;3
+cmd5;[    1.234567] systemd[1]: Starting Journal Service...;150;30;45;255;0;48;0;150;0;0;255;2;1;3
+cmd6;[    1.678901] systemd[1]: Reached target Graphical Interface.;150;30;45;255;0;60;0;150;0;0;255;2;1;3
+cmd7;[    2.456789] Arch Linux login: _;150;30;45;255;0;72;0;150;0;0;255;2;1;3

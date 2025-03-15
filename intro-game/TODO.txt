@@ -1,0 +1,23 @@
+
+=== DATA SCENE BOOT === 
+
+- textes : 
+    - loading 
+    - ligne de commande de boot * 7
+
+- images : 
+    - loading 
+    - BLIS FL5
+
+peut faire un etxtrue manager pour toyute les texture 
+
+=== DATA SCENE DESKTOP === 
+
+- structure desktop 
+
+
+=== changement === 
+
+creer different taille de font dans chaque data : small medium large et d'autre encore
+finir implementation focntion manip text_t 
+changer la maniere d'animer le texte car tres gourmand durant les anim de texte

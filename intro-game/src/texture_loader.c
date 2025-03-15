@@ -3,7 +3,7 @@
 
 // load png file and return the texture 
 SDL_Texture * load_png (char * path) {
-    SDL_Surface * surface = IMG_Load (path);
+    SDL_Surface * surface = IMG_Load (path); 
     if (surface == NULL) {
         printf("Erreur de chargement de l'image: %s\n", IMG_GetError());
         return NULL;
@@ -18,4 +18,10 @@ SDL_Texture * load_png (char * path) {
     SDL_FreeSurface(surface);
 
     return texture;
+}
+
+void SDL_DestroyTexture_cb (void * texture) {
+    SDL_Texture ** ptexture = (SDL_Texture **)texture ;
+    SDL_DestroyTexture(*ptexture);
+    *ptexture = NULL ;
 }

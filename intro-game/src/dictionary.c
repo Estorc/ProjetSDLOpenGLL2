@@ -12,7 +12,10 @@ Dictionary_t * create_dictionnary () {
 
     for (int i = 0; i < TABLE_SIZE; i++) {
         dic->tab[i] = NULL ;
-    }
+    } 
+
+    dic->item = dict_item ;
+    dic->nbEntry = 0 ;
 
     return dic ;
 }
@@ -31,6 +34,10 @@ void destroy_dictionary(Dictionary_t ** dict) {
     }
     free(*dict);
     *dict = NULL ;
+}
+void destroy_dictionary_cb (void * dict) {
+    Dictionary_t ** pdict = (Dictionary_t **)dict ;
+    destroy_dictionary(pdict);
 }
 
 
@@ -56,6 +63,8 @@ void dict_set(Dictionary_t *dict, const char * key, void * value, void (*destroy
     entry->destroy = destroy ;
     entry->next = dict->tab[index]; // Chaînage pour collision
     dict->tab[index] = entry;
+
+    dict->nbEntry++;
 }
 
 
@@ -70,6 +79,32 @@ void * dict_get(Dictionary_t *dict, const char *key) {
         entry = entry->next;
     }
     return NULL; // Clé non trouvée
+}
+
+
+Entry_t * dict_item(Dictionary_t * dict, int index) {
+
+    if (index > (dict->nbEntry - 1) || index < 0) {
+        return NULL ;
+    }
+    
+    int i = 0 ;
+    Entry_t * entry ;
+    while (index >= 0) {
+        // incremente i jusqu'au prochain element non NULL de tab
+        while ((entry = dict->tab[i]) == NULL) i++;
+        index--;
+        
+        // si rencontre une liste chainée 
+        while (index > 0 && entry->next) {
+            index--;
+            entry = entry->next ;
+        }
+
+        i++;
+    }
+
+    return entry ;
 }
 
 
@@ -88,6 +123,7 @@ void dict_remove(Dictionary_t * dict, const char * key) {
             free(entry->key);
             entry->destroy(&entry->value);
             free(entry);
+            dict->nbEntry--;
             return;
         }
         prev = entry;
