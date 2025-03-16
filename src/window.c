@@ -8,6 +8,7 @@
 #include "render/depth_map.h"
 #include "render/render.h"
 #include "window.h"
+#include "settings.h"
 
 #ifdef DEBUG
 //#define DEBUG_GL
@@ -77,6 +78,7 @@ void APIENTRY openglDebugCallback(GLenum source, GLenum type, GLuint id, GLenum 
 #endif
 
 s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Window *window) {
+    window->flags = WINDOW_PRERENDER_PASS;
     window->startTime = get_time_in_seconds();
     window->time = 0.0f;
     window->lastTime = 0.0f;
@@ -124,7 +126,10 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
     #ifdef DEBUG_GL
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG); 
     #endif
-    SDL_GL_SetSwapInterval(VSYNC);
+    if (Game.settings->vsync)
+        SDL_GL_SetSwapInterval(VSYNC);
+    else
+        SDL_GL_SetSwapInterval(IMMEDIATE);
 
     window->sdl_window = SDL_CreateWindow(title, x, y, width, height, flags);
     window->opengl_ctx = SDL_GL_CreateContext(window->sdl_window);
@@ -185,14 +190,18 @@ void refresh_ui(Window *window) {
 
 void update_window(Window *window, Node *scene, Camera *c, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa, Mesh *screenPlane) {
 
-    window->lastTime = window->time;
-    window->time = get_time_in_seconds() - window->startTime;
-    //SDL_SetRelativeMouseMode(SDL_TRUE);  
 
 
     draw_screen(window, scene, c, shaders, depthMap, msaa, screenPlane);
+
+    window->flags &= ~WINDOW_RESIZED;
+    if (window->flags & WINDOW_PRERENDER_PASS) {
+        window->flags &= ~WINDOW_PRERENDER_PASS;
+        return;
+    }
+    window->lastTime = window->time;
     SDL_GL_SwapWindow(window->sdl_window);
-    
+    window->time = get_time_in_seconds() - window->startTime;
 
 }
 
@@ -202,7 +211,8 @@ void refresh_resolution() {
     SDL_FreeSurface(Game.window->ui_surface);
     Game.window->ui_surface = SDL_CreateRGBSurface(0,window_width,window_height,32,0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000);
     resize_msaa_framebuffer(Game.msaa);
-    Game.window->resized = true;
+    Game.window->flags |= WINDOW_PRERENDER_PASS;
+    Game.window->flags |= WINDOW_RESIZED;
 }
 
 

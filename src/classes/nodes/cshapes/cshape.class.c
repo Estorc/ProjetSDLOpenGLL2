@@ -43,11 +43,6 @@ class CShape : public Node {
 
 
     void prepare_render(mat4 *modelMatrix, Shader activeShader) {
-        
-        set_shader_int(activeShader, "diffuseMapActive", 0);
-        set_shader_int(activeShader, "normalMapActive", 0);
-        set_shader_int(activeShader, "parallaxMapActive", 0);
-
         glm_mat4_identity(*modelMatrix);
         
         glm_translate(*modelMatrix, (vec3){this->globalPos[0], this->globalPos[1], this->globalPos[2]});
@@ -58,13 +53,14 @@ class CShape : public Node {
     }
 
 
-    void render(mat4 *modelMatrix) {
+    void render(mat4 *modelMatrix, Shader activeShader) {
         Model *model;
         this::get_model(&model);
         Shader shader;
         this::get_shader(&shader);
         use_shader(shader);
         if (model) render_model(modelMatrix, shader, model);
+        use_shader(activeShader);
     }
 
 }

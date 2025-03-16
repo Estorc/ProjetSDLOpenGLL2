@@ -29,10 +29,9 @@ void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
     glGenTextures(1, &depthMap->texture);
     // Disable binding if settings do not allow shadows
     glBindTexture(GL_TEXTURE_2D_ARRAY, depthMap->texture);
-    glTexStorage3D(GL_TEXTURE_2D_ARRAY, 1, GL_DEPTH_COMPONENT16,
-                Game.settings->shadow_resolution, 
-                Game.settings->shadow_resolution,
-                numDirectionalLights + numPointLights + numSpotLights);
+    glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_DEPTH_COMPONENT16,
+        Game.settings->shadow_resolution, Game.settings->shadow_resolution,
+        numDirectionalLights + numPointLights + numSpotLights, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER); 

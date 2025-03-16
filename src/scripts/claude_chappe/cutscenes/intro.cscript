@@ -21,22 +21,22 @@ NEW_SCRIPT(script_cc_intro_init)
 END_SCRIPT(script_cc_intro_init)
 
 NEW_SCRIPT(script_cc_intro_update)
+    GET_READY_PARAMETERS();
     Frame * frame = this->children[0]->children[0]->children[2]->children[0]->object;
 
     if (frame->label->displayLength < this->attribute[1].i) {
-        if (this->attribute[0].i % 2 == 0) {
+        if (SDL_GetTicks() - this->attribute[0].i > 50) {
             frame->label->displayLength++;
             frame->flags |= FRAME_NEEDS_REFRESH;
-        }
-        if (this->attribute[0].i % 5 == 0) {
+            this->attribute[0].i = SDL_GetTicks();
+            
             char sfx[] = "assets/audio/sfx/text/default?.wav";
             sfx[29] = (rand()%4+1) + '0';
             play_sfx(sfx, 80, 0);
         }
-        this->attribute[0].i++;
     }
     if (Game.window->fadeColor[3] > 0.0f)
-        Game.window->fadeColor[3] -= 0.01f;
+        Game.window->fadeColor[3] -= 1.0f * delta;
 END_SCRIPT(script_cc_intro_update)
 
 
