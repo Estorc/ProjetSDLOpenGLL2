@@ -14,6 +14,7 @@ peut faire un etxtrue manager pour toyute les texture
 === DATA SCENE DESKTOP === 
 
 - structure desktop 
+- utiliser getmousestate et getmousestaterelative pour les evenements de la souris 
 
 
 === changement === 
@@ -21,3 +22,8 @@ peut faire un etxtrue manager pour toyute les texture
 creer different taille de font dans chaque data : small medium large et d'autre encore
 finir implementation focntion manip text_t 
 changer la maniere d'animer le texte car tres gourmand durant les anim de texte
+possibilite de faire un big_free() fonction qui permettrait de detruire n'importe quelle type de donnee. Simplifieras la libération de la mémoire
+
+=== fait === 
+
+TDA list d'objet generique avec methiode 

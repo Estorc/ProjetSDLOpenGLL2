@@ -5,6 +5,7 @@
 #include "render.h" 
 
 typedef struct Dictionary_u Dictionary_t ;
+typedef struct List_u List_t ;
 
 typedef struct Text_u { 
     TTF_Font * font ;               // Police de caractère
@@ -28,4 +29,4 @@ void text_change_type_anim (Text_t * text, TypeTextAnim_t newType) ;
 void text_change_font (Text_t * text, TTF_Font * newFont) ;
 void TTF_CloseFont_cb (void * font) ;
 
-int load_texts_from_file (const char * dataPath, TTF_Font * font, Dictionary_t * dict) ;
+int load_texts_from_file (const char * dataPath, List_t * font, Dictionary_t * dict) ;

@@ -10,6 +10,7 @@
 #include "../include/text.h"
 #include "../include/dictionary.h"
 #include "../include/texture_loader.h"
+#include "../include/list.h"
 
 /**
  * 
@@ -27,6 +28,8 @@ void BOOT_load (Scene_t * self) {
         return ;
     }
 
+    Dictionary_t * dict = self->data ;
+
     // Allocation et initialisation du compteur d'éléments
     InfoScene_t * info = malloc(sizeof(InfoScene_t));
     if (info == NULL) {
@@ -38,7 +41,7 @@ void BOOT_load (Scene_t * self) {
     info->end = FALSE ;
 
     // ajoute info dans la structure data 
-    dict_set(self->data, "info", info, free_cb);
+    dict->set(dict, "info", info, free_cb);
 
     // initialise et créé la liste contenant les textures
     Dictionary_t * texture_dict = create_dictionnary() ;
@@ -48,42 +51,29 @@ void BOOT_load (Scene_t * self) {
         return ;
     }
     SDL_Texture * texture = load_png("intro-game/assets/loading_wheel.png") ;
-    dict_set(texture_dict, "loading_wheel", texture, SDL_DestroyTexture_cb) ;
+    texture_dict->set(texture_dict, "loading_wheel", texture, SDL_DestroyTexture_cb) ;
     texture = load_png("intro-game/assets/blis_fl5.png") ;
-    dict_set(texture_dict, "blis_fl5", texture, SDL_DestroyTexture_cb) ;
+    texture_dict->set(texture_dict, "blis_fl5", texture, SDL_DestroyTexture_cb) ;
 
     // ajoute la liste des texture dans la data de la scene 
-    dict_set(self->data, "texture_dict", texture_dict, destroy_dictionary_cb) ;
+    dict->set(dict, "texture_dict", texture_dict, destroy_dictionary_cb) ;
 
-    // Création font taille small (TTF_Font) 
-    TTF_Font * fontSmall = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 12) ;
-    if (fontSmall == NULL) {
+    // Création fonts (TTF_Font) 
+    TTF_Font * font8 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 8) ;
+    TTF_Font * font16 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 16) ;
+    TTF_Font * font24 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 24) ;
+    if (!existe(font8) || !existe(font16) || !existe(font16)) {
         fprintf(stderr, "Erreur open font : intro-game/assets/PressStart2P-Regular.ttf\n");
         destroy_dictionary(&self->data);
         return ;
-    } 
-    // ajoute font dans data 
-    dict_set(self->data, "fontSmall", fontSmall, TTF_CloseFont_cb);
+    }
 
-    // Création font taille medium (TTF_Font) 
-    TTF_Font * fontMedium = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 21) ;
-    if (fontMedium == NULL) {
-        fprintf(stderr, "Erreur open font : intro-game/assets/PressStart2P-Regular.ttf\n");
-        destroy_dictionary(&self->data);
-        return ;
-    } 
-    // ajoute font dans data 
-    dict_set(self->data, "fontMedium", fontMedium, TTF_CloseFont_cb);
+    List_t * listFont = create_list(TTF_CloseFont_cb) ;
+    listFont->set(listFont, font8, listFont->size) ;
+    listFont->set(listFont, font16, listFont->size) ;
+    listFont->set(listFont, font24, listFont->size) ;
 
-    // Création font taille large (TTF_Font) 
-    TTF_Font * fontLarge = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 27) ;
-    if (fontLarge == NULL) {
-        fprintf(stderr, "Erreur open font : intro-game/assets/PressStart2P-Regular.ttf\n");
-        destroy_dictionary(&self->data);
-        return ;
-    } 
-    // ajoute font dans data 
-    dict_set(self->data, "fontLarge", fontLarge, TTF_CloseFont_cb);
+    dict->set(dict, "listFont", listFont, destroy_list_cb);
 
     Dictionary_t * text_dict = create_dictionnary() ;
     if (!existe(text_dict)) {
@@ -92,7 +82,7 @@ void BOOT_load (Scene_t * self) {
         return ;
     }
 
-    if (load_texts_from_file("intro-game/data/donneesTextsBootScene.csv", fontSmall, text_dict)) {
+    if (load_texts_from_file("intro-game/data/donneesTextsBootScene.csv", listFont, text_dict)) {
         fprintf(stderr, "Erreur création des textes dans BOOT\n");
         destroy_dictionary(&text_dict);
         destroy_dictionary(&self->data);
@@ -100,7 +90,12 @@ void BOOT_load (Scene_t * self) {
     }
 
     // ajoute text_dict dans data 
-    dict_set(self->data, "text_dict", text_dict, destroy_dictionary_cb);
+    dict->set(dict, "text_dict", text_dict, destroy_dictionary_cb);
+
+    BOOT_Event_t * nameEvent = malloc(sizeof(BOOT_Event_t)) ;
+    *nameEvent = LOADING ;
+    
+    dict->set(dict, "nameEvent", nameEvent, free_cb);
 
     printf("[INFO] : Chargement des données BOOT réussi\n");
 }
@@ -131,7 +126,7 @@ void BOOT_unLoad (Scene_t * self) {
  */
 void BOOT_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * manager) {
 
-    InfoScene_t * info = dict_get(self->data, "info") ;
+    InfoScene_t * info = self->data->get(self->data, "info") ;
 
     while (SDL_PollEvent(event)) {
         switch (event->type) {
@@ -158,7 +153,7 @@ void BOOT_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * mana
  */
 void BOOT_update (Scene_t * self, SceneManager_t * manager) {
     
-    Dictionary_t * text_dict = dict_get(self->data, "text_dict") ;
+    Dictionary_t * text_dict = self->data->get(self->data, "text_dict") ;
     text_dict_update(text_dict, "intro-game/data/donneesTextsBootScene.csv");
 }
 
@@ -171,7 +166,7 @@ void BOOT_render (Scene_t * self) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(renderer);
 
-    Dictionary_t * text_dict = dict_get(self->data, "text_dict") ;
+    Dictionary_t * text_dict = self->data->get(self->data, "text_dict") ;
     for (int i = 0; i < text_dict->nbEntry; i++) {
         Entry_t * entry = text_dict->item(text_dict, i) ;
         Text_t * text = entry->value ;
@@ -213,6 +208,8 @@ void DESKTOP_load(Scene_t *self) {
         return ;
     }
 
+    Dictionary_t * dict = self->data ;
+
     // Allocation et initialisation du compteur d'éléments
     InfoScene_t * info = malloc(sizeof(InfoScene_t));
     if (info == NULL) {
@@ -223,7 +220,7 @@ void DESKTOP_load(Scene_t *self) {
     info->len = 4;
     info->end = FALSE ;
 
-    dict_set(self->data, "info", info, free_cb);
+    dict->set(dict, "info", info, free_cb);
 
     // Création du bureau (Desktop_t)
     Desktop_t *desktop = create_desktop("intro-game/assets/backgroundDesktopScene.png", "intro-game/assets/objectsDesktopScene.png", "intro-game/data/donneesObjetsDesktopScene.csv", NB_ELEM_DESKTOP_SCENE);
@@ -235,7 +232,7 @@ void DESKTOP_load(Scene_t *self) {
     // Initialisation element du bureau (DesktopElement_t)
     desktop->elements[3].hidden = TRUE ;    // Annule affichage icone message d'erreur  
 
-    dict_set(self->data, "desktop", desktop, destroy_desktop_cb);
+    dict->set(dict, "desktop", desktop, destroy_desktop_cb);
 
     // Création font (TTF_Font) 
     TTF_Font * font = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 12) ;
@@ -245,7 +242,7 @@ void DESKTOP_load(Scene_t *self) {
         return ;
     } 
 
-    dict_set(self->data, "font", font, TTF_CloseFont_cb);
+    dict->set(dict, "font", font, TTF_CloseFont_cb);
 
     // Création tableau de text (`Text_t`) 
     int nbText = 1 ;
@@ -264,9 +261,9 @@ void DESKTOP_load(Scene_t *self) {
     SDL_Color rouge = {150, 0, 0, 255} ;
     text_change_hollow(text1, TRUE, rouge, BOTTOM_LEFT);
 
-    dict_set(text_dict, "text1", text1, destroy_text_cb);
+    text_dict->set(text_dict, "text1", text1, destroy_text_cb);
 
-    dict_set(self->data, "text_dict", text_dict, destroy_dictionary_cb);
+    dict->set(dict, "text_dict", text_dict, destroy_dictionary_cb);
 
     printf("[INFO] : Chargement des données DESKTOP réussi\n");
 }
@@ -303,8 +300,8 @@ void DESKTOP_unLoad(Scene_t *self) {
 
 void DESKTOP_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * manager) {
 
-    InfoScene_t * info = dict_get(self->data, "info") ;
-    Desktop_t * desktop = dict_get(self->data, "desktop") ;
+    InfoScene_t * info = self->data->get(self->data, "info") ;
+    Desktop_t * desktop = self->data->get(self->data, "desktop") ;
     int iconClicked ;
     
     while (SDL_PollEvent(event)) {
@@ -352,8 +349,8 @@ void DESKTOP_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * m
 
 void DESKTOP_update (Scene_t * self, SceneManager_t * manager) {
 
-    Dictionary_t * text_dict = dict_get(self->data, "text_dict") ;
-    Text_t * text1 = dict_get(text_dict, "text1") ;
+    Dictionary_t * text_dict = self->data->get(self->data, "text_dict") ;
+    Text_t * text1 = text_dict->get(text_dict, "text1") ;
     text_update(text1);
 
     return; 
@@ -365,11 +362,11 @@ void DESKTOP_render (Scene_t * self) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(renderer);
 
-    Desktop_t * desktop = dict_get(self->data, "desktop") ;
+    Desktop_t * desktop = self->data->get(self->data, "desktop") ;
     draw_desktop(desktop);
 
-    Dictionary_t * text_dict = dict_get(self->data, "text_dict") ;
-    Text_t * text1 = dict_get(text_dict, "text1") ;
+    Dictionary_t * text_dict = self->data->get(self->data, "text_dict") ;
+    Text_t * text1 = text_dict->get(text_dict, "text1") ;
     draw_text(text1);
 
     SDL_RenderPresent(renderer); 
@@ -396,6 +393,8 @@ void LEVEL1_load (Scene_t * self) {
         return ;
     }
 
+    Dictionary_t * dict = self->data ;
+
     // Allocation et initialisation du compteur d'éléments
     InfoScene_t * info = malloc(sizeof(InfoScene_t));
     if (info == NULL) {
@@ -407,7 +406,7 @@ void LEVEL1_load (Scene_t * self) {
     info->end = FALSE ;
 
     // Stockage dans `self->data`
-    dict_set(self->data, "info", info, free_cb);
+    dict->set(dict, "info", info, free_cb);
 
     printf("[INFO] : Chargement des données LEVEL1 réussi\n");
     
@@ -437,7 +436,7 @@ void LEVEL1_unLoad (Scene_t * self) {
 
 void LEVEL1_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * manager) {
     
-    InfoScene_t * info = dict_get(self->data, "info") ;
+    InfoScene_t * info = self->data->get(self->data, "info") ;
     
     while (SDL_PollEvent(event)) {
         switch (event->type) {
@@ -505,13 +504,22 @@ void LEVEL1_render (Scene_t * self) {
  */
 void destroy_scene (Scene_t ** scene) {
 
-    // libere memoire chaine caractere 
-    free((*scene)->name);
-    (*scene)->name = NULL;
+    if (existe(scene) && existe(*scene)) {
 
-    // libere memoire structure Scene_t
-    free(*scene);
-    *scene = NULL;
+        if (existe((*scene)->name)) {
+            
+            // libere memoire chaine caractere 
+            free((*scene)->name);
+            (*scene)->name = NULL;
+        }
+
+        // libere memoire structure Scene_t
+        free(*scene);
+        *scene = NULL;
+    }
+    else {
+        printf("destruction scene impossible \n");
+    }
 }
 
 
@@ -703,7 +711,7 @@ int play_scene (SceneManager_t * manager, SDL_Event * event) {
     // Récupère les données nécessaires de la scène actuelle
     int currentIndex = manager->index ;
     Scene_t * currentScene = manager->scenes[currentIndex] ;
-    InfoScene_t * info = dict_get(currentScene->data, "info") ;
+    InfoScene_t * info = currentScene->data->get(currentScene->data, "info") ;
 
     // Joue la scène
     currentScene->handleEvents(currentScene, event, manager) ;

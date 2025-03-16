@@ -48,6 +48,8 @@ typedef struct TextAnim_u {
     
     int width ;                     // largeur de la zone dans laquelle sera rendu le texte 
 
+    TypeTextAnim_t typeAnim ;
+
     // Variables propre aux animations 
     #include "common_anim_attributes.h"
 } TextAnim_t ; 
