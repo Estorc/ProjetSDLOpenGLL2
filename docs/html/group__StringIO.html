@@ -149,6 +149,124 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Utility functions for string and file operations. </p>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ga9f99c5cbcf6052c57972f2044ce260ab" name="ga9f99c5cbcf6052c57972f2044ce260ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9f99c5cbcf6052c57972f2044ce260ab">&#9670;&#160;</a></span>read_filef()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * read_filef </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads the contents of a file into a string. </p>
+<p>This function reads the contents of a file that is already open and returns them as a dynamically allocated string. The caller is responsible for freeing the allocated memory.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>The file to read from. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the dynamically allocated string containing the file contents. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The caller is responsible for freeing the allocated memory. </dd>
+<dd>
+The file must be open and readable. </dd></dl>
+
+</div>
+</div>
+<a id="ga1e0205abb275b15436fa03c89899e4bb" name="ga1e0205abb275b15436fa03c89899e4bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1e0205abb275b15436fa03c89899e4bb">&#9670;&#160;</a></span>read_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * read_file </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads the contents of a file into a string. </p>
+<p>This function opens the file specified by the given path, reads its contents, and returns them as a dynamically allocated string. The caller is responsible for freeing the allocated memory.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path to the file to be read. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the dynamically allocated string containing the file contents. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The caller is responsible for freeing the allocated memory. </dd></dl>
+
+</div>
+</div>
+<a id="ga5c0319e26f420cd9750b2ecbec8b50a3" name="ga5c0319e26f420cd9750b2ecbec8b50a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5c0319e26f420cd9750b2ecbec8b50a3">&#9670;&#160;</a></span>get_folder_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * get_folder_path </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fullpath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Extracts the folder path from a full file path. </p>
+<p>This function takes a full file path and returns the folder path portion of it. The returned string is dynamically allocated, and the caller is responsible for freeing the allocated memory.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fullpath</td><td>The full file path from which to extract the folder path. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the dynamically allocated string containing the folder path. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The caller is responsible for freeing the allocated memory. </dd></dl>
+
+</div>
+</div>
+<a id="ga1d25b14b036624d6e8a205b10c3afa54" name="ga1d25b14b036624d6e8a205b10c3afa54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1d25b14b036624d6e8a205b10c3afa54">&#9670;&#160;</a></span>convert_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * convert_path </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts backslashes in a path to forward slashes. </p>
+<p>This function takes a path string and converts any backslashes to forward slashes. The returned string is dynamically allocated, and the caller is responsible for freeing the allocated memory.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the dynamically allocated string containing the converted path. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The caller is responsible for freeing the allocated memory. </dd></dl>
+
+</div>
+</div>
 <a id="gab2e99bc76bbf988bfb786dc04be63e4d" name="gab2e99bc76bbf988bfb786dc04be63e4d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gab2e99bc76bbf988bfb786dc04be63e4d">&#9670;&#160;</a></span>concat_path()</h2>
 
@@ -185,35 +303,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the dynamically allocated string containing the concatenated path. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>The caller is responsible for freeing the allocated memory. </dd></dl>
-
-</div>
-</div>
-<a id="ga1d25b14b036624d6e8a205b10c3afa54" name="ga1d25b14b036624d6e8a205b10c3afa54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1d25b14b036624d6e8a205b10c3afa54">&#9670;&#160;</a></span>convert_path()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char * convert_path </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Converts backslashes in a path to forward slashes. </p>
-<p>This function takes a path string and converts any backslashes to forward slashes. The returned string is dynamically allocated, and the caller is responsible for freeing the allocated memory.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">path</td><td>The path to convert. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the dynamically allocated string containing the converted path. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The caller is responsible for freeing the allocated memory. </dd></dl>
 
 </div>
@@ -293,35 +382,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga5c0319e26f420cd9750b2ecbec8b50a3" name="ga5c0319e26f420cd9750b2ecbec8b50a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5c0319e26f420cd9750b2ecbec8b50a3">&#9670;&#160;</a></span>get_folder_path()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char * get_folder_path </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>fullpath</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Extracts the folder path from a full file path. </p>
-<p>This function takes a full file path and returns the folder path portion of it. The returned string is dynamically allocated, and the caller is responsible for freeing the allocated memory.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">fullpath</td><td>The full file path from which to extract the folder path. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the dynamically allocated string containing the folder path. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>The caller is responsible for freeing the allocated memory. </dd></dl>
-
-</div>
-</div>
 <a id="ga2726b5bf448b63de929eece392ae8e70" name="ga2726b5bf448b63de929eece392ae8e70"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga2726b5bf448b63de929eece392ae8e70">&#9670;&#160;</a></span>is_utf8_start_byte()</h2>
 
@@ -347,66 +407,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the byte is a valid UTF-8 start byte, 0 otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="ga1e0205abb275b15436fa03c89899e4bb" name="ga1e0205abb275b15436fa03c89899e4bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1e0205abb275b15436fa03c89899e4bb">&#9670;&#160;</a></span>read_file()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char * read_file </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Reads the contents of a file into a string. </p>
-<p>This function opens the file specified by the given path, reads its contents, and returns them as a dynamically allocated string. The caller is responsible for freeing the allocated memory.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">path</td><td>The path to the file to be read. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the dynamically allocated string containing the file contents. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>The caller is responsible for freeing the allocated memory. </dd></dl>
-
-</div>
-</div>
-<a id="ga9f99c5cbcf6052c57972f2044ce260ab" name="ga9f99c5cbcf6052c57972f2044ce260ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9f99c5cbcf6052c57972f2044ce260ab">&#9670;&#160;</a></span>read_filef()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char * read_filef </td>
-          <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>file</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Reads the contents of a file into a string. </p>
-<p>This function reads the contents of a file that is already open and returns them as a dynamically allocated string. The caller is responsible for freeing the allocated memory.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">file</td><td>The file to read from. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the dynamically allocated string containing the file contents. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>The caller is responsible for freeing the allocated memory. </dd>
-<dd>
-The file must be open and readable. </dd></dl>
 
 </div>
 </div>
@@ -468,6 +468,16 @@ The file must be open and readable. </dd></dl>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -476,7 +486,7 @@ The file must be open and readable. </dd></dl>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

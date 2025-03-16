@@ -1,0 +1,87 @@
+/** @page scene_system Scene System Explanation
+
+@section intro Introduction
+The scene system is responsible for managing and loading .scene files, which define hierarchical structures of nodes representing objects in a game environment. These nodes include transformations, visibility, activity flags, and scripts. Below is a breakdown of how the system works.
+
+@section scene_format Scene File Format (.scene files)
+Each .scene file describes a tree-like structure of nodes. Each node may have:
+
+Transform properties (position, rotation, scale)
+
+Visibility and activity flags
+
+Child nodes
+
+Scripts for behavior
+
+@subsection example_format Example Format:
+@code
+Node[m0,0,0r0,0,0s1,1,1a1v1]:2
+Node:4
+Skybox(assets/textures/skybox/right.jpg, ...)
+PointLight(60,50,40,0.001,0,1,0.09,0.032)[m-10,6,9]
+Model(assets/models/settings_bg/settings_bg.obj)[s5,5,5]
+Camera(1){NULL,st_camera,NULL}[m0,3,5]
+@endcode
+
+@section parsing_logic Parsing & Loading Logic
+@subsection load_scene Function: load_scene
+This function reads a .scene file and constructs a node tree. It initializes buffers, reads the file, and builds the hierarchy.
+
+@subsection load_node Function: load_node
+This function recursively loads nodes from the file:
+
+Reads the node type and creates a corresponding structure.
+
+Reads transformation properties (s, r, m for scale, rotation, and position).
+
+Reads visibility (v) and activity (a) flags.
+
+Reads child nodes (:) and scripts ({}) if present.
+
+@subsection example_process Example Process:
+
+Node[m0,0,0r0,0,0s1,1,1a1v1]:2
+
+Creates a node with position (0,0,0), rotation (0,0,0), scale (1,1,1), active & visible flags set.
+
+Has 2 child nodes.
+
+PointLight(60,50,40,...)
+
+Creates a point light at position (-10,6,9).
+
+Model(assets/models/settings_bg/settings_bg.obj)[s5,5,5]
+
+Loads a model and sets its scale to (5,5,5).
+
+@section node_properties Scene Node Properties
+@subsection transformations Transformations
+
+mX,Y,Z → Position (X,Y,Z)
+
+rX,Y,Z → Rotation (X,Y,Z)
+
+sX,Y,Z → Scale (X,Y,Z)
+
+@subsection flags Flags
+
+v1 → Visible (NODE_VISIBLE flag set)
+
+a1 → Active (NODE_ACTIVE flag set)
+
+@subsection scripts Scripts
+
+{script1, script2, ...} → Attaches scripts to the node.
+
+@section memory Memory Management & Finalization
+
+Allocates memory dynamically for nodes and children.
+
+Stores lighting and collision data in separate buffers.
+
+Cleans up resources and finalizes scene graph after parsing.
+
+@section summary Summary
+The .scene system efficiently loads hierarchical structures, handling transformations, visibility, and scripts while ensuring optimized memory management. This allows for dynamic scene composition and scripting integration.
+*/

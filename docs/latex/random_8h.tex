@@ -1,0 +1,81 @@
+\doxysection{src/utils/random.h File Reference}
+\hypertarget{random_8h}{}\label{random_8h}\index{src/utils/random.h@{src/utils/random.h}}
+
+
+Utility functions for generating random numbers.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{random_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{random_8h_a4493259bd15c41b7b632586676455ffa}{init\+\_\+random}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the random number generator. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{random_8h_a9d944ed48c83eedfe629746ecccd1506}{random\+\_\+float}} (float min, float max)
+\begin{DoxyCompactList}\small\item\em Generates a random floating-\/point number within a specified range. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{random_8h_ad7954e6a1b9ea073c7bc894dc5af85a9}{random\+\_\+int}} (int min, int max)
+\begin{DoxyCompactList}\small\item\em Generates a random integer within a specified range. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utility functions for generating random numbers. 
+
+This header file provides functions to initialize the random number generator and to generate random floating-\/point and integer numbers within specified ranges. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{random_8h_a4493259bd15c41b7b632586676455ffa}\label{random_8h_a4493259bd15c41b7b632586676455ffa} 
+\index{random.h@{random.h}!init\_random@{init\_random}}
+\index{init\_random@{init\_random}!random.h@{random.h}}
+\doxysubsubsection{\texorpdfstring{init\_random()}{init\_random()}}
+{\footnotesize\ttfamily void init\+\_\+random (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the random number generator. 
+
+This function should be called before any other random number functions to ensure that the random numbers generated are properly seeded. \Hypertarget{random_8h_a9d944ed48c83eedfe629746ecccd1506}\label{random_8h_a9d944ed48c83eedfe629746ecccd1506} 
+\index{random.h@{random.h}!random\_float@{random\_float}}
+\index{random\_float@{random\_float}!random.h@{random.h}}
+\doxysubsubsection{\texorpdfstring{random\_float()}{random\_float()}}
+{\footnotesize\ttfamily float random\+\_\+float (\begin{DoxyParamCaption}\item[{float}]{min,  }\item[{float}]{max }\end{DoxyParamCaption})}
+
+
+
+Generates a random floating-\/point number within a specified range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min} & The minimum value of the range (inclusive). \\
+\hline
+{\em max} & The maximum value of the range (inclusive). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A random floating-\/point number between min and max. 
+\end{DoxyReturn}
+\Hypertarget{random_8h_ad7954e6a1b9ea073c7bc894dc5af85a9}\label{random_8h_ad7954e6a1b9ea073c7bc894dc5af85a9} 
+\index{random.h@{random.h}!random\_int@{random\_int}}
+\index{random\_int@{random\_int}!random.h@{random.h}}
+\doxysubsubsection{\texorpdfstring{random\_int()}{random\_int()}}
+{\footnotesize\ttfamily int random\+\_\+int (\begin{DoxyParamCaption}\item[{int}]{min,  }\item[{int}]{max }\end{DoxyParamCaption})}
+
+
+
+Generates a random integer within a specified range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min} & The minimum value of the range (inclusive). \\
+\hline
+{\em max} & The maximum value of the range (inclusive). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A random integer between min and max. 
+\end{DoxyReturn}

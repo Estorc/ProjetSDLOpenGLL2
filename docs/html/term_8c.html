@@ -119,17 +119,18 @@ Include dependency graph for term.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="term_8c__incl.png" border="0" usemap="#asrc_2term_2term_8c" alt=""/></div>
 <map name="asrc_2term_2term_8c" id="asrc_2term_2term_8c">
-<area shape="rect" title=" " alt="" coords="24,5,147,31"/>
-<area shape="rect" title=" " alt="" coords="5,79,72,104"/>
-<area shape="poly" title=" " alt="" coords="80,32,56,69,52,66,75,30"/>
-<area shape="rect" title=" " alt="" coords="96,79,171,104"/>
-<area shape="poly" title=" " alt="" coords="95,30,120,66,116,69,91,33"/>
+<area shape="rect" title=" " alt="" coords="5,31,128,56"/>
+<area shape="rect" title=" " alt="" coords="180,5,247,31"/>
+<area shape="poly" title=" " alt="" coords="128,30,166,23,167,29,129,35"/>
+<area shape="rect" title=" " alt="" coords="176,55,251,80"/>
+<area shape="poly" title=" " alt="" coords="129,51,163,56,162,62,128,56"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:af3a4ca1d54533e334f51a0226c53eff6" id="r_af3a4ca1d54533e334f51a0226c53eff6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="term_8c.html#af3a4ca1d54533e334f51a0226c53eff6">fast_vec3_print</a> (const float *v, const char *name)</td></tr>
+<tr class="memdesc:af3a4ca1d54533e334f51a0226c53eff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a 3D vector with a given name.  <br /></td></tr>
 <tr class="separator:af3a4ca1d54533e334f51a0226c53eff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -158,6 +159,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Prints a 3D vector with a given name. </p>
+<p>This function takes a pointer to a 3D vector (array of 3 floats) and a name, and prints the vector in a formatted manner.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Pointer to the first element of the 3D vector (array of 3 floats). </td></tr>
+    <tr><td class="paramname">name</td><td>The name to be printed alongside the vector. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -192,6 +203,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -200,7 +221,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

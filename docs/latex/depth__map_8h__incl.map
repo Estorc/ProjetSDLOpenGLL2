@@ -1,0 +1,19 @@
+<map id="src/render/depth_map.h" name="src/render/depth_map.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,92,181,117"/>
+<area shape="rect" id="Node000002" href="$model_8h.html" title="Defines structures and functions for handling 3D models and their properties." alt="" coords="233,63,336,88"/>
+<area shape="poly" id="edge9_Node000001_Node000002" title=" " alt="" coords="176,89,219,83,220,88,177,95"/>
+<area shape="rect" id="Node000008" href="$framebuffer_8h.html" title=" " alt="" coords="229,116,340,141"/>
+<area shape="poly" id="edge15_Node000001_Node000008" title=" " alt="" coords="182,113,216,117,215,123,181,118"/>
+<area shape="rect" id="Node000003" href="$shader_8h.html" title=" " alt="" coords="431,5,508,31"/>
+<area shape="poly" id="edge10_Node000002_Node000003" title=" " alt="" coords="326,60,416,31,418,37,327,65"/>
+<area shape="rect" id="Node000004" href="$model__loader_8h.html" title="Header file for model loading functions." alt="" coords="388,55,551,95"/>
+<area shape="poly" id="edge11_Node000002_Node000004" title=" " alt="" coords="336,73,374,73,374,78,336,78"/>
+<area shape="rect" id="Node000005" href="$obj__loader_8h.html" title=" " alt="" coords="599,13,701,39"/>
+<area shape="poly" id="edge12_Node000004_Node000005" title=" " alt="" coords="542,53,589,40,590,45,544,58"/>
+<area shape="rect" id="Node000006" href="$mtl__loader_8h.html" title=" " alt="" coords="599,63,701,88"/>
+<area shape="poly" id="edge13_Node000004_Node000006" title=" " alt="" coords="551,73,585,73,585,78,551,78"/>
+<area shape="rect" id="Node000007" href="$fbx__loader_8h.html" title="Header file for loading FBX models." alt="" coords="599,112,701,137"/>
+<area shape="poly" id="edge14_Node000004_Node000007" title=" " alt="" coords="544,93,590,106,589,111,542,98"/>
+<area shape="rect" id="Node000009" href="$input_8h.html" title=" " alt="" coords="422,120,517,145"/>
+<area shape="poly" id="edge16_Node000008_Node000009" title=" " alt="" coords="340,127,408,129,408,134,340,133"/>
+</map>

@@ -136,36 +136,6 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>A structure to hold various shaders used in the rendering process. </p>
 <p>This structure contains different shaders that are used for rendering different aspects of the world, such as the main render, depth, screen, skybox, and GUI. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="a1dd7dbad44b318567d8c0c59b873d5a9" name="a1dd7dbad44b318567d8c0c59b873d5a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1dd7dbad44b318567d8c0c59b873d5a9">&#9670;&#160;</a></span>depth</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> WorldShaders::depth</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Depth shader </p>
-
-</div>
-</div>
-<a id="a92889bafce33339104ccfc29db9d1522" name="a92889bafce33339104ccfc29db9d1522"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92889bafce33339104ccfc29db9d1522">&#9670;&#160;</a></span>gui</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> WorldShaders::gui</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>GUI shader </p>
-
-</div>
-</div>
 <a id="a971e5d33d21e06476fdf895c3e63cb88" name="a971e5d33d21e06476fdf895c3e63cb88"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a971e5d33d21e06476fdf895c3e63cb88">&#9670;&#160;</a></span>render</h2>
 
@@ -178,6 +148,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Main render shader </p>
+
+</div>
+</div>
+<a id="a1dd7dbad44b318567d8c0c59b873d5a9" name="a1dd7dbad44b318567d8c0c59b873d5a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dd7dbad44b318567d8c0c59b873d5a9">&#9670;&#160;</a></span>depth</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> WorldShaders::depth</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Depth shader </p>
 
 </div>
 </div>
@@ -208,6 +193,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p><a class="el" href="classSkybox.html">Skybox</a> shader </p>
+
+</div>
+</div>
+<a id="a92889bafce33339104ccfc29db9d1522" name="a92889bafce33339104ccfc29db9d1522"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92889bafce33339104ccfc29db9d1522">&#9670;&#160;</a></span>gui</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> WorldShaders::gui</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>GUI shader </p>
 
 </div>
 </div>
@@ -245,6 +245,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -253,7 +263,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

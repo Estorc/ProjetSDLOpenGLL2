@@ -21,10 +21,20 @@
 #include "gui/frame.h"
 #include "io/input.h"
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class SelectList : public Frame {
     __containerType__ Node *
     public:
 
+    /**
+     * @brief Constructor for the select list class.
+     *
+     * This function initializes the select list class, setting up any necessary
+     * data structures and preparing the class for use.
+     */
     void constructor() {
         this->type = __type__; 
 
@@ -57,12 +67,21 @@ class SelectList : public Frame {
         glGenTextures(1, &frame->contentTexture);
     }
 
-    
-
+    /**
+     * @brief Loads the select list.
+     *
+     * This function is responsible for initializing and loading the select list.
+     * It sets up the necessary data structures and prepares the list for use.
+     */
     void load() {
         this::constructor();
     }
 
+    /**
+     * @brief Refreshes the options in the select list.
+     *
+     * This function is responsible for updating the options available in the select list. It ensures that the list is current and reflects any changes that may have occurred.
+     */
     void refreshOptions() {
         for (int i = 0; i < this->length; i++) {
             (this->children[i])::free();
@@ -123,7 +142,12 @@ class SelectList : public Frame {
         }
     }
 
-
+    /**
+     * @brief Refreshes the select list.
+     *
+     * This function is responsible for refreshing the select list. It updates the
+     * display and state of the select list to reflect any changes that have occurred.
+     */
     void refresh() {
         SUPER(refresh);
         Frame *frame = (Frame *) this->object;
@@ -139,7 +163,14 @@ class SelectList : public Frame {
         SUPER(refreshContent);
     }
 
-
+    /**
+     * @brief Updates the state of the select list.
+     *
+     * This function is responsible for updating the state of the select list. It performs necessary
+     * operations to ensure the select list is in the correct state based on the current context.
+     *
+     * @note This function does not take any parameters and does not return any value.
+     */
     void update() {
         Frame *frame = (Frame *) this->object;
         SelectList *selectList = (SelectList *) frame->selectList;
@@ -203,15 +234,40 @@ class SelectList : public Frame {
         }
     }
 
+    /**
+     * @brief Checks if the current list is a select list.
+     *
+     * This function sets the value of the provided boolean pointer to indicate
+     * whether the current list is a select list.
+     *
+     * @param result A pointer to a boolean variable where the result will be stored.
+     *               The value will be set to true if the current list is a select list,
+     *               otherwise it will be set to false.
+     */
     void is_selectlist(bool *result) {
         *result = true;
     }
 
+    /**
+     * @brief Saves the current state of the Node editor to a file.
+     *
+     * This function writes the current state of the Node editor to the specified file.
+     *
+     * @param file A pointer to the FILE object where the state will be saved.
+     * @param editor A pointer to the Node editor whose state is to be saved.
+     */
     void save(FILE *file, Node *editor) {
         UNUSED(editor);
         fprintf(file, "%s", classManager.class_names[this->type]);
     }
 
+    /**
+     * @brief Frees the resources allocated by the select list class.
+     *
+     * This function is responsible for releasing any memory or resources
+     * that were allocated for the select list class. It ensures that there
+     * are no memory leaks by properly deallocating all used resources.
+     */
     void free() {
         Frame *frame = (Frame *) this->object;
         SelectList *selectList = frame->selectList;
@@ -221,3 +277,4 @@ class SelectList : public Frame {
  
     
 }
+

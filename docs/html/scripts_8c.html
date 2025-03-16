@@ -115,21 +115,24 @@ $(document).ready(function(){initNavTree('scripts_8c.html',''); initResizable();
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a9b505ef7c67a86c3271f2127911d4d89" id="r_a9b505ef7c67a86c3271f2127911d4d89"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scripts_8c.html#a9b505ef7c67a86c3271f2127911d4d89">__scriptIndex__</a> = 0</td></tr>
-<tr class="separator:a9b505ef7c67a86c3271f2127911d4d89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a62e8ca4dcb8291e4b2be0181dbbf5b" id="r_a8a62e8ca4dcb8291e4b2be0181dbbf5b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scripts_8c.html#a8a62e8ca4dcb8291e4b2be0181dbbf5b">__scriptIndex__</a> = 0</td></tr>
+<tr class="memdesc:a8a62e8ca4dcb8291e4b2be0181dbbf5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global index for tracking the number of registered scripts.  <br /></td></tr>
+<tr class="separator:a8a62e8ca4dcb8291e4b2be0181dbbf5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a9b505ef7c67a86c3271f2127911d4d89" name="a9b505ef7c67a86c3271f2127911d4d89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b505ef7c67a86c3271f2127911d4d89">&#9670;&#160;</a></span>__scriptIndex__</h2>
+<a id="a8a62e8ca4dcb8291e4b2be0181dbbf5b" name="a8a62e8ca4dcb8291e4b2be0181dbbf5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a62e8ca4dcb8291e4b2be0181dbbf5b">&#9670;&#160;</a></span>__scriptIndex__</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int __scriptIndex__ = 0</td>
+          <td class="memname">__scriptIndex__ = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Global index for tracking the number of registered scripts. </p>
 
 </div>
 </div>
@@ -164,6 +167,16 @@ Variables</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -172,7 +185,7 @@ Variables</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

@@ -111,7 +111,6 @@ $(document).ready(function(){initNavTree('globals_a.html',''); initResizable(); 
 
 <h3><a id="index_a" name="index_a"></a>- a -</h3><ul>
 <li>absolute_path_to_relative()&#160;:&#160;<a class="el" href="group__OSIO.html#ga6f9da097d97bc24c4c4bf7b2996331d0">osio.h</a>, <a class="el" href="group__OSIO.html#ga6f9da097d97bc24c4c4bf7b2996331d0">osio.c</a></li>
-<li>accumulator&#160;:&#160;<a class="el" href="main_8c.html#a46eb7da1d21fab45d611c90e42c1eae8">main.c</a></li>
 <li>add_message_handler()&#160;:&#160;<a class="el" href="network__utils_8c.html#a9cb541f929102229982f60af9b67bbdd">network_utils.c</a>, <a class="el" href="network__utils_8h.html#a7046a330569733a062e10db837e25bbe">network_utils.h</a></li>
 <li>add_mix_chunk_to_cache()&#160;:&#160;<a class="el" href="group__MemoryCache.html#gadf72a8ac6da9ce12a4b7264c2747f08f">memory.c</a>, <a class="el" href="group__MemoryCache.html#gadf72a8ac6da9ce12a4b7264c2747f08f">memory.h</a></li>
 <li>add_mix_music_to_cache()&#160;:&#160;<a class="el" href="group__MemoryCache.html#ga09305ad627a28324fd720c408ed2afb9">memory.c</a>, <a class="el" href="group__MemoryCache.html#ga09305ad627a28324fd720c408ed2afb9">memory.h</a></li>
@@ -153,6 +152,16 @@ $(document).ready(function(){initNavTree('globals_a.html',''); initResizable(); 
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -161,7 +170,7 @@ $(document).ready(function(){initNavTree('globals_a.html',''); initResizable(); 
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

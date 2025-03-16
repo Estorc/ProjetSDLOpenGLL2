@@ -1,9 +1,9 @@
 var structpeer =
 [
-    [ "handler_count", "structpeer.html#a9aeb7d91e8fbc4b1000fd4eeaa423da8", null ],
-    [ "handlers", "structpeer.html#a38cce95c59d81f3136144afe2189a6b8", null ],
-    [ "incoming_buffer", "structpeer.html#a552ecaf1ddcbee53c0f9adfcc71a2ecf", null ],
-    [ "listener", "structpeer.html#a231b0c785c044676ff6a9f25d9533171", null ],
-    [ "ping", "structpeer.html#aa7cc8ce1e6f96584b324ace98d25c567", null ],
-    [ "socket", "structpeer.html#aabb18ce7dc7a63a95f4c09998d985f19", null ]
+    [ "socket", "structpeer.html#a77dae86dc4c270a2ac1c95f149d5ab2a", null ],
+    [ "listener", "structpeer.html#a806595a71a3b6d413dbaaa25585d7dc0", null ],
+    [ "incoming_buffer", "structpeer.html#a56b8cd88eeb0250decffc5c4a430836b", null ],
+    [ "ping", "structpeer.html#a624d5261107607e5d48ab7dd3f00d693", null ],
+    [ "handlers", "structpeer.html#aa3cf9df79d3290444a46ccf912c97a64", null ],
+    [ "handler_count", "structpeer.html#acc1a71a0f4d04b0f82fe81d852993cd4", null ]
 ];

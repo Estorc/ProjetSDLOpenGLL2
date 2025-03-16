@@ -1,0 +1,17 @@
+<map id="CShape" name="CShape">
+<area shape="rect" id="Node000001" title=" " alt="" coords="109,129,180,155"/>
+<area shape="rect" id="Node000003" href="$classBoxCShape.html" title=" " alt="" coords="241,5,337,31"/>
+<area shape="poly" id="edge9_Node000001_Node000003" title=" " alt="" coords="159,116,187,77,226,40,246,28,249,33,230,44,191,81,163,119"/>
+<area shape="rect" id="Node000004" href="$classCapsuleCShape.html" title=" " alt="" coords="228,55,351,80"/>
+<area shape="poly" id="edge10_Node000001_Node000004" title=" " alt="" coords="175,119,227,89,252,78,254,82,229,94,178,124"/>
+<area shape="rect" id="Node000005" href="$classMeshCShape.html" title=" " alt="" coords="236,104,343,129"/>
+<area shape="poly" id="edge11_Node000001_Node000005" title=" " alt="" coords="193,131,235,123,236,129,194,136"/>
+<area shape="rect" id="Node000006" href="$classPlaneCShape.html" title=" " alt="" coords="236,153,343,179"/>
+<area shape="poly" id="edge12_Node000001_Node000006" title=" " alt="" coords="194,147,236,155,236,160,193,153"/>
+<area shape="rect" id="Node000007" href="$classRayCShape.html" title=" " alt="" coords="241,203,337,228"/>
+<area shape="poly" id="edge13_Node000001_Node000007" title=" " alt="" coords="178,160,229,189,254,200,252,205,227,194,175,164"/>
+<area shape="rect" id="Node000008" href="$classSphereCShape.html" title=" " alt="" coords="231,252,347,277"/>
+<area shape="poly" id="edge14_Node000001_Node000008" title=" " alt="" coords="164,165,192,203,230,239,249,250,246,254,226,243,188,206,159,169"/>
+<area shape="rect" id="Node000002" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="5,129,61,155"/>
+<area shape="poly" id="edge8_Node000001_Node000002" title=" " alt="" coords="75,139,109,139,109,145,75,145"/>
+</map>

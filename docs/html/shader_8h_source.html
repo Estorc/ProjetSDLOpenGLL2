@@ -114,40 +114,40 @@ $(document).ready(function(){initNavTree('shader_8h_source.html',''); initResiza
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define SHADER_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">   21</a></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">   20</a></span><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#gaae0064bb82d7d6a3929c88550423b7db">   30</a></span><span class="preprocessor">#define DEFAULT_RENDER_SHADER &quot;shaders/shadowShader.vs&quot;, &quot;shaders/shadowShader.fs&quot;</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#ga770865347525c47610ef50f584783534">   38</a></span><span class="preprocessor">#define DEFAULT_DEPTH_SHADER &quot;shaders/simpleDepthShader.vs&quot;, &quot;shaders/simpleDepthShader.fs&quot;</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#ga712eb81654f5792fdb633c586ac30389">   46</a></span><span class="preprocessor">#define DEFAULT_SCREEN_SHADER &quot;shaders/aa_post.vs&quot;, &quot;shaders/aa_post.fs&quot;</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#gab2db09e6298f20fac1c66c8c4ad69cee">   54</a></span><span class="preprocessor">#define DEFAULT_SKYBOX_SHADER &quot;shaders/skybox.vs&quot;, &quot;shaders/skybox.fs&quot;</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#ga88325351f80640e41970b4141a549b44">   62</a></span><span class="preprocessor">#define DEFAULT_GUI_SHADER &quot;shaders/gui.vs&quot;, &quot;shaders/gui.fs&quot;</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#ga7c682b9bed25d2159985f6a11de0b712">   72</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#ga7c682b9bed25d2159985f6a11de0b712">create_shaders</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> shaders[]);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> <a class="code hl_function" href="group__ShaderManagement.html#ga8c5722406ee9544fe6a6fdab7e87a1c0">create_shader</a>(<span class="keywordtype">char</span>* vertexPath, <span class="keywordtype">char</span>* fragmentPath);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#ga1117f5894f4b4abe13e41cfc8109ddbe">use_shader</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> ID);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#gaafee5005fc182fefb7fab74fa868631c">set_shader_int</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> ID, <span class="keywordtype">char</span> *name, <span class="keywordtype">int</span> value);</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#ga4f343c92d0744283d520b975c5408885">  115</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#ga4f343c92d0744283d520b975c5408885">set_shader_float</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> ID, <span class="keywordtype">char</span> *name, <span class="keywordtype">float</span> value);</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#ga4ddd55e651817701c9e65c3006d84f06">set_shader_vec2</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> ID, <span class="keywordtype">char</span> *name, vec2 value);</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#gabe939b6bc86c802ec4514fb3c7a916c0">set_shader_vec3</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> ID, <span class="keywordtype">char</span> *name, vec3 value);</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#ga225dc3d3319fe8c8cc67bb58cdea93d2">set_shader_vec4</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> ID, <span class="keywordtype">char</span> *name, vec4 value);</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#gaaed666bd75a0e319dbacab5ed2191291">set_shader_mat4</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> ID, <span class="keywordtype">char</span> *name, mat4 *value);</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
- <span class="comment">// end of ShaderManagement</span><div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#gaae0064bb82d7d6a3929c88550423b7db">   28</a></span><span class="preprocessor">#define DEFAULT_RENDER_SHADER &quot;shaders/shadowShader.vs&quot;, &quot;shaders/shadowShader.fs&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#ga770865347525c47610ef50f584783534">   35</a></span><span class="preprocessor">#define DEFAULT_DEPTH_SHADER &quot;shaders/simpleDepthShader.vs&quot;, &quot;shaders/simpleDepthShader.fs&quot;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#ga712eb81654f5792fdb633c586ac30389">   42</a></span><span class="preprocessor">#define DEFAULT_SCREEN_SHADER &quot;shaders/aa_post.vs&quot;, &quot;shaders/aa_post.fs&quot;</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#gab2db09e6298f20fac1c66c8c4ad69cee">   49</a></span><span class="preprocessor">#define DEFAULT_SKYBOX_SHADER &quot;shaders/skybox.vs&quot;, &quot;shaders/skybox.fs&quot;</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#ga88325351f80640e41970b4141a549b44">   56</a></span><span class="preprocessor">#define DEFAULT_GUI_SHADER &quot;shaders/gui.vs&quot;, &quot;shaders/gui.fs&quot;</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#ga7c682b9bed25d2159985f6a11de0b712">   66</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#ga7c682b9bed25d2159985f6a11de0b712">create_shaders</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> shaders[]);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> <a class="code hl_function" href="group__ShaderManagement.html#ga8c5722406ee9544fe6a6fdab7e87a1c0">create_shader</a>(<span class="keywordtype">char</span>* vertexPath, <span class="keywordtype">char</span>* fragmentPath);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#ga1117f5894f4b4abe13e41cfc8109ddbe">use_shader</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> ID);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#gaafee5005fc182fefb7fab74fa868631c">set_shader_int</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> ID, <span class="keywordtype">char</span> *name, <span class="keywordtype">int</span> value);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="group__ShaderManagement.html#ga4f343c92d0744283d520b975c5408885">  109</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#ga4f343c92d0744283d520b975c5408885">set_shader_float</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> ID, <span class="keywordtype">char</span> *name, <span class="keywordtype">float</span> value);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#ga4ddd55e651817701c9e65c3006d84f06">set_shader_vec2</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> ID, <span class="keywordtype">char</span> *name, vec2 value);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#gabe939b6bc86c802ec4514fb3c7a916c0">set_shader_vec3</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> ID, <span class="keywordtype">char</span> *name, vec3 value);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#ga225dc3d3319fe8c8cc67bb58cdea93d2">set_shader_vec4</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> ID, <span class="keywordtype">char</span> *name, vec4 value);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ShaderManagement.html#gaaed666bd75a0e319dbacab5ed2191291">set_shader_mat4</a>(<a class="code hl_typedef" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> ID, <span class="keywordtype">char</span> *name, mat4 *value);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+ <span class="comment">// end of ShaderManagement</span><div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="agroup__ShaderManagement_html_ga1117f5894f4b4abe13e41cfc8109ddbe"><div class="ttname"><a href="group__ShaderManagement.html#ga1117f5894f4b4abe13e41cfc8109ddbe">use_shader</a></div><div class="ttdeci">void use_shader(Shader ID)</div><div class="ttdoc">Uses the specified shader program.</div><div class="ttdef"><b>Definition</b> shader.c:78</div></div>
 <div class="ttc" id="agroup__ShaderManagement_html_ga225dc3d3319fe8c8cc67bb58cdea93d2"><div class="ttname"><a href="group__ShaderManagement.html#ga225dc3d3319fe8c8cc67bb58cdea93d2">set_shader_vec4</a></div><div class="ttdeci">void set_shader_vec4(Shader ID, char *name, vec4 value)</div><div class="ttdoc">Sets a vec4 uniform in the shader program.</div><div class="ttdef"><b>Definition</b> shader.c:98</div></div>
 <div class="ttc" id="agroup__ShaderManagement_html_ga4ddd55e651817701c9e65c3006d84f06"><div class="ttname"><a href="group__ShaderManagement.html#ga4ddd55e651817701c9e65c3006d84f06">set_shader_vec2</a></div><div class="ttdeci">void set_shader_vec2(Shader ID, char *name, vec2 value)</div><div class="ttdoc">Sets a vec2 uniform in the shader program.</div><div class="ttdef"><b>Definition</b> shader.c:90</div></div>
@@ -157,7 +157,7 @@ $(document).ready(function(){initNavTree('shader_8h_source.html',''); initResiza
 <div class="ttc" id="agroup__ShaderManagement_html_gaaed666bd75a0e319dbacab5ed2191291"><div class="ttname"><a href="group__ShaderManagement.html#gaaed666bd75a0e319dbacab5ed2191291">set_shader_mat4</a></div><div class="ttdeci">void set_shader_mat4(Shader ID, char *name, mat4 *value)</div><div class="ttdoc">Sets a mat4 uniform in the shader program.</div><div class="ttdef"><b>Definition</b> shader.c:102</div></div>
 <div class="ttc" id="agroup__ShaderManagement_html_gaafee5005fc182fefb7fab74fa868631c"><div class="ttname"><a href="group__ShaderManagement.html#gaafee5005fc182fefb7fab74fa868631c">set_shader_int</a></div><div class="ttdeci">void set_shader_int(Shader ID, char *name, int value)</div><div class="ttdoc">Sets an integer uniform in the shader program.</div><div class="ttdef"><b>Definition</b> shader.c:82</div></div>
 <div class="ttc" id="agroup__ShaderManagement_html_gabe939b6bc86c802ec4514fb3c7a916c0"><div class="ttname"><a href="group__ShaderManagement.html#gabe939b6bc86c802ec4514fb3c7a916c0">set_shader_vec3</a></div><div class="ttdeci">void set_shader_vec3(Shader ID, char *name, vec3 value)</div><div class="ttdoc">Sets a vec3 uniform in the shader program.</div><div class="ttdef"><b>Definition</b> shader.c:94</div></div>
-<div class="ttc" id="agroup__ShaderManagement_html_gaf8187ff58761df5fefccb33e254e5eb5"><div class="ttname"><a href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a></div><div class="ttdeci">unsigned int Shader</div><div class="ttdoc">Represents an unsigned integer used as a shader identifier.</div><div class="ttdef"><b>Definition</b> shader.h:21</div></div>
+<div class="ttc" id="agroup__ShaderManagement_html_gaf8187ff58761df5fefccb33e254e5eb5"><div class="ttname"><a href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a></div><div class="ttdeci">unsigned int Shader</div><div class="ttdoc">Represents an unsigned integer used as a shader identifier.</div><div class="ttdef"><b>Definition</b> shader.h:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -189,6 +189,16 @@ $(document).ready(function(){initNavTree('shader_8h_source.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -197,7 +207,7 @@ $(document).ready(function(){initNavTree('shader_8h_source.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

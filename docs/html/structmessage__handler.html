@@ -142,6 +142,20 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a8b7683d78d01c82bf02a34c79ef574e8" name="a8b7683d78d01c82bf02a34c79ef574e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b7683d78d01c82bf02a34c79ef574e8">&#9670;&#160;</a></span>msg</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* message_handler::msg</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="af99eb5fd284f410ebf21654e38dbc4af" name="af99eb5fd284f410ebf21654e38dbc4af"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af99eb5fd284f410ebf21654e38dbc4af">&#9670;&#160;</a></span>callback</h2>
 
@@ -150,20 +164,6 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">int(* message_handler::callback) (int msglen, char *<a class="el" href="structmessage__handler.html#a8b7683d78d01c82bf02a34c79ef574e8">msg</a>, void *p, void **<a class="el" href="structmessage__handler.html#a6cc1e4b2d4553a00d653da7a37107aea">data</a>)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6cc1e4b2d4553a00d653da7a37107aea" name="a6cc1e4b2d4553a00d653da7a37107aea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6cc1e4b2d4553a00d653da7a37107aea">&#9670;&#160;</a></span>data</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void** message_handler::data</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -184,14 +184,14 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a8b7683d78d01c82bf02a34c79ef574e8" name="a8b7683d78d01c82bf02a34c79ef574e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b7683d78d01c82bf02a34c79ef574e8">&#9670;&#160;</a></span>msg</h2>
+<a id="a6cc1e4b2d4553a00d653da7a37107aea" name="a6cc1e4b2d4553a00d653da7a37107aea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cc1e4b2d4553a00d653da7a37107aea">&#9670;&#160;</a></span>data</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* message_handler::msg</td>
+          <td class="memname">void** message_handler::data</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -232,6 +232,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -240,7 +250,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

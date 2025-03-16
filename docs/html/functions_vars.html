@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <h3><a id="index__5F" name="index__5F"></a>- _ -</h3><ul>
 <li>_model&#160;:&#160;<a class="el" href="classBoxCShape.html#a40d8b1c15a575bb1cbc1540a1c24fec1">BoxCShape</a>, <a class="el" href="classCapsuleCShape.html#a00a1f0b2c0e027010be802d15d943046">CapsuleCShape</a>, <a class="el" href="classPlaneCShape.html#a30e0fb06817b276ba6c78bffc5acf0fd">PlaneCShape</a>, <a class="el" href="classSphereCShape.html#a4219d8764e823467537167a70e0f1682">SphereCShape</a></li>
 <li>_vao&#160;:&#160;<a class="el" href="classFrame.html#a69ba26f9aacfec9606de2d5a6c59e6a9">Frame</a></li>
-<li>_vbo&#160;:&#160;<a class="el" href="classFrame.html#a770bd2917ab92f61e83a739b02121e45">Frame</a></li>
+<li>_vbo&#160;:&#160;<a class="el" href="classFrame.html#ab0d0ef8d49a6370ccda8a09f739453d8">Frame</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -145,6 +145,16 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -153,7 +163,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

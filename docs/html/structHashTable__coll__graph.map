@@ -1,6 +1,6 @@
 <map id="HashTable" name="HashTable">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,93,95,119"/>
-<area shape="rect" id="Node000002" href="$structEntry.html" title=" " alt="" coords="22,5,78,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="53,45,53,93,47,93,47,45"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="93,8,101,11,105,18,96,27,79,29,78,23,94,22,99,18,98,16,91,13"/>
+<area shape="rect" id="Node000001" title="Represents the hash table." alt="" coords="147,44,236,69"/>
+<area shape="rect" id="Node000002" href="$structEntry.html" title="Represents an entry in the hash table." alt="" coords="5,44,61,69"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,54,147,54,147,59,75,59"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="18,29,23,21,33,17,42,20,48,27,47,44,41,44,43,28,39,24,33,23,26,25,23,32"/>
 </map>

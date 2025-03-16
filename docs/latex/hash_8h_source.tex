@@ -7,31 +7,35 @@
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
 \DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{comment}{//\ Define\ the\ Entry\ struct}}
-\DoxyCodeLine{00007\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structEntry}{Entry}}\ \{}
-\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structEntry_a78468c67722e21d21a45c15421f6dbd6}{key}};}
-\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structEntry_aca33bdbd628f38adb997eb8e8a6f64c4}{value}};}
-\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structEntry_a5f98a32f757bfce324f5cfc1ad98eb80}{needs\_free}};}
-\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structEntry}{Entry}}\ *\mbox{\hyperlink{structEntry_a08cba741f383cd7da0f3ab9aee6e3cd5}{next}};}
-\DoxyCodeLine{00012\ \}\ \mbox{\hyperlink{structEntry}{Entry}};}
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{comment}{//\ Define\ the\ HashTable\ struct}}
-\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structHashTable}{HashTable}}\ \{}
-\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{structEntry}{Entry}}\ **\mbox{\hyperlink{structHashTable_ae0ed1720c43ef387133367a60c80c183}{table}};}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structHashTable_ad732056fce42df5162c810b4dd28fca1}{size}};}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structHashTable_ad7b2a756fb5beae48601b03888235ff7}{capacity}};}
-\DoxyCodeLine{00019\ \}\ \mbox{\hyperlink{structHashTable}{HashTable}};}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{comment}{//\ Function\ declarations}}
-\DoxyCodeLine{00022\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{hash_8h_a33cb3d98087eaf13f0bf2827e99719ff}{hash}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key,\ \textcolor{keywordtype}{int}\ capacity);}
-\DoxyCodeLine{00023\ \mbox{\hyperlink{structHashTable}{HashTable}}\ *\mbox{\hyperlink{hash_8h_a3880a434774283481fd2023f2cee535a}{table\_create}}(\textcolor{keywordtype}{int}\ initial\_capacity);}
-\DoxyCodeLine{00024\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hash_8h_a09e2f3b54e1f988ab1f1adda0b5f3853}{table\_resize}}(\mbox{\hyperlink{structHashTable}{HashTable}}\ *table);}
-\DoxyCodeLine{00025\ \mbox{\hyperlink{structEntry}{Entry}}\ *\mbox{\hyperlink{hash_8h_ac2869555cbe386dc1d6c84a198700db3}{table\_insert}}(\mbox{\hyperlink{structHashTable}{HashTable}}\ *table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key,\ \textcolor{keywordtype}{void}\ *value);}
-\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hash_8h_ae56ca11912523d3739e1675fd69e4342}{table\_insert\_raw}}(\mbox{\hyperlink{structHashTable}{HashTable}}\ *table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key,\ \textcolor{keywordtype}{void}\ *value);}
-\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{hash_8h_a7e19607bca351dc4ccd4c386c7e447ac}{table\_get}}(\mbox{\hyperlink{structHashTable}{HashTable}}\ *table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key);}
-\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hash_8h_a5f6c940dc140fecbc4f17495ef05670d}{table\_remove}}(\mbox{\hyperlink{structHashTable}{HashTable}}\ *table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key);}
-\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hash_8h_a065a263e3cfa2b302533f73853b10e45}{table\_free}}(\mbox{\hyperlink{structHashTable}{HashTable}}\ *table);}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ HASH\_H}}
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structEntry}{Entry}}\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structEntry_a44c9fa0677422675db5be9c71b6c357f}{key}};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structEntry_a68d6037b46f03c0087346ddc664cad50}{value}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structEntry_a59d5a56986c7e756b9e16fb6c7bd7984}{needs\_free}};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structEntry}{Entry}}\ *\mbox{\hyperlink{structEntry_a4d1a3e1ac9b0de8ccc7927aed43cdc4c}{next}};}
+\DoxyCodeLine{00035\ \}\ \mbox{\hyperlink{structEntry}{Entry}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structHashTable}{HashTable}}\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{structEntry}{Entry}}\ **\mbox{\hyperlink{structHashTable_a4972f69f6bb5defc96a27ab2a8f89886}{table}};}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structHashTable_a3d60340060fe631634debd36fbf06394}{size}};}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structHashTable_ab0c80fc75b46e3801d6165df60352f9d}{capacity}};}
+\DoxyCodeLine{00054\ \}\ \mbox{\hyperlink{structHashTable}{HashTable}};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{hash_8h_a33cb3d98087eaf13f0bf2827e99719ff}{hash}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key,\ \textcolor{keywordtype}{int}\ capacity);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00071\ \mbox{\hyperlink{structHashTable}{HashTable}}\ *\mbox{\hyperlink{hash_8h_a3880a434774283481fd2023f2cee535a}{table\_create}}(\textcolor{keywordtype}{int}\ initial\_capacity);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hash_8h_a09e2f3b54e1f988ab1f1adda0b5f3853}{table\_resize}}(\mbox{\hyperlink{structHashTable}{HashTable}}\ *table);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00088\ \mbox{\hyperlink{structEntry}{Entry}}\ *\mbox{\hyperlink{hash_8h_ac2869555cbe386dc1d6c84a198700db3}{table\_insert}}(\mbox{\hyperlink{structHashTable}{HashTable}}\ *table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key,\ \textcolor{keywordtype}{void}\ *value);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hash_8h_ae56ca11912523d3739e1675fd69e4342}{table\_insert\_raw}}(\mbox{\hyperlink{structHashTable}{HashTable}}\ *table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key,\ \textcolor{keywordtype}{void}\ *value);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{hash_8h_a7e19607bca351dc4ccd4c386c7e447ac}{table\_get}}(\mbox{\hyperlink{structHashTable}{HashTable}}\ *table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00114\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hash_8h_a5f6c940dc140fecbc4f17495ef05670d}{table\_remove}}(\mbox{\hyperlink{structHashTable}{HashTable}}\ *table,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00121\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hash_8h_a065a263e3cfa2b302533f73853b10e45}{table\_free}}(\mbox{\hyperlink{structHashTable}{HashTable}}\ *table);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

@@ -110,6 +110,7 @@ $(document).ready(function(){initNavTree('globals_func_d.html',''); initResizabl
 <div class="textblock">Here is a list of all functions with links to the files they belong to:</div>
 
 <h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
+<li>default_input_settings()&#160;:&#160;<a class="el" href="group__InputHandling.html#ga600af85b0754785cb4ab342218b1ceee">input.c</a>, <a class="el" href="group__InputHandling.html#ga600af85b0754785cb4ab342218b1ceee">input.h</a></li>
 <li>draw_button()&#160;:&#160;<a class="el" href="gltexture__loader_8c.html#a30269b10be83f106aeaca9d789eaeb6e">gltexture_loader.c</a></li>
 <li>draw_input_box()&#160;:&#160;<a class="el" href="gltexture__loader_8c.html#ad3da1d54578f570dcf4a8d775f0c9f99">gltexture_loader.c</a></li>
 <li>draw_rectangle()&#160;:&#160;<a class="el" href="gltexture__loader_8c.html#a5898674b1926da0aae8ca259c38ab9d0">gltexture_loader.c</a></li>
@@ -150,6 +151,16 @@ $(document).ready(function(){initNavTree('globals_func_d.html',''); initResizabl
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -158,7 +169,7 @@ $(document).ready(function(){initNavTree('globals_func_d.html',''); initResizabl
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

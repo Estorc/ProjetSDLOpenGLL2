@@ -122,9 +122,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCollectedNode.html">CollectedNode</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a node collected by an area.  <a href="structCollectedNode.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html">Area</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an area with collision shapes and nodes.  <a href="classArea.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -231,14 +228,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gad643de832d63de0fe574fe854ba8df82" name="gad643de832d63de0fe574fe854ba8df82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad643de832d63de0fe574fe854ba8df82">&#9670;&#160;</a></span>update_global_position()</h2>
+<a id="ga01dec48dd72d35747fd75272fe16c978" name="ga01dec48dd72d35747fd75272fe16c978"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga01dec48dd72d35747fd75272fe16c978">&#9670;&#160;</a></span>update_script()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void update_global_position </td>
+          <td class="memname">void update_script </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
           <td class="paramname"><em>node</em>, </td>
@@ -259,7 +256,25 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">vec3&#160;</td>
-          <td class="paramname"><em>scale</em>&#160;</td>
+          <td class="paramname"><em>scale</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>delta</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structInput.html">Input</a> *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structWindow.html">Window</a> *&#160;</td>
+          <td class="paramname"><em>window</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -269,13 +284,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Update the global position of a node. </p>
+<p>Update the script for a node. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>Pointer to the node. </td></tr>
     <tr><td class="paramname">pos</td><td>Position vector. </td></tr>
     <tr><td class="paramname">rot</td><td>Rotation vector. </td></tr>
     <tr><td class="paramname">scale</td><td>Scale vector. </td></tr>
+    <tr><td class="paramname">delta</td><td>Time delta. </td></tr>
+    <tr><td class="paramname">input</td><td>Pointer to the input structure. </td></tr>
+    <tr><td class="paramname">window</td><td>Pointer to the window structure. </td></tr>
   </table>
   </dd>
 </dl>
@@ -368,14 +386,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga01dec48dd72d35747fd75272fe16c978" name="ga01dec48dd72d35747fd75272fe16c978"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga01dec48dd72d35747fd75272fe16c978">&#9670;&#160;</a></span>update_script()</h2>
+<a id="gad643de832d63de0fe574fe854ba8df82" name="gad643de832d63de0fe574fe854ba8df82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad643de832d63de0fe574fe854ba8df82">&#9670;&#160;</a></span>update_global_position()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void update_script </td>
+          <td class="memname">void update_global_position </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
           <td class="paramname"><em>node</em>, </td>
@@ -396,25 +414,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">vec3&#160;</td>
-          <td class="paramname"><em>scale</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>delta</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structInput.html">Input</a> *&#160;</td>
-          <td class="paramname"><em>input</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structWindow.html">Window</a> *&#160;</td>
-          <td class="paramname"><em>window</em>&#160;</td>
+          <td class="paramname"><em>scale</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -424,16 +424,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Update the script for a node. </p>
+<p>Update the global position of a node. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>Pointer to the node. </td></tr>
     <tr><td class="paramname">pos</td><td>Position vector. </td></tr>
     <tr><td class="paramname">rot</td><td>Rotation vector. </td></tr>
     <tr><td class="paramname">scale</td><td>Scale vector. </td></tr>
-    <tr><td class="paramname">delta</td><td>Time delta. </td></tr>
-    <tr><td class="paramname">input</td><td>Pointer to the input structure. </td></tr>
-    <tr><td class="paramname">window</td><td>Pointer to the window structure. </td></tr>
   </table>
   </dd>
 </dl>
@@ -471,6 +468,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -479,7 +486,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

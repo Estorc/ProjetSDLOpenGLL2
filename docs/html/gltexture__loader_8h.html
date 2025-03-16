@@ -117,17 +117,17 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="gltexture__loader_8h__dep__incl.png" border="0" usemap="#asrc_2io_2gltexture__loader_8hdep" alt=""/></div>
 <map name="asrc_2io_2gltexture__loader_8hdep" id="asrc_2io_2gltexture__loader_8hdep">
-<area shape="rect" title=" " alt="" coords="381,5,560,31"/>
-<area shape="rect" href="gltexture__loader_8c.html" title=" " alt="" coords="5,86,184,111"/>
-<area shape="poly" title=" " alt="" coords="403,36,150,89,149,83,402,31"/>
-<area shape="rect" href="collision_8c.html" title=" " alt="" coords="208,86,371,111"/>
-<area shape="poly" title=" " alt="" coords="433,39,317,88,315,84,431,34"/>
-<area shape="rect" href="collision__util_8c.html" title=" " alt="" coords="395,79,547,119"/>
-<area shape="poly" title=" " alt="" coords="473,44,473,79,468,79,468,44"/>
-<area shape="rect" href="physics_8c.html" title=" " alt="" coords="571,86,730,111"/>
-<area shape="poly" title=" " alt="" coords="510,34,626,84,623,88,508,39"/>
-<area shape="rect" href="render_8c.html" title=" " alt="" coords="754,86,897,111"/>
-<area shape="poly" title=" " alt="" coords="537,31,743,76,776,83,774,89,742,81,536,36"/>
+<area shape="rect" title=" " alt="" coords="5,112,184,137"/>
+<area shape="rect" href="gltexture__loader_8c.html" title=" " alt="" coords="232,5,411,31"/>
+<area shape="poly" title=" " alt="" coords="123,102,172,70,231,40,263,28,265,33,233,44,175,75,126,106"/>
+<area shape="rect" href="collision_8c.html" title=" " alt="" coords="240,55,403,80"/>
+<area shape="poly" title=" " alt="" coords="158,106,270,77,271,83,159,111"/>
+<area shape="rect" href="collision__util_8c.html" title=" " alt="" coords="245,105,397,145"/>
+<area shape="poly" title=" " alt="" coords="198,122,245,122,245,127,198,127"/>
+<area shape="rect" href="physics_8c.html" title=" " alt="" coords="242,169,401,195"/>
+<area shape="poly" title=" " alt="" coords="159,138,271,167,270,172,158,143"/>
+<area shape="rect" href="render_8c.html" title=" " alt="" coords="250,219,393,244"/>
+<area shape="poly" title=" " alt="" coords="127,143,175,174,233,204,268,216,267,221,231,208,173,178,124,148"/>
 </map>
 </div>
 </div>
@@ -179,6 +179,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -187,7 +197,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

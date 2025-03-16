@@ -1,5 +1,5 @@
 <map id="Bone" name="Bone">
-<area shape="rect" id="Node000001" title="Structure representing a bone in a 3D model." alt="" coords="41,123,95,148"/>
-<area shape="rect" id="Node000002" href="$structModelKeyframe.html" title="Structure representing the data of a 3D model keyframe." alt="" coords="5,5,131,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,44,71,123,65,123,65,44"/>
+<area shape="rect" id="Node000001" title="Structure representing a bone in a 3D model." alt="" coords="320,37,375,62"/>
+<area shape="rect" id="Node000002" href="$structModelKeyframe.html" title="Structure representing the data of a 3D model keyframe." alt="" coords="5,37,131,62"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,47,320,47,320,52,144,52"/>
 </map>

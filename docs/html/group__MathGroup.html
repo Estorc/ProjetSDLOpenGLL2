@@ -159,6 +159,157 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Bunch of math functions. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="gadee8c6d2fc20a1194cf64c481e7b6353" name="gadee8c6d2fc20a1194cf64c481e7b6353"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadee8c6d2fc20a1194cf64c481e7b6353">&#9670;&#160;</a></span>sqr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define sqr</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;((x)*(x))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the square of a number. </p>
+<p>This macro takes a number and returns its square by multiplying the number by itself.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The number to be squared. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The square of the input number. </dd></dl>
+
+</div>
+</div>
+<a id="ga8368822f21884eec2e99ce31c08b0df4" name="ga8368822f21884eec2e99ce31c08b0df4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8368822f21884eec2e99ce31c08b0df4">&#9670;&#160;</a></span>cube</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define cube</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;((x)*(x)*(x))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the cube of a number. </p>
+<p>This macro takes a number and returns its cube by multiplying the number by itself twice.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The number to be cubed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The cube of the input number. </dd></dl>
+
+</div>
+</div>
+<a id="ga598a3330b3c21701223ee0ca14316eca" name="ga598a3330b3c21701223ee0ca14316eca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga598a3330b3c21701223ee0ca14316eca">&#9670;&#160;</a></span>PI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PI&#160;&#160;&#160;3.14159265358979323846264338327</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The mathematical constant π (pi). </p>
+<p>This macro defines the value of π (pi) to a high degree of precision. </p>
+
+</div>
+</div>
+<a id="ga74e75242132eaabbc1c512488a135926" name="ga74e75242132eaabbc1c512488a135926"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga74e75242132eaabbc1c512488a135926">&#9670;&#160;</a></span>MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIN</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">y&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;((x &lt; y) ? x : y)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the minimum of two values. </p>
+<p>This macro takes two values and returns the smaller of the two.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first value. </td></tr>
+    <tr><td class="paramname">y</td><td>The second value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The smaller of the two input values. </dd></dl>
+
+</div>
+</div>
+<a id="gaacc3ee1a7f283f8ef65cea31f4436a95" name="gaacc3ee1a7f283f8ef65cea31f4436a95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaacc3ee1a7f283f8ef65cea31f4436a95">&#9670;&#160;</a></span>MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">y&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;((x &gt; y) ? x : y)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the maximum of two values. </p>
+<p>This macro takes two values and returns the larger of the two.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The first value. </td></tr>
+    <tr><td class="paramname">y</td><td>The second value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The larger of the two input values. </dd></dl>
+
+</div>
+</div>
 <a id="ga3d82ffe4989b63f6edc6e6349838ae3c" name="ga3d82ffe4989b63f6edc6e6349838ae3c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga3d82ffe4989b63f6edc6e6349838ae3c">&#9670;&#160;</a></span>CLAMP</h2>
 
@@ -205,158 +356,99 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga8368822f21884eec2e99ce31c08b0df4" name="ga8368822f21884eec2e99ce31c08b0df4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8368822f21884eec2e99ce31c08b0df4">&#9670;&#160;</a></span>cube</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define cube</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">x</td><td>)</td>
-          <td>&#160;&#160;&#160;((x)*(x)*(x))</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes the cube of a number. </p>
-<p>This macro takes a number and returns its cube by multiplying the number by itself twice.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x</td><td>The number to be cubed. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The cube of the input number. </dd></dl>
-
-</div>
-</div>
-<a id="gaacc3ee1a7f283f8ef65cea31f4436a95" name="gaacc3ee1a7f283f8ef65cea31f4436a95"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaacc3ee1a7f283f8ef65cea31f4436a95">&#9670;&#160;</a></span>MAX</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">x, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">y&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;((x &gt; y) ? x : y)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes the maximum of two values. </p>
-<p>This macro takes two values and returns the larger of the two.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x</td><td>The first value. </td></tr>
-    <tr><td class="paramname">y</td><td>The second value. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The larger of the two input values. </dd></dl>
-
-</div>
-</div>
-<a id="ga74e75242132eaabbc1c512488a135926" name="ga74e75242132eaabbc1c512488a135926"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga74e75242132eaabbc1c512488a135926">&#9670;&#160;</a></span>MIN</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MIN</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">x, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">y&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;((x &lt; y) ? x : y)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes the minimum of two values. </p>
-<p>This macro takes two values and returns the smaller of the two.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x</td><td>The first value. </td></tr>
-    <tr><td class="paramname">y</td><td>The second value. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The smaller of the two input values. </dd></dl>
-
-</div>
-</div>
-<a id="ga598a3330b3c21701223ee0ca14316eca" name="ga598a3330b3c21701223ee0ca14316eca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga598a3330b3c21701223ee0ca14316eca">&#9670;&#160;</a></span>PI</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PI&#160;&#160;&#160;3.14159265358979323846264338327</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The mathematical constant π (pi). </p>
-<p>This macro defines the value of π (pi) to a high degree of precision. </p>
-
-</div>
-</div>
-<a id="gadee8c6d2fc20a1194cf64c481e7b6353" name="gadee8c6d2fc20a1194cf64c481e7b6353"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gadee8c6d2fc20a1194cf64c481e7b6353">&#9670;&#160;</a></span>sqr</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define sqr</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">x</td><td>)</td>
-          <td>&#160;&#160;&#160;((x)*(x))</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes the square of a number. </p>
-<p>This macro takes a number and returns its square by multiplying the number by itself.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x</td><td>The number to be squared. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The square of the input number. </dd></dl>
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ga2e853840b7e363d728f0295d2241e7c7" name="ga2e853840b7e363d728f0295d2241e7c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2e853840b7e363d728f0295d2241e7c7">&#9670;&#160;</a></span>frsqrt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a> frsqrt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a>&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the fast inverse square root of a given number using the "Fast Inverse Square Root" algorithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td>{f32} The input number for which the inverse square root is to be calculated. Must be a positive number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>{f32} The approximate value of the inverse square root of the input number.</dd></dl>
+<p>This function utilizes a clever bit manipulation technique to compute the fast inverse square root, originally popularized by its use in the Quake III Arena graphics engine. The algorithm performs an initial approximation using a magic constant and then refines the result using one iteration of Newton's method for improved accuracy.</p>
+<p>The formula used for the approximation is as follows: </p><pre class="fragment">x = number
+i = *(int*)&amp;x        // Bit-level hacking to get integer representation
+i = 0x5f3759df - (i &gt;&gt; 1) // The magic constant
+x = *(float*)&amp;i      // Convert back to float
+x = x * (1.5 - (number * 0.5 * x * x)) // Newton's method refinement
+</pre><p> This function is typically used in graphics and game development, where performance is critical, and is suitable for scenarios where the input number is non-negative. </p>
+
+</div>
+</div>
+<a id="gaf12eb49731c13c96d3bcc7818566af82" name="gaf12eb49731c13c96d3bcc7818566af82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf12eb49731c13c96d3bcc7818566af82">&#9670;&#160;</a></span>to_radians()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a> to_radians </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a>&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts an angle from degrees to radians. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>{f32} The angle in degrees to be converted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>{f32} The converted angle in radians.</dd></dl>
+<p>This function takes an angle specified in degrees and converts it to radians using the formula: </p><pre class="fragment">radians = degrees * (PI / 180)
+</pre><p> where PI is a constant representing the mathematical constant π. The function returns the equivalent angle in radians, allowing for easier interpretation and usage in applications where radians are preferred. </p>
+
+</div>
+</div>
+<a id="ga2409f579c7b190a358b346041eded59a" name="ga2409f579c7b190a358b346041eded59a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2409f579c7b190a358b346041eded59a">&#9670;&#160;</a></span>to_degrees()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a> to_degrees </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a>&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts an angle from radians to degrees. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>{f32} The angle in radians to be converted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>{f32} The converted angle in degrees.</dd></dl>
+<p>This function takes an angle specified in radians and converts it to degrees using the formula: </p><pre class="fragment">degrees = radians * (180 / PI)
+</pre><p> where PI is a constant representing the mathematical constant π. The function returns the equivalent angle in degrees, allowing for easier interpretation and usage in applications where degrees are preferred. </p>
+
+</div>
+</div>
 <a id="ga6d951237d6e1837dc2b93720aa1e3f28" name="ga6d951237d6e1837dc2b93720aa1e3f28"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga6d951237d6e1837dc2b93720aa1e3f28">&#9670;&#160;</a></span>float_approach()</h2>
 
@@ -399,98 +491,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <p>This macro moves float a towards float b by a factor of t. </p>
-
-</div>
-</div>
-<a id="ga2e853840b7e363d728f0295d2241e7c7" name="ga2e853840b7e363d728f0295d2241e7c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2e853840b7e363d728f0295d2241e7c7">&#9670;&#160;</a></span>frsqrt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a> frsqrt </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a>&#160;</td>
-          <td class="paramname"><em>number</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes the fast inverse square root of a given number using the "Fast Inverse Square Root" algorithm. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">number</td><td>{f32} The input number for which the inverse square root is to be calculated. Must be a positive number. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>{f32} The approximate value of the inverse square root of the input number.</dd></dl>
-<p>This function utilizes a clever bit manipulation technique to compute the fast inverse square root, originally popularized by its use in the Quake III Arena graphics engine. The algorithm performs an initial approximation using a magic constant and then refines the result using one iteration of Newton's method for improved accuracy.</p>
-<p>The formula used for the approximation is as follows: </p><pre class="fragment">x = number
-i = *(int*)&amp;x        // Bit-level hacking to get integer representation
-i = 0x5f3759df - (i &gt;&gt; 1) // The magic constant
-x = *(float*)&amp;i      // Convert back to float
-x = x * (1.5 - (number * 0.5 * x * x)) // Newton's method refinement
-</pre><p> This function is typically used in graphics and game development, where performance is critical, and is suitable for scenarios where the input number is non-negative. </p>
-
-</div>
-</div>
-<a id="ga2409f579c7b190a358b346041eded59a" name="ga2409f579c7b190a358b346041eded59a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2409f579c7b190a358b346041eded59a">&#9670;&#160;</a></span>to_degrees()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a> to_degrees </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a>&#160;</td>
-          <td class="paramname"><em>angle</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Converts an angle from radians to degrees. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">angle</td><td>{f32} The angle in radians to be converted. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>{f32} The converted angle in degrees.</dd></dl>
-<p>This function takes an angle specified in radians and converts it to degrees using the formula: </p><pre class="fragment">degrees = radians * (180 / PI)
-</pre><p> where PI is a constant representing the mathematical constant π. The function returns the equivalent angle in degrees, allowing for easier interpretation and usage in applications where degrees are preferred. </p>
-
-</div>
-</div>
-<a id="gaf12eb49731c13c96d3bcc7818566af82" name="gaf12eb49731c13c96d3bcc7818566af82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf12eb49731c13c96d3bcc7818566af82">&#9670;&#160;</a></span>to_radians()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a> to_radians </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a>&#160;</td>
-          <td class="paramname"><em>angle</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Converts an angle from degrees to radians. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">angle</td><td>{f32} The angle in degrees to be converted. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>{f32} The converted angle in radians.</dd></dl>
-<p>This function takes an angle specified in degrees and converts it to radians using the formula: </p><pre class="fragment">radians = degrees * (PI / 180)
-</pre><p> where PI is a constant representing the mathematical constant π. The function returns the equivalent angle in radians, allowing for easier interpretation and usage in applications where radians are preferred. </p>
 
 </div>
 </div>
@@ -570,6 +570,16 @@ x = x * (1.5 - (number * 0.5 * x * x)) // Newton's method refinement
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -578,7 +588,7 @@ x = x * (1.5 - (number * 0.5 * x * x)) // Newton's method refinement
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

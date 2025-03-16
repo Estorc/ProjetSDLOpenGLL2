@@ -110,19 +110,19 @@ $(document).ready(function(){initNavTree('globals_k.html',''); initResizable(); 
 <div class="textblock">Here is a list of all file members with links to the files they belong to:</div>
 
 <h3><a id="index_k" name="index_k"></a>- k -</h3><ul>
-<li>KDIALOG&#160;:&#160;<a class="el" href="osio_8c.html#a479ebacbd09ab3cf2abed7083e40d418">osio.c</a></li>
 <li>KEY_COUNT&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca65dc7b76fcaf7bf25d4746bcc267f1c0">input.h</a></li>
 <li>KEY_CROUCH&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bcadd9ce2085879140a8122b800b0cdc575">input.h</a></li>
 <li>KEY_DOWN&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bcaa9cdac7967bf7d88fdb761138a2a3416">input.h</a></li>
-<li>KEY_ENTER&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca2a662d23aadd7106a3a2afdfd5d426ed">input.h</a></li>
-<li>KEY_F&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca3c069efeb1638c2ab0d2a50ff45b529f">input.h</a></li>
-<li>KEY_G&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca4ec980867be1d5bded2bccdee2ebd601">input.h</a></li>
+<li>KEY_FLASHLIGHT&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca21427a32e0355785568d024bb947578d">input.h</a></li>
+<li>KEY_FULLSCREEN&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca83bf878f6175091796b612aa6a3d18fe">input.h</a></li>
+<li>KEY_INTERACT&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca4727f0c07c3b42ead5b3d96b586bf0e7">input.h</a></li>
 <li>KEY_JUMP&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca822911a85a9dbc7691c88767071a801d">input.h</a></li>
 <li>KEY_LEFT&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca612120b69c7dfd46086db7aaebdbcf65">input.h</a></li>
 <li>KEY_MENU&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca0483607aa811d9b40ce925494621a188">input.h</a></li>
 <li>KEY_RIGHT&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca6504370d9c6391e1a9da6a1a529b089d">input.h</a></li>
-<li>KEY_SHIFT&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca7d538b177ab06797012e9ffb1449acd9">input.h</a></li>
+<li>KEY_SPRINT&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca368f5fef12ab9f7992ed61dd6e16c85b">input.h</a></li>
 <li>KEY_UP&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca0848a442d907968b211b97bc2bd88acd">input.h</a></li>
+<li>KEY_VALIDATE&#160;:&#160;<a class="el" href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca85c47d4d9a53ad1c1ee744a4e812963a">input.h</a></li>
 <li>Keys&#160;:&#160;<a class="el" href="group__InputHandling.html#ga0ada92b8263d776ca3c779d2a0e031bc">input.h</a></li>
 </ul>
 </div><!-- contents -->
@@ -156,6 +156,16 @@ $(document).ready(function(){initNavTree('globals_k.html',''); initResizable(); 
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -164,7 +174,7 @@ $(document).ready(function(){initNavTree('globals_k.html',''); initResizable(); 
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

@@ -1,0 +1,21 @@
+<map id="src/io/osio.c" name="src/io/osio.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,129,104,155"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="175,5,241,31"/>
+<area shape="poly" id="edge10_Node000001_Node000002" title=" " alt="" coords="64,127,99,85,150,40,161,33,164,38,154,44,103,89,68,130"/>
+<area shape="rect" id="Node000003" href="$stringio_8h.html" title="Provides utility functions for string and file operations." alt="" coords="167,55,249,80"/>
+<area shape="poly" id="edge11_Node000001_Node000003" title=" " alt="" coords="78,127,151,89,163,83,165,88,153,94,80,132"/>
+<area shape="rect" id="Node000005" href="$term_8h.html" title=" " alt="" coords="152,104,264,129"/>
+<area shape="poly" id="edge13_Node000001_Node000005" title=" " alt="" coords="104,131,138,126,139,131,105,137"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="173,153,243,179"/>
+<area shape="poly" id="edge16_Node000001_Node000008" title=" " alt="" coords="105,147,159,156,159,161,104,152"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="171,203,245,228"/>
+<area shape="poly" id="edge17_Node000001_Node000009" title=" " alt="" coords="82,152,153,188,168,195,166,199,151,192,80,157"/>
+<area shape="rect" id="Node000010" href="$osio_8h.html" title="File operations and error handling for the project." alt="" coords="177,252,239,277"/>
+<area shape="poly" id="edge18_Node000001_Node000010" title=" " alt="" coords="68,153,104,193,154,237,167,245,164,250,150,241,100,197,64,157"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="344,55,415,80"/>
+<area shape="poly" id="edge12_Node000003_Node000004" title=" " alt="" coords="250,65,330,65,330,70,250,70"/>
+<area shape="rect" id="Node000006" href="$enhanced__print_8h.html" title=" " alt="" coords="312,104,447,129"/>
+<area shape="poly" id="edge14_Node000005_Node000006" title=" " alt="" coords="264,114,298,114,298,119,264,119"/>
+<area shape="rect" id="Node000007" href="$color_8h.html" title=" " alt="" coords="495,104,560,129"/>
+<area shape="poly" id="edge15_Node000006_Node000007" title=" " alt="" coords="447,114,481,114,481,119,447,119"/>
+</map>

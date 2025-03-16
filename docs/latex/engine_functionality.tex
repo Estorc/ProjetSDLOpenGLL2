@@ -1,0 +1,61 @@
+\doxysection{Engine Functionalities and Usage}
+\hypertarget{engine_functionality}{}\label{engine_functionality}\index{Engine Functionalities and Usage@{Engine Functionalities and Usage}}
+This page describes the core functionalities of the engine and how to use it effectively. The engine is heavily inspired by the architecture of Godot while being implemented entirely in C, using SDL and Open\+GL.\hypertarget{engine_functionality_overview}{}\doxysubsection{\texorpdfstring{Overview}{Overview}}\label{engine_functionality_overview}
+The engine provides a flexible and modular game development framework with the following key features\+:
+\begin{DoxyItemize}
+\item {\bfseries{Node-\/based system}}\+: Inspired by Godot\textquotesingle{}s scene tree, objects in the game world are represented as nodes.
+\item {\bfseries{Custom scripting system}}\+: Uses a macro-\/based scripting approach to define behaviors.
+\item {\bfseries{2D and 3D rendering}}\+: Supports rendering with Open\+GL for both 2D sprites and 3D models.
+\item {\bfseries{\doxylink{classScene}{Scene} management}}\+: Allows seamless scene switching and persistence.
+\item {\bfseries{Signal system}}\+: Implements a lightweight observer pattern for event handling.
+\item {\bfseries{Physics and collisions}}\+: Provides a simple but efficient collision detection system.
+\item {\bfseries{Audio management}}\+: Uses SDL2\+\_\+\+Mixer to handle sound effects and music playback.
+\end{DoxyItemize}\hypertarget{engine_functionality_node_system}{}\doxysubsection{\texorpdfstring{Node System}{Node System}}\label{engine_functionality_node_system}
+The engine adopts a node-\/based hierarchy where every game object is a node. Nodes can be of different types\+:
+\begin{DoxyItemize}
+\item {\bfseries{\doxylink{classNode}{Node}}}\+: The base class for all game objects.
+\item {\bfseries{\doxylink{classControlFrame}{Control\+Frame}}}\+: Specialized for controlling the 2D UI layout.
+\item {\bfseries{\doxylink{classKinematicBody}{Kinematic\+Body}}}\+: Used for objects that are moved by user input or scripts, allowing custom physics.
+\item {\bfseries{\doxylink{classRigidBody}{Rigid\+Body}}}\+: For objects that are simulated with physics, such as being affected by gravity or collisions.
+\item {\bfseries{\doxylink{classMeshCShape}{Mesh\+CShape}}}\+: Handles 3D mesh-\/based collision shapes.
+\item {\bfseries{\doxylink{classCamera}{Camera}}}\+: Defines the viewport for rendering.
+\item {\bfseries{\doxylink{classArea}{Area}}}\+: Used for detecting interactions and physics-\/based triggers.
+\item {\bfseries{\doxylink{classDirectionalLight}{Directional\+Light}}}\+: A type of light that simulates sunlight or other far-\/distance light sources.
+\item {\bfseries{\doxylink{classBody}{Body}}}\+: A general class representing a physical object in the game world.
+\item {\bfseries{\doxylink{classPointLight}{Point\+Light}}}\+: A type of light that emits in all directions from a single point.
+\item {\bfseries{\doxylink{classSpotLight}{Spot\+Light}}}\+: A focused light source that creates a cone of light.
+\end{DoxyItemize}\hypertarget{engine_functionality_scripting}{}\doxysubsection{\texorpdfstring{Scripting}{Scripting}}\label{engine_functionality_scripting}
+Scripts are defined using a macro-\/based system that enables concise behavior definitions\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{scripts_8h_af416bb3d38a37f18dd2c6b4705113481}{NEW\_SCRIPT}}(my\_script)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{scripts_8h_a58f77c5f80369078d6299b1f2fd5bad0}{GET\_READY\_PARAMETERS}}();}
+\DoxyCodeLine{\ \ \ \ this-\/>position.x\ +=\ this-\/>speed\ *\ delta;}
+\DoxyCodeLine{\mbox{\hyperlink{scripts_8h_ac7d49370a5c29bbfabf7a4653d96e43f}{END\_SCRIPT}}(my\_script)}
+
+\end{DoxyCode}
+ This allows easy and fast iteration without requiring complex external scripting languages.\hypertarget{engine_functionality_scene_management}{}\doxysubsection{\texorpdfstring{Scene Management}{Scene Management}}\label{engine_functionality_scene_management}
+Scenes are loaded dynamically using\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{scene_8c_a04b71efe0468d21f9f6f17cfb3d6fda9}{prepare\_change\_scene}}(\textcolor{stringliteral}{"{}assets/scenes/my\_scene.scene"{}});}
+
+\end{DoxyCode}
+ This ensures structured content organization and reusable game environments.\hypertarget{engine_functionality_signals}{}\doxysubsection{\texorpdfstring{Signal System}{Signal System}}\label{engine_functionality_signals}
+Nodes can emit and receive signals, allowing for event-\/driven programming\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{scripts_8h_a5a92c26c2a90419fef673e1c1ea64877}{GET\_SIGNAL}}();}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (signal\ ==\ \mbox{\hyperlink{signals_8h_af01fe53890022ebf14996ce6824f829ea29a4a1bbf9fa5fe9cbf37cc6e92e4e6f}{SIGNAL\_BUTTON\_CLICKED}})\ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{audio_8c_aed0b0c574c1994f085c0b29b02a06d5a}{play\_sfx}}(\textcolor{stringliteral}{"{}assets/audio/click.mp3"{}},\ 50,\ 0);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ This system improves modularity and decouples logic efficiently.\hypertarget{engine_functionality_inspiration}{}\doxysubsection{\texorpdfstring{Inspiration \& Credits}{Inspiration \& Credits}}\label{engine_functionality_inspiration}
+This engine is strongly inspired by {\bfseries{Godot Engine}}, particularly in its scene graph structure and event-\/driven architecture. For reference and further inspiration, visit the official Godot documentation\+:
+\begin{DoxyItemize}
+\item \href{https://docs.godotengine.org/}{\texttt{ Godot Docs}}
+\end{DoxyItemize}
+
+Credits to\+:
+\begin{DoxyItemize}
+\item The Godot community for their open-\/source contributions and design philosophies.
+\item The SDL2 and Open\+GL communities for providing the core tools enabling this engine\textquotesingle{}s development. 
+\end{DoxyItemize}

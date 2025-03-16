@@ -57,6 +57,8 @@ Include dependency graph for raptiquax.\+c\+:\nopagebreak
 \item 
 \mbox{\hyperlink{structMSAA}{MSAA}} \mbox{\hyperlink{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}{msaa}}
 \item 
+\mbox{\hyperlink{structDepthMap}{Depth\+Map}} \mbox{\hyperlink{raptiquax_8c_a05db9a2e20c606a506e7b8da6d0248e3}{depth\+Map}}
+\item 
 struct \mbox{\hyperlink{structRaptiquaX__t}{Raptiqua\+X\+\_\+t}} \mbox{\hyperlink{raptiquax_8c_ad749b00382c53c431741d17582670ad7}{Game}}
 \end{DoxyCompactItemize}
 
@@ -71,6 +73,12 @@ struct \mbox{\hyperlink{structRaptiquaX__t}{Raptiqua\+X\+\_\+t}} \mbox{\hyperlin
 
 
 \doxysubsection{Variable Documentation}
+\Hypertarget{raptiquax_8c_ac20453e81d80b4c155cbf48f8f58d1e0}\label{raptiquax_8c_ac20453e81d80b4c155cbf48f8f58d1e0} 
+\index{raptiquax.c@{raptiquax.c}!memoryCaches@{memoryCaches}}
+\index{memoryCaches@{memoryCaches}!raptiquax.c@{raptiquax.c}}
+\doxysubsubsection{\texorpdfstring{memoryCaches}{memoryCaches}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMemoryCaches}{Memory\+Caches}} memory\+Caches}
+
 \Hypertarget{raptiquax_8c_a15103761ec2954f4ee4ed82ce67679dd}\label{raptiquax_8c_a15103761ec2954f4ee4ed82ce67679dd} 
 \index{raptiquax.c@{raptiquax.c}!buffers@{buffers}}
 \index{buffers@{buffers}!raptiquax.c@{raptiquax.c}}
@@ -82,6 +90,62 @@ struct \mbox{\hyperlink{structRaptiquaX__t}{Raptiqua\+X\+\_\+t}} \mbox{\hyperlin
 \index{callQueue@{callQueue}!raptiquax.c@{raptiquax.c}}
 \doxysubsubsection{\texorpdfstring{callQueue}{callQueue}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structQueue}{Queue}} call\+Queue = \{NULL\}}
+
+\Hypertarget{raptiquax_8c_aebdda7c089f83ea04f75ff2a1c2b2522}\label{raptiquax_8c_aebdda7c089f83ea04f75ff2a1c2b2522} 
+\index{raptiquax.c@{raptiquax.c}!mainTree@{mainTree}}
+\index{mainTree@{mainTree}!raptiquax.c@{raptiquax.c}}
+\doxysubsubsection{\texorpdfstring{mainTree}{mainTree}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structTree}{Tree}} main\+Tree = \{0\}}
+
+\Hypertarget{raptiquax_8c_ad4db59ccea8946af2bb70f8269e99eeb}\label{raptiquax_8c_ad4db59ccea8946af2bb70f8269e99eeb} 
+\index{raptiquax.c@{raptiquax.c}!input@{input}}
+\index{input@{input}!raptiquax.c@{raptiquax.c}}
+\doxysubsubsection{\texorpdfstring{input}{input}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structInput}{Input}} input}
+
+\Hypertarget{raptiquax_8c_a19276c778f3034b94881cf1f8614dbb2}\label{raptiquax_8c_a19276c778f3034b94881cf1f8614dbb2} 
+\index{raptiquax.c@{raptiquax.c}!settings@{settings}}
+\index{settings@{settings}!raptiquax.c@{raptiquax.c}}
+\doxysubsubsection{\texorpdfstring{settings}{settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSettings}{Settings}} settings}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ .show\_fps\ =\ \textcolor{keyword}{false},\ }
+\DoxyCodeLine{\ \ \ \ .cast\_shadows\ =\ \textcolor{keyword}{true},\ }
+\DoxyCodeLine{\ \ \ \ .window\_fullscreen\ =\ \textcolor{keyword}{false},\ }
+\DoxyCodeLine{\ \ \ \ .resolution\ =\ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efaab0ba798c163e6dae89150aaa990917b}{RES\_RESPONSIVE}},\ }
+\DoxyCodeLine{\ \ \ \ .show\_collision\_boxes\ =\ \textcolor{keyword}{false},\ }
+\DoxyCodeLine{\ \ \ \ .master\_volume\ =\ 1,\ }
+\DoxyCodeLine{\ \ \ \ .music\_volume\ =\ 1,\ }
+\DoxyCodeLine{\ \ \ \ .sfx\_volume\ =\ 1,\ }
+\DoxyCodeLine{\ \ \ \ .fov\ =\ \mbox{\hyperlink{group__MathGroup_ga598a3330b3c21701223ee0ca14316eca}{PI}}/4.0f,}
+\DoxyCodeLine{\ \ \ \ .shadow\_resolution\ =\ 1024,}
+\DoxyCodeLine{\ \ \ \ .shadow\_quality\ =\ 0,}
+\DoxyCodeLine{\ \ \ \ .texture\_quality\ =\ 1,}
+\DoxyCodeLine{\ \ \ \ .antialiasing\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{\ \ \ \ .vsync\ =\ \textcolor{keyword}{true}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\Hypertarget{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}\label{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0} 
+\index{raptiquax.c@{raptiquax.c}!window@{window}}
+\index{window@{window}!raptiquax.c@{raptiquax.c}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structWindow}{Window}} window}
+
+\Hypertarget{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}\label{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c} 
+\index{raptiquax.c@{raptiquax.c}!msaa@{msaa}}
+\index{msaa@{msaa}!raptiquax.c@{raptiquax.c}}
+\doxysubsubsection{\texorpdfstring{msaa}{msaa}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMSAA}{MSAA}} msaa}
+
+\Hypertarget{raptiquax_8c_a05db9a2e20c606a506e7b8da6d0248e3}\label{raptiquax_8c_a05db9a2e20c606a506e7b8da6d0248e3} 
+\index{raptiquax.c@{raptiquax.c}!depthMap@{depthMap}}
+\index{depthMap@{depthMap}!raptiquax.c@{raptiquax.c}}
+\doxysubsubsection{\texorpdfstring{depthMap}{depthMap}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structDepthMap}{Depth\+Map}} depth\+Map}
 
 \Hypertarget{raptiquax_8c_ad749b00382c53c431741d17582670ad7}\label{raptiquax_8c_ad749b00382c53c431741d17582670ad7} 
 \index{raptiquax.c@{raptiquax.c}!Game@{Game}}
@@ -103,63 +167,9 @@ struct \mbox{\hyperlink{structRaptiquaX__t}{Raptiqua\+X\+\_\+t}} \mbox{\hyperlin
 \DoxyCodeLine{\ \ \ \ NULL,}
 \DoxyCodeLine{\ \ \ \ \&\mbox{\hyperlink{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}{msaa}},}
 \DoxyCodeLine{\ \ \ \ NULL,}
-\DoxyCodeLine{\ \ \ \ NULL}
+\DoxyCodeLine{\ \ \ \ NULL,}
+\DoxyCodeLine{\ \ \ \ NULL,}
+\DoxyCodeLine{\ \ \ \ \&\mbox{\hyperlink{raptiquax_8c_a05db9a2e20c606a506e7b8da6d0248e3}{depthMap}}}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\Hypertarget{raptiquax_8c_ad4db59ccea8946af2bb70f8269e99eeb}\label{raptiquax_8c_ad4db59ccea8946af2bb70f8269e99eeb} 
-\index{raptiquax.c@{raptiquax.c}!input@{input}}
-\index{input@{input}!raptiquax.c@{raptiquax.c}}
-\doxysubsubsection{\texorpdfstring{input}{input}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structInput}{Input}} input}
-
-\Hypertarget{raptiquax_8c_aebdda7c089f83ea04f75ff2a1c2b2522}\label{raptiquax_8c_aebdda7c089f83ea04f75ff2a1c2b2522} 
-\index{raptiquax.c@{raptiquax.c}!mainTree@{mainTree}}
-\index{mainTree@{mainTree}!raptiquax.c@{raptiquax.c}}
-\doxysubsubsection{\texorpdfstring{mainTree}{mainTree}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structTree}{Tree}} main\+Tree = \{0\}}
-
-\Hypertarget{raptiquax_8c_ac20453e81d80b4c155cbf48f8f58d1e0}\label{raptiquax_8c_ac20453e81d80b4c155cbf48f8f58d1e0} 
-\index{raptiquax.c@{raptiquax.c}!memoryCaches@{memoryCaches}}
-\index{memoryCaches@{memoryCaches}!raptiquax.c@{raptiquax.c}}
-\doxysubsubsection{\texorpdfstring{memoryCaches}{memoryCaches}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structMemoryCaches}{Memory\+Caches}} memory\+Caches}
-
-\Hypertarget{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}\label{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c} 
-\index{raptiquax.c@{raptiquax.c}!msaa@{msaa}}
-\index{msaa@{msaa}!raptiquax.c@{raptiquax.c}}
-\doxysubsubsection{\texorpdfstring{msaa}{msaa}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structMSAA}{MSAA}} msaa}
-
-\Hypertarget{raptiquax_8c_a19276c778f3034b94881cf1f8614dbb2}\label{raptiquax_8c_a19276c778f3034b94881cf1f8614dbb2} 
-\index{raptiquax.c@{raptiquax.c}!settings@{settings}}
-\index{settings@{settings}!raptiquax.c@{raptiquax.c}}
-\doxysubsubsection{\texorpdfstring{settings}{settings}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structSettings}{Settings}} settings}
-
-{\bfseries Initial value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{=\ \{}
-\DoxyCodeLine{\ \ \ \ .show\_fps\ =\ \textcolor{keyword}{false},\ }
-\DoxyCodeLine{\ \ \ \ .cast\_shadows\ =\ \textcolor{keyword}{true},\ }
-\DoxyCodeLine{\ \ \ \ .window\_fullscreen\ =\ \textcolor{keyword}{false},\ }
-\DoxyCodeLine{\ \ \ \ .resolution\ =\ \mbox{\hyperlink{settings_8h_a669b525c3846e41b95573081bfcdf9efa0d7a1cb3c06783cd15c2ad10356d6830}{RES\_RESPONSIVE}},\ }
-\DoxyCodeLine{\ \ \ \ .show\_collision\_boxes\ =\ \textcolor{keyword}{false},\ }
-\DoxyCodeLine{\ \ \ \ .master\_volume\ =\ 1,\ }
-\DoxyCodeLine{\ \ \ \ .music\_volume\ =\ 1,\ }
-\DoxyCodeLine{\ \ \ \ .sfx\_volume\ =\ 1,\ }
-\DoxyCodeLine{\ \ \ \ .fov\ =\ \mbox{\hyperlink{group__MathGroup_ga598a3330b3c21701223ee0ca14316eca}{PI}}/4.0f,}
-\DoxyCodeLine{\ \ \ \ .shadow\_resolution\ =\ 2048,}
-\DoxyCodeLine{\ \ \ \ .shadow\_quality\ =\ 6,}
-\DoxyCodeLine{\ \ \ \ .texture\_quality\ =\ 1,}
-\DoxyCodeLine{\ \ \ \ .antialiasing\ =\ \textcolor{keyword}{true},}
-\DoxyCodeLine{\ \ \ \ .vsync\ =\ \textcolor{keyword}{true}}
-\DoxyCodeLine{\}}
-
-\end{DoxyCode}
-\Hypertarget{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}\label{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0} 
-\index{raptiquax.c@{raptiquax.c}!window@{window}}
-\index{window@{window}!raptiquax.c@{raptiquax.c}}
-\doxysubsubsection{\texorpdfstring{window}{window}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structWindow}{Window}} window}
-

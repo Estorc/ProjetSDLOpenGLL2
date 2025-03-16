@@ -19,13 +19,7 @@ struct \mbox{\hyperlink{structBone}{Bone}}
 struct \mbox{\hyperlink{structModelAnimation}{Model\+Animation}}
 \begin{DoxyCompactList}\small\item\em Structure representing the data of a 3D model animation. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structModelData}{Model\+Data}}
-\begin{DoxyCompactList}\small\item\em Structure representing the data of a 3D model. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{classModel}{Model}}
-\begin{DoxyCompactList}\small\item\em Structure representing a 3D model. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{classTexturedMesh}{Textured\+Mesh}}
-\begin{DoxyCompactList}\small\item\em Structure representing a textured mesh. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{classMesh}{Mesh}}
-\begin{DoxyCompactList}\small\item\em Structure representing a mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Structure representing the data of a 3D model. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -74,7 +68,7 @@ enum \mbox{\hyperlink{group__ModelHandling_gabcb2d8ba41df6aa7347c241c89e81d3f}{V
 , \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa8a8c3fea080dd9c3535e68fd5ebe10bc}{VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+WEIGHT\+\_\+4}}
 , \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198}{VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+COUNT}}
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em Enumeration of vertex attributes used in 3D models. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{group__ModelHandling_ga74a3753dc733cc27e7b37ab4fcc4f20e}{Material\+Properties}} \{ \newline
 \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ead834f3918cf0decc98e4c3724cee546b}{DIFFUSE\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
 , \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eaa070856d072f24a2b62e593655510368}{SPECULAR\+\_\+\+MATERIAL\+\_\+\+PROPERTY}}
@@ -118,7 +112,7 @@ void \mbox{\hyperlink{group__ModelHandling_ga0c6ab322dac2e0ee0acd181e296f1f91}{c
 void \mbox{\hyperlink{group__ModelHandling_ga24d2b6488ada72779f8d522ee86574e7}{create\+\_\+screen\+\_\+plane}} (\mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh)
 \begin{DoxyCompactList}\small\item\em Creates a screen plane. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__ModelHandling_ga8398a26dbcb6eda263cc6e9ef422d1dc}{render\+\_\+model}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader, \mbox{\hyperlink{classModel}{Model}} \texorpdfstring{$\ast$}{*}model)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Renders a 3D model using the specified shader and transformation matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -127,15 +121,15 @@ Group of functions and structures for handling 3D models.
 
 
 \doxysubsection{Typedef Documentation}
-\Hypertarget{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}\label{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae} 
-\index{Model Handling@{Model Handling}!TextureMap@{TextureMap}}
-\index{TextureMap@{TextureMap}!Model Handling@{Model Handling}}
-\doxysubsubsection{\texorpdfstring{TextureMap}{TextureMap}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}}}
+\Hypertarget{group__ModelHandling_gaad5c885aa493ac48e59f4deeed82ca38}\label{group__ModelHandling_gaad5c885aa493ac48e59f4deeed82ca38} 
+\index{Model Handling@{Model Handling}!VBO@{VBO}}
+\index{VBO@{VBO}!Model Handling@{Model Handling}}
+\doxysubsubsection{\texorpdfstring{VBO}{VBO}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaad5c885aa493ac48e59f4deeed82ca38}{VBO}}}
 
 
 
-Alias for u32 representing a texture map. 
+Alias for unsigned int representing a Vertex Buffer \doxylink{structObject}{Object}. 
 
 \Hypertarget{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}\label{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3} 
 \index{Model Handling@{Model Handling}!VAO@{VAO}}
@@ -147,25 +141,15 @@ Alias for u32 representing a texture map.
 
 Alias for unsigned int representing a Vertex Array \doxylink{structObject}{Object}. 
 
-\Hypertarget{group__ModelHandling_gaad5c885aa493ac48e59f4deeed82ca38}\label{group__ModelHandling_gaad5c885aa493ac48e59f4deeed82ca38} 
-\index{Model Handling@{Model Handling}!VBO@{VBO}}
-\index{VBO@{VBO}!Model Handling@{Model Handling}}
-\doxysubsubsection{\texorpdfstring{VBO}{VBO}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaad5c885aa493ac48e59f4deeed82ca38}{VBO}}}
+\Hypertarget{group__ModelHandling_gaddb0a8c0f0a8d1baff3e033eb099a83b}\label{group__ModelHandling_gaddb0a8c0f0a8d1baff3e033eb099a83b} 
+\index{Model Handling@{Model Handling}!VertexBuffer@{VertexBuffer}}
+\index{VertexBuffer@{VertexBuffer}!Model Handling@{Model Handling}}
+\doxysubsubsection{\texorpdfstring{VertexBuffer}{VertexBuffer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaddb0a8c0f0a8d1baff3e033eb099a83b}{Vertex\+Buffer}}}
 
 
 
-Alias for unsigned int representing a Vertex Buffer \doxylink{structObject}{Object}. 
-
-\Hypertarget{group__ModelHandling_ga1351e71110272ccf5e8d661017498adb}\label{group__ModelHandling_ga1351e71110272ccf5e8d661017498adb} 
-\index{Model Handling@{Model Handling}!Vertex@{Vertex}}
-\index{Vertex@{Vertex}!Model Handling@{Model Handling}}
-\doxysubsubsection{\texorpdfstring{Vertex}{Vertex}}
-{\footnotesize\ttfamily Vertex}
-
-
-
-Array of VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+COUNT floats representing a vertex. 
+Alias for VBO. 
 
 \Hypertarget{group__ModelHandling_ga715110c10f770e339f863e38540533bc}\label{group__ModelHandling_ga715110c10f770e339f863e38540533bc} 
 \index{Model Handling@{Model Handling}!VertexArray@{VertexArray}}
@@ -177,19 +161,133 @@ Array of VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+COUNT floats representing a vertex.
 
 Alias for VAO. 
 
-\Hypertarget{group__ModelHandling_gaddb0a8c0f0a8d1baff3e033eb099a83b}\label{group__ModelHandling_gaddb0a8c0f0a8d1baff3e033eb099a83b} 
-\index{Model Handling@{Model Handling}!VertexBuffer@{VertexBuffer}}
-\index{VertexBuffer@{VertexBuffer}!Model Handling@{Model Handling}}
-\doxysubsubsection{\texorpdfstring{VertexBuffer}{VertexBuffer}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaddb0a8c0f0a8d1baff3e033eb099a83b}{Vertex\+Buffer}}}
+\Hypertarget{group__ModelHandling_ga1351e71110272ccf5e8d661017498adb}\label{group__ModelHandling_ga1351e71110272ccf5e8d661017498adb} 
+\index{Model Handling@{Model Handling}!Vertex@{Vertex}}
+\index{Vertex@{Vertex}!Model Handling@{Model Handling}}
+\doxysubsubsection{\texorpdfstring{Vertex}{Vertex}}
+{\footnotesize\ttfamily Vertex}
 
 
 
-Alias for VBO. 
+Array of VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+COUNT floats representing a vertex. 
+
+\Hypertarget{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}\label{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae} 
+\index{Model Handling@{Model Handling}!TextureMap@{TextureMap}}
+\index{TextureMap@{TextureMap}!Model Handling@{Model Handling}}
+\doxysubsubsection{\texorpdfstring{TextureMap}{TextureMap}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}}}
+
+
+
+Alias for u32 representing a texture map. 
 
 
 
 \doxysubsection{Enumeration Type Documentation}
+\Hypertarget{group__ModelHandling_gabcb2d8ba41df6aa7347c241c89e81d3f}\label{group__ModelHandling_gabcb2d8ba41df6aa7347c241c89e81d3f} 
+\index{Model Handling@{Model Handling}!VertexAttribute@{VertexAttribute}}
+\index{VertexAttribute@{VertexAttribute}!Model Handling@{Model Handling}}
+\doxysubsubsection{\texorpdfstring{VertexAttribute}{VertexAttribute}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__ModelHandling_gabcb2d8ba41df6aa7347c241c89e81d3f}{Vertex\+Attribute}}}
+
+
+
+Enumeration of vertex attributes used in 3D models. 
+
+This enumeration defines various attributes that can be associated with a vertex in a 3D model. These attributes include positions, normals, texture coordinates, tangents, bitangents, and bone data. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_POSITION\_X@{VERTEX\_ATTRIBUTE\_POSITION\_X}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_POSITION\_X@{VERTEX\_ATTRIBUTE\_POSITION\_X}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faecc071cb0c4a4faea42c7c2e1108f309}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faecc071cb0c4a4faea42c7c2e1108f309} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+POSITION\+\_\+X&X coordinate of the vertex position \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_POSITION\_Y@{VERTEX\_ATTRIBUTE\_POSITION\_Y}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_POSITION\_Y@{VERTEX\_ATTRIBUTE\_POSITION\_Y}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa6c1fecc71656bc9b2ebc81fc5bff3184}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa6c1fecc71656bc9b2ebc81fc5bff3184} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+POSITION\+\_\+Y&Y coordinate of the vertex position \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_POSITION\_Z@{VERTEX\_ATTRIBUTE\_POSITION\_Z}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_POSITION\_Z@{VERTEX\_ATTRIBUTE\_POSITION\_Z}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa9ce91d8b807350f30277dbb29137a37d}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa9ce91d8b807350f30277dbb29137a37d} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+POSITION\+\_\+Z&Z coordinate of the vertex position \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_NORMAL\_X@{VERTEX\_ATTRIBUTE\_NORMAL\_X}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_NORMAL\_X@{VERTEX\_ATTRIBUTE\_NORMAL\_X}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa2145649d8ddd1dea1899e89c637e6961}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa2145649d8ddd1dea1899e89c637e6961} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+NORMAL\+\_\+X&X component of the vertex normal \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_NORMAL\_Y@{VERTEX\_ATTRIBUTE\_NORMAL\_Y}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_NORMAL\_Y@{VERTEX\_ATTRIBUTE\_NORMAL\_Y}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa44ffd2447902cacde3ecf09ba4a9bf7e}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa44ffd2447902cacde3ecf09ba4a9bf7e} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+NORMAL\+\_\+Y&Y component of the vertex normal \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_NORMAL\_Z@{VERTEX\_ATTRIBUTE\_NORMAL\_Z}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_NORMAL\_Z@{VERTEX\_ATTRIBUTE\_NORMAL\_Z}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad4dc61c5a0006a41a700482f6958d5a0}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad4dc61c5a0006a41a700482f6958d5a0} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+NORMAL\+\_\+Z&Z component of the vertex normal \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_TEXTURE\_U@{VERTEX\_ATTRIBUTE\_TEXTURE\_U}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_TEXTURE\_U@{VERTEX\_ATTRIBUTE\_TEXTURE\_U}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0e906bdeb39e691c1c63e0f186a58fc7}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0e906bdeb39e691c1c63e0f186a58fc7} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+TEXTURE\+\_\+U&U coordinate of the vertex texture \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_TEXTURE\_V@{VERTEX\_ATTRIBUTE\_TEXTURE\_V}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_TEXTURE\_V@{VERTEX\_ATTRIBUTE\_TEXTURE\_V}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0a3f757bd8338d883a6ae78608316ac8}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0a3f757bd8338d883a6ae78608316ac8} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+TEXTURE\+\_\+V&V coordinate of the vertex texture \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_TANGENT\_X@{VERTEX\_ATTRIBUTE\_TANGENT\_X}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_TANGENT\_X@{VERTEX\_ATTRIBUTE\_TANGENT\_X}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa3f997a20aa08eb775be464df97e462c4}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa3f997a20aa08eb775be464df97e462c4} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+TANGENT\+\_\+X&X component of the vertex tangent \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_TANGENT\_Y@{VERTEX\_ATTRIBUTE\_TANGENT\_Y}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_TANGENT\_Y@{VERTEX\_ATTRIBUTE\_TANGENT\_Y}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fac0361afd99159dbc032571acc3f42805}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fac0361afd99159dbc032571acc3f42805} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+TANGENT\+\_\+Y&Y component of the vertex tangent \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_TANGENT\_Z@{VERTEX\_ATTRIBUTE\_TANGENT\_Z}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_TANGENT\_Z@{VERTEX\_ATTRIBUTE\_TANGENT\_Z}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fadf7ae10e6f67d99f85cea13efbe79307}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fadf7ae10e6f67d99f85cea13efbe79307} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+TANGENT\+\_\+Z&Z component of the vertex tangent \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BITANGENT\_X@{VERTEX\_ATTRIBUTE\_BITANGENT\_X}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BITANGENT\_X@{VERTEX\_ATTRIBUTE\_BITANGENT\_X}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0e53f0224db3329d3bc73b669b4c7b11}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0e53f0224db3329d3bc73b669b4c7b11} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BITANGENT\+\_\+X&X component of the vertex bitangent \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BITANGENT\_Y@{VERTEX\_ATTRIBUTE\_BITANGENT\_Y}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BITANGENT\_Y@{VERTEX\_ATTRIBUTE\_BITANGENT\_Y}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fabe965fee5a11062bb99c99ab1ee35e53}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fabe965fee5a11062bb99c99ab1ee35e53} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BITANGENT\+\_\+Y&Y component of the vertex bitangent \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BITANGENT\_Z@{VERTEX\_ATTRIBUTE\_BITANGENT\_Z}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BITANGENT\_Z@{VERTEX\_ATTRIBUTE\_BITANGENT\_Z}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa34b88344378311ad1fb9731aa526b690}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa34b88344378311ad1fb9731aa526b690} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BITANGENT\+\_\+Z&Z component of the vertex bitangent \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_ID\_1@{VERTEX\_ATTRIBUTE\_BONE\_ID\_1}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_ID\_1@{VERTEX\_ATTRIBUTE\_BONE\_ID\_1}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa5794e1a14278263ab9271b77ee87cdaf}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa5794e1a14278263ab9271b77ee87cdaf} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+ID\+\_\+1&ID of the first bone influencing the vertex \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_ID\_2@{VERTEX\_ATTRIBUTE\_BONE\_ID\_2}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_ID\_2@{VERTEX\_ATTRIBUTE\_BONE\_ID\_2}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fab4bf877e6ca0cca62b248e299c34246d}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fab4bf877e6ca0cca62b248e299c34246d} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+ID\+\_\+2&ID of the second bone influencing the vertex \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_ID\_3@{VERTEX\_ATTRIBUTE\_BONE\_ID\_3}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_ID\_3@{VERTEX\_ATTRIBUTE\_BONE\_ID\_3}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa00652540bf5055303a1eac65ec5c7c71}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa00652540bf5055303a1eac65ec5c7c71} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+ID\+\_\+3&ID of the third bone influencing the vertex \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_ID\_4@{VERTEX\_ATTRIBUTE\_BONE\_ID\_4}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_ID\_4@{VERTEX\_ATTRIBUTE\_BONE\_ID\_4}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad2ac90d311145c04bd7c20b893054de6}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad2ac90d311145c04bd7c20b893054de6} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+ID\+\_\+4&ID of the fourth bone influencing the vertex \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_1@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_1}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_1@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_1}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa05fe44cb42440721047d00aba7d408ce}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa05fe44cb42440721047d00aba7d408ce} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+WEIGHT\+\_\+1&Weight of the first bone influencing the vertex \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_2@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_2}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_2@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_2}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad0dfe274caec74ff63e1be319b48dc39}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad0dfe274caec74ff63e1be319b48dc39} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+WEIGHT\+\_\+2&Weight of the second bone influencing the vertex \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_3@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_3}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_3@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_3}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa8739ea71326406860223c6427f75a9a3}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa8739ea71326406860223c6427f75a9a3} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+WEIGHT\+\_\+3&Weight of the third bone influencing the vertex \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_4@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_4}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_4@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_4}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa8a8c3fea080dd9c3535e68fd5ebe10bc}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa8a8c3fea080dd9c3535e68fd5ebe10bc} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+WEIGHT\+\_\+4&Weight of the fourth bone influencing the vertex \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_COUNT@{VERTEX\_ATTRIBUTE\_COUNT}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_COUNT@{VERTEX\_ATTRIBUTE\_COUNT}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198} 
+VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+COUNT&Total number of vertex attributes \\
+\hline
+
+\end{DoxyEnumFields}
 \Hypertarget{group__ModelHandling_ga74a3753dc733cc27e7b37ab4fcc4f20e}\label{group__ModelHandling_ga74a3753dc733cc27e7b37ab4fcc4f20e} 
 \index{Model Handling@{Model Handling}!MaterialProperties@{MaterialProperties}}
 \index{MaterialProperties@{MaterialProperties}!Model Handling@{Model Handling}}
@@ -310,146 +408,10 @@ MODEL\+\_\+\+FLAG\+\_\+\+UNUSED7&Unused flag 7 \\
 \hline
 
 \end{DoxyEnumFields}
-\Hypertarget{group__ModelHandling_gabcb2d8ba41df6aa7347c241c89e81d3f}\label{group__ModelHandling_gabcb2d8ba41df6aa7347c241c89e81d3f} 
-\index{Model Handling@{Model Handling}!VertexAttribute@{VertexAttribute}}
-\index{VertexAttribute@{VertexAttribute}!Model Handling@{Model Handling}}
-\doxysubsubsection{\texorpdfstring{VertexAttribute}{VertexAttribute}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{group__ModelHandling_gabcb2d8ba41df6aa7347c241c89e81d3f}{Vertex\+Attribute}}}
-
-\begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_POSITION\_X@{VERTEX\_ATTRIBUTE\_POSITION\_X}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_POSITION\_X@{VERTEX\_ATTRIBUTE\_POSITION\_X}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faecc071cb0c4a4faea42c7c2e1108f309}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faecc071cb0c4a4faea42c7c2e1108f309} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+POSITION\+\_\+X&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_POSITION\_Y@{VERTEX\_ATTRIBUTE\_POSITION\_Y}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_POSITION\_Y@{VERTEX\_ATTRIBUTE\_POSITION\_Y}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa6c1fecc71656bc9b2ebc81fc5bff3184}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa6c1fecc71656bc9b2ebc81fc5bff3184} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+POSITION\+\_\+Y&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_POSITION\_Z@{VERTEX\_ATTRIBUTE\_POSITION\_Z}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_POSITION\_Z@{VERTEX\_ATTRIBUTE\_POSITION\_Z}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa9ce91d8b807350f30277dbb29137a37d}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa9ce91d8b807350f30277dbb29137a37d} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+POSITION\+\_\+Z&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_NORMAL\_X@{VERTEX\_ATTRIBUTE\_NORMAL\_X}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_NORMAL\_X@{VERTEX\_ATTRIBUTE\_NORMAL\_X}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa2145649d8ddd1dea1899e89c637e6961}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa2145649d8ddd1dea1899e89c637e6961} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+NORMAL\+\_\+X&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_NORMAL\_Y@{VERTEX\_ATTRIBUTE\_NORMAL\_Y}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_NORMAL\_Y@{VERTEX\_ATTRIBUTE\_NORMAL\_Y}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa44ffd2447902cacde3ecf09ba4a9bf7e}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa44ffd2447902cacde3ecf09ba4a9bf7e} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+NORMAL\+\_\+Y&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_NORMAL\_Z@{VERTEX\_ATTRIBUTE\_NORMAL\_Z}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_NORMAL\_Z@{VERTEX\_ATTRIBUTE\_NORMAL\_Z}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad4dc61c5a0006a41a700482f6958d5a0}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad4dc61c5a0006a41a700482f6958d5a0} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+NORMAL\+\_\+Z&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_TEXTURE\_U@{VERTEX\_ATTRIBUTE\_TEXTURE\_U}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_TEXTURE\_U@{VERTEX\_ATTRIBUTE\_TEXTURE\_U}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0e906bdeb39e691c1c63e0f186a58fc7}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0e906bdeb39e691c1c63e0f186a58fc7} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+TEXTURE\+\_\+U&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_TEXTURE\_V@{VERTEX\_ATTRIBUTE\_TEXTURE\_V}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_TEXTURE\_V@{VERTEX\_ATTRIBUTE\_TEXTURE\_V}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0a3f757bd8338d883a6ae78608316ac8}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0a3f757bd8338d883a6ae78608316ac8} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+TEXTURE\+\_\+V&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_TANGENT\_X@{VERTEX\_ATTRIBUTE\_TANGENT\_X}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_TANGENT\_X@{VERTEX\_ATTRIBUTE\_TANGENT\_X}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa3f997a20aa08eb775be464df97e462c4}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa3f997a20aa08eb775be464df97e462c4} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+TANGENT\+\_\+X&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_TANGENT\_Y@{VERTEX\_ATTRIBUTE\_TANGENT\_Y}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_TANGENT\_Y@{VERTEX\_ATTRIBUTE\_TANGENT\_Y}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fac0361afd99159dbc032571acc3f42805}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fac0361afd99159dbc032571acc3f42805} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+TANGENT\+\_\+Y&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_TANGENT\_Z@{VERTEX\_ATTRIBUTE\_TANGENT\_Z}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_TANGENT\_Z@{VERTEX\_ATTRIBUTE\_TANGENT\_Z}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fadf7ae10e6f67d99f85cea13efbe79307}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fadf7ae10e6f67d99f85cea13efbe79307} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+TANGENT\+\_\+Z&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BITANGENT\_X@{VERTEX\_ATTRIBUTE\_BITANGENT\_X}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BITANGENT\_X@{VERTEX\_ATTRIBUTE\_BITANGENT\_X}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0e53f0224db3329d3bc73b669b4c7b11}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0e53f0224db3329d3bc73b669b4c7b11} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BITANGENT\+\_\+X&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BITANGENT\_Y@{VERTEX\_ATTRIBUTE\_BITANGENT\_Y}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BITANGENT\_Y@{VERTEX\_ATTRIBUTE\_BITANGENT\_Y}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fabe965fee5a11062bb99c99ab1ee35e53}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fabe965fee5a11062bb99c99ab1ee35e53} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BITANGENT\+\_\+Y&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BITANGENT\_Z@{VERTEX\_ATTRIBUTE\_BITANGENT\_Z}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BITANGENT\_Z@{VERTEX\_ATTRIBUTE\_BITANGENT\_Z}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa34b88344378311ad1fb9731aa526b690}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa34b88344378311ad1fb9731aa526b690} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BITANGENT\+\_\+Z&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_ID\_1@{VERTEX\_ATTRIBUTE\_BONE\_ID\_1}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_ID\_1@{VERTEX\_ATTRIBUTE\_BONE\_ID\_1}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa5794e1a14278263ab9271b77ee87cdaf}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa5794e1a14278263ab9271b77ee87cdaf} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+ID\+\_\+1&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_ID\_2@{VERTEX\_ATTRIBUTE\_BONE\_ID\_2}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_ID\_2@{VERTEX\_ATTRIBUTE\_BONE\_ID\_2}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fab4bf877e6ca0cca62b248e299c34246d}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fab4bf877e6ca0cca62b248e299c34246d} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+ID\+\_\+2&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_ID\_3@{VERTEX\_ATTRIBUTE\_BONE\_ID\_3}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_ID\_3@{VERTEX\_ATTRIBUTE\_BONE\_ID\_3}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa00652540bf5055303a1eac65ec5c7c71}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa00652540bf5055303a1eac65ec5c7c71} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+ID\+\_\+3&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_ID\_4@{VERTEX\_ATTRIBUTE\_BONE\_ID\_4}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_ID\_4@{VERTEX\_ATTRIBUTE\_BONE\_ID\_4}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad2ac90d311145c04bd7c20b893054de6}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad2ac90d311145c04bd7c20b893054de6} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+ID\+\_\+4&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_1@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_1}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_1@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_1}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa05fe44cb42440721047d00aba7d408ce}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa05fe44cb42440721047d00aba7d408ce} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+WEIGHT\+\_\+1&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_2@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_2}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_2@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_2}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad0dfe274caec74ff63e1be319b48dc39}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad0dfe274caec74ff63e1be319b48dc39} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+WEIGHT\+\_\+2&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_3@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_3}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_3@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_3}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa8739ea71326406860223c6427f75a9a3}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa8739ea71326406860223c6427f75a9a3} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+WEIGHT\+\_\+3&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_4@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_4}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_4@{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_4}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa8a8c3fea080dd9c3535e68fd5ebe10bc}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa8a8c3fea080dd9c3535e68fd5ebe10bc} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+BONE\+\_\+\+WEIGHT\+\_\+4&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{VERTEX\_ATTRIBUTE\_COUNT@{VERTEX\_ATTRIBUTE\_COUNT}!Model Handling@{Model Handling}}\index{Model Handling@{Model Handling}!VERTEX\_ATTRIBUTE\_COUNT@{VERTEX\_ATTRIBUTE\_COUNT}}}\Hypertarget{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198}\label{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198} 
-VERTEX\+\_\+\+ATTRIBUTE\+\_\+\+COUNT&\\
-\hline
-
-\end{DoxyEnumFields}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{group__ModelHandling_ga24d2b6488ada72779f8d522ee86574e7}\label{group__ModelHandling_ga24d2b6488ada72779f8d522ee86574e7} 
-\index{Model Handling@{Model Handling}!create\_screen\_plane@{create\_screen\_plane}}
-\index{create\_screen\_plane@{create\_screen\_plane}!Model Handling@{Model Handling}}
-\doxysubsubsection{\texorpdfstring{create\_screen\_plane()}{create\_screen\_plane()}}
-{\footnotesize\ttfamily void create\+\_\+screen\+\_\+plane (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh }\end{DoxyParamCaption})}
-
-
-
-Creates a screen plane. 
-
-This function initializes a screen plane.
-
-
-\begin{DoxyParams}{Parameters}
-{\em mesh} & Pointer to the \doxylink{classMesh}{Mesh} structure to be initialized.\\
-\hline
-\end{DoxyParams}
-Creates a fullscreen quad (screen plane) mesh for rendering.
-
-
-\begin{DoxyParams}{Parameters}
-{\em mesh} & \{Mesh\texorpdfstring{$\ast$}{*}\} A pointer to a \doxylink{classMesh}{Mesh} structure that will hold the created mesh\textquotesingle{}s VAO and length.\\
-\hline
-\end{DoxyParams}
-This function generates a fullscreen quad mesh suitable for rendering images or effects that cover the entire screen. The quad is defined by six vertices forming two triangles.
-
-The vertex data includes positions in normalized device coordinates (NDC) and corresponding texture coordinates, allowing for the mapping of textures across the full screen.
-
-The function initializes the following attributes in the \doxylink{classMesh}{Mesh} structure\+:
-\begin{DoxyItemize}
-\item VAO\+: The generated Vertex Array \doxylink{structObject}{Object} for the mesh.
-\item length\+: The number of vertices in the mesh (6 vertices total).
-\end{DoxyItemize}
-
-Example Usage\+: \doxylink{classMesh}{Mesh} screen\+Plane; create\+\_\+screen\+\_\+plane(\&screen\+Plane); // Use screen\+Plane for rendering...
-
-Return\+: This function does not return a value but modifies the \doxylink{classMesh}{Mesh} structure pointed to by {\ttfamily mesh}. \Hypertarget{group__ModelHandling_ga0c6ab322dac2e0ee0acd181e296f1f91}\label{group__ModelHandling_ga0c6ab322dac2e0ee0acd181e296f1f91} 
+\Hypertarget{group__ModelHandling_ga0c6ab322dac2e0ee0acd181e296f1f91}\label{group__ModelHandling_ga0c6ab322dac2e0ee0acd181e296f1f91} 
 \index{Model Handling@{Model Handling}!create\_textured\_plane@{create\_textured\_plane}}
 \index{create\_textured\_plane@{create\_textured\_plane}!Model Handling@{Model Handling}}
 \doxysubsubsection{\texorpdfstring{create\_textured\_plane()}{create\_textured\_plane()}}
@@ -495,9 +457,60 @@ The function initializes the following attributes in the \doxylink{classTextured
 
 Example Usage\+: \doxylink{classTexturedMesh}{Textured\+Mesh} my\+Plane; create\+\_\+textured\+\_\+plane(\&my\+Plane, "{}path/to/texture.\+png"{}); // Use my\+Plane for rendering...
 
-Return\+: This function does not return a value but modifies the \doxylink{classTexturedMesh}{Textured\+Mesh} structure pointed to by {\ttfamily textured\+Mesh}. \Hypertarget{group__ModelHandling_ga8398a26dbcb6eda263cc6e9ef422d1dc}\label{group__ModelHandling_ga8398a26dbcb6eda263cc6e9ef422d1dc} 
+Return\+: This function does not return a value but modifies the \doxylink{classTexturedMesh}{Textured\+Mesh} structure pointed to by {\ttfamily textured\+Mesh}. \Hypertarget{group__ModelHandling_ga24d2b6488ada72779f8d522ee86574e7}\label{group__ModelHandling_ga24d2b6488ada72779f8d522ee86574e7} 
+\index{Model Handling@{Model Handling}!create\_screen\_plane@{create\_screen\_plane}}
+\index{create\_screen\_plane@{create\_screen\_plane}!Model Handling@{Model Handling}}
+\doxysubsubsection{\texorpdfstring{create\_screen\_plane()}{create\_screen\_plane()}}
+{\footnotesize\ttfamily void create\+\_\+screen\+\_\+plane (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh }\end{DoxyParamCaption})}
+
+
+
+Creates a screen plane. 
+
+This function initializes a screen plane.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & Pointer to the \doxylink{classMesh}{Mesh} structure to be initialized.\\
+\hline
+\end{DoxyParams}
+Creates a fullscreen quad (screen plane) mesh for rendering.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & \{Mesh\texorpdfstring{$\ast$}{*}\} A pointer to a \doxylink{classMesh}{Mesh} structure that will hold the created mesh\textquotesingle{}s VAO and length.\\
+\hline
+\end{DoxyParams}
+This function generates a fullscreen quad mesh suitable for rendering images or effects that cover the entire screen. The quad is defined by six vertices forming two triangles.
+
+The vertex data includes positions in normalized device coordinates (NDC) and corresponding texture coordinates, allowing for the mapping of textures across the full screen.
+
+The function initializes the following attributes in the \doxylink{classMesh}{Mesh} structure\+:
+\begin{DoxyItemize}
+\item VAO\+: The generated Vertex Array \doxylink{structObject}{Object} for the mesh.
+\item length\+: The number of vertices in the mesh (6 vertices total).
+\end{DoxyItemize}
+
+Example Usage\+: \doxylink{classMesh}{Mesh} screen\+Plane; create\+\_\+screen\+\_\+plane(\&screen\+Plane); // Use screen\+Plane for rendering...
+
+Return\+: This function does not return a value but modifies the \doxylink{classMesh}{Mesh} structure pointed to by {\ttfamily mesh}. \Hypertarget{group__ModelHandling_ga8398a26dbcb6eda263cc6e9ef422d1dc}\label{group__ModelHandling_ga8398a26dbcb6eda263cc6e9ef422d1dc} 
 \index{Model Handling@{Model Handling}!render\_model@{render\_model}}
 \index{render\_model@{render\_model}!Model Handling@{Model Handling}}
 \doxysubsubsection{\texorpdfstring{render\_model()}{render\_model()}}
 {\footnotesize\ttfamily void render\+\_\+model (\begin{DoxyParamCaption}\item[{mat4 \texorpdfstring{$\ast$}{*}}]{model\+Matrix,  }\item[{\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{active\+Shader,  }\item[{\mbox{\hyperlink{classModel}{Model}} \texorpdfstring{$\ast$}{*}}]{model }\end{DoxyParamCaption})}
 
+
+
+Renders a 3D model using the specified shader and transformation matrix. 
+
+This function takes a transformation matrix, an active shader, and a model, and renders the model using the provided shader and transformation matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model\+Matrix} & A pointer to a 4x4 transformation matrix (mat4) that defines the model\textquotesingle{}s position, rotation, and scale in the world space. \\
+\hline
+{\em active\+Shader} & The shader program to be used for rendering the model. \\
+\hline
+{\em model} & A pointer to the \doxylink{classModel}{Model} structure that contains the model\textquotesingle{}s data, such as vertices, indices, textures, etc. \\
+\hline
+\end{DoxyParams}

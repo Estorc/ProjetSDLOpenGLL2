@@ -113,10 +113,10 @@ $(document).ready(function(){initNavTree('structEntry.html',''); initResizable()
 
 <p>This is the complete list of members for <a class="el" href="structEntry.html">Entry</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="structEntry.html#a78468c67722e21d21a45c15421f6dbd6">key</a></td><td class="entry"><a class="el" href="structEntry.html">Entry</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structEntry.html#a5f98a32f757bfce324f5cfc1ad98eb80">needs_free</a></td><td class="entry"><a class="el" href="structEntry.html">Entry</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="structEntry.html#a08cba741f383cd7da0f3ab9aee6e3cd5">next</a></td><td class="entry"><a class="el" href="structEntry.html">Entry</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structEntry.html#aca33bdbd628f38adb997eb8e8a6f64c4">value</a></td><td class="entry"><a class="el" href="structEntry.html">Entry</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structEntry.html#a44c9fa0677422675db5be9c71b6c357f">key</a></td><td class="entry"><a class="el" href="structEntry.html">Entry</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structEntry.html#a59d5a56986c7e756b9e16fb6c7bd7984">needs_free</a></td><td class="entry"><a class="el" href="structEntry.html">Entry</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structEntry.html#a4d1a3e1ac9b0de8ccc7927aed43cdc4c">next</a></td><td class="entry"><a class="el" href="structEntry.html">Entry</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structEntry.html#a68d6037b46f03c0087346ddc664cad50">value</a></td><td class="entry"><a class="el" href="structEntry.html">Entry</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -148,6 +148,16 @@ $(document).ready(function(){initNavTree('structEntry.html',''); initResizable()
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -156,7 +166,7 @@ $(document).ready(function(){initNavTree('structEntry.html',''); initResizable()
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

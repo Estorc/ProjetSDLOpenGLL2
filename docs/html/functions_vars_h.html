@@ -111,8 +111,8 @@ $(document).ready(function(){initNavTree('functions_vars_h.html',''); initResiza
 
 <h3><a id="index_h" name="index_h"></a>- h -</h3><ul>
 <li>h&#160;:&#160;<a class="el" href="classRenderTarget.html#af3d11bfd424cfaa4cdc135a6cca94497">RenderTarget</a></li>
-<li>handler_count&#160;:&#160;<a class="el" href="structpeer.html#a9aeb7d91e8fbc4b1000fd4eeaa423da8">peer</a></li>
-<li>handlers&#160;:&#160;<a class="el" href="structpeer.html#a38cce95c59d81f3136144afe2189a6b8">peer</a></li>
+<li>handler_count&#160;:&#160;<a class="el" href="structpeer.html#acc1a71a0f4d04b0f82fe81d852993cd4">peer</a></li>
+<li>handlers&#160;:&#160;<a class="el" href="structpeer.html#aa3cf9df79d3290444a46ccf912c97a64">peer</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -145,6 +145,16 @@ $(document).ready(function(){initNavTree('functions_vars_h.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -153,7 +163,7 @@ $(document).ready(function(){initNavTree('functions_vars_h.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

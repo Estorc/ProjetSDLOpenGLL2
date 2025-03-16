@@ -25,10 +25,21 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class MeshCShape : public CShape {
     __containerType__ Node *
     public:
 
+    /**
+     * @brief Constructor for the mesh_cshape class.
+     *
+     * This function initializes a mesh_cshape object using the provided file path.
+     *
+     * @param path The file path to initialize the mesh_cshape object.
+     */
     void constructor(const char *path) {
         this->type = __type__;
 
@@ -48,12 +59,24 @@ class MeshCShape : public CShape {
         SUPER(initialize_node);
     }
 
-    
-
+    /**
+     * @brief Retrieves the priority value.
+     *
+     * This function assigns the priority value to the provided pointer.
+     *
+     * @param priority A pointer to an integer where the priority value will be stored.
+     */
     void get_priority(int *priority) {
         *priority = 4;
     }
 
+    /**
+     * @brief Loads data from a file.
+     *
+     * This function reads data from the provided file pointer and loads it into the appropriate structures.
+     *
+     * @param file A pointer to the FILE object that represents the file to be read.
+     */
     void load(FILE *file) {
         char path[100];
         if (file) {
@@ -62,6 +85,14 @@ class MeshCShape : public CShape {
         this::constructor(path);
     }
 
+    /**
+     * @brief Saves the current state of the mesh_cshape object to a file.
+     *
+     * This function writes the necessary data of the mesh_cshape object to the provided file.
+     * The file should be opened in a mode that allows writing before calling this function.
+     *
+     * @param file A pointer to a FILE object that identifies the file to which the data will be written.
+     */
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
     }
@@ -71,3 +102,4 @@ class MeshCShape : public CShape {
 
     
 }
+

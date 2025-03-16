@@ -114,16 +114,16 @@ $(document).ready(function(){initNavTree('functions_vars_r.html',''); initResiza
 <li>r_value&#160;:&#160;<a class="el" href="structModelKeyframe.html#aec45a29a13c7c977c02b73ced2a6220c">ModelKeyframe</a></li>
 <li>radiobutton&#160;:&#160;<a class="el" href="classFrame.html#ab4c84d5e73473baa8a8e0e250d929427">Frame</a></li>
 <li>rbo&#160;:&#160;<a class="el" href="structMSAA.html#a17b499fb58ee18125e8df2c1872df0f1">MSAA</a></li>
-<li>readfds&#160;:&#160;<a class="el" href="structsocket__request__listener.html#ac2c6f7a039f5d52bdb121da49e38534f">socket_request_listener</a></li>
+<li>readfds&#160;:&#160;<a class="el" href="structsocket__request__listener.html#a69b8a2764767b054eebb2bc544295e39">socket_request_listener</a></li>
 <li>released_button&#160;:&#160;<a class="el" href="structMouse.html#a57c5c2bea78566cb048aedddd987493e">Mouse</a></li>
 <li>released_keys&#160;:&#160;<a class="el" href="structInput.html#a4e6a3f41845bb6124d2dfe02645a3afd">Input</a></li>
 <li>relPos&#160;:&#160;<a class="el" href="classFrame.html#a2e8e68ab0a57dfbf0da528a2f550baf1">Frame</a></li>
 <li>render&#160;:&#160;<a class="el" href="structWorldShaders.html#a971e5d33d21e06476fdf895c3e63cb88">WorldShaders</a></li>
 <li>renderTarget&#160;:&#160;<a class="el" href="structRaptiquaX__t.html#abf247e9ee0f60348ba10c660aae885ee">RaptiquaX_t</a></li>
-<li>resized&#160;:&#160;<a class="el" href="structWindow.html#abfd6a085fe40e9011e695b2840640e2e">Window</a></li>
-<li>resolution&#160;:&#160;<a class="el" href="structSettings.html#aa3b5564804fddda4f4fd467035f55d34">Settings</a></li>
-<li>root&#160;:&#160;<a class="el" href="group__NodeFunctions.html#ga5406b91a30624b42976b4f87d3362081">Tree</a></li>
-<li>rot&#160;:&#160;<a class="el" href="classCamera.html#a1456c80b084814b7811c8fe3d797021d">Camera</a>, <a class="el" href="group__NodeFunctions.html#ga4c1d2fdb8be63309e0a7e2a4b3a17066">Node</a></li>
+<li>resolution&#160;:&#160;<a class="el" href="structSettings.html#a9f85d2e9585f26e614a94e4ac6856004">Settings</a></li>
+<li>right&#160;:&#160;<a class="el" href="structKeybinds.html#ad5012c6c2d78b0b72dbfbcc0e97dedd8">Keybinds</a></li>
+<li>root&#160;:&#160;<a class="el" href="group__NodeFunctions.html#gadea11d0e123823b769f7c3ee9a5a1088">Tree</a></li>
+<li>rot&#160;:&#160;<a class="el" href="classCamera.html#a1456c80b084814b7811c8fe3d797021d">Camera</a>, <a class="el" href="classNode.html#a4c1d2fdb8be63309e0a7e2a4b3a17066">Node</a></li>
 <li>rotationKeyframes&#160;:&#160;<a class="el" href="structBone.html#ac6ecb224cad690a2f581543469583081">Bone</a></li>
 <li>rotationKeyframesCount&#160;:&#160;<a class="el" href="structBone.html#a96474088473819d6d942c593b482fefa">Bone</a></li>
 </ul>
@@ -158,6 +158,16 @@ $(document).ready(function(){initNavTree('functions_vars_r.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -166,7 +176,7 @@ $(document).ready(function(){initNavTree('functions_vars_r.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

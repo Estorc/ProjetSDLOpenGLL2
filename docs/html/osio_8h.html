@@ -120,13 +120,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="osio_8h__dep__incl.png" border="0" usemap="#asrc_2io_2osio_8hdep" alt=""/></div>
 <map name="asrc_2io_2osio_8hdep" id="asrc_2io_2osio_8hdep">
-<area shape="rect" title="File operations and error handling for the project." alt="" coords="123,5,223,31"/>
-<area shape="rect" href="osio_8c.html" title=" " alt="" coords="5,79,104,104"/>
-<area shape="poly" title=" " alt="" coords="144,40,75,81,73,76,141,35"/>
-<area shape="rect" href="main_8c.html" title=" " alt="" coords="129,79,218,104"/>
-<area shape="poly" title=" " alt="" coords="176,44,176,79,171,79,171,44"/>
-<area shape="rect" href="raptiquax_8c.html" title=" " alt="" coords="242,79,361,104"/>
-<area shape="poly" title=" " alt="" coords="207,35,282,76,279,81,205,40"/>
+<area shape="rect" title="File operations and error handling for the project." alt="" coords="5,55,105,80"/>
+<area shape="rect" href="osio_8c.html" title=" " alt="" coords="163,5,262,31"/>
+<area shape="poly" title=" " alt="" coords="109,48,170,28,172,33,110,53"/>
+<area shape="rect" href="main_8c.html" title=" " alt="" coords="168,55,257,80"/>
+<area shape="poly" title=" " alt="" coords="119,65,168,65,168,70,119,70"/>
+<area shape="rect" href="raptiquax_8c.html" title=" " alt="" coords="153,104,272,129"/>
+<area shape="poly" title=" " alt="" coords="110,82,172,101,170,106,109,87"/>
 </map>
 </div>
 </div>
@@ -184,6 +184,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -192,7 +202,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

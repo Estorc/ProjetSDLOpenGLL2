@@ -113,12 +113,21 @@ $(document).ready(function(){initNavTree('enhanced__print_8h_source.html',''); i
 <a href="enhanced__print_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="color_8h.html">color.h</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="enhanced__print_8h.html#a2ed00843a64b449ef39f4e95e252b45c">    4</a></span><span class="preprocessor">#define PRINT_ERROR(x, ...) fprintf(stderr, BOLD_RED &quot;[ERROR] &quot; x RESET , ##__VA_ARGS__);</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="enhanced__print_8h.html#a75d71e6bab9ec83e2f1ccbcc502ee1fb">    5</a></span><span class="preprocessor">#define PRINT_INFO(x, ...) fprintf(stdout, GREY &quot;[INFO] &quot; x RESET , ##__VA_ARGS__);</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="enhanced__print_8h.html#af99775dabbf0c6fab12d183eee106eea">    6</a></span><span class="preprocessor">#define PRINT_WARNING(x, ...) fprintf(stderr, YELLOW &quot;[WARNING] &quot; x RESET , ##__VA_ARGS__);</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="enhanced__print_8h.html#a04428e100baf5556cb6448f6e6335879">    7</a></span><span class="preprocessor">#define PRINT_SERVER_INFO(x, ...) fprintf(stdout, BOLD_CYAN &quot;[SERVER INFO] &quot; x RESET , ##__VA_ARGS__);</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="enhanced__print_8h.html#a72448d2cecc6158f64eea3719144774c">    8</a></span><span class="preprocessor">#define PRINT_CLIENT_INFO(x, ...) fprintf(stdout, BOLD_MAGENTA &quot;[CLIENT INFO] &quot; x RESET , ##__VA_ARGS__);</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="enhanced__print_8h.html#aaf8e6e3956443b117561717b77a73ff6">    9</a></span><span class="preprocessor">#define PRINT_SUCCESS(x, ...) fprintf(stdout, BOLD_GREEN &quot;[SUCCESS] &quot; x RESET , ##__VA_ARGS__);</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#define PRINT_ERROR(x, ...) fprintf(stderr, BOLD_RED &quot;[ERROR] &quot; x RESET , ##__VA_ARGS__);</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define PRINT_INFO(x, ...) fprintf(stdout, GREY &quot;[INFO] &quot; x RESET , ##__VA_ARGS__);</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define PRINT_WARNING(x, ...) fprintf(stderr, YELLOW &quot;[WARNING] &quot; x RESET , ##__VA_ARGS__);</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define PRINT_SERVER_INFO(x, ...) fprintf(stdout, BOLD_CYAN &quot;[SERVER INFO] &quot; x RESET , ##__VA_ARGS__);</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define PRINT_CLIENT_INFO(x, ...) fprintf(stdout, BOLD_MAGENTA &quot;[CLIENT INFO] &quot; x RESET , ##__VA_ARGS__);</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define PRINT_SUCCESS(x, ...) fprintf(stdout, BOLD_GREEN &quot;[SUCCESS] &quot; x RESET , ##__VA_ARGS__);</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="enhanced__print_8h.html#a2ed00843a64b449ef39f4e95e252b45c">   12</a></span><span class="preprocessor">#define PRINT_ERROR(x, ...)</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="enhanced__print_8h.html#a75d71e6bab9ec83e2f1ccbcc502ee1fb">   13</a></span><span class="preprocessor">#define PRINT_INFO(x, ...)</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="enhanced__print_8h.html#af99775dabbf0c6fab12d183eee106eea">   14</a></span><span class="preprocessor">#define PRINT_WARNING(x, ...)</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="enhanced__print_8h.html#a04428e100baf5556cb6448f6e6335879">   15</a></span><span class="preprocessor">#define PRINT_SERVER_INFO(x, ...)</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="enhanced__print_8h.html#a72448d2cecc6158f64eea3719144774c">   16</a></span><span class="preprocessor">#define PRINT_CLIENT_INFO(x, ...)</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="enhanced__print_8h.html#aaf8e6e3956443b117561717b77a73ff6">   17</a></span><span class="preprocessor">#define PRINT_SUCCESS(x, ...)</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="acolor_8h_html"><div class="ttname"><a href="color_8h.html">color.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -151,6 +160,16 @@ $(document).ready(function(){initNavTree('enhanced__print_8h_source.html',''); i
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -159,7 +178,7 @@ $(document).ready(function(){initNavTree('enhanced__print_8h_source.html',''); i
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

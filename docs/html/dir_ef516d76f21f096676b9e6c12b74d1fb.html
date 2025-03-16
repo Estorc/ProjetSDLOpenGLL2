@@ -115,8 +115,8 @@ Directory dependency graph for socket:</div>
 <div class="dyncontent">
 <div class="center"><img src="dir_ef516d76f21f096676b9e6c12b74d1fb_dep.png" border="0" usemap="#adir__ef516d76f21f096676b9e6c12b74d1fb__dep" alt="src/io/socket"/></div>
 <map name="adir__ef516d76f21f096676b9e6c12b74d1fb__dep" id="adir__ef516d76f21f096676b9e6c12b74d1fb__dep">
-<area shape="rect" href="dir_ef516d76f21f096676b9e6c12b74d1fb.html" title="socket" alt="" coords="27,52,91,77"/>
-<area shape="rect" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html" title="io" alt="" coords="16,16,101,88"/>
+<area shape="rect" href="dir_ef516d76f21f096676b9e6c12b74d1fb.html" title="socket" alt="" coords="27,53,91,78"/>
+<area shape="rect" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html" title="io" alt="" coords="16,16,101,89"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -125,14 +125,17 @@ Files</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8c.html">client.c</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="io_2socket_2client_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="io_2socket_2client_8h.html">client.h</a></td></tr>
+<tr class="memdesc:io_2socket_2client_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Header file for socket client operations. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network__utils_8c.html">network_utils.c</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="network__utils_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="network__utils_8h.html">network_utils.h</a></td></tr>
+<tr class="memdesc:network__utils_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Network utility functions and structures for socket communication. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_8c.html">server.c</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="server_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_8h.html">server.h</a></td></tr>
+<tr class="memdesc:server_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Header file for socket server functions. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="socket_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html">socket.h</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,6 +171,16 @@ Files</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -176,7 +189,7 @@ Files</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

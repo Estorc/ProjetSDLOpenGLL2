@@ -115,20 +115,20 @@ Directory dependency graph for render:</div>
 <div class="dyncontent">
 <div class="center"><img src="dir_e488ee1cea97fb16abdb5ccc78d2123b_dep.png" border="0" usemap="#adir__e488ee1cea97fb16abdb5ccc78d2123b__dep" alt="src/render"/></div>
 <map name="adir__e488ee1cea97fb16abdb5ccc78d2123b__dep" id="adir__e488ee1cea97fb16abdb5ccc78d2123b__dep">
-<area shape="rect" href="dir_018e9aafb459e6e1a4953404cb0c0b1d.html" title="classes" alt="" coords="27,125,98,151"/>
-<area shape="rect" href="dir_452baf35e1d7639c9f2a5ece4ec85855.html" title="storage" alt="" coords="122,125,193,151"/>
-<area shape="rect" href="dir_ae9a93452e2a84339148a16bcf2eb561.html" title="math" alt="" coords="217,125,273,151"/>
-<area shape="rect" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html" title="io" alt="" coords="298,125,337,151"/>
-<area shape="rect" href="dir_e488ee1cea97fb16abdb5ccc78d2123b.html" title="render" alt="" coords="169,52,233,77"/>
-<area shape="poly" href="dir_000014_000001.html" alt="" coords="180,80,99,121,96,117,178,75"/>
-<area shape="rect" href="dir_000014_000001.html" title="2" alt="" coords="101,117,110,132"/>
-<area shape="poly" href="dir_000014_000018.html" alt="" coords="196,79,174,115,169,112,192,76"/>
-<area shape="rect" href="dir_000014_000018.html" title="4" alt="" coords="177,107,186,122"/>
-<area shape="poly" href="dir_000014_000009.html" alt="" coords="211,76,233,112,229,115,206,79"/>
-<area shape="rect" href="dir_000014_000009.html" title="6" alt="" coords="231,98,240,113"/>
-<area shape="poly" href="dir_000014_000007.html" alt="" coords="221,75,288,116,285,120,219,80"/>
-<area shape="rect" href="dir_000014_000007.html" title="10" alt="" coords="279,101,296,116"/>
-<area shape="rect" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html" title="src" alt="" coords="16,16,348,161"/>
+<area shape="rect" href="dir_018e9aafb459e6e1a4953404cb0c0b1d.html" title="classes" alt="" coords="139,201,209,226"/>
+<area shape="rect" href="dir_452baf35e1d7639c9f2a5ece4ec85855.html" title="storage" alt="" coords="139,151,209,177"/>
+<area shape="rect" href="dir_ae9a93452e2a84339148a16bcf2eb561.html" title="math" alt="" coords="146,102,202,127"/>
+<area shape="rect" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html" title="io" alt="" coords="155,53,193,78"/>
+<area shape="rect" href="dir_e488ee1cea97fb16abdb5ccc78d2123b.html" title="render" alt="" coords="27,127,91,153"/>
+<area shape="poly" href="dir_000017_000001.html" alt="" coords="81,151,143,191,140,195,78,155"/>
+<area shape="rect" href="dir_000017_000001.html" title="2" alt="" coords="138,176,147,191"/>
+<area shape="poly" href="dir_000017_000021.html" alt="" coords="91,144,126,151,125,156,90,149"/>
+<area shape="rect" href="dir_000017_000021.html" title="4" alt="" coords="118,137,127,152"/>
+<area shape="poly" href="dir_000017_000011.html" alt="" coords="90,130,132,121,133,126,91,136"/>
+<area shape="rect" href="dir_000017_000011.html" title="6" alt="" coords="122,109,131,124"/>
+<area shape="poly" href="dir_000017_000008.html" alt="" coords="78,125,141,83,144,87,81,129"/>
+<area shape="rect" href="dir_000017_000008.html" title="10" alt="" coords="126,73,143,88"/>
+<area shape="rect" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html" title="src" alt="" coords="16,16,220,237"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -186,6 +186,16 @@ Files</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -194,7 +204,7 @@ Files</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

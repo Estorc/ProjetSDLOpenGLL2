@@ -21,7 +21,6 @@
  * it to an array of floats representing an RGB32F texture. This format is suitable 
  * for high dynamic range (HDR) rendering in OpenGL.
  */
-
 float * convert_to_rgb32f_texture(SDL_Surface *rgbaSurface);
 
 /**
@@ -34,7 +33,6 @@ float * convert_to_rgb32f_texture(SDL_Surface *rgbaSurface);
  * of the input surface. This is useful for correcting the orientation of textures 
  * that are loaded upside down.
  */
-
 SDL_Surface * flip_y_surface(SDL_Surface *surface);
 
 /**
@@ -60,7 +58,6 @@ SDL_Surface * flip_y_surface(SDL_Surface *surface);
  * @return Returns the OpenGL texture ID on success. If the texture fails to load, 
  * the function returns 0.
  */
-
 TextureMap load_texture_from_path(const char * path, GLenum format, bool yReversed);
 
 /**
@@ -80,7 +77,6 @@ TextureMap load_texture_from_path(const char * path, GLenum format, bool yRevers
  * The alignment parameter specifies how the text should be aligned within the 
  * given width.
  */
-
 void draw_text(SDL_Surface *render_surface, int x, int y, const char *text, TTF_Font *font, SDL_Color color, char *alignment, int width);
 
 /** @} */

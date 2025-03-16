@@ -114,41 +114,49 @@ $(document).ready(function(){initNavTree('structsocket__request__listener.html',
 </div><!--header-->
 <div class="contents">
 
+<p>Structure to hold socket request listener information.  
+ <a href="structsocket__request__listener.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="socket_8h_source.html">socket.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ac2c6f7a039f5d52bdb121da49e38534f" id="r_ac2c6f7a039f5d52bdb121da49e38534f"><td class="memItemLeft" align="right" valign="top">fd_set&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsocket__request__listener.html#ac2c6f7a039f5d52bdb121da49e38534f">readfds</a></td></tr>
-<tr class="separator:ac2c6f7a039f5d52bdb121da49e38534f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4e6820fa5ad4dbe471808b47d43ec05" id="r_af4e6820fa5ad4dbe471808b47d43ec05"><td class="memItemLeft" align="right" valign="top">struct timeval&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsocket__request__listener.html#af4e6820fa5ad4dbe471808b47d43ec05">timeout</a></td></tr>
-<tr class="separator:af4e6820fa5ad4dbe471808b47d43ec05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69b8a2764767b054eebb2bc544295e39" id="r_a69b8a2764767b054eebb2bc544295e39"><td class="memItemLeft" align="right" valign="top">fd_set&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsocket__request__listener.html#a69b8a2764767b054eebb2bc544295e39">readfds</a></td></tr>
+<tr class="separator:a69b8a2764767b054eebb2bc544295e39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9215cb056d728a57458538827f59fb6" id="r_ab9215cb056d728a57458538827f59fb6"><td class="memItemLeft" align="right" valign="top">struct timeval&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsocket__request__listener.html#ab9215cb056d728a57458538827f59fb6">timeout</a></td></tr>
+<tr class="separator:ab9215cb056d728a57458538827f59fb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ac2c6f7a039f5d52bdb121da49e38534f" name="ac2c6f7a039f5d52bdb121da49e38534f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2c6f7a039f5d52bdb121da49e38534f">&#9670;&#160;</a></span>readfds</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Structure to hold socket request listener information. </p>
+<p>This structure contains the file descriptor set and timeout value used for monitoring socket read events. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a69b8a2764767b054eebb2bc544295e39" name="a69b8a2764767b054eebb2bc544295e39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69b8a2764767b054eebb2bc544295e39">&#9670;&#160;</a></span>readfds</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">fd_set socket_request_listener::readfds</td>
+          <td class="memname">socket_request_listener::readfds</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>File descriptor set used for monitoring read events on sockets. </p>
 
 </div>
 </div>
-<a id="af4e6820fa5ad4dbe471808b47d43ec05" name="af4e6820fa5ad4dbe471808b47d43ec05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4e6820fa5ad4dbe471808b47d43ec05">&#9670;&#160;</a></span>timeout</h2>
+<a id="ab9215cb056d728a57458538827f59fb6" name="ab9215cb056d728a57458538827f59fb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9215cb056d728a57458538827f59fb6">&#9670;&#160;</a></span>timeout</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct timeval socket_request_listener::timeout</td>
+          <td class="memname">socket_request_listener::timeout</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Timeout value for the select() system call, specifying the maximum time to wait for an event. </p>
 
 </div>
 </div>
@@ -186,6 +194,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -194,7 +212,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

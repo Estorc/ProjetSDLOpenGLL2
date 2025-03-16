@@ -26,8 +26,10 @@ typedef struct CollectedNode {
 } CollectedNode;
 
 /**
- * @struct Area
+ * @}
+ * @class Area
  * @brief Represents an area with collision shapes and nodes.
+ * @ingroup Classes Classes
  * 
  * This structure holds information about an area, including its collision shapes,
  * collected nodes, and sorted nodes.
@@ -39,6 +41,11 @@ typedef struct Area {
     u32 collectedLength; /** < Number of collected nodes. */
     u16 signal_id; /** < Signal ID for the area. */
 } Area;
+
+/**
+ * @addtogroup Physics
+ * @{
+ */
 
 
 /**

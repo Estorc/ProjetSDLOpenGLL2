@@ -20,34 +20,6 @@ Functions to load and manage materials from .mtl files.
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{group__MTLLoader_gac5de2e2bc09610c6333155368f283bf1}\label{group__MTLLoader_gac5de2e2bc09610c6333155368f283bf1} 
-\index{MTL Loader@{MTL Loader}!find\_material@{find\_material}}
-\index{find\_material@{find\_material}!MTL Loader@{MTL Loader}}
-\doxysubsubsection{\texorpdfstring{find\_material()}{find\_material()}}
-{\footnotesize\ttfamily int find\+\_\+material (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*}}]{materials,  }\item[{int}]{materials\+Count,  }\item[{char \texorpdfstring{$\ast$}{*}}]{material\+Name }\end{DoxyParamCaption})}
-
-
-
-Searches for a material by its name in a list of materials. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em materials} & \{Material\texorpdfstring{$\ast$}{*}\} A pointer to an array of \doxylink{structMaterial}{Material} structures. \\
-\hline
-{\em materials\+Count} & \{int\} The total number of materials in the array. \\
-\hline
-{\em material\+Name} & \{char\texorpdfstring{$\ast$}{*}\} The name of the material to search for.\\
-\hline
-\end{DoxyParams}
-This function iterates through the array of \doxylink{structMaterial}{Material} structures to find a material that matches the specified name. It performs a string comparison using {\ttfamily strcmp} to check for equality.
-
-If a matching material is found, the function returns the index of that material in the array. If no match is found, it returns -\/1.
-
-Example Usage\+: int index = find\+\_\+material(materials, materials\+Count, "{}\+Wood"{}); if (index != -\/1) \{ // \doxylink{structMaterial}{Material} found, process it... \} else \{ // \doxylink{structMaterial}{Material} not found... \}
-
-\begin{DoxyReturn}{Returns}
-Returns the index of the found material or -\/1 if not found. 
-\end{DoxyReturn}
 \Hypertarget{group__MTLLoader_ga6fb214d51f0409a0b7bcb233e55b5966}\label{group__MTLLoader_ga6fb214d51f0409a0b7bcb233e55b5966} 
 \index{MTL Loader@{MTL Loader}!load\_mtl@{load\_mtl}}
 \index{load\_mtl@{load\_mtl}!MTL Loader@{MTL Loader}}
@@ -77,7 +49,7 @@ The following properties are read\+:
 \item Optical density
 \item Illumination flag
 \item Opacity
-\item \doxylink{classTexture}{Texture} maps (diffuse, normal, displacement)
+\item Texture maps (diffuse, normal, displacement)
 \end{DoxyItemize}
 
 If a material with the same name already exists, it will be skipped.
@@ -92,4 +64,32 @@ Example Usage\+: \doxylink{structMaterial}{Material} \texorpdfstring{$\ast$}{*}m
 
 \begin{DoxyReturn}{Returns}
 Returns the number of materials loaded or -\/1 on error. 
+\end{DoxyReturn}
+\Hypertarget{group__MTLLoader_gac5de2e2bc09610c6333155368f283bf1}\label{group__MTLLoader_gac5de2e2bc09610c6333155368f283bf1} 
+\index{MTL Loader@{MTL Loader}!find\_material@{find\_material}}
+\index{find\_material@{find\_material}!MTL Loader@{MTL Loader}}
+\doxysubsubsection{\texorpdfstring{find\_material()}{find\_material()}}
+{\footnotesize\ttfamily int find\+\_\+material (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*}}]{materials,  }\item[{int}]{materials\+Count,  }\item[{char \texorpdfstring{$\ast$}{*}}]{material\+Name }\end{DoxyParamCaption})}
+
+
+
+Searches for a material by its name in a list of materials. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em materials} & \{Material\texorpdfstring{$\ast$}{*}\} A pointer to an array of \doxylink{structMaterial}{Material} structures. \\
+\hline
+{\em materials\+Count} & \{int\} The total number of materials in the array. \\
+\hline
+{\em material\+Name} & \{char\texorpdfstring{$\ast$}{*}\} The name of the material to search for.\\
+\hline
+\end{DoxyParams}
+This function iterates through the array of \doxylink{structMaterial}{Material} structures to find a material that matches the specified name. It performs a string comparison using {\ttfamily strcmp} to check for equality.
+
+If a matching material is found, the function returns the index of that material in the array. If no match is found, it returns -\/1.
+
+Example Usage\+: int index = find\+\_\+material(materials, materials\+Count, "{}\+Wood"{}); if (index != -\/1) \{ // \doxylink{structMaterial}{Material} found, process it... \} else \{ // \doxylink{structMaterial}{Material} not found... \}
+
+\begin{DoxyReturn}{Returns}
+Returns the index of the found material or -\/1 if not found. 
 \end{DoxyReturn}

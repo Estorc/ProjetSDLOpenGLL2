@@ -165,7 +165,7 @@ $(document).ready(function(){initNavTree('chessboard_8h_source.html',''); initRe
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>} <a class="code hl_enumeration" href="chessboard_8h.html#ab5e9a2252870710908096f54ecb89c4a">MovementState</a>;</div>
 </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="chessboard_8h.html#ae9a9460ceb6150588419fad2669b298c">   48</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="chessboard_8h.html#ae9a9460ceb6150588419fad2669b298c">set_piece_skin</a>(<a class="code hl_struct" href="classNode.html">Node</a> *piece, <span class="keywordtype">int</span> flags);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="chessboard_8h.html#ae9a9460ceb6150588419fad2669b298c">   48</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="chessboard_8h.html#ae9a9460ceb6150588419fad2669b298c">set_piece_skin</a>(<a class="code hl_class" href="classNode.html">Node</a> *piece, <span class="keywordtype">int</span> flags);</div>
 <div class="ttc" id="achessboard_8h_html_a0060253a25959527ebc719a2bc931ee2"><div class="ttname"><a href="chessboard_8h.html#a0060253a25959527ebc719a2bc931ee2">ChessPieceFlags</a></div><div class="ttdeci">ChessPieceFlags</div><div class="ttdef"><b>Definition</b> chessboard.h:34</div></div>
 <div class="ttc" id="achessboard_8h_html_a0060253a25959527ebc719a2bc931ee2a18bec648a8173f0852cfb20892984317"><div class="ttname"><a href="chessboard_8h.html#a0060253a25959527ebc719a2bc931ee2a18bec648a8173f0852cfb20892984317">FC_ATTACKED</a></div><div class="ttdeci">@ FC_ATTACKED</div><div class="ttdef"><b>Definition</b> chessboard.h:37</div></div>
 <div class="ttc" id="achessboard_8h_html_a0060253a25959527ebc719a2bc931ee2a86fa83ebc48c112bd46beed610a8c2c6"><div class="ttname"><a href="chessboard_8h.html#a0060253a25959527ebc719a2bc931ee2a86fa83ebc48c112bd46beed610a8c2c6">FC_MOVED</a></div><div class="ttdeci">@ FC_MOVED</div><div class="ttdef"><b>Definition</b> chessboard.h:38</div></div>
@@ -189,7 +189,7 @@ $(document).ready(function(){initNavTree('chessboard_8h_source.html',''); initRe
 <div class="ttc" id="achessboard_8h_html_ab5e9a2252870710908096f54ecb89c4aaa1ef4d34b5f42226b6465eb1891a0865"><div class="ttname"><a href="chessboard_8h.html#ab5e9a2252870710908096f54ecb89c4aaa1ef4d34b5f42226b6465eb1891a0865">FC_CASTLING</a></div><div class="ttdeci">@ FC_CASTLING</div><div class="ttdef"><b>Definition</b> chessboard.h:45</div></div>
 <div class="ttc" id="achessboard_8h_html_ab5e9a2252870710908096f54ecb89c4aaeaced460bdf5f681d398cd299e292aa3"><div class="ttname"><a href="chessboard_8h.html#ab5e9a2252870710908096f54ecb89c4aaeaced460bdf5f681d398cd299e292aa3">FC_FORBIDDEN</a></div><div class="ttdeci">@ FC_FORBIDDEN</div><div class="ttdef"><b>Definition</b> chessboard.h:42</div></div>
 <div class="ttc" id="achessboard_8h_html_ae9a9460ceb6150588419fad2669b298c"><div class="ttname"><a href="chessboard_8h.html#ae9a9460ceb6150588419fad2669b298c">set_piece_skin</a></div><div class="ttdeci">void set_piece_skin(Node *piece, int flags)</div></div>
-<div class="ttc" id="aclassNode_html"><div class="ttname"><a href="classNode.html">Node</a></div><div class="ttdoc">Represents a node in the tree structure.</div><div class="ttdef"><b>Definition</b> node.class.c:21</div></div>
+<div class="ttc" id="aclassNode_html"><div class="ttname"><a href="classNode.html">Node</a></div><div class="ttdoc">Represents a node in the tree structure.</div><div class="ttdef"><b>Definition</b> node.class.c:26</div></div>
 <div class="ttc" id="ascripts_2fps__chess_2client_8h_html"><div class="ttname"><a href="scripts_2fps__chess_2client_8h.html">client.h</a></div></div>
 <div class="ttc" id="atime_8h_html"><div class="ttname"><a href="time_8h.html">time.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -223,6 +223,16 @@ $(document).ready(function(){initNavTree('chessboard_8h_source.html',''); initRe
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -231,7 +241,7 @@ $(document).ready(function(){initNavTree('chessboard_8h_source.html',''); initRe
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

@@ -1,7 +1,7 @@
 var structLoadingModelBuffer =
 [
-    [ "faces", "structLoadingModelBuffer.html#aa7263a67f5acea54e20ce9fb39cba831", null ],
-    [ "normals", "structLoadingModelBuffer.html#a9834242037e4f7bcc534effae03261fe", null ],
-    [ "textureVertex", "structLoadingModelBuffer.html#aa7fd6a2d08540fc39058d2bb59ab440e", null ],
-    [ "vertex", "structLoadingModelBuffer.html#a61dab533dfd10c8f5963105acf65d240", null ]
+    [ "vertex", "group__ObjLoader.html#gafc912d1d97150df207e760397f3fe904", null ],
+    [ "normals", "group__ObjLoader.html#ga6fa9ea9ae14a33791794d1c08623700c", null ],
+    [ "textureVertex", "group__ObjLoader.html#gaeed6db10e83cce4380799b56f2456679", null ],
+    [ "faces", "group__ObjLoader.html#ga04baf96cf7a8c449f068e7bc387ad9bc", null ]
 ];

@@ -111,10 +111,10 @@ $(document).ready(function(){initNavTree('functions_vars_p.html',''); initResiza
 
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
 <li>p&#160;:&#160;<a class="el" href="unionBehaviorAttribute.html#ace6771b71f031624b4fa7345a20dacdc">BehaviorAttribute</a></li>
-<li>parent&#160;:&#160;<a class="el" href="group__NodeFunctions.html#ga34f3ab9670c7b70dad8905359a243c92">Node</a>, <a class="el" href="structTheme.html#a22646a9c1f6b7f2fffd69cdf2e0d7365">Theme</a></li>
+<li>parent&#160;:&#160;<a class="el" href="classNode.html#a34f3ab9670c7b70dad8905359a243c92">Node</a>, <a class="el" href="structTheme.html#a22646a9c1f6b7f2fffd69cdf2e0d7365">Theme</a></li>
 <li>path&#160;:&#160;<a class="el" href="structFont.html#a2b193be860d20cd3841099246073781f">Font</a>, <a class="el" href="classImageFrame.html#ad44f6d3ecdfe5d89bf8bc434cfadb88c">ImageFrame</a></li>
-<li>ping&#160;:&#160;<a class="el" href="structpeer.html#aa7cc8ce1e6f96584b324ace98d25c567">peer</a></li>
-<li>pos&#160;:&#160;<a class="el" href="classCamera.html#a58f8b51664251b5c0f59be0e0a87e754">Camera</a>, <a class="el" href="group__NodeFunctions.html#ga19f2506921f0378b62b4200d0f674411">Node</a></li>
+<li>ping&#160;:&#160;<a class="el" href="structpeer.html#a624d5261107607e5d48ab7dd3f00d693">peer</a></li>
+<li>pos&#160;:&#160;<a class="el" href="classCamera.html#a58f8b51664251b5c0f59be0e0a87e754">Camera</a>, <a class="el" href="classNode.html#a19f2506921f0378b62b4200d0f674411">Node</a></li>
 <li>pressed_button&#160;:&#160;<a class="el" href="structMouse.html#a2c6252aa86f43e627f71dd94c49b634a">Mouse</a></li>
 <li>pressed_keys&#160;:&#160;<a class="el" href="structInput.html#ab54371d47eadcd883ea043948a82de8d">Input</a></li>
 </ul>
@@ -149,6 +149,16 @@ $(document).ready(function(){initNavTree('functions_vars_p.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -157,7 +167,7 @@ $(document).ready(function(){initNavTree('functions_vars_p.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

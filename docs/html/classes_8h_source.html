@@ -119,10 +119,10 @@ $(document).ready(function(){initNavTree('classes_8h_source.html',''); initResiz
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">struct </span>ClassManager <a class="code hl_variable" href="classes_8h.html#aaee6eab14a0e29493217bce3a0ece1de">classManager</a>;</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structObject.html">   28</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structObject.html">Object</a> {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structObject.html">   28</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_class" href="structObject.html">Object</a> {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structObject.html#a8cc6ed7117cf960bfbc8b5543b674968">   29</a></span>    <span class="keywordtype">void</span> *<a class="code hl_variable" href="structObject.html#a8cc6ed7117cf960bfbc8b5543b674968">object</a>; </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structObject.html#a40499f03de9cfbe07831fcf63e8981d5">   30</a></span>    <a class="code hl_define" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> <a class="code hl_variable" href="structObject.html#a40499f03de9cfbe07831fcf63e8981d5">type</a>; </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>} <a class="code hl_struct" href="structObject.html">Object</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>} <a class="code hl_class" href="structObject.html">Object</a>;</div>
 </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__Classes.html#gaa5d13dbe9e2544404028633f7ed3d7cf">call_method_0</a>(<span class="keywordtype">void</span> (*func)(<span class="keywordtype">void</span> *, va_list), ...);</div>
@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('classes_8h_source.html',''); initResiz
 <div class="ttc" id="aclasses_8h_html_aaee6eab14a0e29493217bce3a0ece1de"><div class="ttname"><a href="classes_8h.html#aaee6eab14a0e29493217bce3a0ece1de">classManager</a></div><div class="ttdeci">const struct ClassManager classManager</div></div>
 <div class="ttc" id="aclasses__types_8h_html"><div class="ttname"><a href="classes__types_8h.html">classes_types.h</a></div></div>
 <div class="ttc" id="agroup__Classes_html_gaa5d13dbe9e2544404028633f7ed3d7cf"><div class="ttname"><a href="group__Classes.html#gaa5d13dbe9e2544404028633f7ed3d7cf">call_method_0</a></div><div class="ttdeci">void call_method_0(void(*func)(void *, va_list),...)</div><div class="ttdef"><b>Definition</b> classes.c:4</div></div>
-<div class="ttc" id="araptiquax_8h_html_af3b86d961da0a3575b4f99c9ffaf01fd"><div class="ttname"><a href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a></div><div class="ttdeci">#define u8</div><div class="ttdoc">Alias for uint8_t (unsigned 8-bit integer).</div><div class="ttdef"><b>Definition</b> raptiquax.h:76</div></div>
+<div class="ttc" id="araptiquax_8h_html_af3b86d961da0a3575b4f99c9ffaf01fd"><div class="ttname"><a href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a></div><div class="ttdeci">#define u8</div><div class="ttdoc">Alias for uint8_t (unsigned 8-bit integer).</div><div class="ttdef"><b>Definition</b> raptiquax.h:62</div></div>
 <div class="ttc" id="astructObject_html"><div class="ttname"><a href="structObject.html">Object</a></div><div class="ttdoc">A generic object structure.</div><div class="ttdef"><b>Definition</b> classes.h:28</div></div>
 <div class="ttc" id="astructObject_html_a40499f03de9cfbe07831fcf63e8981d5"><div class="ttname"><a href="structObject.html#a40499f03de9cfbe07831fcf63e8981d5">Object::type</a></div><div class="ttdeci">u8 type</div><div class="ttdef"><b>Definition</b> classes.h:30</div></div>
 <div class="ttc" id="astructObject_html_a8cc6ed7117cf960bfbc8b5543b674968"><div class="ttname"><a href="structObject.html#a8cc6ed7117cf960bfbc8b5543b674968">Object::object</a></div><div class="ttdeci">void * object</div><div class="ttdef"><b>Definition</b> classes.h:29</div></div>
@@ -172,6 +172,16 @@ $(document).ready(function(){initNavTree('classes_8h_source.html',''); initResiz
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -180,7 +190,7 @@ $(document).ready(function(){initNavTree('classes_8h_source.html',''); initResiz
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

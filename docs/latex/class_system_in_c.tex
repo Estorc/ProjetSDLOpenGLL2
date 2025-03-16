@@ -1,0 +1,91 @@
+\doxysection{Class System in C}
+\hypertarget{class_system_in_c}{}\label{class_system_in_c}\index{Class System in C@{Class System in C}}
+This document explains the custom "{}class system"{} in C, using specific syntax patterns designed to mimic object-\/oriented programming (OOP) features like classes, methods, and object creation in C. These syntax patterns are processed by a preprocessor in your pipeline.\hypertarget{class_system_in_c_supported_formats}{}\doxysubsection{\texorpdfstring{Supported Formats}{Supported Formats}}\label{class_system_in_c_supported_formats}
+\hypertarget{class_system_in_c_static_method}{}\doxysubsubsection{\texorpdfstring{Static Method Call on a Class}{Static Method Call on a Class}}\label{class_system_in_c_static_method}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Class::Method(params);}
+
+\end{DoxyCode}
+
+\begin{DoxyItemize}
+\item {\bfseries{Description}}\+: Calls a {\bfseries{static method}} belonging to the class itself rather than an instance.
+\item {\bfseries{Example}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyClass::initialize(config);}
+
+\end{DoxyCode}
+ Calls the static method {\ttfamily initialize} of {\ttfamily My\+Class}, passing {\ttfamily config} as an argument.
+\end{DoxyItemize}\hypertarget{class_system_in_c_object_creation}{}\doxysubsubsection{\texorpdfstring{Object Creation}{Object Creation}}\label{class_system_in_c_object_creation}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Class\ \textcolor{keyword}{class\ }=\ new\ Class(params);}
+
+\end{DoxyCode}
+
+\begin{DoxyItemize}
+\item {\bfseries{Description}}\+: Creates a new {\bfseries{instance}} of a class.
+\item {\bfseries{Example}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{MyClass\ obj\ =\ \textcolor{keyword}{new}\ MyClass(\textcolor{stringliteral}{"{}example"{}});}
+
+\end{DoxyCode}
+ Creates an object {\ttfamily obj} of type {\ttfamily My\+Class} with the parameter {\ttfamily "{}example"{}} passed to its constructor.
+\end{DoxyItemize}\hypertarget{class_system_in_c_instance_method}{}\doxysubsubsection{\texorpdfstring{Calling a Method on an Instance}{Calling a Method on an Instance}}\label{class_system_in_c_instance_method}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{class::Method(params);}
+
+\end{DoxyCode}
+
+\begin{DoxyItemize}
+\item {\bfseries{Description}}\+: Calls a {\bfseries{non-\/static method}} on an instance of a class.
+\item {\bfseries{Example}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{obj::doSomething(10);}
+
+\end{DoxyCode}
+ Calls {\ttfamily do\+Something} on {\ttfamily obj}, passing {\ttfamily 10} as an argument.
+\end{DoxyItemize}\hypertarget{class_system_in_c_conditional_call}{}\doxysubsubsection{\texorpdfstring{Conditional Method Call with Type Casting}{Conditional Method Call with Type Casting}}\label{class_system_in_c_conditional_call}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\textcolor{keyword}{class}::(bool)condition(params));}
+
+\end{DoxyCode}
+
+\begin{DoxyItemize}
+\item {\bfseries{Description}}\+: Calls a method conditionally based on a boolean value returned by {\ttfamily condition}.
+\item {\bfseries{Example}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (obj::isValid(config))\ \{}
+\DoxyCodeLine{\ \ \ \ obj::processData(data);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ If {\ttfamily is\+Valid(config)} is true, it calls {\ttfamily process\+Data(data)}.
+\end{DoxyItemize}\hypertarget{class_system_in_c_child_method}{}\doxysubsubsection{\texorpdfstring{Calling a Method on a Child Object}{Calling a Method on a Child Object}}\label{class_system_in_c_child_method}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\textcolor{keyword}{class}-\/>child)::Method(params);}
+
+\end{DoxyCode}
+
+\begin{DoxyItemize}
+\item {\bfseries{Description}}\+: Calls a method on a {\bfseries{child object}} of a class.
+\item {\bfseries{Example}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(obj-\/>child)::updateChildInfo(info);}
+
+\end{DoxyCode}
+ Calls {\ttfamily update\+Child\+Info} on {\ttfamily child}, a member of {\ttfamily obj}.
+\end{DoxyItemize}\hypertarget{class_system_in_c_key_concepts}{}\doxysubsection{\texorpdfstring{Key Concepts in the Class System}{Key Concepts in the Class System}}\label{class_system_in_c_key_concepts}
+
+\begin{DoxyItemize}
+\item {\bfseries{Static Methods}}\+: Belong to the class itself, callable with {\ttfamily Class\+Name\+::\+Method()}.
+\item {\bfseries{\doxylink{structObject}{Object} Creation}}\+: {\ttfamily new Class(params)} creates objects similar to OOP languages.
+\item {\bfseries{Instance Methods}}\+: Belong to an instance, callable with {\ttfamily instance\+::\+Method()}.
+\item {\bfseries{Conditional Calls}}\+: Calls methods based on conditions, optionally with type casting.
+\item {\bfseries{Child Objects}}\+: Calls methods on child objects with {\ttfamily class-\/\texorpdfstring{$>$}{>}child\+::\+Method()}.
+\end{DoxyItemize}
+
+This custom syntax mimics object-\/oriented behavior in C, allowing it to follow OOP-\/like patterns while remaining procedural. 

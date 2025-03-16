@@ -138,7 +138,7 @@ $(document).ready(function(){initNavTree('classes.html',''); initResizable(); })
 <dd><a class="el" href="classImageFrame.html">ImageFrame</a></dd><dd><a class="el" href="structInput.html">Input</a></dd><dd><a class="el" href="classInputArea.html">InputArea</a></dd></dl>
 <dl class="classindex even">
 <dt class="alphachar"><a id="letter_K" name="letter_K">K</a></dt>
-<dd><a class="el" href="classKinematicBody.html">KinematicBody</a></dd></dl>
+<dd><a class="el" href="structKeybinds.html">Keybinds</a></dd><dd><a class="el" href="classKinematicBody.html">KinematicBody</a></dd></dl>
 <dl class="classindex odd">
 <dt class="alphachar"><a id="letter_L" name="letter_L">L</a></dt>
 <dd><a class="el" href="classLabel.html">Label</a></dd><dd><a class="el" href="classLight.html">Light</a></dd><dd><a class="el" href="structLightingBuffer.html">LightingBuffer</a></dd><dd><a class="el" href="structLoadingModelBuffer.html">LoadingModelBuffer</a></dd></dl>
@@ -165,7 +165,7 @@ $(document).ready(function(){initNavTree('classes.html',''); initResizable(); })
 <dd><a class="el" href="classScene.html">Scene</a></dd><dd><a class="el" href="structScript.html">Script</a></dd><dd><a class="el" href="classSelectList.html">SelectList</a></dd><dd><a class="el" href="structSettings.html">Settings</a></dd><dd><a class="el" href="structShaderCache.html">ShaderCache</a></dd><dd><a class="el" href="structskin__vertex.html">skin_vertex</a></dd><dd><a class="el" href="classSkybox.html">Skybox</a></dd><dd><a class="el" href="classSlider.html">Slider</a></dd><dd><a class="el" href="structsocket__request__listener.html">socket_request_listener</a></dd><dd><a class="el" href="structSphereCollisionShape.html">SphereCollisionShape</a></dd><dd><a class="el" href="classSphereCShape.html">SphereCShape</a></dd><dd><a class="el" href="classSpotLight.html">SpotLight</a></dd><dd><a class="el" href="structStack.html">Stack</a></dd><dd><a class="el" href="classStaticBody.html">StaticBody</a></dd></dl>
 <dl class="classindex odd">
 <dt class="alphachar"><a id="letter_T" name="letter_T">T</a></dt>
-<dd><a class="el" href="classTexture.html">Texture</a></dd><dd><a class="el" href="structTextureCache.html">TextureCache</a></dd><dd><a class="el" href="classTexturedMesh.html">TexturedMesh</a></dd><dd><a class="el" href="structTheme.html">Theme</a></dd><dd><a class="el" href="structTree.html">Tree</a></dd></dl>
+<dd><a class="el" href="structTextureCache.html">TextureCache</a></dd><dd><a class="el" href="classTexturedMesh.html">TexturedMesh</a></dd><dd><a class="el" href="structTheme.html">Theme</a></dd><dd><a class="el" href="structTree.html">Tree</a></dd></dl>
 <dl class="classindex even">
 <dt class="alphachar"><a id="letter_W" name="letter_W">W</a></dt>
 <dd><a class="el" href="structWindow.html">Window</a></dd><dd><a class="el" href="structWorldShaders.html">WorldShaders</a></dd></dl>
@@ -201,6 +201,16 @@ $(document).ready(function(){initNavTree('classes.html',''); initResizable(); })
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -209,7 +219,7 @@ $(document).ready(function(){initNavTree('classes.html',''); initResizable(); })
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

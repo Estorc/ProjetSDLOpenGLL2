@@ -51,7 +51,6 @@
  *
  * @return Returns the number of materials loaded or -1 on error.
  */
-
 int load_mtl(char *path, char *filename, Material **materials);
 
 /**
@@ -78,7 +77,6 @@ int load_mtl(char *path, char *filename, Material **materials);
  *
  * @return Returns the index of the found material or -1 if not found.
  */
-
 int find_material(Material *materials, int materialsCount, char *materialName);
 
 /** @} */

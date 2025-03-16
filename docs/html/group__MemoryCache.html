@@ -198,20 +198,6 @@ Functions</h2></td></tr>
 <p>Functions and structures for managing memory caches. </p>
 <p>This module provides structures and functions to manage caches for cube maps, textures, models, and shaders. It includes initialization and cleanup functions to handle the memory allocation and deallocation for these resources. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ga628acddf9216b5e00424607a3f76ccde" name="ga628acddf9216b5e00424607a3f76ccde"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga628acddf9216b5e00424607a3f76ccde">&#9670;&#160;</a></span>Shader</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef unsigned int <a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ga9efea9b7fc3085f1062d9148aa012307" name="ga9efea9b7fc3085f1062d9148aa012307"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga9efea9b7fc3085f1062d9148aa012307">&#9670;&#160;</a></span>TextureMap</h2>
 
@@ -226,80 +212,86 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga628acddf9216b5e00424607a3f76ccde" name="ga628acddf9216b5e00424607a3f76ccde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga628acddf9216b5e00424607a3f76ccde">&#9670;&#160;</a></span>Shader</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned int <a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gadf72a8ac6da9ce12a4b7264c2747f08f" name="gadf72a8ac6da9ce12a4b7264c2747f08f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gadf72a8ac6da9ce12a4b7264c2747f08f">&#9670;&#160;</a></span>add_mix_chunk_to_cache()</h2>
+<a id="gafc915248428e8d076d93d7029a2dcb79" name="gafc915248428e8d076d93d7029a2dcb79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafc915248428e8d076d93d7029a2dcb79">&#9670;&#160;</a></span>init_memory_cache()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void add_mix_chunk_to_cache </td>
+          <td class="memname">void init_memory_cache </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">Mix_Chunk *&#160;</td>
-          <td class="paramname"><em>chunk</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Adds a sound effect to the cache. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the sound effect. </td></tr>
-    <tr><td class="paramname">music</td><td>The sound effect data to add to the cache.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function adds a sound effect to the cache with the specified name. </p>
+<p>Initializes the memory cache. </p>
+<p>This function sets up the memory cache for use in the project. </p>
 
 </div>
 </div>
-<a id="ga09305ad627a28324fd720c408ed2afb9" name="ga09305ad627a28324fd720c408ed2afb9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga09305ad627a28324fd720c408ed2afb9">&#9670;&#160;</a></span>add_mix_music_to_cache()</h2>
+<a id="ga687de09be998a3af723f109e54937e46" name="ga687de09be998a3af723f109e54937e46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga687de09be998a3af723f109e54937e46">&#9670;&#160;</a></span>free_shaders()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void add_mix_music_to_cache </td>
+          <td class="memname">void free_shaders </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">Mix_Music *&#160;</td>
-          <td class="paramname"><em>music</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Adds a music to the cache. </p>
+<p>Frees the allocated shaders. </p>
+<p>This function releases the memory allocated for shaders. </p>
+
+</div>
+</div>
+<a id="ga61ed234c023f30c5c5708cd4cd77c623" name="ga61ed234c023f30c5c5708cd4cd77c623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga61ed234c023f30c5c5708cd4cd77c623">&#9670;&#160;</a></span>get_model_from_cache()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structModelData.html">ModelData</a> * get_model_from_cache </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a model from the cache. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the music. </td></tr>
-    <tr><td class="paramname">music</td><td>The music data to add to the cache.</td></tr>
+    <tr><td class="paramname">name</td><td>The name of the model. </td></tr>
   </table>
   </dd>
 </dl>
-<p>This function adds a music to the cache with the specified name. </p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the model data.</dd></dl>
+<p>This function retrieves a model from the cache with the specified name. If the model is not found, it returns NULL. </p>
 
 </div>
 </div>
@@ -341,6 +333,178 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="gaf7e9da715331648efbb53611a886b7ba" name="gaf7e9da715331648efbb53611a886b7ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf7e9da715331648efbb53611a886b7ba">&#9670;&#160;</a></span>free_models()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void free_models </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Frees the allocated models. </p>
+<p>This function releases the memory allocated for models. </p>
+
+</div>
+</div>
+<a id="ga004ded5479b7e0050f7e5decd7743cf1" name="ga004ded5479b7e0050f7e5decd7743cf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga004ded5479b7e0050f7e5decd7743cf1">&#9670;&#160;</a></span>get_mix_music_from_cache()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Mix_Music * get_mix_music_from_cache </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a music from the cache. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the music. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the music data.</dd></dl>
+<p>This function retrieves a music from the cache with the specified name. </p>
+
+</div>
+</div>
+<a id="ga09305ad627a28324fd720c408ed2afb9" name="ga09305ad627a28324fd720c408ed2afb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga09305ad627a28324fd720c408ed2afb9">&#9670;&#160;</a></span>add_mix_music_to_cache()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void add_mix_music_to_cache </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Music *&#160;</td>
+          <td class="paramname"><em>music</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a music to the cache. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the music. </td></tr>
+    <tr><td class="paramname">music</td><td>The music data to add to the cache.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function adds a music to the cache with the specified name. </p>
+
+</div>
+</div>
+<a id="ga0ffdd61fb2360024ac5cad44334c6ead" name="ga0ffdd61fb2360024ac5cad44334c6ead"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0ffdd61fb2360024ac5cad44334c6ead">&#9670;&#160;</a></span>free_musics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void free_musics </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Frees the allocated music. </p>
+<p>This function releases the memory allocated for music. </p>
+
+</div>
+</div>
+<a id="ga1659300a896c5455fff79f6b2144337b" name="ga1659300a896c5455fff79f6b2144337b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1659300a896c5455fff79f6b2144337b">&#9670;&#160;</a></span>get_mix_chunk_from_cache()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Mix_Chunk * get_mix_chunk_from_cache </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a sound effect from the cache. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the sound effect. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the sound effect data.</dd></dl>
+<p>This function retrieves a sound effect from the cache with the specified name. </p>
+
+</div>
+</div>
+<a id="gadf72a8ac6da9ce12a4b7264c2747f08f" name="gadf72a8ac6da9ce12a4b7264c2747f08f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadf72a8ac6da9ce12a4b7264c2747f08f">&#9670;&#160;</a></span>add_mix_chunk_to_cache()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void add_mix_chunk_to_cache </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>chunk</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a sound effect to the cache. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the sound effect. </td></tr>
+    <tr><td class="paramname">music</td><td>The sound effect data to add to the cache.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function adds a sound effect to the cache with the specified name. </p>
+
+</div>
+</div>
 <a id="ga937ea060506e98cc1859bdec3583852a" name="ga937ea060506e98cc1859bdec3583852a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga937ea060506e98cc1859bdec3583852a">&#9670;&#160;</a></span>free_chunks()</h2>
 
@@ -358,6 +522,26 @@ Functions</h2></td></tr>
 
 <p>Frees the allocated sound effects. </p>
 <p>This function releases the memory allocated for sound effects. </p>
+
+</div>
+</div>
+<a id="ga4761da15daadabf43f15b2c2d29eb98b" name="ga4761da15daadabf43f15b2c2d29eb98b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4761da15daadabf43f15b2c2d29eb98b">&#9670;&#160;</a></span>free_textures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void free_textures </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Frees the allocated textures. </p>
+<p>This function releases the memory allocated for textures. </p>
 
 </div>
 </div>
@@ -401,190 +585,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaf7e9da715331648efbb53611a886b7ba" name="gaf7e9da715331648efbb53611a886b7ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf7e9da715331648efbb53611a886b7ba">&#9670;&#160;</a></span>free_models()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void free_models </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Frees the allocated models. </p>
-<p>This function releases the memory allocated for models. </p>
-
-</div>
-</div>
-<a id="ga0ffdd61fb2360024ac5cad44334c6ead" name="ga0ffdd61fb2360024ac5cad44334c6ead"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0ffdd61fb2360024ac5cad44334c6ead">&#9670;&#160;</a></span>free_musics()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void free_musics </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Frees the allocated music. </p>
-<p>This function releases the memory allocated for music. </p>
-
-</div>
-</div>
-<a id="ga687de09be998a3af723f109e54937e46" name="ga687de09be998a3af723f109e54937e46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga687de09be998a3af723f109e54937e46">&#9670;&#160;</a></span>free_shaders()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void free_shaders </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Frees the allocated shaders. </p>
-<p>This function releases the memory allocated for shaders. </p>
-
-</div>
-</div>
-<a id="ga4761da15daadabf43f15b2c2d29eb98b" name="ga4761da15daadabf43f15b2c2d29eb98b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4761da15daadabf43f15b2c2d29eb98b">&#9670;&#160;</a></span>free_textures()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void free_textures </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Frees the allocated textures. </p>
-<p>This function releases the memory allocated for textures. </p>
-
-</div>
-</div>
-<a id="ga1659300a896c5455fff79f6b2144337b" name="ga1659300a896c5455fff79f6b2144337b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1659300a896c5455fff79f6b2144337b">&#9670;&#160;</a></span>get_mix_chunk_from_cache()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Mix_Chunk * get_mix_chunk_from_cache </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets a sound effect from the cache. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the sound effect. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the sound effect data.</dd></dl>
-<p>This function retrieves a sound effect from the cache with the specified name. </p>
-
-</div>
-</div>
-<a id="ga004ded5479b7e0050f7e5decd7743cf1" name="ga004ded5479b7e0050f7e5decd7743cf1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga004ded5479b7e0050f7e5decd7743cf1">&#9670;&#160;</a></span>get_mix_music_from_cache()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Mix_Music * get_mix_music_from_cache </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets a music from the cache. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the music. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the music data.</dd></dl>
-<p>This function retrieves a music from the cache with the specified name. </p>
-
-</div>
-</div>
-<a id="ga61ed234c023f30c5c5708cd4cd77c623" name="ga61ed234c023f30c5c5708cd4cd77c623"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga61ed234c023f30c5c5708cd4cd77c623">&#9670;&#160;</a></span>get_model_from_cache()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structModelData.html">ModelData</a> * get_model_from_cache </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets a model from the cache. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the model. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the model data.</dd></dl>
-<p>This function retrieves a model from the cache with the specified name. If the model is not found, it returns NULL. </p>
-
-</div>
-</div>
-<a id="gafc915248428e8d076d93d7029a2dcb79" name="gafc915248428e8d076d93d7029a2dcb79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gafc915248428e8d076d93d7029a2dcb79">&#9670;&#160;</a></span>init_memory_cache()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void init_memory_cache </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initializes the memory cache. </p>
-<p>This function sets up the memory cache for use in the project. </p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -616,6 +616,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -624,7 +634,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

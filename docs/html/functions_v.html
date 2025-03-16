@@ -110,13 +110,14 @@ $(document).ready(function(){initNavTree('functions_v.html',''); initResizable()
 <div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_v" name="index_v"></a>- v -</h3><ul>
-<li>value&#160;:&#160;<a class="el" href="structEntry.html#aca33bdbd628f38adb997eb8e8a6f64c4">Entry</a>, <a class="el" href="structModelKeyframe.html#a8bfc484d7012a966cbecc0f231f7dd2c">ModelKeyframe</a>, <a class="el" href="classSlider.html#a99eb669c941675ce732332554a2f0846">Slider</a></li>
-<li>vao&#160;:&#160;<a class="el" href="classLight.html#aa95c079830da85a842ea323329212c30">Light</a></li>
+<li>validate&#160;:&#160;<a class="el" href="structKeybinds.html#aa70b1da98bc2b675fc8f6f23f11c0757">Keybinds</a></li>
+<li>value&#160;:&#160;<a class="el" href="structEntry.html#a68d6037b46f03c0087346ddc664cad50">Entry</a>, <a class="el" href="structModelKeyframe.html#a8bfc484d7012a966cbecc0f231f7dd2c">ModelKeyframe</a>, <a class="el" href="classSlider.html#a4991d29d0f386b0e1cc09d5da3a99954">Slider</a></li>
+<li>vao&#160;:&#160;<a class="el" href="classLight.html#affd8f98ee0cb4508fd9dda3e283197f0">Light</a></li>
 <li>VAO&#160;:&#160;<a class="el" href="classMesh.html#a070175e7c5d0d1de32a9d62cce73ace0">Mesh</a>, <a class="el" href="structModelObjectData.html#a81a06ba68dc3a3c26e985662f3b1df6d">ModelObjectData</a>, <a class="el" href="classTexturedMesh.html#a05be35182381ceb6df60e98385cc8985">TexturedMesh</a></li>
-<li>vbo&#160;:&#160;<a class="el" href="classLight.html#a90acb42629933de1782cacc87cd7f3ab">Light</a></li>
+<li>vbo&#160;:&#160;<a class="el" href="classLight.html#ab27d4d441543fa871a2b4db5ce0c40d8">Light</a></li>
 <li>velocity&#160;:&#160;<a class="el" href="classKinematicBody.html#a6df89dcb3c0755043974bbb1a5f90746">KinematicBody</a>, <a class="el" href="classRigidBody.html#a327eb9b4c4790efb77944e0e1474d3fe">RigidBody</a></li>
-<li>vertex&#160;:&#160;<a class="el" href="structFace.html#a1172248468cc8f99ca3f268afd45e301">Face</a>, <a class="el" href="structLoadingModelBuffer.html#a61dab533dfd10c8f5963105acf65d240">LoadingModelBuffer</a></li>
-<li>vsync&#160;:&#160;<a class="el" href="structSettings.html#aacb416379371230d79a9bcf2bcdcf5dc">Settings</a></li>
+<li>vertex&#160;:&#160;<a class="el" href="structFace.html#a1172248468cc8f99ca3f268afd45e301">Face</a>, <a class="el" href="group__ObjLoader.html#gafc912d1d97150df207e760397f3fe904">LoadingModelBuffer</a></li>
+<li>vsync&#160;:&#160;<a class="el" href="structSettings.html#aaeeaf334506f90329361f6d8fd57dd1b">Settings</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -149,6 +150,16 @@ $(document).ready(function(){initNavTree('functions_v.html',''); initResizable()
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -157,7 +168,7 @@ $(document).ready(function(){initNavTree('functions_v.html',''); initResizable()
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

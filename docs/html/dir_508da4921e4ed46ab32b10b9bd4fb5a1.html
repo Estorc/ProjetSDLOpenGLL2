@@ -115,23 +115,23 @@ Directory dependency graph for frames:</div>
 <div class="dyncontent">
 <div class="center"><img src="dir_508da4921e4ed46ab32b10b9bd4fb5a1_dep.png" border="0" usemap="#adir__508da4921e4ed46ab32b10b9bd4fb5a1__dep" alt="src/classes/nodes/frames"/></div>
 <map name="adir__508da4921e4ed46ab32b10b9bd4fb5a1__dep" id="adir__508da4921e4ed46ab32b10b9bd4fb5a1__dep">
-<area shape="rect" href="dir_508da4921e4ed46ab32b10b9bd4fb5a1.html" title="frames" alt="" coords="161,52,229,77"/>
-<area shape="rect" href="dir_452baf35e1d7639c9f2a5ece4ec85855.html" title="storage" alt="" coords="5,125,76,151"/>
-<area shape="poly" href="dir_000005_000018.html" alt="" coords="172,80,79,122,77,117,169,75"/>
-<area shape="rect" href="dir_000005_000018.html" title="10" alt="" coords="77,118,95,133"/>
-<area shape="rect" href="dir_99d0482cf009f9d97a0877749b817f19.html" title="gui" alt="" coords="101,125,143,151"/>
-<area shape="poly" href="dir_000005_000006.html" alt="" coords="185,80,146,118,142,114,181,76"/>
-<area shape="rect" href="dir_000005_000006.html" title="10" alt="" coords="144,111,161,126"/>
-<area shape="rect" href="dir_ae9a93452e2a84339148a16bcf2eb561.html" title="math" alt="" coords="167,125,223,151"/>
-<area shape="poly" href="dir_000005_000009.html" alt="" coords="198,78,198,112,193,112,193,78"/>
-<area shape="rect" href="dir_000005_000009.html" title="10" alt="" coords="195,100,212,114"/>
-<area shape="rect" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html" title="io" alt="" coords="248,125,287,151"/>
-<area shape="poly" href="dir_000005_000007.html" alt="" coords="209,76,248,114,244,118,205,80"/>
-<area shape="rect" href="dir_000005_000007.html" title="26" alt="" coords="240,99,257,114"/>
-<area shape="rect" href="dir_e488ee1cea97fb16abdb5ccc78d2123b.html" title="render" alt="" coords="311,125,375,151"/>
-<area shape="poly" href="dir_000005_000014.html" alt="" coords="220,75,308,117,306,122,218,80"/>
-<area shape="rect" href="dir_000005_000014.html" title="10" alt="" coords="298,102,315,117"/>
-<area shape="rect" href="dir_27d2482428742dd719ba843f58f9643f.html" title="nodes" alt="" coords="150,16,241,88"/>
+<area shape="rect" href="dir_508da4921e4ed46ab32b10b9bd4fb5a1.html" title="frames" alt="" coords="27,104,95,129"/>
+<area shape="rect" href="dir_452baf35e1d7639c9f2a5ece4ec85855.html" title="storage" alt="" coords="143,5,213,31"/>
+<area shape="poly" href="dir_000005_000021.html" alt="" coords="73,102,141,40,145,37,148,41,144,44,76,106"/>
+<area shape="rect" href="dir_000005_000021.html" title="10" alt="" coords="129,27,147,42"/>
+<area shape="rect" href="dir_99d0482cf009f9d97a0877749b817f19.html" title="gui" alt="" coords="157,55,199,80"/>
+<area shape="poly" href="dir_000005_000007.html" alt="" coords="90,102,143,79,145,84,93,106"/>
+<area shape="rect" href="dir_000005_000007.html" title="10" alt="" coords="128,68,145,83"/>
+<area shape="rect" href="dir_ae9a93452e2a84339148a16bcf2eb561.html" title="math" alt="" coords="150,104,206,129"/>
+<area shape="poly" href="dir_000005_000011.html" alt="" coords="95,114,136,114,136,119,95,119"/>
+<area shape="rect" href="dir_000005_000011.html" title="10" alt="" coords="123,101,140,116"/>
+<area shape="rect" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html" title="io" alt="" coords="159,153,197,179"/>
+<area shape="poly" href="dir_000005_000008.html" alt="" coords="93,127,147,150,145,155,90,132"/>
+<area shape="rect" href="dir_000005_000008.html" title="26" alt="" coords="136,136,154,151"/>
+<area shape="rect" href="dir_e488ee1cea97fb16abdb5ccc78d2123b.html" title="render" alt="" coords="146,203,210,228"/>
+<area shape="poly" href="dir_000005_000017.html" alt="" coords="76,127,144,189,148,192,145,197,141,193,73,131"/>
+<area shape="rect" href="dir_000005_000017.html" title="10" alt="" coords="139,178,157,192"/>
+<area shape="rect" href="dir_27d2482428742dd719ba843f58f9643f.html" title="nodes" alt="" coords="16,67,105,141"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -198,6 +198,16 @@ Files</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -206,7 +216,7 @@ Files</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

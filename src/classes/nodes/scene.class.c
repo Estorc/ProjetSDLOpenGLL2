@@ -17,10 +17,22 @@
 #include "io/scene_loader.h"
 #include "render/framebuffer.h"
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
+
 class Scene : public Node {
     __containerType__ Node *
     public:
 
+    /**
+     * @brief Constructor for the scene class.
+     *
+     * This function initializes a new scene object using the provided path.
+     *
+     * @param path The file path to initialize the scene object with.
+     */
     void constructor(const char * path) {
         FILE * file = fopen(path, "r");
         if (!file) return;
@@ -34,7 +46,13 @@ class Scene : public Node {
         free(child);
     }
     
-
+    /**
+     * @brief Loads data from a file.
+     *
+     * This function reads data from the given file and loads it into the appropriate structures.
+     *
+     * @param file A pointer to the file to be loaded.
+     */
     void load(FILE *file) {
         char path[256];
         if (file) {
@@ -45,3 +63,4 @@ class Scene : public Node {
     }
     
 }
+

@@ -1,11 +1,11 @@
 <map id="RenderTarget" name="RenderTarget">
-<area shape="rect" id="Node000001" title="A structure to handle render targets." alt="" coords="177,97,285,123"/>
-<area shape="rect" id="Node000002" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="65,7,121,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,38,215,95,212,100,121,42"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="136,10,144,13,147,20,139,29,121,31,121,26,136,24,142,20,140,17,134,15"/>
-<area shape="rect" id="Node000003" href="$unionBehaviorAttribute.html" title=" " alt="" coords="5,97,143,123"/>
-<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="57,42,42,60,40,69,43,78,59,95,55,99,39,81,35,69,37,58,53,39"/>
-<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="77,83,88,32,93,33,82,84"/>
-<area shape="rect" id="Node000004" href="$structMouse.html" title="Structure to store mouse state." alt="" coords="227,7,292,33"/>
-<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="254,47,238,98,233,96,249,45"/>
+<area shape="rect" id="Node000001" title="A structure to handle render targets." alt="" coords="195,113,303,139"/>
+<area shape="rect" id="Node000002" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="10,59,66,84"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,79,200,111,198,116,79,84"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="20,44,26,36,38,32,49,34,55,41,54,59,48,58,50,43,46,39,38,37,29,40,25,47"/>
+<area shape="rect" id="Node000003" href="$unionBehaviorAttribute.html" title="Union representing different types of behavior attributes." alt="" coords="180,49,317,75"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="80,70,95,70,156,70,179,68,180,73,156,75,95,75,80,75"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="166,56,95,58,67,65,65,59,94,53,166,50"/>
+<area shape="rect" id="Node000004" href="$structMouse.html" title="Structure to store mouse state." alt="" coords="5,137,71,163"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="85,149,156,146,204,136,206,141,156,151,85,155"/>
 </map>

@@ -123,9 +123,9 @@ Collaboration diagram for ModelObjectData:</div>
 <div class="dyncontent">
 <div class="center"><img src="structModelObjectData__coll__graph.png" border="0" usemap="#aModelObjectData_coll__map" alt="Collaboration graph"/></div>
 <map name="aModelObjectData_coll__map" id="aModelObjectData_coll__map">
-<area shape="rect" title="Structure representing the data of a 3D model object." alt="" coords="5,93,140,119"/>
-<area shape="rect" href="structMaterial.html" title="Structure representing a material with various properties." alt="" coords="35,5,111,31"/>
-<area shape="poly" title=" " alt="" coords="75,45,75,93,70,93,70,45"/>
+<area shape="rect" title="Structure representing the data of a 3D model object." alt="" coords="196,7,331,33"/>
+<area shape="rect" href="structMaterial.html" title="Structure representing a material with various properties." alt="" coords="5,7,81,33"/>
+<area shape="poly" title=" " alt="" coords="95,17,196,17,196,23,95,23"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -193,21 +193,6 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad22363430228ae7ef129caadaa3d522f" name="ad22363430228ae7ef129caadaa3d522f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad22363430228ae7ef129caadaa3d522f">&#9670;&#160;</a></span>materialsCount</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a> ModelObjectData::materialsCount</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Number of materials </p>
-
-</div>
-</div>
 <a id="afbb71cc0d9b5ab37666dc8d1eaadece6" name="afbb71cc0d9b5ab37666dc8d1eaadece6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afbb71cc0d9b5ab37666dc8d1eaadece6">&#9670;&#160;</a></span>materialsLength</h2>
 
@@ -220,6 +205,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Array of material lengths </p>
+
+</div>
+</div>
+<a id="ad22363430228ae7ef129caadaa3d522f" name="ad22363430228ae7ef129caadaa3d522f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad22363430228ae7ef129caadaa3d522f">&#9670;&#160;</a></span>materialsCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a> ModelObjectData::materialsCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of materials </p>
 
 </div>
 </div>
@@ -272,6 +272,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -280,7 +290,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

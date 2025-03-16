@@ -123,9 +123,9 @@ Collaboration diagram for Bone:</div>
 <div class="dyncontent">
 <div class="center"><img src="structBone__coll__graph.png" border="0" usemap="#aBone_coll__map" alt="Collaboration graph"/></div>
 <map name="aBone_coll__map" id="aBone_coll__map">
-<area shape="rect" title="Structure representing a bone in a 3D model." alt="" coords="41,123,95,148"/>
-<area shape="rect" href="structModelKeyframe.html" title="Structure representing the data of a 3D model keyframe." alt="" coords="5,5,131,31"/>
-<area shape="poly" title=" " alt="" coords="71,44,71,123,65,123,65,44"/>
+<area shape="rect" title="Structure representing a bone in a 3D model." alt="" coords="320,37,375,62"/>
+<area shape="rect" href="structModelKeyframe.html" title="Structure representing the data of a 3D model keyframe." alt="" coords="5,37,131,62"/>
+<area shape="poly" title=" " alt="" coords="144,47,320,47,320,52,144,52"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -156,21 +156,6 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>Structure representing a bone in a 3D model. </p>
 <p>This structure holds the name, parent, and children of a bone in a 3D model. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="ad888628f07c03e6e52766345890b205c" name="ad888628f07c03e6e52766345890b205c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad888628f07c03e6e52766345890b205c">&#9670;&#160;</a></span>index</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a> Bone::index</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Index of the bone </p>
-
-</div>
-</div>
 <a id="a5308bf49086d4115802d73c9f3607b28" name="a5308bf49086d4115802d73c9f3607b28"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5308bf49086d4115802d73c9f3607b28">&#9670;&#160;</a></span>name</h2>
 
@@ -198,6 +183,51 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Offset matrix </p>
+
+</div>
+</div>
+<a id="a24c5bc5cfeb022d82677b5f786d74ff2" name="a24c5bc5cfeb022d82677b5f786d74ff2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24c5bc5cfeb022d82677b5f786d74ff2">&#9670;&#160;</a></span>transform</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mat4 Bone::transform</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Transformation matrix </p>
+
+</div>
+</div>
+<a id="a8fc4280358595cc391fa8c64609056e2" name="a8fc4280358595cc391fa8c64609056e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fc4280358595cc391fa8c64609056e2">&#9670;&#160;</a></span>translationKeyframes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structModelKeyframe.html">ModelKeyframe</a>* Bone::translationKeyframes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of translation keyframes </p>
+
+</div>
+</div>
+<a id="abac3427db0bb36027eabf6bbb369d5c9" name="abac3427db0bb36027eabf6bbb369d5c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abac3427db0bb36027eabf6bbb369d5c9">&#9670;&#160;</a></span>translationKeyframesCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a> Bone::translationKeyframesCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of translation keyframes </p>
 
 </div>
 </div>
@@ -261,48 +291,18 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a24c5bc5cfeb022d82677b5f786d74ff2" name="a24c5bc5cfeb022d82677b5f786d74ff2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24c5bc5cfeb022d82677b5f786d74ff2">&#9670;&#160;</a></span>transform</h2>
+<a id="ad888628f07c03e6e52766345890b205c" name="ad888628f07c03e6e52766345890b205c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad888628f07c03e6e52766345890b205c">&#9670;&#160;</a></span>index</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">mat4 Bone::transform</td>
+          <td class="memname"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a> Bone::index</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Transformation matrix </p>
-
-</div>
-</div>
-<a id="a8fc4280358595cc391fa8c64609056e2" name="a8fc4280358595cc391fa8c64609056e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fc4280358595cc391fa8c64609056e2">&#9670;&#160;</a></span>translationKeyframes</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structModelKeyframe.html">ModelKeyframe</a>* Bone::translationKeyframes</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Array of translation keyframes </p>
-
-</div>
-</div>
-<a id="abac3427db0bb36027eabf6bbb369d5c9" name="abac3427db0bb36027eabf6bbb369d5c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abac3427db0bb36027eabf6bbb369d5c9">&#9670;&#160;</a></span>translationKeyframesCount</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a> Bone::translationKeyframesCount</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Number of translation keyframes </p>
+<p>Index of the bone </p>
 
 </div>
 </div>
@@ -340,6 +340,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -348,7 +358,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

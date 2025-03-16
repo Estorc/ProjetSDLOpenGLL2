@@ -35,7 +35,6 @@ var classes__types_8h =
       [ "CLASS_TYPE_RENDERTARGET", "classes__types_8h.html#a92f93237c843e4b3fff7b7cc4c80f415a2db77788b5700c3fcfc10199263cd39c", null ],
       [ "CLASS_TYPE_SCENE", "classes__types_8h.html#a92f93237c843e4b3fff7b7cc4c80f415a5dbebc15626c20a5ce714146c2a347bf", null ],
       [ "CLASS_TYPE_SKYBOX", "classes__types_8h.html#a92f93237c843e4b3fff7b7cc4c80f415a7d9862a4c2afec5428a0ed0040bd02a6", null ],
-      [ "CLASS_TYPE_TEXTURE", "classes__types_8h.html#a92f93237c843e4b3fff7b7cc4c80f415ab9ab905a4c4dea598e847d8a1d5841f5", null ],
       [ "CLASS_TYPE_TEXTUREDMESH", "classes__types_8h.html#a92f93237c843e4b3fff7b7cc4c80f415a0788ee2c9574f67079a3939850c79d2b", null ],
       [ "CLASS_TYPE_COUNT", "classes__types_8h.html#a92f93237c843e4b3fff7b7cc4c80f415ab77eacda7480fbb2806c9f4cc5aec0c3", null ]
     ] ]

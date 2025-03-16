@@ -115,11 +115,12 @@ $(document).ready(function(){initNavTree('functions_vars_i.html',''); initResiza
 <li>illumFlag&#160;:&#160;<a class="el" href="structMaterial.html#a71e44078b93a4ed9f9062b485f295ffe">Material</a></li>
 <li>imageFrame&#160;:&#160;<a class="el" href="classFrame.html#ae8fb5e1575de3713ec025de837742406">Frame</a></li>
 <li>impactPoint&#160;:&#160;<a class="el" href="structCollectedNode.html#ace4e9a48893cbdaaae4149827456366b">CollectedNode</a></li>
-<li>incoming_buffer&#160;:&#160;<a class="el" href="structpeer.html#a552ecaf1ddcbee53c0f9adfcc71a2ecf">peer</a></li>
+<li>incoming_buffer&#160;:&#160;<a class="el" href="structpeer.html#a56b8cd88eeb0250decffc5c4a430836b">peer</a></li>
 <li>index&#160;:&#160;<a class="el" href="structBone.html#ad888628f07c03e6e52766345890b205c">Bone</a>, <a class="el" href="structCollisionBuffer.html#a8c4f5336e0154216e34fbcd711b30489">CollisionBuffer</a>, <a class="el" href="structLightingBuffer.html#a696ed4130d9750fa2093b997e4d21d4f">LightingBuffer</a></li>
 <li>input&#160;:&#160;<a class="el" href="structRaptiquaX__t.html#ac5dec1d4057951af43c282e1f3b89a6e">RaptiquaX_t</a></li>
 <li>inputArea&#160;:&#160;<a class="el" href="classFrame.html#a3cb42a8726bc2378ab38edb199ff02e3">Frame</a></li>
 <li>inputBuffer&#160;:&#160;<a class="el" href="structInput.html#a95307f96874196b3ed1bb52c2617f5f7">Input</a></li>
+<li>interact&#160;:&#160;<a class="el" href="structKeybinds.html#af54a65b472d6e8c209ef1224d1f1b3be">Keybinds</a></li>
 <li>intermediateFBO&#160;:&#160;<a class="el" href="structMSAA.html#a9a95244ad456e6aa2d50425fe8dfee34">MSAA</a></li>
 </ul>
 </div><!-- contents -->
@@ -153,6 +154,16 @@ $(document).ready(function(){initNavTree('functions_vars_i.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -161,7 +172,7 @@ $(document).ready(function(){initNavTree('functions_vars_i.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

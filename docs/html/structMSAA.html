@@ -180,21 +180,6 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a0405c57a77662de583e0bba37cc306f2" name="a0405c57a77662de583e0bba37cc306f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0405c57a77662de583e0bba37cc306f2">&#9670;&#160;</a></span>screenTexture</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a> MSAA::screenTexture</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>&lt; The multi-sampled color attachment texture. </p>
-
-</div>
-</div>
 <a id="a883d36587238fc78ac789a78ff317ae7" name="a883d36587238fc78ac789a78ff317ae7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a883d36587238fc78ac789a78ff317ae7">&#9670;&#160;</a></span>textureColorBufferMultiSampled</h2>
 
@@ -207,6 +192,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>&lt; The renderbuffer object for depth and stencil attachments. </p>
+
+</div>
+</div>
+<a id="a0405c57a77662de583e0bba37cc306f2" name="a0405c57a77662de583e0bba37cc306f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0405c57a77662de583e0bba37cc306f2">&#9670;&#160;</a></span>screenTexture</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a> MSAA::screenTexture</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>&lt; The multi-sampled color attachment texture. </p>
 
 </div>
 </div>
@@ -244,6 +244,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -252,7 +262,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

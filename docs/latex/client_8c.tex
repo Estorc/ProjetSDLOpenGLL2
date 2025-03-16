@@ -13,29 +13,63 @@ Include dependency graph for client.\+c\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{client_8c_add147e82ff8d88b5e97019783b5f5301}{get\+\_\+address}} (const char \texorpdfstring{$\ast$}{*}name, int port, struct sockaddr\+\_\+in \texorpdfstring{$\ast$}{*}server\+\_\+addr)
-\item 
+\begin{DoxyCompactList}\small\item\em Resolves the address of the server. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{client_8c_a1cb2d7a7df28b07cdc2a887e4ec65be6}{connect\+\_\+socket\+\_\+server}} (const char \texorpdfstring{$\ast$}{*}name, int port)
-\item 
+\begin{DoxyCompactList}\small\item\em Connects to a socket server. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{client_8c_af130bf75cbef46845a569dc2c2e580c9}{create\+\_\+client}} (const char \texorpdfstring{$\ast$}{*}name, int port)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{client_8c_add147e82ff8d88b5e97019783b5f5301}\label{client_8c_add147e82ff8d88b5e97019783b5f5301} 
+\index{client.c@{client.c}!get\_address@{get\_address}}
+\index{get\_address@{get\_address}!client.c@{client.c}}
+\doxysubsubsection{\texorpdfstring{get\_address()}{get\_address()}}
+{\footnotesize\ttfamily int get\+\_\+address (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{int}]{port,  }\item[{struct sockaddr\+\_\+in \texorpdfstring{$\ast$}{*}}]{server\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+Resolves the address of the server. 
+
+This function resolves the address of the server given its name and port number.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the server. \\
+\hline
+{\em port} & The port number of the server. \\
+\hline
+{\em server\+\_\+addr} & A pointer to a sockaddr\+\_\+in structure where the resolved address will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer indicating the success or failure of the address resolution. Returns 0 on success, or a negative value on failure. 
+\end{DoxyReturn}
 \Hypertarget{client_8c_a1cb2d7a7df28b07cdc2a887e4ec65be6}\label{client_8c_a1cb2d7a7df28b07cdc2a887e4ec65be6} 
 \index{client.c@{client.c}!connect\_socket\_server@{connect\_socket\_server}}
 \index{connect\_socket\_server@{connect\_socket\_server}!client.c@{client.c}}
 \doxysubsubsection{\texorpdfstring{connect\_socket\_server()}{connect\_socket\_server()}}
 {\footnotesize\ttfamily int connect\+\_\+socket\+\_\+server (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{int}]{port }\end{DoxyParamCaption})}
 
+
+
+Connects to a socket server. 
+
+This function establishes a connection to a socket server given its name and port number.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the server. \\
+\hline
+{\em port} & The port number of the server. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer representing the socket file descriptor on success, or a negative value on failure. 
+\end{DoxyReturn}
 \Hypertarget{client_8c_af130bf75cbef46845a569dc2c2e580c9}\label{client_8c_af130bf75cbef46845a569dc2c2e580c9} 
 \index{client.c@{client.c}!create\_client@{create\_client}}
 \index{create\_client@{create\_client}!client.c@{client.c}}
 \doxysubsubsection{\texorpdfstring{create\_client()}{create\_client()}}
 {\footnotesize\ttfamily int create\+\_\+client (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{int}]{port }\end{DoxyParamCaption})}
-
-\Hypertarget{client_8c_add147e82ff8d88b5e97019783b5f5301}\label{client_8c_add147e82ff8d88b5e97019783b5f5301} 
-\index{client.c@{client.c}!get\_address@{get\_address}}
-\index{get\_address@{get\_address}!client.c@{client.c}}
-\doxysubsubsection{\texorpdfstring{get\_address()}{get\_address()}}
-{\footnotesize\ttfamily int get\+\_\+address (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{int}]{port,  }\item[{struct sockaddr\+\_\+in \texorpdfstring{$\ast$}{*}}]{server\+\_\+addr }\end{DoxyParamCaption})}
 

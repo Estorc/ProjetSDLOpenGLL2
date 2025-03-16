@@ -134,33 +134,18 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>Represents a raw color. </p>
 <p>This structure holds the red, green, blue, and alpha components of a color. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="a580a5053b09df579f13ef487a2736595" name="a580a5053b09df579f13ef487a2736595"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a580a5053b09df579f13ef487a2736595">&#9670;&#160;</a></span>a</h2>
+<a id="ad0286ca1ba33041a9642e97934ad5492" name="ad0286ca1ba33041a9642e97934ad5492"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0286ca1ba33041a9642e97934ad5492">&#9670;&#160;</a></span>r</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> RawColor::a</td>
+          <td class="memname"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> RawColor::r</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Alpha (transparency) component of the color. </p>
-
-</div>
-</div>
-<a id="acdb8d8aef69b1283c7825a550c5fa44d" name="acdb8d8aef69b1283c7825a550c5fa44d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acdb8d8aef69b1283c7825a550c5fa44d">&#9670;&#160;</a></span>b</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> RawColor::b</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Blue component of the color. </p>
+<p>Red component of the color. </p>
 
 </div>
 </div>
@@ -179,18 +164,33 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad0286ca1ba33041a9642e97934ad5492" name="ad0286ca1ba33041a9642e97934ad5492"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0286ca1ba33041a9642e97934ad5492">&#9670;&#160;</a></span>r</h2>
+<a id="acdb8d8aef69b1283c7825a550c5fa44d" name="acdb8d8aef69b1283c7825a550c5fa44d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdb8d8aef69b1283c7825a550c5fa44d">&#9670;&#160;</a></span>b</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> RawColor::r</td>
+          <td class="memname"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> RawColor::b</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Red component of the color. </p>
+<p>Blue component of the color. </p>
+
+</div>
+</div>
+<a id="a580a5053b09df579f13ef487a2736595" name="a580a5053b09df579f13ef487a2736595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a580a5053b09df579f13ef487a2736595">&#9670;&#160;</a></span>a</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> RawColor::a</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Alpha (transparency) component of the color. </p>
 
 </div>
 </div>
@@ -228,6 +228,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -236,7 +246,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

@@ -1,0 +1,16 @@
+<map id="ModelCache" name="ModelCache">
+<area shape="rect" id="Node000001" title="Structure to cache models." alt="" coords="957,50,1060,75"/>
+<area shape="rect" id="Node000002" href="$structModelData.html" title="Structure representing the data of a 3D model." alt="" coords="771,50,864,75"/>
+<area shape="poly" id="edge8_Node000001_Node000002" title=" " alt="" coords="878,60,957,60,957,65,878,65"/>
+<area shape="rect" id="Node000003" href="$structMaterial.html" title="Structure representing a material with various properties." alt="" coords="320,6,396,31"/>
+<area shape="poly" id="edge9_Node000002_Node000003" title=" " alt="" coords="410,15,561,19,654,27,747,40,777,47,776,52,746,45,654,32,561,25,409,21"/>
+<area shape="rect" id="Node000004" href="$structModelObjectData.html" title="Structure representing the data of a 3D model object." alt="" coords="511,50,645,75"/>
+<area shape="poly" id="edge11_Node000004_Node000003" title=" " alt="" coords="410,30,421,32,511,49,510,55,419,37,409,35"/>
+<area shape="poly" id="edge10_Node000002_Node000004" title=" " alt="" coords="659,60,771,60,771,65,659,65"/>
+<area shape="rect" id="Node000005" href="$structModelAnimation.html" title="Structure representing the data of a 3D model animation." alt="" coords="513,99,643,125"/>
+<area shape="poly" id="edge12_Node000002_Node000005" title=" " alt="" coords="656,98,746,80,774,73,775,78,747,85,657,103"/>
+<area shape="rect" id="Node000006" href="$structBone.html" title="Structure representing a bone in a 3D model." alt="" coords="331,99,385,125"/>
+<area shape="poly" id="edge13_Node000005_Node000006" title=" " alt="" coords="399,109,513,109,513,115,399,115"/>
+<area shape="rect" id="Node000007" href="$structModelKeyframe.html" title="Structure representing the data of a 3D model keyframe." alt="" coords="5,99,131,125"/>
+<area shape="poly" id="edge14_Node000006_Node000007" title=" " alt="" coords="144,109,330,109,330,115,144,115"/>
+</map>

@@ -24,17 +24,67 @@
 #include "render/depth_map.h"
 #include "buffer.h"
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class SpotLight : public Light {
     __containerType__ Node *
     public:
 
-    void constructor(struct SpotLight *spotLight) {
-        this->object = spotLight;
+    /**
+     * @brief Constructor for the SpotLight class.
+     *
+     * This function initializes a SpotLight object with the specified parameters.
+     *
+     * @param r The red component of the light color.
+     * @param g The green component of the light color.
+     * @param b The blue component of the light color.
+     * @param bias The bias value for the light.
+     * @param size The size of the light.
+     * @param constant The constant attenuation factor.
+     * @param linear The linear attenuation factor.
+     * @param quadratic The quadratic attenuation factor.
+     * @param cutOff The inner cutoff angle for the spotlight (in degrees).
+     * @param outerCutOff The outer cutoff angle for the spotlight (in degrees).
+     */
+    void constructor(float r, float g, float b, float bias, float size, float constant, float linear, float quadratic, float cutOff, float outerCutOff) {
         this->type = __type__;
+
+        SpotLight *spotLight;
+        spotLight = malloc(sizeof(SpotLight));
+        POINTER_CHECK(spotLight);
+
+        Game.buffers->lightingBuffer.length++;
+
+        spotLight->color[0] = r;
+        spotLight->color[1] = g;
+        spotLight->color[2] = b;
+        spotLight->bias = bias;
+        spotLight->size = size;
+        spotLight->constant = constant;
+        spotLight->linear = linear;
+        spotLight->quadratic = quadratic;
+        spotLight->cutOff = cutOff;
+        spotLight->outerCutOff = outerCutOff;
+
+        this->object = spotLight;
         SUPER(initialize_node);
         SUPER(init_light);
     }
 
+    /**
+     * @brief Updates the state of the spotlight.
+     *
+     * This function updates the position, rotation, and scale of the spotlight
+     * based on the provided delta time and increments the lights count.
+     *
+     * @param pos Pointer to a vec3 structure representing the position of the spotlight.
+     * @param rot Pointer to a vec3 structure representing the rotation of the spotlight.
+     * @param scale Pointer to a vec3 structure representing the scale of the spotlight.
+     * @param delta The time delta used for updating the spotlight's state.
+     * @param lightsCount Pointer to an unsigned 8-bit integer representing the count of lights.
+     */
     void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta, u8 *lightsCount) {
         UNUSED(delta);
         if (!(this->flags & NODE_LIGHT_ACTIVE)) return;
@@ -88,8 +138,14 @@ class SpotLight : public Light {
         lightsCount[SPOT_LIGHT]++;
     }   
 
-
-
+    /**
+     * @brief Retrieves the settings data.
+     *
+     * This function populates the provided pointer with the settings data and sets the length of the data.
+     *
+     * @param[out] ptr A pointer to a pointer to a pointer where the settings data will be stored.
+     * @param[out] length A pointer to an integer where the length of the settings data will be stored.
+     */
     void get_settings_data(void *** ptr, int * length) {
         SUPER(get_settings_data, ptr, length);
         SpotLight *spotLight = (SpotLight *) this->object;
@@ -108,39 +164,52 @@ class SpotLight : public Light {
         *length += sizeof(data)/sizeof(void *);
     }
 
+    /**
+     * @brief Loads the SpotLight data from a file.
+     *
+     * This function reads the SpotLight data from the specified file and initializes the SpotLight object
+     * with the loaded data. The file should contain the necessary information to fully describe the SpotLight,
+     * including its position, direction, color, intensity, and other relevant properties.
+     *
+     * @param file A pointer to the file from which the SpotLight data will be loaded.
+     */
     void load(FILE *file) {
-        SpotLight *spotLight;
-        spotLight = malloc(sizeof(SpotLight));
-        POINTER_CHECK(spotLight);
-
+        vec3 color;
+        f32 bias, size, constant, linear, quadratic, cutOff, outerCutOff;
         if (file) {
             fscanf(file,"(%g,%g,%g,%g,%g,%g,%g,%g,%g,%g)\n", 
-                &spotLight->color[0], &spotLight->color[1], &spotLight->color[2], 
-                &spotLight->bias,
-                &spotLight->size,
-                &spotLight->constant,
-                &spotLight->linear,
-                &spotLight->quadratic,
-                &spotLight->cutOff,
-                &spotLight->outerCutOff
+                &color[0], &color[1], &color[2], 
+                &bias,
+                &size,
+                &constant,
+                &linear,
+                &quadratic,
+                &cutOff,
+                &outerCutOff
                 );
         } else {
-            glm_vec3_one(spotLight->color);
-            spotLight->bias = 0.005f;
-            spotLight->size = 0.0f;
-            spotLight->constant = 1.0f;
-            spotLight->linear = 0.09f;
-            spotLight->quadratic = 0.032f;
-            spotLight->cutOff = 0.01f;
-            spotLight->outerCutOff = 50.0f;
+            glm_vec3_one(color);
+            bias = 0.005f;
+            size = 0.0f;
+            constant = 1.0f;
+            linear = 0.09f;
+            quadratic = 0.032f;
+            cutOff = 0.01f;
+            outerCutOff = 50.0f;
         }
 
-        Game.buffers->lightingBuffer.length++;
-        this->type = __type__;
-        this::constructor(spotLight);
+        this::constructor(color[0], color[1], color[2], bias, size, constant, linear, quadratic, cutOff, outerCutOff);
         this->flags |= NODE_EDITOR_FLAG;
     }
 
+    /**
+     * @brief Saves the current state of the SpotLight object to a file.
+     *
+     * This function writes the current state of the SpotLight object to the specified file.
+     * The file should be opened in a mode that allows writing before calling this function.
+     *
+     * @param file A pointer to the FILE object where the state will be saved.
+     */
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         SpotLight *spotLight = (SpotLight*) this->object;
@@ -166,7 +235,6 @@ class SpotLight : public Light {
      * @param shaders The shaders to be used for rendering.
      * @param lightsCount The number of lights in the scene.
      */
-
     void configure_lighting(Camera *c, WorldShaders *shaders, DepthMap *depthMap, u8 *lightsCount) {
 
         UNUSED(c);
@@ -197,3 +265,4 @@ class SpotLight : public Light {
 
     
 }
+

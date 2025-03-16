@@ -42,36 +42,7 @@ Converts an SDL\+\_\+\+Surface with RGBA format to an array of floats representi
 \begin{DoxyReturn}{Returns}
 \{float\texorpdfstring{$\ast$}{*}\} A pointer to the array of floats representing the RGB32F texture data.
 \end{DoxyReturn}
-This function takes an SDL\+\_\+\+Surface that contains RGBA texture data and converts it to an array of floats representing an RGB32F texture. This format is suitable for high dynamic range (HDR) rendering in Open\+GL. \Hypertarget{group__TextureLoader_ga26673e4bbcfa9dda796c186ad71308ed}\label{group__TextureLoader_ga26673e4bbcfa9dda796c186ad71308ed} 
-\index{Texture Loader@{Texture Loader}!draw\_text@{draw\_text}}
-\index{draw\_text@{draw\_text}!Texture Loader@{Texture Loader}}
-\doxysubsubsection{\texorpdfstring{draw\_text()}{draw\_text()}}
-{\footnotesize\ttfamily void draw\+\_\+text (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}}]{render\+\_\+surface,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{SDL\+\_\+\+Color}]{color,  }\item[{char \texorpdfstring{$\ast$}{*}}]{alignment,  }\item[{int}]{width }\end{DoxyParamCaption})}
-
-
-
-Renders text onto an SDL\+\_\+\+Surface at a specified position. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em render\+\_\+surface} & \{SDL\+\_\+\+Surface\texorpdfstring{$\ast$}{*}\} A pointer to the SDL\+\_\+\+Surface where the text will be rendered. \\
-\hline
-{\em x} & \{int\} The x-\/coordinate where the text will be rendered. \\
-\hline
-{\em y} & \{int\} The y-\/coordinate where the text will be rendered. \\
-\hline
-{\em text} & \{char\texorpdfstring{$\ast$}{*}\} A string containing the text to be rendered. \\
-\hline
-{\em font} & \{TTF\+\_\+\+Font\texorpdfstring{$\ast$}{*}\} A pointer to the TTF\+\_\+\+Font to be used for rendering the text. \\
-\hline
-{\em color} & \{SDL\+\_\+\+Color\} The color of the text. \\
-\hline
-{\em alignment} & \{char\texorpdfstring{$\ast$}{*}\} A string specifying the alignment of the text ("{}left"{}, "{}center"{}, "{}right"{}). \\
-\hline
-{\em width} & \{int\} The width of the area in which the text will be rendered.\\
-\hline
-\end{DoxyParams}
-This function renders the specified text onto the given SDL\+\_\+\+Surface at the specified position. The text is rendered using the provided TTF\+\_\+\+Font and color. The alignment parameter specifies how the text should be aligned within the given width. \Hypertarget{group__TextureLoader_ga63cbb7972f065dfe4d8a5bfb6690f3b6}\label{group__TextureLoader_ga63cbb7972f065dfe4d8a5bfb6690f3b6} 
+This function takes an SDL\+\_\+\+Surface that contains RGBA texture data and converts it to an array of floats representing an RGB32F texture. This format is suitable for high dynamic range (HDR) rendering in Open\+GL. \Hypertarget{group__TextureLoader_ga63cbb7972f065dfe4d8a5bfb6690f3b6}\label{group__TextureLoader_ga63cbb7972f065dfe4d8a5bfb6690f3b6} 
 \index{Texture Loader@{Texture Loader}!flip\_y\_surface@{flip\_y\_surface}}
 \index{flip\_y\_surface@{flip\_y\_surface}!Texture Loader@{Texture Loader}}
 \doxysubsubsection{\texorpdfstring{flip\_y\_surface()}{flip\_y\_surface()}}
@@ -126,3 +97,33 @@ Example Usage\+:
 \begin{DoxyReturn}{Returns}
 Returns the Open\+GL texture ID on success. If the texture fails to load, the function returns 0. 
 \end{DoxyReturn}
+\Hypertarget{group__TextureLoader_ga26673e4bbcfa9dda796c186ad71308ed}\label{group__TextureLoader_ga26673e4bbcfa9dda796c186ad71308ed} 
+\index{Texture Loader@{Texture Loader}!draw\_text@{draw\_text}}
+\index{draw\_text@{draw\_text}!Texture Loader@{Texture Loader}}
+\doxysubsubsection{\texorpdfstring{draw\_text()}{draw\_text()}}
+{\footnotesize\ttfamily void draw\+\_\+text (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}}]{render\+\_\+surface,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{SDL\+\_\+\+Color}]{color,  }\item[{char \texorpdfstring{$\ast$}{*}}]{alignment,  }\item[{int}]{width }\end{DoxyParamCaption})}
+
+
+
+Renders text onto an SDL\+\_\+\+Surface at a specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em render\+\_\+surface} & \{SDL\+\_\+\+Surface\texorpdfstring{$\ast$}{*}\} A pointer to the SDL\+\_\+\+Surface where the text will be rendered. \\
+\hline
+{\em x} & \{int\} The x-\/coordinate where the text will be rendered. \\
+\hline
+{\em y} & \{int\} The y-\/coordinate where the text will be rendered. \\
+\hline
+{\em text} & \{char\texorpdfstring{$\ast$}{*}\} A string containing the text to be rendered. \\
+\hline
+{\em font} & \{TTF\+\_\+\+Font\texorpdfstring{$\ast$}{*}\} A pointer to the TTF\+\_\+\+Font to be used for rendering the text. \\
+\hline
+{\em color} & \{SDL\+\_\+\+Color\} The color of the text. \\
+\hline
+{\em alignment} & \{char\texorpdfstring{$\ast$}{*}\} A string specifying the alignment of the text ("{}left"{}, "{}center"{}, "{}right"{}). \\
+\hline
+{\em width} & \{int\} The width of the area in which the text will be rendered.\\
+\hline
+\end{DoxyParams}
+This function renders the specified text onto the given SDL\+\_\+\+Surface at the specified position. The text is rendered using the provided TTF\+\_\+\+Font and color. The alignment parameter specifies how the text should be aligned within the given width. 

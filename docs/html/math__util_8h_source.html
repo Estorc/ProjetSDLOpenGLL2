@@ -142,7 +142,7 @@ $(document).ready(function(){initNavTree('math__util_8h_source.html',''); initRe
 <div class="ttc" id="agroup__MathGroup_html_ga6d951237d6e1837dc2b93720aa1e3f28"><div class="ttname"><a href="group__MathGroup.html#ga6d951237d6e1837dc2b93720aa1e3f28">float_approach</a></div><div class="ttdeci">f32 float_approach(f32 *const origin, const f32 dest, const f32 factor)</div><div class="ttdoc">Approaches a target float by a given factor.</div><div class="ttdef"><b>Definition</b> math_util.c:36</div></div>
 <div class="ttc" id="agroup__MathGroup_html_ga895111283c3f80f0ea9a848eedd4e254"><div class="ttname"><a href="group__MathGroup.html#ga895111283c3f80f0ea9a848eedd4e254">vec3_approach</a></div><div class="ttdeci">float * vec3_approach(float *origin, float *dest, const f32 factor)</div><div class="ttdoc">Approaches a target vector by a given factor.</div><div class="ttdef"><b>Definition</b> math_util.c:41</div></div>
 <div class="ttc" id="agroup__MathGroup_html_gaf12eb49731c13c96d3bcc7818566af82"><div class="ttname"><a href="group__MathGroup.html#gaf12eb49731c13c96d3bcc7818566af82">to_radians</a></div><div class="ttdeci">f32 to_radians(f32 angle)</div><div class="ttdoc">Converts an angle from degrees to radians.</div><div class="ttdef"><b>Definition</b> math_util.c:22</div></div>
-<div class="ttc" id="araptiquax_8h_html_a1bd198f821a2a4ea63fa8ab2e4a2afb3"><div class="ttname"><a href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a></div><div class="ttdeci">#define f32</div><div class="ttdoc">Alias for float (32-bit floating-point).</div><div class="ttdef"><b>Definition</b> raptiquax.h:124</div></div>
+<div class="ttc" id="araptiquax_8h_html_a1bd198f821a2a4ea63fa8ab2e4a2afb3"><div class="ttname"><a href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a></div><div class="ttdeci">#define f32</div><div class="ttdoc">Alias for float (32-bit floating-point).</div><div class="ttdef"><b>Definition</b> raptiquax.h:110</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -174,6 +174,16 @@ $(document).ready(function(){initNavTree('math__util_8h_source.html',''); initRe
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -182,7 +192,7 @@ $(document).ready(function(){initNavTree('math__util_8h_source.html',''); initRe
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

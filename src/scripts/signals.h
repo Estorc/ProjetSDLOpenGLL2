@@ -17,7 +17,6 @@
  * 
  * This enumeration defines the possible signals that can be emitted in the application.
  */
-
 typedef enum Signal {
     SIGNAL_BUTTON_HOVERED,
     SIGNAL_BUTTON_CLICKED,

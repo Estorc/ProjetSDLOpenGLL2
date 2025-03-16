@@ -20,7 +20,6 @@
  * 
  * @param key The key to be handled.
  */
-
 #define HANDLE_KEY_PRESSED(_input_id, _key)   if (event.key.keysym.sym == _input_id) { \
                                                 if (!(input->active_keys & _key)) input->pressed_keys |= _key; \
                                                 input->active_keys |= _key; \
@@ -34,7 +33,6 @@
  * 
  * @param key The key to be handled.
  */
-
 #define HANDLE_KEY_RELEASED(_input_id, _key)  if (event.key.keysym.sym == _input_id) { \
                                                 if ((input->active_keys & _key)) input->released_keys |= _key; \
                                                 input->active_keys &= ~_key; \
@@ -47,7 +45,6 @@
  * This enum defines bitwise values for various keys that can be pressed or released. 
  * Each key is represented by a unique bit in a 16-bit integer.
  */
-
 enum Keys {
     KEY_UP          = 1 << 0, /**< The up arrow key. */
     KEY_RIGHT       = 1 << 1, /**< The right arrow key. */
@@ -71,7 +68,6 @@ enum Keys {
  * This structure holds the current and last positions of the mouse, 
  * scroll wheel movements, and the states of mouse buttons.
  */
-
 typedef struct Mouse {
     s32 x; /**< The current x-coordinate of the mouse. */
     s32 y; /**< The current y-coordinate of the mouse. */
@@ -94,7 +90,6 @@ typedef struct Mouse {
  * 
  * This structure holds the states of keys and mouse, as well as text input buffer.
  */
-
 typedef struct Input {
     bool locked; /**< Flag indicating if input is locked. */
     u16 active_keys; /**< Bitfield representing currently active keys. */
@@ -106,6 +101,13 @@ typedef struct Input {
 } Input;
 
 
+/**
+ * @brief Sets the default input settings for the application.
+ *
+ * This function initializes and sets the default input settings, ensuring
+ * that the application has a consistent and expected input configuration.
+ * It should be called during the initialization phase of the application.
+ */
 void default_input_settings();
 
 /**

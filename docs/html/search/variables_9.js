@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['key_0',['key',['../structEntry.html#a78468c67722e21d21a45c15421f6dbd6',1,'Entry']]]
+  ['jump_0',['jump',['../structKeybinds.html#afcf97cfc7a6eba81b9851408d6257613',1,'Keybinds']]]
 ];

@@ -15,13 +15,13 @@ Include dependency graph for audio.\+c\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{audio_8c_aed0b0c574c1994f085c0b29b02a06d5a}{play\+\_\+sfx}} (const char \texorpdfstring{$\ast$}{*}const path, const int volume, const int loops)
-\item 
+\begin{DoxyCompactList}\small\item\em Plays a sound effect. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{audio_8c_ab601c6b9c1088aab010f6db884bbd31d}{play\+\_\+music}} (const char \texorpdfstring{$\ast$}{*}const path, const int volume, const int loops)
-\item 
+\begin{DoxyCompactList}\small\item\em Plays a music file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{audio_8c_a721333addcbf76cb7147b9b91833e5ef}{refresh\+\_\+music\+\_\+volume}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Refreshes the music volume. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{audio_8c_a7a312a24cc4857272167d423ed10e78b}{fade\+\_\+out\+\_\+music}} (const int ms)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Fades out the currently playing music. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,30 +32,75 @@ static int \mbox{\hyperlink{audio_8c_ae44d95eca82d54247ad6924b29fc4df4}{current\
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{audio_8c_a7a312a24cc4857272167d423ed10e78b}\label{audio_8c_a7a312a24cc4857272167d423ed10e78b} 
-\index{audio.c@{audio.c}!fade\_out\_music@{fade\_out\_music}}
-\index{fade\_out\_music@{fade\_out\_music}!audio.c@{audio.c}}
-\doxysubsubsection{\texorpdfstring{fade\_out\_music()}{fade\_out\_music()}}
-{\footnotesize\ttfamily void fade\+\_\+out\+\_\+music (\begin{DoxyParamCaption}\item[{const int}]{ms }\end{DoxyParamCaption})}
-
-\Hypertarget{audio_8c_ab601c6b9c1088aab010f6db884bbd31d}\label{audio_8c_ab601c6b9c1088aab010f6db884bbd31d} 
-\index{audio.c@{audio.c}!play\_music@{play\_music}}
-\index{play\_music@{play\_music}!audio.c@{audio.c}}
-\doxysubsubsection{\texorpdfstring{play\_music()}{play\_music()}}
-{\footnotesize\ttfamily void play\+\_\+music (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{path,  }\item[{const int}]{volume,  }\item[{const int}]{loops }\end{DoxyParamCaption})}
-
 \Hypertarget{audio_8c_aed0b0c574c1994f085c0b29b02a06d5a}\label{audio_8c_aed0b0c574c1994f085c0b29b02a06d5a} 
 \index{audio.c@{audio.c}!play\_sfx@{play\_sfx}}
 \index{play\_sfx@{play\_sfx}!audio.c@{audio.c}}
 \doxysubsubsection{\texorpdfstring{play\_sfx()}{play\_sfx()}}
 {\footnotesize\ttfamily void play\+\_\+sfx (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{path,  }\item[{const int}]{volume,  }\item[{const int}]{loops }\end{DoxyParamCaption})}
 
+
+
+Plays a sound effect. 
+
+This function loads and plays a sound effect from the specified path.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The file path to the sound effect file. It should be a null-\/terminated string. \\
+\hline
+{\em volume} & The volume level at which to play the sound effect. The value should be within the acceptable range for the audio system. \\
+\hline
+{\em loops} & The number of times the sound effect should loop. If loops is -\/1, the sound effect will loop indefinitely. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{audio_8c_ab601c6b9c1088aab010f6db884bbd31d}\label{audio_8c_ab601c6b9c1088aab010f6db884bbd31d} 
+\index{audio.c@{audio.c}!play\_music@{play\_music}}
+\index{play\_music@{play\_music}!audio.c@{audio.c}}
+\doxysubsubsection{\texorpdfstring{play\_music()}{play\_music()}}
+{\footnotesize\ttfamily void play\+\_\+music (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{path,  }\item[{const int}]{volume,  }\item[{const int}]{loops }\end{DoxyParamCaption})}
+
+
+
+Plays a music file. 
+
+This function loads and plays a music file from the specified path.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The file path to the music file. It should be a null-\/terminated string. \\
+\hline
+{\em volume} & The volume level at which to play the music. The value should be within the acceptable range for the audio system. \\
+\hline
+{\em loops} & The number of times the music should loop. If loops is -\/1, the music will loop indefinitely. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{audio_8c_a721333addcbf76cb7147b9b91833e5ef}\label{audio_8c_a721333addcbf76cb7147b9b91833e5ef} 
 \index{audio.c@{audio.c}!refresh\_music\_volume@{refresh\_music\_volume}}
 \index{refresh\_music\_volume@{refresh\_music\_volume}!audio.c@{audio.c}}
 \doxysubsubsection{\texorpdfstring{refresh\_music\_volume()}{refresh\_music\_volume()}}
 {\footnotesize\ttfamily void refresh\+\_\+music\+\_\+volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Refreshes the music volume. 
+
+This function updates the volume of the currently playing music to match the current volume settings of the audio system. \Hypertarget{audio_8c_a7a312a24cc4857272167d423ed10e78b}\label{audio_8c_a7a312a24cc4857272167d423ed10e78b} 
+\index{audio.c@{audio.c}!fade\_out\_music@{fade\_out\_music}}
+\index{fade\_out\_music@{fade\_out\_music}!audio.c@{audio.c}}
+\doxysubsubsection{\texorpdfstring{fade\_out\_music()}{fade\_out\_music()}}
+{\footnotesize\ttfamily void fade\+\_\+out\+\_\+music (\begin{DoxyParamCaption}\item[{const int}]{ms }\end{DoxyParamCaption})}
+
+
+
+Fades out the currently playing music. 
+
+This function gradually reduces the volume of the currently playing music over the specified duration until it is completely silent.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ms} & The duration of the fade-\/out effect, in milliseconds. \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Variable Documentation}

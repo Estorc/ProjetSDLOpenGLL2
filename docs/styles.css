@@ -58,6 +58,8 @@
 
 #side-nav {
 	margin-left: calc((100dvw - 1280px) / 2) !important;
+	min-width: 450px;
+	max-width: 800px;
 }
 @media screen and (max-width: 1280px) {
 	#doc-content {
@@ -126,17 +128,18 @@
 	font-size: 1.2em;
 }
 
-.item:has(.label .nolink):has(+ .children_ul:not([style="display: none;"])) {
+
+#nav-tree-contents>ul>li>.children_ul>li>.item *{
+	color: var(--nav-text-large-category-color);
+	text-transform: uppercase;
+}
+
+#nav-tree-contents>ul>li>.children_ul>li>.item:has(+ .children_ul:not([style="display: none;"])) {
 	background-color: var(--nav-selected-large-category-color);
 }
 
 .item:has(+ .children_ul:not([style="display: none;"])) .arrow {
 	transform: rotate(90deg);
-}
-
-#nav-tree .item .label .nolink {
-	color: var(--nav-text-large-category-color);
-	text-transform: uppercase;
 }
 
 #nav-tree .item:has(.label .nolink) .arrow {
@@ -188,6 +191,10 @@ dark-mode-toggle svg {
 
 .footer a {
 	color: white;
+}
+
+.dyncontent {
+	overflow-x: auto;
 }
 
 
@@ -357,7 +364,7 @@ html {
 /** font-family */
 
 --font-family-normal: Ubuntu,sans-serif;
---font-family-monospace: Ubuntu,Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace,fixed;
+--font-family-monospace: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace,fixed;
 --font-family-nav: Ubuntu,Geneva,Helvetica,Arial,sans-serif;
 --font-family-title: Ubuntu,Arial,sans-serif;
 --font-family-toc: Ubuntu,'DejaVu Sans',Geneva,sans-serif;
@@ -534,7 +541,7 @@ html {
 
 /** font-family */
 --font-family-normal: Ubuntu,sans-serif;
---font-family-monospace: Ubuntu,Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace,fixed;
+--font-family-monospace: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace,fixed;
 --font-family-nav: Ubuntu,Geneva,Helvetica,Arial,sans-serif;
 --font-family-title: Ubuntu,Arial,sans-serif;
 --font-family-toc: Ubuntu,'DejaVu Sans',Geneva,sans-serif;
@@ -854,7 +861,7 @@ pre.fragment {
 }
 
 div.fragment {
-	padding: 0 0 1px 0; /*Fixed: last line underline overlap border*/
+	padding: 8px 8px 8px 8px; /*Fixed: last line underline overlap border*/
 	margin: 4px 8px 4px 2px;
 	color: var(--fragment-foreground-color);
 	background-color: var(--fragment-background-color);

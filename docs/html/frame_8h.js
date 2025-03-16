@@ -1,15 +1,7 @@
 var frame_8h =
 [
-    [ "ImageFrame", "classImageFrame.html", "classImageFrame" ],
-    [ "RadioButton", "classRadioButton.html", "classRadioButton" ],
-    [ "Slider", "classSlider.html", "classSlider" ],
-    [ "Button", "classButton.html", "classButton" ],
-    [ "SelectList", "classSelectList.html", "classSelectList" ],
-    [ "Label", "classLabel.html", "classLabel" ],
-    [ "InputArea", "classInputArea.html", "classInputArea" ],
     [ "Font", "structFont.html", "structFont" ],
     [ "Theme", "structTheme.html", "structTheme" ],
-    [ "Frame", "classFrame.html", "classFrame" ],
     [ "RawColor", "structRawColor.html", "structRawColor" ],
     [ "ButtonState", "frame_8h.html#aa46074d34fe2d6631c6bd9dc74633657", [
       [ "BUTTON_STATE_NORMAL", "frame_8h.html#aa46074d34fe2d6631c6bd9dc74633657a05af63e3fef20bdf01d69e62e52a4eb5", null ],

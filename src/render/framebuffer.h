@@ -29,13 +29,15 @@ typedef unsigned int RBO;
 
 
 /**
- * @struct RenderTarget
+ * @}
+ * @class RenderTarget
  * @brief A structure to handle render targets.
  * 
  * This structure contains the necessary components to manage render targets,
  * including the framebuffer and texture map.
  * 
  * @note The render target is used to render to a texture instead of the screen.
+ * @ingroup Classes Classes
  */
 typedef struct RenderTarget {
     FBO fbo;
@@ -44,6 +46,11 @@ typedef struct RenderTarget {
     int h;
     Mouse mouse;
 } RenderTarget;
+
+/**
+ * @addtogroup Framebuffer
+ * @{ 
+ */
 
 /**
  * @struct MSAA

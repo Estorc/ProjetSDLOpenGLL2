@@ -1,0 +1,91 @@
+/**
+@page getting_started Getting Started
+
+This page provides an introduction to setting up and compiling a project using the custom C-based game engine.
+
+@section project_context Project Context
+
+This game engine was developed as part of a second-year Computer Science project at the University of Le Mans. The project, Claude Chappe: The Infernal Curse of the Silent Shadows, is a first-person horror game set in the Claude Chappe computer science building. The player must navigate the eerie halls, avoiding terrifying professors while collecting hidden grades necessary to pass their degree.
+
+The game is built in pure C, using SDL2 and OpenGL for rendering, with an architecture inspired by Godot.
+
+@section team Team
+
+Loup (Estorc)
+
+Lucien (Mimar)
+
+Ekrem (Ekamyl)
+
+Medhi (MH-le-D2)
+
+@section dependencies Dependencies
+
+Before compiling the project, install the required libraries according to your operating system:
+
+Debian-based distributions:
+@code{.sh}
+sudo apt install build-essential libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev python3 python3-venv python3-pip libglu1-mesa-dev
+@endcode
+
+Arch-based distributions:
+@code{.sh}
+pacman -S --needed base-devel kdialog sdl2 sdl2_image sdl2_ttf sdl2_mixer
+@endcode
+
+MSYS2 (Windows):
+@code{.sh}
+pacman -S make mingw-w64-x86_64-python pacman -S mingw-w64-x86_64-python-pip mingw-w64-x86_64-SDL2 mingw-w64-x86_64-SDL2_gfx mingw-w64-x86_64-SDL2_ttf mingw-w64-x86_64-SDL2_image mingw-w64-x86_64-SDL2_mixer mingw-w64-x86_64-glew mingw-w64-x86_64-freeglut rsync
+@endcode
+
+@section compilation Compilation
+
+Once dependencies are installed, compile the project using the provided Makefile commands:
+
+Install required libraries:
+@code{.sh}
+make install
+@endcode
+
+Build necessary tools:
+@code{.sh}
+make tools
+@endcode
+
+Compile the project:
+@code{.sh}
+make
+@endcode
+
+Clean build files:
+@code{.sh}
+make clean
+@endcode
+
+Compile in debug mode:
+@code{.sh}
+make debug
+@endcode
+
+@section git_usage Git Usage
+
+To clone the repository and set up your local environment:
+
+@code{.sh}
+cd <PROJECT_DIRECTORY>
+git clone https://github.com/Estorc/ProjetSDLOpenGLL2.git
+@endcode
+
+To retrieve the latest updates:
+@code{.sh}
+git pull
+@endcode
+
+To commit and push changes:
+@code{.sh}
+git commit -a
+git push -u origin main
+@endcode
+
+This guide provides a foundation for setting up and compiling the project efficiently. Happy coding!
+*/

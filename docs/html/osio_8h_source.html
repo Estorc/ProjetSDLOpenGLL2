@@ -122,11 +122,11 @@ $(document).ready(function(){initNavTree('osio_8h_source.html',''); initResizabl
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__OSIO.html#ga6f9da097d97bc24c4c4bf7b2996331d0">absolute_path_to_relative</a>(<span class="keywordtype">char</span> *path);</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
- <span class="comment">// end of OSIO group<div class="ttc" id="agroup__OSIO_html_ga054945d77398e3be399fdb8398d0f4ef"><div class="ttname"><a href="group__OSIO.html#ga054945d77398e3be399fdb8398d0f4ef">osio_open_file</a></div><div class="ttdeci">int osio_open_file(char *path, char *relativePath, char *filter)</div><div class="ttdoc">Opens a file from the specified path with a given filter.</div><div class="ttdef"><b>Definition</b> osio.c:127</div></div>
-<div class="ttc" id="agroup__OSIO_html_ga13b0479e5e15d717ef71927639b2822f"><div class="ttname"><a href="group__OSIO.html#ga13b0479e5e15d717ef71927639b2822f">osio_save_file</a></div><div class="ttdeci">int osio_save_file(char *path, char *relativePath, char *filter)</div><div class="ttdoc">Saves a file to the specified path with a given filter.</div><div class="ttdef"><b>Definition</b> osio.c:104</div></div>
+ <span class="comment">// end of OSIO group<div class="ttc" id="agroup__OSIO_html_ga054945d77398e3be399fdb8398d0f4ef"><div class="ttname"><a href="group__OSIO.html#ga054945d77398e3be399fdb8398d0f4ef">osio_open_file</a></div><div class="ttdeci">int osio_open_file(char *path, char *relativePath, char *filter)</div><div class="ttdoc">Opens a file from the specified path with a given filter.</div><div class="ttdef"><b>Definition</b> osio.c:189</div></div>
+<div class="ttc" id="agroup__OSIO_html_ga13b0479e5e15d717ef71927639b2822f"><div class="ttname"><a href="group__OSIO.html#ga13b0479e5e15d717ef71927639b2822f">osio_save_file</a></div><div class="ttdeci">int osio_save_file(char *path, char *relativePath, char *filter)</div><div class="ttdoc">Saves a file to the specified path with a given filter.</div><div class="ttdef"><b>Definition</b> osio.c:167</div></div>
 <div class="ttc" id="agroup__OSIO_html_ga2c057d7941c6df59458be2230e3e7f88"><div class="ttname"><a href="group__OSIO.html#ga2c057d7941c6df59458be2230e3e7f88">update_cwd</a></div><div class="ttdeci">int update_cwd()</div><div class="ttdoc">Updates the current working directory.</div><div class="ttdef"><b>Definition</b> osio.c:226</div></div>
 <div class="ttc" id="agroup__OSIO_html_ga6f9da097d97bc24c4c4bf7b2996331d0"><div class="ttname"><a href="group__OSIO.html#ga6f9da097d97bc24c4c4bf7b2996331d0">absolute_path_to_relative</a></div><div class="ttdeci">int absolute_path_to_relative(char *path)</div><div class="ttdoc">Converts an absolute file path to a relative path.</div><div class="ttdef"><b>Definition</b> osio.c:276</div></div>
-<div class="ttc" id="agroup__OSIO_html_gadc303caa72b5aed4b43ffa8f34f0375f"><div class="ttname"><a href="group__OSIO.html#gadc303caa72b5aed4b43ffa8f34f0375f">osio_print_error</a></div><div class="ttdeci">int osio_print_error(char *msg)</div><div class="ttdoc">Prints an error message to the standard error output.</div><div class="ttdef"><b>Definition</b> osio.c:150</div></div>
+<div class="ttc" id="agroup__OSIO_html_gadc303caa72b5aed4b43ffa8f34f0375f"><div class="ttname"><a href="group__OSIO.html#gadc303caa72b5aed4b43ffa8f34f0375f">osio_print_error</a></div><div class="ttdeci">int osio_print_error(char *msg)</div><div class="ttdoc">Prints an error message to the standard error output.</div><div class="ttdef"><b>Definition</b> osio.c:210</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -158,6 +158,16 @@ $(document).ready(function(){initNavTree('osio_8h_source.html',''); initResizabl
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -166,7 +176,7 @@ $(document).ready(function(){initNavTree('osio_8h_source.html',''); initResizabl
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

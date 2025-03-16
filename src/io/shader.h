@@ -17,7 +17,6 @@
  * @typedef Shader
  * @brief Represents an unsigned integer used as a shader identifier.
  */
-
 typedef unsigned int Shader;
 
 
@@ -26,7 +25,6 @@ typedef unsigned int Shader;
  * @brief Defines the default vertex and fragment shaders for rendering shadows.
  * @details The vertex shader is located at "shaders/shadowShader.vs" and the fragment shader is located at "shaders/shadowShader.fs".
  */
-
 #define DEFAULT_RENDER_SHADER "shaders/shadowShader.vs", "shaders/shadowShader.fs"
 
 /**
@@ -34,7 +32,6 @@ typedef unsigned int Shader;
  * @brief Defines the default vertex and fragment shaders for simple depth rendering.
  * @details The vertex shader is located at "shaders/simpleDepthShader.vs" and the fragment shader is located at "shaders/simpleDepthShader.fs".
  */
-
 #define DEFAULT_DEPTH_SHADER "shaders/simpleDepthShader.vs", "shaders/simpleDepthShader.fs"
 
 /**
@@ -42,7 +39,6 @@ typedef unsigned int Shader;
  * @brief Defines the default vertex and fragment shaders for screen post-processing.
  * @details The vertex shader is located at "shaders/aa_post.vs" and the fragment shader is located at "shaders/aa_post.fs".
  */
-
 #define DEFAULT_SCREEN_SHADER "shaders/aa_post.vs", "shaders/aa_post.fs"
 
 /**
@@ -50,7 +46,6 @@ typedef unsigned int Shader;
  * @brief Defines the default vertex and fragment shaders for rendering the skybox.
  * @details The vertex shader is located at "shaders/skybox.vs" and the fragment shader is located at "shaders/skybox.fs".
  */
-
 #define DEFAULT_SKYBOX_SHADER "shaders/skybox.vs", "shaders/skybox.fs"
 
 /**
@@ -58,7 +53,6 @@ typedef unsigned int Shader;
  * @brief Defines the default vertex and fragment shaders for rendering the GUI.
  * @details The vertex shader is located at "shaders/gui.vs" and the fragment shader is located at "shaders/gui.fs".
  */
-
 #define DEFAULT_GUI_SHADER "shaders/gui.vs", "shaders/gui.fs"
 
 

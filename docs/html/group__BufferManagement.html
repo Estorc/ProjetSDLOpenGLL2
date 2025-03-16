@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('group__BufferManagement.html',''); ini
 </div><!--header-->
 <div class="contents">
 
-<p>Functions for managing Game.buffers-&gt;  
+<p>Functions for managing buffers.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -126,35 +126,15 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gad241cc00b1a92e6d85827df96778e442" id="r_gad241cc00b1a92e6d85827df96778e442"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BufferManagement.html#gad241cc00b1a92e6d85827df96778e442">init_buffers</a> ()</td></tr>
-<tr class="memdesc:gad241cc00b1a92e6d85827df96778e442"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the Game.buffers-&gt;  <br /></td></tr>
+<tr class="memdesc:gad241cc00b1a92e6d85827df96778e442"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the buffers.  <br /></td></tr>
 <tr class="separator:gad241cc00b1a92e6d85827df96778e442"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9b0bc2b765973e939c8763071d523d9f" id="r_ga9b0bc2b765973e939c8763071d523d9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BufferManagement.html#ga9b0bc2b765973e939c8763071d523d9f">free_buffers</a> ()</td></tr>
-<tr class="memdesc:ga9b0bc2b765973e939c8763071d523d9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the Game.buffers-&gt;  <br /></td></tr>
+<tr class="memdesc:ga9b0bc2b765973e939c8763071d523d9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the buffers.  <br /></td></tr>
 <tr class="separator:ga9b0bc2b765973e939c8763071d523d9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Functions for managing Game.buffers-&gt; </p>
+<p>Functions for managing buffers. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga9b0bc2b765973e939c8763071d523d9f" name="ga9b0bc2b765973e939c8763071d523d9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9b0bc2b765973e939c8763071d523d9f">&#9670;&#160;</a></span>free_buffers()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void free_buffers </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Frees the Game.buffers-&gt; </p>
-<p>This function releases the resources allocated for the Game.buffers-&gt; It should be called when buffer operations are no longer needed. </p>
-
-</div>
-</div>
 <a id="gad241cc00b1a92e6d85827df96778e442" name="gad241cc00b1a92e6d85827df96778e442"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gad241cc00b1a92e6d85827df96778e442">&#9670;&#160;</a></span>init_buffers()</h2>
 
@@ -170,8 +150,28 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes the Game.buffers-&gt; </p>
+<p>Initializes the buffers. </p>
 <p>This function sets up the necessary buffers for the application. It should be called before any buffer operations are performed. </p>
+
+</div>
+</div>
+<a id="ga9b0bc2b765973e939c8763071d523d9f" name="ga9b0bc2b765973e939c8763071d523d9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9b0bc2b765973e939c8763071d523d9f">&#9670;&#160;</a></span>free_buffers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void free_buffers </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Frees the buffers. </p>
+<p>This function releases the resources allocated for the buffers. It should be called when buffer operations are no longer needed. </p>
 
 </div>
 </div>
@@ -206,6 +206,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -214,7 +224,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

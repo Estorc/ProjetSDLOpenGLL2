@@ -14,6 +14,7 @@ var hierarchy =
     [ "Font", "structFont.html", null ],
     [ "HashTable", "structHashTable.html", null ],
     [ "Input", "structInput.html", null ],
+    [ "Keybinds", "structKeybinds.html", null ],
     [ "LightingBuffer", "structLightingBuffer.html", null ],
     [ "LoadingModelBuffer", "structLoadingModelBuffer.html", null ],
     [ "Material", "structMaterial.html", null ],
@@ -69,7 +70,6 @@ var hierarchy =
       [ "RenderTarget", "classRenderTarget.html", null ],
       [ "Scene", "classScene.html", null ],
       [ "Skybox", "classSkybox.html", null ],
-      [ "Texture", "classTexture.html", null ],
       [ "TexturedMesh", "classTexturedMesh.html", null ]
     ] ],
     [ "Object", "structObject.html", null ],

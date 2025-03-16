@@ -2,6 +2,11 @@
 \hypertarget{structHashTable}{}\label{structHashTable}\index{HashTable@{HashTable}}
 
 
+Represents the hash table.  
+
+
+
+
 {\ttfamily \#include $<$hash.\+h$>$}
 
 
@@ -16,34 +21,37 @@ Collaboration diagram for Hash\+Table\+:\nopagebreak
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structEntry}{Entry}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structHashTable_ae0ed1720c43ef387133367a60c80c183}{table}}
+\mbox{\hyperlink{structEntry}{Entry}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structHashTable_a4972f69f6bb5defc96a27ab2a8f89886}{table}}
 \item 
-int \mbox{\hyperlink{structHashTable_ad732056fce42df5162c810b4dd28fca1}{size}}
+int \mbox{\hyperlink{structHashTable_a3d60340060fe631634debd36fbf06394}{size}}
 \item 
-int \mbox{\hyperlink{structHashTable_ad7b2a756fb5beae48601b03888235ff7}{capacity}}
+int \mbox{\hyperlink{structHashTable_ab0c80fc75b46e3801d6165df60352f9d}{capacity}}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Represents the hash table. 
+
 \doxysubsection{Member Data Documentation}
-\Hypertarget{structHashTable_ad7b2a756fb5beae48601b03888235ff7}\label{structHashTable_ad7b2a756fb5beae48601b03888235ff7} 
-\index{HashTable@{HashTable}!capacity@{capacity}}
-\index{capacity@{capacity}!HashTable@{HashTable}}
-\doxysubsubsection{\texorpdfstring{capacity}{capacity}}
-{\footnotesize\ttfamily int Hash\+Table\+::capacity}
-
-\Hypertarget{structHashTable_ad732056fce42df5162c810b4dd28fca1}\label{structHashTable_ad732056fce42df5162c810b4dd28fca1} 
-\index{HashTable@{HashTable}!size@{size}}
-\index{size@{size}!HashTable@{HashTable}}
-\doxysubsubsection{\texorpdfstring{size}{size}}
-{\footnotesize\ttfamily int Hash\+Table\+::size}
-
-\Hypertarget{structHashTable_ae0ed1720c43ef387133367a60c80c183}\label{structHashTable_ae0ed1720c43ef387133367a60c80c183} 
+\Hypertarget{structHashTable_a4972f69f6bb5defc96a27ab2a8f89886}\label{structHashTable_a4972f69f6bb5defc96a27ab2a8f89886} 
 \index{HashTable@{HashTable}!table@{table}}
 \index{table@{table}!HashTable@{HashTable}}
 \doxysubsubsection{\texorpdfstring{table}{table}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structEntry}{Entry}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Hash\+Table\+::table}
+{\footnotesize\ttfamily Hash\+Table\+::table}
 
+An array of pointers to entries, representing the buckets of the hash table. \Hypertarget{structHashTable_a3d60340060fe631634debd36fbf06394}\label{structHashTable_a3d60340060fe631634debd36fbf06394} 
+\index{HashTable@{HashTable}!size@{size}}
+\index{size@{size}!HashTable@{HashTable}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily Hash\+Table\+::size}
 
+The current number of entries in the hash table. \Hypertarget{structHashTable_ab0c80fc75b46e3801d6165df60352f9d}\label{structHashTable_ab0c80fc75b46e3801d6165df60352f9d} 
+\index{HashTable@{HashTable}!capacity@{capacity}}
+\index{capacity@{capacity}!HashTable@{HashTable}}
+\doxysubsubsection{\texorpdfstring{capacity}{capacity}}
+{\footnotesize\ttfamily Hash\+Table\+::capacity}
+
+The current capacity of the hash table (number of buckets). 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

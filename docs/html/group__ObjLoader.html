@@ -111,7 +111,8 @@ $(document).ready(function(){initNavTree('group__ObjLoader.html',''); initResiza
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">OBJ Loader</div></div>
 </div><!--header-->
 <div class="contents">
@@ -125,6 +126,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure representing a face of a 3D model.  <a href="structFace.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLoadingModelBuffer.html">LoadingModelBuffer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure to hold the data of a 3D model being loaded.  <a href="structLoadingModelBuffer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -153,6 +155,17 @@ Functions</h2></td></tr>
 <tr class="memitem:gad1c67a7fd502c28832fa5cf248696814" id="r_gad1c67a7fd502c28832fa5cf248696814"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ObjLoader.html#gad1c67a7fd502c28832fa5cf248696814">load_obj_model</a> (const char *path, <a class="el" href="structModelData.html">ModelData</a> *modelPtr)</td></tr>
 <tr class="memdesc:gad1c67a7fd502c28832fa5cf248696814"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a 3D model from an OBJ file, including its associated materials, vertices, normals, and texture coordinates.  <br /></td></tr>
 <tr class="separator:gad1c67a7fd502c28832fa5cf248696814"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:gafc912d1d97150df207e760397f3fe904" id="r_gafc912d1d97150df207e760397f3fe904"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ModelHandling.html#ga1351e71110272ccf5e8d661017498adb">Vertex</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ObjLoader.html#gafc912d1d97150df207e760397f3fe904">LoadingModelBuffer::vertex</a></td></tr>
+<tr class="separator:gafc912d1d97150df207e760397f3fe904"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6fa9ea9ae14a33791794d1c08623700c" id="r_ga6fa9ea9ae14a33791794d1c08623700c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ObjLoader.html#gabb5b863a4c7a7cc7d18a288c908b9f0b">Normal</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ObjLoader.html#ga6fa9ea9ae14a33791794d1c08623700c">LoadingModelBuffer::normals</a></td></tr>
+<tr class="separator:ga6fa9ea9ae14a33791794d1c08623700c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeed6db10e83cce4380799b56f2456679" id="r_gaeed6db10e83cce4380799b56f2456679"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ObjLoader.html#ga035e3505138fdf49eb7ebdcfc5d5a1fc">TextureVertex</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ObjLoader.html#gaeed6db10e83cce4380799b56f2456679">LoadingModelBuffer::textureVertex</a></td></tr>
+<tr class="separator:gaeed6db10e83cce4380799b56f2456679"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga04baf96cf7a8c449f068e7bc387ad9bc" id="r_ga04baf96cf7a8c449f068e7bc387ad9bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFace.html">Face</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ObjLoader.html#ga04baf96cf7a8c449f068e7bc387ad9bc">LoadingModelBuffer::faces</a></td></tr>
+<tr class="separator:ga04baf96cf7a8c449f068e7bc387ad9bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Functions for loading and managing 3D models from OBJ files. </p>
@@ -207,6 +220,78 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ga5a4ede319c6c281e805f900f33a7451b" name="ga5a4ede319c6c281e805f900f33a7451b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5a4ede319c6c281e805f900f33a7451b">&#9670;&#160;</a></span>malloc_obj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int malloc_obj </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structModelObjectData.html">ModelObjectData</a> *&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLoadingModelBuffer.html">LoadingModelBuffer</a> *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a>&#160;</td>
+          <td class="paramname"><em>vim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a>&#160;</td>
+          <td class="paramname"><em>fim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a>&#160;</td>
+          <td class="paramname"><em>vnim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a>&#160;</td>
+          <td class="paramname"><em>vtim</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allocates memory for an <a class="el" href="structModelObjectData.html" title="Structure representing the data of a 3D model object.">ModelObjectData</a>'s vertex, face, normal, and texture data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>{ModelObjectData*} A pointer to the <a class="el" href="structModelObjectData.html" title="Structure representing the data of a 3D model object.">ModelObjectData</a> structure to be initialized. </td></tr>
+    <tr><td class="paramname">vim</td><td>{u32} The initial number of vertices to allocate memory for. </td></tr>
+    <tr><td class="paramname">fim</td><td>{u32} The initial number of faces to allocate memory for. </td></tr>
+    <tr><td class="paramname">vnim</td><td>{u32} The initial number of normals to allocate memory for. </td></tr>
+    <tr><td class="paramname">vtim</td><td>{u32} The initial number of texture coordinates to allocate memory for.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function allocates the necessary memory for various data fields in the specified <a class="el" href="structModelObjectData.html" title="Structure representing the data of a 3D model object.">ModelObjectData</a>, including vertices, faces, normals, and texture coordinates. It initializes the materials and materialsLength to NULL and sets the materialsCount to zero.</p>
+<p>Important Notes:</p><ul>
+<li>The function assumes that <code>obj</code> is a valid pointer to an <a class="el" href="structModelObjectData.html" title="Structure representing the data of a 3D model object.">ModelObjectData</a> structure.</li>
+<li>If any memory allocation fails, a pointer check function (POINTER_CHECK) should handle the error, potentially freeing previously allocated memory and terminating the program or logging the error.</li>
+</ul>
+<p>Example Usage: malloc_obj(&amp;object, initialVertexCount, initialFaceCount, 
+            initialNormalCount, initialTextureVertexCount);</p>
+<dl class="section return"><dt>Returns</dt><dd>Returns 0 on successful memory allocation. </dd></dl>
+
+</div>
+</div>
 <a id="ga183823564439c36d87aac604a9063c59" name="ga183823564439c36d87aac604a9063c59"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga183823564439c36d87aac604a9063c59">&#9670;&#160;</a></span>close_realloc_obj()</h2>
 
@@ -325,75 +410,68 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga5a4ede319c6c281e805f900f33a7451b" name="ga5a4ede319c6c281e805f900f33a7451b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5a4ede319c6c281e805f900f33a7451b">&#9670;&#160;</a></span>malloc_obj()</h2>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="gafc912d1d97150df207e760397f3fe904" name="gafc912d1d97150df207e760397f3fe904"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafc912d1d97150df207e760397f3fe904">&#9670;&#160;</a></span>vertex</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int malloc_obj </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structModelObjectData.html">ModelObjectData</a> *&#160;</td>
-          <td class="paramname"><em>obj</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structLoadingModelBuffer.html">LoadingModelBuffer</a> *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a>&#160;</td>
-          <td class="paramname"><em>vim</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a>&#160;</td>
-          <td class="paramname"><em>fim</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a>&#160;</td>
-          <td class="paramname"><em>vnim</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a>&#160;</td>
-          <td class="paramname"><em>vtim</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">LoadingModelBuffer::vertex</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Array of vertices</p>
+<p>Array of vertices that define the geometric points of the model. </p>
 
-<p>Allocates memory for an <a class="el" href="structModelObjectData.html" title="Structure representing the data of a 3D model object.">ModelObjectData</a>'s vertex, face, normal, and texture data. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">obj</td><td>{ModelObjectData*} A pointer to the <a class="el" href="structModelObjectData.html" title="Structure representing the data of a 3D model object.">ModelObjectData</a> structure to be initialized. </td></tr>
-    <tr><td class="paramname">vim</td><td>{u32} The initial number of vertices to allocate memory for. </td></tr>
-    <tr><td class="paramname">fim</td><td>{u32} The initial number of faces to allocate memory for. </td></tr>
-    <tr><td class="paramname">vnim</td><td>{u32} The initial number of normals to allocate memory for. </td></tr>
-    <tr><td class="paramname">vtim</td><td>{u32} The initial number of texture coordinates to allocate memory for.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function allocates the necessary memory for various data fields in the specified <a class="el" href="structModelObjectData.html" title="Structure representing the data of a 3D model object.">ModelObjectData</a>, including vertices, faces, normals, and texture coordinates. It initializes the materials and materialsLength to NULL and sets the materialsCount to zero.</p>
-<p>Important Notes:</p><ul>
-<li>The function assumes that <code>obj</code> is a valid pointer to an <a class="el" href="structModelObjectData.html" title="Structure representing the data of a 3D model object.">ModelObjectData</a> structure.</li>
-<li>If any memory allocation fails, a pointer check function (POINTER_CHECK) should handle the error, potentially freeing previously allocated memory and terminating the program or logging the error.</li>
-</ul>
-<p>Example Usage: malloc_obj(&amp;object, initialVertexCount, initialFaceCount, 
-            initialNormalCount, initialTextureVertexCount);</p>
-<dl class="section return"><dt>Returns</dt><dd>Returns 0 on successful memory allocation. </dd></dl>
+</div>
+</div>
+<a id="ga6fa9ea9ae14a33791794d1c08623700c" name="ga6fa9ea9ae14a33791794d1c08623700c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6fa9ea9ae14a33791794d1c08623700c">&#9670;&#160;</a></span>normals</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LoadingModelBuffer::normals</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of normals</p>
+<p>Array of normals that define the direction perpendicular to the surface of the model's faces. </p>
+
+</div>
+</div>
+<a id="gaeed6db10e83cce4380799b56f2456679" name="gaeed6db10e83cce4380799b56f2456679"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaeed6db10e83cce4380799b56f2456679">&#9670;&#160;</a></span>textureVertex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LoadingModelBuffer::textureVertex</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of texture vertices</p>
+<p>Array of texture vertices that map the 2D texture coordinates to the 3D model. </p>
+
+</div>
+</div>
+<a id="ga04baf96cf7a8c449f068e7bc387ad9bc" name="ga04baf96cf7a8c449f068e7bc387ad9bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga04baf96cf7a8c449f068e7bc387ad9bc">&#9670;&#160;</a></span>faces</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LoadingModelBuffer::faces</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Array of faces</p>
+<p>Array of faces that define the polygons of the model, typically triangles or quads. </p>
 
 </div>
 </div>
@@ -428,6 +506,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -436,7 +524,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

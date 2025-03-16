@@ -123,18 +123,18 @@ Collaboration diagram for BufferCollection:</div>
 <div class="dyncontent">
 <div class="center"><img src="structBufferCollection__coll__graph.png" border="0" usemap="#aBufferCollection_coll__map" alt="Collaboration graph"/></div>
 <map name="aBufferCollection_coll__map" id="aBufferCollection_coll__map">
-<area shape="rect" title="Structure to hold various buffer collections." alt="" coords="148,185,275,211"/>
-<area shape="rect" href="structLightingBuffer.html" title="Buffer structure to manage an array of lighting nodes." alt="" coords="5,97,119,123"/>
-<area shape="poly" title=" " alt="" coords="95,127,192,183,190,187,93,132"/>
-<area shape="rect" href="classNode.html" title="Represents a node in the tree structure." alt="" coords="195,7,251,33"/>
-<area shape="poly" title=" " alt="" coords="183,34,151,46,119,61,94,80,74,99,70,95,91,76,117,56,149,41,181,29"/>
-<area shape="poly" title=" " alt="" coords="266,10,274,13,278,20,269,29,252,31,251,26,267,24,273,20,271,17,264,15"/>
-<area shape="rect" href="unionBehaviorAttribute.html" title=" " alt="" coords="143,97,280,123"/>
-<area shape="poly" title=" " alt="" coords="199,44,188,60,187,69,189,78,201,95,197,98,185,80,182,69,184,58,195,41"/>
-<area shape="rect" href="structCollisionBuffer.html" title="Represents a buffer for collision shapes." alt="" coords="305,97,422,123"/>
-<area shape="poly" title=" " alt="" coords="263,36,299,56,351,95,348,99,297,61,260,41"/>
-<area shape="poly" title=" " alt="" coords="222,84,226,73,227,52,224,33,229,33,232,52,231,74,227,85"/>
-<area shape="poly" title=" " alt="" coords="332,132,233,187,231,183,330,127"/>
+<area shape="rect" title="Structure to hold various buffer collections." alt="" coords="506,59,633,84"/>
+<area shape="rect" href="structLightingBuffer.html" title="Buffer structure to manage an array of lighting nodes." alt="" coords="235,5,349,31"/>
+<area shape="poly" title=" " alt="" coords="363,29,506,57,505,62,362,34"/>
+<area shape="rect" href="classNode.html" title="Represents a node in the tree structure." alt="" coords="6,68,62,93"/>
+<area shape="poly" title=" " alt="" coords="69,59,85,53,163,33,235,21,236,26,164,38,87,58,71,64"/>
+<area shape="poly" title=" " alt="" coords="12,53,19,45,34,41,47,44,55,50,57,60,53,69,48,67,51,59,50,53,45,49,34,47,22,49,16,56"/>
+<area shape="rect" href="unionBehaviorAttribute.html" title="Union representing different types of behavior attributes." alt="" coords="223,59,361,84"/>
+<area shape="poly" title=" " alt="" coords="76,77,223,71,223,76,76,82"/>
+<area shape="rect" href="structCollisionBuffer.html" title="Represents a buffer for collision shapes." alt="" coords="233,117,351,143"/>
+<area shape="poly" title=" " alt="" coords="55,102,70,116,87,126,123,137,161,141,233,138,233,143,161,146,122,142,85,131,67,120,52,106"/>
+<area shape="poly" title=" " alt="" coords="249,91,200,105,143,111,85,105,59,96,61,91,87,99,143,106,199,99,247,86"/>
+<area shape="poly" title=" " alt="" coords="364,112,508,81,509,87,365,117"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -149,21 +149,6 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>Structure to hold various buffer collections. </p>
 <p>This structure contains buffers for lighting and collision data. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="ad23820da5aaf50ec6b080d6fc5696bbb" name="ad23820da5aaf50ec6b080d6fc5696bbb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad23820da5aaf50ec6b080d6fc5696bbb">&#9670;&#160;</a></span>collisionBuffer</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structCollisionBuffer.html">CollisionBuffer</a> BufferCollection::collisionBuffer</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Buffer for collision data. </p>
-
-</div>
-</div>
 <a id="a6c5535d2f38e4eb5f2927476f1eba2fa" name="a6c5535d2f38e4eb5f2927476f1eba2fa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c5535d2f38e4eb5f2927476f1eba2fa">&#9670;&#160;</a></span>lightingBuffer</h2>
 
@@ -176,6 +161,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Buffer for lighting data. </p>
+
+</div>
+</div>
+<a id="ad23820da5aaf50ec6b080d6fc5696bbb" name="ad23820da5aaf50ec6b080d6fc5696bbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad23820da5aaf50ec6b080d6fc5696bbb">&#9670;&#160;</a></span>collisionBuffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structCollisionBuffer.html">CollisionBuffer</a> BufferCollection::collisionBuffer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Buffer for collision data. </p>
 
 </div>
 </div>
@@ -213,6 +213,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -221,7 +231,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

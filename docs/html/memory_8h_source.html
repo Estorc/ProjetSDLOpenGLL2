@@ -221,7 +221,7 @@ $(document).ready(function(){initNavTree('memory_8h_source.html',''); initResiza
 <div class="ttc" id="agroup__MemoryCache_html_gadf72a8ac6da9ce12a4b7264c2747f08f"><div class="ttname"><a href="group__MemoryCache.html#gadf72a8ac6da9ce12a4b7264c2747f08f">add_mix_chunk_to_cache</a></div><div class="ttdeci">void add_mix_chunk_to_cache(const char *name, Mix_Chunk *chunk)</div><div class="ttdoc">Adds a sound effect to the cache.</div><div class="ttdef"><b>Definition</b> memory.c:107</div></div>
 <div class="ttc" id="agroup__MemoryCache_html_gaf7e9da715331648efbb53611a886b7ba"><div class="ttname"><a href="group__MemoryCache.html#gaf7e9da715331648efbb53611a886b7ba">free_models</a></div><div class="ttdeci">void free_models()</div><div class="ttdoc">Frees the allocated models.</div><div class="ttdef"><b>Definition</b> memory.c:40</div></div>
 <div class="ttc" id="agroup__MemoryCache_html_gafc915248428e8d076d93d7029a2dcb79"><div class="ttname"><a href="group__MemoryCache.html#gafc915248428e8d076d93d7029a2dcb79">init_memory_cache</a></div><div class="ttdeci">void init_memory_cache()</div><div class="ttdoc">Initializes the memory cache.</div><div class="ttdef"><b>Definition</b> memory.c:7</div></div>
-<div class="ttc" id="araptiquax_8h_html_a332ccd83dfe2973e6cb2b61e4f3ab7e6"><div class="ttname"><a href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a></div><div class="ttdeci">#define u32</div><div class="ttdoc">Alias for uint32_t (unsigned 32-bit integer).</div><div class="ttdef"><b>Definition</b> raptiquax.h:88</div></div>
+<div class="ttc" id="araptiquax_8h_html_a332ccd83dfe2973e6cb2b61e4f3ab7e6"><div class="ttname"><a href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a></div><div class="ttdeci">#define u32</div><div class="ttdoc">Alias for uint32_t (unsigned 32-bit integer).</div><div class="ttdef"><b>Definition</b> raptiquax.h:74</div></div>
 <div class="ttc" id="astructCubeMapCache_html"><div class="ttname"><a href="structCubeMapCache.html">CubeMapCache</a></div><div class="ttdoc">Structure to cache cube map textures.</div><div class="ttdef"><b>Definition</b> memory.h:33</div></div>
 <div class="ttc" id="astructCubeMapCache_html_afb7c69412da4e04b6475159deb64ce0f"><div class="ttname"><a href="structCubeMapCache.html#afb7c69412da4e04b6475159deb64ce0f">CubeMapCache::cubeMap</a></div><div class="ttdeci">TextureMap cubeMap</div><div class="ttdef"><b>Definition</b> memory.h:34</div></div>
 <div class="ttc" id="astructMemoryCaches_html"><div class="ttname"><a href="structMemoryCaches.html">MemoryCaches</a></div><div class="ttdoc">Structure to manage all types of caches.</div><div class="ttdef"><b>Definition</b> memory.h:94</div></div>
@@ -243,7 +243,7 @@ $(document).ready(function(){initNavTree('memory_8h_source.html',''); initResiza
 <div class="ttc" id="astructMixMusicCache_html_a159817dcd6ea626615e069ac82023e6e"><div class="ttname"><a href="structMixMusicCache.html#a159817dcd6ea626615e069ac82023e6e">MixMusicCache::music</a></div><div class="ttdeci">Mix_Music * music</div><div class="ttdef"><b>Definition</b> memory.h:74</div></div>
 <div class="ttc" id="astructModelCache_html"><div class="ttname"><a href="structModelCache.html">ModelCache</a></div><div class="ttdoc">Structure to cache models.</div><div class="ttdef"><b>Definition</b> memory.h:53</div></div>
 <div class="ttc" id="astructModelCache_html_a998b9ad2ca1036519beff1ca379eb758"><div class="ttname"><a href="structModelCache.html#a998b9ad2ca1036519beff1ca379eb758">ModelCache::model</a></div><div class="ttdeci">ModelData * model</div><div class="ttdef"><b>Definition</b> memory.h:54</div></div>
-<div class="ttc" id="astructModelData_html"><div class="ttname"><a href="structModelData.html">ModelData</a></div><div class="ttdoc">Structure representing the data of a 3D model.</div><div class="ttdef"><b>Definition</b> model.h:204</div></div>
+<div class="ttc" id="astructModelData_html"><div class="ttname"><a href="structModelData.html">ModelData</a></div><div class="ttdoc">Structure representing the data of a 3D model.</div><div class="ttdef"><b>Definition</b> model.h:208</div></div>
 <div class="ttc" id="astructShaderCache_html"><div class="ttname"><a href="structShaderCache.html">ShaderCache</a></div><div class="ttdoc">Structure to cache shaders.</div><div class="ttdef"><b>Definition</b> memory.h:63</div></div>
 <div class="ttc" id="astructShaderCache_html_a509a0d67e5de6cbe3454a7179fde267b"><div class="ttname"><a href="structShaderCache.html#a509a0d67e5de6cbe3454a7179fde267b">ShaderCache::shader</a></div><div class="ttdeci">Shader shader</div><div class="ttdef"><b>Definition</b> memory.h:64</div></div>
 <div class="ttc" id="astructTextureCache_html"><div class="ttname"><a href="structTextureCache.html">TextureCache</a></div><div class="ttdoc">Structure to cache textures.</div><div class="ttdef"><b>Definition</b> memory.h:43</div></div>
@@ -279,6 +279,16 @@ $(document).ready(function(){initNavTree('memory_8h_source.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -287,7 +297,7 @@ $(document).ready(function(){initNavTree('memory_8h_source.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

@@ -22,10 +22,30 @@
 #include "gui/frame.h"
 #include "memory.h"
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class Frame : public Node {
     __containerType__ Node *
     public:
 
+    /**
+     * @brief Constructor for initializing a frame object with specified parameters.
+     *
+     * @param x The x-coordinate of the frame.
+     * @param xu The unit for the x-coordinate.
+     * @param y The y-coordinate of the frame.
+     * @param yu The unit for the y-coordinate.
+     * @param w The width of the frame.
+     * @param wu The unit for the width.
+     * @param h The height of the frame.
+     * @param hu The unit for the height.
+     * @param ha The horizontal alignment of the frame.
+     * @param va The vertical alignment of the frame.
+     * @param scroll The scroll setting for the frame.
+     * @param theme A pointer to the Theme object associated with the frame.
+     */
     void constructor(double x, int xu, double y, int yu, double w, int wu, double h, int hu, int ha, int va, int scroll, Theme *theme) {
         this->type = __type__;
 
@@ -58,8 +78,20 @@ class Frame : public Node {
         frame->theme = theme;
     }
 
-    
-
+    /**
+     * @brief Handles the conversion of dimension units for a given source and destination.
+     *
+     * This function calculates the dimensions of a graphical element based on the provided unit type and container dimensions.
+     * It should be called every frame to ensure the dimensions are updated correctly.
+     *
+     * @param src Pointer to the source dimension value.
+     * @param dest Pointer to the destination dimension value where the result will be stored.
+     * @param vertical Integer flag indicating if the dimension is vertical (1 for vertical, 0 for horizontal).
+     * @param size The size value to be converted.
+     * @param unit The unit type for the size (e.g., pixels, percentage).
+     * @param containerWidth The width of the container in which the element is placed.
+     * @param containerHeight The height of the container in which the element is placed.
+     */
     void handle_dimension_unit(float *src, float *dest, int vertical, double size, int unit, double containerWidth, double containerHeight) { // Devrait être calculé chaque frame
         *dest = *src;
         *dest = (vertical && size) ? -*dest : *dest; // Inverser l'axe vertical car OpenGL est en coordonnées inversées
@@ -81,6 +113,12 @@ class Frame : public Node {
         }
     }
 
+    /**
+     * @brief Initializes the frame.
+     *
+     * This function sets up the initial state of the frame. It should be called
+     * before using any other functions related to the frame.
+     */
     void init_frame() {
         Frame *frame = (Frame *) this->object;
         frame->alignment[0] = 'l';
@@ -101,6 +139,13 @@ class Frame : public Node {
         glm_vec2_zero(frame->scrollTarget);
     }
 
+    /**
+     * @brief Loads data from a file.
+     *
+     * This function reads data from the given file and processes it accordingly.
+     *
+     * @param file A pointer to the FILE object that represents the file to be read.
+     */
     void load(FILE *file) {
         float relPos[2], scale[2];
         char unit[4], alignment[2], scroll;
@@ -129,6 +174,12 @@ class Frame : public Node {
         this::constructor(relPos[0], unit[0], relPos[1], unit[1], scale[0], unit[2], scale[1], unit[3], alignment[0], alignment[1], scroll, theme);
     }
 
+    /**
+     * @brief Refreshes the frame.
+     *
+     * This function is responsible for updating the frame. It performs necessary
+     * operations to refresh the frame's state.
+     */
     void refresh() {
 
         int window_width, window_height;
@@ -246,6 +297,12 @@ class Frame : public Node {
         frame->flags &= ~FRAME_NEEDS_REFRESH;
     }
 
+    /**
+     * @brief Refreshes the content of the frame.
+     *
+     * This function is responsible for updating or refreshing the content displayed within the frame.
+     * It ensures that the frame's content is up-to-date and reflects any changes that may have occurred.
+     */
     void refreshContent() {
         Frame *frame = (Frame *) this->object;
         glBindTexture(GL_TEXTURE_2D, frame->contentTexture);
@@ -254,6 +311,12 @@ class Frame : public Node {
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 
+    /**
+     * @brief Updates the state of the frame.
+     *
+     * This function is responsible for updating the internal state of the frame.
+     * It should be called regularly to ensure the frame's state is kept up-to-date.
+     */
     void update() {
         Frame *frame = (Frame *) this->object;
         if (frame->flags & OVERFLOW_SCROLL) {
@@ -266,12 +329,24 @@ class Frame : public Node {
         }
     }
 
+    /**
+     * @brief Handles the resize event for the frame.
+     *
+     * This function is called when the frame is resized. It updates the frame's
+     * dimensions and performs any necessary adjustments to ensure the frame
+     * is displayed correctly.
+     */
     void on_resize() {
         Frame *frame = (Frame *) this->object;
         frame->flags |= FRAME_NEEDS_REFRESH;
     }
 
-
+    /**
+     * @brief Draws a frame.
+     *
+     * This function is responsible for rendering a frame. The specific details of
+     * how the frame is drawn are not provided in the given code snippet.
+     */
     void draw_frame() {
         VAO vao;
         this::get_vao(&vao);
@@ -285,8 +360,38 @@ class Frame : public Node {
         glBindVertexArray(0);
     }
 
+    /**
+     * @var _vbo
+     * @brief Static variable to store the Vertex Buffer Object (VBO) identifier.
+     *
+     * This static variable is used to store the identifier of the VBO that is
+     * used for rendering frames. It is initialized to 0, indicating that no VBO
+     * has been created or assigned yet.
+     */
     static VBO _vbo = 0;
+
+    /**
+     * @brief Static variable to store the Vertex Array Object (VAO) identifier.
+     *
+     * This static variable `_vao` is used to store the identifier of the Vertex Array Object (VAO)
+     * associated with the frame. The VAO is used in OpenGL to store the state needed to supply
+     * vertex data to the graphics pipeline.
+     *
+     * @note The initial value of `_vao` is set to 0, indicating that no VAO has been created yet.
+     */
     static VAO _vao = 0;
+
+    /**
+     * @brief Renders a frame using the provided model matrix and shader.
+     *
+     * This function is responsible for rendering a frame in the scene. It takes
+     * a model matrix, an active shader, and a set of world shaders as parameters.
+     *
+     * @param modelMatrix A pointer to the model matrix to be used for rendering.
+     * @param activeShader The shader to be used for rendering the frame.
+     * @param shaders A pointer to the WorldShaders structure containing the shaders
+     *                used in the world.
+     */
     void render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
         UNUSED(modelMatrix);
         Frame *frame = (Frame *) this->object;
@@ -362,6 +467,14 @@ class Frame : public Node {
         frame->flags &= ~FRAME_NEEDS_INIT;
     }
 
+    /**
+     * @brief Saves the current state of the editor node to a file.
+     *
+     * This function writes the state of the given editor node to the specified file.
+     *
+     * @param file A pointer to the FILE object where the editor node state will be saved.
+     * @param editor A pointer to the Node object representing the editor whose state is to be saved.
+     */
     void save(FILE *file, Node *editor) {
         Frame *frame = (Frame *) this->object;
         UNUSED(editor);
@@ -392,6 +505,13 @@ class Frame : public Node {
         }
     }
 
+    /**
+     * @brief Retrieves the Vertex Array Object (VAO).
+     *
+     * This function is responsible for obtaining the VAO and storing it in the provided VAO structure.
+     *
+     * @param vao A pointer to a VAO structure where the retrieved VAO will be stored.
+     */
     void get_vao(VAO *vao) {
         if (!_vao) {
             float quadVertices[] = {
@@ -419,30 +539,92 @@ class Frame : public Node {
     }
 
 
+    /**
+     * @brief Determines if the current object is a GUI element.
+     *
+     * This function sets the value pointed to by the result parameter to indicate
+     * whether the current object is a graphical user interface (GUI) element.
+     *
+     * @param result A pointer to a boolean variable where the result will be stored.
+     *               The value will be set to true if the current object is a GUI element,
+     *               and false otherwise.
+     */
     void is_gui_element(bool *result) {
         *result = true;
     }
 
+    /**
+     * @brief Determines if a button is pressed.
+     *
+     * This function checks the state of a button and sets the result accordingly.
+     *
+     * @param[out] result Pointer to a boolean variable where the result will be stored.
+     *                    - true: if the button is pressed.
+     *                    - false: if the button is not pressed.
+     */
     void is_button(bool *result) {
         *result = false;
     }
 
+    /**
+     * @brief Checks if the current area is an input area.
+     *
+     * This function determines whether the current area is designated as an input area.
+     *
+     * @param result A pointer to a boolean variable where the result will be stored.
+     *               - true: The current area is an input area.
+     *               - false: The current area is not an input area.
+     */
     void is_input_area(bool *result) {
         *result = false;
     }
 
+    /**
+     * @brief Checks if the current item is in the selection list.
+     *
+     * This function sets the value of the provided boolean pointer to indicate
+     * whether the current item is part of the selection list.
+     *
+     * @param result A pointer to a boolean variable where the result will be stored.
+     *               The value will be set to true if the item is in the selection list,
+     *               and false otherwise.
+     */
     void is_selectlist(bool *result) {
         *result = false;
     }
 
+    /**
+     * @brief Checks if a condition is a checkbox.
+     *
+     * This function sets the value of the boolean pointer `result` to indicate
+     * whether a certain condition is a checkbox.
+     *
+     * @param result A pointer to a boolean variable where the result will be stored.
+     *               The value will be set to `true` if the condition is a checkbox,
+     *               otherwise it will be set to `false`.
+     */
     void is_checkbox(bool *result) {
         *result = false;
     }
 
+    /**
+     * @brief Checks if the current frame is a radio button.
+     *
+     * This function determines whether the current frame instance is a radio button.
+     *
+     * @return true if the frame is a radio button, false otherwise.
+     */
     bool is_radiobutton() {
         return false;
     }
 
+    /**
+     * @brief Frees the resources allocated for the frame.
+     *
+     * This function is responsible for releasing any memory or resources
+     * that were allocated for the frame. It should be called when the frame
+     * is no longer needed to avoid memory leaks.
+     */
     void free() {
         Frame *frame = (Frame *) this->object;
         if (frame->flags & FRAME_CONTENT) {
@@ -457,6 +639,5 @@ class Frame : public Node {
         }
         SUPER(free);
     }
- 
-    
 }
+

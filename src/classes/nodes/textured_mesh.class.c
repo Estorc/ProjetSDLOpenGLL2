@@ -18,10 +18,22 @@
 #include "storage/node.h"
 #include "memory.h"
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
+
 class TexturedMesh : public Node {
     __containerType__ Node *
     public:
 
+    /**
+     * @brief Constructor for the textured mesh class.
+     *
+     * This function initializes a textured mesh object using the provided file path.
+     *
+     * @param path The file path to the texture to be used for the mesh.
+     */
     void constructor(const char *path) {
         this->type = __type__;
 
@@ -34,8 +46,14 @@ class TexturedMesh : public Node {
         SUPER(initialize_node);
     }
 
-    
-
+    /**
+     * @brief Retrieves settings data.
+     *
+     * This function retrieves settings data and stores it in the provided pointer.
+     *
+     * @param[out] ptr A pointer to a pointer to a pointer where the settings data will be stored.
+     * @param[out] length A pointer to an integer where the length of the settings data will be stored.
+     */
     void get_settings_data(void *** ptr, int * length) {
         SUPER(get_settings_data, ptr, length);
         TextureMap texture = ((TexturedMesh*) this->object)->texture;
@@ -47,6 +65,13 @@ class TexturedMesh : public Node {
         *length += sizeof(data)/sizeof(void *);
     }
 
+    /**
+     * @brief Loads data from a file.
+     *
+     * This function reads data from the provided file pointer and loads it into the appropriate structures.
+     *
+     * @param file A pointer to the FILE object that represents the file to be read.
+     */
     void load(FILE *file) {
         char path[100];
         if (file) {
@@ -57,6 +82,13 @@ class TexturedMesh : public Node {
         this::constructor(path);
     }
 
+    /**
+     * @brief Saves the current state of the textured mesh to a file.
+     *
+     * This function writes the necessary data of the textured mesh to the provided file.
+     *
+     * @param file A pointer to the FILE object where the textured mesh data will be saved.
+     */
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         TextureMap texture = ((TexturedMesh*) this->object)->texture;
@@ -68,7 +100,16 @@ class TexturedMesh : public Node {
         }
     }
 
-
+    /**
+     * @brief Renders the textured mesh using the provided model matrix and active shader.
+     * 
+     * This function takes a model matrix and an active shader as input parameters and
+     * renders the textured mesh accordingly. The model matrix is used to transform the
+     * mesh, and the shader is used to apply the necessary rendering effects.
+     * 
+     * @param modelMatrix A pointer to the model matrix used for transforming the mesh.
+     * @param activeShader The shader program used for rendering the mesh.
+     */
     void render(mat4 *modelMatrix, Shader activeShader) {
         TexturedMesh *texturedMesh = (TexturedMesh*) this->object;
         vec3 defaultColor = {0.5f, 0.5f, 0.5f};
@@ -97,3 +138,4 @@ class TexturedMesh : public Node {
 
     
 }
+

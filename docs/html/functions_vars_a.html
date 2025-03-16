@@ -119,9 +119,9 @@ $(document).ready(function(){initNavTree('functions_vars_a.html',''); initResiza
 <li>angularVelocity&#160;:&#160;<a class="el" href="classRigidBody.html#a733a02a44389a0a954c627db05a372f1">RigidBody</a></li>
 <li>animations&#160;:&#160;<a class="el" href="structModelData.html#a12dcf46b362065a7cd88f4c6c2e3f001">ModelData</a></li>
 <li>animationsCount&#160;:&#160;<a class="el" href="structModelData.html#a51cb1227ab21db720c5376cd28025535">ModelData</a></li>
-<li>antialiasing&#160;:&#160;<a class="el" href="structSettings.html#a05a884da24bbc023027969019ecf4a8f">Settings</a></li>
-<li>attribute&#160;:&#160;<a class="el" href="group__NodeFunctions.html#gafa50314ea6ca719d2fcbbdaa33dd052a">Node</a></li>
-<li>attributes_count&#160;:&#160;<a class="el" href="group__NodeFunctions.html#gab9c00a78e2cb89d68c1d9a251c870444">Node</a></li>
+<li>antialiasing&#160;:&#160;<a class="el" href="structSettings.html#a5a0ad4a032192977e936e6bc54f81c6e">Settings</a></li>
+<li>attribute&#160;:&#160;<a class="el" href="classNode.html#afa50314ea6ca719d2fcbbdaa33dd052a">Node</a></li>
+<li>attributes_count&#160;:&#160;<a class="el" href="classNode.html#ab9c00a78e2cb89d68c1d9a251c870444">Node</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -154,6 +154,16 @@ $(document).ready(function(){initNavTree('functions_vars_a.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -162,7 +172,7 @@ $(document).ready(function(){initNavTree('functions_vars_a.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

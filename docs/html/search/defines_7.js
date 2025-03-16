@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['magenta_0',['MAGENTA',['../color_8h.html#a6f699060902f800f12aaae150f3a708e',1,'color.h']]],
-  ['malloc_5fattribute_1',['MALLOC_ATTRIBUTE',['../scripts_8h.html#ab66a6ec3ad963180d7459762c3db288f',1,'scripts.h']]],
-  ['max_5fweights_2',['MAX_WEIGHTS',['../fbx__loader_8c.html#a67b64c4de5e778bbd7c76a3d08131f71',1,'fbx_loader.c']]],
-  ['min_3',['MIN',['../network__utils_8c.html#a74e75242132eaabbc1c512488a135926',1,'network_utils.c']]],
-  ['msg_5fterminator_4',['MSG_TERMINATOR',['../network__utils_8h.html#a22d98471c444d26015e3e9180b244ffb',1,'network_utils.h']]],
-  ['multiplier_5',['MULTIPLIER',['../hash_8c.html#ab7ffb5a0ee7b15aecd0b32e84b93e2ee',1,'hash.c']]]
+  ['new_5fraw_0',['NEW_RAW',['../raw_8h.html#a6154ab4bd717caa9740f2780239b6233',1,'raw.h']]],
+  ['new_5fscript_1',['NEW_SCRIPT',['../scripts_8h.html#af416bb3d38a37f18dd2c6b4705113481',1,'scripts.h']]],
+  ['node_5ffunc_5fparams_2',['NODE_FUNC_PARAMS',['../scripts_8h.html#a974cce8e58a6368403c267f9c3a87735',1,'scripts.h']]],
+  ['node_5ffunc_5freturn_3',['NODE_FUNC_RETURN',['../scripts_8h.html#afff6ec8df5aac4eac40fa6b6b6550cab',1,'scripts.h']]],
+  ['num_5fdirectional_5flights_4',['NUM_DIRECTIONAL_LIGHTS',['../depth__map_8h.html#ab90be778d83c75fb725bfc4567b8e994',1,'depth_map.h']]],
+  ['num_5fpoint_5flights_5',['NUM_POINT_LIGHTS',['../depth__map_8h.html#a58f706ceb6011b91f9a62743bf8f7aad',1,'depth_map.h']]],
+  ['num_5fspot_5flights_6',['NUM_SPOT_LIGHTS',['../depth__map_8h.html#acbdacded87b3baa77422a1467098fc6c',1,'depth_map.h']]]
 ];

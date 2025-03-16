@@ -21,17 +21,63 @@
 #include "render/depth_map.h"
 #include "buffer.h"
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class DirectionalLight : public Light {
     __containerType__ Node *
     public:
 
-    void constructor(struct DirectionalLight *directionalLight) {
-        this->object = directionalLight;
+    /**
+     * @brief Constructor for the directional light class.
+     *
+     * This function initializes a directional light with the specified parameters.
+     *
+     * @param r Red component of the light color.
+     * @param g Green component of the light color.
+     * @param b Blue component of the light color.
+     * @param bias Bias value for the light.
+     * @param size Size of the light.
+     * @param constant Constant attenuation factor.
+     * @param linear Linear attenuation factor.
+     * @param quadratic Quadratic attenuation factor.
+     */
+    void constructor(float r, float g, float b, float bias, float size, float constant, float linear, float quadratic) {
         this->type = __type__;
+
+        DirectionalLight *directionalLight;
+        directionalLight = malloc(sizeof(DirectionalLight));
+        POINTER_CHECK(directionalLight);
+
+        Game.buffers->lightingBuffer.length++;
+
+        directionalLight->color[0] = r;
+        directionalLight->color[1] = g;
+        directionalLight->color[2] = b;
+        directionalLight->bias = bias;
+        directionalLight->size = size;
+        directionalLight->constant = constant;
+        directionalLight->linear = linear;
+        directionalLight->quadratic = quadratic;
+
+        this->object = directionalLight;
         SUPER(initialize_node);
         SUPER(init_light);
     }
 
+    /**
+     * @brief Updates the state of a directional light.
+     *
+     * This function updates the position, rotation, and scale of a directional light
+     * based on the given delta time and updates the count of active lights.
+     *
+     * @param pos Pointer to a vec3 structure representing the position of the light.
+     * @param rot Pointer to a vec3 structure representing the rotation of the light.
+     * @param scale Pointer to a vec3 structure representing the scale of the light.
+     * @param delta The time delta used for updating the light's state.
+     * @param lightsCount Pointer to an unsigned 8-bit integer representing the count of active lights.
+     */
     void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta, u8 *lightsCount) {
         UNUSED(delta);
         if (!(this->flags & NODE_LIGHT_ACTIVE)) return;
@@ -82,8 +128,18 @@ class DirectionalLight : public Light {
         lightsCount[DIRECTIONAL_LIGHT]++;
     }   
 
-
-
+    /**
+     * @brief Retrieves the settings data for the directional light.
+     *
+     * This function populates the provided pointer with the settings data
+     * and sets the length of the data.
+     *
+     * @param[out] ptr A pointer to a pointer to a pointer where the settings data will be stored.
+     *                 The function will allocate memory for the settings data and set this pointer
+     *                 to point to the allocated memory.
+     * @param[out] length A pointer to an integer where the length of the settings data will be stored.
+     *                    The function will set this integer to the length of the settings data.
+     */
     void get_settings_data(void *** ptr, int * length) {
         SUPER(get_settings_data, ptr, length);
         DirectionalLight *directionalLight = (DirectionalLight*) this->object;
@@ -100,35 +156,48 @@ class DirectionalLight : public Light {
         *length += sizeof(data)/sizeof(void *);
     }
 
+    /**
+     * @brief Loads data from a file.
+     *
+     * This function reads data from the given file and loads it into the appropriate
+     * structures or variables. The file pointer must be valid and opened in the 
+     * appropriate mode for reading.
+     *
+     * @param file A pointer to the FILE object that identifies the file to read from.
+     */
     void load(FILE *file) {
-        DirectionalLight *directionalLight;
-        directionalLight = malloc(sizeof(DirectionalLight));
-        POINTER_CHECK(directionalLight);
+        vec3 color;
+        f32 bias, size, constant, linear, quadratic;
 
         if (file) {
             fscanf(file,"(%g,%g,%g,%g,%g,%g,%g,%g)\n", 
-                &directionalLight->color[0], &directionalLight->color[1], &directionalLight->color[2], 
-                &directionalLight->bias,
-                &directionalLight->size,
-                &directionalLight->constant,
-                &directionalLight->linear,
-                &directionalLight->quadratic
+                &color[0], &color[1], &color[2], 
+                &bias,
+                &size,
+                &constant,
+                &linear,
+                &quadratic
                 );
         } else {
-            glm_vec3_one(directionalLight->color);
-            directionalLight->bias = 0.005f;
-            directionalLight->size = 0.0f;
-            directionalLight->constant = 1.0f;
-            directionalLight->linear = 0.09f;
-            directionalLight->quadratic = 0.032f;
+            glm_vec3_one(color);
+            bias = 0.005f;
+            size = 0.0f;
+            constant = 1.0f;
+            linear = 0.09f;
+            quadratic = 0.032f;
         }
 
-        Game.buffers->lightingBuffer.length++;
-        this->type = __type__;
-        this::constructor(directionalLight);
+        this::constructor(color[0], color[1], color[2], bias, size, constant, linear, quadratic);
         this->flags |= NODE_EDITOR_FLAG;
     }
 
+    /**
+     * @brief Saves the current state of the directional light to a file.
+     *
+     * This function writes the current state of the directional light object to the specified file.
+     *
+     * @param file A pointer to the FILE object where the state will be saved.
+     */
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         DirectionalLight *directionalLight = (DirectionalLight*) this->object;
@@ -153,7 +222,6 @@ class DirectionalLight : public Light {
      * 
      * @note This function is called by the render loop to configure the lighting for the specified camera.
      */
-
     void configure_lighting(Camera *c, WorldShaders *shaders, DepthMap *depthMap, u8 *lightsCount) {
 
         // Lights and shadows
@@ -186,3 +254,4 @@ class DirectionalLight : public Light {
     }
     
 }
+

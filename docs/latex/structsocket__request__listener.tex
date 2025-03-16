@@ -2,31 +2,41 @@
 \hypertarget{structsocket__request__listener}{}\label{structsocket__request__listener}\index{socket\_request\_listener@{socket\_request\_listener}}
 
 
+Structure to hold socket request listener information.  
+
+
+
+
 {\ttfamily \#include $<$socket.\+h$>$}
 
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-fd\+\_\+set \mbox{\hyperlink{structsocket__request__listener_ac2c6f7a039f5d52bdb121da49e38534f}{readfds}}
+fd\+\_\+set \mbox{\hyperlink{structsocket__request__listener_a69b8a2764767b054eebb2bc544295e39}{readfds}}
 \item 
-struct timeval \mbox{\hyperlink{structsocket__request__listener_af4e6820fa5ad4dbe471808b47d43ec05}{timeout}}
+struct timeval \mbox{\hyperlink{structsocket__request__listener_ab9215cb056d728a57458538827f59fb6}{timeout}}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Structure to hold socket request listener information. 
+
+This structure contains the file descriptor set and timeout value used for monitoring socket read events. 
+
 \doxysubsection{Member Data Documentation}
-\Hypertarget{structsocket__request__listener_ac2c6f7a039f5d52bdb121da49e38534f}\label{structsocket__request__listener_ac2c6f7a039f5d52bdb121da49e38534f} 
+\Hypertarget{structsocket__request__listener_a69b8a2764767b054eebb2bc544295e39}\label{structsocket__request__listener_a69b8a2764767b054eebb2bc544295e39} 
 \index{socket\_request\_listener@{socket\_request\_listener}!readfds@{readfds}}
 \index{readfds@{readfds}!socket\_request\_listener@{socket\_request\_listener}}
 \doxysubsubsection{\texorpdfstring{readfds}{readfds}}
-{\footnotesize\ttfamily fd\+\_\+set socket\+\_\+request\+\_\+listener\+::readfds}
+{\footnotesize\ttfamily socket\+\_\+request\+\_\+listener\+::readfds}
 
-\Hypertarget{structsocket__request__listener_af4e6820fa5ad4dbe471808b47d43ec05}\label{structsocket__request__listener_af4e6820fa5ad4dbe471808b47d43ec05} 
+File descriptor set used for monitoring read events on sockets. \Hypertarget{structsocket__request__listener_ab9215cb056d728a57458538827f59fb6}\label{structsocket__request__listener_ab9215cb056d728a57458538827f59fb6} 
 \index{socket\_request\_listener@{socket\_request\_listener}!timeout@{timeout}}
 \index{timeout@{timeout}!socket\_request\_listener@{socket\_request\_listener}}
 \doxysubsubsection{\texorpdfstring{timeout}{timeout}}
-{\footnotesize\ttfamily struct timeval socket\+\_\+request\+\_\+listener\+::timeout}
+{\footnotesize\ttfamily socket\+\_\+request\+\_\+listener\+::timeout}
 
-
+Timeout value for the select() system call, specifying the maximum time to wait for an event. 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

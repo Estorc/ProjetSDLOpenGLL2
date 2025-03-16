@@ -18,10 +18,20 @@
 #include "render/framebuffer.h"
 #include "storage/node.h"
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class RayCShape : public CShape {
     __containerType__ Node *
     public:
 
+    /**
+     * @brief Constructor for the ray_cshape class.
+     *
+     * This function initializes a new instance of the ray_cshape class.
+     * It sets up the necessary properties and prepares the object for use.
+     */
     void constructor() {
         this->type = __type__;
 
@@ -33,22 +43,37 @@ class RayCShape : public CShape {
         SUPER(initialize_node);
     }
 
-    
-
+    /**
+     * @brief Retrieves the priority value.
+     *
+     * This function assigns the priority value to the provided pointer.
+     *
+     * @param[out] priority Pointer to an integer where the priority value will be stored.
+     */
     void get_priority(int *priority) {
         *priority = 5;
     }
 
+    /**
+     * @brief Loads the ray_cshape class.
+     *
+     * This function is responsible for initializing and loading the necessary
+     * resources for the ray_cshape class. It sets up the required data structures
+     * and prepares the class for use.
+     */
     void load() {
         this::constructor();
     }
 
+    /**
+     * @brief Saves the current state to the specified file.
+     *
+     * This function writes the current state of the object to the provided file.
+     *
+     * @param file A pointer to the FILE object where the state will be saved.
+     */
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
     }
-
-
-
-
-    
 }
+

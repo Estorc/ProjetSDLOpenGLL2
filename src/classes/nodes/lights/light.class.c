@@ -29,21 +29,76 @@
 #include "render/depth_map.h"
 #include "buffer.h"
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class Light : public Node {
     __containerType__ Node *
     public:
 
-
+    /**
+     * @brief Initializes the light object.
+     *
+     * This function sets up the initial state of the light object, configuring
+     * any necessary parameters and preparing it for use in the application.
+     */
     void init_light() {
         this->flags |= NODE_LIGHT_ACTIVE;
     }
 
 
+    /**
+     * @var vbo
+     * @brief Static variable representing the Vertex Buffer Object (VBO) for the light class.
+     *
+     * The VBO is used to store vertex data for rendering the lights in the OpenGL context.
+     */
+
+    /**
+     * @var vao
+     * @brief Static variable representing the Vertex Array Object (VAO) for the light class.
+     *
+     * The VAO is used to store the vertex attribute configuration for rendering the lights in the OpenGL context.
+     */
+
+    /**
+     * @var billboardShader
+     * @brief Static variable representing the shader program used for rendering billboard lights.
+     *
+     * The shader program is used to render lights as billboards, which are 2D textures that always face the camera.
+     */
+
+    /**
+     * @var lightPointTexture
+     * @brief Static variable representing the texture map for point lights.
+     *
+     * The texture map is used to apply a texture to point lights, enhancing their visual appearance in the OpenGL context.
+     */
+
+    /**
+     * @var directionalLightTexture
+     * @brief Static variable representing the texture map for directional lights.
+     *
+     * The texture map is used to apply a texture to directional lights, enhancing their visual appearance in the OpenGL context.
+     */
     static VBO vbo = 0;
     static VAO vao = 0;
     static Shader billboardShader = 0;
     static TextureMap lightPointTexture = 0;
     static TextureMap directionalLightTexture = 0;
+
+    /**
+     * @brief Renders the light using the provided model matrix and active shader.
+     *
+     * This function takes a model matrix and an active shader as parameters and
+     * performs the rendering of the light. The model matrix is used to transform
+     * the light's position and orientation in the scene, while the active shader
+     * is used to apply the appropriate shading effects.
+     *
+     * @param modelMatrix Pointer to the model matrix used for transforming the light.
+     * @param activeShader The shader program currently active for rendering.
+     */
     void render(mat4 *modelMatrix, Shader activeShader) {
         #ifdef DEBUG
         if (!vao) this::init_vao();
@@ -63,7 +118,13 @@ class Light : public Node {
         #endif
     }
 
-
+    /**
+     * @brief Initializes the Vertex Array Object (VAO) for the light class.
+     *
+     * This function sets up the VAO which is used to store the vertex attribute
+     * configuration for the light objects. It binds the necessary buffers and
+     * configures the vertex attributes.
+     */
     void init_vao() {
         float quadVertices[] = {
             // positions        // texture Coords
@@ -133,3 +194,4 @@ class Light : public Node {
         set_shader_mat4(shaders->depth, "lightSpaceMatrix", &lightSpaceMatrix);
     }
 }
+

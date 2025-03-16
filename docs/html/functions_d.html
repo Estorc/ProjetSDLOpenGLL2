@@ -110,12 +110,14 @@ $(document).ready(function(){initNavTree('functions_d.html',''); initResizable()
 <div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
-<li>data&#160;:&#160;<a class="el" href="structmessage__handler.html#a6cc1e4b2d4553a00d653da7a37107aea">message_handler</a>, <a class="el" href="classModel.html#ac61b0aa5e0804844fb7f71e3776fdf35">Model</a>, <a class="el" href="structQueue.html#aebf5af56d0bf90578085ff93cbce8203">Queue</a>, <a class="el" href="structStack.html#ac6da0059516e42463ddacb5f859ec06c">Stack</a></li>
+<li>data&#160;:&#160;<a class="el" href="structmessage__handler.html#a6cc1e4b2d4553a00d653da7a37107aea">message_handler</a>, <a class="el" href="classModel.html#ad65afc7055a966b1ca15004b74846090">Model</a>, <a class="el" href="structQueue.html#aebf5af56d0bf90578085ff93cbce8203">Queue</a>, <a class="el" href="structStack.html#ac6da0059516e42463ddacb5f859ec06c">Stack</a></li>
 <li>defaultText&#160;:&#160;<a class="el" href="classInputArea.html#ad1dd5150e6ce1279bb289c59ade5fd81">InputArea</a></li>
 <li>depth&#160;:&#160;<a class="el" href="structWorldShaders.html#a1dd7dbad44b318567d8c0c59b873d5a9">WorldShaders</a></li>
-<li>directionalLightTexture&#160;:&#160;<a class="el" href="classLight.html#a7417dc99e235b7f775b5f80810cca6fc">Light</a></li>
+<li>depthMap&#160;:&#160;<a class="el" href="structRaptiquaX__t.html#a4a580a42d4719fb7fda27c36864fb042">RaptiquaX_t</a></li>
+<li>directionalLightTexture&#160;:&#160;<a class="el" href="classLight.html#a95d1f2d32be65c60e6910e21a2dabb63">Light</a></li>
 <li>displayLength&#160;:&#160;<a class="el" href="classLabel.html#ab8e68fb9efb4b361b54e8b6418f865d7">Label</a></li>
 <li>distance&#160;:&#160;<a class="el" href="structCollectedNode.html#aaa9a6afb8dc190a0d0b553c0b13e1c35">CollectedNode</a></li>
+<li>down&#160;:&#160;<a class="el" href="structKeybinds.html#ab1e748c37bf791c0b8caf0d75615ae36">Keybinds</a></li>
 <li>draw_frame()&#160;:&#160;<a class="el" href="classFrame.html#ac06c37a1e7b56d157790834f77a9ae1b">Frame</a></li>
 <li>dx&#160;:&#160;<a class="el" href="structMouse.html#a4f5e9a993a861fbb89aba92421659877">Mouse</a></li>
 <li>dy&#160;:&#160;<a class="el" href="structMouse.html#a48cd03c938938767b323d60f9a71cb22">Mouse</a></li>
@@ -151,6 +153,16 @@ $(document).ready(function(){initNavTree('functions_d.html',''); initResizable()
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -159,7 +171,7 @@ $(document).ready(function(){initNavTree('functions_d.html',''); initResizable()
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

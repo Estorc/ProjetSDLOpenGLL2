@@ -37,6 +37,26 @@ typedef struct Face {
     u8 length;                              /**< Number of vertices in the face */
 } Face;
 
+/**
+ * @struct LoadingModelBuffer
+ * @brief Structure to hold the data of a 3D model being loaded.
+ *
+ * This structure contains arrays of vertices, normals, texture vertices, and faces
+ * that represent a 3D model. It is used as a buffer during the loading process of
+ * an OBJ file or similar 3D model formats.
+ *
+ * @var LoadingModelBuffer::vertex
+ * Array of vertices that define the geometric points of the model.
+ *
+ * @var LoadingModelBuffer::normals
+ * Array of normals that define the direction perpendicular to the surface of the model's faces.
+ *
+ * @var LoadingModelBuffer::textureVertex
+ * Array of texture vertices that map the 2D texture coordinates to the 3D model.
+ *
+ * @var LoadingModelBuffer::faces
+ * Array of faces that define the polygons of the model, typically triangles or quads.
+ */
 typedef struct LoadingModelBuffer {
     Vertex *vertex;                         /**< Array of vertices */
     Normal *normals;                        /**< Array of normals */
@@ -71,7 +91,6 @@ typedef struct LoadingModelBuffer {
  *
  * @return Returns 0 on successful memory allocation.
  */
-
 int malloc_obj(ModelObjectData *obj, LoadingModelBuffer *buffer, u32 vim, u32 fim, u32 vnim, u32 vtim);
 
 /**
@@ -104,7 +123,6 @@ int malloc_obj(ModelObjectData *obj, LoadingModelBuffer *buffer, u32 vim, u32 fi
  * Example Usage:
  * close_realloc_obj(&object, vi, fi, vni, vti);
  */
-
 void close_realloc_obj(ModelObjectData *obj, LoadingModelBuffer *buffer, u32 vi, u32 fi, u32 vni, u32 vti);
 
 /**
@@ -142,7 +160,6 @@ void close_realloc_obj(ModelObjectData *obj, LoadingModelBuffer *buffer, u32 vi,
  *     // Handle error
  * }
  */
-
 int load_obj_model(const char *path, ModelData *modelPtr);
 
 

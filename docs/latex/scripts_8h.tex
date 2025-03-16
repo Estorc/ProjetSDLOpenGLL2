@@ -1,5 +1,10 @@
 \doxysection{src/scripts/scripts.h File Reference}
 \hypertarget{scripts_8h}{}\label{scripts_8h}\index{src/scripts/scripts.h@{src/scripts/scripts.h}}
+
+
+Header file defining macros, structures, and functions for script management in a game engine.  
+
+
 {\ttfamily \#include "{}../io/input.\+h"{}}\newline
 {\ttfamily \#include "{}signals.\+h"{}}\newline
 Include dependency graph for scripts.\+h\+:\nopagebreak
@@ -20,39 +25,39 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{DoxyCompactItemize}
 \item 
 union \mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}}
-\item 
+\begin{DoxyCompactList}\small\item\em Union representing different types of behavior attributes. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structScript}{Script}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Structure representing a script with a function and a name. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{scripts_8h_a974cce8e58a6368403c267f9c3a87735}{NODE\+\_\+\+FUNC\+\_\+\+PARAMS}}~struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}this, va\+\_\+list args
-\item 
+\begin{DoxyCompactList}\small\item\em Macro to define the parameters for a node function. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}{NODE\+\_\+\+FUNC\+\_\+\+RETURN}}~void
-\item 
+\begin{DoxyCompactList}\small\item\em Macro to define the return type for a node function. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scripts_8h_a58f77c5f80369078d6299b1f2fd5bad0}{GET\+\_\+\+READY\+\_\+\+PARAMETERS}}()~float delta = (float) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(double); (void) delta
-\item 
+\begin{DoxyCompactList}\small\item\em Macro to retrieve the delta parameter from the variable argument list. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scripts_8h_a5a92c26c2a90419fef673e1c1ea64877}{GET\+\_\+\+SIGNAL}}()~\mbox{\hyperlink{signals_8h_af01fe53890022ebf14996ce6824f829e}{Signal}} signal = (\mbox{\hyperlink{signals_8h_af01fe53890022ebf14996ce6824f829e}{Signal}}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); (void) signal
-\item 
+\begin{DoxyCompactList}\small\item\em Macro to retrieve the signal parameter from the variable argument list. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(type)~va\+\_\+arg(args, type)
-\item 
+\begin{DoxyCompactList}\small\item\em Macro to retrieve a parameter of a specified type from the variable argument list. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scripts_8h_a89cccad7eb1689fcdac2bc98857d6cfe}{GET\+\_\+\+AREA\+\_\+\+SIGNAL\+\_\+\+PARAMETERS}}()~int sig\+Id = \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}other = (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}); float distance = (float) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(double); float \texorpdfstring{$\ast$}{*}impact\+Point = (float \texorpdfstring{$\ast$}{*}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(float \texorpdfstring{$\ast$}{*}); int offset = \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); (void) sig\+Id; (void) other; (void) distance; (void) impact\+Point; (void) offset;
-\item 
+\begin{DoxyCompactList}\small\item\em Macro to retrieve parameters for an area signal from the variable argument list. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scripts_8h_ab66a6ec3ad963180d7459762c3db288f}{MALLOC\+\_\+\+ATTRIBUTE}}(node,  x)
-\item 
+\begin{DoxyCompactList}\small\item\em Macro to allocate memory for node attributes if not already allocated. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scripts_8h_a3b256363c9ad696b1e4d662f05bca390}{SET\+\_\+\+ATTRIBUTES\+\_\+\+COUNT}}(x)~\mbox{\hyperlink{scripts_8h_ab66a6ec3ad963180d7459762c3db288f}{MALLOC\+\_\+\+ATTRIBUTE}}(this, x)
-\item 
+\begin{DoxyCompactList}\small\item\em Macro to set the number of attributes for the current node. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scripts_8h_af416bb3d38a37f18dd2c6b4705113481}{NEW\+\_\+\+SCRIPT}}(script\+\_\+name)~\mbox{\hyperlink{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}{NODE\+\_\+\+FUNC\+\_\+\+RETURN}} script\+\_\+name(\mbox{\hyperlink{scripts_8h_a974cce8e58a6368403c267f9c3a87735}{NODE\+\_\+\+FUNC\+\_\+\+PARAMS}}) \{
-\item 
+\begin{DoxyCompactList}\small\item\em Macro to define a new script function. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scripts_8h_ac7d49370a5c29bbfabf7a4653d96e43f}{END\+\_\+\+SCRIPT}}(script\+\_\+name)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Macro to end a script function and register it in the game engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef \mbox{\hyperlink{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}{NODE\+\_\+\+FUNC\+\_\+\+RETURN}}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{scripts_8h_ac020245962afe481cfa36fabbb2816f6}{Script\+Func}}) (\mbox{\hyperlink{scripts_8h_a974cce8e58a6368403c267f9c3a87735}{NODE\+\_\+\+FUNC\+\_\+\+PARAMS}})
-\item 
-typedef \mbox{\hyperlink{scripts_8h_ac020245962afe481cfa36fabbb2816f6}{Script\+Func}} \mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}}\mbox{[}\mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dceaf4deb964fef817f01b86d7487ab15d3a}{BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+COUNT}}\mbox{]}
-\end{DoxyCompactItemize}
+typedef \mbox{\hyperlink{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}{NODE\+\_\+\+FUNC\+\_\+\+RETURN}}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{scripts_8h_a9ecadf256432372682e2216abac9ab04}{Script\+Func}}) (\mbox{\hyperlink{scripts_8h_a974cce8e58a6368403c267f9c3a87735}{NODE\+\_\+\+FUNC\+\_\+\+PARAMS}})
+\begin{DoxyCompactList}\small\item\em Function pointer type for script functions. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{scripts_8h_a9ecadf256432372682e2216abac9ab04}{Script\+Func}} \mbox{\hyperlink{scripts_8h_a73db917e73a3821d62d9869b4196c024}{Behavior}}\mbox{[}\mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dceaf4deb964fef817f01b86d7487ab15d3a}{BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+COUNT}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array of script functions for different behavior scripts. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -61,43 +66,39 @@ enum \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dce}{Behavior\+Sc
 , \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dcea14e2dd7810c43e265390ddd9e51cd337}{BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+SIGNAL}}
 , \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dceaf4deb964fef817f01b86d7487ab15d3a}{BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+COUNT}}
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Enumeration of different behavior script types. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\+\_\+\+\_\+script\+Index\+\_\+\+\_\+}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Global index for tracking the number of registered scripts. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Header file defining macros, structures, and functions for script management in a game engine. 
+
+This file contains macros for handling script parameters, memory allocation for node attributes, and script registration. It also defines structures and types for behavior attributes, scripts, and behavior scripts enumeration. 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{scripts_8h_ac7d49370a5c29bbfabf7a4653d96e43f}\label{scripts_8h_ac7d49370a5c29bbfabf7a4653d96e43f} 
-\index{scripts.h@{scripts.h}!END\_SCRIPT@{END\_SCRIPT}}
-\index{END\_SCRIPT@{END\_SCRIPT}!scripts.h@{scripts.h}}
-\doxysubsubsection{\texorpdfstring{END\_SCRIPT}{END\_SCRIPT}}
-{\footnotesize\ttfamily \#define END\+\_\+\+SCRIPT(\begin{DoxyParamCaption}\item[{}]{script\+\_\+name }\end{DoxyParamCaption})}
+\Hypertarget{scripts_8h_a974cce8e58a6368403c267f9c3a87735}\label{scripts_8h_a974cce8e58a6368403c267f9c3a87735} 
+\index{scripts.h@{scripts.h}!NODE\_FUNC\_PARAMS@{NODE\_FUNC\_PARAMS}}
+\index{NODE\_FUNC\_PARAMS@{NODE\_FUNC\_PARAMS}!scripts.h@{scripts.h}}
+\doxysubsubsection{\texorpdfstring{NODE\_FUNC\_PARAMS}{NODE\_FUNC\_PARAMS}}
+{\footnotesize\ttfamily \#define NODE\+\_\+\+FUNC\+\_\+\+PARAMS~struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}this, va\+\_\+list args}
 
-{\bfseries Value\+:}
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\};\ \(\backslash\)}
-\DoxyCodeLine{\textcolor{keyword}{static}\ \_\_attribute\_\_((constructor))\ \textcolor{keywordtype}{void}\ \_\_anon\_ctor\_\#\#script\_name(\textcolor{keywordtype}{void})\ \{\(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{raptiquax_8c_ad749b00382c53c431741d17582670ad7}{Game}}.\mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}}\ =\ realloc(\mbox{\hyperlink{raptiquax_8c_ad749b00382c53c431741d17582670ad7}{Game}}.\mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structScript}{Script}})\ *\ (\mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\_\_scriptIndex\_\_}}\ +\ 1));\(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{raptiquax_8c_ad749b00382c53c431741d17582670ad7}{Game}}.\mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}}[\mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\_\_scriptIndex\_\_}}].\mbox{\hyperlink{structScript_a0a0c95e8768aa2b629e06637aeb2876e}{name}}\ =\ \#script\_name;\(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{raptiquax_8c_ad749b00382c53c431741d17582670ad7}{Game}}.\mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}}[\mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\_\_scriptIndex\_\_}}++].\mbox{\hyperlink{structScript_a8ebb4084e2de1a387cb1fe527d49e4e7}{script}}\ =\ script\_name;\(\backslash\)}
-\DoxyCodeLine{\ \ \ \ PRINT\_INFO(\textcolor{stringliteral}{"{}Script\ \%s\ loaded\ in\ \%d!\(\backslash\)n"{}},\ \#script\_name,\ \mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\_\_scriptIndex\_\_}});\(\backslash\)}
-\DoxyCodeLine{\}}
 
-\end{DoxyCode}
-\Hypertarget{scripts_8h_a89cccad7eb1689fcdac2bc98857d6cfe}\label{scripts_8h_a89cccad7eb1689fcdac2bc98857d6cfe} 
-\index{scripts.h@{scripts.h}!GET\_AREA\_SIGNAL\_PARAMETERS@{GET\_AREA\_SIGNAL\_PARAMETERS}}
-\index{GET\_AREA\_SIGNAL\_PARAMETERS@{GET\_AREA\_SIGNAL\_PARAMETERS}!scripts.h@{scripts.h}}
-\doxysubsubsection{\texorpdfstring{GET\_AREA\_SIGNAL\_PARAMETERS}{GET\_AREA\_SIGNAL\_PARAMETERS}}
-{\footnotesize\ttfamily \#define GET\+\_\+\+AREA\+\_\+\+SIGNAL\+\_\+\+PARAMETERS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~int sig\+Id = \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}other = (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}); float distance = (float) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(double); float \texorpdfstring{$\ast$}{*}impact\+Point = (float \texorpdfstring{$\ast$}{*}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(float \texorpdfstring{$\ast$}{*}); int offset = \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); (void) sig\+Id; (void) other; (void) distance; (void) impact\+Point; (void) offset;}
 
-\Hypertarget{scripts_8h_a53d61fbbc3be120d650767848e836f83}\label{scripts_8h_a53d61fbbc3be120d650767848e836f83} 
-\index{scripts.h@{scripts.h}!GET\_PARAMETER@{GET\_PARAMETER}}
-\index{GET\_PARAMETER@{GET\_PARAMETER}!scripts.h@{scripts.h}}
-\doxysubsubsection{\texorpdfstring{GET\_PARAMETER}{GET\_PARAMETER}}
-{\footnotesize\ttfamily \#define GET\+\_\+\+PARAMETER(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})~va\+\_\+arg(args, type)}
+Macro to define the parameters for a node function. 
+
+\Hypertarget{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}\label{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab} 
+\index{scripts.h@{scripts.h}!NODE\_FUNC\_RETURN@{NODE\_FUNC\_RETURN}}
+\index{NODE\_FUNC\_RETURN@{NODE\_FUNC\_RETURN}!scripts.h@{scripts.h}}
+\doxysubsubsection{\texorpdfstring{NODE\_FUNC\_RETURN}{NODE\_FUNC\_RETURN}}
+{\footnotesize\ttfamily \#define NODE\+\_\+\+FUNC\+\_\+\+RETURN~void}
+
+
+
+Macro to define the return type for a node function. 
 
 \Hypertarget{scripts_8h_a58f77c5f80369078d6299b1f2fd5bad0}\label{scripts_8h_a58f77c5f80369078d6299b1f2fd5bad0} 
 \index{scripts.h@{scripts.h}!GET\_READY\_PARAMETERS@{GET\_READY\_PARAMETERS}}
@@ -105,11 +106,44 @@ int \mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\+\_\+\+\_\+s
 \doxysubsubsection{\texorpdfstring{GET\_READY\_PARAMETERS}{GET\_READY\_PARAMETERS}}
 {\footnotesize\ttfamily \#define GET\+\_\+\+READY\+\_\+\+PARAMETERS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~float delta = (float) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(double); (void) delta}
 
+
+
+Macro to retrieve the delta parameter from the variable argument list. 
+
 \Hypertarget{scripts_8h_a5a92c26c2a90419fef673e1c1ea64877}\label{scripts_8h_a5a92c26c2a90419fef673e1c1ea64877} 
 \index{scripts.h@{scripts.h}!GET\_SIGNAL@{GET\_SIGNAL}}
 \index{GET\_SIGNAL@{GET\_SIGNAL}!scripts.h@{scripts.h}}
 \doxysubsubsection{\texorpdfstring{GET\_SIGNAL}{GET\_SIGNAL}}
 {\footnotesize\ttfamily \#define GET\+\_\+\+SIGNAL(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\mbox{\hyperlink{signals_8h_af01fe53890022ebf14996ce6824f829e}{Signal}} signal = (\mbox{\hyperlink{signals_8h_af01fe53890022ebf14996ce6824f829e}{Signal}}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); (void) signal}
+
+
+
+Macro to retrieve the signal parameter from the variable argument list. 
+
+\Hypertarget{scripts_8h_a53d61fbbc3be120d650767848e836f83}\label{scripts_8h_a53d61fbbc3be120d650767848e836f83} 
+\index{scripts.h@{scripts.h}!GET\_PARAMETER@{GET\_PARAMETER}}
+\index{GET\_PARAMETER@{GET\_PARAMETER}!scripts.h@{scripts.h}}
+\doxysubsubsection{\texorpdfstring{GET\_PARAMETER}{GET\_PARAMETER}}
+{\footnotesize\ttfamily \#define GET\+\_\+\+PARAMETER(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})~va\+\_\+arg(args, type)}
+
+
+
+Macro to retrieve a parameter of a specified type from the variable argument list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of the parameter to retrieve. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{scripts_8h_a89cccad7eb1689fcdac2bc98857d6cfe}\label{scripts_8h_a89cccad7eb1689fcdac2bc98857d6cfe} 
+\index{scripts.h@{scripts.h}!GET\_AREA\_SIGNAL\_PARAMETERS@{GET\_AREA\_SIGNAL\_PARAMETERS}}
+\index{GET\_AREA\_SIGNAL\_PARAMETERS@{GET\_AREA\_SIGNAL\_PARAMETERS}!scripts.h@{scripts.h}}
+\doxysubsubsection{\texorpdfstring{GET\_AREA\_SIGNAL\_PARAMETERS}{GET\_AREA\_SIGNAL\_PARAMETERS}}
+{\footnotesize\ttfamily \#define GET\+\_\+\+AREA\+\_\+\+SIGNAL\+\_\+\+PARAMETERS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~int sig\+Id = \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}other = (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}); float distance = (float) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(double); float \texorpdfstring{$\ast$}{*}impact\+Point = (float \texorpdfstring{$\ast$}{*}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(float \texorpdfstring{$\ast$}{*}); int offset = \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); (void) sig\+Id; (void) other; (void) distance; (void) impact\+Point; (void) offset;}
+
+
+
+Macro to retrieve parameters for an area signal from the variable argument list. 
 
 \Hypertarget{scripts_8h_ab66a6ec3ad963180d7459762c3db288f}\label{scripts_8h_ab66a6ec3ad963180d7459762c3db288f} 
 \index{scripts.h@{scripts.h}!MALLOC\_ATTRIBUTE@{MALLOC\_ATTRIBUTE}}
@@ -127,24 +161,17 @@ int \mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\+\_\+\+\_\+s
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
-\Hypertarget{scripts_8h_af416bb3d38a37f18dd2c6b4705113481}\label{scripts_8h_af416bb3d38a37f18dd2c6b4705113481} 
-\index{scripts.h@{scripts.h}!NEW\_SCRIPT@{NEW\_SCRIPT}}
-\index{NEW\_SCRIPT@{NEW\_SCRIPT}!scripts.h@{scripts.h}}
-\doxysubsubsection{\texorpdfstring{NEW\_SCRIPT}{NEW\_SCRIPT}}
-{\footnotesize\ttfamily \#define NEW\+\_\+\+SCRIPT(\begin{DoxyParamCaption}\item[{}]{script\+\_\+name }\end{DoxyParamCaption})~\mbox{\hyperlink{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}{NODE\+\_\+\+FUNC\+\_\+\+RETURN}} script\+\_\+name(\mbox{\hyperlink{scripts_8h_a974cce8e58a6368403c267f9c3a87735}{NODE\+\_\+\+FUNC\+\_\+\+PARAMS}}) \{}
 
-\Hypertarget{scripts_8h_a974cce8e58a6368403c267f9c3a87735}\label{scripts_8h_a974cce8e58a6368403c267f9c3a87735} 
-\index{scripts.h@{scripts.h}!NODE\_FUNC\_PARAMS@{NODE\_FUNC\_PARAMS}}
-\index{NODE\_FUNC\_PARAMS@{NODE\_FUNC\_PARAMS}!scripts.h@{scripts.h}}
-\doxysubsubsection{\texorpdfstring{NODE\_FUNC\_PARAMS}{NODE\_FUNC\_PARAMS}}
-{\footnotesize\ttfamily \#define NODE\+\_\+\+FUNC\+\_\+\+PARAMS~struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}this, va\+\_\+list args}
 
-\Hypertarget{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}\label{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab} 
-\index{scripts.h@{scripts.h}!NODE\_FUNC\_RETURN@{NODE\_FUNC\_RETURN}}
-\index{NODE\_FUNC\_RETURN@{NODE\_FUNC\_RETURN}!scripts.h@{scripts.h}}
-\doxysubsubsection{\texorpdfstring{NODE\_FUNC\_RETURN}{NODE\_FUNC\_RETURN}}
-{\footnotesize\ttfamily \#define NODE\+\_\+\+FUNC\+\_\+\+RETURN~void}
+Macro to allocate memory for node attributes if not already allocated. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em node} & The node for which to allocate attributes. \\
+\hline
+{\em x} & The number of attributes to allocate. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{scripts_8h_a3b256363c9ad696b1e4d662f05bca390}\label{scripts_8h_a3b256363c9ad696b1e4d662f05bca390} 
 \index{scripts.h@{scripts.h}!SET\_ATTRIBUTES\_COUNT@{SET\_ATTRIBUTES\_COUNT}}
 \index{SET\_ATTRIBUTES\_COUNT@{SET\_ATTRIBUTES\_COUNT}!scripts.h@{scripts.h}}
@@ -153,18 +180,76 @@ int \mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\+\_\+\+\_\+s
 
 
 
-\doxysubsection{Typedef Documentation}
-\Hypertarget{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}\label{scripts_8h_a43b2073db874347a0a4ab166b38e36bd} 
-\index{scripts.h@{scripts.h}!Behavior@{Behavior}}
-\index{Behavior@{Behavior}!scripts.h@{scripts.h}}
-\doxysubsubsection{\texorpdfstring{Behavior}{Behavior}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{scripts_8h_ac020245962afe481cfa36fabbb2816f6}{Script\+Func}} Behavior\mbox{[}\mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dceaf4deb964fef817f01b86d7487ab15d3a}{BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+COUNT}}\mbox{]}}
+Macro to set the number of attributes for the current node. 
 
-\Hypertarget{scripts_8h_ac020245962afe481cfa36fabbb2816f6}\label{scripts_8h_ac020245962afe481cfa36fabbb2816f6} 
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The number of attributes to set. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{scripts_8h_af416bb3d38a37f18dd2c6b4705113481}\label{scripts_8h_af416bb3d38a37f18dd2c6b4705113481} 
+\index{scripts.h@{scripts.h}!NEW\_SCRIPT@{NEW\_SCRIPT}}
+\index{NEW\_SCRIPT@{NEW\_SCRIPT}!scripts.h@{scripts.h}}
+\doxysubsubsection{\texorpdfstring{NEW\_SCRIPT}{NEW\_SCRIPT}}
+{\footnotesize\ttfamily \#define NEW\+\_\+\+SCRIPT(\begin{DoxyParamCaption}\item[{}]{script\+\_\+name }\end{DoxyParamCaption})~\mbox{\hyperlink{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}{NODE\+\_\+\+FUNC\+\_\+\+RETURN}} script\+\_\+name(\mbox{\hyperlink{scripts_8h_a974cce8e58a6368403c267f9c3a87735}{NODE\+\_\+\+FUNC\+\_\+\+PARAMS}}) \{}
+
+
+
+Macro to define a new script function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em script\+\_\+name} & The name of the script function. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{scripts_8h_ac7d49370a5c29bbfabf7a4653d96e43f}\label{scripts_8h_ac7d49370a5c29bbfabf7a4653d96e43f} 
+\index{scripts.h@{scripts.h}!END\_SCRIPT@{END\_SCRIPT}}
+\index{END\_SCRIPT@{END\_SCRIPT}!scripts.h@{scripts.h}}
+\doxysubsubsection{\texorpdfstring{END\_SCRIPT}{END\_SCRIPT}}
+{\footnotesize\ttfamily \#define END\+\_\+\+SCRIPT(\begin{DoxyParamCaption}\item[{}]{script\+\_\+name }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\};\ \(\backslash\)}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \_\_attribute\_\_((constructor))\ \textcolor{keywordtype}{void}\ \_\_anon\_ctor\_\#\#script\_name(\textcolor{keywordtype}{void})\ \{\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{raptiquax_8c_ad749b00382c53c431741d17582670ad7}{Game}}.\mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}}\ =\ realloc(\mbox{\hyperlink{raptiquax_8c_ad749b00382c53c431741d17582670ad7}{Game}}.\mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structScript}{Script}})\ *\ (\mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\_\_scriptIndex\_\_}}\ +\ 1));\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{raptiquax_8c_ad749b00382c53c431741d17582670ad7}{Game}}.\mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}}[\mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\_\_scriptIndex\_\_}}].\mbox{\hyperlink{structScript_a0a0c95e8768aa2b629e06637aeb2876e}{name}}\ =\ \#script\_name;\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{raptiquax_8c_ad749b00382c53c431741d17582670ad7}{Game}}.\mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}}[\mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\_\_scriptIndex\_\_}}++].\mbox{\hyperlink{structScript_a8ebb4084e2de1a387cb1fe527d49e4e7}{script}}\ =\ script\_name;\(\backslash\)}
+\DoxyCodeLine{\ \ \ \ PRINT\_INFO(\textcolor{stringliteral}{"{}Script\ \%s\ loaded\ in\ \%d!\(\backslash\)n"{}},\ \#script\_name,\ \mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\_\_scriptIndex\_\_}});\(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Macro to end a script function and register it in the game engine. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em script\+\_\+name} & The name of the script function. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{scripts_8h_a9ecadf256432372682e2216abac9ab04}\label{scripts_8h_a9ecadf256432372682e2216abac9ab04} 
 \index{scripts.h@{scripts.h}!ScriptFunc@{ScriptFunc}}
 \index{ScriptFunc@{ScriptFunc}!scripts.h@{scripts.h}}
 \doxysubsubsection{\texorpdfstring{ScriptFunc}{ScriptFunc}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{scripts_8h_afff6ec8df5aac4eac40fa6b6b6550cab}{NODE\+\_\+\+FUNC\+\_\+\+RETURN}}(\texorpdfstring{$\ast$}{*} Script\+Func) (\mbox{\hyperlink{scripts_8h_a974cce8e58a6368403c267f9c3a87735}{NODE\+\_\+\+FUNC\+\_\+\+PARAMS}})}
+{\footnotesize\ttfamily Script\+Func}
+
+
+
+Function pointer type for script functions. 
+
+\Hypertarget{scripts_8h_a73db917e73a3821d62d9869b4196c024}\label{scripts_8h_a73db917e73a3821d62d9869b4196c024} 
+\index{scripts.h@{scripts.h}!Behavior@{Behavior}}
+\index{Behavior@{Behavior}!scripts.h@{scripts.h}}
+\doxysubsubsection{\texorpdfstring{Behavior}{Behavior}}
+{\footnotesize\ttfamily Behavior}
+
+
+
+Array of script functions for different behavior scripts. 
 
 
 
@@ -175,21 +260,25 @@ int \mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\+\_\+\+\_\+s
 \doxysubsubsection{\texorpdfstring{BehaviorScripts}{BehaviorScripts}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{scripts_8h_ac786ca734f29141f39a61d61836f1dce}{Behavior\+Scripts}}}
 
+
+
+Enumeration of different behavior script types. 
+
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{BEHAVIOR\_SCRIPT\_READY@{BEHAVIOR\_SCRIPT\_READY}!scripts.h@{scripts.h}}\index{scripts.h@{scripts.h}!BEHAVIOR\_SCRIPT\_READY@{BEHAVIOR\_SCRIPT\_READY}}}\Hypertarget{scripts_8h_ac786ca734f29141f39a61d61836f1dcea3b3f46718a5654c73ce66a0598b95c3b}\label{scripts_8h_ac786ca734f29141f39a61d61836f1dcea3b3f46718a5654c73ce66a0598b95c3b} 
-BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+READY&\\
+BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+READY&Ready script \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{BEHAVIOR\_SCRIPT\_UPDATE@{BEHAVIOR\_SCRIPT\_UPDATE}!scripts.h@{scripts.h}}\index{scripts.h@{scripts.h}!BEHAVIOR\_SCRIPT\_UPDATE@{BEHAVIOR\_SCRIPT\_UPDATE}}}\Hypertarget{scripts_8h_ac786ca734f29141f39a61d61836f1dceaa83501e0d766b4d51cf23afd35ec5d13}\label{scripts_8h_ac786ca734f29141f39a61d61836f1dceaa83501e0d766b4d51cf23afd35ec5d13} 
-BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+UPDATE&\\
+BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+UPDATE&Update script \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{BEHAVIOR\_SCRIPT\_SIGNAL@{BEHAVIOR\_SCRIPT\_SIGNAL}!scripts.h@{scripts.h}}\index{scripts.h@{scripts.h}!BEHAVIOR\_SCRIPT\_SIGNAL@{BEHAVIOR\_SCRIPT\_SIGNAL}}}\Hypertarget{scripts_8h_ac786ca734f29141f39a61d61836f1dcea14e2dd7810c43e265390ddd9e51cd337}\label{scripts_8h_ac786ca734f29141f39a61d61836f1dcea14e2dd7810c43e265390ddd9e51cd337} 
-BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+SIGNAL&\\
+BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+SIGNAL&Signal script \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{BEHAVIOR\_SCRIPT\_COUNT@{BEHAVIOR\_SCRIPT\_COUNT}!scripts.h@{scripts.h}}\index{scripts.h@{scripts.h}!BEHAVIOR\_SCRIPT\_COUNT@{BEHAVIOR\_SCRIPT\_COUNT}}}\Hypertarget{scripts_8h_ac786ca734f29141f39a61d61836f1dceaf4deb964fef817f01b86d7487ab15d3a}\label{scripts_8h_ac786ca734f29141f39a61d61836f1dceaf4deb964fef817f01b86d7487ab15d3a} 
-BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+COUNT&\\
+BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+COUNT&Total count of behavior scripts \\
 \hline
 
 \end{DoxyEnumFields}
@@ -201,4 +290,8 @@ BEHAVIOR\+\_\+\+SCRIPT\+\_\+\+COUNT&\\
 \index{\_\_scriptIndex\_\_@{\_\_scriptIndex\_\_}!scripts.h@{scripts.h}}
 \doxysubsubsection{\texorpdfstring{\_\_scriptIndex\_\_}{\_\_scriptIndex\_\_}}
 {\footnotesize\ttfamily int \+\_\+\+\_\+script\+Index\+\_\+\+\_\+\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global index for tracking the number of registered scripts. 
 

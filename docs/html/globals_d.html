@@ -112,9 +112,11 @@ $(document).ready(function(){initNavTree('globals_d.html',''); initResizable(); 
 <h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
 <li>DEFAULT_DEPTH_SHADER&#160;:&#160;<a class="el" href="group__ShaderManagement.html#ga770865347525c47610ef50f584783534">shader.h</a></li>
 <li>DEFAULT_GUI_SHADER&#160;:&#160;<a class="el" href="group__ShaderManagement.html#ga88325351f80640e41970b4141a549b44">shader.h</a></li>
+<li>default_input_settings()&#160;:&#160;<a class="el" href="group__InputHandling.html#ga600af85b0754785cb4ab342218b1ceee">input.c</a>, <a class="el" href="group__InputHandling.html#ga600af85b0754785cb4ab342218b1ceee">input.h</a></li>
 <li>DEFAULT_RENDER_SHADER&#160;:&#160;<a class="el" href="group__ShaderManagement.html#gaae0064bb82d7d6a3929c88550423b7db">shader.h</a></li>
 <li>DEFAULT_SCREEN_SHADER&#160;:&#160;<a class="el" href="group__ShaderManagement.html#ga712eb81654f5792fdb633c586ac30389">shader.h</a></li>
 <li>DEFAULT_SKYBOX_SHADER&#160;:&#160;<a class="el" href="group__ShaderManagement.html#gab2db09e6298f20fac1c66c8c4ad69cee">shader.h</a></li>
+<li>depthMap&#160;:&#160;<a class="el" href="raptiquax_8c.html#a05db9a2e20c606a506e7b8da6d0248e3">raptiquax.c</a></li>
 <li>DIFFUSE_MATERIAL_PROPERTY&#160;:&#160;<a class="el" href="group__ModelHandling.html#gga74a3753dc733cc27e7b37ab4fcc4f20ead834f3918cf0decc98e4c3724cee546b">model.h</a></li>
 <li>DIRECTIONAL_LIGHT&#160;:&#160;<a class="el" href="group__Lighting.html#gga8c6cae46dbb41ab5d86c6df0879fb24ea5d2f2becc8f8ccac92c1077f953543e6">lighting.h</a></li>
 <li>draw_button()&#160;:&#160;<a class="el" href="gltexture__loader_8c.html#a30269b10be83f106aeaca9d789eaeb6e">gltexture_loader.c</a></li>
@@ -157,6 +159,16 @@ $(document).ready(function(){initNavTree('globals_d.html',''); initResizable(); 
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -165,7 +177,7 @@ $(document).ready(function(){initNavTree('globals_d.html',''); initResizable(); 
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

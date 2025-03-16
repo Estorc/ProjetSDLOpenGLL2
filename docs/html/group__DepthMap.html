@@ -125,7 +125,7 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga51a7d0ce85272f7c6ea353b880f64c4c" id="r_ga51a7d0ce85272f7c6ea353b880f64c4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DepthMap.html#ga51a7d0ce85272f7c6ea353b880f64c4c">create_depthmap</a> (<a class="el" href="structDepthMap.html">DepthMap</a> *depthMap, struct <a class="el" href="structWorldShaders.html">WorldShaders</a> *shaders)</td></tr>
+<tr class="memitem:ga51a7d0ce85272f7c6ea353b880f64c4c" id="r_ga51a7d0ce85272f7c6ea353b880f64c4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DepthMap.html#ga51a7d0ce85272f7c6ea353b880f64c4c">create_depthmap</a> (<a class="el" href="structDepthMap.html">DepthMap</a> *<a class="el" href="raptiquax_8c.html#a05db9a2e20c606a506e7b8da6d0248e3">depthMap</a>, struct <a class="el" href="structWorldShaders.html">WorldShaders</a> *shaders)</td></tr>
 <tr class="memdesc:ga51a7d0ce85272f7c6ea353b880f64c4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a depth map for shadow mapping.  <br /></td></tr>
 <tr class="separator:ga51a7d0ce85272f7c6ea353b880f64c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -205,6 +205,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -213,7 +223,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

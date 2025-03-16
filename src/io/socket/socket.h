@@ -14,11 +14,53 @@
 #define CLOSESOCKET close
 #endif
 
+/**
+ * @struct socket_request_listener
+ * @brief Structure to hold socket request listener information.
+ *
+ * This structure contains the file descriptor set and timeout value
+ * used for monitoring socket read events.
+ *
+ * @var socket_request_listener::readfds
+ * File descriptor set used for monitoring read events on sockets.
+ *
+ * @var socket_request_listener::timeout
+ * Timeout value for the select() system call, specifying the maximum
+ * time to wait for an event.
+ */
 struct socket_request_listener {
     fd_set readfds;
     struct timeval timeout;
 };
 
+/**
+ * @struct peer
+ * @brief Structure to represent a network peer.
+ *
+ * This structure contains information about a network peer, including
+ * its socket, request listener, incoming buffer, ping value, and message
+ * handlers.
+ *
+ * @var peer::socket
+ * The socket file descriptor associated with the peer.
+ *
+ * @var peer::listener
+ * The socket request listener associated with the peer, used to monitor
+ * read events and handle timeouts.
+ *
+ * @var peer::incoming_buffer
+ * Pointer to a buffer used for storing incoming data from the peer.
+ *
+ * @var peer::ping
+ * An integer value representing the ping (latency) of the peer.
+ *
+ * @var peer::handlers
+ * Array of pointers to message handler structures, used to process
+ * incoming messages from the peer.
+ *
+ * @var peer::handler_count
+ * The number of message handlers in the handlers array.
+ */
 struct peer {
     int socket;
     struct socket_request_listener listener;

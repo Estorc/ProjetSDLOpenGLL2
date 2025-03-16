@@ -10,6 +10,7 @@
 {\ttfamily \#include "{}render/depth\+\_\+map.\+h"{}}\newline
 {\ttfamily \#include "{}render/render.\+h"{}}\newline
 {\ttfamily \#include "{}window.\+h"{}}\newline
+{\ttfamily \#include "{}settings.\+h"{}}\newline
 Include dependency graph for window.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -24,8 +25,8 @@ Include dependency graph for window.\+c\+:\nopagebreak
 \begin{DoxyCompactList}\small\item\em Creates a new SDL window with an Open\+GL context. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__WindowManagement_gaaed89909806dfb2af681aa06b19dca77}{refresh\+\_\+ui}} (\mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}})
 \begin{DoxyCompactList}\small\item\em Refreshes the UI of the window. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__WindowManagement_gab56ab3230ef96fa735a155b3d1ec8133}{update\+\_\+window}} (\mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}scene, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}depth\+Map, \mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}{msaa}}, \mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}screen\+Plane)
-\begin{DoxyCompactList}\small\item\em Updates the window by rendering the scene and swapping the Game.\+buffers-\/\texorpdfstring{$>$}{>} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__WindowManagement_gab56ab3230ef96fa735a155b3d1ec8133}{update\+\_\+window}} (\mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}scene, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a05db9a2e20c606a506e7b8da6d0248e3}{depth\+Map}}, \mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}{msaa}}, \mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}screen\+Plane)
+\begin{DoxyCompactList}\small\item\em Updates the window by rendering the scene and swapping the buffers. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__WindowManagement_ga753959d386c6d9627c35ce46aa6abcad}{refresh\+\_\+resolution}} ()
 \begin{DoxyCompactList}\small\item\em Refreshes the window resolution. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__WindowManagement_ga9a5e7a077c13adf66a3da172521a39c0}{free\+\_\+window}} (\mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}})

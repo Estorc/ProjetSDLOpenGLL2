@@ -1,0 +1,7 @@
+<map id="src/scripts/scripts.h" name="src/scripts/scripts.h">
+<area shape="rect" id="Node000001" title="Header file defining macros, structures, and functions for script management in a game engine." alt="" coords="5,31,152,56"/>
+<area shape="rect" id="Node000002" href="$input_8h.html" title=" " alt="" coords="200,5,295,31"/>
+<area shape="poly" id="edge3_Node000001_Node000002" title=" " alt="" coords="152,30,186,24,187,30,153,35"/>
+<area shape="rect" id="Node000003" href="$signals_8h.html" title="Signal and slot system for C projects." alt="" coords="207,55,287,80"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="153,51,194,57,194,62,152,56"/>
+</map>

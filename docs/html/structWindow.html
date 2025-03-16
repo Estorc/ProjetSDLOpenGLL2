@@ -139,73 +139,25 @@ Public Attributes</h2></td></tr>
 <tr class="separator:abfc5f54e2c9ade4fdb3866dca7bd39a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ebcd667b3bb46a28b7b0428c29aa93e" id="r_a2ebcd667b3bb46a28b7b0428c29aa93e"><td class="memItemLeft" align="right" valign="top">vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWindow.html#a2ebcd667b3bb46a28b7b0428c29aa93e">fadeColor</a></td></tr>
 <tr class="separator:a2ebcd667b3bb46a28b7b0428c29aa93e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfd6a085fe40e9011e695b2840640e2e" id="r_abfd6a085fe40e9011e695b2840640e2e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWindow.html#abfd6a085fe40e9011e695b2840640e2e">resized</a></td></tr>
-<tr class="separator:abfd6a085fe40e9011e695b2840640e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68384450a0b8af679a72a6fb18d9f4f6" id="r_a68384450a0b8af679a72a6fb18d9f4f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWindow.html#a68384450a0b8af679a72a6fb18d9f4f6">flags</a></td></tr>
+<tr class="separator:a68384450a0b8af679a72a6fb18d9f4f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure representing the SDL window and its associated OpenGL context. </p>
-<p>This structure encapsulates the SDL window and its related properties, including the OpenGL context, surfaces for rendering, and timing information. </p>
+<p>This structure encapsulates the SDL window and its related properties, including the OpenGL context, surfaces for rendering, and timing information.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>[in] The SDL_Window object representing the window. </td></tr>
+    <tr><td class="paramname">context</td><td>[in] The SDL_GLContext object representing the OpenGL context. </td></tr>
+    <tr><td class="paramname">surface</td><td>[in, out] The SDL_Surface object used for rendering. </td></tr>
+    <tr><td class="paramname">width</td><td>[in] The width of the window. </td></tr>
+    <tr><td class="paramname">height</td><td>[in] The height of the window. </td></tr>
+    <tr><td class="paramname">lastFrameTime</td><td>[in, out] The timestamp of the last rendered frame. </td></tr>
+    <tr><td class="paramname">deltaTime</td><td>[in, out] The time elapsed between the last two frames. </td></tr>
+  </table>
+  </dd>
+</dl>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="a2ebcd667b3bb46a28b7b0428c29aa93e" name="a2ebcd667b3bb46a28b7b0428c29aa93e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ebcd667b3bb46a28b7b0428c29aa93e">&#9670;&#160;</a></span>fadeColor</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">vec4 Window::fadeColor</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Color used for fading the screen. </p>
-
-</div>
-</div>
-<a id="abfc5f54e2c9ade4fdb3866dca7bd39a9" name="abfc5f54e2c9ade4fdb3866dca7bd39a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfc5f54e2c9ade4fdb3866dca7bd39a9">&#9670;&#160;</a></span>lastTime</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Window::lastTime</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Time of the last frame update. </p>
-
-</div>
-</div>
-<a id="ac292b9a43d516b4d2eaaaa259d60febb" name="ac292b9a43d516b4d2eaaaa259d60febb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac292b9a43d516b4d2eaaaa259d60febb">&#9670;&#160;</a></span>opengl_ctx</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SDL_GLContext Window::opengl_ctx</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>OpenGL context associated with the window. </p>
-
-</div>
-</div>
-<a id="abfd6a085fe40e9011e695b2840640e2e" name="abfd6a085fe40e9011e695b2840640e2e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfd6a085fe40e9011e695b2840640e2e">&#9670;&#160;</a></span>resized</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Window::resized</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Flag indicating if the window has been resized. </p>
-
-</div>
-</div>
 <a id="a60832cf15f95282154b8fb6ab6c52c72" name="a60832cf15f95282154b8fb6ab6c52c72"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a60832cf15f95282154b8fb6ab6c52c72">&#9670;&#160;</a></span>sdl_window</h2>
 
@@ -221,21 +173,6 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ace1255057064121bed1b5ea6eb13a5a2" name="ace1255057064121bed1b5ea6eb13a5a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace1255057064121bed1b5ea6eb13a5a2">&#9670;&#160;</a></span>startTime</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Window::startTime</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Time when the window was created or initialized. </p>
-
-</div>
-</div>
 <a id="a1a42da4979d383bb3556f62df57952e5" name="a1a42da4979d383bb3556f62df57952e5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1a42da4979d383bb3556f62df57952e5">&#9670;&#160;</a></span>surface</h2>
 
@@ -248,21 +185,6 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Main rendering surface. </p>
-
-</div>
-</div>
-<a id="a506a3b7598ed47b5823a02dc0c648b63" name="a506a3b7598ed47b5823a02dc0c648b63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a506a3b7598ed47b5823a02dc0c648b63">&#9670;&#160;</a></span>time</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Window::time</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Current time since the window was created or initialized. </p>
 
 </div>
 </div>
@@ -292,7 +214,97 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p><a class="el" href="classTexture.html">Texture</a> map for UI elements. </p>
+<p>Texture map for UI elements. </p>
+
+</div>
+</div>
+<a id="ac292b9a43d516b4d2eaaaa259d60febb" name="ac292b9a43d516b4d2eaaaa259d60febb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac292b9a43d516b4d2eaaaa259d60febb">&#9670;&#160;</a></span>opengl_ctx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_GLContext Window::opengl_ctx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>OpenGL context associated with the window. </p>
+
+</div>
+</div>
+<a id="ace1255057064121bed1b5ea6eb13a5a2" name="ace1255057064121bed1b5ea6eb13a5a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace1255057064121bed1b5ea6eb13a5a2">&#9670;&#160;</a></span>startTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Window::startTime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Time when the window was created or initialized. </p>
+
+</div>
+</div>
+<a id="a506a3b7598ed47b5823a02dc0c648b63" name="a506a3b7598ed47b5823a02dc0c648b63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a506a3b7598ed47b5823a02dc0c648b63">&#9670;&#160;</a></span>time</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Window::time</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Current time since the window was created or initialized. </p>
+
+</div>
+</div>
+<a id="abfc5f54e2c9ade4fdb3866dca7bd39a9" name="abfc5f54e2c9ade4fdb3866dca7bd39a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfc5f54e2c9ade4fdb3866dca7bd39a9">&#9670;&#160;</a></span>lastTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Window::lastTime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Time of the last frame update. </p>
+
+</div>
+</div>
+<a id="a2ebcd667b3bb46a28b7b0428c29aa93e" name="a2ebcd667b3bb46a28b7b0428c29aa93e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ebcd667b3bb46a28b7b0428c29aa93e">&#9670;&#160;</a></span>fadeColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vec4 Window::fadeColor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Color used for fading the screen. </p>
+
+</div>
+</div>
+<a id="a68384450a0b8af679a72a6fb18d9f4f6" name="a68384450a0b8af679a72a6fb18d9f4f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68384450a0b8af679a72a6fb18d9f4f6">&#9670;&#160;</a></span>flags</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> Window::flags</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Flags for window properties. </p>
 
 </div>
 </div>
@@ -330,6 +342,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -338,7 +360,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

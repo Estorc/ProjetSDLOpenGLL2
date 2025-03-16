@@ -114,117 +114,129 @@ $(document).ready(function(){initNavTree('structpeer.html',''); initResizable();
 </div><!--header-->
 <div class="contents">
 
+<p>Structure to represent a network peer.  
+ <a href="structpeer.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="socket_8h_source.html">socket.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for peer:</div>
 <div class="dyncontent">
 <div class="center"><img src="structpeer__coll__graph.png" border="0" usemap="#apeer_coll__map" alt="Collaboration graph"/></div>
 <map name="apeer_coll__map" id="apeer_coll__map">
-<area shape="rect" title=" " alt="" coords="159,93,209,119"/>
-<area shape="rect" href="structsocket__request__listener.html" title=" " alt="" coords="5,5,181,31"/>
-<area shape="poly" title=" " alt="" coords="117,38,173,91,170,95,114,42"/>
-<area shape="rect" href="structmessage__handler.html" title="Structure to handle messages." alt="" coords="206,5,343,31"/>
-<area shape="poly" title=" " alt="" coords="254,42,198,95,195,91,251,38"/>
+<area shape="rect" title="Structure to represent a network peer." alt="" coords="291,31,341,56"/>
+<area shape="rect" href="structsocket__request__listener.html" title="Structure to hold socket request listener information." alt="" coords="5,5,181,31"/>
+<area shape="poly" title=" " alt="" coords="195,27,291,38,290,43,195,32"/>
+<area shape="rect" href="structmessage__handler.html" title="Structure to handle messages." alt="" coords="25,55,162,80"/>
+<area shape="poly" title=" " alt="" coords="176,68,221,66,266,59,289,52,291,57,267,65,221,71,176,73"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aabb18ce7dc7a63a95f4c09998d985f19" id="r_aabb18ce7dc7a63a95f4c09998d985f19"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpeer.html#aabb18ce7dc7a63a95f4c09998d985f19">socket</a></td></tr>
-<tr class="separator:aabb18ce7dc7a63a95f4c09998d985f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a231b0c785c044676ff6a9f25d9533171" id="r_a231b0c785c044676ff6a9f25d9533171"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structsocket__request__listener.html">socket_request_listener</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpeer.html#a231b0c785c044676ff6a9f25d9533171">listener</a></td></tr>
-<tr class="separator:a231b0c785c044676ff6a9f25d9533171"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a552ecaf1ddcbee53c0f9adfcc71a2ecf" id="r_a552ecaf1ddcbee53c0f9adfcc71a2ecf"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpeer.html#a552ecaf1ddcbee53c0f9adfcc71a2ecf">incoming_buffer</a></td></tr>
-<tr class="separator:a552ecaf1ddcbee53c0f9adfcc71a2ecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7cc8ce1e6f96584b324ace98d25c567" id="r_aa7cc8ce1e6f96584b324ace98d25c567"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpeer.html#aa7cc8ce1e6f96584b324ace98d25c567">ping</a></td></tr>
-<tr class="separator:aa7cc8ce1e6f96584b324ace98d25c567"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38cce95c59d81f3136144afe2189a6b8" id="r_a38cce95c59d81f3136144afe2189a6b8"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structmessage__handler.html">message_handler</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpeer.html#a38cce95c59d81f3136144afe2189a6b8">handlers</a></td></tr>
-<tr class="separator:a38cce95c59d81f3136144afe2189a6b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9aeb7d91e8fbc4b1000fd4eeaa423da8" id="r_a9aeb7d91e8fbc4b1000fd4eeaa423da8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpeer.html#a9aeb7d91e8fbc4b1000fd4eeaa423da8">handler_count</a></td></tr>
-<tr class="separator:a9aeb7d91e8fbc4b1000fd4eeaa423da8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77dae86dc4c270a2ac1c95f149d5ab2a" id="r_a77dae86dc4c270a2ac1c95f149d5ab2a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpeer.html#a77dae86dc4c270a2ac1c95f149d5ab2a">socket</a></td></tr>
+<tr class="separator:a77dae86dc4c270a2ac1c95f149d5ab2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a806595a71a3b6d413dbaaa25585d7dc0" id="r_a806595a71a3b6d413dbaaa25585d7dc0"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structsocket__request__listener.html">socket_request_listener</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpeer.html#a806595a71a3b6d413dbaaa25585d7dc0">listener</a></td></tr>
+<tr class="separator:a806595a71a3b6d413dbaaa25585d7dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56b8cd88eeb0250decffc5c4a430836b" id="r_a56b8cd88eeb0250decffc5c4a430836b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpeer.html#a56b8cd88eeb0250decffc5c4a430836b">incoming_buffer</a></td></tr>
+<tr class="separator:a56b8cd88eeb0250decffc5c4a430836b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a624d5261107607e5d48ab7dd3f00d693" id="r_a624d5261107607e5d48ab7dd3f00d693"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpeer.html#a624d5261107607e5d48ab7dd3f00d693">ping</a></td></tr>
+<tr class="separator:a624d5261107607e5d48ab7dd3f00d693"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3cf9df79d3290444a46ccf912c97a64" id="r_aa3cf9df79d3290444a46ccf912c97a64"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structmessage__handler.html">message_handler</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpeer.html#aa3cf9df79d3290444a46ccf912c97a64">handlers</a></td></tr>
+<tr class="separator:aa3cf9df79d3290444a46ccf912c97a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc1a71a0f4d04b0f82fe81d852993cd4" id="r_acc1a71a0f4d04b0f82fe81d852993cd4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpeer.html#acc1a71a0f4d04b0f82fe81d852993cd4">handler_count</a></td></tr>
+<tr class="separator:acc1a71a0f4d04b0f82fe81d852993cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a9aeb7d91e8fbc4b1000fd4eeaa423da8" name="a9aeb7d91e8fbc4b1000fd4eeaa423da8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9aeb7d91e8fbc4b1000fd4eeaa423da8">&#9670;&#160;</a></span>handler_count</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Structure to represent a network peer. </p>
+<p>This structure contains information about a network peer, including its socket, request listener, incoming buffer, ping value, and message handlers. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a77dae86dc4c270a2ac1c95f149d5ab2a" name="a77dae86dc4c270a2ac1c95f149d5ab2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77dae86dc4c270a2ac1c95f149d5ab2a">&#9670;&#160;</a></span>socket</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int peer::handler_count</td>
+          <td class="memname">peer::socket</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The socket file descriptor associated with the peer. </p>
 
 </div>
 </div>
-<a id="a38cce95c59d81f3136144afe2189a6b8" name="a38cce95c59d81f3136144afe2189a6b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38cce95c59d81f3136144afe2189a6b8">&#9670;&#160;</a></span>handlers</h2>
+<a id="a806595a71a3b6d413dbaaa25585d7dc0" name="a806595a71a3b6d413dbaaa25585d7dc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a806595a71a3b6d413dbaaa25585d7dc0">&#9670;&#160;</a></span>listener</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structmessage__handler.html">message_handler</a>** peer::handlers</td>
+          <td class="memname">peer::listener</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The socket request listener associated with the peer, used to monitor read events and handle timeouts. </p>
 
 </div>
 </div>
-<a id="a552ecaf1ddcbee53c0f9adfcc71a2ecf" name="a552ecaf1ddcbee53c0f9adfcc71a2ecf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a552ecaf1ddcbee53c0f9adfcc71a2ecf">&#9670;&#160;</a></span>incoming_buffer</h2>
+<a id="a56b8cd88eeb0250decffc5c4a430836b" name="a56b8cd88eeb0250decffc5c4a430836b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56b8cd88eeb0250decffc5c4a430836b">&#9670;&#160;</a></span>incoming_buffer</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* peer::incoming_buffer</td>
+          <td class="memname">peer::incoming_buffer</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Pointer to a buffer used for storing incoming data from the peer. </p>
 
 </div>
 </div>
-<a id="a231b0c785c044676ff6a9f25d9533171" name="a231b0c785c044676ff6a9f25d9533171"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a231b0c785c044676ff6a9f25d9533171">&#9670;&#160;</a></span>listener</h2>
+<a id="a624d5261107607e5d48ab7dd3f00d693" name="a624d5261107607e5d48ab7dd3f00d693"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a624d5261107607e5d48ab7dd3f00d693">&#9670;&#160;</a></span>ping</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structsocket__request__listener.html">socket_request_listener</a> peer::listener</td>
+          <td class="memname">peer::ping</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>An integer value representing the ping (latency) of the peer. </p>
 
 </div>
 </div>
-<a id="aa7cc8ce1e6f96584b324ace98d25c567" name="aa7cc8ce1e6f96584b324ace98d25c567"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7cc8ce1e6f96584b324ace98d25c567">&#9670;&#160;</a></span>ping</h2>
+<a id="aa3cf9df79d3290444a46ccf912c97a64" name="aa3cf9df79d3290444a46ccf912c97a64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3cf9df79d3290444a46ccf912c97a64">&#9670;&#160;</a></span>handlers</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int peer::ping</td>
+          <td class="memname">peer::handlers</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Array of pointers to message handler structures, used to process incoming messages from the peer. </p>
 
 </div>
 </div>
-<a id="aabb18ce7dc7a63a95f4c09998d985f19" name="aabb18ce7dc7a63a95f4c09998d985f19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabb18ce7dc7a63a95f4c09998d985f19">&#9670;&#160;</a></span>socket</h2>
+<a id="acc1a71a0f4d04b0f82fe81d852993cd4" name="acc1a71a0f4d04b0f82fe81d852993cd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc1a71a0f4d04b0f82fe81d852993cd4">&#9670;&#160;</a></span>handler_count</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int peer::socket</td>
+          <td class="memname">peer::handler_count</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The number of message handlers in the handlers array. </p>
 
 </div>
 </div>
@@ -262,6 +274,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -270,7 +292,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

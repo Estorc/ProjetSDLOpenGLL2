@@ -18,7 +18,7 @@ extern const struct ClassManager classManager;
 
 
 /**
- * @struct Object
+ * @class Object
  * @brief A generic object structure.
  * 
  * This structure represents a generic object with a pointer to the actual object data

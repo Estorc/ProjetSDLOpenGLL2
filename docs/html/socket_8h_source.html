@@ -126,54 +126,54 @@ $(document).ready(function(){initNavTree('socket_8h_source.html',''); initResiza
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="socket_8h.html#a6bfb006d6c7d310f9c642d00f7b156ff">   14</a></span><span class="preprocessor">#define CLOSESOCKET close</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structsocket__request__listener.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsocket__request__listener.html">socket_request_listener</a> {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structsocket__request__listener.html#ac2c6f7a039f5d52bdb121da49e38534f">   18</a></span>    fd_set <a class="code hl_variable" href="structsocket__request__listener.html#ac2c6f7a039f5d52bdb121da49e38534f">readfds</a>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structsocket__request__listener.html#af4e6820fa5ad4dbe471808b47d43ec05">   19</a></span>    <span class="keyword">struct </span>timeval <a class="code hl_variable" href="structsocket__request__listener.html#af4e6820fa5ad4dbe471808b47d43ec05">timeout</a>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>};</div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structsocket__request__listener.html">   31</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsocket__request__listener.html">socket_request_listener</a> {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structsocket__request__listener.html#a69b8a2764767b054eebb2bc544295e39">   32</a></span>    fd_set <a class="code hl_variable" href="structsocket__request__listener.html#a69b8a2764767b054eebb2bc544295e39">readfds</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structsocket__request__listener.html#ab9215cb056d728a57458538827f59fb6">   33</a></span>    <span class="keyword">struct </span>timeval <a class="code hl_variable" href="structsocket__request__listener.html#ab9215cb056d728a57458538827f59fb6">timeout</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
 </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structpeer.html">   22</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structpeer.html">peer</a> {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structpeer.html#aabb18ce7dc7a63a95f4c09998d985f19">   23</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structpeer.html#aabb18ce7dc7a63a95f4c09998d985f19">socket</a>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structpeer.html#a231b0c785c044676ff6a9f25d9533171">   24</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsocket__request__listener.html">socket_request_listener</a> <a class="code hl_variable" href="structpeer.html#a231b0c785c044676ff6a9f25d9533171">listener</a>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structpeer.html#a552ecaf1ddcbee53c0f9adfcc71a2ecf">   25</a></span>    <span class="keywordtype">char</span> *<a class="code hl_variable" href="structpeer.html#a552ecaf1ddcbee53c0f9adfcc71a2ecf">incoming_buffer</a>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structpeer.html#aa7cc8ce1e6f96584b324ace98d25c567">   26</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structpeer.html#aa7cc8ce1e6f96584b324ace98d25c567">ping</a>;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structpeer.html#a38cce95c59d81f3136144afe2189a6b8">   27</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structmessage__handler.html">message_handler</a> **<a class="code hl_variable" href="structpeer.html#a38cce95c59d81f3136144afe2189a6b8">handlers</a>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structpeer.html#a9aeb7d91e8fbc4b1000fd4eeaa423da8">   28</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structpeer.html#a9aeb7d91e8fbc4b1000fd4eeaa423da8">handler_count</a>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="};">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="structpeer.html">   64</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structpeer.html">peer</a> {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="structpeer.html#a77dae86dc4c270a2ac1c95f149d5ab2a">   65</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structpeer.html#a77dae86dc4c270a2ac1c95f149d5ab2a">socket</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structpeer.html#a806595a71a3b6d413dbaaa25585d7dc0">   66</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsocket__request__listener.html">socket_request_listener</a> <a class="code hl_variable" href="structpeer.html#a806595a71a3b6d413dbaaa25585d7dc0">listener</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="structpeer.html#a56b8cd88eeb0250decffc5c4a430836b">   67</a></span>    <span class="keywordtype">char</span> *<a class="code hl_variable" href="structpeer.html#a56b8cd88eeb0250decffc5c4a430836b">incoming_buffer</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="structpeer.html#a624d5261107607e5d48ab7dd3f00d693">   68</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structpeer.html#a624d5261107607e5d48ab7dd3f00d693">ping</a>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="structpeer.html#aa3cf9df79d3290444a46ccf912c97a64">   69</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structmessage__handler.html">message_handler</a> **<a class="code hl_variable" href="structpeer.html#aa3cf9df79d3290444a46ccf912c97a64">handlers</a>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="structpeer.html#acc1a71a0f4d04b0f82fe81d852993cd4">   70</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structpeer.html#acc1a71a0f4d04b0f82fe81d852993cd4">handler_count</a>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>};</div>
 </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="foldopen" id="foldopen00041" data-start="{" data-end="};">
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structmessage__handler.html">   41</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structmessage__handler.html">message_handler</a> {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structmessage__handler.html#a8b7683d78d01c82bf02a34c79ef574e8">   42</a></span>    <span class="keywordtype">char</span> *<a class="code hl_variable" href="structmessage__handler.html#a8b7683d78d01c82bf02a34c79ef574e8">msg</a>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structmessage__handler.html#af99eb5fd284f410ebf21654e38dbc4af">   43</a></span>    int (*<a class="code hl_variable" href="structmessage__handler.html#af99eb5fd284f410ebf21654e38dbc4af">callback</a>)(<span class="keywordtype">int</span> msglen, <span class="keywordtype">char</span> *<a class="code hl_variable" href="structmessage__handler.html#a8b7683d78d01c82bf02a34c79ef574e8">msg</a>, <span class="keywordtype">void</span> * p, <span class="keywordtype">void</span> ** <a class="code hl_variable" href="structmessage__handler.html#a6cc1e4b2d4553a00d653da7a37107aea">data</a>);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structmessage__handler.html#a3223c8ab7f9f7bb2e674a2b62a102aa1">   44</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmessage__handler.html#a3223c8ab7f9f7bb2e674a2b62a102aa1">lifespan</a>;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structmessage__handler.html#a6cc1e4b2d4553a00d653da7a37107aea">   45</a></span>    <span class="keywordtype">void</span> ** <a class="code hl_variable" href="structmessage__handler.html#a6cc1e4b2d4553a00d653da7a37107aea">data</a>;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="};">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="structmessage__handler.html">   83</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structmessage__handler.html">message_handler</a> {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="structmessage__handler.html#a8b7683d78d01c82bf02a34c79ef574e8">   84</a></span>    <span class="keywordtype">char</span> *<a class="code hl_variable" href="structmessage__handler.html#a8b7683d78d01c82bf02a34c79ef574e8">msg</a>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="structmessage__handler.html#af99eb5fd284f410ebf21654e38dbc4af">   85</a></span>    int (*<a class="code hl_variable" href="structmessage__handler.html#af99eb5fd284f410ebf21654e38dbc4af">callback</a>)(<span class="keywordtype">int</span> msglen, <span class="keywordtype">char</span> *<a class="code hl_variable" href="structmessage__handler.html#a8b7683d78d01c82bf02a34c79ef574e8">msg</a>, <span class="keywordtype">void</span> * p, <span class="keywordtype">void</span> ** <a class="code hl_variable" href="structmessage__handler.html#a6cc1e4b2d4553a00d653da7a37107aea">data</a>);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="structmessage__handler.html#a3223c8ab7f9f7bb2e674a2b62a102aa1">   86</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structmessage__handler.html#a3223c8ab7f9f7bb2e674a2b62a102aa1">lifespan</a>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="structmessage__handler.html#a6cc1e4b2d4553a00d653da7a37107aea">   87</a></span>    <span class="keywordtype">void</span> ** <a class="code hl_variable" href="structmessage__handler.html#a6cc1e4b2d4553a00d653da7a37107aea">data</a>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>};</div>
 </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#include &quot;<a class="code" href="server_8h.html">server.h</a>&quot;</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#include &quot;<a class="code" href="scripts_2fps__chess_2client_8h.html">client.h</a>&quot;</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &quot;<a class="code" href="network__utils_8h.html">network_utils.h</a>&quot;</span></div>
-<div class="ttc" id="anetwork__utils_8h_html"><div class="ttname"><a href="network__utils_8h.html">network_utils.h</a></div></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#include &quot;<a class="code" href="server_8h.html">server.h</a>&quot;</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">#include &quot;<a class="code" href="scripts_2fps__chess_2client_8h.html">client.h</a>&quot;</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#include &quot;<a class="code" href="network__utils_8h.html">network_utils.h</a>&quot;</span></div>
+<div class="ttc" id="anetwork__utils_8h_html"><div class="ttname"><a href="network__utils_8h.html">network_utils.h</a></div><div class="ttdoc">Network utility functions and structures for socket communication.</div></div>
 <div class="ttc" id="ascripts_2fps__chess_2client_8h_html"><div class="ttname"><a href="scripts_2fps__chess_2client_8h.html">client.h</a></div></div>
-<div class="ttc" id="aserver_8h_html"><div class="ttname"><a href="server_8h.html">server.h</a></div></div>
-<div class="ttc" id="astructmessage__handler_html"><div class="ttname"><a href="structmessage__handler.html">message_handler</a></div><div class="ttdoc">Structure to handle messages.</div><div class="ttdef"><b>Definition</b> socket.h:41</div></div>
-<div class="ttc" id="astructmessage__handler_html_a3223c8ab7f9f7bb2e674a2b62a102aa1"><div class="ttname"><a href="structmessage__handler.html#a3223c8ab7f9f7bb2e674a2b62a102aa1">message_handler::lifespan</a></div><div class="ttdeci">int lifespan</div><div class="ttdef"><b>Definition</b> socket.h:44</div></div>
-<div class="ttc" id="astructmessage__handler_html_a6cc1e4b2d4553a00d653da7a37107aea"><div class="ttname"><a href="structmessage__handler.html#a6cc1e4b2d4553a00d653da7a37107aea">message_handler::data</a></div><div class="ttdeci">void ** data</div><div class="ttdef"><b>Definition</b> socket.h:45</div></div>
-<div class="ttc" id="astructmessage__handler_html_a8b7683d78d01c82bf02a34c79ef574e8"><div class="ttname"><a href="structmessage__handler.html#a8b7683d78d01c82bf02a34c79ef574e8">message_handler::msg</a></div><div class="ttdeci">char * msg</div><div class="ttdef"><b>Definition</b> socket.h:42</div></div>
-<div class="ttc" id="astructmessage__handler_html_af99eb5fd284f410ebf21654e38dbc4af"><div class="ttname"><a href="structmessage__handler.html#af99eb5fd284f410ebf21654e38dbc4af">message_handler::callback</a></div><div class="ttdeci">int(* callback)(int msglen, char *msg, void *p, void **data)</div><div class="ttdef"><b>Definition</b> socket.h:43</div></div>
-<div class="ttc" id="astructpeer_html"><div class="ttname"><a href="structpeer.html">peer</a></div><div class="ttdef"><b>Definition</b> socket.h:22</div></div>
-<div class="ttc" id="astructpeer_html_a231b0c785c044676ff6a9f25d9533171"><div class="ttname"><a href="structpeer.html#a231b0c785c044676ff6a9f25d9533171">peer::listener</a></div><div class="ttdeci">struct socket_request_listener listener</div><div class="ttdef"><b>Definition</b> socket.h:24</div></div>
-<div class="ttc" id="astructpeer_html_a38cce95c59d81f3136144afe2189a6b8"><div class="ttname"><a href="structpeer.html#a38cce95c59d81f3136144afe2189a6b8">peer::handlers</a></div><div class="ttdeci">struct message_handler ** handlers</div><div class="ttdef"><b>Definition</b> socket.h:27</div></div>
-<div class="ttc" id="astructpeer_html_a552ecaf1ddcbee53c0f9adfcc71a2ecf"><div class="ttname"><a href="structpeer.html#a552ecaf1ddcbee53c0f9adfcc71a2ecf">peer::incoming_buffer</a></div><div class="ttdeci">char * incoming_buffer</div><div class="ttdef"><b>Definition</b> socket.h:25</div></div>
-<div class="ttc" id="astructpeer_html_a9aeb7d91e8fbc4b1000fd4eeaa423da8"><div class="ttname"><a href="structpeer.html#a9aeb7d91e8fbc4b1000fd4eeaa423da8">peer::handler_count</a></div><div class="ttdeci">int handler_count</div><div class="ttdef"><b>Definition</b> socket.h:28</div></div>
-<div class="ttc" id="astructpeer_html_aa7cc8ce1e6f96584b324ace98d25c567"><div class="ttname"><a href="structpeer.html#aa7cc8ce1e6f96584b324ace98d25c567">peer::ping</a></div><div class="ttdeci">int ping</div><div class="ttdef"><b>Definition</b> socket.h:26</div></div>
-<div class="ttc" id="astructpeer_html_aabb18ce7dc7a63a95f4c09998d985f19"><div class="ttname"><a href="structpeer.html#aabb18ce7dc7a63a95f4c09998d985f19">peer::socket</a></div><div class="ttdeci">int socket</div><div class="ttdef"><b>Definition</b> socket.h:23</div></div>
-<div class="ttc" id="astructsocket__request__listener_html"><div class="ttname"><a href="structsocket__request__listener.html">socket_request_listener</a></div><div class="ttdef"><b>Definition</b> socket.h:17</div></div>
-<div class="ttc" id="astructsocket__request__listener_html_ac2c6f7a039f5d52bdb121da49e38534f"><div class="ttname"><a href="structsocket__request__listener.html#ac2c6f7a039f5d52bdb121da49e38534f">socket_request_listener::readfds</a></div><div class="ttdeci">fd_set readfds</div><div class="ttdef"><b>Definition</b> socket.h:18</div></div>
-<div class="ttc" id="astructsocket__request__listener_html_af4e6820fa5ad4dbe471808b47d43ec05"><div class="ttname"><a href="structsocket__request__listener.html#af4e6820fa5ad4dbe471808b47d43ec05">socket_request_listener::timeout</a></div><div class="ttdeci">struct timeval timeout</div><div class="ttdef"><b>Definition</b> socket.h:19</div></div>
+<div class="ttc" id="aserver_8h_html"><div class="ttname"><a href="server_8h.html">server.h</a></div><div class="ttdoc">Header file for socket server functions.</div></div>
+<div class="ttc" id="astructmessage__handler_html"><div class="ttname"><a href="structmessage__handler.html">message_handler</a></div><div class="ttdoc">Structure to handle messages.</div><div class="ttdef"><b>Definition</b> socket.h:83</div></div>
+<div class="ttc" id="astructmessage__handler_html_a3223c8ab7f9f7bb2e674a2b62a102aa1"><div class="ttname"><a href="structmessage__handler.html#a3223c8ab7f9f7bb2e674a2b62a102aa1">message_handler::lifespan</a></div><div class="ttdeci">int lifespan</div><div class="ttdef"><b>Definition</b> socket.h:86</div></div>
+<div class="ttc" id="astructmessage__handler_html_a6cc1e4b2d4553a00d653da7a37107aea"><div class="ttname"><a href="structmessage__handler.html#a6cc1e4b2d4553a00d653da7a37107aea">message_handler::data</a></div><div class="ttdeci">void ** data</div><div class="ttdef"><b>Definition</b> socket.h:87</div></div>
+<div class="ttc" id="astructmessage__handler_html_a8b7683d78d01c82bf02a34c79ef574e8"><div class="ttname"><a href="structmessage__handler.html#a8b7683d78d01c82bf02a34c79ef574e8">message_handler::msg</a></div><div class="ttdeci">char * msg</div><div class="ttdef"><b>Definition</b> socket.h:84</div></div>
+<div class="ttc" id="astructmessage__handler_html_af99eb5fd284f410ebf21654e38dbc4af"><div class="ttname"><a href="structmessage__handler.html#af99eb5fd284f410ebf21654e38dbc4af">message_handler::callback</a></div><div class="ttdeci">int(* callback)(int msglen, char *msg, void *p, void **data)</div><div class="ttdef"><b>Definition</b> socket.h:85</div></div>
+<div class="ttc" id="astructpeer_html"><div class="ttname"><a href="structpeer.html">peer</a></div><div class="ttdoc">Structure to represent a network peer.</div><div class="ttdef"><b>Definition</b> socket.h:64</div></div>
+<div class="ttc" id="astructpeer_html_a56b8cd88eeb0250decffc5c4a430836b"><div class="ttname"><a href="structpeer.html#a56b8cd88eeb0250decffc5c4a430836b">peer::incoming_buffer</a></div><div class="ttdeci">char * incoming_buffer</div><div class="ttdef"><b>Definition</b> socket.h:67</div></div>
+<div class="ttc" id="astructpeer_html_a624d5261107607e5d48ab7dd3f00d693"><div class="ttname"><a href="structpeer.html#a624d5261107607e5d48ab7dd3f00d693">peer::ping</a></div><div class="ttdeci">int ping</div><div class="ttdef"><b>Definition</b> socket.h:68</div></div>
+<div class="ttc" id="astructpeer_html_a77dae86dc4c270a2ac1c95f149d5ab2a"><div class="ttname"><a href="structpeer.html#a77dae86dc4c270a2ac1c95f149d5ab2a">peer::socket</a></div><div class="ttdeci">int socket</div><div class="ttdef"><b>Definition</b> socket.h:65</div></div>
+<div class="ttc" id="astructpeer_html_a806595a71a3b6d413dbaaa25585d7dc0"><div class="ttname"><a href="structpeer.html#a806595a71a3b6d413dbaaa25585d7dc0">peer::listener</a></div><div class="ttdeci">struct socket_request_listener listener</div><div class="ttdef"><b>Definition</b> socket.h:66</div></div>
+<div class="ttc" id="astructpeer_html_aa3cf9df79d3290444a46ccf912c97a64"><div class="ttname"><a href="structpeer.html#aa3cf9df79d3290444a46ccf912c97a64">peer::handlers</a></div><div class="ttdeci">struct message_handler ** handlers</div><div class="ttdef"><b>Definition</b> socket.h:69</div></div>
+<div class="ttc" id="astructpeer_html_acc1a71a0f4d04b0f82fe81d852993cd4"><div class="ttname"><a href="structpeer.html#acc1a71a0f4d04b0f82fe81d852993cd4">peer::handler_count</a></div><div class="ttdeci">int handler_count</div><div class="ttdef"><b>Definition</b> socket.h:70</div></div>
+<div class="ttc" id="astructsocket__request__listener_html"><div class="ttname"><a href="structsocket__request__listener.html">socket_request_listener</a></div><div class="ttdoc">Structure to hold socket request listener information.</div><div class="ttdef"><b>Definition</b> socket.h:31</div></div>
+<div class="ttc" id="astructsocket__request__listener_html_a69b8a2764767b054eebb2bc544295e39"><div class="ttname"><a href="structsocket__request__listener.html#a69b8a2764767b054eebb2bc544295e39">socket_request_listener::readfds</a></div><div class="ttdeci">fd_set readfds</div><div class="ttdef"><b>Definition</b> socket.h:32</div></div>
+<div class="ttc" id="astructsocket__request__listener_html_ab9215cb056d728a57458538827f59fb6"><div class="ttname"><a href="structsocket__request__listener.html#ab9215cb056d728a57458538827f59fb6">socket_request_listener::timeout</a></div><div class="ttdeci">struct timeval timeout</div><div class="ttdef"><b>Definition</b> socket.h:33</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -205,6 +205,16 @@ $(document).ready(function(){initNavTree('socket_8h_source.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -213,7 +223,7 @@ $(document).ready(function(){initNavTree('socket_8h_source.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

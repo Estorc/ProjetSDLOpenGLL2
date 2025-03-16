@@ -139,15 +139,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structModelData.html">ModelData</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure representing the data of a 3D model.  <a href="structModelData.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModel.html">Model</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure representing a 3D model.  <a href="classModel.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexturedMesh.html">TexturedMesh</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure representing a textured mesh.  <a href="classTexturedMesh.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMesh.html">Mesh</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure representing a mesh.  <a href="classMesh.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -203,6 +194,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="group__ModelHandling.html#ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198">VERTEX_ATTRIBUTE_COUNT</a>
 <br />
  }</td></tr>
+<tr class="memdesc:gabcb2d8ba41df6aa7347c241c89e81d3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of vertex attributes used in 3D models.  <a href="group__ModelHandling.html#gabcb2d8ba41df6aa7347c241c89e81d3f">More...</a><br /></td></tr>
 <tr class="separator:gabcb2d8ba41df6aa7347c241c89e81d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga74a3753dc733cc27e7b37ab4fcc4f20e" id="r_ga74a3753dc733cc27e7b37ab4fcc4f20e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ModelHandling.html#ga74a3753dc733cc27e7b37ab4fcc4f20e">MaterialProperties</a> { <br />
 &#160;&#160;<a class="el" href="group__ModelHandling.html#gga74a3753dc733cc27e7b37ab4fcc4f20ead834f3918cf0decc98e4c3724cee546b">DIFFUSE_MATERIAL_PROPERTY</a>
@@ -253,24 +245,25 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga24d2b6488ada72779f8d522ee86574e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a screen plane.  <br /></td></tr>
 <tr class="separator:ga24d2b6488ada72779f8d522ee86574e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8398a26dbcb6eda263cc6e9ef422d1dc" id="r_ga8398a26dbcb6eda263cc6e9ef422d1dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ModelHandling.html#ga8398a26dbcb6eda263cc6e9ef422d1dc">render_model</a> (mat4 *modelMatrix, <a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> activeShader, <a class="el" href="classModel.html">Model</a> *model)</td></tr>
+<tr class="memdesc:ga8398a26dbcb6eda263cc6e9ef422d1dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a 3D model using the specified shader and transformation matrix.  <br /></td></tr>
 <tr class="separator:ga8398a26dbcb6eda263cc6e9ef422d1dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Group of functions and structures for handling 3D models. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="gaa9abb132ae6f23dafca840fb8c6081ae" name="gaa9abb132ae6f23dafca840fb8c6081ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa9abb132ae6f23dafca840fb8c6081ae">&#9670;&#160;</a></span>TextureMap</h2>
+<a id="gaad5c885aa493ac48e59f4deeed82ca38" name="gaad5c885aa493ac48e59f4deeed82ca38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaad5c885aa493ac48e59f4deeed82ca38">&#9670;&#160;</a></span>VBO</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a></td>
+          <td class="memname"><a class="el" href="group__ModelHandling.html#gaad5c885aa493ac48e59f4deeed82ca38">VBO</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Alias for u32 representing a texture map. </p>
+<p>Alias for unsigned int representing a Vertex Buffer <a class="el" href="structObject.html" title="A generic object structure.">Object</a>. </p>
 
 </div>
 </div>
@@ -290,35 +283,19 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaad5c885aa493ac48e59f4deeed82ca38" name="gaad5c885aa493ac48e59f4deeed82ca38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaad5c885aa493ac48e59f4deeed82ca38">&#9670;&#160;</a></span>VBO</h2>
+<a id="gaddb0a8c0f0a8d1baff3e033eb099a83b" name="gaddb0a8c0f0a8d1baff3e033eb099a83b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaddb0a8c0f0a8d1baff3e033eb099a83b">&#9670;&#160;</a></span>VertexBuffer</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__ModelHandling.html#gaad5c885aa493ac48e59f4deeed82ca38">VBO</a></td>
+          <td class="memname"><a class="el" href="group__ModelHandling.html#gaddb0a8c0f0a8d1baff3e033eb099a83b">VertexBuffer</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Alias for unsigned int representing a Vertex Buffer <a class="el" href="structObject.html" title="A generic object structure.">Object</a>. </p>
-
-</div>
-</div>
-<a id="ga1351e71110272ccf5e8d661017498adb" name="ga1351e71110272ccf5e8d661017498adb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1351e71110272ccf5e8d661017498adb">&#9670;&#160;</a></span>Vertex</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Vertex</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Array of VERTEX_ATTRIBUTE_COUNT floats representing a vertex. </p>
+<p>Alias for VBO. </p>
 
 </div>
 </div>
@@ -338,23 +315,104 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaddb0a8c0f0a8d1baff3e033eb099a83b" name="gaddb0a8c0f0a8d1baff3e033eb099a83b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaddb0a8c0f0a8d1baff3e033eb099a83b">&#9670;&#160;</a></span>VertexBuffer</h2>
+<a id="ga1351e71110272ccf5e8d661017498adb" name="ga1351e71110272ccf5e8d661017498adb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1351e71110272ccf5e8d661017498adb">&#9670;&#160;</a></span>Vertex</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__ModelHandling.html#gaddb0a8c0f0a8d1baff3e033eb099a83b">VertexBuffer</a></td>
+          <td class="memname">Vertex</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Alias for VBO. </p>
+<p>Array of VERTEX_ATTRIBUTE_COUNT floats representing a vertex. </p>
+
+</div>
+</div>
+<a id="gaa9abb132ae6f23dafca840fb8c6081ae" name="gaa9abb132ae6f23dafca840fb8c6081ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa9abb132ae6f23dafca840fb8c6081ae">&#9670;&#160;</a></span>TextureMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alias for u32 representing a texture map. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="gabcb2d8ba41df6aa7347c241c89e81d3f" name="gabcb2d8ba41df6aa7347c241c89e81d3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabcb2d8ba41df6aa7347c241c89e81d3f">&#9670;&#160;</a></span>VertexAttribute</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__ModelHandling.html#gabcb2d8ba41df6aa7347c241c89e81d3f">VertexAttribute</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enumeration of vertex attributes used in 3D models. </p>
+<p>This enumeration defines various attributes that can be associated with a vertex in a 3D model. These attributes include positions, normals, texture coordinates, tangents, bitangents, and bone data. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3faecc071cb0c4a4faea42c7c2e1108f309" name="ggabcb2d8ba41df6aa7347c241c89e81d3faecc071cb0c4a4faea42c7c2e1108f309"></a>VERTEX_ATTRIBUTE_POSITION_X&#160;</td><td class="fielddoc"><p>X coordinate of the vertex position </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa6c1fecc71656bc9b2ebc81fc5bff3184" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa6c1fecc71656bc9b2ebc81fc5bff3184"></a>VERTEX_ATTRIBUTE_POSITION_Y&#160;</td><td class="fielddoc"><p>Y coordinate of the vertex position </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa9ce91d8b807350f30277dbb29137a37d" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa9ce91d8b807350f30277dbb29137a37d"></a>VERTEX_ATTRIBUTE_POSITION_Z&#160;</td><td class="fielddoc"><p>Z coordinate of the vertex position </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa2145649d8ddd1dea1899e89c637e6961" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa2145649d8ddd1dea1899e89c637e6961"></a>VERTEX_ATTRIBUTE_NORMAL_X&#160;</td><td class="fielddoc"><p>X component of the vertex normal </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa44ffd2447902cacde3ecf09ba4a9bf7e" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa44ffd2447902cacde3ecf09ba4a9bf7e"></a>VERTEX_ATTRIBUTE_NORMAL_Y&#160;</td><td class="fielddoc"><p>Y component of the vertex normal </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fad4dc61c5a0006a41a700482f6958d5a0" name="ggabcb2d8ba41df6aa7347c241c89e81d3fad4dc61c5a0006a41a700482f6958d5a0"></a>VERTEX_ATTRIBUTE_NORMAL_Z&#160;</td><td class="fielddoc"><p>Z component of the vertex normal </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa0e906bdeb39e691c1c63e0f186a58fc7" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa0e906bdeb39e691c1c63e0f186a58fc7"></a>VERTEX_ATTRIBUTE_TEXTURE_U&#160;</td><td class="fielddoc"><p>U coordinate of the vertex texture </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa0a3f757bd8338d883a6ae78608316ac8" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa0a3f757bd8338d883a6ae78608316ac8"></a>VERTEX_ATTRIBUTE_TEXTURE_V&#160;</td><td class="fielddoc"><p>V coordinate of the vertex texture </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa3f997a20aa08eb775be464df97e462c4" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa3f997a20aa08eb775be464df97e462c4"></a>VERTEX_ATTRIBUTE_TANGENT_X&#160;</td><td class="fielddoc"><p>X component of the vertex tangent </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fac0361afd99159dbc032571acc3f42805" name="ggabcb2d8ba41df6aa7347c241c89e81d3fac0361afd99159dbc032571acc3f42805"></a>VERTEX_ATTRIBUTE_TANGENT_Y&#160;</td><td class="fielddoc"><p>Y component of the vertex tangent </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fadf7ae10e6f67d99f85cea13efbe79307" name="ggabcb2d8ba41df6aa7347c241c89e81d3fadf7ae10e6f67d99f85cea13efbe79307"></a>VERTEX_ATTRIBUTE_TANGENT_Z&#160;</td><td class="fielddoc"><p>Z component of the vertex tangent </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa0e53f0224db3329d3bc73b669b4c7b11" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa0e53f0224db3329d3bc73b669b4c7b11"></a>VERTEX_ATTRIBUTE_BITANGENT_X&#160;</td><td class="fielddoc"><p>X component of the vertex bitangent </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fabe965fee5a11062bb99c99ab1ee35e53" name="ggabcb2d8ba41df6aa7347c241c89e81d3fabe965fee5a11062bb99c99ab1ee35e53"></a>VERTEX_ATTRIBUTE_BITANGENT_Y&#160;</td><td class="fielddoc"><p>Y component of the vertex bitangent </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa34b88344378311ad1fb9731aa526b690" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa34b88344378311ad1fb9731aa526b690"></a>VERTEX_ATTRIBUTE_BITANGENT_Z&#160;</td><td class="fielddoc"><p>Z component of the vertex bitangent </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa5794e1a14278263ab9271b77ee87cdaf" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa5794e1a14278263ab9271b77ee87cdaf"></a>VERTEX_ATTRIBUTE_BONE_ID_1&#160;</td><td class="fielddoc"><p>ID of the first bone influencing the vertex </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fab4bf877e6ca0cca62b248e299c34246d" name="ggabcb2d8ba41df6aa7347c241c89e81d3fab4bf877e6ca0cca62b248e299c34246d"></a>VERTEX_ATTRIBUTE_BONE_ID_2&#160;</td><td class="fielddoc"><p>ID of the second bone influencing the vertex </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa00652540bf5055303a1eac65ec5c7c71" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa00652540bf5055303a1eac65ec5c7c71"></a>VERTEX_ATTRIBUTE_BONE_ID_3&#160;</td><td class="fielddoc"><p>ID of the third bone influencing the vertex </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fad2ac90d311145c04bd7c20b893054de6" name="ggabcb2d8ba41df6aa7347c241c89e81d3fad2ac90d311145c04bd7c20b893054de6"></a>VERTEX_ATTRIBUTE_BONE_ID_4&#160;</td><td class="fielddoc"><p>ID of the fourth bone influencing the vertex </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa05fe44cb42440721047d00aba7d408ce" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa05fe44cb42440721047d00aba7d408ce"></a>VERTEX_ATTRIBUTE_BONE_WEIGHT_1&#160;</td><td class="fielddoc"><p>Weight of the first bone influencing the vertex </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fad0dfe274caec74ff63e1be319b48dc39" name="ggabcb2d8ba41df6aa7347c241c89e81d3fad0dfe274caec74ff63e1be319b48dc39"></a>VERTEX_ATTRIBUTE_BONE_WEIGHT_2&#160;</td><td class="fielddoc"><p>Weight of the second bone influencing the vertex </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa8739ea71326406860223c6427f75a9a3" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa8739ea71326406860223c6427f75a9a3"></a>VERTEX_ATTRIBUTE_BONE_WEIGHT_3&#160;</td><td class="fielddoc"><p>Weight of the third bone influencing the vertex </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa8a8c3fea080dd9c3535e68fd5ebe10bc" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa8a8c3fea080dd9c3535e68fd5ebe10bc"></a>VERTEX_ATTRIBUTE_BONE_WEIGHT_4&#160;</td><td class="fielddoc"><p>Weight of the fourth bone influencing the vertex </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198" name="ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198"></a>VERTEX_ATTRIBUTE_COUNT&#160;</td><td class="fielddoc"><p>Total number of vertex attributes </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="ga74a3753dc733cc27e7b37ab4fcc4f20e" name="ga74a3753dc733cc27e7b37ab4fcc4f20e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga74a3753dc733cc27e7b37ab4fcc4f20e">&#9670;&#160;</a></span>MaterialProperties</h2>
 
@@ -441,88 +499,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gabcb2d8ba41df6aa7347c241c89e81d3f" name="gabcb2d8ba41df6aa7347c241c89e81d3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabcb2d8ba41df6aa7347c241c89e81d3f">&#9670;&#160;</a></span>VertexAttribute</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="group__ModelHandling.html#gabcb2d8ba41df6aa7347c241c89e81d3f">VertexAttribute</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3faecc071cb0c4a4faea42c7c2e1108f309" name="ggabcb2d8ba41df6aa7347c241c89e81d3faecc071cb0c4a4faea42c7c2e1108f309"></a>VERTEX_ATTRIBUTE_POSITION_X&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa6c1fecc71656bc9b2ebc81fc5bff3184" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa6c1fecc71656bc9b2ebc81fc5bff3184"></a>VERTEX_ATTRIBUTE_POSITION_Y&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa9ce91d8b807350f30277dbb29137a37d" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa9ce91d8b807350f30277dbb29137a37d"></a>VERTEX_ATTRIBUTE_POSITION_Z&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa2145649d8ddd1dea1899e89c637e6961" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa2145649d8ddd1dea1899e89c637e6961"></a>VERTEX_ATTRIBUTE_NORMAL_X&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa44ffd2447902cacde3ecf09ba4a9bf7e" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa44ffd2447902cacde3ecf09ba4a9bf7e"></a>VERTEX_ATTRIBUTE_NORMAL_Y&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fad4dc61c5a0006a41a700482f6958d5a0" name="ggabcb2d8ba41df6aa7347c241c89e81d3fad4dc61c5a0006a41a700482f6958d5a0"></a>VERTEX_ATTRIBUTE_NORMAL_Z&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa0e906bdeb39e691c1c63e0f186a58fc7" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa0e906bdeb39e691c1c63e0f186a58fc7"></a>VERTEX_ATTRIBUTE_TEXTURE_U&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa0a3f757bd8338d883a6ae78608316ac8" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa0a3f757bd8338d883a6ae78608316ac8"></a>VERTEX_ATTRIBUTE_TEXTURE_V&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa3f997a20aa08eb775be464df97e462c4" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa3f997a20aa08eb775be464df97e462c4"></a>VERTEX_ATTRIBUTE_TANGENT_X&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fac0361afd99159dbc032571acc3f42805" name="ggabcb2d8ba41df6aa7347c241c89e81d3fac0361afd99159dbc032571acc3f42805"></a>VERTEX_ATTRIBUTE_TANGENT_Y&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fadf7ae10e6f67d99f85cea13efbe79307" name="ggabcb2d8ba41df6aa7347c241c89e81d3fadf7ae10e6f67d99f85cea13efbe79307"></a>VERTEX_ATTRIBUTE_TANGENT_Z&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa0e53f0224db3329d3bc73b669b4c7b11" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa0e53f0224db3329d3bc73b669b4c7b11"></a>VERTEX_ATTRIBUTE_BITANGENT_X&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fabe965fee5a11062bb99c99ab1ee35e53" name="ggabcb2d8ba41df6aa7347c241c89e81d3fabe965fee5a11062bb99c99ab1ee35e53"></a>VERTEX_ATTRIBUTE_BITANGENT_Y&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa34b88344378311ad1fb9731aa526b690" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa34b88344378311ad1fb9731aa526b690"></a>VERTEX_ATTRIBUTE_BITANGENT_Z&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa5794e1a14278263ab9271b77ee87cdaf" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa5794e1a14278263ab9271b77ee87cdaf"></a>VERTEX_ATTRIBUTE_BONE_ID_1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fab4bf877e6ca0cca62b248e299c34246d" name="ggabcb2d8ba41df6aa7347c241c89e81d3fab4bf877e6ca0cca62b248e299c34246d"></a>VERTEX_ATTRIBUTE_BONE_ID_2&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa00652540bf5055303a1eac65ec5c7c71" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa00652540bf5055303a1eac65ec5c7c71"></a>VERTEX_ATTRIBUTE_BONE_ID_3&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fad2ac90d311145c04bd7c20b893054de6" name="ggabcb2d8ba41df6aa7347c241c89e81d3fad2ac90d311145c04bd7c20b893054de6"></a>VERTEX_ATTRIBUTE_BONE_ID_4&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa05fe44cb42440721047d00aba7d408ce" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa05fe44cb42440721047d00aba7d408ce"></a>VERTEX_ATTRIBUTE_BONE_WEIGHT_1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fad0dfe274caec74ff63e1be319b48dc39" name="ggabcb2d8ba41df6aa7347c241c89e81d3fad0dfe274caec74ff63e1be319b48dc39"></a>VERTEX_ATTRIBUTE_BONE_WEIGHT_2&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa8739ea71326406860223c6427f75a9a3" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa8739ea71326406860223c6427f75a9a3"></a>VERTEX_ATTRIBUTE_BONE_WEIGHT_3&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3fa8a8c3fea080dd9c3535e68fd5ebe10bc" name="ggabcb2d8ba41df6aa7347c241c89e81d3fa8a8c3fea080dd9c3535e68fd5ebe10bc"></a>VERTEX_ATTRIBUTE_BONE_WEIGHT_4&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198" name="ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198"></a>VERTEX_ATTRIBUTE_COUNT&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga24d2b6488ada72779f8d522ee86574e7" name="ga24d2b6488ada72779f8d522ee86574e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga24d2b6488ada72779f8d522ee86574e7">&#9670;&#160;</a></span>create_screen_plane()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void create_screen_plane </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classMesh.html">Mesh</a> *&#160;</td>
-          <td class="paramname"><em>mesh</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Creates a screen plane. </p>
-<p>This function initializes a screen plane.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">mesh</td><td>Pointer to the <a class="el" href="classMesh.html" title="Structure representing a mesh.">Mesh</a> structure to be initialized.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Creates a fullscreen quad (screen plane) mesh for rendering.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">mesh</td><td>{Mesh*} A pointer to a <a class="el" href="classMesh.html" title="Structure representing a mesh.">Mesh</a> structure that will hold the created mesh's VAO and length.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function generates a fullscreen quad mesh suitable for rendering images or effects that cover the entire screen. The quad is defined by six vertices forming two triangles.</p>
-<p>The vertex data includes positions in normalized device coordinates (NDC) and corresponding texture coordinates, allowing for the mapping of textures across the full screen.</p>
-<p>The function initializes the following attributes in the <a class="el" href="classMesh.html" title="Structure representing a mesh.">Mesh</a> structure:</p><ul>
-<li>VAO: The generated Vertex Array <a class="el" href="structObject.html" title="A generic object structure.">Object</a> for the mesh.</li>
-<li>length: The number of vertices in the mesh (6 vertices total).</li>
-</ul>
-<p>Example Usage: <a class="el" href="classMesh.html" title="Structure representing a mesh.">Mesh</a> screenPlane; create_screen_plane(&amp;screenPlane); // Use screenPlane for rendering...</p>
-<p>Return: This function does not return a value but modifies the <a class="el" href="classMesh.html" title="Structure representing a mesh.">Mesh</a> structure pointed to by <code>mesh</code>. </p>
-
-</div>
-</div>
 <a id="ga0c6ab322dac2e0ee0acd181e296f1f91" name="ga0c6ab322dac2e0ee0acd181e296f1f91"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga0c6ab322dac2e0ee0acd181e296f1f91">&#9670;&#160;</a></span>create_textured_plane()</h2>
 
@@ -581,6 +558,48 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga24d2b6488ada72779f8d522ee86574e7" name="ga24d2b6488ada72779f8d522ee86574e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga24d2b6488ada72779f8d522ee86574e7">&#9670;&#160;</a></span>create_screen_plane()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void create_screen_plane </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classMesh.html">Mesh</a> *&#160;</td>
+          <td class="paramname"><em>mesh</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a screen plane. </p>
+<p>This function initializes a screen plane.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mesh</td><td>Pointer to the <a class="el" href="classMesh.html" title="Structure representing a mesh.">Mesh</a> structure to be initialized.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Creates a fullscreen quad (screen plane) mesh for rendering.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mesh</td><td>{Mesh*} A pointer to a <a class="el" href="classMesh.html" title="Structure representing a mesh.">Mesh</a> structure that will hold the created mesh's VAO and length.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function generates a fullscreen quad mesh suitable for rendering images or effects that cover the entire screen. The quad is defined by six vertices forming two triangles.</p>
+<p>The vertex data includes positions in normalized device coordinates (NDC) and corresponding texture coordinates, allowing for the mapping of textures across the full screen.</p>
+<p>The function initializes the following attributes in the <a class="el" href="classMesh.html" title="Structure representing a mesh.">Mesh</a> structure:</p><ul>
+<li>VAO: The generated Vertex Array <a class="el" href="structObject.html" title="A generic object structure.">Object</a> for the mesh.</li>
+<li>length: The number of vertices in the mesh (6 vertices total).</li>
+</ul>
+<p>Example Usage: <a class="el" href="classMesh.html" title="Structure representing a mesh.">Mesh</a> screenPlane; create_screen_plane(&amp;screenPlane); // Use screenPlane for rendering...</p>
+<p>Return: This function does not return a value but modifies the <a class="el" href="classMesh.html" title="Structure representing a mesh.">Mesh</a> structure pointed to by <code>mesh</code>. </p>
+
+</div>
+</div>
 <a id="ga8398a26dbcb6eda263cc6e9ef422d1dc" name="ga8398a26dbcb6eda263cc6e9ef422d1dc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga8398a26dbcb6eda263cc6e9ef422d1dc">&#9670;&#160;</a></span>render_model()</h2>
 
@@ -612,6 +631,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Renders a 3D model using the specified shader and transformation matrix. </p>
+<p>This function takes a transformation matrix, an active shader, and a model, and renders the model using the provided shader and transformation matrix.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modelMatrix</td><td>A pointer to a 4x4 transformation matrix (mat4) that defines the model's position, rotation, and scale in the world space. </td></tr>
+    <tr><td class="paramname">activeShader</td><td>The shader program to be used for rendering the model. </td></tr>
+    <tr><td class="paramname">model</td><td>A pointer to the <a class="el" href="classModel.html" title="Structure representing a 3D model.">Model</a> structure that contains the model's data, such as vertices, indices, textures, etc. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -646,6 +676,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -654,7 +694,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

@@ -1,0 +1,64 @@
+\doxysection{Scene System Explanation}
+\hypertarget{scene_system}{}\label{scene_system}\index{Scene System Explanation@{Scene System Explanation}}
+\hypertarget{scene_system_intro}{}\doxysubsection{\texorpdfstring{Introduction}{Introduction}}\label{scene_system_intro}
+The scene system is responsible for managing and loading .scene files, which define hierarchical structures of nodes representing objects in a game environment. These nodes include transformations, visibility, activity flags, and scripts. Below is a breakdown of how the system works.\hypertarget{scene_system_scene_format}{}\doxysubsection{\texorpdfstring{Scene File Format (.\+scene files)}{Scene File Format (.scene files)}}\label{scene_system_scene_format}
+Each .scene file describes a tree-\/like structure of nodes. Each node may have\+:
+
+Transform properties (position, rotation, scale)
+
+Visibility and activity flags
+
+Child nodes
+
+Scripts for behavior\hypertarget{scene_system_example_format}{}\doxysubsubsection{\texorpdfstring{Example Format\+:}{Example Format:}}\label{scene_system_example_format}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classNode}{Node}}[m0,0,0r0,0,0s1,1,1a1v1]:2}
+\DoxyCodeLine{\mbox{\hyperlink{classNode}{Node}}:4}
+\DoxyCodeLine{\mbox{\hyperlink{classSkybox}{Skybox}}(assets/textures/skybox/right.jpg,\ ...)}
+\DoxyCodeLine{\mbox{\hyperlink{classPointLight}{PointLight}}(60,50,40,0.001,0,1,0.09,0.032)[m-\/10,6,9]}
+\DoxyCodeLine{\mbox{\hyperlink{classModel}{Model}}(assets/models/settings\_bg/settings\_bg.obj)[s5,5,5]}
+\DoxyCodeLine{\mbox{\hyperlink{classCamera}{Camera}}(1)\{NULL,st\_camera,NULL\}[m0,3,5]}
+
+\end{DoxyCode}
+\hypertarget{scene_system_parsing_logic}{}\doxysubsection{\texorpdfstring{Parsing \& Loading Logic}{Parsing \& Loading Logic}}\label{scene_system_parsing_logic}
+\hypertarget{scene_system_load_scene}{}\doxysubsubsection{\texorpdfstring{Function\+: load\+\_\+scene}{Function: load\_scene}}\label{scene_system_load_scene}
+This function reads a .scene file and constructs a node tree. It initializes buffers, reads the file, and builds the hierarchy.\hypertarget{scene_system_load_node}{}\doxysubsubsection{\texorpdfstring{Function\+: load\+\_\+node}{Function: load\_node}}\label{scene_system_load_node}
+This function recursively loads nodes from the file\+:
+
+Reads the node type and creates a corresponding structure.
+
+Reads transformation properties (s, r, m for scale, rotation, and position).
+
+Reads visibility (v) and activity (a) flags.
+
+Reads child nodes (\+:) and scripts (\{\}) if present.\hypertarget{scene_system_example_process}{}\doxysubsubsection{\texorpdfstring{Example Process\+:}{Example Process:}}\label{scene_system_example_process}
+\doxylink{classNode}{Node}\mbox{[}m0,0,0r0,0,0s1,1,1a1v1\mbox{]}\+:2
+
+Creates a node with position (0,0,0), rotation (0,0,0), scale (1,1,1), active \& visible flags set.
+
+Has 2 child nodes.
+
+\doxylink{classPointLight}{Point\+Light(60,50,40,...)}
+
+Creates a point light at position (-\/10,6,9).
+
+\doxylink{classModel}{Model}(assets/models/settings\+\_\+bg/settings\+\_\+bg.\+obj)\mbox{[}s5,5,5\mbox{]}
+
+Loads a model and sets its scale to (5,5,5).\hypertarget{scene_system_node_properties}{}\doxysubsection{\texorpdfstring{Scene Node Properties}{Scene Node Properties}}\label{scene_system_node_properties}
+\hypertarget{scene_system_transformations}{}\doxysubsubsection{\texorpdfstring{Transformations}{Transformations}}\label{scene_system_transformations}
+mX,Y,Z → Position (X,Y,Z)
+
+rX,Y,Z → Rotation (X,Y,Z)
+
+sX,Y,Z → Scale (X,Y,Z)\hypertarget{scene_system_flags}{}\doxysubsubsection{\texorpdfstring{Flags}{Flags}}\label{scene_system_flags}
+v1 → Visible (NODE\+\_\+\+VISIBLE flag set)
+
+a1 → Active (NODE\+\_\+\+ACTIVE flag set)\hypertarget{scene_system_scripts}{}\doxysubsubsection{\texorpdfstring{Scripts}{Scripts}}\label{scene_system_scripts}
+\{script1, script2, ...\} → Attaches scripts to the node.\hypertarget{scene_system_memory}{}\doxysubsection{\texorpdfstring{Memory Management \& Finalization}{Memory Management \& Finalization}}\label{scene_system_memory}
+Allocates memory dynamically for nodes and children.
+
+Stores lighting and collision data in separate buffers.
+
+Cleans up resources and finalizes scene graph after parsing.\hypertarget{scene_system_summary}{}\doxysubsection{\texorpdfstring{Summary}{Summary}}\label{scene_system_summary}
+The .scene system efficiently loads hierarchical structures, handling transformations, visibility, and scripts while ensuring optimized memory management. This allows for dynamic scene composition and scripting integration. 

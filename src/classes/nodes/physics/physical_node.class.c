@@ -24,10 +24,20 @@
 #include "render/lighting.h"
 #include "buffer.h"
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
+
 class PhysicalNode : public Node {
     __containerType__ Node *
     public:
 
+    /**
+     * @brief Frees the resources allocated for the PhysicalNode instance.
+     *
+     * This function is responsible for releasing any memory or resources that were allocated for the PhysicalNode instance. It should be called when the PhysicalNode is no longer needed to prevent memory leaks.
+     */
     void free() {
         u8 *length;
         Node ***shapes;
@@ -39,3 +49,4 @@ class PhysicalNode : public Node {
         SUPER(free);
     }
 }
+

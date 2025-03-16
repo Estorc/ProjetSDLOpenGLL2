@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Claude Chappe&#39; Curse - A C Game: Slider Struct Reference</title>
+<title>Claude Chappe&#39; Curse - A C Game: Slider Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">var page_layout=1;</script>
 <script type="text/javascript" src="jquery.js"></script>
@@ -109,11 +109,13 @@ $(document).ready(function(){initNavTree('classSlider.html',''); initResizable()
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classSlider-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">Slider Struct Reference</div></div>
+  <div class="headertitle"><div class="title">Slider Class Reference<div class="ingroups"><a class="el" href="group__Classes.html">Classes</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a slider component in the GUI.  
+ <a href="classSlider.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="frame_8h_source.html">frame.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -121,13 +123,13 @@ Inheritance diagram for Slider:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSlider__inherit__graph.png" border="0" usemap="#aSlider_inherit__map" alt="Inheritance graph"/></div>
 <map name="aSlider_inherit__map" id="aSlider_inherit__map">
-<area shape="rect" title=" " alt="" coords="9,225,67,251"/>
-<area shape="rect" href="classButton.html" title="Represents a button." alt="" coords="5,152,71,177"/>
-<area shape="poly" title=" " alt="" coords="41,191,41,225,35,225,35,191"/>
-<area shape="rect" href="classFrame.html" title="Represents a frame." alt="" coords="7,79,69,104"/>
-<area shape="poly" title=" " alt="" coords="41,118,41,152,35,152,35,118"/>
-<area shape="rect" href="classNode.html" title="Represents a node in the tree structure." alt="" coords="10,5,66,31"/>
-<area shape="poly" title=" " alt="" coords="41,44,41,79,35,79,35,44"/>
+<area shape="rect" title="Represents a slider component in the GUI." alt="" coords="333,5,392,31"/>
+<area shape="rect" href="classButton.html" title="Represents a button." alt="" coords="220,5,285,31"/>
+<area shape="poly" title=" " alt="" coords="299,15,333,15,333,21,299,21"/>
+<area shape="rect" href="classFrame.html" title="Represents a frame." alt="" coords="109,5,172,31"/>
+<area shape="poly" title=" " alt="" coords="186,15,220,15,220,21,186,21"/>
+<area shape="rect" href="classNode.html" title="Represents a node in the tree structure." alt="" coords="5,5,61,31"/>
+<area shape="poly" title=" " alt="" coords="75,15,109,15,109,21,75,21"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -135,143 +137,196 @@ Collaboration diagram for Slider:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSlider__coll__graph.png" border="0" usemap="#aSlider_coll__map" alt="Collaboration graph"/></div>
 <map name="aSlider_coll__map" id="aSlider_coll__map">
-<area shape="rect" title=" " alt="" coords="833,7,892,33"/>
-<area shape="rect" href="classFrame.html" title="Represents a frame." alt="" coords="482,97,545,123"/>
-<area shape="poly" title=" " alt="" coords="820,35,546,103,544,98,819,30"/>
-<area shape="rect" href="classButton.html" title="Represents a button." alt="" coords="855,185,921,211"/>
-<area shape="poly" title=" " alt="" coords="882,172,862,33,867,32,887,171"/>
-<area shape="poly" title=" " alt="" coords="857,180,798,149,729,132,658,121,545,114,545,109,659,116,730,126,800,144,859,176"/>
-<area shape="rect" href="classRadioButton.html" title="Represents a radio button." alt="" coords="715,260,818,285"/>
-<area shape="poly" title=" " alt="" coords="858,220,787,262,785,258,856,215"/>
-<area shape="poly" title=" " alt="" coords="559,112,655,122,766,144,861,183,859,188,765,149,654,127,558,117"/>
-<area shape="rect" href="structTheme.html" title="Represents a theme." alt="" coords="59,185,125,211"/>
-<area shape="poly" title=" " alt="" coords="469,116,355,126,287,135,219,149,164,168,117,188,115,183,162,163,218,144,286,130,354,120,468,110"/>
-<area shape="rect" href="classLabel.html" title="Represents a label." alt="" coords="210,185,267,211"/>
-<area shape="poly" title=" " alt="" coords="469,114,384,122,338,132,293,149,268,167,249,187,246,183,265,163,291,144,336,127,384,116,468,108"/>
-<area shape="rect" href="classInputArea.html" title="Represents an input area." alt="" coords="305,185,391,211"/>
-<area shape="poly" title=" " alt="" coords="469,118,426,129,384,149,367,167,355,186,351,184,363,164,381,145,424,124,468,113"/>
-<area shape="rect" href="classSelectList.html" title="Represents a selectable list." alt="" coords="432,185,517,211"/>
-<area shape="poly" title=" " alt="" coords="497,135,490,148,479,186,474,184,486,146,493,133"/>
-<area shape="rect" href="classImageFrame.html" title="Represents an image frame." alt="" coords="569,185,673,211"/>
-<area shape="poly" title=" " alt="" coords="547,128,571,145,613,183,609,187,568,149,544,132"/>
-<area shape="rect" href="classNode.html" title="Represents a node in the tree structure." alt="" coords="944,7,1000,33"/>
-<area shape="poly" title=" " alt="" coords="931,35,757,76,640,95,545,108,545,102,639,90,755,71,930,30"/>
-<area shape="poly" title=" " alt="" coords="1015,10,1023,13,1027,20,1018,29,1001,31,1000,26,1016,24,1021,20,1019,17,1013,15"/>
-<area shape="rect" href="unionBehaviorAttribute.html" title=" " alt="" coords="953,97,1090,123"/>
-<area shape="poly" title=" " alt="" coords="967,46,967,60,970,72,981,85,995,95,992,99,977,89,966,75,962,60,962,46"/>
-<area shape="poly" title=" " alt="" coords="1016,84,1008,60,986,35,990,31,1013,57,1021,83"/>
-<area shape="poly" title=" " alt="" coords="84,172,85,158,91,145,113,135,152,127,262,116,481,109,482,114,262,122,152,132,115,140,95,149,90,159,89,172"/>
-<area shape="rect" href="structFont.html" title="Represents a font." alt="" coords="5,97,56,123"/>
-<area shape="poly" title=" " alt="" coords="29,136,34,160,46,173,61,183,58,187,42,177,30,163,24,137"/>
-<area shape="poly" title=" " alt="" coords="266,175,294,159,326,144,409,122,481,111,482,117,410,127,328,149,296,163,268,180"/>
-<area shape="poly" title=" " alt="" coords="368,174,408,144,445,128,481,116,482,121,447,133,411,149,371,178"/>
-<area shape="poly" title=" " alt="" coords="483,171,506,122,511,124,488,174"/>
-<area shape="poly" title=" " alt="" coords="620,172,618,159,613,148,598,135,581,126,544,116,546,111,583,121,601,131,617,145,623,158,626,171"/>
-<area shape="poly" title=" " alt="" coords="761,247,746,196,732,170,713,149,683,136,638,126,545,116,545,111,639,121,685,131,716,145,737,167,751,194,766,246"/>
+<area shape="rect" title="Represents a slider component in the GUI." alt="" coords="5,99,64,124"/>
+<area shape="rect" href="classFrame.html" title="Represents a frame." alt="" coords="211,273,273,299"/>
+<area shape="poly" title=" " alt="" coords="64,131,227,271,224,275,60,135"/>
+<area shape="rect" href="classButton.html" title="Represents a button." alt="" coords="465,21,530,47"/>
+<area shape="poly" title=" " alt="" coords="451,20,421,13,378,8,335,13,257,30,181,54,65,101,63,96,179,49,255,25,334,7,378,3,422,7,452,15"/>
+<area shape="poly" title=" " alt="" coords="452,50,336,87,325,103,321,119,319,137,313,159,281,225,253,275,249,272,277,222,308,157,314,136,316,118,320,101,333,82,450,45"/>
+<area shape="rect" href="classRadioButton.html" title="Represents a radio button." alt="" coords="599,71,701,96"/>
+<area shape="poly" title=" " alt="" coords="544,46,611,68,609,73,543,51"/>
+<area shape="poly" title=" " alt="" coords="257,260,283,213,308,157,314,123,311,93,314,65,320,51,333,37,364,20,400,15,435,16,465,22,464,27,434,22,400,20,366,25,336,41,325,54,319,66,317,93,319,123,313,159,288,216,261,263"/>
+<area shape="rect" href="structTheme.html" title="Represents a theme." alt="" coords="464,167,531,192"/>
+<area shape="poly" title=" " alt="" coords="262,261,294,232,333,206,367,194,402,185,463,178,464,183,403,190,368,199,336,211,297,236,266,265"/>
+<area shape="rect" href="classLabel.html" title="Represents a label." alt="" coords="469,273,526,299"/>
+<area shape="poly" title=" " alt="" coords="287,283,469,283,469,289,287,289"/>
+<area shape="rect" href="classInputArea.html" title="Represents an input area." alt="" coords="455,352,540,377"/>
+<area shape="poly" title=" " alt="" coords="288,297,456,349,454,354,286,302"/>
+<area shape="rect" href="classSelectList.html" title="Represents a selectable list." alt="" coords="455,439,540,464"/>
+<area shape="poly" title=" " alt="" coords="287,303,313,324,323,345,324,363,326,381,337,397,363,417,394,431,455,446,454,451,392,436,360,422,333,401,321,382,319,364,317,346,309,328,284,307"/>
+<area shape="rect" href="classImageFrame.html" title="Represents an image frame." alt="" coords="445,503,549,528"/>
+<area shape="poly" title=" " alt="" coords="287,301,301,311,313,324,324,346,327,368,322,407,319,444,324,462,337,480,360,498,388,509,417,514,445,516,445,522,416,520,386,514,357,502,333,484,319,464,313,445,317,406,322,368,318,348,308,327,298,315,284,306"/>
+<area shape="rect" href="classNode.html" title="Represents a node in the tree structure." alt="" coords="7,308,63,333"/>
+<area shape="poly" title=" " alt="" coords="76,307,88,305,210,287,211,292,88,310,77,312"/>
+<area shape="poly" title=" " alt="" coords="17,293,23,285,35,281,45,284,51,291,50,308,45,308,46,292,42,288,35,287,26,289,22,296"/>
+<area shape="rect" href="unionBehaviorAttribute.html" title="Union representing different types of behavior attributes." alt="" coords="173,337,311,363"/>
+<area shape="poly" title=" " alt="" coords="77,324,173,338,173,343,76,329"/>
+<area shape="poly" title=" " alt="" coords="190,369,139,375,113,373,87,367,63,353,45,335,48,332,66,349,89,362,114,368,139,370,189,363"/>
+<area shape="poly" title=" " alt="" coords="466,202,422,226,343,258,274,280,273,275,341,252,420,221,463,197"/>
+<area shape="rect" href="structFont.html" title="Represents a font." alt="" coords="217,121,267,147"/>
+<area shape="poly" title=" " alt="" coords="281,137,422,161,464,169,463,175,421,166,280,142"/>
+<area shape="poly" title=" " alt="" coords="456,299,422,305,378,307,334,305,273,295,274,290,335,299,378,302,421,299,455,294"/>
+<area shape="poly" title=" " alt="" coords="456,385,427,393,395,397,363,395,333,383,322,370,318,356,316,342,309,328,291,313,272,301,275,296,295,308,313,324,321,340,324,355,326,368,336,378,364,390,395,392,426,388,455,380"/>
+<area shape="poly" title=" " alt="" coords="453,471,424,478,392,481,361,476,333,461,319,446,314,430,316,396,320,362,317,345,308,328,292,311,272,299,275,295,295,307,313,324,322,344,325,362,321,397,319,429,324,443,336,457,362,471,392,475,423,472,452,466"/>
+<area shape="poly" title=" " alt="" coords="462,537,432,549,398,557,363,555,347,550,333,540,322,522,317,497,316,435,318,372,315,346,308,327,292,311,272,299,275,294,295,306,313,325,320,345,323,371,322,435,322,497,327,520,337,536,350,545,364,550,397,551,430,544,460,532"/>
+<area shape="poly" title=" " alt="" coords="585,80,528,80,463,86,397,103,365,115,336,132,321,153,297,193,252,274,248,272,292,190,316,150,333,128,363,111,395,97,462,81,528,75,585,75"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2e7d6802e651a7e12022f26cc75c3a71" id="r_a2e7d6802e651a7e12022f26cc75c3a71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#a2e7d6802e651a7e12022f26cc75c3a71">constructor</a> (double <a class="el" href="classSlider.html#ac540a0063008ecbcd8bc6ad0eef198ad">min</a>, double <a class="el" href="classSlider.html#a67240512a37bdfe0cbf9b3cc75bbacf1">max</a>)</td></tr>
+<tr class="memitem:a2e7d6802e651a7e12022f26cc75c3a71" id="r_a2e7d6802e651a7e12022f26cc75c3a71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#a2e7d6802e651a7e12022f26cc75c3a71">constructor</a> (double <a class="el" href="classSlider.html#a8790fa27427eef8bd3ef93a0584ef213">min</a>, double <a class="el" href="classSlider.html#a6110cf762ca1d31ba8fccd03af7681e5">max</a>)</td></tr>
+<tr class="memdesc:a2e7d6802e651a7e12022f26cc75c3a71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the slider class.  <br /></td></tr>
 <tr class="separator:a2e7d6802e651a7e12022f26cc75c3a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2700a5c6d56fd2175e44168dbd7c003f" id="r_a2700a5c6d56fd2175e44168dbd7c003f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#a2700a5c6d56fd2175e44168dbd7c003f">init_slider</a> ()</td></tr>
+<tr class="memdesc:a2700a5c6d56fd2175e44168dbd7c003f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the slider.  <br /></td></tr>
 <tr class="separator:a2700a5c6d56fd2175e44168dbd7c003f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00ce3a77e9b3f44f81b95275c7da03ac" id="r_a00ce3a77e9b3f44f81b95275c7da03ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#a00ce3a77e9b3f44f81b95275c7da03ac">load</a> (FILE *file)</td></tr>
+<tr class="memdesc:a00ce3a77e9b3f44f81b95275c7da03ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads data from a file.  <br /></td></tr>
 <tr class="separator:a00ce3a77e9b3f44f81b95275c7da03ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a771382ff36e2312e74e5666ad83d948e" id="r_a771382ff36e2312e74e5666ad83d948e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#a771382ff36e2312e74e5666ad83d948e">save</a> (FILE *file, <a class="el" href="classNode.html">Node</a> *editor)</td></tr>
+<tr class="memdesc:a771382ff36e2312e74e5666ad83d948e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the state of the editor node to a file.  <br /></td></tr>
 <tr class="separator:a771382ff36e2312e74e5666ad83d948e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f9d8041bebf6053b31b798ed3210153" id="r_a5f9d8041bebf6053b31b798ed3210153"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#a5f9d8041bebf6053b31b798ed3210153">is_radiobutton</a> ()</td></tr>
+<tr class="memdesc:a5f9d8041bebf6053b31b798ed3210153"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the current node is a radio button.  <br /></td></tr>
 <tr class="separator:a5f9d8041bebf6053b31b798ed3210153"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bcc94829fa9c1546097da4e797665cb" id="r_a8bcc94829fa9c1546097da4e797665cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#a8bcc94829fa9c1546097da4e797665cb">update</a> ()</td></tr>
+<tr class="memdesc:a8bcc94829fa9c1546097da4e797665cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the state of the slider.  <br /></td></tr>
 <tr class="separator:a8bcc94829fa9c1546097da4e797665cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad70cc2b45c918d0dd272d426fcdc1855" id="r_ad70cc2b45c918d0dd272d426fcdc1855"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#ad70cc2b45c918d0dd272d426fcdc1855">free</a> ()</td></tr>
+<tr class="memdesc:ad70cc2b45c918d0dd272d426fcdc1855"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources allocated by the slider class.  <br /></td></tr>
 <tr class="separator:ad70cc2b45c918d0dd272d426fcdc1855"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classButton"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classButton')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classButton.html">Button</a></td></tr>
 <tr class="memitem:ac590f08873fdfcbc76b203171aadf530 inherit pub_methods_classButton" id="r_ac590f08873fdfcbc76b203171aadf530"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#ac590f08873fdfcbc76b203171aadf530">constructor</a> ()</td></tr>
+<tr class="memdesc:ac590f08873fdfcbc76b203171aadf530 inherit pub_methods_classButton"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classButton.html" title="Represents a button.">Button</a> class.  <br /></td></tr>
 <tr class="separator:ac590f08873fdfcbc76b203171aadf530 inherit pub_methods_classButton"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe7db9fd361d87d121fbfa5d425a50fd inherit pub_methods_classButton" id="r_afe7db9fd361d87d121fbfa5d425a50fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#afe7db9fd361d87d121fbfa5d425a50fd">init_button</a> ()</td></tr>
+<tr class="memdesc:afe7db9fd361d87d121fbfa5d425a50fd inherit pub_methods_classButton"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the button.  <br /></td></tr>
 <tr class="separator:afe7db9fd361d87d121fbfa5d425a50fd inherit pub_methods_classButton"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a342ba542d3f35a1de033005f545aeac2 inherit pub_methods_classButton" id="r_a342ba542d3f35a1de033005f545aeac2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#a342ba542d3f35a1de033005f545aeac2">load</a> ()</td></tr>
+<tr class="memdesc:a342ba542d3f35a1de033005f545aeac2 inherit pub_methods_classButton"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the button resources.  <br /></td></tr>
 <tr class="separator:a342ba542d3f35a1de033005f545aeac2 inherit pub_methods_classButton"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8e030c1c8846d43f3126047d4a3667f inherit pub_methods_classButton" id="r_ad8e030c1c8846d43f3126047d4a3667f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#ad8e030c1c8846d43f3126047d4a3667f">update</a> ()</td></tr>
+<tr class="memdesc:ad8e030c1c8846d43f3126047d4a3667f inherit pub_methods_classButton"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the state of the button.  <br /></td></tr>
 <tr class="separator:ad8e030c1c8846d43f3126047d4a3667f inherit pub_methods_classButton"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc4fa030c3f1cb537d9e9f4b09b7ec8b inherit pub_methods_classButton" id="r_acc4fa030c3f1cb537d9e9f4b09b7ec8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#acc4fa030c3f1cb537d9e9f4b09b7ec8b">is_button</a> (bool *result)</td></tr>
+<tr class="memdesc:acc4fa030c3f1cb537d9e9f4b09b7ec8b inherit pub_methods_classButton"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the current instance is a button.  <br /></td></tr>
 <tr class="separator:acc4fa030c3f1cb537d9e9f4b09b7ec8b inherit pub_methods_classButton"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab41307fda195e079834761523277b9b4 inherit pub_methods_classButton" id="r_ab41307fda195e079834761523277b9b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#ab41307fda195e079834761523277b9b4">save</a> (FILE *file, <a class="el" href="classNode.html">Node</a> *editor)</td></tr>
+<tr class="memdesc:ab41307fda195e079834761523277b9b4 inherit pub_methods_classButton"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the state of the editor node to a file.  <br /></td></tr>
 <tr class="separator:ab41307fda195e079834761523277b9b4 inherit pub_methods_classButton"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab31b0993b959cf9863eb2cf22a7ae18b inherit pub_methods_classButton" id="r_ab31b0993b959cf9863eb2cf22a7ae18b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#ab31b0993b959cf9863eb2cf22a7ae18b">free</a> ()</td></tr>
+<tr class="memdesc:ab31b0993b959cf9863eb2cf22a7ae18b inherit pub_methods_classButton"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources used by the button.  <br /></td></tr>
 <tr class="separator:ab31b0993b959cf9863eb2cf22a7ae18b inherit pub_methods_classButton"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classFrame"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classFrame')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classFrame.html">Frame</a></td></tr>
 <tr class="memitem:a05a82bdf164991c7d314824757e984fa inherit pub_methods_classFrame" id="r_a05a82bdf164991c7d314824757e984fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#a05a82bdf164991c7d314824757e984fa">constructor</a> (double x, int xu, double y, int yu, double w, int wu, double h, int hu, int ha, int va, int <a class="el" href="classFrame.html#acfe3b3c81c5ddcd7e9dd6a5f64dcdac8">scroll</a>, <a class="el" href="structTheme.html">Theme</a> *<a class="el" href="classFrame.html#aa5e1c43a4d9d3a9967ab33152edf6e7c">theme</a>)</td></tr>
+<tr class="memdesc:a05a82bdf164991c7d314824757e984fa inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for initializing a frame object with specified parameters.  <br /></td></tr>
 <tr class="separator:a05a82bdf164991c7d314824757e984fa inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63712e22a5897b4bcc3f26383b9f7205 inherit pub_methods_classFrame" id="r_a63712e22a5897b4bcc3f26383b9f7205"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#a63712e22a5897b4bcc3f26383b9f7205">handle_dimension_unit</a> (float *src, float *dest, int vertical, double <a class="el" href="classFrame.html#a36dd59da3f2cbfda319a393453490763">size</a>, int <a class="el" href="classFrame.html#ad6253ac65e55108bc8a0e8a29fa5ae65">unit</a>, double containerWidth, double containerHeight)</td></tr>
+<tr class="memdesc:a63712e22a5897b4bcc3f26383b9f7205 inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the conversion of dimension units for a given source and destination.  <br /></td></tr>
 <tr class="separator:a63712e22a5897b4bcc3f26383b9f7205 inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7836ed00314cfe053fd99cbedf0d559c inherit pub_methods_classFrame" id="r_a7836ed00314cfe053fd99cbedf0d559c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#a7836ed00314cfe053fd99cbedf0d559c">init_frame</a> ()</td></tr>
+<tr class="memdesc:a7836ed00314cfe053fd99cbedf0d559c inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the frame.  <br /></td></tr>
 <tr class="separator:a7836ed00314cfe053fd99cbedf0d559c inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad16ec9c61e633e2443896750365c4b92 inherit pub_methods_classFrame" id="r_ad16ec9c61e633e2443896750365c4b92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#ad16ec9c61e633e2443896750365c4b92">load</a> (FILE *file)</td></tr>
+<tr class="memdesc:ad16ec9c61e633e2443896750365c4b92 inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads data from a file.  <br /></td></tr>
 <tr class="separator:ad16ec9c61e633e2443896750365c4b92 inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9b5d661830d80bea63f85e9fda5db70 inherit pub_methods_classFrame" id="r_ae9b5d661830d80bea63f85e9fda5db70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#ae9b5d661830d80bea63f85e9fda5db70">refresh</a> ()</td></tr>
+<tr class="memdesc:ae9b5d661830d80bea63f85e9fda5db70 inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refreshes the frame.  <br /></td></tr>
 <tr class="separator:ae9b5d661830d80bea63f85e9fda5db70 inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12287f1efce6749a58bd644a7e7ba48c inherit pub_methods_classFrame" id="r_a12287f1efce6749a58bd644a7e7ba48c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#a12287f1efce6749a58bd644a7e7ba48c">refreshContent</a> ()</td></tr>
+<tr class="memdesc:a12287f1efce6749a58bd644a7e7ba48c inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refreshes the content of the frame.  <br /></td></tr>
 <tr class="separator:a12287f1efce6749a58bd644a7e7ba48c inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31aee47f16abb8322dd96860a4363fda inherit pub_methods_classFrame" id="r_a31aee47f16abb8322dd96860a4363fda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#a31aee47f16abb8322dd96860a4363fda">update</a> ()</td></tr>
+<tr class="memdesc:a31aee47f16abb8322dd96860a4363fda inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the state of the frame.  <br /></td></tr>
 <tr class="separator:a31aee47f16abb8322dd96860a4363fda inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7731f3323fde1804cf0f59c88a70db7b inherit pub_methods_classFrame" id="r_a7731f3323fde1804cf0f59c88a70db7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#a7731f3323fde1804cf0f59c88a70db7b">on_resize</a> ()</td></tr>
+<tr class="memdesc:a7731f3323fde1804cf0f59c88a70db7b inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the resize event for the frame.  <br /></td></tr>
+<tr class="separator:a7731f3323fde1804cf0f59c88a70db7b inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac06c37a1e7b56d157790834f77a9ae1b inherit pub_methods_classFrame" id="r_ac06c37a1e7b56d157790834f77a9ae1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#ac06c37a1e7b56d157790834f77a9ae1b">draw_frame</a> ()</td></tr>
+<tr class="memdesc:ac06c37a1e7b56d157790834f77a9ae1b inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a frame.  <br /></td></tr>
 <tr class="separator:ac06c37a1e7b56d157790834f77a9ae1b inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fd49c5db1ad23f4c8a7e125fffef349 inherit pub_methods_classFrame" id="r_a7fd49c5db1ad23f4c8a7e125fffef349"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#a7fd49c5db1ad23f4c8a7e125fffef349">render</a> (mat4 *modelMatrix, <a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> activeShader, <a class="el" href="structWorldShaders.html">WorldShaders</a> *shaders)</td></tr>
+<tr class="memdesc:a7fd49c5db1ad23f4c8a7e125fffef349 inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a frame using the provided model matrix and shader.  <br /></td></tr>
 <tr class="separator:a7fd49c5db1ad23f4c8a7e125fffef349 inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac97d563c45c120aa754e6b5f711eab76 inherit pub_methods_classFrame" id="r_ac97d563c45c120aa754e6b5f711eab76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#ac97d563c45c120aa754e6b5f711eab76">save</a> (FILE *file, <a class="el" href="classNode.html">Node</a> *editor)</td></tr>
+<tr class="memdesc:ac97d563c45c120aa754e6b5f711eab76 inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the current state of the editor node to a file.  <br /></td></tr>
 <tr class="separator:ac97d563c45c120aa754e6b5f711eab76 inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91247a8e7d98756096081cc49886b275 inherit pub_methods_classFrame" id="r_a91247a8e7d98756096081cc49886b275"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#a91247a8e7d98756096081cc49886b275">get_vao</a> (<a class="el" href="group__ModelHandling.html#ga8045bf7a50b1653e4b1e752967ddf6c3">VAO</a> *vao)</td></tr>
+<tr class="memdesc:a91247a8e7d98756096081cc49886b275 inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the Vertex Array <a class="el" href="structObject.html" title="A generic object structure.">Object</a> (VAO).  <br /></td></tr>
 <tr class="separator:a91247a8e7d98756096081cc49886b275 inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae347f52b5eec84baec216be95aaf1d54 inherit pub_methods_classFrame" id="r_ae347f52b5eec84baec216be95aaf1d54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#ae347f52b5eec84baec216be95aaf1d54">is_gui_element</a> (bool *result)</td></tr>
+<tr class="memdesc:ae347f52b5eec84baec216be95aaf1d54 inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the current object is a GUI element.  <br /></td></tr>
 <tr class="separator:ae347f52b5eec84baec216be95aaf1d54 inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4507b501cf44a0243e9d7ad3861a6b2 inherit pub_methods_classFrame" id="r_ac4507b501cf44a0243e9d7ad3861a6b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#ac4507b501cf44a0243e9d7ad3861a6b2">is_button</a> (bool *result)</td></tr>
+<tr class="memdesc:ac4507b501cf44a0243e9d7ad3861a6b2 inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if a button is pressed.  <br /></td></tr>
 <tr class="separator:ac4507b501cf44a0243e9d7ad3861a6b2 inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af21a08e158231857c2ace344aa0bbc3f inherit pub_methods_classFrame" id="r_af21a08e158231857c2ace344aa0bbc3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#af21a08e158231857c2ace344aa0bbc3f">is_input_area</a> (bool *result)</td></tr>
+<tr class="memdesc:af21a08e158231857c2ace344aa0bbc3f inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the current area is an input area.  <br /></td></tr>
 <tr class="separator:af21a08e158231857c2ace344aa0bbc3f inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47bc156dd1830b987ac9d33f2e7d2b09 inherit pub_methods_classFrame" id="r_a47bc156dd1830b987ac9d33f2e7d2b09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#a47bc156dd1830b987ac9d33f2e7d2b09">is_selectlist</a> (bool *result)</td></tr>
+<tr class="memdesc:a47bc156dd1830b987ac9d33f2e7d2b09 inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the current item is in the selection list.  <br /></td></tr>
 <tr class="separator:a47bc156dd1830b987ac9d33f2e7d2b09 inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5673929d98a9f43102e4ed87de3b891f inherit pub_methods_classFrame" id="r_a5673929d98a9f43102e4ed87de3b891f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#a5673929d98a9f43102e4ed87de3b891f">is_checkbox</a> (bool *result)</td></tr>
+<tr class="memdesc:a5673929d98a9f43102e4ed87de3b891f inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a condition is a checkbox.  <br /></td></tr>
 <tr class="separator:a5673929d98a9f43102e4ed87de3b891f inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3dbeceb0c4fdb37d0fc3a187bf901e01 inherit pub_methods_classFrame" id="r_a3dbeceb0c4fdb37d0fc3a187bf901e01"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#a3dbeceb0c4fdb37d0fc3a187bf901e01">is_radiobutton</a> ()</td></tr>
+<tr class="memdesc:a3dbeceb0c4fdb37d0fc3a187bf901e01 inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the current frame is a radio button.  <br /></td></tr>
 <tr class="separator:a3dbeceb0c4fdb37d0fc3a187bf901e01 inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab12c4bab3ad539606c5f79e303d4129c inherit pub_methods_classFrame" id="r_ab12c4bab3ad539606c5f79e303d4129c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#ab12c4bab3ad539606c5f79e303d4129c">free</a> ()</td></tr>
+<tr class="memdesc:ab12c4bab3ad539606c5f79e303d4129c inherit pub_methods_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources allocated for the frame.  <br /></td></tr>
 <tr class="separator:ab12c4bab3ad539606c5f79e303d4129c inherit pub_methods_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classNode"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classNode')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classNode.html">Node</a></td></tr>
 <tr class="memitem:adc8290bb6f9a55e929ea1d8af7a75818 inherit pub_methods_classNode" id="r_adc8290bb6f9a55e929ea1d8af7a75818"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#adc8290bb6f9a55e929ea1d8af7a75818">constructor</a> ()</td></tr>
+<tr class="memdesc:adc8290bb6f9a55e929ea1d8af7a75818 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classNode.html" title="Represents a node in the tree structure.">Node</a> class.  <br /></td></tr>
 <tr class="separator:adc8290bb6f9a55e929ea1d8af7a75818 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b7d86c5640d6ea769915d22f1129186 inherit pub_methods_classNode" id="r_a6b7d86c5640d6ea769915d22f1129186"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a6b7d86c5640d6ea769915d22f1129186">initialize_node</a> ()</td></tr>
+<tr class="memdesc:a6b7d86c5640d6ea769915d22f1129186 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a node.  <br /></td></tr>
 <tr class="separator:a6b7d86c5640d6ea769915d22f1129186 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2811c63060e67e1c365b4ca6c583d804 inherit pub_methods_classNode" id="r_a2811c63060e67e1c365b4ca6c583d804"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a2811c63060e67e1c365b4ca6c583d804">get_glow_shader</a> (<a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> *<a class="el" href="group__NodeFunctions.html#ga16c1ef53dee5d0538a5027edc2e937f3">shader</a>)</td></tr>
+<tr class="memitem:a2811c63060e67e1c365b4ca6c583d804 inherit pub_methods_classNode" id="r_a2811c63060e67e1c365b4ca6c583d804"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a2811c63060e67e1c365b4ca6c583d804">get_glow_shader</a> (<a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> *<a class="el" href="classNode.html#a16c1ef53dee5d0538a5027edc2e937f3">shader</a>)</td></tr>
+<tr class="memdesc:a2811c63060e67e1c365b4ca6c583d804 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the glow shader.  <br /></td></tr>
 <tr class="separator:a2811c63060e67e1c365b4ca6c583d804 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a542c25c237f346a743cde5f78f81e55b inherit pub_methods_classNode" id="r_a542c25c237f346a743cde5f78f81e55b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a542c25c237f346a743cde5f78f81e55b">get_settings_data</a> (void ***ptr, int *<a class="el" href="group__NodeFunctions.html#gaf0605f2b8a070fb62821274a6cf9b531">length</a>)</td></tr>
+<tr class="memitem:a542c25c237f346a743cde5f78f81e55b inherit pub_methods_classNode" id="r_a542c25c237f346a743cde5f78f81e55b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a542c25c237f346a743cde5f78f81e55b">get_settings_data</a> (void ***ptr, int *<a class="el" href="classNode.html#af0605f2b8a070fb62821274a6cf9b531">length</a>)</td></tr>
+<tr class="memdesc:a542c25c237f346a743cde5f78f81e55b inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves settings data.  <br /></td></tr>
 <tr class="separator:a542c25c237f346a743cde5f78f81e55b inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0672fc0a4d6c6b05c20b9bb5dddf9c3 inherit pub_methods_classNode" id="r_af0672fc0a4d6c6b05c20b9bb5dddf9c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#af0672fc0a4d6c6b05c20b9bb5dddf9c3">load</a> ()</td></tr>
+<tr class="memdesc:af0672fc0a4d6c6b05c20b9bb5dddf9c3 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the necessary resources or data for the node.  <br /></td></tr>
 <tr class="separator:af0672fc0a4d6c6b05c20b9bb5dddf9c3 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06da5ccd34d78a1119160005629f0193 inherit pub_methods_classNode" id="r_a06da5ccd34d78a1119160005629f0193"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a06da5ccd34d78a1119160005629f0193">save</a> (FILE *file)</td></tr>
+<tr class="memdesc:a06da5ccd34d78a1119160005629f0193 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the current state to the specified file.  <br /></td></tr>
 <tr class="separator:a06da5ccd34d78a1119160005629f0193 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab05e54fc6a226fe70d274e46e9ced07a inherit pub_methods_classNode" id="r_ab05e54fc6a226fe70d274e46e9ced07a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ab05e54fc6a226fe70d274e46e9ced07a">prepare_render</a> (mat4 *modelMatrix, <a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> activeShader)</td></tr>
 <tr class="memdesc:ab05e54fc6a226fe70d274e46e9ced07a inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a node using the specified model matrix and shader.  <br /></td></tr>
 <tr class="separator:ab05e54fc6a226fe70d274e46e9ced07a inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab93a6f41e02422a21c44227c0355382a inherit pub_methods_classNode" id="r_ab93a6f41e02422a21c44227c0355382a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ab93a6f41e02422a21c44227c0355382a">render</a> ()</td></tr>
+<tr class="memdesc:ab93a6f41e02422a21c44227c0355382a inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the node.  <br /></td></tr>
 <tr class="separator:ab93a6f41e02422a21c44227c0355382a inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2621112ec04d166f9ec376eba06f3bbb inherit pub_methods_classNode" id="r_a2621112ec04d166f9ec376eba06f3bbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a2621112ec04d166f9ec376eba06f3bbb">update_global_position</a> (vec3 *<a class="el" href="group__NodeFunctions.html#ga19f2506921f0378b62b4200d0f674411">pos</a>, vec3 *<a class="el" href="group__NodeFunctions.html#ga4c1d2fdb8be63309e0a7e2a4b3a17066">rot</a>, vec3 *<a class="el" href="group__NodeFunctions.html#gac6f771ff3b5a0575ab61ce09df2ed685">scale</a>)</td></tr>
+<tr class="memitem:a2621112ec04d166f9ec376eba06f3bbb inherit pub_methods_classNode" id="r_a2621112ec04d166f9ec376eba06f3bbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a2621112ec04d166f9ec376eba06f3bbb">update_global_position</a> (vec3 *<a class="el" href="classNode.html#a19f2506921f0378b62b4200d0f674411">pos</a>, vec3 *<a class="el" href="classNode.html#a4c1d2fdb8be63309e0a7e2a4b3a17066">rot</a>, vec3 *<a class="el" href="classNode.html#ac6f771ff3b5a0575ab61ce09df2ed685">scale</a>)</td></tr>
+<tr class="memdesc:a2621112ec04d166f9ec376eba06f3bbb inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the global position of a node.  <br /></td></tr>
 <tr class="separator:a2621112ec04d166f9ec376eba06f3bbb inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a500a682914a24af188bd9eb79ba2aaae inherit pub_methods_classNode" id="r_a500a682914a24af188bd9eb79ba2aaae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a500a682914a24af188bd9eb79ba2aaae">update</a> (vec3 *<a class="el" href="group__NodeFunctions.html#ga19f2506921f0378b62b4200d0f674411">pos</a>, vec3 *<a class="el" href="group__NodeFunctions.html#ga4c1d2fdb8be63309e0a7e2a4b3a17066">rot</a>, vec3 *<a class="el" href="group__NodeFunctions.html#gac6f771ff3b5a0575ab61ce09df2ed685">scale</a>)</td></tr>
+<tr class="memitem:a500a682914a24af188bd9eb79ba2aaae inherit pub_methods_classNode" id="r_a500a682914a24af188bd9eb79ba2aaae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a500a682914a24af188bd9eb79ba2aaae">update</a> (vec3 *<a class="el" href="classNode.html#a19f2506921f0378b62b4200d0f674411">pos</a>, vec3 *<a class="el" href="classNode.html#a4c1d2fdb8be63309e0a7e2a4b3a17066">rot</a>, vec3 *<a class="el" href="classNode.html#ac6f771ff3b5a0575ab61ce09df2ed685">scale</a>)</td></tr>
+<tr class="memdesc:a500a682914a24af188bd9eb79ba2aaae inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the position, rotation, and scale of a node.  <br /></td></tr>
 <tr class="separator:a500a682914a24af188bd9eb79ba2aaae inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86288848282bf3bba83f0cc7437207ac inherit pub_methods_classNode" id="r_a86288848282bf3bba83f0cc7437207ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a86288848282bf3bba83f0cc7437207ac">on_resize</a> ()</td></tr>
+<tr class="memdesc:a86288848282bf3bba83f0cc7437207ac inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the resize event for the node.  <br /></td></tr>
+<tr class="separator:a86288848282bf3bba83f0cc7437207ac inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acda79ab291312990e96552767c577a3d inherit pub_methods_classNode" id="r_acda79ab291312990e96552767c577a3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#acda79ab291312990e96552767c577a3d">free</a> ()</td></tr>
+<tr class="memdesc:acda79ab291312990e96552767c577a3d inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources allocated by the object.  <br /></td></tr>
 <tr class="separator:acda79ab291312990e96552767c577a3d inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2ee01789b301b3c0323473dbe968283 inherit pub_methods_classNode" id="r_ae2ee01789b301b3c0323473dbe968283"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ae2ee01789b301b3c0323473dbe968283">is_cshape</a> (bool *cshape)</td></tr>
+<tr class="memdesc:ae2ee01789b301b3c0323473dbe968283 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the current shape is a custom shape.  <br /></td></tr>
 <tr class="separator:ae2ee01789b301b3c0323473dbe968283 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75c27b8cf028ae9509b20ad7392c49f8 inherit pub_methods_classNode" id="r_a75c27b8cf028ae9509b20ad7392c49f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a75c27b8cf028ae9509b20ad7392c49f8">is_body</a> (bool *body)</td></tr>
+<tr class="memdesc:a75c27b8cf028ae9509b20ad7392c49f8 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the body status of the node.  <br /></td></tr>
 <tr class="separator:a75c27b8cf028ae9509b20ad7392c49f8 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45b2f4d0c4efe87777b198cd3b9bf2eb inherit pub_methods_classNode" id="r_a45b2f4d0c4efe87777b198cd3b9bf2eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a45b2f4d0c4efe87777b198cd3b9bf2eb">is_area</a> (bool *area)</td></tr>
+<tr class="memdesc:a45b2f4d0c4efe87777b198cd3b9bf2eb inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the current node is within a specified area.  <br /></td></tr>
 <tr class="separator:a45b2f4d0c4efe87777b198cd3b9bf2eb inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a743d883f14521da8f8c62608ce65f7ee inherit pub_methods_classNode" id="r_a743d883f14521da8f8c62608ce65f7ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a743d883f14521da8f8c62608ce65f7ee">is_render_target</a> (bool *render_target)</td></tr>
+<tr class="memdesc:a743d883f14521da8f8c62608ce65f7ee inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the render target status.  <br /></td></tr>
 <tr class="separator:a743d883f14521da8f8c62608ce65f7ee inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29ad16f4987533c2ddebec71439bfbd5 inherit pub_methods_classNode" id="r_a29ad16f4987533c2ddebec71439bfbd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a29ad16f4987533c2ddebec71439bfbd5">is_gui_element</a> (bool *result)</td></tr>
+<tr class="memdesc:a29ad16f4987533c2ddebec71439bfbd5 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the current node is a GUI element.  <br /></td></tr>
 <tr class="separator:a29ad16f4987533c2ddebec71439bfbd5 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42da38ee8e0a621e438e14b94c0e381e inherit pub_methods_classNode" id="r_a42da38ee8e0a621e438e14b94c0e381e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a42da38ee8e0a621e438e14b94c0e381e">add_child</a> (<a class="el" href="classNode.html">Node</a> *child)</td></tr>
 <tr class="memdesc:a42da38ee8e0a621e438e14b94c0e381e inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a child node to a parent node.  <br /></td></tr>
@@ -298,24 +353,28 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aef2f74d45bec672840433aff6abe0d45 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the details of a node at a specified level of indentation.  <br /></td></tr>
 <tr class="separator:aef2f74d45bec672840433aff6abe0d45 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a846d06ed1f7a5ac618fbfef10881230f inherit pub_methods_classNode" id="r_a846d06ed1f7a5ac618fbfef10881230f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a846d06ed1f7a5ac618fbfef10881230f">emit_ready</a> (...)</td></tr>
+<tr class="memdesc:a846d06ed1f7a5ac618fbfef10881230f inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits the 'ready' signal for the node.  <br /></td></tr>
 <tr class="separator:a846d06ed1f7a5ac618fbfef10881230f inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e7054036adfcf19c240b48a7f353f83 inherit pub_methods_classNode" id="r_a3e7054036adfcf19c240b48a7f353f83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a3e7054036adfcf19c240b48a7f353f83">emit_update</a> (...)</td></tr>
+<tr class="memdesc:a3e7054036adfcf19c240b48a7f353f83 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits an update event for the node.  <br /></td></tr>
 <tr class="separator:a3e7054036adfcf19c240b48a7f353f83 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a3256bf578114f603b9407814638a2f inherit pub_methods_classNode" id="r_a0a3256bf578114f603b9407814638a2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a0a3256bf578114f603b9407814638a2f">emit_signal</a> (...)</td></tr>
+<tr class="memdesc:a0a3256bf578114f603b9407814638a2f inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits a signal if the node has a script and the script has a signal handler.  <br /></td></tr>
 <tr class="separator:a0a3256bf578114f603b9407814638a2f inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a65daca7f05932f4ee8ae6e7623fcd84e" id="r_a65daca7f05932f4ee8ae6e7623fcd84e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="frame_8h.html#aa46074d34fe2d6631c6bd9dc74633657">ButtonState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#a65daca7f05932f4ee8ae6e7623fcd84e">state</a></td></tr>
-<tr class="separator:a65daca7f05932f4ee8ae6e7623fcd84e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfb7de0e49127d086f58c8232fae76d5" id="r_abfb7de0e49127d086f58c8232fae76d5"><td class="memItemLeft" align="right" valign="top">bool *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#abfb7de0e49127d086f58c8232fae76d5">checked</a></td></tr>
-<tr class="separator:abfb7de0e49127d086f58c8232fae76d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99eb669c941675ce732332554a2f0846" id="r_a99eb669c941675ce732332554a2f0846"><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#a99eb669c941675ce732332554a2f0846">value</a></td></tr>
-<tr class="separator:a99eb669c941675ce732332554a2f0846"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac540a0063008ecbcd8bc6ad0eef198ad" id="r_ac540a0063008ecbcd8bc6ad0eef198ad"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#ac540a0063008ecbcd8bc6ad0eef198ad">min</a></td></tr>
-<tr class="separator:ac540a0063008ecbcd8bc6ad0eef198ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67240512a37bdfe0cbf9b3cc75bbacf1" id="r_a67240512a37bdfe0cbf9b3cc75bbacf1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#a67240512a37bdfe0cbf9b3cc75bbacf1">max</a></td></tr>
-<tr class="separator:a67240512a37bdfe0cbf9b3cc75bbacf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:aafc973b1891d60e74cc075482d5757d6" id="r_aafc973b1891d60e74cc075482d5757d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="frame_8h.html#aa46074d34fe2d6631c6bd9dc74633657">ButtonState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#aafc973b1891d60e74cc075482d5757d6">state</a></td></tr>
+<tr class="separator:aafc973b1891d60e74cc075482d5757d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab009758b6794140fe0fe6f51b940e10b" id="r_ab009758b6794140fe0fe6f51b940e10b"><td class="memItemLeft" align="right" valign="top">bool *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#ab009758b6794140fe0fe6f51b940e10b">checked</a></td></tr>
+<tr class="separator:ab009758b6794140fe0fe6f51b940e10b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4991d29d0f386b0e1cc09d5da3a99954" id="r_a4991d29d0f386b0e1cc09d5da3a99954"><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#a4991d29d0f386b0e1cc09d5da3a99954">value</a></td></tr>
+<tr class="separator:a4991d29d0f386b0e1cc09d5da3a99954"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8790fa27427eef8bd3ef93a0584ef213" id="r_a8790fa27427eef8bd3ef93a0584ef213"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#a8790fa27427eef8bd3ef93a0584ef213">min</a></td></tr>
+<tr class="separator:a8790fa27427eef8bd3ef93a0584ef213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6110cf762ca1d31ba8fccd03af7681e5" id="r_a6110cf762ca1d31ba8fccd03af7681e5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSlider.html#a6110cf762ca1d31ba8fccd03af7681e5">max</a></td></tr>
+<tr class="separator:a6110cf762ca1d31ba8fccd03af7681e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classButton"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classButton')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classButton.html">Button</a></td></tr>
 <tr class="memitem:ae823b05599aa1650bdc496c0d377c106 inherit pub_attribs_classButton" id="r_ae823b05599aa1650bdc496c0d377c106"><td class="memItemLeft" align="right" valign="top"><a class="el" href="frame_8h.html#aa46074d34fe2d6631c6bd9dc74633657">ButtonState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classButton.html#ae823b05599aa1650bdc496c0d377c106">state</a></td></tr>
 <tr class="separator:ae823b05599aa1650bdc496c0d377c106 inherit pub_attribs_classButton"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -369,51 +428,57 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:af4ef763070b4043171c29d714437e539 inherit pub_attribs_classFrame" id="r_af4ef763070b4043171c29d714437e539"><td class="memItemLeft" align="right" valign="top"><a class="el" href="frame_8h.html#a885df608db65e29c399b42f68ef201a0">FrameFlags</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#af4ef763070b4043171c29d714437e539">flags</a></td></tr>
 <tr class="separator:af4ef763070b4043171c29d714437e539 inherit pub_attribs_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classNode"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classNode')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classNode.html">Node</a></td></tr>
-<tr class="memitem:ga9cf70c2b354e11c49130331da4519864 inherit pub_attribs_classNode" id="r_ga9cf70c2b354e11c49130331da4519864"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga9cf70c2b354e11c49130331da4519864">object</a></td></tr>
-<tr class="separator:ga9cf70c2b354e11c49130331da4519864 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3d857c2fdb25634fe92ca32ff006c233 inherit pub_attribs_classNode" id="r_ga3d857c2fdb25634fe92ca32ff006c233"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="classNode.html">Node</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga3d857c2fdb25634fe92ca32ff006c233">children</a></td></tr>
-<tr class="separator:ga3d857c2fdb25634fe92ca32ff006c233 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga34f3ab9670c7b70dad8905359a243c92 inherit pub_attribs_classNode" id="r_ga34f3ab9670c7b70dad8905359a243c92"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="classNode.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga34f3ab9670c7b70dad8905359a243c92">parent</a></td></tr>
-<tr class="separator:ga34f3ab9670c7b70dad8905359a243c92 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf0605f2b8a070fb62821274a6cf9b531 inherit pub_attribs_classNode" id="r_gaf0605f2b8a070fb62821274a6cf9b531"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#a2b19d553290a8d4a083d3c03280ea800">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#gaf0605f2b8a070fb62821274a6cf9b531">length</a></td></tr>
-<tr class="separator:gaf0605f2b8a070fb62821274a6cf9b531 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga670b66a39fdb438336be47a9cb68a516 inherit pub_attribs_classNode" id="r_ga670b66a39fdb438336be47a9cb68a516"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga670b66a39fdb438336be47a9cb68a516">type</a></td></tr>
-<tr class="separator:ga670b66a39fdb438336be47a9cb68a516 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0c95683293e9f234118c583a28bc9cc0 inherit pub_attribs_classNode" id="r_ga0c95683293e9f234118c583a28bc9cc0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga0c95683293e9f234118c583a28bc9cc0">flags</a></td></tr>
-<tr class="separator:ga0c95683293e9f234118c583a28bc9cc0 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga19f2506921f0378b62b4200d0f674411 inherit pub_attribs_classNode" id="r_ga19f2506921f0378b62b4200d0f674411"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga19f2506921f0378b62b4200d0f674411">pos</a></td></tr>
-<tr class="separator:ga19f2506921f0378b62b4200d0f674411 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4c1d2fdb8be63309e0a7e2a4b3a17066 inherit pub_attribs_classNode" id="r_ga4c1d2fdb8be63309e0a7e2a4b3a17066"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga4c1d2fdb8be63309e0a7e2a4b3a17066">rot</a></td></tr>
-<tr class="separator:ga4c1d2fdb8be63309e0a7e2a4b3a17066 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac6f771ff3b5a0575ab61ce09df2ed685 inherit pub_attribs_classNode" id="r_gac6f771ff3b5a0575ab61ce09df2ed685"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#gac6f771ff3b5a0575ab61ce09df2ed685">scale</a></td></tr>
-<tr class="separator:gac6f771ff3b5a0575ab61ce09df2ed685 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1cf2ef86297b1bdfed11d030c0ed3dd2 inherit pub_attribs_classNode" id="r_ga1cf2ef86297b1bdfed11d030c0ed3dd2"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga1cf2ef86297b1bdfed11d030c0ed3dd2">globalPos</a></td></tr>
-<tr class="separator:ga1cf2ef86297b1bdfed11d030c0ed3dd2 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga16edb124722f7491fa3d41573b2fec8a inherit pub_attribs_classNode" id="r_ga16edb124722f7491fa3d41573b2fec8a"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga16edb124722f7491fa3d41573b2fec8a">globalRot</a></td></tr>
-<tr class="separator:ga16edb124722f7491fa3d41573b2fec8a inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1d353831fd989481401e337cd5ba0ddc inherit pub_attribs_classNode" id="r_ga1d353831fd989481401e337cd5ba0ddc"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga1d353831fd989481401e337cd5ba0ddc">globalScale</a></td></tr>
-<tr class="separator:ga1d353831fd989481401e337cd5ba0ddc inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafecba6f76777835ffecef5c947e19f26 inherit pub_attribs_classNode" id="r_gafecba6f76777835ffecef5c947e19f26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="scripts_8h.html#a43b2073db874347a0a4ab166b38e36bd">Behavior</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#gafecba6f76777835ffecef5c947e19f26">behavior</a></td></tr>
-<tr class="separator:gafecba6f76777835ffecef5c947e19f26 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafa50314ea6ca719d2fcbbdaa33dd052a inherit pub_attribs_classNode" id="r_gafa50314ea6ca719d2fcbbdaa33dd052a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionBehaviorAttribute.html">BehaviorAttribute</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#gafa50314ea6ca719d2fcbbdaa33dd052a">attribute</a></td></tr>
-<tr class="separator:gafa50314ea6ca719d2fcbbdaa33dd052a inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab9c00a78e2cb89d68c1d9a251c870444 inherit pub_attribs_classNode" id="r_gab9c00a78e2cb89d68c1d9a251c870444"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#gab9c00a78e2cb89d68c1d9a251c870444">attributes_count</a></td></tr>
-<tr class="separator:gab9c00a78e2cb89d68c1d9a251c870444 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga16c1ef53dee5d0538a5027edc2e937f3 inherit pub_attribs_classNode" id="r_ga16c1ef53dee5d0538a5027edc2e937f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga16c1ef53dee5d0538a5027edc2e937f3">shader</a></td></tr>
-<tr class="separator:ga16c1ef53dee5d0538a5027edc2e937f3 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cf70c2b354e11c49130331da4519864 inherit pub_attribs_classNode" id="r_a9cf70c2b354e11c49130331da4519864"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a9cf70c2b354e11c49130331da4519864">object</a></td></tr>
+<tr class="separator:a9cf70c2b354e11c49130331da4519864 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d857c2fdb25634fe92ca32ff006c233 inherit pub_attribs_classNode" id="r_a3d857c2fdb25634fe92ca32ff006c233"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="classNode.html">Node</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a3d857c2fdb25634fe92ca32ff006c233">children</a></td></tr>
+<tr class="separator:a3d857c2fdb25634fe92ca32ff006c233 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34f3ab9670c7b70dad8905359a243c92 inherit pub_attribs_classNode" id="r_a34f3ab9670c7b70dad8905359a243c92"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="classNode.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a34f3ab9670c7b70dad8905359a243c92">parent</a></td></tr>
+<tr class="separator:a34f3ab9670c7b70dad8905359a243c92 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0605f2b8a070fb62821274a6cf9b531 inherit pub_attribs_classNode" id="r_af0605f2b8a070fb62821274a6cf9b531"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#a2b19d553290a8d4a083d3c03280ea800">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#af0605f2b8a070fb62821274a6cf9b531">length</a></td></tr>
+<tr class="separator:af0605f2b8a070fb62821274a6cf9b531 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a670b66a39fdb438336be47a9cb68a516 inherit pub_attribs_classNode" id="r_a670b66a39fdb438336be47a9cb68a516"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a670b66a39fdb438336be47a9cb68a516">type</a></td></tr>
+<tr class="separator:a670b66a39fdb438336be47a9cb68a516 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c95683293e9f234118c583a28bc9cc0 inherit pub_attribs_classNode" id="r_a0c95683293e9f234118c583a28bc9cc0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a0c95683293e9f234118c583a28bc9cc0">flags</a></td></tr>
+<tr class="separator:a0c95683293e9f234118c583a28bc9cc0 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19f2506921f0378b62b4200d0f674411 inherit pub_attribs_classNode" id="r_a19f2506921f0378b62b4200d0f674411"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a19f2506921f0378b62b4200d0f674411">pos</a></td></tr>
+<tr class="separator:a19f2506921f0378b62b4200d0f674411 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c1d2fdb8be63309e0a7e2a4b3a17066 inherit pub_attribs_classNode" id="r_a4c1d2fdb8be63309e0a7e2a4b3a17066"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a4c1d2fdb8be63309e0a7e2a4b3a17066">rot</a></td></tr>
+<tr class="separator:a4c1d2fdb8be63309e0a7e2a4b3a17066 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6f771ff3b5a0575ab61ce09df2ed685 inherit pub_attribs_classNode" id="r_ac6f771ff3b5a0575ab61ce09df2ed685"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ac6f771ff3b5a0575ab61ce09df2ed685">scale</a></td></tr>
+<tr class="separator:ac6f771ff3b5a0575ab61ce09df2ed685 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cf2ef86297b1bdfed11d030c0ed3dd2 inherit pub_attribs_classNode" id="r_a1cf2ef86297b1bdfed11d030c0ed3dd2"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a1cf2ef86297b1bdfed11d030c0ed3dd2">globalPos</a></td></tr>
+<tr class="separator:a1cf2ef86297b1bdfed11d030c0ed3dd2 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16edb124722f7491fa3d41573b2fec8a inherit pub_attribs_classNode" id="r_a16edb124722f7491fa3d41573b2fec8a"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a16edb124722f7491fa3d41573b2fec8a">globalRot</a></td></tr>
+<tr class="separator:a16edb124722f7491fa3d41573b2fec8a inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d353831fd989481401e337cd5ba0ddc inherit pub_attribs_classNode" id="r_a1d353831fd989481401e337cd5ba0ddc"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a1d353831fd989481401e337cd5ba0ddc">globalScale</a></td></tr>
+<tr class="separator:a1d353831fd989481401e337cd5ba0ddc inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afecba6f76777835ffecef5c947e19f26 inherit pub_attribs_classNode" id="r_afecba6f76777835ffecef5c947e19f26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="scripts_8h.html#a73db917e73a3821d62d9869b4196c024">Behavior</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#afecba6f76777835ffecef5c947e19f26">behavior</a></td></tr>
+<tr class="separator:afecba6f76777835ffecef5c947e19f26 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa50314ea6ca719d2fcbbdaa33dd052a inherit pub_attribs_classNode" id="r_afa50314ea6ca719d2fcbbdaa33dd052a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionBehaviorAttribute.html">BehaviorAttribute</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#afa50314ea6ca719d2fcbbdaa33dd052a">attribute</a></td></tr>
+<tr class="separator:afa50314ea6ca719d2fcbbdaa33dd052a inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9c00a78e2cb89d68c1d9a251c870444 inherit pub_attribs_classNode" id="r_ab9c00a78e2cb89d68c1d9a251c870444"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ab9c00a78e2cb89d68c1d9a251c870444">attributes_count</a></td></tr>
+<tr class="separator:ab9c00a78e2cb89d68c1d9a251c870444 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16c1ef53dee5d0538a5027edc2e937f3 inherit pub_attribs_classNode" id="r_a16c1ef53dee5d0538a5027edc2e937f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a16c1ef53dee5d0538a5027edc2e937f3">shader</a></td></tr>
+<tr class="separator:a16c1ef53dee5d0538a5027edc2e937f3 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_attribs_classFrame"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classFrame')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classFrame.html">Frame</a></td></tr>
-<tr class="memitem:a770bd2917ab92f61e83a739b02121e45 inherit pub_static_attribs_classFrame" id="r_a770bd2917ab92f61e83a739b02121e45"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__ModelHandling.html#gaad5c885aa493ac48e59f4deeed82ca38">VBO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#a770bd2917ab92f61e83a739b02121e45">_vbo</a> = 0</td></tr>
-<tr class="separator:a770bd2917ab92f61e83a739b02121e45 inherit pub_static_attribs_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0d0ef8d49a6370ccda8a09f739453d8 inherit pub_static_attribs_classFrame" id="r_ab0d0ef8d49a6370ccda8a09f739453d8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__ModelHandling.html#gaad5c885aa493ac48e59f4deeed82ca38">VBO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#ab0d0ef8d49a6370ccda8a09f739453d8">_vbo</a> = 0</td></tr>
+<tr class="memdesc:ab0d0ef8d49a6370ccda8a09f739453d8 inherit pub_static_attribs_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static variable to store the Vertex Buffer <a class="el" href="structObject.html" title="A generic object structure.">Object</a> (VBO) identifier.  <br /></td></tr>
+<tr class="separator:ab0d0ef8d49a6370ccda8a09f739453d8 inherit pub_static_attribs_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69ba26f9aacfec9606de2d5a6c59e6a9 inherit pub_static_attribs_classFrame" id="r_a69ba26f9aacfec9606de2d5a6c59e6a9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__ModelHandling.html#ga8045bf7a50b1653e4b1e752967ddf6c3">VAO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFrame.html#a69ba26f9aacfec9606de2d5a6c59e6a9">_vao</a> = 0</td></tr>
+<tr class="memdesc:a69ba26f9aacfec9606de2d5a6c59e6a9 inherit pub_static_attribs_classFrame"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static variable to store the Vertex Array <a class="el" href="structObject.html" title="A generic object structure.">Object</a> (VAO) identifier.  <br /></td></tr>
 <tr class="separator:a69ba26f9aacfec9606de2d5a6c59e6a9 inherit pub_static_attribs_classFrame"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_attribs_classNode"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classNode')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classNode.html">Node</a></td></tr>
-<tr class="memitem:a44e2ccb5f2209f6367f33a3c712f0eb1 inherit pub_static_attribs_classNode" id="r_a44e2ccb5f2209f6367f33a3c712f0eb1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a44e2ccb5f2209f6367f33a3c712f0eb1">glowShader</a> = 0</td></tr>
-<tr class="separator:a44e2ccb5f2209f6367f33a3c712f0eb1 inherit pub_static_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad05f8b1de975fa3370e8b98c0ec5aa4f inherit pub_static_attribs_classNode" id="r_ad05f8b1de975fa3370e8b98c0ec5aa4f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ad05f8b1de975fa3370e8b98c0ec5aa4f">glowShader</a> = 0</td></tr>
+<tr class="memdesc:ad05f8b1de975fa3370e8b98c0ec5aa4f inherit pub_static_attribs_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static Shader variable used for glow effect.  <br /></td></tr>
+<tr class="separator:ad05f8b1de975fa3370e8b98c0ec5aa4f inherit pub_static_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a slider component in the GUI. </p>
+<p>This structure defines a slider which can be used to select a value within a specified range. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a2e7d6802e651a7e12022f26cc75c3a71" name="a2e7d6802e651a7e12022f26cc75c3a71"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2e7d6802e651a7e12022f26cc75c3a71">&#9670;&#160;</a></span>constructor()</h2>
 
@@ -448,30 +513,15 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="ad70cc2b45c918d0dd272d426fcdc1855" name="ad70cc2b45c918d0dd272d426fcdc1855"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad70cc2b45c918d0dd272d426fcdc1855">&#9670;&#160;</a></span>free()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Slider::free </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Constructor for the slider class. </p>
+<p>This function initializes a slider object with the specified minimum and maximum values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min</td><td>The minimum value of the slider. </td></tr>
+    <tr><td class="paramname">max</td><td>The maximum value of the slider. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -498,30 +548,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a5f9d8041bebf6053b31b798ed3210153" name="a5f9d8041bebf6053b31b798ed3210153"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f9d8041bebf6053b31b798ed3210153">&#9670;&#160;</a></span>is_radiobutton()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Slider::is_radiobutton </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Initializes the slider. </p>
+<p>This function sets up the initial state of the slider, including any necessary resources or configurations. It should be called before using the slider. </p>
 
 </div>
 </div>
@@ -548,6 +576,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Loads data from a file. </p>
+<p>This function reads data from the given file and initializes the slider class with the loaded data.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>A pointer to the file to read from. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -585,6 +622,45 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Saves the state of the editor node to a file. </p>
+<p>This function writes the current state of the editor node to the specified file.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>A pointer to the FILE object where the state will be saved. </td></tr>
+    <tr><td class="paramname">editor</td><td>A pointer to the <a class="el" href="classNode.html" title="Represents a node in the tree structure.">Node</a> object representing the editor whose state is to be saved. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5f9d8041bebf6053b31b798ed3210153" name="a5f9d8041bebf6053b31b798ed3210153"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f9d8041bebf6053b31b798ed3210153">&#9670;&#160;</a></span>is_radiobutton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Slider::is_radiobutton </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if the current node is a radio button. </p>
+<p>This function determines whether the current node in the GUI framework is a radio button. It returns a boolean value indicating the result.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if the current node is a radio button, false otherwise. </dd></dl>
+
 </div>
 </div>
 <a id="a8bcc94829fa9c1546097da4e797665cb" name="a8bcc94829fa9c1546097da4e797665cb"></a>
@@ -610,82 +686,116 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Updates the state of the slider. </p>
+<p>This function is responsible for updating the state of the slider based on user interactions or other events. It should be called regularly to ensure the slider's state is kept up to date. </p>
+
+</div>
+</div>
+<a id="ad70cc2b45c918d0dd272d426fcdc1855" name="ad70cc2b45c918d0dd272d426fcdc1855"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad70cc2b45c918d0dd272d426fcdc1855">&#9670;&#160;</a></span>free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Slider::free </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Frees the resources allocated by the slider class. </p>
+<p>This function is responsible for releasing any memory or resources that were allocated for the slider class. It should be called when the slider is no longer needed to prevent memory leaks. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="abfb7de0e49127d086f58c8232fae76d5" name="abfb7de0e49127d086f58c8232fae76d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfb7de0e49127d086f58c8232fae76d5">&#9670;&#160;</a></span>checked</h2>
+<a id="aafc973b1891d60e74cc075482d5757d6" name="aafc973b1891d60e74cc075482d5757d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafc973b1891d60e74cc075482d5757d6">&#9670;&#160;</a></span>state</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool* Slider::checked</td>
+          <td class="memname">Slider::state</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>For alignement purpose. </p>
+<p>Current state of the slider, represented by the ButtonState enum. </p>
 
 </div>
 </div>
-<a id="a67240512a37bdfe0cbf9b3cc75bbacf1" name="a67240512a37bdfe0cbf9b3cc75bbacf1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67240512a37bdfe0cbf9b3cc75bbacf1">&#9670;&#160;</a></span>max</h2>
+<a id="ab009758b6794140fe0fe6f51b940e10b" name="ab009758b6794140fe0fe6f51b940e10b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab009758b6794140fe0fe6f51b940e10b">&#9670;&#160;</a></span>checked</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Slider::max</td>
+          <td class="memname">Slider::checked</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Pointer to a boolean value used for alignment purposes. </p>
 
 </div>
 </div>
-<a id="ac540a0063008ecbcd8bc6ad0eef198ad" name="ac540a0063008ecbcd8bc6ad0eef198ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac540a0063008ecbcd8bc6ad0eef198ad">&#9670;&#160;</a></span>min</h2>
+<a id="a4991d29d0f386b0e1cc09d5da3a99954" name="a4991d29d0f386b0e1cc09d5da3a99954"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4991d29d0f386b0e1cc09d5da3a99954">&#9670;&#160;</a></span>value</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Slider::min</td>
+          <td class="memname">Slider::value</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Pointer to a float that holds the current value of the slider. </p>
 
 </div>
 </div>
-<a id="a65daca7f05932f4ee8ae6e7623fcd84e" name="a65daca7f05932f4ee8ae6e7623fcd84e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65daca7f05932f4ee8ae6e7623fcd84e">&#9670;&#160;</a></span>state</h2>
+<a id="a8790fa27427eef8bd3ef93a0584ef213" name="a8790fa27427eef8bd3ef93a0584ef213"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8790fa27427eef8bd3ef93a0584ef213">&#9670;&#160;</a></span>min</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="frame_8h.html#aa46074d34fe2d6631c6bd9dc74633657">ButtonState</a> Slider::state</td>
+          <td class="memname">Slider::min</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Current state of the button. </p>
+<p>Minimum value that the slider can represent. </p>
 
 </div>
 </div>
-<a id="a99eb669c941675ce732332554a2f0846" name="a99eb669c941675ce732332554a2f0846"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99eb669c941675ce732332554a2f0846">&#9670;&#160;</a></span>value</h2>
+<a id="a6110cf762ca1d31ba8fccd03af7681e5" name="a6110cf762ca1d31ba8fccd03af7681e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6110cf762ca1d31ba8fccd03af7681e5">&#9670;&#160;</a></span>max</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float* Slider::value</td>
+          <td class="memname">Slider::max</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Maximum value that the slider can represent. </p>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/classes/nodes/frames/<a class="el" href="slider_8class_8c.html">slider.class.c</a></li>
 <li>src/gui/<a class="el" href="frame_8h_source.html">frame.h</a></li>
 </ul>
@@ -720,6 +830,16 @@ Additional Inherited Members</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -728,7 +848,7 @@ Additional Inherited Members</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

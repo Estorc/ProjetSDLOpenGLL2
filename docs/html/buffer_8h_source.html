@@ -129,13 +129,13 @@ $(document).ready(function(){initNavTree('buffer_8h_source.html',''); initResiza
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
  <span class="comment">// end of BufferManagement</span><div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="agroup__BufferManagement_html_ga9b0bc2b765973e939c8763071d523d9f"><div class="ttname"><a href="group__BufferManagement.html#ga9b0bc2b765973e939c8763071d523d9f">free_buffers</a></div><div class="ttdeci">void free_buffers()</div><div class="ttdoc">Frees the Game.buffers-&gt;</div><div class="ttdef"><b>Definition</b> buffer.c:12</div></div>
-<div class="ttc" id="agroup__BufferManagement_html_gad241cc00b1a92e6d85827df96778e442"><div class="ttname"><a href="group__BufferManagement.html#gad241cc00b1a92e6d85827df96778e442">init_buffers</a></div><div class="ttdeci">void init_buffers()</div><div class="ttdoc">Initializes the Game.buffers-&gt;</div><div class="ttdef"><b>Definition</b> buffer.c:7</div></div>
+<div class="ttc" id="agroup__BufferManagement_html_ga9b0bc2b765973e939c8763071d523d9f"><div class="ttname"><a href="group__BufferManagement.html#ga9b0bc2b765973e939c8763071d523d9f">free_buffers</a></div><div class="ttdeci">void free_buffers()</div><div class="ttdoc">Frees the buffers.</div><div class="ttdef"><b>Definition</b> buffer.c:12</div></div>
+<div class="ttc" id="agroup__BufferManagement_html_gad241cc00b1a92e6d85827df96778e442"><div class="ttname"><a href="group__BufferManagement.html#gad241cc00b1a92e6d85827df96778e442">init_buffers</a></div><div class="ttdeci">void init_buffers()</div><div class="ttdoc">Initializes the buffers.</div><div class="ttdef"><b>Definition</b> buffer.c:7</div></div>
 <div class="ttc" id="astructBufferCollection_html"><div class="ttname"><a href="structBufferCollection.html">BufferCollection</a></div><div class="ttdoc">Structure to hold various buffer collections.</div><div class="ttdef"><b>Definition</b> buffer.h:26</div></div>
 <div class="ttc" id="astructBufferCollection_html_a6c5535d2f38e4eb5f2927476f1eba2fa"><div class="ttname"><a href="structBufferCollection.html#a6c5535d2f38e4eb5f2927476f1eba2fa">BufferCollection::lightingBuffer</a></div><div class="ttdeci">struct LightingBuffer lightingBuffer</div><div class="ttdef"><b>Definition</b> buffer.h:27</div></div>
 <div class="ttc" id="astructBufferCollection_html_ad23820da5aaf50ec6b080d6fc5696bbb"><div class="ttname"><a href="structBufferCollection.html#ad23820da5aaf50ec6b080d6fc5696bbb">BufferCollection::collisionBuffer</a></div><div class="ttdeci">struct CollisionBuffer collisionBuffer</div><div class="ttdef"><b>Definition</b> buffer.h:28</div></div>
-<div class="ttc" id="astructCollisionBuffer_html"><div class="ttname"><a href="structCollisionBuffer.html">CollisionBuffer</a></div><div class="ttdoc">Represents a buffer for collision shapes.</div><div class="ttdef"><b>Definition</b> bodies.h:119</div></div>
-<div class="ttc" id="astructLightingBuffer_html"><div class="ttname"><a href="structLightingBuffer.html">LightingBuffer</a></div><div class="ttdoc">Buffer structure to manage an array of lighting nodes.</div><div class="ttdef"><b>Definition</b> lighting.h:103</div></div>
+<div class="ttc" id="astructCollisionBuffer_html"><div class="ttname"><a href="structCollisionBuffer.html">CollisionBuffer</a></div><div class="ttdoc">Represents a buffer for collision shapes.</div><div class="ttdef"><b>Definition</b> bodies.h:125</div></div>
+<div class="ttc" id="astructLightingBuffer_html"><div class="ttname"><a href="structLightingBuffer.html">LightingBuffer</a></div><div class="ttdoc">Buffer structure to manage an array of lighting nodes.</div><div class="ttdef"><b>Definition</b> lighting.h:101</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -167,6 +167,16 @@ $(document).ready(function(){initNavTree('buffer_8h_source.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -175,7 +185,7 @@ $(document).ready(function(){initNavTree('buffer_8h_source.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

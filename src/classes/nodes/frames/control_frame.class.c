@@ -21,10 +21,31 @@
 #include "window.h"
 #include "gui/frame.h"
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class ControlFrame : public Frame {
     __containerType__ Node *
     public:
 
+    /**
+     * @brief Constructor for the control frame class.
+     *
+     * This function initializes a control frame with the specified parameters.
+     *
+     * @param x The x-coordinate of the control frame.
+     * @param xu The unit of measurement for the x-coordinate.
+     * @param y The y-coordinate of the control frame.
+     * @param yu The unit of measurement for the y-coordinate.
+     * @param w The width of the control frame.
+     * @param wu The unit of measurement for the width.
+     * @param h The height of the control frame.
+     * @param hu The unit of measurement for the height.
+     * @param ha The horizontal alignment of the control frame.
+     * @param va The vertical alignment of the control frame.
+     * @param scroll The scroll setting for the control frame.
+     */
     void constructor(double x, int xu, double y, int yu, double w, int wu, double h, int hu, int ha, int va, int scroll) {
         this->type = __type__; 
 
@@ -54,8 +75,13 @@ class ControlFrame : public Frame {
         }
     }
 
-    
-
+    /**
+     * @brief Loads data from a file.
+     *
+     * This function reads data from the given file pointer and processes it accordingly.
+     *
+     * @param file A pointer to the FILE object that represents the file to be read.
+     */
     void load(FILE *file) {
         float relPos[2], scale[2];
         char unit[4], alignment[2], scroll;
@@ -71,11 +97,26 @@ class ControlFrame : public Frame {
         this::constructor(relPos[0], unit[0], relPos[1], unit[1], scale[0], unit[2], scale[1], unit[3], alignment[0], alignment[1], scroll);
     }
 
+    /**
+     * @brief Renders the control frame.
+     *
+     * This function is responsible for rendering the control frame. It performs all necessary
+     * operations to display the control frame on the screen.
+     */
     void render() {
         Frame *frame = (Frame *) this->object;
         if (frame->flags & FRAME_NEEDS_REFRESH) this::refresh();
     }
 
+    /**
+     * @brief Saves the state of the editor node to a file.
+     *
+     * This function writes the current state of the provided editor node to the specified file.
+     * It is used to persist the state of the editor for later retrieval.
+     *
+     * @param file A pointer to the FILE object where the editor state will be saved.
+     * @param editor A pointer to the Node object representing the editor whose state is to be saved.
+     */
     void save(FILE *file, Node *editor) {
         Frame *frame = (Frame *) this->object;
         UNUSED(editor);
@@ -91,3 +132,4 @@ class ControlFrame : public Frame {
     }
     
 }
+

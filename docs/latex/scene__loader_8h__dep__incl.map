@@ -1,0 +1,25 @@
+<map id="src/io/scene_loader.h" name="src/io/scene_loader.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,333,164,358"/>
+<area shape="rect" id="Node000002" href="$area_8class_8c.html" title="This file handles the physics area nodes in the project." alt="" coords="231,5,420,45"/>
+<area shape="poly" id="edge12_Node000001_Node000002" title=" " alt="" coords="87,318,99,263,122,193,138,155,158,119,182,85,210,55,229,43,232,47,214,59,186,88,162,122,143,158,127,195,104,265,93,319"/>
+<area shape="rect" id="Node000003" href="$body_8class_8c.html" title="This file defines the body class for the physics engine." alt="" coords="231,69,420,109"/>
+<area shape="poly" id="edge13_Node000001_Node000003" title=" " alt="" coords="91,318,106,275,131,221,165,166,186,141,210,119,230,107,233,112,214,123,190,145,170,169,136,224,111,277,96,320"/>
+<area shape="rect" id="Node000004" href="$kinematic__body_8class_8c.html" title="This file defines the implementation of kinematic bodies for the physics engine." alt="" coords="214,133,437,173"/>
+<area shape="poly" id="edge14_Node000001_Node000004" title=" " alt="" coords="97,319,141,251,173,214,211,183,233,171,236,176,213,188,177,218,145,254,101,322"/>
+<area shape="rect" id="Node000005" href="$rigid__body_8class_8c.html" title="This source file defines the implementation of rigid body physics for the project." alt="" coords="231,197,420,237"/>
+<area shape="poly" id="edge15_Node000001_Node000005" title=" " alt="" coords="107,321,153,284,211,247,240,235,242,240,213,252,156,288,111,326"/>
+<area shape="rect" id="Node000006" href="$static__body_8class_8c.html" title="This file defines the implementation of static bodies in the physics engine." alt="" coords="228,261,423,301"/>
+<area shape="poly" id="edge16_Node000001_Node000006" title=" " alt="" coords="146,326,249,299,250,304,147,332"/>
+<area shape="rect" id="Node000007" href="$physical__node_8class_8c.html" title="This file contains the implementation of the PhysicalNode class." alt="" coords="231,325,420,365"/>
+<area shape="poly" id="edge17_Node000001_Node000007" title=" " alt="" coords="178,343,231,343,231,348,178,348"/>
+<area shape="rect" id="Node000008" href="$scene_8class_8c.html" title="This file contains the implementation of the scene class." alt="" coords="212,390,439,415"/>
+<area shape="poly" id="edge18_Node000001_Node000008" title=" " alt="" coords="149,359,213,375,267,387,266,393,211,380,147,364"/>
+<area shape="rect" id="Node000009" href="$node__loader_8c.html" title=" " alt="" coords="250,439,401,465"/>
+<area shape="poly" id="edge19_Node000001_Node000009" title=" " alt="" coords="114,364,159,395,213,424,251,437,250,442,211,429,156,400,111,369"/>
+<area shape="rect" id="Node000010" href="$main_8c.html" title=" " alt="" coords="281,489,370,514"/>
+<area shape="poly" id="edge20_Node000001_Node000010" title=" " alt="" coords="104,367,149,422,179,450,213,474,247,487,281,495,280,500,245,492,211,478,176,454,145,426,100,371"/>
+<area shape="rect" id="Node000011" href="$raptiquax_8c.html" title=" " alt="" coords="266,538,385,563"/>
+<area shape="poly" id="edge21_Node000001_Node000011" title=" " alt="" coords="99,369,116,405,141,447,174,488,213,523,239,536,266,543,265,548,237,541,211,528,170,492,137,450,111,407,94,372"/>
+<area shape="rect" id="Node000012" href="$scene_8c.html" title=" " alt="" coords="262,587,389,613"/>
+<area shape="poly" id="edge22_Node000001_Node000012" title=" " alt="" coords="95,370,110,415,134,470,168,526,189,551,214,572,237,585,263,593,261,598,235,590,210,577,186,555,164,529,129,473,105,417,90,372"/>
+</map>

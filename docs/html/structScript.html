@@ -114,16 +114,36 @@ $(document).ready(function(){initNavTree('structScript.html',''); initResizable(
 </div><!--header-->
 <div class="contents">
 
+<p>Structure representing a script with a function and a name.  
+ <a href="structScript.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="scripts_8h_source.html">scripts.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a8ebb4084e2de1a387cb1fe527d49e4e7" id="r_a8ebb4084e2de1a387cb1fe527d49e4e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="scripts_8h.html#ac020245962afe481cfa36fabbb2816f6">ScriptFunc</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structScript.html#a8ebb4084e2de1a387cb1fe527d49e4e7">script</a></td></tr>
+<tr class="memitem:a8ebb4084e2de1a387cb1fe527d49e4e7" id="r_a8ebb4084e2de1a387cb1fe527d49e4e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="scripts_8h.html#a9ecadf256432372682e2216abac9ab04">ScriptFunc</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structScript.html#a8ebb4084e2de1a387cb1fe527d49e4e7">script</a></td></tr>
 <tr class="separator:a8ebb4084e2de1a387cb1fe527d49e4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a0c95e8768aa2b629e06637aeb2876e" id="r_a0a0c95e8768aa2b629e06637aeb2876e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structScript.html#a0a0c95e8768aa2b629e06637aeb2876e">name</a></td></tr>
 <tr class="separator:a0a0c95e8768aa2b629e06637aeb2876e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Structure representing a script with a function and a name. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a8ebb4084e2de1a387cb1fe527d49e4e7" name="a8ebb4084e2de1a387cb1fe527d49e4e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ebb4084e2de1a387cb1fe527d49e4e7">&#9670;&#160;</a></span>script</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="scripts_8h.html#a9ecadf256432372682e2216abac9ab04">ScriptFunc</a> Script::script</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function pointer to the script function </p>
+
+</div>
+</div>
 <a id="a0a0c95e8768aa2b629e06637aeb2876e" name="a0a0c95e8768aa2b629e06637aeb2876e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0a0c95e8768aa2b629e06637aeb2876e">&#9670;&#160;</a></span>name</h2>
 
@@ -135,20 +155,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8ebb4084e2de1a387cb1fe527d49e4e7" name="a8ebb4084e2de1a387cb1fe527d49e4e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ebb4084e2de1a387cb1fe527d49e4e7">&#9670;&#160;</a></span>script</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="scripts_8h.html#ac020245962afe481cfa36fabbb2816f6">ScriptFunc</a> Script::script</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Name of the script </p>
 
 </div>
 </div>
@@ -186,6 +193,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -194,7 +211,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

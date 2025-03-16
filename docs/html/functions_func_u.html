@@ -110,7 +110,7 @@ $(document).ready(function(){initNavTree('functions_func_u.html',''); initResiza
 <div class="textblock">Here is a list of all functions with links to the classes they belong to:</div>
 
 <h3><a id="index_u" name="index_u"></a>- u -</h3><ul>
-<li>update()&#160;:&#160;<a class="el" href="classArea.html#a589fbdb24b0e82711669645e24b40c91">Area</a>, <a class="el" href="classButton.html#ad8e030c1c8846d43f3126047d4a3667f">Button</a>, <a class="el" href="classCamera.html#a8bf37f95d2e93f14b481426177b39ca1">Camera</a>, <a class="el" href="classDirectionalLight.html#a54c0194fe606359949adfc38e6d3847f">DirectionalLight</a>, <a class="el" href="classFrame.html#a31aee47f16abb8322dd96860a4363fda">Frame</a>, <a class="el" href="classInputArea.html#a5aa27005d3fff2e706abab45ae541611">InputArea</a>, <a class="el" href="classKinematicBody.html#ad9febc7e4fe1714dd1af6748db34d2f3">KinematicBody</a>, <a class="el" href="classNode.html#a500a682914a24af188bd9eb79ba2aaae">Node</a>, <a class="el" href="classPointLight.html#ae150ea9eb87c9eec2320b6b1fb431f56">PointLight</a>, <a class="el" href="classRenderTarget.html#a7cbdd9d75f840e4a94534ef3dd5b194a">RenderTarget</a>, <a class="el" href="classRigidBody.html#af219a257ea6ebbbbdd71bac6a5e89473">RigidBody</a>, <a class="el" href="classSelectList.html#a7ada57300b746957f8cead5334ff3752">SelectList</a>, <a class="el" href="classSlider.html#a8bcc94829fa9c1546097da4e797665cb">Slider</a>, <a class="el" href="classSpotLight.html#a95581ff96b9f4a53f4e41d836302e891">SpotLight</a>, <a class="el" href="classStaticBody.html#ac2200b98bbc1ea0693485a84f931c3df">StaticBody</a></li>
+<li>update()&#160;:&#160;<a class="el" href="classArea.html#a589fbdb24b0e82711669645e24b40c91">Area</a>, <a class="el" href="classButton.html#ad8e030c1c8846d43f3126047d4a3667f">Button</a>, <a class="el" href="classCamera.html#a8bf37f95d2e93f14b481426177b39ca1">Camera</a>, <a class="el" href="classDirectionalLight.html#a54c0194fe606359949adfc38e6d3847f">DirectionalLight</a>, <a class="el" href="classFrame.html#a31aee47f16abb8322dd96860a4363fda">Frame</a>, <a class="el" href="classInputArea.html#a5aa27005d3fff2e706abab45ae541611">InputArea</a>, <a class="el" href="classKinematicBody.html#a1fa2ad507fd4168649317dc274285120">KinematicBody</a>, <a class="el" href="classNode.html#a500a682914a24af188bd9eb79ba2aaae">Node</a>, <a class="el" href="classPointLight.html#ae150ea9eb87c9eec2320b6b1fb431f56">PointLight</a>, <a class="el" href="classRenderTarget.html#a7cbdd9d75f840e4a94534ef3dd5b194a">RenderTarget</a>, <a class="el" href="classRigidBody.html#af219a257ea6ebbbbdd71bac6a5e89473">RigidBody</a>, <a class="el" href="classSelectList.html#a7ada57300b746957f8cead5334ff3752">SelectList</a>, <a class="el" href="classSlider.html#a8bcc94829fa9c1546097da4e797665cb">Slider</a>, <a class="el" href="classSpotLight.html#a95581ff96b9f4a53f4e41d836302e891">SpotLight</a>, <a class="el" href="classStaticBody.html#ac2200b98bbc1ea0693485a84f931c3df">StaticBody</a></li>
 <li>update_global_position()&#160;:&#160;<a class="el" href="classKinematicBody.html#afddcbf2d53bbb1a441f3d7cf6e22c818">KinematicBody</a>, <a class="el" href="classNode.html#a2621112ec04d166f9ec376eba06f3bbb">Node</a>, <a class="el" href="classRigidBody.html#aa431d1e53955b7bed03752cced5efb50">RigidBody</a>, <a class="el" href="classStaticBody.html#a4f3d26f9b5c769a7fb54fdeebd64b9e7">StaticBody</a></li>
 </ul>
 </div><!-- contents -->
@@ -144,6 +144,16 @@ $(document).ready(function(){initNavTree('functions_func_u.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -152,7 +162,7 @@ $(document).ready(function(){initNavTree('functions_func_u.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

@@ -34,27 +34,73 @@ Utility functions for string and file operations.
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{group__StringIO_gab2e99bc76bbf988bfb786dc04be63e4d}\label{group__StringIO_gab2e99bc76bbf988bfb786dc04be63e4d} 
-\index{String and File I/O Utilities@{String and File I/O Utilities}!concat\_path@{concat\_path}}
-\index{concat\_path@{concat\_path}!String and File I/O Utilities@{String and File I/O Utilities}}
-\doxysubsubsection{\texorpdfstring{concat\_path()}{concat\_path()}}
-{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} concat\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path1,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{path2 }\end{DoxyParamCaption})}
+\Hypertarget{group__StringIO_ga9f99c5cbcf6052c57972f2044ce260ab}\label{group__StringIO_ga9f99c5cbcf6052c57972f2044ce260ab} 
+\index{String and File I/O Utilities@{String and File I/O Utilities}!read\_filef@{read\_filef}}
+\index{read\_filef@{read\_filef}!String and File I/O Utilities@{String and File I/O Utilities}}
+\doxysubsubsection{\texorpdfstring{read\_filef()}{read\_filef()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} read\+\_\+filef (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file }\end{DoxyParamCaption})}
 
 
 
-Concatenates two file paths. 
+Reads the contents of a file into a string. 
 
-This function concatenates two file paths, adding a path separator between them if necessary. The returned string is dynamically allocated, and the caller is responsible for freeing the allocated memory.
+This function reads the contents of a file that is already open and returns them as a dynamically allocated string. The caller is responsible for freeing the allocated memory.
 
 
 \begin{DoxyParams}{Parameters}
-{\em path1} & The first part of the path. \\
-\hline
-{\em path2} & The second part of the path. \\
+{\em file} & The file to read from. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A pointer to the dynamically allocated string containing the concatenated path. 
+A pointer to the dynamically allocated string containing the file contents. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The caller is responsible for freeing the allocated memory. 
+
+The file must be open and readable. 
+\end{DoxyNote}
+\Hypertarget{group__StringIO_ga1e0205abb275b15436fa03c89899e4bb}\label{group__StringIO_ga1e0205abb275b15436fa03c89899e4bb} 
+\index{String and File I/O Utilities@{String and File I/O Utilities}!read\_file@{read\_file}}
+\index{read\_file@{read\_file}!String and File I/O Utilities@{String and File I/O Utilities}}
+\doxysubsubsection{\texorpdfstring{read\_file()}{read\_file()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} read\+\_\+file (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
+
+
+
+Reads the contents of a file into a string. 
+
+This function opens the file specified by the given path, reads its contents, and returns them as a dynamically allocated string. The caller is responsible for freeing the allocated memory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to the file to be read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated string containing the file contents. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The caller is responsible for freeing the allocated memory. 
+\end{DoxyNote}
+\Hypertarget{group__StringIO_ga5c0319e26f420cd9750b2ecbec8b50a3}\label{group__StringIO_ga5c0319e26f420cd9750b2ecbec8b50a3} 
+\index{String and File I/O Utilities@{String and File I/O Utilities}!get\_folder\_path@{get\_folder\_path}}
+\index{get\_folder\_path@{get\_folder\_path}!String and File I/O Utilities@{String and File I/O Utilities}}
+\doxysubsubsection{\texorpdfstring{get\_folder\_path()}{get\_folder\_path()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} get\+\_\+folder\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{fullpath }\end{DoxyParamCaption})}
+
+
+
+Extracts the folder path from a full file path. 
+
+This function takes a full file path and returns the folder path portion of it. The returned string is dynamically allocated, and the caller is responsible for freeing the allocated memory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fullpath} & The full file path from which to extract the folder path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated string containing the folder path. 
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
 The caller is responsible for freeing the allocated memory. 
@@ -78,6 +124,31 @@ This function takes a path string and converts any backslashes to forward slashe
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A pointer to the dynamically allocated string containing the converted path. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The caller is responsible for freeing the allocated memory. 
+\end{DoxyNote}
+\Hypertarget{group__StringIO_gab2e99bc76bbf988bfb786dc04be63e4d}\label{group__StringIO_gab2e99bc76bbf988bfb786dc04be63e4d} 
+\index{String and File I/O Utilities@{String and File I/O Utilities}!concat\_path@{concat\_path}}
+\index{concat\_path@{concat\_path}!String and File I/O Utilities@{String and File I/O Utilities}}
+\doxysubsubsection{\texorpdfstring{concat\_path()}{concat\_path()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} concat\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path1,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{path2 }\end{DoxyParamCaption})}
+
+
+
+Concatenates two file paths. 
+
+This function concatenates two file paths, adding a path separator between them if necessary. The returned string is dynamically allocated, and the caller is responsible for freeing the allocated memory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path1} & The first part of the path. \\
+\hline
+{\em path2} & The second part of the path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamically allocated string containing the concatenated path. 
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
 The caller is responsible for freeing the allocated memory. 
@@ -129,29 +200,6 @@ A pointer to the modified string.
 \begin{DoxyNote}{Note}
 This function modifies the input string in place. 
 \end{DoxyNote}
-\Hypertarget{group__StringIO_ga5c0319e26f420cd9750b2ecbec8b50a3}\label{group__StringIO_ga5c0319e26f420cd9750b2ecbec8b50a3} 
-\index{String and File I/O Utilities@{String and File I/O Utilities}!get\_folder\_path@{get\_folder\_path}}
-\index{get\_folder\_path@{get\_folder\_path}!String and File I/O Utilities@{String and File I/O Utilities}}
-\doxysubsubsection{\texorpdfstring{get\_folder\_path()}{get\_folder\_path()}}
-{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} get\+\_\+folder\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{fullpath }\end{DoxyParamCaption})}
-
-
-
-Extracts the folder path from a full file path. 
-
-This function takes a full file path and returns the folder path portion of it. The returned string is dynamically allocated, and the caller is responsible for freeing the allocated memory.
-
-
-\begin{DoxyParams}{Parameters}
-{\em fullpath} & The full file path from which to extract the folder path. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A pointer to the dynamically allocated string containing the folder path. 
-\end{DoxyReturn}
-\begin{DoxyNote}{Note}
-The caller is responsible for freeing the allocated memory. 
-\end{DoxyNote}
 \Hypertarget{group__StringIO_ga2726b5bf448b63de929eece392ae8e70}\label{group__StringIO_ga2726b5bf448b63de929eece392ae8e70} 
 \index{String and File I/O Utilities@{String and File I/O Utilities}!is\_utf8\_start\_byte@{is\_utf8\_start\_byte}}
 \index{is\_utf8\_start\_byte@{is\_utf8\_start\_byte}!String and File I/O Utilities@{String and File I/O Utilities}}
@@ -172,54 +220,6 @@ This function determines whether a given byte is a valid start byte for a UTF-\/
 \begin{DoxyReturn}{Returns}
 1 if the byte is a valid UTF-\/8 start byte, 0 otherwise. 
 \end{DoxyReturn}
-\Hypertarget{group__StringIO_ga1e0205abb275b15436fa03c89899e4bb}\label{group__StringIO_ga1e0205abb275b15436fa03c89899e4bb} 
-\index{String and File I/O Utilities@{String and File I/O Utilities}!read\_file@{read\_file}}
-\index{read\_file@{read\_file}!String and File I/O Utilities@{String and File I/O Utilities}}
-\doxysubsubsection{\texorpdfstring{read\_file()}{read\_file()}}
-{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} read\+\_\+file (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
-
-
-
-Reads the contents of a file into a string. 
-
-This function opens the file specified by the given path, reads its contents, and returns them as a dynamically allocated string. The caller is responsible for freeing the allocated memory.
-
-
-\begin{DoxyParams}{Parameters}
-{\em path} & The path to the file to be read. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A pointer to the dynamically allocated string containing the file contents. 
-\end{DoxyReturn}
-\begin{DoxyNote}{Note}
-The caller is responsible for freeing the allocated memory. 
-\end{DoxyNote}
-\Hypertarget{group__StringIO_ga9f99c5cbcf6052c57972f2044ce260ab}\label{group__StringIO_ga9f99c5cbcf6052c57972f2044ce260ab} 
-\index{String and File I/O Utilities@{String and File I/O Utilities}!read\_filef@{read\_filef}}
-\index{read\_filef@{read\_filef}!String and File I/O Utilities@{String and File I/O Utilities}}
-\doxysubsubsection{\texorpdfstring{read\_filef()}{read\_filef()}}
-{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} read\+\_\+filef (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file }\end{DoxyParamCaption})}
-
-
-
-Reads the contents of a file into a string. 
-
-This function reads the contents of a file that is already open and returns them as a dynamically allocated string. The caller is responsible for freeing the allocated memory.
-
-
-\begin{DoxyParams}{Parameters}
-{\em file} & The file to read from. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A pointer to the dynamically allocated string containing the file contents. 
-\end{DoxyReturn}
-\begin{DoxyNote}{Note}
-The caller is responsible for freeing the allocated memory. 
-
-The file must be open and readable. 
-\end{DoxyNote}
 \Hypertarget{group__StringIO_gaba7a0b4a178c6cb2fa43a9f14162835e}\label{group__StringIO_gaba7a0b4a178c6cb2fa43a9f14162835e} 
 \index{String and File I/O Utilities@{String and File I/O Utilities}!remove\_last\_utf8\_char@{remove\_last\_utf8\_char}}
 \index{remove\_last\_utf8\_char@{remove\_last\_utf8\_char}!String and File I/O Utilities@{String and File I/O Utilities}}

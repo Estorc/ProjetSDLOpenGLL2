@@ -112,19 +112,19 @@ $(document).ready(function(){initNavTree('scene__loader_8h_source.html',''); ini
 <div class="contents">
 <a href="scene__loader_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef SCENE_LOADER_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define SCENE_LOADER_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">struct </span><a class="code hl_struct" href="classNode.html">Node</a>;</div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">struct </span><a class="code hl_struct" href="classCamera.html">Camera</a>;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">struct </span><a class="code hl_class" href="classNode.html">Node</a>;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">struct </span><a class="code hl_class" href="classCamera.html">Camera</a>;</div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">struct </span><a class="code hl_struct" href="classNode.html">Node</a> *<a class="code hl_function" href="group__SceneLoader.html#gafbb853272747ad89201f0a3bf8e7846f">load_node</a>(FILE *file, <span class="keyword">struct</span> <a class="code hl_struct" href="classCamera.html">Camera</a> **c, <a class="code hl_struct" href="structScript.html">Script</a> *scripts, <span class="keyword">struct</span> <a class="code hl_struct" href="classNode.html">Node</a> *editor);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">struct </span><a class="code hl_class" href="classNode.html">Node</a> *<a class="code hl_function" href="group__SceneLoader.html#gafbb853272747ad89201f0a3bf8e7846f">load_node</a>(FILE *file, <span class="keyword">struct</span> <a class="code hl_class" href="classCamera.html">Camera</a> **c, <a class="code hl_struct" href="structScript.html">Script</a> *scripts, <span class="keyword">struct</span> <a class="code hl_class" href="classNode.html">Node</a> *editor);</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">struct </span><a class="code hl_struct" href="classNode.html">Node</a> *<a class="code hl_function" href="group__SceneLoader.html#ga0aa55f0b593e73644e24b556cdfc58d7">load_scene</a>(<span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code hl_struct" href="classCamera.html">Camera</a> **c, <a class="code hl_struct" href="structScript.html">Script</a> *scripts);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">struct </span><a class="code hl_class" href="classNode.html">Node</a> *<a class="code hl_function" href="group__SceneLoader.html#ga00fb17a87dfab3519dfc08f1f4ec7b66">load_scene</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">struct</span> <a class="code hl_class" href="classCamera.html">Camera</a> **c, <a class="code hl_struct" href="structScript.html">Script</a> *scripts);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassCamera_html"><div class="ttname"><a href="classCamera.html">Camera</a></div><div class="ttdoc">A structure to represent a camera with position and rotation in 3D space.</div><div class="ttdef"><b>Definition</b> camera.class.c:24</div></div>
-<div class="ttc" id="aclassNode_html"><div class="ttname"><a href="classNode.html">Node</a></div><div class="ttdoc">Represents a node in the tree structure.</div><div class="ttdef"><b>Definition</b> node.class.c:21</div></div>
-<div class="ttc" id="agroup__SceneLoader_html_ga0aa55f0b593e73644e24b556cdfc58d7"><div class="ttname"><a href="group__SceneLoader.html#ga0aa55f0b593e73644e24b556cdfc58d7">load_scene</a></div><div class="ttdeci">struct Node * load_scene(char *path, struct Camera **c, Script *scripts)</div><div class="ttdoc">Loads a scene from a file.</div><div class="ttdef"><b>Definition</b> scene_loader.c:116</div></div>
+<div class="ttc" id="aclassCamera_html"><div class="ttname"><a href="classCamera.html">Camera</a></div><div class="ttdoc">A structure to represent a camera with position and rotation in 3D space.</div><div class="ttdef"><b>Definition</b> camera.class.c:29</div></div>
+<div class="ttc" id="aclassNode_html"><div class="ttname"><a href="classNode.html">Node</a></div><div class="ttdoc">Represents a node in the tree structure.</div><div class="ttdef"><b>Definition</b> node.class.c:26</div></div>
+<div class="ttc" id="agroup__SceneLoader_html_ga00fb17a87dfab3519dfc08f1f4ec7b66"><div class="ttname"><a href="group__SceneLoader.html#ga00fb17a87dfab3519dfc08f1f4ec7b66">load_scene</a></div><div class="ttdeci">struct Node * load_scene(const char *path, struct Camera **c, Script *scripts)</div><div class="ttdoc">Loads a scene from a file.</div><div class="ttdef"><b>Definition</b> scene_loader.c:116</div></div>
 <div class="ttc" id="agroup__SceneLoader_html_gafbb853272747ad89201f0a3bf8e7846f"><div class="ttname"><a href="group__SceneLoader.html#gafbb853272747ad89201f0a3bf8e7846f">load_node</a></div><div class="ttdeci">struct Node * load_node(FILE *file, struct Camera **c, Script *scripts, struct Node *editor)</div><div class="ttdoc">Loads a node from a file.</div><div class="ttdef"><b>Definition</b> scene_loader.c:19</div></div>
-<div class="ttc" id="astructScript_html"><div class="ttname"><a href="structScript.html">Script</a></div><div class="ttdef"><b>Definition</b> scripts.h:41</div></div>
+<div class="ttc" id="astructScript_html"><div class="ttname"><a href="structScript.html">Script</a></div><div class="ttdoc">Structure representing a script with a function and a name.</div><div class="ttdef"><b>Definition</b> scripts.h:106</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -156,6 +156,16 @@ $(document).ready(function(){initNavTree('scene__loader_8h_source.html',''); ini
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -164,7 +174,7 @@ $(document).ready(function(){initNavTree('scene__loader_8h_source.html',''); ini
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

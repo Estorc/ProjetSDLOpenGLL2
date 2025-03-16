@@ -156,7 +156,6 @@ $(document).ready(function(){initNavTree('globals_defs.html',''); initResizable(
 
 <h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
 <li>GET_AREA_SIGNAL_PARAMETERS&#160;:&#160;<a class="el" href="scripts_8h.html#a89cccad7eb1689fcdac2bc98857d6cfe">scripts.h</a></li>
-<li>GET_FROM_BODY_NODE&#160;:&#160;<a class="el" href="group__BodiesGroup.html#gaee92f42cc80ce048ea337169c64cbba8">bodies.h</a></li>
 <li>GET_PARAMETER&#160;:&#160;<a class="el" href="scripts_8h.html#a53d61fbbc3be120d650767848e836f83">scripts.h</a></li>
 <li>GET_RAW&#160;:&#160;<a class="el" href="raw_8h.html#a36e402057b28e948d41ada8476bff204">raw.h</a></li>
 <li>GET_READY_PARAMETERS&#160;:&#160;<a class="el" href="scripts_8h.html#a58f77c5f80369078d6299b1f2fd5bad0">scripts.h</a></li>
@@ -167,13 +166,8 @@ $(document).ready(function(){initNavTree('globals_defs.html',''); initResizable(
 
 
 <h3><a id="index_h" name="index_h"></a>- h -</h3><ul>
-<li>HANDLE_KEY_PRESSED&#160;:&#160;<a class="el" href="group__InputHandling.html#gab1f82eb759b9b2a684a3e9b6611480b6">input.h</a></li>
-<li>HANDLE_KEY_RELEASED&#160;:&#160;<a class="el" href="group__InputHandling.html#ga46a042ddea19e481bcef55171d156875">input.h</a></li>
-</ul>
-
-
-<h3><a id="index_k" name="index_k"></a>- k -</h3><ul>
-<li>KDIALOG&#160;:&#160;<a class="el" href="osio_8c.html#a479ebacbd09ab3cf2abed7083e40d418">osio.c</a></li>
+<li>HANDLE_KEY_PRESSED&#160;:&#160;<a class="el" href="group__InputHandling.html#gaac8e2c6ed7e87689e71793638e270418">input.h</a></li>
+<li>HANDLE_KEY_RELEASED&#160;:&#160;<a class="el" href="group__InputHandling.html#ga0482cbaa13743245843420842fc09874">input.h</a></li>
 </ul>
 
 
@@ -259,6 +253,11 @@ $(document).ready(function(){initNavTree('globals_defs.html',''); initResizable(
 <h3><a id="index_y" name="index_y"></a>- y -</h3><ul>
 <li>YELLOW&#160;:&#160;<a class="el" href="color_8h.html#abf681265909adf3d3e8116c93c0ba179">color.h</a></li>
 </ul>
+
+
+<h3><a id="index_z" name="index_z"></a>- z -</h3><ul>
+<li>ZENITY&#160;:&#160;<a class="el" href="osio_8c.html#aec0249dd00faa70eea2d10807956e97e">osio.c</a></li>
+</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -290,6 +289,16 @@ $(document).ready(function(){initNavTree('globals_defs.html',''); initResizable(
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -298,7 +307,7 @@ $(document).ready(function(){initNavTree('globals_defs.html',''); initResizable(
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

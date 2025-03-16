@@ -114,6 +114,7 @@ $(document).ready(function(){initNavTree('globals_i.html',''); initResizable(); 
 <li>init_camera()&#160;:&#160;<a class="el" href="group__Camera.html#ga8251d5473e00feb6f2181942b89e654d">camera.c</a>, <a class="el" href="group__Camera.html#ga8251d5473e00feb6f2181942b89e654d">camera.h</a></li>
 <li>init_input()&#160;:&#160;<a class="el" href="group__InputHandling.html#gae4b985d12550bdd0f0de9b851601cd81">input.c</a>, <a class="el" href="group__InputHandling.html#gae4b985d12550bdd0f0de9b851601cd81">input.h</a></li>
 <li>init_memory_cache()&#160;:&#160;<a class="el" href="group__MemoryCache.html#gafc915248428e8d076d93d7029a2dcb79">memory.c</a>, <a class="el" href="group__MemoryCache.html#gafc915248428e8d076d93d7029a2dcb79">memory.h</a></li>
+<li>init_random()&#160;:&#160;<a class="el" href="random_8c.html#a4493259bd15c41b7b632586676455ffa">random.c</a>, <a class="el" href="random_8h.html#a4493259bd15c41b7b632586676455ffa">random.h</a></li>
 <li>initiate_socket()&#160;:&#160;<a class="el" href="network__utils_8c.html#acf605ccd92ad4a7e013b0d7375b06abd">network_utils.c</a>, <a class="el" href="network__utils_8h.html#acf605ccd92ad4a7e013b0d7375b06abd">network_utils.h</a></li>
 <li>input&#160;:&#160;<a class="el" href="raptiquax_8c.html#ad4db59ccea8946af2bb70f8269e99eeb">raptiquax.c</a></li>
 <li>input_server()&#160;:&#160;<a class="el" href="scripts_2fps__chess_2client_8h.html#a1528dc7bffd06f8236b97d9dde2e4ba5">client.h</a></li>
@@ -150,6 +151,16 @@ $(document).ready(function(){initNavTree('globals_i.html',''); initResizable(); 
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -158,7 +169,7 @@ $(document).ready(function(){initNavTree('globals_i.html',''); initResizable(); 
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

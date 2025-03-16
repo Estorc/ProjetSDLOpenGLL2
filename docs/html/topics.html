@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('topics.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock">Here is a list of all topics with brief descriptions:</div><div class="directory">
 <table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="group__BufferManagement.html" target="_self">Buffer Management</a></td><td class="desc">Functions for managing Game.buffers-&gt; </td></tr>
+<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="group__BufferManagement.html" target="_self">Buffer Management</a></td><td class="desc">Functions for managing buffers </td></tr>
 <tr id="row_1_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="group__Classes.html" target="_self">Classes</a></td><td class="desc">Defines the <a class="el" href="structObject.html" title="A generic object structure.">Object</a> structure and macros for method invocation in a class hierarchy </td></tr>
 <tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="group__TextureLoader.html" target="_self">Texture Loader</a></td><td class="desc">Functions for loading and manipulating textures </td></tr>
 <tr id="row_3_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="group__InputHandling.html" target="_self">Input Handling</a></td><td class="desc">Functions and structures for handling user input </td></tr>
@@ -174,6 +174,16 @@ $(document).ready(function(){initNavTree('topics.html',''); initResizable(); });
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -182,7 +192,7 @@ $(document).ready(function(){initNavTree('topics.html',''); initResizable(); });
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

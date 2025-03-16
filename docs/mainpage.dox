@@ -15,9 +15,9 @@
  * - **Game engine fully operational**: A game engine inspired of Godot's nodes system and really easy to use (level & code editor in developpment).
  * 
  * ## Quick Links
- * - @ref Wiki "Getting Started"
+ * - @ref getting_started "Getting Started"
  * - @ref Node "Take a look to node class architecture!"
- * - @ref ClassWiki "How to use the new C class ?"
+ * - @ref class_system_in_c "How to use the new C class ?"
  * 
  * ## Getting Started
  * To use this game engine:

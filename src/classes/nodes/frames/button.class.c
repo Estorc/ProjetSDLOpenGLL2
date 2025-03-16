@@ -25,10 +25,19 @@
 #include "gui/frame.h"
 #include "io/input.h"
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class Button : public Frame {
     __containerType__ Node *
     public:
 
+    /**
+     * @brief Constructor for the Button class.
+     *
+     * This function initializes a new instance of the Button class.
+     */
     void constructor() {
         this->type = __type__; 
 
@@ -42,6 +51,12 @@ class Button : public Frame {
         this::init_button();
     }
 
+    /**
+     * @brief Initializes the button.
+     *
+     * This function sets up the initial state and properties of the button.
+     * It should be called before using the button in the application.
+     */
     void init_button() {
         Frame *frame = (Frame *) this->object;
         frame->button = malloc(sizeof(Button));
@@ -57,13 +72,25 @@ class Button : public Frame {
         frame->unit[2] = '%';
         frame->unit[3] = '%';
     }
-
     
-
+    /**
+     * @brief Loads the button resources.
+     *
+     * This function is responsible for loading the necessary resources for the button,
+     * such as textures, sounds, or any other assets required for the button to function
+     * properly within the application.
+     */
     void load() {
         this::constructor();
     }
 
+    /**
+     * @brief Updates the state of the button.
+     *
+     * This function is responsible for updating the button's state, which may
+     * include handling user input, updating the button's appearance, and
+     * triggering any associated actions or events.
+     */
     void update() {
         Frame *frame = (Frame *) this->object;
         Button *button = (Button *) frame->button;
@@ -115,15 +142,38 @@ class Button : public Frame {
         }
     }
 
+    /**
+     * @brief Checks if the current instance is a button.
+     *
+     * This function sets the result to true if the current instance is a button,
+     * otherwise it sets the result to false.
+     *
+     * @param result A pointer to a boolean variable where the result will be stored.
+     */
     void is_button(bool *result) {
         *result = true;
     }
 
+    /**
+     * @brief Saves the state of the editor node to a file.
+     *
+     * This function writes the current state of the editor node to the specified file.
+     *
+     * @param file A pointer to the FILE object where the editor state will be saved.
+     * @param editor A pointer to the Node object representing the editor whose state is to be saved.
+     */
     void save(FILE *file, Node *editor) {
         UNUSED(editor);
         fprintf(file, "%s", classManager.class_names[this->type]);
     }
 
+    /**
+     * @brief Frees the resources used by the button.
+     *
+     * This function is responsible for freeing the resources used by the button,
+     * such as textures, sounds, or any other assets loaded during the button's
+     * lifetime.
+     */
     void free() {
         Frame *frame = (Frame *) this->object;
         free(frame->button);
@@ -132,3 +182,4 @@ class Button : public Frame {
  
     
 }
+

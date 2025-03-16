@@ -22,7 +22,7 @@ typedef enum ButtonState {
 } ButtonState;
 
 /**
- * @struct ImageFrame
+ * @class ImageFrame
  * @brief Represents an image frame.
  * 
  * This structure holds the path to an image file.
@@ -32,7 +32,7 @@ typedef struct ImageFrame {
 } ImageFrame;
 
 /**
- * @struct RadioButton
+ * @class RadioButton
  * @brief Represents a radio button.
  * 
  * This structure holds information about a radio button, including its checked state and ID.
@@ -44,16 +44,37 @@ typedef struct RadioButton {
 } RadioButton;
 
 
+/**
+ * @class Slider
+ * @brief Represents a slider component in the GUI.
+ *
+ * This structure defines a slider which can be used to select a value within a specified range.
+ *
+ * @var Slider::state
+ * Current state of the slider, represented by the ButtonState enum.
+ *
+ * @var Slider::checked
+ * Pointer to a boolean value used for alignment purposes.
+ *
+ * @var Slider::value
+ * Pointer to a float that holds the current value of the slider.
+ *
+ * @var Slider::min
+ * Minimum value that the slider can represent.
+ *
+ * @var Slider::max
+ * Maximum value that the slider can represent.
+ */
 typedef struct Slider {
-    ButtonState state; /**< Current state of the button. */
-    bool *checked; /**< For alignement purpose. */
+    ButtonState state;
+    bool *checked;
     float *value;
     float min;
     float max;
 } Slider;
 
 /**
- * @struct Button
+ * @class Button
  * @brief Represents a button.
  * 
  * This structure holds information about a button, including its state and whether it is checked.
@@ -65,7 +86,7 @@ typedef struct Button {
 } Button;
 
 /**
- * @struct SelectList
+ * @class SelectList
  * @brief Represents a selectable list.
  * 
  * This structure holds information about a selectable list, including its state, options, and selected item.
@@ -78,7 +99,7 @@ typedef struct SelectList {
 } SelectList;
 
 /**
- * @struct Label
+ * @class Label
  * @brief Represents a label.
  * 
  * This structure holds the text of a label.
@@ -89,7 +110,7 @@ typedef struct Label {
 } Label;
 
 /**
- * @struct InputArea
+ * @class InputArea
  * @brief Represents an input area.
  * 
  * This structure holds information about an input area, including its state, text, and default text.
@@ -142,7 +163,7 @@ typedef enum FrameFlags {
 } FrameFlags;
 
 /**
- * @struct Frame
+ * @class Frame
  * @brief Represents a frame.
  * 
  * This structure holds information about a frame, including its position, size, theme, content, and flags.

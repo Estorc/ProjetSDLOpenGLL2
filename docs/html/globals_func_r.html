@@ -110,13 +110,15 @@ $(document).ready(function(){initNavTree('globals_func_r.html',''); initResizabl
 <div class="textblock">Here is a list of all functions with links to the files they belong to:</div>
 
 <h3><a id="index_r" name="index_r"></a>- r -</h3><ul>
-<li>read_file()&#160;:&#160;<a class="el" href="group__StringIO.html#ga1e0205abb275b15436fa03c89899e4bb">stringio.h</a>, <a class="el" href="group__StringIO.html#ga1e0205abb275b15436fa03c89899e4bb">stringio.c</a></li>
+<li>random_float()&#160;:&#160;<a class="el" href="random_8h.html#a9d944ed48c83eedfe629746ecccd1506">random.h</a>, <a class="el" href="random_8c.html#a9d944ed48c83eedfe629746ecccd1506">random.c</a></li>
+<li>random_int()&#160;:&#160;<a class="el" href="random_8c.html#ad7954e6a1b9ea073c7bc894dc5af85a9">random.c</a>, <a class="el" href="random_8h.html#ad7954e6a1b9ea073c7bc894dc5af85a9">random.h</a></li>
+<li>read_file()&#160;:&#160;<a class="el" href="group__StringIO.html#ga1e0205abb275b15436fa03c89899e4bb">stringio.c</a>, <a class="el" href="group__StringIO.html#ga1e0205abb275b15436fa03c89899e4bb">stringio.h</a></li>
 <li>read_filef()&#160;:&#160;<a class="el" href="group__StringIO.html#ga9f99c5cbcf6052c57972f2044ce260ab">stringio.c</a>, <a class="el" href="group__StringIO.html#ga9f99c5cbcf6052c57972f2044ce260ab">stringio.h</a></li>
 <li>read_messages()&#160;:&#160;<a class="el" href="network__utils_8c.html#a9986359c3d46f8576db45d383b9a267f">network_utils.c</a>, <a class="el" href="network__utils_8h.html#a9986359c3d46f8576db45d383b9a267f">network_utils.h</a></li>
 <li>receive_message()&#160;:&#160;<a class="el" href="network__utils_8c.html#abddb212edeae58f7124fd236af34aa1a">network_utils.c</a>, <a class="el" href="network__utils_8h.html#a4da562a4381af026360e407f1927b802">network_utils.h</a></li>
 <li>refresh_music_volume()&#160;:&#160;<a class="el" href="audio_8c.html#a721333addcbf76cb7147b9b91833e5ef">audio.c</a>, <a class="el" href="audio_8h.html#a721333addcbf76cb7147b9b91833e5ef">audio.h</a></li>
-<li>refresh_resolution()&#160;:&#160;<a class="el" href="group__WindowManagement.html#ga753959d386c6d9627c35ce46aa6abcad">window.c</a>, <a class="el" href="group__WindowManagement.html#ga753959d386c6d9627c35ce46aa6abcad">window.h</a></li>
-<li>refresh_ui()&#160;:&#160;<a class="el" href="group__WindowManagement.html#gaaed89909806dfb2af681aa06b19dca77">window.h</a>, <a class="el" href="group__WindowManagement.html#gaaed89909806dfb2af681aa06b19dca77">window.c</a></li>
+<li>refresh_resolution()&#160;:&#160;<a class="el" href="group__WindowManagement.html#ga753959d386c6d9627c35ce46aa6abcad">window.h</a>, <a class="el" href="group__WindowManagement.html#ga753959d386c6d9627c35ce46aa6abcad">window.c</a></li>
+<li>refresh_ui()&#160;:&#160;<a class="el" href="group__WindowManagement.html#gaaed89909806dfb2af681aa06b19dca77">window.c</a>, <a class="el" href="group__WindowManagement.html#gaaed89909806dfb2af681aa06b19dca77">window.h</a></li>
 <li>remove_last_utf8_char()&#160;:&#160;<a class="el" href="group__StringIO.html#gaba7a0b4a178c6cb2fa43a9f14162835e">stringio.c</a>, <a class="el" href="group__StringIO.html#gaba7a0b4a178c6cb2fa43a9f14162835e">stringio.h</a></li>
 <li>remove_message_handler_by_index()&#160;:&#160;<a class="el" href="network__utils_8c.html#a1c3be22b24f41dbc42b42076573dcc10">network_utils.c</a>, <a class="el" href="network__utils_8h.html#a81e49c3af43ec4fee7c4544d0dad6d3b">network_utils.h</a></li>
 <li>remove_message_handling()&#160;:&#160;<a class="el" href="network__utils_8c.html#af253bdc748298077cb65b62659426feb">network_utils.c</a>, <a class="el" href="network__utils_8h.html#af253bdc748298077cb65b62659426feb">network_utils.h</a></li>
@@ -155,6 +157,16 @@ $(document).ready(function(){initNavTree('globals_func_r.html',''); initResizabl
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -163,7 +175,7 @@ $(document).ready(function(){initNavTree('globals_func_r.html',''); initResizabl
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");
