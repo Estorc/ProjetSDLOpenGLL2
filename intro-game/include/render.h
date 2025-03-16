@@ -15,24 +15,33 @@ extern GameStatus_t gameStatus ;
 
 
 typedef struct Text_u Text_t ;
+typedef struct Texture_u Texture_t ;
 typedef enum Direction_u {UP, DOWN, LEFT, RIGHT} Direction_t ;
 typedef enum TypeHollow_u {TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT} TypeHollow_t ;
 typedef enum TypeTextAnim_u {LEFT_RIGHT} TypeTextAnim_t ; 
+
+
+typedef struct Anim_u {
+    #include "common_anim_attributes.h"
+} Anim_t ;
 
 /**
  * Structure de gestion de l'animation pour chacun des objets ou entités devant etre animée.
  */
 typedef struct EntityAnim_u {
+    #include "common_anim_attributes.h"
+
     SDL_Texture * spritesheet;      // Texture globale contenant tous les sprites
     int startX, startY;             // Position de la première frame dans le spritesheet
     int frameWidth, frameHeight;    // Taille d'une frame
-    #include "common_anim_attributes.h"
 } EntityAnim_t ;
 
 /**
  * Structure de gestion de l'animation des textes à afficher. 
  */
 typedef struct TextAnim_u {
+    // Variables propre aux animations 
+    #include "common_anim_attributes.h"
 
     // Texture à afficher 
     SDL_Texture * texture ;         // Message en texture 
@@ -49,13 +58,11 @@ typedef struct TextAnim_u {
     int width ;                     // largeur de la zone dans laquelle sera rendu le texte 
 
     TypeTextAnim_t typeAnim ;
-
-    // Variables propre aux animations 
-    #include "common_anim_attributes.h"
 } TextAnim_t ; 
  
 
 err_t draw_text (Text_t * text) ;
+void draw_texture (Texture_t * texture) ;
 void draw_map (Map_t * map, Camera_t * camera) ;
 void draw_desktop (Desktop_t * desktop) ;
 int draw (Camera_t * camera, Player_t * player, Map_t * map) ;

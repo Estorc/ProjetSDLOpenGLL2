@@ -29,6 +29,55 @@ err_t draw_text (Text_t * text) {
 } 
 
 
+void draw_texture (Texture_t * texture) {
+
+    if (existe(texture)) {
+
+        if (texture->hidden == FALSE) {
+
+            switch (texture->typeAnim) {
+                case NONE : 
+                    if (!compare_SDL_Rect(texture->srcrect, (SDL_Rect){0, 0, 0, 0})) {
+                        SDL_RenderCopy(renderer, texture->texture, NULL, &texture->position);
+                    }
+                    else { 
+                        SDL_RenderCopy(renderer, texture->texture, &texture->srcrect, &texture->position);
+                    }
+                    break;
+                    
+                case DEFAULT : 
+                    if (!compare_SDL_Rect(texture->srcrect, (SDL_Rect){0, 0, 0, 0})) {
+                        SDL_RenderCopy(renderer, texture->texture, NULL, &texture->position);
+                    }
+                    else { 
+                        texture->srcrect.x = texture->srcrect.w * texture->currentFrame ;
+                        SDL_RenderCopy(renderer, texture->texture, &texture->srcrect, &texture->position);
+                    }
+                    break;
+                
+                case ROTATION :
+                    double angle = (360.0 / (texture->numFrames)) * texture->currentFrame ;
+                
+                    if (!compare_SDL_Rect(texture->srcrect, (SDL_Rect){0, 0, 0, 0})) {
+                        SDL_RenderCopyEx(renderer, texture->texture, NULL, &texture->position, angle, NULL, SDL_FLIP_NONE);
+                    }
+                    else { 
+                        SDL_RenderCopyEx(renderer, texture->texture, &texture->srcrect, &texture->position, angle, NULL, SDL_FLIP_NONE);
+                    }
+                    break;
+                
+                default :
+                    break;
+            }
+            
+        }
+    }
+    else {
+        printf("Impossible d'afficer la texture car la texture est NULL\n");
+    }
+}
+
+
 int mapPrevX, mapPrevY;
 /**
  * 

@@ -179,6 +179,9 @@ void BOOT_update (Scene_t * self, SceneManager_t * manager) {
     
     Dictionary_t * text_dict = self->data->get(self->data, "text_dict") ;
     text_dict_update(text_dict, "intro-game/data/donneesTextsBootScene.csv");
+
+    Dictionary_t * texture_dict = self->data->get(self->data, "texture_dict") ;
+    texture_dict_update_from_file(texture_dict, "intro-game/data/donneesTexturesBootScene.csv");
 }
 
 
@@ -196,6 +199,14 @@ void BOOT_render (Scene_t * self) {
         Text_t * text = entry->value ;
 
         draw_text(text);
+    }
+
+    Dictionary_t * texture_dict = self->data->get(self->data, "texture_dict") ;
+    for (int i = 0; i < texture_dict->nbEntry; i++) {
+        Entry_t * entry = texture_dict->item(texture_dict, i) ;
+        Texture_t * texture = entry->value ;
+
+        draw_texture(texture);
     }
 
     SDL_RenderPresent(renderer); 

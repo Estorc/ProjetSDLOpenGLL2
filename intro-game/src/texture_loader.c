@@ -42,6 +42,13 @@ Texture_t * create_texture (SDL_Rect position, SDL_Rect srcrect, int hidden) {
     texture->srcrect = srcrect ; 
     texture->texture = NULL ;
 
+    texture->numFrames = 3 ;
+    texture->currentFrame = 0 ;
+    texture->frameCount = 0 ;
+    texture->animationSpeed = 3 ;
+    texture->loop = FALSE ;
+    texture->playing = TRUE ;
+
     return texture ;
 }
 
@@ -65,6 +72,119 @@ void destroy_texture_cb (void * texture) {
 }
 
 
+void texture_update (Texture_t * texture) {
+
+    if (existe(texture)) {
+
+        // Incrémentation du compteur de frames
+        texture->frameCount++; 
+        if (texture->frameCount >= texture->animationSpeed) {
+            texture->frameCount = 0 ; // Réinitialisation du compteur
+
+            // Si la texture est active, on passe au frame suivant
+            if (texture->playing == TRUE) {
+                texture->currentFrame++;
+            }
+        }
+        
+        // Vérifie si la texture a dépassé le nombre total de frames
+        if (texture->currentFrame >= texture->numFrames) {
+            
+            // Si la texture est en boucle, on la remet à zéro
+            if (texture->loop == TRUE) {
+                texture->currentFrame = 0;
+            }
+            else {
+                texture->currentFrame = texture->numFrames ;
+                texture->playing = FALSE; // Sinon, on arrête la texture
+            }
+        }
+        //printf("nouvelle current frame %d \n", texture->currentFrame);
+    }
+    else {
+        printf("Impossible d'update la texture car texture NULL\n");
+    }
+}
+
+
+void texture_dict_update (Dictionary_t * dict) {
+
+    if (existe(dict)) {
+
+        for (int i = 0; i < dict->nbEntry; i++) {
+
+            Entry_t * entry = dict->item(dict, i) ;
+            Texture_t * texture = entry->value ;
+
+            texture_update(texture);
+        }
+    }
+    else {
+        printf("Impossible d'update le texture_dict car dict NULL\n");
+    }
+}
+
+
+void texture_dict_update_from_file (Dictionary_t * dict, const char * dataPath) {
+    
+    if (existe(dict)) {
+
+        FILE * file = fopen(dataPath, "r") ;
+        if (!existe(file)) {
+            fprintf(stderr, "Erreur ouverture du fichier %s : %s\n", dataPath, SDL_GetError());
+            return ;
+        }
+
+        // Variables pour stocker les données lues
+        int x, y, w, h;
+        int srcX, srcY, srcW, srcH ;
+        int hidden, numFrames, speed, loop, typeAnim ;
+        char key[64], texturePath[128] ; 
+        char buffer[512] ;
+
+        // Lecture de la première ligne
+        fgets(buffer, sizeof(buffer), file);
+
+        for (int i = 0; i < dict->nbEntry; i++) {
+
+            Entry_t * entry = dict->item(dict, i) ;
+            Texture_t * texture = entry->value ;
+
+            // Lecture et initialisation des éléments
+            if (fscanf(file, "%[^;];%[^;];%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d%%", 
+                key, texturePath, &x, &y, &w, &h, &srcX, &srcY, &srcW, &srcH, &hidden, &numFrames, &speed, &loop, &typeAnim) == 15) {
+
+                texture->typeAnim = (TypeTextureAnim_t)typeAnim ;
+
+                texture->numFrames = numFrames ;
+                texture->animationSpeed = speed ;
+                texture->loop = loop ; 
+
+                texture->position.x = x ;
+                texture->position.y = y ;
+                texture->position.w = w ;
+                texture->position.h = h ;
+
+                texture->srcrect.x = srcX ;
+                texture->srcrect.y = srcY ;
+                texture->srcrect.w = srcW ;
+                texture->srcrect.h = srcH ;
+
+                texture->hidden = hidden ;
+
+            }
+            
+            texture_update(texture);
+        }
+
+        fclose(file);
+    }
+    else {
+        printf("Impossible d'update le texture_dict car dict NULL\n");
+    }
+}
+
+
 int load_textures_from_file (Dictionary_t * dict, const char * dataPath) {
 
     FILE * file = fopen(dataPath, "r") ;
@@ -76,7 +196,7 @@ int load_textures_from_file (Dictionary_t * dict, const char * dataPath) {
     // Variables pour stocker les données lues
     int x, y, w, h;
     int srcX, srcY, srcW, srcH ;
-    int hidden ;
+    int hidden, numFrames, speed, loop, typeAnim ;
     char key[64], texturePath[128] ; 
     char buffer[512] ;
 
@@ -86,8 +206,8 @@ int load_textures_from_file (Dictionary_t * dict, const char * dataPath) {
     printf("Lecture fichier : %s\n", dataPath) ;
 
     // Lecture et initialisation des éléments
-    while (fscanf(file, "%[^;];%[^;];%d;%d;%d;%d;%d;%d;%d;%d;%d%%", 
-        key, texturePath, &x, &y, &w, &h, &srcX, &srcY, &srcW, &srcH, &hidden) == 11) {
+    while (fscanf(file, "%[^;];%[^;];%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d%%", 
+        key, texturePath, &x, &y, &w, &h, &srcX, &srcY, &srcW, &srcH, &hidden, &numFrames, &speed, &loop, &typeAnim) == 15) {
 
         Texture_t * texture = create_texture ((SDL_Rect){x, y, w, h}, (SDL_Rect){srcX, srcY, srcW, srcH}, hidden) ;
         
@@ -102,6 +222,11 @@ int load_textures_from_file (Dictionary_t * dict, const char * dataPath) {
             fprintf(stderr, "Erreur chargement des textures dans %s\n", dataPath) ;
             return ERROR ;
         }
+
+        texture->typeAnim = (TypeTextureAnim_t)typeAnim ;
+        texture->numFrames = numFrames ;
+        texture->animationSpeed = speed ;
+        texture->loop = loop ;
 
         dict->set(dict, key, texture, destroy_texture_cb);
 
