@@ -19,6 +19,9 @@ peut faire un etxtrue manager pour toyute les texture
 
 === changement === 
 
+trouver un moyen simple d'animer une texture 
+
+
 creer different taille de font dans chaque data : small medium large et d'autre encore
 finir implementation focntion manip text_t 
 changer la maniere d'animer le texte car tres gourmand durant les anim de texte
@@ -27,3 +30,8 @@ possibilite de faire un big_free() fonction qui permettrait de detruire n'import
 === fait === 
 
 TDA list d'objet generique avec methiode 
+
+
+=== INFO ===
+
+atten,tion destroy_texture detruit la texture comprise dedans il pourrai tetre detruit plusieurs fois si la meme texture est affecter a plusieurs tecture_t

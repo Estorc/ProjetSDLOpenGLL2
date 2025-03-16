@@ -13,6 +13,7 @@ typedef struct Text_u {
     int len ;                       // taille string 
 
     TextAnim_t animation ;          // Structure propre à l'animation  
+    int hidden ;                    // texte affiche ou non 
 } Text_t ; 
 
 
@@ -27,6 +28,8 @@ void text_change_color (Text_t * text, SDL_Color newColor) ;
 void text_change_position (Text_t * text, SDL_Rect newPosition) ; 
 void text_change_type_anim (Text_t * text, TypeTextAnim_t newType) ;
 void text_change_font (Text_t * text, TTF_Font * newFont) ;
+void text_change_visibility (Text_t * text, int hidden) ;
 void TTF_CloseFont_cb (void * font) ;
 
 int load_texts_from_file (const char * dataPath, List_t * font, Dictionary_t * dict) ;
+void get_text_dimensions (Text_t * text, int * w, int * h) ;

@@ -65,7 +65,7 @@ void BOOT_render (Scene_t * self) ;
 
 // fonctions manip scene desktop
 #define DESKTOP_NB_EVENT 3
-typedef enum DESKTOP_Event_u {LOADING, BLIS, CMD} DESKTOP_Event_t ;
+typedef enum DESKTOP_Event_u {D_LOADING, D_BLIS, D_CMD} DESKTOP_Event_t ;
 void DESKTOP_load (Scene_t * self) ;
 void DESKTOP_unLoad (Scene_t * self) ;
 void DESKTOP_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * manager) ;
@@ -74,7 +74,7 @@ void DESKTOP_render (Scene_t * self) ;
 
 // fonctions manip scene level1
 #define LEVEL1_NB_EVENT 3
-typedef enum LEVEL1_Event_u {LOADING, BLIS, CMD} LEVEL1_Event_t ;
+typedef enum LEVEL1_Event_u {L_LOADING, L_BLIS, L_CMD} LEVEL1_Event_t ;
 void LEVEL1_load (Scene_t * self) ;
 void LEVEL1_unLoad (Scene_t * self) ;
 void LEVEL1_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * manager) ;

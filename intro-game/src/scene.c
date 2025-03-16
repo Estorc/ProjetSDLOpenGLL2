@@ -12,9 +12,33 @@
 #include "../include/texture_loader.h"
 #include "../include/list.h"
 
+
+
+
 /**
  * 
  */
+static BOOT_Event_t boot_event_name = LOADING ;
+static
+void BOOT_init_event (Scene_t * self, BOOT_Event_t event_name) {
+
+    Dictionary_t * dict = self->data ;
+
+    switch (event_name) {
+
+        case LOADING : 
+            break;
+
+        case BLIS : 
+            break;
+
+        case CMD : 
+            break;
+
+        default :
+            break;
+    }
+}
 void BOOT_load (Scene_t * self) {
     
     if (self == NULL) {
@@ -50,10 +74,8 @@ void BOOT_load (Scene_t * self) {
         destroy_dictionary(&self->data);
         return ;
     }
-    SDL_Texture * texture = load_png("intro-game/assets/loading_wheel.png") ;
-    texture_dict->set(texture_dict, "loading_wheel", texture, SDL_DestroyTexture_cb) ;
-    texture = load_png("intro-game/assets/blis_fl5.png") ;
-    texture_dict->set(texture_dict, "blis_fl5", texture, SDL_DestroyTexture_cb) ;
+    
+    load_textures_from_file(texture_dict, "intro-game/data/donneesTexturesBootScene.csv") ;
 
     // ajoute la liste des texture dans la data de la scene 
     dict->set(dict, "texture_dict", texture_dict, destroy_dictionary_cb) ;
@@ -127,6 +149,7 @@ void BOOT_unLoad (Scene_t * self) {
 void BOOT_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * manager) {
 
     InfoScene_t * info = self->data->get(self->data, "info") ;
+    Dictionary_t * text_dict = self->data->get(self->data, "text_dict") ;
 
     while (SDL_PollEvent(event)) {
         switch (event->type) {
@@ -145,6 +168,7 @@ void BOOT_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * mana
                 break;
         }
     }
+
 }
 
 

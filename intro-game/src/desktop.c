@@ -11,7 +11,7 @@
  * et initialise un tableau d'éléments `DesktopElementt_t` en lisant les données depuis un fichier.
  * 
  * @param backgroundPath Chemin vers l'image de fond à charger en tant que texture SDL.
- * @param dataPath Chemin du fichier contenant les données des éléments du bureau.
+ * @param dataPath Chemin du fichier contenant les données des éléments du bureau. 
  * @param nbElements Nombre d'éléments `DesktopElementt_t` à initialiser.
  * @return Desktop_t* Pointeur vers la structure `Desktop_t` allouée et initialisée, ou `NULL` en cas d'échec.
  * 

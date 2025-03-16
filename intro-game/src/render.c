@@ -13,14 +13,16 @@
  */
 err_t draw_text (Text_t * text) {
 
-    SDL_Rect posHollow = {text->animation.position.x - 3, text->animation.position.y + 3, text->animation.position.w, text->animation.position.h} ;
+    if (text->hidden == FALSE) {
+        SDL_Rect posHollow = {text->animation.position.x - 3, text->animation.position.y + 3, text->animation.position.w, text->animation.position.h} ;
 
-    if (text->animation.hollow == TRUE && existe(text->animation.hollowTexture)) {
-        SDL_RenderCopy(renderer, text->animation.hollowTexture, NULL, &posHollow);
-    }
-    
-    if (existe(text->animation.texture)) {
-        SDL_RenderCopy(renderer, text->animation.texture, NULL, &text->animation.position);
+        if (text->animation.hollow == TRUE && existe(text->animation.hollowTexture)) {
+            SDL_RenderCopy(renderer, text->animation.hollowTexture, NULL, &posHollow);
+        }
+        
+        if (existe(text->animation.texture)) {
+            SDL_RenderCopy(renderer, text->animation.texture, NULL, &text->animation.position);
+        }
     }
 
     return NO_ERR ;

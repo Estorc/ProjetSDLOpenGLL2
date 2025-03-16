@@ -50,6 +50,8 @@ Text_t * create_text (const char * string, TTF_Font * font, SDL_Color color, SDL
     // Assignation de la police de caractères
     text->font = font;
 
+    text->hidden = FALSE ;
+
     // Initialisation des paramètres de l'animation du texte
     text->animation.texture = NULL ;
     text->animation.textColor = color;   // Assignation de la couleur du texte
@@ -313,6 +315,17 @@ void text_change_type_anim (Text_t * text, TypeTextAnim_t newType) {
 }
 
 
+void text_change_visibility (Text_t * text, int hidden) {
+
+    if (existe(text)) {
+
+        text->hidden = hidden ;
+
+        text->animation.needChange = TRUE ;
+    }
+}
+
+
 void text_change_font (Text_t * text, TTF_Font * newFont) {
     
     if (existe(text)) {
@@ -350,6 +363,7 @@ int load_texts_from_file (const char * dataPath, List_t * listFont, Dictionary_t
     char key[64], string[512];
     int animated, speed ;
     int fontSize ;
+    int hidden ;
     char buffer[256];
 
     // Lecture de la première ligne
@@ -358,8 +372,8 @@ int load_texts_from_file (const char * dataPath, List_t * listFont, Dictionary_t
     printf("Lecture fichier : %s\n", dataPath) ;
 
     // Lecture et initialisation des éléments
-    while (fscanf(file, "%[^;];%[^;];%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d%%", 
-        key, string, &r, &g, &b, &a, &x, &y, &hollow, &hr, &hg, &hb, &ha, &typeHollow, &animated, &speed, &fontSize) == 17) {
+    while (fscanf(file, "%[^;];%[^;];%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d%%", 
+        key, string, &r, &g, &b, &a, &x, &y, &hollow, &hr, &hg, &hb, &ha, &typeHollow, &animated, &speed, &fontSize, &hidden) == 18) {
 
         Text_t * text = create_text(string, listFont->item(listFont, fontSize), (SDL_Color){r, g, b, a}, (SDL_Rect){x, y, 0, 0}) ;
         
@@ -380,6 +394,10 @@ int load_texts_from_file (const char * dataPath, List_t * listFont, Dictionary_t
             text->animation.playing = FALSE ;
         }
 
+        if (hidden == TRUE) {
+            text_change_visibility(text, hidden);
+        }
+
         text->animation.animationSpeed = speed ;
 
         printf("key : %s, string : %s\n", key, string) ;    
@@ -388,4 +406,19 @@ int load_texts_from_file (const char * dataPath, List_t * listFont, Dictionary_t
     fclose(file);
 
     return NO_ERR ;
+}
+
+
+void get_text_dimensions (Text_t * text, int * w, int * h) {
+
+    if (existe(text) && existe(text->string)) {
+
+        char * buffer = malloc(sizeof(char) * (text->animation.currentFrame + 1)) ;
+        strncpy(buffer, text->string, text->animation.currentFrame);
+        buffer[text->animation.currentFrame] = '\0';
+
+        TTF_SizeUTF8(text->font, buffer, w, h);
+
+        free(buffer);
+    }
 }
