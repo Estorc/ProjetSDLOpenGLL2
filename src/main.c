@@ -23,16 +23,16 @@
 #include "storage/queue.h"
 #include "storage/hash.h"
 #include "utils/scene.h"
+#include "utils/random.h"
 
 #include "classes/classes.h"
 
 #define BOOT_SCENE "assets/scenes/claude_chappe/boot.scene"
 
-float accumulator = 0.0f;
-const float fixedTimeStep = 0.0167f;
-float fps = 0.0f;
-
 int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa, Mesh *screenPlane) {
+    static float accumulator = 0.0f;
+    const float fixedTimeStep = 0.0167f;
+    
     float delta = (window->lastTime) ? window->time - window->lastTime : 0.0;
     const float maxDelta = 0.1f;
     delta = (delta > maxDelta) ? maxDelta : delta;
@@ -46,7 +46,9 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
         else return -1;
     }
 
- 
+
+
+    static float fps = 0.0;
     char delta_str[50];
     char fps_str[50];
     if (Game.settings->show_fps) {
@@ -63,6 +65,8 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
         TTF_CloseFont(font);
     }
 
+
+
     u8 lightsCount[LIGHTS_COUNT];
     while (accumulator >= fixedTimeStep) {
         s8 input_result = update_input(Game.input);
@@ -77,9 +81,10 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
         Game.buffers->lightingBuffer.index = 0;
         memset(lightsCount, 0, sizeof(lightsCount));
         update_physics(Game.mainTree->root, (vec3) {0.0, 0.0, 0.0}, (vec3) {0.0, 0.0, 0.0}, (vec3) {1.0, 1.0, 1.0}, fixedTimeStep, Game.input, window, lightsCount, true);
-        window->resized = false;
         accumulator -= fixedTimeStep;
     }
+
+
     set_lightings(lightsCount);
     refresh_ui(window);
     update_window(window, Game.mainTree->root, Game.camera, shaders, depthMap, msaa, screenPlane);
@@ -91,7 +96,13 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
 int main(int argc, char *argv[]) {
 
     if (update_cwd() == -1) return -1;
+
+    init_random();
     init_memory_cache();
+
+    default_input_settings(&Game.settings->keybinds);
+
+    load_settings();
 
     if (create_window("Physics Engine Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE, Game.window) == -1) return -1;
     init_input(Game.input);
@@ -109,8 +120,7 @@ int main(int argc, char *argv[]) {
         .gui = create_shader(DEFAULT_GUI_SHADER)
     };
 
-    DepthMap depthMap;
-    create_depthmap(&depthMap, &defaultShaders);
+    create_depthmap(Game.depthMap, &defaultShaders);
 
     Mesh screenPlane;
     create_screen_plane(&screenPlane);
@@ -134,7 +144,7 @@ int main(int argc, char *argv[]) {
     #endif
     Game.mainTree->root = load_scene(BOOT_SCENE, &Game.camera, Game.scripts);
 
-    while (update(Game.window, &defaultShaders, &depthMap, Game.msaa, &screenPlane) >= 0);
+    while (update(Game.window, &defaultShaders, Game.depthMap, Game.msaa, &screenPlane) >= 0);
 
     if (!queue_is_empty(Game.callQueue)) {
         queue_free(Game.callQueue);
@@ -153,12 +163,12 @@ int main(int argc, char *argv[]) {
     (Game.mainTree->root)::free();
 
     glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
-    glDeleteTextures(1, &depthMap.texture);
+    glDeleteTextures(1, &Game.depthMap->texture);
     for (int i = 0; i < NUM_DIRECTIONAL_LIGHTS + NUM_POINT_LIGHTS * 6 + NUM_SPOT_LIGHTS; i++) {
-        glDeleteFramebuffers(1, &depthMap.frameBuffer[i]);
+        glDeleteFramebuffers(1, &Game.depthMap->frameBuffer[i]);
     }
-    glDeleteBuffers(1, &depthMap.tbo);
-    glDeleteTextures(1, &depthMap.matrixTexture);
+    glDeleteBuffers(1, &Game.depthMap->tbo);
+    glDeleteTextures(1, &Game.depthMap->matrixTexture);
     PRINT_INFO("Free depth map!\n");
 
     table_free(Game.storage);

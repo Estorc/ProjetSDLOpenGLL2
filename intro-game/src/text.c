@@ -5,6 +5,7 @@
 #include "../include/render.h"
 #include "../include/text.h"
 #include "../include/dictionary.h"
+#include "../include/list.h"
 
 
 /**
@@ -48,6 +49,8 @@ Text_t * create_text (const char * string, TTF_Font * font, SDL_Color color, SDL
 
     // Assignation de la police de caractères
     text->font = font;
+
+    text->hidden = FALSE ;
 
     // Initialisation des paramètres de l'animation du texte
     text->animation.texture = NULL ;
@@ -172,42 +175,8 @@ void text_update (Text_t * text) {
     // Récupération de la structure d'animation associée au texte
     TextAnim_t * anim = &text->animation;
 
-    // Incrémentation du compteur de frames
-    anim->frameCount++; 
-    if (anim->frameCount == anim->animationSpeed) {
-        anim->frameCount = 0 ; // Réinitialisation du compteur
-
-        // Si l'animation est active, on passe au frame suivant et on marque un besoin de mise à jour
-        if (anim->playing == TRUE) {
-            do {
-                anim->currentFrame++;
-            } while (!isalpha(text->string[anim->currentFrame])) ;
-            anim->needChange = TRUE; // Indique qu'on doit redessiner la texture
-            printf("l'anim de %s needChange\n", text->string);
-        }
-        else {
-            anim->needChange = FALSE ;
-        }
-    }
-
-    // Vérifie si l'animation a dépassé le nombre total de frames
-    if (anim->currentFrame > anim->numFrames) {
-
-        // Si l'animation est en boucle, on la remet à zéro
-        if (anim->loop == TRUE) {
-            anim->currentFrame = 0;
-            anim->needChange = TRUE;
-        }
-        else {
-            anim->currentFrame = anim->numFrames ;
-            anim->playing = FALSE; // Sinon, on arrête l'animation
-            anim->needChange = FALSE ;
-            printf("passage du playing a false pour %s\n", text->string);
-        }
-    }
-
     // Si un changement est nécessaire, on met à jour le `srcrect`
-    if (anim->needChange == TRUE) {
+    if (anim->needChange == TRUE && anim->frameCount == 0) {
 
         char * buffer = malloc(sizeof(char) * (anim->currentFrame + 1)) ;
         strncpy(buffer, text->string, anim->currentFrame);
@@ -226,15 +195,49 @@ void text_update (Text_t * text) {
         TTF_SizeUTF8(text->font, buffer, &width, &height);
 
         anim->texture = create_TTF_Texture(text->font, buffer, anim->textColor) ;
-        SDL_QueryTexture(anim->texture, NULL, NULL, &width, &height);
+        //SDL_QueryTexture(anim->texture, NULL, NULL, &width, &height);
         
-        anim->hollowTexture = create_TTF_Texture(text->font, buffer, anim->hollowColor) ;
-        SDL_QueryTexture(anim->hollowTexture, NULL, NULL, &width, &height);
+        if (anim->hollow == TRUE) {
+            anim->hollowTexture = create_TTF_Texture(text->font, buffer, anim->hollowColor) ;
+            //SDL_QueryTexture(anim->hollowTexture, NULL, NULL, &width, &height);
+        }
 
         anim->position.w = width ;
         anim->position.h = height ;
 
         free(buffer);
+    }
+
+    // Incrémentation du compteur de frames
+    anim->frameCount++; 
+    if (anim->frameCount == anim->animationSpeed) {
+        anim->frameCount = 0 ; // Réinitialisation du compteur
+
+        // Si l'animation est active, on passe au frame suivant et on marque un besoin de mise à jour
+        if (anim->playing == TRUE) {
+            do {
+                anim->currentFrame++;
+            } while (!isalpha(text->string[anim->currentFrame])) ;
+            anim->needChange = TRUE; // Indique qu'on doit redessiner la texture
+        }
+        else {
+            anim->needChange = FALSE ;
+        }
+    }
+
+    // Vérifie si l'animation a dépassé le nombre total de frames
+    if (anim->currentFrame > anim->numFrames) {
+
+        // Si l'animation est en boucle, on la remet à zéro
+        if (anim->loop == TRUE) {
+            anim->currentFrame = 0;
+            anim->needChange = TRUE;
+        }
+        else {
+            anim->currentFrame = anim->numFrames ;
+            anim->playing = FALSE; // Sinon, on arrête l'animation
+            anim->needChange = TRUE ;
+        }
     }
 }
 void text_dict_update (Dictionary_t * dict, const char * dataPath) {
@@ -257,7 +260,6 @@ void text_dict_update (Dictionary_t * dict, const char * dataPath) {
 }
 
 
-
 /**
  * 
  */
@@ -268,6 +270,70 @@ void text_change_hollow (Text_t * text, int boolean, SDL_Color color, TypeHollow
     anim->hollow = boolean ;
     anim->hollowColor = color ;
     anim->hollowDir = dir ;
+
+    text->animation.needChange = TRUE ;
+}
+
+
+void text_change_color (Text_t * text, SDL_Color newColor) {
+
+    if (existe(text)) {
+
+        text->animation.textColor.r = newColor.r ;
+        text->animation.textColor.g = newColor.g ;
+        text->animation.textColor.b = newColor.b ;
+        text->animation.textColor.a = newColor.a ;
+
+        text->animation.needChange = TRUE ;
+    }
+}
+
+
+void text_change_position (Text_t * text, SDL_Rect newPosition) {
+
+    if (existe(text)) {
+
+        text->animation.position.x = newPosition.x ;
+        text->animation.position.y = newPosition.y ;
+        text->animation.position.w = newPosition.w ;
+        text->animation.position.h = newPosition.h ;
+
+        text->animation.needChange = TRUE ;
+    }
+}
+
+
+
+void text_change_type_anim (Text_t * text, TypeTextAnim_t newType) {
+    
+    if (existe(text)) {
+
+        text->animation.typeAnim = newType ;
+
+        text->animation.needChange = TRUE ;
+    }
+}
+
+
+void text_change_visibility (Text_t * text, int hidden) {
+
+    if (existe(text)) {
+
+        text->hidden = hidden ;
+
+        text->animation.needChange = TRUE ;
+    }
+}
+
+
+void text_change_font (Text_t * text, TTF_Font * newFont) {
+    
+    if (existe(text)) {
+
+        text->font = newFont ;
+
+        text->animation.needChange = TRUE ;
+    }
 }
 
 
@@ -281,7 +347,7 @@ void TTF_CloseFont_cb (void * font) {
 /**
  * Insert des donnees text_t dans un dictionnaire a partir d'un fichier csv  
  */
-int load_texts_from_file (const char * dataPath, TTF_Font * font, Dictionary_t * dict) {
+int load_texts_from_file (const char * dataPath, List_t * listFont, Dictionary_t * dict) {
 
     FILE * file = fopen(dataPath, "r") ;
     if (!existe(file)) {
@@ -296,6 +362,8 @@ int load_texts_from_file (const char * dataPath, TTF_Font * font, Dictionary_t *
     int hr, hg, hb, ha;
     char key[64], string[512];
     int animated, speed ;
+    int fontSize ;
+    int hidden ;
     char buffer[256];
 
     // Lecture de la première ligne
@@ -304,10 +372,10 @@ int load_texts_from_file (const char * dataPath, TTF_Font * font, Dictionary_t *
     printf("Lecture fichier : %s\n", dataPath) ;
 
     // Lecture et initialisation des éléments
-    while (fscanf(file, "%[^;];%[^;];%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d%%", 
-        key, string, &r, &g, &b, &a, &x, &y, &hollow, &hr, &hg, &hb, &ha, &typeHollow, &animated, &speed) == 16) {
+    while (fscanf(file, "%[^;];%[^;];%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d%%", 
+        key, string, &r, &g, &b, &a, &x, &y, &hollow, &hr, &hg, &hb, &ha, &typeHollow, &animated, &speed, &fontSize, &hidden) == 18) {
 
-        Text_t * text = create_text(string, font, (SDL_Color){r, g, b, a}, (SDL_Rect){x, y, 0, 0}) ;
+        Text_t * text = create_text(string, listFont->item(listFont, fontSize), (SDL_Color){r, g, b, a}, (SDL_Rect){x, y, 0, 0}) ;
         
         if (!existe(text)) {
             fprintf(stderr, "Erreur creation du text dans \"%s\"\n", dataPath) ;
@@ -315,7 +383,7 @@ int load_texts_from_file (const char * dataPath, TTF_Font * font, Dictionary_t *
             return ERROR ;
         } 
         else {
-            dict_set(dict, key, text, destroy_text_cb);
+            dict->set(dict, key, text, destroy_text_cb);
         }
 
         text_change_hollow(text, hollow, (SDL_Color){hr, hg, hb, ha}, typeHollow);
@@ -326,6 +394,10 @@ int load_texts_from_file (const char * dataPath, TTF_Font * font, Dictionary_t *
             text->animation.playing = FALSE ;
         }
 
+        if (hidden == TRUE) {
+            text_change_visibility(text, hidden);
+        }
+
         text->animation.animationSpeed = speed ;
 
         printf("key : %s, string : %s\n", key, string) ;    
@@ -334,4 +406,19 @@ int load_texts_from_file (const char * dataPath, TTF_Font * font, Dictionary_t *
     fclose(file);
 
     return NO_ERR ;
+}
+
+
+void get_text_dimensions (Text_t * text, int * w, int * h) {
+
+    if (existe(text) && existe(text->string)) {
+
+        char * buffer = malloc(sizeof(char) * (text->animation.currentFrame + 1)) ;
+        strncpy(buffer, text->string, text->animation.currentFrame);
+        buffer[text->animation.currentFrame] = '\0';
+
+        TTF_SizeUTF8(text->font, buffer, w, h);
+
+        free(buffer);
+    }
 }

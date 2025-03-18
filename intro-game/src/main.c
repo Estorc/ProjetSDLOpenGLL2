@@ -83,6 +83,7 @@ int main(int argc, char* argv[]) {
     change_scene(manager);
     
     // Boucle principale
+    printf("ok\n");
     while (running) {
 
         // traitement debut frame 
@@ -91,7 +92,7 @@ int main(int argc, char* argv[]) {
         // Récupère les données nécessaires de la scène actuelle
         int currentIndex = manager->index ;
         Scene_t * currentScene = manager->scenes[currentIndex] ;
-        InfoScene_t * info = dict_get(currentScene->data, "info") ;
+        InfoScene_t * info = currentScene->data->get(currentScene->data, "info") ;
 
         // Joue la scène
         currentScene->handleEvents(currentScene, &event, manager) ;
@@ -135,7 +136,7 @@ void end_frame (uint32_t * timerStart, uint32_t * previousTime) {
 
     uint32_t timerDelay = SDL_GetTicks() - *timerStart;
     if (timerDelay < FRAME_DELAY) {
-        //SDL_Delay(FRAME_DELAY - timerDelay);
+        SDL_Delay(FRAME_DELAY - timerDelay);
     }
 }
 

@@ -47,6 +47,7 @@ class Button : public Frame {
         frame->button = malloc(sizeof(Button));
         POINTER_CHECK(frame->button);
         frame->button->checked = NULL;
+        frame->button->state = BUTTON_STATE_NORMAL;
         frame->relPos[0] = 0.0f;
         frame->relPos[1] = 0.0f;
         frame->scale[0] = 100.0f;
@@ -81,7 +82,11 @@ class Button : public Frame {
                 if (mouse->x > x &&
                     mouse->x < x+w &&
                     mouse->y > y &&
-                    mouse->y < y+h) {
+                    mouse->y < y+h &&
+                    mouse->x > frame->overflow[0] &&
+                    mouse->x < frame->overflow[2] &&
+                    mouse->y > frame->overflow[1] &&
+                    mouse->y < frame->overflow[3]) {
                     if (button->checked) *button->checked = !(*button->checked);
                     this::emit_signal(SIGNAL_BUTTON_CLICKED);
                 }
@@ -90,7 +95,11 @@ class Button : public Frame {
             if (mouse->x > x &&
                 mouse->x < x+w &&
                 mouse->y > y &&
-                mouse->y < y+h) {
+                mouse->y < y+h &&
+                mouse->x > frame->overflow[0] &&
+                mouse->x < frame->overflow[2] &&
+                mouse->y > frame->overflow[1] &&
+                mouse->y < frame->overflow[3]) {
 
                 if (button->state != BUTTON_STATE_HOVERED) {
                     this::emit_signal(SIGNAL_BUTTON_HOVERED);
@@ -104,7 +113,6 @@ class Button : public Frame {
                 button->state = BUTTON_STATE_NORMAL;
             }
         }
-        if (Game.window->resized) frame->flags |= FRAME_NEEDS_REFRESH;
     }
 
     void is_button(bool *result) {

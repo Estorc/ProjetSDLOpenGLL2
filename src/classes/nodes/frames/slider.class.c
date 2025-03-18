@@ -38,7 +38,7 @@ class Slider : public Button {
 
         frame->relPos[0] = 0.0f;
         frame->relPos[1] = 0.0f;
-        frame->unit[0] = '%';
+        frame->unit[0] = '!';
         frame->unit[1] = '%';
 
         frame->scale[0] = 24.0f;

@@ -40,6 +40,7 @@ struct RenderTarget;
 struct Script;
 struct ClassManager;
 struct HashTable;
+struct DepthMap;
 
 /**
  * @brief The main structure that holds all the data and state of the engine.
@@ -64,6 +65,7 @@ struct RaptiquaX_t {
     struct RenderTarget *renderTarget; /**< The actual render target. */
     struct HashTable *storage; /**< Global storage in a Hash Table */
     struct Script *scripts; /**< The scripts. */
+    struct DepthMap *depthMap; /**< The depth map. */
 };
 
  extern struct RaptiquaX_t Game;

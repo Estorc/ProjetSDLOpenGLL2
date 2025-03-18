@@ -21,41 +21,27 @@ class Scene : public Node {
     __containerType__ Node *
     public:
 
-    void constructor() {
-        this->type = __type__;
+    void constructor(const char * path) {
+        FILE * file = fopen(path, "r");
+        if (!file) return;
+        Node *child = load_node(file, &Game.camera, Game.scripts, NULL);
+        if (!child) return;
 
-        SUPER(initialize_node);
+        memcpy(this, child, sizeof(Node));
+        for (int i = 0; i < this->length; i++) {
+            this->children[i]->parent = this;
+        }
+        free(child);
     }
-
     
 
-    void load(FILE *file, Camera **c, Script *scripts) {
+    void load(FILE *file) {
         char path[256];
-        this::constructor(path);
         if (file) {
-            fscanf(file,"(%s)\n", 
+            fscanf(file,"(%[^)])\n", 
                 path);
-            this->children = realloc(this->children, sizeof(Node *));
-            this::add_child(load_scene(path, c, scripts));
+            this::constructor(path);
         }
     }
-
-    void save(FILE *file) {
-        fprintf(file, "%s", classManager.class_names[this->type]);
-    }
-
-
-    void render(mat4 *modelMatrix, Shader activeShader) {
-        int modelLoc = glGetUniformLocation(activeShader, "model");
-        Mesh *mesh = (Mesh *)this->object;
-
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, (const GLfloat *) modelMatrix);
-
-        glBindVertexArray(mesh->VAO);
-
-        glDrawArrays(GL_TRIANGLES, 0, mesh->length);
-        glBindVertexArray(0);
-    }
-
     
 }

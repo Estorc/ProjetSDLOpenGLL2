@@ -56,10 +56,12 @@ class KinematicBody : public Body {
         }
     }
 
-    void update(vec3 *pos, vec3 *rot, vec3 *scale) {
+    void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta) {
         KinematicBody *kinematicBody = (KinematicBody *) this->object;
 
-        glm_vec3_add(this->pos, kinematicBody->velocity, this->pos);
+        vec3 deltaVelocity;
+        glm_vec3_scale(kinematicBody->velocity, 62.5f*delta, deltaVelocity);
+        glm_vec3_add(this->pos, deltaVelocity, this->pos);
         this::update_global_position(pos, rot, scale);
 
         for (int i = 0; i < kinematicBody->length; i++) {

@@ -44,7 +44,7 @@ class Light : public Node {
     static Shader billboardShader = 0;
     static TextureMap lightPointTexture = 0;
     static TextureMap directionalLightTexture = 0;
-    void render(mat4 *modelMatrix) {
+    void render(mat4 *modelMatrix, Shader activeShader) {
         #ifdef DEBUG
         if (!vao) this::init_vao();
         use_shader(billboardShader);
@@ -59,6 +59,7 @@ class Light : public Node {
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
+        use_shader(activeShader);
         #endif
     }
 

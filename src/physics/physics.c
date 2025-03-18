@@ -221,6 +221,10 @@ void update_physics(Node *node, vec3 pos, vec3 rot, vec3 scale, float delta, Inp
         node->flags |= NODE_INITIALIZED;
     }
 
+    if (window->flags & WINDOW_RESIZED) {
+        node::on_resize();
+    }
+
     if (node->flags & NODE_ACTIVE && (active || node->flags & NODE_EDITOR_FLAG)) {
         node::emit_update(delta);
         node::update(newPos, newRot, newScale, delta, lightsCount);

@@ -134,6 +134,10 @@ class Node {
         this::update_global_position(pos, rot, scale);
     }
 
+    void on_resize() {
+        //
+    }
+
     void free() {
         for (int i = 0; i < this->length; i++) {
             (this->children[i])::free();

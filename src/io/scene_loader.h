@@ -34,7 +34,7 @@ struct Node *load_node(FILE *file, struct Camera **c, Script *scripts, struct No
  * @param scripts An array of scripts to be updated.
  * @return A pointer to the loaded scene.
  */
-struct Node *load_scene(char *path, struct Camera **c, Script *scripts);
+struct Node *load_scene(const char *path, struct Camera **c, Script *scripts);
 
 /** @} */
 #endif

@@ -16,13 +16,16 @@ NEW_SCRIPT(script_no_fade_init)
 END_SCRIPT(script_no_fade_init)
 
 NEW_SCRIPT(script_rotate_x)
-    this->rot[0] += 0.5f;
+    GET_READY_PARAMETERS();
+    this->rot[0] += 30.0f * delta;
 END_SCRIPT(script_rotate_x)
 
 NEW_SCRIPT(script_rotate_y)
-    this->rot[1] += 0.5f;
+    GET_READY_PARAMETERS();
+    this->rot[1] += 30.0f * delta;
 END_SCRIPT(script_rotate_y)
 
 NEW_SCRIPT(script_rotate_z)
-    this->rot[2] += 0.5f;
+    GET_READY_PARAMETERS();
+    this->rot[2] += 30.0f * delta;
 END_SCRIPT(script_rotate_z)

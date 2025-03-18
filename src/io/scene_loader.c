@@ -113,7 +113,7 @@ Node *load_node(FILE *file, Camera **c, Script *scripts, Node *editor) {
 }
 
 
-Node *load_scene(char *path, Camera **c, Script *scripts) {
+Node *load_scene(const char *path, Camera **c, Script *scripts) {
     Game.buffers->collisionBuffer.length = 0;
     Game.buffers->lightingBuffer.length = 0;
     Game.buffers->collisionBuffer.index = 0;

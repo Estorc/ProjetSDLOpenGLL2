@@ -128,54 +128,52 @@ NEW_SCRIPT(fs_fight_player_update)
 
 	KinematicBody *player = (KinematicBody*) this->object;
 
-	f32 vel = 0.05f;
-	if (Game.input->active_keys & KEY_SHIFT) vel = 0.2f;
-	vel *= delta * 100.0f;
+    f32 base_speed = 10.0f;
+    if (Game.input->active_keys & KEY_SPRINT) base_speed = 20.0f;
+    f32 vel = base_speed * delta;  // Scale speed by delta for frame-rate independence
 
+    Camera *c = (Camera*) this->children[0]->object;
 
-	Camera *c = (Camera*) this->children[0]->object;
+    vec3 dir = {0.0f, 0.0f, -1.0f};
+    glm_vec3_rotate(dir, to_radians(c->rot[1]), (vec3){0.0f, 1.0f, 0.0f});
+    dir[0] = -dir[0];
 
-	vec3 dir = {0.0f, 0.0f, -1.0f};
-	glm_vec3_rotate(dir, to_radians(c->rot[1]), (vec3){0.0f, 1.0f, 0.0f});
-	dir[0] = -dir[0];
+    vec3 appliedVelocity;
+    glm_vec3_zero(appliedVelocity);
 
-	vec3 appliedVelocity;
-	glm_vec3_zero(appliedVelocity);
+    if (!*menu_open) {
+        SDL_SetRelativeMouseMode(SDL_TRUE);
 
-	if (!*menu_open) {
+        if (Game.input->active_keys & KEY_LEFT) {
+            appliedVelocity[0] += dir[2] * vel;
+            appliedVelocity[2] -= dir[0] * vel;
+        };
+        if (Game.input->active_keys & KEY_RIGHT) {
+            appliedVelocity[0] -= dir[2] * vel;
+            appliedVelocity[2] += dir[0] * vel;
+        };
+        if (Game.input->active_keys & KEY_UP) {
+            appliedVelocity[0] += dir[0] * vel;
+            appliedVelocity[2] += dir[2] * vel;
+        };
+        if (Game.input->active_keys & KEY_DOWN) {
+            appliedVelocity[0] -= dir[0] * vel;
+            appliedVelocity[2] -= dir[2] * vel;
+        };
 
-		SDL_SetRelativeMouseMode(SDL_TRUE);
+        if (Game.input->pressed_keys & KEY_JUMP) {
+            player->velocity[1] = 0.2f;
+        };
+    } else {
+        SDL_SetRelativeMouseMode(SDL_FALSE);
+    }
 
-		if (Game.input->active_keys & KEY_LEFT) {
-			appliedVelocity[0] += dir[2] * vel;
-			appliedVelocity[2] -= dir[0] * vel;
-		};
-		if (Game.input->active_keys & KEY_RIGHT) {
-			appliedVelocity[0] -= dir[2] * vel;
-			appliedVelocity[2] += dir[0] * vel;
-		};
-		if (Game.input->active_keys & KEY_UP) {
-			appliedVelocity[0] += dir[0] * vel;
-			appliedVelocity[2] += dir[2] * vel;
-		};
-		if (Game.input->active_keys & KEY_DOWN) {
-			appliedVelocity[0] -= dir[0] * vel;
-			appliedVelocity[2] -= dir[2] * vel;
-		};
+    // Smooth velocity adjustment using delta
+    player->velocity[0] += (appliedVelocity[0] - player->velocity[0]) * (delta * 2.0f);
+    player->velocity[2] += (appliedVelocity[2] - player->velocity[2]) * (delta * 2.0f);
 
-		if (Game.input->pressed_keys & KEY_JUMP) {
-			player->velocity[1] = 0.2f;
-		};
-
-	}
-
-	else SDL_SetRelativeMouseMode(SDL_FALSE);
-
-		
-	player->velocity[0] += (appliedVelocity[0] - player->velocity[0]) / 20.0;
-	player->velocity[2] += (appliedVelocity[2] - player->velocity[2]) / 20.0;
-
-	player->velocity[1] -= 0.5*delta;
+    // Apply gravity scaled by delta
+    player->velocity[1] -= 0.5f * delta;
 
     static struct timespec last_time = {0, 0};
     struct timespec current_time;
