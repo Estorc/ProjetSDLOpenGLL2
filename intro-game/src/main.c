@@ -83,41 +83,27 @@ int main(int argc, char* argv[]) {
     change_scene(manager);
     
     // Boucle principale
-    printf("ok\n");
     while (running) {
 
         // traitement debut frame 
         start_frame(&timerStart);
-        
-        // Récupère les données nécessaires de la scène actuelle
-        int currentIndex = manager->index ;
-        Scene_t * currentScene = manager->scenes[currentIndex] ;
-        InfoScene_t * info = currentScene->data->get(currentScene->data, "info") ;
 
-        // Joue la scène
-        currentScene->handleEvents(currentScene, &event, manager) ;
-        currentScene->update(currentScene, manager) ;
-        currentScene->render(currentScene) ;
-
-        // Vérification des scènes en attentes
-        if (strcmp(manager->nextScene, "") != 0) {
-            change_scene(manager); 
-        }
-
-        // Vérification de l'état du jeu (fin ou continuer)
-        if (info->end == TRUE) {
-            currentScene->unLoad(currentScene);
+        // Joue scene et vérification de l'état du jeu (fin ou continuer)
+        if (play_scene(manager, &event)) {
             running = FALSE ;
         } 
         
         // traitement fin frame  
         end_frame(&timerStart, &previousTime);
     }
-
+    
     // Nettoyage
     Mix_FreeChunk(snoreSound);
     Mix_FreeChunk(spidermanSound);
+    destroy_scene_manager(&manager);
     terminate_system(music, TRUE, player, map, TRUE, TRUE, TRUE, TRUE, camera);
+
+    printf("fin propre\n");
 
     return 0;
 }

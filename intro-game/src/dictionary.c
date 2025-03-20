@@ -147,8 +147,7 @@ void destroy_dictionary(Dictionary_t ** dict) {
     *dict = NULL ;
 }
 void destroy_dictionary_cb (void * dict) {
-    Dictionary_t ** pdict = (Dictionary_t **)dict ;
-    destroy_dictionary(pdict);
+    destroy_dictionary(dict);
 }
 
 

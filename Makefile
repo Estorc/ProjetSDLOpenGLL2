@@ -16,12 +16,12 @@ OBJ_FILES := $(patsubst $(SRC_DIR)/%.c, $(BIN_DIR)/%.o, $(SRC_FILES))
 HEADER_FILES := $(shell find $(INC_DIR) -type f -name '*.h')
 
 # Options de compilation pour Linux et macOS
-CFLAGS := -Wall -Wextra -I$(INC_DIR) `sdl2-config --cflags`
+CFLAGS := -I$(INC_DIR) `sdl2-config --cflags`
 LDFLAGS := `sdl2-config --libs` -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 
 # Gestion spécifique pour macOS
 ifeq ($(UNAME_S), Darwin)
-    CFLAGS := -Wall -Wextra -I$(INC_DIR) -F/Library/Frameworks
+    CFLAGS := -I$(INC_DIR) -F/Library/Frameworks
     LDFLAGS := -F/Library/Frameworks -framework SDL2 -framework SDL2_image -framework SDL2_ttf -framework SDL2_mixer -Wl,-rpath,/Library/Frameworks
 endif
 

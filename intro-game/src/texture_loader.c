@@ -125,8 +125,13 @@ void texture_list_update (List_t * list) {
 
 
 void texture_list_update_from_file (List_t * list, const char * dataPath) {
+
+    if (!existe(list)) {
+        printf("Impossible d'update le listTexture car list NULL\n");
+        return ;
+    }
     
-    if (existe(list)) {
+    if (fileModified(dataPath)) {
 
         FILE * file = fopen(dataPath, "r") ;
         if (!existe(file)) {
@@ -177,7 +182,9 @@ void texture_list_update_from_file (List_t * list, const char * dataPath) {
         fclose(file);
     }
     else {
-        printf("Impossible d'update le texture_dict car dict NULL\n");
+        for (int i = 0; i < list->size; i++) {
+            texture_update(list->item(list, i));
+        }
     }
 }
 
