@@ -150,7 +150,7 @@ void set_shader_vec4(Shader ID, char *name, vec4 value);
  * @param name The name of the uniform variable in the shader program.
  * @param value The mat4 value to set for the uniform variable.
  */
-void set_shader_mat4(Shader ID, char *name, mat4 *value);
+void set_shader_mat4(Shader ID, char *name, mat4 value);
 
 /** @} */ // end of ShaderManagement
 

@@ -43,7 +43,7 @@ NEW_SCRIPT(play_game_button)
 		case SIGNAL_BUTTON_CLICKED:
 			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
 			if (Game.input->active_keys & KEY_SPRINT) {
-				prepare_change_scene("assets/scenes/fps_chess/fpschess.scene");
+				prepare_change_scene("assets/scenes/fps_chess/boot.scene");
 			}
 			fade_out_music(1000);
 			Game.mainTree->root->attribute[0].b = true;

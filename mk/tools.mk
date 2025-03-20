@@ -2,6 +2,7 @@
 
 NEED_BUILD_TOOLS := 0
 TOOLS += ${TOOLS_DIR}/class_tools
+TOOLS += ${TOOLS_DIR}/preprocessor_pipeline
 
 # Targets
 
@@ -11,7 +12,7 @@ prebuildtools:
 
 ${TOOLS_DIR}/%: ${TOOLS_DIR}/%.c
 	@$(call PRINT_CENTERED,${ACT_COL}Build ${notdir $@}...)
-	@${GCC} -o $@ $^ ${DFLAGS} ${WFLAGS} -Wno-format
+	@${GCC} -o $@ $^ ${DFLAGS} ${LFLAGS} ${WFLAGS} -g -Wno-format
 
 define end_build_tools
 	@$(call PRINT_SEPARATOR,${SUCCESS_COL}Successfully build the tools!)

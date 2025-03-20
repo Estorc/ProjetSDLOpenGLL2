@@ -79,13 +79,13 @@ class SpotLight : public Light {
      * This function updates the position, rotation, and scale of the spotlight
      * based on the provided delta time and increments the lights count.
      *
-     * @param pos Pointer to a vec3 structure representing the position of the spotlight.
-     * @param rot Pointer to a vec3 structure representing the rotation of the spotlight.
-     * @param scale Pointer to a vec3 structure representing the scale of the spotlight.
+     * @param pos Vec3 structure representing the position of the spotlight.
+     * @param rot Vec3 structure representing the rotation of the spotlight.
+     * @param scale Vec3 structure representing the scale of the spotlight.
      * @param delta The time delta used for updating the spotlight's state.
      * @param lightsCount Pointer to an unsigned 8-bit integer representing the count of lights.
      */
-    void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta, u8 *lightsCount) {
+    void update(vec3 pos, vec3 rot, vec3 scale, float delta, u8 *lightsCount) {
         UNUSED(delta);
         if (!(this->flags & NODE_LIGHT_ACTIVE)) return;
         SpotLight *spotLight = (SpotLight *) this->object;

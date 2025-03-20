@@ -245,11 +245,11 @@ class Skybox : public Node {
      * apply the necessary shading effects. Additionally, it utilizes the world
      * shaders for any global shader settings or configurations.
      *
-     * @param modelMatrix A pointer to the model matrix used to transform the skybox.
+     * @param modelMatrix Model matrix used to transform the skybox.
      * @param activeShader The shader program currently active for rendering.
      * @param shaders A pointer to the WorldShaders structure containing global shader settings.
      */
-    void render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
+    void render(mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
         UNUSED(activeShader);
         
         glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content

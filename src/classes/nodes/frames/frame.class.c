@@ -46,7 +46,7 @@ class Frame : public Node {
      * @param scroll The scroll setting for the frame.
      * @param theme A pointer to the Theme object associated with the frame.
      */
-    void constructor(double x, int xu, double y, int yu, double w, int wu, double h, int hu, int ha, int va, int scroll, Theme *theme) {
+    void constructor(float x, int xu, float y, int yu, float w, int wu, float h, int hu, int ha, int va, int scroll, Theme *theme) {
         this->type = __type__;
 
         Frame *frame;
@@ -192,8 +192,10 @@ class Frame : public Node {
         Frame *frame = (Frame *) this->object;
         vec2 scroll = {0.0f, 0.0f};
 
-        frame->contentSize[0] = 0.0f;
-        frame->contentSize[1] = 0.0f;
+        if (frame->flags & OVERFLOW_SCROLL) {
+            frame->contentSize[0] = 0.0f;
+            frame->contentSize[1] = 0.0f;
+        }
 
         if (frame->theme && frame->theme->parent == frame) {
             TTF_CloseFont(frame->theme->font.font);
@@ -246,6 +248,7 @@ class Frame : public Node {
         if (frame->unit[3] == 'a') {
             float scale = ((this->scale[0] * containerSize[0]) / frame->contentSize[0]) * frame->contentSize[1];
             this::handle_dimension_unit(&scale, &this->scale[1], true, 0.0f, 'p', (double) containerSize[0], (double) containerSize[1]);
+            printf("Scale: %f\n", this->scale[1]);
         }
         if (frame->unit[0] != '!') this::handle_dimension_unit(&frame->relPos[0], &this->pos[0], false, this->scale[0], frame->unit[0], (double) containerSize[0], (double) containerSize[1]);
         if (frame->unit[1] != '!') this::handle_dimension_unit(&frame->relPos[1], &this->pos[1], true, this->scale[1], frame->unit[1], (double) containerSize[0], (double) containerSize[1]);
@@ -387,13 +390,12 @@ class Frame : public Node {
      * This function is responsible for rendering a frame in the scene. It takes
      * a model matrix, an active shader, and a set of world shaders as parameters.
      *
-     * @param modelMatrix A pointer to the model matrix to be used for rendering.
+     * @param modelMatrix Model matrix to be used for rendering.
      * @param activeShader The shader to be used for rendering the frame.
      * @param shaders A pointer to the WorldShaders structure containing the shaders
      *                used in the world.
      */
-    void render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
-        UNUSED(modelMatrix);
+    void render(mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
         Frame *frame = (Frame *) this->object;
         if (frame->flags & FRAME_NEEDS_REFRESH || frame->flags & FRAME_NEEDS_INIT) this::refresh();
         if (frame->flags & FRAME_VISIBLE && activeShader != shaders->depth && !(frame->flags & FRAME_NEEDS_INIT)) {

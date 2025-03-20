@@ -62,7 +62,8 @@ char * concat_path(const char * path1, const char * path2) {
     return path;
 }
 
-int find_string_index(char *str, const char **str_list, int list_size) {
+int find_string_index(char *str, const char * const *str_list, int list_size) {
+    if (!str) return -1;
 	for (int i = 0; i < list_size; i++) {
 		if (strcmp(str, str_list[i]) == 0) {
 			return i;

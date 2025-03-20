@@ -303,13 +303,13 @@ void create_screen_plane(Mesh *mesh);
  * This function takes a transformation matrix, an active shader, and a model,
  * and renders the model using the provided shader and transformation matrix.
  *
- * @param modelMatrix A pointer to a 4x4 transformation matrix (mat4) that defines
+ * @param modelMatrix A 4x4 transformation matrix (mat4) that defines
  *                    the model's position, rotation, and scale in the world space.
  * @param activeShader The shader program to be used for rendering the model.
  * @param model A pointer to the Model structure that contains the model's data,
  *              such as vertices, indices, textures, etc.
  */
-void render_model(mat4 *modelMatrix, Shader activeShader, Model *model);
+void render_model(mat4 modelMatrix, Shader activeShader, Model *model);
 
 /** @} */ // end of ModelHandling
 

@@ -46,7 +46,7 @@ class ControlFrame : public Frame {
      * @param va The vertical alignment of the control frame.
      * @param scroll The scroll setting for the control frame.
      */
-    void constructor(double x, int xu, double y, int yu, double w, int wu, double h, int hu, int ha, int va, int scroll) {
+    void constructor(float x, int xu, float y, int yu, float w, int wu, float h, int hu, int ha, int va, int scroll) {
         this->type = __type__; 
 
         Frame *frame;

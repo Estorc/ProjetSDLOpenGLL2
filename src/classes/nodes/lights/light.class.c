@@ -96,10 +96,10 @@ class Light : public Node {
      * the light's position and orientation in the scene, while the active shader
      * is used to apply the appropriate shading effects.
      *
-     * @param modelMatrix Pointer to the model matrix used for transforming the light.
+     * @param modelMatrix Model matrix used for transforming the light.
      * @param activeShader The shader program currently active for rendering.
      */
-    void render(mat4 *modelMatrix, Shader activeShader) {
+    void render(mat4 modelMatrix, Shader activeShader) {
         #ifdef DEBUG
         if (!vao) this::init_vao();
         use_shader(billboardShader);
@@ -161,9 +161,9 @@ class Light : public Node {
      * @param storageBufferIndex The index of the storage buffer.
      */
 
-    void configure_lighting(WorldShaders *shaders, mat4 *lightView, mat4 *lightProjection, int storageBufferIndex, DepthMap *depthMap) {
+    void configure_lighting(WorldShaders *shaders, mat4 lightView, mat4 lightProjection, int storageBufferIndex, DepthMap *depthMap) {
         mat4 lightSpaceMatrix;
-        glm_mat4_mul(*lightProjection, *lightView, lightSpaceMatrix);
+        glm_mat4_mul(lightProjection, lightView, lightSpaceMatrix);
 
         if (depthMap->tbo == 0) {
             PRINT_ERROR("Error: depthMap->tbo is not initialized!");
@@ -191,7 +191,7 @@ class Light : public Node {
         use_shader(shaders->render);
         set_shader_int(shaders->render, "lightMatrixBuffer", 9);
         use_shader(shaders->depth);
-        set_shader_mat4(shaders->depth, "lightSpaceMatrix", &lightSpaceMatrix);
+        set_shader_mat4(shaders->depth, "lightSpaceMatrix", lightSpaceMatrix);
     }
 }
 

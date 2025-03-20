@@ -99,6 +99,6 @@ void set_shader_vec4(Shader ID, char *name, vec4 value) {
     glUniform4fv(glGetUniformLocation(ID, name), 1, value);
 }
 
-void set_shader_mat4(Shader ID, char *name, mat4 *value) {
+void set_shader_mat4(Shader ID, char *name, mat4 value) {
     glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, (const GLfloat *) value);
 }

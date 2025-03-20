@@ -75,13 +75,13 @@ class PointLight : public Light {
      * This function updates the position, rotation, and scale of a point light based on the provided delta time.
      * It also increments the count of active lights.
      *
-     * @param pos Pointer to a vec3 structure representing the position of the point light.
-     * @param rot Pointer to a vec3 structure representing the rotation of the point light.
-     * @param scale Pointer to a vec3 structure representing the scale of the point light.
+     * @param pos Vec3 structure representing the position of the point light.
+     * @param rot Vec3 structure representing the rotation of the point light.
+     * @param scale Vec3 structure representing the scale of the point light.
      * @param delta The time delta used to update the point light's properties.
      * @param lightsCount Pointer to an unsigned 8-bit integer representing the count of active lights.
      */
-    void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta, u8 *lightsCount) {
+    void update(vec3 pos, vec3 rot, vec3 scale, double delta, u8 *lightsCount) {
         UNUSED(delta);
         if (!(this->flags & NODE_LIGHT_ACTIVE)) return;
         PointLight *pointLight = (PointLight *) this->object;

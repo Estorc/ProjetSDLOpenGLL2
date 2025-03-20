@@ -49,7 +49,7 @@ class ImageFrame : public Frame {
      * @param va The vertical alignment of the image frame.
      * @param imagePath The file path to the image to be used in the frame.
      */
-    void constructor(double x, int xu, double y, int yu, double w, int wu, double h, int hu, int ha, int va, char *imagePath) {
+    void constructor(float x, int xu, float y, int yu, float w, int wu, float h, int hu, int ha, int va, char *imagePath) {
         this->type = __type__; 
 
         Frame *frame;
@@ -74,17 +74,16 @@ class ImageFrame : public Frame {
         frame->alignment[0] = ha;
         frame->alignment[1] = va;
 
-        if (imagePath && *imagePath) {
-            frame->contentTexture = load_texture_from_path(imagePath, GL_SRGB_ALPHA, false);
-            GLint width, height;
-            glBindTexture(GL_TEXTURE_2D, frame->contentTexture);
-            glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &width);
-            glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &height);
-            glBindTexture(GL_TEXTURE_2D, 0);
-            frame->contentSize[0] = width;
-            frame->contentSize[1] = height;
-            frame->flags |= FRAME_CONTENT;
-        }
+        strcpy(frame->imageFrame->path, imagePath);
+        frame->contentTexture = load_texture_from_path(imagePath, GL_SRGB_ALPHA, false);
+        GLint width, height;
+        glBindTexture(GL_TEXTURE_2D, frame->contentTexture);
+        glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &width);
+        glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &height);
+        glBindTexture(GL_TEXTURE_2D, 0);
+        frame->contentSize[0] = width;
+        frame->contentSize[1] = height;
+        frame->flags |= FRAME_CONTENT;
     }
 
     /**
@@ -134,7 +133,7 @@ class ImageFrame : public Frame {
      * @param activeShader The shader program currently active for rendering.
      * @param shaders A pointer to the WorldShaders structure containing various shaders used in the world.
      */
-    void render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
+    void render(mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
         SUPER(render, modelMatrix, activeShader, shaders);
     }
 

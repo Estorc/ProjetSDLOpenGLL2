@@ -37,9 +37,9 @@ class KinematicBody : public Body {
      *
      * This function initializes a kinematic body with the given velocity.
      *
-     * @param velocity A pointer to a float representing the initial velocity of the kinematic body.
+     * @param velocity Vec3 representing the initial velocity of the kinematic body.
      */
-    void constructor(float *velocity) {
+    void constructor(vec3 velocity) {
         this->type = __type__;
 
         KinematicBody *kinematicBody;
@@ -84,18 +84,18 @@ class KinematicBody : public Body {
      *
      * This function updates the global position of a kinematic body based on the provided position, rotation, and scale vectors.
      *
-     * @param pos Pointer to a vec3 structure representing the position of the kinematic body.
-     * @param rot Pointer to a vec3 structure representing the rotation of the kinematic body.
-     * @param scale Pointer to a vec3 structure representing the scale of the kinematic body.
+     * @param pos Vec3 structure representing the position of the kinematic body.
+     * @param rot Vec3 structure representing the rotation of the kinematic body.
+     * @param scale Vec3 structure representing the scale of the kinematic body.
      */
-    void update_global_position(vec3 *pos, vec3 *rot, vec3 *scale) {
+    void update_global_position(vec3 pos, vec3 rot, vec3 scale) {
         SUPER(update_global_position, pos, rot, scale);
         KinematicBody *kinematicBody = (KinematicBody *) this->object;
         for (int i = 0; i < kinematicBody->length; i++) {
             (kinematicBody->collisionsShapes[i])::update_global_position(pos, rot, scale);
-            glm_vec3_copy(this->globalPos, *pos);
-            glm_vec3_copy(this->globalRot, *rot);
-            glm_vec3_copy(this->globalScale, *scale);
+            glm_vec3_copy(this->globalPos, pos);
+            glm_vec3_copy(this->globalRot, rot);
+            glm_vec3_copy(this->globalScale, scale);
         }
     }
 
@@ -106,12 +106,12 @@ class KinematicBody : public Body {
      * based on the given delta time. It is typically used in a physics simulation to
      * update the state of the body over time.
      *
-     * @param pos Pointer to a vec3 structure representing the position of the body.
-     * @param rot Pointer to a vec3 structure representing the rotation of the body.
-     * @param scale Pointer to a vec3 structure representing the scale of the body.
+     * @param pos Vec3 structure representing the position of the body.
+     * @param rot Vec3 structure representing the rotation of the body.
+     * @param scale Vec3 structure representing the scale of the body.
      * @param delta The time delta used to update the body's state.
      */
-    void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta) {
+    void update(vec3 pos, vec3 rot, vec3 scale, float delta) {
         KinematicBody *kinematicBody = (KinematicBody *) this->object;
 
         vec3 deltaVelocity;
@@ -185,13 +185,13 @@ class KinematicBody : public Body {
      *
      * This function applies a given impulse and torque to the kinematic body and performs any necessary corrections.
      *
-     * @param impulse A pointer to a float representing the impulse to be applied.
-     * @param torque A pointer to a float representing the torque to be applied.
-     * @param correction A pointer to a float representing the correction to be applied.
+     * @param impulse Vec3 representing the impulse to be applied.
+     * @param torque Vec3 representing the torque to be applied.
+     * @param correction Vec3 representing the correction to be applied.
      */
-    void apply_impulse(float *impulse, float *torque, float *correction) {
+    void apply_impulse(vec3 impulse, vec3 torque, vec3 correction) {
         UNUSED(torque);
-        KinematicBody *kinematicBody = (KinematicBody *) this->object;
+        KinematicBody *kinematicBody = this->object;
 
         // Change velocity
         glm_vec3_add(kinematicBody->velocity, impulse, kinematicBody->velocity);
@@ -209,7 +209,7 @@ class KinematicBody : public Body {
      * @return The velocity norm of the node.
      */
     float get_velocity_norm() {
-        KinematicBody *kinematicBody = (KinematicBody *) this->object;
+        KinematicBody *kinematicBody = this->object;
         return glm_vec3_norm(kinematicBody->velocity);
     };
 
@@ -218,9 +218,9 @@ class KinematicBody : public Body {
      * 
      * @param velocity Output vector to store the velocity.
      */
-    void get_velocity(vec3 *velocity) {
-        KinematicBody *kinematicBody = (KinematicBody *) this->object;
-        glm_vec3_copy(kinematicBody->velocity, *velocity);
+    void get_velocity(vec3 velocity) {
+        KinematicBody *kinematicBody = this->object;
+        glm_vec3_copy(kinematicBody->velocity, velocity);
     };
 
     /**
@@ -237,7 +237,7 @@ class KinematicBody : public Body {
      * 
      * @param com Output vector to store the center of mass.
      */
-    void get_center_of_mass(float *com) {
+    void get_center_of_mass(vec3 com) {
         glm_vec3_zero(com);
     }
 }

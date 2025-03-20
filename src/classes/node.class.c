@@ -148,17 +148,17 @@ class Node {
      * @param modelMatrix The model matrix to be used for rendering.
      * @param activeShader The shader to be used for rendering.
      */
-    void prepare_render(mat4 *modelMatrix, Shader activeShader) {
+    void prepare_render(mat4 modelMatrix, Shader activeShader) {
         
         set_shader_int(activeShader, "diffuseMapActive", 0);
         set_shader_int(activeShader, "normalMapActive", 0);
         set_shader_int(activeShader, "parallaxMapActive", 0);
         
-        glm_translate(*modelMatrix, (vec3){this->pos[0], this->pos[1], this->pos[2]});
-        glm_rotate(*modelMatrix, to_radians(this->rot[0]), (vec3){1.0f, 0.0f, 0.0f});
-        glm_rotate(*modelMatrix, to_radians(this->rot[1]), (vec3){0.0f, 1.0f, 0.0f});
-        glm_rotate(*modelMatrix, to_radians(this->rot[2]), (vec3){0.0f, 0.0f, 1.0f});
-        glm_scale(*modelMatrix, (vec3){this->scale[0], this->scale[1], this->scale[2]});
+        glm_translate(modelMatrix, (vec3){this->pos[0], this->pos[1], this->pos[2]});
+        glm_rotate(modelMatrix, to_radians(this->rot[0]), (vec3){1.0f, 0.0f, 0.0f});
+        glm_rotate(modelMatrix, to_radians(this->rot[1]), (vec3){0.0f, 1.0f, 0.0f});
+        glm_rotate(modelMatrix, to_radians(this->rot[2]), (vec3){0.0f, 0.0f, 1.0f});
+        glm_scale(modelMatrix, (vec3){this->scale[0], this->scale[1], this->scale[2]});
     }
 
     /**
@@ -183,25 +183,25 @@ class Node {
      * @param rot Pointer to a vec3 structure representing the rotation vector.
      * @param scale Pointer to a vec3 structure representing the scale vector.
      */
-    void update_global_position(vec3 *pos, vec3 *rot, vec3 *scale) {
+    void update_global_position(vec3 pos, vec3 rot, vec3 scale) {
         vec3 nodePos;
         glm_vec3_copy(this->pos, nodePos);
 
-        glm_vec3_mul(nodePos, *scale, nodePos);
+        glm_vec3_mul(nodePos, scale, nodePos);
 
         mat4 rotationMatrix;
         vec3 radiansRot;
-        glm_vec3_scale(*rot, PI/180.0f, radiansRot);
+        glm_vec3_scale(rot, PI/180.0f, radiansRot);
         glm_euler(radiansRot, rotationMatrix);
         glm_vec3_rotate_m4(rotationMatrix, nodePos, nodePos);
 
-        glm_vec3_add(*pos, nodePos, *pos);
+        glm_vec3_add(pos, nodePos, pos);
 
-        glm_vec3_add(*rot, this->rot, *rot);
-        glm_vec3_mul(*scale, this->scale, *scale);
-        glm_vec3_copy(*pos, this->globalPos);
-        glm_vec3_copy(*rot, this->globalRot);
-        glm_vec3_copy(*scale, this->globalScale);
+        glm_vec3_add(rot, this->rot, rot);
+        glm_vec3_mul(scale, this->scale, scale);
+        glm_vec3_copy(pos, this->globalPos);
+        glm_vec3_copy(rot, this->globalRot);
+        glm_vec3_copy(scale, this->globalScale);
     }
 
     /**
@@ -214,7 +214,7 @@ class Node {
      * @param rot Pointer to a vec3 structure representing the rotation of the node.
      * @param scale Pointer to a vec3 structure representing the scale of the node.
      */
-    void update(vec3 *pos, vec3 *rot, vec3 *scale) {
+    void update(vec3 pos, vec3 rot, vec3 scale) {
         this::update_global_position(pos, rot, scale);
     }
 

@@ -97,9 +97,9 @@ class Area : public PhysicalNode {
      *
      * @param node A pointer to the Node structure that needs to be processed.
      * @param distance A double value representing the distance used in the calculation.
-     * @param impactPoint A pointer to a float array where the calculated impact point will be stored.
+     * @param impactPoint Vec3 where the calculated impact point will be stored.
      */
-    void collect_node(Node * node, double distance, float *impactPoint) {
+    void collect_node(Node * node, float distance, vec3 impactPoint) {
         Area *area = (Area *) this->object;
         area->collectedNodes = realloc(area->collectedNodes, sizeof(CollectedNode) * (area->collectedLength + 1));
         POINTER_CHECK(area->collectedNodes);
@@ -160,11 +160,11 @@ class Area : public PhysicalNode {
      *
      * This function takes pointers to the position, rotation, and scale of an object and updates them accordingly.
      *
-     * @param pos Pointer to the position of the object. It is expected to be a float array of size 3 representing x, y, and z coordinates.
-     * @param rot Pointer to the rotation of the object. It is expected to be a float array of size 3 representing rotation angles around x, y, and z axes.
-     * @param scale Pointer to the scale of the object. It is expected to be a float array of size 3 representing scaling factors along x, y, and z axes.
+     * @param pos Vec3 position of the object. It is expected to be a float array of size 3 representing x, y, and z coordinates.
+     * @param rot Vec3 rotation of the object. It is expected to be a float array of size 3 representing rotation angles around x, y, and z axes.
+     * @param scale Vec3 scale of the object. It is expected to be a float array of size 3 representing scaling factors along x, y, and z axes.
      */
-    void update(float *pos, float *rot, float *scale) {
+    void update(vec3 pos, vec3 rot, vec3 scale) {
         Area *area = (Area *) this->object;
 
         this::sort_nodes();

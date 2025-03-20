@@ -77,16 +77,16 @@ class Camera : public Node {
      * This function updates the camera's transformation properties including
      * position, rotation, and scale based on the provided vectors.
      *
-     * @param pos Pointer to a vec3 structure representing the new position of the camera.
-     * @param rot Pointer to a vec3 structure representing the new rotation of the camera.
-     * @param scale Pointer to a vec3 structure representing the new scale of the camera.
+     * @param pos Vec3 structure representing the new position of the camera.
+     * @param rot Vec3 structure representing the new rotation of the camera.
+     * @param scale Vec3 structure representing the new scale of the camera.
      */
-    void update(vec3 *pos, vec3 *rot, vec3 *scale) {
+    void update(vec3 pos, vec3 rot, vec3 scale) {
         Camera *camera = (Camera *) this->object;
 
         this::update_global_position(pos, rot, scale);
-        glm_vec3_negate_to(*pos, camera->pos);
-        glm_vec3_negate_to(*rot, camera->rot);
+        glm_vec3_negate_to(pos, camera->pos);
+        glm_vec3_negate_to(rot, camera->rot);
     }
 
     /**

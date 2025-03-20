@@ -107,10 +107,10 @@ class TexturedMesh : public Node {
      * renders the textured mesh accordingly. The model matrix is used to transform the
      * mesh, and the shader is used to apply the necessary rendering effects.
      * 
-     * @param modelMatrix A pointer to the model matrix used for transforming the mesh.
+     * @param modelMatrix Model matrix used for transforming the mesh.
      * @param activeShader The shader program used for rendering the mesh.
      */
-    void render(mat4 *modelMatrix, Shader activeShader) {
+    void render(mat4 modelMatrix, Shader activeShader) {
         TexturedMesh *texturedMesh = (TexturedMesh*) this->object;
         vec3 defaultColor = {0.5f, 0.5f, 0.5f};
         set_shader_vec3(activeShader, "material.ambient", defaultColor);

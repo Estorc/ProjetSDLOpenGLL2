@@ -86,21 +86,21 @@ class CShape : public Node {
      * This function is responsible for preparing the necessary components for rendering a shape.
      * It takes a model matrix and an active shader as parameters and performs the required setup.
      *
-     * @param modelMatrix A pointer to the model matrix (of type mat4) that will be used for rendering.
+     * @param modelMatrix Model matrix (of type mat4) that will be used for rendering.
      *                    The model matrix contains the transformations (translation, rotation, scaling)
      *                    that will be applied to the shape before rendering.
      * @param activeShader The shader program (of type Shader) that will be used for rendering.
      *                     The shader program contains the vertex and fragment shaders that will be
      *                     applied to the shape during rendering.
      */
-    void prepare_render(mat4 *modelMatrix, Shader activeShader) {
-        glm_mat4_identity(*modelMatrix);
+    void prepare_render(mat4 modelMatrix, Shader activeShader) {
+        glm_mat4_identity(modelMatrix);
         
-        glm_translate(*modelMatrix, (vec3){this->globalPos[0], this->globalPos[1], this->globalPos[2]});
-        glm_rotate(*modelMatrix, to_radians(this->globalRot[0]), (vec3){1.0f, 0.0f, 0.0f});
-        glm_rotate(*modelMatrix, to_radians(this->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
-        glm_rotate(*modelMatrix, to_radians(this->globalRot[2]), (vec3){0.0f, 0.0f, 1.0f});
-        glm_scale(*modelMatrix, (vec3){this->globalScale[0], this->globalScale[1], this->globalScale[2]});
+        glm_translate(modelMatrix, (vec3){this->globalPos[0], this->globalPos[1], this->globalPos[2]});
+        glm_rotate(modelMatrix, to_radians(this->globalRot[0]), (vec3){1.0f, 0.0f, 0.0f});
+        glm_rotate(modelMatrix, to_radians(this->globalRot[1]), (vec3){0.0f, 1.0f, 0.0f});
+        glm_rotate(modelMatrix, to_radians(this->globalRot[2]), (vec3){0.0f, 0.0f, 1.0f});
+        glm_scale(modelMatrix, (vec3){this->globalScale[0], this->globalScale[1], this->globalScale[2]});
     }
 
 
@@ -112,12 +112,12 @@ class CShape : public Node {
      * shape in the 3D space, and the active shader is used to apply shading effects
      * during the rendering process.
      *
-     * @param modelMatrix A pointer to a mat4 structure representing the model matrix.
+     * @param modelMatrix Mat4 structure representing the model matrix.
      *                    This matrix is used to transform the shape in the 3D space.
      * @param activeShader An instance of the Shader structure representing the active shader.
      *                     This shader is used to apply shading effects during the rendering process.
      */
-    void render(mat4 *modelMatrix, Shader activeShader) {
+    void render(mat4 modelMatrix, Shader activeShader) {
         Model *model;
         this::get_model(&model);
         Shader shader;

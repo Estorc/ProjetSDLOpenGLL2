@@ -40,9 +40,9 @@ class StaticBody : public Body {
      *
      * This function initializes a static body with the given normal force.
      *
-     * @param forcedNormal A pointer to a float representing the normal force to be applied to the static body.
+     * @param forcedNormal Vec3 representing the normal force to be applied to the static body.
      */
-    void constructor(float *forcedNormal) {
+    void constructor(vec3 forcedNormal) {
         this->type = __type__;
 
         StaticBody *staticBody;
@@ -74,18 +74,18 @@ class StaticBody : public Body {
      *
      * This function updates the global position of a static body based on the provided position, rotation, and scale vectors.
      *
-     * @param pos A pointer to a vec3 structure representing the position of the static body.
-     * @param rot A pointer to a vec3 structure representing the rotation of the static body.
-     * @param scale A pointer to a vec3 structure representing the scale of the static body.
+     * @param pos Vec3 structure representing the position of the static body.
+     * @param rot Vec3 structure representing the rotation of the static body.
+     * @param scale Vec3 structure representing the scale of the static body.
      */
-    void update_global_position(vec3 *pos, vec3 *rot, vec3 *scale) {
+    void update_global_position(vec3 pos, vec3 rot, vec3 scale) {
         SUPER(update_global_position, pos, rot, scale);
         StaticBody *staticBody = (StaticBody *) this->object;
         for (int i = 0; i < staticBody->length; i++) {
             (staticBody->collisionsShapes[i])::update_global_position(pos, rot, scale);
-            glm_vec3_copy(this->globalPos, *pos);
-            glm_vec3_copy(this->globalRot, *rot);
-            glm_vec3_copy(this->globalScale, *scale);
+            glm_vec3_copy(this->globalPos, pos);
+            glm_vec3_copy(this->globalRot, rot);
+            glm_vec3_copy(this->globalScale, scale);
         }
     }
 
@@ -94,11 +94,11 @@ class StaticBody : public Body {
      *
      * This function updates the transformation properties of a static body in the physics engine.
      *
-     * @param pos Pointer to a vec3 structure representing the position of the static body.
-     * @param rot Pointer to a vec3 structure representing the rotation of the static body.
-     * @param scale Pointer to a vec3 structure representing the scale of the static body.
+     * @param pos Vec3 structure representing the position of the static body.
+     * @param rot Vec3 structure representing the rotation of the static body.
+     * @param scale Vec3 structure representing the scale of the static body.
      */
-    void update(vec3 *pos, vec3 *rot, vec3 *scale) {
+    void update(vec3 pos, vec3 rot, vec3 scale) {
         StaticBody *staticBody = (StaticBody *) this->object;
 
         this::update_global_position(pos, rot, scale);
@@ -131,6 +131,8 @@ class StaticBody : public Body {
             }
         }
         this::constructor(forcedNormal);
+
+        StaticBody *staticBody = this->object;
 
         staticBody->collisionsShapes = malloc(sizeof(Node *) * children_count);
         Game.buffers->collisionBuffer.length += children_count;
@@ -171,8 +173,8 @@ class StaticBody : public Body {
      * 
      * @param velocity Output vector to store the velocity.
      */
-    void get_velocity(vec3 *velocity) {
-        glm_vec3_zero(*velocity);
+    void get_velocity(vec3 velocity) {
+        glm_vec3_zero(velocity);
     };
 
     /**
@@ -189,7 +191,7 @@ class StaticBody : public Body {
      * 
      * @param com Output vector to store the center of mass.
      */
-    void get_center_of_mass(float *com) {
+    void get_center_of_mass(vec3 com) {
         glm_vec3_zero(com);
     }
 
@@ -200,11 +202,10 @@ class StaticBody : public Body {
      * The normal vector is a unit vector that is perpendicular to the surface
      * at the point of collision.
      *
-     * @param[out] normal A pointer to a float array where the normal vector
-     *                    will be stored. The array should have enough space
-     *                    to store the components of the normal vector.
+     * @param[out] normal Vec3 where the normal vector
+     *                    will be stored.
      */
-    void get_collision_normal(float *normal) {
+    void get_collision_normal(vec3 normal) {
         StaticBody *staticBody = (StaticBody *) this->object;
         glm_vec3_copy(staticBody->forcedNormal, normal);
     }

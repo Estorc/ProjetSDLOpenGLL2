@@ -45,7 +45,7 @@ NEW_SCRIPT(script_cc_intro_btn)
     switch (signal) {
         case SIGNAL_BUTTON_CLICKED:
             play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
-            prepare_change_scene("assets/scenes/claude_chappe/whole_scene_8.scene");
+            prepare_change_scene("assets/scenes/claude_chappe/level.scene");
             SDL_SetRelativeMouseMode(SDL_FALSE);
             break;
         case SIGNAL_BUTTON_HOVERED:

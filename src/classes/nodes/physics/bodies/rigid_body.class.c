@@ -35,14 +35,14 @@ class RigidBody : public Body {
      *
      * This function initializes a rigid body with the given parameters.
      *
-     * @param velocity Pointer to a float representing the initial velocity of the rigid body.
-     * @param angularVelocity Pointer to a float representing the initial angular velocity of the rigid body.
-     * @param gravity Pointer to a float representing the gravity affecting the rigid body.
+     * @param velocity Vec3 representing the initial velocity of the rigid body.
+     * @param angularVelocity Vec3 representing the initial angular velocity of the rigid body.
+     * @param gravity Vec3 representing the gravity affecting the rigid body.
      * @param mass Float representing the mass of the rigid body.
      * @param friction Float representing the friction coefficient of the rigid body.
-     * @param centerOfMass Pointer to a float representing the center of mass of the rigid body.
+     * @param centerOfMass Vec3 representing the center of mass of the rigid body.
      */
-    void constructor(float *velocity, float *angularVelocity, float *gravity, float mass, float friction, float *centerOfMass) {
+    void constructor(vec3 velocity, vec3 angularVelocity, vec3 gravity, float mass, float friction, vec3 centerOfMass) {
         this->type = __type__;
 
         RigidBody *rigidBody;
@@ -80,18 +80,18 @@ class RigidBody : public Body {
      * This function updates the global position of a rigid body based on the provided
      * position, rotation, and scale vectors.
      *
-     * @param pos A pointer to a vec3 structure representing the position of the rigid body.
-     * @param rot A pointer to a vec3 structure representing the rotation of the rigid body.
-     * @param scale A pointer to a vec3 structure representing the scale of the rigid body.
+     * @param pos Vec3 structure representing the position of the rigid body.
+     * @param rot Vec3 structure representing the rotation of the rigid body.
+     * @param scale Vec3 structure representing the scale of the rigid body.
      */
-    void update_global_position(vec3 *pos, vec3 *rot, vec3 *scale) {
+    void update_global_position(vec3 pos, vec3 rot, vec3 scale) {
         SUPER(update_global_position, pos, rot, scale);
         RigidBody *rigidBody = (RigidBody *) this->object;
         for (int i = 0; i < rigidBody->length; i++) {
             (rigidBody->collisionsShapes[i])::update_global_position(pos, rot, scale);
-            glm_vec3_copy(this->globalPos, *pos);
-            glm_vec3_copy(this->globalRot, *rot);
-            glm_vec3_copy(this->globalScale, *scale);
+            glm_vec3_copy(this->globalPos, pos);
+            glm_vec3_copy(this->globalRot, rot);
+            glm_vec3_copy(this->globalScale, scale);
         }
     }
 
@@ -100,9 +100,9 @@ class RigidBody : public Body {
      *
      * This function takes a pointer to a torque vector and applies it to the rigid body. The torque vector should be in the form of a float array representing the torque components.
      *
-     * @param torque A pointer to a float array representing the torque to be applied.
+     * @param torque Vec3 representing the torque to be applied.
      */
-    void apply_torque(float *torque) {
+    void apply_torque(vec3 torque) {
         RigidBody *rigidBody = (RigidBody *) this->object;
 
         glm_vec3_scale(torque, 4.0f, torque);
@@ -148,12 +148,12 @@ class RigidBody : public Body {
      *
      * This function updates the position, rotation, and scale of a rigid body based on the given delta time.
      *
-     * @param pos Pointer to a vec3 structure representing the position of the rigid body.
-     * @param rot Pointer to a vec3 structure representing the rotation of the rigid body.
-     * @param scale Pointer to a vec3 structure representing the scale of the rigid body.
+     * @param pos Vec3 structure representing the position of the rigid body.
+     * @param rot Vec3 structure representing the rotation of the rigid body.
+     * @param scale Vec3 structure representing the scale of the rigid body.
      * @param delta The time delta used to update the rigid body's properties.
      */
-    void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta) {
+    void update(vec3 pos, vec3 rot, vec3 scale, float delta) {
         RigidBody *rigidBody = (RigidBody *) this->object;
 
         // Apply gravity over time
@@ -275,14 +275,11 @@ class RigidBody : public Body {
      * The impulse is applied at the center of mass of the rigid body, and the torque is applied
      * to affect the angular velocity.
      *
-     * @param impulse A pointer to a float representing the impulse to be applied. This should be a 
-     *                3-element array representing the x, y, and z components of the impulse.
-     * @param torque A pointer to a float representing the torque to be applied. This should be a 
-     *               3-element array representing the x, y, and z components of the torque.
-     * @param correction A pointer to a float representing the correction to be applied. This should be a 
-     *                   3-element array representing the x, y, and z components of the correction.
+     * @param impulse Vec3 representing the impulse to be applied.
+     * @param torque Vec3 representing the torque to be applied.
+     * @param correction Vec3 representing the correction to be applied.
      */
-    void apply_impulse(float *impulse, float *torque, float *correction) {
+    void apply_impulse(vec3 impulse, vec3 torque, vec3 correction) {
         RigidBody *rigidBody = (RigidBody *) this->object;
 
         // Change velocity
@@ -313,9 +310,9 @@ class RigidBody : public Body {
      * 
      * @param velocity Output vector to store the velocity.
      */
-    void get_velocity(vec3 *velocity) {
+    void get_velocity(vec3 velocity) {
         RigidBody *rigidBody = (RigidBody *) this->object;
-        glm_vec3_copy(rigidBody->velocity, *velocity);
+        glm_vec3_copy(rigidBody->velocity, velocity);
     };
 
     /**
@@ -333,9 +330,9 @@ class RigidBody : public Body {
      * 
      * @param com Output vector to store the center of mass.
      */
-    void get_center_of_mass(vec3 *com) {
+    void get_center_of_mass(vec3 com) {
         RigidBody *rigidBody = (RigidBody *) this->object;
-        glm_vec3_copy(rigidBody->centerOfMass, *com);
+        glm_vec3_copy(rigidBody->centerOfMass, com);
     }
     
 }

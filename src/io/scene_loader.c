@@ -26,7 +26,7 @@ Node *load_node(FILE *file, Camera **c, Script *scripts, Node *editor) {
     
     fscanf(file,"%100[a-z,A-Z]", symbol);
 
-    malloc_node(node, find_string_index(symbol, (const char **) classManager.class_names, CLASS_TYPE_COUNT), file, c, scripts, editor);
+    malloc_node(node, find_string_index(symbol, classManager.class_names, CLASS_TYPE_COUNT), file, c, scripts, editor);
     
     char paramSymbol;
     do {

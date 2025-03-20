@@ -41,7 +41,6 @@
  * This function does not return a value but modifies the TexturedMesh structure 
  * pointed to by `texturedMesh`.
  */
-
 void create_textured_plane(TexturedMesh *texturedMesh, const char *texture) {
 
     VBO meshVBO;
@@ -109,8 +108,6 @@ void create_textured_plane(TexturedMesh *texturedMesh, const char *texture) {
  * This function does not return a value but modifies the Mesh structure pointed 
  * to by `mesh`.
  */
-
-
 void create_screen_plane(Mesh *mesh) {
     VBO meshVBO;
     VAO meshVAO;
@@ -143,11 +140,7 @@ void create_screen_plane(Mesh *mesh) {
 
 
 
-
-
-
-
-void render_model(mat4 *modelMatrix, Shader shader, Model *model) {
+void render_model(mat4 modelMatrix, Shader shader, Model *model) {
     ModelData *data = model->data;
 
     if (!data) return;
@@ -163,7 +156,7 @@ void render_model(mat4 *modelMatrix, Shader shader, Model *model) {
             //glm_mat4_copy(data->animations[0].targets[i].offsetMatrix, boneMatrix);
             //glm_quat_rotate(boneMatrix, data->animations[0].targets[i].rotationKeyframes[1].r_value, boneMatrix);
             sprintf(uniformName, "finalBonesMatrices[%d]", i-1);
-            set_shader_mat4(shader, uniformName, &boneMatrix);
+            set_shader_mat4(shader, uniformName, boneMatrix);
         }
         set_shader_int(shader, "haveBone", 1);
     } else set_shader_int(shader, "haveBone", 0);

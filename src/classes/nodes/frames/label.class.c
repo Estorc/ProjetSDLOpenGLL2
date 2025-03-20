@@ -132,7 +132,7 @@ class Label : public Frame {
     }
 
 
-    void render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
+    void render(mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
         SUPER(render, modelMatrix, activeShader, shaders);
     }
 

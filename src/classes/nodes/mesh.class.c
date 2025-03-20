@@ -74,10 +74,10 @@ class Mesh : public Node {
      * mesh in the 3D space, and the active shader is used to apply shading effects
      * during the rendering process.
      *
-     * @param modelMatrix A pointer to a mat4 structure representing the model matrix.
+     * @param modelMatrix Mat4 structure representing the model matrix.
      * @param activeShader The shader program to be used for rendering.
      */
-    void render(mat4 *modelMatrix, Shader activeShader) {
+    void render(mat4 modelMatrix, Shader activeShader) {
         int modelLoc = glGetUniformLocation(activeShader, "model");
         Mesh *mesh = (Mesh *)this->object;
 

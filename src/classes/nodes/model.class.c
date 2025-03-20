@@ -93,7 +93,7 @@ class Model : public Node {
      */
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
-        Model *model = (Model*) this->object;
+        Model *model = this->object;
         for (int i = 0; i < Game.memoryCaches->modelsCount; i++) {
             if (Game.memoryCaches->modelCache[i].model == model->data) {
                 fprintf(file, "(%s)", Game.memoryCaches->modelCache[i].modelName);
@@ -110,12 +110,12 @@ class Model : public Node {
      * model's vertices, and the active shader is used to apply shading effects
      * during rendering.
      *
-     * @param modelMatrix A pointer to a mat4 structure representing the model matrix.
+     * @param modelMatrix Mat4 structure representing the model matrix.
      * @param activeShader The shader to be used for rendering the model.
      */
-    void render(mat4 *modelMatrix, Shader activeShader) {
+    void render(mat4 modelMatrix, Shader activeShader) {
 
-        render_model(modelMatrix, activeShader, (Model *) this->object);
+        render_model(modelMatrix, activeShader, this->object);
 
     }
 

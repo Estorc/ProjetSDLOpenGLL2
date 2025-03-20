@@ -37,7 +37,7 @@ class Slider : public Button {
      * @param min The minimum value of the slider.
      * @param max The maximum value of the slider.
      */
-    void constructor(double min, double max) {
+    void constructor(float min, float max) {
         this->type = __type__; 
         
         Frame *frame;
