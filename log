@@ -1,0 +1,6661 @@
+Found 35 files
+Found class Node
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the Node class.
+
+Line:      * 
+
+Line:      * This function initializes a new instance of the Node class.
+
+Line:      * It sets up the necessary properties and states for the node.
+
+Line:      * 
+
+Line:      * @note Ensure that all required resources are available before calling this constructor.
+
+Line:      */
+
+Line:     void constructor() {
+
+	Found method (void) constructor
+Line:     }
+
+Line:  
+
+Line:     /**
+
+Line:      * @brief Initializes a node.
+
+Line:      *
+
+Line:      * This function sets up the necessary parameters and state for a node.
+
+Line:      * It should be called before using the node in any operations to ensure
+
+Line:      * it is properly initialized.
+
+Line:      */
+
+Line:     void initialize_node() {
+
+	Found method (void) initialize_node
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @var glowShader
+
+Line:      * @brief A static Shader variable used for glow effect.
+
+Line:      *
+
+Line:      * @details This static variable holds the shader program used to apply a glow effect
+
+Line:      * to the nodes. It is initialized to 0 and should be assigned a valid shader program
+
+Line:      * before use.
+
+Line:      */
+
+Line:     static Shader glowShader = 0;
+
+Line:     
+
+Line:     /**
+
+Line:      * @brief Retrieves the glow shader.
+
+Line:      * 
+
+Line:      * This function assigns the glow shader to the provided Shader object.
+
+Line:      * 
+
+Line:      * @param shader A pointer to a Shader object where the glow shader will be stored.
+
+Line:      */
+
+Line:     void get_glow_shader(Shader *shader) {
+
+	Found method (void) get_glow_shader
+		Found argument (Shader *) [shader]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves settings data.
+
+Line:      * 
+
+Line:      * This function populates the provided pointer with settings data and sets the length of the data.
+
+Line:      * 
+
+Line:      * @param[out] ptr A pointer to a pointer to a pointer that will be set to the settings data.
+
+Line:      * @param[out] length A pointer to an integer that will be set to the length of the settings data.
+
+Line:      */
+
+Line:     void get_settings_data(void *** ptr, int * length) {
+
+	Found method (void) get_settings_data
+		Found argument (void ***) [ptr]
+		Found argument (int *) [length]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads the necessary resources or data for the node.
+
+Line:      * 
+
+Line:      * This function is responsible for initializing and loading any resources,
+
+Line:      * data, or configurations required by the node. It should be called before
+
+Line:      * the node is used to ensure that all dependencies are properly set up.
+
+Line:      */
+
+Line:     void load() {
+
+	Found method (void) load
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state to the specified file.
+
+Line:      * 
+
+Line:      * This function writes the current state of the object to the given file.
+
+Line:      * The file must be opened in write mode before calling this function.
+
+Line:      * 
+
+Line:      * @param file A pointer to a FILE object that identifies the file to which 
+
+Line:      * the state will be saved. The file should be opened in write mode.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Renders a node using the specified model matrix and shader.
+
+Line:      * 
+
+Line:      * This function renders the specified node using the provided model matrix and active shader.
+
+Line:      * 
+
+Line:      * @param modelMatrix The model matrix to be used for rendering.
+
+Line:      * @param activeShader The shader to be used for rendering.
+
+Line:      */
+
+Line:     void prepare_render(mat4 modelMatrix, Shader activeShader) {
+
+	Found method (void) prepare_render
+		Found argument (float (*) [modelMatrix)[4]]
+		Found argument (Shader) [activeShader]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Renders the node.
+
+Line:      * 
+
+Line:      * This function is responsible for rendering the node. It should be called
+
+Line:      * whenever the node needs to be drawn on the screen. The specific rendering
+
+Line:      * implementation details are handled within this function.
+
+Line:      */
+
+Line:     void render() {
+
+	Found method (void) render
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the global position of a node.
+
+Line:      *
+
+Line:      * This function updates the global position of a node based on the provided
+
+Line:      * position, rotation, and scale vectors. It modifies the input vectors to
+
+Line:      * reflect the new global position.
+
+Line:      *
+
+Line:      * @param pos Pointer to a vec3 structure representing the position vector.
+
+Line:      * @param rot Pointer to a vec3 structure representing the rotation vector.
+
+Line:      * @param scale Pointer to a vec3 structure representing the scale vector.
+
+Line:      */
+
+Line:     void update_global_position(vec3 pos, vec3 rot, vec3 scale) {
+
+	Found method (void) update_global_position
+		Found argument (float *) [pos]
+		Found argument (float *) [rot]
+		Found argument (float *) [scale]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the position, rotation, and scale of a node.
+
+Line:      * 
+
+Line:      * This function takes pointers to vec3 structures representing the position,
+
+Line:      * rotation, and scale of a node and updates them accordingly.
+
+Line:      * 
+
+Line:      * @param pos Pointer to a vec3 structure representing the position of the node.
+
+Line:      * @param rot Pointer to a vec3 structure representing the rotation of the node.
+
+Line:      * @param scale Pointer to a vec3 structure representing the scale of the node.
+
+Line:      */
+
+Line:     void update(vec3 pos, vec3 rot, vec3 scale) {
+
+	Found method (void) update
+		Found argument (float *) [pos]
+		Found argument (float *) [rot]
+		Found argument (float *) [scale]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Handles the resize event for the node.
+
+Line:      *
+
+Line:      * This function is called when the node needs to respond to a resize event.
+
+Line:      * It adjusts the node's properties and layout to accommodate the new size.
+
+Line:      */
+
+Line:     void on_resize() {
+
+	Found method (void) on_resize
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Frees the resources allocated by the object.
+
+Line:      * 
+
+Line:      * This function is responsible for releasing any memory or resources
+
+Line:      * that were allocated by the object. It should be called when the object
+
+Line:      * is no longer needed to avoid memory leaks.
+
+Line:      */
+
+Line:     void free() {
+
+	Found method (void) free
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the current shape is a custom shape.
+
+Line:      * 
+
+Line:      * This function determines whether the current shape is a custom shape and 
+
+Line:      * sets the provided boolean pointer accordingly.
+
+Line:      * 
+
+Line:      * @param cshape A pointer to a boolean variable. The function sets this 
+
+Line:      *               variable to true if the current shape is a custom shape, 
+
+Line:      *               otherwise it sets it to false.
+
+Line:      */
+
+Line:     void is_cshape(bool *cshape) {
+
+	Found method (void) is_cshape
+		Found argument (bool *) [cshape]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Sets the body status of the node.
+
+Line:      * 
+
+Line:      * This function sets the body status of the node by modifying the value
+
+Line:      * pointed to by the provided boolean pointer.
+
+Line:      * 
+
+Line:      * @param body A pointer to a boolean variable that will be set to indicate
+
+Line:      *             the body status of the node. If the node is a body, the value
+
+Line:      *             pointed to by this parameter will be set to true; otherwise,
+
+Line:      *             it will be set to false.
+
+Line:      */
+
+Line:     void is_body(bool *body) {
+
+	Found method (void) is_body
+		Found argument (bool *) [body]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the current node is within a specified area.
+
+Line:      * 
+
+Line:      * This function determines whether the current node falls within a given area.
+
+Line:      * The result is stored in the boolean pointer provided as an argument.
+
+Line:      * 
+
+Line:      * @param area A pointer to a boolean variable where the result will be stored.
+
+Line:      *             The value will be set to true if the node is within the area,
+
+Line:      *             and false otherwise.
+
+Line:      */
+
+Line:     void is_area(bool *area) {
+
+	Found method (void) is_area
+		Found argument (bool *) [area]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Sets the render target status.
+
+Line:      * 
+
+Line:      * This function sets the status of whether the current node is a render target.
+
+Line:      * 
+
+Line:      * @param render_target A pointer to a boolean value. If true, the node is set as a render target.
+
+Line:      *                      If false, the node is not a render target.
+
+Line:      */
+
+Line:     void is_render_target(bool *render_target) {
+
+	Found method (void) is_render_target
+		Found argument (bool *) [render_target]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Determines if the current node is a GUI element.
+
+Line:      * 
+
+Line:      * This function checks whether the current node is a graphical user interface (GUI) element
+
+Line:      * and sets the result accordingly.
+
+Line:      * 
+
+Line:      * @param result A pointer to a boolean variable where the result will be stored.
+
+Line:      *               - true if the node is a GUI element.
+
+Line:      *               - false otherwise.
+
+Line:      */
+
+Line:     void is_gui_element(bool *result) {
+
+	Found method (void) is_gui_element
+		Found argument (bool *) [result]
+Line:     } 
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Adds a child node to a parent node.
+
+Line:      * 
+
+Line:      * This function adds a child node to the specified parent node, establishing a parent-child
+
+Line:      * relationship in the scene graph.
+
+Line:      * 
+
+Line:      * @param child The child node to be added.
+
+Line:      */
+
+Line:     void add_child(Node *child) {
+
+	Found method (void) add_child
+		Found argument (Node *) [child]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Adds a child node to a parent node and reallocates memory if necessary.
+
+Line:      * 
+
+Line:      * This function adds a child node to the specified parent node and reallocates memory
+
+Line:      * for the parent's children array if needed to accommodate the new child.
+
+Line:      * 
+
+Line:      * @param child The child node to be added.
+
+Line:      */
+
+Line:     void add_child_and_realloc(Node *child) {
+
+	Found method (void) add_child_and_realloc
+		Found argument (Node *) [child]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Removes a child node from a parent node.
+
+Line:      * 
+
+Line:      * This function removes a child node from the specified parent node, breaking the
+
+Line:      * parent-child relationship in the scene graph.
+
+Line:      * 
+
+Line:      * @param child The child node to be removed.
+
+Line:      */
+
+Line:     void remove_child(Node *child) {
+
+	Found method (void) remove_child
+		Found argument (Node *) [child]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Removes a child node from a parent node and reallocates memory if necessary.
+
+Line:      * 
+
+Line:      * This function removes a child node from the specified parent node and reallocates memory
+
+Line:      * for the parent's children array if needed to optimize memory usage.
+
+Line:      * 
+
+Line:      * @param child The child node to be removed.
+
+Line:      */
+
+Line:     void remove_child_and_realloc(Node *child) {
+
+	Found method (void) remove_child_and_realloc
+		Found argument (Node *) [child]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Removes a child node from a parent node and frees the memory of the child node.
+
+Line:      * 
+
+Line:      * This function removes a child node from the specified parent node and frees the memory
+
+Line:      * allocated for the child node.
+
+Line:      * 
+
+Line:      * @param child The child node to be removed and freed.
+
+Line:      */
+
+Line:     void remove_child_and_free(Node *child) {
+
+	Found method (void) remove_child_and_free
+		Found argument (Node *) [child]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Removes a child node from a parent node, frees the memory of the child node, and reallocates memory if necessary.
+
+Line:      * 
+
+Line:      * This function removes a child node from the specified parent node, frees the memory
+
+Line:      * allocated for the child node, and reallocates memory for the parent's children array
+
+Line:      * if needed to optimize memory usage.
+
+Line:      * 
+
+Line:      * @param child The child node to be removed and freed.
+
+Line:      */
+
+Line:     void remove_child_and_free_and_realloc(Node *child) {
+
+	Found method (void) remove_child_and_free_and_realloc
+		Found argument (Node *) [child]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the index of a child node in a parent node's children array.
+
+Line:      * 
+
+Line:      * This function retrieves the index of a child node in a parent node's children array.
+
+Line:      * 
+
+Line:      * @param child The child node whose index is to be retrieved.
+
+Line:      * @return The index of the child node in the parent node's children array.
+
+Line:      * 
+
+Line:      * @note If the child node is not found in the parent node's children array, the function returns -1.
+
+Line:      */
+
+Line:     int index_of_child(Node *child) {
+
+	Found method (int) index_of_child
+		Found argument (Node *) [child]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Prints the details of a node at a specified level of indentation.
+
+Line:      * 
+
+Line:      * This function prints the details of the specified node, including its properties and
+
+Line:      * children, at the specified level of indentation for better readability.
+
+Line:      * 
+
+Line:      * @param node The node to be printed.
+
+Line:      * @param level The level of indentation for printing.
+
+Line:      */
+
+Line:     void print(int level) {
+
+	Found method (void) print
+		Found argument (int) [level]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Emits the 'ready' signal for the node.
+
+Line:      *
+
+Line:      * This function checks if the node has the NODE_SCRIPT flag set and if the 
+
+Line:      * BEHAVIOR_SCRIPT_READY behavior is defined. If both conditions are met, it 
+
+Line:      * calls the BEHAVIOR_SCRIPT_READY behavior function with the current node 
+
+Line:      * instance and the provided arguments.
+
+Line:      *
+
+Line:      * @param ... args The arguments to pass to the behavior function.
+
+Line:      *
+
+Line:      * @note The behavior function is expected to be a callable object stored in 
+
+Line:      * the behavior map with the key BEHAVIOR_SCRIPT_READY.
+
+Line:      */
+
+Line:     void emit_ready(...) {
+
+	Found method (void) emit_ready
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Emits an update event for the node.
+
+Line:      *
+
+Line:      * This function checks if the node has the NODE_SCRIPT flag set and if the 
+
+Line:      * behavior script for the update event is defined. If both conditions are met, 
+
+Line:      * it calls the update behavior script with the current node and provided arguments.
+
+Line:      *
+
+Line:      * @param ... args Arguments to be passed to the behavior script.
+
+Line:      */
+
+Line:     void emit_update(...) {
+
+	Found method (void) emit_update
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Emits a signal if the node has a script and the script has a signal handler.
+
+Line:      * 
+
+Line:      * This function checks if the node has a script associated with it by verifying the NODE_SCRIPT flag.
+
+Line:      * If the node has a script and the script contains a signal handler for BEHAVIOR_SCRIPT_SIGNAL,
+
+Line:      * it calls the signal handler with the current node and the provided arguments.
+
+Line:      * 
+
+Line:      * @param ... args The arguments to be passed to the signal handler.
+
+Line:      */
+
+Line:     void emit_signal(...) {
+
+	Found method (void) emit_signal
+Line:     }
+
+Found class Camera
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the Camera class.
+
+Line:      *
+
+Line:      * This function initializes a new instance of the Camera class.
+
+Line:      */
+
+Line:     void constructor() {
+
+	Found method (void) constructor
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads a Camera object from a file.
+
+Line:      *
+
+Line:      * This function reads data from the specified file and initializes a Camera object.
+
+Line:      *
+
+Line:      * @param file A pointer to the file from which the Camera data will be read.
+
+Line:      * @param c A double pointer to the Camera object that will be initialized.
+
+Line:      * @param scripts A pointer to the Script object associated with the Camera.
+
+Line:      * @param editor A pointer to the Node object representing the editor.
+
+Line:      */
+
+Line:     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+		Found argument (Camera **) [c]
+		Found argument (Script *) [scripts]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the camera's position, rotation, and scale.
+
+Line:      *
+
+Line:      * This function updates the camera's transformation properties including
+
+Line:      * position, rotation, and scale based on the provided vectors.
+
+Line:      *
+
+Line:      * @param pos Vec3 structure representing the new position of the camera.
+
+Line:      * @param rot Vec3 structure representing the new rotation of the camera.
+
+Line:      * @param scale Vec3 structure representing the new scale of the camera.
+
+Line:      */
+
+Line:     void update(vec3 pos, vec3 rot, vec3 scale) {
+
+	Found method (void) update
+		Found argument (float *) [pos]
+		Found argument (float *) [rot]
+		Found argument (float *) [scale]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the settings data.
+
+Line:      *
+
+Line:      * This function retrieves the settings data and stores it in the provided pointer.
+
+Line:      * It also sets the length of the data.
+
+Line:      *
+
+Line:      * @param[out] ptr A pointer to a pointer to a pointer where the settings data will be stored.
+
+Line:      *                 The function will allocate memory for the settings data and set this pointer
+
+Line:      *                 to point to the allocated memory.
+
+Line:      * @param[out] length A pointer to an integer where the length of the settings data will be stored.
+
+Line:      *                    The function will set this integer to the length of the settings data.
+
+Line:      */
+
+Line:     void get_settings_data(void *** ptr, int * length) {
+
+	Found method (void) get_settings_data
+		Found argument (void ***) [ptr]
+		Found argument (int *) [length]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the state of the editor node to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the editor node to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the state will be saved.
+
+Line:      * @param editor A pointer to the Node object representing the editor whose state is to be saved.
+
+Line:      */
+
+Line:     void save(FILE *file, Node *editor) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line: 
+
+Line: 
+Found class BoxCShape
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the BoxCShape class.
+
+Line:      *
+
+Line:      * This function initializes a new instance of the BoxCShape class. It sets up the
+
+Line:      * necessary properties and state for the box shape.
+
+Line:      */
+
+Line:     void constructor() {
+
+	Found method (void) constructor
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the priority value.
+
+Line:      *
+
+Line:      * This function assigns the priority value to the provided pointer.
+
+Line:      *
+
+Line:      * @param priority A pointer to an integer where the priority value will be stored.
+
+Line:      */
+
+Line:     void get_priority(int *priority) {
+
+	Found method (void) get_priority
+		Found argument (int *) [priority]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads the box collision shape.
+
+Line:      *
+
+Line:      * This function is responsible for initializing and loading the necessary
+
+Line:      * resources for the box collision shape. It sets up the vertices, indices,
+
+Line:      * and other required data for rendering the box shape.
+
+Line:      */
+
+Line:     void load() {
+
+	Found method (void) load
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the BoxCShape to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the BoxCShape object to the specified file.
+
+Line:      * The file should be opened in a mode that allows writing.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the state will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Static instance of the Model structure.
+
+Line:      *
+
+Line:      * This static variable holds the model data for the box shape. It is 
+
+Line:      * initialized to zero and used throughout the BoxCShape class to represent 
+
+Line:      * the box shape.
+
+Line:      */
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the model associated with the BoxCShape.
+
+Line:      *
+
+Line:      * This function assigns the model associated with the BoxCShape to the provided
+
+Line:      * pointer. The model is represented by the Model structure.
+
+Line:      *
+
+Line:      * @param[out] model A double pointer to the Model structure where the model
+
+Line:      *                   will be stored.
+
+Line:      */
+
+Line:     void get_model(Model **model) {
+
+	Found method (void) get_model
+		Found argument (Model **) [model]
+Line:     }
+
+Line: 
+
+Line:     
+
+Line: 
+
+Line: 
+
+Line: 
+Found class CapsuleCShape
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the capsule shape class.
+
+Line:      *
+
+Line:      * This function initializes a new instance of the capsule shape class.
+
+Line:      * It sets up the necessary properties and prepares the object for use.
+
+Line:      */
+
+Line:     void constructor() {
+
+	Found method (void) constructor
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the priority value.
+
+Line:      *
+
+Line:      * This function assigns the priority value to the provided pointer.
+
+Line:      *
+
+Line:      * @param[out] priority Pointer to an integer where the priority value will be stored.
+
+Line:      */
+
+Line:     void get_priority(int *priority) {
+
+	Found method (void) get_priority
+		Found argument (int *) [priority]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads the capsule shape data.
+
+Line:      *
+
+Line:      * This function is responsible for loading the necessary data for the capsule shape.
+
+Line:      * It initializes the shape properties and prepares it for rendering or other operations.
+
+Line:      */
+
+Line:     void load() {
+
+	Found method (void) load
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the object to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the file where the state will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Static model instance for the capsule shape.
+
+Line:      *
+
+Line:      * This static variable holds the model data for the capsule shape. It is initialized
+
+Line:      * to zero and used throughout the application to represent the capsule shape.
+
+Line:      */
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the model associated with the current object.
+
+Line:      *
+
+Line:      * This function assigns the model associated with the current object to the 
+
+Line:      * provided pointer. The model is returned as a pointer to a pointer of type Model.
+
+Line:      *
+
+Line:      * @param model A double pointer to a Model structure where the model will be stored.
+
+Line:      */
+
+Line:     void get_model(Model **model) {
+
+	Found method (void) get_model
+		Found argument (Model **) [model]
+Line:     }
+
+Line: 
+
+Line: 
+
+Line:     
+
+Line: 
+
+Line: 
+Found class CShape
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the given shape is a cshape.
+
+Line:      *
+
+Line:      * This function sets the value of the boolean pointer to indicate whether the shape is a cshape.
+
+Line:      *
+
+Line:      * @param cshape A pointer to a boolean variable that will be set to true if the shape is a cshape, false otherwise.
+
+Line:      */
+
+Line:     void is_cshape(bool *cshape) {
+
+	Found method (void) is_cshape
+		Found argument (bool *) [cshape]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the model associated with the CShape.
+
+Line:      *
+
+Line:      * This function assigns the model associated with the CShape to the provided
+
+Line:      * pointer. The model is returned as a double pointer to allow modification
+
+Line:      * of the original pointer passed by the caller.
+
+Line:      *
+
+Line:      * @param[out] model A double pointer to a Model structure where the model
+
+Line:      *                   associated with the CShape will be stored.
+
+Line:      */
+
+Line:     void get_model(Model **model) {
+
+	Found method (void) get_model
+		Found argument (Model **) [model]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Shader used for collision detection.
+
+Line:      *
+
+Line:      * @details This static variable holds the shader program used to detect collisions 
+
+Line:      * between shapes. The shader is initialized and used within the CShape class 
+
+Line:      * to perform collision detection operations.
+
+Line:      */
+
+Line:     static Shader collisionShader;
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the shader information.
+
+Line:      *
+
+Line:      * This function is responsible for obtaining the shader information and 
+
+Line:      * storing it in the provided Shader structure.
+
+Line:      *
+
+Line:      * @param shader A pointer to a Shader structure where the shader information 
+
+Line:      *               will be stored.
+
+Line:      */
+
+Line:     void get_shader(Shader *shader) {
+
+	Found method (void) get_shader
+		Found argument (Shader *) [shader]
+Line:     }
+
+Line: 
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Prepares the rendering process by setting up the model matrix and activating the shader.
+
+Line:      *
+
+Line:      * This function is responsible for preparing the necessary components for rendering a shape.
+
+Line:      * It takes a model matrix and an active shader as parameters and performs the required setup.
+
+Line:      *
+
+Line:      * @param modelMatrix Model matrix (of type mat4) that will be used for rendering.
+
+Line:      *                    The model matrix contains the transformations (translation, rotation, scaling)
+
+Line:      *                    that will be applied to the shape before rendering.
+
+Line:      * @param activeShader The shader program (of type Shader) that will be used for rendering.
+
+Line:      *                     The shader program contains the vertex and fragment shaders that will be
+
+Line:      *                     applied to the shape during rendering.
+
+Line:      */
+
+Line:     void prepare_render(mat4 modelMatrix, Shader activeShader) {
+
+	Found method (void) prepare_render
+		Found argument (float (*) [modelMatrix)[4]]
+		Found argument (Shader) [activeShader]
+Line:     }
+
+Line: 
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Renders the shape using the provided model matrix and active shader.
+
+Line:      *
+
+Line:      * This function takes a model matrix and an active shader as parameters and
+
+Line:      * renders the shape accordingly. The model matrix is used to transform the
+
+Line:      * shape in the 3D space, and the active shader is used to apply shading effects
+
+Line:      * during the rendering process.
+
+Line:      *
+
+Line:      * @param modelMatrix Mat4 structure representing the model matrix.
+
+Line:      *                    This matrix is used to transform the shape in the 3D space.
+
+Line:      * @param activeShader An instance of the Shader structure representing the active shader.
+
+Line:      *                     This shader is used to apply shading effects during the rendering process.
+
+Line:      */
+
+Line:     void render(mat4 modelMatrix, Shader activeShader) {
+
+	Found method (void) render
+		Found argument (float (*) [modelMatrix)[4]]
+		Found argument (Shader) [activeShader]
+Line:     }
+
+Line: 
+
+Line: 
+
+Line: 
+Found class MeshCShape
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the mesh_cshape class.
+
+Line:      *
+
+Line:      * This function initializes a mesh_cshape object using the provided file path.
+
+Line:      *
+
+Line:      * @param path The file path to initialize the mesh_cshape object.
+
+Line:      */
+
+Line:     void constructor(const char *path) {
+
+	Found method (void) constructor
+		Found argument (const char *) [path]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the priority value.
+
+Line:      *
+
+Line:      * This function assigns the priority value to the provided pointer.
+
+Line:      *
+
+Line:      * @param priority A pointer to an integer where the priority value will be stored.
+
+Line:      */
+
+Line:     void get_priority(int *priority) {
+
+	Found method (void) get_priority
+		Found argument (int *) [priority]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file.
+
+Line:      *
+
+Line:      * This function reads data from the provided file pointer and loads it into the appropriate structures.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object that represents the file to be read.
+
+Line:      */
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the mesh_cshape object to a file.
+
+Line:      *
+
+Line:      * This function writes the necessary data of the mesh_cshape object to the provided file.
+
+Line:      * The file should be opened in a mode that allows writing before calling this function.
+
+Line:      *
+
+Line:      * @param file A pointer to a FILE object that identifies the file to which the data will be written.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line: 
+
+Line: 
+
+Line: 
+
+Line:     
+
+Line: 
+
+Line: 
+Found class PlaneCShape
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the PlaneCShape class.
+
+Line:      *
+
+Line:      * This function initializes a new instance of the PlaneCShape class. It sets up
+
+Line:      * the necessary properties and resources required for the plane shape.
+
+Line:      */
+
+Line:     void constructor() {
+
+	Found method (void) constructor
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the priority value.
+
+Line:      *
+
+Line:      * This function assigns the priority value to the provided pointer.
+
+Line:      *
+
+Line:      * @param[out] priority Pointer to an integer where the priority value will be stored.
+
+Line:      */
+
+Line:     void get_priority(int *priority) {
+
+	Found method (void) get_priority
+		Found argument (int *) [priority]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads the plane shape data.
+
+Line:      *
+
+Line:      * This function is responsible for loading the necessary data for the plane shape.
+
+Line:      * It initializes the required resources and prepares the plane shape for rendering.
+
+Line:      */
+
+Line:     void load() {
+
+	Found method (void) load
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the plane shape to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the plane shape to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the plane shape state will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Static model data for the plane shape.
+
+Line:      *
+
+Line:      * This static variable holds the model data for the plane shape. It is initialized
+
+Line:      * to zero and is used to store the model's properties and attributes.
+
+Line:      */
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the model.
+
+Line:      *
+
+Line:      * This function assigns a pointer to a Model structure to the provided
+
+Line:      * pointer-to-pointer parameter. The function is expected to populate the
+
+Line:      * provided pointer with a valid Model instance.
+
+Line:      *
+
+Line:      * @param model A double pointer to a Model structure. The function will
+
+Line:      *              assign a pointer to a Model instance to this parameter.
+
+Line:      */
+
+Line:     void get_model(Model **model) {
+
+	Found method (void) get_model
+		Found argument (Model **) [model]
+Line:     }
+
+Line:     
+
+Line: 
+
+Line: 
+Found class RayCShape
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the ray_cshape class.
+
+Line:      *
+
+Line:      * This function initializes a new instance of the ray_cshape class.
+
+Line:      * It sets up the necessary properties and prepares the object for use.
+
+Line:      */
+
+Line:     void constructor() {
+
+	Found method (void) constructor
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the priority value.
+
+Line:      *
+
+Line:      * This function assigns the priority value to the provided pointer.
+
+Line:      *
+
+Line:      * @param[out] priority Pointer to an integer where the priority value will be stored.
+
+Line:      */
+
+Line:     void get_priority(int *priority) {
+
+	Found method (void) get_priority
+		Found argument (int *) [priority]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads the ray_cshape class.
+
+Line:      *
+
+Line:      * This function is responsible for initializing and loading the necessary
+
+Line:      * resources for the ray_cshape class. It sets up the required data structures
+
+Line:      * and prepares the class for use.
+
+Line:      */
+
+Line:     void load() {
+
+	Found method (void) load
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state to the specified file.
+
+Line:      *
+
+Line:      * This function writes the current state of the object to the provided file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the state will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line: 
+Found class SphereCShape
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the SphereCShape class.
+
+Line:      *
+
+Line:      * This function initializes a new instance of the SphereCShape class.
+
+Line:      * It sets up the necessary properties and resources for the sphere shape.
+
+Line:      */
+
+Line:     void constructor() {
+
+	Found method (void) constructor
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the priority value.
+
+Line:      *
+
+Line:      * This function assigns the priority value to the provided pointer.
+
+Line:      *
+
+Line:      * @param priority A pointer to an integer where the priority value will be stored.
+
+Line:      */
+
+Line:     void get_priority(int *priority) {
+
+	Found method (void) get_priority
+		Found argument (int *) [priority]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads the sphere shape data.
+
+Line:      *
+
+Line:      * This function is responsible for loading the necessary data to represent
+
+Line:      * a sphere shape in the application. It initializes the required resources
+
+Line:      * and prepares the sphere shape for rendering.
+
+Line:      */
+
+Line:     void load() {
+
+	Found method (void) load
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the sphere shape to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the sphere shape to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the sphere shape state will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Static variable to store the model data for the sphere.
+
+Line:      *
+
+Line:      * The _model variable is a static instance of the Model structure. It is
+
+Line:      * initialized to zero and is used to store the model data for the sphere
+
+Line:      * shape. Being static, it is only accessible within this file.
+
+Line:      */
+
+Line:     
+
+Line:     /**
+
+Line:      * @brief Retrieves the model.
+
+Line:      *
+
+Line:      * This function retrieves the model and assigns it to the provided pointer.
+
+Line:      *
+
+Line:      * @param model A double pointer to a Model structure where the retrieved model will be stored.
+
+Line:      */
+
+Line:     void get_model(Model **model) {
+
+	Found method (void) get_model
+		Found argument (Model **) [model]
+Line:     }
+
+Line: 
+
+Line: 
+
+Line:     
+
+Line: 
+
+Line: 
+Found class Button
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the Button class.
+
+Line:      *
+
+Line:      * This function initializes a new instance of the Button class.
+
+Line:      */
+
+Line:     void constructor() {
+
+	Found method (void) constructor
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Initializes the button.
+
+Line:      *
+
+Line:      * This function sets up the initial state and properties of the button.
+
+Line:      * It should be called before using the button in the application.
+
+Line:      */
+
+Line:     void init_button() {
+
+	Found method (void) init_button
+Line:     }
+
+Line:     
+
+Line:     /**
+
+Line:      * @brief Loads the button resources.
+
+Line:      *
+
+Line:      * This function is responsible for loading the necessary resources for the button,
+
+Line:      * such as textures, sounds, or any other assets required for the button to function
+
+Line:      * properly within the application.
+
+Line:      */
+
+Line:     void load() {
+
+	Found method (void) load
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the state of the button.
+
+Line:      *
+
+Line:      * This function is responsible for updating the button's state, which may
+
+Line:      * include handling user input, updating the button's appearance, and
+
+Line:      * triggering any associated actions or events.
+
+Line:      */
+
+Line:     void update() {
+
+	Found method (void) update
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the current instance is a button.
+
+Line:      *
+
+Line:      * This function sets the result to true if the current instance is a button,
+
+Line:      * otherwise it sets the result to false.
+
+Line:      *
+
+Line:      * @param result A pointer to a boolean variable where the result will be stored.
+
+Line:      */
+
+Line:     void is_button(bool *result) {
+
+	Found method (void) is_button
+		Found argument (bool *) [result]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the state of the editor node to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the editor node to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the editor state will be saved.
+
+Line:      * @param editor A pointer to the Node object representing the editor whose state is to be saved.
+
+Line:      */
+
+Line:     void save(FILE *file, Node *editor) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Frees the resources used by the button.
+
+Line:      *
+
+Line:      * This function is responsible for freeing the resources used by the button,
+
+Line:      * such as textures, sounds, or any other assets loaded during the button's
+
+Line:      * lifetime.
+
+Line:      */
+
+Line:     void free() {
+
+	Found method (void) free
+Line:     }
+
+Line:  
+
+Line:     
+
+Line: 
+
+Line: 
+Found class CheckBox
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the Checkbox class.
+
+Line:      *
+
+Line:      * This function initializes a new instance of the Checkbox class. It sets up the
+
+Line:      * necessary properties and state for the checkbox to function correctly.
+
+Line:      */
+
+Line:     void constructor() {
+
+	Found method (void) constructor
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads the resources and initializes the Checkbox.
+
+Line:      *
+
+Line:      * This function is responsible for loading the necessary resources and performing
+
+Line:      * any initialization required for the Checkbox. It should be called before using
+
+Line:      * any other functions related to the Checkbox.
+
+Line:      */
+
+Line:     void load() {
+
+	Found method (void) load
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the state of the editor node to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the editor node to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the state will be saved.
+
+Line:      * @param editor A pointer to the Node object representing the editor whose state is to be saved.
+
+Line:      */
+
+Line:     void save(FILE *file, Node *editor) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the current instance is a checkbox.
+
+Line:      *
+
+Line:      * This function sets the result to true if the current instance is a checkbox,
+
+Line:      * otherwise it sets the result to false.
+
+Line:      *
+
+Line:      * @param result A pointer to a boolean variable where the result will be stored.
+
+Line:      */
+
+Line:     void is_checkbox(bool *result) {
+
+	Found method (void) is_checkbox
+		Found argument (bool *) [result]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Frees the resources used by the checkbox.
+
+Line:      *
+
+Line:      * This function is responsible for freeing the resources used by the checkbox,
+
+Line:      * such as textures, sounds, or any other assets loaded during the checkbox's
+
+Line:      * lifetime.
+
+Line:      */
+
+Line:     void free() {
+
+	Found method (void) free
+Line:     }
+
+Line:  
+
+Line:     
+
+Line: 
+
+Line: 
+Found class ControlFrame
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the control frame class.
+
+Line:      *
+
+Line:      * This function initializes a control frame with the specified parameters.
+
+Line:      *
+
+Line:      * @param x The x-coordinate of the control frame.
+
+Line:      * @param xu The unit of measurement for the x-coordinate.
+
+Line:      * @param y The y-coordinate of the control frame.
+
+Line:      * @param yu The unit of measurement for the y-coordinate.
+
+Line:      * @param w The width of the control frame.
+
+Line:      * @param wu The unit of measurement for the width.
+
+Line:      * @param h The height of the control frame.
+
+Line:      * @param hu The unit of measurement for the height.
+
+Line:      * @param ha The horizontal alignment of the control frame.
+
+Line:      * @param va The vertical alignment of the control frame.
+
+Line:      * @param scroll The scroll setting for the control frame.
+
+Line:      */
+
+Line:     void constructor(float x, int xu, float y, int yu, float w, int wu, float h, int hu, int ha, int va, int scroll) {
+
+	Found method (void) constructor
+		Found argument (double) [x]
+		Found argument (int) [xu]
+		Found argument (double) [y]
+		Found argument (int) [yu]
+		Found argument (double) [w]
+		Found argument (int) [wu]
+		Found argument (double) [h]
+		Found argument (int) [hu]
+		Found argument (int) [ha]
+		Found argument (int) [va]
+		Found argument (int) [scroll]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file.
+
+Line:      *
+
+Line:      * This function reads data from the given file pointer and processes it accordingly.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object that represents the file to be read.
+
+Line:      */
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Renders the control frame.
+
+Line:      *
+
+Line:      * This function is responsible for rendering the control frame. It performs all necessary
+
+Line:      * operations to display the control frame on the screen.
+
+Line:      */
+
+Line:     void render() {
+
+	Found method (void) render
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the state of the editor node to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the provided editor node to the specified file.
+
+Line:      * It is used to persist the state of the editor for later retrieval.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the editor state will be saved.
+
+Line:      * @param editor A pointer to the Node object representing the editor whose state is to be saved.
+
+Line:      */
+
+Line:     void save(FILE *file, Node *editor) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line:     
+
+Line: 
+
+Line: 
+Found class Frame
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for initializing a frame object with specified parameters.
+
+Line:      *
+
+Line:      * @param x The x-coordinate of the frame.
+
+Line:      * @param xu The unit for the x-coordinate.
+
+Line:      * @param y The y-coordinate of the frame.
+
+Line:      * @param yu The unit for the y-coordinate.
+
+Line:      * @param w The width of the frame.
+
+Line:      * @param wu The unit for the width.
+
+Line:      * @param h The height of the frame.
+
+Line:      * @param hu The unit for the height.
+
+Line:      * @param ha The horizontal alignment of the frame.
+
+Line:      * @param va The vertical alignment of the frame.
+
+Line:      * @param scroll The scroll setting for the frame.
+
+Line:      * @param theme A pointer to the Theme object associated with the frame.
+
+Line:      */
+
+Line:     void constructor(float x, int xu, float y, int yu, float w, int wu, float h, int hu, int ha, int va, int scroll, Theme *theme) {
+
+	Found method (void) constructor
+		Found argument (double) [x]
+		Found argument (int) [xu]
+		Found argument (double) [y]
+		Found argument (int) [yu]
+		Found argument (double) [w]
+		Found argument (int) [wu]
+		Found argument (double) [h]
+		Found argument (int) [hu]
+		Found argument (int) [ha]
+		Found argument (int) [va]
+		Found argument (int) [scroll]
+		Found argument (Theme *) [theme]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Handles the conversion of dimension units for a given source and destination.
+
+Line:      *
+
+Line:      * This function calculates the dimensions of a graphical element based on the provided unit type and container dimensions.
+
+Line:      * It should be called every frame to ensure the dimensions are updated correctly.
+
+Line:      *
+
+Line:      * @param src Pointer to the source dimension value.
+
+Line:      * @param dest Pointer to the destination dimension value where the result will be stored.
+
+Line:      * @param vertical Integer flag indicating if the dimension is vertical (1 for vertical, 0 for horizontal).
+
+Line:      * @param size The size value to be converted.
+
+Line:      * @param unit The unit type for the size (e.g., pixels, percentage).
+
+Line:      * @param containerWidth The width of the container in which the element is placed.
+
+Line:      * @param containerHeight The height of the container in which the element is placed.
+
+Line:      */
+
+Line:     void handle_dimension_unit(float *src, float *dest, int vertical, double size, int unit, double containerWidth, double containerHeight) { // Devrait être calculé chaque frame
+
+	Found method (void) handle_dimension_unit
+		Found argument (float *) [src]
+		Found argument (float *) [dest]
+		Found argument (int) [vertical]
+		Found argument (double) [size]
+		Found argument (int) [unit]
+		Found argument (double) [containerWidth]
+		Found argument (double) [containerHeight]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Initializes the frame.
+
+Line:      *
+
+Line:      * This function sets up the initial state of the frame. It should be called
+
+Line:      * before using any other functions related to the frame.
+
+Line:      */
+
+Line:     void init_frame() {
+
+	Found method (void) init_frame
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file.
+
+Line:      *
+
+Line:      * This function reads data from the given file and processes it accordingly.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object that represents the file to be read.
+
+Line:      */
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Refreshes the frame.
+
+Line:      *
+
+Line:      * This function is responsible for updating the frame. It performs necessary
+
+Line:      * operations to refresh the frame's state.
+
+Line:      */
+
+Line:     void refresh() {
+
+	Found method (void) refresh
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Refreshes the content of the frame.
+
+Line:      *
+
+Line:      * This function is responsible for updating or refreshing the content displayed within the frame.
+
+Line:      * It ensures that the frame's content is up-to-date and reflects any changes that may have occurred.
+
+Line:      */
+
+Line:     void refreshContent() {
+
+	Found method (void) refreshContent
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the state of the frame.
+
+Line:      *
+
+Line:      * This function is responsible for updating the internal state of the frame.
+
+Line:      * It should be called regularly to ensure the frame's state is kept up-to-date.
+
+Line:      */
+
+Line:     void update() {
+
+	Found method (void) update
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Handles the resize event for the frame.
+
+Line:      *
+
+Line:      * This function is called when the frame is resized. It updates the frame's
+
+Line:      * dimensions and performs any necessary adjustments to ensure the frame
+
+Line:      * is displayed correctly.
+
+Line:      */
+
+Line:     void on_resize() {
+
+	Found method (void) on_resize
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Draws a frame.
+
+Line:      *
+
+Line:      * This function is responsible for rendering a frame. The specific details of
+
+Line:      * how the frame is drawn are not provided in the given code snippet.
+
+Line:      */
+
+Line:     void draw_frame() {
+
+	Found method (void) draw_frame
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @var _vbo
+
+Line:      * @brief Static variable to store the Vertex Buffer Object (VBO) identifier.
+
+Line:      *
+
+Line:      * This static variable is used to store the identifier of the VBO that is
+
+Line:      * used for rendering frames. It is initialized to 0, indicating that no VBO
+
+Line:      * has been created or assigned yet.
+
+Line:      */
+
+Line:     static VBO _vbo = 0;
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Static variable to store the Vertex Array Object (VAO) identifier.
+
+Line:      *
+
+Line:      * This static variable `_vao` is used to store the identifier of the Vertex Array Object (VAO)
+
+Line:      * associated with the frame. The VAO is used in OpenGL to store the state needed to supply
+
+Line:      * vertex data to the graphics pipeline.
+
+Line:      *
+
+Line:      * @note The initial value of `_vao` is set to 0, indicating that no VAO has been created yet.
+
+Line:      */
+
+Line:     static VAO _vao = 0;
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Renders a frame using the provided model matrix and shader.
+
+Line:      *
+
+Line:      * This function is responsible for rendering a frame in the scene. It takes
+
+Line:      * a model matrix, an active shader, and a set of world shaders as parameters.
+
+Line:      *
+
+Line:      * @param modelMatrix Model matrix to be used for rendering.
+
+Line:      * @param activeShader The shader to be used for rendering the frame.
+
+Line:      * @param shaders A pointer to the WorldShaders structure containing the shaders
+
+Line:      *                used in the world.
+
+Line:      */
+
+Line:     void render(mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
+
+	Found method (void) render
+		Found argument (float (*) [modelMatrix)[4]]
+		Found argument (Shader) [activeShader]
+		Found argument (WorldShaders *) [shaders]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the editor node to a file.
+
+Line:      *
+
+Line:      * This function writes the state of the given editor node to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the editor node state will be saved.
+
+Line:      * @param editor A pointer to the Node object representing the editor whose state is to be saved.
+
+Line:      */
+
+Line:     void save(FILE *file, Node *editor) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the Vertex Array Object (VAO).
+
+Line:      *
+
+Line:      * This function is responsible for obtaining the VAO and storing it in the provided VAO structure.
+
+Line:      *
+
+Line:      * @param vao A pointer to a VAO structure where the retrieved VAO will be stored.
+
+Line:      */
+
+Line:     void get_vao(VAO *vao) {
+
+	Found method (void) get_vao
+		Found argument (VAO *) [vao]
+Line:     }
+
+Line: 
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Determines if the current object is a GUI element.
+
+Line:      *
+
+Line:      * This function sets the value pointed to by the result parameter to indicate
+
+Line:      * whether the current object is a graphical user interface (GUI) element.
+
+Line:      *
+
+Line:      * @param result A pointer to a boolean variable where the result will be stored.
+
+Line:      *               The value will be set to true if the current object is a GUI element,
+
+Line:      *               and false otherwise.
+
+Line:      */
+
+Line:     void is_gui_element(bool *result) {
+
+	Found method (void) is_gui_element
+		Found argument (bool *) [result]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Determines if a button is pressed.
+
+Line:      *
+
+Line:      * This function checks the state of a button and sets the result accordingly.
+
+Line:      *
+
+Line:      * @param[out] result Pointer to a boolean variable where the result will be stored.
+
+Line:      *                    - true: if the button is pressed.
+
+Line:      *                    - false: if the button is not pressed.
+
+Line:      */
+
+Line:     void is_button(bool *result) {
+
+	Found method (void) is_button
+		Found argument (bool *) [result]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the current area is an input area.
+
+Line:      *
+
+Line:      * This function determines whether the current area is designated as an input area.
+
+Line:      *
+
+Line:      * @param result A pointer to a boolean variable where the result will be stored.
+
+Line:      *               - true: The current area is an input area.
+
+Line:      *               - false: The current area is not an input area.
+
+Line:      */
+
+Line:     void is_input_area(bool *result) {
+
+	Found method (void) is_input_area
+		Found argument (bool *) [result]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the current item is in the selection list.
+
+Line:      *
+
+Line:      * This function sets the value of the provided boolean pointer to indicate
+
+Line:      * whether the current item is part of the selection list.
+
+Line:      *
+
+Line:      * @param result A pointer to a boolean variable where the result will be stored.
+
+Line:      *               The value will be set to true if the item is in the selection list,
+
+Line:      *               and false otherwise.
+
+Line:      */
+
+Line:     void is_selectlist(bool *result) {
+
+	Found method (void) is_selectlist
+		Found argument (bool *) [result]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if a condition is a checkbox.
+
+Line:      *
+
+Line:      * This function sets the value of the boolean pointer `result` to indicate
+
+Line:      * whether a certain condition is a checkbox.
+
+Line:      *
+
+Line:      * @param result A pointer to a boolean variable where the result will be stored.
+
+Line:      *               The value will be set to `true` if the condition is a checkbox,
+
+Line:      *               otherwise it will be set to `false`.
+
+Line:      */
+
+Line:     void is_checkbox(bool *result) {
+
+	Found method (void) is_checkbox
+		Found argument (bool *) [result]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the current frame is a radio button.
+
+Line:      *
+
+Line:      * This function determines whether the current frame instance is a radio button.
+
+Line:      *
+
+Line:      * @return true if the frame is a radio button, false otherwise.
+
+Line:      */
+
+Line:     bool is_radiobutton() {
+
+	Found method (bool) is_radiobutton
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Frees the resources allocated for the frame.
+
+Line:      *
+
+Line:      * This function is responsible for releasing any memory or resources
+
+Line:      * that were allocated for the frame. It should be called when the frame
+
+Line:      * is no longer needed to avoid memory leaks.
+
+Line:      */
+
+Line:     void free() {
+
+	Found method (void) free
+Line:     }
+
+Line: 
+
+Line: 
+Found class ImageFrame
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the image frame class.
+
+Line:      *
+
+Line:      * This function initializes an image frame with the specified parameters.
+
+Line:      *
+
+Line:      * @param x The x-coordinate of the image frame.
+
+Line:      * @param xu The unit of the x-coordinate.
+
+Line:      * @param y The y-coordinate of the image frame.
+
+Line:      * @param yu The unit of the y-coordinate.
+
+Line:      * @param w The width of the image frame.
+
+Line:      * @param wu The unit of the width.
+
+Line:      * @param h The height of the image frame.
+
+Line:      * @param hu The unit of the height.
+
+Line:      * @param ha The horizontal alignment of the image frame.
+
+Line:      * @param va The vertical alignment of the image frame.
+
+Line:      * @param imagePath The file path to the image to be used in the frame.
+
+Line:      */
+
+Line:     void constructor(float x, int xu, float y, int yu, float w, int wu, float h, int hu, int ha, int va, char *imagePath) {
+
+	Found method (void) constructor
+		Found argument (double) [x]
+		Found argument (int) [xu]
+		Found argument (double) [y]
+		Found argument (int) [yu]
+		Found argument (double) [w]
+		Found argument (int) [wu]
+		Found argument (double) [h]
+		Found argument (int) [hu]
+		Found argument (int) [ha]
+		Found argument (int) [va]
+		Found argument (char *) [imagePath]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file.
+
+Line:      *
+
+Line:      * This function reads data from the provided file pointer and processes it accordingly.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object from which data is to be read.
+
+Line:      */
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Sets the image for the frame.
+
+Line:      *
+
+Line:      * This function sets the image for the frame by loading it from the specified file path.
+
+Line:      *
+
+Line:      * @param path The file path to the image to be loaded.
+
+Line:      */
+
+Line:     void set_image(char *path) {
+
+	Found method (void) set_image
+		Found argument (char *) [path]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Renders the image frame using the provided model matrix and shader.
+
+Line:      *
+
+Line:      * This function is responsible for rendering the image frame. It takes a model matrix,
+
+Line:      * an active shader, and a set of world shaders as parameters to perform the rendering.
+
+Line:      *
+
+Line:      * @param modelMatrix A pointer to the model matrix used for rendering transformations.
+
+Line:      * @param activeShader The shader program currently active for rendering.
+
+Line:      * @param shaders A pointer to the WorldShaders structure containing various shaders used in the world.
+
+Line:      */
+
+Line:     void render(mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
+
+	Found method (void) render
+		Found argument (float (*) [modelMatrix)[4]]
+		Found argument (Shader) [activeShader]
+		Found argument (WorldShaders *) [shaders]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the editor to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the editor to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the editor state will be saved.
+
+Line:      * @param editor A pointer to the Node object representing the editor whose state is to be saved.
+
+Line:      */
+
+Line:     void save(FILE *file, Node *editor) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line:  
+
+Line:     /**
+
+Line:      * @brief Frees the resources allocated for the image frame.
+
+Line:      *
+
+Line:      * This function is responsible for releasing any memory or resources
+
+Line:      * that were allocated for the image frame. It should be called when
+
+Line:      * the image frame is no longer needed to avoid memory leaks.
+
+Line:      */
+
+Line:     void free() {
+
+	Found method (void) free
+Line:     }
+
+Line:     
+
+Line: 
+
+Line: 
+Found class InputArea
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the input area class.
+
+Line:      *
+
+Line:      * This function initializes an input area with the specified default text,
+
+Line:      * horizontal alignment, and vertical alignment.
+
+Line:      *
+
+Line:      * @param defaultText A pointer to a character array containing the default text
+
+Line:      *                    to be displayed in the input area.
+
+Line:      * @param ha An integer representing the horizontal alignment of the input area.
+
+Line:      *           Possible values can be defined as constants or enums elsewhere in the code.
+
+Line:      * @param va An integer representing the vertical alignment of the input area.
+
+Line:      *           Possible values can be defined as constants or enums elsewhere in the code.
+
+Line:      */
+
+Line:     void constructor(char *defaultText, int ha, int va) {
+
+	Found method (void) constructor
+		Found argument (char *) [defaultText]
+		Found argument (int) [ha]
+		Found argument (int) [va]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file.
+
+Line:      *
+
+Line:      * This function reads data from the given file and processes it accordingly.
+
+Line:      *
+
+Line:      * @param file A pointer to the file to be loaded.
+
+Line:      */
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Refreshes the input area.
+
+Line:      *
+
+Line:      * This function is responsible for refreshing the input area, updating its state and rendering
+
+Line:      * any necessary changes. It should be called whenever the input area needs to be redrawn or updated.
+
+Line:      */
+
+Line:     void refresh() {
+
+	Found method (void) refresh
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the state of the input area.
+
+Line:      *
+
+Line:      * This function is responsible for updating the state of the input area.
+
+Line:      * It should be called whenever there is a need to refresh or change the state
+
+Line:      * of the input area based on user interactions or other events.
+
+Line:      */
+
+Line:     void update() {
+
+	Found method (void) update
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the current area is an input area.
+
+Line:      *
+
+Line:      * This function sets the value of the provided boolean pointer to indicate
+
+Line:      * whether the current area is an input area.
+
+Line:      *
+
+Line:      * @param result A pointer to a boolean variable where the result will be stored.
+
+Line:      *               - true: if the current area is an input area.
+
+Line:      *               - false: otherwise.
+
+Line:      */
+
+Line:     void is_input_area(bool *result) {
+
+	Found method (void) is_input_area
+		Found argument (bool *) [result]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the editor node to a file.
+
+Line:      *
+
+Line:      * This function writes the state of the given editor node to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the editor node state will be saved.
+
+Line:      * @param editor A pointer to the Node object representing the editor node whose state is to be saved.
+
+Line:      */
+
+Line:     void save(FILE *file, Node *editor) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Frees the resources allocated for the input area class.
+
+Line:      *
+
+Line:      * This function is responsible for releasing any memory or resources
+
+Line:      * that were allocated for the input area class. It should be called
+
+Line:      * when the input area is no longer needed to prevent memory leaks.
+
+Line:      */
+
+Line:     void free() {
+
+	Found method (void) free
+Line:     }
+
+Line:  
+
+Line:     
+
+Line: 
+
+Line: 
+Found class Label
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the label class.
+
+Line:      *
+
+Line:      * This function initializes a label object with the specified text and alignment parameters.
+
+Line:      *
+
+Line:      * @param text The text to be displayed in the label.
+
+Line:      * @param ha The horizontal alignment of the text. 
+
+Line:      *           Possible values:
+
+Line:      *           - 0: Left-aligned
+
+Line:      *           - 1: Center-aligned
+
+Line:      *           - 2: Right-aligned
+
+Line:      * @param va The vertical alignment of the text.
+
+Line:      *           Possible values:
+
+Line:      *           - 0: Top-aligned
+
+Line:      *           - 1: Middle-aligned
+
+Line:      *           - 2: Bottom-aligned
+
+Line:      */
+
+Line:     void constructor(char *text, int ha, int va) {
+
+	Found method (void) constructor
+		Found argument (char *) [text]
+		Found argument (int) [ha]
+		Found argument (int) [va]
+Line:     }
+
+Line: 
+
+Line:     
+
+Line: 
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     void set_text(char * str) {
+
+	Found method (void) set_text
+		Found argument (char *) [str]
+Line:     }
+
+Line: 
+
+Line: 
+
+Line:     void refresh() {
+
+	Found method (void) refresh
+Line:     }
+
+Line: 
+
+Line: 
+
+Line:     void render(mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
+
+	Found method (void) render
+		Found argument (float (*) [modelMatrix)[4]]
+		Found argument (Shader) [activeShader]
+		Found argument (WorldShaders *) [shaders]
+Line:     }
+
+Line: 
+
+Line:     void save(FILE *file, Node *editor) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line:  
+
+Line:     void free() {
+
+	Found method (void) free
+Line:     }
+
+Line:     
+
+Line: 
+
+Line: 
+Found class RadioButton
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the RadioButton class.
+
+Line:      *
+
+Line:      * This function initializes a new instance of the RadioButton class.
+
+Line:      * It sets up the necessary properties and states for the radio button.
+
+Line:      */
+
+Line:     void constructor() {
+
+	Found method (void) constructor
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Initializes the radio button.
+
+Line:      *
+
+Line:      * This function sets up the necessary properties and states for the radio button
+
+Line:      * to function correctly. It should be called before using any other radio button
+
+Line:      * functions.
+
+Line:      */
+
+Line:     void init_radiobutton() {
+
+	Found method (void) init_radiobutton
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads the necessary resources or initializes the RadioButton.
+
+Line:      *
+
+Line:      * This function is responsible for loading any resources or performing
+
+Line:      * any initialization required for the RadioButton class. The specific
+
+Line:      * details of what is loaded or initialized should be documented here.
+
+Line:      */
+
+Line:     void load() {
+
+	Found method (void) load
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the state of the editor node to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the editor node to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the state will be saved.
+
+Line:      * @param editor A pointer to the Node object representing the editor whose state is to be saved.
+
+Line:      */
+
+Line:     void save(FILE *file, Node *editor) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the current object is a radiobutton.
+
+Line:      *
+
+Line:      * This function determines whether the current object is of type radiobutton.
+
+Line:      *
+
+Line:      * @return true if the object is a radiobutton, false otherwise.
+
+Line:      */
+
+Line:     bool is_radiobutton() {
+
+	Found method (bool) is_radiobutton
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Frees the resources allocated for the RadioButton instance.
+
+Line:      *
+
+Line:      * This function is responsible for releasing any memory or resources that were allocated
+
+Line:      * for the RadioButton instance. It should be called when the RadioButton is no longer needed
+
+Line:      * to avoid memory leaks.
+
+Line:      */
+
+Line:     void free() {
+
+	Found method (void) free
+Line:     }
+
+Line:  
+
+Line:     
+
+Line: 
+
+Line: 
+Found class SelectList
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the select list class.
+
+Line:      *
+
+Line:      * This function initializes the select list class, setting up any necessary
+
+Line:      * data structures and preparing the class for use.
+
+Line:      */
+
+Line:     void constructor() {
+
+	Found method (void) constructor
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads the select list.
+
+Line:      *
+
+Line:      * This function is responsible for initializing and loading the select list.
+
+Line:      * It sets up the necessary data structures and prepares the list for use.
+
+Line:      */
+
+Line:     void load() {
+
+	Found method (void) load
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Refreshes the options in the select list.
+
+Line:      *
+
+Line:      * This function is responsible for updating the options available in the select list. It ensures that the list is current and reflects any changes that may have occurred.
+
+Line:      */
+
+Line:     void refreshOptions() {
+
+	Found method (void) refreshOptions
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Refreshes the select list.
+
+Line:      *
+
+Line:      * This function is responsible for refreshing the select list. It updates the
+
+Line:      * display and state of the select list to reflect any changes that have occurred.
+
+Line:      */
+
+Line:     void refresh() {
+
+	Found method (void) refresh
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the state of the select list.
+
+Line:      *
+
+Line:      * This function is responsible for updating the state of the select list. It performs necessary
+
+Line:      * operations to ensure the select list is in the correct state based on the current context.
+
+Line:      *
+
+Line:      * @note This function does not take any parameters and does not return any value.
+
+Line:      */
+
+Line:     void update() {
+
+	Found method (void) update
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the current list is a select list.
+
+Line:      *
+
+Line:      * This function sets the value of the provided boolean pointer to indicate
+
+Line:      * whether the current list is a select list.
+
+Line:      *
+
+Line:      * @param result A pointer to a boolean variable where the result will be stored.
+
+Line:      *               The value will be set to true if the current list is a select list,
+
+Line:      *               otherwise it will be set to false.
+
+Line:      */
+
+Line:     void is_selectlist(bool *result) {
+
+	Found method (void) is_selectlist
+		Found argument (bool *) [result]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the Node editor to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the Node editor to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the state will be saved.
+
+Line:      * @param editor A pointer to the Node editor whose state is to be saved.
+
+Line:      */
+
+Line:     void save(FILE *file, Node *editor) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Frees the resources allocated by the select list class.
+
+Line:      *
+
+Line:      * This function is responsible for releasing any memory or resources
+
+Line:      * that were allocated for the select list class. It ensures that there
+
+Line:      * are no memory leaks by properly deallocating all used resources.
+
+Line:      */
+
+Line:     void free() {
+
+	Found method (void) free
+Line:     }
+
+Line:  
+
+Line:     
+
+Line: 
+
+Line: 
+Found class Slider
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the slider class.
+
+Line:      *
+
+Line:      * This function initializes a slider object with the specified minimum and maximum values.
+
+Line:      *
+
+Line:      * @param min The minimum value of the slider.
+
+Line:      * @param max The maximum value of the slider.
+
+Line:      */
+
+Line:     void constructor(float min, float max) {
+
+	Found method (void) constructor
+		Found argument (double) [min]
+		Found argument (double) [max]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Initializes the slider.
+
+Line:      *
+
+Line:      * This function sets up the initial state of the slider, including any necessary
+
+Line:      * resources or configurations. It should be called before using the slider.
+
+Line:      */
+
+Line:     void init_slider() {
+
+	Found method (void) init_slider
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file.
+
+Line:      *
+
+Line:      * This function reads data from the given file and initializes the slider
+
+Line:      * class with the loaded data.
+
+Line:      *
+
+Line:      * @param file A pointer to the file to read from.
+
+Line:      */
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the state of the editor node to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the editor node to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the state will be saved.
+
+Line:      * @param editor A pointer to the Node object representing the editor whose state is to be saved.
+
+Line:      */
+
+Line:     void save(FILE *file, Node *editor) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the current node is a radio button.
+
+Line:      *
+
+Line:      * This function determines whether the current node in the GUI framework
+
+Line:      * is a radio button. It returns a boolean value indicating the result.
+
+Line:      *
+
+Line:      * @return true if the current node is a radio button, false otherwise.
+
+Line:      */
+
+Line:     bool is_radiobutton() {
+
+	Found method (bool) is_radiobutton
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the state of the slider.
+
+Line:      *
+
+Line:      * This function is responsible for updating the state of the slider based on
+
+Line:      * user interactions or other events. It should be called regularly to ensure
+
+Line:      * the slider's state is kept up to date.
+
+Line:      */
+
+Line:     void update() {
+
+	Found method (void) update
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Frees the resources allocated by the slider class.
+
+Line:      *
+
+Line:      * This function is responsible for releasing any memory or resources
+
+Line:      * that were allocated for the slider class. It should be called when
+
+Line:      * the slider is no longer needed to prevent memory leaks.
+
+Line:      */
+
+Line:     void free() {
+
+	Found method (void) free
+Line:     }
+
+Line:  
+
+Line:     
+
+Line: 
+
+Line: 
+Found class DirectionalLight
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the directional light class.
+
+Line:      *
+
+Line:      * This function initializes a directional light with the specified parameters.
+
+Line:      *
+
+Line:      * @param r Red component of the light color.
+
+Line:      * @param g Green component of the light color.
+
+Line:      * @param b Blue component of the light color.
+
+Line:      * @param bias Bias value for the light.
+
+Line:      * @param size Size of the light.
+
+Line:      * @param constant Constant attenuation factor.
+
+Line:      * @param linear Linear attenuation factor.
+
+Line:      * @param quadratic Quadratic attenuation factor.
+
+Line:      */
+
+Line:     void constructor(float r, float g, float b, float bias, float size, float constant, float linear, float quadratic) {
+
+	Found method (void) constructor
+		Found argument (double) [r]
+		Found argument (double) [g]
+		Found argument (double) [b]
+		Found argument (double) [bias]
+		Found argument (double) [size]
+		Found argument (double) [constant]
+		Found argument (double) [linear]
+		Found argument (double) [quadratic]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the state of a directional light.
+
+Line:      *
+
+Line:      * This function updates the position, rotation, and scale of a directional light
+
+Line:      * based on the given delta time and updates the count of active lights.
+
+Line:      *
+
+Line:      * @param pos Vec3 structure representing the position of the light.
+
+Line:      * @param rot Vec3 structure representing the rotation of the light.
+
+Line:      * @param scale Vec3 structure representing the scale of the light.
+
+Line:      * @param delta The time delta used for updating the light's state.
+
+Line:      * @param lightsCount Pointer to an unsigned 8-bit integer representing the count of active lights.
+
+Line:      */
+
+Line:     void update(vec3 pos, vec3 rot, vec3 scale, double delta, u8 *lightsCount) {
+
+	Found method (void) update
+		Found argument (float *) [pos]
+		Found argument (float *) [rot]
+		Found argument (float *) [scale]
+		Found argument (double) [delta]
+		Found argument (u8 *) [lightsCount]
+Line:     }   
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the settings data for the directional light.
+
+Line:      *
+
+Line:      * This function populates the provided pointer with the settings data
+
+Line:      * and sets the length of the data.
+
+Line:      *
+
+Line:      * @param[out] ptr A pointer to a pointer to a pointer where the settings data will be stored.
+
+Line:      *                 The function will allocate memory for the settings data and set this pointer
+
+Line:      *                 to point to the allocated memory.
+
+Line:      * @param[out] length A pointer to an integer where the length of the settings data will be stored.
+
+Line:      *                    The function will set this integer to the length of the settings data.
+
+Line:      */
+
+Line:     void get_settings_data(void *** ptr, int * length) {
+
+	Found method (void) get_settings_data
+		Found argument (void ***) [ptr]
+		Found argument (int *) [length]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file.
+
+Line:      *
+
+Line:      * This function reads data from the given file and loads it into the appropriate
+
+Line:      * structures or variables. The file pointer must be valid and opened in the 
+
+Line:      * appropriate mode for reading.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object that identifies the file to read from.
+
+Line:      */
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the directional light to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the directional light object to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the state will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Configures the directional lighting for the specified camera.
+
+Line:      * 
+
+Line:      * This function configures the directional lighting for the specified camera.
+
+Line:      * 
+
+Line:      * @param c The camera for which the directional lighting is to be configured.
+
+Line:      * @param shaders The shaders to be used for rendering.
+
+Line:      * @param lightsCount The count of lights in the scene.
+
+Line:      * 
+
+Line:      * @note This function is called by the render loop to configure the lighting for the specified camera.
+
+Line:      */
+
+Line:     void configure_lighting(Camera *c, WorldShaders *shaders, DepthMap *depthMap, u8 *lightsCount) {
+
+	Found method (void) configure_lighting
+		Found argument (Camera *) [c]
+		Found argument (WorldShaders *) [shaders]
+		Found argument (DepthMap *) [depthMap]
+		Found argument (u8 *) [lightsCount]
+Line:     }
+
+Line:     
+
+Line: 
+
+Line: 
+Found class Light
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Initializes the light object.
+
+Line:      *
+
+Line:      * This function sets up the initial state of the light object, configuring
+
+Line:      * any necessary parameters and preparing it for use in the application.
+
+Line:      */
+
+Line:     void init_light() {
+
+	Found method (void) init_light
+Line:     }
+
+Line: 
+
+Line: 
+
+Line:     /**
+
+Line:      * @var vbo
+
+Line:      * @brief Static variable representing the Vertex Buffer Object (VBO) for the light class.
+
+Line:      *
+
+Line:      * The VBO is used to store vertex data for rendering the lights in the OpenGL context.
+
+Line:      */
+
+Line: 
+
+Line:     /**
+
+Line:      * @var vao
+
+Line:      * @brief Static variable representing the Vertex Array Object (VAO) for the light class.
+
+Line:      *
+
+Line:      * The VAO is used to store the vertex attribute configuration for rendering the lights in the OpenGL context.
+
+Line:      */
+
+Line: 
+
+Line:     /**
+
+Line:      * @var billboardShader
+
+Line:      * @brief Static variable representing the shader program used for rendering billboard lights.
+
+Line:      *
+
+Line:      * The shader program is used to render lights as billboards, which are 2D textures that always face the camera.
+
+Line:      */
+
+Line: 
+
+Line:     /**
+
+Line:      * @var lightPointTexture
+
+Line:      * @brief Static variable representing the texture map for point lights.
+
+Line:      *
+
+Line:      * The texture map is used to apply a texture to point lights, enhancing their visual appearance in the OpenGL context.
+
+Line:      */
+
+Line: 
+
+Line:     /**
+
+Line:      * @var directionalLightTexture
+
+Line:      * @brief Static variable representing the texture map for directional lights.
+
+Line:      *
+
+Line:      * The texture map is used to apply a texture to directional lights, enhancing their visual appearance in the OpenGL context.
+
+Line:      */
+
+Line:     static VBO vbo = 0;
+
+Line:     static VAO vao = 0;
+
+Line:     static Shader billboardShader = 0;
+
+Line:     static TextureMap lightPointTexture = 0;
+
+Line:     static TextureMap directionalLightTexture = 0;
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Renders the light using the provided model matrix and active shader.
+
+Line:      *
+
+Line:      * This function takes a model matrix and an active shader as parameters and
+
+Line:      * performs the rendering of the light. The model matrix is used to transform
+
+Line:      * the light's position and orientation in the scene, while the active shader
+
+Line:      * is used to apply the appropriate shading effects.
+
+Line:      *
+
+Line:      * @param modelMatrix Model matrix used for transforming the light.
+
+Line:      * @param activeShader The shader program currently active for rendering.
+
+Line:      */
+
+Line:     void render(mat4 modelMatrix, Shader activeShader) {
+
+	Found method (void) render
+		Found argument (float (*) [modelMatrix)[4]]
+		Found argument (Shader) [activeShader]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Initializes the Vertex Array Object (VAO) for the light class.
+
+Line:      *
+
+Line:      * This function sets up the VAO which is used to store the vertex attribute
+
+Line:      * configuration for the light objects. It binds the necessary buffers and
+
+Line:      * configures the vertex attributes.
+
+Line:      */
+
+Line:     void init_vao() {
+
+	Found method (void) init_vao
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Configures the lighting for the scene.
+
+Line:      * 
+
+Line:      * This function configures the lighting for the scene by setting the light properties in the shader.
+
+Line:      * 
+
+Line:      * @param shaders The shaders to be used for rendering.
+
+Line:      * @param lightView The view matrix for the light.
+
+Line:      * @param lightProjection The projection matrix for the light.
+
+Line:      * @param storageBufferIndex The index of the storage buffer.
+
+Line:      */
+
+Line: 
+
+Line:     void configure_lighting(WorldShaders *shaders, mat4 lightView, mat4 lightProjection, int storageBufferIndex, DepthMap *depthMap) {
+
+	Found method (void) configure_lighting
+		Found argument (WorldShaders *) [shaders]
+		Found argument (float (*) [lightView)[4]]
+		Found argument (float (*) [lightProjection)[4]]
+		Found argument (int) [storageBufferIndex]
+		Found argument (DepthMap *) [depthMap]
+Line:     }
+
+Line: 
+
+Line: 
+Found class PointLight
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the PointLight class.
+
+Line:      *
+
+Line:      * This function initializes a PointLight object with the specified parameters.
+
+Line:      *
+
+Line:      * @param r The red component of the light color.
+
+Line:      * @param g The green component of the light color.
+
+Line:      * @param b The blue component of the light color.
+
+Line:      * @param bias The bias value for the light.
+
+Line:      * @param size The size of the light.
+
+Line:      * @param constant The constant attenuation factor.
+
+Line:      * @param linear The linear attenuation factor.
+
+Line:      * @param quadratic The quadratic attenuation factor.
+
+Line:      */
+
+Line:     void constructor(float r, float g, float b, float bias, float size, float constant, float linear, float quadratic) {
+
+	Found method (void) constructor
+		Found argument (double) [r]
+		Found argument (double) [g]
+		Found argument (double) [b]
+		Found argument (double) [bias]
+		Found argument (double) [size]
+		Found argument (double) [constant]
+		Found argument (double) [linear]
+		Found argument (double) [quadratic]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the position, rotation, and scale of a point light, and increments the lights count.
+
+Line:      *
+
+Line:      * This function updates the position, rotation, and scale of a point light based on the provided delta time.
+
+Line:      * It also increments the count of active lights.
+
+Line:      *
+
+Line:      * @param pos Vec3 structure representing the position of the point light.
+
+Line:      * @param rot Vec3 structure representing the rotation of the point light.
+
+Line:      * @param scale Vec3 structure representing the scale of the point light.
+
+Line:      * @param delta The time delta used to update the point light's properties.
+
+Line:      * @param lightsCount Pointer to an unsigned 8-bit integer representing the count of active lights.
+
+Line:      */
+
+Line:     void update(vec3 pos, vec3 rot, vec3 scale, double delta, u8 *lightsCount) {
+
+	Found method (void) update
+		Found argument (float *) [pos]
+		Found argument (float *) [rot]
+		Found argument (float *) [scale]
+		Found argument (double) [delta]
+		Found argument (u8 *) [lightsCount]
+Line:     }    
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the settings data for the point light.
+
+Line:      *
+
+Line:      * This function populates the provided pointer with the settings data
+
+Line:      * and sets the length of the data.
+
+Line:      *
+
+Line:      * @param[out] ptr A pointer to a pointer to a pointer where the settings data will be stored.
+
+Line:      * @param[out] length A pointer to an integer where the length of the settings data will be stored.
+
+Line:      */
+
+Line:     void get_settings_data(void *** ptr, int * length) {
+
+	Found method (void) get_settings_data
+		Found argument (void ***) [ptr]
+		Found argument (int *) [length]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file.
+
+Line:      *
+
+Line:      * This function reads data from the specified file and loads it into the
+
+Line:      * appropriate structures or variables. The file pointer should be valid and
+
+Line:      * opened in the appropriate mode for reading.
+
+Line:      *
+
+Line:      * @param file A pointer to the file from which data will be loaded.
+
+Line:      */
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the state of the point light to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the point light to the specified
+
+Line:      * file. The state includes all relevant properties of the point light that
+
+Line:      * need to be persisted.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the point light state will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Configures the lighting
+
+Line:      * 
+
+Line:      * This function configures the lighting.
+
+Line:      * 
+
+Line:      * @param c The camera for which the lighting is to be configured.
+
+Line:      * @param shaders The shaders to be used for rendering.
+
+Line:      * @param lightsCount The number of lights in the scene.
+
+Line:      * @param pointLightId The ID of the point light.
+
+Line:      */
+
+Line:     void configure_lighting(Camera *c, WorldShaders *shaders, DepthMap *depthMap, u8 *lightsCount, int pointLightId) {
+
+	Found method (void) configure_lighting
+		Found argument (Camera *) [c]
+		Found argument (WorldShaders *) [shaders]
+		Found argument (DepthMap *) [depthMap]
+		Found argument (u8 *) [lightsCount]
+		Found argument (int) [pointLightId]
+Line:     }
+
+Line: 
+
+Line: 
+
+Line: 
+Found class SpotLight
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the SpotLight class.
+
+Line:      *
+
+Line:      * This function initializes a SpotLight object with the specified parameters.
+
+Line:      *
+
+Line:      * @param r The red component of the light color.
+
+Line:      * @param g The green component of the light color.
+
+Line:      * @param b The blue component of the light color.
+
+Line:      * @param bias The bias value for the light.
+
+Line:      * @param size The size of the light.
+
+Line:      * @param constant The constant attenuation factor.
+
+Line:      * @param linear The linear attenuation factor.
+
+Line:      * @param quadratic The quadratic attenuation factor.
+
+Line:      * @param cutOff The inner cutoff angle for the spotlight (in degrees).
+
+Line:      * @param outerCutOff The outer cutoff angle for the spotlight (in degrees).
+
+Line:      */
+
+Line:     void constructor(float r, float g, float b, float bias, float size, float constant, float linear, float quadratic, float cutOff, float outerCutOff) {
+
+	Found method (void) constructor
+		Found argument (double) [r]
+		Found argument (double) [g]
+		Found argument (double) [b]
+		Found argument (double) [bias]
+		Found argument (double) [size]
+		Found argument (double) [constant]
+		Found argument (double) [linear]
+		Found argument (double) [quadratic]
+		Found argument (double) [cutOff]
+		Found argument (double) [outerCutOff]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the state of the spotlight.
+
+Line:      *
+
+Line:      * This function updates the position, rotation, and scale of the spotlight
+
+Line:      * based on the provided delta time and increments the lights count.
+
+Line:      *
+
+Line:      * @param pos Vec3 structure representing the position of the spotlight.
+
+Line:      * @param rot Vec3 structure representing the rotation of the spotlight.
+
+Line:      * @param scale Vec3 structure representing the scale of the spotlight.
+
+Line:      * @param delta The time delta used for updating the spotlight's state.
+
+Line:      * @param lightsCount Pointer to an unsigned 8-bit integer representing the count of lights.
+
+Line:      */
+
+Line:     void update(vec3 pos, vec3 rot, vec3 scale, float delta, u8 *lightsCount) {
+
+	Found method (void) update
+		Found argument (float *) [pos]
+		Found argument (float *) [rot]
+		Found argument (float *) [scale]
+		Found argument (double) [delta]
+		Found argument (u8 *) [lightsCount]
+Line:     }   
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the settings data.
+
+Line:      *
+
+Line:      * This function populates the provided pointer with the settings data and sets the length of the data.
+
+Line:      *
+
+Line:      * @param[out] ptr A pointer to a pointer to a pointer where the settings data will be stored.
+
+Line:      * @param[out] length A pointer to an integer where the length of the settings data will be stored.
+
+Line:      */
+
+Line:     void get_settings_data(void *** ptr, int * length) {
+
+	Found method (void) get_settings_data
+		Found argument (void ***) [ptr]
+		Found argument (int *) [length]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads the SpotLight data from a file.
+
+Line:      *
+
+Line:      * This function reads the SpotLight data from the specified file and initializes the SpotLight object
+
+Line:      * with the loaded data. The file should contain the necessary information to fully describe the SpotLight,
+
+Line:      * including its position, direction, color, intensity, and other relevant properties.
+
+Line:      *
+
+Line:      * @param file A pointer to the file from which the SpotLight data will be loaded.
+
+Line:      */
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the SpotLight object to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the SpotLight object to the specified file.
+
+Line:      * The file should be opened in a mode that allows writing before calling this function.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the state will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Configures the lighting.
+
+Line:      * 
+
+Line:      * This function configures the lighting.
+
+Line:      * 
+
+Line:      * @param c The camera to be used for rendering.
+
+Line:      * @param shaders The shaders to be used for rendering.
+
+Line:      * @param lightsCount The number of lights in the scene.
+
+Line:      */
+
+Line:     void configure_lighting(Camera *c, WorldShaders *shaders, DepthMap *depthMap, u8 *lightsCount) {
+
+	Found method (void) configure_lighting
+		Found argument (Camera *) [c]
+		Found argument (WorldShaders *) [shaders]
+		Found argument (DepthMap *) [depthMap]
+		Found argument (u8 *) [lightsCount]
+Line:     }
+
+Line: 
+
+Line:     
+
+Line: 
+
+Line: 
+Found class Mesh
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the mesh class.
+
+Line:      *
+
+Line:      * This function initializes a new instance of the mesh class.
+
+Line:      */
+
+Line:     void constructor() {
+
+	Found method (void) constructor
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads the mesh data.
+
+Line:      *
+
+Line:      * This function is responsible for loading the mesh data from a specified source.
+
+Line:      * It initializes the necessary resources and prepares the mesh for rendering.
+
+Line:      *
+
+Line:      * @note Ensure that the source of the mesh data is correctly specified before calling this function.
+
+Line:      */
+
+Line:     void load() {
+
+	Found method (void) load
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the mesh to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the mesh to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the mesh state will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Renders the mesh using the provided model matrix and active shader.
+
+Line:      *
+
+Line:      * This function takes a model matrix and an active shader as parameters and
+
+Line:      * renders the mesh accordingly. The model matrix is used to transform the
+
+Line:      * mesh in the 3D space, and the active shader is used to apply shading effects
+
+Line:      * during the rendering process.
+
+Line:      *
+
+Line:      * @param modelMatrix Mat4 structure representing the model matrix.
+
+Line:      * @param activeShader The shader program to be used for rendering.
+
+Line:      */
+
+Line:     void render(mat4 modelMatrix, Shader activeShader) {
+
+	Found method (void) render
+		Found argument (float (*) [modelMatrix)[4]]
+		Found argument (Shader) [activeShader]
+Line:     }
+
+Line: 
+
+Line:     
+
+Line: 
+
+Line: 
+Found class Model
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the model class.
+
+Line:      *
+
+Line:      * This function initializes a model object using the provided file path.
+
+Line:      *
+
+Line:      * @param path The file path to the model data.
+
+Line:      */
+
+Line:     void constructor(const char *path) {
+
+	Found method (void) constructor
+		Found argument (const char *) [path]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file.
+
+Line:      *
+
+Line:      * This function reads data from the provided file pointer and loads it into the appropriate data structures.
+
+Line:      *
+
+Line:      * @param file A pointer to the file to be read.
+
+Line:      */
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves settings data.
+
+Line:      *
+
+Line:      * This function retrieves settings data and stores it in the provided pointer.
+
+Line:      *
+
+Line:      * @param[out] ptr A pointer to a pointer to a pointer where the settings data will be stored.
+
+Line:      * @param[out] length A pointer to an integer where the length of the settings data will be stored.
+
+Line:      */
+
+Line:     void get_settings_data(void *** ptr, int * length) {
+
+	Found method (void) get_settings_data
+		Found argument (void ***) [ptr]
+		Found argument (int *) [length]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the model to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the model to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the model state will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Renders the model using the provided model matrix and active shader.
+
+Line:      *
+
+Line:      * This function takes a model matrix and an active shader as parameters and
+
+Line:      * renders the model accordingly. The model matrix is used to transform the
+
+Line:      * model's vertices, and the active shader is used to apply shading effects
+
+Line:      * during rendering.
+
+Line:      *
+
+Line:      * @param modelMatrix Mat4 structure representing the model matrix.
+
+Line:      * @param activeShader The shader to be used for rendering the model.
+
+Line:      */
+
+Line:     void render(mat4 modelMatrix, Shader activeShader) {
+
+	Found method (void) render
+		Found argument (float (*) [modelMatrix)[4]]
+		Found argument (Shader) [activeShader]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Frees the resources allocated by the model class.
+
+Line:      *
+
+Line:      * This function is responsible for releasing any memory or resources
+
+Line:      * that were allocated for the model class.
+
+Line:      */
+
+Line:     void free() {
+
+	Found method (void) free
+Line:     }
+
+Line:     
+
+Line: 
+
+Line: 
+Found class Area
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the physics area class.
+
+Line:      *
+
+Line:      * This function initializes a new instance of the physics area class with the given signal ID.
+
+Line:      *
+
+Line:      * @param signal_id The signal ID to initialize the physics area instance with.
+
+Line:      */
+
+Line:     void constructor(int signal_id) {
+
+	Found method (void) constructor
+		Found argument (int) [signal_id]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file and initializes the given camera, scripts, and editor node.
+
+Line:      *
+
+Line:      * This function reads data from the specified file and uses it to initialize the provided camera,
+
+Line:      * scripts, and editor node. The exact format and content of the file are assumed to be known by the
+
+Line:      * caller.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object from which data will be read.
+
+Line:      * @param c A double pointer to a Camera object that will be initialized with data from the file.
+
+Line:      * @param scripts A pointer to a Script object that will be initialized with data from the file.
+
+Line:      * @param editor A pointer to a Node object representing the editor that will be initialized with data from the file.
+
+Line:      */
+
+Line:     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+		Found argument (Camera **) [c]
+		Found argument (Script *) [scripts]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Collects a node based on the given distance and calculates the impact point.
+
+Line:      *
+
+Line:      * This function processes a given node and calculates the impact point based on the specified distance.
+
+Line:      *
+
+Line:      * @param node A pointer to the Node structure that needs to be processed.
+
+Line:      * @param distance A double value representing the distance used in the calculation.
+
+Line:      * @param impactPoint Vec3 where the calculated impact point will be stored.
+
+Line:      */
+
+Line:     void collect_node(Node * node, float distance, vec3 impactPoint) {
+
+	Found method (void) collect_node
+		Found argument (Node *) [node]
+		Found argument (double) [distance]
+		Found argument (float *) [impactPoint]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the given area is valid.
+
+Line:      *
+
+Line:      * This function takes a pointer to a boolean variable and checks if the area is valid.
+
+Line:      *
+
+Line:      * @param area A pointer to a boolean variable that indicates the validity of the area.
+
+Line:      */
+
+Line:     void is_area(bool *area) {
+
+	Found method (void) is_area
+		Found argument (bool *) [area]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Compares the distances of two nodes.
+
+Line:      *
+
+Line:      * This function is used to compare the distances of two nodes. It is typically used
+
+Line:      * in sorting algorithms where nodes need to be ordered based on their distances.
+
+Line:      *
+
+Line:      * @param a Pointer to the first node to compare.
+
+Line:      * @param b Pointer to the second node to compare.
+
+Line:      * @return An integer less than, equal to, or greater than zero if the distance of the first node
+
+Line:      *         is considered to be respectively less than, equal to, or greater than the distance of the second node.
+
+Line:      */
+
+Line:     static int compare_distance_nodes(const void *a, const void *b) {
+
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Sorts the nodes in the physics area.
+
+Line:      *
+
+Line:      * This function sorts the nodes in the physics area based on a specific criterion.
+
+Line:      * The sorting algorithm and criterion are not specified in the provided code snippet.
+
+Line:      *
+
+Line:      * @note Ensure that the nodes are properly initialized before calling this function.
+
+Line:      */
+
+Line:     void sort_nodes() {
+
+	Found method (void) sort_nodes
+Line:     }
+
+Line: 
+
+Line:     //#define DEBUG_AREA
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the position, rotation, and scale of an object.
+
+Line:      *
+
+Line:      * This function takes pointers to the position, rotation, and scale of an object and updates them accordingly.
+
+Line:      *
+
+Line:      * @param pos Vec3 position of the object. It is expected to be a float array of size 3 representing x, y, and z coordinates.
+
+Line:      * @param rot Vec3 rotation of the object. It is expected to be a float array of size 3 representing rotation angles around x, y, and z axes.
+
+Line:      * @param scale Vec3 scale of the object. It is expected to be a float array of size 3 representing scaling factors along x, y, and z axes.
+
+Line:      */
+
+Line:     void update(vec3 pos, vec3 rot, vec3 scale) {
+
+	Found method (void) update
+		Found argument (float *) [pos]
+		Found argument (float *) [rot]
+		Found argument (float *) [scale]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the collision shapes and their lengths.
+
+Line:      *
+
+Line:      * This function populates the provided pointers with the collision shapes and their corresponding lengths.
+
+Line:      *
+
+Line:      * @param shapes A pointer to a 4-dimensional array of Node pointers. This will be populated with the collision shapes.
+
+Line:      * @param length A pointer to an array of unsigned 8-bit integers. This will be populated with the lengths of the collision shapes.
+
+Line:      */
+
+Line:     void get_collisions_shapes(Node ****shapes, u8 **length) {
+
+	Found method (void) get_collisions_shapes
+		Found argument (Node ****) [shapes]
+		Found argument (u8 **) [length]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves a collection of nodes.
+
+Line:      *
+
+Line:      * This function populates the provided array with a collection of nodes and sets the length of the collection.
+
+Line:      *
+
+Line:      * @param[out] nodes A pointer to an array of CollectedNode pointers that will be populated with the nodes.
+
+Line:      * @param[out] length A pointer to an unsigned 8-bit integer that will be set to the length of the node collection.
+
+Line:      */
+
+Line:     void get_node_collection(CollectedNode **nodes, u8 *length) {
+
+	Found method (void) get_node_collection
+		Found argument (CollectedNode **) [nodes]
+		Found argument (u8 *) [length]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the physics area to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the physics area to the specified file.
+
+Line:      * The file should be opened in a mode that allows writing before calling this function.
+
+Line:      *
+
+Line:      * @param file A pointer to a FILE object that identifies the file to which the state will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line: 
+
+Line: 
+Found class Body
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the given pointer represents a body.
+
+Line:      *
+
+Line:      * This function takes a pointer to a boolean and performs a check to determine if it represents a body.
+
+Line:      *
+
+Line:      * @param body A pointer to a boolean that will be checked.
+
+Line:      */
+
+Line:     void is_body(bool *body) {
+
+	Found method (void) is_body
+		Found argument (bool *) [body]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Applies an impulse to the physics body.
+
+Line:      *
+
+Line:      * This function is responsible for applying an impulse to the physics body,
+
+Line:      * which will affect its velocity and position based on the physics simulation.
+
+Line:      *
+
+Line:      * @note The specific details of how the impulse is calculated and applied
+
+Line:      *       are not provided in this snippet.
+
+Line:      */
+
+Line:     void apply_impulse() {
+
+	Found method (void) apply_impulse
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Adds a child shape to the specified node.
+
+Line:      * 
+
+Line:      * @param child The child shape to be added to the node.
+
+Line:      */
+
+Line:     void add_shape(Node *child) {
+
+	Found method (void) add_shape
+		Found argument (Node *) [child]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Adds a child shape to the specified node and reallocates memory if necessary.
+
+Line:      * 
+
+Line:      * @param node The parent node to which the child shape will be added.
+
+Line:      * @param child The child shape to be added to the node.
+
+Line:      */
+
+Line:     void add_shape_and_realloc(Node *child) {
+
+	Found method (void) add_shape_and_realloc
+		Found argument (Node *) [child]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Removes a child shape from the specified node.
+
+Line:      * 
+
+Line:      * @param node The parent node from which the child shape will be removed.
+
+Line:      * @param child The child shape to be removed from the node.
+
+Line:      */
+
+Line:     void remove_shape(Node *child) {
+
+	Found method (void) remove_shape
+		Found argument (Node *) [child]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Removes a child shape from the specified node and reallocates memory if necessary.
+
+Line:      * 
+
+Line:      * @param node The parent node from which the child shape will be removed.
+
+Line:      * @param child The child shape to be removed from the node.
+
+Line:      */
+
+Line:     void remove_shape_and_realloc(Node *child) {
+
+	Found method (void) remove_shape_and_realloc
+		Found argument (Node *) [child]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Removes a child shape from the specified node and frees the memory allocated for the child shape.
+
+Line:      * 
+
+Line:      * @param node The parent node from which the child shape will be removed.
+
+Line:      * @param child The child shape to be removed and freed.
+
+Line:      */
+
+Line:     void remove_shape_and_free(Node *child) {
+
+	Found method (void) remove_shape_and_free
+		Found argument (Node *) [child]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Removes a child shape from the specified node, frees the memory allocated for the child shape, and reallocates memory if necessary.
+
+Line:      * 
+
+Line:      * @param node The parent node from which the child shape will be removed.
+
+Line:      * @param child The child shape to be removed, freed, and reallocated.
+
+Line:      */
+
+Line:     void remove_shape_and_free_and_realloc(Node *child) {
+
+	Found method (void) remove_shape_and_free_and_realloc
+		Found argument (Node *) [child]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Calculates the collision normal vector.
+
+Line:      *
+
+Line:      * This function computes the normal vector of a collision and stores it in the provided array.
+
+Line:      *
+
+Line:      * @param[out] normal A pointer to an array of floats where the collision normal vector will be stored.
+
+Line:      */
+
+Line:     void get_collision_normal(float *normal) {
+
+	Found method (void) get_collision_normal
+		Found argument (float *) [normal]
+Line:     }
+
+Line: 
+
+Line: 
+Found class KinematicBody
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the kinematic body class.
+
+Line:      *
+
+Line:      * This function initializes a kinematic body with the given velocity.
+
+Line:      *
+
+Line:      * @param velocity Vec3 representing the initial velocity of the kinematic body.
+
+Line:      */
+
+Line:     void constructor(vec3 velocity) {
+
+	Found method (void) constructor
+		Found argument (float *) [velocity]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the length of a kinematic body.
+
+Line:      *
+
+Line:      * This function assigns the length of a kinematic body to the provided pointer.
+
+Line:      *
+
+Line:      * @param length A pointer to an unsigned 8-bit integer where the length will be stored.
+
+Line:      */
+
+Line:     void get_length(u8 *length) {
+
+	Found method (void) get_length
+		Found argument (u8 *) [length]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the collision shapes and their count.
+
+Line:      *
+
+Line:      * This function populates the provided pointers with the collision shapes and their respective count.
+
+Line:      *
+
+Line:      * @param[out] shapes A pointer to a 4-dimensional array of Node pointers where the collision shapes will be stored.
+
+Line:      * @param[out] length A pointer to an array of unsigned 8-bit integers where the count of collision shapes will be stored.
+
+Line:      */
+
+Line:     void get_collisions_shapes(Node ****shapes, u8 **length) {
+
+	Found method (void) get_collisions_shapes
+		Found argument (Node ****) [shapes]
+		Found argument (u8 **) [length]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the global position of a kinematic body.
+
+Line:      *
+
+Line:      * This function updates the global position of a kinematic body based on the provided position, rotation, and scale vectors.
+
+Line:      *
+
+Line:      * @param pos Vec3 structure representing the position of the kinematic body.
+
+Line:      * @param rot Vec3 structure representing the rotation of the kinematic body.
+
+Line:      * @param scale Vec3 structure representing the scale of the kinematic body.
+
+Line:      */
+
+Line:     void update_global_position(vec3 pos, vec3 rot, vec3 scale) {
+
+	Found method (void) update_global_position
+		Found argument (float *) [pos]
+		Found argument (float *) [rot]
+		Found argument (float *) [scale]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the position, rotation, and scale of a kinematic body.
+
+Line:      *
+
+Line:      * This function updates the position, rotation, and scale vectors of a kinematic body
+
+Line:      * based on the given delta time. It is typically used in a physics simulation to
+
+Line:      * update the state of the body over time.
+
+Line:      *
+
+Line:      * @param pos Vec3 structure representing the position of the body.
+
+Line:      * @param rot Vec3 structure representing the rotation of the body.
+
+Line:      * @param scale Vec3 structure representing the scale of the body.
+
+Line:      * @param delta The time delta used to update the body's state.
+
+Line:      */
+
+Line:     void update(vec3 pos, vec3 rot, vec3 scale, float delta) {
+
+	Found method (void) update
+		Found argument (float *) [pos]
+		Found argument (float *) [rot]
+		Found argument (float *) [scale]
+		Found argument (double) [delta]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file and initializes the provided Camera, Script, and Node objects.
+
+Line:      *
+
+Line:      * This function reads data from the specified file and uses it to initialize the provided
+
+Line:      * Camera, Script, and Node objects. The function assumes that the file is already opened
+
+Line:      * and ready for reading.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object from which data will be read.
+
+Line:      * @param c A double pointer to a Camera object that will be initialized with the data read from the file.
+
+Line:      * @param scripts A pointer to a Script object that will be initialized with the data read from the file.
+
+Line:      * @param editor A pointer to a Node object that will be initialized with the data read from the file.
+
+Line:      */
+
+Line:     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+		Found argument (Camera **) [c]
+		Found argument (Script *) [scripts]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the state of the kinematic body to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the kinematic body to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the file where the state will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Applies an impulse to the kinematic body.
+
+Line:      *
+
+Line:      * This function applies a given impulse and torque to the kinematic body and performs any necessary corrections.
+
+Line:      *
+
+Line:      * @param impulse Vec3 representing the impulse to be applied.
+
+Line:      * @param torque Vec3 representing the torque to be applied.
+
+Line:      * @param correction Vec3 representing the correction to be applied.
+
+Line:      */
+
+Line:     void apply_impulse(vec3 impulse, vec3 torque, vec3 correction) {
+
+	Found method (void) apply_impulse
+		Found argument (float *) [impulse]
+		Found argument (float *) [torque]
+		Found argument (float *) [correction]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Get the velocity norm of a node.
+
+Line:      * 
+
+Line:      * @return The velocity norm of the node.
+
+Line:      */
+
+Line:     float get_velocity_norm() {
+
+	Found method (float) get_velocity_norm
+Line:     };
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Get the velocity of a node.
+
+Line:      * 
+
+Line:      * @param velocity Output vector to store the velocity.
+
+Line:      */
+
+Line:     void get_velocity(vec3 velocity) {
+
+	Found method (void) get_velocity
+		Found argument (float *) [velocity]
+Line:     };
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Get the mass of a node.
+
+Line:      * 
+
+Line:      * @param mass Output pointer to store the mass.
+
+Line:      */
+
+Line:     void get_mass(float * mass) {
+
+	Found method (void) get_mass
+		Found argument (float *) [mass]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Get the center of mass of a node.
+
+Line:      * 
+
+Line:      * @param com Output vector to store the center of mass.
+
+Line:      */
+
+Line:     void get_center_of_mass(vec3 com) {
+
+	Found method (void) get_center_of_mass
+		Found argument (float *) [com]
+Line:     }
+
+Line: 
+
+Line: 
+Found class RigidBody
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the rigid body class.
+
+Line:      *
+
+Line:      * This function initializes a rigid body with the given parameters.
+
+Line:      *
+
+Line:      * @param velocity Vec3 representing the initial velocity of the rigid body.
+
+Line:      * @param angularVelocity Vec3 representing the initial angular velocity of the rigid body.
+
+Line:      * @param gravity Vec3 representing the gravity affecting the rigid body.
+
+Line:      * @param mass Float representing the mass of the rigid body.
+
+Line:      * @param friction Float representing the friction coefficient of the rigid body.
+
+Line:      * @param centerOfMass Vec3 representing the center of mass of the rigid body.
+
+Line:      */
+
+Line:     void constructor(vec3 velocity, vec3 angularVelocity, vec3 gravity, float mass, float friction, vec3 centerOfMass) {
+
+	Found method (void) constructor
+		Found argument (float *) [velocity]
+		Found argument (float *) [angularVelocity]
+		Found argument (float *) [gravity]
+		Found argument (double) [mass]
+		Found argument (double) [friction]
+		Found argument (float *) [centerOfMass]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the collision shapes and their lengths.
+
+Line:      *
+
+Line:      * This function populates the provided pointers with the collision shapes and their respective lengths.
+
+Line:      *
+
+Line:      * @param[out] shapes A pointer to a 4-dimensional array of Node pointers that will be populated with the collision shapes.
+
+Line:      * @param[out] length A pointer to an array of unsigned 8-bit integers that will be populated with the lengths of the collision shapes.
+
+Line:      */
+
+Line:     void get_collisions_shapes(Node ****shapes, u8 **length) {
+
+	Found method (void) get_collisions_shapes
+		Found argument (Node ****) [shapes]
+		Found argument (u8 **) [length]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the global position of a rigid body.
+
+Line:      *
+
+Line:      * This function updates the global position of a rigid body based on the provided
+
+Line:      * position, rotation, and scale vectors.
+
+Line:      *
+
+Line:      * @param pos Vec3 structure representing the position of the rigid body.
+
+Line:      * @param rot Vec3 structure representing the rotation of the rigid body.
+
+Line:      * @param scale Vec3 structure representing the scale of the rigid body.
+
+Line:      */
+
+Line:     void update_global_position(vec3 pos, vec3 rot, vec3 scale) {
+
+	Found method (void) update_global_position
+		Found argument (float *) [pos]
+		Found argument (float *) [rot]
+		Found argument (float *) [scale]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Applies a torque to the rigid body.
+
+Line:      *
+
+Line:      * This function takes a pointer to a torque vector and applies it to the rigid body. The torque vector should be in the form of a float array representing the torque components.
+
+Line:      *
+
+Line:      * @param torque Vec3 representing the torque to be applied.
+
+Line:      */
+
+Line:     void apply_torque(vec3 torque) {
+
+	Found method (void) apply_torque
+		Found argument (float *) [torque]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the position, rotation, and scale of a rigid body.
+
+Line:      *
+
+Line:      * This function updates the position, rotation, and scale of a rigid body based on the given delta time.
+
+Line:      *
+
+Line:      * @param pos Vec3 structure representing the position of the rigid body.
+
+Line:      * @param rot Vec3 structure representing the rotation of the rigid body.
+
+Line:      * @param scale Vec3 structure representing the scale of the rigid body.
+
+Line:      * @param delta The time delta used to update the rigid body's properties.
+
+Line:      */
+
+Line:     void update(vec3 pos, vec3 rot, vec3 scale, float delta) {
+
+	Found method (void) update
+		Found argument (float *) [pos]
+		Found argument (float *) [rot]
+		Found argument (float *) [scale]
+		Found argument (double) [delta]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file and initializes the given parameters.
+
+Line:      *
+
+Line:      * This function reads data from the specified file and uses it to initialize
+
+Line:      * the provided Camera, Script, and Node objects.
+
+Line:      *
+
+Line:      * @param file A pointer to the file to read data from.
+
+Line:      * @param c A double pointer to a Camera object that will be initialized.
+
+Line:      * @param scripts A pointer to a Script object that will be initialized.
+
+Line:      * @param editor A pointer to a Node object that will be initialized.
+
+Line:      */
+
+Line:     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+		Found argument (Camera **) [c]
+		Found argument (Script *) [scripts]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the RigidBody to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the RigidBody instance to the specified file.
+
+Line:      * The file should be opened in a mode that allows writing binary data.
+
+Line:      *
+
+Line:      * @param file A pointer to a FILE object that identifies the file to which the data will be written.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Applies an impulse to a rigid body.
+
+Line:      *
+
+Line:      * This function applies an impulse to a rigid body, affecting its linear and angular velocity.
+
+Line:      * The impulse is applied at the center of mass of the rigid body, and the torque is applied
+
+Line:      * to affect the angular velocity.
+
+Line:      *
+
+Line:      * @param impulse Vec3 representing the impulse to be applied.
+
+Line:      * @param torque Vec3 representing the torque to be applied.
+
+Line:      * @param correction Vec3 representing the correction to be applied.
+
+Line:      */
+
+Line:     void apply_impulse(vec3 impulse, vec3 torque, vec3 correction) {
+
+	Found method (void) apply_impulse
+		Found argument (float *) [impulse]
+		Found argument (float *) [torque]
+		Found argument (float *) [correction]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Get the velocity norm of a node.
+
+Line:      * 
+
+Line:      * @return The velocity norm of the node.
+
+Line:      */
+
+Line:     float get_velocity_norm() {
+
+	Found method (float) get_velocity_norm
+Line:     };
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Get the velocity of a node.
+
+Line:      * 
+
+Line:      * @param velocity Output vector to store the velocity.
+
+Line:      */
+
+Line:     void get_velocity(vec3 velocity) {
+
+	Found method (void) get_velocity
+		Found argument (float *) [velocity]
+Line:     };
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Get the mass of a node.
+
+Line:      * 
+
+Line:      * @param mass Output pointer to store the mass.
+
+Line:      */
+
+Line:     void get_mass(float * mass) {
+
+	Found method (void) get_mass
+		Found argument (float *) [mass]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Get the center of mass of a node.
+
+Line:      * 
+
+Line:      * @param com Output vector to store the center of mass.
+
+Line:      */
+
+Line:     void get_center_of_mass(vec3 com) {
+
+	Found method (void) get_center_of_mass
+		Found argument (float *) [com]
+Line:     }
+
+Line:     
+
+Line: 
+
+Line: 
+Found class StaticBody
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the static body class.
+
+Line:      *
+
+Line:      * This function initializes a static body with the given normal force.
+
+Line:      *
+
+Line:      * @param forcedNormal Vec3 representing the normal force to be applied to the static body.
+
+Line:      */
+
+Line:     void constructor(vec3 forcedNormal) {
+
+	Found method (void) constructor
+		Found argument (float *) [forcedNormal]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the collision shapes and their lengths.
+
+Line:      *
+
+Line:      * This function populates the provided pointers with the collision shapes and their corresponding lengths.
+
+Line:      *
+
+Line:      * @param shapes A pointer to a 4-dimensional array of Node pointers. This will be populated with the collision shapes.
+
+Line:      * @param length A pointer to an array of unsigned 8-bit integers. This will be populated with the lengths of the collision shapes.
+
+Line:      */
+
+Line:     void get_collisions_shapes(Node ****shapes, u8 **length) {
+
+	Found method (void) get_collisions_shapes
+		Found argument (Node ****) [shapes]
+		Found argument (u8 **) [length]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the global position of a static body.
+
+Line:      *
+
+Line:      * This function updates the global position of a static body based on the provided position, rotation, and scale vectors.
+
+Line:      *
+
+Line:      * @param pos Vec3 structure representing the position of the static body.
+
+Line:      * @param rot Vec3 structure representing the rotation of the static body.
+
+Line:      * @param scale Vec3 structure representing the scale of the static body.
+
+Line:      */
+
+Line:     void update_global_position(vec3 pos, vec3 rot, vec3 scale) {
+
+	Found method (void) update_global_position
+		Found argument (float *) [pos]
+		Found argument (float *) [rot]
+		Found argument (float *) [scale]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the position, rotation, and scale of a static body.
+
+Line:      *
+
+Line:      * This function updates the transformation properties of a static body in the physics engine.
+
+Line:      *
+
+Line:      * @param pos Vec3 structure representing the position of the static body.
+
+Line:      * @param rot Vec3 structure representing the rotation of the static body.
+
+Line:      * @param scale Vec3 structure representing the scale of the static body.
+
+Line:      */
+
+Line:     void update(vec3 pos, vec3 rot, vec3 scale) {
+
+	Found method (void) update
+		Found argument (float *) [pos]
+		Found argument (float *) [rot]
+		Found argument (float *) [scale]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file and initializes the provided Camera, Script, and Node structures.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object from which data will be read.
+
+Line:      * @param c A double pointer to a Camera structure that will be initialized with data from the file.
+
+Line:      * @param scripts A pointer to a Script structure that will be initialized with data from the file.
+
+Line:      * @param editor A pointer to a Node structure that will be initialized with data from the file.
+
+Line:      */
+
+Line:     void load(FILE *file, Camera **c, Script *scripts, Node *editor) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+		Found argument (Camera **) [c]
+		Found argument (Script *) [scripts]
+		Found argument (Node *) [editor]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the static body to a file.
+
+Line:      *
+
+Line:      * This function writes the relevant data of the static body to the provided file.
+
+Line:      *
+
+Line:      * @param file A pointer to a FILE object that identifies the file to which the data will be written.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Get the velocity norm of a node.
+
+Line:      * 
+
+Line:      * @return The velocity norm of the node.
+
+Line:      */
+
+Line:     float get_velocity_norm() {
+
+	Found method (float) get_velocity_norm
+Line:     };
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Get the velocity of a node.
+
+Line:      * 
+
+Line:      * @param velocity Output vector to store the velocity.
+
+Line:      */
+
+Line:     void get_velocity(vec3 velocity) {
+
+	Found method (void) get_velocity
+		Found argument (float *) [velocity]
+Line:     };
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Get the mass of a node.
+
+Line:      * 
+
+Line:      * @param mass Output pointer to store the mass.
+
+Line:      */
+
+Line:     void get_mass(float * mass) {
+
+	Found method (void) get_mass
+		Found argument (float *) [mass]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Get the center of mass of a node.
+
+Line:      * 
+
+Line:      * @param com Output vector to store the center of mass.
+
+Line:      */
+
+Line:     void get_center_of_mass(vec3 com) {
+
+	Found method (void) get_center_of_mass
+		Found argument (float *) [com]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves the collision normal vector.
+
+Line:      *
+
+Line:      * This function calculates and returns the normal vector of a collision.
+
+Line:      * The normal vector is a unit vector that is perpendicular to the surface
+
+Line:      * at the point of collision.
+
+Line:      *
+
+Line:      * @param[out] normal Vec3 where the normal vector
+
+Line:      *                    will be stored.
+
+Line:      */
+
+Line:     void get_collision_normal(vec3 normal) {
+
+	Found method (void) get_collision_normal
+		Found argument (float *) [normal]
+Line:     }
+
+Line: 
+
+Line: 
+
+Line: 
+Found class PhysicalNode
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Frees the resources allocated for the PhysicalNode instance.
+
+Line:      *
+
+Line:      * This function is responsible for releasing any memory or resources that were allocated for the PhysicalNode instance. It should be called when the PhysicalNode is no longer needed to prevent memory leaks.
+
+Line:      */
+
+Line:     void free() {
+
+	Found method (void) free
+Line:     }
+
+Line: 
+
+Line: 
+Found class RenderTarget
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the render target class.
+
+Line:      *
+
+Line:      * This function initializes a render target with the specified width and height.
+
+Line:      *
+
+Line:      * @param width The width of the render target.
+
+Line:      * @param height The height of the render target.
+
+Line:      */
+
+Line:     void constructor(int width, int height) {
+
+	Found method (void) constructor
+		Found argument (int) [width]
+		Found argument (int) [height]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Updates the render target.
+
+Line:      *
+
+Line:      * This function is responsible for updating the state of the render target.
+
+Line:      * It performs necessary operations to ensure the render target is up-to-date.
+
+Line:      */
+
+Line:     void update() {
+
+	Found method (void) update
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file.
+
+Line:      *
+
+Line:      * This function reads data from the given file and processes it accordingly.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object that represents the file to be read.
+
+Line:      */
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state to the specified file.
+
+Line:      *
+
+Line:      * This function writes the current state of the render target to the given
+
+Line:      * file. The file must be opened in a mode that allows writing.
+
+Line:      *
+
+Line:      * @param file A pointer to a FILE object that identifies the file to which
+
+Line:      * the state will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Checks if the current target is a render target.
+
+Line:      *
+
+Line:      * This function sets the value of the provided boolean pointer to indicate
+
+Line:      * whether the current target is a render target.
+
+Line:      *
+
+Line:      * @param render_target A pointer to a boolean variable that will be set to true
+
+Line:      *                      if the current target is a render target, or false otherwise.
+
+Line:      */
+
+Line:     void is_render_target(bool *render_target) {
+
+	Found method (void) is_render_target
+		Found argument (bool *) [render_target]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Frees the resources allocated for the render target.
+
+Line:      *
+
+Line:      * This function is responsible for releasing any memory or resources
+
+Line:      * that were allocated for the render target. It should be called when
+
+Line:      * the render target is no longer needed to avoid memory leaks.
+
+Line:      */
+
+Line:     void free() {
+
+	Found method (void) free
+Line:     }
+
+Line: 
+
+Line:     
+
+Line: 
+
+Line: 
+Found class Scene
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the scene class.
+
+Line:      *
+
+Line:      * This function initializes a new scene object using the provided path.
+
+Line:      *
+
+Line:      * @param path The file path to initialize the scene object with.
+
+Line:      */
+
+Line:     void constructor(const char * path) {
+
+	Found method (void) constructor
+		Found argument (const char *) [path]
+Line:     }
+
+Line:     
+
+Line:     /**
+
+Line:      * @brief Loads data from a file.
+
+Line:      *
+
+Line:      * This function reads data from the given file and loads it into the appropriate structures.
+
+Line:      *
+
+Line:      * @param file A pointer to the file to be loaded.
+
+Line:      */
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line:     
+
+Line: 
+
+Line: 
+Found class Skybox
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads a cubemap texture from 6 individual texture faces.
+
+Line:      * 
+
+Line:      * This function takes an array of file paths to 6 texture images, each representing
+
+Line:      * one face of a cubemap (right, left, top, bottom, front, back), and loads them into
+
+Line:      * a single cubemap texture.
+
+Line:      * 
+
+Line:      * @param faces An array of 6 strings, each containing the file path to a texture image.
+
+Line:      *              The order of the faces should be: right, left, top, bottom, front, back.
+
+Line:      * 
+
+Line:      * @return TextureMap The loaded cubemap texture.
+
+Line:      */
+
+Line:      TextureMap load_cubemap(char (*faces)[100]) {
+
+	Found method (TextureMap) load_cubemap
+		Found argument (char (*) [faces)[100]]
+Line:     }  
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Creates a skybox with the given textures.
+
+Line:      *
+
+Line:      * This function initializes a skybox using the provided textures and assigns it to the given textured mesh.
+
+Line:      *
+
+Line:      * @param texturedMesh A pointer to the TextureMap structure where the skybox will be created.
+
+Line:      * @param skyboxTexture A 2D array containing the file paths of the six textures for the skybox. 
+
+Line:      *                      The textures should be ordered as follows: right, left, top, bottom, front, back.
+
+Line:      * @note Each file path in the skyboxTexture array should not exceed 200 characters.
+
+Line:      */
+
+Line:     void create_skybox(TexturedMesh *texturedMesh, char (*skyboxTexture)[100]) {
+
+	Found method (void) create_skybox
+		Found argument (TexturedMesh *) [texturedMesh]
+		Found argument (char (*) [skyboxTexture)[100]]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the Skybox class.
+
+Line:      *
+
+Line:      * This function initializes a Skybox object with the given path to the skybox textures.
+
+Line:      *
+
+Line:      * @param path A pointer to an array of strings, each string representing the file path to a texture image.
+
+Line:      *             The array should contain exactly 6 file paths, one for each face of the skybox.
+
+Line:      */
+
+Line:     void constructor(const char (*path)[100]) {
+
+	Found method (void) constructor
+		Found argument (const char (*) [path)[100]]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file.
+
+Line:      *
+
+Line:      * This function reads data from the provided file and processes it
+
+Line:      * to load the necessary information for the Skybox class.
+
+Line:      *
+
+Line:      * @param file A pointer to the file to be read.
+
+Line:      */
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the Skybox to a file.
+
+Line:      *
+
+Line:      * This function writes the current state of the Skybox object to the specified file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the Skybox state will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Renders the skybox using the provided model matrix and shader.
+
+Line:      *
+
+Line:      * This function is responsible for rendering the skybox in the scene. It uses
+
+Line:      * the provided model matrix to transform the skybox and the active shader to
+
+Line:      * apply the necessary shading effects. Additionally, it utilizes the world
+
+Line:      * shaders for any global shader settings or configurations.
+
+Line:      *
+
+Line:      * @param modelMatrix Model matrix used to transform the skybox.
+
+Line:      * @param activeShader The shader program currently active for rendering.
+
+Line:      * @param shaders A pointer to the WorldShaders structure containing global shader settings.
+
+Line:      */
+
+Line:     void render(mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
+
+	Found method (void) render
+		Found argument (float (*) [modelMatrix)[4]]
+		Found argument (Shader) [activeShader]
+		Found argument (WorldShaders *) [shaders]
+Line:     }
+
+Line: 
+
+Line: 
+
+Line: 
+Found class TexturedMesh
+Line:     __containerType__ Node *
+
+Line:     public:
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Constructor for the textured mesh class.
+
+Line:      *
+
+Line:      * This function initializes a textured mesh object using the provided file path.
+
+Line:      *
+
+Line:      * @param path The file path to the texture to be used for the mesh.
+
+Line:      */
+
+Line:     void constructor(const char *path) {
+
+	Found method (void) constructor
+		Found argument (const char *) [path]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Retrieves settings data.
+
+Line:      *
+
+Line:      * This function retrieves settings data and stores it in the provided pointer.
+
+Line:      *
+
+Line:      * @param[out] ptr A pointer to a pointer to a pointer where the settings data will be stored.
+
+Line:      * @param[out] length A pointer to an integer where the length of the settings data will be stored.
+
+Line:      */
+
+Line:     void get_settings_data(void *** ptr, int * length) {
+
+	Found method (void) get_settings_data
+		Found argument (void ***) [ptr]
+		Found argument (int *) [length]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Loads data from a file.
+
+Line:      *
+
+Line:      * This function reads data from the provided file pointer and loads it into the appropriate structures.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object that represents the file to be read.
+
+Line:      */
+
+Line:     void load(FILE *file) {
+
+	Found method (void) load
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Saves the current state of the textured mesh to a file.
+
+Line:      *
+
+Line:      * This function writes the necessary data of the textured mesh to the provided file.
+
+Line:      *
+
+Line:      * @param file A pointer to the FILE object where the textured mesh data will be saved.
+
+Line:      */
+
+Line:     void save(FILE *file) {
+
+	Found method (void) save
+		Found argument (FILE *) [file]
+Line:     }
+
+Line: 
+
+Line:     /**
+
+Line:      * @brief Renders the textured mesh using the provided model matrix and active shader.
+
+Line:      * 
+
+Line:      * This function takes a model matrix and an active shader as input parameters and
+
+Line:      * renders the textured mesh accordingly. The model matrix is used to transform the
+
+Line:      * mesh, and the shader is used to apply the necessary rendering effects.
+
+Line:      * 
+
+Line:      * @param modelMatrix Model matrix used for transforming the mesh.
+
+Line:      * @param activeShader The shader program used for rendering the mesh.
+
+Line:      */
+
+Line:     void render(mat4 modelMatrix, Shader activeShader) {
+
+	Found method (void) render
+		Found argument (float (*) [modelMatrix)[4]]
+		Found argument (Shader) [activeShader]
+Line:     }
+
+Line: 
+
+Line:     
+
+Line: 
+
+Line: 
+Done
