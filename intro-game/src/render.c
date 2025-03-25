@@ -35,6 +35,7 @@ void draw_texture (Texture_t * texture) {
 
         if (texture->hidden == FALSE) {
 
+            double angle ;
             switch (texture->typeAnim) {
                 case NONE : 
                     if (!compare_SDL_Rect(texture->srcrect, (SDL_Rect){0, 0, 0, 0})) {
@@ -56,7 +57,7 @@ void draw_texture (Texture_t * texture) {
                     break;
                 
                 case ROTATION :
-                    double angle = (360.0 / (texture->numFrames)) * texture->currentFrame ;
+                    angle = (360.0 / (texture->numFrames)) * texture->currentFrame ;
                 
                     if (!compare_SDL_Rect(texture->srcrect, (SDL_Rect){0, 0, 0, 0})) {
                         SDL_RenderCopyEx(renderer, texture->texture, NULL, &texture->position, angle, NULL, SDL_FLIP_NONE);

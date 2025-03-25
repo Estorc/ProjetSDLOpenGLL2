@@ -4,6 +4,7 @@
  
 extern SDL_Renderer * renderer ;
 typedef struct Dictionary_u Dictionary_t ;
+typedef struct List_u List_t ;
 
 /**
  * Définis le type d'animation que subira la texture : 
@@ -33,9 +34,9 @@ Texture_t * create_texture (SDL_Rect position, SDL_Rect srcrect, int hidden) ;
 void destroy_texture (Texture_t ** texture) ;
 void destroy_texture_cb (void * texture) ;
 void texture_update (Texture_t * texture) ;
-void texture_dict_update (Dictionary_t * dict) ;
-void texture_dict_update_from_file (Dictionary_t * dict, const char * dataPath) ;
-int load_textures_from_file (Dictionary_t * dict, const char * dataPath) ;
+void texture_list_update (List_t * list) ;
+void texture_list_update_from_file (List_t * list, const char * dataPath) ;
+int load_textures_from_file (List_t * list, const char * dataPath) ;
 
 // return NULL if failed, print the error message in this case 
 SDL_Texture * load_png (char * path) ;

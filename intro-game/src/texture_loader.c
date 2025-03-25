@@ -2,6 +2,7 @@
 #include "../include/main.h"
 #include "../include/texture_loader.h"
 #include "../include/dictionary.h"
+#include "../include/list.h"
 
 // load png file and return the texture 
 SDL_Texture * load_png (char * path) {
@@ -107,15 +108,13 @@ void texture_update (Texture_t * texture) {
 }
 
 
-void texture_dict_update (Dictionary_t * dict) {
+void texture_list_update (List_t * list) {
 
-    if (existe(dict)) {
+    if (existe(list)) {
 
-        for (int i = 0; i < dict->nbEntry; i++) {
+        for (int i = 0; i < list->size; i++) {
 
-            Entry_t * entry = dict->item(dict, i) ;
-            Texture_t * texture = entry->value ;
-
+            Texture_t * texture = list->item(list, i) ;
             texture_update(texture);
         }
     }
@@ -125,9 +124,14 @@ void texture_dict_update (Dictionary_t * dict) {
 }
 
 
-void texture_dict_update_from_file (Dictionary_t * dict, const char * dataPath) {
+void texture_list_update_from_file (List_t * list, const char * dataPath) {
+
+    if (!existe(list)) {
+        printf("Impossible d'update le listTexture car list NULL\n");
+        return ;
+    }
     
-    if (existe(dict)) {
+    if (fileModified(dataPath)) {
 
         FILE * file = fopen(dataPath, "r") ;
         if (!existe(file)) {
@@ -145,10 +149,9 @@ void texture_dict_update_from_file (Dictionary_t * dict, const char * dataPath) 
         // Lecture de la première ligne
         fgets(buffer, sizeof(buffer), file);
 
-        for (int i = 0; i < dict->nbEntry; i++) {
+        for (int i = 0; i < list->size; i++) {
 
-            Entry_t * entry = dict->item(dict, i) ;
-            Texture_t * texture = entry->value ;
+            Texture_t * texture = list->item(list, i) ;
 
             // Lecture et initialisation des éléments
             if (fscanf(file, "%[^;];%[^;];%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d%%", 
@@ -171,7 +174,6 @@ void texture_dict_update_from_file (Dictionary_t * dict, const char * dataPath) 
                 texture->srcrect.h = srcH ;
 
                 texture->hidden = hidden ;
-
             }
             
             texture_update(texture);
@@ -180,12 +182,14 @@ void texture_dict_update_from_file (Dictionary_t * dict, const char * dataPath) 
         fclose(file);
     }
     else {
-        printf("Impossible d'update le texture_dict car dict NULL\n");
+        for (int i = 0; i < list->size; i++) {
+            texture_update(list->item(list, i));
+        }
     }
 }
 
 
-int load_textures_from_file (Dictionary_t * dict, const char * dataPath) {
+int load_textures_from_file (List_t * list, const char * dataPath) {
 
     FILE * file = fopen(dataPath, "r") ;
     if (!existe(file)) {
@@ -228,7 +232,7 @@ int load_textures_from_file (Dictionary_t * dict, const char * dataPath) {
         texture->animationSpeed = speed ;
         texture->loop = loop ;
 
-        dict->set(dict, key, texture, destroy_texture_cb);
+        list->set(list, texture, list->size);
 
         printf("key : %s, texturePath : %s\n", key, texturePath) ;    
     }

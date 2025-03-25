@@ -23,6 +23,7 @@ trouver un moyen simple d'animer une texture
 
 changer le text dict update pour le rendre comme celui de texture update + ajouter text update from file comme pour texture
 
+modif les structure de donnees pour les texture_t et les text_t, passer a des list_t 
 creer different taille de font dans chaque data : small medium large et d'autre encore
 finir implementation focntion manip text_t 
 changer la maniere d'animer le texte car tres gourmand durant les anim de texte
