@@ -21,6 +21,7 @@ peut faire un etxtrue manager pour toyute les texture
 
 trouver un moyen simple d'animer une texture 
 
+changer le text dict update pour le rendre comme celui de texture update + ajouter text update from file comme pour texture
 
 creer different taille de font dans chaque data : small medium large et d'autre encore
 finir implementation focntion manip text_t 
