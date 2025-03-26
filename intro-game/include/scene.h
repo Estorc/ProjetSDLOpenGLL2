@@ -6,9 +6,11 @@
 
 #define MAX_SCENES 10
 
-#define GET_LIST_TEXTURE(dict) dict->get(dict, "listTexture")
+#define GET_LIST_TEXTURE(dict) dict->get(dict, "listTexture") 
+#define GET_LIST_TEXT(dict) dict->get(dict, "listText") 
 #define GET_INFO(dict) dict->get(dict, "info")
 #define GET_EVENT_MANAGER(dict) dict->get(dict, "eventManager")
+
 
 extern SDL_Renderer * renderer ;
 extern GameStatus_t gameStatus ;
@@ -32,6 +34,8 @@ typedef struct SceneEvent_u {
     float (*trigger) (Scene_t *, struct SceneEvent_u *) ; 
     void (*action) (Scene_t *, float) ;
 
+    uint32_t execTime ;
+    uint32_t duration ;
     int active ;
 } SceneEvent_t ;
 

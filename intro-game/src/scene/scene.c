@@ -13,13 +13,6 @@
 #include "../include/list.h"
 
 
-
-// #######################################################################################
-// ############################## FONCTIONS SCENE DESKTOP ################################
-// #######################################################################################
-
-
-
 void LEVEL1_load (Scene_t * self) {
     
     if (self == NULL) {
@@ -134,11 +127,6 @@ void LEVEL1_render (Scene_t * self) {
 }
 
 
-// #######################################################################################
-// ############################## FONCTIONS DE MANIP SCENES ##############################
-// #######################################################################################
-
-
 /**
  * Detruis la scene 
  */
@@ -198,13 +186,6 @@ Scene_t * create_scene (char * name, void (*load) (Scene_t *), void (*unLoad) (S
 
     return scene;
 }
-
-
-/**
- * ##############################################################################################
- * ############################## FONCTIONS DE MANIP SCENE MANAGER ##############################
- * ##############################################################################################
- */
 
 
 /**
@@ -454,17 +435,18 @@ void add_event (SceneEventManager_t * manager, float (*trigger) (Scene_t *, Scen
  * 
  */
 void process_events(SceneEventManager_t * manager, Scene_t * scene) {
-    Uint32 currentTime = SDL_GetTicks();
+
     for (int i = 0; i < manager->eventCount; i++) {
         SceneEvent_t * event = &manager->events[i];
 
-        float progress = event->trigger(scene, event) ;
-
         if (event->active) {
+
+            float progress = event->trigger(scene, event) ;
 
             if (progress >= 1.0f) {
                 event->active = 0;  // L'événement est terminé
                 progress = 1.0f;     // On s'assure que progress ne dépasse pas 1
+                printf("passeg a no actif\n");
             }
 
             event->action(scene, progress);

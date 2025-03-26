@@ -26,8 +26,6 @@ int main(int argc, char* argv[]) {
     if (init_systeme()) {
         return 1;
     }
-
-    Mix_AllocateChannels(16);
     
 
     // creer personnage 
