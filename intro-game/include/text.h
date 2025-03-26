@@ -22,7 +22,7 @@ void destroy_text (Text_t ** text) ;
 void destroy_text_cb (void * text) ;
 SDL_Texture * create_TTF_Texture (TTF_Font * font, const char * string, SDL_Color color) ;
 void text_update (Text_t * text) ;
-void text_dict_update (Dictionary_t * dict, const char * dataPath) ;
+void text_list_update (List_t * list, const char * dataPath) ;
 void text_change_hollow (Text_t * text, int boolean, SDL_Color color, TypeHollow_t dir) ;
 void text_change_color (Text_t * text, SDL_Color newColor) ;
 void text_change_position (Text_t * text, SDL_Rect newPosition) ; 
@@ -31,5 +31,5 @@ void text_change_font (Text_t * text, TTF_Font * newFont) ;
 void text_change_visibility (Text_t * text, int hidden) ;
 void TTF_CloseFont_cb (void * font) ;
 
-int load_texts_from_file (const char * dataPath, List_t * font, Dictionary_t * dict) ;
+int load_texts_from_file (const char * dataPath, List_t * font, List_t * list) ;
 void get_text_dimensions (Text_t * text, int * w, int * h) ;
