@@ -20,6 +20,8 @@ typedef struct Map_u Map_t ;
 typedef struct Scene_u Scene_t ;
 typedef struct SceneManager_u SceneManager_t ; 
 
+extern SceneManager_t * manager ;
+
 typedef struct InfoScene_u {
     int len ;       // Taille attribut `data` de la scene 
     int end ;       // Trigger de la fin du jeu, prends valeur TRUE ou FALSE 
