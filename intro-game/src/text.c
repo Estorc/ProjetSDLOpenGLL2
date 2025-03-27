@@ -240,22 +240,16 @@ void text_update (Text_t * text) {
         }
     }
 }
-void text_dict_update (Dictionary_t * dict, const char * dataPath) {
+void text_list_update (List_t * list, const char * dataPath) {
     // Vérifie si le text existe 
-    if (!existe(dict)) {
+    if (!existe(list)) {
         return ;
     }
 
-    for (int i = 0; i < dict->nbEntry; i++) {
+    for (int i = 0; i < list->size; i++) {
 
-        Entry_t * entry = dict->item(dict, i) ;
-        Text_t * text = entry->value ;
-
+        Text_t * text = list->item(list, i) ;
         text_update(text);
-
-        if (text->animation.frameCount == 0) {
-            // load_texts_from_file(dataPath, text->font, dict);
-        }
     }
 }
 
@@ -347,7 +341,7 @@ void TTF_CloseFont_cb (void * font) {
 /**
  * Insert des donnees text_t dans un dictionnaire a partir d'un fichier csv  
  */
-int load_texts_from_file (const char * dataPath, List_t * listFont, Dictionary_t * dict) {
+int load_texts_from_file (const char * dataPath, List_t * listFont, List_t * list) {
 
     FILE * file = fopen(dataPath, "r") ;
     if (!existe(file)) {
@@ -383,7 +377,7 @@ int load_texts_from_file (const char * dataPath, List_t * listFont, Dictionary_t
             return ERROR ;
         } 
         else {
-            dict->set(dict, key, text, destroy_text_cb);
+            list->set(list, text, list->size);
         }
 
         text_change_hollow(text, hollow, (SDL_Color){hr, hg, hb, ha}, typeHollow);

@@ -1,6 +1,6 @@
 #include "../include/lib.h"
 #include "../include/main.h"
-#include "../include/commun.h"
+#include "../include/utils.h"
 #include "../include/dictionary.h"
 
 int existe (void * ptr) {
@@ -67,3 +67,5 @@ int fileModified (const char * path) {
 
     return 0;  // pas de changement dans le fichier 
 }
+
+

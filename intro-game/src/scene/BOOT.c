@@ -6,22 +6,16 @@
 #include "../include/text.h"
 #include "../include/dictionary.h"
 #include "../include/texture_loader.h"
-#include "../include/list.h"
+#include "../include/list.h" 
 
 
 // fonctions correspondant a certains evenements 
 static float imageFadeIn_trigger (Scene_t * scene, SceneEvent_t * event) ;
 static void imageFadeIn (Scene_t * scene, float progress) ;
 
+static SceneEventManager_t * BOOT_create_events () ;
 
-static SceneEventManager_t * BOOT_init_events () {
-    SceneEventManager_t * manager = create_event_manager(20) ;
 
-    manager->events[manager->eventCount].trigger = imageFadeIn_trigger ;
-    manager->events[manager->eventCount++].action = imageFadeIn ;
-
-    return manager ;
-}
 /**
  * 
  */
@@ -39,7 +33,7 @@ void BOOT_load (Scene_t * self) {
 
     Dictionary_t * dict = self->data ;
 
-    SceneEventManager_t * eventManager = BOOT_init_events() ;
+    SceneEventManager_t * eventManager = BOOT_create_events() ;
     if (!existe(eventManager)) {
         destroy_dictionary(&dict);
         return ;
@@ -90,22 +84,22 @@ void BOOT_load (Scene_t * self) {
 
     dict->set(dict, "listFont", listFont, destroy_list_cb);
 
-    Dictionary_t * text_dict = create_dictionnary() ;
-    if (!existe(text_dict)) {
+    List_t * listText = create_list(destroy_text_cb) ;
+    if (!existe(listText)) {
         fprintf(stderr, "Erreur création dict_textures dans DESKTOP\n");
         destroy_dictionary(&self->data);
         return ;
     }
 
-    if (load_texts_from_file("intro-game/data/donneesTextsBootScene.csv", listFont, text_dict)) {
+    if (load_texts_from_file("intro-game/data/donneesTextsBootScene.csv", listFont, listText)) {
         fprintf(stderr, "Erreur création des textes dans BOOT\n");
-        destroy_dictionary(&text_dict);
+        destroy_list(&listText);
         destroy_dictionary(&self->data);
         return ;
     }
 
     // ajoute text_dict dans data 
-    dict->set(dict, "text_dict", text_dict, destroy_dictionary_cb);
+    dict->set(dict, "listText", listText, destroy_list_cb);
 
     BOOT_Event_t * nameEvent = malloc(sizeof(BOOT_Event_t)) ;
     *nameEvent = LOADING ;
@@ -145,7 +139,6 @@ void BOOT_unLoad (Scene_t * self) {
 void BOOT_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * manager) {
 
     InfoScene_t * info = self->data->get(self->data, "info") ;
-    Dictionary_t * text_dict = self->data->get(self->data, "text_dict") ;
 
     while (SDL_PollEvent(event)) {
         switch (event->type) {
@@ -175,11 +168,11 @@ void BOOT_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * mana
  */
 void BOOT_update (Scene_t * self, SceneManager_t * manager) {
     
-    Dictionary_t * text_dict = self->data->get(self->data, "text_dict") ;
-    text_dict_update(text_dict, "intro-game/data/donneesTextsBootScene.csv");
+    List_t * listText = GET_LIST_TEXT(self->data) ;
+    text_list_update(listText, "intro-game/data/donneesTextsBootScene.csv");
 
     List_t * listTexture = self->data->get(self->data, "listTexture") ;
-    texture_list_update_from_file(listTexture, "intro-game/data/donneesTexturesBootScene.csv");
+    texture_list_update(listTexture);
 }
 
 
@@ -191,42 +184,54 @@ void BOOT_render (Scene_t * self) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(renderer);
 
-    Dictionary_t * text_dict = self->data->get(self->data, "text_dict") ;
-    for (int i = 0; i < text_dict->nbEntry; i++) {
-        Entry_t * entry = text_dict->item(text_dict, i) ;
-        Text_t * text = entry->value ;
-
+    List_t * listText = GET_LIST_TEXT(self->data) ;
+    for (int i = 0; i < listText->size; i++) {
+        
+        Text_t * text = listText->item(listText, i) ;
         draw_text(text);
     }
 
-    List_t * listTexture = self->data->get(self->data, "listTexture") ;
+    List_t * listTexture = GET_LIST_TEXTURE(self->data) ;
     for (int i = 0; i < listTexture->size; i++) {
+
         Texture_t * texture = listTexture->item(listTexture, i) ;
-        
         draw_texture(texture);
+
+        // if (i == 0) 
+        //     printf("loading hidden = %d\n", texture->hidden);
     }
 
     SDL_RenderPresent(renderer); 
 }
 
 
+static SceneEventManager_t * BOOT_create_events () {
+    SceneEventManager_t * manager = create_event_manager(20) ;
+
+    manager->events[manager->eventCount].trigger = imageFadeIn_trigger ;
+    manager->events[manager->eventCount].action = imageFadeIn ;
+    manager->events[manager->eventCount].active = TRUE ;
+
+    manager->eventCount++;
+
+    return manager ;
+}
 static float imageFadeIn_trigger (Scene_t * scene, SceneEvent_t * event) {
 
     InfoScene_t * info = GET_INFO(scene->data) ;
 
-    uint32_t delay = 5000 ;
-    uint32_t delayEnd = 8000 ;
-    if (info->currentTime >= (info->startTime + delay) && info->currentTime < (info->startTime + delayEnd)) {
+    uint32_t start = 5000 ;
+    uint32_t end = 8000 ;
+    if (info->currentTime >= (info->startTime + start)) {
 
-        event->active = TRUE ;
+        float val = (float)(info->currentTime - (info->startTime + start)) / (float)(end - start) ;
+        printf("\rval = %f", val) ;
+        fflush(stdout);
 
-        return ((float)(info->currentTime - (info->startTime + delay)) / (float)(delayEnd - delay)) ;
+        return ((float)(info->currentTime - (info->startTime + start)) / (float)(end - start)) ;
     }
-    else {
-        event->active = FALSE ;
 
-        return 0.0 ;
-    }
+    return 0.0f
 }
 static void imageFadeIn (Scene_t * scene, float progress) {
 
@@ -245,4 +250,5 @@ static void imageFadeIn (Scene_t * scene, float progress) {
     if (existe(texture) && existe(textureLogo->texture)) {
         SDL_SetTextureAlphaMod(textureLogo->texture, alpha);
     }
+    // printf("action faiiiiiit \n");
 }

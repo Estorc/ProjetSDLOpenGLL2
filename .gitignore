@@ -4,3 +4,8 @@
 /.venv/*
 /src/__processed__/*
 *.blend*
+
+
+*.o
+*.exe
+!*/?*.*

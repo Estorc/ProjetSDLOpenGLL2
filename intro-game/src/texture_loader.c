@@ -227,6 +227,7 @@ int load_textures_from_file (List_t * list, const char * dataPath) {
             return ERROR ;
         }
 
+        texture->hidden = hidden ;
         texture->typeAnim = (TypeTextureAnim_t)typeAnim ;
         texture->numFrames = numFrames ;
         texture->animationSpeed = speed ;

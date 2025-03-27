@@ -26,37 +26,24 @@ int main(int argc, char* argv[]) {
     if (init_systeme()) {
         return 1;
     }
-
-
-    // charge music 
-    Mix_Chunk * music = Mix_LoadWAV("intro-game/music/ah_shit_here_we_go_again.ogg");
-    if (music == NULL) {
-        printf("Erreur de chargement music \"%s\": %s\n", "music/ah_shit_here_we_go_again.mp3", SDL_GetError());
-        terminate_system(NULL, TRUE, NULL, NULL, TRUE, TRUE, TRUE, TRUE, NULL);
-        return 1;
-    }
-    Mix_Chunk * snoreSound = Mix_LoadWAV("intro-game/music/snore-mimimimimimi.ogg");
-    Mix_Chunk * spidermanSound = Mix_LoadWAV("intro-game/music/spiderman-meme-song.ogg");
-
-    Mix_AllocateChannels(16);
     
 
     // creer personnage 
     Player_t * player = player_constructor();
     if (player == NULL) {
-        terminate_system(music, TRUE, NULL, NULL, TRUE, TRUE, TRUE, TRUE, NULL);
+        terminate_system(NULL, TRUE, NULL, NULL, TRUE, TRUE, TRUE, TRUE, NULL);
         return 1;
     }
 
     Map_t * map = map_constructor();
     if (map == NULL) {
-        terminate_system(music, TRUE, player, NULL, TRUE, TRUE, TRUE, TRUE, NULL);
+        terminate_system(NULL, TRUE, player, NULL, TRUE, TRUE, TRUE, TRUE, NULL);
         return 1;
     }
 
     Camera_t * camera = camera_constructor (player);
     if (camera == NULL) {
-        terminate_system(music, TRUE, player, map, TRUE, TRUE, TRUE, TRUE, NULL);
+        terminate_system(NULL, TRUE, player, map, TRUE, TRUE, TRUE, TRUE, NULL);
         return 1;
     }
     
@@ -89,7 +76,7 @@ int main(int argc, char* argv[]) {
         start_frame(&timerStart);
 
         // Joue scene et vérification de l'état du jeu (fin ou continuer)
-        if (play_scene(manager, &event)) {
+        if (play_scene(manager, &event)) { 
             running = FALSE ;
         } 
         
@@ -98,10 +85,8 @@ int main(int argc, char* argv[]) {
     }
     
     // Nettoyage
-    Mix_FreeChunk(snoreSound);
-    Mix_FreeChunk(spidermanSound);
     destroy_scene_manager(&manager);
-    terminate_system(music, TRUE, player, map, TRUE, TRUE, TRUE, TRUE, camera);
+    terminate_system(NULL, TRUE, player, map, TRUE, TRUE, TRUE, TRUE, camera);
 
     printf("fin propre\n");
 
@@ -168,7 +153,7 @@ int init_systeme () {
 
 
     // Initialisation de SDL_mixer et configuration audio 
-    if (Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG) != (MIX_INIT_MP3 | MIX_INIT_OGG)) {
+    if (Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG) != (MIX_INIT_MP3 | MIX_INIT_OGG )) {
         printf("Erreur d'initialisation de SDL_mixer : %s\n", Mix_GetError());
         TTF_Quit();
         IMG_Quit();
