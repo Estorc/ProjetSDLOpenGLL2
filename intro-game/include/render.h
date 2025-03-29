@@ -6,7 +6,7 @@
 #include "player.h"
 #include "map.h"
 #include "camera.h" 
-#include "desktop.h"
+#include "desktop.h" 
 
 #define TEXT_ANIM_SPEED 6
 
@@ -70,3 +70,6 @@ int generate_noise_texture(int width, int height) ;
 void destroy_noise_texture () ;
 int generate_desktop_glitch_texture () ;
 void destroy_desktop_glitch_texture () ;
+
+void draw_rect_filled (SDL_Rect rect, SDL_Color color) ;
+void draw_rect_border (SDL_Rect rect, SDL_Color color) ;

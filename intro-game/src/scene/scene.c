@@ -419,13 +419,17 @@ void destroy_event_manager_cb (void * manager) {
 /**
  * 
  */
-void add_event (SceneEventManager_t * manager, float (*trigger) (Scene_t *, SceneEvent_t *), void (*action) (Scene_t *, float)) {
+void add_event (SceneEventManager_t * manager, uint32_t delay, uint32_t duration, 
+    float (*trigger) (Scene_t *, SceneEvent_t *), void (*action) (Scene_t *, float)) {
 
     if (manager->eventCount < manager->maxEvent) {
         SceneEvent_t * event = &manager->events[manager->eventCount] ;
         event->trigger = trigger ;
         event->action = action ;
-        event->active = 0 ;
+        event->execTime = delay + SDL_GetTicks() ;
+        event->duration = duration ;
+        event->active = TRUE ;
+        
         manager->eventCount++;
     }
 }
@@ -448,8 +452,9 @@ void process_events(SceneEventManager_t * manager, Scene_t * scene) {
                 progress = 1.0f;     // On s'assure que progress ne dépasse pas 1
                 printf("passeg a no actif\n");
             }
-
-            event->action(scene, progress);
+            if (progress > 0) {
+                event->action(scene, progress);
+            }
         }
     }
 }
