@@ -8,6 +8,18 @@
 #include "../include/text.h"
 
 
+void draw_rect_filled (SDL_Rect rect, SDL_Color color) {
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+    SDL_RenderFillRect(renderer, &rect);
+}
+
+
+void draw_rect_border (SDL_Rect rect, SDL_Color color) {
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+    SDL_RenderDrawRect(renderer, &rect);
+}
+
+
 /**
  * 
  */

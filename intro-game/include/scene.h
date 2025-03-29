@@ -22,13 +22,14 @@ typedef struct Map_u Map_t ;
 typedef struct Scene_u Scene_t ;
 typedef struct SceneManager_u SceneManager_t ; 
 
-extern SceneManager_t * manager ;
+extern SceneManager_t * sceneManager ;
 
 typedef struct InfoScene_u {
     int len ;       // Taille attribut `data` de la scene 
     int end ;       // Trigger de la fin du jeu, prends valeur TRUE ou FALSE 
     uint32_t startTime ;
     uint32_t currentTime ;
+    uint8_t state ;
 } InfoScene_t ;
 
 typedef struct SceneEvent_u {
@@ -86,7 +87,7 @@ SceneEventManager_t * create_event_manager(int maxEvent) ;
 void destroy_event_manager (SceneEventManager_t ** manager) ;
 void destroy_event_manager_cb (void * manager) ;
 void init_event_manager (SceneEventManager_t * manager, int maxEvent) ; 
-void add_event (SceneEventManager_t * manager, float (*trigger) (Scene_t *, SceneEvent_t *), void (*action) (Scene_t *, float)) ;
+void add_event (SceneEventManager_t * manager, uint32_t delay, uint32_t duration, float (*trigger) (Scene_t *, SceneEvent_t *), void (*action) (Scene_t *, float)) ;
 void process_events(SceneEventManager_t *manager, Scene_t *scene) ;
 
 
