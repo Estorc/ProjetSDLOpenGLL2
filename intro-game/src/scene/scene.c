@@ -355,10 +355,17 @@ int play_scene (SceneManager_t * manager, SDL_Event * event) {
     int end = info->end ;
     info->currentTime = SDL_GetTicks() ;
 
+    // efface l'affichage precedent
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    SDL_RenderClear(renderer);
+    
     // Joue la scène
     currentScene->handleEvents(currentScene, event, manager) ;
     currentScene->update(currentScene, manager) ;
     currentScene->render(currentScene) ;
+
+    // dessine le nouvel affichage 
+    SDL_RenderPresent(renderer);
 
     // Vérification des scènes en attentes
     if (strcmp(manager->nextScene, "") != 0) {
@@ -377,17 +384,17 @@ int play_scene (SceneManager_t * manager, SDL_Event * event) {
 /**
  * 
  */
-void init_event_manager(SceneEventManager_t * manager, int maxEvent) {
+void init_event_manager(EventManager_t * manager, int maxEvent) {
     manager->eventCount = 0;
     manager->maxEvent = maxEvent ;
 }
 /**
  * 
  */
-SceneEventManager_t * create_event_manager(int maxEvent) {
+EventManager_t * create_event_manager(int maxEvent) {
 
-    SceneEventManager_t * manager = malloc(sizeof(SceneEventManager_t)) ;
-    manager->events = malloc(sizeof(SceneEvent_t) * maxEvent) ;
+    EventManager_t * manager = malloc(sizeof(EventManager_t)) ;
+    manager->events = malloc(sizeof(Event_t) * maxEvent) ;
     init_event_manager(manager, maxEvent);
 
     return manager ;
@@ -397,7 +404,7 @@ SceneEventManager_t * create_event_manager(int maxEvent) {
 /**
  * 
  */
-void destroy_event_manager (SceneEventManager_t ** manager) {
+void destroy_event_manager (EventManager_t ** manager) {
 
     if (existe(manager) && existe(*manager)) {
 
@@ -419,11 +426,11 @@ void destroy_event_manager_cb (void * manager) {
 /**
  * 
  */
-void add_event (SceneEventManager_t * manager, uint32_t delay, uint32_t duration, 
-    float (*trigger) (Scene_t *, SceneEvent_t *), void (*action) (Scene_t *, float)) {
+void add_event (EventManager_t * manager, uint32_t delay, uint32_t duration, 
+    float (*trigger) (Scene_t *, Event_t *), void (*action) (Scene_t *, float)) {
 
     if (manager->eventCount < manager->maxEvent) {
-        SceneEvent_t * event = &manager->events[manager->eventCount] ;
+        Event_t * event = &manager->events[manager->eventCount] ;
         event->trigger = trigger ;
         event->action = action ;
         event->execTime = delay + SDL_GetTicks() ;
@@ -438,10 +445,10 @@ void add_event (SceneEventManager_t * manager, uint32_t delay, uint32_t duration
 /**
  * 
  */
-void process_events(SceneEventManager_t * manager, Scene_t * scene) {
+void process_events(EventManager_t * manager, Scene_t * scene) {
 
     for (int i = 0; i < manager->eventCount; i++) {
-        SceneEvent_t * event = &manager->events[i];
+        Event_t * event = &manager->events[i];
 
         if (event->active) {
 
@@ -450,7 +457,6 @@ void process_events(SceneEventManager_t * manager, Scene_t * scene) {
             if (progress >= 1.0f) {
                 event->active = 0;  // L'événement est terminé
                 progress = 1.0f;     // On s'assure que progress ne dépasse pas 1
-                printf("passeg a no actif\n");
             }
             if (progress > 0) {
                 event->action(scene, progress);

@@ -7,4 +7,3 @@ cmd4;[    0.345678] RAMDISK: Loading kernel modules...;150;30;45;255;0;36;0;150;
 cmd5;[    1.234567] systemd[1]: Starting Journal Service...;150;30;45;255;0;48;0;150;0;0;255;2;1;1;1;1
 cmd6;[    1.678901] systemd[1]: Reached target Graphical Interface.;150;30;45;255;0;60;0;150;0;0;255;2;1;1;1;1
 cmd7;[    2.456789] Arch Linux login: _;150;30;45;255;0;72;0;150;0;0;255;2;1;1;1;1
-curseur;_;150;30;45;255;0;84;0;150;0;0;255;2;1;1;1;0

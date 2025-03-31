@@ -9,12 +9,12 @@
 #include "../include/list.h" 
 
 
-static SceneEventManager_t * BOOT_create_events () ;
+static EventManager_t * BOOT_create_events () ;
 
 // fonctions correspondant a certains evenements 
-static float imageFadeIn_trigger (Scene_t * scene, SceneEvent_t * event) ;
+static float imageFadeIn_trigger (Scene_t * scene, Event_t * event) ;
 static void imageFadeIn (Scene_t * scene, float progress) ;
-static float loading_bar_trigger (Scene_t * scene, SceneEvent_t * event) ;
+static float loading_bar_trigger (Scene_t * scene, Event_t * event) ;
 static void loading_bar (Scene_t * scene, float progress) ;
 
 
@@ -35,7 +35,7 @@ void BOOT_load (Scene_t * self) {
 
     Dictionary_t * dict = self->data ;
 
-    SceneEventManager_t * eventManager = BOOT_create_events() ;
+    EventManager_t * eventManager = BOOT_create_events() ;
     if (!existe(eventManager)) {
         destroy_dictionary(&dict);
         return ;
@@ -107,6 +107,7 @@ void BOOT_load (Scene_t * self) {
     info->startTime = SDL_GetTicks() ;
 
     info->state = STATE_LOADING ;
+    info->nextState = STATE_LOADING ;
 
     printf("[INFO] : Chargement des données BOOT réussi\n");
 }
@@ -157,7 +158,7 @@ void BOOT_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * mana
         }
     }
 
-    SceneEventManager_t * eventManager = GET_EVENT_MANAGER(self->data) ;
+    EventManager_t * eventManager = GET_EVENT_MANAGER(self->data) ;
     process_events(eventManager, self);
 }
 
@@ -170,23 +171,38 @@ void BOOT_update (Scene_t * self, SceneManager_t * manager) {
     List_t * listText = GET_LIST_TEXT(self->data) ;
     text_list_update(listText, "intro-game/data/donneesTextsBootScene.csv");
 
-    List_t * listTexture = self->data->get(self->data, "listTexture") ;
-    texture_list_update(listTexture);
+    List_t * listTexture = GET_LIST_TEXTURE(self->data) ;
+    texture_list_update_from_file(listTexture, "intro-game/data/donneesTexturesBootScene.csv");
+
+    EventManager_t * eventManager = GET_EVENT_MANAGER(self->data) ;
 
     InfoScene_t * info = GET_INFO(self->data) ;
     switch (info->state) {
 
-        case STATE_LOADING : 
-            if (info->currentTime - info->startTime >= 3000) {
-                Texture_t * texture = listTexture->item(listTexture, I_LOADING_WHEEL) ;
-                if (texture->hidden == TRUE) {
-                    add_event(sceneManager, 0, 0, loading_bar_trigger, loading_bar);
-                }
-                texture->hidden = FALSE ;
+    case STATE_LOADING : 
+        if (info->currentTime - info->startTime >= 3000) {
+            Texture_t * texture = listTexture->item(listTexture, I_LOADING_WHEEL) ;
+            if (texture->hidden == TRUE) {
+                add_event(eventManager, 2000, 6000, loading_bar_trigger, loading_bar);
             }
-            break;
-        default : 
-            break;
+            texture->hidden = FALSE ;
+        }
+        break;
+        
+    case STATE_CMD : 
+        break;
+
+    case STATE_BLIS : 
+        break;
+
+    default : 
+        break;
+    }
+
+
+    // effectue le changement d'etat de la scene 
+    if (info->nextState != info->state) {
+        BOOT_change_state(self, info);   
     }
 }
 
@@ -195,9 +211,6 @@ void BOOT_update (Scene_t * self, SceneManager_t * manager) {
  * 
  */
 void BOOT_render (Scene_t * self) {
-
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-    SDL_RenderClear(renderer);
 
     List_t * listText = GET_LIST_TEXT(self->data) ;
     for (int i = 0; i < listText->size; i++) {
@@ -213,22 +226,50 @@ void BOOT_render (Scene_t * self) {
         draw_texture(texture);
     }
 
-    SDL_RenderPresent(renderer); 
 }
 
 
-static SceneEventManager_t * BOOT_create_events () {
-    SceneEventManager_t * manager = create_event_manager(20) ;
 
-    add_event(manager, 5000, 3000, imageFadeIn_trigger, imageFadeIn) ;
+
+void BOOT_change_state (Scene_t * self, InfoScene_t * info) {
+
+    switch (info->nextState) {
+
+    case STATE_CMD :
+        List_t * listTexture = GET_LIST_TEXTURE(self->data) ;
+        Texture_t * loadingWheel = listTexture->item(listTexture, I_LOADING_WHEEL) ;
+        
+        loadingWheel->hidden = TRUE ;
+
+        add_event(GET_EVENT_MANAGER(self->data), 3000, 1500, imageFadeIn_trigger, imageFadeIn);
+
+        info->state = info->nextState ;
+        break;
+
+    case STATE_BLIS :
+        add_event(GET_EVENT_MANAGER(self->data), 3000, 1500, imageFadeIn_trigger, imageFadeIn);
+
+        info->state = info->nextState ;
+        break;
+    
+    default:
+        break;
+    }
+}
+
+
+
+
+static EventManager_t * BOOT_create_events () {
+    EventManager_t * manager = create_event_manager(20) ;
 
     return manager ;
 }
-static float imageFadeIn_trigger (Scene_t * scene, SceneEvent_t * event) {
+static float imageFadeIn_trigger (Scene_t * scene, Event_t * event) {
 
     InfoScene_t * info = GET_INFO(scene->data) ;
 
-    if (info->currentTime >= (event->execTime)) {
+    if (info->currentTime >= event->execTime) {
 
         return (float)(info->currentTime - event->execTime) / (float)(event->duration) ;
     }
@@ -238,7 +279,7 @@ static float imageFadeIn_trigger (Scene_t * scene, SceneEvent_t * event) {
 static void imageFadeIn (Scene_t * scene, float progress) {
 
     List_t * listTexture = GET_LIST_TEXTURE(scene->data) ;
-    Texture_t * texture = listTexture->item(listTexture, I_LOADING_WHEEL) ;
+    Texture_t * texture = listTexture->item(listTexture, I_BLIS_FL5) ;
 
     texture->hidden = FALSE ;
 
@@ -248,11 +289,25 @@ static void imageFadeIn (Scene_t * scene, float progress) {
         SDL_SetTextureAlphaMod(texture->texture, alpha);
     }
 }
-static float loading_bar_trigger (Scene_t * scene, SceneEvent_t * event) {
+static float loading_bar_trigger (Scene_t * scene, Event_t * event) {
     static uint8_t progress = 0 ;
 
-    if (progress < 100) {
-        progress += rand() % 10 ; // ajoute un petit pourcentage a la progression entre 0 et 10 aleatoirement
+    InfoScene_t * info = GET_INFO(scene->data) ;
+
+    if (info->currentTime >= event->execTime) {
+
+        if (progress < 100) {
+            if (rand() % 10 < 3)
+                progress += rand() % 5 ; // ajoute un petit pourcentage a la progression 
+        }
+        
+        if (progress >= 100 && info->currentTime < event->execTime + event->duration) {
+            return 99.0 / 100 ;
+        }
+    }
+
+    if (progress >= 100) {
+        info->nextState = STATE_CMD;
     }
 
     return (float)progress / 100 ; 
@@ -265,7 +320,14 @@ static void loading_bar (Scene_t * scene, float progress) {
     int width = 500 ;
     int height = 50 ;
     SDL_Rect rect = {
-        .x = loadingTexture->position.x 
+        .x = loadingTexture->position.x + loadingTexture->position.w / 2 - width / 2,
+        .y = loadingTexture->position.y + loadingTexture->position.h + 60,          // Place la barre de chargement 60px en dessous de la roue 
+        .h = height,
+        .w = (int)(width * progress)          // Longueur en fonction de la progression 
     };
+
+    // Dessine la barre de chargement
+    draw_rect_filled((SDL_Rect){rect.x, rect.y, width, rect.h}, (SDL_Color){200, 200, 200, 100}); 
+    draw_rect_filled(rect, (SDL_Color){200, 200, 200, 255});
     
 }

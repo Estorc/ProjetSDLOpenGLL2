@@ -30,23 +30,24 @@ typedef struct InfoScene_u {
     uint32_t startTime ;
     uint32_t currentTime ;
     uint8_t state ;
+    uint8_t nextState ;
 } InfoScene_t ;
 
-typedef struct SceneEvent_u {
+typedef struct Event_u {
     // fonction qui check si l'event s'active ou se desactive et renvoi l'état de la progression (nb entre 0.0 et 1.0)
-    float (*trigger) (Scene_t *, struct SceneEvent_u *) ; 
+    float (*trigger) (Scene_t *, struct Event_u *) ; 
     void (*action) (Scene_t *, float) ;
 
     uint32_t execTime ;
     uint32_t duration ;
     int active ;
-} SceneEvent_t ;
+} Event_t ;
 
-typedef struct SceneEventManager_u {
-    SceneEvent_t * events ;
+typedef struct EventManager_u {
+    Event_t * events ;
     int eventCount ;
     int maxEvent ;
-} SceneEventManager_t ;
+} EventManager_t ;
 
 typedef struct Scene_u {
     char * name ;
@@ -83,12 +84,12 @@ void destroy_scene (Scene_t ** scene);
 int play_scene (SceneManager_t * manager, SDL_Event * event);
 
 // fonctions SceneEvent 
-SceneEventManager_t * create_event_manager(int maxEvent) ;
-void destroy_event_manager (SceneEventManager_t ** manager) ;
+EventManager_t * create_event_manager(int maxEvent) ;
+void destroy_event_manager (EventManager_t ** manager) ;
 void destroy_event_manager_cb (void * manager) ;
-void init_event_manager (SceneEventManager_t * manager, int maxEvent) ; 
-void add_event (SceneEventManager_t * manager, uint32_t delay, uint32_t duration, float (*trigger) (Scene_t *, SceneEvent_t *), void (*action) (Scene_t *, float)) ;
-void process_events(SceneEventManager_t *manager, Scene_t *scene) ;
+void init_event_manager (EventManager_t * manager, int maxEvent) ; 
+void add_event (EventManager_t * manager, uint32_t delay, uint32_t duration, float (*trigger) (Scene_t *, Event_t *), void (*action) (Scene_t *, float)) ;
+void process_events(EventManager_t *manager, Scene_t *scene) ;
 
 
 // fonctions manip scene level1
