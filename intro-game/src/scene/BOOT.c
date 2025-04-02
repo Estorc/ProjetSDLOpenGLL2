@@ -235,7 +235,7 @@ void BOOT_change_state (Scene_t * self, InfoScene_t * info) {
 
     switch (info->nextState) {
 
-    case STATE_CMD :
+    case STATE_CMD :;
         List_t * listTexture = GET_LIST_TEXTURE(self->data) ;
         Texture_t * loadingWheel = listTexture->item(listTexture, I_LOADING_WHEEL) ;
         
@@ -246,7 +246,7 @@ void BOOT_change_state (Scene_t * self, InfoScene_t * info) {
         info->state = info->nextState ;
         break;
 
-    case STATE_BLIS :
+    case STATE_BLIS :;
         add_event(GET_EVENT_MANAGER(self->data), 3000, 1500, imageFadeIn_trigger, imageFadeIn);
 
         info->state = info->nextState ;
