@@ -1,8 +1,10 @@
 #pragma once 
 
+
 #include "lib.h"
 #include "../src/scene/BOOT.h"
 #include "../src/scene/DESKTOP.h"
+#include "../include/LEVEL1.h"
 
 #define MAX_SCENES 10
 
@@ -11,17 +13,13 @@
 #define GET_INFO(dict) dict->get(dict, "info")
 #define GET_EVENT_MANAGER(dict) dict->get(dict, "eventManager")
 
-
 extern SDL_Renderer * renderer ;
-extern GameStatus_t gameStatus ;
 
-typedef struct Camera_u Camera_t ; 
-typedef struct Player_u Player_t ;
+
 typedef struct Dictionary_u Dictionary_t ; 
 typedef struct Map_u Map_t ; 
 typedef struct Scene_u Scene_t ;
 typedef struct SceneManager_u SceneManager_t ; 
-
 extern SceneManager_t * sceneManager ;
 
 typedef struct InfoScene_u {
@@ -32,22 +30,6 @@ typedef struct InfoScene_u {
     uint8_t state ;
     uint8_t nextState ;
 } InfoScene_t ;
-
-typedef struct Event_u {
-    // fonction qui check si l'event s'active ou se desactive et renvoi l'état de la progression (nb entre 0.0 et 1.0)
-    float (*trigger) (Scene_t *, struct Event_u *) ; 
-    void (*action) (Scene_t *, float) ;
-
-    uint32_t execTime ;
-    uint32_t duration ;
-    int active ;
-} Event_t ;
-
-typedef struct EventManager_u {
-    Event_t * events ;
-    int eventCount ;
-    int maxEvent ;
-} EventManager_t ;
 
 typedef struct Scene_u {
     char * name ;
@@ -82,21 +64,3 @@ Scene_t * create_scene (char * name, void (*load) (Scene_t *), void (*unLoad) (S
             void (*render) (Scene_t *));    
 void destroy_scene (Scene_t ** scene);
 int play_scene (SceneManager_t * manager, SDL_Event * event);
-
-// fonctions SceneEvent 
-EventManager_t * create_event_manager(int maxEvent) ;
-void destroy_event_manager (EventManager_t ** manager) ;
-void destroy_event_manager_cb (void * manager) ;
-void init_event_manager (EventManager_t * manager, int maxEvent) ; 
-void add_event (EventManager_t * manager, uint32_t delay, uint32_t duration, float (*trigger) (Scene_t *, Event_t *), void (*action) (Scene_t *, float)) ;
-void process_events(EventManager_t *manager, Scene_t *scene) ;
-
-
-// fonctions manip scene level1
-#define LEVEL1_NB_EVENT 3
-typedef enum LEVEL1_Event_u {L_LOADING, L_BLIS, L_CMD} LEVEL1_Event_t ;
-void LEVEL1_load (Scene_t * self) ;
-void LEVEL1_unLoad (Scene_t * self) ;
-void LEVEL1_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * manager) ;
-void LEVEL1_update (Scene_t * self, SceneManager_t * manager) ;
-void LEVEL1_render (Scene_t * self) ; 

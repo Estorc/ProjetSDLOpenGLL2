@@ -29,4 +29,3 @@ Dictionary_t * create_dictionnary () ;
 void destroy_dictionary(Dictionary_t ** dict) ;
 void destroy_dictionary_cb (void * dict) ;
 unsigned int hash (const char * key) ;
-void free_cb (void * data) ;

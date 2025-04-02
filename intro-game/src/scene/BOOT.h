@@ -3,7 +3,6 @@
 
 #include "lib.h"
 
-#define MAX_EVENT 20 
 
 #define STATE_LOADING 0
 #define STATE_BLIS 1
@@ -16,7 +15,7 @@ typedef struct Scene_u Scene_t ;
 typedef struct SceneManager_u SceneManager_t ; 
 typedef struct InfoScene_u InfoScene_t ; 
 
-#define BOOT_NB_EVENT 3
+
 void BOOT_load (Scene_t * self) ;
 void BOOT_unLoad (Scene_t * self) ;
 void BOOT_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * manager) ;

@@ -70,7 +70,7 @@ int main(int argc, char* argv[]) {
     change_scene(manager);
     
     // Boucle principale
-    while (running) {
+    while (running) { 
 
         // traitement debut frame 
         start_frame(&timerStart);
