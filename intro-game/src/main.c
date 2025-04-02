@@ -18,7 +18,7 @@ void end_frame (uint32_t * timerStart, uint32_t * previousTime);
 
 SDL_Window * window ; 
 SDL_Renderer * renderer ; 
-SceneManager_t * manager ;
+SceneManager_t * sceneManager ;
 GameStatus_t gameStatus ; 
 
 int main(int argc, char* argv[]) {
@@ -59,15 +59,15 @@ int main(int argc, char* argv[]) {
     int running = TRUE;
 
     // initialise le scene manager  
-    manager = create_scene_manager() ;
+    sceneManager = create_scene_manager() ;
     Scene_t * bootScene = create_scene("BOOT", BOOT_load, BOOT_unLoad, BOOT_handleEvents, BOOT_update, BOOT_render);
     Scene_t * desktopScene = create_scene("DESKTOP", DESKTOP_load, DESKTOP_unLoad, DESKTOP_handleEvents, DESKTOP_update, DESKTOP_render);
     Scene_t * level1Scene = create_scene("LEVEL1", LEVEL1_load, LEVEL1_unLoad, LEVEL1_handleEvents, LEVEL1_update, LEVEL1_render);
-    push_scene(manager, bootScene);
-    push_scene(manager, desktopScene);
-    push_scene(manager, level1Scene);
-    request_scene_change(manager, "BOOT");
-    change_scene(manager);
+    push_scene(sceneManager, bootScene);
+    push_scene(sceneManager, desktopScene);
+    push_scene(sceneManager, level1Scene);
+    request_scene_change(sceneManager, "BOOT");
+    change_scene(sceneManager);
     
     // Boucle principale
     while (running) { 
@@ -76,7 +76,7 @@ int main(int argc, char* argv[]) {
         start_frame(&timerStart);
 
         // Joue scene et vérification de l'état du jeu (fin ou continuer)
-        if (play_scene(manager, &event)) { 
+        if (play_scene(sceneManager, &event)) { 
             running = FALSE ;
         } 
         
@@ -85,7 +85,7 @@ int main(int argc, char* argv[]) {
     }
     
     // Nettoyage
-    destroy_scene_manager(&manager);
+    destroy_scene_manager(&sceneManager);
     terminate_system(NULL, TRUE, player, map, TRUE, TRUE, TRUE, TRUE, camera);
 
     printf("fin propre\n");

@@ -6,7 +6,6 @@
 
 #define STATE_LOADING 0
 #define STATE_BLIS 1
-#define STATE_CMD 2
 
 #define I_LOADING_WHEEL 0
 #define I_BLIS_FL5 1
@@ -14,6 +13,8 @@
 typedef struct Scene_u Scene_t ;
 typedef struct SceneManager_u SceneManager_t ; 
 typedef struct InfoScene_u InfoScene_t ; 
+
+extern SceneManager_t * sceneManager ;
 
 
 void BOOT_load (Scene_t * self) ;

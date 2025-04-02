@@ -20,7 +20,6 @@ typedef struct Dictionary_u Dictionary_t ;
 typedef struct Map_u Map_t ; 
 typedef struct Scene_u Scene_t ;
 typedef struct SceneManager_u SceneManager_t ; 
-extern SceneManager_t * sceneManager ;
 
 typedef struct InfoScene_u {
     int len ;       // Taille attribut `data` de la scene 

@@ -1,5 +1,5 @@
 #include "../include/lib.h"
-#include "../include/main.h"
+#include "../include/main.h" 
 #include "../include/window.h"
 #include "../include/scene.h"
 #include "../include/list.h"
@@ -55,7 +55,7 @@ void add_event (EventManager_t * manager, uint32_t delay, uint32_t duration,
     event->duration = duration ;
     event->active = TRUE ;
     
-    manager->events->push(manager->events, event);
+    manager->events->set(manager->events, event, manager->events->size);
     manager->eventCount++;
 }
 

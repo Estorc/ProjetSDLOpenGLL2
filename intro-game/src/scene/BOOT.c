@@ -13,8 +13,15 @@
 // fonctions correspondant a certains evenements 
 static float imageFadeIn_trigger (Scene_t * scene, Event_t * event) ;
 static void imageFadeIn (Scene_t * scene, float progress) ;
+
+static float wait_to_loading_trigger (Scene_t * scene, Event_t * event) ;
+static void wait_to_loading (Scene_t * scene, float progress) ;
+
 static float loading_bar_trigger (Scene_t * scene, Event_t * event) ;
 static void loading_bar (Scene_t * scene, float progress) ;
+
+static float to_next_scene_trigger (Scene_t * scene, Event_t * event) ;
+static void to_next_scene (Scene_t * scene, float progress) ;
 
 
 /**
@@ -68,45 +75,12 @@ void BOOT_load (Scene_t * self) {
     // ajoute la liste des texture dans la data de la scene 
     dict->set(dict, "listTexture", listTexture, destroy_list_cb) ;
 
-    // Création fonts (TTF_Font) 
-    TTF_Font * font8 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 8) ;
-    TTF_Font * font16 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 16) ;
-    TTF_Font * font24 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 24) ;
-    if (!existe(font8) || !existe(font16) || !existe(font16)) {
-        fprintf(stderr, "Erreur open font : intro-game/assets/PressStart2P-Regular.ttf\n");
-        destroy_dictionary(&self->data);
-        return ;
-    }
-
-    List_t * listFont = create_list(TTF_CloseFont_cb) ;
-    listFont->set(listFont, font8, listFont->size) ;
-    listFont->set(listFont, font16, listFont->size) ;
-    listFont->set(listFont, font24, listFont->size) ;
-
-    dict->set(dict, "listFont", listFont, destroy_list_cb);
-
-    List_t * listText = create_list(destroy_text_cb) ;
-    if (!existe(listText)) {
-        fprintf(stderr, "Erreur création dict_textures dans DESKTOP\n");
-        destroy_dictionary(&self->data);
-        return ;
-    }
-
-    if (load_texts_from_file("intro-game/data/donneesTextsBootScene.csv", listFont, listText)) {
-        fprintf(stderr, "Erreur création des textes dans BOOT\n");
-        destroy_list(&listText);
-        destroy_dictionary(&self->data);
-        return ;
-    }
-
-    // ajoute text_dict dans data 
-    dict->set(dict, "listText", listText, destroy_list_cb);
-
     // recupere la date de lancement en millisecondes
     info->startTime = SDL_GetTicks() ;
 
     info->state = STATE_LOADING ;
     info->nextState = STATE_LOADING ;
+    BOOT_change_state(self, info) ;
 
     printf("[INFO] : Chargement des données BOOT réussi\n");
 }
@@ -144,14 +118,6 @@ void BOOT_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * mana
             case SDL_QUIT :
                 info->end = TRUE ;
                 break;
-            case SDL_KEYDOWN :  
-                switch (event->key.keysym.sym) {
-                    case SDLK_SPACE : 
-                        request_scene_change(manager, "DESKTOP");
-                        break;
-                    default : 
-                        break;
-                }
             default : 
                 break;
         }
@@ -167,9 +133,6 @@ void BOOT_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * mana
  */
 void BOOT_update (Scene_t * self, SceneManager_t * manager) {
 
-    List_t * listText = GET_LIST_TEXT(self->data) ;
-    text_list_update(listText, "intro-game/data/donneesTextsBootScene.csv");
-
     List_t * listTexture = GET_LIST_TEXTURE(self->data) ;
     texture_list_update_from_file(listTexture, "intro-game/data/donneesTexturesBootScene.csv");
 
@@ -179,16 +142,6 @@ void BOOT_update (Scene_t * self, SceneManager_t * manager) {
     switch (info->state) {
 
     case STATE_LOADING : 
-        if (info->currentTime - info->startTime >= 3000) {
-            Texture_t * texture = listTexture->item(listTexture, I_LOADING_WHEEL) ;
-            if (texture->hidden == TRUE) {
-                add_event(eventManager, 2000, 6000, loading_bar_trigger, loading_bar);
-            }
-            texture->hidden = FALSE ;
-        }
-        break;
-        
-    case STATE_CMD : 
         break;
 
     case STATE_BLIS : 
@@ -211,13 +164,6 @@ void BOOT_update (Scene_t * self, SceneManager_t * manager) {
  */
 void BOOT_render (Scene_t * self) {
 
-    List_t * listText = GET_LIST_TEXT(self->data) ;
-    for (int i = 0; i < listText->size; i++) {
-        
-        Text_t * text = listText->item(listText, i) ;
-        draw_text(text);
-    }
-
     List_t * listTexture = GET_LIST_TEXTURE(self->data) ;
     for (int i = 0; i < listTexture->size; i++) {
 
@@ -234,19 +180,20 @@ void BOOT_change_state (Scene_t * self, InfoScene_t * info) {
 
     switch (info->nextState) {
 
-    case STATE_CMD :;
+    case STATE_LOADING :;
+        add_event(GET_EVENT_MANAGER(self->data), 3000, 0, wait_to_loading_trigger, wait_to_loading);
+
+        info->state = info->nextState ;
+        break;
+
+    case STATE_BLIS :;
         List_t * listTexture = GET_LIST_TEXTURE(self->data) ;
         Texture_t * loadingWheel = listTexture->item(listTexture, I_LOADING_WHEEL) ;
         
         loadingWheel->hidden = TRUE ;
 
         add_event(GET_EVENT_MANAGER(self->data), 3000, 1500, imageFadeIn_trigger, imageFadeIn);
-
-        info->state = info->nextState ;
-        break;
-
-    case STATE_BLIS :;
-        add_event(GET_EVENT_MANAGER(self->data), 3000, 1500, imageFadeIn_trigger, imageFadeIn);
+        add_event(GET_EVENT_MANAGER(self->data), 10000, 0, to_next_scene_trigger, to_next_scene);
 
         info->state = info->nextState ;
         break;
@@ -284,6 +231,24 @@ static void imageFadeIn (Scene_t * scene, float progress) {
         SDL_SetTextureAlphaMod(texture->texture, alpha);
     }
 }
+static float wait_to_loading_trigger (Scene_t * scene, Event_t * event) {
+
+    InfoScene_t * info = GET_INFO(scene->data) ;
+
+    if (info->currentTime >= event->execTime) {
+        return 1.0f ;
+    }
+
+    return 0.0f ;
+}
+static void wait_to_loading (Scene_t * scene, float progress) {
+    List_t * listTexture = GET_LIST_TEXTURE(scene->data) ;
+    Texture_t * loadingWheel = listTexture->item(listTexture, I_LOADING_WHEEL) ;
+
+    loadingWheel->hidden = FALSE ;
+
+    add_event(GET_EVENT_MANAGER(scene->data), 0, 6000, loading_bar_trigger, loading_bar);
+}
 static float loading_bar_trigger (Scene_t * scene, Event_t * event) {
     static uint8_t progress = 0 ;
 
@@ -299,10 +264,6 @@ static float loading_bar_trigger (Scene_t * scene, Event_t * event) {
         if (progress >= 100 && info->currentTime < event->execTime + event->duration) {
             return 99.0 / 100 ;
         }
-    }
-
-    if (progress >= 100) {
-        info->nextState = STATE_CMD;
     }
 
     return (float)progress / 100 ; 
@@ -324,5 +285,21 @@ static void loading_bar (Scene_t * scene, float progress) {
     // Dessine la barre de chargement
     draw_rect_filled((SDL_Rect){rect.x, rect.y, width, rect.h}, (SDL_Color){200, 200, 200, 100}); 
     draw_rect_filled(rect, (SDL_Color){200, 200, 200, 255});
+
+    if (progress >= 1.0f) {
+        InfoScene_t * info = GET_INFO(scene->data) ;
+        info->nextState = STATE_BLIS;
+    }
     
+}
+static float to_next_scene_trigger (Scene_t * scene, Event_t * event) {
+    InfoScene_t * info = GET_INFO(scene->data) ;
+
+    if (info->currentTime >= event->execTime) {
+        return 1.0f ;
+    }
+
+    return 0.0f ;}
+static void to_next_scene (Scene_t * scene, float progress) {
+    request_scene_change(sceneManager, "DESKTOP");
 }
