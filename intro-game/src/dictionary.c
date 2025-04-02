@@ -149,10 +149,3 @@ void destroy_dictionary(Dictionary_t ** dict) {
 void destroy_dictionary_cb (void * dict) {
     destroy_dictionary(dict);
 }
-
-
-void free_cb (void * data) {
-    void ** pdata = (void **)data ;
-    free(*pdata);
-    *pdata = NULL ;
-}

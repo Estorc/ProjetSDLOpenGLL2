@@ -7,9 +7,8 @@
 #include "../include/dictionary.h"
 #include "../include/texture_loader.h"
 #include "../include/list.h" 
+#include "../include/event.h"
 
-
-static EventManager_t * BOOT_create_events () ;
 
 // fonctions correspondant a certains evenements 
 static float imageFadeIn_trigger (Scene_t * scene, Event_t * event) ;
@@ -35,7 +34,7 @@ void BOOT_load (Scene_t * self) {
 
     Dictionary_t * dict = self->data ;
 
-    EventManager_t * eventManager = BOOT_create_events() ;
+    EventManager_t * eventManager = create_event_manager() ;
     if (!existe(eventManager)) {
         destroy_dictionary(&dict);
         return ;
@@ -235,7 +234,7 @@ void BOOT_change_state (Scene_t * self, InfoScene_t * info) {
 
     switch (info->nextState) {
 
-    case STATE_CMD :
+    case STATE_CMD :;
         List_t * listTexture = GET_LIST_TEXTURE(self->data) ;
         Texture_t * loadingWheel = listTexture->item(listTexture, I_LOADING_WHEEL) ;
         
@@ -246,7 +245,7 @@ void BOOT_change_state (Scene_t * self, InfoScene_t * info) {
         info->state = info->nextState ;
         break;
 
-    case STATE_BLIS :
+    case STATE_BLIS :;
         add_event(GET_EVENT_MANAGER(self->data), 3000, 1500, imageFadeIn_trigger, imageFadeIn);
 
         info->state = info->nextState ;
@@ -260,11 +259,7 @@ void BOOT_change_state (Scene_t * self, InfoScene_t * info) {
 
 
 
-static EventManager_t * BOOT_create_events () {
-    EventManager_t * manager = create_event_manager(20) ;
 
-    return manager ;
-}
 static float imageFadeIn_trigger (Scene_t * scene, Event_t * event) {
 
     InfoScene_t * info = GET_INFO(scene->data) ;

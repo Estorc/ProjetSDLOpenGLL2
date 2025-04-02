@@ -194,9 +194,6 @@ void DESKTOP_update (Scene_t * self, SceneManager_t * manager) {
 
 void DESKTOP_render (Scene_t * self) {
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-    SDL_RenderClear(renderer);
-
     Desktop_t * desktop = self->data->get(self->data, "desktop") ;
     draw_desktop(desktop);
 
@@ -204,5 +201,4 @@ void DESKTOP_render (Scene_t * self) {
     Text_t * text1 = text_dict->get(text_dict, "text1") ;
     draw_text(text1);
 
-    SDL_RenderPresent(renderer); 
 }

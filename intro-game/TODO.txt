@@ -11,27 +11,46 @@
 
 peut faire un etxtrue manager pour toyute les texture 
 
+
+
+
+
 === DATA SCENE DESKTOP === 
 
 - structure desktop 
 - utiliser getmousestate et getmousestaterelative pour les evenements de la souris 
 
 
-=== changement === 
 
-trouver un moyen simple d'animer une texture 
+
+
+
+=== changement === 
 
 changer le text dict update pour le rendre comme celui de texture update + ajouter text update from file comme pour texture
 
-modif les structure de donnees pour les texture_t et les text_t, passer a des list_t 
-creer different taille de font dans chaque data : small medium large et d'autre encore
-finir implementation focntion manip text_t 
 changer la maniere d'animer le texte car tres gourmand durant les anim de texte
+
+modif les structure de donnees pour les texture_t et les text_t, passer a des list_t 
+
+finir implementation focntion manip text_t 
+
 possibilite de faire un big_free() fonction qui permettrait de detruire n'importe quelle type de donnee. Simplifieras la libération de la mémoire
+
+nouvelle tda possible de liste : tableau contigue d'élément pour eviter les redirections memoire 
+
+
 
 === fait === 
 
 TDA list d'objet generique avec methiode 
+
+creer different taille de font dans chaque data : small medium large et d'autre encore
+
+trouver un moyen simple d'animer une texture 
+
+finir l'implementaion du systeme d'evenements 
+
 
 
 === INFO ===

@@ -1,6 +1,5 @@
 #include "../include/lib.h"
 #include "../include/main.h"
-#include "../include/utils.h"
 #include "../include/dictionary.h"
 
 int existe (void * ptr) {
@@ -69,3 +68,8 @@ int fileModified (const char * path) {
 }
 
 
+void free_cb (void * data) {
+    void ** pdata = (void **)data ;
+    free(*pdata);
+    *pdata = NULL ;
+}
