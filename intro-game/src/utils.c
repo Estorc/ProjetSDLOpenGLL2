@@ -73,3 +73,11 @@ void free_cb (void * data) {
     free(*pdata);
     *pdata = NULL ;
 }
+
+
+void swap(void* a, void* b, size_t size) {
+    unsigned char temp[size]; 
+    memcpy(temp, a, size);
+    memcpy(a, b, size);
+    memcpy(b, temp, size);
+}

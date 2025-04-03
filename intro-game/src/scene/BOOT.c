@@ -118,6 +118,14 @@ void BOOT_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * mana
             case SDL_QUIT :
                 info->end = TRUE ;
                 break;
+            case SDL_KEYDOWN : 
+                switch (event->key.keysym.sym) {
+                    case SDLK_RETURN : 
+                        request_scene_change(sceneManager, "DESKTOP");
+                        break;
+                    default :
+                        break;
+                }
             default : 
                 break;
         }

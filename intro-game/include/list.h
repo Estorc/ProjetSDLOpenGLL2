@@ -21,6 +21,7 @@ typedef struct List_u {
     void * (*item) (struct List_u *, int) ;
     void (*remove) (struct List_u *, int) ;
     void (*set) (struct List_u *, void *, int) ;
+    void (*stack) (struct List_u *, void *) ;
     void (*push) (struct List_u *, void *) ;
     void (*pop) (struct List_u *) ;
     void (*destroy) (void *) ;      // fonction de destruction de data 

@@ -321,6 +321,12 @@ void list_set (List_t * list, void * data, int index) {
 }
 
 
+static 
+void list_stack (List_t * list, void * data) {
+    list_set(list, data, list->size);
+}
+
+
 List_t * create_list (void (*destroy) (void *)) {
 
     List_t * list = malloc(sizeof(List_t)) ;

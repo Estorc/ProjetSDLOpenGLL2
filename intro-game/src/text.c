@@ -339,7 +339,7 @@ void TTF_CloseFont_cb (void * font) {
 
 
 /**
- * Insert des donnees text_t dans un dictionnaire a partir d'un fichier csv  
+ * Insert des donnees text_t dans une liste a partir d'un fichier csv  
  */
 int load_texts_from_file (const char * dataPath, List_t * listFont, List_t * list) {
 
