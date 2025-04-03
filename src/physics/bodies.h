@@ -118,8 +118,8 @@ typedef struct RayCollisionShape {
  */
 typedef struct CollisionBuffer {
     struct Node **collisionsShapes; /**< Array of collision shapes in the buffer. */
-    u8 length; /**< Number of collision shapes in the buffer. */
-    u8 index; /**< Current index in the buffer. */
+    u32 length; /**< Number of collision shapes in the buffer. */
+    u32 index; /**< Current index in the buffer. */
 } CollisionBuffer;
 
 // All the bodies listed bellow have shared attributes. It allows the compiler to get an attribute from the void* pointer.

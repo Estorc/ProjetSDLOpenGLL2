@@ -1,0 +1,109 @@
+# Blender 4.1.1 MTL File: 'mapJeuSDLseparation.blend'
+# www.blender.org
+
+newmtl Brown_Ceramic_Floor_Tile
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd 4K_tiling_19_basecolor.jpg
+map_Pm 4K_tiling_19_metallic.jpg
+map_Pr 4K_tiling_19_roughness.jpg
+map_Bump -bm 0.100000 4K_tiling_19_normal.jpg
+
+newmtl Metal_Vent_Slats
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd metal-37_diffuse.jpg
+map_Pm metal-37_metal.jpg
+map_Pr metal-37_roughness.jpg
+
+newmtl Plastic_white_material
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Pr 0.500000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd plastic07_diffuse.jpg
+map_Pm plastic_metallic.jpg
+map_Ks plastic_specular.jpg
+map_Bump -bm 1.000000 plastic_normal_opengl.jpg
+
+newmtl Stone
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd -s 1.5 1.5 1.5 stone-9_diffuse.jpg
+map_Pr -s 1.5 1.5 1.5 stone-9_smooth.jpg
+
+newmtl Wood.120
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd -s 3 3 3 wood-5-dark_diffuse.jpg
+map_Pr -s 3 3 3 wood-5_smooth.jpg
+
+newmtl plastic_bleu_foncé_amphi
+Kd 0.000778 0.004342 0.046442
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+Pr 0.500000
+Pm 1.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+
+newmtl texture_porte
+Kd 0.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Pr 0.500000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000

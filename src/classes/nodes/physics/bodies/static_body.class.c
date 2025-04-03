@@ -59,9 +59,9 @@ class StaticBody : public Body {
 
         this::update_global_position(pos, rot, scale);
 
-        for (int i = 0; i < staticBody->length; i++) {
+        /*for (int i = 0; i < staticBody->length; i++) {
             check_collisions(staticBody->collisionsShapes[i]);
-        }
+        }*/
         memcpy(&Game.buffers->collisionBuffer.collisionsShapes[Game.buffers->collisionBuffer.index], staticBody->collisionsShapes, staticBody->length * sizeof(staticBody->collisionsShapes[0]));
         Game.buffers->collisionBuffer.index += staticBody->length;
     }

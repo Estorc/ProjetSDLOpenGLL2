@@ -102,8 +102,8 @@ typedef struct SpotLight {
 
 typedef struct LightingBuffer {
     struct Node **lightings; /**< Array of lighting nodes. */
-    u8 length; /**< Length of the array. */
-    u8 index; /**< Current index in the array. */
+    u32 length; /**< Length of the array. */
+    u32 index; /**< Current index in the array. */
 } LightingBuffer;
 
 
