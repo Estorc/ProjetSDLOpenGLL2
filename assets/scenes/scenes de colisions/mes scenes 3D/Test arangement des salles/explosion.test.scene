@@ -66,3 +66,10 @@ BoxCShape[m-35,-12,-53s10,2,3]
 Node
 Node
 Node
+KinematicBody(0,0,0,2)
+SphereCShape[s0.8,0.8,0.8]
+SphereCShape[m0,-3,0s0.8,0.8,0.8]
+[m0,4,10]{NULL,script_cc_player_update,NULL}:2
+Camera(1){NULL,script_cc_camera_player,NULL}
+SpotLight(50,50,50,0.03,0,1,0.09,0.03,1,0.95)[m0.75,0.75,-3.27835e-08r-4.51248,1.36458,-4.51248]{NULL,flashlight,NULL}
+Skybox(assets/textures/skybox/claude_chappe/graycloud_ft.png,assets/textures/skybox/claude_chappe/graycloud_bk.png,assets/textures/skybox/claude_chappe/graycloud_up.png,assets/textures/skybox/claude_chappe/graycloud_dn.png,assets/textures/skybox/claude_chappe/graycloud_rt.png,assets/textures/skybox/claude_chappe/graycloud_lf.png)

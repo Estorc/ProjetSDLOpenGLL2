@@ -17,6 +17,22 @@ map_Pm 4K_tiling_19_metallic.jpg
 map_Pr 4K_tiling_19_roughness.jpg
 map_Bump -bm 0.100000 4K_tiling_19_normal.jpg
 
+newmtl Dark_metal
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+Pm 1.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd plane_divided_DefaultMaterial_BaseColor.jpg
+map_Pr plane_divided_DefaultMaterial_Roughness.jpg
+map_Bump -bm 1.000000 plane_divided_DefaultMaterial_Normal.jpg
+
 newmtl Metal_Vent_Slats
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
@@ -47,6 +63,22 @@ map_Kd plastic07_diffuse.jpg
 map_Pm plastic_metallic.jpg
 map_Ks plastic_specular.jpg
 map_Bump -bm 1.000000 plastic_normal_opengl.jpg
+
+newmtl STONE
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+Pr 0.586364
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd stone_C.jpg
+map_Bump -bm 1.000000 stone_N.jpg
 
 newmtl Stone
 Ks 0.200000 0.200000 0.200000
@@ -87,21 +119,6 @@ d 1.000000
 illum 3
 Pr 0.500000
 Pm 1.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
-
-newmtl texture_porte
-Kd 0.000000 0.000000 0.000000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.500000
-d 1.000000
-illum 2
-Pr 0.500000
-Pm 0.000000
 Ps 0.000000
 Pc 0.000000
 Pcr 0.030000

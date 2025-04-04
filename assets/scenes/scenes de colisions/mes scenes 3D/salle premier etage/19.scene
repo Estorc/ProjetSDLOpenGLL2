@@ -146,11 +146,11 @@ PointLight(1,1,1,0.005,30,1,0.09,0.032)[m-3,16,-60]{NULL,NULL,NULL}
 PointLight(1,1,1,0.005,30,1,0.09,0.032)[m-3,5,-50]{NULL,NULL,NULL}
 StaticBody(6)
 BoxCShape[m1.5,8.6,-57.13r0,42,0s2,0.2,1]{NULL,NULL,NULL}
-BoxCShape[m1.5,8.6,-57.13r0,42,0s2,0.2,1]{NULL,NULL,NULL}
-BoxCShape[m1.5,8.6,-57.13r0,42,0s2,0.2,1]{NULL,NULL,NULL}
-BoxCShape[m1.5,8.6,-57.13r0,42,0s2,0.2,1]{NULL,NULL,NULL}
-BoxCShape[m1.5,8.6,-57.13r0,42,0s2,0.2,1]{NULL,NULL,NULL}
-BoxCShape[m1.5,8.6,-57.13r0,42,0s2,0.2,1]{NULL,NULL,NULL}
+BoxCShape{NULL,NULL,NULL}
+BoxCShape
+BoxCShape
+BoxCShape
+BoxCShape
 
 Node:1
 StaticBody(6)
