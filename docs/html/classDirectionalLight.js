@@ -1,7 +1,7 @@
 var classDirectionalLight =
 [
     [ "constructor", "classDirectionalLight.html#af8770798a6af38736adc634162cc2b78", null ],
-    [ "update", "classDirectionalLight.html#a54c0194fe606359949adfc38e6d3847f", null ],
+    [ "update", "classDirectionalLight.html#aafe82b3674d3514a85293cafe4c29b71", null ],
     [ "get_settings_data", "classDirectionalLight.html#ac8ccb4c1eaae0e9b8a132cbc7f4c282e", null ],
     [ "load", "classDirectionalLight.html#a7cf1a221d98f5ba39c5954d2a43190df", null ],
     [ "save", "classDirectionalLight.html#a2e75ba84cda8a1aabc2df723504c6eee", null ],

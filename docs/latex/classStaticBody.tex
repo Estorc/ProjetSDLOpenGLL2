@@ -30,13 +30,13 @@ Collaboration diagram for Static\+Body\+:\nopagebreak
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classStaticBody_a6b41ec60c6fbb3439dbef94fba6216e1}{constructor}} (float \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classStaticBody_a4a669198037c11d60943dce755cbfea0}{forced\+Normal}})
+void \mbox{\hyperlink{classStaticBody_a8be7e504be46f51fc86feb88ca1bff1a}{constructor}} (vec3 \mbox{\hyperlink{classStaticBody_a4a669198037c11d60943dce755cbfea0}{forced\+Normal}})
 \begin{DoxyCompactList}\small\item\em Constructor for the static body class. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classStaticBody_a02a766602b3222419277ea82c5beb956}{get\+\_\+collisions\+\_\+shapes}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shapes, \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classStaticBody_a9d2973c36dc745928707d787afafde2e}{length}})
+void \mbox{\hyperlink{classStaticBody_a02a766602b3222419277ea82c5beb956}{get\+\_\+collisions\+\_\+shapes}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shapes, \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classStaticBody_a9d2973c36dc745928707d787afafde2e}{length}})
 \begin{DoxyCompactList}\small\item\em Retrieves the collision shapes and their lengths. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classStaticBody_a4f3d26f9b5c769a7fb54fdeebd64b9e7}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+void \mbox{\hyperlink{classStaticBody_a2402015ac1e40d1b04e0ef882a867414}{update\+\_\+global\+\_\+position}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
 \begin{DoxyCompactList}\small\item\em Updates the global position of a static body. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classStaticBody_ac2200b98bbc1ea0693485a84f931c3df}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+void \mbox{\hyperlink{classStaticBody_aa19dd4655a5b11e3fd52dc458371431e}{update}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
 \begin{DoxyCompactList}\small\item\em Updates the position, rotation, and scale of a static body. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classStaticBody_a4e9e7d67bffe09f901dbcb78620a16b2}{load}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}scripts, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
 \begin{DoxyCompactList}\small\item\em Loads data from a file and initializes the provided \doxylink{classCamera}{Camera}, \doxylink{structScript}{Script}, and \doxylink{classNode}{Node} structures. \end{DoxyCompactList}\item 
@@ -44,13 +44,13 @@ void \mbox{\hyperlink{classStaticBody_afa700e79c37db2ae91c321b054444449}{save}} 
 \begin{DoxyCompactList}\small\item\em Saves the current state of the static body to a file. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classStaticBody_a143cf54ba7dcb5be2a11a5ff53bd13ce}{get\+\_\+velocity\+\_\+norm}} ()
 \begin{DoxyCompactList}\small\item\em Get the velocity norm of a node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classStaticBody_a37aa0720586a7f7267eac40020eae7f6}{get\+\_\+velocity}} (vec3 \texorpdfstring{$\ast$}{*}velocity)
+void \mbox{\hyperlink{classStaticBody_ad0c86bcbb150c3a11f18703c629aa1be}{get\+\_\+velocity}} (vec3 velocity)
 \begin{DoxyCompactList}\small\item\em Get the velocity of a node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classStaticBody_a99fa7779443f749956b48a28e8c7798b}{get\+\_\+mass}} (float \texorpdfstring{$\ast$}{*}mass)
 \begin{DoxyCompactList}\small\item\em Get the mass of a node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classStaticBody_a4719d7789b717dc7ab07fd7bf0097e11}{get\+\_\+center\+\_\+of\+\_\+mass}} (float \texorpdfstring{$\ast$}{*}com)
+void \mbox{\hyperlink{classStaticBody_ac80b860ec57a3ba5cd719067232dbb83}{get\+\_\+center\+\_\+of\+\_\+mass}} (vec3 com)
 \begin{DoxyCompactList}\small\item\em Get the center of mass of a node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classStaticBody_a361cc6c5940a3403312ba4635d0aa6f1}{get\+\_\+collision\+\_\+normal}} (float \texorpdfstring{$\ast$}{*}normal)
+void \mbox{\hyperlink{classStaticBody_a0d2834a674a804f7d9288c84a832eb5f}{get\+\_\+collision\+\_\+normal}} (vec3 normal)
 \begin{DoxyCompactList}\small\item\em Retrieves the collision normal vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classBody}{Body}}}
 \begin{DoxyCompactItemize}
@@ -85,7 +85,7 @@ void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}}
 \begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classNode}{Node} class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
 \begin{DoxyCompactList}\small\item\em Initializes a node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}})
 \begin{DoxyCompactList}\small\item\em Retrieves the glow shader. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}})
 \begin{DoxyCompactList}\small\item\em Retrieves settings data. \end{DoxyCompactList}\item 
@@ -93,13 +93,13 @@ void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
 \begin{DoxyCompactList}\small\item\em Loads the necessary resources or data for the node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
 \begin{DoxyCompactList}\small\item\em Saves the current state to the specified file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_ab05e54fc6a226fe70d274e46e9ced07a}{prepare\+\_\+render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+void \mbox{\hyperlink{classNode_af61079d444fa059127bc4983cf5e4ea5}{prepare\+\_\+render}} (mat4 model\+Matrix, \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
 \begin{DoxyCompactList}\small\item\em Renders a node using the specified model matrix and shader. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_ab93a6f41e02422a21c44227c0355382a}{render}} ()
 \begin{DoxyCompactList}\small\item\em Renders the node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_a2621112ec04d166f9ec376eba06f3bbb}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+void \mbox{\hyperlink{classNode_a117da4a7be3efb9541f5279a98bf839f}{update\+\_\+global\+\_\+position}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
 \begin{DoxyCompactList}\small\item\em Updates the global position of a node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_a500a682914a24af188bd9eb79ba2aaae}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+void \mbox{\hyperlink{classNode_a1e577d625ac818cc6dac5634e713cdaf}{update}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
 \begin{DoxyCompactList}\small\item\em Updates the position, rotation, and scale of a node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a86288848282bf3bba83f0cc7437207ac}{on\+\_\+resize}} ()
 \begin{DoxyCompactList}\small\item\em Handles the resize event for the node. \end{DoxyCompactList}\item 
@@ -144,7 +144,7 @@ struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstr
 \item 
 vec3 \mbox{\hyperlink{classStaticBody_a4a669198037c11d60943dce755cbfea0}{forced\+Normal}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classStaticBody_a9d2973c36dc745928707d787afafde2e}{length}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classStaticBody_a9d2973c36dc745928707d787afafde2e}{length}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
@@ -155,11 +155,11 @@ struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstr
 \item 
 struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_a34f3ab9670c7b70dad8905359a243c92}{parent}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}}
+\mbox{\hyperlink{aliases_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a670b66a39fdb438336be47a9cb68a516}{type}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a670b66a39fdb438336be47a9cb68a516}{type}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a0c95683293e9f234118c583a28bc9cc0}{flags}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a0c95683293e9f234118c583a28bc9cc0}{flags}}
 \item 
 vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}
 \item 
@@ -177,15 +177,15 @@ vec3 \mbox{\hyperlink{classNode_a1d353831fd989481401e337cd5ba0ddc}{global\+Scale
 \item 
 \mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_afa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_ab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_ab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
 \item 
-\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}}
+\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_ad05f8b1de975fa3370e8b98c0ec5aa4f}{glow\+Shader}} = 0
+static \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_ad05f8b1de975fa3370e8b98c0ec5aa4f}{glow\+Shader}} = 0
 \begin{DoxyCompactList}\small\item\em A static Shader variable used for glow effect. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -195,11 +195,11 @@ Represents a static body in the physics simulation.
 A static body does not move and is used for objects like walls or floors. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classStaticBody_a6b41ec60c6fbb3439dbef94fba6216e1}\label{classStaticBody_a6b41ec60c6fbb3439dbef94fba6216e1} 
+\Hypertarget{classStaticBody_a8be7e504be46f51fc86feb88ca1bff1a}\label{classStaticBody_a8be7e504be46f51fc86feb88ca1bff1a} 
 \index{StaticBody@{StaticBody}!constructor@{constructor}}
 \index{constructor@{constructor}!StaticBody@{StaticBody}}
 \doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
-{\footnotesize\ttfamily void Static\+Body\+::constructor (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{forced\+Normal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Static\+Body\+::constructor (\begin{DoxyParamCaption}\item[{vec3}]{forced\+Normal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -209,14 +209,14 @@ This function initializes a static body with the given normal force.
 
 
 \begin{DoxyParams}{Parameters}
-{\em forced\+Normal} & A pointer to a float representing the normal force to be applied to the static body. \\
+{\em forced\+Normal} & Vec3 representing the normal force to be applied to the static body. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classStaticBody_a02a766602b3222419277ea82c5beb956}\label{classStaticBody_a02a766602b3222419277ea82c5beb956} 
 \index{StaticBody@{StaticBody}!get\_collisions\_shapes@{get\_collisions\_shapes}}
 \index{get\_collisions\_shapes@{get\_collisions\_shapes}!StaticBody@{StaticBody}}
 \doxysubsubsection{\texorpdfstring{get\_collisions\_shapes()}{get\_collisions\_shapes()}}
-{\footnotesize\ttfamily void Static\+Body\+::get\+\_\+collisions\+\_\+shapes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{shapes,  }\item[{\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Static\+Body\+::get\+\_\+collisions\+\_\+shapes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{shapes,  }\item[{\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -231,11 +231,11 @@ This function populates the provided pointers with the collision shapes and thei
 {\em length} & A pointer to an array of unsigned 8-\/bit integers. This will be populated with the lengths of the collision shapes. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classStaticBody_a4f3d26f9b5c769a7fb54fdeebd64b9e7}\label{classStaticBody_a4f3d26f9b5c769a7fb54fdeebd64b9e7} 
+\Hypertarget{classStaticBody_a2402015ac1e40d1b04e0ef882a867414}\label{classStaticBody_a2402015ac1e40d1b04e0ef882a867414} 
 \index{StaticBody@{StaticBody}!update\_global\_position@{update\_global\_position}}
 \index{update\_global\_position@{update\_global\_position}!StaticBody@{StaticBody}}
 \doxysubsubsection{\texorpdfstring{update\_global\_position()}{update\_global\_position()}}
-{\footnotesize\ttfamily void Static\+Body\+::update\+\_\+global\+\_\+position (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Static\+Body\+::update\+\_\+global\+\_\+position (\begin{DoxyParamCaption}\item[{vec3}]{pos,  }\item[{vec3}]{rot,  }\item[{vec3}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -245,18 +245,18 @@ This function updates the global position of a static body based on the provided
 
 
 \begin{DoxyParams}{Parameters}
-{\em pos} & A pointer to a vec3 structure representing the position of the static body. \\
+{\em pos} & Vec3 structure representing the position of the static body. \\
 \hline
-{\em rot} & A pointer to a vec3 structure representing the rotation of the static body. \\
+{\em rot} & Vec3 structure representing the rotation of the static body. \\
 \hline
-{\em scale} & A pointer to a vec3 structure representing the scale of the static body. \\
+{\em scale} & Vec3 structure representing the scale of the static body. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classStaticBody_ac2200b98bbc1ea0693485a84f931c3df}\label{classStaticBody_ac2200b98bbc1ea0693485a84f931c3df} 
+\Hypertarget{classStaticBody_aa19dd4655a5b11e3fd52dc458371431e}\label{classStaticBody_aa19dd4655a5b11e3fd52dc458371431e} 
 \index{StaticBody@{StaticBody}!update@{update}}
 \index{update@{update}!StaticBody@{StaticBody}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily void Static\+Body\+::update (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Static\+Body\+::update (\begin{DoxyParamCaption}\item[{vec3}]{pos,  }\item[{vec3}]{rot,  }\item[{vec3}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -266,11 +266,11 @@ This function updates the transformation properties of a static body in the phys
 
 
 \begin{DoxyParams}{Parameters}
-{\em pos} & Pointer to a vec3 structure representing the position of the static body. \\
+{\em pos} & Vec3 structure representing the position of the static body. \\
 \hline
-{\em rot} & Pointer to a vec3 structure representing the rotation of the static body. \\
+{\em rot} & Vec3 structure representing the rotation of the static body. \\
 \hline
-{\em scale} & Pointer to a vec3 structure representing the scale of the static body. \\
+{\em scale} & Vec3 structure representing the scale of the static body. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classStaticBody_a4e9e7d67bffe09f901dbcb78620a16b2}\label{classStaticBody_a4e9e7d67bffe09f901dbcb78620a16b2} 
@@ -324,11 +324,11 @@ Get the velocity norm of a node.
 \begin{DoxyReturn}{Returns}
 The velocity norm of the node. 
 \end{DoxyReturn}
-\Hypertarget{classStaticBody_a37aa0720586a7f7267eac40020eae7f6}\label{classStaticBody_a37aa0720586a7f7267eac40020eae7f6} 
+\Hypertarget{classStaticBody_ad0c86bcbb150c3a11f18703c629aa1be}\label{classStaticBody_ad0c86bcbb150c3a11f18703c629aa1be} 
 \index{StaticBody@{StaticBody}!get\_velocity@{get\_velocity}}
 \index{get\_velocity@{get\_velocity}!StaticBody@{StaticBody}}
 \doxysubsubsection{\texorpdfstring{get\_velocity()}{get\_velocity()}}
-{\footnotesize\ttfamily void Static\+Body\+::get\+\_\+velocity (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{velocity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Static\+Body\+::get\+\_\+velocity (\begin{DoxyParamCaption}\item[{vec3}]{velocity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -354,11 +354,11 @@ Get the mass of a node.
 {\em mass} & Output pointer to store the mass. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classStaticBody_a4719d7789b717dc7ab07fd7bf0097e11}\label{classStaticBody_a4719d7789b717dc7ab07fd7bf0097e11} 
+\Hypertarget{classStaticBody_ac80b860ec57a3ba5cd719067232dbb83}\label{classStaticBody_ac80b860ec57a3ba5cd719067232dbb83} 
 \index{StaticBody@{StaticBody}!get\_center\_of\_mass@{get\_center\_of\_mass}}
 \index{get\_center\_of\_mass@{get\_center\_of\_mass}!StaticBody@{StaticBody}}
 \doxysubsubsection{\texorpdfstring{get\_center\_of\_mass()}{get\_center\_of\_mass()}}
-{\footnotesize\ttfamily void Static\+Body\+::get\+\_\+center\+\_\+of\+\_\+mass (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{com }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Static\+Body\+::get\+\_\+center\+\_\+of\+\_\+mass (\begin{DoxyParamCaption}\item[{vec3}]{com }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -369,11 +369,11 @@ Get the center of mass of a node.
 {\em com} & Output vector to store the center of mass. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classStaticBody_a361cc6c5940a3403312ba4635d0aa6f1}\label{classStaticBody_a361cc6c5940a3403312ba4635d0aa6f1} 
+\Hypertarget{classStaticBody_a0d2834a674a804f7d9288c84a832eb5f}\label{classStaticBody_a0d2834a674a804f7d9288c84a832eb5f} 
 \index{StaticBody@{StaticBody}!get\_collision\_normal@{get\_collision\_normal}}
 \index{get\_collision\_normal@{get\_collision\_normal}!StaticBody@{StaticBody}}
 \doxysubsubsection{\texorpdfstring{get\_collision\_normal()}{get\_collision\_normal()}}
-{\footnotesize\ttfamily void Static\+Body\+::get\+\_\+collision\+\_\+normal (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{normal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Static\+Body\+::get\+\_\+collision\+\_\+normal (\begin{DoxyParamCaption}\item[{vec3}]{normal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -383,7 +383,7 @@ This function calculates and returns the normal vector of a collision. The norma
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ out}}  & {\em normal} & A pointer to a float array where the normal vector will be stored. The array should have enough space to store the components of the normal vector. \\
+\mbox{\texttt{ out}}  & {\em normal} & Vec3 where the normal vector will be stored. \\
 \hline
 \end{DoxyParams}
 
@@ -405,7 +405,7 @@ If defined, force the collision normal of the static body. \Hypertarget{classSta
 \index{StaticBody@{StaticBody}!length@{length}}
 \index{length@{length}!StaticBody@{StaticBody}}
 \doxysubsubsection{\texorpdfstring{length}{length}}
-{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Static\+Body\+::length}
+{\footnotesize\ttfamily \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Static\+Body\+::length}
 
 Number of collision shapes. 
 

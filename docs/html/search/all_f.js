@@ -21,12 +21,13 @@ var searchData=
   ['osio_20file_20operations_18',['OSIO File Operations',['../group__OSIO.html',1,'']]],
   ['osio_2ec_19',['osio.c',['../osio_8c.html',1,'']]],
   ['osio_2eh_20',['osio.h',['../osio_8h.html',1,'']]],
-  ['osio_5fopen_5ffile_21',['osio_open_file',['../group__OSIO.html#ga054945d77398e3be399fdb8398d0f4ef',1,'osio_open_file(char *path, char *relativePath, char *filter):&#160;osio.c'],['../group__OSIO.html#ga054945d77398e3be399fdb8398d0f4ef',1,'osio_open_file(char *path, char *relativePath, char *filter):&#160;osio.c']]],
-  ['osio_5fprint_5ferror_22',['osio_print_error',['../group__OSIO.html#gadc303caa72b5aed4b43ffa8f34f0375f',1,'osio_print_error(char *msg):&#160;osio.c'],['../group__OSIO.html#gadc303caa72b5aed4b43ffa8f34f0375f',1,'osio_print_error(char *msg):&#160;osio.c']]],
-  ['osio_5fsave_5ffile_23',['osio_save_file',['../group__OSIO.html#ga13b0479e5e15d717ef71927639b2822f',1,'osio_save_file(char *path, char *relativePath, char *filter):&#160;osio.c'],['../group__OSIO.html#ga13b0479e5e15d717ef71927639b2822f',1,'osio_save_file(char *path, char *relativePath, char *filter):&#160;osio.c']]],
-  ['outercutoff_24',['outerCutOff',['../classSpotLight.html#ad4152c35627a503d111d1c613fae3ad1',1,'SpotLight']]],
-  ['overflow_25',['overflow',['../classFrame.html#a26597ca9417001184f7d396ffd7a62a5',1,'Frame']]],
-  ['overflow_5fscroll_26',['OVERFLOW_SCROLL',['../frame_8h.html#a885df608db65e29c399b42f68ef201a0a0d1cd7142b181eb9b04bfb0e77060ce5',1,'frame.h']]],
-  ['overflow_5fvisible_27',['OVERFLOW_VISIBLE',['../frame_8h.html#a885df608db65e29c399b42f68ef201a0a61f9ff297e544cd92c3fcc68f9860bd6',1,'frame.h']]],
-  ['overview_28',['Overview',['../engine_functionality.html#overview',1,'']]]
+  ['osio_5ffind_21',['osio_find',['../group__OSIO.html#ga73f3b3dc473ae5d8d46d95fe3cd72759',1,'osio_find(dirent_t ***namelist, const char *path, int(*filter)(const dirent_t *entry)):&#160;osio.c'],['../group__OSIO.html#ga73f3b3dc473ae5d8d46d95fe3cd72759',1,'osio_find(dirent_t ***namelist, const char *path, int(*filter)(const dirent_t *entry)):&#160;osio.c']]],
+  ['osio_5fopen_5ffile_22',['osio_open_file',['../group__OSIO.html#ga054945d77398e3be399fdb8398d0f4ef',1,'osio_open_file(char *path, char *relativePath, char *filter):&#160;osio.c'],['../group__OSIO.html#ga054945d77398e3be399fdb8398d0f4ef',1,'osio_open_file(char *path, char *relativePath, char *filter):&#160;osio.c']]],
+  ['osio_5fprint_5ferror_23',['osio_print_error',['../group__OSIO.html#gadc303caa72b5aed4b43ffa8f34f0375f',1,'osio_print_error(char *msg):&#160;osio.c'],['../group__OSIO.html#gadc303caa72b5aed4b43ffa8f34f0375f',1,'osio_print_error(char *msg):&#160;osio.c']]],
+  ['osio_5fsave_5ffile_24',['osio_save_file',['../group__OSIO.html#ga13b0479e5e15d717ef71927639b2822f',1,'osio_save_file(char *path, char *relativePath, char *filter):&#160;osio.c'],['../group__OSIO.html#ga13b0479e5e15d717ef71927639b2822f',1,'osio_save_file(char *path, char *relativePath, char *filter):&#160;osio.c']]],
+  ['outercutoff_25',['outerCutOff',['../classSpotLight.html#ad4152c35627a503d111d1c613fae3ad1',1,'SpotLight']]],
+  ['overflow_26',['overflow',['../classFrame.html#a26597ca9417001184f7d396ffd7a62a5',1,'Frame']]],
+  ['overflow_5fscroll_27',['OVERFLOW_SCROLL',['../frame_8h.html#a885df608db65e29c399b42f68ef201a0a0d1cd7142b181eb9b04bfb0e77060ce5',1,'frame.h']]],
+  ['overflow_5fvisible_28',['OVERFLOW_VISIBLE',['../frame_8h.html#a885df608db65e29c399b42f68ef201a0a61f9ff297e544cd92c3fcc68f9860bd6',1,'frame.h']]],
+  ['overview_29',['Overview',['../engine_functionality.html#overview',1,'']]]
 ];

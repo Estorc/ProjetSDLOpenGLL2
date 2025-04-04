@@ -137,10 +137,10 @@ Example</h2>
 <div class="ttc" id="agroup__InputHandling_html_gga0ada92b8263d776ca3c779d2a0e031bca0483607aa811d9b40ce925494621a188"><div class="ttname"><a href="group__InputHandling.html#gga0ada92b8263d776ca3c779d2a0e031bca0483607aa811d9b40ce925494621a188">KEY_MENU</a></div><div class="ttdeci">@ KEY_MENU</div><div class="ttdef"><b>Definition</b> input.h:56</div></div>
 <div class="ttc" id="agroup__NodeFunctions_html_ggae925b777d12c58434a689cce258b57c0a579273ea1ad284119327d60ff4dbc4b5"><div class="ttname"><a href="group__NodeFunctions.html#ggae925b777d12c58434a689cce258b57c0a579273ea1ad284119327d60ff4dbc4b5">NODE_VISIBLE</a></div><div class="ttdeci">@ NODE_VISIBLE</div><div class="ttdef"><b>Definition</b> node.h:91</div></div>
 <div class="ttc" id="agroup__NodeFunctions_html_ggae925b777d12c58434a689cce258b57c0a60ab1e6cf30478e53bd7bcba32c2c792"><div class="ttname"><a href="group__NodeFunctions.html#ggae925b777d12c58434a689cce258b57c0a60ab1e6cf30478e53bd7bcba32c2c792">NODE_ACTIVE</a></div><div class="ttdeci">@ NODE_ACTIVE</div><div class="ttdef"><b>Definition</b> node.h:90</div></div>
-<div class="ttc" id="araptiquax_8c_html_ad749b00382c53c431741d17582670ad7"><div class="ttname"><a href="raptiquax_8c.html#ad749b00382c53c431741d17582670ad7">Game</a></div><div class="ttdeci">struct RaptiquaX_t Game</div><div class="ttdef"><b>Definition</b> raptiquax.c:57</div></div>
+<div class="ttc" id="araptiquax_8c_html_ad749b00382c53c431741d17582670ad7"><div class="ttname"><a href="raptiquax_8c.html#ad749b00382c53c431741d17582670ad7">Game</a></div><div class="ttdeci">struct RaptiquaX_t Game</div><div class="ttdef"><b>Definition</b> raptiquax.c:61</div></div>
 <div class="ttc" id="ascripts_8h_html_a58f77c5f80369078d6299b1f2fd5bad0"><div class="ttname"><a href="scripts_8h.html#a58f77c5f80369078d6299b1f2fd5bad0">GET_READY_PARAMETERS</a></div><div class="ttdeci">#define GET_READY_PARAMETERS()</div><div class="ttdoc">Macro to retrieve the delta parameter from the variable argument list.</div><div class="ttdef"><b>Definition</b> scripts.h:30</div></div>
 <div class="ttc" id="astructInput_html_a4e6a3f41845bb6124d2dfe02645a3afd"><div class="ttname"><a href="structInput.html#a4e6a3f41845bb6124d2dfe02645a3afd">Input::released_keys</a></div><div class="ttdeci">u16 released_keys</div><div class="ttdef"><b>Definition</b> input.h:97</div></div>
-<div class="ttc" id="astructRaptiquaX__t_html_ac5dec1d4057951af43c282e1f3b89a6e"><div class="ttname"><a href="structRaptiquaX__t.html#ac5dec1d4057951af43c282e1f3b89a6e">RaptiquaX_t::input</a></div><div class="ttdeci">struct Input *const input</div><div class="ttdef"><b>Definition</b> raptiquax.h:43</div></div>
+<div class="ttc" id="astructRaptiquaX__t_html_ac5dec1d4057951af43c282e1f3b89a6e"><div class="ttname"><a href="structRaptiquaX__t.html#ac5dec1d4057951af43c282e1f3b89a6e">RaptiquaX_t::input</a></div><div class="ttdeci">struct Input *const input</div><div class="ttdef"><b>Definition</b> raptiquax.h:30</div></div>
 </div><!-- fragment --><p> This script toggles the visibility and activity of the first child node when the <code>KEY_MENU</code> is released.</p>
 <h1><a class="anchor" id="retrieving_parameters"></a>
 Retrieving Parameters</h1>
@@ -162,9 +162,9 @@ Retrieving a Signal</h2>
 <li><b>Description</b>: Retrieves a signal (<code>Signal signal</code>), indicating which event triggered the script.</li>
 <li><b>Example</b>: <div class="fragment"><div class="line"><a class="code hl_define" href="scripts_8h.html#a5a92c26c2a90419fef673e1c1ea64877">GET_SIGNAL</a>();</div>
 <div class="line"><span class="keywordflow">if</span> (signal == <a class="code hl_enumvalue" href="signals_8h.html#af01fe53890022ebf14996ce6824f829ea29a4a1bbf9fa5fe9cbf37cc6e92e4e6f">SIGNAL_BUTTON_CLICKED</a>) {</div>
-<div class="line">    <a class="code hl_function" href="audio_8c.html#aed0b0c574c1994f085c0b29b02a06d5a">play_sfx</a>(<span class="stringliteral">&quot;assets/audio/sfx/click.mp3&quot;</span>, 50, 0);</div>
+<div class="line">    <a class="code hl_function" href="audio_8c.html#a3e75618a4df30874bc8a8c651c41e8c5">play_sfx</a>(<span class="stringliteral">&quot;assets/audio/sfx/click.mp3&quot;</span>, 50, 0);</div>
 <div class="line">}</div>
-<div class="ttc" id="aaudio_8c_html_aed0b0c574c1994f085c0b29b02a06d5a"><div class="ttname"><a href="audio_8c.html#aed0b0c574c1994f085c0b29b02a06d5a">play_sfx</a></div><div class="ttdeci">void play_sfx(const char *const path, const int volume, const int loops)</div><div class="ttdoc">Plays a sound effect.</div><div class="ttdef"><b>Definition</b> audio.c:9</div></div>
+<div class="ttc" id="aaudio_8c_html_a3e75618a4df30874bc8a8c651c41e8c5"><div class="ttname"><a href="audio_8c.html#a3e75618a4df30874bc8a8c651c41e8c5">play_sfx</a></div><div class="ttdeci">Mix_Chunk * play_sfx(const char *const path, const int volume, const int loops)</div><div class="ttdoc">Plays a sound effect.</div><div class="ttdef"><b>Definition</b> audio.c:9</div></div>
 <div class="ttc" id="asignals_8h_html_af01fe53890022ebf14996ce6824f829ea29a4a1bbf9fa5fe9cbf37cc6e92e4e6f"><div class="ttname"><a href="signals_8h.html#af01fe53890022ebf14996ce6824f829ea29a4a1bbf9fa5fe9cbf37cc6e92e4e6f">SIGNAL_BUTTON_CLICKED</a></div><div class="ttdeci">@ SIGNAL_BUTTON_CLICKED</div><div class="ttdef"><b>Definition</b> signals.h:22</div></div>
 </div><!-- fragment --></li>
 </ul>
@@ -204,11 +204,11 @@ Example: Script Responding to Signals</h1>
 <div class="line">    <a class="code hl_define" href="scripts_8h.html#a5a92c26c2a90419fef673e1c1ea64877">GET_SIGNAL</a>();    </div>
 <div class="line">    <span class="keywordflow">switch</span> (signal) {</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="signals_8h.html#af01fe53890022ebf14996ce6824f829ea29a4a1bbf9fa5fe9cbf37cc6e92e4e6f">SIGNAL_BUTTON_CLICKED</a>:</div>
-<div class="line">            <a class="code hl_function" href="audio_8c.html#aed0b0c574c1994f085c0b29b02a06d5a">play_sfx</a>(<span class="stringliteral">&quot;assets/audio/sfx/button-clicked-sfx.mp3&quot;</span>, 50, 0);</div>
+<div class="line">            <a class="code hl_function" href="audio_8c.html#a3e75618a4df30874bc8a8c651c41e8c5">play_sfx</a>(<span class="stringliteral">&quot;assets/audio/sfx/button-clicked-sfx.mp3&quot;</span>, 50, 0);</div>
 <div class="line">            <a class="code hl_function" href="scene_8c.html#a04b71efe0468d21f9f6f17cfb3d6fda9">prepare_change_scene</a>(<span class="stringliteral">&quot;assets/scenes/claude_chappe/boot.scene&quot;</span>);</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="signals_8h.html#af01fe53890022ebf14996ce6824f829ead2af2274fdeb9f5f3663f520acf49b1c">SIGNAL_BUTTON_HOVERED</a>:</div>
-<div class="line">            <a class="code hl_function" href="audio_8c.html#aed0b0c574c1994f085c0b29b02a06d5a">play_sfx</a>(<span class="stringliteral">&quot;assets/audio/sfx/button-hover-sfx.mp3&quot;</span>, 50, 0);</div>
+<div class="line">            <a class="code hl_function" href="audio_8c.html#a3e75618a4df30874bc8a8c651c41e8c5">play_sfx</a>(<span class="stringliteral">&quot;assets/audio/sfx/button-hover-sfx.mp3&quot;</span>, 50, 0);</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">default</span>:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>

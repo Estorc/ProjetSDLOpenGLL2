@@ -5,7 +5,7 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MODEL\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MODEL\_H}}
 \DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{shader_8h}{shader.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{shader_8h}{io/shader.h}}>}}
 \DoxyCodeLine{00005\ }
 \DoxyCodeLine{00006\ }
 \DoxyCodeLine{00007\ \textcolor{comment}{/*}}
@@ -16,163 +16,153 @@
 \DoxyCodeLine{00012\ \textcolor{comment}{\ *\ -\/\ The\ MTL\ file\ must\ not\ contain\ this\ regex\ string:\ "{}(-\/s\ \(\backslash\)d*\ \(\backslash\)d*\ \(\backslash\)d*\ *)*(-\/bm\ \(\backslash\)d*\(\backslash\).*\(\backslash\)d*\ )*"{}}}
 \DoxyCodeLine{00013\ \textcolor{comment}{\ */}}
 \DoxyCodeLine{00014\ }
-\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__ModelHandling_gaad5c885aa493ac48e59f4deeed82ca38}{VBO}};}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00036\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}};}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00042\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{group__ModelHandling_gaad5c885aa493ac48e59f4deeed82ca38}{VBO}}\ \mbox{\hyperlink{group__ModelHandling_gaddb0a8c0f0a8d1baff3e033eb099a83b}{VertexBuffer}};}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00048\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}}\ \mbox{\hyperlink{group__ModelHandling_ga715110c10f770e339f863e38540533bc}{VertexArray}};}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00057\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__ModelHandling_gabcb2d8ba41df6aa7347c241c89e81d3f}{VertexAttribute}}\ \{}
-\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faecc071cb0c4a4faea42c7c2e1108f309}{VERTEX\_ATTRIBUTE\_POSITION\_X}},\ \ \ \ \ \ }
-\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa6c1fecc71656bc9b2ebc81fc5bff3184}{VERTEX\_ATTRIBUTE\_POSITION\_Y}},\ \ \ \ \ \ }
-\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa9ce91d8b807350f30277dbb29137a37d}{VERTEX\_ATTRIBUTE\_POSITION\_Z}},\ \ \ \ \ \ }
-\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa2145649d8ddd1dea1899e89c637e6961}{VERTEX\_ATTRIBUTE\_NORMAL\_X}},\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa44ffd2447902cacde3ecf09ba4a9bf7e}{VERTEX\_ATTRIBUTE\_NORMAL\_Y}},\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad4dc61c5a0006a41a700482f6958d5a0}{VERTEX\_ATTRIBUTE\_NORMAL\_Z}},\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0e906bdeb39e691c1c63e0f186a58fc7}{VERTEX\_ATTRIBUTE\_TEXTURE\_U}},\ \ \ \ \ \ \ }
-\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0a3f757bd8338d883a6ae78608316ac8}{VERTEX\_ATTRIBUTE\_TEXTURE\_V}},\ \ \ \ \ \ \ }
-\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa3f997a20aa08eb775be464df97e462c4}{VERTEX\_ATTRIBUTE\_TANGENT\_X}},\ \ \ \ \ \ \ }
-\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fac0361afd99159dbc032571acc3f42805}{VERTEX\_ATTRIBUTE\_TANGENT\_Y}},\ \ \ \ \ \ \ }
-\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fadf7ae10e6f67d99f85cea13efbe79307}{VERTEX\_ATTRIBUTE\_TANGENT\_Z}},\ \ \ \ \ \ \ }
-\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0e53f0224db3329d3bc73b669b4c7b11}{VERTEX\_ATTRIBUTE\_BITANGENT\_X}},\ \ \ \ \ }
-\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fabe965fee5a11062bb99c99ab1ee35e53}{VERTEX\_ATTRIBUTE\_BITANGENT\_Y}},\ \ \ \ \ }
-\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa34b88344378311ad1fb9731aa526b690}{VERTEX\_ATTRIBUTE\_BITANGENT\_Z}},\ \ \ \ \ }
-\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa5794e1a14278263ab9271b77ee87cdaf}{VERTEX\_ATTRIBUTE\_BONE\_ID\_1}},\ \ \ \ \ \ \ }
-\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fab4bf877e6ca0cca62b248e299c34246d}{VERTEX\_ATTRIBUTE\_BONE\_ID\_2}},\ \ \ \ \ \ \ }
-\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa00652540bf5055303a1eac65ec5c7c71}{VERTEX\_ATTRIBUTE\_BONE\_ID\_3}},\ \ \ \ \ \ \ }
-\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad2ac90d311145c04bd7c20b893054de6}{VERTEX\_ATTRIBUTE\_BONE\_ID\_4}},\ \ \ \ \ \ \ }
-\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa05fe44cb42440721047d00aba7d408ce}{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_1}},\ \ \ }
-\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad0dfe274caec74ff63e1be319b48dc39}{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_2}},\ \ \ }
-\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa8739ea71326406860223c6427f75a9a3}{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_3}},\ \ \ }
-\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa8a8c3fea080dd9c3535e68fd5ebe10bc}{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_4}},\ \ \ }
-\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198}{VERTEX\_ATTRIBUTE\_COUNT}}\ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00081\ \}\ \mbox{\hyperlink{group__ModelHandling_gabcb2d8ba41df6aa7347c241c89e81d3f}{VertexAttribute}};}
-\DoxyCodeLine{00082\ }
-\DoxyCodeLine{00087\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group__ModelHandling_ga1351e71110272ccf5e8d661017498adb}{Vertex}}[\mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198}{VERTEX\_ATTRIBUTE\_COUNT}}];}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00093\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}};}
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00103\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
-\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ead834f3918cf0decc98e4c3724cee546b}{DIFFUSE\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eaa070856d072f24a2b62e593655510368}{SPECULAR\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eacefd7489137b1445bcfc571a4542d7f7}{AMBIENT\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea3950bd94c957f7171dff8a613f384304}{EMISSION\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00108\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea3427aa6606175c4b8bdb127197b13055}{PARALLAX\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eac309d743533ed702fd0eb1873f50f095}{ROUGHNESS\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eae2da96e9f97fe956180214c733275544}{SHEEN\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea5db1778c4563ef8d8d7e6deede1c5b18}{METALLIC\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eaee07e6793bc65f0cf0726c9aaff5cc5a}{CLEARCOAT\_THICKNESS\_MATERIAL\_PROPERTY}},\ \ }
-\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea6aef513b1b7051333e9e9ef238719e01}{CLEARCOAT\_ROUGHNESS\_MATERIAL\_PROPERTY}},\ \ }
-\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea75494dc25c0069e6ae336c414fd3d36e}{NORMAL\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00115\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea17dfc85b152da0de03562080c2714308}{REFLECTION\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea7752e3a397e9f76b816271441a5bb62e}{ANISOTROPY\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00117\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea13d5654e68552ce7c9cb81d014634549}{ANISOTROPY\_ROTATION\_MATERIAL\_PROPERTY}},\ \ }
-\DoxyCodeLine{00118\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea521b3e3857784f7f57eb57f08cdc8fe3}{MATERIAL\_PROPERTY\_COUNT}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00119\ \}\ \mbox{\hyperlink{group__ModelHandling_ga74a3753dc733cc27e7b37ab4fcc4f20e}{MaterialProperties}};}
-\DoxyCodeLine{00120\ }
-\DoxyCodeLine{00127\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMaterial}{Material}}\ \{}
-\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structMaterial_a60ae747c079187c06770d44d30a1b64c}{name}}[128];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00129\ \ \ \ \ vec3\ \mbox{\hyperlink{structMaterial_a12fd08f12919a1a842143a23dd3f87c0}{flatColors}}[\mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea521b3e3857784f7f57eb57f08cdc8fe3}{MATERIAL\_PROPERTY\_COUNT}}];\ }
-\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ \mbox{\hyperlink{structMaterial_a8a6654467e15a8e820817f4f75c7679f}{textureMaps}}[\mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea521b3e3857784f7f57eb57f08cdc8fe3}{MATERIAL\_PROPERTY\_COUNT}}];\ }
-\DoxyCodeLine{00131\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}\ \mbox{\hyperlink{structMaterial_a2c099c8078adff68f7751cddfd2cbe64}{specularExp}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00132\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}\ \mbox{\hyperlink{structMaterial_a5f665ff4d2fdfd52db7f8a8624f4aab5}{opacity}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00133\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}\ \mbox{\hyperlink{structMaterial_ac03bf1d5a0befb80a4258bd9004b21a7}{opticalDensity}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00134\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structMaterial_a71e44078b93a4ed9f9062b485f295ffe}{illumFlag}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00135\ \}\ \mbox{\hyperlink{structMaterial}{Material}};}
-\DoxyCodeLine{00136\ }
-\DoxyCodeLine{00143\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structModelObjectData}{ModelObjectData}}\ \mbox{\hyperlink{structModelObjectData}{ModelObjectData}};}
-\DoxyCodeLine{00144\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structModelObjectData}{ModelObjectData}}\ \{}
-\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ga1351e71110272ccf5e8d661017498adb}{Vertex}}\ *\mbox{\hyperlink{structModelObjectData_a69c6d0bea70653388b26ed33dff8691c}{facesVertex}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structModelObjectData_a741d26a4aff11635d045fd8acc222698}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00147\ \ \ \ \ \mbox{\hyperlink{structMaterial}{Material}}\ **\mbox{\hyperlink{structModelObjectData_a8b7b2f25625addb081fc1bdd893ce7c3}{materials}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ *\mbox{\hyperlink{structModelObjectData_afbb71cc0d9b5ab37666dc8d1eaadece6}{materialsLength}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//The\ numbers\ of\ faces\ before\ switching\ material}}
-\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structModelObjectData_ad22363430228ae7ef129caadaa3d522f}{materialsCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}}\ \mbox{\hyperlink{structModelObjectData_a81a06ba68dc3a3c26e985662f3b1df6d}{VAO}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00151\ \};}
-\DoxyCodeLine{00152\ }
-\DoxyCodeLine{00153\ }
-\DoxyCodeLine{00160\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structModelKeyframe}{ModelKeyframe}}\ \{}
-\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keyword}{union\ }\{}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ vec3\ \mbox{\hyperlink{structModelKeyframe_a8bfc484d7012a966cbecc0f231f7dd2c}{value}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ versor\ \mbox{\hyperlink{structModelKeyframe_aec45a29a13c7c977c02b73ced2a6220c}{r\_value}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00164\ \ \ \ \ \};}
-\DoxyCodeLine{00165\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}\ \mbox{\hyperlink{structModelKeyframe_aee84d3493c012b27fc691d4ab5afc1d2}{time}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00166\ \}\ \mbox{\hyperlink{structModelKeyframe}{ModelKeyframe}};}
-\DoxyCodeLine{00167\ }
-\DoxyCodeLine{00174\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBone}{Bone}}\ \{}
-\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structBone_a5308bf49086d4115802d73c9f3607b28}{name}}[128];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00176\ \ \ \ \ mat4\ \mbox{\hyperlink{structBone_a842ad02b3b17a412a3fd505081c186db}{offsetMatrix}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00177\ \ \ \ \ mat4\ \mbox{\hyperlink{structBone_a24c5bc5cfeb022d82677b5f786d74ff2}{transform}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00178\ \ \ \ \ \mbox{\hyperlink{structModelKeyframe}{ModelKeyframe}}\ *\mbox{\hyperlink{structBone_a8fc4280358595cc391fa8c64609056e2}{translationKeyframes}};\ \ \ \ }
-\DoxyCodeLine{00179\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structBone_abac3427db0bb36027eabf6bbb369d5c9}{translationKeyframesCount}};\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00180\ \ \ \ \ \mbox{\hyperlink{structModelKeyframe}{ModelKeyframe}}\ *\mbox{\hyperlink{structBone_ac6ecb224cad690a2f581543469583081}{rotationKeyframes}};\ \ \ \ \ \ \ }
-\DoxyCodeLine{00181\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structBone_a96474088473819d6d942c593b482fefa}{rotationKeyframesCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00182\ \ \ \ \ \mbox{\hyperlink{structModelKeyframe}{ModelKeyframe}}\ *\mbox{\hyperlink{structBone_a2df40db652d6f984ee572e5ab1a9a7f9}{scaleKeyframes}};\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00183\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structBone_ac37b59cc86bfb8b3d30693ed8f18d61c}{scaleKeyframesCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00184\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structBone_ad888628f07c03e6e52766345890b205c}{index}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00185\ \}\ \mbox{\hyperlink{structBone}{Bone}};}
+\DoxyCodeLine{00033\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__ModelHandling_gabcb2d8ba41df6aa7347c241c89e81d3f}{VertexAttribute}}\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faecc071cb0c4a4faea42c7c2e1108f309}{VERTEX\_ATTRIBUTE\_POSITION\_X}},\ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa6c1fecc71656bc9b2ebc81fc5bff3184}{VERTEX\_ATTRIBUTE\_POSITION\_Y}},\ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa9ce91d8b807350f30277dbb29137a37d}{VERTEX\_ATTRIBUTE\_POSITION\_Z}},\ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa2145649d8ddd1dea1899e89c637e6961}{VERTEX\_ATTRIBUTE\_NORMAL\_X}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa44ffd2447902cacde3ecf09ba4a9bf7e}{VERTEX\_ATTRIBUTE\_NORMAL\_Y}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad4dc61c5a0006a41a700482f6958d5a0}{VERTEX\_ATTRIBUTE\_NORMAL\_Z}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0e906bdeb39e691c1c63e0f186a58fc7}{VERTEX\_ATTRIBUTE\_TEXTURE\_U}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0a3f757bd8338d883a6ae78608316ac8}{VERTEX\_ATTRIBUTE\_TEXTURE\_V}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa3f997a20aa08eb775be464df97e462c4}{VERTEX\_ATTRIBUTE\_TANGENT\_X}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fac0361afd99159dbc032571acc3f42805}{VERTEX\_ATTRIBUTE\_TANGENT\_Y}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fadf7ae10e6f67d99f85cea13efbe79307}{VERTEX\_ATTRIBUTE\_TANGENT\_Z}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa0e53f0224db3329d3bc73b669b4c7b11}{VERTEX\_ATTRIBUTE\_BITANGENT\_X}},\ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fabe965fee5a11062bb99c99ab1ee35e53}{VERTEX\_ATTRIBUTE\_BITANGENT\_Y}},\ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa34b88344378311ad1fb9731aa526b690}{VERTEX\_ATTRIBUTE\_BITANGENT\_Z}},\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa5794e1a14278263ab9271b77ee87cdaf}{VERTEX\_ATTRIBUTE\_BONE\_ID\_1}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fab4bf877e6ca0cca62b248e299c34246d}{VERTEX\_ATTRIBUTE\_BONE\_ID\_2}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa00652540bf5055303a1eac65ec5c7c71}{VERTEX\_ATTRIBUTE\_BONE\_ID\_3}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad2ac90d311145c04bd7c20b893054de6}{VERTEX\_ATTRIBUTE\_BONE\_ID\_4}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa05fe44cb42440721047d00aba7d408ce}{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_1}},\ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fad0dfe274caec74ff63e1be319b48dc39}{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_2}},\ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa8739ea71326406860223c6427f75a9a3}{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_3}},\ \ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3fa8a8c3fea080dd9c3535e68fd5ebe10bc}{VERTEX\_ATTRIBUTE\_BONE\_WEIGHT\_4}},\ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198}{VERTEX\_ATTRIBUTE\_COUNT}}\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \}\ \mbox{\hyperlink{group__ModelHandling_gabcb2d8ba41df6aa7347c241c89e81d3f}{VertexAttribute}};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group__ModelHandling_ga1351e71110272ccf5e8d661017498adb}{Vertex}}[\mbox{\hyperlink{group__ModelHandling_ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198}{VERTEX\_ATTRIBUTE\_COUNT}}];}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ead834f3918cf0decc98e4c3724cee546b}{DIFFUSE\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eaa070856d072f24a2b62e593655510368}{SPECULAR\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eacefd7489137b1445bcfc571a4542d7f7}{AMBIENT\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea3950bd94c957f7171dff8a613f384304}{EMISSION\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea3427aa6606175c4b8bdb127197b13055}{PARALLAX\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eac309d743533ed702fd0eb1873f50f095}{ROUGHNESS\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eae2da96e9f97fe956180214c733275544}{SHEEN\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea5db1778c4563ef8d8d7e6deede1c5b18}{METALLIC\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20eaee07e6793bc65f0cf0726c9aaff5cc5a}{CLEARCOAT\_THICKNESS\_MATERIAL\_PROPERTY}},\ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea6aef513b1b7051333e9e9ef238719e01}{CLEARCOAT\_ROUGHNESS\_MATERIAL\_PROPERTY}},\ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea75494dc25c0069e6ae336c414fd3d36e}{NORMAL\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea17dfc85b152da0de03562080c2714308}{REFLECTION\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea7752e3a397e9f76b816271441a5bb62e}{ANISOTROPY\_MATERIAL\_PROPERTY}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea13d5654e68552ce7c9cb81d014634549}{ANISOTROPY\_ROTATION\_MATERIAL\_PROPERTY}},\ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea521b3e3857784f7f57eb57f08cdc8fe3}{MATERIAL\_PROPERTY\_COUNT}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \}\ \mbox{\hyperlink{group__ModelHandling_ga74a3753dc733cc27e7b37ab4fcc4f20e}{MaterialProperties}};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMaterial}{Material}}\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structMaterial_a60ae747c079187c06770d44d30a1b64c}{name}}[128];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00099\ \ \ \ \ vec3\ \mbox{\hyperlink{structMaterial_a12fd08f12919a1a842143a23dd3f87c0}{flatColors}}[\mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea521b3e3857784f7f57eb57f08cdc8fe3}{MATERIAL\_PROPERTY\_COUNT}}];\ }
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ \mbox{\hyperlink{structMaterial_a8a6654467e15a8e820817f4f75c7679f}{textureMaps}}[\mbox{\hyperlink{group__ModelHandling_gga74a3753dc733cc27e7b37ab4fcc4f20ea521b3e3857784f7f57eb57f08cdc8fe3}{MATERIAL\_PROPERTY\_COUNT}}];\ }
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}\ \mbox{\hyperlink{structMaterial_a2c099c8078adff68f7751cddfd2cbe64}{specularExp}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}\ \mbox{\hyperlink{structMaterial_a5f665ff4d2fdfd52db7f8a8624f4aab5}{opacity}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}\ \mbox{\hyperlink{structMaterial_ac03bf1d5a0befb80a4258bd9004b21a7}{opticalDensity}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structMaterial_a71e44078b93a4ed9f9062b485f295ffe}{illumFlag}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00105\ \}\ \mbox{\hyperlink{structMaterial}{Material}};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00113\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structModelObjectData}{ModelObjectData}}\ \mbox{\hyperlink{structModelObjectData}{ModelObjectData}};}
+\DoxyCodeLine{00114\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structModelObjectData}{ModelObjectData}}\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ga1351e71110272ccf5e8d661017498adb}{Vertex}}\ *\mbox{\hyperlink{structModelObjectData_a69c6d0bea70653388b26ed33dff8691c}{facesVertex}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structModelObjectData_a741d26a4aff11635d045fd8acc222698}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \mbox{\hyperlink{structMaterial}{Material}}\ **\mbox{\hyperlink{structModelObjectData_a8b7b2f25625addb081fc1bdd893ce7c3}{materials}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ *\mbox{\hyperlink{structModelObjectData_afbb71cc0d9b5ab37666dc8d1eaadece6}{materialsLength}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//The\ numbers\ of\ faces\ before\ switching\ material}}
+\DoxyCodeLine{00119\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structModelObjectData_ad22363430228ae7ef129caadaa3d522f}{materialsCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00120\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a8045bf7a50b1653e4b1e752967ddf6c3}{VAO}}\ \mbox{\hyperlink{structModelObjectData_a81a06ba68dc3a3c26e985662f3b1df6d}{VAO}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00121\ \};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00130\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structModelKeyframe}{ModelKeyframe}}\ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ vec3\ \mbox{\hyperlink{structModelKeyframe_a8bfc484d7012a966cbecc0f231f7dd2c}{value}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ versor\ \mbox{\hyperlink{structModelKeyframe_aec45a29a13c7c977c02b73ced2a6220c}{r\_value}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \};}
+\DoxyCodeLine{00135\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}\ \mbox{\hyperlink{structModelKeyframe_aee84d3493c012b27fc691d4ab5afc1d2}{time}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00136\ \}\ \mbox{\hyperlink{structModelKeyframe}{ModelKeyframe}};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00144\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBone}{Bone}}\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structBone_a5308bf49086d4115802d73c9f3607b28}{name}}[128];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00146\ \ \ \ \ mat4\ \mbox{\hyperlink{structBone_a842ad02b3b17a412a3fd505081c186db}{offsetMatrix}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00147\ \ \ \ \ mat4\ \mbox{\hyperlink{structBone_a24c5bc5cfeb022d82677b5f786d74ff2}{transform}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{structModelKeyframe}{ModelKeyframe}}\ *\mbox{\hyperlink{structBone_a8fc4280358595cc391fa8c64609056e2}{translationKeyframes}};\ \ \ \ }
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structBone_abac3427db0bb36027eabf6bbb369d5c9}{translationKeyframesCount}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{structModelKeyframe}{ModelKeyframe}}\ *\mbox{\hyperlink{structBone_ac6ecb224cad690a2f581543469583081}{rotationKeyframes}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structBone_a96474088473819d6d942c593b482fefa}{rotationKeyframesCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00152\ \ \ \ \ \mbox{\hyperlink{structModelKeyframe}{ModelKeyframe}}\ *\mbox{\hyperlink{structBone_a2df40db652d6f984ee572e5ab1a9a7f9}{scaleKeyframes}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structBone_ac37b59cc86bfb8b3d30693ed8f18d61c}{scaleKeyframesCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structBone_ad888628f07c03e6e52766345890b205c}{index}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00155\ \}\ \mbox{\hyperlink{structBone}{Bone}};}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00163\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structModelAnimation}{ModelAnimation}}\ \mbox{\hyperlink{structModelAnimation}{ModelAnimation}};}
+\DoxyCodeLine{00164\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structModelAnimation}{ModelAnimation}}\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structModelAnimation_a5fa9232357f3527e9fce7982ff7739cc}{name}}[128];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00166\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structModelAnimation_a37aa7a84dc664ebe0cc57e672b3d3f10}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00167\ \ \ \ \ \mbox{\hyperlink{structBone}{Bone}}\ *\mbox{\hyperlink{structModelAnimation_a8411eccf423a1e735a739dba614ad615}{targets}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00168\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structModelAnimation_a9b2b9103eb1787ec0bfe95eaa2afcf78}{targetsCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00169\ \};}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00177\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structModelData}{ModelData}}\ \mbox{\hyperlink{structModelData}{ModelData}};}
+\DoxyCodeLine{00178\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structModelData}{ModelData}}\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \mbox{\hyperlink{structMaterial}{Material}}\ *\mbox{\hyperlink{structModelData_a8eb6a8bbabf16efee10efc6862c6b94b}{materials}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//UNUSED}}
+\DoxyCodeLine{00180\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structModelData_abb9cdafeeb940b2dded841ac800b4c00}{materialsCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//UNUSED}}
+\DoxyCodeLine{00181\ \ \ \ \ \mbox{\hyperlink{structModelObjectData}{ModelObjectData}}\ *\mbox{\hyperlink{structModelData_abed85b0c0f0a25e5775f7b824a6a8e2e}{objects}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00182\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structModelData_a012086854bcd4e688d125130e9421d7a}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00183\ \ \ \ \ \mbox{\hyperlink{structModelAnimation}{ModelAnimation}}\ *\mbox{\hyperlink{structModelData_a12dcf46b362065a7cd88f4c6c2e3f001}{animations}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00184\ \ \ \ \ \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structModelData_a51cb1227ab21db720c5376cd28025535}{animationsCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00185\ \};}
 \DoxyCodeLine{00186\ }
-\DoxyCodeLine{00193\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structModelAnimation}{ModelAnimation}}\ \mbox{\hyperlink{structModelAnimation}{ModelAnimation}};}
-\DoxyCodeLine{00194\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structModelAnimation}{ModelAnimation}}\ \{}
-\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structModelAnimation_a5fa9232357f3527e9fce7982ff7739cc}{name}}[128];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00196\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structModelAnimation_a37aa7a84dc664ebe0cc57e672b3d3f10}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00197\ \ \ \ \ \mbox{\hyperlink{structBone}{Bone}}\ *\mbox{\hyperlink{structModelAnimation_a8411eccf423a1e735a739dba614ad615}{targets}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00198\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structModelAnimation_a9b2b9103eb1787ec0bfe95eaa2afcf78}{targetsCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00199\ \};}
-\DoxyCodeLine{00200\ }
-\DoxyCodeLine{00207\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structModelData}{ModelData}}\ \mbox{\hyperlink{structModelData}{ModelData}};}
-\DoxyCodeLine{00208\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structModelData}{ModelData}}\ \{}
-\DoxyCodeLine{00209\ \ \ \ \ \mbox{\hyperlink{structMaterial}{Material}}\ *\mbox{\hyperlink{structModelData_a8eb6a8bbabf16efee10efc6862c6b94b}{materials}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//UNUSED}}
-\DoxyCodeLine{00210\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structModelData_abb9cdafeeb940b2dded841ac800b4c00}{materialsCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//UNUSED}}
-\DoxyCodeLine{00211\ \ \ \ \ \mbox{\hyperlink{structModelObjectData}{ModelObjectData}}\ *\mbox{\hyperlink{structModelData_abed85b0c0f0a25e5775f7b824a6a8e2e}{objects}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00212\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structModelData_a012086854bcd4e688d125130e9421d7a}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00213\ \ \ \ \ \mbox{\hyperlink{structModelAnimation}{ModelAnimation}}\ *\mbox{\hyperlink{structModelData_a12dcf46b362065a7cd88f4c6c2e3f001}{animations}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00214\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structModelData_a51cb1227ab21db720c5376cd28025535}{animationsCount}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00215\ \};}
-\DoxyCodeLine{00216\ }
-\DoxyCodeLine{00223\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__ModelHandling_ga829dc978e29d88ada1059ea4ca6c4cd3}{ModelFlags}}\ \{}
-\DoxyCodeLine{00224\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3a2b30ff95d88165619069049a2d63dd5b}{MODEL\_FLAG\_NONE}}\ \ \ \ \ \ \ \ \ =\ 0,\ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00225\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3aed9e0d5515a86c37bb824798402143f5}{MODEL\_FLAG\_GLOW}}\ \ \ \ \ \ \ \ \ =\ 1\ <<\ 0,\ \ \ \ \ \ \ }
-\DoxyCodeLine{00226\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3a8f6e16e84592882a0a15e84621315c9e}{MODEL\_FLAG\_UNUSED1}}\ \ \ \ \ \ =\ 1\ <<\ 1,\ \ \ \ \ \ \ }
-\DoxyCodeLine{00227\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3a4dfe55474925099f083370a199f52f07}{MODEL\_FLAG\_UNUSED2}}\ \ \ \ \ \ =\ 1\ <<\ 2,\ \ \ \ \ \ \ }
-\DoxyCodeLine{00228\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3aefc89c58c71ec4d600b1a88ce28ba2a3}{MODEL\_FLAG\_UNUSED3}}\ \ \ \ \ \ =\ 1\ <<\ 3,\ \ \ \ \ \ \ }
-\DoxyCodeLine{00229\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3aa1fdaa6e462cdef530d25276417d66a6}{MODEL\_FLAG\_UNUSED4}}\ \ \ \ \ \ =\ 1\ <<\ 4,\ \ \ \ \ \ \ }
-\DoxyCodeLine{00230\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3aeb59a56aca17378fe2c5f18f2163b71b}{MODEL\_FLAG\_UNUSED5}}\ \ \ \ \ \ =\ 1\ <<\ 5,\ \ \ \ \ \ \ }
-\DoxyCodeLine{00231\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3a162b0f65301c7cfc3c16f3b56f7f8ece}{MODEL\_FLAG\_UNUSED6}}\ \ \ \ \ \ =\ 1\ <<\ 6,\ \ \ \ \ \ \ }
-\DoxyCodeLine{00232\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3abf370e3f8593ebca0792404501d959ed}{MODEL\_FLAG\_UNUSED7}}\ \ \ \ \ \ =\ 1\ <<\ 7\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00233\ \}\ \mbox{\hyperlink{group__ModelHandling_ga829dc978e29d88ada1059ea4ca6c4cd3}{ModelFlags}};}
-\DoxyCodeLine{00234\ }
-\DoxyCodeLine{00235\ }
-\DoxyCodeLine{00245\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classModel}{Model}}\ \{}
-\DoxyCodeLine{00246\ \ \ \ \ \mbox{\hyperlink{structModelData}{ModelData}}\ *\mbox{\hyperlink{classModel_ad65afc7055a966b1ca15004b74846090}{data}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00247\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classModel_aa83cdaa2a40d9d853bd0c94a7802a400}{flags}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00248\ \}\ \mbox{\hyperlink{classModel}{Model}};}
-\DoxyCodeLine{00249\ }
-\DoxyCodeLine{00257\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classTexturedMesh}{TexturedMesh}}\ \{}
-\DoxyCodeLine{00258\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}}\ \mbox{\hyperlink{classTexturedMesh_a05be35182381ceb6df60e98385cc8985}{VAO}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00259\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ \mbox{\hyperlink{classTexturedMesh_a742c1788ac3e1b070c003b408936f8b8}{texture}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00260\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classTexturedMesh_aca5c26bca1d7a7255356e6e015ade0a7}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00261\ \}\ \mbox{\hyperlink{classTexturedMesh}{TexturedMesh}};}
-\DoxyCodeLine{00262\ }
-\DoxyCodeLine{00270\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classMesh}{Mesh}}\ \{}
-\DoxyCodeLine{00271\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}}\ \mbox{\hyperlink{classMesh_a070175e7c5d0d1de32a9d62cce73ace0}{VAO}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00272\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classMesh_a02c9481584a6b995a32084bbecd64b87}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00273\ \}\ \mbox{\hyperlink{classMesh}{Mesh}};}
-\DoxyCodeLine{00274\ }
-\DoxyCodeLine{00275\ }
-\DoxyCodeLine{00289\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ModelHandling_ga0c6ab322dac2e0ee0acd181e296f1f91}{create\_textured\_plane}}(\mbox{\hyperlink{classTexturedMesh}{TexturedMesh}}\ *texturedMesh,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *texture);}
-\DoxyCodeLine{00290\ }
-\DoxyCodeLine{00298\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ModelHandling_ga24d2b6488ada72779f8d522ee86574e7}{create\_screen\_plane}}(\mbox{\hyperlink{classMesh}{Mesh}}\ *mesh);}
-\DoxyCodeLine{00299\ }
-\DoxyCodeLine{00312\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ModelHandling_ga8398a26dbcb6eda263cc6e9ef422d1dc}{render\_model}}(mat4\ *modelMatrix,\ \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ activeShader,\ \mbox{\hyperlink{classModel}{Model}}\ *model);}
-\DoxyCodeLine{00313\ }
- \textcolor{comment}{// end of ModelHandling}\DoxyCodeLine{00315\ }
-\DoxyCodeLine{00316\ }
-\DoxyCodeLine{00317\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{model__loader_8h}{model\_loaders/model\_loader.h}}"{}}}
-\DoxyCodeLine{00318\ }
-\DoxyCodeLine{00319\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00193\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__ModelHandling_ga829dc978e29d88ada1059ea4ca6c4cd3}{ModelFlags}}\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3a2b30ff95d88165619069049a2d63dd5b}{MODEL\_FLAG\_NONE}}\ \ \ \ \ \ \ \ \ =\ 0,\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00195\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3aed9e0d5515a86c37bb824798402143f5}{MODEL\_FLAG\_GLOW}}\ \ \ \ \ \ \ \ \ =\ 1\ <<\ 0,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00196\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3a8f6e16e84592882a0a15e84621315c9e}{MODEL\_FLAG\_UNUSED1}}\ \ \ \ \ \ =\ 1\ <<\ 1,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00197\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3a4dfe55474925099f083370a199f52f07}{MODEL\_FLAG\_UNUSED2}}\ \ \ \ \ \ =\ 1\ <<\ 2,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00198\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3aefc89c58c71ec4d600b1a88ce28ba2a3}{MODEL\_FLAG\_UNUSED3}}\ \ \ \ \ \ =\ 1\ <<\ 3,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00199\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3aa1fdaa6e462cdef530d25276417d66a6}{MODEL\_FLAG\_UNUSED4}}\ \ \ \ \ \ =\ 1\ <<\ 4,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00200\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3aeb59a56aca17378fe2c5f18f2163b71b}{MODEL\_FLAG\_UNUSED5}}\ \ \ \ \ \ =\ 1\ <<\ 5,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00201\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3a162b0f65301c7cfc3c16f3b56f7f8ece}{MODEL\_FLAG\_UNUSED6}}\ \ \ \ \ \ =\ 1\ <<\ 6,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00202\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gga829dc978e29d88ada1059ea4ca6c4cd3abf370e3f8593ebca0792404501d959ed}{MODEL\_FLAG\_UNUSED7}}\ \ \ \ \ \ =\ 1\ <<\ 7\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00203\ \}\ \mbox{\hyperlink{group__ModelHandling_ga829dc978e29d88ada1059ea4ca6c4cd3}{ModelFlags}};}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00215\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classModel}{Model}}\ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \mbox{\hyperlink{structModelData}{ModelData}}\ *\mbox{\hyperlink{classModel_ad65afc7055a966b1ca15004b74846090}{data}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00217\ \ \ \ \ \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classModel_aa83cdaa2a40d9d853bd0c94a7802a400}{flags}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00218\ \}\ \mbox{\hyperlink{classModel}{Model}};}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00227\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classTexturedMesh}{TexturedMesh}}\ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a8045bf7a50b1653e4b1e752967ddf6c3}{VAO}}\ \mbox{\hyperlink{classTexturedMesh_a05be35182381ceb6df60e98385cc8985}{VAO}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00229\ \ \ \ \ \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ \mbox{\hyperlink{classTexturedMesh_a742c1788ac3e1b070c003b408936f8b8}{texture}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00230\ \ \ \ \ \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classTexturedMesh_aca5c26bca1d7a7255356e6e015ade0a7}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00231\ \}\ \mbox{\hyperlink{classTexturedMesh}{TexturedMesh}};}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00240\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classMesh}{Mesh}}\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a8045bf7a50b1653e4b1e752967ddf6c3}{VAO}}\ \mbox{\hyperlink{classMesh_a070175e7c5d0d1de32a9d62cce73ace0}{VAO}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00242\ \ \ \ \ \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classMesh_a02c9481584a6b995a32084bbecd64b87}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00243\ \}\ \mbox{\hyperlink{classMesh}{Mesh}};}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00259\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ModelHandling_ga0c6ab322dac2e0ee0acd181e296f1f91}{create\_textured\_plane}}(\mbox{\hyperlink{classTexturedMesh}{TexturedMesh}}\ *texturedMesh,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *texture);}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00268\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ModelHandling_ga24d2b6488ada72779f8d522ee86574e7}{create\_screen\_plane}}(\mbox{\hyperlink{classMesh}{Mesh}}\ *mesh);}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00282\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ModelHandling_gac727bc258aa5300560b585dc67893ca0}{render\_model}}(mat4\ modelMatrix,\ \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ activeShader,\ \mbox{\hyperlink{classModel}{Model}}\ *model);}
+\DoxyCodeLine{00283\ }
+ \textcolor{comment}{// end of ModelHandling}\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00287\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{model__loader_8h}{io/model\_loaders/model\_loader.h}}>}}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

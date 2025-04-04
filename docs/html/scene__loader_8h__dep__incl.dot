@@ -26,5 +26,7 @@ digraph "src/io/scene_loader.h"
   Node1 -> Node11 [id="edge10_Node000001_Node000011",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node11 [id="Node000011",label="src/raptiquax.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$raptiquax_8c.html",tooltip=" "];
   Node1 -> Node12 [id="edge11_Node000001_Node000012",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node12 [id="Node000012",label="src/utils/scene.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$scene_8c.html",tooltip=" "];
+  Node12 [id="Node000012",label="src/utils/deferred.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$deferred_8c.html",tooltip=" "];
+  Node1 -> Node13 [id="edge12_Node000001_Node000013",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node13 [id="Node000013",label="src/utils/scene.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$scene_8c.html",tooltip=" "];
 }

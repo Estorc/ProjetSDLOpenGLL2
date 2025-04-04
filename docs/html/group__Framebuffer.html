@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('group__Framebuffer.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
-<p>Functions for managing <a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a> framebuffers.  
+<p>Functions for managing framebuffers and render targets.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -123,13 +123,19 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMSAA.html">MSAA</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure to handle Multi-Sample Anti-Aliasing (<a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a>) framebuffers.  <a href="structMSAA.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDFBO.html">DFBO</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure to handle Deferred <a class="el" href="classFrame.html" title="Represents a frame.">Frame</a> Buffer Objects (<a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a>).  <a href="structDFBO.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCFBO.html">CFBO</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure to handle Complete <a class="el" href="classFrame.html" title="Represents a frame.">Frame</a> Buffer Objects (<a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a>).  <a href="structCFBO.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:gac85a61ad9743ee6947a9c5b15f8f700d" id="r_gac85a61ad9743ee6947a9c5b15f8f700d"><td class="memItemLeft" align="right" valign="top">typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gac85a61ad9743ee6947a9c5b15f8f700d">FBO</a></td></tr>
 <tr class="memdesc:gac85a61ad9743ee6947a9c5b15f8f700d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for an unsigned int representing a <a class="el" href="classFrame.html" title="Represents a frame.">Frame</a> Buffer <a class="el" href="structObject.html" title="A generic object structure.">Object</a>.  <br /></td></tr>
 <tr class="separator:gac85a61ad9743ee6947a9c5b15f8f700d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab75cdf3b36517627dfe9b6029e00129d" id="r_gab75cdf3b36517627dfe9b6029e00129d"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="group__Framebuffer.html#gac85a61ad9743ee6947a9c5b15f8f700d">FBO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gab75cdf3b36517627dfe9b6029e00129d">FrameBuffer</a></td></tr>
+<tr class="memitem:gab75cdf3b36517627dfe9b6029e00129d" id="r_gab75cdf3b36517627dfe9b6029e00129d"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="aliases_8h.html#ac85a61ad9743ee6947a9c5b15f8f700d">FBO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gab75cdf3b36517627dfe9b6029e00129d">FrameBuffer</a></td></tr>
 <tr class="memdesc:gab75cdf3b36517627dfe9b6029e00129d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for FBO, representing a <a class="el" href="classFrame.html" title="Represents a frame.">Frame</a> Buffer <a class="el" href="structObject.html" title="A generic object structure.">Object</a>.  <br /></td></tr>
 <tr class="separator:gab75cdf3b36517627dfe9b6029e00129d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5ccf15e59bc43f1030c39f6951deb862" id="r_ga5ccf15e59bc43f1030c39f6951deb862"><td class="memItemLeft" align="right" valign="top">typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga5ccf15e59bc43f1030c39f6951deb862">RBO</a></td></tr>
@@ -138,18 +144,60 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaf612536a5e3ec772e9bede8b62b37f92" id="r_gaf612536a5e3ec772e9bede8b62b37f92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gaf612536a5e3ec772e9bede8b62b37f92">create_msaa_framebuffer</a> (<a class="el" href="structMSAA.html">MSAA</a> *<a class="el" href="raptiquax_8c.html#a58daf641d993a02e7806fe8b763fad6c">msaa</a>)</td></tr>
-<tr class="memdesc:gaf612536a5e3ec772e9bede8b62b37f92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an <a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a> framebuffer.  <br /></td></tr>
-<tr class="separator:gaf612536a5e3ec772e9bede8b62b37f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga61ecc0fe7012195a1a406b36c766d45c" id="r_ga61ecc0fe7012195a1a406b36c766d45c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga61ecc0fe7012195a1a406b36c766d45c">free_msaa_framebuffer</a> (<a class="el" href="structMSAA.html">MSAA</a> *<a class="el" href="raptiquax_8c.html#a58daf641d993a02e7806fe8b763fad6c">msaa</a>)</td></tr>
-<tr class="memdesc:ga61ecc0fe7012195a1a406b36c766d45c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with an <a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a> framebuffer.  <br /></td></tr>
-<tr class="separator:ga61ecc0fe7012195a1a406b36c766d45c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga38295e04feba1f829d93bacadffa8394" id="r_ga38295e04feba1f829d93bacadffa8394"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga38295e04feba1f829d93bacadffa8394">resize_msaa_framebuffer</a> (<a class="el" href="structMSAA.html">MSAA</a> *<a class="el" href="raptiquax_8c.html#a58daf641d993a02e7806fe8b763fad6c">msaa</a>)</td></tr>
-<tr class="memdesc:ga38295e04feba1f829d93bacadffa8394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes an <a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a> framebuffer.  <br /></td></tr>
-<tr class="separator:ga38295e04feba1f829d93bacadffa8394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1f1c2bcaf05d7a424243130c98360279" id="r_ga1f1c2bcaf05d7a424243130c98360279"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga1f1c2bcaf05d7a424243130c98360279">swap_intermediate_fbo</a> ()</td></tr>
+<tr class="memdesc:ga1f1c2bcaf05d7a424243130c98360279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swaps the intermediate framebuffer.  <br /></td></tr>
+<tr class="separator:ga1f1c2bcaf05d7a424243130c98360279"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4629714663ba4f9cf524aa7e1032c0bd" id="r_ga4629714663ba4f9cf524aa7e1032c0bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__MemoryCache.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga4629714663ba4f9cf524aa7e1032c0bd">get_intermediate_texture</a> ()</td></tr>
+<tr class="memdesc:ga4629714663ba4f9cf524aa7e1032c0bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last intermediate framebuffer texture.  <br /></td></tr>
+<tr class="separator:ga4629714663ba4f9cf524aa7e1032c0bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac312742b6faacf3fac32021c96035636" id="r_gac312742b6faacf3fac32021c96035636"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gac312742b6faacf3fac32021c96035636">use_intermediate_fbo</a> ()</td></tr>
+<tr class="memdesc:gac312742b6faacf3fac32021c96035636"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current framebuffer to an intermediate framebuffer.  <br /></td></tr>
+<tr class="separator:gac312742b6faacf3fac32021c96035636"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4112a92a859922f3fd3c55c0a91b6417" id="r_ga4112a92a859922f3fd3c55c0a91b6417"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga4112a92a859922f3fd3c55c0a91b6417">create_intermediate_fbo</a> ()</td></tr>
+<tr class="memdesc:ga4112a92a859922f3fd3c55c0a91b6417"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates two intermediate framebuffers.  <br /></td></tr>
+<tr class="separator:ga4112a92a859922f3fd3c55c0a91b6417"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab27f7062028bafa5a505699132c8f2eb" id="r_gab27f7062028bafa5a505699132c8f2eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gab27f7062028bafa5a505699132c8f2eb">free_intermediate_fbo</a> ()</td></tr>
+<tr class="memdesc:gab27f7062028bafa5a505699132c8f2eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with the intermediate framebuffers.  <br /></td></tr>
+<tr class="separator:gab27f7062028bafa5a505699132c8f2eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga191710b00b6e862c34a77d43ed183fba" id="r_ga191710b00b6e862c34a77d43ed183fba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga191710b00b6e862c34a77d43ed183fba">resize_intermediate_fbo</a> ()</td></tr>
+<tr class="memdesc:ga191710b00b6e862c34a77d43ed183fba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes the intermediate framebuffers.  <br /></td></tr>
+<tr class="separator:ga191710b00b6e862c34a77d43ed183fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0b9eaa6db11d1983a670eb50ba3e21d4" id="r_ga0b9eaa6db11d1983a670eb50ba3e21d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga0b9eaa6db11d1983a670eb50ba3e21d4">use_fbo</a> (GLenum mode, <a class="el" href="aliases_8h.html#ac85a61ad9743ee6947a9c5b15f8f700d">FBO</a> fbo)</td></tr>
+<tr class="memdesc:ga0b9eaa6db11d1983a670eb50ba3e21d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current framebuffer.  <br /></td></tr>
+<tr class="separator:ga0b9eaa6db11d1983a670eb50ba3e21d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7239212a7451660eb22ec24b7a35f2d7" id="r_ga7239212a7451660eb22ec24b7a35f2d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="aliases_8h.html#ac85a61ad9743ee6947a9c5b15f8f700d">FBO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga7239212a7451660eb22ec24b7a35f2d7">get_fbo</a> ()</td></tr>
+<tr class="memdesc:ga7239212a7451660eb22ec24b7a35f2d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current framebuffer.  <br /></td></tr>
+<tr class="separator:ga7239212a7451660eb22ec24b7a35f2d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e5e3bec8bb81e2cc53a667cde95d4ed" id="r_ga9e5e3bec8bb81e2cc53a667cde95d4ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga9e5e3bec8bb81e2cc53a667cde95d4ed">create_dfbo</a> (<a class="el" href="structDFBO.html">DFBO</a> *<a class="el" href="raptiquax_8c.html#a0a410b5c4c1deff0fbeb2b4051c83f7c">dfbo</a>)</td></tr>
+<tr class="memdesc:ga9e5e3bec8bb81e2cc53a667cde95d4ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a Deferred <a class="el" href="classFrame.html" title="Represents a frame.">Frame</a> Buffer <a class="el" href="structObject.html" title="A generic object structure.">Object</a> (<a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a>).  <br /></td></tr>
+<tr class="separator:ga9e5e3bec8bb81e2cc53a667cde95d4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab61154bf9254dede290d337801adaf09" id="r_gab61154bf9254dede290d337801adaf09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gab61154bf9254dede290d337801adaf09">free_dfbo</a> (<a class="el" href="structDFBO.html">DFBO</a> *<a class="el" href="raptiquax_8c.html#a0a410b5c4c1deff0fbeb2b4051c83f7c">dfbo</a>)</td></tr>
+<tr class="memdesc:gab61154bf9254dede290d337801adaf09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with a <a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a>.  <br /></td></tr>
+<tr class="separator:gab61154bf9254dede290d337801adaf09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga153eafa87b77b28c3e131d8f3f5338a0" id="r_ga153eafa87b77b28c3e131d8f3f5338a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga153eafa87b77b28c3e131d8f3f5338a0">resize_dfbo</a> (<a class="el" href="structDFBO.html">DFBO</a> *<a class="el" href="raptiquax_8c.html#a0a410b5c4c1deff0fbeb2b4051c83f7c">dfbo</a>)</td></tr>
+<tr class="memdesc:ga153eafa87b77b28c3e131d8f3f5338a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes a <a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a>.  <br /></td></tr>
+<tr class="separator:ga153eafa87b77b28c3e131d8f3f5338a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab9933c53e866307ec54f6008f5d256b4" id="r_gab9933c53e866307ec54f6008f5d256b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gab9933c53e866307ec54f6008f5d256b4">create_cfbo</a> (<a class="el" href="structCFBO.html">CFBO</a> *cFbo)</td></tr>
+<tr class="memdesc:gab9933c53e866307ec54f6008f5d256b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a> (Complete <a class="el" href="classFrame.html" title="Represents a frame.">Frame</a> Buffer <a class="el" href="structObject.html" title="A generic object structure.">Object</a>).  <br /></td></tr>
+<tr class="separator:gab9933c53e866307ec54f6008f5d256b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae40cfeb920148961b224d8b3b2c4cfa8" id="r_gae40cfeb920148961b224d8b3b2c4cfa8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gae40cfeb920148961b224d8b3b2c4cfa8">free_cfbo</a> (<a class="el" href="structCFBO.html">CFBO</a> *cFbo)</td></tr>
+<tr class="memdesc:gae40cfeb920148961b224d8b3b2c4cfa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with a <a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a>.  <br /></td></tr>
+<tr class="separator:gae40cfeb920148961b224d8b3b2c4cfa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga62bd1965ce8383baa104a30175d43c6f" id="r_ga62bd1965ce8383baa104a30175d43c6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga62bd1965ce8383baa104a30175d43c6f">resize_cfbo</a> (<a class="el" href="structCFBO.html">CFBO</a> *cFbo)</td></tr>
+<tr class="memdesc:ga62bd1965ce8383baa104a30175d43c6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes a <a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a>.  <br /></td></tr>
+<tr class="separator:ga62bd1965ce8383baa104a30175d43c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0b8e81253be7e81ab7a03a3569de41e0" id="r_ga0b8e81253be7e81ab7a03a3569de41e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga0b8e81253be7e81ab7a03a3569de41e0">create_msaa</a> (<a class="el" href="structMSAA.html">MSAA</a> *msaa)</td></tr>
+<tr class="memdesc:ga0b8e81253be7e81ab7a03a3569de41e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an <a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a> framebuffer.  <br /></td></tr>
+<tr class="separator:ga0b8e81253be7e81ab7a03a3569de41e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8117e8cb2cc37caf74b072de4bd5ddac" id="r_ga8117e8cb2cc37caf74b072de4bd5ddac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga8117e8cb2cc37caf74b072de4bd5ddac">free_msaa</a> (<a class="el" href="structMSAA.html">MSAA</a> *msaa)</td></tr>
+<tr class="memdesc:ga8117e8cb2cc37caf74b072de4bd5ddac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with an <a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a> framebuffer.  <br /></td></tr>
+<tr class="separator:ga8117e8cb2cc37caf74b072de4bd5ddac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6dd2c206822b94066a686d5041d2383c" id="r_ga6dd2c206822b94066a686d5041d2383c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga6dd2c206822b94066a686d5041d2383c">resize_msaa</a> (<a class="el" href="structMSAA.html">MSAA</a> *msaa)</td></tr>
+<tr class="memdesc:ga6dd2c206822b94066a686d5041d2383c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes an <a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a> framebuffer.  <br /></td></tr>
+<tr class="separator:ga6dd2c206822b94066a686d5041d2383c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Functions for managing <a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a> framebuffers. </p>
+<p>Functions for managing framebuffers and render targets. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="gac85a61ad9743ee6947a9c5b15f8f700d" name="gac85a61ad9743ee6947a9c5b15f8f700d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gac85a61ad9743ee6947a9c5b15f8f700d">&#9670;&#160;</a></span>FBO</h2>
@@ -158,7 +206,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__Framebuffer.html#gac85a61ad9743ee6947a9c5b15f8f700d">FBO</a></td>
+          <td class="memname"><a class="el" href="aliases_8h.html#ac85a61ad9743ee6947a9c5b15f8f700d">FBO</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -174,7 +222,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__Framebuffer.html#gab75cdf3b36517627dfe9b6029e00129d">FrameBuffer</a></td>
+          <td class="memname"><a class="el" href="aliases_8h.html#ab75cdf3b36517627dfe9b6029e00129d">FrameBuffer</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -190,7 +238,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__Framebuffer.html#ga5ccf15e59bc43f1030c39f6951deb862">RBO</a></td>
+          <td class="memname"><a class="el" href="aliases_8h.html#a5ccf15e59bc43f1030c39f6951deb862">RBO</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -200,14 +248,361 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gaf612536a5e3ec772e9bede8b62b37f92" name="gaf612536a5e3ec772e9bede8b62b37f92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf612536a5e3ec772e9bede8b62b37f92">&#9670;&#160;</a></span>create_msaa_framebuffer()</h2>
+<a id="ga1f1c2bcaf05d7a424243130c98360279" name="ga1f1c2bcaf05d7a424243130c98360279"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1f1c2bcaf05d7a424243130c98360279">&#9670;&#160;</a></span>swap_intermediate_fbo()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void create_msaa_framebuffer </td>
+          <td class="memname">void swap_intermediate_fbo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Swaps the intermediate framebuffer. </p>
+<p>This function swaps the current intermediate framebuffer with the next one. It is used for post-processing effects.</p>
+<dl class="section note"><dt>Note</dt><dd>This function is typically called after rendering to the main framebuffer and before applying post-processing effects. </dd></dl>
+
+</div>
+</div>
+<a id="ga4629714663ba4f9cf524aa7e1032c0bd" name="ga4629714663ba4f9cf524aa7e1032c0bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4629714663ba4f9cf524aa7e1032c0bd">&#9670;&#160;</a></span>get_intermediate_texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__MemoryCache.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a> get_intermediate_texture </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the last intermediate framebuffer texture. </p>
+<p>This function retrieves the last intermediate framebuffer texture. It is used for post-processing effects.</p>
+<dl class="section return"><dt>Returns</dt><dd>The last intermediate framebuffer texture.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function is typically called after rendering to the main framebuffer and before applying post-processing effects. </dd></dl>
+
+</div>
+</div>
+<a id="gac312742b6faacf3fac32021c96035636" name="gac312742b6faacf3fac32021c96035636"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac312742b6faacf3fac32021c96035636">&#9670;&#160;</a></span>use_intermediate_fbo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void use_intermediate_fbo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the current framebuffer to an intermediate framebuffer. </p>
+<p>This function sets the current framebuffer to the intermediate framebuffer. It is used for post-processing effects.</p>
+<dl class="section note"><dt>Note</dt><dd>This function is typically called after rendering to the main framebuffer and before applying post-processing effects. </dd></dl>
+
+</div>
+</div>
+<a id="ga4112a92a859922f3fd3c55c0a91b6417" name="ga4112a92a859922f3fd3c55c0a91b6417"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4112a92a859922f3fd3c55c0a91b6417">&#9670;&#160;</a></span>create_intermediate_fbo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void create_intermediate_fbo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates two intermediate framebuffers. </p>
+<p>This function initializes and sets up two intermediate framebuffers for post-processing effects. It is typically called during the initialization phase of the rendering pipeline.</p>
+<dl class="section note"><dt>Note</dt><dd>This function should be called before rendering to the main framebuffer. </dd></dl>
+
+</div>
+</div>
+<a id="gab27f7062028bafa5a505699132c8f2eb" name="gab27f7062028bafa5a505699132c8f2eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab27f7062028bafa5a505699132c8f2eb">&#9670;&#160;</a></span>free_intermediate_fbo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void free_intermediate_fbo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Frees the resources associated with the intermediate framebuffers. </p>
+<p>This function deallocates and cleans up the resources used by the intermediate framebuffers. It should be called when the framebuffers are no longer needed to avoid memory leaks.</p>
+<dl class="section note"><dt>Note</dt><dd>This function should be called during the cleanup phase of the rendering pipeline. </dd></dl>
+
+</div>
+</div>
+<a id="ga191710b00b6e862c34a77d43ed183fba" name="ga191710b00b6e862c34a77d43ed183fba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga191710b00b6e862c34a77d43ed183fba">&#9670;&#160;</a></span>resize_intermediate_fbo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void resize_intermediate_fbo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resizes the intermediate framebuffers. </p>
+<p>This function adjusts the size of the intermediate framebuffers to match new dimensions. It is useful when the window or viewport size changes and the framebuffers need to be updated accordingly.</p>
+<dl class="section note"><dt>Note</dt><dd>This function should be called when the window or viewport size changes. </dd></dl>
+
+</div>
+</div>
+<a id="ga0b9eaa6db11d1983a670eb50ba3e21d4" name="ga0b9eaa6db11d1983a670eb50ba3e21d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0b9eaa6db11d1983a670eb50ba3e21d4">&#9670;&#160;</a></span>use_fbo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void use_fbo </td>
+          <td>(</td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="aliases_8h.html#ac85a61ad9743ee6947a9c5b15f8f700d">FBO</a>&#160;</td>
+          <td class="paramname"><em>fbo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the current framebuffer. </p>
+<p>This function sets the current framebuffer object to the specified framebuffer.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fbo</td><td>The framebuffer object to be set as the current framebuffer. </td></tr>
+    <tr><td class="paramname">mode</td><td>The mode to set the framebuffer to (GL_FRAMEBUFFER, GL_READ_FRAMEBUFFER, GL_DRAW_FRAMEBUFFER). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga7239212a7451660eb22ec24b7a35f2d7" name="ga7239212a7451660eb22ec24b7a35f2d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7239212a7451660eb22ec24b7a35f2d7">&#9670;&#160;</a></span>get_fbo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="aliases_8h.html#ac85a61ad9743ee6947a9c5b15f8f700d">FBO</a> get_fbo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the current framebuffer. </p>
+<p>This function returns the current framebuffer object. </p>
+
+</div>
+</div>
+<a id="ga9e5e3bec8bb81e2cc53a667cde95d4ed" name="ga9e5e3bec8bb81e2cc53a667cde95d4ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9e5e3bec8bb81e2cc53a667cde95d4ed">&#9670;&#160;</a></span>create_dfbo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void create_dfbo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structDFBO.html">DFBO</a> *&#160;</td>
+          <td class="paramname"><em>dfbo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a Deferred <a class="el" href="classFrame.html" title="Represents a frame.">Frame</a> Buffer <a class="el" href="structObject.html" title="A generic object structure.">Object</a> (<a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a>). </p>
+<p>This function initializes and sets up a deferred framebuffer object. DFBOs are used for deferred rendering techniques, allowing for efficient rendering of complex scenes with multiple lights.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dfbo</td><td>A pointer to a <a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a> structure that will hold the framebuffer information. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gab61154bf9254dede290d337801adaf09" name="gab61154bf9254dede290d337801adaf09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab61154bf9254dede290d337801adaf09">&#9670;&#160;</a></span>free_dfbo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void free_dfbo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structDFBO.html">DFBO</a> *&#160;</td>
+          <td class="paramname"><em>dfbo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Frees the resources associated with a <a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a>. </p>
+<p>This function deallocates and cleans up the resources used by a <a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a>. It should be called when the framebuffer is no longer needed to avoid memory leaks.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dfbo</td><td>A pointer to a <a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a> structure that holds the framebuffer information to be freed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga153eafa87b77b28c3e131d8f3f5338a0" name="ga153eafa87b77b28c3e131d8f3f5338a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga153eafa87b77b28c3e131d8f3f5338a0">&#9670;&#160;</a></span>resize_dfbo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void resize_dfbo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structDFBO.html">DFBO</a> *&#160;</td>
+          <td class="paramname"><em>dfbo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resizes a <a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a>. </p>
+<p>This function adjusts the size of an existing <a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a> to match new dimensions. It is useful when the window or viewport size changes and the framebuffer needs to be updated accordingly.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dfbo</td><td>A pointer to a <a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a> structure that holds the framebuffer information to be resized. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gab9933c53e866307ec54f6008f5d256b4" name="gab9933c53e866307ec54f6008f5d256b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab9933c53e866307ec54f6008f5d256b4">&#9670;&#160;</a></span>create_cfbo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void create_cfbo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCFBO.html">CFBO</a> *&#160;</td>
+          <td class="paramname"><em>cFbo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a <a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a> (Complete <a class="el" href="classFrame.html" title="Represents a frame.">Frame</a> Buffer <a class="el" href="structObject.html" title="A generic object structure.">Object</a>). </p>
+<p>This function initializes and sets up a complete framebuffer object. CFBOs are used to render to textures and can be used for various effects.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cFbo</td><td>A pointer to a <a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a> structure that will hold the framebuffer information. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gae40cfeb920148961b224d8b3b2c4cfa8" name="gae40cfeb920148961b224d8b3b2c4cfa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae40cfeb920148961b224d8b3b2c4cfa8">&#9670;&#160;</a></span>free_cfbo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void free_cfbo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCFBO.html">CFBO</a> *&#160;</td>
+          <td class="paramname"><em>cFbo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Frees the resources associated with a <a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a>. </p>
+<p>This function deallocates and cleans up the resources used by a <a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a>. It should be called when the framebuffer is no longer needed to avoid memory leaks.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cFbo</td><td>A pointer to a <a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a> structure that holds the framebuffer information to be freed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga62bd1965ce8383baa104a30175d43c6f" name="ga62bd1965ce8383baa104a30175d43c6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga62bd1965ce8383baa104a30175d43c6f">&#9670;&#160;</a></span>resize_cfbo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void resize_cfbo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCFBO.html">CFBO</a> *&#160;</td>
+          <td class="paramname"><em>cFbo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resizes a <a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a>. </p>
+<p>This function adjusts the size of an existing <a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a> to match new dimensions. It is useful when the window or viewport size changes and the framebuffer needs to be updated accordingly.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cFbo</td><td>A pointer to a <a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a> structure that holds the framebuffer information to be resized. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga0b8e81253be7e81ab7a03a3569de41e0" name="ga0b8e81253be7e81ab7a03a3569de41e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0b8e81253be7e81ab7a03a3569de41e0">&#9670;&#160;</a></span>create_msaa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void create_msaa </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structMSAA.html">MSAA</a> *&#160;</td>
           <td class="paramname"><em>msaa</em></td><td>)</td>
@@ -224,17 +619,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>DEPRECATED: This function is deprecated and should not be used in new code. </dd></dl>
 
 </div>
 </div>
-<a id="ga61ecc0fe7012195a1a406b36c766d45c" name="ga61ecc0fe7012195a1a406b36c766d45c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga61ecc0fe7012195a1a406b36c766d45c">&#9670;&#160;</a></span>free_msaa_framebuffer()</h2>
+<a id="ga8117e8cb2cc37caf74b072de4bd5ddac" name="ga8117e8cb2cc37caf74b072de4bd5ddac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8117e8cb2cc37caf74b072de4bd5ddac">&#9670;&#160;</a></span>free_msaa()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void free_msaa_framebuffer </td>
+          <td class="memname">void free_msaa </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structMSAA.html">MSAA</a> *&#160;</td>
           <td class="paramname"><em>msaa</em></td><td>)</td>
@@ -251,17 +647,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>DEPRECATED: This function is deprecated and should not be used in new code. </dd></dl>
 
 </div>
 </div>
-<a id="ga38295e04feba1f829d93bacadffa8394" name="ga38295e04feba1f829d93bacadffa8394"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga38295e04feba1f829d93bacadffa8394">&#9670;&#160;</a></span>resize_msaa_framebuffer()</h2>
+<a id="ga6dd2c206822b94066a686d5041d2383c" name="ga6dd2c206822b94066a686d5041d2383c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6dd2c206822b94066a686d5041d2383c">&#9670;&#160;</a></span>resize_msaa()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void resize_msaa_framebuffer </td>
+          <td class="memname">void resize_msaa </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structMSAA.html">MSAA</a> *&#160;</td>
           <td class="paramname"><em>msaa</em></td><td>)</td>
@@ -278,6 +675,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>DEPRECATED: This function is deprecated and should not be used in new code. </dd></dl>
 
 </div>
 </div>

@@ -115,111 +115,126 @@ $(document).ready(function(){initNavTree('mesh_8class_8c.html',''); initResizabl
 
 <p>This file defines the implementation of the <a class="el" href="classMesh.html" title="Structure representing a mesh.">Mesh</a> class.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="raptiquax_8h_source.html">raptiquax.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="classes_8h_source.html">classes/classes.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="math__util_8h_source.html">math/math_util.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="model_8h_source.html">io/model.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="framebuffer_8h_source.html">render/framebuffer.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="node_8h_source.html">storage/node.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="raptiquax_8h_source.html">raptiquax.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="classes_8h_source.html">classes/classes.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="math__util_8h_source.html">math/math_util.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="model_8h_source.html">io/model.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="framebuffer_8h_source.html">render/framebuffer.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="node_8h_source.html">storage/node.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for mesh.class.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="mesh_8class_8c__incl.png" border="0" usemap="#asrc_2classes_2nodes_2mesh_8class_8c" alt=""/></div>
 <map name="asrc_2classes_2nodes_2mesh_8class_8c" id="asrc_2classes_2nodes_2mesh_8class_8c">
-<area shape="rect" title="This file defines the implementation of the Mesh class." alt="" coords="5,817,229,843"/>
-<area shape="rect" href="raptiquax_8h.html" title="This file contains type definitions for fixed&#45;width integer types and floating&#45;point types." alt="" coords="683,633,779,659"/>
-<area shape="poly" title=" " alt="" coords="147,815,281,761,369,730,459,701,570,673,669,654,670,659,571,678,461,706,371,735,283,766,149,820"/>
-<area shape="rect" href="classes_8h.html" title=" " alt="" coords="277,589,412,615"/>
-<area shape="poly" title=" " alt="" coords="128,815,189,747,275,657,315,622,319,626,279,661,193,750,132,819"/>
-<area shape="rect" href="math__util_8h.html" title=" " alt="" coords="664,767,799,792"/>
-<area shape="poly" title=" " alt="" coords="229,818,650,783,651,789,230,823"/>
-<area shape="rect" href="model_8h.html" title="Defines structures and functions for handling 3D models and their properties." alt="" coords="686,864,777,889"/>
-<area shape="poly" title=" " alt="" coords="230,836,673,870,672,875,229,841"/>
-<area shape="rect" href="framebuffer_8h.html" title=" " alt="" coords="460,1019,616,1044"/>
-<area shape="poly" title=" " alt="" coords="133,841,192,895,234,927,279,954,321,974,366,990,452,1013,451,1018,365,995,319,979,276,959,231,931,189,899,129,845"/>
-<area shape="rect" href="node_8h.html" title="Defines the structure for a tree and its nodes used in the project." alt="" coords="285,919,404,944"/>
-<area shape="poly" title=" " alt="" coords="148,840,304,911,302,915,146,845"/>
-<area shape="rect" href="std_8h.html" title=" " alt="" coords="868,153,988,179"/>
-<area shape="poly" title=" " alt="" coords="735,632,914,191,919,193,740,634"/>
-<area shape="rect" href="GL_8h.html" title=" " alt="" coords="869,400,987,425"/>
-<area shape="poly" title=" " alt="" coords="741,631,905,435,909,438,745,635"/>
-<area shape="rect" href="SDL_8h.html" title=" " alt="" coords="865,608,991,633"/>
-<area shape="poly" title=" " alt="" coords="779,637,851,628,852,633,780,643"/>
-<area shape="rect" href="stringio_8h.html" title="Provides utility functions for string and file operations." alt="" coords="879,680,977,705"/>
-<area shape="poly" title=" " alt="" coords="780,655,866,675,865,680,779,660"/>
-<area shape="rect" href="config_8h.html" title=" " alt="" coords="891,775,965,800"/>
-<area shape="poly" title=" " alt="" coords="752,657,899,764,896,768,749,661"/>
-<area shape="rect" title=" " alt="" coords="1097,252,1165,277"/>
-<area shape="poly" title=" " alt="" coords="951,177,999,206,1058,237,1085,248,1083,253,1056,242,996,210,948,181"/>
-<area shape="rect" title=" " alt="" coords="1097,5,1164,31"/>
-<area shape="poly" title=" " alt="" coords="937,151,985,98,1018,67,1056,40,1083,27,1085,32,1059,44,1022,71,988,102,941,155"/>
-<area shape="rect" title=" " alt="" coords="1095,55,1166,80"/>
-<area shape="poly" title=" " alt="" coords="947,151,995,121,1056,89,1081,79,1083,84,1058,94,998,126,950,156"/>
-<area shape="rect" title=" " alt="" coords="1089,104,1172,129"/>
-<area shape="poly" title=" " alt="" coords="980,151,1075,127,1076,132,981,156"/>
-<area shape="rect" title=" " alt="" coords="1093,153,1168,179"/>
-<area shape="poly" title=" " alt="" coords="988,163,1079,163,1079,169,988,169"/>
-<area shape="rect" title=" " alt="" coords="1095,203,1166,228"/>
-<area shape="poly" title=" " alt="" coords="981,176,1082,201,1081,206,980,181"/>
-<area shape="rect" title=" " alt="" coords="1097,351,1164,376"/>
-<area shape="poly" title=" " alt="" coords="980,397,1083,372,1084,377,981,403"/>
-<area shape="rect" title=" " alt="" coords="1093,400,1168,425"/>
-<area shape="poly" title=" " alt="" coords="987,410,1079,410,1079,415,987,415"/>
-<area shape="rect" title=" " alt="" coords="1087,449,1175,475"/>
-<area shape="poly" title=" " alt="" coords="981,423,1074,445,1072,451,980,428"/>
-<area shape="rect" title=" " alt="" coords="1079,301,1182,327"/>
-<area shape="poly" title=" " alt="" coords="947,398,995,368,1056,336,1072,329,1074,334,1058,340,998,372,950,402"/>
-<area shape="rect" title=" " alt="" coords="1083,548,1179,573"/>
-<area shape="poly" title=" " alt="" coords="971,605,1073,575,1075,580,973,610"/>
-<area shape="rect" title=" " alt="" coords="1059,597,1203,623"/>
-<area shape="poly" title=" " alt="" coords="991,615,1045,612,1045,617,991,620"/>
-<area shape="rect" title=" " alt="" coords="1057,647,1204,672"/>
-<area shape="poly" title=" " alt="" coords="991,630,1051,641,1050,647,990,635"/>
-<area shape="rect" title=" " alt="" coords="1061,696,1200,721"/>
-<area shape="poly" title=" " alt="" coords="955,631,1058,681,1079,689,1077,694,1056,686,952,636"/>
-<area shape="rect" title=" " alt="" coords="1072,499,1189,524"/>
-<area shape="poly" title=" " alt="" coords="944,606,993,570,1056,533,1071,526,1073,531,1059,538,996,575,947,610"/>
-<area shape="rect" title=" " alt="" coords="1095,745,1166,771"/>
-<area shape="poly" title=" " alt="" coords="969,703,1083,740,1081,745,968,708"/>
-<area shape="rect" href="term_8h.html" title=" " alt="" coords="1081,795,1181,820"/>
-<area shape="poly" title=" " alt="" coords="965,788,1067,798,1067,804,965,794"/>
-<area shape="rect" href="enhanced__print_8h.html" title=" " alt="" coords="1252,795,1387,820"/>
-<area shape="poly" title=" " alt="" coords="1181,805,1239,805,1239,810,1181,810"/>
-<area shape="rect" href="color_8h.html" title=" " alt="" coords="1435,795,1500,820"/>
-<area shape="poly" title=" " alt="" coords="1387,805,1421,805,1421,810,1387,810"/>
-<area shape="poly" title=" " alt="" coords="412,607,670,636,669,642,412,612"/>
-<area shape="rect" href="classes__types_8h.html" title=" " alt="" coords="475,515,601,540"/>
-<area shape="poly" title=" " alt="" coords="371,587,459,549,479,542,481,547,461,554,373,592"/>
-<area shape="rect" title=" " alt="" coords="472,564,604,589"/>
-<area shape="poly" title=" " alt="" coords="412,591,458,584,459,590,413,596"/>
-<area shape="rect" href="shader_8h.html" title=" " alt="" coords="889,919,967,944"/>
-<area shape="poly" title=" " alt="" coords="777,887,876,914,875,920,776,892"/>
-<area shape="rect" href="model__loader_8h.html" title="Header file for model loading functions." alt="" coords="847,854,1009,894"/>
-<area shape="poly" title=" " alt="" coords="777,873,833,873,833,878,777,879"/>
-<area shape="rect" href="obj__loader_8h.html" title=" " alt="" coords="1080,893,1181,919"/>
-<area shape="poly" title=" " alt="" coords="1010,884,1067,893,1066,899,1009,889"/>
-<area shape="rect" href="mtl__loader_8h.html" title=" " alt="" coords="1079,943,1182,968"/>
-<area shape="poly" title=" " alt="" coords="980,892,1010,905,1058,929,1076,936,1074,941,1056,934,1008,910,978,897"/>
-<area shape="rect" href="fbx__loader_8h.html" title="Header file for loading FBX models." alt="" coords="1079,844,1182,869"/>
-<area shape="poly" title=" " alt="" coords="1009,864,1065,860,1065,865,1010,870"/>
-<area shape="rect" href="input_8h.html" title=" " alt="" coords="684,1019,779,1044"/>
-<area shape="poly" title=" " alt="" coords="616,1029,671,1029,671,1034,616,1034"/>
-<area shape="poly" title=" " alt="" coords="404,929,876,929,876,934,404,934"/>
-<area shape="poly" title=" " alt="" coords="364,942,406,973,461,1005,477,1012,475,1016,459,1010,404,978,361,946"/>
-<area shape="rect" href="camera_8h.html" title=" " alt="" coords="467,716,609,741"/>
-<area shape="poly" title=" " alt="" coords="355,917,458,803,512,749,516,753,462,807,359,920"/>
-<area shape="rect" href="bodies_8h.html" title=" " alt="" coords="467,817,609,843"/>
-<area shape="poly" title=" " alt="" coords="369,916,499,847,502,852,371,921"/>
-<area shape="rect" href="scripts_8h.html" title="Header file defining macros, structures, and functions for script management in a game engine." alt="" coords="470,969,606,995"/>
-<area shape="poly" title=" " alt="" coords="395,942,476,963,475,968,393,947"/>
-<area shape="poly" title=" " alt="" coords="569,713,615,694,688,662,690,667,617,699,571,718"/>
-<area shape="poly" title=" " alt="" coords="588,739,670,761,668,766,587,744"/>
-<area shape="poly" title=" " alt="" coords="609,713,655,711,706,714,756,727,779,738,800,752,817,770,825,789,827,828,828,867,835,886,849,904,862,914,877,921,875,926,859,918,845,908,830,888,823,868,822,828,820,790,812,773,797,756,776,742,754,732,705,719,655,716,609,719"/>
-<area shape="poly" title=" " alt="" coords="587,815,668,793,670,798,588,820"/>
-<area shape="poly" title=" " alt="" coords="592,840,673,860,672,865,591,845"/>
-<area shape="poly" title=" " alt="" coords="589,992,671,1013,670,1019,588,997"/>
-<area shape="rect" href="signals_8h.html" title="Signal and slot system for C projects." alt="" coords="691,969,771,995"/>
-<area shape="poly" title=" " alt="" coords="606,979,677,979,677,985,606,985"/>
+<area shape="rect" title="This file defines the implementation of the Mesh class." alt="" coords="2035,5,2259,31"/>
+<area shape="rect" href="raptiquax_8h.html" title="This file contains type definitions for fixed&#45;width integer types and floating&#45;point types." alt="" coords="1381,225,1477,251"/>
+<area shape="poly" title=" " alt="" coords="2128,33,1985,116,1865,180,1764,207,1662,224,1568,234,1491,238,1491,233,1567,228,1661,219,1763,201,1863,175,1983,111,2126,29"/>
+<area shape="rect" href="classes_8h.html" title=" " alt="" coords="1594,79,1729,104"/>
+<area shape="poly" title=" " alt="" coords="2069,33,1743,81,1742,76,2068,28"/>
+<area shape="rect" href="math__util_8h.html" title=" " alt="" coords="2031,225,2166,251"/>
+<area shape="poly" title=" " alt="" coords="2147,32,2107,212,2102,211,2141,30"/>
+<area shape="rect" href="model_8h.html" title="Defines structures and functions for handling 3D models and their properties." alt="" coords="2335,225,2425,251"/>
+<area shape="poly" title=" " alt="" coords="2208,28,2258,46,2283,60,2306,77,2333,108,2353,145,2377,211,2372,213,2348,147,2328,112,2302,81,2281,64,2256,51,2206,33"/>
+<area shape="rect" href="framebuffer_8h.html" title=" " alt="" coords="2561,152,2717,177"/>
+<area shape="poly" title=" " alt="" coords="2198,28,2386,76,2596,145,2594,150,2385,81,2197,33"/>
+<area shape="rect" href="node_8h.html" title="Defines the structure for a tree and its nodes used in the project." alt="" coords="2174,79,2293,104"/>
+<area shape="poly" title=" " alt="" coords="2162,29,2210,68,2207,72,2159,33"/>
+<area shape="rect" href="std_8h.html" title=" " alt="" coords="1491,306,1611,331"/>
+<area shape="poly" title=" " alt="" coords="1449,249,1523,296,1520,301,1446,253"/>
+<area shape="rect" href="GL_8h.html" title=" " alt="" coords="2151,306,2268,331"/>
+<area shape="poly" title=" " alt="" coords="1478,242,2137,307,2137,313,1477,247"/>
+<area shape="rect" href="SDL_8h.html" title=" " alt="" coords="388,306,513,331"/>
+<area shape="poly" title=" " alt="" coords="1381,246,527,314,527,309,1381,241"/>
+<area shape="rect" href="aliases_8h.html" title=" " alt="" coords="931,306,1077,331"/>
+<area shape="poly" title=" " alt="" coords="1381,250,1090,301,1068,306,1067,301,1089,296,1380,245"/>
+<area shape="rect" href="structs_8h.html" title="This file contains forward declarations of all structures used in the engine." alt="" coords="1101,306,1245,331"/>
+<area shape="poly" title=" " alt="" coords="1393,253,1225,304,1223,299,1391,248"/>
+<area shape="rect" href="stringio_8h.html" title="Provides utility functions for string and file operations." alt="" coords="1269,306,1368,331"/>
+<area shape="poly" title=" " alt="" coords="1415,253,1348,300,1345,296,1411,249"/>
+<area shape="rect" href="config_8h.html" title=" " alt="" coords="1393,306,1466,331"/>
+<area shape="poly" title=" " alt="" coords="1432,251,1432,292,1427,292,1427,251"/>
+<area shape="rect" title=" " alt="" coords="1837,394,1905,419"/>
+<area shape="poly" title=" " alt="" coords="1608,329,1710,352,1825,384,1832,386,1830,391,1823,389,1708,357,1607,334"/>
+<area shape="rect" title=" " alt="" coords="1929,394,1996,419"/>
+<area shape="poly" title=" " alt="" coords="1611,325,1752,347,1835,363,1917,384,1925,387,1923,392,1915,389,1834,369,1751,352,1611,330"/>
+<area shape="rect" title=" " alt="" coords="2021,394,2091,419"/>
+<area shape="poly" title=" " alt="" coords="1611,322,1790,342,1900,360,2009,384,2018,387,2017,392,2007,389,1899,365,1790,347,1610,327"/>
+<area shape="rect" title=" " alt="" coords="985,394,1068,419"/>
+<area shape="poly" title=" " alt="" coords="1510,334,1478,341,1366,357,1278,362,1191,369,1081,389,1069,392,1068,387,1079,384,1190,364,1278,357,1366,352,1477,336,1509,329"/>
+<area shape="rect" title=" " alt="" coords="1092,394,1167,419"/>
+<area shape="poly" title=" " alt="" coords="1509,334,1478,341,1394,355,1328,363,1262,371,1179,389,1170,392,1169,387,1178,384,1261,366,1327,357,1393,350,1477,336,1508,329"/>
+<area shape="rect" title=" " alt="" coords="1191,394,1262,419"/>
+<area shape="poly" title=" " alt="" coords="1507,334,1478,341,1376,363,1275,389,1268,392,1266,387,1274,384,1375,358,1477,336,1506,329"/>
+<area shape="rect" href="dirent_8h.html" title=" " alt="" coords="1287,394,1375,419"/>
+<area shape="poly" title=" " alt="" coords="1522,334,1374,391,1372,386,1520,329"/>
+<area shape="rect" title=" " alt="" coords="1423,394,1494,419"/>
+<area shape="poly" title=" " alt="" coords="1540,333,1483,386,1480,382,1536,330"/>
+<area shape="rect" href="time_8h.html" title=" " alt="" coords="1519,394,1583,419"/>
+<area shape="poly" title=" " alt="" coords="1553,332,1553,380,1548,380,1548,332"/>
+<area shape="rect" title=" " alt="" coords="1607,394,1692,419"/>
+<area shape="poly" title=" " alt="" coords="1566,329,1627,382,1623,386,1562,334"/>
+<area shape="rect" title=" " alt="" coords="1716,394,1812,419"/>
+<area shape="poly" title=" " alt="" coords="1580,329,1723,386,1722,391,1578,334"/>
+<area shape="poly" title=" " alt="" coords="1356,391,1386,390,1397,396,1401,407,1398,415,1391,421,1369,424,1369,419,1389,416,1394,412,1396,407,1393,400,1385,396,1356,397"/>
+<area shape="rect" title=" " alt="" coords="2455,394,2521,419"/>
+<area shape="poly" title=" " alt="" coords="2252,329,2443,384,2450,387,2448,392,2442,389,2251,334"/>
+<area shape="rect" title=" " alt="" coords="2116,394,2191,419"/>
+<area shape="poly" title=" " alt="" coords="2204,333,2171,384,2166,381,2200,330"/>
+<area shape="rect" title=" " alt="" coords="2215,394,2303,419"/>
+<area shape="poly" title=" " alt="" coords="2218,330,2247,380,2243,383,2214,333"/>
+<area shape="rect" title=" " alt="" coords="2327,394,2430,419"/>
+<area shape="poly" title=" " alt="" coords="2233,329,2345,385,2342,390,2231,334"/>
+<area shape="rect" title=" " alt="" coords="5,394,101,419"/>
+<area shape="poly" title=" " alt="" coords="388,333,261,357,114,389,102,393,100,387,113,384,260,351,387,328"/>
+<area shape="rect" title=" " alt="" coords="125,394,269,419"/>
+<area shape="poly" title=" " alt="" coords="417,334,245,392,243,387,416,329"/>
+<area shape="rect" title=" " alt="" coords="293,394,440,419"/>
+<area shape="poly" title=" " alt="" coords="441,333,390,385,386,382,437,330"/>
+<area shape="rect" title=" " alt="" coords="464,394,603,419"/>
+<area shape="poly" title=" " alt="" coords="464,330,514,382,510,385,460,333"/>
+<area shape="rect" title=" " alt="" coords="627,394,744,419"/>
+<area shape="poly" title=" " alt="" coords="483,329,642,387,640,392,481,334"/>
+<area shape="rect" title=" " alt="" coords="767,394,838,419"/>
+<area shape="poly" title=" " alt="" coords="1286,334,1258,341,1196,352,1143,358,1053,362,963,368,911,376,850,389,841,392,840,387,849,384,910,371,962,363,1053,357,1143,353,1195,347,1257,336,1285,329"/>
+<area shape="rect" href="term_8h.html" title=" " alt="" coords="862,394,962,419"/>
+<area shape="poly" title=" " alt="" coords="1403,334,1381,341,1320,354,1267,362,1177,368,1087,372,974,389,959,393,958,388,973,384,1087,367,1177,362,1267,356,1319,349,1379,336,1402,329"/>
+<area shape="rect" href="enhanced__print_8h.html" title=" " alt="" coords="827,475,997,500"/>
+<area shape="poly" title=" " alt="" coords="915,420,915,461,909,461,909,420"/>
+<area shape="rect" href="color_8h.html" title=" " alt="" coords="862,548,962,573"/>
+<area shape="poly" title=" " alt="" coords="915,500,915,534,909,534,909,500"/>
+<area shape="poly" title=" " alt="" coords="1594,98,1559,104,1522,115,1487,131,1457,154,1447,167,1440,181,1433,212,1428,211,1435,180,1442,164,1453,150,1484,126,1520,110,1558,99,1593,93"/>
+<area shape="rect" href="classes__types_8h.html" title=" " alt="" coords="1675,152,1853,177"/>
+<area shape="poly" title=" " alt="" coords="1679,102,1737,142,1734,146,1676,106"/>
+<area shape="rect" title=" " alt="" coords="1467,152,1651,177"/>
+<area shape="poly" title=" " alt="" coords="1646,106,1588,146,1585,142,1643,102"/>
+<area shape="rect" href="shader_8h.html" title=" " alt="" coords="2292,306,2385,331"/>
+<area shape="poly" title=" " alt="" coords="2376,252,2353,295,2349,293,2372,250"/>
+<area shape="rect" href="model__loader_8h.html" title="Header file for model loading functions." alt="" coords="2628,299,2807,339"/>
+<area shape="poly" title=" " alt="" coords="2426,247,2624,293,2623,298,2425,252"/>
+<area shape="rect" href="obj__loader_8h.html" title=" " alt="" coords="2913,387,3071,427"/>
+<area shape="poly" title=" " alt="" coords="2778,336,2919,380,2918,385,2777,341"/>
+<area shape="rect" href="mtl__loader_8h.html" title=" " alt="" coords="2545,387,2705,427"/>
+<area shape="poly" title=" " alt="" coords="2699,341,2657,379,2654,375,2695,337"/>
+<area shape="rect" href="fbx__loader_8h.html" title="Header file for loading FBX models." alt="" coords="2730,387,2889,427"/>
+<area shape="poly" title=" " alt="" coords="2740,337,2781,375,2777,379,2736,341"/>
+<area shape="rect" href="input_8h.html" title=" " alt="" coords="2601,225,2684,251"/>
+<area shape="poly" title=" " alt="" coords="2642,178,2644,212,2639,212,2637,178"/>
+<area shape="poly" title=" " alt="" coords="2245,103,2278,151,2312,227,2334,292,2329,293,2307,229,2274,153,2241,106"/>
+<area shape="poly" title=" " alt="" coords="2293,100,2561,147,2560,152,2292,106"/>
+<area shape="rect" href="camera_8h.html" title=" " alt="" coords="1929,152,2058,177"/>
+<area shape="poly" title=" " alt="" coords="2196,107,2046,151,2045,145,2194,101"/>
+<area shape="rect" href="bodies_8h.html" title=" " alt="" coords="2133,152,2264,177"/>
+<area shape="poly" title=" " alt="" coords="2230,106,2213,141,2208,138,2225,103"/>
+<area shape="rect" href="scripts_8h.html" title="Header file defining macros, structures, and functions for script management in a game engine." alt="" coords="2413,152,2537,177"/>
+<area shape="poly" title=" " alt="" coords="2273,101,2423,145,2421,151,2271,107"/>
+<area shape="poly" title=" " alt="" coords="1929,178,1910,180,1491,232,1490,227,1909,175,1928,172"/>
+<area shape="poly" title=" " alt="" coords="2012,175,2072,215,2069,220,2009,180"/>
+<area shape="poly" title=" " alt="" coords="1996,177,2001,213,2008,233,2021,249,2052,272,2081,285,2110,290,2139,291,2203,288,2240,289,2281,296,2293,299,2292,305,2279,301,2239,294,2203,293,2139,296,2110,296,2080,290,2049,276,2017,253,2004,235,1996,215,1991,178"/>
+<area shape="poly" title=" " alt="" coords="2184,180,2128,219,2125,215,2181,175"/>
+<area shape="poly" title=" " alt="" coords="2229,175,2339,218,2337,223,2227,180"/>
+<area shape="poly" title=" " alt="" coords="2503,175,2604,217,2602,222,2501,180"/>
+<area shape="rect" href="signals_8h.html" title="Signal and slot system for C projects." alt="" coords="2450,225,2577,251"/>
+<area shape="poly" title=" " alt="" coords="2483,176,2503,212,2498,215,2479,179"/>
 </map>
 </div>
 </div><table class="memberdecls">

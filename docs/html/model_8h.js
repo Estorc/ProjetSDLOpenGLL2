@@ -1,11 +1,6 @@
 var model_8h =
 [
-    [ "VBO", "group__ModelHandling.html#gaad5c885aa493ac48e59f4deeed82ca38", null ],
-    [ "VAO", "group__ModelHandling.html#ga8045bf7a50b1653e4b1e752967ddf6c3", null ],
-    [ "VertexBuffer", "group__ModelHandling.html#gaddb0a8c0f0a8d1baff3e033eb099a83b", null ],
-    [ "VertexArray", "group__ModelHandling.html#ga715110c10f770e339f863e38540533bc", null ],
     [ "Vertex", "group__ModelHandling.html#ga1351e71110272ccf5e8d661017498adb", null ],
-    [ "TextureMap", "group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae", null ],
     [ "VertexAttribute", "group__ModelHandling.html#gabcb2d8ba41df6aa7347c241c89e81d3f", [
       [ "VERTEX_ATTRIBUTE_POSITION_X", "group__ModelHandling.html#ggabcb2d8ba41df6aa7347c241c89e81d3faecc071cb0c4a4faea42c7c2e1108f309", null ],
       [ "VERTEX_ATTRIBUTE_POSITION_Y", "group__ModelHandling.html#ggabcb2d8ba41df6aa7347c241c89e81d3fa6c1fecc71656bc9b2ebc81fc5bff3184", null ],
@@ -61,5 +56,5 @@ var model_8h =
     ] ],
     [ "create_textured_plane", "group__ModelHandling.html#ga0c6ab322dac2e0ee0acd181e296f1f91", null ],
     [ "create_screen_plane", "group__ModelHandling.html#ga24d2b6488ada72779f8d522ee86574e7", null ],
-    [ "render_model", "group__ModelHandling.html#ga8398a26dbcb6eda263cc6e9ef422d1dc", null ]
+    [ "render_model", "group__ModelHandling.html#gac727bc258aa5300560b585dc67893ca0", null ]
 ];

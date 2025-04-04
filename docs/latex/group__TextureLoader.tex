@@ -12,7 +12,7 @@ float \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__TextureLoader_ga423969b
 \begin{DoxyCompactList}\small\item\em Converts an SDL\+\_\+\+Surface with RGBA format to an array of floats representing an RGB32F texture. \end{DoxyCompactList}\item 
 SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__TextureLoader_ga63cbb7972f065dfe4d8a5bfb6690f3b6}{flip\+\_\+y\+\_\+surface}} (SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}surface)
 \begin{DoxyCompactList}\small\item\em Flips an SDL\+\_\+\+Surface vertically (along the Y-\/axis). \end{DoxyCompactList}\item 
-\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{group__TextureLoader_ga591c0c9eb16ebc91a0c71c112cbae995}{load\+\_\+texture\+\_\+from\+\_\+path}} (const char \texorpdfstring{$\ast$}{*}path, GLenum format, bool y\+Reversed)
+\mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{group__TextureLoader_ga591c0c9eb16ebc91a0c71c112cbae995}{load\+\_\+texture\+\_\+from\+\_\+path}} (const char \texorpdfstring{$\ast$}{*}path, GLenum format, bool y\+Reversed)
 \begin{DoxyCompactList}\small\item\em Loads a texture from a specified file path and creates an Open\+GL texture. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__TextureLoader_ga26673e4bbcfa9dda796c186ad71308ed}{draw\+\_\+text}} (SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}render\+\_\+surface, int x, int y, const char \texorpdfstring{$\ast$}{*}text, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, SDL\+\_\+\+Color color, char \texorpdfstring{$\ast$}{*}alignment, int width)
 \begin{DoxyCompactList}\small\item\em Renders text onto an SDL\+\_\+\+Surface at a specified position. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -64,7 +64,7 @@ This function creates a new SDL\+\_\+\+Surface that is a vertically flipped vers
 \index{Texture Loader@{Texture Loader}!load\_texture\_from\_path@{load\_texture\_from\_path}}
 \index{load\_texture\_from\_path@{load\_texture\_from\_path}!Texture Loader@{Texture Loader}}
 \doxysubsubsection{\texorpdfstring{load\_texture\_from\_path()}{load\_texture\_from\_path()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} load\+\_\+texture\+\_\+from\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{GLenum}]{format,  }\item[{bool}]{y\+Reversed }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} load\+\_\+texture\+\_\+from\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{GLenum}]{format,  }\item[{bool}]{y\+Reversed }\end{DoxyParamCaption})}
 
 
 
@@ -86,7 +86,7 @@ This function utilizes SDL\+\_\+image to load a texture from the specified file 
 
 Example Usage\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ texture\ =\ \mbox{\hyperlink{group__TextureLoader_ga591c0c9eb16ebc91a0c71c112cbae995}{load\_texture\_from\_path}}(\textcolor{stringliteral}{"{}path/to/texture.png"{}},\ GL\_RGBA,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ texture\ =\ \mbox{\hyperlink{group__TextureLoader_ga591c0c9eb16ebc91a0c71c112cbae995}{load\_texture\_from\_path}}(\textcolor{stringliteral}{"{}path/to/texture.png"{}},\ GL\_RGBA,\ \textcolor{keyword}{true});}
 \DoxyCodeLine{\textcolor{keywordflow}{if}\ (texture\ !=\ 0)\ \{}
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Use\ the\ texture\ for\ rendering...}}
 \DoxyCodeLine{\}}

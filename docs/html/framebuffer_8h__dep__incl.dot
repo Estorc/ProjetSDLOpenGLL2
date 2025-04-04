@@ -150,9 +150,9 @@ digraph "src/render/framebuffer.h"
   Node42 -> Node40 [id="edge95_Node000042_Node000040",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node42 -> Node37 [id="edge96_Node000042_Node000037",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node42 -> Node38 [id="edge97_Node000042_Node000038",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node42 -> Node55 [id="edge98_Node000042_Node000055",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node55 [id="Node000055",label="src/utils/scene.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$scene_8c.html",tooltip=" "];
+  Node42 -> Node56 [id="edge98_Node000042_Node000056",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node56 [id="Node000056",label="src/utils/scene.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$scene_8c.html",tooltip=" "];
   Node42 -> Node39 [id="edge99_Node000042_Node000039",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node1 -> Node55 [id="edge100_Node000001_Node000055",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node56 [id="edge100_Node000001_Node000056",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node1 -> Node39 [id="edge101_Node000001_Node000039",dir="back",color="steelblue1",style="solid",tooltip=" "];
 }

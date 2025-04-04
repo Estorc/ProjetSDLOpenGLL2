@@ -13,4 +13,6 @@ digraph "src/storage/hash.h"
   Node4 [id="Node000004",label="src/scripts/fps_chess\l/chessboard.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$chessboard_8h.html",tooltip=" "];
   Node1 -> Node5 [id="edge4_Node000001_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node5 [id="Node000005",label="src/storage/hash.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$hash_8c.html",tooltip=" "];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="src/utils/deferred.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$deferred_8c.html",tooltip=" "];
 }

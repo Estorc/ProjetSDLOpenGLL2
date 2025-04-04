@@ -40,5 +40,7 @@ digraph "src/memory.h"
   Node1 -> Node18 [id="edge17_Node000001_Node000018",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node18 [id="Node000018",label="src/render/camera.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$camera_8c.html",tooltip=" "];
   Node1 -> Node19 [id="edge18_Node000001_Node000019",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node19 [id="Node000019",label="src/render/lighting.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$lighting_8c.html",tooltip=" "];
+  Node19 [id="Node000019",label="src/render/framebuffer.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$framebuffer_8c.html",tooltip=" "];
+  Node1 -> Node20 [id="edge19_Node000001_Node000020",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node20 [id="Node000020",label="src/render/lighting.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$lighting_8c.html",tooltip=" "];
 }

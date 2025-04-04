@@ -1,10 +1,11 @@
 \doxysection{src/io/model.c File Reference}
 \hypertarget{model_8c}{}\label{model_8c}\index{src/io/model.c@{src/io/model.c}}
-{\ttfamily \#include "{}../raptiquax.\+h"{}}\newline
-{\ttfamily \#include "{}../math/math\+\_\+util.\+h"{}}\newline
-{\ttfamily \#include "{}model.\+h"{}}\newline
-{\ttfamily \#include "{}../render/camera.\+h"{}}\newline
-Include dependency graph for model.\+c\+:\nopagebreak
+{\ttfamily \#include $<$raptiquax.\+h$>$}\newline
+{\ttfamily \#include $<$math/math\+\_\+util.\+h$>$}\newline
+{\ttfamily \#include $<$io/model.\+h$>$}\newline
+{\ttfamily \#include $<$render/camera.\+h$>$}\newline
+Include dependency graph for model.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -18,5 +19,5 @@ void \mbox{\hyperlink{group__ModelHandling_ga0c6ab322dac2e0ee0acd181e296f1f91}{c
 \begin{DoxyCompactList}\small\item\em Creates a textured plane. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__ModelHandling_ga24d2b6488ada72779f8d522ee86574e7}{create\+\_\+screen\+\_\+plane}} (\mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh)
 \begin{DoxyCompactList}\small\item\em Creates a screen plane. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ModelHandling_ga8398a26dbcb6eda263cc6e9ef422d1dc}{render\+\_\+model}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} shader, \mbox{\hyperlink{classModel}{Model}} \texorpdfstring{$\ast$}{*}model)
+void \mbox{\hyperlink{group__ModelHandling_gac727bc258aa5300560b585dc67893ca0}{render\+\_\+model}} (mat4 model\+Matrix, \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} shader, \mbox{\hyperlink{classModel}{Model}} \texorpdfstring{$\ast$}{*}model)
 \begin{DoxyCompactList}\small\item\em Renders a 3D model using the specified shader and transformation matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}

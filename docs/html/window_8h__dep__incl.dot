@@ -52,5 +52,7 @@ digraph "src/window.h"
   Node1 -> Node24 [id="edge23_Node000001_Node000024",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node24 [id="Node000024",label="src/settings.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$settings_8c.html",tooltip=" "];
   Node1 -> Node25 [id="edge24_Node000001_Node000025",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node25 [id="Node000025",label="src/window.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$window_8c.html",tooltip=" "];
+  Node25 [id="Node000025",label="src/utils/deferred.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$deferred_8c.html",tooltip=" "];
+  Node1 -> Node26 [id="edge25_Node000001_Node000026",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node26 [id="Node000026",label="src/window.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$window_8c.html",tooltip=" "];
 }

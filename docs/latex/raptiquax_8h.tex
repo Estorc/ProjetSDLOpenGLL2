@@ -5,12 +5,15 @@
 This file contains type definitions for fixed-\/width integer types and floating-\/point types.  
 
 
-{\ttfamily \#include "{}raptiquax/std.\+h"{}}\newline
-{\ttfamily \#include "{}raptiquax/\+GL.\+h"{}}\newline
-{\ttfamily \#include "{}raptiquax/\+SDL.\+h"{}}\newline
-{\ttfamily \#include "{}io/stringio.\+h"{}}\newline
-{\ttfamily \#include "{}config.\+h"{}}\newline
-Include dependency graph for raptiquax.\+h\+:\nopagebreak
+{\ttfamily \#include $<$raptiquax/std.\+h$>$}\newline
+{\ttfamily \#include $<$raptiquax/\+GL.\+h$>$}\newline
+{\ttfamily \#include $<$raptiquax/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$raptiquax/aliases.\+h$>$}\newline
+{\ttfamily \#include $<$raptiquax/structs.\+h$>$}\newline
+{\ttfamily \#include $<$io/stringio.\+h$>$}\newline
+{\ttfamily \#include $<$config.\+h$>$}\newline
+Include dependency graph for raptiquax.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -22,29 +25,6 @@ Include dependency graph for raptiquax.\+h\+:\nopagebreak
 \item 
 struct \mbox{\hyperlink{structRaptiquaX__t}{Raptiqua\+X\+\_\+t}}
 \begin{DoxyCompactList}\small\item\em The main structure that holds all the data and state of the engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Macros}
-\begin{DoxyCompactItemize}
-\item 
-\#define \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}~uint8\+\_\+t
-\begin{DoxyCompactList}\small\item\em Alias for uint8\+\_\+t (unsigned 8-\/bit integer). \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}}~uint16\+\_\+t
-\begin{DoxyCompactList}\small\item\em Alias for uint16\+\_\+t (unsigned 16-\/bit integer). \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}~uint32\+\_\+t
-\begin{DoxyCompactList}\small\item\em Alias for uint32\+\_\+t (unsigned 32-\/bit integer). \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{raptiquax_8h_a969c7c1ebb4f70581e040a3034b14ee0}{u64}}~uint64\+\_\+t
-\begin{DoxyCompactList}\small\item\em Alias for uint64\+\_\+t (unsigned 64-\/bit integer). \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{raptiquax_8h_a543c9bcb4e7b83b40dd6ae7a024a63d2}{s8}}~int8\+\_\+t
-\begin{DoxyCompactList}\small\item\em Alias for int8\+\_\+t (signed 8-\/bit integer). \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{raptiquax_8h_ad6aafede8a0cfa326715005e57f9d9f5}{s16}}~int16\+\_\+t
-\begin{DoxyCompactList}\small\item\em Alias for int16\+\_\+t (signed 16-\/bit integer). \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{raptiquax_8h_af0938d8dd13b4f7a595e78aacafd3323}{s32}}~int32\+\_\+t
-\begin{DoxyCompactList}\small\item\em Alias for int32\+\_\+t (signed 32-\/bit integer). \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{raptiquax_8h_aa2049b7d943f40b2facb60b17e8a7199}{s64}}~int64\+\_\+t
-\begin{DoxyCompactList}\small\item\em Alias for int64\+\_\+t (signed 64-\/bit integer). \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}~float
-\begin{DoxyCompactList}\small\item\em Alias for float (32-\/bit floating-\/point). \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{raptiquax_8h_a1d69936f20818f2cd1b34d1d2fd841be}{f64}}~double
-\begin{DoxyCompactList}\small\item\em Alias for double (64-\/bit floating-\/point). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -54,109 +34,6 @@ struct \mbox{\hyperlink{structRaptiquaX__t}{Raptiqua\+X\+\_\+t}} \mbox{\hyperlin
 
 \doxysubsection{Detailed Description}
 This file contains type definitions for fixed-\/width integer types and floating-\/point types. 
-
-
-
-\doxysubsection{Macro Definition Documentation}
-\Hypertarget{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}\label{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd} 
-\index{raptiquax.h@{raptiquax.h}!u8@{u8}}
-\index{u8@{u8}!raptiquax.h@{raptiquax.h}}
-\doxysubsubsection{\texorpdfstring{u8}{u8}}
-{\footnotesize\ttfamily \#define u8~uint8\+\_\+t}
-
-
-
-Alias for uint8\+\_\+t (unsigned 8-\/bit integer). 
-
-\Hypertarget{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}\label{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800} 
-\index{raptiquax.h@{raptiquax.h}!u16@{u16}}
-\index{u16@{u16}!raptiquax.h@{raptiquax.h}}
-\doxysubsubsection{\texorpdfstring{u16}{u16}}
-{\footnotesize\ttfamily \#define u16~uint16\+\_\+t}
-
-
-
-Alias for uint16\+\_\+t (unsigned 16-\/bit integer). 
-
-\Hypertarget{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}\label{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6} 
-\index{raptiquax.h@{raptiquax.h}!u32@{u32}}
-\index{u32@{u32}!raptiquax.h@{raptiquax.h}}
-\doxysubsubsection{\texorpdfstring{u32}{u32}}
-{\footnotesize\ttfamily \#define u32~uint32\+\_\+t}
-
-
-
-Alias for uint32\+\_\+t (unsigned 32-\/bit integer). 
-
-\Hypertarget{raptiquax_8h_a969c7c1ebb4f70581e040a3034b14ee0}\label{raptiquax_8h_a969c7c1ebb4f70581e040a3034b14ee0} 
-\index{raptiquax.h@{raptiquax.h}!u64@{u64}}
-\index{u64@{u64}!raptiquax.h@{raptiquax.h}}
-\doxysubsubsection{\texorpdfstring{u64}{u64}}
-{\footnotesize\ttfamily \#define u64~uint64\+\_\+t}
-
-
-
-Alias for uint64\+\_\+t (unsigned 64-\/bit integer). 
-
-\Hypertarget{raptiquax_8h_a543c9bcb4e7b83b40dd6ae7a024a63d2}\label{raptiquax_8h_a543c9bcb4e7b83b40dd6ae7a024a63d2} 
-\index{raptiquax.h@{raptiquax.h}!s8@{s8}}
-\index{s8@{s8}!raptiquax.h@{raptiquax.h}}
-\doxysubsubsection{\texorpdfstring{s8}{s8}}
-{\footnotesize\ttfamily \#define s8~int8\+\_\+t}
-
-
-
-Alias for int8\+\_\+t (signed 8-\/bit integer). 
-
-\Hypertarget{raptiquax_8h_ad6aafede8a0cfa326715005e57f9d9f5}\label{raptiquax_8h_ad6aafede8a0cfa326715005e57f9d9f5} 
-\index{raptiquax.h@{raptiquax.h}!s16@{s16}}
-\index{s16@{s16}!raptiquax.h@{raptiquax.h}}
-\doxysubsubsection{\texorpdfstring{s16}{s16}}
-{\footnotesize\ttfamily \#define s16~int16\+\_\+t}
-
-
-
-Alias for int16\+\_\+t (signed 16-\/bit integer). 
-
-\Hypertarget{raptiquax_8h_af0938d8dd13b4f7a595e78aacafd3323}\label{raptiquax_8h_af0938d8dd13b4f7a595e78aacafd3323} 
-\index{raptiquax.h@{raptiquax.h}!s32@{s32}}
-\index{s32@{s32}!raptiquax.h@{raptiquax.h}}
-\doxysubsubsection{\texorpdfstring{s32}{s32}}
-{\footnotesize\ttfamily \#define s32~int32\+\_\+t}
-
-
-
-Alias for int32\+\_\+t (signed 32-\/bit integer). 
-
-\Hypertarget{raptiquax_8h_aa2049b7d943f40b2facb60b17e8a7199}\label{raptiquax_8h_aa2049b7d943f40b2facb60b17e8a7199} 
-\index{raptiquax.h@{raptiquax.h}!s64@{s64}}
-\index{s64@{s64}!raptiquax.h@{raptiquax.h}}
-\doxysubsubsection{\texorpdfstring{s64}{s64}}
-{\footnotesize\ttfamily \#define s64~int64\+\_\+t}
-
-
-
-Alias for int64\+\_\+t (signed 64-\/bit integer). 
-
-\Hypertarget{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}\label{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3} 
-\index{raptiquax.h@{raptiquax.h}!f32@{f32}}
-\index{f32@{f32}!raptiquax.h@{raptiquax.h}}
-\doxysubsubsection{\texorpdfstring{f32}{f32}}
-{\footnotesize\ttfamily \#define f32~float}
-
-
-
-Alias for float (32-\/bit floating-\/point). 
-
-\Hypertarget{raptiquax_8h_a1d69936f20818f2cd1b34d1d2fd841be}\label{raptiquax_8h_a1d69936f20818f2cd1b34d1d2fd841be} 
-\index{raptiquax.h@{raptiquax.h}!f64@{f64}}
-\index{f64@{f64}!raptiquax.h@{raptiquax.h}}
-\doxysubsubsection{\texorpdfstring{f64}{f64}}
-{\footnotesize\ttfamily \#define f64~double}
-
-
-
-Alias for double (64-\/bit floating-\/point). 
 
 
 

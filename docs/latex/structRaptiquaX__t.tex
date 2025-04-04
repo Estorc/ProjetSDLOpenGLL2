@@ -11,7 +11,8 @@ The main structure that holds all the data and state of the engine.
 
 
 
-Collaboration diagram for Raptiqua\+X\+\_\+t\+:\nopagebreak
+Collaboration diagram for Raptiqua\+X\+\_\+t\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -39,7 +40,9 @@ const struct Class\+Manager \texorpdfstring{$\ast$}{*}const \mbox{\hyperlink{str
 \item 
 struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structRaptiquaX__t_a3f838cfab20c911d0f0379293c6edf2f}{camera}}
 \item 
-struct \mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structRaptiquaX__t_aa474abb47edc0036ef9d87003455c1dc}{msaa}}
+struct \mbox{\hyperlink{structDFBO}{DFBO}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structRaptiquaX__t_a19e237f478c20864e29f2aae4760f847}{deferred\+Buffer}}
+\item 
+struct \mbox{\hyperlink{structCFBO}{CFBO}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structRaptiquaX__t_a79c4838b583474fa74ffe8d4ee7d60c3}{ui\+FBO}}
 \item 
 struct \mbox{\hyperlink{classRenderTarget}{Render\+Target}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structRaptiquaX__t_abf247e9ee0f60348ba10c660aae885ee}{render\+Target}}
 \item 
@@ -116,13 +119,19 @@ The class manager of the engine. \Hypertarget{structRaptiquaX__t_a3f838cfab20c91
 \doxysubsubsection{\texorpdfstring{camera}{camera}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{classCamera}{Camera}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::camera}
 
-The camera actually used. \Hypertarget{structRaptiquaX__t_aa474abb47edc0036ef9d87003455c1dc}\label{structRaptiquaX__t_aa474abb47edc0036ef9d87003455c1dc} 
-\index{RaptiquaX\_t@{RaptiquaX\_t}!msaa@{msaa}}
-\index{msaa@{msaa}!RaptiquaX\_t@{RaptiquaX\_t}}
-\doxysubsubsection{\texorpdfstring{msaa}{msaa}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structMSAA}{MSAA}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::msaa}
+The camera actually used. \Hypertarget{structRaptiquaX__t_a19e237f478c20864e29f2aae4760f847}\label{structRaptiquaX__t_a19e237f478c20864e29f2aae4760f847} 
+\index{RaptiquaX\_t@{RaptiquaX\_t}!deferredBuffer@{deferredBuffer}}
+\index{deferredBuffer@{deferredBuffer}!RaptiquaX\_t@{RaptiquaX\_t}}
+\doxysubsubsection{\texorpdfstring{deferredBuffer}{deferredBuffer}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structDFBO}{DFBO}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::deferred\+Buffer}
 
-The \doxylink{structMSAA}{MSAA} settings. \Hypertarget{structRaptiquaX__t_abf247e9ee0f60348ba10c660aae885ee}\label{structRaptiquaX__t_abf247e9ee0f60348ba10c660aae885ee} 
+The SSR settings. \Hypertarget{structRaptiquaX__t_a79c4838b583474fa74ffe8d4ee7d60c3}\label{structRaptiquaX__t_a79c4838b583474fa74ffe8d4ee7d60c3} 
+\index{RaptiquaX\_t@{RaptiquaX\_t}!uiFBO@{uiFBO}}
+\index{uiFBO@{uiFBO}!RaptiquaX\_t@{RaptiquaX\_t}}
+\doxysubsubsection{\texorpdfstring{uiFBO}{uiFBO}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structCFBO}{CFBO}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::ui\+FBO}
+
+The UI frame buffer object. \Hypertarget{structRaptiquaX__t_abf247e9ee0f60348ba10c660aae885ee}\label{structRaptiquaX__t_abf247e9ee0f60348ba10c660aae885ee} 
 \index{RaptiquaX\_t@{RaptiquaX\_t}!renderTarget@{renderTarget}}
 \index{renderTarget@{renderTarget}!RaptiquaX\_t@{RaptiquaX\_t}}
 \doxysubsubsection{\texorpdfstring{renderTarget}{renderTarget}}

@@ -118,24 +118,24 @@ $(document).ready(function(){initNavTree('model_8h.html',''); initResizable(); }
 
 <p>Defines structures and functions for handling 3D models and their properties.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="shader_8h_source.html">shader.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="model__loader_8h_source.html">model_loaders/model_loader.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="shader_8h_source.html">io/shader.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="model__loader_8h_source.html">io/model_loaders/model_loader.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for model.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="model_8h__incl.png" border="0" usemap="#asrc_2io_2model_8h" alt=""/></div>
 <map name="asrc_2io_2model_8h" id="asrc_2io_2model_8h">
-<area shape="rect" title="Defines structures and functions for handling 3D models and their properties." alt="" coords="5,35,120,60"/>
-<area shape="rect" href="shader_8h.html" title=" " alt="" coords="211,5,288,31"/>
-<area shape="poly" title=" " alt="" coords="120,36,196,24,197,29,121,41"/>
-<area shape="rect" href="model__loader_8h.html" title="Header file for model loading functions." alt="" coords="168,55,331,95"/>
-<area shape="poly" title=" " alt="" coords="121,53,155,58,154,64,120,59"/>
-<area shape="rect" href="obj__loader_8h.html" title=" " alt="" coords="379,13,481,39"/>
-<area shape="poly" title=" " alt="" coords="322,53,369,40,370,45,324,58"/>
-<area shape="rect" href="mtl__loader_8h.html" title=" " alt="" coords="379,63,481,88"/>
-<area shape="poly" title=" " alt="" coords="331,73,365,73,365,78,331,78"/>
-<area shape="rect" href="fbx__loader_8h.html" title="Header file for loading FBX models." alt="" coords="379,112,481,137"/>
-<area shape="poly" title=" " alt="" coords="324,93,370,106,369,111,322,98"/>
+<area shape="rect" title="Defines structures and functions for handling 3D models and their properties." alt="" coords="131,5,246,31"/>
+<area shape="rect" href="shader_8h.html" title=" " alt="" coords="62,86,155,111"/>
+<area shape="poly" title=" " alt="" coords="179,33,132,78,129,74,175,29"/>
+<area shape="rect" href="model__loader_8h.html" title="Header file for model loading functions." alt="" coords="179,79,358,119"/>
+<area shape="poly" title=" " alt="" coords="202,29,241,67,238,71,199,33"/>
+<area shape="rect" href="obj__loader_8h.html" title=" " alt="" coords="5,167,164,207"/>
+<area shape="poly" title=" " alt="" coords="229,121,138,163,136,158,227,116"/>
+<area shape="rect" href="mtl__loader_8h.html" title=" " alt="" coords="189,167,349,207"/>
+<area shape="poly" title=" " alt="" coords="271,119,271,153,266,153,266,119"/>
+<area shape="rect" href="fbx__loader_8h.html" title="Header file for loading FBX models." alt="" coords="373,167,532,207"/>
+<area shape="poly" title=" " alt="" coords="310,116,401,158,399,163,308,121"/>
 </map>
 </div>
 </div>
@@ -173,24 +173,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:gaad5c885aa493ac48e59f4deeed82ca38" id="r_gaad5c885aa493ac48e59f4deeed82ca38"><td class="memItemLeft" align="right" valign="top">typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ModelHandling.html#gaad5c885aa493ac48e59f4deeed82ca38">VBO</a></td></tr>
-<tr class="memdesc:gaad5c885aa493ac48e59f4deeed82ca38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for unsigned int representing a Vertex Buffer <a class="el" href="structObject.html" title="A generic object structure.">Object</a>.  <br /></td></tr>
-<tr class="separator:gaad5c885aa493ac48e59f4deeed82ca38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8045bf7a50b1653e4b1e752967ddf6c3" id="r_ga8045bf7a50b1653e4b1e752967ddf6c3"><td class="memItemLeft" align="right" valign="top">typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ModelHandling.html#ga8045bf7a50b1653e4b1e752967ddf6c3">VAO</a></td></tr>
-<tr class="memdesc:ga8045bf7a50b1653e4b1e752967ddf6c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for unsigned int representing a Vertex Array <a class="el" href="structObject.html" title="A generic object structure.">Object</a>.  <br /></td></tr>
-<tr class="separator:ga8045bf7a50b1653e4b1e752967ddf6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaddb0a8c0f0a8d1baff3e033eb099a83b" id="r_gaddb0a8c0f0a8d1baff3e033eb099a83b"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="group__ModelHandling.html#gaad5c885aa493ac48e59f4deeed82ca38">VBO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ModelHandling.html#gaddb0a8c0f0a8d1baff3e033eb099a83b">VertexBuffer</a></td></tr>
-<tr class="memdesc:gaddb0a8c0f0a8d1baff3e033eb099a83b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for VBO.  <br /></td></tr>
-<tr class="separator:gaddb0a8c0f0a8d1baff3e033eb099a83b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga715110c10f770e339f863e38540533bc" id="r_ga715110c10f770e339f863e38540533bc"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="group__ModelHandling.html#ga8045bf7a50b1653e4b1e752967ddf6c3">VAO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ModelHandling.html#ga715110c10f770e339f863e38540533bc">VertexArray</a></td></tr>
-<tr class="memdesc:ga715110c10f770e339f863e38540533bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for VAO.  <br /></td></tr>
-<tr class="separator:ga715110c10f770e339f863e38540533bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1351e71110272ccf5e8d661017498adb" id="r_ga1351e71110272ccf5e8d661017498adb"><td class="memItemLeft" align="right" valign="top">typedef float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ModelHandling.html#ga1351e71110272ccf5e8d661017498adb">Vertex</a>[<a class="el" href="group__ModelHandling.html#ggabcb2d8ba41df6aa7347c241c89e81d3faf93184f1d02844ea5634f19f17842198">VERTEX_ATTRIBUTE_COUNT</a>]</td></tr>
 <tr class="memdesc:ga1351e71110272ccf5e8d661017498adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of VERTEX_ATTRIBUTE_COUNT floats representing a vertex.  <br /></td></tr>
 <tr class="separator:ga1351e71110272ccf5e8d661017498adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa9abb132ae6f23dafca840fb8c6081ae" id="r_gaa9abb132ae6f23dafca840fb8c6081ae"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a></td></tr>
-<tr class="memdesc:gaa9abb132ae6f23dafca840fb8c6081ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for u32 representing a texture map.  <br /></td></tr>
-<tr class="separator:gaa9abb132ae6f23dafca840fb8c6081ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -275,9 +260,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga24d2b6488ada72779f8d522ee86574e7" id="r_ga24d2b6488ada72779f8d522ee86574e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ModelHandling.html#ga24d2b6488ada72779f8d522ee86574e7">create_screen_plane</a> (<a class="el" href="classMesh.html">Mesh</a> *mesh)</td></tr>
 <tr class="memdesc:ga24d2b6488ada72779f8d522ee86574e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a screen plane.  <br /></td></tr>
 <tr class="separator:ga24d2b6488ada72779f8d522ee86574e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8398a26dbcb6eda263cc6e9ef422d1dc" id="r_ga8398a26dbcb6eda263cc6e9ef422d1dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ModelHandling.html#ga8398a26dbcb6eda263cc6e9ef422d1dc">render_model</a> (mat4 *modelMatrix, <a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> activeShader, <a class="el" href="classModel.html">Model</a> *model)</td></tr>
-<tr class="memdesc:ga8398a26dbcb6eda263cc6e9ef422d1dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a 3D model using the specified shader and transformation matrix.  <br /></td></tr>
-<tr class="separator:ga8398a26dbcb6eda263cc6e9ef422d1dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac727bc258aa5300560b585dc67893ca0" id="r_gac727bc258aa5300560b585dc67893ca0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ModelHandling.html#gac727bc258aa5300560b585dc67893ca0">render_model</a> (mat4 modelMatrix, <a class="el" href="group__MemoryCache.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> activeShader, <a class="el" href="classModel.html">Model</a> *model)</td></tr>
+<tr class="memdesc:gac727bc258aa5300560b585dc67893ca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a 3D model using the specified shader and transformation matrix.  <br /></td></tr>
+<tr class="separator:gac727bc258aa5300560b585dc67893ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines structures and functions for handling 3D models and their properties. </p>

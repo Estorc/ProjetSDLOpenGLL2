@@ -8,7 +8,8 @@ var raptiquax_8c =
     [ "input", "raptiquax_8c.html#ad4db59ccea8946af2bb70f8269e99eeb", null ],
     [ "settings", "raptiquax_8c.html#a19276c778f3034b94881cf1f8614dbb2", null ],
     [ "window", "raptiquax_8c.html#ac5b0b3c19d476a314bb68af9bc4a0ee0", null ],
-    [ "msaa", "raptiquax_8c.html#a58daf641d993a02e7806fe8b763fad6c", null ],
+    [ "dfbo", "raptiquax_8c.html#a0a410b5c4c1deff0fbeb2b4051c83f7c", null ],
+    [ "uiFBO", "raptiquax_8c.html#a2929b50099c2c5df2800f4206220bc91", null ],
     [ "depthMap", "raptiquax_8c.html#a05db9a2e20c606a506e7b8da6d0248e3", null ],
     [ "Game", "raptiquax_8c.html#ad749b00382c53c431741d17582670ad7", null ]
 ];

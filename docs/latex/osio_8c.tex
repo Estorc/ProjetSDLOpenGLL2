@@ -1,12 +1,13 @@
 \doxysection{src/io/osio.c File Reference}
 \hypertarget{osio_8c}{}\label{osio_8c}\index{src/io/osio.c@{src/io/osio.c}}
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
-{\ttfamily \#include "{}stringio.\+h"{}}\newline
-{\ttfamily \#include "{}../term/term.\+h"{}}\newline
+{\ttfamily \#include $<$io/stringio.\+h$>$}\newline
+{\ttfamily \#include $<$term/term.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$unistd.\+h$>$}\newline
-{\ttfamily \#include "{}osio.\+h"{}}\newline
-Include dependency graph for osio.\+c\+:\nopagebreak
+{\ttfamily \#include $<$io/osio.\+h$>$}\newline
+Include dependency graph for osio.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -27,6 +28,8 @@ int \mbox{\hyperlink{group__OSIO_ga054945d77398e3be399fdb8398d0f4ef}{osio\+\_\+o
 \begin{DoxyCompactList}\small\item\em Opens a file from the specified path with a given filter. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{group__OSIO_gadc303caa72b5aed4b43ffa8f34f0375f}{osio\+\_\+print\+\_\+error}} (char \texorpdfstring{$\ast$}{*}msg)
 \begin{DoxyCompactList}\small\item\em Prints an error message to the standard error output. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__OSIO_ga73f3b3dc473ae5d8d46d95fe3cd72759}{osio\+\_\+find}} (\mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}namelist, const char \texorpdfstring{$\ast$}{*}path, int(\texorpdfstring{$\ast$}{*}filter)(const \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}entry))
+\begin{DoxyCompactList}\small\item\em Finds files in a directory that match a given filter. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{group__OSIO_ga2c057d7941c6df59458be2230e3e7f88}{update\+\_\+cwd}} ()
 \begin{DoxyCompactList}\small\item\em Updates the current working directory. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{group__OSIO_ga6f9da097d97bc24c4c4bf7b2996331d0}{absolute\+\_\+path\+\_\+to\+\_\+relative}} (char \texorpdfstring{$\ast$}{*}path)

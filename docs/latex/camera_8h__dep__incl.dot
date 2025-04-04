@@ -110,10 +110,10 @@ digraph "src/render/camera.h"
   Node14 -> Node11 [id="edge118_Node000014_Node000011",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node14 -> Node12 [id="edge119_Node000014_Node000012",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node14 -> Node13 [id="edge120_Node000014_Node000013",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node14 -> Node52 [id="edge121_Node000014_Node000052",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node52 [id="Node000052",label="src/utils/scene.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$scene_8c.html",tooltip=" "];
-  Node14 -> Node53 [id="edge122_Node000014_Node000053",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node53 [id="Node000053",label="src/window.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$window_8c.html",tooltip=" "];
-  Node1 -> Node52 [id="edge123_Node000001_Node000052",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node1 -> Node53 [id="edge124_Node000001_Node000053",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node14 -> Node53 [id="edge121_Node000014_Node000053",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node53 [id="Node000053",label="src/utils/scene.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$scene_8c.html",tooltip=" "];
+  Node14 -> Node54 [id="edge122_Node000014_Node000054",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node54 [id="Node000054",label="src/window.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$window_8c.html",tooltip=" "];
+  Node1 -> Node53 [id="edge123_Node000001_Node000053",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node54 [id="edge124_Node000001_Node000054",dir="back",color="steelblue1",style="solid",tooltip=" "];
 }

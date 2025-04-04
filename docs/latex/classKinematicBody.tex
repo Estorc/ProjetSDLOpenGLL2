@@ -30,29 +30,29 @@ Collaboration diagram for Kinematic\+Body\+:\nopagebreak
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classKinematicBody_af17d21a473577af932f8d61cb31730d3}{constructor}} (float \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classKinematicBody_a6df89dcb3c0755043974bbb1a5f90746}{velocity}})
+void \mbox{\hyperlink{classKinematicBody_a0d502ed21de1adbf2665689bc194e557}{constructor}} (vec3 \mbox{\hyperlink{classKinematicBody_a6df89dcb3c0755043974bbb1a5f90746}{velocity}})
 \begin{DoxyCompactList}\small\item\em Constructor for the kinematic body class. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classKinematicBody_a6f587a65cb96c123a3615565a80e1e1d}{get\+\_\+length}} (\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classKinematicBody_ad869823646607bf62ecac40b78751a92}{length}})
+void \mbox{\hyperlink{classKinematicBody_a6f587a65cb96c123a3615565a80e1e1d}{get\+\_\+length}} (\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classKinematicBody_ad869823646607bf62ecac40b78751a92}{length}})
 \begin{DoxyCompactList}\small\item\em Retrieves the length of a kinematic body. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classKinematicBody_af3080728c8608c9c127ed8be326b16b4}{get\+\_\+collisions\+\_\+shapes}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shapes, \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classKinematicBody_ad869823646607bf62ecac40b78751a92}{length}})
+void \mbox{\hyperlink{classKinematicBody_af3080728c8608c9c127ed8be326b16b4}{get\+\_\+collisions\+\_\+shapes}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shapes, \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classKinematicBody_ad869823646607bf62ecac40b78751a92}{length}})
 \begin{DoxyCompactList}\small\item\em Retrieves the collision shapes and their count. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classKinematicBody_afddcbf2d53bbb1a441f3d7cf6e22c818}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+void \mbox{\hyperlink{classKinematicBody_acbcc1cba8ff1f4b96988866de1c71bb1}{update\+\_\+global\+\_\+position}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
 \begin{DoxyCompactList}\small\item\em Updates the global position of a kinematic body. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classKinematicBody_a1fa2ad507fd4168649317dc274285120}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}}, double delta)
+void \mbox{\hyperlink{classKinematicBody_ac16dd4224d7d39605c9777a4748b09e2}{update}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}}, float delta)
 \begin{DoxyCompactList}\small\item\em Updates the position, rotation, and scale of a kinematic body. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classKinematicBody_a03c35eca297b689a38fca4420c751f5d}{load}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}scripts, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
 \begin{DoxyCompactList}\small\item\em Loads data from a file and initializes the provided \doxylink{classCamera}{Camera}, \doxylink{structScript}{Script}, and \doxylink{classNode}{Node} objects. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classKinematicBody_a38bab48799e072d6eef589aad5b44d62}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
 \begin{DoxyCompactList}\small\item\em Saves the state of the kinematic body to a file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classKinematicBody_aa873ffbe2bf8a20c61b14712cae95ae9}{apply\+\_\+impulse}} (float \texorpdfstring{$\ast$}{*}impulse, float \texorpdfstring{$\ast$}{*}torque, float \texorpdfstring{$\ast$}{*}correction)
+void \mbox{\hyperlink{classKinematicBody_ab496db1f14aea8d403d2c3eeef9181c9}{apply\+\_\+impulse}} (vec3 impulse, vec3 torque, vec3 correction)
 \begin{DoxyCompactList}\small\item\em Applies an impulse to the kinematic body. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classKinematicBody_a53585d0d290ac2fb3ecf068b0ac5d11d}{get\+\_\+velocity\+\_\+norm}} ()
 \begin{DoxyCompactList}\small\item\em Get the velocity norm of a node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classKinematicBody_afc04ceef5407cdbe226de343d27e5160}{get\+\_\+velocity}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classKinematicBody_a6df89dcb3c0755043974bbb1a5f90746}{velocity}})
+void \mbox{\hyperlink{classKinematicBody_aabfb41997974381a757bed497396b9b1}{get\+\_\+velocity}} (vec3 \mbox{\hyperlink{classKinematicBody_a6df89dcb3c0755043974bbb1a5f90746}{velocity}})
 \begin{DoxyCompactList}\small\item\em Get the velocity of a node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classKinematicBody_ab84c50380fc6b95e730efebf9f237b52}{get\+\_\+mass}} (float \texorpdfstring{$\ast$}{*}mass)
 \begin{DoxyCompactList}\small\item\em Get the mass of a node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classKinematicBody_aff8658e99e7423ac20e83473a8676d8c}{get\+\_\+center\+\_\+of\+\_\+mass}} (float \texorpdfstring{$\ast$}{*}com)
+void \mbox{\hyperlink{classKinematicBody_adb47f5537de0281b1950d82575ff0f4e}{get\+\_\+center\+\_\+of\+\_\+mass}} (vec3 com)
 \begin{DoxyCompactList}\small\item\em Get the center of mass of a node. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classBody}{Body}}}
 \begin{DoxyCompactItemize}
@@ -87,7 +87,7 @@ void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}}
 \begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classNode}{Node} class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
 \begin{DoxyCompactList}\small\item\em Initializes a node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}})
 \begin{DoxyCompactList}\small\item\em Retrieves the glow shader. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}})
 \begin{DoxyCompactList}\small\item\em Retrieves settings data. \end{DoxyCompactList}\item 
@@ -95,13 +95,13 @@ void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
 \begin{DoxyCompactList}\small\item\em Loads the necessary resources or data for the node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
 \begin{DoxyCompactList}\small\item\em Saves the current state to the specified file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_ab05e54fc6a226fe70d274e46e9ced07a}{prepare\+\_\+render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+void \mbox{\hyperlink{classNode_af61079d444fa059127bc4983cf5e4ea5}{prepare\+\_\+render}} (mat4 model\+Matrix, \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
 \begin{DoxyCompactList}\small\item\em Renders a node using the specified model matrix and shader. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_ab93a6f41e02422a21c44227c0355382a}{render}} ()
 \begin{DoxyCompactList}\small\item\em Renders the node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_a2621112ec04d166f9ec376eba06f3bbb}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+void \mbox{\hyperlink{classNode_a117da4a7be3efb9541f5279a98bf839f}{update\+\_\+global\+\_\+position}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
 \begin{DoxyCompactList}\small\item\em Updates the global position of a node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_a500a682914a24af188bd9eb79ba2aaae}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+void \mbox{\hyperlink{classNode_a1e577d625ac818cc6dac5634e713cdaf}{update}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
 \begin{DoxyCompactList}\small\item\em Updates the position, rotation, and scale of a node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a86288848282bf3bba83f0cc7437207ac}{on\+\_\+resize}} ()
 \begin{DoxyCompactList}\small\item\em Handles the resize event for the node. \end{DoxyCompactList}\item 
@@ -146,7 +146,7 @@ struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstr
 \item 
 vec3 \mbox{\hyperlink{classKinematicBody_a6df89dcb3c0755043974bbb1a5f90746}{velocity}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classKinematicBody_ad869823646607bf62ecac40b78751a92}{length}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classKinematicBody_ad869823646607bf62ecac40b78751a92}{length}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
@@ -157,11 +157,11 @@ struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstr
 \item 
 struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_a34f3ab9670c7b70dad8905359a243c92}{parent}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}}
+\mbox{\hyperlink{aliases_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a670b66a39fdb438336be47a9cb68a516}{type}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a670b66a39fdb438336be47a9cb68a516}{type}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a0c95683293e9f234118c583a28bc9cc0}{flags}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a0c95683293e9f234118c583a28bc9cc0}{flags}}
 \item 
 vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}
 \item 
@@ -179,15 +179,15 @@ vec3 \mbox{\hyperlink{classNode_a1d353831fd989481401e337cd5ba0ddc}{global\+Scale
 \item 
 \mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_afa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_ab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_ab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
 \item 
-\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}}
+\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_ad05f8b1de975fa3370e8b98c0ec5aa4f}{glow\+Shader}} = 0
+static \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_ad05f8b1de975fa3370e8b98c0ec5aa4f}{glow\+Shader}} = 0
 \begin{DoxyCompactList}\small\item\em A static Shader variable used for glow effect. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -197,11 +197,11 @@ Represents a kinematic body in the physics simulation.
 A kinematic body is controlled by the user and is not affected by forces. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classKinematicBody_af17d21a473577af932f8d61cb31730d3}\label{classKinematicBody_af17d21a473577af932f8d61cb31730d3} 
+\Hypertarget{classKinematicBody_a0d502ed21de1adbf2665689bc194e557}\label{classKinematicBody_a0d502ed21de1adbf2665689bc194e557} 
 \index{KinematicBody@{KinematicBody}!constructor@{constructor}}
 \index{constructor@{constructor}!KinematicBody@{KinematicBody}}
 \doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
-{\footnotesize\ttfamily void Kinematic\+Body\+::constructor (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{velocity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kinematic\+Body\+::constructor (\begin{DoxyParamCaption}\item[{vec3}]{velocity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -211,14 +211,14 @@ This function initializes a kinematic body with the given velocity.
 
 
 \begin{DoxyParams}{Parameters}
-{\em velocity} & A pointer to a float representing the initial velocity of the kinematic body. \\
+{\em velocity} & Vec3 representing the initial velocity of the kinematic body. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classKinematicBody_a6f587a65cb96c123a3615565a80e1e1d}\label{classKinematicBody_a6f587a65cb96c123a3615565a80e1e1d} 
 \index{KinematicBody@{KinematicBody}!get\_length@{get\_length}}
 \index{get\_length@{get\_length}!KinematicBody@{KinematicBody}}
 \doxysubsubsection{\texorpdfstring{get\_length()}{get\_length()}}
-{\footnotesize\ttfamily void Kinematic\+Body\+::get\+\_\+length (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kinematic\+Body\+::get\+\_\+length (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -235,7 +235,7 @@ This function assigns the length of a kinematic body to the provided pointer.
 \index{KinematicBody@{KinematicBody}!get\_collisions\_shapes@{get\_collisions\_shapes}}
 \index{get\_collisions\_shapes@{get\_collisions\_shapes}!KinematicBody@{KinematicBody}}
 \doxysubsubsection{\texorpdfstring{get\_collisions\_shapes()}{get\_collisions\_shapes()}}
-{\footnotesize\ttfamily void Kinematic\+Body\+::get\+\_\+collisions\+\_\+shapes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{shapes,  }\item[{\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kinematic\+Body\+::get\+\_\+collisions\+\_\+shapes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{shapes,  }\item[{\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -250,11 +250,11 @@ This function populates the provided pointers with the collision shapes and thei
 \mbox{\texttt{ out}}  & {\em length} & A pointer to an array of unsigned 8-\/bit integers where the count of collision shapes will be stored. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classKinematicBody_afddcbf2d53bbb1a441f3d7cf6e22c818}\label{classKinematicBody_afddcbf2d53bbb1a441f3d7cf6e22c818} 
+\Hypertarget{classKinematicBody_acbcc1cba8ff1f4b96988866de1c71bb1}\label{classKinematicBody_acbcc1cba8ff1f4b96988866de1c71bb1} 
 \index{KinematicBody@{KinematicBody}!update\_global\_position@{update\_global\_position}}
 \index{update\_global\_position@{update\_global\_position}!KinematicBody@{KinematicBody}}
 \doxysubsubsection{\texorpdfstring{update\_global\_position()}{update\_global\_position()}}
-{\footnotesize\ttfamily void Kinematic\+Body\+::update\+\_\+global\+\_\+position (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kinematic\+Body\+::update\+\_\+global\+\_\+position (\begin{DoxyParamCaption}\item[{vec3}]{pos,  }\item[{vec3}]{rot,  }\item[{vec3}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -264,18 +264,18 @@ This function updates the global position of a kinematic body based on the provi
 
 
 \begin{DoxyParams}{Parameters}
-{\em pos} & Pointer to a vec3 structure representing the position of the kinematic body. \\
+{\em pos} & Vec3 structure representing the position of the kinematic body. \\
 \hline
-{\em rot} & Pointer to a vec3 structure representing the rotation of the kinematic body. \\
+{\em rot} & Vec3 structure representing the rotation of the kinematic body. \\
 \hline
-{\em scale} & Pointer to a vec3 structure representing the scale of the kinematic body. \\
+{\em scale} & Vec3 structure representing the scale of the kinematic body. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classKinematicBody_a1fa2ad507fd4168649317dc274285120}\label{classKinematicBody_a1fa2ad507fd4168649317dc274285120} 
+\Hypertarget{classKinematicBody_ac16dd4224d7d39605c9777a4748b09e2}\label{classKinematicBody_ac16dd4224d7d39605c9777a4748b09e2} 
 \index{KinematicBody@{KinematicBody}!update@{update}}
 \index{update@{update}!KinematicBody@{KinematicBody}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily void Kinematic\+Body\+::update (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{scale,  }\item[{double}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kinematic\+Body\+::update (\begin{DoxyParamCaption}\item[{vec3}]{pos,  }\item[{vec3}]{rot,  }\item[{vec3}]{scale,  }\item[{float}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -285,11 +285,11 @@ This function updates the position, rotation, and scale vectors of a kinematic b
 
 
 \begin{DoxyParams}{Parameters}
-{\em pos} & Pointer to a vec3 structure representing the position of the body. \\
+{\em pos} & Vec3 structure representing the position of the body. \\
 \hline
-{\em rot} & Pointer to a vec3 structure representing the rotation of the body. \\
+{\em rot} & Vec3 structure representing the rotation of the body. \\
 \hline
-{\em scale} & Pointer to a vec3 structure representing the scale of the body. \\
+{\em scale} & Vec3 structure representing the scale of the body. \\
 \hline
 {\em delta} & The time delta used to update the body\textquotesingle{}s state. \\
 \hline
@@ -334,11 +334,11 @@ This function writes the current state of the kinematic body to the specified fi
 {\em file} & A pointer to the file where the state will be saved. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classKinematicBody_aa873ffbe2bf8a20c61b14712cae95ae9}\label{classKinematicBody_aa873ffbe2bf8a20c61b14712cae95ae9} 
+\Hypertarget{classKinematicBody_ab496db1f14aea8d403d2c3eeef9181c9}\label{classKinematicBody_ab496db1f14aea8d403d2c3eeef9181c9} 
 \index{KinematicBody@{KinematicBody}!apply\_impulse@{apply\_impulse}}
 \index{apply\_impulse@{apply\_impulse}!KinematicBody@{KinematicBody}}
 \doxysubsubsection{\texorpdfstring{apply\_impulse()}{apply\_impulse()}}
-{\footnotesize\ttfamily void Kinematic\+Body\+::apply\+\_\+impulse (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{impulse,  }\item[{float \texorpdfstring{$\ast$}{*}}]{torque,  }\item[{float \texorpdfstring{$\ast$}{*}}]{correction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kinematic\+Body\+::apply\+\_\+impulse (\begin{DoxyParamCaption}\item[{vec3}]{impulse,  }\item[{vec3}]{torque,  }\item[{vec3}]{correction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -348,11 +348,11 @@ This function applies a given impulse and torque to the kinematic body and perfo
 
 
 \begin{DoxyParams}{Parameters}
-{\em impulse} & A pointer to a float representing the impulse to be applied. \\
+{\em impulse} & Vec3 representing the impulse to be applied. \\
 \hline
-{\em torque} & A pointer to a float representing the torque to be applied. \\
+{\em torque} & Vec3 representing the torque to be applied. \\
 \hline
-{\em correction} & A pointer to a float representing the correction to be applied. \\
+{\em correction} & Vec3 representing the correction to be applied. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classKinematicBody_a53585d0d290ac2fb3ecf068b0ac5d11d}\label{classKinematicBody_a53585d0d290ac2fb3ecf068b0ac5d11d} 
@@ -368,11 +368,11 @@ Get the velocity norm of a node.
 \begin{DoxyReturn}{Returns}
 The velocity norm of the node. 
 \end{DoxyReturn}
-\Hypertarget{classKinematicBody_afc04ceef5407cdbe226de343d27e5160}\label{classKinematicBody_afc04ceef5407cdbe226de343d27e5160} 
+\Hypertarget{classKinematicBody_aabfb41997974381a757bed497396b9b1}\label{classKinematicBody_aabfb41997974381a757bed497396b9b1} 
 \index{KinematicBody@{KinematicBody}!get\_velocity@{get\_velocity}}
 \index{get\_velocity@{get\_velocity}!KinematicBody@{KinematicBody}}
 \doxysubsubsection{\texorpdfstring{get\_velocity()}{get\_velocity()}}
-{\footnotesize\ttfamily void Kinematic\+Body\+::get\+\_\+velocity (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{velocity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kinematic\+Body\+::get\+\_\+velocity (\begin{DoxyParamCaption}\item[{vec3}]{velocity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -398,11 +398,11 @@ Get the mass of a node.
 {\em mass} & Output pointer to store the mass. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classKinematicBody_aff8658e99e7423ac20e83473a8676d8c}\label{classKinematicBody_aff8658e99e7423ac20e83473a8676d8c} 
+\Hypertarget{classKinematicBody_adb47f5537de0281b1950d82575ff0f4e}\label{classKinematicBody_adb47f5537de0281b1950d82575ff0f4e} 
 \index{KinematicBody@{KinematicBody}!get\_center\_of\_mass@{get\_center\_of\_mass}}
 \index{get\_center\_of\_mass@{get\_center\_of\_mass}!KinematicBody@{KinematicBody}}
 \doxysubsubsection{\texorpdfstring{get\_center\_of\_mass()}{get\_center\_of\_mass()}}
-{\footnotesize\ttfamily void Kinematic\+Body\+::get\+\_\+center\+\_\+of\+\_\+mass (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{com }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Kinematic\+Body\+::get\+\_\+center\+\_\+of\+\_\+mass (\begin{DoxyParamCaption}\item[{vec3}]{com }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -432,7 +432,7 @@ Current velocity of the kinematic body. \Hypertarget{classKinematicBody_ad869823
 \index{KinematicBody@{KinematicBody}!length@{length}}
 \index{length@{length}!KinematicBody@{KinematicBody}}
 \doxysubsubsection{\texorpdfstring{length}{length}}
-{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Kinematic\+Body\+::length}
+{\footnotesize\ttfamily \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Kinematic\+Body\+::length}
 
 Number of collision shapes. 
 

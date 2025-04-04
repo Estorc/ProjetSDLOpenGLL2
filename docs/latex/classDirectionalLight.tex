@@ -32,7 +32,7 @@ Collaboration diagram for Directional\+Light\+:\nopagebreak
 \item 
 void \mbox{\hyperlink{classDirectionalLight_af8770798a6af38736adc634162cc2b78}{constructor}} (float r, float g, float b, float \mbox{\hyperlink{classDirectionalLight_ab74a595d58c20a08feb4338ef8099e0f}{bias}}, float \mbox{\hyperlink{classDirectionalLight_adfd0f6dcdd96c32ce4f66fb39cad43d0}{size}}, float \mbox{\hyperlink{classDirectionalLight_ad2a16d94812d6c5a78d702799c428c5d}{constant}}, float \mbox{\hyperlink{classDirectionalLight_ab3945e26901a5cf65649da41808605ba}{linear}}, float \mbox{\hyperlink{classDirectionalLight_aa8cbf5985a84fbc509e6bf9295627048}{quadratic}})
 \begin{DoxyCompactList}\small\item\em Constructor for the directional light class. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classDirectionalLight_a54c0194fe606359949adfc38e6d3847f}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}}, double delta, \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}lights\+Count)
+void \mbox{\hyperlink{classDirectionalLight_aafe82b3674d3514a85293cafe4c29b71}{update}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}}, double delta, \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}lights\+Count)
 \begin{DoxyCompactList}\small\item\em Updates the state of a directional light. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classDirectionalLight_ac8ccb4c1eaae0e9b8a132cbc7f4c282e}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}})
 \begin{DoxyCompactList}\small\item\em Retrieves the settings data for the directional light. \end{DoxyCompactList}\item 
@@ -40,18 +40,20 @@ void \mbox{\hyperlink{classDirectionalLight_a7cf1a221d98f5ba39c5954d2a43190df}{l
 \begin{DoxyCompactList}\small\item\em Loads data from a file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classDirectionalLight_a2e75ba84cda8a1aabc2df723504c6eee}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
 \begin{DoxyCompactList}\small\item\em Saves the current state of the directional light to a file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classDirectionalLight_a780d5c5a4b42a1c114ee8fc302400d62}{configure\+\_\+lighting}} (\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a05db9a2e20c606a506e7b8da6d0248e3}{depth\+Map}}, \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}lights\+Count)
+void \mbox{\hyperlink{classDirectionalLight_a780d5c5a4b42a1c114ee8fc302400d62}{configure\+\_\+lighting}} (\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a05db9a2e20c606a506e7b8da6d0248e3}{depth\+Map}}, \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}lights\+Count)
 \begin{DoxyCompactList}\small\item\em Configures the directional lighting for the specified camera. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classLight}{Light}}}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classLight_a5d5340f3f260f4bdf363c49fc4b9332b}{init\+\_\+light}} ()
 \begin{DoxyCompactList}\small\item\em Initializes the light object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classLight_aab86c5ca4c681a2ab633781807401698}{render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+void \mbox{\hyperlink{classLight_ab57340618453254a859593e59c2a4928}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
+\begin{DoxyCompactList}\small\item\em Determines if the current object is a GUI element. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLight_aec18bcd99caf9868f7fe2fe9096c1e71}{render}} (mat4 model\+Matrix, \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
 \begin{DoxyCompactList}\small\item\em Renders the light using the provided model matrix and active shader. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLight_a0478fb3eaf6a6292d76c26e9bdf54859}{init\+\_\+vao}} ()
 \begin{DoxyCompactList}\small\item\em Initializes the Vertex Array \doxylink{structObject}{Object} (VAO) for the light class. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classLight_a54b906034c98c0df4275b2a9de32890d}{configure\+\_\+lighting}} (\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, mat4 \texorpdfstring{$\ast$}{*}light\+View, mat4 \texorpdfstring{$\ast$}{*}light\+Projection, int storage\+Buffer\+Index, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a05db9a2e20c606a506e7b8da6d0248e3}{depth\+Map}})
+void \mbox{\hyperlink{classLight_ad72ee2dade1651117fee84104065b3c0}{configure\+\_\+lighting}} (\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, mat4 light\+View, mat4 light\+Projection, int storage\+Buffer\+Index, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a05db9a2e20c606a506e7b8da6d0248e3}{depth\+Map}})
 \begin{DoxyCompactList}\small\item\em Configures the lighting for the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
@@ -60,7 +62,7 @@ void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}}
 \begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classNode}{Node} class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
 \begin{DoxyCompactList}\small\item\em Initializes a node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}})
 \begin{DoxyCompactList}\small\item\em Retrieves the glow shader. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}})
 \begin{DoxyCompactList}\small\item\em Retrieves settings data. \end{DoxyCompactList}\item 
@@ -68,13 +70,13 @@ void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
 \begin{DoxyCompactList}\small\item\em Loads the necessary resources or data for the node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
 \begin{DoxyCompactList}\small\item\em Saves the current state to the specified file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_ab05e54fc6a226fe70d274e46e9ced07a}{prepare\+\_\+render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+void \mbox{\hyperlink{classNode_af61079d444fa059127bc4983cf5e4ea5}{prepare\+\_\+render}} (mat4 model\+Matrix, \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
 \begin{DoxyCompactList}\small\item\em Renders a node using the specified model matrix and shader. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_ab93a6f41e02422a21c44227c0355382a}{render}} ()
 \begin{DoxyCompactList}\small\item\em Renders the node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_a2621112ec04d166f9ec376eba06f3bbb}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+void \mbox{\hyperlink{classNode_a117da4a7be3efb9541f5279a98bf839f}{update\+\_\+global\+\_\+position}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
 \begin{DoxyCompactList}\small\item\em Updates the global position of a node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_a500a682914a24af188bd9eb79ba2aaae}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+void \mbox{\hyperlink{classNode_a1e577d625ac818cc6dac5634e713cdaf}{update}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
 \begin{DoxyCompactList}\small\item\em Updates the position, rotation, and scale of a node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a86288848282bf3bba83f0cc7437207ac}{on\+\_\+resize}} ()
 \begin{DoxyCompactList}\small\item\em Handles the resize event for the node. \end{DoxyCompactList}\item 
@@ -136,11 +138,11 @@ struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstr
 \item 
 struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_a34f3ab9670c7b70dad8905359a243c92}{parent}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}}
+\mbox{\hyperlink{aliases_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a670b66a39fdb438336be47a9cb68a516}{type}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a670b66a39fdb438336be47a9cb68a516}{type}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a0c95683293e9f234118c583a28bc9cc0}{flags}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a0c95683293e9f234118c583a28bc9cc0}{flags}}
 \item 
 vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}
 \item 
@@ -158,28 +160,28 @@ vec3 \mbox{\hyperlink{classNode_a1d353831fd989481401e337cd5ba0ddc}{global\+Scale
 \item 
 \mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_afa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_ab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_ab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
 \item 
-\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}}
+\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classLight}{Light}}}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{group__ModelHandling_gaad5c885aa493ac48e59f4deeed82ca38}{VBO}} \mbox{\hyperlink{classLight_ab27d4d441543fa871a2b4db5ce0c40d8}{vbo}} = 0
+static \mbox{\hyperlink{aliases_8h_aad5c885aa493ac48e59f4deeed82ca38}{VBO}} \mbox{\hyperlink{classLight_ab27d4d441543fa871a2b4db5ce0c40d8}{vbo}} = 0
 \begin{DoxyCompactList}\small\item\em Static variable representing the Vertex Buffer \doxylink{structObject}{Object} (VBO) for the light class. \end{DoxyCompactList}\item 
-static \mbox{\hyperlink{group__ModelHandling_ga8045bf7a50b1653e4b1e752967ddf6c3}{VAO}} \mbox{\hyperlink{classLight_affd8f98ee0cb4508fd9dda3e283197f0}{vao}} = 0
+static \mbox{\hyperlink{aliases_8h_a8045bf7a50b1653e4b1e752967ddf6c3}{VAO}} \mbox{\hyperlink{classLight_affd8f98ee0cb4508fd9dda3e283197f0}{vao}} = 0
 \begin{DoxyCompactList}\small\item\em Static variable representing the Vertex Array \doxylink{structObject}{Object} (VAO) for the light class. \end{DoxyCompactList}\item 
-static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classLight_a30f2cc3e09937c8831ae1e4e5091f730}{billboard\+Shader}} = 0
+static \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classLight_a30f2cc3e09937c8831ae1e4e5091f730}{billboard\+Shader}} = 0
 \begin{DoxyCompactList}\small\item\em Static variable representing the shader program used for rendering billboard lights. \end{DoxyCompactList}\item 
-static \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{classLight_a4049e24d8e694fea11e75252c6845c8e}{light\+Point\+Texture}} = 0
+static \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{classLight_a4049e24d8e694fea11e75252c6845c8e}{light\+Point\+Texture}} = 0
 \begin{DoxyCompactList}\small\item\em Static variable representing the texture map for point lights. \end{DoxyCompactList}\item 
-static \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{classLight_a95d1f2d32be65c60e6910e21a2dabb63}{directional\+Light\+Texture}} = 0
+static \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{classLight_a95d1f2d32be65c60e6910e21a2dabb63}{directional\+Light\+Texture}} = 0
 \begin{DoxyCompactList}\small\item\em Static variable representing the texture map for directional lights. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_ad05f8b1de975fa3370e8b98c0ec5aa4f}{glow\+Shader}} = 0
+static \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_ad05f8b1de975fa3370e8b98c0ec5aa4f}{glow\+Shader}} = 0
 \begin{DoxyCompactList}\small\item\em A static Shader variable used for glow effect. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -220,11 +222,11 @@ This function initializes a directional light with the specified parameters.
 {\em quadratic} & Quadratic attenuation factor. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classDirectionalLight_a54c0194fe606359949adfc38e6d3847f}\label{classDirectionalLight_a54c0194fe606359949adfc38e6d3847f} 
+\Hypertarget{classDirectionalLight_aafe82b3674d3514a85293cafe4c29b71}\label{classDirectionalLight_aafe82b3674d3514a85293cafe4c29b71} 
 \index{DirectionalLight@{DirectionalLight}!update@{update}}
 \index{update@{update}!DirectionalLight@{DirectionalLight}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily void Directional\+Light\+::update (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{scale,  }\item[{double}]{delta,  }\item[{\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{lights\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Directional\+Light\+::update (\begin{DoxyParamCaption}\item[{vec3}]{pos,  }\item[{vec3}]{rot,  }\item[{vec3}]{scale,  }\item[{double}]{delta,  }\item[{\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{lights\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -234,11 +236,11 @@ This function updates the position, rotation, and scale of a directional light b
 
 
 \begin{DoxyParams}{Parameters}
-{\em pos} & Pointer to a vec3 structure representing the position of the light. \\
+{\em pos} & Vec3 structure representing the position of the light. \\
 \hline
-{\em rot} & Pointer to a vec3 structure representing the rotation of the light. \\
+{\em rot} & Vec3 structure representing the rotation of the light. \\
 \hline
-{\em scale} & Pointer to a vec3 structure representing the scale of the light. \\
+{\em scale} & Vec3 structure representing the scale of the light. \\
 \hline
 {\em delta} & The time delta used for updating the light\textquotesingle{}s state. \\
 \hline
@@ -302,7 +304,7 @@ This function writes the current state of the directional light object to the sp
 \index{DirectionalLight@{DirectionalLight}!configure\_lighting@{configure\_lighting}}
 \index{configure\_lighting@{configure\_lighting}!DirectionalLight@{DirectionalLight}}
 \doxysubsubsection{\texorpdfstring{configure\_lighting()}{configure\_lighting()}}
-{\footnotesize\ttfamily void Directional\+Light\+::configure\+\_\+lighting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders,  }\item[{\mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}}]{depth\+Map,  }\item[{\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{lights\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Directional\+Light\+::configure\+\_\+lighting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders,  }\item[{\mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}}]{depth\+Map,  }\item[{\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{lights\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 

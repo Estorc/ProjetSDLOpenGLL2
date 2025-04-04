@@ -31,7 +31,7 @@ var searchData=
   ['node_5funused5_28',['NODE_UNUSED5',['../group__NodeFunctions.html#ggae925b777d12c58434a689cce258b57c0a114b0f86ab1e39a1162d185834e9567f',1,'node.h']]],
   ['node_5fvisible_29',['NODE_VISIBLE',['../group__NodeFunctions.html#ggae925b777d12c58434a689cce258b57c0a579273ea1ad284119327d60ff4dbc4b5',1,'node.h']]],
   ['nodeflags_30',['NodeFlags',['../group__NodeFunctions.html#gae925b777d12c58434a689cce258b57c0',1,'node.h']]],
-  ['normal_31',['Normal',['../group__ObjLoader.html#gabb5b863a4c7a7cc7d18a288c908b9f0b',1,'obj_loader.h']]],
+  ['normal_31',['Normal',['../aliases_8h.html#abb5b863a4c7a7cc7d18a288c908b9f0b',1,'aliases.h']]],
   ['normal_5fmaterial_5fproperty_32',['NORMAL_MATERIAL_PROPERTY',['../group__ModelHandling.html#gga74a3753dc733cc27e7b37ab4fcc4f20ea75494dc25c0069e6ae336c414fd3d36e',1,'model.h']]],
   ['normals_33',['normals',['../structFace.html#af7ac3badebf6a913e880fed8f327c115',1,'Face::normals'],['../group__ObjLoader.html#ga6fa9ea9ae14a33791794d1c08623700c',1,'LoadingModelBuffer::normals']]],
   ['num_5fdirectional_5flights_34',['NUM_DIRECTIONAL_LIGHTS',['../depth__map_8h.html#ab90be778d83c75fb725bfc4567b8e994',1,'depth_map.h']]],

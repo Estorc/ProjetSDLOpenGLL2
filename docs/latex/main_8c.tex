@@ -1,33 +1,35 @@
 \doxysection{src/main.c File Reference}
 \hypertarget{main_8c}{}\label{main_8c}\index{src/main.c@{src/main.c}}
-{\ttfamily \#include "{}raptiquax.\+h"{}}\newline
-{\ttfamily \#include "{}math/math\+\_\+util.\+h"{}}\newline
-{\ttfamily \#include "{}io/model.\+h"{}}\newline
-{\ttfamily \#include "{}render/framebuffer.\+h"{}}\newline
-{\ttfamily \#include "{}storage/node.\+h"{}}\newline
-{\ttfamily \#include "{}render/depth\+\_\+map.\+h"{}}\newline
-{\ttfamily \#include "{}render/render.\+h"{}}\newline
-{\ttfamily \#include "{}render/lighting.\+h"{}}\newline
-{\ttfamily \#include "{}window.\+h"{}}\newline
-{\ttfamily \#include "{}io/input.\+h"{}}\newline
-{\ttfamily \#include "{}io/osio.\+h"{}}\newline
-{\ttfamily \#include "{}render/camera.\+h"{}}\newline
-{\ttfamily \#include "{}io/shader.\+h"{}}\newline
-{\ttfamily \#include "{}io/scene\+\_\+loader.\+h"{}}\newline
-{\ttfamily \#include "{}io/node\+\_\+loader.\+h"{}}\newline
-{\ttfamily \#include "{}physics/physics.\+h"{}}\newline
-{\ttfamily \#include "{}physics/bodies.\+h"{}}\newline
-{\ttfamily \#include "{}scripts/scripts.\+h"{}}\newline
-{\ttfamily \#include "{}gui/frame.\+h"{}}\newline
-{\ttfamily \#include "{}settings.\+h"{}}\newline
-{\ttfamily \#include "{}memory.\+h"{}}\newline
-{\ttfamily \#include "{}buffer.\+h"{}}\newline
-{\ttfamily \#include "{}storage/queue.\+h"{}}\newline
-{\ttfamily \#include "{}storage/hash.\+h"{}}\newline
-{\ttfamily \#include "{}utils/scene.\+h"{}}\newline
-{\ttfamily \#include "{}utils/random.\+h"{}}\newline
-{\ttfamily \#include "{}classes/classes.\+h"{}}\newline
-Include dependency graph for main.\+c\+:\nopagebreak
+{\ttfamily \#include $<$raptiquax.\+h$>$}\newline
+{\ttfamily \#include $<$math/math\+\_\+util.\+h$>$}\newline
+{\ttfamily \#include $<$io/model.\+h$>$}\newline
+{\ttfamily \#include $<$render/framebuffer.\+h$>$}\newline
+{\ttfamily \#include $<$storage/node.\+h$>$}\newline
+{\ttfamily \#include $<$render/depth\+\_\+map.\+h$>$}\newline
+{\ttfamily \#include $<$render/render.\+h$>$}\newline
+{\ttfamily \#include $<$render/lighting.\+h$>$}\newline
+{\ttfamily \#include $<$window.\+h$>$}\newline
+{\ttfamily \#include $<$io/input.\+h$>$}\newline
+{\ttfamily \#include $<$io/osio.\+h$>$}\newline
+{\ttfamily \#include $<$render/camera.\+h$>$}\newline
+{\ttfamily \#include $<$io/shader.\+h$>$}\newline
+{\ttfamily \#include $<$io/scene\+\_\+loader.\+h$>$}\newline
+{\ttfamily \#include $<$io/node\+\_\+loader.\+h$>$}\newline
+{\ttfamily \#include $<$physics/physics.\+h$>$}\newline
+{\ttfamily \#include $<$physics/bodies.\+h$>$}\newline
+{\ttfamily \#include $<$scripts/scripts.\+h$>$}\newline
+{\ttfamily \#include $<$gui/frame.\+h$>$}\newline
+{\ttfamily \#include $<$settings.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include $<$buffer.\+h$>$}\newline
+{\ttfamily \#include $<$storage/queue.\+h$>$}\newline
+{\ttfamily \#include $<$storage/hash.\+h$>$}\newline
+{\ttfamily \#include $<$utils/scene.\+h$>$}\newline
+{\ttfamily \#include $<$utils/random.\+h$>$}\newline
+{\ttfamily \#include $<$render/shaders/ssao.\+h$>$}\newline
+{\ttfamily \#include $<$classes/classes.\+h$>$}\newline
+Include dependency graph for main.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -38,11 +40,13 @@ Include dependency graph for main.\+c\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{main_8c_a29cd995d5546036ce244341225b5b648}{BOOT\+\_\+\+SCENE}}~"{}assets/scenes/claude\+\_\+chappe/boot.\+scene"{}
+\item 
+\#define \mbox{\hyperlink{main_8c_aed7818555b2da57314243d796315e4e9}{GAME\+\_\+\+NAME}}~"{}Raptiqua\+X"{}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{main_8c_a24cc69090d2d703aabdac0303346d9f3}{update}} (\mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a05db9a2e20c606a506e7b8da6d0248e3}{depth\+Map}}, \mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}{msaa}}, \mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}screen\+Plane)
+int \mbox{\hyperlink{main_8c_a9d320e3cd46c839483f499ec7bbaaea6}{update}} (\mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, \mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}shaders, \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a05db9a2e20c606a506e7b8da6d0248e3}{depth\+Map}}, \mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}screen\+Plane)
 \item 
 int \mbox{\hyperlink{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
 \end{DoxyCompactItemize}
@@ -55,14 +59,20 @@ int \mbox{\hyperlink{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc
 \doxysubsubsection{\texorpdfstring{BOOT\_SCENE}{BOOT\_SCENE}}
 {\footnotesize\ttfamily \#define BOOT\+\_\+\+SCENE~"{}assets/scenes/claude\+\_\+chappe/boot.\+scene"{}}
 
+\Hypertarget{main_8c_aed7818555b2da57314243d796315e4e9}\label{main_8c_aed7818555b2da57314243d796315e4e9} 
+\index{main.c@{main.c}!GAME\_NAME@{GAME\_NAME}}
+\index{GAME\_NAME@{GAME\_NAME}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{GAME\_NAME}{GAME\_NAME}}
+{\footnotesize\ttfamily \#define GAME\+\_\+\+NAME~"{}Raptiqua\+X"{}}
+
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{main_8c_a24cc69090d2d703aabdac0303346d9f3}\label{main_8c_a24cc69090d2d703aabdac0303346d9f3} 
+\Hypertarget{main_8c_a9d320e3cd46c839483f499ec7bbaaea6}\label{main_8c_a9d320e3cd46c839483f499ec7bbaaea6} 
 \index{main.c@{main.c}!update@{update}}
 \index{update@{update}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily int update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders,  }\item[{\mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}}]{depth\+Map,  }\item[{\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}}]{msaa,  }\item[{\mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{screen\+Plane }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{structWorldShaders}{World\+Shaders}} \texorpdfstring{$\ast$}{*}}]{shaders,  }\item[{\mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*}}]{depth\+Map,  }\item[{\mbox{\hyperlink{classMesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{screen\+Plane }\end{DoxyParamCaption})}
 
 \Hypertarget{main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8c_a0ddf1224851353fc92bfbff6f499fa97} 
 \index{main.c@{main.c}!main@{main}}

@@ -1,0 +1,33 @@
+\doxysection{dirent.\+h}
+\hypertarget{dirent_8h_source}{}\label{dirent_8h_source}\index{src/io/dirent.h@{src/io/dirent.h}}
+\mbox{\hyperlink{dirent_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{dirent_8h}{dirent.h}}>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <windows.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <direct.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ DT\_UNKNOWN\ \ 0}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ DT\_REG\ \ \ \ \ \ 8}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ DT\_DIR\ \ \ \ \ \ 4}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }dirent\_win\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{char}\ d\_name[MAX\_PATH];}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ d\_type;}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }dirent\_win\ \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\_t}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{dirent_8c_ac5e0ddc0ee130338dd924f2bac344820}{scandir\_windows}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *dirpath,\ \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\_t}}\ ***namelist,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ (*filter)(\textcolor{keyword}{const}\ \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\_t}}\ *),}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ (*compar)(\textcolor{keyword}{const}\ \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\_t}}\ **,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\_t}}\ **));}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{dirent_8c_af3919b25dc3ca682db35106d9e44e41d}{alphasort\_portable}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\_t}}\ **a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\_t}}\ **b);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ scandir(dirpath,\ namelist,\ filter,\ compar)\ scandir\_windows(dirpath,\ namelist,\ filter,\ compar)}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ alphasort\ alphasort\_portable}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00026\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }dirent\ \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\_t}};}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

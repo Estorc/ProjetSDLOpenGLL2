@@ -133,6 +133,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga6f9da097d97bc24c4c4bf7b2996331d0" id="r_ga6f9da097d97bc24c4c4bf7b2996331d0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OSIO.html#ga6f9da097d97bc24c4c4bf7b2996331d0">absolute_path_to_relative</a> (char *path)</td></tr>
 <tr class="memdesc:ga6f9da097d97bc24c4c4bf7b2996331d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an absolute file path to a relative path.  <br /></td></tr>
 <tr class="separator:ga6f9da097d97bc24c4c4bf7b2996331d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga73f3b3dc473ae5d8d46d95fe3cd72759" id="r_ga73f3b3dc473ae5d8d46d95fe3cd72759"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OSIO.html#ga73f3b3dc473ae5d8d46d95fe3cd72759">osio_find</a> (<a class="el" href="dirent_8h.html#a6673e8f64ca9ebd7e26e6289dca06e87">dirent_t</a> ***namelist, const char *path, int(*filter)(const <a class="el" href="dirent_8h.html#a6673e8f64ca9ebd7e26e6289dca06e87">dirent_t</a> *entry))</td></tr>
+<tr class="memdesc:ga73f3b3dc473ae5d8d46d95fe3cd72759"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds files in a directory that match a given filter.  <br /></td></tr>
+<tr class="separator:ga73f3b3dc473ae5d8d46d95fe3cd72759"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Functions for file operations and error handling. </p>
@@ -302,6 +305,52 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int Returns 0 on success, or a non-zero error code on failure. </dd></dl>
+
+</div>
+</div>
+<a id="ga73f3b3dc473ae5d8d46d95fe3cd72759" name="ga73f3b3dc473ae5d8d46d95fe3cd72759"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga73f3b3dc473ae5d8d46d95fe3cd72759">&#9670;&#160;</a></span>osio_find()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int osio_find </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="dirent_8h.html#a6673e8f64ca9ebd7e26e6289dca06e87">dirent_t</a> ***&#160;</td>
+          <td class="paramname"><em>namelist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int(*)(const <a class="el" href="dirent_8h.html#a6673e8f64ca9ebd7e26e6289dca06e87">dirent_t</a> *entry)&#160;</td>
+          <td class="paramname"><em>filter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds files in a directory that match a given filter. </p>
+<p>This function searches for files in the directory specified by the <code>path</code> parameter that match the filter function provided by the <code>filter</code> parameter. The filter function should return 1 for files that match the criteria, and 0 for files that do not.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">namelist</td><td>A pointer to the list of directory entries. </td></tr>
+    <tr><td class="paramname">path</td><td>The path to the directory where files should be searched. </td></tr>
+    <tr><td class="paramname">filter</td><td>The filter function to apply to the directory entries. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int Returns the number of files found, or a non-zero error code on failure. </dd></dl>
 
 </div>
 </div>

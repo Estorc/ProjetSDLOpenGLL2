@@ -1,21 +1,21 @@
 <map id="src/io/socket/socket.h" name="src/io/socket/socket.h">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,203,167,228"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="227,5,325,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,201,135,126,171,81,213,40,220,35,223,40,216,44,175,84,140,129,96,204"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="225,55,327,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="96,201,143,148,176,117,213,89,222,84,225,88,216,94,180,121,147,152,100,204"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="228,104,324,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="106,200,154,171,213,138,226,132,229,137,216,143,157,175,109,205"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="230,153,322,179"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="135,200,216,179,217,184,136,205"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="241,203,311,228"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="167,213,226,213,226,218,167,218"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="239,252,313,277"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="136,225,226,249,225,254,135,231"/>
-<area shape="rect" id="Node000008" href="$server_8h.html" title="Header file for socket server functions." alt="" coords="239,301,313,327"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="109,226,216,286,231,294,229,298,213,291,106,230"/>
-<area shape="rect" id="Node000009" href="$io_2socket_2client_8h.html" title="Header file for socket client operations." alt="" coords="241,351,311,376"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="100,226,147,278,180,308,216,336,229,343,227,348,213,340,177,313,143,282,96,230"/>
-<area shape="rect" id="Node000010" href="$network__utils_8h.html" title="Network utility functions and structures for socket communication." alt="" coords="215,400,337,425"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="96,227,140,301,175,345,216,385,225,391,222,396,213,389,171,349,136,304,92,230"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="257,5,356,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,201,107,169,133,125,169,79,213,40,243,26,245,31,216,44,173,83,138,128,112,171,95,204"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="255,55,358,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="95,201,141,147,175,116,213,89,241,77,243,82,216,94,179,120,145,151,99,204"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="259,104,355,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="104,200,152,170,214,138,245,128,246,133,216,143,155,174,107,205"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="261,153,353,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="143,200,247,177,248,182,144,205"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="271,203,342,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="167,213,257,213,257,218,167,218"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="269,252,344,277"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="144,225,257,251,255,256,143,231"/>
+<area shape="rect" id="Node000008" href="$server_8h.html" title="Header file for socket server functions." alt="" coords="239,301,375,327"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="107,226,155,256,216,286,240,295,238,300,214,291,153,260,105,230"/>
+<area shape="rect" id="Node000009" href="$io_2socket_2client_8h.html" title="Header file for socket client operations." alt="" coords="241,351,373,376"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="99,226,146,280,179,310,216,336,232,344,230,348,213,340,176,314,142,283,95,230"/>
+<area shape="rect" id="Node000010" href="$network__utils_8h.html" title="Network utility functions and structures for socket communication." alt="" coords="215,400,399,425"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="96,227,112,259,138,302,173,347,216,385,228,392,226,397,213,389,170,351,134,305,108,262,91,230"/>
 </map>

@@ -104,7 +104,7 @@ digraph "src/scripts/scripts.h"
   Node5 -> Node49 [id="edge50_Node000005_Node000049",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node49 [id="Node000049",label="src/render/lighting.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$lighting_8c.html",tooltip=" "];
   Node5 -> Node4 [id="edge51_Node000005_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node5 -> Node51 [id="edge52_Node000005_Node000051",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node51 [id="Node000051",label="src/utils/scene.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$scene_8c.html",tooltip=" "];
-  Node1 -> Node51 [id="edge53_Node000001_Node000051",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 -> Node52 [id="edge52_Node000005_Node000052",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node52 [id="Node000052",label="src/utils/scene.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$scene_8c.html",tooltip=" "];
+  Node1 -> Node52 [id="edge53_Node000001_Node000052",dir="back",color="steelblue1",style="solid",tooltip=" "];
 }

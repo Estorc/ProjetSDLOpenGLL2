@@ -38,8 +38,8 @@ var group__MemoryCache =
       [ "chunkCache", "structMemoryCaches.html#a3a9afa1983265feaef1068512b2f206d", null ],
       [ "chunkCount", "structMemoryCaches.html#a1e689aa158a41c030c3e612c6f5f79c7", null ]
     ] ],
-    [ "TextureMap", "group__MemoryCache.html#ga9efea9b7fc3085f1062d9148aa012307", null ],
-    [ "Shader", "group__MemoryCache.html#ga628acddf9216b5e00424607a3f76ccde", null ],
+    [ "TextureMap", "group__MemoryCache.html#gaa9abb132ae6f23dafca840fb8c6081ae", null ],
+    [ "Shader", "group__MemoryCache.html#gaf8187ff58761df5fefccb33e254e5eb5", null ],
     [ "init_memory_cache", "group__MemoryCache.html#gafc915248428e8d076d93d7029a2dcb79", null ],
     [ "free_shaders", "group__MemoryCache.html#ga687de09be998a3af723f109e54937e46", null ],
     [ "get_model_from_cache", "group__MemoryCache.html#ga61ed234c023f30c5c5708cd4cd77c623", null ],

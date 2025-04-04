@@ -1,0 +1,37 @@
+\doxysection{src/io/dirent.c File Reference}
+\hypertarget{dirent_8c}{}\label{dirent_8c}\index{src/io/dirent.c@{src/io/dirent.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$term/term.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$io/dirent.\+h$>$}\newline
+Include dependency graph for dirent.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dirent_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{dirent_8c_ac5e0ddc0ee130338dd924f2bac344820}{scandir\+\_\+windows}} (const char \texorpdfstring{$\ast$}{*}dirpath, \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}namelist, int(\texorpdfstring{$\ast$}{*}filter)(const \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}), int(\texorpdfstring{$\ast$}{*}compar)(const \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}, const \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}))
+\item 
+int \mbox{\hyperlink{dirent_8c_af3919b25dc3ca682db35106d9e44e41d}{alphasort\+\_\+portable}} (const \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}b)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{dirent_8c_ac5e0ddc0ee130338dd924f2bac344820}\label{dirent_8c_ac5e0ddc0ee130338dd924f2bac344820} 
+\index{dirent.c@{dirent.c}!scandir\_windows@{scandir\_windows}}
+\index{scandir\_windows@{scandir\_windows}!dirent.c@{dirent.c}}
+\doxysubsubsection{\texorpdfstring{scandir\_windows()}{scandir\_windows()}}
+{\footnotesize\ttfamily int scandir\+\_\+windows (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{dirpath,  }\item[{\mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{namelist,  }\item[{int(\texorpdfstring{$\ast$}{*})(const \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*})}]{filter,  }\item[{int(\texorpdfstring{$\ast$}{*})(const \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}, const \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*})}]{compar }\end{DoxyParamCaption})}
+
+\Hypertarget{dirent_8c_af3919b25dc3ca682db35106d9e44e41d}\label{dirent_8c_af3919b25dc3ca682db35106d9e44e41d} 
+\index{dirent.c@{dirent.c}!alphasort\_portable@{alphasort\_portable}}
+\index{alphasort\_portable@{alphasort\_portable}!dirent.c@{dirent.c}}
+\doxysubsubsection{\texorpdfstring{alphasort\_portable()}{alphasort\_portable()}}
+{\footnotesize\ttfamily int alphasort\+\_\+portable (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{a,  }\item[{const \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+

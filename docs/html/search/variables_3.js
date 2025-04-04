@@ -12,12 +12,12 @@ var searchData=
   ['chunkcache_9',['chunkCache',['../structMemoryCaches.html#a3a9afa1983265feaef1068512b2f206d',1,'MemoryCaches']]],
   ['chunkcount_10',['chunkCount',['../structMemoryCaches.html#a1e689aa158a41c030c3e612c6f5f79c7',1,'MemoryCaches']]],
   ['chunkname_11',['chunkName',['../structMixChunkCache.html#a82f2cdd3cda7e7f42c6a8062324b651c',1,'MixChunkCache']]],
-  ['classmanager_12',['classmanager',['../structRaptiquaX__t.html#ad2ab9245fa362d883807426a0051dd0f',1,'RaptiquaX_t::classManager'],['../classes_8h.html#aaee6eab14a0e29493217bce3a0ece1de',1,'classManager:&#160;classes.h']]],
+  ['classmanager_12',['classmanager',['../classes_8h.html#aaee6eab14a0e29493217bce3a0ece1de',1,'classManager:&#160;classes.h'],['../structRaptiquaX__t.html#ad2ab9245fa362d883807426a0051dd0f',1,'RaptiquaX_t::classManager']]],
   ['collectedlength_13',['collectedLength',['../classArea.html#a736dc4fb322517b2ba4e68bd6140aa59',1,'Area']]],
   ['collectednodes_14',['collectedNodes',['../classArea.html#aab560744196b8b3cec57b80dd2560af3',1,'Area']]],
   ['collisionbuffer_15',['collisionBuffer',['../structBufferCollection.html#ad23820da5aaf50ec6b080d6fc5696bbb',1,'BufferCollection']]],
   ['collisionshader_16',['collisionShader',['../classCShape.html#a1b5a0e43e87dd6f22cb73517ce3a0dfd',1,'CShape']]],
-  ['collisionsshapes_17',['collisionsshapes',['../classKinematicBody.html#a19d02f45e67012fe48a8ea2c4fd7e665',1,'KinematicBody::collisionsShapes'],['../classArea.html#a81fbd9797b9458beeda0fd4853596687',1,'Area::collisionsShapes'],['../structCollisionBuffer.html#a9a137b046c86b3acab3f60701138dece',1,'CollisionBuffer::collisionsShapes'],['../classStaticBody.html#a408be5d12123695c0aaf5606229424f4',1,'StaticBody::collisionsShapes'],['../classRigidBody.html#a3f1742d7e024aef933df2f1271658820',1,'RigidBody::collisionsShapes']]],
+  ['collisionsshapes_17',['collisionsshapes',['../classArea.html#a81fbd9797b9458beeda0fd4853596687',1,'Area::collisionsShapes'],['../structCollisionBuffer.html#a9a137b046c86b3acab3f60701138dece',1,'CollisionBuffer::collisionsShapes'],['../classKinematicBody.html#a19d02f45e67012fe48a8ea2c4fd7e665',1,'KinematicBody::collisionsShapes'],['../classStaticBody.html#a408be5d12123695c0aaf5606229424f4',1,'StaticBody::collisionsShapes'],['../classRigidBody.html#a3f1742d7e024aef933df2f1271658820',1,'RigidBody::collisionsShapes']]],
   ['color_18',['color',['../classPointLight.html#ab5b56bbc015365ca09c09b564dbeb7f2',1,'PointLight::color'],['../classDirectionalLight.html#a0fff081764e57e46c7342fc6c6849c1c',1,'DirectionalLight::color'],['../classSpotLight.html#ae1426c92b7130b3a608a5aa4a0a814cb',1,'SpotLight::color']]],
   ['constant_19',['constant',['../classPointLight.html#a965104c9c660615ba35721c7aac7c262',1,'PointLight::constant'],['../classDirectionalLight.html#ad2a16d94812d6c5a78d702799c428c5d',1,'DirectionalLight::constant'],['../classSpotLight.html#a0c79a7ed156e29331e41ccbd1bc3da4b',1,'SpotLight::constant']]],
   ['contentsize_20',['contentSize',['../classFrame.html#a2cd98714f3456bde30243e80e7c0020b',1,'Frame']]],
@@ -30,5 +30,7 @@ var searchData=
   ['cubemapcount_27',['cubeMapCount',['../structMemoryCaches.html#a62466b4d0ad88ce3a6d01d4068bee2f5',1,'MemoryCaches']]],
   ['current_5fmusic_28',['current_music',['../audio_8c.html#a3a8b333a9cf9923a97f257d0406d7e1f',1,'audio.c']]],
   ['current_5fmusic_5fvolume_29',['current_music_volume',['../audio_8c.html#ae44d95eca82d54247ad6924b29fc4df4',1,'audio.c']]],
-  ['cutoff_30',['cutOff',['../classSpotLight.html#a59fe1726d865118a0fb4743bf5ed6d18',1,'SpotLight']]]
+  ['currentfbo_30',['currentFBO',['../framebuffer_8c.html#a20f9f9adc6ae8857741f3e14868ac60a',1,'framebuffer.c']]],
+  ['currentifbo_31',['currentIFBO',['../framebuffer_8c.html#aa4150f3b364f11b8ab875714b651307d',1,'framebuffer.c']]],
+  ['cutoff_32',['cutOff',['../classSpotLight.html#a59fe1726d865118a0fb4743bf5ed6d18',1,'SpotLight']]]
 ];

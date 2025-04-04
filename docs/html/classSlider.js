@@ -1,6 +1,6 @@
 var classSlider =
 [
-    [ "constructor", "classSlider.html#a2e7d6802e651a7e12022f26cc75c3a71", null ],
+    [ "constructor", "classSlider.html#aa4889f5c935a59f6ee86189fcef4369c", null ],
     [ "init_slider", "classSlider.html#a2700a5c6d56fd2175e44168dbd7c003f", null ],
     [ "load", "classSlider.html#a00ce3a77e9b3f44f81b95275c7da03ac", null ],
     [ "save", "classSlider.html#a771382ff36e2312e74e5666ad83d948e", null ],

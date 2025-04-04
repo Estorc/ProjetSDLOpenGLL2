@@ -1,7 +1,7 @@
 var classSpotLight =
 [
     [ "constructor", "classSpotLight.html#ad67705b4cb80de111f135a112dbb5572", null ],
-    [ "update", "classSpotLight.html#a95581ff96b9f4a53f4e41d836302e891", null ],
+    [ "update", "classSpotLight.html#ac86593866258cb87e4a82975a5ae7255", null ],
     [ "get_settings_data", "classSpotLight.html#af0f684f5f703f1d0e9f31a05aa41fedd", null ],
     [ "load", "classSpotLight.html#a9080e1a9cee9546430f63231052a1d64", null ],
     [ "save", "classSpotLight.html#a543d9ee116ec34c90aaed3c2703d1398", null ],

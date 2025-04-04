@@ -5,16 +5,18 @@
 Header file defining macros, structures, and functions for script management in a game engine.  
 
 
-{\ttfamily \#include "{}../io/input.\+h"{}}\newline
-{\ttfamily \#include "{}signals.\+h"{}}\newline
-Include dependency graph for scripts.\+h\+:\nopagebreak
+{\ttfamily \#include $<$io/input.\+h$>$}\newline
+{\ttfamily \#include $<$scripts/signals.\+h$>$}\newline
+Include dependency graph for scripts.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=230pt]{scripts_8h__incl}
+\includegraphics[width=256pt]{scripts_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -41,7 +43,7 @@ struct \mbox{\hyperlink{structScript}{Script}}
 \begin{DoxyCompactList}\small\item\em Macro to retrieve the signal parameter from the variable argument list. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(type)~va\+\_\+arg(args, type)
 \begin{DoxyCompactList}\small\item\em Macro to retrieve a parameter of a specified type from the variable argument list. \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{scripts_8h_a89cccad7eb1689fcdac2bc98857d6cfe}{GET\+\_\+\+AREA\+\_\+\+SIGNAL\+\_\+\+PARAMETERS}}()~int sig\+Id = \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}other = (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}); float distance = (float) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(double); float \texorpdfstring{$\ast$}{*}impact\+Point = (float \texorpdfstring{$\ast$}{*}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(float \texorpdfstring{$\ast$}{*}); int offset = \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); (void) sig\+Id; (void) other; (void) distance; (void) impact\+Point; (void) offset;
+\#define \mbox{\hyperlink{scripts_8h_a89cccad7eb1689fcdac2bc98857d6cfe}{GET\+\_\+\+AREA\+\_\+\+SIGNAL\+\_\+\+PARAMETERS}}()~;int sig\+Id = \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}other = (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}); float distance = (float) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(double); float \texorpdfstring{$\ast$}{*}impact\+Point = (float \texorpdfstring{$\ast$}{*}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(float \texorpdfstring{$\ast$}{*}); int offset = \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); (void) sig\+Id; (void) other; (void) distance; (void) impact\+Point; (void) offset;
 \begin{DoxyCompactList}\small\item\em Macro to retrieve parameters for an area signal from the variable argument list. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{scripts_8h_ab66a6ec3ad963180d7459762c3db288f}{MALLOC\+\_\+\+ATTRIBUTE}}(node,  x)
 \begin{DoxyCompactList}\small\item\em Macro to allocate memory for node attributes if not already allocated. \end{DoxyCompactList}\item 
@@ -139,7 +141,7 @@ Macro to retrieve a parameter of a specified type from the variable argument lis
 \index{scripts.h@{scripts.h}!GET\_AREA\_SIGNAL\_PARAMETERS@{GET\_AREA\_SIGNAL\_PARAMETERS}}
 \index{GET\_AREA\_SIGNAL\_PARAMETERS@{GET\_AREA\_SIGNAL\_PARAMETERS}!scripts.h@{scripts.h}}
 \doxysubsubsection{\texorpdfstring{GET\_AREA\_SIGNAL\_PARAMETERS}{GET\_AREA\_SIGNAL\_PARAMETERS}}
-{\footnotesize\ttfamily \#define GET\+\_\+\+AREA\+\_\+\+SIGNAL\+\_\+\+PARAMETERS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~int sig\+Id = \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}other = (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}); float distance = (float) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(double); float \texorpdfstring{$\ast$}{*}impact\+Point = (float \texorpdfstring{$\ast$}{*}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(float \texorpdfstring{$\ast$}{*}); int offset = \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); (void) sig\+Id; (void) other; (void) distance; (void) impact\+Point; (void) offset;}
+{\footnotesize\ttfamily \#define GET\+\_\+\+AREA\+\_\+\+SIGNAL\+\_\+\+PARAMETERS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~;int sig\+Id = \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}other = (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}); float distance = (float) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(double); float \texorpdfstring{$\ast$}{*}impact\+Point = (float \texorpdfstring{$\ast$}{*}) \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(float \texorpdfstring{$\ast$}{*}); int offset = \mbox{\hyperlink{scripts_8h_a53d61fbbc3be120d650767848e836f83}{GET\+\_\+\+PARAMETER}}(int); (void) sig\+Id; (void) other; (void) distance; (void) impact\+Point; (void) offset;}
 
 
 
@@ -215,7 +217,6 @@ Macro to define a new script function.
 \DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{raptiquax_8c_ad749b00382c53c431741d17582670ad7}{Game}}.\mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}}\ =\ realloc(\mbox{\hyperlink{raptiquax_8c_ad749b00382c53c431741d17582670ad7}{Game}}.\mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structScript}{Script}})\ *\ (\mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\_\_scriptIndex\_\_}}\ +\ 1));\(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{raptiquax_8c_ad749b00382c53c431741d17582670ad7}{Game}}.\mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}}[\mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\_\_scriptIndex\_\_}}].\mbox{\hyperlink{structScript_a0a0c95e8768aa2b629e06637aeb2876e}{name}}\ =\ \#script\_name;\(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{raptiquax_8c_ad749b00382c53c431741d17582670ad7}{Game}}.\mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}}[\mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\_\_scriptIndex\_\_}}++].\mbox{\hyperlink{structScript_a8ebb4084e2de1a387cb1fe527d49e4e7}{script}}\ =\ script\_name;\(\backslash\)}
-\DoxyCodeLine{\ \ \ \ PRINT\_INFO(\textcolor{stringliteral}{"{}Script\ \%s\ loaded\ in\ \%d!\(\backslash\)n"{}},\ \#script\_name,\ \mbox{\hyperlink{scripts_8h_a9b505ef7c67a86c3271f2127911d4d89}{\_\_scriptIndex\_\_}});\(\backslash\)}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}

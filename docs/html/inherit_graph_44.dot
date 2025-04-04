@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="Stack",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$structStack.html",tooltip="A node in the stack."];
+  Node0 [id="Node000000",label="socket_request_listener",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$structsocket__request__listener.html",tooltip="Structure to hold socket request listener information."];
 }

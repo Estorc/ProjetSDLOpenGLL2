@@ -1,7 +1,7 @@
 var classPointLight =
 [
     [ "constructor", "classPointLight.html#a013e1bd80034035cded1bc775023f32e", null ],
-    [ "update", "classPointLight.html#ae150ea9eb87c9eec2320b6b1fb431f56", null ],
+    [ "update", "classPointLight.html#a2dca3fa8d1cd02ee11460c0cab578e41", null ],
     [ "get_settings_data", "classPointLight.html#af4168e21d26b81cc6fb0e419c1bbba39", null ],
     [ "load", "classPointLight.html#a45b731e9c9d4b1112f32d4431aa6ff32", null ],
     [ "save", "classPointLight.html#af8321bf0f599fce5d8d4b0dd5c2a92d5", null ],

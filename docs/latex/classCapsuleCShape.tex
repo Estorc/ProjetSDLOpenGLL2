@@ -38,11 +38,11 @@ void \mbox{\hyperlink{classCShape_a366f87b7ef23a3db3e3a4a116df966cc}{is\+\_\+csh
 \begin{DoxyCompactList}\small\item\em Checks if the given shape is a cshape. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCShape_af8459de9c5e517fd9217dc65bdf75254}{get\+\_\+model}} (\mbox{\hyperlink{classModel}{Model}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}model)
 \begin{DoxyCompactList}\small\item\em Retrieves the model associated with the \doxylink{classCShape}{CShape}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classCShape_acb66c0a85667b78d7036ce6976ca36ff}{get\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+void \mbox{\hyperlink{classCShape_acb66c0a85667b78d7036ce6976ca36ff}{get\+\_\+shader}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}})
 \begin{DoxyCompactList}\small\item\em Retrieves the shader information. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classCShape_aae7feda6e1d742dd6253ce420466c624}{prepare\+\_\+render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+void \mbox{\hyperlink{classCShape_a198675428f55a5ca03e5307eaf04c9e0}{prepare\+\_\+render}} (mat4 model\+Matrix, \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
 \begin{DoxyCompactList}\small\item\em Prepares the rendering process by setting up the model matrix and activating the shader. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classCShape_a0b7059c77c12cb777e13b7a5f9add6c3}{render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+void \mbox{\hyperlink{classCShape_a9b18783c2eee894b65662aee8e4ebc28}{render}} (mat4 model\+Matrix, \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
 \begin{DoxyCompactList}\small\item\em Renders the shape using the provided model matrix and active shader. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
@@ -51,7 +51,7 @@ void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}}
 \begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classNode}{Node} class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
 \begin{DoxyCompactList}\small\item\em Initializes a node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}})
 \begin{DoxyCompactList}\small\item\em Retrieves the glow shader. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}})
 \begin{DoxyCompactList}\small\item\em Retrieves settings data. \end{DoxyCompactList}\item 
@@ -59,13 +59,13 @@ void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
 \begin{DoxyCompactList}\small\item\em Loads the necessary resources or data for the node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
 \begin{DoxyCompactList}\small\item\em Saves the current state to the specified file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_ab05e54fc6a226fe70d274e46e9ced07a}{prepare\+\_\+render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+void \mbox{\hyperlink{classNode_af61079d444fa059127bc4983cf5e4ea5}{prepare\+\_\+render}} (mat4 model\+Matrix, \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
 \begin{DoxyCompactList}\small\item\em Renders a node using the specified model matrix and shader. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_ab93a6f41e02422a21c44227c0355382a}{render}} ()
 \begin{DoxyCompactList}\small\item\em Renders the node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_a2621112ec04d166f9ec376eba06f3bbb}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+void \mbox{\hyperlink{classNode_a117da4a7be3efb9541f5279a98bf839f}{update\+\_\+global\+\_\+position}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
 \begin{DoxyCompactList}\small\item\em Updates the global position of a node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classNode_a500a682914a24af188bd9eb79ba2aaae}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+void \mbox{\hyperlink{classNode_a1e577d625ac818cc6dac5634e713cdaf}{update}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
 \begin{DoxyCompactList}\small\item\em Updates the position, rotation, and scale of a node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a86288848282bf3bba83f0cc7437207ac}{on\+\_\+resize}} ()
 \begin{DoxyCompactList}\small\item\em Handles the resize event for the node. \end{DoxyCompactList}\item 
@@ -111,12 +111,12 @@ static \mbox{\hyperlink{classModel}{Model}} \mbox{\hyperlink{classCapsuleCShape_
 \doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classCShape}{CShape}}}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classCShape_a1b5a0e43e87dd6f22cb73517ce3a0dfd}{collision\+Shader}}
+static \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classCShape_a1b5a0e43e87dd6f22cb73517ce3a0dfd}{collision\+Shader}}
 \begin{DoxyCompactList}\small\item\em Shader used for collision detection. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_ad05f8b1de975fa3370e8b98c0ec5aa4f}{glow\+Shader}} = 0
+static \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_ad05f8b1de975fa3370e8b98c0ec5aa4f}{glow\+Shader}} = 0
 \begin{DoxyCompactList}\small\item\em A static Shader variable used for glow effect. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
@@ -128,11 +128,11 @@ struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstr
 \item 
 struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_a34f3ab9670c7b70dad8905359a243c92}{parent}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}}
+\mbox{\hyperlink{aliases_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a670b66a39fdb438336be47a9cb68a516}{type}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a670b66a39fdb438336be47a9cb68a516}{type}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a0c95683293e9f234118c583a28bc9cc0}{flags}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a0c95683293e9f234118c583a28bc9cc0}{flags}}
 \item 
 vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}
 \item 
@@ -150,9 +150,9 @@ vec3 \mbox{\hyperlink{classNode_a1d353831fd989481401e337cd5ba0ddc}{global\+Scale
 \item 
 \mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_afa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_ab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_ab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
 \item 
-\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}}
+\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}}
 \end{DoxyCompactItemize}
 
 

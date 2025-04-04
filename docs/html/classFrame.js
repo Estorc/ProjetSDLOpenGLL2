@@ -1,6 +1,6 @@
 var classFrame =
 [
-    [ "constructor", "classFrame.html#a05a82bdf164991c7d314824757e984fa", null ],
+    [ "constructor", "classFrame.html#a1642806d02226a8414b9b775a1e3f345", null ],
     [ "handle_dimension_unit", "classFrame.html#a63712e22a5897b4bcc3f26383b9f7205", null ],
     [ "init_frame", "classFrame.html#a7836ed00314cfe053fd99cbedf0d559c", null ],
     [ "load", "classFrame.html#ad16ec9c61e633e2443896750365c4b92", null ],
@@ -9,7 +9,7 @@ var classFrame =
     [ "update", "classFrame.html#a31aee47f16abb8322dd96860a4363fda", null ],
     [ "on_resize", "classFrame.html#a7731f3323fde1804cf0f59c88a70db7b", null ],
     [ "draw_frame", "classFrame.html#ac06c37a1e7b56d157790834f77a9ae1b", null ],
-    [ "render", "classFrame.html#a7fd49c5db1ad23f4c8a7e125fffef349", null ],
+    [ "render", "classFrame.html#a7b37c782e64f94c89e834e227cd3f3da", null ],
     [ "save", "classFrame.html#ac97d563c45c120aa754e6b5f711eab76", null ],
     [ "get_vao", "classFrame.html#a91247a8e7d98756096081cc49886b275", null ],
     [ "is_gui_element", "classFrame.html#ae347f52b5eec84baec216be95aaf1d54", null ],

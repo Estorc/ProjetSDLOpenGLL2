@@ -2,11 +2,11 @@
 \hypertarget{node_8h_source}{}\label{node_8h_source}\index{src/storage/node.h@{src/storage/node.h}}
 \mbox{\hyperlink{node_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}../io/shader.h"{}}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}../render/camera.h"{}}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../physics/bodies.h"{}}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../scripts/scripts.h"{}}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}../render/framebuffer.h"{}}}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{shader_8h}{io/shader.h}}>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{camera_8h}{render/camera.h}}>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{bodies_8h}{physics/bodies.h}}>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{scripts_8h}{scripts/scripts.h}}>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{framebuffer_8h}{render/framebuffer.h}}>}}
 \DoxyCodeLine{00006\ }
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ NODE\_H}}
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ NODE\_H}}
@@ -35,9 +35,9 @@
 \DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classNode_a9cf70c2b354e11c49130331da4519864}{object}};\ }
 \DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ **\mbox{\hyperlink{classNode_a3d857c2fdb25634fe92ca32ff006c233}{children}};\ }
 \DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ *\mbox{\hyperlink{classNode_a34f3ab9670c7b70dad8905359a243c92}{parent}};\ }
-\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}}\ \mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}};\ }
-\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classNode_a670b66a39fdb438336be47a9cb68a516}{type}};\ }
-\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classNode_a0c95683293e9f234118c583a28bc9cc0}{flags}};\ }
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}}\ \mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}};\ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classNode_a670b66a39fdb438336be47a9cb68a516}{type}};\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classNode_a0c95683293e9f234118c583a28bc9cc0}{flags}};\ }
 \DoxyCodeLine{00049\ \ \ \ \ vec3\ \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}};\ }
 \DoxyCodeLine{00050\ \ \ \ \ vec3\ \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}};\ }
 \DoxyCodeLine{00051\ \ \ \ \ vec3\ \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}};\ }
@@ -46,8 +46,8 @@
 \DoxyCodeLine{00055\ \ \ \ \ vec3\ \mbox{\hyperlink{classNode_a1d353831fd989481401e337cd5ba0ddc}{globalScale}};\ }
 \DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{scripts_8h_a73db917e73a3821d62d9869b4196c024}{Behavior}}\ *\mbox{\hyperlink{classNode_afecba6f76777835ffecef5c947e19f26}{behavior}};\ }
 \DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{unionBehaviorAttribute}{BehaviorAttribute}}\ *\mbox{\hyperlink{classNode_afa50314ea6ca719d2fcbbdaa33dd052a}{attribute}};\ }
-\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classNode_ab9c00a78e2cb89d68c1d9a251c870444}{attributes\_count}};\ }
-\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ \mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}};\ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classNode_ab9c00a78e2cb89d68c1d9a251c870444}{attributes\_count}};\ }
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ \mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}};\ }
 \DoxyCodeLine{00062\ \}\ \mbox{\hyperlink{classNode}{Node}};}
 \DoxyCodeLine{00063\ }
 \DoxyCodeLine{00064\ }

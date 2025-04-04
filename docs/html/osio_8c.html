@@ -114,35 +114,38 @@ $(document).ready(function(){initNavTree('osio_8c.html',''); initResizable(); })
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="stringio_8h_source.html">stringio.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="term_8h_source.html">../term/term.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="stringio_8h_source.html">io/stringio.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="term_8h_source.html">term/term.h</a>&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="osio_8h_source.html">osio.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="osio_8h_source.html">io/osio.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for osio.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="osio_8c__incl.png" border="0" usemap="#asrc_2io_2osio_8c" alt=""/></div>
 <map name="asrc_2io_2osio_8c" id="asrc_2io_2osio_8c">
-<area shape="rect" title=" " alt="" coords="5,129,104,155"/>
-<area shape="rect" title=" " alt="" coords="175,5,241,31"/>
-<area shape="poly" title=" " alt="" coords="64,127,99,85,150,40,161,33,164,38,154,44,103,89,68,130"/>
-<area shape="rect" href="stringio_8h.html" title="Provides utility functions for string and file operations." alt="" coords="167,55,249,80"/>
-<area shape="poly" title=" " alt="" coords="78,127,151,89,163,83,165,88,153,94,80,132"/>
-<area shape="rect" href="term_8h.html" title=" " alt="" coords="152,104,264,129"/>
-<area shape="poly" title=" " alt="" coords="104,131,138,126,139,131,105,137"/>
-<area shape="rect" title=" " alt="" coords="173,153,243,179"/>
-<area shape="poly" title=" " alt="" coords="105,147,159,156,159,161,104,152"/>
-<area shape="rect" title=" " alt="" coords="171,203,245,228"/>
-<area shape="poly" title=" " alt="" coords="82,152,153,188,168,195,166,199,151,192,80,157"/>
-<area shape="rect" href="osio_8h.html" title="File operations and error handling for the project." alt="" coords="177,252,239,277"/>
-<area shape="poly" title=" " alt="" coords="68,153,104,193,154,237,167,245,164,250,150,241,100,197,64,157"/>
-<area shape="rect" title=" " alt="" coords="344,55,415,80"/>
-<area shape="poly" title=" " alt="" coords="250,65,330,65,330,70,250,70"/>
-<area shape="rect" href="enhanced__print_8h.html" title=" " alt="" coords="312,104,447,129"/>
-<area shape="poly" title=" " alt="" coords="264,114,298,114,298,119,264,119"/>
-<area shape="rect" href="color_8h.html" title=" " alt="" coords="495,104,560,129"/>
-<area shape="poly" title=" " alt="" coords="447,114,481,114,481,119,447,119"/>
+<area shape="rect" title=" " alt="" coords="275,5,373,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,72,104"/>
+<area shape="poly" title=" " alt="" coords="279,33,86,81,85,76,277,28"/>
+<area shape="rect" href="stringio_8h.html" title="Provides utility functions for string and file operations." alt="" coords="96,79,195,104"/>
+<area shape="poly" title=" " alt="" coords="296,33,188,76,186,71,294,28"/>
+<area shape="rect" href="term_8h.html" title=" " alt="" coords="219,79,319,104"/>
+<area shape="poly" title=" " alt="" coords="317,33,289,69,284,66,313,29"/>
+<area shape="rect" title=" " alt="" coords="343,79,414,104"/>
+<area shape="poly" title=" " alt="" coords="335,29,364,66,359,69,331,33"/>
+<area shape="rect" title=" " alt="" coords="439,79,513,104"/>
+<area shape="poly" title=" " alt="" coords="350,28,440,70,438,75,347,33"/>
+<area shape="rect" href="osio_8h.html" title="File operations and error handling for the project." alt="" coords="537,79,615,104"/>
+<area shape="poly" title=" " alt="" coords="365,28,525,73,523,78,364,33"/>
+<area shape="rect" title=" " alt="" coords="99,152,170,177"/>
+<area shape="poly" title=" " alt="" coords="146,105,141,139,136,138,141,104"/>
+<area shape="rect" href="enhanced__print_8h.html" title=" " alt="" coords="194,152,363,177"/>
+<area shape="poly" title=" " alt="" coords="274,104,278,138,273,139,268,105"/>
+<area shape="rect" href="color_8h.html" title=" " alt="" coords="229,225,329,251"/>
+<area shape="poly" title=" " alt="" coords="281,178,281,212,276,212,276,178"/>
+<area shape="rect" href="dirent_8h.html" title=" " alt="" coords="532,152,620,177"/>
+<area shape="poly" title=" " alt="" coords="579,104,579,138,573,138,573,104"/>
+<area shape="poly" title=" " alt="" coords="608,149,634,151,643,156,647,165,639,177,622,181,621,176,636,172,641,164,639,159,632,156,608,155"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -162,6 +165,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gadc303caa72b5aed4b43ffa8f34f0375f" id="r_gadc303caa72b5aed4b43ffa8f34f0375f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OSIO.html#gadc303caa72b5aed4b43ffa8f34f0375f">osio_print_error</a> (char *msg)</td></tr>
 <tr class="memdesc:gadc303caa72b5aed4b43ffa8f34f0375f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints an error message to the standard error output.  <br /></td></tr>
 <tr class="separator:gadc303caa72b5aed4b43ffa8f34f0375f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga73f3b3dc473ae5d8d46d95fe3cd72759" id="r_ga73f3b3dc473ae5d8d46d95fe3cd72759"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OSIO.html#ga73f3b3dc473ae5d8d46d95fe3cd72759">osio_find</a> (<a class="el" href="dirent_8h.html#a6673e8f64ca9ebd7e26e6289dca06e87">dirent_t</a> ***namelist, const char *path, int(*filter)(const <a class="el" href="dirent_8h.html#a6673e8f64ca9ebd7e26e6289dca06e87">dirent_t</a> *entry))</td></tr>
+<tr class="memdesc:ga73f3b3dc473ae5d8d46d95fe3cd72759"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds files in a directory that match a given filter.  <br /></td></tr>
+<tr class="separator:ga73f3b3dc473ae5d8d46d95fe3cd72759"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2c057d7941c6df59458be2230e3e7f88" id="r_ga2c057d7941c6df59458be2230e3e7f88"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OSIO.html#ga2c057d7941c6df59458be2230e3e7f88">update_cwd</a> ()</td></tr>
 <tr class="memdesc:ga2c057d7941c6df59458be2230e3e7f88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the current working directory.  <br /></td></tr>
 <tr class="separator:ga2c057d7941c6df59458be2230e3e7f88"><td class="memSeparator" colspan="2">&#160;</td></tr>

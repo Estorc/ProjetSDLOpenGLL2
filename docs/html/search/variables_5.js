@@ -11,7 +11,7 @@ var searchData=
   ['font_8',['font',['../structFont.html#ac4b9e6be3380400960a1fcb26710ad37',1,'Font::font'],['../structTheme.html#a84fe7509c85836ad503a51286f6601bf',1,'Theme::font']]],
   ['forcednormal_9',['forcedNormal',['../classStaticBody.html#a4a669198037c11d60943dce755cbfea0',1,'StaticBody']]],
   ['fov_10',['fov',['../classCamera.html#aff7393c9cfbccd7e369091f00008da93',1,'Camera::fov'],['../structSettings.html#ae491ab9fb4610146d3d3ea524526ac78',1,'Settings::fov']]],
-  ['framebuffer_11',['framebuffer',['../structMSAA.html#abf724a2cf62347effbc5d719649dff01',1,'MSAA::framebuffer'],['../structDepthMap.html#ada1a44dcae50066e76bd1f76b444693d',1,'DepthMap::frameBuffer']]],
+  ['framebuffer_11',['framebuffer',['../structMSAA.html#abf724a2cf62347effbc5d719649dff01',1,'MSAA::framebuffer'],['../structDFBO.html#a756c024d66c11070e2afac991a9ac148',1,'DFBO::framebuffer'],['../structCFBO.html#a821b79d795392e09a414a974601f1108',1,'CFBO::framebuffer'],['../structDepthMap.html#ada1a44dcae50066e76bd1f76b444693d',1,'DepthMap::frameBuffer']]],
   ['friction_12',['friction',['../classRigidBody.html#a424760c36cdad93c9c86d2c28e58589c',1,'RigidBody']]],
   ['fullscreen_13',['fullscreen',['../structKeybinds.html#a43612a8714590086f707cfb4e64e3402',1,'Keybinds']]]
 ];

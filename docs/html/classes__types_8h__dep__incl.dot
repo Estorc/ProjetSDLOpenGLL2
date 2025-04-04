@@ -98,5 +98,7 @@ digraph "src/classes/classes_types.h"
   Node2 -> Node47 [id="edge46_Node000002_Node000047",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node47 [id="Node000047",label="src/scripts/fps_chess\l/chessboard.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$chessboard_8h.html",tooltip=" "];
   Node2 -> Node48 [id="edge47_Node000002_Node000048",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node48 [id="Node000048",label="src/utils/scene.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$scene_8c.html",tooltip=" "];
+  Node48 [id="Node000048",label="src/utils/deferred.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$deferred_8c.html",tooltip=" "];
+  Node2 -> Node49 [id="edge48_Node000002_Node000049",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node49 [id="Node000049",label="src/utils/scene.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$scene_8c.html",tooltip=" "];
 }

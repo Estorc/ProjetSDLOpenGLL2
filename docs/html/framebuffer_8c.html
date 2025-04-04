@@ -108,125 +108,317 @@ $(document).ready(function(){initNavTree('framebuffer_8c.html',''); initResizabl
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">framebuffer.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="raptiquax_8h_source.html">../raptiquax.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="math__util_8h_source.html">../math/math_util.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="model_8h_source.html">../io/model.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="framebuffer_8h_source.html">framebuffer.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="node_8h_source.html">../storage/node.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="window_8h_source.html">../window.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="raptiquax_8h_source.html">raptiquax.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="math__util_8h_source.html">math/math_util.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="model_8h_source.html">io/model.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="framebuffer_8h_source.html">framebuffer.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="node_8h_source.html">storage/node.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="window_8h_source.html">window.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="memory_8h_source.html">memory.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for framebuffer.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="framebuffer_8c__incl.png" border="0" usemap="#asrc_2render_2framebuffer_8c" alt=""/></div>
 <map name="asrc_2render_2framebuffer_8c" id="asrc_2render_2framebuffer_8c">
-<area shape="rect" title=" " alt="" coords="5,827,184,852"/>
-<area shape="rect" href="raptiquax_8h.html" title="This file contains type definitions for fixed&#45;width integer types and floating&#45;point types." alt="" coords="621,475,729,500"/>
-<area shape="poly" title=" " alt="" coords="116,824,639,505,642,509,118,829"/>
-<area shape="rect" href="math__util_8h.html" title=" " alt="" coords="601,825,748,851"/>
-<area shape="poly" title=" " alt="" coords="184,824,355,810,455,808,554,813,605,820,605,825,553,818,455,813,356,815,184,830"/>
-<area shape="rect" href="model_8h.html" title="Defines structures and functions for handling 3D models and their properties." alt="" coords="623,776,726,801"/>
-<area shape="poly" title=" " alt="" coords="128,824,176,808,232,795,335,784,438,779,610,782,610,787,438,784,335,789,232,801,178,813,130,829"/>
-<area shape="rect" href="framebuffer_8h.html" title=" " alt="" coords="427,1027,537,1052"/>
-<area shape="poly" title=" " alt="" coords="119,850,233,912,270,926,300,934,329,945,364,964,379,977,389,989,398,1001,412,1013,423,1019,420,1024,409,1018,394,1005,384,993,375,980,361,968,327,949,298,940,268,931,231,916,116,854"/>
-<area shape="rect" href="node_8h.html" title="Defines the structure for a tree and its nodes used in the project." alt="" coords="232,876,363,901"/>
-<area shape="poly" title=" " alt="" coords="148,849,232,870,231,875,147,855"/>
-<area shape="rect" href="window_8h.html" title=" " alt="" coords="250,977,345,1003"/>
-<area shape="poly" title=" " alt="" coords="110,850,162,899,234,956,255,969,253,973,230,960,159,903,107,854"/>
-<area shape="rect" href="std_8h.html" title=" " alt="" coords="817,475,937,500"/>
-<area shape="poly" title=" " alt="" coords="729,485,804,485,804,490,729,490"/>
-<area shape="rect" href="GL_8h.html" title=" " alt="" coords="819,696,936,721"/>
-<area shape="poly" title=" " alt="" coords="690,499,857,684,853,688,686,502"/>
-<area shape="rect" href="SDL_8h.html" title=" " alt="" coords="815,129,940,155"/>
-<area shape="poly" title=" " alt="" coords="680,473,726,385,794,263,857,164,862,167,798,266,731,387,685,476"/>
-<area shape="rect" href="stringio_8h.html" title="Provides utility functions for string and file operations." alt="" coords="828,277,927,303"/>
-<area shape="poly" title=" " alt="" coords="682,473,726,411,758,373,794,337,837,307,840,312,798,341,762,377,730,415,686,476"/>
-<area shape="rect" href="config_8h.html" title=" " alt="" coords="841,352,914,377"/>
-<area shape="poly" title=" " alt="" coords="696,472,842,382,845,387,698,477"/>
-<area shape="rect" title=" " alt="" coords="1046,449,1114,475"/>
-<area shape="poly" title=" " alt="" coords="937,477,1032,465,1032,471,938,483"/>
-<area shape="rect" title=" " alt="" coords="1047,499,1113,524"/>
-<area shape="poly" title=" " alt="" coords="938,492,1033,503,1032,508,937,497"/>
-<area shape="rect" title=" " alt="" coords="1045,548,1115,573"/>
-<area shape="poly" title=" " alt="" coords="913,498,1008,533,1033,542,1031,547,1006,538,911,503"/>
-<area shape="rect" title=" " alt="" coords="1039,597,1121,623"/>
-<area shape="poly" title=" " alt="" coords="894,498,943,539,1008,582,1027,591,1025,596,1005,587,940,543,891,502"/>
-<area shape="rect" title=" " alt="" coords="1043,351,1117,376"/>
-<area shape="poly" title=" " alt="" coords="890,473,938,430,971,406,1005,385,1028,375,1031,380,1008,390,974,411,942,434,894,477"/>
-<area shape="rect" title=" " alt="" coords="1045,400,1115,425"/>
-<area shape="poly" title=" " alt="" coords="909,472,1006,434,1031,425,1033,430,1008,439,910,477"/>
-<area shape="rect" title=" " alt="" coords="1047,647,1113,672"/>
-<area shape="poly" title=" " alt="" coords="930,693,1032,668,1033,673,931,699"/>
-<area shape="rect" title=" " alt="" coords="1043,696,1117,721"/>
-<area shape="poly" title=" " alt="" coords="937,706,1029,706,1029,711,937,711"/>
-<area shape="rect" title=" " alt="" coords="1036,745,1124,771"/>
-<area shape="poly" title=" " alt="" coords="931,719,1023,741,1022,747,930,724"/>
-<area shape="rect" title=" " alt="" coords="1029,795,1131,820"/>
-<area shape="poly" title=" " alt="" coords="899,719,947,749,1008,781,1024,787,1022,792,1006,786,945,754,896,724"/>
-<area shape="rect" title=" " alt="" coords="1032,203,1128,228"/>
-<area shape="poly" title=" " alt="" coords="913,152,1008,187,1030,196,1029,201,1006,193,911,157"/>
-<area shape="rect" title=" " alt="" coords="1008,5,1152,31"/>
-<area shape="poly" title=" " alt="" coords="890,127,938,85,971,61,1005,40,1019,33,1021,38,1008,44,974,65,942,89,894,131"/>
-<area shape="rect" title=" " alt="" coords="1007,55,1153,80"/>
-<area shape="poly" title=" " alt="" coords="909,127,1006,89,1026,82,1027,87,1008,94,910,132"/>
-<area shape="rect" title=" " alt="" coords="1011,104,1149,129"/>
-<area shape="poly" title=" " alt="" coords="940,132,997,124,997,130,941,137"/>
-<area shape="rect" title=" " alt="" coords="1021,153,1139,179"/>
-<area shape="poly" title=" " alt="" coords="941,147,1008,155,1008,160,940,152"/>
-<area shape="rect" title=" " alt="" coords="1045,252,1115,277"/>
-<area shape="poly" title=" " alt="" coords="927,281,1031,268,1032,273,927,287"/>
-<area shape="rect" href="term_8h.html" title=" " alt="" coords="1030,301,1130,327"/>
-<area shape="poly" title=" " alt="" coords="914,353,1016,327,1017,332,915,358"/>
-<area shape="rect" href="enhanced__print_8h.html" title=" " alt="" coords="1201,301,1336,327"/>
-<area shape="poly" title=" " alt="" coords="1130,311,1188,311,1188,317,1130,317"/>
-<area shape="rect" href="color_8h.html" title=" " alt="" coords="1384,301,1449,327"/>
-<area shape="poly" title=" " alt="" coords="1336,311,1370,311,1370,317,1336,317"/>
-<area shape="rect" href="shader_8h.html" title=" " alt="" coords="839,901,916,927"/>
-<area shape="poly" title=" " alt="" coords="728,799,750,812,766,831,774,851,782,869,798,887,827,901,824,906,794,891,777,872,769,853,762,834,746,816,725,804"/>
-<area shape="rect" href="model__loader_8h.html" title="Header file for model loading functions." alt="" coords="796,837,959,877"/>
-<area shape="poly" title=" " alt="" coords="714,799,805,830,803,835,713,804"/>
-<area shape="rect" href="obj__loader_8h.html" title=" " alt="" coords="1029,844,1131,869"/>
-<area shape="poly" title=" " alt="" coords="959,854,1016,854,1016,859,959,859"/>
-<area shape="rect" href="mtl__loader_8h.html" title=" " alt="" coords="1029,893,1131,919"/>
-<area shape="poly" title=" " alt="" coords="960,874,1016,888,1014,893,958,879"/>
-<area shape="rect" href="fbx__loader_8h.html" title="Header file for loading FBX models." alt="" coords="1029,943,1131,968"/>
-<area shape="poly" title=" " alt="" coords="935,874,960,888,984,909,1008,929,1020,935,1018,940,1005,934,981,913,957,892,932,879"/>
-<area shape="rect" href="input_8h.html" title=" " alt="" coords="627,1027,722,1052"/>
-<area shape="poly" title=" " alt="" coords="538,1037,614,1037,614,1042,538,1042"/>
-<area shape="poly" title=" " alt="" coords="345,899,411,911,527,920,642,921,825,915,825,920,642,927,526,925,410,917,344,904"/>
-<area shape="poly" title=" " alt="" coords="336,899,365,919,382,944,388,968,395,991,413,1013,418,1018,415,1022,409,1017,390,993,383,970,377,946,361,923,333,904"/>
-<area shape="rect" href="camera_8h.html" title=" " alt="" coords="411,876,553,901"/>
-<area shape="poly" title=" " alt="" coords="363,886,397,886,397,891,363,891"/>
-<area shape="rect" href="bodies_8h.html" title=" " alt="" coords="411,827,553,852"/>
-<area shape="poly" title=" " alt="" coords="345,873,420,853,421,858,346,879"/>
-<area shape="rect" href="scripts_8h.html" title="Header file defining macros, structures, and functions for script management in a game engine." alt="" coords="414,977,550,1003"/>
-<area shape="poly" title=" " alt="" coords="329,899,364,918,388,937,412,956,438,969,435,974,409,960,385,942,361,923,326,904"/>
-<area shape="poly" title=" " alt="" coords="536,874,551,863,562,844,576,809,609,709,664,512,669,514,614,710,581,811,567,847,555,866,539,878"/>
-<area shape="poly" title=" " alt="" coords="531,873,612,852,613,857,532,878"/>
-<area shape="poly" title=" " alt="" coords="553,891,825,908,825,913,553,896"/>
-<area shape="poly" title=" " alt="" coords="554,836,587,836,587,841,554,842"/>
-<area shape="poly" title=" " alt="" coords="531,824,612,802,613,807,532,829"/>
-<area shape="poly" title=" " alt="" coords="533,1000,615,1021,614,1027,532,1005"/>
-<area shape="rect" href="signals_8h.html" title="Signal and slot system for C projects." alt="" coords="635,977,715,1003"/>
-<area shape="poly" title=" " alt="" coords="550,987,621,987,621,993,550,993"/>
+<area shape="rect" title=" " alt="" coords="2375,5,2553,31"/>
+<area shape="rect" href="raptiquax_8h.html" title="This file contains type definitions for fixed&#45;width integer types and floating&#45;point types." alt="" coords="1381,225,1477,251"/>
+<area shape="poly" title=" " alt="" coords="2410,33,1491,226,1490,221,2409,28"/>
+<area shape="rect" href="math__util_8h.html" title=" " alt="" coords="2101,225,2235,251"/>
+<area shape="poly" title=" " alt="" coords="2406,33,2349,51,2320,65,2294,81,2258,112,2226,148,2183,215,2178,212,2222,145,2254,108,2290,77,2318,60,2347,46,2405,28"/>
+<area shape="rect" href="model_8h.html" title="Defines structures and functions for handling 3D models and their properties." alt="" coords="2351,225,2441,251"/>
+<area shape="poly" title=" " alt="" coords="2467,31,2462,95,2454,137,2441,178,2418,216,2413,213,2436,176,2449,136,2456,94,2461,31"/>
+<area shape="rect" href="framebuffer_8h.html" title=" " alt="" coords="2650,152,2761,177"/>
+<area shape="poly" title=" " alt="" coords="2474,29,2501,65,2520,85,2541,102,2591,128,2642,146,2640,151,2589,133,2539,106,2516,89,2497,68,2469,32"/>
+<area shape="rect" href="node_8h.html" title="Defines the structure for a tree and its nodes used in the project." alt="" coords="2305,79,2423,104"/>
+<area shape="poly" title=" " alt="" coords="2449,33,2393,73,2390,68,2446,29"/>
+<area shape="rect" href="window_8h.html" title=" " alt="" coords="2552,79,2635,104"/>
+<area shape="poly" title=" " alt="" coords="2486,28,2561,69,2559,74,2484,33"/>
+<area shape="rect" href="memory_8h.html" title="Header file for memory management functions and structures." alt="" coords="2659,79,2746,104"/>
+<area shape="poly" title=" " alt="" coords="2503,28,2652,72,2650,77,2502,33"/>
+<area shape="rect" href="std_8h.html" title=" " alt="" coords="1491,306,1611,331"/>
+<area shape="poly" title=" " alt="" coords="1449,249,1523,296,1520,301,1446,253"/>
+<area shape="rect" href="GL_8h.html" title=" " alt="" coords="2147,306,2264,331"/>
+<area shape="poly" title=" " alt="" coords="1478,242,2133,307,2133,313,1478,247"/>
+<area shape="rect" href="SDL_8h.html" title=" " alt="" coords="388,306,513,331"/>
+<area shape="poly" title=" " alt="" coords="1381,246,527,314,527,309,1381,241"/>
+<area shape="rect" href="aliases_8h.html" title=" " alt="" coords="931,306,1077,331"/>
+<area shape="poly" title=" " alt="" coords="1381,250,1090,301,1068,306,1067,301,1089,296,1380,245"/>
+<area shape="rect" href="structs_8h.html" title="This file contains forward declarations of all structures used in the engine." alt="" coords="1101,306,1245,331"/>
+<area shape="poly" title=" " alt="" coords="1393,253,1225,304,1223,299,1391,248"/>
+<area shape="rect" href="stringio_8h.html" title="Provides utility functions for string and file operations." alt="" coords="1269,306,1368,331"/>
+<area shape="poly" title=" " alt="" coords="1415,253,1348,300,1345,296,1411,249"/>
+<area shape="rect" href="config_8h.html" title=" " alt="" coords="1393,306,1466,331"/>
+<area shape="poly" title=" " alt="" coords="1432,251,1432,292,1427,292,1427,251"/>
+<area shape="rect" title=" " alt="" coords="1837,394,1905,419"/>
+<area shape="poly" title=" " alt="" coords="1608,329,1710,352,1825,384,1832,386,1830,391,1823,389,1708,357,1607,334"/>
+<area shape="rect" title=" " alt="" coords="1929,394,1996,419"/>
+<area shape="poly" title=" " alt="" coords="1611,325,1752,347,1835,363,1917,384,1925,387,1923,392,1915,389,1834,369,1751,352,1611,330"/>
+<area shape="rect" title=" " alt="" coords="2021,394,2091,419"/>
+<area shape="poly" title=" " alt="" coords="1611,322,1790,342,1900,360,2009,384,2018,387,2017,392,2007,389,1899,365,1790,347,1610,327"/>
+<area shape="rect" title=" " alt="" coords="985,394,1068,419"/>
+<area shape="poly" title=" " alt="" coords="1510,334,1478,341,1366,357,1278,362,1191,369,1081,389,1069,392,1068,387,1079,384,1190,364,1278,357,1366,352,1477,336,1509,329"/>
+<area shape="rect" title=" " alt="" coords="1092,394,1167,419"/>
+<area shape="poly" title=" " alt="" coords="1509,334,1478,341,1394,355,1328,363,1262,371,1179,389,1170,392,1169,387,1178,384,1261,366,1327,357,1393,350,1477,336,1508,329"/>
+<area shape="rect" title=" " alt="" coords="1191,394,1262,419"/>
+<area shape="poly" title=" " alt="" coords="1507,334,1478,341,1376,363,1275,389,1268,392,1266,387,1274,384,1375,358,1477,336,1506,329"/>
+<area shape="rect" href="dirent_8h.html" title=" " alt="" coords="1287,394,1375,419"/>
+<area shape="poly" title=" " alt="" coords="1522,334,1374,391,1372,386,1520,329"/>
+<area shape="rect" title=" " alt="" coords="1423,394,1494,419"/>
+<area shape="poly" title=" " alt="" coords="1540,333,1483,386,1480,382,1536,330"/>
+<area shape="rect" href="time_8h.html" title=" " alt="" coords="1519,394,1583,419"/>
+<area shape="poly" title=" " alt="" coords="1553,332,1553,380,1548,380,1548,332"/>
+<area shape="rect" title=" " alt="" coords="1607,394,1692,419"/>
+<area shape="poly" title=" " alt="" coords="1566,329,1627,382,1623,386,1562,334"/>
+<area shape="rect" title=" " alt="" coords="1716,394,1812,419"/>
+<area shape="poly" title=" " alt="" coords="1580,329,1723,386,1722,391,1578,334"/>
+<area shape="poly" title=" " alt="" coords="1356,391,1386,390,1397,396,1401,407,1398,415,1391,421,1369,424,1369,419,1389,416,1394,412,1396,407,1393,400,1385,396,1356,397"/>
+<area shape="rect" title=" " alt="" coords="2455,394,2521,419"/>
+<area shape="poly" title=" " alt="" coords="2248,329,2442,384,2449,387,2447,392,2441,389,2247,334"/>
+<area shape="rect" title=" " alt="" coords="2116,394,2191,419"/>
+<area shape="poly" title=" " alt="" coords="2201,333,2170,383,2166,380,2196,330"/>
+<area shape="rect" title=" " alt="" coords="2215,394,2303,419"/>
+<area shape="poly" title=" " alt="" coords="2215,330,2246,381,2242,383,2210,333"/>
+<area shape="rect" title=" " alt="" coords="2327,394,2430,419"/>
+<area shape="poly" title=" " alt="" coords="2230,329,2344,385,2342,390,2228,334"/>
+<area shape="rect" title=" " alt="" coords="5,394,101,419"/>
+<area shape="poly" title=" " alt="" coords="388,333,261,357,114,389,102,393,100,387,113,384,260,351,387,328"/>
+<area shape="rect" title=" " alt="" coords="125,394,269,419"/>
+<area shape="poly" title=" " alt="" coords="417,334,245,392,243,387,416,329"/>
+<area shape="rect" title=" " alt="" coords="293,394,440,419"/>
+<area shape="poly" title=" " alt="" coords="441,333,390,385,386,382,437,330"/>
+<area shape="rect" title=" " alt="" coords="464,394,603,419"/>
+<area shape="poly" title=" " alt="" coords="464,330,514,382,510,385,460,333"/>
+<area shape="rect" title=" " alt="" coords="627,394,744,419"/>
+<area shape="poly" title=" " alt="" coords="483,329,642,387,640,392,481,334"/>
+<area shape="rect" title=" " alt="" coords="767,394,838,419"/>
+<area shape="poly" title=" " alt="" coords="1286,334,1258,341,1196,352,1143,358,1053,362,963,368,911,376,850,389,841,392,840,387,849,384,910,371,962,363,1053,357,1143,353,1195,347,1257,336,1285,329"/>
+<area shape="rect" href="term_8h.html" title=" " alt="" coords="862,394,962,419"/>
+<area shape="poly" title=" " alt="" coords="1403,334,1381,341,1320,354,1267,362,1177,368,1087,372,974,389,959,393,958,388,973,384,1087,367,1177,362,1267,356,1319,349,1379,336,1402,329"/>
+<area shape="rect" href="enhanced__print_8h.html" title=" " alt="" coords="827,475,997,500"/>
+<area shape="poly" title=" " alt="" coords="915,420,915,461,909,461,909,420"/>
+<area shape="rect" href="color_8h.html" title=" " alt="" coords="862,548,962,573"/>
+<area shape="poly" title=" " alt="" coords="915,500,915,534,909,534,909,500"/>
+<area shape="rect" href="shader_8h.html" title=" " alt="" coords="2288,306,2381,331"/>
+<area shape="poly" title=" " alt="" coords="2389,252,2354,297,2350,294,2385,249"/>
+<area shape="rect" href="model__loader_8h.html" title="Header file for model loading functions." alt="" coords="2628,299,2807,339"/>
+<area shape="poly" title=" " alt="" coords="2442,248,2628,293,2626,298,2441,253"/>
+<area shape="rect" href="obj__loader_8h.html" title=" " alt="" coords="2913,387,3071,427"/>
+<area shape="poly" title=" " alt="" coords="2778,336,2919,380,2918,385,2777,341"/>
+<area shape="rect" href="mtl__loader_8h.html" title=" " alt="" coords="2545,387,2705,427"/>
+<area shape="poly" title=" " alt="" coords="2699,341,2657,379,2654,375,2695,337"/>
+<area shape="rect" href="fbx__loader_8h.html" title="Header file for loading FBX models." alt="" coords="2730,387,2889,427"/>
+<area shape="poly" title=" " alt="" coords="2740,337,2781,375,2777,379,2736,341"/>
+<area shape="rect" href="input_8h.html" title=" " alt="" coords="2657,225,2740,251"/>
+<area shape="poly" title=" " alt="" coords="2707,178,2704,212,2698,212,2702,177"/>
+<area shape="poly" title=" " alt="" coords="2339,106,2310,125,2297,138,2286,153,2280,171,2278,190,2285,228,2301,264,2319,293,2315,296,2297,266,2280,230,2273,190,2275,170,2282,151,2292,135,2306,121,2336,102"/>
+<area shape="poly" title=" " alt="" coords="2419,101,2637,147,2636,152,2418,107"/>
+<area shape="rect" href="camera_8h.html" title=" " alt="" coords="2013,152,2142,177"/>
+<area shape="poly" title=" " alt="" coords="2319,107,2138,151,2136,146,2317,101"/>
+<area shape="rect" href="bodies_8h.html" title=" " alt="" coords="2296,152,2427,177"/>
+<area shape="poly" title=" " alt="" coords="2366,104,2365,139,2360,138,2361,104"/>
+<area shape="rect" href="scripts_8h.html" title="Header file defining macros, structures, and functions for script management in a game engine." alt="" coords="2502,152,2626,177"/>
+<area shape="poly" title=" " alt="" coords="2397,102,2519,145,2517,150,2395,107"/>
+<area shape="poly" title=" " alt="" coords="2013,176,1491,233,1491,227,2012,170"/>
+<area shape="poly" title=" " alt="" coords="2094,175,2144,214,2141,219,2090,179"/>
+<area shape="poly" title=" " alt="" coords="2078,178,2076,213,2080,232,2090,249,2111,268,2131,280,2151,285,2172,287,2220,288,2247,290,2277,296,2288,299,2286,305,2275,301,2246,295,2220,293,2172,293,2150,291,2129,285,2107,272,2086,252,2075,234,2071,213,2072,177"/>
+<area shape="poly" title=" " alt="" coords="2331,180,2213,223,2211,218,2329,175"/>
+<area shape="poly" title=" " alt="" coords="2369,176,2387,212,2382,214,2365,179"/>
+<area shape="poly" title=" " alt="" coords="2587,175,2666,216,2663,221,2584,180"/>
+<area shape="rect" href="signals_8h.html" title="Signal and slot system for C projects." alt="" coords="2501,225,2627,251"/>
+<area shape="poly" title=" " alt="" coords="2567,178,2567,212,2561,212,2561,178"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaf612536a5e3ec772e9bede8b62b37f92" id="r_gaf612536a5e3ec772e9bede8b62b37f92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gaf612536a5e3ec772e9bede8b62b37f92">create_msaa_framebuffer</a> (<a class="el" href="structMSAA.html">MSAA</a> *<a class="el" href="raptiquax_8c.html#a58daf641d993a02e7806fe8b763fad6c">msaa</a>)</td></tr>
-<tr class="memdesc:gaf612536a5e3ec772e9bede8b62b37f92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an <a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a> framebuffer.  <br /></td></tr>
-<tr class="separator:gaf612536a5e3ec772e9bede8b62b37f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga61ecc0fe7012195a1a406b36c766d45c" id="r_ga61ecc0fe7012195a1a406b36c766d45c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga61ecc0fe7012195a1a406b36c766d45c">free_msaa_framebuffer</a> (<a class="el" href="structMSAA.html">MSAA</a> *<a class="el" href="raptiquax_8c.html#a58daf641d993a02e7806fe8b763fad6c">msaa</a>)</td></tr>
-<tr class="memdesc:ga61ecc0fe7012195a1a406b36c766d45c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with an <a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a> framebuffer.  <br /></td></tr>
-<tr class="separator:ga61ecc0fe7012195a1a406b36c766d45c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga38295e04feba1f829d93bacadffa8394" id="r_ga38295e04feba1f829d93bacadffa8394"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga38295e04feba1f829d93bacadffa8394">resize_msaa_framebuffer</a> (<a class="el" href="structMSAA.html">MSAA</a> *<a class="el" href="raptiquax_8c.html#a58daf641d993a02e7806fe8b763fad6c">msaa</a>)</td></tr>
-<tr class="memdesc:ga38295e04feba1f829d93bacadffa8394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes an <a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a> framebuffer.  <br /></td></tr>
-<tr class="separator:ga38295e04feba1f829d93bacadffa8394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f507b008af615bc2629bbd27ec8a4e9" id="r_a6f507b008af615bc2629bbd27ec8a4e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="framebuffer_8c.html#a6f507b008af615bc2629bbd27ec8a4e9">create_texture</a> (<a class="el" href="group__MemoryCache.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a> *tex, GLint attachment, GLenum internalFormat, GLenum format, int width, int height)</td></tr>
+<tr class="separator:a6f507b008af615bc2629bbd27ec8a4e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1f1c2bcaf05d7a424243130c98360279" id="r_ga1f1c2bcaf05d7a424243130c98360279"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga1f1c2bcaf05d7a424243130c98360279">swap_intermediate_fbo</a> ()</td></tr>
+<tr class="memdesc:ga1f1c2bcaf05d7a424243130c98360279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swaps the intermediate framebuffer.  <br /></td></tr>
+<tr class="separator:ga1f1c2bcaf05d7a424243130c98360279"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4629714663ba4f9cf524aa7e1032c0bd" id="r_ga4629714663ba4f9cf524aa7e1032c0bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__MemoryCache.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga4629714663ba4f9cf524aa7e1032c0bd">get_intermediate_texture</a> ()</td></tr>
+<tr class="memdesc:ga4629714663ba4f9cf524aa7e1032c0bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last intermediate framebuffer texture.  <br /></td></tr>
+<tr class="separator:ga4629714663ba4f9cf524aa7e1032c0bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac312742b6faacf3fac32021c96035636" id="r_gac312742b6faacf3fac32021c96035636"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gac312742b6faacf3fac32021c96035636">use_intermediate_fbo</a> ()</td></tr>
+<tr class="memdesc:gac312742b6faacf3fac32021c96035636"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current framebuffer to an intermediate framebuffer.  <br /></td></tr>
+<tr class="separator:gac312742b6faacf3fac32021c96035636"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4112a92a859922f3fd3c55c0a91b6417" id="r_ga4112a92a859922f3fd3c55c0a91b6417"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga4112a92a859922f3fd3c55c0a91b6417">create_intermediate_fbo</a> ()</td></tr>
+<tr class="memdesc:ga4112a92a859922f3fd3c55c0a91b6417"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates two intermediate framebuffers.  <br /></td></tr>
+<tr class="separator:ga4112a92a859922f3fd3c55c0a91b6417"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab27f7062028bafa5a505699132c8f2eb" id="r_gab27f7062028bafa5a505699132c8f2eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gab27f7062028bafa5a505699132c8f2eb">free_intermediate_fbo</a> ()</td></tr>
+<tr class="memdesc:gab27f7062028bafa5a505699132c8f2eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with the intermediate framebuffers.  <br /></td></tr>
+<tr class="separator:gab27f7062028bafa5a505699132c8f2eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga191710b00b6e862c34a77d43ed183fba" id="r_ga191710b00b6e862c34a77d43ed183fba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga191710b00b6e862c34a77d43ed183fba">resize_intermediate_fbo</a> ()</td></tr>
+<tr class="memdesc:ga191710b00b6e862c34a77d43ed183fba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes the intermediate framebuffers.  <br /></td></tr>
+<tr class="separator:ga191710b00b6e862c34a77d43ed183fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0b9eaa6db11d1983a670eb50ba3e21d4" id="r_ga0b9eaa6db11d1983a670eb50ba3e21d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga0b9eaa6db11d1983a670eb50ba3e21d4">use_fbo</a> (GLenum mode, <a class="el" href="aliases_8h.html#ac85a61ad9743ee6947a9c5b15f8f700d">FBO</a> fbo)</td></tr>
+<tr class="memdesc:ga0b9eaa6db11d1983a670eb50ba3e21d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current framebuffer.  <br /></td></tr>
+<tr class="separator:ga0b9eaa6db11d1983a670eb50ba3e21d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7239212a7451660eb22ec24b7a35f2d7" id="r_ga7239212a7451660eb22ec24b7a35f2d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="aliases_8h.html#ac85a61ad9743ee6947a9c5b15f8f700d">FBO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga7239212a7451660eb22ec24b7a35f2d7">get_fbo</a> ()</td></tr>
+<tr class="memdesc:ga7239212a7451660eb22ec24b7a35f2d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current framebuffer.  <br /></td></tr>
+<tr class="separator:ga7239212a7451660eb22ec24b7a35f2d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab9933c53e866307ec54f6008f5d256b4" id="r_gab9933c53e866307ec54f6008f5d256b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gab9933c53e866307ec54f6008f5d256b4">create_cfbo</a> (<a class="el" href="structCFBO.html">CFBO</a> *cFbo)</td></tr>
+<tr class="memdesc:gab9933c53e866307ec54f6008f5d256b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a> (Complete <a class="el" href="classFrame.html" title="Represents a frame.">Frame</a> Buffer <a class="el" href="structObject.html" title="A generic object structure.">Object</a>).  <br /></td></tr>
+<tr class="separator:gab9933c53e866307ec54f6008f5d256b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae40cfeb920148961b224d8b3b2c4cfa8" id="r_gae40cfeb920148961b224d8b3b2c4cfa8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gae40cfeb920148961b224d8b3b2c4cfa8">free_cfbo</a> (<a class="el" href="structCFBO.html">CFBO</a> *cFbo)</td></tr>
+<tr class="memdesc:gae40cfeb920148961b224d8b3b2c4cfa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with a <a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a>.  <br /></td></tr>
+<tr class="separator:gae40cfeb920148961b224d8b3b2c4cfa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga62bd1965ce8383baa104a30175d43c6f" id="r_ga62bd1965ce8383baa104a30175d43c6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga62bd1965ce8383baa104a30175d43c6f">resize_cfbo</a> (<a class="el" href="structCFBO.html">CFBO</a> *cFbo)</td></tr>
+<tr class="memdesc:ga62bd1965ce8383baa104a30175d43c6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes a <a class="el" href="structCFBO.html" title="A structure to handle Complete Frame Buffer Objects (CFBO).">CFBO</a>.  <br /></td></tr>
+<tr class="separator:ga62bd1965ce8383baa104a30175d43c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e5e3bec8bb81e2cc53a667cde95d4ed" id="r_ga9e5e3bec8bb81e2cc53a667cde95d4ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga9e5e3bec8bb81e2cc53a667cde95d4ed">create_dfbo</a> (<a class="el" href="structDFBO.html">DFBO</a> *<a class="el" href="raptiquax_8c.html#a0a410b5c4c1deff0fbeb2b4051c83f7c">dfbo</a>)</td></tr>
+<tr class="memdesc:ga9e5e3bec8bb81e2cc53a667cde95d4ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a Deferred <a class="el" href="classFrame.html" title="Represents a frame.">Frame</a> Buffer <a class="el" href="structObject.html" title="A generic object structure.">Object</a> (<a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a>).  <br /></td></tr>
+<tr class="separator:ga9e5e3bec8bb81e2cc53a667cde95d4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab61154bf9254dede290d337801adaf09" id="r_gab61154bf9254dede290d337801adaf09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#gab61154bf9254dede290d337801adaf09">free_dfbo</a> (<a class="el" href="structDFBO.html">DFBO</a> *<a class="el" href="raptiquax_8c.html#a0a410b5c4c1deff0fbeb2b4051c83f7c">dfbo</a>)</td></tr>
+<tr class="memdesc:gab61154bf9254dede290d337801adaf09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with a <a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a>.  <br /></td></tr>
+<tr class="separator:gab61154bf9254dede290d337801adaf09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga153eafa87b77b28c3e131d8f3f5338a0" id="r_ga153eafa87b77b28c3e131d8f3f5338a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga153eafa87b77b28c3e131d8f3f5338a0">resize_dfbo</a> (<a class="el" href="structDFBO.html">DFBO</a> *<a class="el" href="raptiquax_8c.html#a0a410b5c4c1deff0fbeb2b4051c83f7c">dfbo</a>)</td></tr>
+<tr class="memdesc:ga153eafa87b77b28c3e131d8f3f5338a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes a <a class="el" href="structDFBO.html" title="A structure to handle Deferred Frame Buffer Objects (DFBO).">DFBO</a>.  <br /></td></tr>
+<tr class="separator:ga153eafa87b77b28c3e131d8f3f5338a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0b8e81253be7e81ab7a03a3569de41e0" id="r_ga0b8e81253be7e81ab7a03a3569de41e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga0b8e81253be7e81ab7a03a3569de41e0">create_msaa</a> (<a class="el" href="structMSAA.html">MSAA</a> *msaa)</td></tr>
+<tr class="memdesc:ga0b8e81253be7e81ab7a03a3569de41e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an <a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a> framebuffer.  <br /></td></tr>
+<tr class="separator:ga0b8e81253be7e81ab7a03a3569de41e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8117e8cb2cc37caf74b072de4bd5ddac" id="r_ga8117e8cb2cc37caf74b072de4bd5ddac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga8117e8cb2cc37caf74b072de4bd5ddac">free_msaa</a> (<a class="el" href="structMSAA.html">MSAA</a> *msaa)</td></tr>
+<tr class="memdesc:ga8117e8cb2cc37caf74b072de4bd5ddac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources associated with an <a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a> framebuffer.  <br /></td></tr>
+<tr class="separator:ga8117e8cb2cc37caf74b072de4bd5ddac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6dd2c206822b94066a686d5041d2383c" id="r_ga6dd2c206822b94066a686d5041d2383c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Framebuffer.html#ga6dd2c206822b94066a686d5041d2383c">resize_msaa</a> (<a class="el" href="structMSAA.html">MSAA</a> *msaa)</td></tr>
+<tr class="memdesc:ga6dd2c206822b94066a686d5041d2383c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes an <a class="el" href="structMSAA.html" title="A structure to handle Multi-Sample Anti-Aliasing (MSAA) framebuffers.">MSAA</a> framebuffer.  <br /></td></tr>
+<tr class="separator:ga6dd2c206822b94066a686d5041d2383c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aac08ceeb58c3140cd97b55465e4ddc66" id="r_aac08ceeb58c3140cd97b55465e4ddc66"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCFBO.html">CFBO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="framebuffer_8c.html#aac08ceeb58c3140cd97b55465e4ddc66">intermediateFBO</a> [2] = {0}</td></tr>
+<tr class="separator:aac08ceeb58c3140cd97b55465e4ddc66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4150f3b364f11b8ab875714b651307d" id="r_aa4150f3b364f11b8ab875714b651307d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structCFBO.html">CFBO</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="framebuffer_8c.html#aa4150f3b364f11b8ab875714b651307d">currentIFBO</a> = 0</td></tr>
+<tr class="separator:aa4150f3b364f11b8ab875714b651307d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20f9f9adc6ae8857741f3e14868ac60a" id="r_a20f9f9adc6ae8857741f3e14868ac60a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="aliases_8h.html#ac85a61ad9743ee6947a9c5b15f8f700d">FBO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="framebuffer_8c.html#a20f9f9adc6ae8857741f3e14868ac60a">currentFBO</a> = 0</td></tr>
+<tr class="separator:a20f9f9adc6ae8857741f3e14868ac60a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a6f507b008af615bc2629bbd27ec8a4e9" name="a6f507b008af615bc2629bbd27ec8a4e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f507b008af615bc2629bbd27ec8a4e9">&#9670;&#160;</a></span>create_texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void create_texture </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__MemoryCache.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a> *&#160;</td>
+          <td class="paramname"><em>tex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLint&#160;</td>
+          <td class="paramname"><em>attachment</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>internalFormat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="aac08ceeb58c3140cd97b55465e4ddc66" name="aac08ceeb58c3140cd97b55465e4ddc66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac08ceeb58c3140cd97b55465e4ddc66">&#9670;&#160;</a></span>intermediateFBO</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCFBO.html">CFBO</a> intermediateFBO[2] = {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa4150f3b364f11b8ab875714b651307d" name="aa4150f3b364f11b8ab875714b651307d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4150f3b364f11b8ab875714b651307d">&#9670;&#160;</a></span>currentIFBO</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCFBO.html">CFBO</a>* currentIFBO = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a20f9f9adc6ae8857741f3e14868ac60a" name="a20f9f9adc6ae8857741f3e14868ac60a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20f9f9adc6ae8857741f3e14868ac60a">&#9670;&#160;</a></span>currentFBO</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="aliases_8h.html#ac85a61ad9743ee6947a9c5b15f8f700d">FBO</a> currentFBO = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->

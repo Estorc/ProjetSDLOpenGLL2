@@ -130,9 +130,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aed0b0c574c1994f085c0b29b02a06d5a" id="r_aed0b0c574c1994f085c0b29b02a06d5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#aed0b0c574c1994f085c0b29b02a06d5a">play_sfx</a> (const char *const path, const int volume, const int loops)</td></tr>
-<tr class="memdesc:aed0b0c574c1994f085c0b29b02a06d5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays a sound effect.  <br /></td></tr>
-<tr class="separator:aed0b0c574c1994f085c0b29b02a06d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e75618a4df30874bc8a8c651c41e8c5" id="r_a3e75618a4df30874bc8a8c651c41e8c5"><td class="memItemLeft" align="right" valign="top">Mix_Chunk *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#a3e75618a4df30874bc8a8c651c41e8c5">play_sfx</a> (const char *const path, const int volume, const int loops)</td></tr>
+<tr class="memdesc:a3e75618a4df30874bc8a8c651c41e8c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays a sound effect.  <br /></td></tr>
+<tr class="separator:a3e75618a4df30874bc8a8c651c41e8c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab601c6b9c1088aab010f6db884bbd31d" id="r_ab601c6b9c1088aab010f6db884bbd31d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#ab601c6b9c1088aab010f6db884bbd31d">play_music</a> (const char *const path, const int volume, const int loops)</td></tr>
 <tr class="memdesc:ab601c6b9c1088aab010f6db884bbd31d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays a music file.  <br /></td></tr>
 <tr class="separator:ab601c6b9c1088aab010f6db884bbd31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,19 +142,22 @@ Functions</h2></td></tr>
 <tr class="memitem:a721333addcbf76cb7147b9b91833e5ef" id="r_a721333addcbf76cb7147b9b91833e5ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#a721333addcbf76cb7147b9b91833e5ef">refresh_music_volume</a> ()</td></tr>
 <tr class="memdesc:a721333addcbf76cb7147b9b91833e5ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refreshes the music volume.  <br /></td></tr>
 <tr class="separator:a721333addcbf76cb7147b9b91833e5ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e28cd40cd59f4ae4d5e3b36f8ab9450" id="r_a2e28cd40cd59f4ae4d5e3b36f8ab9450"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#a2e28cd40cd59f4ae4d5e3b36f8ab9450">set_sfx_volume</a> (Mix_Chunk *const chunk, const int volume)</td></tr>
+<tr class="memdesc:a2e28cd40cd59f4ae4d5e3b36f8ab9450"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the volume of a sound effect.  <br /></td></tr>
+<tr class="separator:a2e28cd40cd59f4ae4d5e3b36f8ab9450"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Audio playback functions for sound effects and music. </p>
 <p>This header file contains declarations for functions that handle the playback of sound effects and music in the application. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="aed0b0c574c1994f085c0b29b02a06d5a" name="aed0b0c574c1994f085c0b29b02a06d5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed0b0c574c1994f085c0b29b02a06d5a">&#9670;&#160;</a></span>play_sfx()</h2>
+<a id="a3e75618a4df30874bc8a8c651c41e8c5" name="a3e75618a4df30874bc8a8c651c41e8c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e75618a4df30874bc8a8c651c41e8c5">&#9670;&#160;</a></span>play_sfx()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void play_sfx </td>
+          <td class="memname">Mix_Chunk * play_sfx </td>
           <td>(</td>
           <td class="paramtype">const char *const&#160;</td>
           <td class="paramname"><em>path</em>, </td>
@@ -185,10 +188,12 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">path</td><td>The file path to the sound effect file. It should be a null-terminated string. </td></tr>
     <tr><td class="paramname">volume</td><td>The volume level at which to play the sound effect. The value should be within the acceptable range for the audio system. </td></tr>
-    <tr><td class="paramname">loops</td><td>The number of times the sound effect should loop. If loops is -1, the sound effect will loop indefinitely. </td></tr>
+    <tr><td class="paramname">loops</td><td>The number of times the sound effect should loop. If loops is -1, the sound effect will loop indefinitely.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the Mix_Chunk structure representing the sound effect. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The function will automatically cache the sound effect for future use. </dd></dl>
 
 </div>
 </div>
@@ -281,6 +286,44 @@ Functions</h2></td></tr>
 
 <p>Refreshes the music volume. </p>
 <p>This function updates the volume of the currently playing music to match the current volume settings of the audio system. </p>
+
+</div>
+</div>
+<a id="a2e28cd40cd59f4ae4d5e3b36f8ab9450" name="a2e28cd40cd59f4ae4d5e3b36f8ab9450"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e28cd40cd59f4ae4d5e3b36f8ab9450">&#9670;&#160;</a></span>set_sfx_volume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_sfx_volume </td>
+          <td>(</td>
+          <td class="paramtype">Mix_Chunk *const&#160;</td>
+          <td class="paramname"><em>chunk</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>volume</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the volume of a sound effect. </p>
+<p>This function sets the volume of a specific sound effect channel.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chunk</td><td>The sound effect channel to set the volume for. This should be a valid Mix_Chunk pointer. </td></tr>
+    <tr><td class="paramname">volume</td><td>The volume level to set for the sound effect. The value should be within the acceptable range for the audio system. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

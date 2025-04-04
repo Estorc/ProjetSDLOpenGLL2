@@ -13,6 +13,9 @@ var structSettings =
     [ "shadow_quality", "structSettings.html#a35cb3f44d314a65d2974ee53f8901640", null ],
     [ "texture_quality", "structSettings.html#a3c32c046fd726798ddd71ee4bcd23a50", null ],
     [ "antialiasing", "structSettings.html#a5a0ad4a032192977e936e6bc54f81c6e", null ],
+    [ "ssr", "structSettings.html#a2885ad47b384263e3604dbdb0dd64f2c", null ],
+    [ "ssao", "structSettings.html#ab4b7cff7d866a83134f43aecadf6f33d", null ],
+    [ "bloom", "structSettings.html#a563f18b1763bd4095a5fbbf7aded41a0", null ],
     [ "vsync", "structSettings.html#aaeeaf334506f90329361f6d8fd57dd1b", null ],
     [ "keybinds", "structSettings.html#ae66b456c544c9ff722f18b1374b593c4", null ]
 ];
