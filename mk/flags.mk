@@ -8,7 +8,6 @@ LFLAGS += -Ilib
 LFLAGS += -lSDL2_image
 LFLAGS += -lSDL2_ttf
 LFLAGS += -lSDL2_mixer
-LFLAGS += -lavcodec -lavformat -lavutil
 LFLAGS += -lCUnit
 LFLAGS += -pthread
 ifeq ($(OS),Windows_NT)
