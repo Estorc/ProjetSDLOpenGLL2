@@ -1,5 +1,46 @@
 \newpage
 \section{Annexes}
+\subsection{Exemples de débogage}
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{images/gdb_editeur.png}
+        \caption{Bug de collision}
+        \label{fig:editeur1}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{images/gdb_editeur2.png}
+        \caption{Bug de collision}
+        \label{fig:editeur2}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{images/gdb_editeur3.png}
+        \caption{Bug d'affichage}
+        \label{fig:editeur3}
+    \end{subfigure}
+    \caption{Exemples de bug à déboguer}
+    \label{fig:debug}
+\end{figure}
+
+\begin{multicols}{2}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/gdb.png}
+    \caption{Exemple de débogage avec GDB}
+    \label{fig:debug}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/gdb_fix.png}
+    \caption{Correction du bug grâce à GDB}
+    \label{fig:fix}
+\end{figure}
+\end{multicols}
+
 \subsection{Code d'une classe générique}
 \lstinputlisting[style=class_c,caption={Template de classe dans RaptiquaX},label=lst:class_template]{pages/developpement/class_templace.class.c}
 \subsection{Rendu différé}

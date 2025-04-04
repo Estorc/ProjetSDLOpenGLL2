@@ -37,9 +37,10 @@
 \contentsline {section}{\numberline {5}Résultats et conclusion}{18}{section.5}%
 \contentsline {section}{\numberline {6}Bibliographie}{18}{section.6}%
 \contentsline {section}{\numberline {7}Annexes}{23}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Code d'une classe générique}{23}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Rendu différé}{23}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Pipeline graphique}{25}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Musique}{27}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7.5}Tableau des différents n\oe {}uds de la scène}{28}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}Tableau des commandes Socket du mini-jeu \@FB@og FPS Chess \@FB@fg \relax {}}{29}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.1}Exemples de débogage}{23}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Code d'une classe générique}{23}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Rendu différé}{24}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Pipeline graphique}{26}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Musique}{28}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Tableau des différents n\oe {}uds de la scène}{29}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Tableau des commandes Socket du mini-jeu \@FB@og FPS Chess \@FB@fg \relax {}}{30}{subsection.7.7}%

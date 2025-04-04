@@ -23,7 +23,7 @@ Model(assets/models/ClaudeChappe/salle_reu02.obj)
 Model(assets/models/ClaudeChappe/toilettes.obj)
 Model(assets/models/ClaudeChappe/salle_secrete1.obj)
 Model(assets/models/ClaudeChappe/salle_secrete2.obj)
-Node:64
+Node:67
 StaticBody(9)
 BoxCShape[m-40,0.8,-50.5r0,-40,0s1.45,0.75,0.95]
 BoxCShape[m-36.85,0.8,-50.77r0,23.5,0s1.45,0.75,0.95]
@@ -71,6 +71,11 @@ BoxCShape[m-34,-5,-50.6s10,5,1.8]
 BoxCShape[m-35,-5,-59.1s10,5,2]
 BoxCShape[m-46,-5,-55s1.8,5,8]
 BoxCShape[m-35,-12,-53s10,2,3]
+
+RigidBody(0,0,0,0,0,0,0,-1,0,100,0.98,0,0,0,3)
+BoxCShape[m-36.5,-8,-54.5s13,3,3]
+BoxCShape[m-50,-8,-52.5s2,3,2]
+BoxCShape[m-55,-8,-56.5s2,3,2]
 
 StaticBody(11)
 BoxCShape[m-25.225,9.5,-56.8r0,90,0s5,1,1.02]
@@ -189,6 +194,49 @@ BoxCShape[m-5,-1,-56s7.5,1,6.3]
 BoxCShape[m-0.8,-0.5,-45.6s3,0.5,4]
 BoxCShape[m-10.8,-0.5,-46s1.5,0.5,4]
 
+StaticBody(19)
+BoxCShape[m-66,-0.5,-5s15,1,2.5]
+BoxCShape[m-66,-1.36,-2s15,1,2.5]
+BoxCShape[m-66,-2.1,1s15,1,2.5]
+BoxCShape[m-66,-2.95,3.85s15,1,2.5]
+BoxCShape[m-66,-3.75,6.7s15,1,2.5]
+BoxCShape[m-66,-4.56,9.7s15,1,2.5]
+BoxCShape[m-66,-5.35,12.5s15,1,2.5]
+BoxCShape[m-66,-6.15,15.45s15,1,2.5]
+BoxCShape[m-66,-6.96,20.5s15,1,3.1]
+BoxCShape[m-81,0,8s0.5,8.5,16]
+BoxCShape[m-54.5,0,22.5s3.25,8.5,2.9]
+BoxCShape[m-67,0,24s9.5,8.5,0.5]
+BoxCShape[m-80.8,0,24s1,8.5,0.5]
+BoxCShape
+BoxCShape
+BoxCShape
+BoxCShape
+BoxCShape
+BoxCShape
+
+StaticBody(15)
+BoxCShape[m-66,1.5,-2.4s11.5,1,0.4]
+BoxCShape[m-65.8,0.6,0s11.7,1.2,1]
+BoxCShape[m-65.8,-0.3,2.8s11.7,1.2,1]
+BoxCShape[m-65.8,-1.08,5.9s11.7,1.2,1]
+BoxCShape[m-65.8,-1.8,8.65s11.7,1.2,1]
+BoxCShape[m-65.8,-2.6,11.7s11.7,1.2,1]
+BoxCShape[m-65.8,-3.43,14.5s11.7,1.2,1]
+BoxCShape[m-65.8,-4.5,17.33s11.7,1.2,0.8]
+BoxCShape[m-78.8,-0.5,18.85s0.45,5.5,0.45]
+BoxCShape[m-78,-1,24.11s2,5.5,0.5]
+BoxCShape[m-53.55,1.2,8.2s0.5,5,0.5]
+BoxCShape[m-78.2,1.9,8.5s0.5,5,0.5]
+BoxCShape[m-66,1.62,-4.9s1.99,1,1]
+BoxCShape[m-67.2,-5.9,21.2s5.4,1,1.25]
+BoxCShape[m-66,6.9,6.6r5,0,0s15.14,0.5,14.5]
+
+StaticBody(3)
+BoxCShape[m-81.5,4,-43.5s1,4.5,4.3]
+BoxCShape[m-11,4,-7.6s3,4.2,3]
+BoxCShape[m-26.2,14,-43.21s2,6,4]
+
 StaticBody(4)
 BoxCShape[m0.8,1.3,0.2s0.1,0.4,0.3]
 BoxCShape[m-0.65,1.3,0.2s0.1,0.4,0.3]
@@ -296,11 +344,11 @@ StaticBody(1)
 BoxCShape[m-59,3.9,-10.6r0,0,65.1s0.4,11,2.5]
 
 StaticBody(4)
-BoxCShape[m-69.03,9.6,-16.5s0.1,1,3.5]{NULL,NULL,NULL}
-BoxCShape[m-75,8.35,-20s6,0.5,57]{NULL,NULL,NULL}
+BoxCShape[m-69.03,9.6,-16.5s0.1,1,3.5]
+BoxCShape[m-75,8.35,-20s6,0.5,57]
 BoxCShape[m-34,8.35,31.5s36,0.5,20]
 BoxCShape[m-5,8.35,0s12,0.5,20]
-{NULL,NULL,NULL}
+
 StaticBody(13)
 BoxCShape[m-66,-0.5,-5s15,1,2.5]
 BoxCShape[m-66,-1.36,-2s15,1,2.5]
@@ -315,7 +363,7 @@ BoxCShape[m-81,0,8s0.5,8.5,16]
 BoxCShape[m-54.5,0,22.5s3.25,8.5,2.9]
 BoxCShape[m-67,0,24s9.5,8.5,0.5]
 BoxCShape[m-80.8,0,24s1,8.5,0.5]
-{NULL,NULL,NULL}
+
 StaticBody(8)
 BoxCShape[m-86,0.5,-24.2r0,0,56s0.5,7,2.5]
 BoxCShape[m-88.3,3.48,-26.71r0,0,63.5s0.5,4.4,0.1]
@@ -324,7 +372,7 @@ BoxCShape[m-88.6,7.2,-27.36r0,0,-57s0.5,4,0.1]
 BoxCShape[m-94,4.7,-27.1s2.4,0.2,5]
 BoxCShape[m-90,0,-21.7s9.3,20,0.3]
 BoxCShape[m-98.1,0,-27s0.5,20,6]
-BoxCShape[m-83,8.35,-27s2.6,0.5,6]{NULL,NULL,NULL}
+BoxCShape[m-83,8.35,-27s2.6,0.5,6]
 
 StaticBody(10)
 BoxCShape[m-27,0,-31.5s9.1,8.5,0.3]
@@ -337,7 +385,7 @@ BoxCShape[m-24.8,0,-28.5s0.3,8.5,3]
 BoxCShape[m-26,0,-25.71s3.86,8.5,0.35]
 BoxCShape[m-18.46,0,-25.71s0.8,8.5,0.35]
 BoxCShape[m-40,0,-25.71s7.55,8.5,0.35]
-{NULL,NULL,NULL}
+
 StaticBody(6)
 BoxCShape[m-40,1.5,-18s1,1.2,1]
 BoxCShape[m-81.3,17.65,-24s0.6,0.55,16]
@@ -345,7 +393,7 @@ BoxCShape[m-81.3,13,-15.2s0.6,4.1,7.1]
 BoxCShape[m-81.3,13,-34.5s0.6,4.1,5.51]
 BoxCShape[m-68.5,13.5,-29.6s0.6,4.6,10]
 BoxCShape[m-68.5,13.5,-29.6s1,1,1.1]
-{NULL,NULL,NULL}
+
 StaticBody(4)
 BoxCShape[m-43,16,-39.3r0,90,0s0.5,2,25.5]
 BoxCShape[m-65,11.5,-39.4r0,90,0s0.33,2.7,4.14]
@@ -403,7 +451,7 @@ BoxCShape[m-68.6,13.5,2r0,90,0s9.4,4.7,0.5]
 BoxCShape[m-80.2,12.3,4.9r0,90,0s6.4,4,0.7]
 BoxCShape[m-81.33,13.5,6.5r0,90,0s14.4,4.7,0.52]
 BoxCShape[m-60,13.5,11r0,-90,0s0.5,4.7,9]
-{NULL,NULL,NULL}
+
 StaticBody(7)
 BoxCShape[m-17.41,13.5,-11.93s0.22,4.65,2.7]
 BoxCShape[m-17.41,13.5,-1.86s0.22,4.65,2.3]
@@ -412,7 +460,7 @@ BoxCShape[m-17.82,11.2,-16.9r0,0,8s0.22,2.28,2.3]
 BoxCShape[m-17.82,11.2,-6.7r0,0,8s0.22,2.28,2.53]
 BoxCShape[m-17.82,11.2,2.24r0,0,8s0.22,2.28,1.7]
 BoxCShape[m-17.82,11.2,10.2r0,0,8s0.22,2.28,1.2]
-{NULL,NULL,NULL}
+
 StaticBody(8)
 BoxCShape[m-19.16,13.5,11.4r0,-90,0s0.19,4.65,1.85]
 BoxCShape[m-22.31,11.2,10.95r0,-90,8s0.2,2.28,1.3]
@@ -422,7 +470,7 @@ BoxCShape[m-32.7,13.5,11.4r0,-90,0s0.19,4.65,1.86]
 BoxCShape[m-37.55,11.2,10.95r0,-90,8s0.2,2.29,2.92]
 BoxCShape[m-43.99,13.5,11.4r0,-90,0s0.19,4.65,3.45]
 BoxCShape[m-49,11.2,10.95r0,-90,8s0.2,2.28,1.65]
-{NULL,NULL,NULL}
+
 StaticBody(3)
 BoxCShape[m-51,16.5,15.4s0.3,1.35,4.5]
 BoxCShape[m-51,12,19.5s0.3,3.5,0.45]
