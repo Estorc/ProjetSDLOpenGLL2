@@ -18,7 +18,7 @@ The initial project duration set by the professors is approximately two months, 
 
 The story unfolds as you explore various sections of the institute. Early in the game, you receive a message from a student, Souleymane, who urgently requests your assistance with a practical assignment in one of the institute’s buildings. Accepting his request sets off a chain of events that lead you deeper into the mystery of the institute, where each mini-game you complete advances the plot. The gameplay seamlessly combines exploration, puzzle-solving, and survival elements to create a tense and immersive experience.
 
-# Controls & Game Start
+### Controls & Game Start
 
 At the start of the game, a brief tutorial introduces you to the essential controls and gameplay mechanics to ensure you’re well-prepared for the challenges ahead. You can use either the ZQSD keys or the arrow keys to move around, with the SPACEBAR dedicated to jumping over obstacles. Additionally, a flashlight tool is available to illuminate dark areas with the F key, which is crucial for both exploration and avoiding hazards. The tutorial guides you through the initial exploration of the institute, explaining how to interact with in-game computers to launch mini-games and how to respond to the various notifications that appear on-screen. This setup ensures that you are never left guessing what to do next, allowing you to dive straight into the adventure of Chapper's Fallout.
 
