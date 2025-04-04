@@ -1,7 +1,7 @@
-#include "../../raptiquax.h"
-#include "../../math/math_util.h"
-#include "../../storage/node.h"
-#include "../../scripts/scripts.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <storage/node.h>
+#include <scripts/scripts.h>
 
 NEW_SCRIPT(script_cc_camera_intro)
 	GET_READY_PARAMETERS();

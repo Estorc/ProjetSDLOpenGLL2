@@ -17,15 +17,15 @@
  * @date 2023-10-31
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "render/framebuffer.h"
-#include "storage/node.h"
-#include "io/scene_loader.h"
-#include "render/lighting.h"
-#include "buffer.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <io/scene_loader.h>
+#include <render/lighting.h>
+#include <buffer.h>
 
 /**
  * @ingroup Classes Classes
@@ -103,9 +103,9 @@ class StaticBody : public Body {
 
         this::update_global_position(pos, rot, scale);
 
-        for (int i = 0; i < staticBody->length; i++) {
+        /*for (int i = 0; i < staticBody->length; i++) {
             check_collisions(staticBody->collisionsShapes[i]);
-        }
+        }*/
         memcpy(&Game.buffers->collisionBuffer.collisionsShapes[Game.buffers->collisionBuffer.index], staticBody->collisionsShapes, staticBody->length * sizeof(staticBody->collisionsShapes[0]));
         Game.buffers->collisionBuffer.index += staticBody->length;
     }

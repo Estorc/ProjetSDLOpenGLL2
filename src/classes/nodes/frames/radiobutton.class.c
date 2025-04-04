@@ -10,16 +10,16 @@
  * @date 2023-10-20
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "storage/node.h"
-#include "io/shader.h"
-#include "render/render.h"
-#include "window.h"
-#include "gui/frame.h"
-#include "io/input.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <storage/node.h>
+#include <io/shader.h>
+#include <render/render.h>
+#include <window.h>
+#include <gui/frame.h>
+#include <io/input.h>
 
 /**
  * @ingroup Classes Classes

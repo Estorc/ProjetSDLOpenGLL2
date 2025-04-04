@@ -1,16 +1,16 @@
-#include "../../../raptiquax.h"
-#include "../../../math/math_util.h"
-#include "../../../storage/node.h"
-#include "../../../render/camera.h"
-#include "../../../gui/frame.h"
-#include "../../../storage/queue.h"
-#include "../../../utils/scene.h"
-#include "../../../io/audio.h"
-#include "../../../render/lighting.h"
-#include "../../../buffer.h"
-#include "../../../window.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <storage/node.h>
+#include <render/camera.h>
+#include <gui/frame.h>
+#include <storage/queue.h>
+#include <utils/deferred.h>
+#include <io/audio.h>
+#include <render/lighting.h>
+#include <buffer.h>
+#include <window.h>
 
-#include "../../../storage/hash.h"
+#include <storage/hash.h>
 
 
 NEW_SCRIPT(title_screen_init)
@@ -25,7 +25,7 @@ NEW_SCRIPT(title_screen_camera)
 	if (Game.mainTree->root->attribute[0].b) {
 		Game.window->fadeColor[3] += 1.0f * delta;
 		if (Game.window->fadeColor[3] >= 1.0f)
-			prepare_change_scene("assets/scenes/claude_chappe/intro.scene");
+			deferred_load_scene("assets/scenes/claude_chappe/intro.scene");
 	} else {
 		if (Game.window->fadeColor[3] > 0.0f)
 			Game.window->fadeColor[3] -= 1.0f * delta;
@@ -43,11 +43,11 @@ NEW_SCRIPT(play_game_button)
 		case SIGNAL_BUTTON_CLICKED:
 			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
 			if (Game.input->active_keys & KEY_SPRINT) {
-				prepare_change_scene("assets/scenes/fps_chess/boot.scene");
+				deferred_load_scene("assets/scenes/fps_chess/boot.scene");
 			}
 			fade_out_music(1000);
 			Game.mainTree->root->attribute[0].b = true;
-			Game.mainTree->root->children[12]->flags &= ~NODE_ACTIVE;
+			Game.mainTree->root->children[5]->flags &= ~NODE_ACTIVE;
 			break;
 		case SIGNAL_BUTTON_HOVERED:
 			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
@@ -65,7 +65,7 @@ NEW_SCRIPT(settings_game_button)
 			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
 			Game.window->fadeColor[3] = 0.0f;
 			table_insert(Game.storage, "Game::last_scene", "assets/scenes/claude_chappe/boot.scene");
-			prepare_change_scene("assets/scenes/settings/main.scene");
+			deferred_load_scene("assets/scenes/settings/main.scene");
 			break;
 		case SIGNAL_BUTTON_HOVERED:
 			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);

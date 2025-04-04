@@ -16,7 +16,7 @@ endef
 
 # Ensure that the environment is not externally-managed
 check-python:
-	@if [ $(HAVE_PIP) = "0" ]; then \
+	@if [ "$(HAVE_PIP)" = "0" ]; then \
 		$(call PRINT_CENTERED,Error: pip is not installed. Please install pip.); \
 		$(call failed_build); \
 	elif [ -f "/usr/lib/python$(shell $(PYTHON) -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')" ]; then \

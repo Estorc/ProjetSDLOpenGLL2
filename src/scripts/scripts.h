@@ -1,5 +1,5 @@
-#include "../io/input.h"
-#include "signals.h"
+#include <io/input.h>
+#include <scripts/signals.h>
 struct Window;
 
 /**
@@ -43,7 +43,7 @@ struct Window;
 /**
  * @brief Macro to retrieve parameters for an area signal from the variable argument list.
  */
-#define GET_AREA_SIGNAL_PARAMETERS() int sigId = GET_PARAMETER(int); Node *other = (Node *) GET_PARAMETER(Node *); float distance = (float) GET_PARAMETER(double); float *impactPoint = (float *) GET_PARAMETER(float *); int offset = GET_PARAMETER(int); (void) sigId; (void) other; (void) distance; (void) impactPoint; (void) offset;
+#define GET_AREA_SIGNAL_PARAMETERS() ;int sigId = GET_PARAMETER(int); Node *other = (Node *) GET_PARAMETER(Node *); float distance = (float) GET_PARAMETER(double); float *impactPoint = (float *) GET_PARAMETER(float *); int offset = GET_PARAMETER(int); (void) sigId; (void) other; (void) distance; (void) impactPoint; (void) offset;
 
 /**
  * @brief Macro to allocate memory for node attributes if not already allocated.
@@ -78,7 +78,6 @@ static __attribute__((constructor)) void __anon_ctor_##script_name(void) {\
     Game.scripts = realloc(Game.scripts, sizeof(Script) * (__scriptIndex__ + 1));\
     Game.scripts[__scriptIndex__].name = #script_name;\
     Game.scripts[__scriptIndex__++].script = script_name;\
-    PRINT_INFO("Script %s loaded in %d!\n", #script_name, __scriptIndex__);\
 }
 
 /**

@@ -9,7 +9,7 @@ enum ReturnSymbol {
 #endif
 
 
-#include "term/term.h"
+#include <term/term.h>
 #define UNUSED(x) (void)x;
 #ifdef DEBUG
 #include <signal.h>

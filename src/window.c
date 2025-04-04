@@ -1,14 +1,14 @@
-#include "raptiquax.h"
-#include "utils/time.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "render/framebuffer.h"
-#include "storage/node.h"
-#include "render/camera.h"
-#include "render/depth_map.h"
-#include "render/render.h"
-#include "window.h"
-#include "settings.h"
+#include <raptiquax.h>
+#include <utils/time.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <render/camera.h>
+#include <render/depth_map.h>
+#include <render/render.h>
+#include <window.h>
+#include <settings.h>
 
 #ifdef DEBUG
 //#define DEBUG_GL
@@ -188,11 +188,11 @@ void refresh_ui(Window *window) {
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void update_window(Window *window, Node *scene, Camera *c, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa, Mesh *screenPlane) {
+void update_window(Window *window, Node *scene, Camera *c, WorldShaders *shaders, DepthMap *depthMap, Mesh *screenPlane) {
 
 
 
-    draw_screen(window, scene, c, shaders, depthMap, msaa, screenPlane);
+    draw_screen(window, scene, c, shaders, depthMap, screenPlane);
 
     window->flags &= ~WINDOW_RESIZED;
     if (window->flags & WINDOW_PRERENDER_PASS) {
@@ -210,7 +210,10 @@ void refresh_resolution() {
     get_resolution(&window_width, &window_height);
     SDL_FreeSurface(Game.window->ui_surface);
     Game.window->ui_surface = SDL_CreateRGBSurface(0,window_width,window_height,32,0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000);
-    resize_msaa_framebuffer(Game.msaa);
+    resize_cfbo(Game.uiFBO);
+    resize_dfbo(Game.deferredBuffer);
+    resize_intermediate_fbo();
+    set_shaders_screen_size(window_width, window_height);
     Game.window->flags |= WINDOW_PRERENDER_PASS;
     Game.window->flags |= WINDOW_RESIZED;
 }

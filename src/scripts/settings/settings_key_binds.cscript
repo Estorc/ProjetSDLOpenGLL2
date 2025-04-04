@@ -1,15 +1,15 @@
-#include "../../raptiquax.h"
-#include "../../math/math_util.h"
-#include "../../io/model.h"
-#include "../../storage/node.h"
-#include "../../settings.h"
-#include "../../window.h"
-#include "../../gui/frame.h"
-#include "../../storage/queue.h"
-#include "../../scripts/scripts.h"
-#include "../../classes/classes.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <storage/node.h>
+#include <settings.h>
+#include <window.h>
+#include <gui/frame.h>
+#include <storage/queue.h>
+#include <scripts/scripts.h>
+#include <classes/classes.h>
 
-#include "../../storage/hash.h"
+#include <storage/hash.h>
 
 NEW_SCRIPT(st_keybind_up_init)
     SET_ATTRIBUTES_COUNT(1);
@@ -131,6 +131,7 @@ NEW_SCRIPT(st_keybind_init)
 END_SCRIPT(st_keybind_init)
 
 NEW_SCRIPT(st_keybind_update)
+    int * keybind;
     SDL_Event event;
     while( SDL_PollEvent( &event ) ) {
         switch( event.type ){
@@ -139,7 +140,7 @@ NEW_SCRIPT(st_keybind_update)
                 /* Check the SDLKey values and move change the coords */
                 switch( event.key.keysym.sym ) {
                     default:
-                        int * keybind = this->attribute[0].node->attribute[0].p;
+                        keybind = this->attribute[0].node->attribute[0].p;
                         *keybind = event.key.keysym.sym;
                         (this->attribute[0].node->children[0])::set_text(SDL_GetKeyName(*keybind));
                         PRINT_INFO("Keybind changed to %s\n", SDL_GetKeyName(*keybind));

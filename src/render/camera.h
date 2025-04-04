@@ -1,6 +1,6 @@
-#include "../raptiquax.h"
-#include "../math/math_util.h"
-#include "../io/shader.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/shader.h>
 
 #ifndef CAMERA_H
 #define CAMERA_H

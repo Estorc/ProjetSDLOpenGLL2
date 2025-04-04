@@ -1,4 +1,4 @@
-#include "../raptiquax.h"
+#include <raptiquax.h>
 
 char * read_filef(FILE * file) {
     int bufferSize = 8, bufferPos = 0;

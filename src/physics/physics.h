@@ -1,6 +1,6 @@
 #pragma once
-#include "../io/input.h"
-#include "../render/lighting.h"
+#include <io/input.h>
+#include <render/lighting.h>
 
 struct Input;
 struct Window;

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "hash.h"
+#include <storage/hash.h>
 
 #define LOAD_FACTOR 0.75f
 #define MULTIPLIER 31

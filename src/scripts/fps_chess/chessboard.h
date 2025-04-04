@@ -1,14 +1,14 @@
 #pragma once
-#include "../../raptiquax.h"
-#include "../../math/math_util.h"
-#include "../../storage/node.h"
-#include "../../scripts/scripts.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <storage/node.h>
+#include <scripts/scripts.h>
 
-#include "../../io/socket/socket.h"
-#include "../../classes/classes.h"
+#include <io/socket/socket.h>
+#include <classes/classes.h>
 
-#include "../../storage/hash.h"
-#include "../../storage/raw.h"
+#include <storage/hash.h>
+#include <storage/raw.h>
 
 
 #include <time.h>

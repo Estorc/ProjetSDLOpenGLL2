@@ -2,10 +2,13 @@ MD += -MD
 
 LFLAGS += `sdl2-config --cflags --libs`
 LFLAGS += -lm
+LFLAGS += -Isrc
+LFLAGS += -Iinclude
 LFLAGS += -Ilib
 LFLAGS += -lSDL2_image
 LFLAGS += -lSDL2_ttf
 LFLAGS += -lSDL2_mixer
+LFLAGS += -lCUnit
 LFLAGS += -pthread
 ifeq ($(OS),Windows_NT)
 LFLAGS += -lglew32

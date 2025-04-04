@@ -1,5 +1,5 @@
-#include "../src/io/socket/socket.h"
-#include "../src/raptiquax.h"
+#include <io/socket/socket.h>
+#include <raptiquax.h>
 #include <pthread.h>
 
 pthread_mutex_t send_mutex = PTHREAD_MUTEX_INITIALIZER;

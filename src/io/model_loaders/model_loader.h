@@ -1,8 +1,8 @@
 #pragma once
 
-#include "obj_loader.h"
-#include "mtl_loader.h"
-#include "fbx_loader.h"
+#include <io/model_loaders/obj_loader.h>
+#include <io/model_loaders/mtl_loader.h>
+#include <io/model_loaders/fbx_loader.h>
 
 
 /**

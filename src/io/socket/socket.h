@@ -87,6 +87,6 @@ struct message_handler {
     void ** data;
 };
 
-#include "server.h"
-#include "client.h"
-#include "network_utils.h"
+#include <io/socket/server.h>
+#include <io/socket/client.h>
+#include <io/socket/network_utils.h>

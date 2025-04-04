@@ -1,5 +1,5 @@
-#include "../../raptiquax.h"
-#include "socket.h"
+#include <raptiquax.h>
+#include <io/socket/socket.h>
 #include <errno.h>
 
 #define MIN(x,y) x < y ? x : y

@@ -1,8 +1,8 @@
-#include "../raptiquax.h"
-#include "../math/math_util.h"
-#include "shader.h"
-#include "model.h"
-#include "../memory.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/shader.h>
+#include <io/model.h>
+#include <memory.h>
 
 Shader create_shader(char* vertexPath, char* fragmentPath) {
     for (int i = 0; i < Game.memoryCaches->shadersCount; i++) {
@@ -72,6 +72,20 @@ Shader create_shader(char* vertexPath, char* fragmentPath) {
 
     return ID;
 
+}
+
+
+void set_shader_screen_size(Shader ID, int width, int height) {
+    use_shader(ID);
+    set_shader_float(ID, "screenWidth", (float)width);
+    set_shader_float(ID, "screenHeight", (float)height);
+}
+
+
+void set_shaders_screen_size(int width, int height) {
+    for (int i = 0; i < Game.memoryCaches->shadersCount; i++) {
+        set_shader_screen_size(Game.memoryCaches->shaderCache[i].shader, width, height);
+    }
 }
 
 

@@ -1,30 +1,30 @@
-#include "raptiquax.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "io/input.h"
-#include "render/framebuffer.h"
-#include "storage/node.h"
-#include "render/depth_map.h"
-#include "render/render.h"
-#include "render/lighting.h"
-#include "window.h"
-#include "io/osio.h"
-#include "render/camera.h"
-#include "io/shader.h"
-#include "io/scene_loader.h"
-#include "io/node_loader.h"
-#include "physics/physics.h"
-#include "physics/bodies.h"
-#include "scripts/scripts.h"
-#include "gui/frame.h"
-#include "settings.h"
-#include "memory.h"
-#include "buffer.h"
-#include "storage/queue.h"
-#include "storage/hash.h"
-#include "utils/scene.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <io/input.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <render/depth_map.h>
+#include <render/render.h>
+#include <render/lighting.h>
+#include <window.h>
+#include <io/osio.h>
+#include <render/camera.h>
+#include <io/shader.h>
+#include <io/scene_loader.h>
+#include <io/node_loader.h>
+#include <physics/physics.h>
+#include <physics/bodies.h>
+#include <scripts/scripts.h>
+#include <gui/frame.h>
+#include <settings.h>
+#include <memory.h>
+#include <buffer.h>
+#include <storage/queue.h>
+#include <storage/hash.h>
+#include <utils/scene.h>
 
-#include "classes/classes.h"
+#include <classes/classes.h>
 
 MemoryCaches memoryCaches;
 BufferCollection buffers;
@@ -45,10 +45,14 @@ Settings settings = {
     .shadow_quality = 0,
     .texture_quality = 1,
     .antialiasing = true,
+    .ssr = true,
+    .ssao = true,
+    .bloom = true,
     .vsync = true
 };
 Window window;
-MSAA msaa;
+DFBO dfbo;
+CFBO uiFBO;
 DepthMap depthMap;
 
 
@@ -64,7 +68,8 @@ struct RaptiquaX_t Game = {
     &window, 
     &classManager,
     NULL,
-    &msaa,
+    &dfbo,
+    &uiFBO,
     NULL,
     NULL,
     NULL,

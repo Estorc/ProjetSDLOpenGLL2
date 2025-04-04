@@ -103,7 +103,6 @@ void refresh_resolution();
  * @param[in] shaders Pointer to the WorldShaders structure used for rendering.
  * @param[in] depthMap Pointer to the DepthMap structure that handles 
  *                     depth information for rendering.
- * @param[in] msaa Pointer to the MSAA structure for multisample anti-aliasing.
  * @param[in] screenPlane Pointer to the Mesh structure representing the screen plane.
  * @return This function does not return a value.
  * 
@@ -113,7 +112,7 @@ void refresh_resolution();
  * for capturing mouse movements. Finally, it swaps the OpenGL buffers 
  * to display the rendered content on the window.
  */
-void update_window(Window *window, struct Node *scene, struct Camera *c, struct WorldShaders *shaders, struct DepthMap *depthMap, struct MSAA *msaa, struct Mesh *screenPlane);
+void update_window(Window *window, struct Node *scene, struct Camera *c, struct WorldShaders *shaders, struct DepthMap *depthMap, struct Mesh *screenPlane);
 
 /**
  * @brief Refreshes the UI of the window.

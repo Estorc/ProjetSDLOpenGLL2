@@ -15,7 +15,7 @@ aniso 0.000000
 anisor 0.000000
 map_Kd plane_divided_DefaultMaterial_BaseColor.jpg
 map_Pr plane_divided_DefaultMaterial_Roughness.jpg
-map_Bump -bm 1.000000 plane_divided_DefaultMaterial_Normal.jpg
+map_Bump plane_divided_DefaultMaterial_Normal.jpg
 
 newmtl Dark_wood
 Ks 0.500000 0.500000 0.500000
@@ -31,7 +31,7 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 map_Kd wood__diffuse.jpg
-map_Bump -bm 1.000000 wood__normal.jpg
+map_Bump wood__normal.jpg
 
 newmtl Material
 Kd 0.800000 0.800000 0.800000
@@ -62,7 +62,7 @@ anisor 0.000000
 map_Kd plastic07_diffuse.jpg
 map_Pm plastic_metallic.jpg
 map_Ks plastic_specular.jpg
-map_Bump -bm 1.000000 plastic_normal_opengl.jpg
+map_Bump plastic_normal_opengl.jpg
 
 newmtl plastic_bleu_foncé_amphi
 Kd 0.000778 0.004342 0.046442

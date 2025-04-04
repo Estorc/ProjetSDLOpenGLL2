@@ -1,0 +1,52 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}Conception}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Cahier des charges}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Fonctionnalités}{5}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Organisation du projet}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Planning prévisionnel}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Répartition des tâches}{6}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Développement}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Création du moteur de jeu 3D}{7}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Conception du moteur de rendu (OpenGL)}{7}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Conception du moteur de physique}{8}{subsubsection.4.1.2}%
+\contentsline {paragraph}{\numberline {4.1.2.1}Norme de la collision}{9}{paragraph.4.1.2.1}%
+\contentsline {paragraph}{\numberline {4.1.2.2}Vitesse relative}{9}{paragraph.4.1.2.2}%
+\contentsline {paragraph}{\numberline {4.1.2.3}Vitesse relative selon la direction normale}{9}{paragraph.4.1.2.3}%
+\contentsline {paragraph}{\numberline {4.1.2.4}Coefficient de restitution (élasticité de la collision)}{9}{paragraph.4.1.2.4}%
+\contentsline {paragraph}{\numberline {4.1.2.5}Calcul de l'impulsion}{9}{paragraph.4.1.2.5}%
+\contentsline {paragraph}{\numberline {4.1.2.6}Calcul du vecteur d'impulsion}{9}{paragraph.4.1.2.6}%
+\contentsline {paragraph}{\numberline {4.1.2.7}Application de l'impulsion et du couple}{9}{paragraph.4.1.2.7}%
+\contentsline {paragraph}{\numberline {4.1.2.8}Application de l'impulsion}{9}{paragraph.4.1.2.8}%
+\contentsline {paragraph}{\numberline {4.1.2.9}Correction de la pénétration}{10}{paragraph.4.1.2.9}%
+\contentsline {paragraph}{\numberline {4.1.2.10}Calcul du couple et de l'inertie}{10}{paragraph.4.1.2.10}%
+\contentsline {paragraph}{\numberline {4.1.2.11}Accélération angulaire}{10}{paragraph.4.1.2.11}%
+\contentsline {subsubsection}{\numberline {4.1.3}Conception de l'arbre de données}{10}{subsubsection.4.1.3}%
+\contentsline {subsubsection}{\numberline {4.1.4}Conception des classes et héritage}{10}{subsubsection.4.1.4}%
+\contentsline {subsubsection}{\numberline {4.1.5}Conception des entrées sorties}{11}{subsubsection.4.1.5}%
+\contentsline {paragraph}{\numberline {4.1.5.1}Chargement des ressources}{11}{paragraph.4.1.5.1}%
+\contentsline {paragraph}{\numberline {4.1.5.2}Communication en réseau (SocketIO)}{12}{paragraph.4.1.5.2}%
+\contentsline {subsection}{\numberline {4.2}Création des ressources}{12}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Conception du modèle 3d et des textures}{12}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Conception des musiques et effets sonores}{13}{subsubsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.3}Gestion des instances}{14}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Gestion des objets}{14}{subsubsection.4.3.1}%
+\contentsline {paragraph}{\numberline {4.3.1.1}Gestion des lumières}{14}{paragraph.4.3.1.1}%
+\contentsline {paragraph}{\numberline {4.3.1.2}Conception des mini-jeux (SDL2)}{14}{paragraph.4.3.1.2}%
+\contentsline {subsubsection}{\numberline {4.3.2}Gestion des PNJ (personnages non joueurs)}{14}{subsubsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.4}Gestion des scènes}{14}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Placement des collisions}{15}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Placement des instances}{16}{subsubsection.4.4.2}%
+\contentsline {section}{\numberline {5}Résultats et conclusion}{16}{section.5}%
+\contentsline {section}{\numberline {6}Bibliographie}{16}{section.6}%
+\contentsline {section}{\numberline {7}Annexes}{19}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Code d'une classe générique}{19}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Rendu différé}{19}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Rendu direct}{19}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Pipeline du moteur}{19}{subsection.7.4}%
+\contentsline {subsubsection}{\numberline {7.4.1}Pipeline graphique}{21}{subsubsection.7.4.1}%
+\contentsline {subsubsection}{\numberline {7.4.2}Pipeline physique}{23}{subsubsection.7.4.2}%
+\contentsline {subsection}{\numberline {7.5}Musique}{23}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Fiche technique des mini-jeux}{23}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Tableau des différents n\oe {}uds de la scène}{24}{subsection.7.7}%
+\contentsline {subsection}{\numberline {7.8}Tableau des commandes Socket du mini-jeu \@FB@og FPS Chess \@FB@fg \relax {}}{25}{subsection.7.8}%

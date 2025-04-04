@@ -1,8 +1,8 @@
-#include "../io/shader.h"
-#include "../render/camera.h"
-#include "../physics/bodies.h"
-#include "../scripts/scripts.h"
-#include "../render/framebuffer.h"
+#include <io/shader.h>
+#include <render/camera.h>
+#include <physics/bodies.h>
+#include <scripts/scripts.h>
+#include <render/framebuffer.h>
 
 #ifndef NODE_H
 #define NODE_H

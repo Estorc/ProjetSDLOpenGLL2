@@ -18,12 +18,12 @@
  * Date: 2023-10-06
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "render/framebuffer.h"
-#include "storage/node.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
 
 /**
  * @ingroup Classes Classes
@@ -66,7 +66,7 @@ class RenderTarget : public Node {
         renderTarget->mouse.active_button = 0;
 
         glGenFramebuffers(1, &renderTarget->fbo);
-        glBindFramebuffer(GL_FRAMEBUFFER, renderTarget->fbo);
+        set_fbo(GL_FRAMEBUFFER, renderTarget->fbo);
         
         // Create texture to store FBO result
         glGenTextures(1, &renderTarget->texture);
@@ -84,7 +84,7 @@ class RenderTarget : public Node {
         }
         
         // Unbind FBO (back to default framebuffer)
-        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        set_fbo(GL_FRAMEBUFFER, 0);
 
         SUPER(initialize_node);
     }

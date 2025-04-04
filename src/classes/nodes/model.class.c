@@ -10,14 +10,14 @@
  * @date October 11, 2023
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "render/framebuffer.h"
-#include "storage/node.h"
-#include "memory.h"
-#include "render/render.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <memory.h>
+#include <render/render.h>
 
 /**
  * @ingroup Classes Classes

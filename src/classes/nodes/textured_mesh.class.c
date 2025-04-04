@@ -10,13 +10,13 @@
  * creating a 3D graphics application using SDL and OpenGL.
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "render/framebuffer.h"
-#include "storage/node.h"
-#include "memory.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <memory.h>
 
 /**
  * @ingroup Classes Classes

@@ -1,7 +1,7 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include "shader.h"
+#include <io/shader.h>
 
 
 /*
@@ -22,30 +22,6 @@
  * @brief Group of functions and structures for handling 3D models.
  * @{
  */
-
-/**
- * @typedef VBO
- * @brief Alias for unsigned int representing a Vertex Buffer Object.
- */
-typedef unsigned int VBO;
-
-/**
- * @typedef VAO
- * @brief Alias for unsigned int representing a Vertex Array Object.
- */
-typedef unsigned int VAO;
-
-/**
- * @typedef VertexBuffer
- * @brief Alias for VBO.
- */
-typedef VBO VertexBuffer;
-
-/**
- * @typedef VertexArray
- * @brief Alias for VAO.
- */
-typedef VAO VertexArray;
 
 /**
  * @enum VertexAttribute
@@ -85,12 +61,6 @@ typedef enum VertexAttribute {
  * @brief Array of VERTEX_ATTRIBUTE_COUNT floats representing a vertex.
  */
 typedef float Vertex[VERTEX_ATTRIBUTE_COUNT];
-
-/**
- * @typedef TextureMap
- * @brief Alias for u32 representing a texture map.
- */
-typedef u32 TextureMap;
 
 
 /**
@@ -314,6 +284,6 @@ void render_model(mat4 modelMatrix, Shader activeShader, Model *model);
 /** @} */ // end of ModelHandling
 
 
-#include "model_loaders/model_loader.h"
+#include <io/model_loaders/model_loader.h>
 
 #endif

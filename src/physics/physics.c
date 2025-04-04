@@ -1,19 +1,19 @@
-#include "../raptiquax.h"
-#include "../math/math_util.h"
-#include "../io/model.h"
-#include "../render/framebuffer.h"
-#include "../storage/node.h"
-#include "../window.h"
-#include "../render/camera.h"
-#include "../render/depth_map.h"
-#include "../render/lighting.h"
-#include "../io/gltexture_loader.h"
-#include "../classes/classes.h"
-#include "../memory.h"
-#include "../buffer.h"
-#include "physics.h"
-#include "bodies.h"
-#include "collision.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <window.h>
+#include <render/camera.h>
+#include <render/depth_map.h>
+#include <render/lighting.h>
+#include <io/gltexture_loader.h>
+#include <classes/classes.h>
+#include <memory.h>
+#include <buffer.h>
+#include <physics/physics.h>
+#include <physics/bodies.h>
+#include <physics/collision.h>
 
 
 void apply_body_collision(Node *shapeA, Node *shapeB, vec3 collisionNormal, vec3 impactPoint, float penetrationDepth) {

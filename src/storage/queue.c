@@ -1,5 +1,5 @@
-#include "../raptiquax.h"
-#include "queue.h"
+#include <raptiquax.h>
+#include <storage/queue.h>
 
 void queue_push(Queue *queue, void *data) {
     Queue *new_element = malloc(sizeof(Queue));
@@ -30,6 +30,7 @@ void *queue_pop(Queue *queue) {
 
 void queue_free(Queue *queue) {
     Queue *cursor = queue->next;
+    if (!cursor) return;
     while (cursor->next != NULL) {
         Queue *next = cursor->next;
         free(cursor);

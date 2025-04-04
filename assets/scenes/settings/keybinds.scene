@@ -11,72 +11,72 @@ ControlFrame(2w,10p,96w,50p,ltn):2
 Frame(0w,0h,40w,100h,rtn):1
 Button{st_keybind_up_init,NULL,st_keybind_signal}:1
 Label("Touche",cc)
-ControlFrame(0w,0h,60w,100h,lt):1
+ControlFrame(0w,0h,60w,100h,ltn):1
 Label("Avancer en haut : ",lc)
 ControlFrame(2w,65p,96w,50p,ltn):2
 Frame(0w,0h,40w,100h,rtn):1
 Button{st_keybind_left_init,NULL,st_keybind_signal}:1
 Label("Touche",cc)
-ControlFrame(0w,0h,60w,100h,lt):1
+ControlFrame(0w,0h,60w,100h,ltn):1
 Label("Avancer à gauche : ",lc)
 ControlFrame(2w,120p,96w,50p,ltn):2
 Frame(0w,0h,40w,100h,rtn):1
 Button{st_keybind_right_init,NULL,st_keybind_signal}:1
 Label("Touche",cc)
-ControlFrame(0w,0h,60w,100h,lt):1
+ControlFrame(0w,0h,60w,100h,ltn):1
 Label("Avancer à droite : ",lc)
 ControlFrame(2w,175p,96w,50p,ltn):2
 Frame(0w,0h,40w,100h,rtn):1
 Button{st_keybind_down_init,NULL,st_keybind_signal}:1
 Label("Touche",cc)
-ControlFrame(0w,0h,60w,100h,lt):1
+ControlFrame(0w,0h,60w,100h,ltn):1
 Label("Avancer en bas : ",lc)
 ControlFrame(2w,230p,96w,50p,ltn):2
 Frame(0w,0h,40w,100h,rtn):1
 Button{st_keybind_jump_init,NULL,st_keybind_signal}:1
 Label("Touche",cc)
-ControlFrame(0w,0h,60w,100h,lt):1
+ControlFrame(0w,0h,60w,100h,ltn):1
 Label("Sauter : ",lc)
 ControlFrame(2w,285p,96w,50p,ltn):2
 Frame(0w,0h,40w,100h,rtn):1
 Button{st_keybind_crouch_init,NULL,st_keybind_signal}:1
 Label("Touche",cc)
-ControlFrame(0w,0h,60w,100h,lt):1
+ControlFrame(0w,0h,60w,100h,ltn):1
 Label("S'accroupir : ",lc)
 ControlFrame(2w,340p,96w,50p,ltn):2
 Frame(0w,0h,40w,100h,rtn):1
 Button{st_keybind_sprint_init,NULL,st_keybind_signal}:1
 Label("Touche",cc)
-ControlFrame(0w,0h,60w,100h,lt):1
+ControlFrame(0w,0h,60w,100h,ltn):1
 Label("Courir : ",lc)
 ControlFrame(2w,395p,96w,50p,ltn):2
 Frame(0w,0h,40w,100h,rtn):1
 Button{st_keybind_menu_init,NULL,st_keybind_signal}:1
 Label("Touche",cc)
-ControlFrame(0w,0h,60w,100h,lt):1
+ControlFrame(0w,0h,60w,100h,ltn):1
 Label("Menu : ",lc)
 ControlFrame(2w,450p,96w,50p,ltn):2
 Frame(0w,0h,40w,100h,rtn):1
 Button{st_keybind_flashlight_init,NULL,st_keybind_signal}:1
 Label("Touche",cc)
-ControlFrame(0w,0h,60w,100h,lt):1
+ControlFrame(0w,0h,60w,100h,ltn):1
 Label("Lampe torche : ",lc)
 ControlFrame(2w,505p,96w,50p,ltn):2
 Frame(0w,0h,40w,100h,rtn):1
 Button{st_keybind_validate_init,NULL,st_keybind_signal}:1
 Label("Touche",cc)
-ControlFrame(0w,0h,60w,100h,lt):1
+ControlFrame(0w,0h,60w,100h,ltn):1
 Label("Valider : ",lc)
 ControlFrame(2w,560p,96w,50p,ltn):2
 Frame(0w,0h,40w,100h,rtn):1
 Button{st_keybind_interact_init,NULL,st_keybind_signal}:1
 Label("Touche",cc)
-ControlFrame(0w,0h,60w,100h,lt):1
+ControlFrame(0w,0h,60w,100h,ltn):1
 Label("Interagir : ",lc)
 ControlFrame(2w,615p,96w,50p,ltn):2
 Frame(0w,0h,40w,100h,rtn):1
 Button{st_keybind_fullscreen_init,NULL,st_keybind_signal}:1
 Label("Touche",cc)
-ControlFrame(0w,0h,60w,100h,lt):1
+ControlFrame(0w,0h,60w,100h,ltn):1
 Label("Plein écran : ",lc)
 Scene(assets/scenes/settings/bottom_bar.scene)

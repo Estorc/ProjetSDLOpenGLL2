@@ -614,6 +614,7 @@ bool catch_preprocessor_directive(char *line) {
 			fprintf(temp_processed_header_file, "#include \"../src/%s", line + strlen("#include \"")); // ../src because we are in the __processed__ directory
 		} else {
 			fprintf(processed_file, "%s", line);
+			fprintf(temp_processed_header_file, "%s", line);
 		}
 		return true;
 	}

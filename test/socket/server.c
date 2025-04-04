@@ -1,5 +1,5 @@
-#include "../src/io/socket/socket.h"
-#include "../src/raptiquax.h"
+#include <io/socket/socket.h>
+#include <raptiquax.h>
 
 #define MAX_CLIENTS 20
 

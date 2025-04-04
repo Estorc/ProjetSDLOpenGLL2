@@ -1,11 +1,11 @@
-#include "../../raptiquax.h"
-#include "../../math/math_util.h"
-#include "../../io/model.h"
-#include "../../storage/node.h"
-#include "../../render/framebuffer.h"
-#include "../../gui/frame.h"
-#include "../../scripts/scripts.h"
-#include "../../io/input.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <storage/node.h>
+#include <render/framebuffer.h>
+#include <gui/frame.h>
+#include <scripts/scripts.h>
+#include <io/input.h>
 
 NEW_SCRIPT(script_input_area_init)
 #ifdef DEBUG

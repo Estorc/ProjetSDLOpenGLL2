@@ -5,11 +5,11 @@ PointLight(60,50,40,0.001,0,1,0.09,0.032)[m-10,6,9]
 Model(assets/models/settings_bg/settings_bg.obj)[s5,5,5]
 Camera(1){NULL,st_camera,NULL}[m0,3,5]
 Frame(0w,0h,100w,100h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):2
-ControlFrame(0w,0h,100w,80h,ctn):8
+ControlFrame(0w,0h,100w,80h,ctn):9
 ControlFrame(2w,10p,96w,50p,ltn):2
 ControlFrame(0w,0h,10w,100h,ltn):1
 CheckBox{st_cast_shadows_init,NULL,st_signal}
-ControlFrame(10w,0h,90w,100h,lt):1
+ControlFrame(10w,0h,90w,100h,ltn):1
 Label("Projeter les ombres",lc)
 ControlFrame(2w,65p,96w,50p,ltn):2
 ControlFrame(0w,0h,10w,100h,ltn):1
@@ -25,22 +25,29 @@ ControlFrame(2w,175p,96w,50p,ltv):2
 Label("Résolution des ombres :",lc)
 Frame(0w,100h,50w,10p,ltv):1
 Slider(0.0,4.0){st_shadows_res_init,st_shadows_res,NULL}:0
-ControlFrame(2w,230p,96w,50p,ltv):2
-Label("Qualité des ombres :",lc)
-Frame(0w,100h,50w,10p,ltv):1
-Slider(0.0,10.0){st_shadows_quality_init,st_shadows_quality,NULL}:0
-ControlFrame(2w,285p,96w,50p,ltv):2
-Label("Qualité des textures :",lc)
-Frame(0w,100h,50w,10p,ltv):1
-Slider(0.0,4.0){st_textures_quality_init,st_textures_quality,NULL}:0
+ControlFrame(2w,240p,96w,50p,ltv):2
+ControlFrame(0w,0h,10w,100h,ltn):1
+CheckBox{st_smaa_init,NULL,st_signal}
+ControlFrame(10w,0h,90w,100h,ltn):1
+Label("SMAA",lc)
+ControlFrame(2w,295p,96w,50p,ltn):2
+ControlFrame(0w,0h,10w,100h,ltn):1
+CheckBox{st_ssao_init,NULL,st_signal}
+ControlFrame(10w,0h,90w,100h,ltn):1
+Label("SSAO",lc)
 ControlFrame(2w,350p,96w,50p,ltn):2
 ControlFrame(0w,0h,10w,100h,ltn):1
-CheckBox{st_msaa_init,NULL,st_signal}
-ControlFrame(10w,0h,90w,100h,lt):1
-Label("MSAA",lc)
+CheckBox{st_bloom_init,NULL,st_signal}
+ControlFrame(10w,0h,90w,100h,ltn):1
+Label("Bloom",lc)
 ControlFrame(2w,405p,96w,50p,ltn):2
 ControlFrame(0w,0h,10w,100h,ltn):1
+CheckBox{st_ssr_init,NULL,st_signal}
+ControlFrame(10w,0h,90w,100h,ltn):1
+Label("SSR",lc)
+ControlFrame(2w,460p,96w,50p,ltn):2
+ControlFrame(0w,0h,10w,100h,ltn):1
 CheckBox{st_vsync_init,NULL,st_vsync_signal}
-ControlFrame(10w,0h,90w,100h,lt):1
+ControlFrame(10w,0h,90w,100h,ltn):1
 Label("V-Sync",lc)
 Scene(assets/scenes/settings/bottom_bar.scene)

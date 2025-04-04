@@ -1,8 +1,8 @@
 #ifndef CLASSES_H
 #define CLASSES_H
-#include "classes_types.h"
-#include "import_classes.h"
-#include "../raptiquax.h"
+#include <classes/classes_types.h>
+#include <classes/import_classes.h>
+#include <raptiquax.h>
 
 extern const struct ClassManager classManager;
 

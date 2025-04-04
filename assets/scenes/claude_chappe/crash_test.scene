@@ -161,7 +161,7 @@ SphereCShape[s0.8,0.8,0.8]
 SphereCShape[m0,-3,0s0.8,0.8,0.8]
 [m0,4,10]{NULL,script_cc_player_update,NULL}:2
 Camera(1){NULL,script_cc_camera_player,NULL}
-SpotLight(50,50,50,0.03,0,1,0.09,0.03,1,0.95)[m0.75,0.75,-3.27835e-08r4.63492,1.81801,4.63492]{NULL,flashlight,NULL}
+SpotLight(50,50,50,0.03,0,1,0.09,0.03,1,0.95)[m0.75,0.75,-3.27835e-08r4.63492,1.81801,4.63492]{cc_flashlight_init,cc_flashlight_update,NULL}
 PointLight(3,3,6,0.03,0,1,0.09,0.032)[m-70,5,0]
 Node:9
 PointLight(20,40,100,0.01,0,1,0.09,0.032)[m-40,10,-7]

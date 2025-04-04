@@ -15,6 +15,7 @@ uniform mat4 finalBonesMatrices[MAX_BONES];
 uniform bool haveBone;
 
 out VS_OUT {
+    vec4 FragGPos;
     vec3 FragPos;
     vec3 Normal;
     vec2 TexCoords;
@@ -51,6 +52,7 @@ void main()
     } else tPos = vec4(aPos,1.0);
 
     gl_Position = projection * view * model * tPos;
+    vs_out.FragGPos = view * model * tPos;
     vs_out.FragPos = vec3(model * tPos);
     vs_out.Normal = transpose(inverse(mat3(model))) * tNormal;
     vs_out.TexCoords = aTexCoords;

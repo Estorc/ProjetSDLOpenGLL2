@@ -1,5 +1,5 @@
-#include "../math/math_util.h"
-#include "../io/model.h"
+#include <math/math_util.h>
+#include <io/model.h>
 
 #ifndef BODIES_H
 #define BODIES_H
@@ -124,8 +124,8 @@ typedef struct RayCollisionShape {
  */
 typedef struct CollisionBuffer {
     struct Node **collisionsShapes; /**< Array of collision shapes in the buffer. */
-    u8 length; /**< Number of collision shapes in the buffer. */
-    u8 index; /**< Current index in the buffer. */
+    u32 length; /**< Number of collision shapes in the buffer. */
+    u32 index; /**< Current index in the buffer. */
 } CollisionBuffer;
 
 /** @} */

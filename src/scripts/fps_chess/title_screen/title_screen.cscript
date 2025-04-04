@@ -1,18 +1,18 @@
-#include "../../../raptiquax.h"
-#include "../../../math/math_util.h"
-#include "../../../storage/node.h"
-#include "../../../render/camera.h"
-#include "../../../gui/frame.h"
-#include "../../../storage/queue.h"
-#include "../../../utils/scene.h"
-#include "../../../io/audio.h"
-#include "../../../render/lighting.h"
-#include "../../../buffer.h"
-#include "../../../window.h"
-#include "../../../io/socket/socket.h"
-#include "../../../classes/classes.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <storage/node.h>
+#include <render/camera.h>
+#include <gui/frame.h>
+#include <storage/queue.h>
+#include <utils/deferred.h>
+#include <io/audio.h>
+#include <render/lighting.h>
+#include <buffer.h>
+#include <window.h>
+#include <io/socket/socket.h>
+#include <classes/classes.h>
 
-#include "../../../storage/hash.h"
+#include <storage/hash.h>
 
 
 #include "../client.h"
@@ -29,7 +29,7 @@ NEW_SCRIPT(script_fc_title_screen_camera)
 	if (Game.mainTree->root->attribute[0].b) {
 		Game.window->fadeColor[3] += 1.0f * delta;
 		if (Game.window->fadeColor[3] >= 1.0f)
-			prepare_change_scene("assets/scenes/fps_chess/server_party.scene");
+			deferred_load_scene("assets/scenes/fps_chess/server_party.scene");
 	} else {
 		if (Game.window->fadeColor[3] > 0.0f)
 			Game.window->fadeColor[3] -= 1.0f * delta;
@@ -125,7 +125,7 @@ NEW_SCRIPT(script_fc_settings_game_button)
 			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
 			Game.window->fadeColor[3] = 0.0f;
 			table_insert(Game.storage, "Game::last_scene", "assets/scenes/fps_chess/boot.scene");
-			prepare_change_scene("assets/scenes/settings/main.scene");
+			deferred_load_scene("assets/scenes/settings/main.scene");
 			break;
 		case SIGNAL_BUTTON_HOVERED:
 			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);

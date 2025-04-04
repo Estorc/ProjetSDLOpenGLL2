@@ -1,6 +1,6 @@
-#include "../../../src/io/socket/socket.h"
-#include "../../../src/raptiquax.h"
-#include "../../../src/storage/hash.h"
+#include <io/socket/socket.h>
+#include <raptiquax.h>
+#include <storage/hash.h>
 #include <pthread.h>
 
 #define MAX_PING 1000000

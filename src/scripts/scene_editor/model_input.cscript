@@ -1,10 +1,10 @@
-#include "../../raptiquax.h"
-#include "../../io/model.h"
-#include "../../storage/node.h"
-#include "../../io/osio.h"
-#include "../../gui/frame.h"
-#include "../../memory.h"
-#include "../../classes/classes.h"
+#include <raptiquax.h>
+#include <io/model.h>
+#include <storage/node.h>
+#include <io/osio.h>
+#include <gui/frame.h>
+#include <memory.h>
+#include <classes/classes.h>
 
 NEW_SCRIPT(model_input_init)
 #ifdef DEBUG

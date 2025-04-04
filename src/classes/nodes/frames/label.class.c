@@ -17,15 +17,15 @@
  * @date 2023-10-10
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "storage/node.h"
-#include "io/shader.h"
-#include "render/render.h"
-#include "window.h"
-#include "gui/frame.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <storage/node.h>
+#include <io/shader.h>
+#include <render/render.h>
+#include <window.h>
+#include <gui/frame.h>
 
 /**
  * @ingroup Classes Classes
@@ -99,6 +99,7 @@ class Label : public Frame {
     }
 
     void set_text(char * str) {
+        if (strcmp(str, ((Frame *) this->object)->label->text) == 0) return;
         Frame *frame = (Frame *) this->object;
         Label *label = (Label *) frame->label;
         label->text = realloc(label->text, strlen(str) + 1);

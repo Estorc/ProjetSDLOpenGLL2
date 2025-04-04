@@ -16,16 +16,16 @@
  * @author Loup Picault
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "render/framebuffer.h"
-#include "physics/physics.h"
-#include "storage/node.h"
-#include "io/scene_loader.h"
-#include "render/lighting.h"
-#include "buffer.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <physics/physics.h>
+#include <storage/node.h>
+#include <io/scene_loader.h>
+#include <render/lighting.h>
+#include <buffer.h>
 
 /**
  * @ingroup Classes Classes

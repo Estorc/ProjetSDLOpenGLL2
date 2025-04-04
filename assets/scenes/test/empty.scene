@@ -1,0 +1,8 @@
+Node{script_no_fade_init,NULL,NULL}:3
+TexturedMesh(assets/textures/texture.png)[r180,0,0s5,5,5]
+Skybox(assets/textures/skybox/right.jpg,assets/textures/skybox/left.jpg,assets/textures/skybox/top.jpg,assets/textures/skybox/bottom.jpg,assets/textures/skybox/front.jpg,assets/textures/skybox/back.jpg)
+Area(0,1)
+SphereCShape[s3,3,3]
+:1
+Model(assets/models/Flashlight/flashlight.obj)[m0,0.5,0s0.5,0.5,0.5]:1
+SpotLight(8,5,5,0.3,1,1,0.09,0.032,1,0.7)[m2,0.5,0r0,-90,0]

@@ -1,5 +1,5 @@
-#include "../src/io/socket/socket.h"
-#include "../src/raptiquax.h"
+#include <io/socket/socket.h>
+#include <raptiquax.h>
 #include <pthread.h>
 
 #define PORT 30000

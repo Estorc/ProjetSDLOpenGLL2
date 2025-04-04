@@ -207,6 +207,9 @@ typedef struct Settings {
     int shadow_quality;
     int texture_quality;
     bool antialiasing;
+    bool ssr;
+    bool ssao;
+    bool bloom;
     bool vsync;
     Keybinds keybinds;
 } Settings;

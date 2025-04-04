@@ -1,9 +1,9 @@
-#include "../raptiquax.h"
-#include "../math/math_util.h"
-#include "../io/shader.h"
-#include "render.h"
-#include "depth_map.h"
-#include "../settings.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/shader.h>
+#include <render.h>
+#include <depth_map.h>
+#include <settings.h>
 
 void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
 
@@ -41,17 +41,18 @@ void create_depthmap(DepthMap *depthMap, struct WorldShaders *shaders) {
     float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
     glTexParameterfv(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_BORDER_COLOR, borderColor);  
 
-    use_shader(shaders->render);
-    glActiveTexture(GL_TEXTURE3);
+    use_shader(shaders->light);
+    glActiveTexture(GL_TEXTURE8);
     glBindTexture(GL_TEXTURE_2D_ARRAY, depthMap->texture);
+    set_shader_int(shaders->light, "shadowMap", 8);
     use_shader(0);
 
     for (int i = 0; i < numDirectionalLights + numPointLights + numSpotLights; i++) {
         glGenFramebuffers(1, &depthMap->frameBuffer[i]);  
-        glBindFramebuffer(GL_FRAMEBUFFER, depthMap->frameBuffer[i]);
+        use_fbo(GL_FRAMEBUFFER, depthMap->frameBuffer[i]);
         glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthMap->texture, 0, i);
         glDrawBuffer(GL_NONE);
         glReadBuffer(GL_NONE);
     }
-    glBindFramebuffer(GL_FRAMEBUFFER, 0); 
+    use_fbo(GL_FRAMEBUFFER, 0); 
 }  

@@ -1,7 +1,7 @@
-#include "../raptiquax.h"
-#include "../math/math_util.h"
-#include "model.h"
-#include "../render/camera.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/camera.h>
 
 
 

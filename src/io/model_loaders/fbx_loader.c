@@ -1,9 +1,9 @@
 #include <ufbx/ufbx.h>
-#include "../../raptiquax.h"
-#include "../../math/math_util.h"
-#include "../../io/model.h"
-#include "../../io/shader.h"
-#include "../../memory.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <io/shader.h>
+#include <memory.h>
 
 #define MAX_WEIGHTS 4
 

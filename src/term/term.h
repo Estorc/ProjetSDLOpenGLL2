@@ -1,5 +1,5 @@
 #pragma once
-#include "enhanced_print.h"
+#include <term/enhanced_print.h>
 
 /**
  * @brief Prints a 3D vector with a given name.

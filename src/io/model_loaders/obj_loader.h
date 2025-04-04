@@ -13,18 +13,6 @@
 #define MAX_VERTEX_PER_FACE 10
 
 /**
- * @typedef Normal
- * @brief Alias for vec3 representing a normal vector.
- */
-typedef vec3 Normal;
-
-/**
- * @typedef TextureVertex
- * @brief Alias for vec2 representing a texture vertex.
- */
-typedef vec2 TextureVertex;
-
-/**
  * @struct Face
  * @brief Structure representing a face of a 3D model.
  * 

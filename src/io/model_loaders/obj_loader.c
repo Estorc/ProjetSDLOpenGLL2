@@ -1,9 +1,9 @@
-#include "../../raptiquax.h"
-#include "../../math/math_util.h"
-#include "../model.h"
-#include "../shader.h"
-#include "obj_loader.h"
-#include "../../memory.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <io/shader.h>
+#include <io/model_loaders/obj_loader.h>
+#include <memory.h>
 
 
 

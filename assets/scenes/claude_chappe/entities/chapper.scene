@@ -1,0 +1,10 @@
+Node[m0,8,0s5.8,5.8,5.8]{script_cc_chapper_init,script_cc_chapper_update,NULL}:2
+Model(assets/models/Chapper/Parts/head.obj)[r20.0,0,0]:1
+Model(assets/models/Chapper/Parts/neck_1.obj)[m0,0.246533,-0.156832r-20.0,0,0]:1
+Model(assets/models/Chapper/Parts/neck_2.obj)[m0,-0.75,-1.0]:1
+Model(assets/models/Chapper/Parts/arm.obj)[m0,-0.3,0.8]:1
+Model(assets/models/Chapper/Parts/hand.obj)[m0,0,0.9]:1
+Model(assets/models/Chapper/Parts/saw.obj)[m0,0,0.4]{NULL,script_cc_chapper_saw,NULL}
+Area(5,1)
+SphereCShape[s2,2,2]
+:0

@@ -11,15 +11,15 @@
  * @date October 6, 2023
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "storage/node.h"
-#include "io/shader.h"
-#include "render/render.h"
-#include "window.h"
-#include "gui/frame.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <storage/node.h>
+#include <io/shader.h>
+#include <render/render.h>
+#include <window.h>
+#include <gui/frame.h>
 
 /**
  * @ingroup Classes Classes
@@ -46,7 +46,7 @@ class ControlFrame : public Frame {
      * @param va The vertical alignment of the control frame.
      * @param scroll The scroll setting for the control frame.
      */
-    void constructor(float x, int xu, float y, int yu, float w, int wu, float h, int hu, int ha, int va, int scroll) {
+    void constructor(float x, int xu, float y, int yu, float w, int wu, float h, int hu, int ha, int va, int scroll, Theme *theme) {
         this->type = __type__; 
 
         Frame *frame;
@@ -73,6 +73,8 @@ class ControlFrame : public Frame {
         } else if (scroll == 'v') {
             frame->flags |= OVERFLOW_VISIBLE;
         }
+
+        frame->theme = theme;
     }
 
     /**
@@ -83,18 +85,7 @@ class ControlFrame : public Frame {
      * @param file A pointer to the FILE object that represents the file to be read.
      */
     void load(FILE *file) {
-        float relPos[2], scale[2];
-        char unit[4], alignment[2], scroll;
-        if (file) {
-            fscanf(file, "(%g%c,%g%c,%g%c,%g%c,%c%c%c)", 
-                &relPos[0],&unit[0], 
-                &relPos[1],&unit[1], 
-                &scale[0],&unit[2], 
-                &scale[1],&unit[3], 
-                &alignment[0], &alignment[1],
-                &scroll);
-        }
-        this::constructor(relPos[0], unit[0], relPos[1], unit[1], scale[0], unit[2], scale[1], unit[3], alignment[0], alignment[1], scroll);
+        Frame::load(this, file);
     }
 
     /**

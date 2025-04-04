@@ -1,15 +1,15 @@
-#include "../raptiquax.h"
-#include "../math/math_util.h"
-#include "../io/model.h"
-#include "../render/framebuffer.h"
-#include "../storage/node.h"
-#include "../window.h"
-#include "../render/camera.h"
-#include "../render/depth_map.h"
-#include "../render/lighting.h"
-#include "../io/gltexture_loader.h"
-#include "physics.h"
-#include "bodies.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <window.h>
+#include <render/camera.h>
+#include <render/depth_map.h>
+#include <render/lighting.h>
+#include <io/gltexture_loader.h>
+#include <physics/physics.h>
+#include <physics/bodies.h>
 
 // Function to project a box onto an axis and return min and max projection values
 void project_box_onto_axis(vec3 axis, vec3 halfExtents, mat3 rotation, vec3 boxCenter, float *minProj, float *maxProj) {

@@ -11,15 +11,15 @@
  * @date 2023-10-31
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "render/framebuffer.h"
-#include "storage/node.h"
-#include "render/lighting.h"
-#include "render/depth_map.h"
-#include "buffer.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <render/lighting.h>
+#include <render/depth_map.h>
+#include <buffer.h>
 
 /**
  * @ingroup Classes Classes

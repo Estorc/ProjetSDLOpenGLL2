@@ -11,16 +11,16 @@
  * @date 2023-10-03
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "storage/node.h"
-#include "io/shader.h"
-#include "render/render.h"
-#include "window.h"
-#include "gui/frame.h"
-#include "memory.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <storage/node.h>
+#include <io/shader.h>
+#include <render/render.h>
+#include <window.h>
+#include <gui/frame.h>
+#include <memory.h>
 
 /**
  * @ingroup Classes Classes
@@ -631,7 +631,7 @@ class Frame : public Node {
         Frame *frame = (Frame *) this->object;
         if (frame->flags & FRAME_CONTENT) {
             glBindTexture(GL_TEXTURE_2D, 0);
-            glBindFramebuffer(GL_FRAMEBUFFER, 0);
+            use_fbo(GL_FRAMEBUFFER, 0);
             if (frame->contentTexture) glDeleteTextures(1, &frame->contentTexture);
             if (frame->contentSurface) SDL_FreeSurface(frame->contentSurface);
         }

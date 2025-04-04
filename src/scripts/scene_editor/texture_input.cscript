@@ -1,11 +1,11 @@
-#include "../../raptiquax.h"
-#include "../../io/model.h"
-#include "../../storage/node.h"
-#include "../../io/osio.h"
-#include "../../memory.h"
-#include "../../scripts/scripts.h"
-#include "../../gui/frame.h"
-#include "../../classes/classes.h"
+#include <raptiquax.h>
+#include <io/model.h>
+#include <storage/node.h>
+#include <io/osio.h>
+#include <memory.h>
+#include <scripts/scripts.h>
+#include <gui/frame.h>
+#include <classes/classes.h>
 
 NEW_SCRIPT(texture_input_init)
 #ifdef DEBUG

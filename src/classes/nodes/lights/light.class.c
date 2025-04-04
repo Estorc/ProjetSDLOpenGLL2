@@ -19,15 +19,15 @@
  * @date 2023-10-24
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "render/framebuffer.h"
-#include "storage/node.h"
-#include "render/lighting.h"
-#include "render/depth_map.h"
-#include "buffer.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <render/lighting.h>
+#include <render/depth_map.h>
+#include <buffer.h>
 
 /**
  * @ingroup Classes Classes
@@ -87,6 +87,20 @@ class Light : public Node {
     static Shader billboardShader = 0;
     static TextureMap lightPointTexture = 0;
     static TextureMap directionalLightTexture = 0;
+
+    /**
+     * @brief Determines if the current object is a GUI element.
+     *
+     * This function sets the value pointed to by the result parameter to indicate
+     * whether the current object is a graphical user interface (GUI) element.
+     *
+     * @param result A pointer to a boolean variable where the result will be stored.
+     *               The value will be set to true if the current object is a GUI element,
+     *               and false otherwise.
+     */
+    void is_gui_element(bool *result) {
+        *result = true;
+    }
 
     /**
      * @brief Renders the light using the provided model matrix and active shader.
@@ -188,8 +202,8 @@ class Light : public Node {
         glActiveTexture(GL_TEXTURE9); // Use texture unit 0
         glBindTexture(GL_TEXTURE_BUFFER, depthMap->matrixTexture);
         glBindBuffer(GL_TEXTURE_BUFFER, 0);
-        use_shader(shaders->render);
-        set_shader_int(shaders->render, "lightMatrixBuffer", 9);
+        use_shader(shaders->light);
+        set_shader_int(shaders->light, "lightMatrixBuffer", 9);
         use_shader(shaders->depth);
         set_shader_mat4(shaders->depth, "lightSpaceMatrix", lightSpaceMatrix);
     }
