@@ -3,12 +3,65 @@
 \input{pages/developpement/creation_du_moteur_de_jeu_3d}
 
 \input{pages/developpement/creation_des_ressources}
-\subsection{Gestion des instances}
-\subsubsection{Gestion des objets}
-    \paragraph{Gestion des lumières}
-    \paragraph{Conception des mini-jeux (SDL2)}
-\subsubsection{Gestion des PNJ (personnages non joueurs)}
 \subsection{Gestion des scènes}
-\input{pages/developpement/placement_des_collisions}
+\subsubsection{Gestion des objets}
 
-\subsubsection{Placement des instances}
+Les objets sont des entités gérées par des scripts importés dans les scènes du
+moteur 3D.
+\\ \\
+Les scripts sont écrits en C et sont chargés par le moteur 3D au moment de
+l'importation de la scène. Ils sont ensuite exécutés par le moteur 3D lors de
+la boucle de jeu à des instants clés.
+\\ \\
+On peut ainsi définir des comportements spécifiques pour l'initialisation
+des objets, leur mise à jour et lors de la réception de signaux.
+\\ \\
+Les interactions entre les objets et l'environnement sont gérées par ces
+signaux qui sont émis notamment lorsque les objets entrent en collision avec
+d'autres objets, mais il est possible de paramétrer divers signaux personnalisés.
+
+\paragraph{Mini-jeux}
+Dans le cadre de Chapper's Fallout, les mini-jeux en 2D sont conçus pour être totalement intégrés au sein d’un environnement homogène. Chaque mini-jeu débute 
+par l’activation d’une fenêtre qui simule le démarrage d’un ordinateur. Cette fenêtre, gérée par un système de fenêtrage complet, initialise automatiquement 
+l’affichage du bureau virtuel et coordonne le déroulement des scènes à l’aide d’un gestionnaire d’événements centralisé.
+\\ \\
+Le premier mini-jeu, par exemple, présente un bureau sur lequel se trouvent des icônes décoratives. Le cœur du gameplay repose sur l’apparition de 
+notifications qui indiquent la prochaine mission. Ici, le joueur reçoit un message de Souleymane lui demandant de le rejoindre pour un TP dans le bâtiment CC. 
+Une fois le message accepté via une interaction clavier ou souris, la fenêtre signale la fin du mini-jeu et permet le retour fluide dans le monde 3D.
+\\ \\
+Le second mini-jeu suit une logique similaire : l’ordinateur se lance dans une nouvelle fenêtre affichant le bureau, puis, en cliquant sur une icône spécifique, 
+le joueur accède à un jeu en 2D. Ce dernier consiste à esquiver des objets projetés depuis les bords de la fenêtre. Une fois l’épreuve terminée, le joueur peut 
+ouvrir un fichier interactif, conçu pour afficher des lignes de code de l’IA, et tenter de modifier ces paramètres pour réparer le système, même si l’issue n’est 
+pas toujours favorable.
+\\ \\
+Le troisième mini-jeu reprend le même mécanisme de lancement d’ordinateur. Après l’affichage du bureau, le joueur est amené à réaliser un jeu de décodage simple, 
+où il doit décrypter une série de symboles. La réussite de cette épreuve permet d’accéder à un fichier de nettoyage, indispensable pour poursuivre la réparation 
+de l’IA.
+\\ \\
+Au niveau du code, la gestion des événements est assurée par une boucle principale qui interroge SDL afin de capter en temps réel les entrées utilisateur (clics, 
+déplacements de souris, frappes clavier). Chaque mini-jeu possède ainsi son propre « event manager » qui orchestre les transitions entre les différentes scènes. 
+Par ailleurs, le système de gestion de fenêtres permet de créer, mettre à jour et détruire les fenêtres de jeu en synchronisation avec ces événements, assurant 
+ainsi une expérience utilisateur fluide et réactive.
+\\ \\
+Les structures de données, notamment celles dédiées aux éléments du bureau et aux textures animées, jouent un rôle crucial dans l’animation et 
+l’affichage des éléments graphiques. Par exemple, la fonction de mise à jour des textures incrémente le compteur de frames pour afficher la portion adéquate d’un 
+spritesheet, garantissant une animation cohérente et dynamique. Ce modèle a d’ailleurs été pensé pour être facilement extensible, afin d’ajouter de nouvelles 
+interactions ou de modifier l’ordre des scènes sans perturber le fonctionnement global du système.
+\\ \\
+Dans l’ensemble, ce design modulaire basé sur le système de fenêtrage intégré, couplé à une gestion des événements et une architecture orientée scène, permet de 
+créer des mini-jeux diversifiés et immersifs, renforçant ainsi l’expérience globale du joueur dans l’univers de Chapper's Fallout.
+
+\subsubsection{Gestion des PNJ (personnages non joueurs)}
+
+Les PNJ sont des entités qui se déplacent dans la scène. Ils sont gérés par le moteur
+3D et sont placés dans la scène via l'éditeur de niveau. Leurs comportements sont
+défini par des scripts qui sont exécutés par le moteur et utilisent le principe
+de la machine à état.\\
+
+Pour rendre les PNJ plus réalistes, nous avons implémenté un système de chemins
+de navigation. Ce système permet aux PNJ de se déplacer le long d'un chemin prédéfini
+dans la scène. Les chemins sont définis par des points de contrôle placés dans
+la scène. Le moteur 3D utilise ces points de contrôle pour calculer la trajectoire
+des PNJ et les faire se déplacer le long de cette trajectoire.
+
+\input{pages/developpement/placement_des_collisions}

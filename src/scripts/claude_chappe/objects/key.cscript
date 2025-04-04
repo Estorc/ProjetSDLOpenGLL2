@@ -1,0 +1,63 @@
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <storage/node.h>
+#include <render/camera.h>
+#include <gui/frame.h>
+#include <storage/queue.h>
+#include <storage/hash.h>
+#include <utils/scene.h>
+#include <io/audio.h>
+#include <render/lighting.h>
+#include <buffer.h>
+#include <window.h>
+#include <utils/random.h>
+#include <utils/deferred.h>
+#include <settings.h>
+
+#include <classes/classes.h>
+
+
+static char text[256];
+NEW_SCRIPT(cc_key_prop_init)
+	SET_ATTRIBUTES_COUNT(4);
+	deferred_table_get(Game.storage, "Game::alabel", &this->attribute[0].node);
+	deferred_table_get(Game.storage, "Game::player", &this->attribute[2].node);
+	deferred_table_get(Game.storage, "Game::level", &this->attribute[3].node);
+	sprintf(text, "[%s] récupérer la clé du serveur", SDL_GetKeyName(Game.settings->keybinds.interact));
+END_SCRIPT(cc_key_prop_init)
+
+NEW_SCRIPT(cc_key_prop_update)
+    Node * label = this->attribute[0].node;
+    if (label) {
+        label->flags &= ~NODE_ACTIVE;
+        label->flags &= ~NODE_VISIBLE;
+    }
+END_SCRIPT(cc_key_prop_update)
+
+
+NEW_SCRIPT(cc_key_prop_signal)
+	GET_SIGNAL();
+	switch (signal) {
+		case SIGNAL_AREA_COLLISION:
+			GET_AREA_SIGNAL_PARAMETERS();
+			if (sigId == 10 && distance < 10.0f && this->attribute[3].node->attribute[4].i == 1) {
+				Node * label = this->attribute[0].node;
+				if (label) {
+					label->flags |= NODE_ACTIVE;
+					label->flags |= NODE_VISIBLE;
+					label::set_text(text);
+				}
+				if (Game.input->pressed_keys & KEY_INTERACT) {
+					this->flags &= ~NODE_ACTIVE;
+					this->flags &= ~NODE_VISIBLE;
+					label->flags &= ~NODE_ACTIVE;
+					label->flags &= ~NODE_VISIBLE;
+					this->attribute[3].node->attribute[4].i++;
+					this->attribute[3].node->attribute[5].b = true;
+				}
+			}
+			break;
+		default:
+			break;
+	}
+END_SCRIPT(cc_key_prop_signal)

@@ -5,7 +5,11 @@
 
 \textbf{- Contexte et objectifs du projet :}\\
 
-Ce projet, réalisé dans le cadre de la L2 Informatique à l’Université du Mans, consiste à concevoir un jeu vidéo en langage C. Nous avons choisi de créer un jeu d’horreur en 3D prenant place dans l’institut Claude Chappe où le joueur explore un bâtiment, parfois poursuivi par un monstre, tout en résolvant des mini-jeux (voir détails dans l'introduction \ref{sec:intro}).\\
+Ce projet, réalisé dans le cadre de la L2 Informatique à l’Université du Mans,
+consiste à concevoir un jeu vidéo en langage C. Nous avons choisi de créer un jeu
+d’horreur en 3D prenant place dans l’institut Claude Chappe où le joueur explore un
+bâtiment, parfois poursuivi par un monstre, tout en résolvant des mini-jeux (voir
+détails dans l'introduction \ref{sec:intro}).\\
 
 \textbf{- Contraintes techniques :}\\\\
 - Langage imposé : C (exclusivement ou presque)  
@@ -22,7 +26,10 @@ Ce projet, réalisé dans le cadre de la L2 Informatique à l’Université du M
 - Tutoriel expliquant les commandes\\
 
 \textbf{- Architecture générale :}\\\\
-Pour cela, nous développons notre propre moteur 3D, \textit{RaptiquaX}, en C avec SDL. L’institut est modélisé en 3D sur Blender, puis intégré au moteur. Un éditeur de niveau nous permet de placer objets, collisions et éléments interactifs. Les mini-jeux sont codés séparément puis intégrés au jeu.\\
+Pour cela, nous développons notre propre moteur 3D, \textit{RaptiquaX}, en C avec SDL.
+L’institut est modélisé en 3D sur Blender, puis intégré au moteur. Un éditeur de niveau
+nous permet de placer objets, collisions et éléments interactifs. Les mini-jeux sont
+codés séparément puis intégrés au jeu.\\
 
 \textbf{- Répartition des rôles :}\\\\
 - \textbf{Lucien} : modélisation 3D du bâtiment/objets, design sonore\\ 
@@ -32,4 +39,37 @@ Pour cela, nous développons notre propre moteur 3D, \textit{RaptiquaX}, en C av
 
 \newpage
 \subsection{Fonctionnalités}
+
+Chapper's Fallout est un jeu d’horreur en 3D où le joueur doit explorer l’institut
+Claude Chappe tout en évitant un monstre qui le poursuit et en utilisant des
+plateformes pour naviguer dans l’environnement. Pour mener à bien ce projet,
+nous avons développé un moteur 3D en C, nommé \textit{RaptiquaX}, qui gère les
+déplacements, les collisions et les interactions avec l’environnement, en plus
+de permettre un affichage 3D avancé avec OpenGL.\\
+
+\begin{itemize}
+    \item \emph{Déplacement en 3D} - Le joueur peut se déplacer dans l’institut Claude
+    Chappe en utilisant les touches ZQSD (ou flèches directionnelles) pour avancer,
+    reculer et tourner. Il peut également sauter avec la touche espace.\\
+
+    \item \emph{Monstre} - Le joueur est poursuivi par un monstre qui apparaît à certains
+    moments. Il doit éviter d'être touché par le monstre, sinon il perd une vie.\\
+
+    \item \emph{Mini-jeux} - Le joueur peut interagir avec des ordinateurs pour accéder
+    à des mini-jeux en 2D. Ces mini-jeux sont variés et nécessitent différentes
+    compétences pour être résolus.\\
+
+    \item \emph{Lampe torche} - Le joueur peut activer une lampe torche pour
+    éclairer son chemin. \\
+
+    \item \emph{Vidéo exclusive} - Le joueur peut visionner une vidéo exclusive à la fin
+    du jeu, qui lui explique la
+    fin de l’histoire.\\
+
+    \item \emph{Affectation des touches} - Le joueur peut configurer les touches de son
+    clavier pour contrôler le jeu.\\
+
+    \item \emph{Guide de jeu} - Un tutoriel interactif guide le joueur à travers les
+    différentes étapes du jeu, séparés sous forme de chapitres.\\
+\end{itemize}
 \newpage

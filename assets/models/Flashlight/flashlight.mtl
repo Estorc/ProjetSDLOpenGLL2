@@ -15,4 +15,4 @@ anisor 0.000000
 map_Kd Diffuse.jpg
 map_Pm Metalness.jpg
 map_Pr Diffuse_Glossy.jpg
-map_Bump -bm 1.000000 Diffuse_Normal.jpg
+map_Bump Diffuse_Normal.jpg

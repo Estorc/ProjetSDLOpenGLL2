@@ -51,6 +51,9 @@ void render_scene(Window *window, Node *node, Camera *c, mat4 modelMatrix, Shade
         if (Game.settings->show_collision_boxes) {
             bool is_body = false;
             node::is_body((&is_body));
+            if (!is_body) {
+                node::is_area(&is_body);
+            }
             if (is_body) {
                 u8 *length;
                 Node ***shapes;

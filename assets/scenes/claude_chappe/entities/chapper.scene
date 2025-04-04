@@ -1,4 +1,4 @@
-Node[m0,8,0s5.8,5.8,5.8]{script_cc_chapper_init,script_cc_chapper_update,NULL}:2
+Node[s5.8,5.8,5.8]{script_cc_chapper_init,script_cc_chapper_update,NULL}:2
 Model(assets/models/Chapper/Parts/head.obj)[r20.0,0,0]:1
 Model(assets/models/Chapper/Parts/neck_1.obj)[m0,0.246533,-0.156832r-20.0,0,0]:1
 Model(assets/models/Chapper/Parts/neck_2.obj)[m0,-0.75,-1.0]:1

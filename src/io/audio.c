@@ -6,7 +6,7 @@
 static Mix_Music * current_music = NULL;
 static int current_music_volume = 0;
 
-void play_sfx(const char * const path, const int volume, const int loops) {
+Mix_Chunk * play_sfx(const char * const path, const int volume, const int loops) {
     Mix_Chunk *chunk = get_mix_chunk_from_cache(path);
     if (!chunk) {
         chunk = Mix_LoadWAV(path);
@@ -14,10 +14,11 @@ void play_sfx(const char * const path, const int volume, const int loops) {
     }
     if (!chunk) {
         PRINT_ERROR("Failed to load audio file %s\n", path);
-        return;
+        return NULL;
     }
     Mix_VolumeChunk(chunk, volume * Game.settings->master_volume * Game.settings->sfx_volume);
     Mix_PlayChannel(-1, chunk, loops);
+    return chunk;
 }
 
 void play_music(const char * const path, const int volume, const int loops) {
@@ -39,6 +40,9 @@ void play_music(const char * const path, const int volume, const int loops) {
     Mix_PlayMusic(current_music, loops);
 }
 
+void set_sfx_volume(Mix_Chunk * const channel, const int volume) {
+    Mix_VolumeChunk(channel, volume * Game.settings->master_volume * Game.settings->sfx_volume);
+}
 
 void refresh_music_volume() {
     Mix_VolumeMusic(current_music_volume * Game.settings->master_volume * Game.settings->music_volume);

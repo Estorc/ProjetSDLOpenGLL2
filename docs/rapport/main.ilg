@@ -7,8 +7,8 @@ Scanning style file C:/Users/loupe/AppData/Local/Programs/MiKTeX/makeindex/nomen
 ** Input style error (file = C:/Users/loupe/AppData/Local/Programs/MiKTeX/makeindex/nomencl/nomencl.ist, line = 38):
    -- Unknown specifier lethead_flag.
 ....done (12 attributes redefined, 3 ignored).
-Scanning input file main.nlo....done (2 entries accepted, 0 rejected).
-Sorting entries....done (2 comparisons).
-Generating output file main.nls....done (7 lines written, 0 warnings).
+Scanning input file main.nlo....done (32 entries accepted, 0 rejected).
+Sorting entries....done (167 comparisons).
+Generating output file main.nls....done (37 lines written, 0 warnings).
 Output written in main.nls.
 Transcript written in main.ilg.

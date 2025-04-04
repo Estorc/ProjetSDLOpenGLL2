@@ -16,8 +16,11 @@
  * @param path The file path to the sound effect file. It should be a null-terminated string.
  * @param volume The volume level at which to play the sound effect. The value should be within the acceptable range for the audio system.
  * @param loops The number of times the sound effect should loop. If loops is -1, the sound effect will loop indefinitely.
+ * 
+ * @return A pointer to the Mix_Chunk structure representing the sound effect.
+ * @note The function will automatically cache the sound effect for future use.
  */
-void play_sfx(const char * const path, const int volume, const int loops);
+Mix_Chunk * play_sfx(const char * const path, const int volume, const int loops);
 
 /**
  * @brief Plays a music file.
@@ -47,3 +50,13 @@ void fade_out_music(const int ms);
  * the current volume settings of the audio system.
  */
 void refresh_music_volume();
+
+/**
+ * @brief Sets the volume of a sound effect.
+ *
+ * This function sets the volume of a specific sound effect channel.
+ *
+ * @param chunk The sound effect channel to set the volume for. This should be a valid Mix_Chunk pointer.
+ * @param volume The volume level to set for the sound effect. The value should be within the acceptable range for the audio system.
+ */
+void set_sfx_volume(Mix_Chunk * const chunk, const int volume);

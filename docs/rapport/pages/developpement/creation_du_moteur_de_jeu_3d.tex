@@ -21,14 +21,14 @@
     alternatives\footnote{p. ex. HLSL sous Direct3D}) permet deux pipelines
     différentes et incompatibles\footnote{Depuis quelques années, la pipeline
     "Forward+" cherchant à mêler les deux par des méthodes avancées s'est
-    popularisé.} \cite{iehl_deferred_vs_forward} :
+    popularisé.} \cite{iehl_deferred_vs_forward} :\\
     \begin{itemize}
         \item Le rendu différé qui permet d'appliquer le \gls{fragment shader}
         une seule fois par \gls{fragment} en utilisant plusieurs couches de
         rendu.
         \item Le rendu direct qui affiche immédiatement sans précalculer le
         \gls{GBuffer} ce qui peut s'avérer plus rapide selon le
-        contexte.
+        contexte.\\
     \end{itemize}
 
     Nous avons opté pour l'utilisation du rendu différé, car il permet de
@@ -40,14 +40,14 @@
 
     Le traitement de l'image est effectué majoritairement par le \gls{gpu},
     exploitant la stratégie inventée pas Silicon Graphics\cite{silicon_graphics}
-    pour le traitement de l'image :
+    pour le traitement de l'image :\\
     \begin{itemize}
         \item Le \Gls{gpu} est divisé en plusieurs unités de calcul
         \item Chaque unité de calcul est responsable d'un aspect du rendu
         \item Les unités de calcul travaillent en parallèle pour traiter
         l'image rapidement
         \item La géométrie est transformée en primitives (triangles, lignes, points) par un programme appelé \emph{\gls{vertex shader}} (figure \ref{fig:sm64_wireframe})
-        \item Les primitives sont ensuite \glslink{rasteriser}{rasterisées} pour créer des \glspl{fragment} (figure \ref{fig:sm64_result})
+        \item Les primitives sont ensuite \glslink{rasteriser}{rasterisées} pour créer des \glspl{fragment} (figure \ref{fig:sm64_result})\\
     \end{itemize}
 
     \begin{figure}[h]
@@ -88,7 +88,7 @@
     dans son site web LearnOpenGL \cite{learnopengl}, auquels nous avons
     ajouté des améliorations et des optimisations pour notre moteur grâce
     aux travaux de Adrian Courrèges sur DOOM 2016 \cite{courreges_doom2016}.
-
+    \\ \\
     Pour un aperçu de la pipeline graphique de notre moteur, voir la section
     \ref{sec:graphics_pipeline}.
 
@@ -98,7 +98,7 @@
     des interactions entre les objets de la scène. Il utilise un système de
     détection de collisions basé sur des formes géométriques simples, comme
     des sphères, des boîtes aux transformations non uniforme, des plans, etc.
-
+    \\ \\
     La physique est ensuite calculée en utilisant une approche simplifiée des
     équations \emph{cinématiques} et des équations du \emph{principe fondamental de la dynamique}
     (\emph{deuxième loi de Newton}).
@@ -109,71 +109,71 @@
     en collision. Voici comment nous calculons la réponse à la collision
     en utilisant les concepts de base de la physique des corps rigides.
 
-    \begin{multicols}{2}  % Start two-column layout
-        
+    \begin{multicols}{2}
+
         \paragraph{Norme de la collision}
         La norme de la collision entre les deux corps est donnée par un vecteur
         normal à la surface de collision. Si les corps ont une normale de
         collision définie, cette norme est utilisée dans les calculs suivants.
+    
+        \nomenclature{$\mathbf{n}$}{Vecteur normal à la surface de collision}
+        \nomenclature{$\mathbf{\lambda}_A$}{Normale de l'objet $A$}
+        \nomenclature{$\mathbf{\lambda}_B$}{Normale de l'objet $B$}
         
         \begin{equation}
         \mathbf{n} = \mathbf{\lambda}_A \cdot \mathbf{\lambda}_B
         \end{equation}
-        
+    
         \paragraph{Vitesse relative}
         La vitesse relative des deux objets rigides \( A \) et \( B \) est calculée
         comme la différence entre leurs vitesses respectives :
+    
+        \nomenclature{$\mathbf{v}_{\text{relative}}$}{Vitesse relative entre deux objets}
+        \nomenclature{$\mathbf{v}_A$}{Vitesse de l'objet $A$}
+        \nomenclature{$\mathbf{v}_B$}{Vitesse de l'objet $B$}
         
         \begin{equation}
         \mathbf{v}_{\text{relative}} = \mathbf{v}_B - \mathbf{v}_A
         \end{equation}
-
-        où \( \mathbf{v}_A \) et \( \mathbf{v}_B \) sont les vitesses des objets
-        \( A \) et \( B \) respectivement.
-        
+    
         \paragraph{Vitesse relative selon la direction normale}
-        La vitesse relative des objets le long de la direction de la norme de la
-        collision est donnée par le produit scalaire :
+        \nomenclature{$v_{\text{normal}}$}{Vitesse relative projetée sur la normale de collision}
         
         \begin{equation}
         v_{\text{normal}} = \mathbf{v}_{\text{relative}} \cdot \mathbf{n}
         \end{equation}
-        
-        Si cette vitesse est positive, cela signifie que les objets s'éloignent et
-        qu'il n'y a pas de collision à traiter.
-        
+    
         \paragraph{Coefficient de restitution (élasticité de la collision)}
-        Le coefficient de restitution \( e \) est une mesure de l'élasticité de la
-        collision. Pour cet exemple, nous avons \( e = 0.02 \), ce qui signifie que
-        la collision est presque inélastique.
+        \nomenclature{$e$}{Coefficient de restitution}
         
         \begin{equation}
         e = 0.02
         \end{equation}
-        
-        \columnbreak  % Start second column
-        
+    
+        \columnbreak
+    
         \paragraph{Calcul de l'impulsion}
-        L'impulsion résultante de la collision est calculée en utilisant la formule
-        suivante :
+        \nomenclature{$I_{scalaire}$}{Quantité scalaire représentant l'impulsion échangée}
+        \nomenclature{$m_A$}{Masse de l'objet $A$}
+        \nomenclature{$m_B$}{Masse de l'objet $B$}
         
         \begin{equation}
-        \text{impulsion scalaire} = \frac{(1 + e) \cdot v_{\text{normal}}}{m_A^{-1} + m_B^{-1}}
+        I_{scalaire} = \frac{(1 + e) \cdot v_{\text{normal}}}{m_A^{-1} + m_B^{-1}}
         \end{equation}
-        
-        où \( m_A \) et \( m_B \) sont les masses respectives des objets.
-        
+    
         \paragraph{Calcul du vecteur d'impulsion}
-        Le vecteur d'impulsion est donné par :
+        \nomenclature{$\mathbf{I}$}{Vecteur d'impulsion appliqué pendant la collision}
         
         \begin{equation}
-        \mathbf{I} = \text{impulsion scalaire} \cdot \mathbf{n}
+        \mathbf{I} = I_{scalaire} \cdot \mathbf{n}
         \end{equation}
-        
+    
         \paragraph{Application de l'impulsion et du couple}
-        Une fois l'impulsion calculée, elle est appliquée aux corps respectifs en tenant
-        compte de leurs centres de masse et de l'effet du couple. Les corrections de
-        position sont appliquées pour tenir compte de la pénétration des objets.
+        \nomenclature{$\mathbf{r}_A$}{Vecteur du centre de masse de $A$ au point d’impact}
+        \nomenclature{$\mathbf{r}_B$}{Vecteur du centre de masse de $B$ au point d’impact}
+        \nomenclature{$\mathbf{C}_A$}{Centre de masse de $A$}
+        \nomenclature{$\mathbf{C}_B$}{Centre de masse de $B$}
+        \nomenclature{$\mathbf{P}_{\text{impact}}$}{Point d’impact}
         
         \begin{equation}
         \mathbf{r}_A = \mathbf{P}_{\text{impact}} - \mathbf{C}_A
@@ -187,14 +187,10 @@
         \begin{equation}
         \text{Couple sur B} = \mathbf{r}_B \times \mathbf{I}
         \end{equation}
-
-        où \( \mathbf{C}_A \) et \( \mathbf{C}_B \) sont les centres de masse des
-        objets \( A \) et \( B \), et \( \mathbf{P}_{\text{impact}} \) est le point
-        d'impact de la collision.
-        
+    
         \paragraph{Application de l'impulsion}
-        Finalement, l'impulsion est appliquée à chaque corps, en ajustant leur vitesse et
-        leur orientation en fonction des calculs de couple et des corrections de position.
+        \nomenclature{$\mathbf{v}_A'$}{Nouvelle vitesse de l’objet $A$}
+        \nomenclature{$\mathbf{v}_B'$}{Nouvelle vitesse de l’objet $B$}
         
         \begin{equation}
         \mathbf{v}_A' = \mathbf{v}_A + \mathbf{I} \cdot m_A^{-1}
@@ -202,47 +198,44 @@
         \begin{equation}
         \mathbf{v}_B' = \mathbf{v}_B - \mathbf{I} \cdot m_B^{-1}
         \end{equation}
-
-        où \( \mathbf{v}_A' \) et \( \mathbf{v}_B' \) sont les nouvelles vitesses des
-        objets \( A \) et \( B \) après la collision.
-        
+    
         \paragraph{Correction de la pénétration}
-        La correction pour la pénétration des objets est appliquée si la profondeur de
-        pénétration \( \delta \) est supérieure à zéro :
+        \nomenclature{$\delta$}{Profondeur de pénétration}
+        \nomenclature{$\mathbf{C}$}{Correction appliquée pour compenser la pénétration}
+        \nomenclature{$\mathbf{P}_A$}{Position initiale de l'objet $A$}
+        \nomenclature{$\mathbf{P}_B$}{Position initiale de l'objet $B$}
+        \nomenclature{$\mathbf{P}_A'$}{Nouvelle position de l'objet $A$}
+        \nomenclature{$\mathbf{P}_B'$}{Nouvelle position de l'objet $B$}
         
         \[
         \mathbf{C} = \delta \cdot \mathbf{n}
         \]
-        
-        Si \( \delta > 0 \), la position des objets est ajustée en conséquence :
-        
         \begin{equation}
         \mathbf{P}_A' = \mathbf{P}_A - \mathbf{C}
         \end{equation}
         \begin{equation}
         \mathbf{P}_B' = \mathbf{P}_B + \mathbf{C}
         \end{equation}
-        
+    
         \paragraph{Calcul du couple et de l'inertie}
-        Pour chaque corps, le couple résultant de l'impulsion est calculé en tenant compte
-        de l'inertie locale et de la rotation de chaque corps autour de son centre de masse.
-        L'inertie locale d'un objet rigide de forme cubique est donnée par la matrice d'inertie :
-        
+        \nomenclature{$\mathbf{I}_{\text{locale}}$}{Matrice d’inertie locale}
+        \nomenclature{$w$}{Largeur de l'objet}
+        \nomenclature{$h$}{Hauteur de l'objet}
+        \nomenclature{$d$}{Profondeur de l'objet}
+    
         \begin{equation}
         \mathbf{I}_{\text{locale}} = \frac{m}{12} \begin{bmatrix} h^2 + d^2 & 0 & 0 \\ 0 & w^2 + d^2 & 0 \\ 0 & 0 & w^2 + h^2 \end{bmatrix}
         \end{equation}
-        
-        où \( h \), \( w \), et \( d \) sont respectivement la hauteur, la largeur et la profondeur de l'objet, et \( m \) est sa masse.
-        
+    
         \paragraph{Accélération angulaire}
-        Le couple généré entraîne une accélération angulaire selon la relation :
+        \nomenclature{$\mathbf{\alpha}$}{Accélération angulaire}
+        \nomenclature{$\mathbf{T}$}{Couple appliqué}
+        \nomenclature{$\mathbf{I}^{-1}$}{Inverse de la matrice d’inertie}
         
         \begin{equation}
         \mathbf{\alpha} = \mathbf{I}^{-1} \cdot \mathbf{T}
         \end{equation}
-        
-        où \( \mathbf{T} \) est le couple et \( \mathbf{I}^{-1} \) est la matrice d'inertie inverse.
-        
+    
     \end{multicols}
 
 \subsubsection{Conception de l'arbre de données}
@@ -255,10 +248,10 @@
     Cela permet de créer une hiérarchie d'objets, où chaque objet peut
     être transformé indépendamment tout en étant affecté par les
     transformations de ses parents.
-
+    \\ \\
     Ce modèle d'arbre de données est inspiré du moteur de jeu Godot, qui
     utilise également un arbre de n\oe{}uds pour représenter une scène.
-
+    \\ \\
     Les n\oe{}uds de l'arbre sont génériques, ce qui garantit un stockage
     efficace des données et une gestion facile des objets de la scène (figure \ref{fig:node_structure}).
 
@@ -281,7 +274,7 @@
     Pour assurer une bonne organisation du code et une gestion efficace
     des objets de la scène, nous avons utilisé un système de classes capable
     de gérer l'héritage.
-    
+    \\ \\
     Le code source du moteur est précompilé par un outil développé par nos
     soins, qui permet de générer un code source en C à partir d'un fichier
     classe inspiré de la syntaxe de \emph{C++}. Les classes ainsi générées
@@ -289,10 +282,10 @@
     généré par l'outil. Cela permet de créer un code source propre et
     facilement lisible, tout en assurant une bonne gestion de la mémoire et des
     performances.
-
+    \\ \\
     Un exemple des classes utilisées par l'outil de précompilation est
     présenté dans le listing \ref{lst:class_template}.
-
+    \\ \\
     Le code source généré utilise les arguments variadiques et prend en charge
     les promotions automatiques des types.
 \subsubsection{Conception des entrées sorties}
@@ -306,7 +299,7 @@
     Les ressources du moteurs sont chargées à l'aide de diverses
     fonctions d'entrée/sortie, qui permettent de charger des fichiers
     de différents formats. Voici une liste non exhaustive des formats
-    de fichiers pris en charge par le moteur :
+    de fichiers pris en charge par le moteur :\\
     \begin{itemize}
         \item \textbf{OBJ} : format de fichier 3D utilisé pour stocker
         des modèles 3D. Il est simple et largement utilisé dans
@@ -326,7 +319,7 @@
         \item \textbf{FS} : format de fichier shader utilisé pour stocker
         des shaders de fragment. \cite{glsl}
         \item \textbf{VS} : format de fichier shader utilisé pour stocker
-        des shaders de vertex. \cite{glsl}
+        des shaders de vertex. \cite{glsl}\\
     \end{itemize}
     
     Les ressources sont stockées en cache pour éviter de les recharger
@@ -347,6 +340,6 @@
     déconnexions des clients, ainsi que les erreurs de communication.
     Le serveur de démonstration que nous avons mis en place est capable de
     gérer une dizaine de commandes différentes (table \ref{tab:raptiquax_requests}).
-
+    \\ \\
     Comme preuve de concept, nous avons mis en place un serveur pour \og \emph{FPS Chess} \fg{}, un
     mini-jeu fps multijoueur qui gère plusieurs parties de deux joueurs en même temps.

@@ -1,0 +1,27 @@
+Node[m0,0,0r0,0,0s1,1,1a1v1]{script_no_fade_init,NULL,NULL}:7
+Node:2
+Node[m0,4,-26s0.04,0.04,0.04]{script_cc_drone_init,script_cc_drone_update,NULL}:2
+Model(assets/models/Drone/drone.obj)
+Area(6,1)
+SphereCShape[s30,30,30]
+:0
+Node:3
+Node[m0,4,-26]
+Node[m0,4,-40]
+Node[m20,4,-30]
+Node[m0.1,0,0.1r0,0,0s1,1,1a1v1]:1
+StaticBody(1)
+PlaneCShape[m0,0,0r0,0,0s1,1,1a1v1]
+[m0,0,0r0,0,0s1,1,1a1v1]:1
+TexturedMesh(assets/textures/texture.png)[m0,0,0r180,0,0s5,5,5a1v1]
+Skybox(assets/textures/skybox/right.jpg,assets/textures/skybox/left.jpg,assets/textures/skybox/top.jpg,assets/textures/skybox/bottom.jpg,assets/textures/skybox/front.jpg,assets/textures/skybox/back.jpg)[m0,0,0r0,0,0s1,1,1a1v1]
+PointLight(1,1,1,0.03,0,1,0.09,0.032)[m0,5,2r0,0,0s1,1,1a1v1]
+Scene(assets/scenes/claude_chappe/player.scene)[m0,2,10]
+ImageFrame(0%,0%,48p,48p,cc,assets/textures/cursor.png)
+Node{NULL,open_close_menu,NULL}:1
+Node[a0v0]:1
+Frame(0w,0h,60w,80h,ccn,[assets/textures/windowskin/Window.png,assets/fonts/Orbitron-Medium.ttf,32,#ffffffff]):1
+Frame(5h,5h,90h,90h,lts):1
+Frame(5w,1h,90w,18h,ltn):1
+Button{NULL,NULL,return_to_main_menu}:1
+Label("Retour au menu",cc)

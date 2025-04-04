@@ -1,5 +1,5 @@
 Node:8
-Node:24
+Node:23
 Model(assets/models/ClaudeChappe/amphi.obj)
 Model(assets/models/ClaudeChappe/couloirs.obj)
 Model(assets/models/ClaudeChappe/hub.obj)
@@ -21,7 +21,6 @@ Model(assets/models/ClaudeChappe/salle_classe_haut10.obj)
 Model(assets/models/ClaudeChappe/salle_reu01.obj)
 Model(assets/models/ClaudeChappe/salle_reu02.obj)
 Model(assets/models/ClaudeChappe/toilettes.obj)
-Model(assets/models/ClaudeChappe/plateforme_parcours.obj)
 Model(assets/models/ClaudeChappe/salle_secrete1.obj)
 Model(assets/models/ClaudeChappe/salle_secrete2.obj)
 Node:50

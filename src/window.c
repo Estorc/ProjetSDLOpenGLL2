@@ -101,6 +101,12 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
         return -1;
     }
 
+    if (Mix_AllocateChannels(64) < 0) {
+        PRINT_ERROR("Could not allocate channels\n");
+        PRINT_ERROR("Mix_AllocateChannels: %s\n", Mix_GetError());
+        return -1;
+    }
+
     // Disable deprecated functions
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);

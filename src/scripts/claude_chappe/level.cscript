@@ -50,7 +50,13 @@ NEW_SCRIPT(script_cc_level_update)
                 sprintf(text, "Chapitre 1 : Que la lumière soit !\n\n - Récupérer la lampe torche");
                 break;
             case 1:
-                sprintf(text, "Chapitre 2 : La clé perdue !\n\n - Récupérer la clé du serveur principal");
+                sprintf(text, "Chapitre 2 : La clé perdue !\n\n - Récupérer la clé du serveur principal\ndans l'amphithéâtre");
+                break;
+            case 2:
+                sprintf(text, "Chapitre 3 : Le serveur principal !\n\n - Rechercher une issue vers le\nserveur principal");
+                break;
+            case 3:
+                sprintf(text, "Chapitre 4 : La sortie ?!\n\n - Utilisez l'ascenseur pour quitter le bâtiment");
                 break;
             default:
                 break;
@@ -58,10 +64,11 @@ NEW_SCRIPT(script_cc_level_update)
         label->flags |= NODE_ACTIVE;
         label->flags |= NODE_VISIBLE;
         label::set_text(text);
-        frame->label->displayLength = 0;
+        frame->label->displayLength = 1;
         this->attribute[3].i = strlen(text);
         this->attribute[5].b = false;
         this->attribute[6].i = 10;
+        play_sfx("assets/audio/sfx/siren.mp3", MIX_MAX_VOLUME, 0);
     }
 
     if (frame->label->displayLength < this->attribute[3].i && this->attribute[6].i) {
@@ -87,19 +94,19 @@ NEW_SCRIPT(script_cc_level_update)
             play_sfx(sfx, 20, 0);
         }
     }
+
+    if (!frame->label->displayLength) {
+        label->flags &= ~NODE_ACTIVE;
+        label->flags &= ~NODE_VISIBLE;
+    }
 END_SCRIPT(script_cc_level_update)
 
 NEW_SCRIPT(cc_flickering_light)
     SET_ATTRIBUTES_COUNT(1);
     PointLight * light = this->object;
     if (SDL_GetTicks() - this->attribute[0].i > 100) {
-        light->constant = random_float(0.0f, 20.0f);
+        light->constant = random_float(0.0f, 10.0f);
         this->attribute[0].i = SDL_GetTicks();
-        if (random_int(0, 2) == 0) {
-            this->flags &= ~NODE_LIGHT_ACTIVE;
-        } else {
-            this->flags |= NODE_LIGHT_ACTIVE;
-        }
     }
 END_SCRIPT(cc_flickering_light)
 
@@ -112,13 +119,8 @@ NEW_SCRIPT(cc_level_flickering_light)
     PointLight * light = this->object;
     if (this->attribute[1].node && this->attribute[1].node->attribute[0].b) {
         if (SDL_GetTicks() - this->attribute[0].i > 100) {
-            light->constant = random_float(0.0f, 20.0f);
+            light->constant = random_float(0.0f, 10.0f);
             this->attribute[0].i = SDL_GetTicks();
-            if (random_int(0, 2) == 0) {
-                this->flags &= ~NODE_LIGHT_ACTIVE;
-            } else {
-                this->flags |= NODE_LIGHT_ACTIVE;
-            }
         }
     } else {
         this->flags &= ~NODE_LIGHT_ACTIVE;
