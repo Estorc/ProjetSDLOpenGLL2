@@ -15,7 +15,7 @@ aniso 0.000000
 anisor 0.000000
 map_Kd plane_divided_DefaultMaterial_BaseColor.jpg
 map_Pr plane_divided_DefaultMaterial_Roughness.jpg
-map_Bump plane_divided_DefaultMaterial_Normal.jpg
+map_Bump -bm 1.000000 plane_divided_DefaultMaterial_Normal.jpg
 
 newmtl Dark_wood
 Ks 0.500000 0.500000 0.500000
@@ -31,22 +31,7 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 map_Kd wood__diffuse.jpg
-map_Bump wood__normal.jpg
-
-newmtl Material
-Kd 0.800000 0.800000 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.500000
-d 1.000000
-illum 2
-Pr 0.500000
-Pm 0.000000
-Ps 0.000000
-Pc 0.000000
-Pcr 0.030000
-aniso 0.000000
-anisor 0.000000
+map_Bump -bm 1.000000 wood__normal.jpg
 
 newmtl Plastic_white_material
 Ke 0.000000 0.000000 0.000000
@@ -62,25 +47,26 @@ anisor 0.000000
 map_Kd plastic07_diffuse.jpg
 map_Pm plastic_metallic.jpg
 map_Ks plastic_specular.jpg
-map_Bump plastic_normal_opengl.jpg
+map_Bump -bm 1.000000 plastic_normal_opengl.jpg
 
-newmtl plastic_bleu_foncé_amphi
-Kd 0.000778 0.004342 0.046442
+newmtl Wet_water_cave_rock_cliff_wall
+Kd 0.800000 0.800000 0.800000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
-Ni 1.500000
+Ni 1.450000
 d 1.000000
-illum 3
-Pr 0.500000
-Pm 1.000000
+illum 2
 Ps 0.000000
 Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Pm rock_metallic.tga
+map_Pr rock_roughness.tga
+map_Bump -bm 0.250000 rock_normal.tga
 
-newmtl plastic_noir
-Kd 0.000000 0.000000 0.000000
+newmtl plastic_bleu_foncé_amphi
+Kd 0.000778 0.004342 0.046442
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
