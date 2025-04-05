@@ -9,10 +9,9 @@ typedef struct Camera_u Camera_t ;
 typedef struct Player_u Player_t ;
 typedef struct Dictionary_u Dictionary_t ; 
 typedef struct Map_u Map_t ; 
-typedef struct Scene_u Scene_t ;
+typedef struct Scene_u Scene_t ; 
 typedef struct SceneManager_u SceneManager_t ; 
 
-#include "lib.h" 
 
 // fonctions manip scene desktop
 typedef enum DESKTOP_Event_u {D_LOADING, D_BLIS, D_CMD} DESKTOP_Event_t ;

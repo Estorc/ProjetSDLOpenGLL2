@@ -6,7 +6,7 @@
 #include "../include/camera.h"
 #include "../include/render.h"
 #include "../include/scene.h"
-#include "../include/desktop.h"
+#include "../include/gui.h"
 #include "../include/text.h"
 #include "../include/dictionary.h"
 #include "../include/texture_loader.h"
@@ -52,53 +52,41 @@ void DESKTOP_load(Scene_t *self) {
         destroy_dictionary(&self->data);
         return ;
     }
-    info->len = 4;
     info->end = FALSE ;
 
     dict->set(dict, "info", info, free_cb);
 
+
+    // Création font (TTF_Font) 
+    TTF_Font * font1 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 18) ;
+    TTF_Font * font2 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 20) ;
+    TTF_Font * font3 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 22) ;
+    
+    List_t * listFont = create_list(TTF_CloseFont_cb) ;
+    listFont->stack(listFont, font1);
+    listFont->stack(listFont, font2);
+    listFont->stack(listFont, font3);
+    
+    dict->set(dict, "listFont", listFont, destroy_list_cb);
+
+
     // Création du bureau (Desktop_t)
-    Desktop_t *desktop = create_desktop("intro-game/assets/backgroundDesktopScene.png", "intro-game/assets/objectsDesktopScene.png", "intro-game/data/donneesObjetsDesktopScene.csv", NB_ELEM_DESKTOP_SCENE);
+    Desktop_t * desktop = create_desktop() ;
     if (desktop == NULL) {
         fprintf(stderr, "Erreur: création de `desktop` échouée\n");
         destroy_dictionary(&self->data);
         return ;
     }
-    // Initialisation element du bureau (DesktopElement_t)
-    desktop->elements[3].hidden = TRUE ;    // Annule affichage icone message d'erreur  
 
+    SDL_Color textColor = {255, 255, 255, SDL_ALPHA_OPAQUE} ;
+    SDL_Color bgColor = {255, 0, 0, SDL_ALPHA_OPAQUE} ;
+    init_desktop_main_window(&desktop->mainWindow, (WinTheme_t){NULL, textColor, bgColor});
+    
     dict->set(dict, "desktop", desktop, destroy_desktop_cb);
+    
 
-    // Création font (TTF_Font) 
-    TTF_Font * font = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 12) ;
-    if (font == NULL) {
-        fprintf(stderr, "Erreur open font : intro-game/assets/PressStart2P-Regular.ttf\n");
-        destroy_dictionary(&self->data);
-        return ;
-    } 
-
-    dict->set(dict, "font", font, TTF_CloseFont_cb);
-
-    // Création tableau de text (`Text_t`) 
-    int nbText = 1 ;
-    Dictionary_t * text_dict = create_dictionnary() ;
-    if (!existe(text_dict)) {
-        fprintf(stderr, "Erreur malloc tableau text scene DESKTOP : %s\n", SDL_GetError());
-        destroy_dictionary(&self->data);
-        return ;
-    }
-
-    // création des text 
-    SDL_Color blanc = {255, 255, 255, 255} ;
-    SDL_Rect position = {50, WINDOW_HEIGHT / 2, 100, 100} ;
-    Text_t * text1 = create_text ("je suis nul", font, blanc, position) ;
-
-    SDL_Color rouge = {150, 0, 0, 255} ;
-    text_change_hollow(text1, TRUE, rouge, BOTTOM_LEFT);
-
-    text_dict->set(text_dict, "text1", text1, destroy_text_cb);
-
-    dict->set(dict, "text_dict", text_dict, destroy_dictionary_cb);
+    info->startTime = SDL_GetTicks() ;
+    info->currentTime = info->startTime ;
 
     printf("[INFO] : Chargement des données DESKTOP réussi\n");
 }
@@ -115,7 +103,7 @@ void DESKTOP_load(Scene_t *self) {
  * 
  * @param self Pointeur vers la structure `Scene_t` contenant les données de la scène.
  * @return int Retourne `1` en cas de succès, ou `0` si `self` est `NULL`.
- */
+ */ 
 void DESKTOP_unLoad(Scene_t *self) {
     if (self == NULL) {
         fprintf(stderr, "Erreur: `self` est NULL\n");
@@ -137,7 +125,6 @@ void DESKTOP_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * m
 
     InfoScene_t * info = self->data->get(self->data, "info") ;
     Desktop_t * desktop = self->data->get(self->data, "desktop") ;
-    int iconClicked ;
     
     while (SDL_PollEvent(event)) {
         switch (event->type) {
@@ -161,19 +148,19 @@ void DESKTOP_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * m
                 }
                 break;
             case SDL_MOUSEBUTTONDOWN :
-                iconClicked = element_update(desktop, event);
-                if (iconClicked == ICON_GAME) {
-                    request_scene_change(manager, "LEVEL1");
-                }
+                // element_update(desktop, event);
+                // if (iconClicked == ICON_GAME) {
+                //     request_scene_change(manager, "LEVEL1");
+                // }
                 break;
             case SDL_MOUSEBUTTONUP :
-                iconClicked = element_update(desktop, event);
-                if (iconClicked == ICON_GAME) {
-                    request_scene_change(manager, "LEVEL1");
-                }
+                // element_update(desktop, event);
+                // if (iconClicked == ICON_GAME) {
+                //     request_scene_change(manager, "LEVEL1");
+                // }
                 break;
             case SDL_MOUSEMOTION : 
-                move_element(desktop, event);
+                // move_element(desktop, event);
                 break;
             default : 
                 break;
@@ -184,9 +171,7 @@ void DESKTOP_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * m
 
 void DESKTOP_update (Scene_t * self, SceneManager_t * manager) {
 
-    Dictionary_t * text_dict = self->data->get(self->data, "text_dict") ;
-    Text_t * text1 = text_dict->get(text_dict, "text1") ;
-    text_update(text1);
+    
 
     return; 
 }
@@ -196,9 +181,4 @@ void DESKTOP_render (Scene_t * self) {
 
     Desktop_t * desktop = self->data->get(self->data, "desktop") ;
     draw_desktop(desktop);
-
-    Dictionary_t * text_dict = self->data->get(self->data, "text_dict") ;
-    Text_t * text1 = text_dict->get(text_dict, "text1") ;
-    draw_text(text1);
-
 }

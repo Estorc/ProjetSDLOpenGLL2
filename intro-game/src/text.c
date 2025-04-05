@@ -1,7 +1,7 @@
 #include "../include/lib.h"
 #include "../include/main.h"
 #include "../include/window.h"
-#include "../include/desktop.h"
+#include "../include/gui.h"
 #include "../include/render.h"
 #include "../include/text.h"
 #include "../include/dictionary.h"

@@ -6,7 +6,7 @@
 #include "../include/camera.h"
 #include "../include/render.h"
 #include "../include/scene.h"
-#include "../include/desktop.h"
+#include "../include/gui.h"
 #include "../include/text.h"
 #include "../include/dictionary.h" 
 #include "../include/texture_loader.h"

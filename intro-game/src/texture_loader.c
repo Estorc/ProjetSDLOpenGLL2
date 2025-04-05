@@ -188,7 +188,9 @@ void texture_list_update_from_file (List_t * list, const char * dataPath) {
     }
 }
 
-
+/**
+ * Creer une liste de texture a partir d'un fichier et les stock dans une liste.
+ */
 int load_textures_from_file (List_t * list, const char * dataPath) {
 
     FILE * file = fopen(dataPath, "r") ;

@@ -6,7 +6,7 @@
 #include "player.h"
 #include "map.h"
 #include "camera.h" 
-#include "desktop.h" 
+#include "gui.h" 
 
 #define TEXT_ANIM_SPEED 6
 

@@ -340,6 +340,7 @@ List_t * create_list (void (*destroy) (void *)) {
     list->item = list_item ;
     list->remove = list_remove ;
     list->set = list_set ;
+    list->stack = list_stack ;
     list->push = list_push ;
     list->pop = list_pop ;
     list->destroy = destroy ;
@@ -348,6 +349,9 @@ List_t * create_list (void (*destroy) (void *)) {
 }
 
 
+/**
+ * Detruis la structure elle meme et tout ses éléments.
+ */
 void destroy_list (List_t ** list) {
 
     if (existe(list) && existe(*list)) {

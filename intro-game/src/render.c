@@ -1,11 +1,9 @@
 #include "../include/lib.h"
 #include "../include/main.h"
 #include "../include/texture_loader.h" 
-#include "../include/map.h"
-#include "../include/camera.h" 
-#include "../include/player.h"
 #include "../include/render.h"
 #include "../include/text.h"
+#include "../include/list.h"
 
 
 void draw_rect_filled (SDL_Rect rect, SDL_Color color) {
@@ -131,24 +129,53 @@ void draw_background (Map_t * map, Camera_t * camera) {
 
 
 /**
+ * Affiche le widget.
+ */
+void draw_window (Window_t * window) {
+
+    SDL_RenderCopy(renderer, window->background, NULL, &window->position);
+
+    SDL_Rect winPosition = window->position ;
+    Widget_t * tabWidget = window->tabWidget ;
+    for (int i = 0; i < window->widgetCount; i++) {
+
+        Widget_t widget = tabWidget[i] ;
+        switch(widget.type) {
+
+        case WIDGET_ICON :;
+            SDL_Rect dstrect = {
+                widget.relPosition.x + window->position.x, 
+                widget.relPosition.y + window->position.y, 
+                widget.relPosition.w, 
+                widget.relPosition.h
+            };
+            SDL_RenderCopy(renderer, window->spriteSheet, &widget.icon.srcrect, &dstrect);
+
+            if (widget.icon.isClicked) {
+                SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+                SDL_SetRenderDrawColor(renderer, 0, 0, 150, 100);
+                SDL_RenderDrawRect(renderer, &dstrect);
+            }
+            break;
+
+        default : 
+            break;
+        }
+    }
+}
+/**
  * Pour afficher les elements relativement a la fenetre et non pas a la camera, passée NULL a camera.
  */
 void draw_desktop (Desktop_t * desktop) {
 
-    SDL_RenderCopy(renderer, desktop->background, NULL, NULL);
+    draw_window(&desktop->mainWindow);
 
-    for (int i = 0; i < desktop->nbElem; i++) {
-        // affiche l'element si il est visible
-        if (desktop->elements[i].hidden == FALSE) {
-            SDL_RenderCopy(renderer, desktop->elementSpritesheet, &desktop->elements[i].srcrect, &desktop->elements[i].position);
-
-            if (desktop->elements[i].clicked == TRUE) {
-                SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-                SDL_SetRenderDrawColor(renderer, 231, 244, 244, 100);
-
-                SDL_RenderFillRect(renderer, &desktop->elements[i].position);
-            }
-        }
+    List_t * listWindow = desktop->listWindow ;
+    for (int i = 0; i < listWindow->size; i++) {
+        Window_t * window = listWindow->item(listWindow, i) ;
+        
+        if (window->isActive)
+            draw_window(window);
     }
 }
 

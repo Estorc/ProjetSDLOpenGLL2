@@ -5,8 +5,8 @@
 #include "../include/map.h"
 #include "../include/camera.h"
 #include "../include/render.h"
+#include "../include/gui.h"
 #include "../include/scene.h"
-#include "../include/desktop.h"
 #include "../include/dictionary.h"
 
 
