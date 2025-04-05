@@ -4,7 +4,7 @@
 #include "lib.h"
 #include "../src/scene/BOOT.h"
 #include "../src/scene/DESKTOP.h"
-#include "../include/LEVEL1.h"
+#include "../src/scene/LEVEL1.h"
 
 #define MAX_SCENES 10
 
