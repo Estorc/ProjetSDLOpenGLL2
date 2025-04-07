@@ -1,0 +1,5 @@
+Node:1
+StaticBody(1)
+BoxCShape[m0,2.5,-1.5s0.1,2.5,1.5]{NULL,NULL,NULL}
+{script_cc_locked_door_init,script_cc_door_update,script_cc_door_signal}:1
+Model(assets/models/ClaudeChappe/porte_classe_basique.obj)

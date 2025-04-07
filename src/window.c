@@ -90,6 +90,11 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
         return -1;
     }
 
+    if (init_video() == 0) {
+        fprintf(stderr, "Failed to open audio device: %s\n", SDL_GetError());
+        return -1;
+    }
+
     if (TTF_Init() < 0) {
         PRINT_ERROR("Failed to initialize the SDL2 TTF library\n");
         return -1;
@@ -101,7 +106,7 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
         return -1;
     }
 
-    if (Mix_AllocateChannels(64) < 0) {
+    if (Mix_AllocateChannels(256) < 0) {
         PRINT_ERROR("Could not allocate channels\n");
         PRINT_ERROR("Mix_AllocateChannels: %s\n", Mix_GetError());
         return -1;

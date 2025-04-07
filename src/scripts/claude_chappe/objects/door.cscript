@@ -26,15 +26,33 @@ NEW_SCRIPT(script_cc_door_init)
     sprintf(locked_text, "La porte est verrouillée !");
 END_SCRIPT(script_cc_door_init)
 
+NEW_SCRIPT(script_cc_asimov_door_init)
+    script_cc_door_init(this, NULL);
+    this->attribute[1].i = 1;
+END_SCRIPT(script_cc_asimov_door_init)
+
+NEW_SCRIPT(script_cc_locked_door_init)
+    SET_ATTRIBUTES_COUNT(4);
+    script_cc_door_init(this, NULL);
+    this->attribute[1].i = 2;
+    deferred_table_get(Game.storage, "Game::level", &this->attribute[3].node);
+END_SCRIPT(script_cc_locked_door_init)
+
 NEW_SCRIPT(script_cc_door_update)
     Node * label = this->attribute[0].node;
     if (label) {
         label->flags &= ~NODE_ACTIVE;
         label->flags &= ~NODE_VISIBLE;
     }
-    if (this->attribute[1].i) float_approach(&this->rot[1], 90.0f, 0.1f);
+    if (this->attribute[1].i == 1) float_approach(&this->rot[1], 90.0f, 0.1f);
     else float_approach(&this->rot[1], 0.0f, 0.1f);
 END_SCRIPT(script_cc_door_update)
+
+NEW_SCRIPT(script_cc_key_door_update)
+    script_cc_door_update(this, NULL);
+    if (this->attribute[1].i == 2 && this->attribute[3].node && this->attribute[3].node->attribute[4].i == 2) this->attribute[1].i = 0;
+    if (this->attribute[3].node && this->attribute[3].node->attribute[4].i != 2) this->attribute[1].i = 2;
+END_SCRIPT(script_cc_key_door_update)
 
 NEW_SCRIPT(script_cc_door_chapper_update)
     Node * label = this->attribute[0].node;

@@ -91,12 +91,14 @@ NEW_SCRIPT(script_cc_player_signal)
 			switch (sigId)
 			{
 			case 5:
-				play_sfx("assets/audio/sfx/chapper_kill.wav", MIX_MAX_VOLUME, 0);
-				*stopped = true;
-				*menu_open = true;
-				glm_vec3_zero(player->velocity);
-				other->parent->attribute[3].i = 2;
-				other->parent->attribute[4].node = this->children[0];
+				if (other->parent->attribute[3].i) {
+					play_sfx("assets/audio/sfx/chapper_kill.wav", MIX_MAX_VOLUME, 0);
+					*stopped = true;
+					*menu_open = true;
+					glm_vec3_zero(player->velocity);
+					other->parent->attribute[3].i = 2;
+					other->parent->attribute[4].node = this->children[0];
+				}
 				break;
 
 			case 6:

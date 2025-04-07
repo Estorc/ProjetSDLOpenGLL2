@@ -6,6 +6,7 @@
 #include <storage/queue.h>
 #include <utils/deferred.h>
 #include <io/audio.h>
+#include <io/video.h>
 #include <render/lighting.h>
 #include <buffer.h>
 #include <window.h>
@@ -82,6 +83,22 @@ NEW_SCRIPT(script_cc_intro_btn)
     }
 END_SCRIPT(script_cc_intro_btn)
 
+NEW_SCRIPT(script_cc_skip_video_btn)
+    GET_SIGNAL();	
+    switch (signal) {
+        case SIGNAL_BUTTON_CLICKED:
+            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            SDL_SetRelativeMouseMode(SDL_FALSE);
+            stop_video();
+            break;
+        case SIGNAL_BUTTON_HOVERED:
+            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            break;
+        default:
+            break;
+    }
+END_SCRIPT(script_cc_skip_video_btn)
+
 NEW_SCRIPT(script_cc_intro_screen_init)
     SET_ATTRIBUTES_COUNT(1);
     this->attribute[0].p = Game.mainTree->root->children[0]->object;
@@ -106,3 +123,50 @@ NEW_SCRIPT(script_cc_intro_screen_signal)
             break;
     }
 END_SCRIPT(script_cc_intro_screen_signal)
+
+
+
+
+static bool ended_video = false;
+
+static void video_callback() {
+    ended_video = true;
+}
+
+NEW_SCRIPT(script_cc_intro_video_init)
+    SET_ATTRIBUTES_COUNT(3);
+    this->attribute[1].b = true;
+
+    if (loadVideo("assets/video/intro.mp4") < 0) {
+        this->attribute[1].b = false;
+        PRINT_ERROR("Failed to load video file: %s\n", SDL_GetError());
+    }
+END_SCRIPT(script_cc_intro_video_init)
+
+NEW_SCRIPT(script_cc_intro_video_update)
+    GET_READY_PARAMETERS();
+    Frame * frame = this->object;
+
+    if (this->attribute[1].b && frame->contentTexture) {
+        play_video_async(&frame->contentTexture, video_callback);
+        this->attribute[1].b = false;
+    }
+
+    get_last_frame(frame->contentTexture);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    if (ended_video) {
+        ended_video = false;
+        this->attribute[2].b = true;
+    }
+
+	if (this->attribute[2].b) {
+		Game.window->fadeColor[3] += 1.0f * delta;
+		if (Game.window->fadeColor[3] >= 1.0f)
+            deferred_load_scene("assets/scenes/claude_chappe/level.scene");
+	} else {
+		if (Game.window->fadeColor[3] > 0.0f)
+			Game.window->fadeColor[3] -= 1.0f * delta;
+	}
+END_SCRIPT(script_cc_intro_video_update)

@@ -1,0 +1,2 @@
+Node:1
+ImageFrame(0%,0%,100%,100%,cc,assets/textures/windowskin/Window.png){script_cc_ending_video_init,script_cc_ending_video_update,NULL}

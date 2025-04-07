@@ -23,6 +23,7 @@ MODULES += src/io/shader.o
 MODULES += src/io/osio.o
 MODULES += src/io/audio.o
 MODULES += src/io/dirent.o
+MODULES += src/io/video.o
 
 MODULES += src/render/shaders/ssao.o
 

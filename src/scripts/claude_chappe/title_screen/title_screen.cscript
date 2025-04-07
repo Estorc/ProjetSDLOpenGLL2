@@ -25,7 +25,7 @@ NEW_SCRIPT(title_screen_camera)
 	if (Game.mainTree->root->attribute[0].b) {
 		Game.window->fadeColor[3] += 1.0f * delta;
 		if (Game.window->fadeColor[3] >= 1.0f)
-			deferred_load_scene("assets/scenes/claude_chappe/intro.scene");
+			deferred_load_scene("assets/scenes/claude_chappe/intro_video.scene");
 	} else {
 		if (Game.window->fadeColor[3] > 0.0f)
 			Game.window->fadeColor[3] -= 1.0f * delta;

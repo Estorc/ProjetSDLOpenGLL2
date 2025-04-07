@@ -1,6 +1,7 @@
 MD += -MD
 
 LFLAGS += `sdl2-config --cflags --libs`
+LFLAGS += -lswscale -lavcodec -lavformat -lavutil
 LFLAGS += -lm
 LFLAGS += -Isrc
 LFLAGS += -Iinclude

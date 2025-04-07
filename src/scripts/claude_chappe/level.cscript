@@ -56,7 +56,10 @@ NEW_SCRIPT(script_cc_level_update)
                 sprintf(text, "Chapitre 3 : Le serveur principal !\n\n - Rechercher une issue vers le\nserveur principal");
                 break;
             case 3:
-                sprintf(text, "Chapitre 4 : La sortie ?!\n\n - Utilisez l'ascenseur pour quitter le bâtiment");
+                sprintf(text, "Chapitre 4 : La fuite !\n\n - Échappez à Chapper !!");
+                break;
+            case 4:
+                sprintf(text, "Chapitre 5 : La sortie ?!\n\n - Utilisez l'ascenseur pour quitter le bâtiment");
                 break;
             default:
                 break;
