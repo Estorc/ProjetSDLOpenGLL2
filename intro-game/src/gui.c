@@ -1,10 +1,14 @@
 #include "../include/lib.h"
 #include "../include/main.h"
 #include "../include/texture_loader.h"
+#include "../include/dictionary.h"
 #include "../include/list.h"
 #include "../include/gui.h"
 #include "../include/text.h"
+#include "../include/scene.h"
 
+// id de la liste de fenetre pour differencier chaque fenetre
+static uint8_t windowId = 0 ;
 
 /**
  * Creer une structure de type `Desktop_t`. L'intialisation de ses attributs devra se faire 
@@ -40,7 +44,38 @@ void destroy_desktop(Desktop_t **desktop) {
 
     if (desktop != NULL && existe(desktop)) {
 
+        // Destruction liste de fenetre 
         destroy_list( &(*desktop)->listWindow );
+
+
+        // Destruction bureau 
+        Window_t * window = &(*desktop)->mainWindow ;
+        if ( existe( window->background ) ) {
+
+            SDL_DestroyTexture(window->background);
+            window->background = NULL ;
+        }
+
+        if ( existe( window->spriteSheet ) ) {
+
+            SDL_DestroyTexture(window->spriteSheet);
+            window->spriteSheet = NULL ;
+        }
+
+        if ( existe( window->tabWidget ) ) {
+
+            // Supprime chaque texture et string des widget de type text 
+            for (int i = 0; i < window->widgetCount; i++) {
+                if (window->tabWidget[i].type == WIDGET_TEXT) {
+
+                    SDL_DestroyTexture(window->tabWidget[i].text.texture);
+                    free(window->tabWidget[i].text.string);
+                }
+            }
+
+            free(window->tabWidget);
+            window->tabWidget = NULL ;
+        }
 
         free(*desktop);
         *desktop = NULL ;
@@ -64,6 +99,7 @@ Window_t * create_window () {
     window->tabWidget = NULL ;
     window->widgetCount = 0 ;
     window->isActive = FALSE ;
+    window->isDragged = FALSE ;
     
     return window ;
 }
@@ -88,7 +124,7 @@ void init_desktop_main_window (Window_t * window, WinTheme_t theme ) {
     window->position.w = WINDOW_WIDTH ; 
     window->position.h = WINDOW_HEIGHT ;
     
-    window->widgetCount = 3 ;
+    window->widgetCount = 4 ;
     window->tabWidget = malloc(sizeof(Widget_t) * window->widgetCount) ;
     if (!existe(window->tabWidget)) {
         fprintf(stderr, "Erreur malloc tabWidget : %s\n", SDL_GetError());
@@ -100,6 +136,7 @@ void init_desktop_main_window (Window_t * window, WinTheme_t theme ) {
     window->theme = theme ;
 
     window->isActive = TRUE ;
+    window->isDragged = FALSE ;
 }
 
 
@@ -121,7 +158,7 @@ void load_windows_from_file (List_t * list, char * dataPath, WinTheme_t theme) {
     char buffer[256] ;
     fgets(buffer, sizeof(buffer), file);
 
-    while (fscanf(file, "%s;%s;%s;%d;%d;%d;%d;%d", backgroundPath, spriteSheetPath, widgetsPath, &widgetCount, &x, &y, &w, &h) == 8) {
+    while (fscanf(file, "%[^;];%[^;];%[^;];%d;%d;%d;%d;%d", backgroundPath, spriteSheetPath, widgetsPath, &widgetCount, &x, &y, &w, &h) == 8) {
 
         Window_t * window = create_window() ;
         if (!existe(window)) {
@@ -158,11 +195,15 @@ void load_windows_from_file (List_t * list, char * dataPath, WinTheme_t theme) {
         window->theme = theme ;
 
         window->isActive = FALSE ;
+        window->isDragged = FALSE ;
+
+        window->id = windowId++ ;
 
         list->stack(list, window);
     }
 
     fclose(file);
+
 
     return ;
 }
@@ -185,6 +226,15 @@ void destroy_window (Window_t ** window) {
         }
 
         if ( existe( (*window)->tabWidget ) ) {
+
+            // Supprime chaque texture et string des widget de type text 
+            for (int i = 0; i < (*window)->widgetCount; i++) {
+                if ((*window)->tabWidget[i].type == WIDGET_TEXT) {
+
+                    SDL_DestroyTexture((*window)->tabWidget[i].text.texture);
+                    free((*window)->tabWidget[i].text.string);
+                }
+            }
 
             free((*window)->tabWidget);
             (*window)->tabWidget = NULL ;
@@ -209,9 +259,31 @@ void window_change_theme (Window_t * window, WinTheme_t newTheme) {
     for (int i = 0; i < window->widgetCount; i++) {
         
         if (tab[i].type == WIDGET_TEXT && existe(tab[i].text.string)) {
+            SDL_DestroyTexture(tab[i].text.texture);
             tab[i].text.texture = create_TTF_Texture(newTheme.font, tab[i].text.string, newTheme.textColor) ;
         }
     }
+}
+
+
+void window_add_widget (Window_t * window, Widget_t newWidget) {
+
+    if (!existe(window)) {
+        printf("Impossible d'ajouter un widget, car window inexistant\n");
+        return ;
+    }
+
+    
+    Widget_t * newTab = realloc(window->tabWidget, sizeof(Widget_t) * (window->widgetCount + 1)) ;
+    if (existe(newTab)) {
+        window->tabWidget = newTab ;
+        window->tabWidget[window->widgetCount++] = newWidget ;
+    }
+    else {
+        fprintf(stderr, "Erreur realloc de tabWidget, le newWidget n'a pas pu etre ajouté\n");
+        return ;
+    }
+
 }
 
 
@@ -226,7 +298,6 @@ void init_widgets_from_file (Widget_t * tab, char * dataPath, WinTheme_t theme) 
     int x1, y1, w1, h1 ;
     int x2, y2, w2, h2 ;
     int type ;
-    int cbFunc ;
     
     char buffer[256] ;
     fgets(buffer, sizeof(buffer), file);
@@ -250,14 +321,10 @@ void init_widgets_from_file (Widget_t * tab, char * dataPath, WinTheme_t theme) 
             tab[i].button.srcrect.w = w2 ;
             tab[i].button.srcrect.h = h2 ;
 
-            tab[i].button.isClicked = FALSE ;
-
-            if (fscanf(file, ";%d", &cbFunc) != 1) {
+            if (fscanf(file, ";%d", (int *)&tab[i].button.actionID) != 1) {
                 printf("Erreur fscanf de cbFunc dans init_widgets_from_file\n");
                 return ;
             }
-
-            //init_button_onClick(&tab[i].button.onClick, cbFunc);
             break;
         
         case WIDGET_ICON :
@@ -269,22 +336,16 @@ void init_widgets_from_file (Widget_t * tab, char * dataPath, WinTheme_t theme) 
             tab[i].icon.isClicked = FALSE ;
             tab[i].icon.isDragged = FALSE ;
 
-            if (fscanf(file, ";%d", &cbFunc) != 1) {
+            if (fscanf(file, ";%d", (int *)&tab[i].icon.actionID) != 1) {
                 printf("Erreur fscanf de cbFunc dans init_widgets_from_file\n");
                 return ;
             }
 
-            //init_icon_onClick(&tab[i].icon.onClick, cbFunc);
             break;
 
-        case WIDGET_TEXT :
-            tab[i].text.rect.x = x2 ;
-            tab[i].text.rect.y = y2 ;
-            tab[i].text.rect.w = w2 ;
-            tab[i].text.rect.h = h2 ;
-
+        case WIDGET_TEXT :;
             char text[256] ;
-            if (fscanf(file, ";%s", text) != 1) 
+            if (fscanf(file, ";%[^\n]", text) != 1) 
             {
                 fprintf(stderr, "Erreur fscanf de WIDGET_TEXT dans init_widgets_from_file\n");
                 return ;
@@ -313,93 +374,202 @@ void init_widgets_from_file (Widget_t * tab, char * dataPath, WinTheme_t theme) 
 
 
 
-// /**
-//  * @brief Détecte l'interaction de l'utilisateur avec un élément du bureau.
-//  * 
-//  * Cette fonction vérifie si la souris est positionnée sur un élément du bureau
-//  * et met à jour son état en fonction de l'événement SDL reçu.
-//  * 
-//  * @param desktop Pointeur vers la structure `Desktop_t` contenant les éléments affichés à l'écran.
-//  * @param event Pointeur vers la structure `SDL_Event` représentant l'événement utilisateur (ex: clic souris).
-//  * @return int L'index de l'élément activé (double-cliqué), ou `-1` si aucun élément n'a été exécuté.
-//  * 
-//  * @note La fonction met à jour les attributs `dragged` et `clicked` des éléments en fonction de l'interaction.
-//  */
-// int element_update(Desktop_t *desktop, SDL_Event *event) {
-//     if (desktop == NULL || event == NULL) {
-//         fprintf(stderr, "Erreur: `desktop` ou `event` est NULL\n");
-//         return -1;
-//     } 
+/**
+ * @brief Détecte l'interaction de l'utilisateur avec un élément du bureau.
+ * 
+ * Cette fonction vérifie si la souris est positionnée sur un élément du bureau
+ * et met à jour son état en fonction de l'événement SDL reçu.
+ */
+int desktop_element_update(Desktop_t *desktop, SDL_Event *event) {
 
-//     // Récupération de la position actuelle de la souris
-//     SDL_Point mouse;
-//     SDL_GetMouseState(&mouse.x, &mouse.y);
+    if (desktop == NULL || event == NULL) {
+        fprintf(stderr, "Erreur: `desktop` ou `event` est NULL\n");
+        return -1;
+    } 
 
-//     // Parcourt tous les éléments du bureau
-//     for (int i = 0; i < desktop->nbElem; i++) {
-//         // Vérifie si l'élément est visible et si la souris est dessus
-//         if (!desktop->elements[i].hidden && SDL_PointInRect(&mouse, &desktop->elements[i].position)) {
+    // Récupération de la position actuelle de la souris
+    SDL_Point mouse;
+    SDL_GetMouseState(&mouse.x, &mouse.y);
 
-//             // Gestion des événements liés à la souris
-//             if (event->type == SDL_MOUSEBUTTONDOWN) {
-//                 desktop->elements[i].dragged = TRUE;  // L'élément est en cours de déplacement
-//                 desktop->elements[i].clicked = TRUE;  // L'élément est cliqué
-//             }
-//             else if (event->type == SDL_MOUSEBUTTONUP) {
-//                 desktop->elements[i].dragged = FALSE; // L'élément est relâché
-//                 desktop->elements[i].clicked = TRUE;  // L'élément a bien été cliqué
-//             }
+    
+    // Cherche la fenetre active la plus haute 
+    Window_t * window = &desktop->mainWindow ;
+    List_t * listWindow = desktop->listWindow ;
+    uint8_t run = TRUE ;
+    for (int i = listWindow->size - 1; i >= 0 && run; i--) {
+        
+        Window_t * currWindow = listWindow->item(listWindow, i) ;
+        if (currWindow->isActive && SDL_PointInRect(&mouse, &currWindow->position)) {
+            window = currWindow ;
+            run = FALSE ;
 
-//             // Vérifie si l'utilisateur a effectué un double-clic sur l'élément
-//             if (event->button.clicks == 2) {
-//                 return i; // Retourne l'index de l'élément activé
-//             }
-//         }
-//         else {
-//             // Réinitialisation des états si l'élément n'est pas sous la souris
-//             desktop->elements[i].dragged = FALSE;
-//             desktop->elements[i].clicked = FALSE;
-//         }
-//     }
-
-//     return -1; // Aucun élément n'a été activé
-// }
+            if (i != listWindow->size - 1) {
+                listWindow->swap(listWindow, i, listWindow->size - 1);
+            }
+        }
+    }
 
 
-// /**
-//  * @brief Permet de déplacer un élément du bureau lorsque l'utilisateur clique et glisse avec la souris.
-//  * 
-//  * Cette fonction détecte si la souris est positionnée sur un élément du bureau et affiche un effet visuel 
-//  * lorsqu'elle le survole. Si l'élément est en mode "dragged", il suit les mouvements relatifs de la souris.
-//  * 
-//  * @param desktop Pointeur vers la structure `Desktop_t` contenant les éléments affichés à l'écran.
-//  * @param event Pointeur vers la structure `SDL_Event` contenant les informations sur l'événement utilisateur.
-//  */
-// void move_element(Desktop_t *desktop, SDL_Event *event) {
-//     if (desktop == NULL || event == NULL) {
-//         fprintf(stderr, "Erreur: `desktop` ou `event` est NULL\n");
-//         return;
-//     }
+    // Verifie si un des widget a été cliquée et update son état si besoin 
+    Widget_t * tab = window->tabWidget ;
+    for (int i = 0; i < window->widgetCount; i++) {
 
-//     // Récupération de la position actuelle de la souris
-//     SDL_Point mouse;
-//     SDL_GetMouseState(&mouse.x, &mouse.y);
+        Widget_t * currWidget = &tab[i] ;
+        SDL_Rect absPosition = {
+            currWidget->relPosition.x + window->position.x, 
+            currWidget->relPosition.y + window->position.y, 
+            currWidget->relPosition.w, 
+            currWidget->relPosition.h
+        };
+        switch (currWidget->type) {
 
-//     // Activation du mode de fusion (blending) pour permettre la transparence des couleurs rendues
-//     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-//     SDL_SetRenderDrawColor(renderer, 231, 244, 244, 60); // Couleur semi-transparente pour l'effet visuel
+        case WIDGET_ICON :;
+            if (SDL_PointInRect(&mouse, &absPosition)) {
+                if (event->type == SDL_MOUSEBUTTONDOWN) {
+                    currWidget->icon.isDragged = TRUE;  // L'élément est en cours de déplacement
+                    currWidget->icon.isClicked = TRUE;  // L'élément est cliqué
+                }
+                else if (event->type == SDL_MOUSEBUTTONUP) {
+                    currWidget->icon.isDragged = FALSE; // L'élément est relâché
+                    currWidget->icon.isClicked = TRUE;  // L'élément a bien été cliqué
+                }
+        
+                // Vérifie si l'utilisateur a effectué un double-clic sur l'élément
+                if (event->button.clicks == 2) {
+                    return currWidget->icon.actionID ;
+                }
+            }
+            else {
+                // Réinitialisation des états si l'élément n'est pas sous la souris
+                currWidget->icon.isDragged = FALSE;
+                currWidget->icon.isClicked = FALSE;
+            }   
+            break;
+        
+        case WIDGET_BUTTON :;
+            if (SDL_PointInRect(&mouse, &absPosition)) {
+                if (i == CLOSE_BUTTON) {
+                    window->isActive = FALSE ;
+                    window->isDragged = FALSE ;
+                }
+                return currWidget->button.actionID ;
+            } 
+            break;
 
-//     // Parcours de tous les éléments du bureau
-//     for (int i = 0; i < desktop->nbElem; i++) {
-//         // Vérifie si l'élément est visible et si la souris est dessus
-//         if (!desktop->elements[i].hidden && SDL_PointInRect(&mouse, &desktop->elements[i].position)) {
-//             SDL_RenderFillRect(renderer, &desktop->elements[i].position); // Affiche un effet visuel
-//         }
+        default :
+            break;
+        }
+    }
 
-//         // Si l'élément est en mode "dragged", il suit les déplacements de la souris
-//         if (desktop->elements[i].dragged) {
-//             desktop->elements[i].position.x += event->motion.xrel; // Déplacement horizontal
-//             desktop->elements[i].position.y += event->motion.yrel; // Déplacement vertical
-//         }
-//     }
-// }
+    // Rect de la bar superieur de la fenetre pour la deplacer 
+    SDL_Rect rect = {
+        window->position.x,
+        window->position.y,
+        window->position.w,
+        50
+    };
+    if (SDL_PointInRect(&mouse, &rect) && event->type == SDL_MOUSEBUTTONDOWN) {
+        window->isDragged = TRUE ;
+    }
+    else {
+        window->isDragged = FALSE ;
+    }
+
+
+    return -1; // Aucun élément n'a été activé
+}
+
+
+/**
+ * @brief Permet de déplacer un élément du bureau lorsque l'utilisateur clique et glisse avec la souris.
+ * 
+ * Cette fonction détecte si la souris est positionnée sur un élément du bureau et affiche un effet visuel 
+ * lorsqu'elle le survole. Si l'élément est en mode "dragged", il suit les mouvements relatifs de la souris.
+ * 
+ * @param desktop Pointeur vers la structure `Desktop_t` contenant les éléments affichés à l'écran.
+ * @param event Pointeur vers la structure `SDL_Event` contenant les informations sur l'événement utilisateur.
+ */
+void desktop_move_element(Desktop_t *desktop, SDL_Event *event) {
+    
+    if (desktop == NULL || event == NULL) {
+        fprintf(stderr, "Erreur: `desktop` ou `event` est NULL\n");
+        return;
+    }
+
+    // Récupération de la position actuelle de la souris
+    SDL_Point mouse;
+    SDL_GetMouseState(&mouse.x, &mouse.y);
+
+    
+    // Déplacement des icones du bureau 
+    Window_t * window = &desktop->mainWindow ;
+    Widget_t * tab = window->tabWidget ;
+    for (int i = 0; i < window->widgetCount; i++) {
+
+        Widget_t * currWidget = &tab[i] ;
+        if (currWidget->type == WIDGET_ICON && currWidget->icon.isDragged) {
+            currWidget->relPosition.x += event->motion.xrel ;
+            currWidget->relPosition.y += event->motion.yrel ;
+        }
+    }
+
+
+    // Déplacement des fenetres 
+    List_t * listWindow = desktop->listWindow ;
+    for (int i = 0; i < listWindow->size; i++) {
+
+        Window_t * currWindow = listWindow->item(listWindow, i) ;
+        if (currWindow->isActive && currWindow->isDragged) {
+            currWindow->position.x += event->motion.xrel ;
+            currWindow->position.y += event->motion.yrel ;
+        }
+    }
+}
+
+
+Window_t * desktop_get_window_from_id (Desktop_t * desktop, uint8_t id) {
+    
+    if (!existe(desktop)) {
+        printf("impossible de recupere le window car desktop est NULL\n");
+        return NULL ;
+    }
+
+    List_t * list = desktop->listWindow ;
+    for (int i = 0; i < list->size; i++) {
+
+        Window_t * window = list->item(list, i) ;
+        if (window->id == id) 
+            return window ;
+    }
+
+    return NULL ;
+}
+
+
+/**
+ * Effectue l'action suite au clic d'un bouton
+ */
+void desktop_handle_button_events (Scene_t * scene, uint8_t actionID) {
+
+    Desktop_t * desktop = GET_DESKTOP(scene->data) ;
+
+    switch(actionID) {
+    
+    case 0 :
+        printf("action 0 effectuée\n");
+        Window_t * window = desktop_get_window_from_id(desktop, 0) ;
+        if (existe(window)) {
+            window->isActive = TRUE ;
+        }
+        break;
+
+    case 1 :
+        printf("action 1 effectuée\n");
+        request_scene_change(sceneManager, "LEVEL1");
+        break;
+
+    default :
+        printf("action par defaut\n");
+        break;
+    }
+}

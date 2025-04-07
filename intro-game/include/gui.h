@@ -3,10 +3,15 @@
 
 #include "lib.h"
 
+#define CLOSE_BUTTON 0
+
 typedef struct Desktop_u Desktop_t ;
 typedef struct Window_u Window_t ;
 typedef struct List_u List_t ;
 typedef struct Text_u Text_t ;
+typedef struct Scene_u Scene_t ;
+typedef struct SceneManager_u SceneManager_t ; 
+extern SceneManager_t * sceneManager ;
 
 typedef enum {
     WIDGET_BUTTON,
@@ -20,19 +25,16 @@ typedef struct Icon_u {
     uint8_t isClicked ;
     uint8_t isDragged ;
 
-    void (*onClick)(Desktop_t *) ;
+    uint8_t actionID ;
 } Icon_t ;
 
 typedef struct Button_u {
     SDL_Rect srcrect ;
 
-    uint8_t isClicked ;
-
-    void (*onClick)(Window_t *) ;
+    uint8_t actionID ;
 } Button_t ;
 
 typedef struct TextBox_u {
-    SDL_Rect rect ;
     SDL_Texture * texture ;
     char * string ;
 } TextBox_t ;
@@ -65,6 +67,9 @@ typedef struct Window_u {
     WinTheme_t theme ;
 
     uint8_t isActive ;
+    uint8_t isDragged ;
+
+    uint8_t id ;
 } Window_t ;
 
 typedef struct Desktop_u {
@@ -83,8 +88,11 @@ void destroy_window_cb (void * window) ;
 void init_desktop_main_window (Window_t * window, WinTheme_t theme) ;
 void load_windows_from_file (List_t * list, char * dataPath, WinTheme_t theme) ;
 void window_change_theme (Window_t * window, WinTheme_t newTheme) ;
+void window_add_widget (Window_t * window, Widget_t newWidget) ;
 
 void init_widgets_from_file (Widget_t * tab, char * dataPath, WinTheme_t theme) ;
 
-int element_update(Desktop_t * desktop, SDL_Event * event) ;
-void move_element (Desktop_t * desktop, SDL_Event * event) ;
+int desktop_element_update (Desktop_t * desktop, SDL_Event * event) ;
+void desktop_move_element (Desktop_t * desktop, SDL_Event * event) ;
+Window_t * desktop_get_window_from_id (Desktop_t * desktop, uint8_t id) ;
+void desktop_handle_button_events (Scene_t * scene, uint8_t actionID) ;

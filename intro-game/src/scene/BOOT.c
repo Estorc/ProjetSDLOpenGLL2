@@ -10,7 +10,14 @@
 #include "../include/event.h"
 
 
-// fonctions correspondant a certains evenements 
+#define STATE_LOADING 0
+#define STATE_BLIS 1
+
+#define I_LOADING_WHEEL 0
+#define I_BLIS_FL5 1
+
+
+// scripts evenements 
 static float imageFadeIn_trigger (Scene_t * scene, Event_t * event) ;
 static void imageFadeIn (Scene_t * scene, float progress) ;
 
@@ -43,7 +50,7 @@ void BOOT_load (Scene_t * self) {
 
     EventManager_t * eventManager = create_event_manager() ;
     if (!existe(eventManager)) {
-        destroy_dictionary(&dict);
+        destroy_dictionary(&self->data);
         return ;
     }
 

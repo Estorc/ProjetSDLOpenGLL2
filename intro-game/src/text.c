@@ -135,7 +135,7 @@ SDL_Texture * create_TTF_Texture (TTF_Font * font, const char * string, SDL_Colo
         return NULL ;
 
     // Création d'une surface SDL avec le texte et sa couleur
-    SDL_Surface * surface = TTF_RenderUTF8_Blended(font, string, color);
+    SDL_Surface * surface = TTF_RenderUTF8_Blended_Wrapped(font, string, color, 10000);
     if (surface == NULL) {
         fprintf(stderr, "Erreur malloc surface du `Text_t` %s : %s\n", string, SDL_GetError());
         return NULL ;

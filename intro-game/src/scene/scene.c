@@ -376,7 +376,7 @@ int play_scene (SceneManager_t * manager, SDL_Event * event) {
 //         gameStatus.scene = 1;
 //     }
 
-//     return 0;
+//     return 0; 
 // }
 
 

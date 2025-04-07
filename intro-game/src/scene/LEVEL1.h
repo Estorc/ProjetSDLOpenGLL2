@@ -1,12 +1,14 @@
 #pragma once 
 
 
-#include "lib.h"
+#include "lib.h" 
 
 
 typedef struct Scene_u Scene_t ;
 typedef struct SceneManager_u SceneManager_t ; 
 typedef struct InfoScene_u InfoScene_t ; 
+
+extern GameStatus_t gameStatus ;
 
 
 void LEVEL1_load (Scene_t * self) ;

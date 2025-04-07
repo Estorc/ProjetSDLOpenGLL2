@@ -43,4 +43,5 @@ typedef struct Map_u {
 DesktopElement_t * load_elements(int nbObject);
 Map_t * map_constructor () ;
 void map_destructor (Map_t ** map) ;
+void map_destructor_cb (void * map) ;
 void init_elements_scene0 (Map_t * map);

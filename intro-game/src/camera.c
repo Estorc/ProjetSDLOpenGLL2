@@ -27,6 +27,9 @@ void camera_destructor (Camera_t ** camera) {
     free(*camera);
     *camera = NULL;
 }
+void camera_destructor_cb (void * camera) {
+    camera_destructor(camera);
+}
 
 
 /**

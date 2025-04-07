@@ -21,7 +21,5 @@ typedef struct {
     int frameCount ;
     int updateCount ;
     int scene ;
-
-    int (*(*playScene)) (Camera_t *, Player_t *, Map_t *);
 } GameStatus_t ; 
 

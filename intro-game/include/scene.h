@@ -12,6 +12,10 @@
 #define GET_LIST_TEXT(dict) dict->get(dict, "listText") 
 #define GET_INFO(dict) dict->get(dict, "info")
 #define GET_EVENT_MANAGER(dict) dict->get(dict, "eventManager")
+#define GET_DESKTOP(dict) dict->get(dict, "desktop")
+#define GET_PLAYER(dict) dict->get(dict, "player")
+#define GET_MAP(dict) dict->get(dict, "map")
+#define GET_CAMERA(dict) dict->get(dict, "camera")
 
 extern SDL_Renderer * renderer ;
 

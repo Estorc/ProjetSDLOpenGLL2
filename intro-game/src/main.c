@@ -11,7 +11,7 @@
 
 
 int init_systeme ();
-void terminate_system (Mix_Chunk * music, int audio, Player_t * player, Map_t * map, int ttf, int mixer, int img, int sdl, Camera_t * camera);
+void terminate_system (Mix_Chunk * music, int audio, int ttf, int mixer, int img, int sdl);
 void print_fps (uint32_t * previousTime);
 void start_frame (uint32_t * timerStart);
 void end_frame (uint32_t * timerStart, uint32_t * previousTime);
@@ -27,33 +27,11 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     
-
-    // creer personnage 
-    Player_t * player = player_constructor();
-    if (player == NULL) {
-        terminate_system(NULL, TRUE, NULL, NULL, TRUE, TRUE, TRUE, TRUE, NULL);
-        return 1;
-    }
-
-    Map_t * map = map_constructor();
-    if (map == NULL) {
-        terminate_system(NULL, TRUE, player, NULL, TRUE, TRUE, TRUE, TRUE, NULL);
-        return 1;
-    }
-
-    Camera_t * camera = camera_constructor (player);
-    if (camera == NULL) {
-        terminate_system(NULL, TRUE, player, map, TRUE, TRUE, TRUE, TRUE, NULL);
-        return 1;
-    }
     
     // variable pour l'affichage du nombre de FPS 
     uint32_t previousTime = SDL_GetTicks(); // to print fps every second 
-    
-    // Variable to keep track of the time elapsed during the actual frame rendering 
     uint32_t timerStart; 
-    uint32_t timerDelay; 
-
+    
     // variable gestion evenements 
     SDL_Event event ;
     int running = TRUE;
@@ -86,7 +64,7 @@ int main(int argc, char* argv[]) {
     
     // Nettoyage
     destroy_scene_manager(&sceneManager);
-    terminate_system(NULL, TRUE, player, map, TRUE, TRUE, TRUE, TRUE, camera);
+    terminate_system(NULL, TRUE, TRUE, TRUE, TRUE, TRUE);
 
     printf("fin propre\n");
 
@@ -201,43 +179,20 @@ int init_systeme () {
     gameStatus.scene = 0;
     gameStatus.frameCount = 0;
     gameStatus.updateCount = 0;
-    
-    // alloue memoire pour deux scene 
-    gameStatus.playScene = malloc(sizeof(int (*)(Camera_t *, Player_t *, Map_t *)) * 2);
-    if (gameStatus.playScene == NULL) {
-        printf("Erreur malloc gameStatus.playScene : %s\n", SDL_GetError()); 
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        destroy_noise_texture();
-        Mix_CloseAudio();
-        Mix_Quit();
-        TTF_Quit();
-        IMG_Quit();
-        SDL_Quit();
-        return 1;
-    } 
 
     return 0;
 }
 
 
-void terminate_system (Mix_Chunk * music, int audio, Player_t * player, Map_t * map, int ttf, int mixer, int img, int sdl, Camera_t * camera) {
+void terminate_system (Mix_Chunk * music, int audio, int ttf, int mixer, int img, int sdl) {
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
-    free(gameStatus.playScene); 
-    gameStatus.playScene = NULL;
     if (music) {
         Mix_FreeChunk(music);
     }
     if (audio) {
         Mix_CloseAudio();
-    }
-    if (player) {
-        player_destructor(&player);
-    }
-    if (map) {
-        map_destructor(&map);
     }
     if (ttf) {
         TTF_Quit();
@@ -250,9 +205,6 @@ void terminate_system (Mix_Chunk * music, int audio, Player_t * player, Map_t * 
     }
     if (sdl) {
         SDL_Quit();
-    }
-    if (camera) {
-        camera_destructor(&camera);
     }
 
 }

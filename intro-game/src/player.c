@@ -43,6 +43,9 @@ void player_destructor (Player_t ** player) {
     free(*player);
     *player = NULL;
 }
+void player_destructor_cb (void * player) {
+    player_destructor(player);
+}
 
 
 /* Incremente anim state pour afficher le sprite suivant de l'animation 
@@ -102,7 +105,7 @@ void handle_input (const uint8_t * keys, Player_t * player) {
         player->body.vx += player->acceleration ;
         if (player->body.vx > player->vMax) 
             player->body.vx = player->vMax;
-    }
+    } 
     else if (keys[SDL_SCANCODE_A] && !keys[SDL_SCANCODE_D]) {
         // if (player->body.vx > 0 && (player->body.vx == player->vMax)) 
         //     player->body.vx = -player->body.vx;

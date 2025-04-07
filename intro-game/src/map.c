@@ -80,7 +80,7 @@ Map_t * map_constructor () {
     map->ground = ground;
 
     // charge l'image de fond
-    map->background = load_png("intro-game/assets/background.png");
+    map->background = load_png("intro-game/assets/background_grey.png");
     if (map->background == NULL) {
         return NULL;
     }
@@ -104,4 +104,7 @@ void map_destructor (Map_t ** map) {
     (*map)->listElements = NULL;
     free(*map);
     *map = NULL;
+}
+void map_destructor_cb (void * map) {
+    map_destructor(map);
 }

@@ -327,6 +327,77 @@ void list_stack (List_t * list, void * data) {
 }
 
 
+static 
+void list_swap (List_t * list, int indexA, int indexB) {
+
+    if (!existe(list)) {
+        printf("List n'existe pas, impossible de faire le swap\n");
+        return ;
+    }
+
+    if (list->size < 2) {
+        printf("impossible de faire le swap la liste ne contient pas assez d'élément\n");
+        return ;
+    }
+
+    if (indexA > (list->size - 1) || indexA < 0 || indexB > (list->size - 1) || indexB < 0) {
+        printf("impossible de faire le swap l'indice est incorrect\n");
+        return ;
+    }
+
+
+    // Recup l'item indexA
+    ListNode_t * itemA ;
+    if (indexA <= list->size / 2) {
+
+        itemA = list->head ;
+        while (indexA > 0) {
+            itemA = itemA->next ;
+            indexA--;
+        }
+    }
+    else {
+
+        // reprends l'indice de depart
+        indexA -= list->size ;
+
+        itemA = list->head ;
+        while (indexA < 0) {
+            itemA = itemA->prev ;
+            indexA++;
+        }
+    }
+
+    // Recup l'item indexB
+    ListNode_t * itemB ;
+    if (indexB <= list->size / 2) {
+
+        itemB = list->head ;
+        while (indexB > 0) {
+            itemB = itemB->next ;
+            indexB--;
+        }
+    }
+    else {
+
+        // reprends l'indice de depart
+        indexB -= list->size ;
+
+        itemB = list->head ;
+        while (indexB < 0) {
+            itemB = itemB->prev ;
+            indexB++;
+        }
+    }
+
+
+    // Echange les données des deux item 
+    void * temp = itemA->data ;
+    itemA->data = itemB->data ;
+    itemB->data = temp ;
+}
+
+
 List_t * create_list (void (*destroy) (void *)) {
 
     List_t * list = malloc(sizeof(List_t)) ;
@@ -341,6 +412,7 @@ List_t * create_list (void (*destroy) (void *)) {
     list->remove = list_remove ;
     list->set = list_set ;
     list->stack = list_stack ;
+    list->swap = list_swap ;
     list->push = list_push ;
     list->pop = list_pop ;
     list->destroy = destroy ;

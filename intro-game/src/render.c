@@ -140,22 +140,71 @@ void draw_window (Window_t * window) {
     for (int i = 0; i < window->widgetCount; i++) {
 
         Widget_t widget = tabWidget[i] ;
+        SDL_Rect dstrect = {
+            .x = widget.relPosition.x + window->position.x, 
+            .y = widget.relPosition.y + window->position.y, 
+            .w = widget.relPosition.w, 
+            .h = widget.relPosition.h
+        };
         switch(widget.type) {
 
         case WIDGET_ICON :;
-            SDL_Rect dstrect = {
-                widget.relPosition.x + window->position.x, 
-                widget.relPosition.y + window->position.y, 
-                widget.relPosition.w, 
-                widget.relPosition.h
-            };
             SDL_RenderCopy(renderer, window->spriteSheet, &widget.icon.srcrect, &dstrect);
 
             if (widget.icon.isClicked) {
                 SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+                
                 SDL_SetRenderDrawColor(renderer, 0, 0, 150, 100);
                 SDL_RenderDrawRect(renderer, &dstrect);
+
+                SDL_SetRenderDrawColor(renderer, 0, 0, 100, 100);
+                SDL_RenderFillRect(renderer, &dstrect);
             }
+            break;
+
+        case WIDGET_BUTTON :;
+            if (compare_SDL_Rect(widget.button.srcrect, (SDL_Rect){0, 0, 0, 0}) != 0) 
+                SDL_RenderCopy(renderer, window->spriteSheet, &widget.button.srcrect, &dstrect);
+
+            SDL_Point mouse ; 
+            SDL_GetMouseState(&mouse.x, &mouse.y) ;
+            // Met en surbrillance lorsque la souris survole le bouton 
+            if (SDL_PointInRect(&mouse, &dstrect)) {
+                SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+
+                SDL_SetRenderDrawColor(renderer, 221, 255, 252, 200);
+                SDL_RenderFillRect(renderer, &dstrect);
+            }
+            break; 
+
+        case WIDGET_TEXT :;
+            int width, height ;
+            SDL_QueryTexture(widget.text.texture, NULL, NULL, &width, &height);
+
+            dstrect.x = widget.relPosition.x + window->position.x ;
+            dstrect.y = widget.relPosition.y + window->position.y ;
+            dstrect.w = width ;
+            dstrect.h = height ;
+
+            if (width > widget.relPosition.w) {
+                dstrect.w = widget.relPosition.w ;
+            }
+            if (height > widget.relPosition.h) {
+                dstrect.h = widget.relPosition.h ;
+            }
+
+            SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+            SDL_SetRenderDrawColor(renderer, window->theme.bgColor.r, window->theme.bgColor.g, window->theme.bgColor.b, window->theme.bgColor.a);
+            
+            SDL_Rect bgDstRect = {
+                .x = widget.relPosition.x + window->position.x, 
+                .y = widget.relPosition.y + window->position.y, 
+                .w = widget.relPosition.w, 
+                .h = widget.relPosition.h
+            };
+            SDL_RenderFillRect(renderer, &bgDstRect);
+
+            SDL_RenderCopy(renderer, widget.text.texture, NULL, &dstrect);
             break;
 
         default : 
@@ -328,19 +377,10 @@ void draw_scene0 (Camera_t * camera, Map_t * map) {
 // retourne 1 en cas d'erreu ou 0 si aucune erreur 
 int draw (Camera_t * camera, Player_t * player, Map_t * map) {
     
-    switch (gameStatus.scene) {
-        case 0 : 
-            draw_scene0(camera, map);
-            break;
-        case 1 : 
-            draw_map(map, camera);
-            draw_player(player, camera);
-            // if (rand() % 10 > 6)
-            //     apply_glitch(camera, map->background, BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
-            break;
-        default : 
-            break;
-    }
+    draw_map(map, camera);
+    draw_player(player, camera);
+    // if (rand() % 10 > 6)
+    //     apply_glitch(camera, map->background, BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
 
     return 0;
 }

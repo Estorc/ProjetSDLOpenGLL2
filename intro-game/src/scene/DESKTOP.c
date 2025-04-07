@@ -13,6 +13,27 @@
 #include "../include/list.h"
 
 
+void window_add_widget_test (Window_t * window) {
+
+    SDL_Rect relPosition = {WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, 319, 120} ;
+    WidgetType_t type = 2 ;
+    Icon_t icon = {
+        .srcrect = (SDL_Rect){360, 0, 319, 120},
+        .isClicked = FALSE, 
+        .isDragged = FALSE, 
+        .actionID = 0
+    };
+
+    Widget_t widget = {
+        .relPosition = relPosition,
+        .type = type,
+        .icon = icon
+    };
+
+    window_add_widget(window, widget);
+}
+
+
 /**
  * @brief Charge les données de la scène "DESKTOP" et les stocke dans `self->data`.
  * 
@@ -58,9 +79,9 @@ void DESKTOP_load(Scene_t *self) {
 
 
     // Création font (TTF_Font) 
-    TTF_Font * font1 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 18) ;
-    TTF_Font * font2 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 20) ;
-    TTF_Font * font3 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 22) ;
+    TTF_Font * font1 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 12) ;
+    TTF_Font * font2 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 18) ;
+    TTF_Font * font3 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 20) ;
     
     List_t * listFont = create_list(TTF_CloseFont_cb) ;
     listFont->stack(listFont, font1);
@@ -74,13 +95,16 @@ void DESKTOP_load(Scene_t *self) {
     Desktop_t * desktop = create_desktop() ;
     if (desktop == NULL) {
         fprintf(stderr, "Erreur: création de `desktop` échouée\n");
-        destroy_dictionary(&self->data);
+        destroy_dictionary(&self->data); 
         return ;
     }
 
     SDL_Color textColor = {255, 255, 255, SDL_ALPHA_OPAQUE} ;
-    SDL_Color bgColor = {255, 0, 0, SDL_ALPHA_OPAQUE} ;
-    init_desktop_main_window(&desktop->mainWindow, (WinTheme_t){NULL, textColor, bgColor});
+    SDL_Color bgColor = {155, 0, 0, SDL_ALPHA_OPAQUE} ;
+    init_desktop_main_window(&desktop->mainWindow, (WinTheme_t){font1, textColor, bgColor});
+    window_change_theme(&desktop->mainWindow, (WinTheme_t){font1, textColor, (SDL_Color){0, 0, 0, 0}});
+
+    load_windows_from_file(desktop->listWindow, "intro-game/data/testWin.csv", (WinTheme_t){font1, textColor, bgColor});
     
     dict->set(dict, "desktop", desktop, destroy_desktop_cb);
     
@@ -126,6 +150,7 @@ void DESKTOP_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * m
     InfoScene_t * info = self->data->get(self->data, "info") ;
     Desktop_t * desktop = self->data->get(self->data, "desktop") ;
     
+    int actionID ;
     while (SDL_PollEvent(event)) {
         switch (event->type) {
             case SDL_QUIT :
@@ -140,6 +165,7 @@ void DESKTOP_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * m
                     case SDLK_r : 
                         break;
                     case SDLK_SPACE :
+                        printf("taille list win = %d\n", desktop->listWindow->size) ;
                         break;
                     case SDLK_BACKSPACE : 
                         info->end = TRUE;
@@ -147,20 +173,15 @@ void DESKTOP_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * m
                         break;
                 }
                 break;
-            case SDL_MOUSEBUTTONDOWN :
-                // element_update(desktop, event);
-                // if (iconClicked == ICON_GAME) {
-                //     request_scene_change(manager, "LEVEL1");
-                // }
+            case SDL_MOUSEBUTTONDOWN :;
+                actionID = desktop_element_update(desktop, event) ;
+                if (actionID != -1) desktop_handle_button_events(self, actionID) ;
                 break;
-            case SDL_MOUSEBUTTONUP :
-                // element_update(desktop, event);
-                // if (iconClicked == ICON_GAME) {
-                //     request_scene_change(manager, "LEVEL1");
-                // }
+            case SDL_MOUSEBUTTONUP :;
+                desktop_element_update(desktop, event) ;
                 break;
-            case SDL_MOUSEMOTION : 
-                // move_element(desktop, event);
+            case SDL_MOUSEMOTION :;
+                desktop_move_element(desktop, event) ;
                 break;
             default : 
                 break;
