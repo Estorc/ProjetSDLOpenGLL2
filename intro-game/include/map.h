@@ -4,6 +4,9 @@
 #include "physics.h"
 #include "window.h"
 
+typedef struct List_u List_t ;
+typedef struct Texture_u Texture_t ; 
+
 extern GameStatus_t gameStatus ;
 
 #define BACKGROUND_WIDTH 2304
@@ -12,36 +15,20 @@ extern GameStatus_t gameStatus ;
 #define GROUND_WIDTH BACKGROUND_WIDTH
 #define GROUND_HEIGHT (WINDOW_HEIGHT / 4)
 
-#define ICON_LOCK 0
-#define ICON_GAME 1
-#define ICON_DOC 2
-#define ERROR_WINDOW 3
-#define TOP_BORDER 4
-#define LEFT_BORDER 5
-#define RIGHT_BORDER 6
-#define BOTTOM_BORDER 7
-
-typedef struct DesktopElement_u {
-    SDL_Rect srcrect ;
-    SDL_Rect position ;
-    int hidden ;        // TRUE or FALSE 
-    int clicked ;       // TRUE or FALSE 
-    int dragged ;       // TRUE or FALSE 
-} DesktopElement_t ; 
+typedef struct MapObj_u {
+    Texture_t sprite ;
+    uint8_t idSpriteSheet ;
+} MapObj_t ;
 
 typedef struct Map_u {
     SDL_Texture * background ;
 
     SDL_FRect ground ;
-    
-    SDL_Texture * objectsTexture ;
-    DesktopElement_t * listElements ;
-    int nbObject;
+
+    List_t * listObjects ;
 } Map_t ;
 
 
-DesktopElement_t * load_elements(int nbObject);
 Map_t * map_constructor () ;
 void map_destructor (Map_t ** map) ;
 void map_destructor_cb (void * map) ;
-void init_elements_scene0 (Map_t * map);
