@@ -86,8 +86,8 @@ void map_update (Scene_t * scene, Map_t * map, Player_t * player) {
             
             texture_update(&object->sprite);
 
-            object->sprite.position.x = object->vx ;
-            object->sprite.position.y = object->vy ;
+            object->sprite.position.x += object->vx ;
+            object->sprite.position.y += object->vy ;
 
             SDL_Rect playerBody = (SDL_Rect){player->body.position.x, player->body.position.y, player->body.position.w, player->body.position.h} ;
             if (SDL_Rect_check_collision(&playerBody, &object->sprite.position)) {
