@@ -129,24 +129,25 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ad70aad5dcff2d47029c113299859dafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa23dc805b95425426a3948a0ac6ec881" id="r_aa23dc805b95425426a3948a0ac6ec881"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom">&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
 <tr class="separator:aa23dc805b95425426a3948a0ac6ec881"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee84d3493c012b27fc691d4ab5afc1d2" id="r_aee84d3493c012b27fc691d4ab5afc1d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structModelKeyframe.html#aee84d3493c012b27fc691d4ab5afc1d2">time</a></td></tr>
+<tr class="memitem:aee84d3493c012b27fc691d4ab5afc1d2" id="r_aee84d3493c012b27fc691d4ab5afc1d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="aliases_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structModelKeyframe.html#aee84d3493c012b27fc691d4ab5afc1d2">time</a></td></tr>
 <tr class="separator:aee84d3493c012b27fc691d4ab5afc1d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure representing the data of a 3D model keyframe. </p>
 <p>This structure holds the transformation matrix and time of a keyframe. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="aa23dc805b95425426a3948a0ac6ec881" name="aa23dc805b95425426a3948a0ac6ec881"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa23dc805b95425426a3948a0ac6ec881">&#9670;&#160;</a></span>[union]</h2>
+<a id="a8bfc484d7012a966cbecc0f231f7dd2c" name="a8bfc484d7012a966cbecc0f231f7dd2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bfc484d7012a966cbecc0f231f7dd2c">&#9670;&#160;</a></span>value</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">union  { ... }  <a class="el" href="structModelKeyframe.html">ModelKeyframe</a></td>
+          <td class="memname">vec3 ModelKeyframe::value</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Value of the keyframe </p>
 
 </div>
 </div>
@@ -165,6 +166,20 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="aa23dc805b95425426a3948a0ac6ec881" name="aa23dc805b95425426a3948a0ac6ec881"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa23dc805b95425426a3948a0ac6ec881">&#9670;&#160;</a></span>[union]</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">union  { ... }  <a class="el" href="structModelKeyframe.html">ModelKeyframe</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aee84d3493c012b27fc691d4ab5afc1d2" name="aee84d3493c012b27fc691d4ab5afc1d2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aee84d3493c012b27fc691d4ab5afc1d2">&#9670;&#160;</a></span>time</h2>
 
@@ -172,26 +187,11 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a> ModelKeyframe::time</td>
+          <td class="memname"><a class="el" href="aliases_8h.html#a1bd198f821a2a4ea63fa8ab2e4a2afb3">f32</a> ModelKeyframe::time</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Time of the keyframe </p>
-
-</div>
-</div>
-<a id="a8bfc484d7012a966cbecc0f231f7dd2c" name="a8bfc484d7012a966cbecc0f231f7dd2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8bfc484d7012a966cbecc0f231f7dd2c">&#9670;&#160;</a></span>value</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">vec3 ModelKeyframe::value</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Value of the keyframe </p>
 
 </div>
 </div>
@@ -229,6 +229,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -237,7 +247,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

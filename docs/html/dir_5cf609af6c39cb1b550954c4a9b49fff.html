@@ -115,11 +115,11 @@ Directory dependency graph for model_loaders:</div>
 <div class="dyncontent">
 <div class="center"><img src="dir_5cf609af6c39cb1b550954c4a9b49fff_dep.png" border="0" usemap="#adir__5cf609af6c39cb1b550954c4a9b49fff__dep" alt="src/io/model_loaders"/></div>
 <map name="adir__5cf609af6c39cb1b550954c4a9b49fff__dep" id="adir__5cf609af6c39cb1b550954c4a9b49fff__dep">
-<area shape="rect" href="dir_5cf609af6c39cb1b550954c4a9b49fff.html" title="model_loaders" alt="" coords="26,52,145,77"/>
-<area shape="rect" href="dir_ae9a93452e2a84339148a16bcf2eb561.html" title="math" alt="" coords="57,125,113,151"/>
-<area shape="poly" href="dir_000010_000009.html" alt="" coords="88,78,88,112,83,112,83,78"/>
-<area shape="rect" href="dir_000010_000009.html" title="4" alt="" coords="89,100,98,114"/>
-<area shape="rect" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html" title="io" alt="" coords="16,16,155,88"/>
+<area shape="rect" href="dir_5cf609af6c39cb1b550954c4a9b49fff.html" title="model_loaders" alt="" coords="27,53,145,78"/>
+<area shape="rect" href="dir_ae9a93452e2a84339148a16bcf2eb561.html" title="math" alt="" coords="193,53,249,78"/>
+<area shape="poly" href="dir_000012_000011.html" alt="" coords="146,63,180,63,180,68,146,68"/>
+<area shape="rect" href="dir_000012_000011.html" title="4" alt="" coords="170,50,180,64"/>
+<area shape="rect" href="dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html" title="io" alt="" coords="16,16,156,89"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -128,10 +128,12 @@ Files</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fbx__loader_8c.html">fbx_loader.c</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="fbx__loader_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fbx__loader_8h.html">fbx_loader.h</a></td></tr>
+<tr class="memdesc:fbx__loader_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Header file for loading FBX models. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model__loader_8c.html">model_loader.c</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="model__loader_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="model__loader_8h.html">model_loader.h</a></td></tr>
+<tr class="memdesc:model__loader_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Header file for model loading functions. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mtl__loader_8c.html">mtl_loader.c</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,6 +175,16 @@ Files</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -181,7 +193,7 @@ Files</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

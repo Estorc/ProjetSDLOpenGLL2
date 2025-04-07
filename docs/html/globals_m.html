@@ -137,7 +137,6 @@ $(document).ready(function(){initNavTree('globals_m.html',''); initResizable(); 
 <li>MODEL_FLAG_UNUSED7&#160;:&#160;<a class="el" href="group__ModelHandling.html#gga829dc978e29d88ada1059ea4ca6c4cd3abf370e3f8593ebca0792404501d959ed">model.h</a></li>
 <li>ModelFlags&#160;:&#160;<a class="el" href="group__ModelHandling.html#ga829dc978e29d88ada1059ea4ca6c4cd3">model.h</a></li>
 <li>MovementState&#160;:&#160;<a class="el" href="chessboard_8h.html#ab5e9a2252870710908096f54ecb89c4a">chessboard.h</a></li>
-<li>msaa&#160;:&#160;<a class="el" href="raptiquax_8c.html#a58daf641d993a02e7806fe8b763fad6c">raptiquax.c</a></li>
 <li>MSG_TERMINATOR&#160;:&#160;<a class="el" href="network__utils_8h.html#a22d98471c444d26015e3e9180b244ffb">network_utils.h</a></li>
 <li>MULTIPLIER&#160;:&#160;<a class="el" href="hash_8c.html#ab7ffb5a0ee7b15aecd0b32e84b93e2ee">hash.c</a></li>
 </ul>
@@ -172,6 +171,16 @@ $(document).ready(function(){initNavTree('globals_m.html',''); initResizable(); 
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -180,7 +189,7 @@ $(document).ready(function(){initNavTree('globals_m.html',''); initResizable(); 
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Claude Chappe&#39; Curse - A C Game: Object Struct Reference</title>
+<title>Claude Chappe&#39; Curse - A C Game: Object Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">var page_layout=1;</script>
 <script type="text/javascript" src="jquery.js"></script>
@@ -110,7 +110,7 @@ $(document).ready(function(){initNavTree('structObject.html',''); initResizable(
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structObject-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">Object Struct Reference<div class="ingroups"><a class="el" href="group__Classes.html">Classes</a></div></div></div>
+  <div class="headertitle"><div class="title">Object Class Reference<div class="ingroups"><a class="el" href="group__Classes.html">Classes</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -123,7 +123,7 @@ $(document).ready(function(){initNavTree('structObject.html',''); initResizable(
 Public Attributes</h2></td></tr>
 <tr class="memitem:a8cc6ed7117cf960bfbc8b5543b674968" id="r_a8cc6ed7117cf960bfbc8b5543b674968"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structObject.html#a8cc6ed7117cf960bfbc8b5543b674968">object</a></td></tr>
 <tr class="separator:a8cc6ed7117cf960bfbc8b5543b674968"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40499f03de9cfbe07831fcf63e8981d5" id="r_a40499f03de9cfbe07831fcf63e8981d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structObject.html#a40499f03de9cfbe07831fcf63e8981d5">type</a></td></tr>
+<tr class="memitem:a40499f03de9cfbe07831fcf63e8981d5" id="r_a40499f03de9cfbe07831fcf63e8981d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structObject.html#a40499f03de9cfbe07831fcf63e8981d5">type</a></td></tr>
 <tr class="separator:a40499f03de9cfbe07831fcf63e8981d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -151,7 +151,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> Object::type</td>
+          <td class="memname"><a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> Object::type</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -159,7 +159,7 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/classes/<a class="el" href="classes_8h_source.html">classes.h</a></li>
 </ul>
 </div><!-- contents -->
@@ -193,6 +193,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -201,7 +211,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

@@ -1,15 +1,15 @@
-#include "../raptiquax.h"
-#include "../math/math_util.h"
-#include "../io/model.h"
-#include "../render/framebuffer.h"
-#include "../storage/node.h"
-#include "../render/render.h"
-#include "../render/lighting.h"
-#include "../classes/classes.h"
-#include "../io/scene_loader.h"
-#include "../scripts/scripts.h"
-#include "../render/camera.h"
-#include "../storage/queue.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <render/render.h>
+#include <render/lighting.h>
+#include <classes/classes.h>
+#include <io/scene_loader.h>
+#include <scripts/scripts.h>
+#include <render/camera.h>
+#include <storage/queue.h>
 
 void change_scene() {
 

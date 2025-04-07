@@ -2,9 +2,9 @@
 \hypertarget{camera_8h_source}{}\label{camera_8h_source}\index{src/render/camera.h@{src/render/camera.h}}
 \mbox{\hyperlink{camera_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}../raptiquax.h"{}}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}../math/math\_util.h"{}}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../io/shader.h"{}}}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{raptiquax_8h}{raptiquax.h}}>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{math__util_8h}{math/math\_util.h}}>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{shader_8h}{io/shader.h}}>}}
 \DoxyCodeLine{00004\ }
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ CAMERA\_H}}
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ CAMERA\_H}}
@@ -12,12 +12,12 @@
 \DoxyCodeLine{00008\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}};}
 \DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structWorldShaders}{WorldShaders}};}
 \DoxyCodeLine{00010\ }
-\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classCamera}{Camera}}\ \{}
-\DoxyCodeLine{00023\ \ \ \ \ vec3\ \mbox{\hyperlink{classCamera_a58f8b51664251b5c0f59be0e0a87e754}{pos}};\ }
-\DoxyCodeLine{00024\ \ \ \ \ vec3\ \mbox{\hyperlink{classCamera_a1456c80b084814b7811c8fe3d797021d}{rot}};\ }
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classCamera_aff7393c9cfbccd7e369091f00008da93}{fov}};\ }
-\DoxyCodeLine{00026\ \}\ \mbox{\hyperlink{classCamera}{Camera}};}
-\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classCamera}{Camera}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ vec3\ \mbox{\hyperlink{classCamera_a58f8b51664251b5c0f59be0e0a87e754}{pos}};\ }
+\DoxyCodeLine{00018\ \ \ \ \ vec3\ \mbox{\hyperlink{classCamera_a1456c80b084814b7811c8fe3d797021d}{rot}};\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classCamera_aff7393c9cfbccd7e369091f00008da93}{fov}};\ }
+\DoxyCodeLine{00020\ \}\ \mbox{\hyperlink{classCamera}{Camera}};}
+\DoxyCodeLine{00021\ }
 \DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Camera_ga8251d5473e00feb6f2181942b89e654d}{init\_camera}}(\mbox{\hyperlink{classCamera}{Camera}}\ *c);}
 \DoxyCodeLine{00038\ }
 \DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Camera_gadd86e5f49d6695d5497c08e3de4207af}{camera\_projection}}(\mbox{\hyperlink{classCamera}{Camera}}\ *c,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structWorldShaders}{WorldShaders}}\ *shaders);}

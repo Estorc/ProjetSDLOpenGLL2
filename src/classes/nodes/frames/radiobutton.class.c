@@ -10,21 +10,31 @@
  * @date 2023-10-20
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "storage/node.h"
-#include "io/shader.h"
-#include "render/render.h"
-#include "window.h"
-#include "gui/frame.h"
-#include "io/input.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <storage/node.h>
+#include <io/shader.h>
+#include <render/render.h>
+#include <window.h>
+#include <gui/frame.h>
+#include <io/input.h>
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class RadioButton : public Button {
     __containerType__ Node *
     public:
 
+    /**
+     * @brief Constructor for the RadioButton class.
+     *
+     * This function initializes a new instance of the RadioButton class.
+     * It sets up the necessary properties and states for the radio button.
+     */
     void constructor() {
         this->type = __type__; 
 
@@ -43,6 +53,13 @@ class RadioButton : public Button {
         frame->alignment[1] = 'c';
     }
 
+    /**
+     * @brief Initializes the radio button.
+     *
+     * This function sets up the necessary properties and states for the radio button
+     * to function correctly. It should be called before using any other radio button
+     * functions.
+     */
     void init_radiobutton() {
         Frame *frame = (Frame *) this->object;
         frame->radiobutton = malloc(sizeof(RadioButton));
@@ -50,24 +67,52 @@ class RadioButton : public Button {
         radiobutton->checked = NULL;
     }
 
-    
-
+    /**
+     * @brief Loads the necessary resources or initializes the RadioButton.
+     *
+     * This function is responsible for loading any resources or performing
+     * any initialization required for the RadioButton class. The specific
+     * details of what is loaded or initialized should be documented here.
+     */
     void load() {
         this::constructor();
     }
 
+    /**
+     * @brief Saves the state of the editor node to a file.
+     *
+     * This function writes the current state of the editor node to the specified file.
+     *
+     * @param file A pointer to the FILE object where the state will be saved.
+     * @param editor A pointer to the Node object representing the editor whose state is to be saved.
+     */
     void save(FILE *file, Node *editor) {
         UNUSED(editor);
         fprintf(file, "%s", classManager.class_names[this->type]);
     }
 
+    /**
+     * @brief Checks if the current object is a radiobutton.
+     *
+     * This function determines whether the current object is of type radiobutton.
+     *
+     * @return true if the object is a radiobutton, false otherwise.
+     */
     bool is_radiobutton() {
         return true;
     }
 
+    /**
+     * @brief Frees the resources allocated for the RadioButton instance.
+     *
+     * This function is responsible for releasing any memory or resources that were allocated
+     * for the RadioButton instance. It should be called when the RadioButton is no longer needed
+     * to avoid memory leaks.
+     */
     void free() {
         SUPER(free);
     }
  
     
 }
+

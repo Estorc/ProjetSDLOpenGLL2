@@ -1,8 +1,8 @@
-#include "../raptiquax.h"
-#include "../io/input.h"
-#include "../storage/node.h"
-#include "../gui/frame.h"
-#include "../utils/scene.h"
+#include <raptiquax.h>
+#include <io/input.h>
+#include <storage/node.h>
+#include <gui/frame.h>
+#include <utils/deferred.h>
 
 NEW_SCRIPT(open_close_menu)
 	GET_READY_PARAMETERS();
@@ -17,7 +17,7 @@ NEW_SCRIPT(return_to_main_menu)
 	switch (signal) {
 		case SIGNAL_BUTTON_CLICKED:
 			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
-			prepare_change_scene("assets/scenes/claude_chappe/boot.scene");
+			deferred_load_scene("assets/scenes/claude_chappe/boot.scene");
 			break;
 		case SIGNAL_BUTTON_HOVERED:
 			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);

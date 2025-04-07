@@ -110,7 +110,7 @@ $(document).ready(function(){initNavTree('functions_vars_o.html',''); initResiza
 <div class="textblock">Here is a list of all variables with links to the classes they belong to:</div>
 
 <h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
-<li>object&#160;:&#160;<a class="el" href="group__NodeFunctions.html#ga9cf70c2b354e11c49130331da4519864">Node</a>, <a class="el" href="structObject.html#a8cc6ed7117cf960bfbc8b5543b674968">Object</a></li>
+<li>object&#160;:&#160;<a class="el" href="classNode.html#a9cf70c2b354e11c49130331da4519864">Node</a>, <a class="el" href="structObject.html#a8cc6ed7117cf960bfbc8b5543b674968">Object</a></li>
 <li>objects&#160;:&#160;<a class="el" href="structModelData.html#abed85b0c0f0a25e5775f7b824a6a8e2e">ModelData</a></li>
 <li>offsetMatrix&#160;:&#160;<a class="el" href="structBone.html#a842ad02b3b17a412a3fd505081c186db">Bone</a></li>
 <li>opacity&#160;:&#160;<a class="el" href="structMaterial.html#a5f665ff4d2fdfd52db7f8a8624f4aab5">Material</a></li>
@@ -151,6 +151,16 @@ $(document).ready(function(){initNavTree('functions_vars_o.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -159,7 +169,7 @@ $(document).ready(function(){initNavTree('functions_vars_o.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

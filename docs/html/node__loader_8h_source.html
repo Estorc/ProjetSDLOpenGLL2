@@ -112,15 +112,15 @@ $(document).ready(function(){initNavTree('node__loader_8h_source.html',''); init
 <div class="contents">
 <a href="node__loader_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__NodeLoader.html#gaa2f68fcfede0dc8ee9aeb8bd1ebba4fc">malloc_node</a>(<a class="code hl_struct" href="classNode.html">Node</a> *node, <span class="keywordtype">int</span> nodeType, FILE *file, <a class="code hl_struct" href="classCamera.html">Camera</a> **c, <a class="code hl_struct" href="structScript.html">Script</a> *scripts, <a class="code hl_struct" href="classNode.html">Node</a> *editor);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__NodeLoader.html#gaa2f68fcfede0dc8ee9aeb8bd1ebba4fc">malloc_node</a>(<a class="code hl_class" href="classNode.html">Node</a> *node, <span class="keywordtype">int</span> nodeType, FILE *file, <a class="code hl_class" href="classCamera.html">Camera</a> **c, <a class="code hl_struct" href="structScript.html">Script</a> *scripts, <a class="code hl_class" href="classNode.html">Node</a> *editor);</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__NodeLoader.html#ga930ce06b98b45fb3cef57f5a2e3c91dd">node_tree_to_file</a>(FILE * file, <a class="code hl_struct" href="classNode.html">Node</a> *node, <a class="code hl_struct" href="classNode.html">Node</a> *editor);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__NodeLoader.html#ga930ce06b98b45fb3cef57f5a2e3c91dd">node_tree_to_file</a>(FILE * file, <a class="code hl_class" href="classNode.html">Node</a> *node, <a class="code hl_class" href="classNode.html">Node</a> *editor);</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
- <span class="comment">// end of NodeLoader<div class="ttc" id="aclassCamera_html"><div class="ttname"><a href="classCamera.html">Camera</a></div><div class="ttdoc">A structure to represent a camera with position and rotation in 3D space.</div><div class="ttdef"><b>Definition</b> camera.class.c:24</div></div>
-<div class="ttc" id="aclassNode_html"><div class="ttname"><a href="classNode.html">Node</a></div><div class="ttdoc">Represents a node in the tree structure.</div><div class="ttdef"><b>Definition</b> node.class.c:21</div></div>
+ <span class="comment">// end of NodeLoader<div class="ttc" id="aclassCamera_html"><div class="ttname"><a href="classCamera.html">Camera</a></div><div class="ttdoc">A structure to represent a camera with position and rotation in 3D space.</div><div class="ttdef"><b>Definition</b> camera.class.c:29</div></div>
+<div class="ttc" id="aclassNode_html"><div class="ttname"><a href="classNode.html">Node</a></div><div class="ttdoc">Represents a node in the tree structure.</div><div class="ttdef"><b>Definition</b> node.class.c:26</div></div>
 <div class="ttc" id="agroup__NodeLoader_html_ga930ce06b98b45fb3cef57f5a2e3c91dd"><div class="ttname"><a href="group__NodeLoader.html#ga930ce06b98b45fb3cef57f5a2e3c91dd">node_tree_to_file</a></div><div class="ttdeci">void node_tree_to_file(FILE *file, Node *node, Node *editor)</div><div class="ttdoc">Writes the node tree to a file.</div><div class="ttdef"><b>Definition</b> node_loader.c:24</div></div>
 <div class="ttc" id="agroup__NodeLoader_html_gaa2f68fcfede0dc8ee9aeb8bd1ebba4fc"><div class="ttname"><a href="group__NodeLoader.html#gaa2f68fcfede0dc8ee9aeb8bd1ebba4fc">malloc_node</a></div><div class="ttdeci">void malloc_node(Node *node, int nodeType, FILE *file, Camera **c, Script *scripts, Node *editor)</div><div class="ttdoc">Allocates memory for a node and initializes it.</div><div class="ttdef"><b>Definition</b> node_loader.c:18</div></div>
-<div class="ttc" id="astructScript_html"><div class="ttname"><a href="structScript.html">Script</a></div><div class="ttdef"><b>Definition</b> scripts.h:41</div></div>
+<div class="ttc" id="astructScript_html"><div class="ttname"><a href="structScript.html">Script</a></div><div class="ttdoc">Structure representing a script with a function and a name.</div><div class="ttdef"><b>Definition</b> scripts.h:105</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -152,6 +152,16 @@ $(document).ready(function(){initNavTree('node__loader_8h_source.html',''); init
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -160,7 +170,7 @@ $(document).ready(function(){initNavTree('node__loader_8h_source.html',''); init
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

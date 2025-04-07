@@ -111,22 +111,28 @@ $(document).ready(function(){initNavTree('osio_8h_source.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 <a href="osio_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__OSIO.html#ga13b0479e5e15d717ef71927639b2822f">osio_save_file</a>(<span class="keywordtype">char</span> *path, <span class="keywordtype">char</span> *relativePath, <span class="keywordtype">char</span> *filter);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__OSIO.html#ga054945d77398e3be399fdb8398d0f4ef">osio_open_file</a>(<span class="keywordtype">char</span> *path, <span class="keywordtype">char</span> *relativePath, <span class="keywordtype">char</span> *filter);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__OSIO.html#gadc303caa72b5aed4b43ffa8f34f0375f">osio_print_error</a>(<span class="keywordtype">char</span> *msg);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__OSIO.html#ga2c057d7941c6df59458be2230e3e7f88">update_cwd</a>();</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__OSIO.html#ga6f9da097d97bc24c4c4bf7b2996331d0">absolute_path_to_relative</a>(<span class="keywordtype">char</span> *path);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
- <span class="comment">// end of OSIO group<div class="ttc" id="agroup__OSIO_html_ga054945d77398e3be399fdb8398d0f4ef"><div class="ttname"><a href="group__OSIO.html#ga054945d77398e3be399fdb8398d0f4ef">osio_open_file</a></div><div class="ttdeci">int osio_open_file(char *path, char *relativePath, char *filter)</div><div class="ttdoc">Opens a file from the specified path with a given filter.</div><div class="ttdef"><b>Definition</b> osio.c:127</div></div>
-<div class="ttc" id="agroup__OSIO_html_ga13b0479e5e15d717ef71927639b2822f"><div class="ttname"><a href="group__OSIO.html#ga13b0479e5e15d717ef71927639b2822f">osio_save_file</a></div><div class="ttdeci">int osio_save_file(char *path, char *relativePath, char *filter)</div><div class="ttdoc">Saves a file to the specified path with a given filter.</div><div class="ttdef"><b>Definition</b> osio.c:104</div></div>
-<div class="ttc" id="agroup__OSIO_html_ga2c057d7941c6df59458be2230e3e7f88"><div class="ttname"><a href="group__OSIO.html#ga2c057d7941c6df59458be2230e3e7f88">update_cwd</a></div><div class="ttdeci">int update_cwd()</div><div class="ttdoc">Updates the current working directory.</div><div class="ttdef"><b>Definition</b> osio.c:226</div></div>
-<div class="ttc" id="agroup__OSIO_html_ga6f9da097d97bc24c4c4bf7b2996331d0"><div class="ttname"><a href="group__OSIO.html#ga6f9da097d97bc24c4c4bf7b2996331d0">absolute_path_to_relative</a></div><div class="ttdeci">int absolute_path_to_relative(char *path)</div><div class="ttdoc">Converts an absolute file path to a relative path.</div><div class="ttdef"><b>Definition</b> osio.c:276</div></div>
-<div class="ttc" id="agroup__OSIO_html_gadc303caa72b5aed4b43ffa8f34f0375f"><div class="ttname"><a href="group__OSIO.html#gadc303caa72b5aed4b43ffa8f34f0375f">osio_print_error</a></div><div class="ttdeci">int osio_print_error(char *msg)</div><div class="ttdoc">Prints an error message to the standard error output.</div><div class="ttdef"><b>Definition</b> osio.c:150</div></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;<a class="code" href="dirent_8h.html">io/dirent.h</a>&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__OSIO.html#ga13b0479e5e15d717ef71927639b2822f">osio_save_file</a>(<span class="keywordtype">char</span> *path, <span class="keywordtype">char</span> *relativePath, <span class="keywordtype">char</span> *filter);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__OSIO.html#ga054945d77398e3be399fdb8398d0f4ef">osio_open_file</a>(<span class="keywordtype">char</span> *path, <span class="keywordtype">char</span> *relativePath, <span class="keywordtype">char</span> *filter);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__OSIO.html#gadc303caa72b5aed4b43ffa8f34f0375f">osio_print_error</a>(<span class="keywordtype">char</span> *msg);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__OSIO.html#ga2c057d7941c6df59458be2230e3e7f88">update_cwd</a>();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__OSIO.html#ga6f9da097d97bc24c4c4bf7b2996331d0">absolute_path_to_relative</a>(<span class="keywordtype">char</span> *path);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__OSIO.html#ga73f3b3dc473ae5d8d46d95fe3cd72759">osio_find</a>(<a class="code hl_typedef" href="dirent_8h.html#a6673e8f64ca9ebd7e26e6289dca06e87">dirent_t</a> ***namelist, <span class="keyword">const</span> <span class="keywordtype">char</span> * path, <span class="keywordtype">int</span> (*filter)(<span class="keyword">const</span> <a class="code hl_typedef" href="dirent_8h.html#a6673e8f64ca9ebd7e26e6289dca06e87">dirent_t</a> *entry));</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+ <span class="comment">// end of OSIO group<div class="ttc" id="adirent_8h_html"><div class="ttname"><a href="dirent_8h.html">dirent.h</a></div></div>
+<div class="ttc" id="adirent_8h_html_a6673e8f64ca9ebd7e26e6289dca06e87"><div class="ttname"><a href="dirent_8h.html#a6673e8f64ca9ebd7e26e6289dca06e87">dirent_t</a></div><div class="ttdeci">struct dirent dirent_t</div><div class="ttdef"><b>Definition</b> dirent.h:26</div></div>
+<div class="ttc" id="agroup__OSIO_html_ga054945d77398e3be399fdb8398d0f4ef"><div class="ttname"><a href="group__OSIO.html#ga054945d77398e3be399fdb8398d0f4ef">osio_open_file</a></div><div class="ttdeci">int osio_open_file(char *path, char *relativePath, char *filter)</div><div class="ttdoc">Opens a file from the specified path with a given filter.</div><div class="ttdef"><b>Definition</b> osio.c:185</div></div>
+<div class="ttc" id="agroup__OSIO_html_ga13b0479e5e15d717ef71927639b2822f"><div class="ttname"><a href="group__OSIO.html#ga13b0479e5e15d717ef71927639b2822f">osio_save_file</a></div><div class="ttdeci">int osio_save_file(char *path, char *relativePath, char *filter)</div><div class="ttdoc">Saves a file to the specified path with a given filter.</div><div class="ttdef"><b>Definition</b> osio.c:163</div></div>
+<div class="ttc" id="agroup__OSIO_html_ga2c057d7941c6df59458be2230e3e7f88"><div class="ttname"><a href="group__OSIO.html#ga2c057d7941c6df59458be2230e3e7f88">update_cwd</a></div><div class="ttdeci">int update_cwd()</div><div class="ttdoc">Updates the current working directory.</div><div class="ttdef"><b>Definition</b> osio.c:232</div></div>
+<div class="ttc" id="agroup__OSIO_html_ga6f9da097d97bc24c4c4bf7b2996331d0"><div class="ttname"><a href="group__OSIO.html#ga6f9da097d97bc24c4c4bf7b2996331d0">absolute_path_to_relative</a></div><div class="ttdeci">int absolute_path_to_relative(char *path)</div><div class="ttdoc">Converts an absolute file path to a relative path.</div><div class="ttdef"><b>Definition</b> osio.c:282</div></div>
+<div class="ttc" id="agroup__OSIO_html_ga73f3b3dc473ae5d8d46d95fe3cd72759"><div class="ttname"><a href="group__OSIO.html#ga73f3b3dc473ae5d8d46d95fe3cd72759">osio_find</a></div><div class="ttdeci">int osio_find(dirent_t ***namelist, const char *path, int(*filter)(const dirent_t *entry))</div><div class="ttdoc">Finds files in a directory that match a given filter.</div><div class="ttdef"><b>Definition</b> osio.c:223</div></div>
+<div class="ttc" id="agroup__OSIO_html_gadc303caa72b5aed4b43ffa8f34f0375f"><div class="ttname"><a href="group__OSIO.html#gadc303caa72b5aed4b43ffa8f34f0375f">osio_print_error</a></div><div class="ttdeci">int osio_print_error(char *msg)</div><div class="ttdoc">Prints an error message to the standard error output.</div><div class="ttdef"><b>Definition</b> osio.c:206</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -158,6 +164,16 @@ $(document).ready(function(){initNavTree('osio_8h_source.html',''); initResizabl
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -166,7 +182,7 @@ $(document).ready(function(){initNavTree('osio_8h_source.html',''); initResizabl
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

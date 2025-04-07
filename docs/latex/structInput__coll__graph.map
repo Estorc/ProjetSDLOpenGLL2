@@ -1,0 +1,5 @@
+<map id="Input" name="Input">
+<area shape="rect" id="Node000001" title="Structure to store input state." alt="" coords="168,7,223,33"/>
+<area shape="rect" id="Node000002" href="$structMouse.html" title="Structure to store mouse state." alt="" coords="5,7,71,33"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="84,17,168,17,168,23,84,23"/>
+</map>

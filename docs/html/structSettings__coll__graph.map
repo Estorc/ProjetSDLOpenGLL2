@@ -1,0 +1,5 @@
+<map id="Settings" name="Settings">
+<area shape="rect" id="Node000001" title="A structure to hold various settings for the application." alt="" coords="197,7,272,33"/>
+<area shape="rect" id="Node000002" href="$structKeybinds.html" title="A structure to hold key bindings for various actions in the game." alt="" coords="5,7,87,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,17,197,17,197,23,100,23"/>
+</map>

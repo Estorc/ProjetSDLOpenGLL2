@@ -1,4 +1,4 @@
-\doxysection{Area Struct Reference}
+\doxysection{Area Class Reference}
 \hypertarget{classArea}{}\label{classArea}\index{Area@{Area}}
 
 
@@ -31,63 +31,65 @@ Collaboration diagram for Area\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classArea_ab057dcc33eff0273510ca17becbe03b9}{constructor}} (int \mbox{\hyperlink{classArea_a0184f6b0f7d5b95791cfee7842a53d7f}{signal\+\_\+id}})
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor for the physics area class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classArea_a18cc3c9215fb618b5c90e8d30f0eb929}{load}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}scripts, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
-\item 
-void \mbox{\hyperlink{classArea_a53c3b2817302a4a4a53478cc3faa636b}{collect\+\_\+node}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, double distance, float \texorpdfstring{$\ast$}{*}impact\+Point)
-\item 
+\begin{DoxyCompactList}\small\item\em Loads data from a file and initializes the given camera, scripts, and editor node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArea_ac0e09d3148de0be1b0a8982c2590e47a}{collect\+\_\+node}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, float distance, vec3 impact\+Point)
+\begin{DoxyCompactList}\small\item\em Collects a node based on the given distance and calculates the impact point. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classArea_aaa5492d5041c690d630e9be327acdc0c}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
-\item 
+\begin{DoxyCompactList}\small\item\em Checks if the given area is valid. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classArea_a10c01b01dd5bd4bed630b8438d70adb1}{sort\+\_\+nodes}} ()
-\item 
-void \mbox{\hyperlink{classArea_a589fbdb24b0e82711669645e24b40c91}{update}} (float \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, float \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, float \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
-\item 
-void \mbox{\hyperlink{classArea_a5cef19e601e24e23dad05e780b671f6e}{get\+\_\+collisions\+\_\+shapes}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shapes, \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classArea_ad6881cbeab01152d62749a7a34d0aa40}{length}})
-\item 
-void \mbox{\hyperlink{classArea_a28fdf9c2977f0746bcfe1d15ec9ee0e2}{get\+\_\+node\+\_\+collection}} (\mbox{\hyperlink{structCollectedNode}{Collected\+Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}nodes, \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classArea_ad6881cbeab01152d62749a7a34d0aa40}{length}})
-\item 
+\begin{DoxyCompactList}\small\item\em Sorts the nodes in the physics area. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArea_a6385456e4c8e268c746eb88b373579b1}{update}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\begin{DoxyCompactList}\small\item\em Updates the position, rotation, and scale of an object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArea_a5cef19e601e24e23dad05e780b671f6e}{get\+\_\+collisions\+\_\+shapes}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}shapes, \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classArea_ad6881cbeab01152d62749a7a34d0aa40}{length}})
+\begin{DoxyCompactList}\small\item\em Retrieves the collision shapes and their lengths. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classArea_a28fdf9c2977f0746bcfe1d15ec9ee0e2}{get\+\_\+node\+\_\+collection}} (\mbox{\hyperlink{structCollectedNode}{Collected\+Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}nodes, \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classArea_ad6881cbeab01152d62749a7a34d0aa40}{length}})
+\begin{DoxyCompactList}\small\item\em Retrieves a collection of nodes. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classArea_a0fc67491e18cd5c2552fe115a5f56acb}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Saves the current state of the physics area to a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classPhysicalNode}{Physical\+Node}}}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classPhysicalNode_ab4fba76d5aa0a7a55ac60153eca1b466}{free}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Frees the resources allocated for the \doxylink{classPhysicalNode}{Physical\+Node} instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classNode}{Node} class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
-\item 
-void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
-\item 
-void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
-\item 
+\begin{DoxyCompactList}\small\item\em Initializes a node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+\begin{DoxyCompactList}\small\item\em Retrieves the glow shader. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}})
+\begin{DoxyCompactList}\small\item\em Retrieves settings data. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Loads the necessary resources or data for the node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
-\item 
-void \mbox{\hyperlink{classNode_ab05e54fc6a226fe70d274e46e9ced07a}{prepare\+\_\+render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+\begin{DoxyCompactList}\small\item\em Saves the current state to the specified file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_af61079d444fa059127bc4983cf5e4ea5}{prepare\+\_\+render}} (mat4 model\+Matrix, \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
 \begin{DoxyCompactList}\small\item\em Renders a node using the specified model matrix and shader. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_ab93a6f41e02422a21c44227c0355382a}{render}} ()
-\item 
-void \mbox{\hyperlink{classNode_a2621112ec04d166f9ec376eba06f3bbb}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
-\item 
-void \mbox{\hyperlink{classNode_a500a682914a24af188bd9eb79ba2aaae}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
-\item 
+\begin{DoxyCompactList}\small\item\em Renders the node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a117da4a7be3efb9541f5279a98bf839f}{update\+\_\+global\+\_\+position}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\begin{DoxyCompactList}\small\item\em Updates the global position of a node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a1e577d625ac818cc6dac5634e713cdaf}{update}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\begin{DoxyCompactList}\small\item\em Updates the position, rotation, and scale of a node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a86288848282bf3bba83f0cc7437207ac}{on\+\_\+resize}} ()
+\begin{DoxyCompactList}\small\item\em Handles the resize event for the node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_acda79ab291312990e96552767c577a3d}{free}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Frees the resources allocated by the object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_ae2ee01789b301b3c0323473dbe968283}{is\+\_\+cshape}} (bool \texorpdfstring{$\ast$}{*}cshape)
-\item 
+\begin{DoxyCompactList}\small\item\em Checks if the current shape is a custom shape. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a75c27b8cf028ae9509b20ad7392c49f8}{is\+\_\+body}} (bool \texorpdfstring{$\ast$}{*}body)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the body status of the node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
-\item 
+\begin{DoxyCompactList}\small\item\em Checks if the current node is within a specified area. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a743d883f14521da8f8c62608ce65f7ee}{is\+\_\+render\+\_\+target}} (bool \texorpdfstring{$\ast$}{*}render\+\_\+target)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the render target status. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
-\item 
+\begin{DoxyCompactList}\small\item\em Determines if the current node is a GUI element. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a42da38ee8e0a621e438e14b94c0e381e}{add\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
 \begin{DoxyCompactList}\small\item\em Adds a child node to a parent node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a8e6b8cc31d9259fcf89b21c180954996}{add\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
@@ -105,70 +107,70 @@ int \mbox{\hyperlink{classNode_af99346e2725916df2fbe2e4af7a2d51c}{index\+\_\+of\
 void \mbox{\hyperlink{classNode_aef2f74d45bec672840433aff6abe0d45}{print}} (int level)
 \begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a846d06ed1f7a5ac618fbfef10881230f}{emit\+\_\+ready}} (...)
-\item 
+\begin{DoxyCompactList}\small\item\em Emits the \textquotesingle{}ready\textquotesingle{} signal for the node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a3e7054036adfcf19c240b48a7f353f83}{emit\+\_\+update}} (...)
-\item 
+\begin{DoxyCompactList}\small\item\em Emits an update event for the node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a0a3256bf578114f603b9407814638a2f}{emit\+\_\+signal}} (...)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Emits a signal if the node has a script and the script has a signal handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static int \mbox{\hyperlink{classArea_a08b84bd1f8ae3d3dbdbfe7d58d181c05}{compare\+\_\+distance\+\_\+nodes}} (const void \texorpdfstring{$\ast$}{*}a, const void \texorpdfstring{$\ast$}{*}b)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Compares the distances of two nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classArea_a81fbd9797b9458beeda0fd4853596687}{collisions\+Shapes}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classArea_ad6881cbeab01152d62749a7a34d0aa40}{length}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classArea_ad6881cbeab01152d62749a7a34d0aa40}{length}}
 \item 
 struct \mbox{\hyperlink{structCollectedNode}{Collected\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classArea_aab560744196b8b3cec57b80dd2560af3}{collected\+Nodes}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \mbox{\hyperlink{classArea_a736dc4fb322517b2ba4e68bd6140aa59}{collected\+Length}}
+\mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \mbox{\hyperlink{classArea_a736dc4fb322517b2ba4e68bd6140aa59}{collected\+Length}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{classArea_a0184f6b0f7d5b95791cfee7842a53d7f}{signal\+\_\+id}}
+\mbox{\hyperlink{aliases_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{classArea_a0184f6b0f7d5b95791cfee7842a53d7f}{signal\+\_\+id}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
 \item 
-void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga9cf70c2b354e11c49130331da4519864}{object}}
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_a9cf70c2b354e11c49130331da4519864}{object}}
 \item 
-struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga3d857c2fdb25634fe92ca32ff006c233}{children}}
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_a3d857c2fdb25634fe92ca32ff006c233}{children}}
 \item 
-struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{parent}}
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_a34f3ab9670c7b70dad8905359a243c92}{parent}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
+\mbox{\hyperlink{aliases_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a670b66a39fdb438336be47a9cb68a516}{type}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a0c95683293e9f234118c583a28bc9cc0}{flags}}
 \item 
-vec3 \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}
+vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}
 \item 
-vec3 \mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}
+vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}
 \item 
-vec3 \mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}}
+vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}}
 \item 
-vec3 \mbox{\hyperlink{group__NodeFunctions_ga1cf2ef86297b1bdfed11d030c0ed3dd2}{global\+Pos}}
+vec3 \mbox{\hyperlink{classNode_a1cf2ef86297b1bdfed11d030c0ed3dd2}{global\+Pos}}
 \item 
-vec3 \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{global\+Rot}}
+vec3 \mbox{\hyperlink{classNode_a16edb124722f7491fa3d41573b2fec8a}{global\+Rot}}
 \item 
-vec3 \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
+vec3 \mbox{\hyperlink{classNode_a1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
 \item 
-\mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
+\mbox{\hyperlink{scripts_8h_a73db917e73a3821d62d9869b4196c024}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_afecba6f76777835ffecef5c947e19f26}{behavior}}
 \item 
-\mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
+\mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_afa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_gab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_ab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
 \item 
-\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}}
+\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a44e2ccb5f2209f6367f33a3c712f0eb1}{glow\+Shader}} = 0
-\end{DoxyCompactItemize}
+static \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_ad05f8b1de975fa3370e8b98c0ec5aa4f}{glow\+Shader}} = 0
+\begin{DoxyCompactList}\small\item\em A static Shader variable used for glow effect. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -177,82 +179,201 @@ Represents an area with collision shapes and nodes.
 This structure holds information about an area, including its collision shapes, collected nodes, and sorted nodes. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classArea_a53c3b2817302a4a4a53478cc3faa636b}\label{classArea_a53c3b2817302a4a4a53478cc3faa636b} 
-\index{Area@{Area}!collect\_node@{collect\_node}}
-\index{collect\_node@{collect\_node}!Area@{Area}}
-\doxysubsubsection{\texorpdfstring{collect\_node()}{collect\_node()}}
-{\footnotesize\ttfamily void Area\+::collect\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{double}]{distance,  }\item[{float \texorpdfstring{$\ast$}{*}}]{impact\+Point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-\Hypertarget{classArea_a08b84bd1f8ae3d3dbdbfe7d58d181c05}\label{classArea_a08b84bd1f8ae3d3dbdbfe7d58d181c05} 
-\index{Area@{Area}!compare\_distance\_nodes@{compare\_distance\_nodes}}
-\index{compare\_distance\_nodes@{compare\_distance\_nodes}!Area@{Area}}
-\doxysubsubsection{\texorpdfstring{compare\_distance\_nodes()}{compare\_distance\_nodes()}}
-{\footnotesize\ttfamily static int Area\+::compare\+\_\+distance\+\_\+nodes (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const void \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
-
 \Hypertarget{classArea_ab057dcc33eff0273510ca17becbe03b9}\label{classArea_ab057dcc33eff0273510ca17becbe03b9} 
 \index{Area@{Area}!constructor@{constructor}}
 \index{constructor@{constructor}!Area@{Area}}
 \doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
 {\footnotesize\ttfamily void Area\+::constructor (\begin{DoxyParamCaption}\item[{int}]{signal\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\Hypertarget{classArea_a5cef19e601e24e23dad05e780b671f6e}\label{classArea_a5cef19e601e24e23dad05e780b671f6e} 
-\index{Area@{Area}!get\_collisions\_shapes@{get\_collisions\_shapes}}
-\index{get\_collisions\_shapes@{get\_collisions\_shapes}!Area@{Area}}
-\doxysubsubsection{\texorpdfstring{get\_collisions\_shapes()}{get\_collisions\_shapes()}}
-{\footnotesize\ttfamily void Area\+::get\+\_\+collisions\+\_\+shapes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{shapes,  }\item[{\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\Hypertarget{classArea_a28fdf9c2977f0746bcfe1d15ec9ee0e2}\label{classArea_a28fdf9c2977f0746bcfe1d15ec9ee0e2} 
-\index{Area@{Area}!get\_node\_collection@{get\_node\_collection}}
-\index{get\_node\_collection@{get\_node\_collection}!Area@{Area}}
-\doxysubsubsection{\texorpdfstring{get\_node\_collection()}{get\_node\_collection()}}
-{\footnotesize\ttfamily void Area\+::get\+\_\+node\+\_\+collection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCollectedNode}{Collected\+Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{nodes,  }\item[{\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\Hypertarget{classArea_aaa5492d5041c690d630e9be327acdc0c}\label{classArea_aaa5492d5041c690d630e9be327acdc0c} 
-\index{Area@{Area}!is\_area@{is\_area}}
-\index{is\_area@{is\_area}!Area@{Area}}
-\doxysubsubsection{\texorpdfstring{is\_area()}{is\_area()}}
-{\footnotesize\ttfamily void Area\+::is\+\_\+area (\begin{DoxyParamCaption}\item[{bool \texorpdfstring{$\ast$}{*}}]{area }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+Constructor for the physics area class. 
 
+This function initializes a new instance of the physics area class with the given signal ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em signal\+\_\+id} & The signal ID to initialize the physics area instance with. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classArea_a18cc3c9215fb618b5c90e8d30f0eb929}\label{classArea_a18cc3c9215fb618b5c90e8d30f0eb929} 
 \index{Area@{Area}!load@{load}}
 \index{load@{load}!Area@{Area}}
 \doxysubsubsection{\texorpdfstring{load()}{load()}}
 {\footnotesize\ttfamily void Area\+::load (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file,  }\item[{\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}}]{scripts,  }\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{editor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\Hypertarget{classArea_a0fc67491e18cd5c2552fe115a5f56acb}\label{classArea_a0fc67491e18cd5c2552fe115a5f56acb} 
-\index{Area@{Area}!save@{save}}
-\index{save@{save}!Area@{Area}}
-\doxysubsubsection{\texorpdfstring{save()}{save()}}
-{\footnotesize\ttfamily void Area\+::save (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+Loads data from a file and initializes the given camera, scripts, and editor node. 
+
+This function reads data from the specified file and uses it to initialize the provided camera, scripts, and editor node. The exact format and content of the file are assumed to be known by the caller.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & A pointer to the FILE object from which data will be read. \\
+\hline
+{\em c} & A double pointer to a \doxylink{classCamera}{Camera} object that will be initialized with data from the file. \\
+\hline
+{\em scripts} & A pointer to a \doxylink{structScript}{Script} object that will be initialized with data from the file. \\
+\hline
+{\em editor} & A pointer to a \doxylink{classNode}{Node} object representing the editor that will be initialized with data from the file. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classArea_ac0e09d3148de0be1b0a8982c2590e47a}\label{classArea_ac0e09d3148de0be1b0a8982c2590e47a} 
+\index{Area@{Area}!collect\_node@{collect\_node}}
+\index{collect\_node@{collect\_node}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{collect\_node()}{collect\_node()}}
+{\footnotesize\ttfamily void Area\+::collect\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{float}]{distance,  }\item[{vec3}]{impact\+Point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Collects a node based on the given distance and calculates the impact point. 
+
+This function processes a given node and calculates the impact point based on the specified distance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & A pointer to the \doxylink{classNode}{Node} structure that needs to be processed. \\
+\hline
+{\em distance} & A double value representing the distance used in the calculation. \\
+\hline
+{\em impact\+Point} & Vec3 where the calculated impact point will be stored. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classArea_aaa5492d5041c690d630e9be327acdc0c}\label{classArea_aaa5492d5041c690d630e9be327acdc0c} 
+\index{Area@{Area}!is\_area@{is\_area}}
+\index{is\_area@{is\_area}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{is\_area()}{is\_area()}}
+{\footnotesize\ttfamily void Area\+::is\+\_\+area (\begin{DoxyParamCaption}\item[{bool \texorpdfstring{$\ast$}{*}}]{area }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the given area is valid. 
+
+This function takes a pointer to a boolean variable and checks if the area is valid.
+
+
+\begin{DoxyParams}{Parameters}
+{\em area} & A pointer to a boolean variable that indicates the validity of the area. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classArea_a08b84bd1f8ae3d3dbdbfe7d58d181c05}\label{classArea_a08b84bd1f8ae3d3dbdbfe7d58d181c05} 
+\index{Area@{Area}!compare\_distance\_nodes@{compare\_distance\_nodes}}
+\index{compare\_distance\_nodes@{compare\_distance\_nodes}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{compare\_distance\_nodes()}{compare\_distance\_nodes()}}
+{\footnotesize\ttfamily static int Area\+::compare\+\_\+distance\+\_\+nodes (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const void \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Compares the distances of two nodes. 
+
+This function is used to compare the distances of two nodes. It is typically used in sorting algorithms where nodes need to be ordered based on their distances.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Pointer to the first node to compare. \\
+\hline
+{\em b} & Pointer to the second node to compare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer less than, equal to, or greater than zero if the distance of the first node is considered to be respectively less than, equal to, or greater than the distance of the second node. 
+\end{DoxyReturn}
 \Hypertarget{classArea_a10c01b01dd5bd4bed630b8438d70adb1}\label{classArea_a10c01b01dd5bd4bed630b8438d70adb1} 
 \index{Area@{Area}!sort\_nodes@{sort\_nodes}}
 \index{sort\_nodes@{sort\_nodes}!Area@{Area}}
 \doxysubsubsection{\texorpdfstring{sort\_nodes()}{sort\_nodes()}}
 {\footnotesize\ttfamily void Area\+::sort\+\_\+nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\Hypertarget{classArea_a589fbdb24b0e82711669645e24b40c91}\label{classArea_a589fbdb24b0e82711669645e24b40c91} 
+
+
+Sorts the nodes in the physics area. 
+
+This function sorts the nodes in the physics area based on a specific criterion. The sorting algorithm and criterion are not specified in the provided code snippet.
+
+\begin{DoxyNote}{Note}
+Ensure that the nodes are properly initialized before calling this function. 
+\end{DoxyNote}
+\Hypertarget{classArea_a6385456e4c8e268c746eb88b373579b1}\label{classArea_a6385456e4c8e268c746eb88b373579b1} 
 \index{Area@{Area}!update@{update}}
 \index{update@{update}!Area@{Area}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily void Area\+::update (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{float \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{float \texorpdfstring{$\ast$}{*}}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void Area\+::update (\begin{DoxyParamCaption}\item[{vec3}]{pos,  }\item[{vec3}]{rot,  }\item[{vec3}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Updates the position, rotation, and scale of an object. 
+
+This function takes pointers to the position, rotation, and scale of an object and updates them accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & Vec3 position of the object. It is expected to be a float array of size 3 representing x, y, and z coordinates. \\
+\hline
+{\em rot} & Vec3 rotation of the object. It is expected to be a float array of size 3 representing rotation angles around x, y, and z axes. \\
+\hline
+{\em scale} & Vec3 scale of the object. It is expected to be a float array of size 3 representing scaling factors along x, y, and z axes. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classArea_a5cef19e601e24e23dad05e780b671f6e}\label{classArea_a5cef19e601e24e23dad05e780b671f6e} 
+\index{Area@{Area}!get\_collisions\_shapes@{get\_collisions\_shapes}}
+\index{get\_collisions\_shapes@{get\_collisions\_shapes}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{get\_collisions\_shapes()}{get\_collisions\_shapes()}}
+{\footnotesize\ttfamily void Area\+::get\+\_\+collisions\+\_\+shapes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{shapes,  }\item[{\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the collision shapes and their lengths. 
+
+This function populates the provided pointers with the collision shapes and their corresponding lengths.
+
+
+\begin{DoxyParams}{Parameters}
+{\em shapes} & A pointer to a 4-\/dimensional array of \doxylink{classNode}{Node} pointers. This will be populated with the collision shapes. \\
+\hline
+{\em length} & A pointer to an array of unsigned 8-\/bit integers. This will be populated with the lengths of the collision shapes. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classArea_a28fdf9c2977f0746bcfe1d15ec9ee0e2}\label{classArea_a28fdf9c2977f0746bcfe1d15ec9ee0e2} 
+\index{Area@{Area}!get\_node\_collection@{get\_node\_collection}}
+\index{get\_node\_collection@{get\_node\_collection}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{get\_node\_collection()}{get\_node\_collection()}}
+{\footnotesize\ttfamily void Area\+::get\+\_\+node\+\_\+collection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCollectedNode}{Collected\+Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{nodes,  }\item[{\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves a collection of nodes. 
+
+This function populates the provided array with a collection of nodes and sets the length of the collection.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em nodes} & A pointer to an array of \doxylink{structCollectedNode}{Collected\+Node} pointers that will be populated with the nodes. \\
+\hline
+\mbox{\texttt{ out}}  & {\em length} & A pointer to an unsigned 8-\/bit integer that will be set to the length of the node collection. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classArea_a0fc67491e18cd5c2552fe115a5f56acb}\label{classArea_a0fc67491e18cd5c2552fe115a5f56acb} 
+\index{Area@{Area}!save@{save}}
+\index{save@{save}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Area\+::save (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Saves the current state of the physics area to a file. 
+
+This function writes the current state of the physics area to the specified file. The file should be opened in a mode that allows writing before calling this function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & A pointer to a FILE object that identifies the file to which the state will be saved. \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classArea_a736dc4fb322517b2ba4e68bd6140aa59}\label{classArea_a736dc4fb322517b2ba4e68bd6140aa59} 
-\index{Area@{Area}!collectedLength@{collectedLength}}
-\index{collectedLength@{collectedLength}!Area@{Area}}
-\doxysubsubsection{\texorpdfstring{collectedLength}{collectedLength}}
-{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} Area\+::collected\+Length}
-
-\texorpdfstring{$<$}{<} Array of collected nodes with distances. \Hypertarget{classArea_aab560744196b8b3cec57b80dd2560af3}\label{classArea_aab560744196b8b3cec57b80dd2560af3} 
-\index{Area@{Area}!collectedNodes@{collectedNodes}}
-\index{collectedNodes@{collectedNodes}!Area@{Area}}
-\doxysubsubsection{\texorpdfstring{collectedNodes}{collectedNodes}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structCollectedNode}{Collected\+Node}}\texorpdfstring{$\ast$}{*} Area\+::collected\+Nodes}
-
-\texorpdfstring{$<$}{<} Number of collision shapes. \Hypertarget{classArea_a81fbd9797b9458beeda0fd4853596687}\label{classArea_a81fbd9797b9458beeda0fd4853596687} 
+\Hypertarget{classArea_a81fbd9797b9458beeda0fd4853596687}\label{classArea_a81fbd9797b9458beeda0fd4853596687} 
 \index{Area@{Area}!collisionsShapes@{collisionsShapes}}
 \index{collisionsShapes@{collisionsShapes}!Area@{Area}}
 \doxysubsubsection{\texorpdfstring{collisionsShapes}{collisionsShapes}}
@@ -262,17 +383,29 @@ This structure holds information about an area, including its collision shapes, 
 \index{Area@{Area}!length@{length}}
 \index{length@{length}!Area@{Area}}
 \doxysubsubsection{\texorpdfstring{length}{length}}
-{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Area\+::length}
+{\footnotesize\ttfamily \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} Area\+::length}
+
+\texorpdfstring{$<$}{<} Array of collected nodes with distances. \Hypertarget{classArea_aab560744196b8b3cec57b80dd2560af3}\label{classArea_aab560744196b8b3cec57b80dd2560af3} 
+\index{Area@{Area}!collectedNodes@{collectedNodes}}
+\index{collectedNodes@{collectedNodes}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{collectedNodes}{collectedNodes}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structCollectedNode}{Collected\+Node}}\texorpdfstring{$\ast$}{*} Area\+::collected\+Nodes}
+
+\texorpdfstring{$<$}{<} Number of collision shapes. \Hypertarget{classArea_a736dc4fb322517b2ba4e68bd6140aa59}\label{classArea_a736dc4fb322517b2ba4e68bd6140aa59} 
+\index{Area@{Area}!collectedLength@{collectedLength}}
+\index{collectedLength@{collectedLength}!Area@{Area}}
+\doxysubsubsection{\texorpdfstring{collectedLength}{collectedLength}}
+{\footnotesize\ttfamily \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} Area\+::collected\+Length}
 
 \texorpdfstring{$<$}{<} Array of collected nodes with distances. \Hypertarget{classArea_a0184f6b0f7d5b95791cfee7842a53d7f}\label{classArea_a0184f6b0f7d5b95791cfee7842a53d7f} 
 \index{Area@{Area}!signal\_id@{signal\_id}}
 \index{signal\_id@{signal\_id}!Area@{Area}}
 \doxysubsubsection{\texorpdfstring{signal\_id}{signal\_id}}
-{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} Area\+::signal\+\_\+id}
+{\footnotesize\ttfamily \mbox{\hyperlink{aliases_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} Area\+::signal\+\_\+id}
 
 \texorpdfstring{$<$}{<} Number of collected nodes. 
 
-The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 src/classes/nodes/physics/\mbox{\hyperlink{area_8class_8c}{area.\+class.\+c}}\item 
 src/physics/\mbox{\hyperlink{physics_8h}{physics.\+h}}\end{DoxyCompactItemize}

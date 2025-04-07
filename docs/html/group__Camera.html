@@ -108,7 +108,6 @@ $(document).ready(function(){initNavTree('group__Camera.html',''); initResizable
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Camera Functions</div></div>
 </div><!--header-->
@@ -117,12 +116,6 @@ $(document).ready(function(){initNavTree('group__Camera.html',''); initResizable
 <p>Functions for initializing and managing the camera.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCamera.html">Camera</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure to represent a camera with position and rotation in 3D space.  <a href="classCamera.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga8251d5473e00feb6f2181942b89e654d" id="r_ga8251d5473e00feb6f2181942b89e654d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Camera.html#ga8251d5473e00feb6f2181942b89e654d">init_camera</a> (<a class="el" href="classCamera.html">Camera</a> *c)</td></tr>
@@ -135,6 +128,33 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Functions for initializing and managing the camera. </p>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ga8251d5473e00feb6f2181942b89e654d" name="ga8251d5473e00feb6f2181942b89e654d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8251d5473e00feb6f2181942b89e654d">&#9670;&#160;</a></span>init_camera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_camera </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCamera.html">Camera</a> *&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes the camera. </p>
+<p>This function sets up the initial state of the camera, including its position, orientation, and any other relevant parameters. It must be called before using the camera in rendering operations.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Pointer to a <a class="el" href="classCamera.html" title="A structure to represent a camera with position and rotation in 3D space.">Camera</a> structure that will be initialized. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="gadd86e5f49d6695d5497c08e3de4207af" name="gadd86e5f49d6695d5497c08e3de4207af"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gadd86e5f49d6695d5497c08e3de4207af">&#9670;&#160;</a></span>camera_projection()</h2>
 
@@ -173,33 +193,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga8251d5473e00feb6f2181942b89e654d" name="ga8251d5473e00feb6f2181942b89e654d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8251d5473e00feb6f2181942b89e654d">&#9670;&#160;</a></span>init_camera()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void init_camera </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classCamera.html">Camera</a> *&#160;</td>
-          <td class="paramname"><em>c</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initializes the camera. </p>
-<p>This function sets up the initial state of the camera, including its position, orientation, and any other relevant parameters. It must be called before using the camera in rendering operations.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">c</td><td>Pointer to a <a class="el" href="classCamera.html" title="A structure to represent a camera with position and rotation in 3D space.">Camera</a> structure that will be initialized. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -231,6 +224,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -239,7 +242,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

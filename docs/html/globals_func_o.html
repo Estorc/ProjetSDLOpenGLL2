@@ -110,6 +110,7 @@ $(document).ready(function(){initNavTree('globals_func_o.html',''); initResizabl
 <div class="textblock">Here is a list of all functions with links to the files they belong to:</div>
 
 <h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
+<li>osio_find()&#160;:&#160;<a class="el" href="group__OSIO.html#ga73f3b3dc473ae5d8d46d95fe3cd72759">osio.c</a>, <a class="el" href="group__OSIO.html#ga73f3b3dc473ae5d8d46d95fe3cd72759">osio.h</a></li>
 <li>osio_open_file()&#160;:&#160;<a class="el" href="group__OSIO.html#ga054945d77398e3be399fdb8398d0f4ef">osio.c</a>, <a class="el" href="group__OSIO.html#ga054945d77398e3be399fdb8398d0f4ef">osio.h</a></li>
 <li>osio_print_error()&#160;:&#160;<a class="el" href="group__OSIO.html#gadc303caa72b5aed4b43ffa8f34f0375f">osio.c</a>, <a class="el" href="group__OSIO.html#gadc303caa72b5aed4b43ffa8f34f0375f">osio.h</a></li>
 <li>osio_save_file()&#160;:&#160;<a class="el" href="group__OSIO.html#ga13b0479e5e15d717ef71927639b2822f">osio.c</a>, <a class="el" href="group__OSIO.html#ga13b0479e5e15d717ef71927639b2822f">osio.h</a></li>
@@ -145,6 +146,16 @@ $(document).ready(function(){initNavTree('globals_func_o.html',''); initResizabl
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -153,7 +164,7 @@ $(document).ready(function(){initNavTree('globals_func_o.html',''); initResizabl
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

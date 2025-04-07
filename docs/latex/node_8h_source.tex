@@ -2,11 +2,11 @@
 \hypertarget{node_8h_source}{}\label{node_8h_source}\index{src/storage/node.h@{src/storage/node.h}}
 \mbox{\hyperlink{node_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}../io/shader.h"{}}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}../render/camera.h"{}}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../physics/bodies.h"{}}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../scripts/scripts.h"{}}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}../render/framebuffer.h"{}}}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{shader_8h}{io/shader.h}}>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{camera_8h}{render/camera.h}}>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{bodies_8h}{physics/bodies.h}}>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{scripts_8h}{scripts/scripts.h}}>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{framebuffer_8h}{render/framebuffer.h}}>}}
 \DoxyCodeLine{00006\ }
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ NODE\_H}}
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ NODE\_H}}
@@ -30,44 +30,45 @@
 \DoxyCodeLine{00026\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structWorldShaders}{WorldShaders}};}
 \DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classRenderTarget}{RenderTarget}};}
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00042\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structTree}{Tree}}\ \{}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ *\mbox{\hyperlink{group__NodeFunctions_ga5406b91a30624b42976b4f87d3362081}{root}};\ }
-\DoxyCodeLine{00044\ \}\ \mbox{\hyperlink{structTree}{Tree}};}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00050\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ \{}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{group__NodeFunctions_ga9cf70c2b354e11c49130331da4519864}{object}};\ }
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ **\mbox{\hyperlink{group__NodeFunctions_ga3d857c2fdb25634fe92ca32ff006c233}{children}};\ }
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ *\mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{parent}};\ }
-\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}}\ \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}};\ }
-\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}};\ }
-\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}};\ }
-\DoxyCodeLine{00058\ \ \ \ \ vec3\ \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}};\ }
-\DoxyCodeLine{00059\ \ \ \ \ vec3\ \mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}};\ }
-\DoxyCodeLine{00060\ \ \ \ \ vec3\ \mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}};\ }
-\DoxyCodeLine{00062\ \ \ \ \ vec3\ \mbox{\hyperlink{group__NodeFunctions_ga1cf2ef86297b1bdfed11d030c0ed3dd2}{globalPos}};\ }
-\DoxyCodeLine{00063\ \ \ \ \ vec3\ \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{globalRot}};\ }
-\DoxyCodeLine{00064\ \ \ \ \ vec3\ \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{globalScale}};\ }
-\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}}\ *\mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}};\ }
-\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{unionBehaviorAttribute}{BehaviorAttribute}}\ *\mbox{\hyperlink{group__NodeFunctions_gafa50314ea6ca719d2fcbbdaa33dd052a}{attribute}};\ }
-\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{group__NodeFunctions_gab9c00a78e2cb89d68c1d9a251c870444}{attributes\_count}};\ }
-\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}};\ }
-\DoxyCodeLine{00071\ \}\ \mbox{\hyperlink{classNode}{Node}};}
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00078\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__NodeFunctions_gae925b777d12c58434a689cce258b57c0}{NodeFlags}}\ \{}
-\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a60ab1e6cf30478e53bd7bcba32c2c792}{NODE\_ACTIVE}}\ \ \ \ \ \ \ \ \ \ \ \ \ =\ 1\ <<\ 0,\ \textcolor{comment}{//\ 0000\ 0001}}
-\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a579273ea1ad284119327d60ff4dbc4b5}{NODE\_VISIBLE}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 1\ <<\ 1,\ \textcolor{comment}{//\ 0000\ 0010}}
-\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0ab2fcac4053398589571a32ecd8006451}{NODE\_SCRIPT}}\ \ \ \ \ \ \ \ \ \ \ \ \ =\ 1\ <<\ 2,\ \textcolor{comment}{//\ 0000\ 0100\ }}
-\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a4c9ec9a67e59ef9acb25ed7b719b5687}{NODE\_LIGHT\_ACTIVE}}\ \ \ \ \ \ \ =\ 1\ <<\ 3,\ \textcolor{comment}{//\ 0000\ 1000}}
-\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0ad195f4e0acd4e3573ed2ed82ddd0a036}{NODE\_INITIALIZED}}\ \ \ \ \ \ \ \ =\ 1\ <<\ 4,\ \textcolor{comment}{//\ 0001\ 0000}}
-\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a81804ec13b8cf9cdc42a6ae1e89066ee}{NODE\_UNUSED4}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 1\ <<\ 5,\ \textcolor{comment}{//\ 0010\ 0000}}
-\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a114b0f86ab1e39a1162d185834e9567f}{NODE\_UNUSED5}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 1\ <<\ 6,\ \textcolor{comment}{//\ 0100\ 0000}}
-\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0acb4410df9bfe0bd0ef7dc83b26fe77ca}{NODE\_EDITOR\_FLAG}}\ \ \ \ \ \ \ \ =\ 1\ <<\ 7,\ \textcolor{comment}{//\ 1000\ 0000}}
-\DoxyCodeLine{00087\ \};}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ NODE\_ACTIVE\_AND\_VISIBLE\ NODE\_ACTIVE\ |\ NODE\_VISIBLE\ }\textcolor{comment}{//\ 0000\ 0011}}
-\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ NODE\_DEFAULT\_FLAGS\ NODE\_ACTIVE\_AND\_VISIBLE\ }\textcolor{comment}{//\ 0000\ 0011}}
-\DoxyCodeLine{00092\ }
-\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{classNode_a9cf70c2b354e11c49130331da4519864}{object}};\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ **\mbox{\hyperlink{classNode_a3d857c2fdb25634fe92ca32ff006c233}{children}};\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ *\mbox{\hyperlink{classNode_a34f3ab9670c7b70dad8905359a243c92}{parent}};\ }
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}}\ \mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}};\ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classNode_a670b66a39fdb438336be47a9cb68a516}{type}};\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classNode_a0c95683293e9f234118c583a28bc9cc0}{flags}};\ }
+\DoxyCodeLine{00049\ \ \ \ \ vec3\ \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}};\ }
+\DoxyCodeLine{00050\ \ \ \ \ vec3\ \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}};\ }
+\DoxyCodeLine{00051\ \ \ \ \ vec3\ \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}};\ }
+\DoxyCodeLine{00053\ \ \ \ \ vec3\ \mbox{\hyperlink{classNode_a1cf2ef86297b1bdfed11d030c0ed3dd2}{globalPos}};\ }
+\DoxyCodeLine{00054\ \ \ \ \ vec3\ \mbox{\hyperlink{classNode_a16edb124722f7491fa3d41573b2fec8a}{globalRot}};\ }
+\DoxyCodeLine{00055\ \ \ \ \ vec3\ \mbox{\hyperlink{classNode_a1d353831fd989481401e337cd5ba0ddc}{globalScale}};\ }
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{scripts_8h_a73db917e73a3821d62d9869b4196c024}{Behavior}}\ *\mbox{\hyperlink{classNode_afecba6f76777835ffecef5c947e19f26}{behavior}};\ }
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{unionBehaviorAttribute}{BehaviorAttribute}}\ *\mbox{\hyperlink{classNode_afa50314ea6ca719d2fcbbdaa33dd052a}{attribute}};\ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{classNode_ab9c00a78e2cb89d68c1d9a251c870444}{attributes\_count}};\ }
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}\ \mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}};\ }
+\DoxyCodeLine{00062\ \}\ \mbox{\hyperlink{classNode}{Node}};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structTree}{Tree}}\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ *\mbox{\hyperlink{group__NodeFunctions_gadea11d0e123823b769f7c3ee9a5a1088}{root}};\ }
+\DoxyCodeLine{00083\ \}\ \mbox{\hyperlink{structTree}{Tree}};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00089\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__NodeFunctions_gae925b777d12c58434a689cce258b57c0}{NodeFlags}}\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a60ab1e6cf30478e53bd7bcba32c2c792}{NODE\_ACTIVE}}\ \ \ \ \ \ \ \ \ \ \ \ \ =\ 1\ <<\ 0,\ \textcolor{comment}{//\ 0000\ 0001}}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a579273ea1ad284119327d60ff4dbc4b5}{NODE\_VISIBLE}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 1\ <<\ 1,\ \textcolor{comment}{//\ 0000\ 0010}}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0ab2fcac4053398589571a32ecd8006451}{NODE\_SCRIPT}}\ \ \ \ \ \ \ \ \ \ \ \ \ =\ 1\ <<\ 2,\ \textcolor{comment}{//\ 0000\ 0100\ }}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a4c9ec9a67e59ef9acb25ed7b719b5687}{NODE\_LIGHT\_ACTIVE}}\ \ \ \ \ \ \ =\ 1\ <<\ 3,\ \textcolor{comment}{//\ 0000\ 1000}}
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0ad195f4e0acd4e3573ed2ed82ddd0a036}{NODE\_INITIALIZED}}\ \ \ \ \ \ \ \ =\ 1\ <<\ 4,\ \textcolor{comment}{//\ 0001\ 0000}}
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a81804ec13b8cf9cdc42a6ae1e89066ee}{NODE\_UNUSED4}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 1\ <<\ 5,\ \textcolor{comment}{//\ 0010\ 0000}}
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0a114b0f86ab1e39a1162d185834e9567f}{NODE\_UNUSED5}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 1\ <<\ 6,\ \textcolor{comment}{//\ 0100\ 0000}}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0acb4410df9bfe0bd0ef7dc83b26fe77ca}{NODE\_EDITOR\_FLAG}}\ \ \ \ \ \ \ \ =\ 1\ <<\ 7,\ \textcolor{comment}{//\ 1000\ 0000}}
+\DoxyCodeLine{00098\ \};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ NODE\_ACTIVE\_AND\_VISIBLE\ NODE\_ACTIVE\ |\ NODE\_VISIBLE\ }\textcolor{comment}{//\ 0000\ 0011}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ NODE\_DEFAULT\_FLAGS\ NODE\_ACTIVE\_AND\_VISIBLE\ }\textcolor{comment}{//\ 0000\ 0011}}
+\DoxyCodeLine{00104\ \#endif}
 
 \end{DoxyCode}

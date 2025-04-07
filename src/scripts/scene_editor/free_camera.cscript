@@ -1,9 +1,9 @@
-#include "../../raptiquax.h"
-#include "../../math/math_util.h"
-#include "../../io/input.h"
-#include "../../render/camera.h"
-#include "../../storage/node.h"
-#include "../../utils/scene.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/input.h>
+#include <render/camera.h>
+#include <storage/node.h>
+#include <utils/scene.h>
 
 NEW_SCRIPT(free_camera)
 	GET_READY_PARAMETERS();

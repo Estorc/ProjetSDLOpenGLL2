@@ -115,8 +115,8 @@ Directory dependency graph for gui:</div>
 <div class="dyncontent">
 <div class="center"><img src="dir_99d0482cf009f9d97a0877749b817f19_dep.png" border="0" usemap="#adir__99d0482cf009f9d97a0877749b817f19__dep" alt="src/gui"/></div>
 <map name="adir__99d0482cf009f9d97a0877749b817f19__dep" id="adir__99d0482cf009f9d97a0877749b817f19__dep">
-<area shape="rect" href="dir_99d0482cf009f9d97a0877749b817f19.html" title="gui" alt="" coords="27,52,69,77"/>
-<area shape="rect" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html" title="src" alt="" coords="16,16,80,88"/>
+<area shape="rect" href="dir_99d0482cf009f9d97a0877749b817f19.html" title="gui" alt="" coords="27,53,69,78"/>
+<area shape="rect" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html" title="src" alt="" coords="16,16,80,89"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -159,6 +159,16 @@ Files</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -167,7 +177,7 @@ Files</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

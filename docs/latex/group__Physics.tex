@@ -9,9 +9,7 @@ Functions and structures for physics and collision detection.
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structCollectedNode}{Collected\+Node}}
-\begin{DoxyCompactList}\small\item\em Represents a node collected by an area. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{classArea}{Area}}
-\begin{DoxyCompactList}\small\item\em Represents an area with collision shapes and nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Represents a node collected by an area. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -21,7 +19,7 @@ void \mbox{\hyperlink{group__Physics_gafcff17acd8a0fae789362da90940abc5}{check\+
 \begin{DoxyCompactList}\small\item\em Check collisions for a shape. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__Physics_ga01dec48dd72d35747fd75272fe16c978}{update\+\_\+script}} (struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, vec3 pos, vec3 rot, vec3 scale, float delta, struct \mbox{\hyperlink{structInput}{Input}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_ad4db59ccea8946af2bb70f8269e99eeb}{input}}, struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}})
 \begin{DoxyCompactList}\small\item\em Update the script for a node. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__Physics_gad78ccbcf4f39c0e4a4ce555badd55f0c}{update\+\_\+physics}} (struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, vec3 pos, vec3 rot, vec3 scale, float delta, struct \mbox{\hyperlink{structInput}{Input}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_ad4db59ccea8946af2bb70f8269e99eeb}{input}}, struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} lights\+Count\mbox{[}\mbox{\hyperlink{group__Lighting_gga8c6cae46dbb41ab5d86c6df0879fb24ea5277e3bbd4a68494273b73c7df8815c4}{LIGHTS\+\_\+\+COUNT}}\mbox{]}, bool active)
+void \mbox{\hyperlink{group__Physics_gad78ccbcf4f39c0e4a4ce555badd55f0c}{update\+\_\+physics}} (struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, vec3 pos, vec3 rot, vec3 scale, float delta, struct \mbox{\hyperlink{structInput}{Input}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_ad4db59ccea8946af2bb70f8269e99eeb}{input}}, struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} lights\+Count\mbox{[}\mbox{\hyperlink{group__Lighting_gga8c6cae46dbb41ab5d86c6df0879fb24ea5277e3bbd4a68494273b73c7df8815c4}{LIGHTS\+\_\+\+COUNT}}\mbox{]}, bool active)
 \begin{DoxyCompactList}\small\item\em Update the physics for a node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group__Physics_gad643de832d63de0fe574fe854ba8df82}{update\+\_\+global\+\_\+position}} (struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}node, vec3 pos, vec3 rot, vec3 scale)
 \begin{DoxyCompactList}\small\item\em Update the global position of a node. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -71,15 +69,15 @@ Check collisions for a shape.
 {\em shape} & Pointer to the shape. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{group__Physics_gad643de832d63de0fe574fe854ba8df82}\label{group__Physics_gad643de832d63de0fe574fe854ba8df82} 
-\index{Physics@{Physics}!update\_global\_position@{update\_global\_position}}
-\index{update\_global\_position@{update\_global\_position}!Physics@{Physics}}
-\doxysubsubsection{\texorpdfstring{update\_global\_position()}{update\_global\_position()}}
-{\footnotesize\ttfamily void update\+\_\+global\+\_\+position (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{vec3}]{pos,  }\item[{vec3}]{rot,  }\item[{vec3}]{scale }\end{DoxyParamCaption})}
+\Hypertarget{group__Physics_ga01dec48dd72d35747fd75272fe16c978}\label{group__Physics_ga01dec48dd72d35747fd75272fe16c978} 
+\index{Physics@{Physics}!update\_script@{update\_script}}
+\index{update\_script@{update\_script}!Physics@{Physics}}
+\doxysubsubsection{\texorpdfstring{update\_script()}{update\_script()}}
+{\footnotesize\ttfamily void update\+\_\+script (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{vec3}]{pos,  }\item[{vec3}]{rot,  }\item[{vec3}]{scale,  }\item[{float}]{delta,  }\item[{struct \mbox{\hyperlink{structInput}{Input}} \texorpdfstring{$\ast$}{*}}]{input,  }\item[{struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
 
 
 
-Update the global position of a node. 
+Update the script for a node. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -91,12 +89,18 @@ Update the global position of a node.
 \hline
 {\em scale} & Scale vector. \\
 \hline
+{\em delta} & Time delta. \\
+\hline
+{\em input} & Pointer to the input structure. \\
+\hline
+{\em window} & Pointer to the window structure. \\
+\hline
 \end{DoxyParams}
 \Hypertarget{group__Physics_gad78ccbcf4f39c0e4a4ce555badd55f0c}\label{group__Physics_gad78ccbcf4f39c0e4a4ce555badd55f0c} 
 \index{Physics@{Physics}!update\_physics@{update\_physics}}
 \index{update\_physics@{update\_physics}!Physics@{Physics}}
 \doxysubsubsection{\texorpdfstring{update\_physics()}{update\_physics()}}
-{\footnotesize\ttfamily void update\+\_\+physics (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{vec3}]{pos,  }\item[{vec3}]{rot,  }\item[{vec3}]{scale,  }\item[{float}]{delta,  }\item[{struct \mbox{\hyperlink{structInput}{Input}} \texorpdfstring{$\ast$}{*}}]{input,  }\item[{struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}}]{lights\+Count\mbox{[}\+LIGHTS\+\_\+\+COUNT\mbox{]},  }\item[{bool}]{active }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void update\+\_\+physics (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{vec3}]{pos,  }\item[{vec3}]{rot,  }\item[{vec3}]{scale,  }\item[{float}]{delta,  }\item[{struct \mbox{\hyperlink{structInput}{Input}} \texorpdfstring{$\ast$}{*}}]{input,  }\item[{struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}}]{lights\+Count\mbox{[}\+LIGHTS\+\_\+\+COUNT\mbox{]},  }\item[{bool}]{active }\end{DoxyParamCaption})}
 
 
 
@@ -123,15 +127,15 @@ Update the physics for a node.
 {\em active} & Boolean indicating if the node is active. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{group__Physics_ga01dec48dd72d35747fd75272fe16c978}\label{group__Physics_ga01dec48dd72d35747fd75272fe16c978} 
-\index{Physics@{Physics}!update\_script@{update\_script}}
-\index{update\_script@{update\_script}!Physics@{Physics}}
-\doxysubsubsection{\texorpdfstring{update\_script()}{update\_script()}}
-{\footnotesize\ttfamily void update\+\_\+script (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{vec3}]{pos,  }\item[{vec3}]{rot,  }\item[{vec3}]{scale,  }\item[{float}]{delta,  }\item[{struct \mbox{\hyperlink{structInput}{Input}} \texorpdfstring{$\ast$}{*}}]{input,  }\item[{struct \mbox{\hyperlink{structWindow}{Window}} \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
+\Hypertarget{group__Physics_gad643de832d63de0fe574fe854ba8df82}\label{group__Physics_gad643de832d63de0fe574fe854ba8df82} 
+\index{Physics@{Physics}!update\_global\_position@{update\_global\_position}}
+\index{update\_global\_position@{update\_global\_position}!Physics@{Physics}}
+\doxysubsubsection{\texorpdfstring{update\_global\_position()}{update\_global\_position()}}
+{\footnotesize\ttfamily void update\+\_\+global\+\_\+position (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{vec3}]{pos,  }\item[{vec3}]{rot,  }\item[{vec3}]{scale }\end{DoxyParamCaption})}
 
 
 
-Update the script for a node. 
+Update the global position of a node. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -142,11 +146,5 @@ Update the script for a node.
 {\em rot} & Rotation vector. \\
 \hline
 {\em scale} & Scale vector. \\
-\hline
-{\em delta} & Time delta. \\
-\hline
-{\em input} & Pointer to the input structure. \\
-\hline
-{\em window} & Pointer to the window structure. \\
 \hline
 \end{DoxyParams}

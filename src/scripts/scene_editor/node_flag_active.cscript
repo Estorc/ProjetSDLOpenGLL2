@@ -1,8 +1,8 @@
-#include "../../raptiquax.h"
-#include "../../storage/node.h"
-#include "../../gui/frame.h"
-#include "../../scripts/scripts.h"
-#include "../../classes/classes.h"
+#include <raptiquax.h>
+#include <storage/node.h>
+#include <gui/frame.h>
+#include <scripts/scripts.h>
+#include <classes/classes.h>
 
 NEW_SCRIPT(scene_editor_btn_active_init)
 #ifdef DEBUG

@@ -1,13 +1,13 @@
-#include "../raptiquax.h"
-#include "../math/math_util.h"
-#include "model.h"
-#include "../render/framebuffer.h"
-#include "../storage/node.h"
-#include "../render/render.h"
-#include "../window.h"
-#include "../render/camera.h"
-#include "input.h"
-#include "../settings.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <render/render.h>
+#include <window.h>
+#include <render/camera.h>
+#include <io/input.h>
+#include <settings.h>
 
 void default_input_settings() {
     Game.settings->keybinds.up = SDLK_z;

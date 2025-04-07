@@ -69,6 +69,9 @@ void update_player_anim_state (Player_t * player) {
 }
 
 
+/**
+ * Update la vélocité verticale du player et met a jour sa position en fonction de la vélocité.
+ */
 void update_player (Player_t * player, SDL_FRect * ground) {
     // gere la hauteur du personnage en fonction du saut
     if (!player->body.onGround) {
@@ -97,6 +100,9 @@ void update_player (Player_t * player, SDL_FRect * ground) {
 }
 
 
+/**
+ * Ne change pas la position du joueur, uniquement sa vélocité.
+ */
 void handle_input (const uint8_t * keys, Player_t * player) {
     if (keys[SDL_SCANCODE_D] && !keys[SDL_SCANCODE_A]) {
         // if (player->body.vx < 0 && (player->body.vx == player->vMax)) 
@@ -129,5 +135,5 @@ void handle_input (const uint8_t * keys, Player_t * player) {
     if (keys[SDL_SCANCODE_SPACE] && player->body.onGround == TRUE) {
         player->body.jump = JUMP_FORCE;
         player->body.onGround = FALSE;
-    }
+    } 
 }

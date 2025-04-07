@@ -1,7 +1,7 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include "shader.h"
+#include <io/shader.h>
 
 
 /*
@@ -24,53 +24,36 @@
  */
 
 /**
- * @typedef VBO
- * @brief Alias for unsigned int representing a Vertex Buffer Object.
+ * @enum VertexAttribute
+ * @brief Enumeration of vertex attributes used in 3D models.
+ *
+ * This enumeration defines various attributes that can be associated with a vertex in a 3D model.
+ * These attributes include positions, normals, texture coordinates, tangents, bitangents, and bone data.
  */
-typedef unsigned int VBO;
-
-/**
- * @typedef VAO
- * @brief Alias for unsigned int representing a Vertex Array Object.
- */
-typedef unsigned int VAO;
-
-/**
- * @typedef VertexBuffer
- * @brief Alias for VBO.
- */
-typedef VBO VertexBuffer;
-
-/**
- * @typedef VertexArray
- * @brief Alias for VAO.
- */
-typedef VAO VertexArray;
-
 typedef enum VertexAttribute {
-    VERTEX_ATTRIBUTE_POSITION_X,
-    VERTEX_ATTRIBUTE_POSITION_Y,
-    VERTEX_ATTRIBUTE_POSITION_Z,
-    VERTEX_ATTRIBUTE_NORMAL_X,
-    VERTEX_ATTRIBUTE_NORMAL_Y,
-    VERTEX_ATTRIBUTE_NORMAL_Z,
-    VERTEX_ATTRIBUTE_TEXTURE_U,
-    VERTEX_ATTRIBUTE_TEXTURE_V,
-    VERTEX_ATTRIBUTE_TANGENT_X,
-    VERTEX_ATTRIBUTE_TANGENT_Y,
-    VERTEX_ATTRIBUTE_TANGENT_Z,
-    VERTEX_ATTRIBUTE_BITANGENT_X,
-    VERTEX_ATTRIBUTE_BITANGENT_Y,
-    VERTEX_ATTRIBUTE_BITANGENT_Z,
-    VERTEX_ATTRIBUTE_BONE_ID_1,
-    VERTEX_ATTRIBUTE_BONE_ID_2,
-    VERTEX_ATTRIBUTE_BONE_ID_3,
-    VERTEX_ATTRIBUTE_BONE_ID_4,
-    VERTEX_ATTRIBUTE_BONE_WEIGHT_1,
-    VERTEX_ATTRIBUTE_BONE_WEIGHT_2,
-    VERTEX_ATTRIBUTE_BONE_WEIGHT_3,
-    VERTEX_ATTRIBUTE_BONE_WEIGHT_4,
-    VERTEX_ATTRIBUTE_COUNT
+    VERTEX_ATTRIBUTE_POSITION_X,      /**< X coordinate of the vertex position */
+    VERTEX_ATTRIBUTE_POSITION_Y,      /**< Y coordinate of the vertex position */
+    VERTEX_ATTRIBUTE_POSITION_Z,      /**< Z coordinate of the vertex position */
+    VERTEX_ATTRIBUTE_NORMAL_X,        /**< X component of the vertex normal */
+    VERTEX_ATTRIBUTE_NORMAL_Y,        /**< Y component of the vertex normal */
+    VERTEX_ATTRIBUTE_NORMAL_Z,        /**< Z component of the vertex normal */
+    VERTEX_ATTRIBUTE_TEXTURE_U,       /**< U coordinate of the vertex texture */
+    VERTEX_ATTRIBUTE_TEXTURE_V,       /**< V coordinate of the vertex texture */
+    VERTEX_ATTRIBUTE_TANGENT_X,       /**< X component of the vertex tangent */
+    VERTEX_ATTRIBUTE_TANGENT_Y,       /**< Y component of the vertex tangent */
+    VERTEX_ATTRIBUTE_TANGENT_Z,       /**< Z component of the vertex tangent */
+    VERTEX_ATTRIBUTE_BITANGENT_X,     /**< X component of the vertex bitangent */
+    VERTEX_ATTRIBUTE_BITANGENT_Y,     /**< Y component of the vertex bitangent */
+    VERTEX_ATTRIBUTE_BITANGENT_Z,     /**< Z component of the vertex bitangent */
+    VERTEX_ATTRIBUTE_BONE_ID_1,       /**< ID of the first bone influencing the vertex */
+    VERTEX_ATTRIBUTE_BONE_ID_2,       /**< ID of the second bone influencing the vertex */
+    VERTEX_ATTRIBUTE_BONE_ID_3,       /**< ID of the third bone influencing the vertex */
+    VERTEX_ATTRIBUTE_BONE_ID_4,       /**< ID of the fourth bone influencing the vertex */
+    VERTEX_ATTRIBUTE_BONE_WEIGHT_1,   /**< Weight of the first bone influencing the vertex */
+    VERTEX_ATTRIBUTE_BONE_WEIGHT_2,   /**< Weight of the second bone influencing the vertex */
+    VERTEX_ATTRIBUTE_BONE_WEIGHT_3,   /**< Weight of the third bone influencing the vertex */
+    VERTEX_ATTRIBUTE_BONE_WEIGHT_4,   /**< Weight of the fourth bone influencing the vertex */
+    VERTEX_ATTRIBUTE_COUNT            /**< Total number of vertex attributes */
 } VertexAttribute;
 
 /**
@@ -78,12 +61,6 @@ typedef enum VertexAttribute {
  * @brief Array of VERTEX_ATTRIBUTE_COUNT floats representing a vertex.
  */
 typedef float Vertex[VERTEX_ATTRIBUTE_COUNT];
-
-/**
- * @typedef TextureMap
- * @brief Alias for u32 representing a texture map.
- */
-typedef u32 TextureMap;
 
 
 /**
@@ -150,7 +127,6 @@ struct ModelObjectData {
  * 
  * This structure holds the transformation matrix and time of a keyframe.
  */
-
 typedef struct ModelKeyframe {
     union {
         vec3 value;                         /**< Value of the keyframe */
@@ -165,7 +141,6 @@ typedef struct ModelKeyframe {
  * 
  * This structure holds the name, parent, and children of a bone in a 3D model.
  */
-
 typedef struct Bone {
     char name[128];                         /**< Name of the bone */
     mat4 offsetMatrix;                      /**< Offset matrix */
@@ -185,7 +160,6 @@ typedef struct Bone {
  * 
  * This structure holds the keyframes and other properties of a model animation.
  */
-
 typedef struct ModelAnimation ModelAnimation;
 struct ModelAnimation {
     char name[128];                         /**< Name of the animation */
@@ -228,20 +202,25 @@ typedef enum ModelFlags {
     MODEL_FLAG_UNUSED7      = 1 << 7        /**< Unused flag 7 */
 } ModelFlags;
 
+
+/**@} */
+
 /**
- * @struct Model
+ * @class Model
  * @brief Structure representing a 3D model.
+ * @ingroup Classes Classes
  * 
  * This structure holds the data and flags of a 3D model.
  */
 typedef struct Model {
-    struct ModelData *data;                 /**< Pointer to the model data */
+    ModelData *data;                 /**< Pointer to the model data */
     u8 flags;                               /**< Flags for the model */
 } Model;
 
 /**
- * @struct TexturedMesh
+ * @class TexturedMesh
  * @brief Structure representing a textured mesh.
+ * @ingroup Classes Classes
  * 
  * This structure holds the Vertex Array Object (VAO) and texture map of a textured mesh.
  */
@@ -252,8 +231,9 @@ typedef struct TexturedMesh {
 } TexturedMesh;
 
 /**
- * @struct Mesh
+ * @class Mesh
  * @brief Structure representing a mesh.
+ * @ingroup Classes Classes
  * 
  * This structure holds the Vertex Array Object (VAO) of a mesh.
  */
@@ -261,6 +241,12 @@ typedef struct Mesh {
     VAO VAO;                                /**< Vertex Array Object */
     u8 length;                              /**< Length of the mesh */
 } Mesh;
+
+
+/** 
+ * @addtogroup ModelHandling
+ * @{
+ */
 
 /**
  * @brief Creates a textured plane.
@@ -281,12 +267,23 @@ void create_textured_plane(TexturedMesh *texturedMesh, const char *texture);
  */
 void create_screen_plane(Mesh *mesh);
 
-
-void render_model(mat4 *modelMatrix, Shader activeShader, Model *model);
+/**
+ * @brief Renders a 3D model using the specified shader and transformation matrix.
+ *
+ * This function takes a transformation matrix, an active shader, and a model,
+ * and renders the model using the provided shader and transformation matrix.
+ *
+ * @param modelMatrix A 4x4 transformation matrix (mat4) that defines
+ *                    the model's position, rotation, and scale in the world space.
+ * @param activeShader The shader program to be used for rendering the model.
+ * @param model A pointer to the Model structure that contains the model's data,
+ *              such as vertices, indices, textures, etc.
+ */
+void render_model(mat4 modelMatrix, Shader activeShader, Model *model);
 
 /** @} */ // end of ModelHandling
 
 
-#include "model_loaders/model_loader.h"
+#include <io/model_loaders/model_loader.h>
 
 #endif

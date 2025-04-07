@@ -1,0 +1,91 @@
+\doxysection{DFBO Struct Reference}
+\hypertarget{structDFBO}{}\label{structDFBO}\index{DFBO@{DFBO}}
+
+
+A structure to handle Deferred \doxylink{classFrame}{Frame} Buffer Objects (\doxylink{structDFBO}{DFBO}).  
+
+
+
+
+{\ttfamily \#include $<$framebuffer.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}} \mbox{\hyperlink{structDFBO_a756c024d66c11070e2afac991a9ac148}{framebuffer}}
+\item 
+\mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}} \mbox{\hyperlink{structDFBO_ad9b5a9f432a2656cfd03b2b5c8e3ea6d}{intermediate\+FBO}}
+\item 
+\mbox{\hyperlink{group__Framebuffer_ga5ccf15e59bc43f1030c39f6951deb862}{RBO}} \mbox{\hyperlink{structDFBO_a178cc3640770f0884010981061413987}{rbo}}
+\item 
+\mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{structDFBO_a919150941fa3bb8381df749f28d34048}{screen\+Texture}}
+\item 
+\mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{structDFBO_ae87c7586b3b7c3f8733db2eee816fdc6}{texture\+Color\+Buffer}}
+\item 
+\mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{structDFBO_ac3889ac75209e594bb159d44c982bf7f}{texture\+Normal\+Buffer}}
+\item 
+\mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{structDFBO_a8bd9c0eaf33ebe6c702d041127c7ecfc}{texture\+Position\+Buffer}}
+\item 
+\mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{structDFBO_a5a489814f4e2a910b45f295a30829b2c}{texture\+Extra\+Component}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A structure to handle Deferred \doxylink{classFrame}{Frame} Buffer Objects (\doxylink{structDFBO}{DFBO}). 
+
+This structure contains the necessary components to manage deferred framebuffers, including the main framebuffer, an intermediate framebuffer, and texture maps for color buffer, normal buffer, position buffer, and screen texture. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structDFBO_a756c024d66c11070e2afac991a9ac148}\label{structDFBO_a756c024d66c11070e2afac991a9ac148} 
+\index{DFBO@{DFBO}!framebuffer@{framebuffer}}
+\index{framebuffer@{framebuffer}!DFBO@{DFBO}}
+\doxysubsubsection{\texorpdfstring{framebuffer}{framebuffer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}} DFBO\+::framebuffer}
+
+\Hypertarget{structDFBO_ad9b5a9f432a2656cfd03b2b5c8e3ea6d}\label{structDFBO_ad9b5a9f432a2656cfd03b2b5c8e3ea6d} 
+\index{DFBO@{DFBO}!intermediateFBO@{intermediateFBO}}
+\index{intermediateFBO@{intermediateFBO}!DFBO@{DFBO}}
+\doxysubsubsection{\texorpdfstring{intermediateFBO}{intermediateFBO}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}} DFBO\+::intermediate\+FBO}
+
+\texorpdfstring{$<$}{<} The main \doxylink{structDFBO}{DFBO} framebuffer. \Hypertarget{structDFBO_a178cc3640770f0884010981061413987}\label{structDFBO_a178cc3640770f0884010981061413987} 
+\index{DFBO@{DFBO}!rbo@{rbo}}
+\index{rbo@{rbo}!DFBO@{DFBO}}
+\doxysubsubsection{\texorpdfstring{rbo}{rbo}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__Framebuffer_ga5ccf15e59bc43f1030c39f6951deb862}{RBO}} DFBO\+::rbo}
+
+\texorpdfstring{$<$}{<} The intermediate framebuffer for post-\/processing. \Hypertarget{structDFBO_a919150941fa3bb8381df749f28d34048}\label{structDFBO_a919150941fa3bb8381df749f28d34048} 
+\index{DFBO@{DFBO}!screenTexture@{screenTexture}}
+\index{screenTexture@{screenTexture}!DFBO@{DFBO}}
+\doxysubsubsection{\texorpdfstring{screenTexture}{screenTexture}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} DFBO\+::screen\+Texture}
+
+\texorpdfstring{$<$}{<} The renderbuffer object for depth and stencil attachments. \Hypertarget{structDFBO_ae87c7586b3b7c3f8733db2eee816fdc6}\label{structDFBO_ae87c7586b3b7c3f8733db2eee816fdc6} 
+\index{DFBO@{DFBO}!textureColorBuffer@{textureColorBuffer}}
+\index{textureColorBuffer@{textureColorBuffer}!DFBO@{DFBO}}
+\doxysubsubsection{\texorpdfstring{textureColorBuffer}{textureColorBuffer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} DFBO\+::texture\+Color\+Buffer}
+
+\texorpdfstring{$<$}{<} The screen texture for post-\/processing. \Hypertarget{structDFBO_ac3889ac75209e594bb159d44c982bf7f}\label{structDFBO_ac3889ac75209e594bb159d44c982bf7f} 
+\index{DFBO@{DFBO}!textureNormalBuffer@{textureNormalBuffer}}
+\index{textureNormalBuffer@{textureNormalBuffer}!DFBO@{DFBO}}
+\doxysubsubsection{\texorpdfstring{textureNormalBuffer}{textureNormalBuffer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} DFBO\+::texture\+Normal\+Buffer}
+
+\texorpdfstring{$<$}{<} The color attachment texture. \Hypertarget{structDFBO_a8bd9c0eaf33ebe6c702d041127c7ecfc}\label{structDFBO_a8bd9c0eaf33ebe6c702d041127c7ecfc} 
+\index{DFBO@{DFBO}!texturePositionBuffer@{texturePositionBuffer}}
+\index{texturePositionBuffer@{texturePositionBuffer}!DFBO@{DFBO}}
+\doxysubsubsection{\texorpdfstring{texturePositionBuffer}{texturePositionBuffer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} DFBO\+::texture\+Position\+Buffer}
+
+\texorpdfstring{$<$}{<} The normal attachment texture. \Hypertarget{structDFBO_a5a489814f4e2a910b45f295a30829b2c}\label{structDFBO_a5a489814f4e2a910b45f295a30829b2c} 
+\index{DFBO@{DFBO}!textureExtraComponent@{textureExtraComponent}}
+\index{textureExtraComponent@{textureExtraComponent}!DFBO@{DFBO}}
+\doxysubsubsection{\texorpdfstring{textureExtraComponent}{textureExtraComponent}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} DFBO\+::texture\+Extra\+Component}
+
+\texorpdfstring{$<$}{<} The position attachment texture. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/render/\mbox{\hyperlink{framebuffer_8h}{framebuffer.\+h}}\end{DoxyCompactItemize}

@@ -22,6 +22,9 @@ MODULES += src/io/stringio.o
 MODULES += src/io/shader.o
 MODULES += src/io/osio.o
 MODULES += src/io/audio.o
+MODULES += src/io/dirent.o
+
+MODULES += src/render/shaders/ssao.o
 
 MODULES += src/render/lighting.o
 MODULES += src/render/render.o
@@ -33,8 +36,9 @@ MODULES += src/physics/physics.o
 MODULES += src/physics/collision_util.o
 MODULES += src/physics/collision.o
 
+MODULES += src/utils/deferred.o
+MODULES += src/utils/interp.o
 MODULES += src/utils/random.o
-MODULES += src/utils/scene.o
 MODULES += src/utils/time.o
 
 MODULES += src/gui/frame.o

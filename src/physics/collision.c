@@ -1,20 +1,20 @@
-#include "../raptiquax.h"
-#include "../math/math_util.h"
-#include "../io/model.h"
-#include "../render/framebuffer.h"
-#include "../storage/node.h"
-#include "../window.h"
-#include "../render/camera.h"
-#include "../render/depth_map.h"
-#include "../render/lighting.h"
-#include "../io/gltexture_loader.h"
-#include "../classes/classes.h"
-#include "../memory.h"
-#include "../buffer.h"
-#include "physics.h"
-#include "bodies.h"
-#include "collision.h"
-#include "collision_util.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <window.h>
+#include <render/camera.h>
+#include <render/depth_map.h>
+#include <render/lighting.h>
+#include <io/gltexture_loader.h>
+#include <classes/classes.h>
+#include <memory.h>
+#include <buffer.h>
+#include <physics/physics.h>
+#include <physics/bodies.h>
+#include <physics/collision.h>
+#include <physics/collision_util.h>
 
 
 

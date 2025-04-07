@@ -7,6 +7,11 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glext.h>
+#include "test.h"
+
+int test() {
+    return 0;
+}
 
 int main(int argc, char *argv[])
 {

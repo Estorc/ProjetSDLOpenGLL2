@@ -10,55 +10,56 @@
 \DoxyCodeLine{00006\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}};}
 \DoxyCodeLine{00007\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classCamera}{Camera}};}
 \DoxyCodeLine{00008\ }
-\DoxyCodeLine{00027\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__Lighting_ga8c6cae46dbb41ab5d86c6df0879fb24e}{Lightings}}\ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{group__Lighting_gga8c6cae46dbb41ab5d86c6df0879fb24ea30d898c2a063caaf4b25a1af79e2e305}{POINT\_LIGHT}},\ }
-\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{group__Lighting_gga8c6cae46dbb41ab5d86c6df0879fb24ea5d2f2becc8f8ccac92c1077f953543e6}{DIRECTIONAL\_LIGHT}},\ }
-\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{group__Lighting_gga8c6cae46dbb41ab5d86c6df0879fb24ea35201264051660c1c10df69ce81d2f44}{SPOT\_LIGHT}},\ }
-\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{group__Lighting_gga8c6cae46dbb41ab5d86c6df0879fb24ea5277e3bbd4a68494273b73c7df8815c4}{LIGHTS\_COUNT}}\ }
-\DoxyCodeLine{00032\ \};}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00044\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classPointLight}{PointLight}}\ \{}
-\DoxyCodeLine{00045\ \ \ \ \ vec3\ \mbox{\hyperlink{classPointLight_ab5b56bbc015365ca09c09b564dbeb7f2}{color}};\ }
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPointLight_a852f2ee107530919875668160a374d87}{bias}};\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPointLight_ab6d17cfc47e0f77e809be1a04933188d}{size}};\ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPointLight_a965104c9c660615ba35721c7aac7c262}{constant}};\ }
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPointLight_a491f53e12fd4f689550ea8bfb6d68d19}{linear}};\ }
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPointLight_a3dba0bf3332f30b9a5925fc16774dcc0}{quadratic}};\ }
-\DoxyCodeLine{00051\ \}\ \mbox{\hyperlink{classPointLight}{PointLight}};}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00063\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classDirectionalLight}{DirectionalLight}}\ \{}
-\DoxyCodeLine{00064\ \ \ \ \ vec3\ \mbox{\hyperlink{classDirectionalLight_a0fff081764e57e46c7342fc6c6849c1c}{color}};\ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classDirectionalLight_ab74a595d58c20a08feb4338ef8099e0f}{bias}};\ }
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classDirectionalLight_adfd0f6dcdd96c32ce4f66fb39cad43d0}{size}};\ }
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classDirectionalLight_ad2a16d94812d6c5a78d702799c428c5d}{constant}};\ }
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classDirectionalLight_ab3945e26901a5cf65649da41808605ba}{linear}};\ }
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classDirectionalLight_aa8cbf5985a84fbc509e6bf9295627048}{quadratic}};\ }
-\DoxyCodeLine{00070\ \}\ \mbox{\hyperlink{classDirectionalLight}{DirectionalLight}};}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00082\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classSpotLight}{SpotLight}}\ \{}
-\DoxyCodeLine{00083\ \ \ \ \ vec3\ \mbox{\hyperlink{classSpotLight_ae1426c92b7130b3a608a5aa4a0a814cb}{color}};\ }
-\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSpotLight_a91841274f58f9a7857c4ca704f82b6b0}{bias}};\ }
-\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSpotLight_aa2a9e0c8e58e51d9f1f0e7dd027b11b4}{size}};\ }
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSpotLight_a0c79a7ed156e29331e41ccbd1bc3da4b}{constant}};\ }
-\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSpotLight_aea797f47fdd6543ca1365010b2dabe9b}{linear}};\ }
-\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSpotLight_a8f04a1ccfefbd377a19c677686e09eaa}{quadratic}};\ }
-\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSpotLight_a59fe1726d865118a0fb4743bf5ed6d18}{cutOff}};\ }
-\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSpotLight_ad4152c35627a503d111d1c613fae3ad1}{outerCutOff}};\ }
-\DoxyCodeLine{00091\ \}\ \mbox{\hyperlink{classSpotLight}{SpotLight}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classPointLight}{PointLight}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ vec3\ \mbox{\hyperlink{classPointLight_ab5b56bbc015365ca09c09b564dbeb7f2}{color}};\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPointLight_a852f2ee107530919875668160a374d87}{bias}};\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPointLight_ab6d17cfc47e0f77e809be1a04933188d}{size}};\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPointLight_a965104c9c660615ba35721c7aac7c262}{constant}};\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPointLight_a491f53e12fd4f689550ea8bfb6d68d19}{linear}};\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPointLight_a3dba0bf3332f30b9a5925fc16774dcc0}{quadratic}};\ }
+\DoxyCodeLine{00026\ \}\ \mbox{\hyperlink{classPointLight}{PointLight}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classDirectionalLight}{DirectionalLight}}\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ vec3\ \mbox{\hyperlink{classDirectionalLight_a0fff081764e57e46c7342fc6c6849c1c}{color}};\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classDirectionalLight_ab74a595d58c20a08feb4338ef8099e0f}{bias}};\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classDirectionalLight_adfd0f6dcdd96c32ce4f66fb39cad43d0}{size}};\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classDirectionalLight_ad2a16d94812d6c5a78d702799c428c5d}{constant}};\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classDirectionalLight_ab3945e26901a5cf65649da41808605ba}{linear}};\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classDirectionalLight_aa8cbf5985a84fbc509e6bf9295627048}{quadratic}};\ }
+\DoxyCodeLine{00045\ \}\ \mbox{\hyperlink{classDirectionalLight}{DirectionalLight}};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classSpotLight}{SpotLight}}\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ vec3\ \mbox{\hyperlink{classSpotLight_ae1426c92b7130b3a608a5aa4a0a814cb}{color}};\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSpotLight_a91841274f58f9a7857c4ca704f82b6b0}{bias}};\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSpotLight_aa2a9e0c8e58e51d9f1f0e7dd027b11b4}{size}};\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSpotLight_a0c79a7ed156e29331e41ccbd1bc3da4b}{constant}};\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSpotLight_aea797f47fdd6543ca1365010b2dabe9b}{linear}};\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSpotLight_a8f04a1ccfefbd377a19c677686e09eaa}{quadratic}};\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSpotLight_a59fe1726d865118a0fb4743bf5ed6d18}{cutOff}};\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSpotLight_ad4152c35627a503d111d1c613fae3ad1}{outerCutOff}};\ }
+\DoxyCodeLine{00066\ \}\ \mbox{\hyperlink{classSpotLight}{SpotLight}};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__Lighting_ga8c6cae46dbb41ab5d86c6df0879fb24e}{Lightings}}\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{group__Lighting_gga8c6cae46dbb41ab5d86c6df0879fb24ea30d898c2a063caaf4b25a1af79e2e305}{POINT\_LIGHT}},\ }
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{group__Lighting_gga8c6cae46dbb41ab5d86c6df0879fb24ea5d2f2becc8f8ccac92c1077f953543e6}{DIRECTIONAL\_LIGHT}},\ }
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{group__Lighting_gga8c6cae46dbb41ab5d86c6df0879fb24ea35201264051660c1c10df69ce81d2f44}{SPOT\_LIGHT}},\ }
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{group__Lighting_gga8c6cae46dbb41ab5d86c6df0879fb24ea5277e3bbd4a68494273b73c7df8815c4}{LIGHTS\_COUNT}}\ }
+\DoxyCodeLine{00091\ \};}
 \DoxyCodeLine{00092\ }
 \DoxyCodeLine{00093\ }
-\DoxyCodeLine{00103\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structLightingBuffer}{LightingBuffer}}\ \{}
-\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ **\mbox{\hyperlink{structLightingBuffer_aa21b26ad906cd0309f59c11d662f8608}{lightings}};\ }
-\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structLightingBuffer_af2037b9b9e262837c3dea59771d02222}{length}};\ }
-\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structLightingBuffer_a696ed4130d9750fa2093b997e4d21d4f}{index}};\ }
-\DoxyCodeLine{00107\ \}\ \mbox{\hyperlink{structLightingBuffer}{LightingBuffer}};}
-\DoxyCodeLine{00108\ }
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00119\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Lighting_ga830244338622a3c278b53b3d98ee28f9}{set\_lightings}}(\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ lightsCount[\mbox{\hyperlink{group__Lighting_gga8c6cae46dbb41ab5d86c6df0879fb24ea5277e3bbd4a68494273b73c7df8815c4}{LIGHTS\_COUNT}}]);}
-\DoxyCodeLine{00120\ }
- \textcolor{comment}{// end of Lighting group}\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00101\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structLightingBuffer}{LightingBuffer}}\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classNode}{Node}}\ **\mbox{\hyperlink{structLightingBuffer_aa21b26ad906cd0309f59c11d662f8608}{lightings}};\ }
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structLightingBuffer_a68f7ee88b876e8978d9dbace90e6c6ca}{length}};\ }
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ \mbox{\hyperlink{structLightingBuffer_a868db0cdb260da56fb817eec15725bd4}{index}};\ }
+\DoxyCodeLine{00105\ \}\ \mbox{\hyperlink{structLightingBuffer}{LightingBuffer}};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00116\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__Lighting_ga830244338622a3c278b53b3d98ee28f9}{set\_lightings}}(\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ lightsCount[\mbox{\hyperlink{group__Lighting_gga8c6cae46dbb41ab5d86c6df0879fb24ea5277e3bbd4a68494273b73c7df8815c4}{LIGHTS\_COUNT}}]);}
+\DoxyCodeLine{00117\ }
+ \textcolor{comment}{// end of Lighting group}\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

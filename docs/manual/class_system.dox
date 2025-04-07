@@ -1,0 +1,76 @@
+/**
+@page class_system_in_c Class System in C
+
+This document explains the custom "class system" in C, using specific syntax patterns
+designed to mimic object-oriented programming (OOP) features like classes, methods,
+and object creation in C. These syntax patterns are processed by a preprocessor in your pipeline.
+
+@section supported_formats Supported Formats
+
+@subsection static_method Static Method Call on a Class
+@code{.c}
+Class::Method(params);
+@endcode
+- **Description**: Calls a **static method** belonging to the class itself rather than an instance.
+- **Example**:
+  @code{.c}
+  MyClass::initialize(config);
+  @endcode
+  Calls the static method `initialize` of `MyClass`, passing `config` as an argument.
+
+@subsection object_creation Object Creation
+@code{.c}
+Class class = new Class(params);
+@endcode
+- **Description**: Creates a new **instance** of a class.
+- **Example**:
+  @code{.c}
+  MyClass obj = new MyClass("example");
+  @endcode
+  Creates an object `obj` of type `MyClass` with the parameter `"example"` passed to its constructor.
+
+@subsection instance_method Calling a Method on an Instance
+@code{.c}
+class::Method(params);
+@endcode
+- **Description**: Calls a **non-static method** on an instance of a class.
+- **Example**:
+  @code{.c}
+  obj::doSomething(10);
+  @endcode
+  Calls `doSomething` on `obj`, passing `10` as an argument.
+
+@subsection conditional_call Conditional Method Call with Type Casting
+@code{.c}
+if (class::(bool)condition(params));
+@endcode
+- **Description**: Calls a method conditionally based on a boolean value returned by `condition`.
+- **Example**:
+  @code{.c}
+  if (obj::isValid(config)) {
+      obj::processData(data);
+  }
+  @endcode
+  If `isValid(config)` is true, it calls `processData(data)`.
+
+@subsection child_method Calling a Method on a Child Object
+@code{.c}
+(class->child)::Method(params);
+@endcode
+- **Description**: Calls a method on a **child object** of a class.
+- **Example**:
+  @code{.c}
+  (obj->child)::updateChildInfo(info);
+  @endcode
+  Calls `updateChildInfo` on `child`, a member of `obj`.
+
+@section key_concepts Key Concepts in the Class System
+
+- **Static Methods**: Belong to the class itself, callable with `ClassName::Method()`.
+- **Object Creation**: `new Class(params)` creates objects similar to OOP languages.
+- **Instance Methods**: Belong to an instance, callable with `instance::Method()`.
+- **Conditional Calls**: Calls methods based on conditions, optionally with type casting.
+- **Child Objects**: Calls methods on child objects with `class->child::Method()`.
+
+This custom syntax mimics object-oriented behavior in C, allowing it to follow OOP-like patterns while remaining procedural.
+*/

@@ -1,11 +1,17 @@
 \doxysection{src/storage/node.h File Reference}
 \hypertarget{node_8h}{}\label{node_8h}\index{src/storage/node.h@{src/storage/node.h}}
-{\ttfamily \#include "{}../io/shader.\+h"{}}\newline
-{\ttfamily \#include "{}../render/camera.\+h"{}}\newline
-{\ttfamily \#include "{}../physics/bodies.\+h"{}}\newline
-{\ttfamily \#include "{}../scripts/scripts.\+h"{}}\newline
-{\ttfamily \#include "{}../render/framebuffer.\+h"{}}\newline
-Include dependency graph for node.\+h\+:\nopagebreak
+
+
+Defines the structure for a tree and its nodes used in the project.  
+
+
+{\ttfamily \#include $<$io/shader.\+h$>$}\newline
+{\ttfamily \#include $<$render/camera.\+h$>$}\newline
+{\ttfamily \#include $<$physics/bodies.\+h$>$}\newline
+{\ttfamily \#include $<$scripts/scripts.\+h$>$}\newline
+{\ttfamily \#include $<$render/framebuffer.\+h$>$}\newline
+Include dependency graph for node.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,10 +21,10 @@ Include dependency graph for node.\+h\+:\nopagebreak
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+class \mbox{\hyperlink{classNode}{Node}}
+\begin{DoxyCompactList}\small\item\em Represents a node in the tree structure. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structTree}{Tree}}
-\begin{DoxyCompactList}\small\item\em Represents a tree structure containing nodes, a camera, \doxylink{structMSAA}{MSAA} settings, and scripts. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{classNode}{Node}}
-\begin{DoxyCompactList}\small\item\em Represents a node in the tree structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Represents a tree structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -41,3 +47,8 @@ enum \mbox{\hyperlink{group__NodeFunctions_gae925b777d12c58434a689cce258b57c0}{N
 , \mbox{\hyperlink{group__NodeFunctions_ggae925b777d12c58434a689cce258b57c0acb4410df9bfe0bd0ef7dc83b26fe77ca}{NODE\+\_\+\+EDITOR\+\_\+\+FLAG}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 7
  \}
 \begin{DoxyCompactList}\small\item\em Flags indicating the state and properties of a node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the structure for a tree and its nodes used in the project. 
+

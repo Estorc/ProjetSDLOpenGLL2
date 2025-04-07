@@ -1,11 +1,15 @@
 var searchData=
 [
-  ['data_0',['data',['../classModel.html#ac61b0aa5e0804844fb7f71e3776fdf35',1,'Model::data'],['../structmessage__handler.html#a6cc1e4b2d4553a00d653da7a37107aea',1,'message_handler::data'],['../structQueue.html#aebf5af56d0bf90578085ff93cbce8203',1,'Queue::data'],['../structStack.html#ac6da0059516e42463ddacb5f859ec06c',1,'Stack::data']]],
+  ['data_0',['data',['../classModel.html#ad65afc7055a966b1ca15004b74846090',1,'Model::data'],['../structmessage__handler.html#a6cc1e4b2d4553a00d653da7a37107aea',1,'message_handler::data'],['../structQueue.html#aebf5af56d0bf90578085ff93cbce8203',1,'Queue::data'],['../structStack.html#ac6da0059516e42463ddacb5f859ec06c',1,'Stack::data']]],
   ['defaulttext_1',['defaultText',['../classInputArea.html#ad1dd5150e6ce1279bb289c59ade5fd81',1,'InputArea']]],
-  ['depth_2',['depth',['../structWorldShaders.html#a1dd7dbad44b318567d8c0c59b873d5a9',1,'WorldShaders']]],
-  ['directionallighttexture_3',['directionalLightTexture',['../classLight.html#a7417dc99e235b7f775b5f80810cca6fc',1,'Light']]],
-  ['displaylength_4',['displayLength',['../classLabel.html#ab8e68fb9efb4b361b54e8b6418f865d7',1,'Label']]],
-  ['distance_5',['distance',['../structCollectedNode.html#aaa9a6afb8dc190a0d0b553c0b13e1c35',1,'CollectedNode']]],
-  ['dx_6',['dx',['../structMouse.html#a4f5e9a993a861fbb89aba92421659877',1,'Mouse']]],
-  ['dy_7',['dy',['../structMouse.html#a48cd03c938938767b323d60f9a71cb22',1,'Mouse']]]
+  ['deferredbuffer_2',['deferredBuffer',['../structRaptiquaX__t.html#a19e237f478c20864e29f2aae4760f847',1,'RaptiquaX_t']]],
+  ['depth_3',['depth',['../structWorldShaders.html#a1dd7dbad44b318567d8c0c59b873d5a9',1,'WorldShaders']]],
+  ['depthmap_4',['depthmap',['../structRaptiquaX__t.html#a4a580a42d4719fb7fda27c36864fb042',1,'RaptiquaX_t::depthMap'],['../raptiquax_8c.html#a05db9a2e20c606a506e7b8da6d0248e3',1,'depthMap:&#160;raptiquax.c']]],
+  ['dfbo_5',['dfbo',['../raptiquax_8c.html#a0a410b5c4c1deff0fbeb2b4051c83f7c',1,'raptiquax.c']]],
+  ['directionallighttexture_6',['directionalLightTexture',['../classLight.html#a95d1f2d32be65c60e6910e21a2dabb63',1,'Light']]],
+  ['displaylength_7',['displayLength',['../classLabel.html#ab8e68fb9efb4b361b54e8b6418f865d7',1,'Label']]],
+  ['distance_8',['distance',['../structCollectedNode.html#aaa9a6afb8dc190a0d0b553c0b13e1c35',1,'CollectedNode']]],
+  ['down_9',['down',['../structKeybinds.html#ab1e748c37bf791c0b8caf0d75615ae36',1,'Keybinds']]],
+  ['dx_10',['dx',['../structMouse.html#a4f5e9a993a861fbb89aba92421659877',1,'Mouse']]],
+  ['dy_11',['dy',['../structMouse.html#a48cd03c938938767b323d60f9a71cb22',1,'Mouse']]]
 ];

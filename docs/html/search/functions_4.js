@@ -1,6 +1,15 @@
 var searchData=
 [
-  ['emit_5fready_0',['emit_ready',['../classNode.html#a846d06ed1f7a5ac618fbfef10881230f',1,'Node']]],
-  ['emit_5fsignal_1',['emit_signal',['../classNode.html#a0a3256bf578114f603b9407814638a2f',1,'Node']]],
-  ['emit_5fupdate_2',['emit_update',['../classNode.html#a3e7054036adfcf19c240b48a7f353f83',1,'Node']]]
+  ['default_5finput_5fsettings_0',['default_input_settings',['../group__InputHandling.html#ga600af85b0754785cb4ab342218b1ceee',1,'default_input_settings():&#160;input.c'],['../group__InputHandling.html#ga600af85b0754785cb4ab342218b1ceee',1,'default_input_settings():&#160;input.c']]],
+  ['deferred_5fload_5fscene_1',['deferred_load_scene',['../deferred_8c.html#a8d8c373ed55da487ebbfa3a6884ce737',1,'deferred_load_scene(char *path):&#160;deferred.c'],['../deferred_8h.html#a8d8c373ed55da487ebbfa3a6884ce737',1,'deferred_load_scene(char *path):&#160;deferred.c']]],
+  ['deferred_5ftable_5fget_2',['deferred_table_get',['../deferred_8c.html#a8fa52eb9adfbd4a2d15fb37ba9114b6c',1,'deferred_table_get(HashTable *table, char *key, void *out):&#160;deferred.c'],['../deferred_8h.html#a140d2385f530e23c2bbb73038fa545b5',1,'deferred_table_get(struct HashTable *table, char *key, void *out):&#160;deferred.c']]],
+  ['draw_5fbutton_3',['draw_button',['../gltexture__loader_8c.html#a30269b10be83f106aeaca9d789eaeb6e',1,'gltexture_loader.c']]],
+  ['draw_5fframe_4',['draw_frame',['../classFrame.html#ac06c37a1e7b56d157790834f77a9ae1b',1,'Frame']]],
+  ['draw_5finput_5fbox_5',['draw_input_box',['../gltexture__loader_8c.html#ad3da1d54578f570dcf4a8d775f0c9f99',1,'gltexture_loader.c']]],
+  ['draw_5frectangle_6',['draw_rectangle',['../gltexture__loader_8c.html#a5898674b1926da0aae8ca259c38ab9d0',1,'gltexture_loader.c']]],
+  ['draw_5fscene_7',['draw_scene',['../group__RenderFunctions.html#ga3a40b329a60cbe367e798eecbb95c855',1,'draw_scene(Window *window, Node *root, Camera *c, WorldShaders *shaders, DepthMap *depthMap):&#160;render.c'],['../group__RenderFunctions.html#ga3a40b329a60cbe367e798eecbb95c855',1,'draw_scene(struct Window *window, struct Node *root, struct Camera *c, struct WorldShaders *shaders, struct DepthMap *depthMap):&#160;render.c']]],
+  ['draw_5fscreen_8',['draw_screen',['../group__RenderFunctions.html#ga75d84d7e466d41c7d3effc80c0991537',1,'draw_screen(Window *window, Node *scene, Camera *c, WorldShaders *shaders, DepthMap *depthMap, Mesh *screenPlane):&#160;render.c'],['../group__RenderFunctions.html#ga75d84d7e466d41c7d3effc80c0991537',1,'draw_screen(struct Window *window, struct Node *scene, struct Camera *c, WorldShaders *shaders, struct DepthMap *depthMap, struct Mesh *screenPlane):&#160;render.c']]],
+  ['draw_5fshadow_5fmap_9',['draw_shadow_map',['../group__RenderFunctions.html#ga5be131954e4b841d5dbb65b09aee0af0',1,'draw_shadow_map(Window *window, Node *root, Camera *c, WorldShaders *shaders, DepthMap *depthMap):&#160;render.c'],['../group__RenderFunctions.html#ga5be131954e4b841d5dbb65b09aee0af0',1,'draw_shadow_map(struct Window *window, struct Node *root, struct Camera *c, struct WorldShaders *shaders, struct DepthMap *depthMap):&#160;render.c']]],
+  ['draw_5fsprite_10',['draw_sprite',['../gltexture__loader_8c.html#a2a462a0a4a45821dc469cbb7e85c18be',1,'gltexture_loader.c']]],
+  ['draw_5ftext_11',['draw_text',['../group__TextureLoader.html#ga26673e4bbcfa9dda796c186ad71308ed',1,'draw_text(SDL_Surface *render_surface, int x, int y, const char *text, TTF_Font *font, SDL_Color color, char *alignment, int width):&#160;gltexture_loader.c'],['../group__TextureLoader.html#ga26673e4bbcfa9dda796c186ad71308ed',1,'draw_text(SDL_Surface *render_surface, int x, int y, const char *text, TTF_Font *font, SDL_Color color, char *alignment, int width):&#160;gltexture_loader.c']]]
 ];

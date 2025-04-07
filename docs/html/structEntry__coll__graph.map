@@ -1,4 +1,4 @@
 <map id="Entry" name="Entry">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,61,31"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="76,11,88,18,79,24,62,25,62,20,78,19,83,18,74,16"/>
+<area shape="rect" id="Node000001" title="Represents an entry in the hash table." alt="" coords="5,44,61,69"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="21,29,25,21,33,17,41,20,45,27,44,44,39,44,40,28,37,24,33,23,29,25,26,31"/>
 </map>

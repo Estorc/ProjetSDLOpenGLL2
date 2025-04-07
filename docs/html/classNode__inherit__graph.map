@@ -1,29 +1,27 @@
 <map id="Node" name="Node">
-<area shape="rect" id="Node000001" title="Represents a node in the tree structure." alt="" coords="5,721,61,747"/>
+<area shape="rect" id="Node000001" title="Represents a node in the tree structure." alt="" coords="5,696,61,721"/>
 <area shape="rect" id="Node000002" href="$classCShape.html" title=" " alt="" coords="131,153,201,179"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="38,707,159,179,164,180,43,708"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="38,682,159,178,164,180,44,683"/>
 <area shape="rect" id="Node000009" href="$classCamera.html" title="A structure to represent a camera with position and rotation in 3D space." alt="" coords="129,425,203,451"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="32,707,36,657,46,591,69,522,86,490,107,460,127,446,130,450,111,464,90,493,74,524,52,593,41,657,37,708"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="33,682,38,636,50,577,72,515,88,486,107,460,127,446,130,450,111,464,92,489,77,518,55,578,43,636,38,683"/>
 <area shape="rect" id="Node000010" href="$classFrame.html" title="Represents a frame." alt="" coords="135,475,197,500"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="44,708,107,583,155,499,159,502,112,586,49,710"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="47,682,155,499,159,502,52,685"/>
 <area shape="rect" id="Node000020" href="$classLight.html" title=" " alt="" coords="139,597,193,623"/>
-<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="46,708,72,670,108,632,137,616,140,621,111,636,76,673,50,711"/>
+<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="52,684,77,657,108,632,137,617,139,621,111,636,81,661,56,687"/>
 <area shape="rect" id="Node000024" href="$classMesh.html" title="Structure representing a mesh." alt="" coords="137,647,195,672"/>
-<area shape="poly" id="edge23_Node000001_Node000024" title=" " alt="" coords="62,711,108,681,136,668,138,672,111,686,64,715"/>
+<area shape="poly" id="edge23_Node000001_Node000024" title=" " alt="" coords="73,691,136,667,138,672,75,696"/>
 <area shape="rect" id="Node000025" href="$classModel.html" title="Structure representing a 3D model." alt="" coords="135,696,197,721"/>
-<area shape="poly" id="edge24_Node000001_Node000025" title=" " alt="" coords="74,724,134,712,135,717,75,729"/>
+<area shape="poly" id="edge24_Node000001_Node000025" title=" " alt="" coords="75,706,135,706,135,711,75,711"/>
 <area shape="rect" id="Node000026" href="$classPhysicalNode.html" title=" " alt="" coords="111,745,221,771"/>
-<area shape="poly" id="edge25_Node000001_Node000026" title=" " alt="" coords="76,739,111,745,110,751,75,744"/>
+<area shape="poly" id="edge25_Node000001_Node000026" title=" " alt="" coords="75,721,132,743,130,748,73,726"/>
 <area shape="rect" id="Node000032" href="$classRenderTarget.html" title="A structure to handle render targets." alt="" coords="112,795,220,820"/>
-<area shape="poly" id="edge31_Node000001_Node000032" title=" " alt="" coords="66,752,111,780,136,792,133,797,108,784,63,757"/>
+<area shape="poly" id="edge31_Node000001_Node000032" title=" " alt="" coords="56,730,81,755,111,780,133,792,130,797,108,784,78,759,52,734"/>
 <area shape="rect" id="Node000033" href="$classScene.html" title=" " alt="" coords="135,844,197,869"/>
-<area shape="poly" id="edge32_Node000001_Node000033" title=" " alt="" coords="51,757,77,794,111,829,136,844,134,849,108,833,73,797,47,761"/>
+<area shape="poly" id="edge32_Node000001_Node000033" title=" " alt="" coords="47,733,72,781,90,807,111,829,137,845,134,849,108,833,86,810,68,784,42,735"/>
 <area shape="rect" id="Node000034" href="$classSkybox.html" title=" " alt="" coords="131,893,201,919"/>
-<area shape="poly" id="edge33_Node000001_Node000034" title=" " alt="" coords="44,759,68,819,87,852,111,880,132,893,129,898,108,884,83,855,63,822,39,761"/>
-<area shape="rect" id="Node000035" href="$classTexture.html" title=" " alt="" coords="131,943,201,968"/>
-<area shape="poly" id="edge34_Node000001_Node000035" title=" " alt="" coords="41,760,48,797,61,842,82,888,111,929,132,943,129,948,107,933,77,891,56,844,43,798,35,761"/>
-<area shape="rect" id="Node000036" href="$classTexturedMesh.html" title="Structure representing a textured mesh." alt="" coords="109,992,223,1017"/>
-<area shape="poly" id="edge35_Node000001_Node000036" title=" " alt="" coords="38,760,43,806,55,864,77,925,92,953,111,979,125,990,122,994,107,983,88,956,72,927,50,866,38,807,33,761"/>
+<area shape="poly" id="edge33_Node000001_Node000034" title=" " alt="" coords="42,734,51,767,64,806,84,845,111,880,133,894,130,898,108,884,80,848,60,808,46,768,37,735"/>
+<area shape="rect" id="Node000035" href="$classTexturedMesh.html" title="Structure representing a textured mesh." alt="" coords="109,943,223,968"/>
+<area shape="poly" id="edge34_Node000001_Node000035" title=" " alt="" coords="39,735,45,776,58,828,79,882,94,907,111,929,126,940,122,945,107,933,89,910,74,884,53,830,40,777,34,735"/>
 <area shape="rect" id="Node000003" href="$classBoxCShape.html" title=" " alt="" coords="285,5,381,31"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="180,140,217,90,241,63,269,40,290,28,292,33,272,44,245,67,221,94,184,144"/>
 <area shape="rect" id="Node000004" href="$classCapsuleCShape.html" title=" " alt="" coords="272,55,395,80"/>
@@ -52,7 +50,7 @@
 <area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="379,298,460,275,462,280,380,303"/>
 <area shape="rect" id="Node000013" href="$classRadioButton.html" title="Represents a radio button." alt="" coords="453,301,556,327"/>
 <area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="380,311,453,311,453,317,380,317"/>
-<area shape="rect" id="Node000014" href="$classSlider.html" title=" " alt="" coords="475,351,534,376"/>
+<area shape="rect" id="Node000014" href="$classSlider.html" title="Represents a slider component in the GUI." alt="" coords="475,351,534,376"/>
 <area shape="poly" id="edge13_Node000011_Node000014" title=" " alt="" coords="380,324,476,353,474,358,378,330"/>
 <area shape="rect" id="Node000021" href="$classDirectionalLight.html" title="Represents a directional light source." alt="" coords="271,597,396,623"/>
 <area shape="poly" id="edge20_Node000020_Node000021" title=" " alt="" coords="207,607,270,607,270,613,207,613"/>

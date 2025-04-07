@@ -133,31 +133,51 @@ Functions</h2></td></tr>
 <tr class="memitem:ga6f9da097d97bc24c4c4bf7b2996331d0" id="r_ga6f9da097d97bc24c4c4bf7b2996331d0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OSIO.html#ga6f9da097d97bc24c4c4bf7b2996331d0">absolute_path_to_relative</a> (char *path)</td></tr>
 <tr class="memdesc:ga6f9da097d97bc24c4c4bf7b2996331d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an absolute file path to a relative path.  <br /></td></tr>
 <tr class="separator:ga6f9da097d97bc24c4c4bf7b2996331d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga73f3b3dc473ae5d8d46d95fe3cd72759" id="r_ga73f3b3dc473ae5d8d46d95fe3cd72759"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OSIO.html#ga73f3b3dc473ae5d8d46d95fe3cd72759">osio_find</a> (<a class="el" href="dirent_8h.html#a6673e8f64ca9ebd7e26e6289dca06e87">dirent_t</a> ***namelist, const char *path, int(*filter)(const <a class="el" href="dirent_8h.html#a6673e8f64ca9ebd7e26e6289dca06e87">dirent_t</a> *entry))</td></tr>
+<tr class="memdesc:ga73f3b3dc473ae5d8d46d95fe3cd72759"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds files in a directory that match a given filter.  <br /></td></tr>
+<tr class="separator:ga73f3b3dc473ae5d8d46d95fe3cd72759"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Functions for file operations and error handling. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga6f9da097d97bc24c4c4bf7b2996331d0" name="ga6f9da097d97bc24c4c4bf7b2996331d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6f9da097d97bc24c4c4bf7b2996331d0">&#9670;&#160;</a></span>absolute_path_to_relative()</h2>
+<a id="ga13b0479e5e15d717ef71927639b2822f" name="ga13b0479e5e15d717ef71927639b2822f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga13b0479e5e15d717ef71927639b2822f">&#9670;&#160;</a></span>osio_save_file()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int absolute_path_to_relative </td>
+          <td class="memname">int osio_save_file </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>relativePath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>filter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Converts an absolute file path to a relative path. </p>
-<p>This function converts the absolute file path specified by the <code>path</code> parameter to a relative path. It can be useful for creating paths that are relative to the current working directory or another base directory.</p>
+<p>Saves a file to the specified path with a given filter. </p>
+<p>This function attempts to save a file to the location specified by the <code>path</code> parameter, applying the filter specified by the <code>filter</code> parameter. The filter can be used to specify file types or other criteria.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>The absolute path to be converted to a relative path. </td></tr>
+    <tr><td class="paramname">path</td><td>The path where the file should be saved. </td></tr>
+    <tr><td class="paramname">filter</td><td>The filter to apply when saving the file. </td></tr>
   </table>
   </dd>
 </dl>
@@ -239,51 +259,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga13b0479e5e15d717ef71927639b2822f" name="ga13b0479e5e15d717ef71927639b2822f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga13b0479e5e15d717ef71927639b2822f">&#9670;&#160;</a></span>osio_save_file()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int osio_save_file </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>relativePath</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>filter</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Saves a file to the specified path with a given filter. </p>
-<p>This function attempts to save a file to the location specified by the <code>path</code> parameter, applying the filter specified by the <code>filter</code> parameter. The filter can be used to specify file types or other criteria.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">path</td><td>The path where the file should be saved. </td></tr>
-    <tr><td class="paramname">filter</td><td>The filter to apply when saving the file. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>int Returns 0 on success, or a non-zero error code on failure. </dd></dl>
-
-</div>
-</div>
 <a id="ga2c057d7941c6df59458be2230e3e7f88" name="ga2c057d7941c6df59458be2230e3e7f88"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga2c057d7941c6df59458be2230e3e7f88">&#9670;&#160;</a></span>update_cwd()</h2>
 
@@ -302,6 +277,80 @@ Functions</h2></td></tr>
 <p>Updates the current working directory. </p>
 <p>This function updates the current working directory to the latest state. It can be used to ensure that the program is operating in the correct directory context.</p>
 <dl class="section return"><dt>Returns</dt><dd>int Returns 0 on success, or a non-zero error code on failure. </dd></dl>
+
+</div>
+</div>
+<a id="ga6f9da097d97bc24c4c4bf7b2996331d0" name="ga6f9da097d97bc24c4c4bf7b2996331d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6f9da097d97bc24c4c4bf7b2996331d0">&#9670;&#160;</a></span>absolute_path_to_relative()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int absolute_path_to_relative </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts an absolute file path to a relative path. </p>
+<p>This function converts the absolute file path specified by the <code>path</code> parameter to a relative path. It can be useful for creating paths that are relative to the current working directory or another base directory.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The absolute path to be converted to a relative path. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int Returns 0 on success, or a non-zero error code on failure. </dd></dl>
+
+</div>
+</div>
+<a id="ga73f3b3dc473ae5d8d46d95fe3cd72759" name="ga73f3b3dc473ae5d8d46d95fe3cd72759"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga73f3b3dc473ae5d8d46d95fe3cd72759">&#9670;&#160;</a></span>osio_find()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int osio_find </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="dirent_8h.html#a6673e8f64ca9ebd7e26e6289dca06e87">dirent_t</a> ***&#160;</td>
+          <td class="paramname"><em>namelist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int(*)(const <a class="el" href="dirent_8h.html#a6673e8f64ca9ebd7e26e6289dca06e87">dirent_t</a> *entry)&#160;</td>
+          <td class="paramname"><em>filter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds files in a directory that match a given filter. </p>
+<p>This function searches for files in the directory specified by the <code>path</code> parameter that match the filter function provided by the <code>filter</code> parameter. The filter function should return 1 for files that match the criteria, and 0 for files that do not.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">namelist</td><td>A pointer to the list of directory entries. </td></tr>
+    <tr><td class="paramname">path</td><td>The path to the directory where files should be searched. </td></tr>
+    <tr><td class="paramname">filter</td><td>The filter function to apply to the directory entries. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int Returns the number of files found, or a non-zero error code on failure. </dd></dl>
 
 </div>
 </div>
@@ -336,6 +385,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -344,7 +403,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

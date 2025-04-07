@@ -26,7 +26,70 @@ var NAVTREE =
 [
   [ "Claude Chappe' Curse - A C Game", "index.html", [
     [ "About", null, [
-      [ "Claude Chappe' Curse - A C Game Documentation", "index.html", null ],
+      [ "Claude Chappe' Curse - A C Game Documentation", "index.html", null ]
+    ] ],
+    [ "Getting Started", "_getting_started.html", [
+      [ "Getting Started", "getting_started.html", [
+        [ "Project Context", "getting_started.html#project_context", null ],
+        [ "Team", "getting_started.html#team", null ],
+        [ "Dependencies", "getting_started.html#dependencies", null ],
+        [ "Compilation", "getting_started.html#compilation", null ],
+        [ "Git Usage", "getting_started.html#git_usage", null ]
+      ] ],
+      [ "Engine Functionalities and Usage", "engine_functionality.html", [
+        [ "Overview", "engine_functionality.html#overview", null ],
+        [ "Node System", "engine_functionality.html#node_system", null ],
+        [ "Scripting", "engine_functionality.html#scripting", null ],
+        [ "Scene Management", "engine_functionality.html#scene_management", null ],
+        [ "Signal System", "engine_functionality.html#signals", null ],
+        [ "Inspiration & Credits", "engine_functionality.html#inspiration", null ]
+      ] ]
+    ] ],
+    [ "Manual", "manual.html", [
+      [ "Script System in C", "script_system_in_c.html", [
+        [ "Script Structure", "script_system_in_c.html#script_structure", null ],
+        [ "Defining a Script", "script_system_in_c.html#defining_script", [
+          [ "Example", "script_system_in_c.html#example_script", null ]
+        ] ],
+        [ "Retrieving Parameters", "script_system_in_c.html#retrieving_parameters", [
+          [ "Retrieving the Delta Parameter (Elapsed Time)", "script_system_in_c.html#delta_parameter", null ],
+          [ "Retrieving a Signal", "script_system_in_c.html#signal_retrieval", null ],
+          [ "Retrieving Area Signal Parameters", "script_system_in_c.html#area_signal_parameters", null ]
+        ] ],
+        [ "Behavior Attributes (BehaviorAttribute)", "script_system_in_c.html#behavior_attributes", null ],
+        [ "Example: Script Responding to Signals", "script_system_in_c.html#example_signal", null ],
+        [ "Summary of Used Macros", "script_system_in_c.html#macro_summary", null ]
+      ] ],
+      [ "Class System in C", "class_system_in_c.html", [
+        [ "Supported Formats", "class_system_in_c.html#supported_formats", [
+          [ "Static Method Call on a Class", "class_system_in_c.html#static_method", null ],
+          [ "Object Creation", "class_system_in_c.html#object_creation", null ],
+          [ "Calling a Method on an Instance", "class_system_in_c.html#instance_method", null ],
+          [ "Conditional Method Call with Type Casting", "class_system_in_c.html#conditional_call", null ],
+          [ "Calling a Method on a Child Object", "class_system_in_c.html#child_method", null ]
+        ] ],
+        [ "Key Concepts in the Class System", "class_system_in_c.html#key_concepts", null ]
+      ] ],
+      [ "Scene System Explanation", "scene_system.html", [
+        [ "Introduction", "scene_system.html#intro", null ],
+        [ "Scene File Format (.scene files)", "scene_system.html#scene_format", [
+          [ "Example Format:", "scene_system.html#example_format", null ]
+        ] ],
+        [ "Parsing & Loading Logic", "scene_system.html#parsing_logic", [
+          [ "Function: load_scene", "scene_system.html#load_scene", null ],
+          [ "Function: load_node", "scene_system.html#load_node", null ],
+          [ "Example Process:", "scene_system.html#example_process", null ]
+        ] ],
+        [ "Scene Node Properties", "scene_system.html#node_properties", [
+          [ "Transformations", "scene_system.html#transformations", null ],
+          [ "Flags", "scene_system.html#flags", null ],
+          [ "Scripts", "scene_system.html#scripts", null ]
+        ] ],
+        [ "Memory Management & Finalization", "scene_system.html#memory", null ],
+        [ "Summary", "scene_system.html#summary", null ]
+      ] ]
+    ] ],
+    [ "References", null, [
       [ "Topics", "topics.html", "topics" ],
       [ "Class List", "annotated.html", [
         [ "Class List", "annotated.html", "annotated_dup" ],
@@ -56,13 +119,13 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"classMeshCShape.html#a3e71555433eb444d00a1caaf476f8222",
-"collision_8h.html",
-"group__Collision.html#ga16d110012e15dd4be594f3f487086dec",
-"group__ShaderManagement.html#ga1117f5894f4b4abe13e41cfc8109ddbe",
-"settings_8h.html#a669b525c3846e41b95573081bfcdf9ef",
-"structTheme.html#af82ca908e149cbdba3da3b3d19d52bb7"
+"GL_8h.html",
+"classKinematicBody.html#adb47f5537de0281b1950d82575ff0f4e",
+"class_system_in_c.html#supported_formats",
+"functions_vars_v.html",
+"group__ModelHandling.html#gga829dc978e29d88ada1059ea4ca6c4cd3aed9e0d5515a86c37bb824798402143f5",
+"physics_8c.html",
+"structInput.html#aace579899ad6ffde6db9a20dec15d0f6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

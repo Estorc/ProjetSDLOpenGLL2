@@ -1,9 +1,9 @@
 <map id="src/config.h" name="src/config.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="25,5,121,31"/>
-<area shape="rect" id="Node000002" href="$term_8h.html" title=" " alt="" coords="23,79,123,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,31,75,65,70,65,70,31"/>
-<area shape="rect" id="Node000003" href="$enhanced__print_8h.html" title=" " alt="" coords="5,152,140,177"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="75,104,75,138,70,138,70,104"/>
-<area shape="rect" id="Node000004" href="$color_8h.html" title=" " alt="" coords="40,225,105,251"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="75,178,75,212,70,212,70,178"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,101,31"/>
+<area shape="rect" id="Node000002" href="$term_8h.html" title=" " alt="" coords="149,5,249,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,15,135,15,135,21,102,21"/>
+<area shape="rect" id="Node000003" href="$enhanced__print_8h.html" title=" " alt="" coords="297,5,467,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="249,15,284,15,284,21,249,21"/>
+<area shape="rect" id="Node000004" href="$color_8h.html" title=" " alt="" coords="515,5,615,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="467,15,501,15,501,21,467,21"/>
 </map>

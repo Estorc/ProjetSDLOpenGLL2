@@ -1,5 +1,5 @@
-#include "../raptiquax.h"
-#include "math_util.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
 
 /**
  * @internal

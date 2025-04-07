@@ -1,4 +1,5 @@
 #include "chessboard.h"
+#include <utils/deferred.h>
 
 static ChessPieceColor player_color = FC_UNKNOWN;
 static ChessPieceColor current_player = FC_WHITE;
@@ -42,7 +43,7 @@ static inline void begin_fight(Node *** board, int id1, int id2) {
         send_message(peer->socket, buffer, 0);
     }
 
-    prepare_change_scene("assets/scenes/fps_chess/play_room_fight.scene");
+    deferred_load_scene("assets/scenes/fps_chess/play_room_fight.scene");
 }
 
 static inline void swap_player() {
@@ -167,7 +168,8 @@ static inline int is_move_valid(Node ***board, int flags, int ox, int oy, int dx
             if (flags & move_or_eat(*board, dx, dy, flags) || flags & FC_MOVED) {
                 return FC_FORBIDDEN;
             }
-            int rox, rdx;
+            int rox = 0;
+            int rdx = 0;
             if (dx - ox == 2) {
                 rox = 7;
                 rdx = 5;

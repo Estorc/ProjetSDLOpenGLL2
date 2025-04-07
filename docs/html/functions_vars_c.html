@@ -113,11 +113,11 @@ $(document).ready(function(){initNavTree('functions_vars_c.html',''); initResiza
 <li>callback&#160;:&#160;<a class="el" href="structmessage__handler.html#af99eb5fd284f410ebf21654e38dbc4af">message_handler</a></li>
 <li>callQueue&#160;:&#160;<a class="el" href="structRaptiquaX__t.html#af9407d64ede7f649fcdcc0171f7cdd87">RaptiquaX_t</a></li>
 <li>camera&#160;:&#160;<a class="el" href="structRaptiquaX__t.html#a3f838cfab20c911d0f0379293c6edf2f">RaptiquaX_t</a></li>
-<li>capacity&#160;:&#160;<a class="el" href="structHashTable.html#ad7b2a756fb5beae48601b03888235ff7">HashTable</a></li>
-<li>cast_shadows&#160;:&#160;<a class="el" href="structSettings.html#a6eeb3bce280b655b264a5485bc98131d">Settings</a></li>
+<li>capacity&#160;:&#160;<a class="el" href="structHashTable.html#ab0c80fc75b46e3801d6165df60352f9d">HashTable</a></li>
+<li>cast_shadows&#160;:&#160;<a class="el" href="structSettings.html#ac383a3b653fbb893ba0e92af9864c5b4">Settings</a></li>
 <li>centerOfMass&#160;:&#160;<a class="el" href="classRigidBody.html#ad02d16bc585b090bd6cd76f2aef5f36d">RigidBody</a></li>
-<li>checked&#160;:&#160;<a class="el" href="classButton.html#a59869bbd81f4aed84f42dda707478850">Button</a>, <a class="el" href="classRadioButton.html#ad71225448aeaaf84af566afc67be604a">RadioButton</a>, <a class="el" href="classSlider.html#abfb7de0e49127d086f58c8232fae76d5">Slider</a></li>
-<li>children&#160;:&#160;<a class="el" href="group__NodeFunctions.html#ga3d857c2fdb25634fe92ca32ff006c233">Node</a></li>
+<li>checked&#160;:&#160;<a class="el" href="classButton.html#a59869bbd81f4aed84f42dda707478850">Button</a>, <a class="el" href="classRadioButton.html#ad71225448aeaaf84af566afc67be604a">RadioButton</a>, <a class="el" href="classSlider.html#ab009758b6794140fe0fe6f51b940e10b">Slider</a></li>
+<li>children&#160;:&#160;<a class="el" href="classNode.html#a3d857c2fdb25634fe92ca32ff006c233">Node</a></li>
 <li>chunk&#160;:&#160;<a class="el" href="structMixChunkCache.html#a8b78caad3a753f74bb1d4cd0f0aaa9b6">MixChunkCache</a></li>
 <li>chunkCache&#160;:&#160;<a class="el" href="structMemoryCaches.html#a3a9afa1983265feaef1068512b2f206d">MemoryCaches</a></li>
 <li>chunkCount&#160;:&#160;<a class="el" href="structMemoryCaches.html#a1e689aa158a41c030c3e612c6f5f79c7">MemoryCaches</a></li>
@@ -134,6 +134,7 @@ $(document).ready(function(){initNavTree('functions_vars_c.html',''); initResiza
 <li>contentSurface&#160;:&#160;<a class="el" href="classFrame.html#a5a33045cc663b18b0dd11aee9f6443f9">Frame</a></li>
 <li>contentTexture&#160;:&#160;<a class="el" href="classFrame.html#a4aaadcfce8050772cd652119f68a9cef">Frame</a></li>
 <li>count&#160;:&#160;<a class="el" href="classSelectList.html#aead8175adef8979f92c8e528d52ea720">SelectList</a></li>
+<li>crouch&#160;:&#160;<a class="el" href="structKeybinds.html#aee6ea23551b922b71d6c66efbeafb1f9">Keybinds</a></li>
 <li>cubeMap&#160;:&#160;<a class="el" href="structCubeMapCache.html#afb7c69412da4e04b6475159deb64ce0f">CubeMapCache</a></li>
 <li>cubeMapCache&#160;:&#160;<a class="el" href="structMemoryCaches.html#ac2885ae5eaedfe6183f7dcef82842b6a">MemoryCaches</a></li>
 <li>cubeMapCount&#160;:&#160;<a class="el" href="structMemoryCaches.html#a62466b4d0ad88ce3a6d01d4068bee2f5">MemoryCaches</a></li>
@@ -170,6 +171,16 @@ $(document).ready(function(){initNavTree('functions_vars_c.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -178,7 +189,7 @@ $(document).ready(function(){initNavTree('functions_vars_c.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

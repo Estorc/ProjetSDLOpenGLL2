@@ -105,7 +105,7 @@ char * concat_path(const char * path1, const char * path2);
  * @param list_size The number of strings in the list.
  * @return The index of the first occurrence of the string, or -1 if not found.
  */
-int find_string_index(char *str, const char **str_list, int list_size);
+int find_string_index(char *str, const char * const *str_list, int list_size);
 
 /**
  * @brief Formats escaped newlines in a string.

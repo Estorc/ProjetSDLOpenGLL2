@@ -110,7 +110,7 @@ $(document).ready(function(){initNavTree('functions_func_p.html',''); initResiza
 <div class="textblock">Here is a list of all functions with links to the classes they belong to:</div>
 
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
-<li>prepare_render()&#160;:&#160;<a class="el" href="classCShape.html#aae7feda6e1d742dd6253ce420466c624">CShape</a>, <a class="el" href="classNode.html#ab05e54fc6a226fe70d274e46e9ced07a">Node</a></li>
+<li>prepare_render()&#160;:&#160;<a class="el" href="classCShape.html#a198675428f55a5ca03e5307eaf04c9e0">CShape</a>, <a class="el" href="classNode.html#af61079d444fa059127bc4983cf5e4ea5">Node</a></li>
 <li>print()&#160;:&#160;<a class="el" href="classNode.html#aef2f74d45bec672840433aff6abe0d45">Node</a></li>
 </ul>
 </div><!-- contents -->
@@ -144,6 +144,16 @@ $(document).ready(function(){initNavTree('functions_func_p.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -152,7 +162,7 @@ $(document).ready(function(){initNavTree('functions_func_p.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

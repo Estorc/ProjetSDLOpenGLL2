@@ -128,9 +128,9 @@ Features</h2>
 <h2><a class="anchor" id="autotoc_md1"></a>
 Quick Links</h2>
 <ul>
-<li>Getting Started</li>
+<li><a class="el" href="getting_started.html">Getting Started</a></li>
 <li><a class="el" href="classNode.html">Take a look to node class architecture!</a></li>
-<li>How to use the new C class ?</li>
+<li><a class="el" href="class_system_in_c.html">How to use the new C class ?</a></li>
 </ul>
 <h2><a class="anchor" id="autotoc_md2"></a>
 Getting Started</h2>
@@ -171,6 +171,16 @@ Getting Started</h2>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -179,7 +189,7 @@ Getting Started</h2>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

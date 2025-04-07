@@ -1,5 +1,5 @@
 <map id="src/io/audio.h" name="src/io/audio.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,115,31"/>
-<area shape="rect" id="Node000002" href="$audio_8c.html" title=" " alt="" coords="6,79,114,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,44,63,79,57,79,57,44"/>
+<area shape="rect" id="Node000001" title="Audio playback functions for sound effects and music." alt="" coords="5,5,115,31"/>
+<area shape="rect" id="Node000002" href="$audio_8c.html" title=" " alt="" coords="163,5,271,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,15,163,15,163,21,128,21"/>
 </map>

@@ -1,7 +1,5 @@
 var classScene =
 [
-    [ "constructor", "classScene.html#a8bf67b78e1d1a955dc25dddae3b87953", null ],
-    [ "load", "classScene.html#a6c6ed93b7bb2f9c82bf71037168eb7a4", null ],
-    [ "render", "classScene.html#ad6a57cf369a3d790fa63606d9bc9b034", null ],
-    [ "save", "classScene.html#a0f7841bbb9396fb7b909b6a9eaf9ed5d", null ]
+    [ "constructor", "classScene.html#ad9fc1f6e1d987f73d3f3933d0588bc82", null ],
+    [ "load", "classScene.html#a915472ccd06e5ad8ccd297f55b605469", null ]
 ];

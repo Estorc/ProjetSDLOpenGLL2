@@ -2,8 +2,8 @@
 \hypertarget{depth__map_8h_source}{}\label{depth__map_8h_source}\index{src/render/depth\_map.h@{src/render/depth\_map.h}}
 \mbox{\hyperlink{depth__map_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}../io/model.h"{}}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{framebuffer_8h}{framebuffer.h}}"{}}}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{model_8h}{io/model.h}}>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{framebuffer_8h}{render/framebuffer.h}}>}}
 \DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ DEPTH\_MAP\_H}}
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ DEPTH\_MAP\_H}}
 \DoxyCodeLine{00005\ }
@@ -15,13 +15,13 @@
 \DoxyCodeLine{00011\ }
 \DoxyCodeLine{00012\ }
 \DoxyCodeLine{00026\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDepthMap}{DepthMap}}\ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}}\ \mbox{\hyperlink{structDepthMap_a9c637c06d0643f13863e225b7c06928b}{frameBuffer}};\ }
-\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ \mbox{\hyperlink{structDepthMap_a1bd1fa2d9e63d28a12067577865ed072}{texture}};\ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{aliases_8h_ac85a61ad9743ee6947a9c5b15f8f700d}{FBO}}\ \mbox{\hyperlink{structDepthMap_ada1a44dcae50066e76bd1f76b444693d}{frameBuffer}}[\mbox{\hyperlink{depth__map_8h_ab90be778d83c75fb725bfc4567b8e994}{NUM\_DIRECTIONAL\_LIGHTS}}\ +\ \mbox{\hyperlink{depth__map_8h_a58f706ceb6011b91f9a62743bf8f7aad}{NUM\_POINT\_LIGHTS}}\ *\ 6\ +\ \mbox{\hyperlink{depth__map_8h_acbdacded87b3baa77422a1467098fc6c}{NUM\_SPOT\_LIGHTS}}];\ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ \mbox{\hyperlink{structDepthMap_a1bd1fa2d9e63d28a12067577865ed072}{texture}};\ }
 \DoxyCodeLine{00029\ \ \ \ \ GLuint\ \mbox{\hyperlink{structDepthMap_ac1d7438c7cab13d6dd4b81c89821b749}{tbo}};\ }
-\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ \mbox{\hyperlink{structDepthMap_a0745a63209e05ef6ea5c94af4fd2c455}{matrixTexture}};\ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{TextureMap}}\ \mbox{\hyperlink{structDepthMap_a0745a63209e05ef6ea5c94af4fd2c455}{matrixTexture}};\ }
 \DoxyCodeLine{00031\ \}\ \mbox{\hyperlink{structDepthMap}{DepthMap}};}
 \DoxyCodeLine{00032\ }
-\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__DepthMap_ga51a7d0ce85272f7c6ea353b880f64c4c}{create\_depthmap}}(\mbox{\hyperlink{structDepthMap}{DepthMap}}\ *depthMap,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structWorldShaders}{WorldShaders}}\ *shaders);}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__DepthMap_ga51a7d0ce85272f7c6ea353b880f64c4c}{create\_depthmap}}(\mbox{\hyperlink{structDepthMap}{DepthMap}}\ *\mbox{\hyperlink{raptiquax_8c_a05db9a2e20c606a506e7b8da6d0248e3}{depthMap}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structWorldShaders}{WorldShaders}}\ *shaders);}
 \DoxyCodeLine{00050\ }
 \DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif}}
 

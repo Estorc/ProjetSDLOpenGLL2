@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('functions_w.html',''); initResizable()
 <h3><a id="index_w" name="index_w"></a>- w -</h3><ul>
 <li>w&#160;:&#160;<a class="el" href="classRenderTarget.html#af3597240c263400d1ec7c99a94eb8e33">RenderTarget</a></li>
 <li>window&#160;:&#160;<a class="el" href="structRaptiquaX__t.html#a0a06b56aacfc717a9a40be81eee1d869">RaptiquaX_t</a></li>
-<li>window_fullscreen&#160;:&#160;<a class="el" href="structSettings.html#ae523e7e0ac8d0cb194a02821d9862b39">Settings</a></li>
+<li>window_fullscreen&#160;:&#160;<a class="el" href="structSettings.html#a94dfa7d0181c7b476e4651463278f621">Settings</a></li>
 <li>windowSkin&#160;:&#160;<a class="el" href="structTheme.html#af82ca908e149cbdba3da3b3d19d52bb7">Theme</a></li>
 </ul>
 </div><!-- contents -->
@@ -146,6 +146,16 @@ $(document).ready(function(){initNavTree('functions_w.html',''); initResizable()
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -154,7 +164,7 @@ $(document).ready(function(){initNavTree('functions_w.html',''); initResizable()
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

@@ -17,20 +17,41 @@
  * @date 2023-10-10
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "storage/node.h"
-#include "io/shader.h"
-#include "render/render.h"
-#include "window.h"
-#include "gui/frame.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <storage/node.h>
+#include <io/shader.h>
+#include <render/render.h>
+#include <window.h>
+#include <gui/frame.h>
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class Label : public Frame {
     __containerType__ Node *
     public:
 
+    /**
+     * @brief Constructor for the label class.
+     *
+     * This function initializes a label object with the specified text and alignment parameters.
+     *
+     * @param text The text to be displayed in the label.
+     * @param ha The horizontal alignment of the text. 
+     *           Possible values:
+     *           - 0: Left-aligned
+     *           - 1: Center-aligned
+     *           - 2: Right-aligned
+     * @param va The vertical alignment of the text.
+     *           Possible values:
+     *           - 0: Top-aligned
+     *           - 1: Middle-aligned
+     *           - 2: Bottom-aligned
+     */
     void constructor(char *text, int ha, int va) {
         this->type = __type__; 
 
@@ -78,6 +99,7 @@ class Label : public Frame {
     }
 
     void set_text(char * str) {
+        if (strcmp(str, ((Frame *) this->object)->label->text) == 0) return;
         Frame *frame = (Frame *) this->object;
         Label *label = (Label *) frame->label;
         label->text = realloc(label->text, strlen(str) + 1);
@@ -111,7 +133,7 @@ class Label : public Frame {
     }
 
 
-    void render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
+    void render(mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
         SUPER(render, modelMatrix, activeShader, shaders);
     }
 
@@ -132,3 +154,4 @@ class Label : public Frame {
     }
     
 }
+

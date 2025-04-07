@@ -1,0 +1,86 @@
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <storage/node.h>
+#include <render/camera.h>
+#include <gui/frame.h>
+#include <storage/queue.h>
+#include <storage/hash.h>
+#include <utils/scene.h>
+#include <io/audio.h>
+#include <render/lighting.h>
+#include <buffer.h>
+#include <window.h>
+#include <utils/random.h>
+#include <utils/deferred.h>
+#include <settings.h>
+
+#include <classes/classes.h>
+
+static char text[256];
+static char locked_text[256];
+NEW_SCRIPT(script_cc_door_init)
+    SET_ATTRIBUTES_COUNT(3);
+    deferred_table_get(Game.storage, "Game::alabel", &this->attribute[0].node);
+    deferred_table_get(Game.storage, "Game::player", &this->attribute[2].node);
+    sprintf(text, "Appuyez sur [%s] pour ouvrir la porte", SDL_GetKeyName(Game.settings->keybinds.interact));
+    sprintf(locked_text, "La porte est verrouillée !");
+END_SCRIPT(script_cc_door_init)
+
+NEW_SCRIPT(script_cc_door_update)
+    Node * label = this->attribute[0].node;
+    if (label) {
+        label->flags &= ~NODE_ACTIVE;
+        label->flags &= ~NODE_VISIBLE;
+    }
+    if (this->attribute[1].i) float_approach(&this->rot[1], 90.0f, 0.1f);
+    else float_approach(&this->rot[1], 0.0f, 0.1f);
+END_SCRIPT(script_cc_door_update)
+
+NEW_SCRIPT(script_cc_door_chapper_update)
+    Node * label = this->attribute[0].node;
+    if (label) {
+        label->flags &= ~NODE_ACTIVE;
+        label->flags &= ~NODE_VISIBLE;
+    }
+    if (this->attribute[1].i == 1) {
+        float_approach(&this->rot[1], 90.0f, 0.1f);
+        if (glm_vec3_distance2(this->globalPos, this->attribute[2].node->globalPos) > sqr(10.0f)) {
+            this->attribute[1].i = 2;
+            this->parent->parent->children[1]->flags |= NODE_ACTIVE;
+            this->parent->parent->children[1]->flags |= NODE_VISIBLE;
+            play_music("assets/audio/musics/maquette_music_chapper.mp3", MIX_MAX_VOLUME, -1);
+        }
+    }
+    else float_approach(&this->rot[1], 0.0f, 0.1f);
+END_SCRIPT(script_cc_door_chapper_update)
+
+NEW_SCRIPT(script_cc_door_signal)
+    GET_SIGNAL();
+    switch (signal) {
+        case SIGNAL_AREA_COLLISION:
+            GET_AREA_SIGNAL_PARAMETERS();
+            if (sigId == 10 && distance < 10.0f) {
+                Node * label = this->attribute[0].node;
+                if (label) {
+                    label->flags |= NODE_ACTIVE;
+                    label->flags |= NODE_VISIBLE;
+                    if (this->attribute[1].i == 2) {
+                        label::set_text(locked_text);
+                    } else {
+                        label::set_text(text);
+                    }
+                }
+                if (Game.input->pressed_keys & KEY_INTERACT) {
+                    if (this->attribute[1].i == 2) {
+                        play_sfx("assets/audio/sfx/door_locked.mp3", 50, 0);
+                    } else {
+                        play_sfx("assets/audio/sfx/door_opened.mp3", 50, 0);
+                        this->attribute[1].i = !this->attribute[1].i;
+                    }
+                }
+            }
+            break;
+        default:
+            break;
+    }
+END_SCRIPT(script_cc_door_signal)

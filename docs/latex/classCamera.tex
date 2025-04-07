@@ -1,4 +1,4 @@
-\doxysection{Camera Struct Reference}
+\doxysection{Camera Class Reference}
 \hypertarget{classCamera}{}\label{classCamera}\index{Camera@{Camera}}
 
 
@@ -31,50 +31,52 @@ Collaboration diagram for Camera\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classCamera_a820d262dfb04db3929dfe41c25abe0d0}{constructor}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classCamera}{Camera} class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCamera_abe898f96e5db6053561904256126b044}{load}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}c, \mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}scripts, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
-\item 
-void \mbox{\hyperlink{classCamera_a8bf37f95d2e93f14b481426177b39ca1}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classCamera_a58f8b51664251b5c0f59be0e0a87e754}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classCamera_a1456c80b084814b7811c8fe3d797021d}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
-\item 
-void \mbox{\hyperlink{classCamera_af45ed0a37b84e98b88d756d96b73df7b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
-\item 
+\begin{DoxyCompactList}\small\item\em Loads a \doxylink{classCamera}{Camera} object from a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_ac3b27f4688e63264a77fa53c77deb03f}{update}} (vec3 \mbox{\hyperlink{classCamera_a58f8b51664251b5c0f59be0e0a87e754}{pos}}, vec3 \mbox{\hyperlink{classCamera_a1456c80b084814b7811c8fe3d797021d}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\begin{DoxyCompactList}\small\item\em Updates the camera\textquotesingle{}s position, rotation, and scale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCamera_af45ed0a37b84e98b88d756d96b73df7b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}})
+\begin{DoxyCompactList}\small\item\em Retrieves the settings data. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCamera_a61396a083ed2e99485213d5b3ceb9cc0}{save}} (FILE \texorpdfstring{$\ast$}{*}file, \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}editor)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Saves the state of the editor node to a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classNode_adc8290bb6f9a55e929ea1d8af7a75818}{constructor}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{classNode}{Node} class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a6b7d86c5640d6ea769915d22f1129186}{initialize\+\_\+node}} ()
-\item 
-void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}})
-\item 
-void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}})
-\item 
+\begin{DoxyCompactList}\small\item\em Initializes a node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a2811c63060e67e1c365b4ca6c583d804}{get\+\_\+glow\+\_\+shader}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}})
+\begin{DoxyCompactList}\small\item\em Retrieves the glow shader. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a542c25c237f346a743cde5f78f81e55b}{get\+\_\+settings\+\_\+data}} (void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ptr, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}})
+\begin{DoxyCompactList}\small\item\em Retrieves settings data. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_af0672fc0a4d6c6b05c20b9bb5dddf9c3}{load}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Loads the necessary resources or data for the node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a06da5ccd34d78a1119160005629f0193}{save}} (FILE \texorpdfstring{$\ast$}{*}file)
-\item 
-void \mbox{\hyperlink{classNode_ab05e54fc6a226fe70d274e46e9ced07a}{prepare\+\_\+render}} (mat4 \texorpdfstring{$\ast$}{*}model\+Matrix, \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
+\begin{DoxyCompactList}\small\item\em Saves the current state to the specified file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_af61079d444fa059127bc4983cf5e4ea5}{prepare\+\_\+render}} (mat4 model\+Matrix, \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} active\+Shader)
 \begin{DoxyCompactList}\small\item\em Renders a node using the specified model matrix and shader. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_ab93a6f41e02422a21c44227c0355382a}{render}} ()
-\item 
-void \mbox{\hyperlink{classNode_a2621112ec04d166f9ec376eba06f3bbb}{update\+\_\+global\+\_\+position}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
-\item 
-void \mbox{\hyperlink{classNode_a500a682914a24af188bd9eb79ba2aaae}{update}} (vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
-\item 
+\begin{DoxyCompactList}\small\item\em Renders the node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a117da4a7be3efb9541f5279a98bf839f}{update\+\_\+global\+\_\+position}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\begin{DoxyCompactList}\small\item\em Updates the global position of a node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a1e577d625ac818cc6dac5634e713cdaf}{update}} (vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}, vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}, vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}})
+\begin{DoxyCompactList}\small\item\em Updates the position, rotation, and scale of a node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNode_a86288848282bf3bba83f0cc7437207ac}{on\+\_\+resize}} ()
+\begin{DoxyCompactList}\small\item\em Handles the resize event for the node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_acda79ab291312990e96552767c577a3d}{free}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Frees the resources allocated by the object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_ae2ee01789b301b3c0323473dbe968283}{is\+\_\+cshape}} (bool \texorpdfstring{$\ast$}{*}cshape)
-\item 
+\begin{DoxyCompactList}\small\item\em Checks if the current shape is a custom shape. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a75c27b8cf028ae9509b20ad7392c49f8}{is\+\_\+body}} (bool \texorpdfstring{$\ast$}{*}body)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the body status of the node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a45b2f4d0c4efe87777b198cd3b9bf2eb}{is\+\_\+area}} (bool \texorpdfstring{$\ast$}{*}area)
-\item 
+\begin{DoxyCompactList}\small\item\em Checks if the current node is within a specified area. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a743d883f14521da8f8c62608ce65f7ee}{is\+\_\+render\+\_\+target}} (bool \texorpdfstring{$\ast$}{*}render\+\_\+target)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the render target status. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a29ad16f4987533c2ddebec71439bfbd5}{is\+\_\+gui\+\_\+element}} (bool \texorpdfstring{$\ast$}{*}result)
-\item 
+\begin{DoxyCompactList}\small\item\em Determines if the current node is a GUI element. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a42da38ee8e0a621e438e14b94c0e381e}{add\+\_\+child}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
 \begin{DoxyCompactList}\small\item\em Adds a child node to a parent node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a8e6b8cc31d9259fcf89b21c180954996}{add\+\_\+child\+\_\+and\+\_\+realloc}} (\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}child)
@@ -92,11 +94,11 @@ int \mbox{\hyperlink{classNode_af99346e2725916df2fbe2e4af7a2d51c}{index\+\_\+of\
 void \mbox{\hyperlink{classNode_aef2f74d45bec672840433aff6abe0d45}{print}} (int level)
 \begin{DoxyCompactList}\small\item\em Prints the details of a node at a specified level of indentation. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a846d06ed1f7a5ac618fbfef10881230f}{emit\+\_\+ready}} (...)
-\item 
+\begin{DoxyCompactList}\small\item\em Emits the \textquotesingle{}ready\textquotesingle{} signal for the node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a3e7054036adfcf19c240b48a7f353f83}{emit\+\_\+update}} (...)
-\item 
+\begin{DoxyCompactList}\small\item\em Emits an update event for the node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNode_a0a3256bf578114f603b9407814638a2f}{emit\+\_\+signal}} (...)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Emits a signal if the node has a script and the script has a signal handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -109,44 +111,44 @@ float \mbox{\hyperlink{classCamera_aff7393c9cfbccd7e369091f00008da93}{fov}}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
 \item 
-void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga9cf70c2b354e11c49130331da4519864}{object}}
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_a9cf70c2b354e11c49130331da4519864}{object}}
 \item 
-struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga3d857c2fdb25634fe92ca32ff006c233}{children}}
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_a3d857c2fdb25634fe92ca32ff006c233}{children}}
 \item 
-struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_ga34f3ab9670c7b70dad8905359a243c92}{parent}}
+struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_a34f3ab9670c7b70dad8905359a243c92}{parent}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{group__NodeFunctions_gaf0605f2b8a070fb62821274a6cf9b531}{length}}
+\mbox{\hyperlink{aliases_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{classNode_af0605f2b8a070fb62821274a6cf9b531}{length}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga670b66a39fdb438336be47a9cb68a516}{type}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a670b66a39fdb438336be47a9cb68a516}{type}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_ga0c95683293e9f234118c583a28bc9cc0}{flags}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_a0c95683293e9f234118c583a28bc9cc0}{flags}}
 \item 
-vec3 \mbox{\hyperlink{group__NodeFunctions_ga19f2506921f0378b62b4200d0f674411}{pos}}
+vec3 \mbox{\hyperlink{classNode_a19f2506921f0378b62b4200d0f674411}{pos}}
 \item 
-vec3 \mbox{\hyperlink{group__NodeFunctions_ga4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}
+vec3 \mbox{\hyperlink{classNode_a4c1d2fdb8be63309e0a7e2a4b3a17066}{rot}}
 \item 
-vec3 \mbox{\hyperlink{group__NodeFunctions_gac6f771ff3b5a0575ab61ce09df2ed685}{scale}}
+vec3 \mbox{\hyperlink{classNode_ac6f771ff3b5a0575ab61ce09df2ed685}{scale}}
 \item 
-vec3 \mbox{\hyperlink{group__NodeFunctions_ga1cf2ef86297b1bdfed11d030c0ed3dd2}{global\+Pos}}
+vec3 \mbox{\hyperlink{classNode_a1cf2ef86297b1bdfed11d030c0ed3dd2}{global\+Pos}}
 \item 
-vec3 \mbox{\hyperlink{group__NodeFunctions_ga16edb124722f7491fa3d41573b2fec8a}{global\+Rot}}
+vec3 \mbox{\hyperlink{classNode_a16edb124722f7491fa3d41573b2fec8a}{global\+Rot}}
 \item 
-vec3 \mbox{\hyperlink{group__NodeFunctions_ga1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
+vec3 \mbox{\hyperlink{classNode_a1d353831fd989481401e337cd5ba0ddc}{global\+Scale}}
 \item 
-\mbox{\hyperlink{scripts_8h_a43b2073db874347a0a4ab166b38e36bd}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafecba6f76777835ffecef5c947e19f26}{behavior}}
+\mbox{\hyperlink{scripts_8h_a73db917e73a3821d62d9869b4196c024}{Behavior}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_afecba6f76777835ffecef5c947e19f26}{behavior}}
 \item 
-\mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__NodeFunctions_gafa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
+\mbox{\hyperlink{unionBehaviorAttribute}{Behavior\+Attribute}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classNode_afa50314ea6ca719d2fcbbdaa33dd052a}{attribute}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{group__NodeFunctions_gab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
+\mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}} \mbox{\hyperlink{classNode_ab9c00a78e2cb89d68c1d9a251c870444}{attributes\+\_\+count}}
 \item 
-\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__NodeFunctions_ga16c1ef53dee5d0538a5027edc2e937f3}{shader}}
+\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a16c1ef53dee5d0538a5027edc2e937f3}{shader}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classNode}{Node}}}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_a44e2ccb5f2209f6367f33a3c712f0eb1}{glow\+Shader}} = 0
-\end{DoxyCompactItemize}
+static \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{classNode_ad05f8b1de975fa3370e8b98c0ec5aa4f}{glow\+Shader}} = 0
+\begin{DoxyCompactList}\small\item\em A static Shader variable used for glow effect. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -159,40 +161,96 @@ A structure to represent a camera with position and rotation in 3D space.
 \doxysubsubsection{\texorpdfstring{constructor()}{constructor()}}
 {\footnotesize\ttfamily void Camera\+::constructor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Constructor for the \doxylink{classCamera}{Camera} class. 
+
+This function initializes a new instance of the \doxylink{classCamera}{Camera} class. \Hypertarget{classCamera_abe898f96e5db6053561904256126b044}\label{classCamera_abe898f96e5db6053561904256126b044} 
+\index{Camera@{Camera}!load@{load}}
+\index{load@{load}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Camera\+::load (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file,  }\item[{\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}}]{scripts,  }\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{editor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Loads a \doxylink{classCamera}{Camera} object from a file. 
+
+This function reads data from the specified file and initializes a \doxylink{classCamera}{Camera} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & A pointer to the file from which the \doxylink{classCamera}{Camera} data will be read. \\
+\hline
+{\em c} & A double pointer to the \doxylink{classCamera}{Camera} object that will be initialized. \\
+\hline
+{\em scripts} & A pointer to the \doxylink{structScript}{Script} object associated with the \doxylink{classCamera}{Camera}. \\
+\hline
+{\em editor} & A pointer to the \doxylink{classNode}{Node} object representing the editor. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classCamera_ac3b27f4688e63264a77fa53c77deb03f}\label{classCamera_ac3b27f4688e63264a77fa53c77deb03f} 
+\index{Camera@{Camera}!update@{update}}
+\index{update@{update}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Camera\+::update (\begin{DoxyParamCaption}\item[{vec3}]{pos,  }\item[{vec3}]{rot,  }\item[{vec3}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates the camera\textquotesingle{}s position, rotation, and scale. 
+
+This function updates the camera\textquotesingle{}s transformation properties including position, rotation, and scale based on the provided vectors.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & Vec3 structure representing the new position of the camera. \\
+\hline
+{\em rot} & Vec3 structure representing the new rotation of the camera. \\
+\hline
+{\em scale} & Vec3 structure representing the new scale of the camera. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classCamera_af45ed0a37b84e98b88d756d96b73df7b}\label{classCamera_af45ed0a37b84e98b88d756d96b73df7b} 
 \index{Camera@{Camera}!get\_settings\_data@{get\_settings\_data}}
 \index{get\_settings\_data@{get\_settings\_data}!Camera@{Camera}}
 \doxysubsubsection{\texorpdfstring{get\_settings\_data()}{get\_settings\_data()}}
 {\footnotesize\ttfamily void Camera\+::get\+\_\+settings\+\_\+data (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{ptr,  }\item[{int \texorpdfstring{$\ast$}{*}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\Hypertarget{classCamera_abe898f96e5db6053561904256126b044}\label{classCamera_abe898f96e5db6053561904256126b044} 
-\index{Camera@{Camera}!load@{load}}
-\index{load@{load}!Camera@{Camera}}
-\doxysubsubsection{\texorpdfstring{load()}{load()}}
-{\footnotesize\ttfamily void Camera\+::load (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file,  }\item[{\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{c,  }\item[{\mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*}}]{scripts,  }\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{editor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+Retrieves the settings data. 
+
+This function retrieves the settings data and stores it in the provided pointer. It also sets the length of the data.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em ptr} & A pointer to a pointer to a pointer where the settings data will be stored. The function will allocate memory for the settings data and set this pointer to point to the allocated memory. \\
+\hline
+\mbox{\texttt{ out}}  & {\em length} & A pointer to an integer where the length of the settings data will be stored. The function will set this integer to the length of the settings data. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classCamera_a61396a083ed2e99485213d5b3ceb9cc0}\label{classCamera_a61396a083ed2e99485213d5b3ceb9cc0} 
 \index{Camera@{Camera}!save@{save}}
 \index{save@{save}!Camera@{Camera}}
 \doxysubsubsection{\texorpdfstring{save()}{save()}}
 {\footnotesize\ttfamily void Camera\+::save (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{file,  }\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{editor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\Hypertarget{classCamera_a8bf37f95d2e93f14b481426177b39ca1}\label{classCamera_a8bf37f95d2e93f14b481426177b39ca1} 
-\index{Camera@{Camera}!update@{update}}
-\index{update@{update}!Camera@{Camera}}
-\doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily void Camera\+::update (\begin{DoxyParamCaption}\item[{vec3 \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{rot,  }\item[{vec3 \texorpdfstring{$\ast$}{*}}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+Saves the state of the editor node to a file. 
+
+This function writes the current state of the editor node to the specified file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & A pointer to the FILE object where the state will be saved. \\
+\hline
+{\em editor} & A pointer to the \doxylink{classNode}{Node} object representing the editor whose state is to be saved. \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classCamera_aff7393c9cfbccd7e369091f00008da93}\label{classCamera_aff7393c9cfbccd7e369091f00008da93} 
-\index{Camera@{Camera}!fov@{fov}}
-\index{fov@{fov}!Camera@{Camera}}
-\doxysubsubsection{\texorpdfstring{fov}{fov}}
-{\footnotesize\ttfamily float Camera\+::fov}
-
-Field of view of the camera. \Hypertarget{classCamera_a58f8b51664251b5c0f59be0e0a87e754}\label{classCamera_a58f8b51664251b5c0f59be0e0a87e754} 
+\Hypertarget{classCamera_a58f8b51664251b5c0f59be0e0a87e754}\label{classCamera_a58f8b51664251b5c0f59be0e0a87e754} 
 \index{Camera@{Camera}!pos@{pos}}
 \index{pos@{pos}!Camera@{Camera}}
 \doxysubsubsection{\texorpdfstring{pos}{pos}}
@@ -204,9 +262,15 @@ Position of the camera. \Hypertarget{classCamera_a1456c80b084814b7811c8fe3d79702
 \doxysubsubsection{\texorpdfstring{rot}{rot}}
 {\footnotesize\ttfamily vec3 Camera\+::rot}
 
-Rotation of the camera. 
+Rotation of the camera. \Hypertarget{classCamera_aff7393c9cfbccd7e369091f00008da93}\label{classCamera_aff7393c9cfbccd7e369091f00008da93} 
+\index{Camera@{Camera}!fov@{fov}}
+\index{fov@{fov}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{fov}{fov}}
+{\footnotesize\ttfamily float Camera\+::fov}
 
-The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+Field of view of the camera. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 src/classes/nodes/\mbox{\hyperlink{camera_8class_8c}{camera.\+class.\+c}}\item 
 src/render/\mbox{\hyperlink{camera_8h}{camera.\+h}}\end{DoxyCompactItemize}

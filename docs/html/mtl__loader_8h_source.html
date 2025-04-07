@@ -112,13 +112,13 @@ $(document).ready(function(){initNavTree('mtl__loader_8h_source.html',''); initR
 <div class="contents">
 <a href="mtl__loader_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__MTLLoader.html#ga6fb214d51f0409a0b7bcb233e55b5966">load_mtl</a>(<span class="keywordtype">char</span> *path, <span class="keywordtype">char</span> *filename, <a class="code hl_struct" href="structMaterial.html">Material</a> **materials);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__MTLLoader.html#gac5de2e2bc09610c6333155368f283bf1">find_material</a>(<a class="code hl_struct" href="structMaterial.html">Material</a> *materials, <span class="keywordtype">int</span> materialsCount, <span class="keywordtype">char</span> *materialName);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__MTLLoader.html#ga6fb214d51f0409a0b7bcb233e55b5966">load_mtl</a>(<span class="keywordtype">char</span> *path, <span class="keywordtype">char</span> *filename, <a class="code hl_struct" href="structMaterial.html">Material</a> **materials);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keywordtype">int</span> <a class="code hl_function" href="group__MTLLoader.html#gac5de2e2bc09610c6333155368f283bf1">find_material</a>(<a class="code hl_struct" href="structMaterial.html">Material</a> *materials, <span class="keywordtype">int</span> materialsCount, <span class="keywordtype">char</span> *materialName);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
 <div class="ttc" id="agroup__MTLLoader_html_ga6fb214d51f0409a0b7bcb233e55b5966"><div class="ttname"><a href="group__MTLLoader.html#ga6fb214d51f0409a0b7bcb233e55b5966">load_mtl</a></div><div class="ttdeci">int load_mtl(char *path, char *filename, Material **materials)</div><div class="ttdoc">Loads material properties from a .mtl file and stores them in an array.</div><div class="ttdef"><b>Definition</b> mtl_loader.c:6</div></div>
 <div class="ttc" id="agroup__MTLLoader_html_gac5de2e2bc09610c6333155368f283bf1"><div class="ttname"><a href="group__MTLLoader.html#gac5de2e2bc09610c6333155368f283bf1">find_material</a></div><div class="ttdeci">int find_material(Material *materials, int materialsCount, char *materialName)</div><div class="ttdoc">Searches for a material by its name in a list of materials.</div><div class="ttdef"><b>Definition</b> mtl_loader.c:176</div></div>
-<div class="ttc" id="astructMaterial_html"><div class="ttname"><a href="structMaterial.html">Material</a></div><div class="ttdoc">Structure representing a material with various properties.</div><div class="ttdef"><b>Definition</b> model.h:120</div></div>
+<div class="ttc" id="astructMaterial_html"><div class="ttname"><a href="structMaterial.html">Material</a></div><div class="ttdoc">Structure representing a material with various properties.</div><div class="ttdef"><b>Definition</b> model.h:97</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -150,6 +150,16 @@ $(document).ready(function(){initNavTree('mtl__loader_8h_source.html',''); initR
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -158,7 +168,7 @@ $(document).ready(function(){initNavTree('mtl__loader_8h_source.html',''); initR
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

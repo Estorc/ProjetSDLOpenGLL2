@@ -25,10 +25,10 @@ struct \mbox{\hyperlink{structMemoryCaches}{Memory\+Caches}}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \mbox{\hyperlink{group__MemoryCache_ga9efea9b7fc3085f1062d9148aa012307}{Texture\+Map}}
-\item 
-typedef unsigned int \mbox{\hyperlink{group__MemoryCache_ga628acddf9216b5e00424607a3f76ccde}{Shader}}
-\end{DoxyCompactItemize}
+typedef \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}}
+\begin{DoxyCompactList}\small\item\em Alias for u32 representing a texture map. \end{DoxyCompactList}\item 
+typedef unsigned int \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}
+\begin{DoxyCompactList}\small\item\em Represents an unsigned integer used as a shader identifier. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -68,56 +68,68 @@ Functions and structures for managing memory caches.
 This module provides structures and functions to manage caches for cube maps, textures, models, and shaders. It includes initialization and cleanup functions to handle the memory allocation and deallocation for these resources. 
 
 \doxysubsection{Typedef Documentation}
-\Hypertarget{group__MemoryCache_ga628acddf9216b5e00424607a3f76ccde}\label{group__MemoryCache_ga628acddf9216b5e00424607a3f76ccde} 
-\index{Memory Cache Management@{Memory Cache Management}!Shader@{Shader}}
-\index{Shader@{Shader}!Memory Cache Management@{Memory Cache Management}}
-\doxysubsubsection{\texorpdfstring{Shader}{Shader}}
-{\footnotesize\ttfamily typedef unsigned int \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}
-
-\Hypertarget{group__MemoryCache_ga9efea9b7fc3085f1062d9148aa012307}\label{group__MemoryCache_ga9efea9b7fc3085f1062d9148aa012307} 
+\Hypertarget{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}\label{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae} 
 \index{Memory Cache Management@{Memory Cache Management}!TextureMap@{TextureMap}}
 \index{TextureMap@{TextureMap}!Memory Cache Management@{Memory Cache Management}}
 \doxysubsubsection{\texorpdfstring{TextureMap}{TextureMap}}
-{\footnotesize\ttfamily typedef \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}} \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}}}
+
+
+
+Alias for u32 representing a texture map. 
+
+\Hypertarget{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}\label{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5} 
+\index{Memory Cache Management@{Memory Cache Management}!Shader@{Shader}}
+\index{Shader@{Shader}!Memory Cache Management@{Memory Cache Management}}
+\doxysubsubsection{\texorpdfstring{Shader}{Shader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}
+
+
+
+Represents an unsigned integer used as a shader identifier. 
 
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{group__MemoryCache_gadf72a8ac6da9ce12a4b7264c2747f08f}\label{group__MemoryCache_gadf72a8ac6da9ce12a4b7264c2747f08f} 
-\index{Memory Cache Management@{Memory Cache Management}!add\_mix\_chunk\_to\_cache@{add\_mix\_chunk\_to\_cache}}
-\index{add\_mix\_chunk\_to\_cache@{add\_mix\_chunk\_to\_cache}!Memory Cache Management@{Memory Cache Management}}
-\doxysubsubsection{\texorpdfstring{add\_mix\_chunk\_to\_cache()}{add\_mix\_chunk\_to\_cache()}}
-{\footnotesize\ttfamily void add\+\_\+mix\+\_\+chunk\+\_\+to\+\_\+cache (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*}}]{chunk }\end{DoxyParamCaption})}
+\Hypertarget{group__MemoryCache_gafc915248428e8d076d93d7029a2dcb79}\label{group__MemoryCache_gafc915248428e8d076d93d7029a2dcb79} 
+\index{Memory Cache Management@{Memory Cache Management}!init\_memory\_cache@{init\_memory\_cache}}
+\index{init\_memory\_cache@{init\_memory\_cache}!Memory Cache Management@{Memory Cache Management}}
+\doxysubsubsection{\texorpdfstring{init\_memory\_cache()}{init\_memory\_cache()}}
+{\footnotesize\ttfamily void init\+\_\+memory\+\_\+cache (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Adds a sound effect to the cache. 
+Initializes the memory cache. 
+
+This function sets up the memory cache for use in the project. \Hypertarget{group__MemoryCache_ga687de09be998a3af723f109e54937e46}\label{group__MemoryCache_ga687de09be998a3af723f109e54937e46} 
+\index{Memory Cache Management@{Memory Cache Management}!free\_shaders@{free\_shaders}}
+\index{free\_shaders@{free\_shaders}!Memory Cache Management@{Memory Cache Management}}
+\doxysubsubsection{\texorpdfstring{free\_shaders()}{free\_shaders()}}
+{\footnotesize\ttfamily void free\+\_\+shaders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Frees the allocated shaders. 
+
+This function releases the memory allocated for shaders. \Hypertarget{group__MemoryCache_ga61ed234c023f30c5c5708cd4cd77c623}\label{group__MemoryCache_ga61ed234c023f30c5c5708cd4cd77c623} 
+\index{Memory Cache Management@{Memory Cache Management}!get\_model\_from\_cache@{get\_model\_from\_cache}}
+\index{get\_model\_from\_cache@{get\_model\_from\_cache}!Memory Cache Management@{Memory Cache Management}}
+\doxysubsubsection{\texorpdfstring{get\_model\_from\_cache()}{get\_model\_from\_cache()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*} get\+\_\+model\+\_\+from\+\_\+cache (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+Gets a model from the cache. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & The name of the sound effect. \\
-\hline
-{\em music} & The sound effect data to add to the cache.\\
+{\em name} & The name of the model. \\
 \hline
 \end{DoxyParams}
-This function adds a sound effect to the cache with the specified name. \Hypertarget{group__MemoryCache_ga09305ad627a28324fd720c408ed2afb9}\label{group__MemoryCache_ga09305ad627a28324fd720c408ed2afb9} 
-\index{Memory Cache Management@{Memory Cache Management}!add\_mix\_music\_to\_cache@{add\_mix\_music\_to\_cache}}
-\index{add\_mix\_music\_to\_cache@{add\_mix\_music\_to\_cache}!Memory Cache Management@{Memory Cache Management}}
-\doxysubsubsection{\texorpdfstring{add\_mix\_music\_to\_cache()}{add\_mix\_music\_to\_cache()}}
-{\footnotesize\ttfamily void add\+\_\+mix\+\_\+music\+\_\+to\+\_\+cache (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{Mix\+\_\+\+Music \texorpdfstring{$\ast$}{*}}]{music }\end{DoxyParamCaption})}
-
-
-
-Adds a music to the cache. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em name} & The name of the music. \\
-\hline
-{\em music} & The music data to add to the cache.\\
-\hline
-\end{DoxyParams}
-This function adds a music to the cache with the specified name. \Hypertarget{group__MemoryCache_ga40b571f1daed50851b292a5c5a0e0881}\label{group__MemoryCache_ga40b571f1daed50851b292a5c5a0e0881} 
+\begin{DoxyReturn}{Returns}
+A pointer to the model data.
+\end{DoxyReturn}
+This function retrieves a model from the cache with the specified name. If the model is not found, it returns NULL. \Hypertarget{group__MemoryCache_ga40b571f1daed50851b292a5c5a0e0881}\label{group__MemoryCache_ga40b571f1daed50851b292a5c5a0e0881} 
 \index{Memory Cache Management@{Memory Cache Management}!add\_model\_to\_cache@{add\_model\_to\_cache}}
 \index{add\_model\_to\_cache@{add\_model\_to\_cache}!Memory Cache Management@{Memory Cache Management}}
 \doxysubsubsection{\texorpdfstring{add\_model\_to\_cache()}{add\_model\_to\_cache()}}
@@ -134,7 +146,97 @@ Adds a model to the cache.
 {\em model} & The model data to add to the cache.\\
 \hline
 \end{DoxyParams}
-This function adds a model to the cache with the specified name. \Hypertarget{group__MemoryCache_ga937ea060506e98cc1859bdec3583852a}\label{group__MemoryCache_ga937ea060506e98cc1859bdec3583852a} 
+This function adds a model to the cache with the specified name. \Hypertarget{group__MemoryCache_gaf7e9da715331648efbb53611a886b7ba}\label{group__MemoryCache_gaf7e9da715331648efbb53611a886b7ba} 
+\index{Memory Cache Management@{Memory Cache Management}!free\_models@{free\_models}}
+\index{free\_models@{free\_models}!Memory Cache Management@{Memory Cache Management}}
+\doxysubsubsection{\texorpdfstring{free\_models()}{free\_models()}}
+{\footnotesize\ttfamily void free\+\_\+models (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Frees the allocated models. 
+
+This function releases the memory allocated for models. \Hypertarget{group__MemoryCache_ga004ded5479b7e0050f7e5decd7743cf1}\label{group__MemoryCache_ga004ded5479b7e0050f7e5decd7743cf1} 
+\index{Memory Cache Management@{Memory Cache Management}!get\_mix\_music\_from\_cache@{get\_mix\_music\_from\_cache}}
+\index{get\_mix\_music\_from\_cache@{get\_mix\_music\_from\_cache}!Memory Cache Management@{Memory Cache Management}}
+\doxysubsubsection{\texorpdfstring{get\_mix\_music\_from\_cache()}{get\_mix\_music\_from\_cache()}}
+{\footnotesize\ttfamily Mix\+\_\+\+Music \texorpdfstring{$\ast$}{*} get\+\_\+mix\+\_\+music\+\_\+from\+\_\+cache (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+Gets a music from the cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the music. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the music data.
+\end{DoxyReturn}
+This function retrieves a music from the cache with the specified name. \Hypertarget{group__MemoryCache_ga09305ad627a28324fd720c408ed2afb9}\label{group__MemoryCache_ga09305ad627a28324fd720c408ed2afb9} 
+\index{Memory Cache Management@{Memory Cache Management}!add\_mix\_music\_to\_cache@{add\_mix\_music\_to\_cache}}
+\index{add\_mix\_music\_to\_cache@{add\_mix\_music\_to\_cache}!Memory Cache Management@{Memory Cache Management}}
+\doxysubsubsection{\texorpdfstring{add\_mix\_music\_to\_cache()}{add\_mix\_music\_to\_cache()}}
+{\footnotesize\ttfamily void add\+\_\+mix\+\_\+music\+\_\+to\+\_\+cache (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{Mix\+\_\+\+Music \texorpdfstring{$\ast$}{*}}]{music }\end{DoxyParamCaption})}
+
+
+
+Adds a music to the cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the music. \\
+\hline
+{\em music} & The music data to add to the cache.\\
+\hline
+\end{DoxyParams}
+This function adds a music to the cache with the specified name. \Hypertarget{group__MemoryCache_ga0ffdd61fb2360024ac5cad44334c6ead}\label{group__MemoryCache_ga0ffdd61fb2360024ac5cad44334c6ead} 
+\index{Memory Cache Management@{Memory Cache Management}!free\_musics@{free\_musics}}
+\index{free\_musics@{free\_musics}!Memory Cache Management@{Memory Cache Management}}
+\doxysubsubsection{\texorpdfstring{free\_musics()}{free\_musics()}}
+{\footnotesize\ttfamily void free\+\_\+musics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Frees the allocated music. 
+
+This function releases the memory allocated for music. \Hypertarget{group__MemoryCache_ga1659300a896c5455fff79f6b2144337b}\label{group__MemoryCache_ga1659300a896c5455fff79f6b2144337b} 
+\index{Memory Cache Management@{Memory Cache Management}!get\_mix\_chunk\_from\_cache@{get\_mix\_chunk\_from\_cache}}
+\index{get\_mix\_chunk\_from\_cache@{get\_mix\_chunk\_from\_cache}!Memory Cache Management@{Memory Cache Management}}
+\doxysubsubsection{\texorpdfstring{get\_mix\_chunk\_from\_cache()}{get\_mix\_chunk\_from\_cache()}}
+{\footnotesize\ttfamily Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} get\+\_\+mix\+\_\+chunk\+\_\+from\+\_\+cache (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+Gets a sound effect from the cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the sound effect. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the sound effect data.
+\end{DoxyReturn}
+This function retrieves a sound effect from the cache with the specified name. \Hypertarget{group__MemoryCache_gadf72a8ac6da9ce12a4b7264c2747f08f}\label{group__MemoryCache_gadf72a8ac6da9ce12a4b7264c2747f08f} 
+\index{Memory Cache Management@{Memory Cache Management}!add\_mix\_chunk\_to\_cache@{add\_mix\_chunk\_to\_cache}}
+\index{add\_mix\_chunk\_to\_cache@{add\_mix\_chunk\_to\_cache}!Memory Cache Management@{Memory Cache Management}}
+\doxysubsubsection{\texorpdfstring{add\_mix\_chunk\_to\_cache()}{add\_mix\_chunk\_to\_cache()}}
+{\footnotesize\ttfamily void add\+\_\+mix\+\_\+chunk\+\_\+to\+\_\+cache (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*}}]{chunk }\end{DoxyParamCaption})}
+
+
+
+Adds a sound effect to the cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the sound effect. \\
+\hline
+{\em music} & The sound effect data to add to the cache.\\
+\hline
+\end{DoxyParams}
+This function adds a sound effect to the cache with the specified name. \Hypertarget{group__MemoryCache_ga937ea060506e98cc1859bdec3583852a}\label{group__MemoryCache_ga937ea060506e98cc1859bdec3583852a} 
 \index{Memory Cache Management@{Memory Cache Management}!free\_chunks@{free\_chunks}}
 \index{free\_chunks@{free\_chunks}!Memory Cache Management@{Memory Cache Management}}
 \doxysubsubsection{\texorpdfstring{free\_chunks()}{free\_chunks()}}
@@ -144,7 +246,17 @@ This function adds a model to the cache with the specified name. \Hypertarget{gr
 
 Frees the allocated sound effects. 
 
-This function releases the memory allocated for sound effects. \Hypertarget{group__MemoryCache_gaa4a40d70edd62e77d572df8a576693b3}\label{group__MemoryCache_gaa4a40d70edd62e77d572df8a576693b3} 
+This function releases the memory allocated for sound effects. \Hypertarget{group__MemoryCache_ga4761da15daadabf43f15b2c2d29eb98b}\label{group__MemoryCache_ga4761da15daadabf43f15b2c2d29eb98b} 
+\index{Memory Cache Management@{Memory Cache Management}!free\_textures@{free\_textures}}
+\index{free\_textures@{free\_textures}!Memory Cache Management@{Memory Cache Management}}
+\doxysubsubsection{\texorpdfstring{free\_textures()}{free\_textures()}}
+{\footnotesize\ttfamily void free\+\_\+textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Frees the allocated textures. 
+
+This function releases the memory allocated for textures. \Hypertarget{group__MemoryCache_gaa4a40d70edd62e77d572df8a576693b3}\label{group__MemoryCache_gaa4a40d70edd62e77d572df8a576693b3} 
 \index{Memory Cache Management@{Memory Cache Management}!free\_cubemaps@{free\_cubemaps}}
 \index{free\_cubemaps@{free\_cubemaps}!Memory Cache Management@{Memory Cache Management}}
 \doxysubsubsection{\texorpdfstring{free\_cubemaps()}{free\_cubemaps()}}
@@ -164,108 +276,4 @@ This function releases the memory allocated for cubemaps. \Hypertarget{group__Me
 
 Frees the entire memory cache. 
 
-This function releases all memory allocated in the memory cache. \Hypertarget{group__MemoryCache_gaf7e9da715331648efbb53611a886b7ba}\label{group__MemoryCache_gaf7e9da715331648efbb53611a886b7ba} 
-\index{Memory Cache Management@{Memory Cache Management}!free\_models@{free\_models}}
-\index{free\_models@{free\_models}!Memory Cache Management@{Memory Cache Management}}
-\doxysubsubsection{\texorpdfstring{free\_models()}{free\_models()}}
-{\footnotesize\ttfamily void free\+\_\+models (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Frees the allocated models. 
-
-This function releases the memory allocated for models. \Hypertarget{group__MemoryCache_ga0ffdd61fb2360024ac5cad44334c6ead}\label{group__MemoryCache_ga0ffdd61fb2360024ac5cad44334c6ead} 
-\index{Memory Cache Management@{Memory Cache Management}!free\_musics@{free\_musics}}
-\index{free\_musics@{free\_musics}!Memory Cache Management@{Memory Cache Management}}
-\doxysubsubsection{\texorpdfstring{free\_musics()}{free\_musics()}}
-{\footnotesize\ttfamily void free\+\_\+musics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Frees the allocated music. 
-
-This function releases the memory allocated for music. \Hypertarget{group__MemoryCache_ga687de09be998a3af723f109e54937e46}\label{group__MemoryCache_ga687de09be998a3af723f109e54937e46} 
-\index{Memory Cache Management@{Memory Cache Management}!free\_shaders@{free\_shaders}}
-\index{free\_shaders@{free\_shaders}!Memory Cache Management@{Memory Cache Management}}
-\doxysubsubsection{\texorpdfstring{free\_shaders()}{free\_shaders()}}
-{\footnotesize\ttfamily void free\+\_\+shaders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Frees the allocated shaders. 
-
-This function releases the memory allocated for shaders. \Hypertarget{group__MemoryCache_ga4761da15daadabf43f15b2c2d29eb98b}\label{group__MemoryCache_ga4761da15daadabf43f15b2c2d29eb98b} 
-\index{Memory Cache Management@{Memory Cache Management}!free\_textures@{free\_textures}}
-\index{free\_textures@{free\_textures}!Memory Cache Management@{Memory Cache Management}}
-\doxysubsubsection{\texorpdfstring{free\_textures()}{free\_textures()}}
-{\footnotesize\ttfamily void free\+\_\+textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Frees the allocated textures. 
-
-This function releases the memory allocated for textures. \Hypertarget{group__MemoryCache_ga1659300a896c5455fff79f6b2144337b}\label{group__MemoryCache_ga1659300a896c5455fff79f6b2144337b} 
-\index{Memory Cache Management@{Memory Cache Management}!get\_mix\_chunk\_from\_cache@{get\_mix\_chunk\_from\_cache}}
-\index{get\_mix\_chunk\_from\_cache@{get\_mix\_chunk\_from\_cache}!Memory Cache Management@{Memory Cache Management}}
-\doxysubsubsection{\texorpdfstring{get\_mix\_chunk\_from\_cache()}{get\_mix\_chunk\_from\_cache()}}
-{\footnotesize\ttfamily Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*} get\+\_\+mix\+\_\+chunk\+\_\+from\+\_\+cache (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
-
-
-
-Gets a sound effect from the cache. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em name} & The name of the sound effect. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A pointer to the sound effect data.
-\end{DoxyReturn}
-This function retrieves a sound effect from the cache with the specified name. \Hypertarget{group__MemoryCache_ga004ded5479b7e0050f7e5decd7743cf1}\label{group__MemoryCache_ga004ded5479b7e0050f7e5decd7743cf1} 
-\index{Memory Cache Management@{Memory Cache Management}!get\_mix\_music\_from\_cache@{get\_mix\_music\_from\_cache}}
-\index{get\_mix\_music\_from\_cache@{get\_mix\_music\_from\_cache}!Memory Cache Management@{Memory Cache Management}}
-\doxysubsubsection{\texorpdfstring{get\_mix\_music\_from\_cache()}{get\_mix\_music\_from\_cache()}}
-{\footnotesize\ttfamily Mix\+\_\+\+Music \texorpdfstring{$\ast$}{*} get\+\_\+mix\+\_\+music\+\_\+from\+\_\+cache (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
-
-
-
-Gets a music from the cache. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em name} & The name of the music. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A pointer to the music data.
-\end{DoxyReturn}
-This function retrieves a music from the cache with the specified name. \Hypertarget{group__MemoryCache_ga61ed234c023f30c5c5708cd4cd77c623}\label{group__MemoryCache_ga61ed234c023f30c5c5708cd4cd77c623} 
-\index{Memory Cache Management@{Memory Cache Management}!get\_model\_from\_cache@{get\_model\_from\_cache}}
-\index{get\_model\_from\_cache@{get\_model\_from\_cache}!Memory Cache Management@{Memory Cache Management}}
-\doxysubsubsection{\texorpdfstring{get\_model\_from\_cache()}{get\_model\_from\_cache()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structModelData}{Model\+Data}} \texorpdfstring{$\ast$}{*} get\+\_\+model\+\_\+from\+\_\+cache (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
-
-
-
-Gets a model from the cache. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em name} & The name of the model. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A pointer to the model data.
-\end{DoxyReturn}
-This function retrieves a model from the cache with the specified name. If the model is not found, it returns NULL. \Hypertarget{group__MemoryCache_gafc915248428e8d076d93d7029a2dcb79}\label{group__MemoryCache_gafc915248428e8d076d93d7029a2dcb79} 
-\index{Memory Cache Management@{Memory Cache Management}!init\_memory\_cache@{init\_memory\_cache}}
-\index{init\_memory\_cache@{init\_memory\_cache}!Memory Cache Management@{Memory Cache Management}}
-\doxysubsubsection{\texorpdfstring{init\_memory\_cache()}{init\_memory\_cache()}}
-{\footnotesize\ttfamily void init\+\_\+memory\+\_\+cache (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Initializes the memory cache. 
-
-This function sets up the memory cache for use in the project. 
+This function releases all memory allocated in the memory cache. 

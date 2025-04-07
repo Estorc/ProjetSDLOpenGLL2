@@ -114,9 +114,9 @@ $(document).ready(function(){initNavTree('structWindow.html',''); initResizable(
 <p>This is the complete list of members for <a class="el" href="structWindow.html">Window</a>, including all inherited members.</p>
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="structWindow.html#a2ebcd667b3bb46a28b7b0428c29aa93e">fadeColor</a></td><td class="entry"><a class="el" href="structWindow.html">Window</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structWindow.html#abfc5f54e2c9ade4fdb3866dca7bd39a9">lastTime</a></td><td class="entry"><a class="el" href="structWindow.html">Window</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="structWindow.html#ac292b9a43d516b4d2eaaaa259d60febb">opengl_ctx</a></td><td class="entry"><a class="el" href="structWindow.html">Window</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structWindow.html#abfd6a085fe40e9011e695b2840640e2e">resized</a></td><td class="entry"><a class="el" href="structWindow.html">Window</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structWindow.html#a68384450a0b8af679a72a6fb18d9f4f6">flags</a></td><td class="entry"><a class="el" href="structWindow.html">Window</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structWindow.html#abfc5f54e2c9ade4fdb3866dca7bd39a9">lastTime</a></td><td class="entry"><a class="el" href="structWindow.html">Window</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structWindow.html#ac292b9a43d516b4d2eaaaa259d60febb">opengl_ctx</a></td><td class="entry"><a class="el" href="structWindow.html">Window</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="structWindow.html#a60832cf15f95282154b8fb6ab6c52c72">sdl_window</a></td><td class="entry"><a class="el" href="structWindow.html">Window</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="structWindow.html#ace1255057064121bed1b5ea6eb13a5a2">startTime</a></td><td class="entry"><a class="el" href="structWindow.html">Window</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="structWindow.html#a1a42da4979d383bb3556f62df57952e5">surface</a></td><td class="entry"><a class="el" href="structWindow.html">Window</a></td><td class="entry"></td></tr>
@@ -154,6 +154,16 @@ $(document).ready(function(){initNavTree('structWindow.html',''); initResizable(
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -162,7 +172,7 @@ $(document).ready(function(){initNavTree('structWindow.html',''); initResizable(
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

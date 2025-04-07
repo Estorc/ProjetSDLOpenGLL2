@@ -1,19 +1,19 @@
-#include "../raptiquax.h"
-#include "../math/math_util.h"
-#include "model.h"
-#include "../render/framebuffer.h"
-#include "../render/lighting.h"
-#include "../physics/bodies.h"
-#include "../storage/node.h"
-#include "../render/render.h"
-#include "../window.h"
-#include "input.h"
-#include "../render/camera.h"
-#include "shader.h"
-#include "../render/depth_map.h"
-#include "node_loader.h"
-#include "../buffer.h"
-#include "../classes/classes.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <render/lighting.h>
+#include <physics/bodies.h>
+#include <storage/node.h>
+#include <render/render.h>
+#include <window.h>
+#include <io/input.h>
+#include <render/camera.h>
+#include <io/shader.h>
+#include <render/depth_map.h>
+#include <io/node_loader.h>
+#include <buffer.h>
+#include <classes/classes.h>
 
 
 Node *load_node(FILE *file, Camera **c, Script *scripts, Node *editor) {
@@ -24,9 +24,9 @@ Node *load_node(FILE *file, Camera **c, Script *scripts, Node *editor) {
     node = malloc(sizeof(Node));
     POINTER_CHECK(node);
     
-    fscanf(file,"%100[a-z,A-Z]", symbol);
+    fscanf(file,"%99[a-z,A-Z]", symbol);
 
-    malloc_node(node, find_string_index(symbol, (const char **) classManager.class_names, CLASS_TYPE_COUNT), file, c, scripts, editor);
+    malloc_node(node, find_string_index(symbol, classManager.class_names, CLASS_TYPE_COUNT), file, c, scripts, editor);
     
     char paramSymbol;
     do {

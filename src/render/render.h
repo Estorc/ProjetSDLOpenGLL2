@@ -5,7 +5,6 @@ struct Window;
 struct DepthMap;
 struct Camera;
 struct Node;
-struct MSAA;
 struct Mesh;
 
 /**
@@ -29,6 +28,12 @@ typedef struct WorldShaders {
     Shader screen; /**< Screen shader */
     Shader skybox; /**< Skybox shader */
     Shader gui; /**< GUI shader */
+    Shader light; /**< Light shader */
+    Shader ssr; /**< Screen Space Reflections (SSR) shader */
+    Shader ssao; /**< Screen Space Ambient Occlusion (SSAO) shader */
+    Shader ssaoBlur; /**< SSAO blur shader */
+    Shader smaa; /**< SMAA shader */
+    Shader bloom; /**< Bloom shader */
 } WorldShaders;
 
 
@@ -83,7 +88,7 @@ void draw_scene(struct Window *window, struct Node *root, struct Camera *c, stru
  * @brief Draws the final screen output.
  *
  * This function renders the final output to the screen. It uses the provided window, scene graph,
- * camera, world shaders, depth map, MSAA settings, and screen plane mesh to draw the final image
+ * camera, world shaders, depth map, and screen plane mesh to render the final image.
  * on the screen.
  *
  * @param window Pointer to the Window structure.
@@ -91,10 +96,9 @@ void draw_scene(struct Window *window, struct Node *root, struct Camera *c, stru
  * @param c Pointer to the Camera structure.
  * @param shaders Pointer to the WorldShaders structure containing shader programs.
  * @param depthMap Pointer to the DepthMap structure for shadow mapping.
- * @param msaa Pointer to the MSAA structure for multi-sample anti-aliasing.
  * @param screenPlane Pointer to the Mesh structure representing the screen plane.
  */
-void draw_screen(struct Window *window, struct Node *scene, struct Camera *c, WorldShaders *shaders, struct DepthMap *depthMap, struct MSAA *msaa, struct Mesh *screenPlane);
+void draw_screen(struct Window *window, struct Node *scene, struct Camera *c, WorldShaders *shaders, struct DepthMap *depthMap, struct Mesh *screenPlane);
 
 /** @} */ // end of RenderFunctions group
 #endif

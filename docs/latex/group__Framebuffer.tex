@@ -2,38 +2,68 @@
 \hypertarget{group__Framebuffer}{}\label{group__Framebuffer}\index{Framebuffer Management@{Framebuffer Management}}
 
 
-Functions for managing \doxylink{structMSAA}{MSAA} framebuffers.  
+Functions for managing framebuffers and render targets.  
 
 
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{classRenderTarget}{Render\+Target}}
-\begin{DoxyCompactList}\small\item\em A structure to handle render targets. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structMSAA}{MSAA}}
-\begin{DoxyCompactList}\small\item\em A structure to handle Multi-\/\+Sample Anti-\/\+Aliasing (\doxylink{structMSAA}{MSAA}) framebuffers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A structure to handle Multi-\/\+Sample Anti-\/\+Aliasing (\doxylink{structMSAA}{MSAA}) framebuffers. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structDFBO}{DFBO}}
+\begin{DoxyCompactList}\small\item\em A structure to handle Deferred \doxylink{classFrame}{Frame} Buffer Objects (\doxylink{structDFBO}{DFBO}). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structCFBO}{CFBO}}
+\begin{DoxyCompactList}\small\item\em A structure to handle Complete \doxylink{classFrame}{Frame} Buffer Objects (\doxylink{structCFBO}{CFBO}). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 typedef unsigned int \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}}
 \begin{DoxyCompactList}\small\item\em Alias for an unsigned int representing a \doxylink{classFrame}{Frame} Buffer \doxylink{structObject}{Object}. \end{DoxyCompactList}\item 
-typedef \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}} \mbox{\hyperlink{group__Framebuffer_gab75cdf3b36517627dfe9b6029e00129d}{Frame\+Buffer}}
+typedef \mbox{\hyperlink{aliases_8h_ac85a61ad9743ee6947a9c5b15f8f700d}{FBO}} \mbox{\hyperlink{group__Framebuffer_gab75cdf3b36517627dfe9b6029e00129d}{Frame\+Buffer}}
 \begin{DoxyCompactList}\small\item\em Alias for FBO, representing a \doxylink{classFrame}{Frame} Buffer \doxylink{structObject}{Object}. \end{DoxyCompactList}\item 
 typedef unsigned int \mbox{\hyperlink{group__Framebuffer_ga5ccf15e59bc43f1030c39f6951deb862}{RBO}}
 \begin{DoxyCompactList}\small\item\em Alias for an unsigned int representing a Render Buffer \doxylink{structObject}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{group__Framebuffer_gaf612536a5e3ec772e9bede8b62b37f92}{create\+\_\+msaa\+\_\+framebuffer}} (\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}{msaa}})
+void \mbox{\hyperlink{group__Framebuffer_ga1f1c2bcaf05d7a424243130c98360279}{swap\+\_\+intermediate\+\_\+fbo}} ()
+\begin{DoxyCompactList}\small\item\em Swaps the intermediate framebuffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{group__Framebuffer_ga4629714663ba4f9cf524aa7e1032c0bd}{get\+\_\+intermediate\+\_\+texture}} ()
+\begin{DoxyCompactList}\small\item\em Gets the last intermediate framebuffer texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_gac312742b6faacf3fac32021c96035636}{use\+\_\+intermediate\+\_\+fbo}} ()
+\begin{DoxyCompactList}\small\item\em Sets the current framebuffer to an intermediate framebuffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_ga4112a92a859922f3fd3c55c0a91b6417}{create\+\_\+intermediate\+\_\+fbo}} ()
+\begin{DoxyCompactList}\small\item\em Creates two intermediate framebuffers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_gab27f7062028bafa5a505699132c8f2eb}{free\+\_\+intermediate\+\_\+fbo}} ()
+\begin{DoxyCompactList}\small\item\em Frees the resources associated with the intermediate framebuffers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_ga191710b00b6e862c34a77d43ed183fba}{resize\+\_\+intermediate\+\_\+fbo}} ()
+\begin{DoxyCompactList}\small\item\em Resizes the intermediate framebuffers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_ga0b9eaa6db11d1983a670eb50ba3e21d4}{use\+\_\+fbo}} (GLenum mode, \mbox{\hyperlink{aliases_8h_ac85a61ad9743ee6947a9c5b15f8f700d}{FBO}} fbo)
+\begin{DoxyCompactList}\small\item\em Sets the current framebuffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{aliases_8h_ac85a61ad9743ee6947a9c5b15f8f700d}{FBO}} \mbox{\hyperlink{group__Framebuffer_ga7239212a7451660eb22ec24b7a35f2d7}{get\+\_\+fbo}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current framebuffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_ga9e5e3bec8bb81e2cc53a667cde95d4ed}{create\+\_\+dfbo}} (\mbox{\hyperlink{structDFBO}{DFBO}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a0a410b5c4c1deff0fbeb2b4051c83f7c}{dfbo}})
+\begin{DoxyCompactList}\small\item\em Creates a Deferred \doxylink{classFrame}{Frame} Buffer \doxylink{structObject}{Object} (\doxylink{structDFBO}{DFBO}). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_gab61154bf9254dede290d337801adaf09}{free\+\_\+dfbo}} (\mbox{\hyperlink{structDFBO}{DFBO}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a0a410b5c4c1deff0fbeb2b4051c83f7c}{dfbo}})
+\begin{DoxyCompactList}\small\item\em Frees the resources associated with a \doxylink{structDFBO}{DFBO}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_ga153eafa87b77b28c3e131d8f3f5338a0}{resize\+\_\+dfbo}} (\mbox{\hyperlink{structDFBO}{DFBO}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a0a410b5c4c1deff0fbeb2b4051c83f7c}{dfbo}})
+\begin{DoxyCompactList}\small\item\em Resizes a \doxylink{structDFBO}{DFBO}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_gab9933c53e866307ec54f6008f5d256b4}{create\+\_\+cfbo}} (\mbox{\hyperlink{structCFBO}{CFBO}} \texorpdfstring{$\ast$}{*}c\+Fbo)
+\begin{DoxyCompactList}\small\item\em Creates a \doxylink{structCFBO}{CFBO} (Complete \doxylink{classFrame}{Frame} Buffer \doxylink{structObject}{Object}). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_gae40cfeb920148961b224d8b3b2c4cfa8}{free\+\_\+cfbo}} (\mbox{\hyperlink{structCFBO}{CFBO}} \texorpdfstring{$\ast$}{*}c\+Fbo)
+\begin{DoxyCompactList}\small\item\em Frees the resources associated with a \doxylink{structCFBO}{CFBO}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_ga62bd1965ce8383baa104a30175d43c6f}{resize\+\_\+cfbo}} (\mbox{\hyperlink{structCFBO}{CFBO}} \texorpdfstring{$\ast$}{*}c\+Fbo)
+\begin{DoxyCompactList}\small\item\em Resizes a \doxylink{structCFBO}{CFBO}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Framebuffer_ga0b8e81253be7e81ab7a03a3569de41e0}{create\+\_\+msaa}} (\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}msaa)
 \begin{DoxyCompactList}\small\item\em Creates an \doxylink{structMSAA}{MSAA} framebuffer. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__Framebuffer_ga61ecc0fe7012195a1a406b36c766d45c}{free\+\_\+msaa\+\_\+framebuffer}} (\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}{msaa}})
+void \mbox{\hyperlink{group__Framebuffer_ga8117e8cb2cc37caf74b072de4bd5ddac}{free\+\_\+msaa}} (\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}msaa)
 \begin{DoxyCompactList}\small\item\em Frees the resources associated with an \doxylink{structMSAA}{MSAA} framebuffer. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__Framebuffer_ga38295e04feba1f829d93bacadffa8394}{resize\+\_\+msaa\+\_\+framebuffer}} (\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{raptiquax_8c_a58daf641d993a02e7806fe8b763fad6c}{msaa}})
+void \mbox{\hyperlink{group__Framebuffer_ga6dd2c206822b94066a686d5041d2383c}{resize\+\_\+msaa}} (\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}msaa)
 \begin{DoxyCompactList}\small\item\em Resizes an \doxylink{structMSAA}{MSAA} framebuffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Functions for managing \doxylink{structMSAA}{MSAA} framebuffers. 
+Functions for managing framebuffers and render targets. 
 
 
 
@@ -42,7 +72,7 @@ Functions for managing \doxylink{structMSAA}{MSAA} framebuffers.
 \index{Framebuffer Management@{Framebuffer Management}!FBO@{FBO}}
 \index{FBO@{FBO}!Framebuffer Management@{Framebuffer Management}}
 \doxysubsubsection{\texorpdfstring{FBO}{FBO}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__Framebuffer_gac85a61ad9743ee6947a9c5b15f8f700d}{FBO}}}
+{\footnotesize\ttfamily \mbox{\hyperlink{aliases_8h_ac85a61ad9743ee6947a9c5b15f8f700d}{FBO}}}
 
 
 
@@ -52,7 +82,7 @@ Alias for an unsigned int representing a \doxylink{classFrame}{Frame} Buffer \do
 \index{Framebuffer Management@{Framebuffer Management}!FrameBuffer@{FrameBuffer}}
 \index{FrameBuffer@{FrameBuffer}!Framebuffer Management@{Framebuffer Management}}
 \doxysubsubsection{\texorpdfstring{FrameBuffer}{FrameBuffer}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__Framebuffer_gab75cdf3b36517627dfe9b6029e00129d}{Frame\+Buffer}}}
+{\footnotesize\ttfamily \mbox{\hyperlink{aliases_8h_ab75cdf3b36517627dfe9b6029e00129d}{Frame\+Buffer}}}
 
 
 
@@ -62,7 +92,7 @@ Alias for FBO, representing a \doxylink{classFrame}{Frame} Buffer \doxylink{stru
 \index{Framebuffer Management@{Framebuffer Management}!RBO@{RBO}}
 \index{RBO@{RBO}!Framebuffer Management@{Framebuffer Management}}
 \doxysubsubsection{\texorpdfstring{RBO}{RBO}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__Framebuffer_ga5ccf15e59bc43f1030c39f6951deb862}{RBO}}}
+{\footnotesize\ttfamily \mbox{\hyperlink{aliases_8h_a5ccf15e59bc43f1030c39f6951deb862}{RBO}}}
 
 
 
@@ -71,11 +101,235 @@ Alias for an unsigned int representing a Render Buffer \doxylink{structObject}{O
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{group__Framebuffer_gaf612536a5e3ec772e9bede8b62b37f92}\label{group__Framebuffer_gaf612536a5e3ec772e9bede8b62b37f92} 
-\index{Framebuffer Management@{Framebuffer Management}!create\_msaa\_framebuffer@{create\_msaa\_framebuffer}}
-\index{create\_msaa\_framebuffer@{create\_msaa\_framebuffer}!Framebuffer Management@{Framebuffer Management}}
-\doxysubsubsection{\texorpdfstring{create\_msaa\_framebuffer()}{create\_msaa\_framebuffer()}}
-{\footnotesize\ttfamily void create\+\_\+msaa\+\_\+framebuffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}}]{msaa }\end{DoxyParamCaption})}
+\Hypertarget{group__Framebuffer_ga1f1c2bcaf05d7a424243130c98360279}\label{group__Framebuffer_ga1f1c2bcaf05d7a424243130c98360279} 
+\index{Framebuffer Management@{Framebuffer Management}!swap\_intermediate\_fbo@{swap\_intermediate\_fbo}}
+\index{swap\_intermediate\_fbo@{swap\_intermediate\_fbo}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{swap\_intermediate\_fbo()}{swap\_intermediate\_fbo()}}
+{\footnotesize\ttfamily void swap\+\_\+intermediate\+\_\+fbo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Swaps the intermediate framebuffer. 
+
+This function swaps the current intermediate framebuffer with the next one. It is used for post-\/processing effects.
+
+\begin{DoxyNote}{Note}
+This function is typically called after rendering to the main framebuffer and before applying post-\/processing effects. 
+\end{DoxyNote}
+\Hypertarget{group__Framebuffer_ga4629714663ba4f9cf524aa7e1032c0bd}\label{group__Framebuffer_ga4629714663ba4f9cf524aa7e1032c0bd} 
+\index{Framebuffer Management@{Framebuffer Management}!get\_intermediate\_texture@{get\_intermediate\_texture}}
+\index{get\_intermediate\_texture@{get\_intermediate\_texture}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{get\_intermediate\_texture()}{get\_intermediate\_texture()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} get\+\_\+intermediate\+\_\+texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the last intermediate framebuffer texture. 
+
+This function retrieves the last intermediate framebuffer texture. It is used for post-\/processing effects.
+
+\begin{DoxyReturn}{Returns}
+The last intermediate framebuffer texture.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function is typically called after rendering to the main framebuffer and before applying post-\/processing effects. 
+\end{DoxyNote}
+\Hypertarget{group__Framebuffer_gac312742b6faacf3fac32021c96035636}\label{group__Framebuffer_gac312742b6faacf3fac32021c96035636} 
+\index{Framebuffer Management@{Framebuffer Management}!use\_intermediate\_fbo@{use\_intermediate\_fbo}}
+\index{use\_intermediate\_fbo@{use\_intermediate\_fbo}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{use\_intermediate\_fbo()}{use\_intermediate\_fbo()}}
+{\footnotesize\ttfamily void use\+\_\+intermediate\+\_\+fbo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets the current framebuffer to an intermediate framebuffer. 
+
+This function sets the current framebuffer to the intermediate framebuffer. It is used for post-\/processing effects.
+
+\begin{DoxyNote}{Note}
+This function is typically called after rendering to the main framebuffer and before applying post-\/processing effects. 
+\end{DoxyNote}
+\Hypertarget{group__Framebuffer_ga4112a92a859922f3fd3c55c0a91b6417}\label{group__Framebuffer_ga4112a92a859922f3fd3c55c0a91b6417} 
+\index{Framebuffer Management@{Framebuffer Management}!create\_intermediate\_fbo@{create\_intermediate\_fbo}}
+\index{create\_intermediate\_fbo@{create\_intermediate\_fbo}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{create\_intermediate\_fbo()}{create\_intermediate\_fbo()}}
+{\footnotesize\ttfamily void create\+\_\+intermediate\+\_\+fbo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates two intermediate framebuffers. 
+
+This function initializes and sets up two intermediate framebuffers for post-\/processing effects. It is typically called during the initialization phase of the rendering pipeline.
+
+\begin{DoxyNote}{Note}
+This function should be called before rendering to the main framebuffer. 
+\end{DoxyNote}
+\Hypertarget{group__Framebuffer_gab27f7062028bafa5a505699132c8f2eb}\label{group__Framebuffer_gab27f7062028bafa5a505699132c8f2eb} 
+\index{Framebuffer Management@{Framebuffer Management}!free\_intermediate\_fbo@{free\_intermediate\_fbo}}
+\index{free\_intermediate\_fbo@{free\_intermediate\_fbo}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{free\_intermediate\_fbo()}{free\_intermediate\_fbo()}}
+{\footnotesize\ttfamily void free\+\_\+intermediate\+\_\+fbo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Frees the resources associated with the intermediate framebuffers. 
+
+This function deallocates and cleans up the resources used by the intermediate framebuffers. It should be called when the framebuffers are no longer needed to avoid memory leaks.
+
+\begin{DoxyNote}{Note}
+This function should be called during the cleanup phase of the rendering pipeline. 
+\end{DoxyNote}
+\Hypertarget{group__Framebuffer_ga191710b00b6e862c34a77d43ed183fba}\label{group__Framebuffer_ga191710b00b6e862c34a77d43ed183fba} 
+\index{Framebuffer Management@{Framebuffer Management}!resize\_intermediate\_fbo@{resize\_intermediate\_fbo}}
+\index{resize\_intermediate\_fbo@{resize\_intermediate\_fbo}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{resize\_intermediate\_fbo()}{resize\_intermediate\_fbo()}}
+{\footnotesize\ttfamily void resize\+\_\+intermediate\+\_\+fbo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resizes the intermediate framebuffers. 
+
+This function adjusts the size of the intermediate framebuffers to match new dimensions. It is useful when the window or viewport size changes and the framebuffers need to be updated accordingly.
+
+\begin{DoxyNote}{Note}
+This function should be called when the window or viewport size changes. 
+\end{DoxyNote}
+\Hypertarget{group__Framebuffer_ga0b9eaa6db11d1983a670eb50ba3e21d4}\label{group__Framebuffer_ga0b9eaa6db11d1983a670eb50ba3e21d4} 
+\index{Framebuffer Management@{Framebuffer Management}!use\_fbo@{use\_fbo}}
+\index{use\_fbo@{use\_fbo}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{use\_fbo()}{use\_fbo()}}
+{\footnotesize\ttfamily void use\+\_\+fbo (\begin{DoxyParamCaption}\item[{GLenum}]{mode,  }\item[{\mbox{\hyperlink{aliases_8h_ac85a61ad9743ee6947a9c5b15f8f700d}{FBO}}}]{fbo }\end{DoxyParamCaption})}
+
+
+
+Sets the current framebuffer. 
+
+This function sets the current framebuffer object to the specified framebuffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fbo} & The framebuffer object to be set as the current framebuffer. \\
+\hline
+{\em mode} & The mode to set the framebuffer to (GL\+\_\+\+FRAMEBUFFER, GL\+\_\+\+READ\+\_\+\+FRAMEBUFFER, GL\+\_\+\+DRAW\+\_\+\+FRAMEBUFFER). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__Framebuffer_ga7239212a7451660eb22ec24b7a35f2d7}\label{group__Framebuffer_ga7239212a7451660eb22ec24b7a35f2d7} 
+\index{Framebuffer Management@{Framebuffer Management}!get\_fbo@{get\_fbo}}
+\index{get\_fbo@{get\_fbo}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{get\_fbo()}{get\_fbo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{aliases_8h_ac85a61ad9743ee6947a9c5b15f8f700d}{FBO}} get\+\_\+fbo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the current framebuffer. 
+
+This function returns the current framebuffer object. \Hypertarget{group__Framebuffer_ga9e5e3bec8bb81e2cc53a667cde95d4ed}\label{group__Framebuffer_ga9e5e3bec8bb81e2cc53a667cde95d4ed} 
+\index{Framebuffer Management@{Framebuffer Management}!create\_dfbo@{create\_dfbo}}
+\index{create\_dfbo@{create\_dfbo}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{create\_dfbo()}{create\_dfbo()}}
+{\footnotesize\ttfamily void create\+\_\+dfbo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDFBO}{DFBO}} \texorpdfstring{$\ast$}{*}}]{dfbo }\end{DoxyParamCaption})}
+
+
+
+Creates a Deferred \doxylink{classFrame}{Frame} Buffer \doxylink{structObject}{Object} (\doxylink{structDFBO}{DFBO}). 
+
+This function initializes and sets up a deferred framebuffer object. DFBOs are used for deferred rendering techniques, allowing for efficient rendering of complex scenes with multiple lights.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dfbo} & A pointer to a \doxylink{structDFBO}{DFBO} structure that will hold the framebuffer information. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__Framebuffer_gab61154bf9254dede290d337801adaf09}\label{group__Framebuffer_gab61154bf9254dede290d337801adaf09} 
+\index{Framebuffer Management@{Framebuffer Management}!free\_dfbo@{free\_dfbo}}
+\index{free\_dfbo@{free\_dfbo}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{free\_dfbo()}{free\_dfbo()}}
+{\footnotesize\ttfamily void free\+\_\+dfbo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDFBO}{DFBO}} \texorpdfstring{$\ast$}{*}}]{dfbo }\end{DoxyParamCaption})}
+
+
+
+Frees the resources associated with a \doxylink{structDFBO}{DFBO}. 
+
+This function deallocates and cleans up the resources used by a \doxylink{structDFBO}{DFBO}. It should be called when the framebuffer is no longer needed to avoid memory leaks.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dfbo} & A pointer to a \doxylink{structDFBO}{DFBO} structure that holds the framebuffer information to be freed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__Framebuffer_ga153eafa87b77b28c3e131d8f3f5338a0}\label{group__Framebuffer_ga153eafa87b77b28c3e131d8f3f5338a0} 
+\index{Framebuffer Management@{Framebuffer Management}!resize\_dfbo@{resize\_dfbo}}
+\index{resize\_dfbo@{resize\_dfbo}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{resize\_dfbo()}{resize\_dfbo()}}
+{\footnotesize\ttfamily void resize\+\_\+dfbo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDFBO}{DFBO}} \texorpdfstring{$\ast$}{*}}]{dfbo }\end{DoxyParamCaption})}
+
+
+
+Resizes a \doxylink{structDFBO}{DFBO}. 
+
+This function adjusts the size of an existing \doxylink{structDFBO}{DFBO} to match new dimensions. It is useful when the window or viewport size changes and the framebuffer needs to be updated accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dfbo} & A pointer to a \doxylink{structDFBO}{DFBO} structure that holds the framebuffer information to be resized. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__Framebuffer_gab9933c53e866307ec54f6008f5d256b4}\label{group__Framebuffer_gab9933c53e866307ec54f6008f5d256b4} 
+\index{Framebuffer Management@{Framebuffer Management}!create\_cfbo@{create\_cfbo}}
+\index{create\_cfbo@{create\_cfbo}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{create\_cfbo()}{create\_cfbo()}}
+{\footnotesize\ttfamily void create\+\_\+cfbo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCFBO}{CFBO}} \texorpdfstring{$\ast$}{*}}]{c\+Fbo }\end{DoxyParamCaption})}
+
+
+
+Creates a \doxylink{structCFBO}{CFBO} (Complete \doxylink{classFrame}{Frame} Buffer \doxylink{structObject}{Object}). 
+
+This function initializes and sets up a complete framebuffer object. CFBOs are used to render to textures and can be used for various effects.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c\+Fbo} & A pointer to a \doxylink{structCFBO}{CFBO} structure that will hold the framebuffer information. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__Framebuffer_gae40cfeb920148961b224d8b3b2c4cfa8}\label{group__Framebuffer_gae40cfeb920148961b224d8b3b2c4cfa8} 
+\index{Framebuffer Management@{Framebuffer Management}!free\_cfbo@{free\_cfbo}}
+\index{free\_cfbo@{free\_cfbo}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{free\_cfbo()}{free\_cfbo()}}
+{\footnotesize\ttfamily void free\+\_\+cfbo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCFBO}{CFBO}} \texorpdfstring{$\ast$}{*}}]{c\+Fbo }\end{DoxyParamCaption})}
+
+
+
+Frees the resources associated with a \doxylink{structCFBO}{CFBO}. 
+
+This function deallocates and cleans up the resources used by a \doxylink{structCFBO}{CFBO}. It should be called when the framebuffer is no longer needed to avoid memory leaks.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c\+Fbo} & A pointer to a \doxylink{structCFBO}{CFBO} structure that holds the framebuffer information to be freed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__Framebuffer_ga62bd1965ce8383baa104a30175d43c6f}\label{group__Framebuffer_ga62bd1965ce8383baa104a30175d43c6f} 
+\index{Framebuffer Management@{Framebuffer Management}!resize\_cfbo@{resize\_cfbo}}
+\index{resize\_cfbo@{resize\_cfbo}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{resize\_cfbo()}{resize\_cfbo()}}
+{\footnotesize\ttfamily void resize\+\_\+cfbo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCFBO}{CFBO}} \texorpdfstring{$\ast$}{*}}]{c\+Fbo }\end{DoxyParamCaption})}
+
+
+
+Resizes a \doxylink{structCFBO}{CFBO}. 
+
+This function adjusts the size of an existing \doxylink{structCFBO}{CFBO} to match new dimensions. It is useful when the window or viewport size changes and the framebuffer needs to be updated accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c\+Fbo} & A pointer to a \doxylink{structCFBO}{CFBO} structure that holds the framebuffer information to be resized. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__Framebuffer_ga0b8e81253be7e81ab7a03a3569de41e0}\label{group__Framebuffer_ga0b8e81253be7e81ab7a03a3569de41e0} 
+\index{Framebuffer Management@{Framebuffer Management}!create\_msaa@{create\_msaa}}
+\index{create\_msaa@{create\_msaa}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{create\_msaa()}{create\_msaa()}}
+{\footnotesize\ttfamily void create\+\_\+msaa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}}]{msaa }\end{DoxyParamCaption})}
 
 
 
@@ -88,11 +342,14 @@ This function initializes and sets up a multisample anti-\/aliasing (\doxylink{s
 {\em msaa} & A pointer to an \doxylink{structMSAA}{MSAA} structure that will hold the framebuffer information. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{group__Framebuffer_ga61ecc0fe7012195a1a406b36c766d45c}\label{group__Framebuffer_ga61ecc0fe7012195a1a406b36c766d45c} 
-\index{Framebuffer Management@{Framebuffer Management}!free\_msaa\_framebuffer@{free\_msaa\_framebuffer}}
-\index{free\_msaa\_framebuffer@{free\_msaa\_framebuffer}!Framebuffer Management@{Framebuffer Management}}
-\doxysubsubsection{\texorpdfstring{free\_msaa\_framebuffer()}{free\_msaa\_framebuffer()}}
-{\footnotesize\ttfamily void free\+\_\+msaa\+\_\+framebuffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}}]{msaa }\end{DoxyParamCaption})}
+\begin{DoxyNote}{Note}
+DEPRECATED\+: This function is deprecated and should not be used in new code. 
+\end{DoxyNote}
+\Hypertarget{group__Framebuffer_ga8117e8cb2cc37caf74b072de4bd5ddac}\label{group__Framebuffer_ga8117e8cb2cc37caf74b072de4bd5ddac} 
+\index{Framebuffer Management@{Framebuffer Management}!free\_msaa@{free\_msaa}}
+\index{free\_msaa@{free\_msaa}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{free\_msaa()}{free\_msaa()}}
+{\footnotesize\ttfamily void free\+\_\+msaa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}}]{msaa }\end{DoxyParamCaption})}
 
 
 
@@ -105,11 +362,14 @@ This function deallocates and cleans up the resources used by an \doxylink{struc
 {\em msaa} & A pointer to an \doxylink{structMSAA}{MSAA} structure that holds the framebuffer information to be freed. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{group__Framebuffer_ga38295e04feba1f829d93bacadffa8394}\label{group__Framebuffer_ga38295e04feba1f829d93bacadffa8394} 
-\index{Framebuffer Management@{Framebuffer Management}!resize\_msaa\_framebuffer@{resize\_msaa\_framebuffer}}
-\index{resize\_msaa\_framebuffer@{resize\_msaa\_framebuffer}!Framebuffer Management@{Framebuffer Management}}
-\doxysubsubsection{\texorpdfstring{resize\_msaa\_framebuffer()}{resize\_msaa\_framebuffer()}}
-{\footnotesize\ttfamily void resize\+\_\+msaa\+\_\+framebuffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}}]{msaa }\end{DoxyParamCaption})}
+\begin{DoxyNote}{Note}
+DEPRECATED\+: This function is deprecated and should not be used in new code. 
+\end{DoxyNote}
+\Hypertarget{group__Framebuffer_ga6dd2c206822b94066a686d5041d2383c}\label{group__Framebuffer_ga6dd2c206822b94066a686d5041d2383c} 
+\index{Framebuffer Management@{Framebuffer Management}!resize\_msaa@{resize\_msaa}}
+\index{resize\_msaa@{resize\_msaa}!Framebuffer Management@{Framebuffer Management}}
+\doxysubsubsection{\texorpdfstring{resize\_msaa()}{resize\_msaa()}}
+{\footnotesize\ttfamily void resize\+\_\+msaa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*}}]{msaa }\end{DoxyParamCaption})}
 
 
 
@@ -122,3 +382,6 @@ This function adjusts the size of an existing \doxylink{structMSAA}{MSAA} frameb
 {\em msaa} & A pointer to an \doxylink{structMSAA}{MSAA} structure that holds the framebuffer information to be resized. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+DEPRECATED\+: This function is deprecated and should not be used in new code. 
+\end{DoxyNote}

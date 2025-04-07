@@ -23,7 +23,6 @@
  * This structure represents a node in the queue. Each node contains a pointer
  * to the next node in the queue and a pointer to the data stored in the node.
  */
-
 typedef struct Queue {
     struct Queue *next; /**< Pointer to the next node in the queue. */
     void *data; /**< Pointer to the data stored in the node. */

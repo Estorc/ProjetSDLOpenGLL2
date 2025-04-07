@@ -11,7 +11,8 @@ The main structure that holds all the data and state of the engine.
 
 
 
-Collaboration diagram for Raptiqua\+X\+\_\+t\+:\nopagebreak
+Collaboration diagram for Raptiqua\+X\+\_\+t\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -39,13 +40,17 @@ const struct Class\+Manager \texorpdfstring{$\ast$}{*}const \mbox{\hyperlink{str
 \item 
 struct \mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structRaptiquaX__t_a3f838cfab20c911d0f0379293c6edf2f}{camera}}
 \item 
-struct \mbox{\hyperlink{structMSAA}{MSAA}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structRaptiquaX__t_aa474abb47edc0036ef9d87003455c1dc}{msaa}}
+struct \mbox{\hyperlink{structDFBO}{DFBO}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structRaptiquaX__t_a19e237f478c20864e29f2aae4760f847}{deferred\+Buffer}}
+\item 
+struct \mbox{\hyperlink{structCFBO}{CFBO}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structRaptiquaX__t_a79c4838b583474fa74ffe8d4ee7d60c3}{ui\+FBO}}
 \item 
 struct \mbox{\hyperlink{classRenderTarget}{Render\+Target}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structRaptiquaX__t_abf247e9ee0f60348ba10c660aae885ee}{render\+Target}}
 \item 
 struct \mbox{\hyperlink{structHashTable}{Hash\+Table}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structRaptiquaX__t_a1d8eff7379f2e9f669b1c5c8b9f3aa50}{storage}}
 \item 
 struct \mbox{\hyperlink{structScript}{Script}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}}
+\item 
+struct \mbox{\hyperlink{structDepthMap}{Depth\+Map}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structRaptiquaX__t_a4a580a42d4719fb7fda27c36864fb042}{depth\+Map}}
 \end{DoxyCompactItemize}
 
 
@@ -60,7 +65,13 @@ This structure is used as a singleton to hold the global state of the engine. It
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{structRaptiquaX__t_a8d370f45176595b7f119489749b3ed18}\label{structRaptiquaX__t_a8d370f45176595b7f119489749b3ed18} 
+\Hypertarget{structRaptiquaX__t_a230f0f177f36d012505ef63342f73d72}\label{structRaptiquaX__t_a230f0f177f36d012505ef63342f73d72} 
+\index{RaptiquaX\_t@{RaptiquaX\_t}!memoryCaches@{memoryCaches}}
+\index{memoryCaches@{memoryCaches}!RaptiquaX\_t@{RaptiquaX\_t}}
+\doxysubsubsection{\texorpdfstring{memoryCaches}{memoryCaches}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structMemoryCaches}{Memory\+Caches}}\texorpdfstring{$\ast$}{*} const Raptiqua\+X\+\_\+t\+::memory\+Caches}
+
+The memory caches of the engine. \Hypertarget{structRaptiquaX__t_a8d370f45176595b7f119489749b3ed18}\label{structRaptiquaX__t_a8d370f45176595b7f119489749b3ed18} 
 \index{RaptiquaX\_t@{RaptiquaX\_t}!buffers@{buffers}}
 \index{buffers@{buffers}!RaptiquaX\_t@{RaptiquaX\_t}}
 \doxysubsubsection{\texorpdfstring{buffers}{buffers}}
@@ -72,73 +83,79 @@ The buffer collection of the engine. \Hypertarget{structRaptiquaX__t_af9407d64ed
 \doxysubsubsection{\texorpdfstring{callQueue}{callQueue}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structQueue}{Queue}}\texorpdfstring{$\ast$}{*} const Raptiqua\+X\+\_\+t\+::call\+Queue}
 
-The call queue of the engine. \Hypertarget{structRaptiquaX__t_a3f838cfab20c911d0f0379293c6edf2f}\label{structRaptiquaX__t_a3f838cfab20c911d0f0379293c6edf2f} 
-\index{RaptiquaX\_t@{RaptiquaX\_t}!camera@{camera}}
-\index{camera@{camera}!RaptiquaX\_t@{RaptiquaX\_t}}
-\doxysubsubsection{\texorpdfstring{camera}{camera}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{classCamera}{Camera}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::camera}
-
-The camera actually used. \Hypertarget{structRaptiquaX__t_ad2ab9245fa362d883807426a0051dd0f}\label{structRaptiquaX__t_ad2ab9245fa362d883807426a0051dd0f} 
-\index{RaptiquaX\_t@{RaptiquaX\_t}!classManager@{classManager}}
-\index{classManager@{classManager}!RaptiquaX\_t@{RaptiquaX\_t}}
-\doxysubsubsection{\texorpdfstring{classManager}{classManager}}
-{\footnotesize\ttfamily const struct Class\+Manager\texorpdfstring{$\ast$}{*} const Raptiqua\+X\+\_\+t\+::class\+Manager}
-
-The class manager of the engine. \Hypertarget{structRaptiquaX__t_ac5dec1d4057951af43c282e1f3b89a6e}\label{structRaptiquaX__t_ac5dec1d4057951af43c282e1f3b89a6e} 
-\index{RaptiquaX\_t@{RaptiquaX\_t}!input@{input}}
-\index{input@{input}!RaptiquaX\_t@{RaptiquaX\_t}}
-\doxysubsubsection{\texorpdfstring{input}{input}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structInput}{Input}}\texorpdfstring{$\ast$}{*} const Raptiqua\+X\+\_\+t\+::input}
-
-The input data of the engine. \Hypertarget{structRaptiquaX__t_adfadc30b0addd71f1b7ccf4d26e3cd02}\label{structRaptiquaX__t_adfadc30b0addd71f1b7ccf4d26e3cd02} 
+The call queue of the engine. \Hypertarget{structRaptiquaX__t_adfadc30b0addd71f1b7ccf4d26e3cd02}\label{structRaptiquaX__t_adfadc30b0addd71f1b7ccf4d26e3cd02} 
 \index{RaptiquaX\_t@{RaptiquaX\_t}!mainTree@{mainTree}}
 \index{mainTree@{mainTree}!RaptiquaX\_t@{RaptiquaX\_t}}
 \doxysubsubsection{\texorpdfstring{mainTree}{mainTree}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structTree}{Tree}}\texorpdfstring{$\ast$}{*} const Raptiqua\+X\+\_\+t\+::main\+Tree}
 
-The main node tree of the engine. \Hypertarget{structRaptiquaX__t_a230f0f177f36d012505ef63342f73d72}\label{structRaptiquaX__t_a230f0f177f36d012505ef63342f73d72} 
-\index{RaptiquaX\_t@{RaptiquaX\_t}!memoryCaches@{memoryCaches}}
-\index{memoryCaches@{memoryCaches}!RaptiquaX\_t@{RaptiquaX\_t}}
-\doxysubsubsection{\texorpdfstring{memoryCaches}{memoryCaches}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structMemoryCaches}{Memory\+Caches}}\texorpdfstring{$\ast$}{*} const Raptiqua\+X\+\_\+t\+::memory\+Caches}
+The main node tree of the engine. \Hypertarget{structRaptiquaX__t_ac5dec1d4057951af43c282e1f3b89a6e}\label{structRaptiquaX__t_ac5dec1d4057951af43c282e1f3b89a6e} 
+\index{RaptiquaX\_t@{RaptiquaX\_t}!input@{input}}
+\index{input@{input}!RaptiquaX\_t@{RaptiquaX\_t}}
+\doxysubsubsection{\texorpdfstring{input}{input}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structInput}{Input}}\texorpdfstring{$\ast$}{*} const Raptiqua\+X\+\_\+t\+::input}
 
-The memory caches of the engine. \Hypertarget{structRaptiquaX__t_aa474abb47edc0036ef9d87003455c1dc}\label{structRaptiquaX__t_aa474abb47edc0036ef9d87003455c1dc} 
-\index{RaptiquaX\_t@{RaptiquaX\_t}!msaa@{msaa}}
-\index{msaa@{msaa}!RaptiquaX\_t@{RaptiquaX\_t}}
-\doxysubsubsection{\texorpdfstring{msaa}{msaa}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structMSAA}{MSAA}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::msaa}
-
-The \doxylink{structMSAA}{MSAA} settings. \Hypertarget{structRaptiquaX__t_abf247e9ee0f60348ba10c660aae885ee}\label{structRaptiquaX__t_abf247e9ee0f60348ba10c660aae885ee} 
-\index{RaptiquaX\_t@{RaptiquaX\_t}!renderTarget@{renderTarget}}
-\index{renderTarget@{renderTarget}!RaptiquaX\_t@{RaptiquaX\_t}}
-\doxysubsubsection{\texorpdfstring{renderTarget}{renderTarget}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{classRenderTarget}{Render\+Target}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::render\+Target}
-
-The actual render target. \Hypertarget{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}\label{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a} 
-\index{RaptiquaX\_t@{RaptiquaX\_t}!scripts@{scripts}}
-\index{scripts@{scripts}!RaptiquaX\_t@{RaptiquaX\_t}}
-\doxysubsubsection{\texorpdfstring{scripts}{scripts}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structScript}{Script}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::scripts}
-
-The scripts. \Hypertarget{structRaptiquaX__t_a9ff5de733c4c491a68b4bf5efab27fc2}\label{structRaptiquaX__t_a9ff5de733c4c491a68b4bf5efab27fc2} 
+The input data of the engine. \Hypertarget{structRaptiquaX__t_a9ff5de733c4c491a68b4bf5efab27fc2}\label{structRaptiquaX__t_a9ff5de733c4c491a68b4bf5efab27fc2} 
 \index{RaptiquaX\_t@{RaptiquaX\_t}!settings@{settings}}
 \index{settings@{settings}!RaptiquaX\_t@{RaptiquaX\_t}}
 \doxysubsubsection{\texorpdfstring{settings}{settings}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structSettings}{Settings}}\texorpdfstring{$\ast$}{*} const Raptiqua\+X\+\_\+t\+::settings}
 
-The settings of the engine. \Hypertarget{structRaptiquaX__t_a1d8eff7379f2e9f669b1c5c8b9f3aa50}\label{structRaptiquaX__t_a1d8eff7379f2e9f669b1c5c8b9f3aa50} 
-\index{RaptiquaX\_t@{RaptiquaX\_t}!storage@{storage}}
-\index{storage@{storage}!RaptiquaX\_t@{RaptiquaX\_t}}
-\doxysubsubsection{\texorpdfstring{storage}{storage}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structHashTable}{Hash\+Table}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::storage}
-
-Global storage in a Hash Table \Hypertarget{structRaptiquaX__t_a0a06b56aacfc717a9a40be81eee1d869}\label{structRaptiquaX__t_a0a06b56aacfc717a9a40be81eee1d869} 
+The settings of the engine. \Hypertarget{structRaptiquaX__t_a0a06b56aacfc717a9a40be81eee1d869}\label{structRaptiquaX__t_a0a06b56aacfc717a9a40be81eee1d869} 
 \index{RaptiquaX\_t@{RaptiquaX\_t}!window@{window}}
 \index{window@{window}!RaptiquaX\_t@{RaptiquaX\_t}}
 \doxysubsubsection{\texorpdfstring{window}{window}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structWindow}{Window}}\texorpdfstring{$\ast$}{*} const Raptiqua\+X\+\_\+t\+::window}
 
-The window of the engine. 
+The window of the engine. \Hypertarget{structRaptiquaX__t_ad2ab9245fa362d883807426a0051dd0f}\label{structRaptiquaX__t_ad2ab9245fa362d883807426a0051dd0f} 
+\index{RaptiquaX\_t@{RaptiquaX\_t}!classManager@{classManager}}
+\index{classManager@{classManager}!RaptiquaX\_t@{RaptiquaX\_t}}
+\doxysubsubsection{\texorpdfstring{classManager}{classManager}}
+{\footnotesize\ttfamily const struct Class\+Manager\texorpdfstring{$\ast$}{*} const Raptiqua\+X\+\_\+t\+::class\+Manager}
+
+The class manager of the engine. \Hypertarget{structRaptiquaX__t_a3f838cfab20c911d0f0379293c6edf2f}\label{structRaptiquaX__t_a3f838cfab20c911d0f0379293c6edf2f} 
+\index{RaptiquaX\_t@{RaptiquaX\_t}!camera@{camera}}
+\index{camera@{camera}!RaptiquaX\_t@{RaptiquaX\_t}}
+\doxysubsubsection{\texorpdfstring{camera}{camera}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{classCamera}{Camera}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::camera}
+
+The camera actually used. \Hypertarget{structRaptiquaX__t_a19e237f478c20864e29f2aae4760f847}\label{structRaptiquaX__t_a19e237f478c20864e29f2aae4760f847} 
+\index{RaptiquaX\_t@{RaptiquaX\_t}!deferredBuffer@{deferredBuffer}}
+\index{deferredBuffer@{deferredBuffer}!RaptiquaX\_t@{RaptiquaX\_t}}
+\doxysubsubsection{\texorpdfstring{deferredBuffer}{deferredBuffer}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structDFBO}{DFBO}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::deferred\+Buffer}
+
+The SSR settings. \Hypertarget{structRaptiquaX__t_a79c4838b583474fa74ffe8d4ee7d60c3}\label{structRaptiquaX__t_a79c4838b583474fa74ffe8d4ee7d60c3} 
+\index{RaptiquaX\_t@{RaptiquaX\_t}!uiFBO@{uiFBO}}
+\index{uiFBO@{uiFBO}!RaptiquaX\_t@{RaptiquaX\_t}}
+\doxysubsubsection{\texorpdfstring{uiFBO}{uiFBO}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structCFBO}{CFBO}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::ui\+FBO}
+
+The UI frame buffer object. \Hypertarget{structRaptiquaX__t_abf247e9ee0f60348ba10c660aae885ee}\label{structRaptiquaX__t_abf247e9ee0f60348ba10c660aae885ee} 
+\index{RaptiquaX\_t@{RaptiquaX\_t}!renderTarget@{renderTarget}}
+\index{renderTarget@{renderTarget}!RaptiquaX\_t@{RaptiquaX\_t}}
+\doxysubsubsection{\texorpdfstring{renderTarget}{renderTarget}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{classRenderTarget}{Render\+Target}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::render\+Target}
+
+The actual render target. \Hypertarget{structRaptiquaX__t_a1d8eff7379f2e9f669b1c5c8b9f3aa50}\label{structRaptiquaX__t_a1d8eff7379f2e9f669b1c5c8b9f3aa50} 
+\index{RaptiquaX\_t@{RaptiquaX\_t}!storage@{storage}}
+\index{storage@{storage}!RaptiquaX\_t@{RaptiquaX\_t}}
+\doxysubsubsection{\texorpdfstring{storage}{storage}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structHashTable}{Hash\+Table}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::storage}
+
+Global storage in a Hash Table \Hypertarget{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}\label{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a} 
+\index{RaptiquaX\_t@{RaptiquaX\_t}!scripts@{scripts}}
+\index{scripts@{scripts}!RaptiquaX\_t@{RaptiquaX\_t}}
+\doxysubsubsection{\texorpdfstring{scripts}{scripts}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structScript}{Script}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::scripts}
+
+The scripts. \Hypertarget{structRaptiquaX__t_a4a580a42d4719fb7fda27c36864fb042}\label{structRaptiquaX__t_a4a580a42d4719fb7fda27c36864fb042} 
+\index{RaptiquaX\_t@{RaptiquaX\_t}!depthMap@{depthMap}}
+\index{depthMap@{depthMap}!RaptiquaX\_t@{RaptiquaX\_t}}
+\doxysubsubsection{\texorpdfstring{depthMap}{depthMap}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structDepthMap}{Depth\+Map}}\texorpdfstring{$\ast$}{*} Raptiqua\+X\+\_\+t\+::depth\+Map}
+
+The depth map. 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

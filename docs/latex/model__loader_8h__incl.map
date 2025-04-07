@@ -1,0 +1,9 @@
+<map id="src/io/model_loaders/model_loader.h" name="src/io/model_loaders/model_loader.h">
+<area shape="rect" id="Node000001" title="Header file for model loading functions." alt="" coords="5,69,163,109"/>
+<area shape="rect" id="Node000002" href="$obj__loader_8h.html" title=" " alt="" coords="211,5,370,45"/>
+<area shape="poly" id="edge4_Node000001_Node000002" title=" " alt="" coords="149,67,212,47,214,52,150,72"/>
+<area shape="rect" id="Node000003" href="$mtl__loader_8h.html" title=" " alt="" coords="211,69,371,109"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="163,87,197,87,197,92,163,92"/>
+<area shape="rect" id="Node000004" href="$fbx__loader_8h.html" title="Header file for loading FBX models." alt="" coords="211,133,370,173"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="150,107,214,127,212,132,149,112"/>
+</map>

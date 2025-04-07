@@ -1,0 +1,125 @@
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <storage/node.h>
+#include <render/camera.h>
+#include <gui/frame.h>
+#include <storage/queue.h>
+#include <utils/deferred.h>
+#include <io/audio.h>
+#include <render/lighting.h>
+#include <buffer.h>
+#include <window.h>
+#include <scripts/scripts.h>
+
+
+static void play_drone_idle_animation(Node *this, float *realPos) {
+    this->pos[0] = realPos[0];
+    this->pos[1] = realPos[1] + sinf(SDL_GetTicks()/100.0f) * 0.3f;
+    this->pos[2] = realPos[2];
+    this->rot[2] = sinf(SDL_GetTicks()/100.0f) * 0.3f;
+    this->rot[0] = sinf(SDL_GetTicks()/100.0f) * 0.3f;
+    this->scale[0] = 0.05f + sinf(SDL_GetTicks()/140.0f) * 0.003f;
+    this->scale[1] = 0.05f + sinf(SDL_GetTicks()/140.0f) * 0.003f;
+    this->scale[2] = 0.05f + sinf(SDL_GetTicks()/140.0f) * 0.003f;
+}
+
+typedef enum DroneState {
+    DRONE_STATE_IDLE,
+    DRONE_STATE_CHASE,
+    DRONE_STATE_ATTACK,
+    DRONE_STATE_DEATH
+} DroneState;
+
+
+NEW_SCRIPT(script_cc_drone_init)
+    SET_ATTRIBUTES_COUNT(9);
+    float *realPos = &this->attribute[0].f;
+    DroneState *state = (DroneState *) &this->attribute[3];
+    *state = DRONE_STATE_IDLE;
+    glm_vec3_copy(this->pos, realPos);
+    deferred_table_get(Game.storage, "Game::player", &this->attribute[7].node);
+    this->attribute[8].p = play_sfx("assets/audio/sfx/drone-fly.mp3", 1, -1);
+END_SCRIPT(script_cc_drone_init)
+
+NEW_SCRIPT(script_cc_drone_update)
+    GET_READY_PARAMETERS();
+    float *realPos = &this->attribute[0].f;
+    DroneState *state = (DroneState *) &this->attribute[3];
+    Node *camera = this->attribute[4].node;
+    float *timer = &this->attribute[5].f;
+    Node *player = this->attribute[7].node;
+    float *targetRot;
+    vec3 dir;
+
+    *timer += delta;
+    switch (*state)
+    {
+    case DRONE_STATE_IDLE:
+        play_drone_idle_animation(this, realPos);
+
+        glm_vec3_sub(this->parent->children[1]->children[this->attribute[6].i]->globalPos, this->globalPos, dir);
+        glm_vec3_normalize(dir);
+        realPos[2] += dir[2] * delta * 10.0f;
+        realPos[1] += dir[1] * delta * 10.0f;
+        realPos[0] += dir[0] * delta * 10.0f;
+        float destRot = atan2f(this->parent->children[1]->children[this->attribute[6].i]->globalPos[0] - this->globalPos[0],
+            this->parent->children[1]->children[this->attribute[6].i]->globalPos[2] - this->globalPos[2]) * (180.0f / PI);
+        if (this->rot[1] - destRot > 180.0f) {
+            this->rot[1] -= 360.0f;
+        }
+        if (this->rot[1] - destRot < -180.0f) {
+            this->rot[1] += 360.0f;
+        }
+        float_approach(&this->rot[1],
+                    destRot,
+                    delta * 2.0f);
+        if (glm_vec3_distance2(this->globalPos, this->parent->children[1]->children[this->attribute[6].i]->globalPos) < 10.0f) {
+            this->attribute[6].i++;
+            if (this->attribute[6].i >= this->parent->children[1]->length) {
+                this->attribute[6].i = 0;
+            }
+        }
+
+        if (player) {
+            if ((*timer) > 2.0f) {
+                *timer = 0.0f;
+            }
+            set_sfx_volume(this->attribute[8].p, max(128 - (int) (glm_vec3_distance2(this->globalPos, player->globalPos) / 20.0f), 0));
+        }
+        break;
+    case DRONE_STATE_ATTACK:
+        set_sfx_volume(this->attribute[8].p, 0);
+        targetRot = &camera->attribute[0].f;
+        ((KinematicBody *) camera->parent->object)->velocity[1] = -0.1f;
+        targetRot[0] = 0.0f;
+        targetRot[1] = atan2f(camera->globalPos[0] - this->globalPos[0], camera->globalPos[2] - this->globalPos[2]) * (180.0f / PI);
+        float_approach(&this->rot[1], targetRot[1], delta * 10.0f);
+        
+        this->pos[0] += (camera->globalPos[0] - this->globalPos[0]) * 3.0f * delta;
+        this->pos[1] += (camera->globalPos[1] - this->globalPos[1]) * 3.0f * delta;
+        this->pos[2] += (camera->globalPos[2] - this->globalPos[2]) * 3.0f * delta;
+
+        if (glm_vec3_distance2(this->globalPos, camera->globalPos) < 32.0f) {
+            if (Game.window->fadeColor[3] <= 0.0f) Mix_FadeOutMusic(1000);
+            if (Game.window->fadeColor[3] < 1.0f) {
+                Game.window->fadeColor[3] += 3.0f * delta;
+                Game.window->fadeColor[0] += 1.0f * delta;
+            }
+            if (Game.window->fadeColor[3] >= 1.0f) {
+                Game.window->fadeColor[0] -= 1.0f * delta;
+            }
+            if (Game.window->fadeColor[0] <= 0.0f) {
+                deferred_load_scene("assets/scenes/claude_chappe/boot.scene");
+                SDL_SetRelativeMouseMode(SDL_FALSE);
+            }
+        }
+        break;
+
+    case DRONE_STATE_DEATH:
+
+        break;
+
+    default:
+        break;
+    }
+END_SCRIPT(script_cc_drone_update)

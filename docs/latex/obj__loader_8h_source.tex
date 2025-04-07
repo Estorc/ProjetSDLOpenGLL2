@@ -6,30 +6,26 @@
 \DoxyCodeLine{00002\ }
 \DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ MAX\_VERTEX\_PER\_FACE\ 10}}
 \DoxyCodeLine{00014\ }
-\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ vec3\ \mbox{\hyperlink{group__ObjLoader_gabb5b863a4c7a7cc7d18a288c908b9f0b}{Normal}};}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ vec2\ \mbox{\hyperlink{group__ObjLoader_ga035e3505138fdf49eb7ebdcfc5d5a1fc}{TextureVertex}};}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structFace}{Face}}\ \{}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structFace_a1172248468cc8f99ca3f268afd45e301}{vertex}}[\mbox{\hyperlink{group__ObjLoader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\_VERTEX\_PER\_FACE}}];\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structFace_af7ac3badebf6a913e880fed8f327c115}{normals}}[\mbox{\hyperlink{group__ObjLoader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\_VERTEX\_PER\_FACE}}];\ \ \ \ \ \ \ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structFace_afe9fb91d164312de484f987ab088ae50}{textureVertex}}[\mbox{\hyperlink{group__ObjLoader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\_VERTEX\_PER\_FACE}}];\ }
-\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{raptiquax_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structFace_ad8660f1df79e1a97a34365fab4e5b6f1}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00038\ \}\ \mbox{\hyperlink{structFace}{Face}};}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structLoadingModelBuffer}{LoadingModelBuffer}}\ \{}
-\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ga1351e71110272ccf5e8d661017498adb}{Vertex}}\ *\mbox{\hyperlink{structLoadingModelBuffer_a61dab533dfd10c8f5963105acf65d240}{vertex}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{group__ObjLoader_gabb5b863a4c7a7cc7d18a288c908b9f0b}{Normal}}\ *\mbox{\hyperlink{structLoadingModelBuffer_a9834242037e4f7bcc534effae03261fe}{normals}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{group__ObjLoader_ga035e3505138fdf49eb7ebdcfc5d5a1fc}{TextureVertex}}\ *\mbox{\hyperlink{structLoadingModelBuffer_aa7fd6a2d08540fc39058d2bb59ab440e}{textureVertex}};\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{structFace}{Face}}\ *\mbox{\hyperlink{structLoadingModelBuffer_aa7263a67f5acea54e20ce9fb39cba831}{faces}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00045\ \}\ \mbox{\hyperlink{structLoadingModelBuffer}{LoadingModelBuffer}};}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00075\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__ObjLoader_ga5a4ede319c6c281e805f900f33a7451b}{malloc\_obj}}(\mbox{\hyperlink{structModelObjectData}{ModelObjectData}}\ *obj,\ \mbox{\hyperlink{structLoadingModelBuffer}{LoadingModelBuffer}}\ *buffer,\ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ vim,\ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ fim,\ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ vnim,\ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ vtim);}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00108\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ObjLoader_ga183823564439c36d87aac604a9063c59}{close\_realloc\_obj}}(\mbox{\hyperlink{structModelObjectData}{ModelObjectData}}\ *obj,\ \mbox{\hyperlink{structLoadingModelBuffer}{LoadingModelBuffer}}\ *buffer,\ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ vi,\ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ fi,\ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ vni,\ \mbox{\hyperlink{raptiquax_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ vti);}
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00146\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__ObjLoader_gad1c67a7fd502c28832fa5cf248696814}{load\_obj\_model}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path,\ \mbox{\hyperlink{structModelData}{ModelData}}\ *modelPtr);}
-\DoxyCodeLine{00147\ }
-\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structFace}{Face}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structFace_a1172248468cc8f99ca3f268afd45e301}{vertex}}[\mbox{\hyperlink{group__ObjLoader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\_VERTEX\_PER\_FACE}}];\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structFace_af7ac3badebf6a913e880fed8f327c115}{normals}}[\mbox{\hyperlink{group__ObjLoader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\_VERTEX\_PER\_FACE}}];\ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structFace_afe9fb91d164312de484f987ab088ae50}{textureVertex}}[\mbox{\hyperlink{group__ObjLoader_ga505a07845a4c8d45ba2013e9760bd7f0}{MAX\_VERTEX\_PER\_FACE}}];\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{aliases_8h_af3b86d961da0a3575b4f99c9ffaf01fd}{u8}}\ \mbox{\hyperlink{structFace_ad8660f1df79e1a97a34365fab4e5b6f1}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \}\ \mbox{\hyperlink{structFace}{Face}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structLoadingModelBuffer}{LoadingModelBuffer}}\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{group__ModelHandling_ga1351e71110272ccf5e8d661017498adb}{Vertex}}\ *\mbox{\hyperlink{group__ObjLoader_gafc912d1d97150df207e760397f3fe904}{vertex}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{aliases_8h_abb5b863a4c7a7cc7d18a288c908b9f0b}{Normal}}\ *\mbox{\hyperlink{group__ObjLoader_ga6fa9ea9ae14a33791794d1c08623700c}{normals}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{aliases_8h_a035e3505138fdf49eb7ebdcfc5d5a1fc}{TextureVertex}}\ *\mbox{\hyperlink{group__ObjLoader_gaeed6db10e83cce4380799b56f2456679}{textureVertex}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{structFace}{Face}}\ *\mbox{\hyperlink{group__ObjLoader_ga04baf96cf7a8c449f068e7bc387ad9bc}{faces}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \}\ \mbox{\hyperlink{structLoadingModelBuffer}{LoadingModelBuffer}};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__ObjLoader_ga5a4ede319c6c281e805f900f33a7451b}{malloc\_obj}}(\mbox{\hyperlink{structModelObjectData}{ModelObjectData}}\ *obj,\ \mbox{\hyperlink{structLoadingModelBuffer}{LoadingModelBuffer}}\ *buffer,\ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ vim,\ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ fim,\ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ vnim,\ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ vtim);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00114\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__ObjLoader_ga183823564439c36d87aac604a9063c59}{close\_realloc\_obj}}(\mbox{\hyperlink{structModelObjectData}{ModelObjectData}}\ *obj,\ \mbox{\hyperlink{structLoadingModelBuffer}{LoadingModelBuffer}}\ *buffer,\ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ vi,\ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ fi,\ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ vni,\ \mbox{\hyperlink{aliases_8h_a332ccd83dfe2973e6cb2b61e4f3ab7e6}{u32}}\ vti);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00151\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__ObjLoader_gad1c67a7fd502c28832fa5cf248696814}{load\_obj\_model}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path,\ \mbox{\hyperlink{structModelData}{ModelData}}\ *modelPtr);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ }
 
 \end{DoxyCode}

@@ -1,8 +1,8 @@
-#include "../io/shader.h"
-#include "../render/camera.h"
-#include "../physics/bodies.h"
-#include "../scripts/scripts.h"
-#include "../render/framebuffer.h"
+#include <io/shader.h>
+#include <render/camera.h>
+#include <physics/bodies.h>
+#include <scripts/scripts.h>
+#include <render/framebuffer.h>
 
 #ifndef NODE_H
 #define NODE_H
@@ -26,26 +26,17 @@ struct Filter;
 struct WorldShaders;
 struct RenderTarget;
 
+
 /**
- * @defgroup NodeFunctions Node Data Structure
- * @brief Functions for managing and rendering nodes in the scene graph.
- * @{
+ * @file node.h
+ * @brief Defines the structure for a tree and its nodes used in the project.
  */
 
 
-
 /**
- * @struct Tree
- * @brief Represents a tree structure containing nodes, a camera, MSAA settings, and scripts.
- */
-
-typedef struct Tree {
-    struct Node *root; /**< The root node of the tree structure. */
-} Tree;
-
-/**
- * @struct Node
+ * @class Node
  * @brief Represents a node in the tree structure.
+ * @ingroup Classes Classes
  */
 typedef struct Node {
     void *object; /**< A pointer to an object associated with the node. */
@@ -70,11 +61,31 @@ typedef struct Node {
     Shader shader; /**< The shader associated with the node. */
 } Node;
 
+
+/**
+ * @defgroup NodeFunctions Node Data Structure
+ * @brief Functions for managing and rendering nodes in the scene graph.
+ * @{
+ */
+
+/**
+ * @struct Tree
+ * @brief Represents a tree structure.
+ *
+ * This structure is used to represent a tree with a single root node.
+ * The tree can be traversed and manipulated starting from this root node.
+ *
+ * @var Tree::root
+ * The root node of the tree structure. This is the entry point to the tree.
+ */
+typedef struct Tree {
+    struct Node *root; /**< The root node of the tree structure. */
+} Tree;
+
 /**
  * @enum NodeFlags
  * @brief Flags indicating the state and properties of a node.
  */
-
 enum NodeFlags {
     NODE_ACTIVE             = 1 << 0, // 0000 0001
     NODE_VISIBLE            = 1 << 1, // 0000 0010
@@ -89,5 +100,5 @@ enum NodeFlags {
 
 #define NODE_ACTIVE_AND_VISIBLE NODE_ACTIVE | NODE_VISIBLE // 0000 0011
 #define NODE_DEFAULT_FLAGS NODE_ACTIVE_AND_VISIBLE // 0000 0011
-
+/**@} */
 #endif

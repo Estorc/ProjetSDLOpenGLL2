@@ -142,33 +142,6 @@ Functions</h2></td></tr>
 <p><a class="el" href="structStack.html" title="A node in the stack.">Stack</a> data structure and its associated operations. </p>
 <p>This file contains the definition of a stack data structure and the declarations of functions to manipulate the stack. The stack is implemented as a linked list, where each element points to the next element in the stack. The stack supports basic operations such as checking if it is empty, pushing an element onto the stack, popping an element from the stack, and freeing the stack. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gafc04d6c48f275815a5a248a37b9f30bc" name="gafc04d6c48f275815a5a248a37b9f30bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gafc04d6c48f275815a5a248a37b9f30bc">&#9670;&#160;</a></span>stack_free()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void stack_free </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structStack.html">Stack</a> *&#160;</td>
-          <td class="paramname"><em>stack</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Frees the stack. </p>
-<p>This function frees all the elements in the stack and the data stored in each element. After calling this function, the stack pointer will be NULL.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">stack</td><td>Pointer to the stack. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="gaa5bbdc634e8c5a1517207300e4b91482" name="gaa5bbdc634e8c5a1517207300e4b91482"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaa5bbdc634e8c5a1517207300e4b91482">&#9670;&#160;</a></span>stack_is_empty()</h2>
 
@@ -194,34 +167,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the stack is empty, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="ga81d5a10d57ff3cd9435c9ff19830cde4" name="ga81d5a10d57ff3cd9435c9ff19830cde4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga81d5a10d57ff3cd9435c9ff19830cde4">&#9670;&#160;</a></span>stack_pop()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void * stack_pop </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structStack.html">Stack</a> *&#160;</td>
-          <td class="paramname"><em>stack</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pops an element from the stack. </p>
-<p>This function removes the top element from the stack and returns the data stored in that element. If the stack is empty, the function returns NULL.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">stack</td><td>Pointer to the stack. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the data stored in the popped element, or NULL if the stack is empty. </dd></dl>
 
 </div>
 </div>
@@ -263,6 +208,61 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga81d5a10d57ff3cd9435c9ff19830cde4" name="ga81d5a10d57ff3cd9435c9ff19830cde4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga81d5a10d57ff3cd9435c9ff19830cde4">&#9670;&#160;</a></span>stack_pop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * stack_pop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structStack.html">Stack</a> *&#160;</td>
+          <td class="paramname"><em>stack</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pops an element from the stack. </p>
+<p>This function removes the top element from the stack and returns the data stored in that element. If the stack is empty, the function returns NULL.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stack</td><td>Pointer to the stack. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the data stored in the popped element, or NULL if the stack is empty. </dd></dl>
+
+</div>
+</div>
+<a id="gafc04d6c48f275815a5a248a37b9f30bc" name="gafc04d6c48f275815a5a248a37b9f30bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafc04d6c48f275815a5a248a37b9f30bc">&#9670;&#160;</a></span>stack_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stack_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structStack.html">Stack</a> *&#160;</td>
+          <td class="paramname"><em>stack</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Frees the stack. </p>
+<p>This function frees all the elements in the stack and the data stored in each element. After calling this function, the stack pointer will be NULL.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stack</td><td>Pointer to the stack. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -294,6 +294,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -302,7 +312,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

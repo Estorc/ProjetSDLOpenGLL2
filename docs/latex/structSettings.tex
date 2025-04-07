@@ -2,127 +2,178 @@
 \hypertarget{structSettings}{}\label{structSettings}\index{Settings@{Settings}}
 
 
+A structure to hold various settings for the application.  
+
+
+
+
 {\ttfamily \#include $<$settings.\+h$>$}
 
+
+
+Collaboration diagram for Settings\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{structSettings__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{structSettings_a8a0a93423fb282d6cdffaa57b4a18105}{show\+\_\+fps}}
+bool \mbox{\hyperlink{structSettings_ac6dce77df9847d86f1e34864044fe05b}{show\+\_\+fps}}
 \item 
-bool \mbox{\hyperlink{structSettings_a6eeb3bce280b655b264a5485bc98131d}{cast\+\_\+shadows}}
+bool \mbox{\hyperlink{structSettings_ac383a3b653fbb893ba0e92af9864c5b4}{cast\+\_\+shadows}}
 \item 
-bool \mbox{\hyperlink{structSettings_ae523e7e0ac8d0cb194a02821d9862b39}{window\+\_\+fullscreen}}
+bool \mbox{\hyperlink{structSettings_a94dfa7d0181c7b476e4651463278f621}{window\+\_\+fullscreen}}
 \item 
-\mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{structSettings_aa3b5564804fddda4f4fd467035f55d34}{resolution}}
+\mbox{\hyperlink{aliases_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} \mbox{\hyperlink{structSettings_a9f85d2e9585f26e614a94e4ac6856004}{resolution}}
 \item 
-bool \mbox{\hyperlink{structSettings_aadaec3227cfed84e96156877945a241c}{show\+\_\+collision\+\_\+boxes}}
+bool \mbox{\hyperlink{structSettings_a59192e870444623b2824b03c6ea96fe1}{show\+\_\+collision\+\_\+boxes}}
 \item 
-float \mbox{\hyperlink{structSettings_a42321e1b16d47aa586fc0550af51ec8e}{master\+\_\+volume}}
+float \mbox{\hyperlink{structSettings_a2bd37af197d6fb1b2d5d28aad5c4445d}{master\+\_\+volume}}
 \item 
-float \mbox{\hyperlink{structSettings_acc122f84c20ea17487b4ec401ed7c220}{music\+\_\+volume}}
+float \mbox{\hyperlink{structSettings_ae16822b4ae59632f4104c5ece8820bfa}{music\+\_\+volume}}
 \item 
-float \mbox{\hyperlink{structSettings_a67617a262358a51627b3a5a7d7014e6e}{sfx\+\_\+volume}}
+float \mbox{\hyperlink{structSettings_a7a242ee1f5db23eac56156bff89f166d}{sfx\+\_\+volume}}
 \item 
-float \mbox{\hyperlink{structSettings_abcc9afaca9cc43e6a8e89019f813605c}{fov}}
+float \mbox{\hyperlink{structSettings_ae491ab9fb4610146d3d3ea524526ac78}{fov}}
 \item 
-int \mbox{\hyperlink{structSettings_ac12200481fd626c6467dcd1e9b11e9c1}{shadow\+\_\+resolution}}
+int \mbox{\hyperlink{structSettings_a559ad2ee293c51f2946d2ae224e588aa}{shadow\+\_\+resolution}}
 \item 
-int \mbox{\hyperlink{structSettings_accd4cef4192b90fc3c3c9363041e4321}{shadow\+\_\+quality}}
+int \mbox{\hyperlink{structSettings_a35cb3f44d314a65d2974ee53f8901640}{shadow\+\_\+quality}}
 \item 
-int \mbox{\hyperlink{structSettings_ae0c651af626997d943614fbad848b8d8}{texture\+\_\+quality}}
+int \mbox{\hyperlink{structSettings_a3c32c046fd726798ddd71ee4bcd23a50}{texture\+\_\+quality}}
 \item 
-bool \mbox{\hyperlink{structSettings_a05a884da24bbc023027969019ecf4a8f}{antialiasing}}
+bool \mbox{\hyperlink{structSettings_a5a0ad4a032192977e936e6bc54f81c6e}{antialiasing}}
 \item 
-bool \mbox{\hyperlink{structSettings_aacb416379371230d79a9bcf2bcdcf5dc}{vsync}}
+bool \mbox{\hyperlink{structSettings_a2885ad47b384263e3604dbdb0dd64f2c}{ssr}}
+\item 
+bool \mbox{\hyperlink{structSettings_ab4b7cff7d866a83134f43aecadf6f33d}{ssao}}
+\item 
+bool \mbox{\hyperlink{structSettings_a563f18b1763bd4095a5fbbf7aded41a0}{bloom}}
+\item 
+bool \mbox{\hyperlink{structSettings_aaeeaf334506f90329361f6d8fd57dd1b}{vsync}}
+\item 
+\mbox{\hyperlink{structKeybinds}{Keybinds}} \mbox{\hyperlink{structSettings_ae66b456c544c9ff722f18b1374b593c4}{keybinds}}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+A structure to hold various settings for the application. 
+
+This structure contains various settings that can be configured for the application, including display options, audio settings, and keybindings. 
+
 \doxysubsection{Member Data Documentation}
-\Hypertarget{structSettings_a05a884da24bbc023027969019ecf4a8f}\label{structSettings_a05a884da24bbc023027969019ecf4a8f} 
-\index{Settings@{Settings}!antialiasing@{antialiasing}}
-\index{antialiasing@{antialiasing}!Settings@{Settings}}
-\doxysubsubsection{\texorpdfstring{antialiasing}{antialiasing}}
-{\footnotesize\ttfamily bool Settings\+::antialiasing}
-
-\Hypertarget{structSettings_a6eeb3bce280b655b264a5485bc98131d}\label{structSettings_a6eeb3bce280b655b264a5485bc98131d} 
-\index{Settings@{Settings}!cast\_shadows@{cast\_shadows}}
-\index{cast\_shadows@{cast\_shadows}!Settings@{Settings}}
-\doxysubsubsection{\texorpdfstring{cast\_shadows}{cast\_shadows}}
-{\footnotesize\ttfamily bool Settings\+::cast\+\_\+shadows}
-
-\Hypertarget{structSettings_abcc9afaca9cc43e6a8e89019f813605c}\label{structSettings_abcc9afaca9cc43e6a8e89019f813605c} 
-\index{Settings@{Settings}!fov@{fov}}
-\index{fov@{fov}!Settings@{Settings}}
-\doxysubsubsection{\texorpdfstring{fov}{fov}}
-{\footnotesize\ttfamily float Settings\+::fov}
-
-\Hypertarget{structSettings_a42321e1b16d47aa586fc0550af51ec8e}\label{structSettings_a42321e1b16d47aa586fc0550af51ec8e} 
-\index{Settings@{Settings}!master\_volume@{master\_volume}}
-\index{master\_volume@{master\_volume}!Settings@{Settings}}
-\doxysubsubsection{\texorpdfstring{master\_volume}{master\_volume}}
-{\footnotesize\ttfamily float Settings\+::master\+\_\+volume}
-
-\Hypertarget{structSettings_acc122f84c20ea17487b4ec401ed7c220}\label{structSettings_acc122f84c20ea17487b4ec401ed7c220} 
-\index{Settings@{Settings}!music\_volume@{music\_volume}}
-\index{music\_volume@{music\_volume}!Settings@{Settings}}
-\doxysubsubsection{\texorpdfstring{music\_volume}{music\_volume}}
-{\footnotesize\ttfamily float Settings\+::music\+\_\+volume}
-
-\Hypertarget{structSettings_aa3b5564804fddda4f4fd467035f55d34}\label{structSettings_aa3b5564804fddda4f4fd467035f55d34} 
-\index{Settings@{Settings}!resolution@{resolution}}
-\index{resolution@{resolution}!Settings@{Settings}}
-\doxysubsubsection{\texorpdfstring{resolution}{resolution}}
-{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_a2b19d553290a8d4a083d3c03280ea800}{u16}} Settings\+::resolution}
-
-\Hypertarget{structSettings_a67617a262358a51627b3a5a7d7014e6e}\label{structSettings_a67617a262358a51627b3a5a7d7014e6e} 
-\index{Settings@{Settings}!sfx\_volume@{sfx\_volume}}
-\index{sfx\_volume@{sfx\_volume}!Settings@{Settings}}
-\doxysubsubsection{\texorpdfstring{sfx\_volume}{sfx\_volume}}
-{\footnotesize\ttfamily float Settings\+::sfx\+\_\+volume}
-
-\Hypertarget{structSettings_accd4cef4192b90fc3c3c9363041e4321}\label{structSettings_accd4cef4192b90fc3c3c9363041e4321} 
-\index{Settings@{Settings}!shadow\_quality@{shadow\_quality}}
-\index{shadow\_quality@{shadow\_quality}!Settings@{Settings}}
-\doxysubsubsection{\texorpdfstring{shadow\_quality}{shadow\_quality}}
-{\footnotesize\ttfamily int Settings\+::shadow\+\_\+quality}
-
-\Hypertarget{structSettings_ac12200481fd626c6467dcd1e9b11e9c1}\label{structSettings_ac12200481fd626c6467dcd1e9b11e9c1} 
-\index{Settings@{Settings}!shadow\_resolution@{shadow\_resolution}}
-\index{shadow\_resolution@{shadow\_resolution}!Settings@{Settings}}
-\doxysubsubsection{\texorpdfstring{shadow\_resolution}{shadow\_resolution}}
-{\footnotesize\ttfamily int Settings\+::shadow\+\_\+resolution}
-
-\Hypertarget{structSettings_aadaec3227cfed84e96156877945a241c}\label{structSettings_aadaec3227cfed84e96156877945a241c} 
-\index{Settings@{Settings}!show\_collision\_boxes@{show\_collision\_boxes}}
-\index{show\_collision\_boxes@{show\_collision\_boxes}!Settings@{Settings}}
-\doxysubsubsection{\texorpdfstring{show\_collision\_boxes}{show\_collision\_boxes}}
-{\footnotesize\ttfamily bool Settings\+::show\+\_\+collision\+\_\+boxes}
-
-\Hypertarget{structSettings_a8a0a93423fb282d6cdffaa57b4a18105}\label{structSettings_a8a0a93423fb282d6cdffaa57b4a18105} 
+\Hypertarget{structSettings_ac6dce77df9847d86f1e34864044fe05b}\label{structSettings_ac6dce77df9847d86f1e34864044fe05b} 
 \index{Settings@{Settings}!show\_fps@{show\_fps}}
 \index{show\_fps@{show\_fps}!Settings@{Settings}}
 \doxysubsubsection{\texorpdfstring{show\_fps}{show\_fps}}
-{\footnotesize\ttfamily bool Settings\+::show\+\_\+fps}
+{\footnotesize\ttfamily Settings\+::show\+\_\+fps}
 
-\Hypertarget{structSettings_ae0c651af626997d943614fbad848b8d8}\label{structSettings_ae0c651af626997d943614fbad848b8d8} 
-\index{Settings@{Settings}!texture\_quality@{texture\_quality}}
-\index{texture\_quality@{texture\_quality}!Settings@{Settings}}
-\doxysubsubsection{\texorpdfstring{texture\_quality}{texture\_quality}}
-{\footnotesize\ttfamily int Settings\+::texture\+\_\+quality}
+A boolean flag to indicate whether the FPS (frames per second) should be displayed. \Hypertarget{structSettings_ac383a3b653fbb893ba0e92af9864c5b4}\label{structSettings_ac383a3b653fbb893ba0e92af9864c5b4} 
+\index{Settings@{Settings}!cast\_shadows@{cast\_shadows}}
+\index{cast\_shadows@{cast\_shadows}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{cast\_shadows}{cast\_shadows}}
+{\footnotesize\ttfamily Settings\+::cast\+\_\+shadows}
 
-\Hypertarget{structSettings_aacb416379371230d79a9bcf2bcdcf5dc}\label{structSettings_aacb416379371230d79a9bcf2bcdcf5dc} 
-\index{Settings@{Settings}!vsync@{vsync}}
-\index{vsync@{vsync}!Settings@{Settings}}
-\doxysubsubsection{\texorpdfstring{vsync}{vsync}}
-{\footnotesize\ttfamily bool Settings\+::vsync}
-
-\Hypertarget{structSettings_ae523e7e0ac8d0cb194a02821d9862b39}\label{structSettings_ae523e7e0ac8d0cb194a02821d9862b39} 
+A boolean flag to indicate whether shadows should be cast in the application. \Hypertarget{structSettings_a94dfa7d0181c7b476e4651463278f621}\label{structSettings_a94dfa7d0181c7b476e4651463278f621} 
 \index{Settings@{Settings}!window\_fullscreen@{window\_fullscreen}}
 \index{window\_fullscreen@{window\_fullscreen}!Settings@{Settings}}
 \doxysubsubsection{\texorpdfstring{window\_fullscreen}{window\_fullscreen}}
-{\footnotesize\ttfamily bool Settings\+::window\+\_\+fullscreen}
+{\footnotesize\ttfamily Settings\+::window\+\_\+fullscreen}
 
+A boolean flag to indicate whether the application window should be in fullscreen mode. \Hypertarget{structSettings_a9f85d2e9585f26e614a94e4ac6856004}\label{structSettings_a9f85d2e9585f26e614a94e4ac6856004} 
+\index{Settings@{Settings}!resolution@{resolution}}
+\index{resolution@{resolution}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{resolution}{resolution}}
+{\footnotesize\ttfamily Settings\+::resolution}
 
+An unsigned 16-\/bit integer representing the resolution setting of the application. \Hypertarget{structSettings_a59192e870444623b2824b03c6ea96fe1}\label{structSettings_a59192e870444623b2824b03c6ea96fe1} 
+\index{Settings@{Settings}!show\_collision\_boxes@{show\_collision\_boxes}}
+\index{show\_collision\_boxes@{show\_collision\_boxes}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{show\_collision\_boxes}{show\_collision\_boxes}}
+{\footnotesize\ttfamily Settings\+::show\+\_\+collision\+\_\+boxes}
+
+A boolean flag to indicate whether collision boxes should be displayed. \Hypertarget{structSettings_a2bd37af197d6fb1b2d5d28aad5c4445d}\label{structSettings_a2bd37af197d6fb1b2d5d28aad5c4445d} 
+\index{Settings@{Settings}!master\_volume@{master\_volume}}
+\index{master\_volume@{master\_volume}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{master\_volume}{master\_volume}}
+{\footnotesize\ttfamily Settings\+::master\+\_\+volume}
+
+A float representing the master volume level of the application. \Hypertarget{structSettings_ae16822b4ae59632f4104c5ece8820bfa}\label{structSettings_ae16822b4ae59632f4104c5ece8820bfa} 
+\index{Settings@{Settings}!music\_volume@{music\_volume}}
+\index{music\_volume@{music\_volume}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{music\_volume}{music\_volume}}
+{\footnotesize\ttfamily Settings\+::music\+\_\+volume}
+
+A float representing the volume level for music in the application. \Hypertarget{structSettings_a7a242ee1f5db23eac56156bff89f166d}\label{structSettings_a7a242ee1f5db23eac56156bff89f166d} 
+\index{Settings@{Settings}!sfx\_volume@{sfx\_volume}}
+\index{sfx\_volume@{sfx\_volume}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{sfx\_volume}{sfx\_volume}}
+{\footnotesize\ttfamily Settings\+::sfx\+\_\+volume}
+
+A float representing the volume level for sound effects in the application. \Hypertarget{structSettings_ae491ab9fb4610146d3d3ea524526ac78}\label{structSettings_ae491ab9fb4610146d3d3ea524526ac78} 
+\index{Settings@{Settings}!fov@{fov}}
+\index{fov@{fov}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{fov}{fov}}
+{\footnotesize\ttfamily Settings\+::fov}
+
+A float representing the field of view (FOV) setting of the application. \Hypertarget{structSettings_a559ad2ee293c51f2946d2ae224e588aa}\label{structSettings_a559ad2ee293c51f2946d2ae224e588aa} 
+\index{Settings@{Settings}!shadow\_resolution@{shadow\_resolution}}
+\index{shadow\_resolution@{shadow\_resolution}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{shadow\_resolution}{shadow\_resolution}}
+{\footnotesize\ttfamily Settings\+::shadow\+\_\+resolution}
+
+An integer representing the resolution of shadows in the application. \Hypertarget{structSettings_a35cb3f44d314a65d2974ee53f8901640}\label{structSettings_a35cb3f44d314a65d2974ee53f8901640} 
+\index{Settings@{Settings}!shadow\_quality@{shadow\_quality}}
+\index{shadow\_quality@{shadow\_quality}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{shadow\_quality}{shadow\_quality}}
+{\footnotesize\ttfamily Settings\+::shadow\+\_\+quality}
+
+An integer representing the quality level of shadows in the application. \Hypertarget{structSettings_a3c32c046fd726798ddd71ee4bcd23a50}\label{structSettings_a3c32c046fd726798ddd71ee4bcd23a50} 
+\index{Settings@{Settings}!texture\_quality@{texture\_quality}}
+\index{texture\_quality@{texture\_quality}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{texture\_quality}{texture\_quality}}
+{\footnotesize\ttfamily Settings\+::texture\+\_\+quality}
+
+An integer representing the quality level of textures in the application. \Hypertarget{structSettings_a5a0ad4a032192977e936e6bc54f81c6e}\label{structSettings_a5a0ad4a032192977e936e6bc54f81c6e} 
+\index{Settings@{Settings}!antialiasing@{antialiasing}}
+\index{antialiasing@{antialiasing}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{antialiasing}{antialiasing}}
+{\footnotesize\ttfamily Settings\+::antialiasing}
+
+A boolean flag to indicate whether antialiasing is enabled. \Hypertarget{structSettings_a2885ad47b384263e3604dbdb0dd64f2c}\label{structSettings_a2885ad47b384263e3604dbdb0dd64f2c} 
+\index{Settings@{Settings}!ssr@{ssr}}
+\index{ssr@{ssr}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{ssr}{ssr}}
+{\footnotesize\ttfamily bool Settings\+::ssr}
+
+\Hypertarget{structSettings_ab4b7cff7d866a83134f43aecadf6f33d}\label{structSettings_ab4b7cff7d866a83134f43aecadf6f33d} 
+\index{Settings@{Settings}!ssao@{ssao}}
+\index{ssao@{ssao}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{ssao}{ssao}}
+{\footnotesize\ttfamily bool Settings\+::ssao}
+
+\Hypertarget{structSettings_a563f18b1763bd4095a5fbbf7aded41a0}\label{structSettings_a563f18b1763bd4095a5fbbf7aded41a0} 
+\index{Settings@{Settings}!bloom@{bloom}}
+\index{bloom@{bloom}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{bloom}{bloom}}
+{\footnotesize\ttfamily bool Settings\+::bloom}
+
+\Hypertarget{structSettings_aaeeaf334506f90329361f6d8fd57dd1b}\label{structSettings_aaeeaf334506f90329361f6d8fd57dd1b} 
+\index{Settings@{Settings}!vsync@{vsync}}
+\index{vsync@{vsync}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{vsync}{vsync}}
+{\footnotesize\ttfamily Settings\+::vsync}
+
+A boolean flag to indicate whether vertical synchronization (VSync) is enabled. \Hypertarget{structSettings_ae66b456c544c9ff722f18b1374b593c4}\label{structSettings_ae66b456c544c9ff722f18b1374b593c4} 
+\index{Settings@{Settings}!keybinds@{keybinds}}
+\index{keybinds@{keybinds}!Settings@{Settings}}
+\doxysubsubsection{\texorpdfstring{keybinds}{keybinds}}
+{\footnotesize\ttfamily Settings\+::keybinds}
+
+A \doxylink{structKeybinds}{Keybinds} structure containing the keybindings for the application. 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

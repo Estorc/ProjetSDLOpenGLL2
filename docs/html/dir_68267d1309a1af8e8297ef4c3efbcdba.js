@@ -5,6 +5,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "io", "dir_c184e51c84f2c3f0345bbc8a0d75d3e1.html", "dir_c184e51c84f2c3f0345bbc8a0d75d3e1" ],
     [ "math", "dir_ae9a93452e2a84339148a16bcf2eb561.html", "dir_ae9a93452e2a84339148a16bcf2eb561" ],
     [ "physics", "dir_8250e12e5a19acb8ece30f1703b6dc16.html", "dir_8250e12e5a19acb8ece30f1703b6dc16" ],
+    [ "raptiquax", "dir_ca94d180c7623ac9f0d275250717fdf1.html", "dir_ca94d180c7623ac9f0d275250717fdf1" ],
     [ "render", "dir_e488ee1cea97fb16abdb5ccc78d2123b.html", "dir_e488ee1cea97fb16abdb5ccc78d2123b" ],
     [ "scripts", "dir_634e799a3947388232110823971192a8.html", "dir_634e799a3947388232110823971192a8" ],
     [ "storage", "dir_452baf35e1d7639c9f2a5ece4ec85855.html", "dir_452baf35e1d7639c9f2a5ece4ec85855" ],

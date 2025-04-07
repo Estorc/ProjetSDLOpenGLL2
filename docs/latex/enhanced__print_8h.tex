@@ -1,14 +1,16 @@
 \doxysection{src/term/enhanced\+\_\+print.h File Reference}
 \hypertarget{enhanced__print_8h}{}\label{enhanced__print_8h}\index{src/term/enhanced\_print.h@{src/term/enhanced\_print.h}}
-{\ttfamily \#include "{}color.\+h"{}}\newline
-Include dependency graph for enhanced\+\_\+print.\+h\+:\nopagebreak
+{\ttfamily \#include $<$term/color.\+h$>$}\newline
+Include dependency graph for enhanced\+\_\+print.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=224pt]{enhanced__print_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -18,54 +20,54 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{enhanced__print_8h_a2ed00843a64b449ef39f4e95e252b45c}{PRINT\+\_\+\+ERROR}}(x, ...)~fprintf(stderr, \mbox{\hyperlink{color_8h_a58f9401d546703859ab9c8720c61ee9e}{BOLD\+\_\+\+RED}} "{}\mbox{[}ERROR\mbox{]} "{} x \mbox{\hyperlink{color_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}} , \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+);
+\#define \mbox{\hyperlink{enhanced__print_8h_a2ed00843a64b449ef39f4e95e252b45c}{PRINT\+\_\+\+ERROR}}(x, ...)
 \item 
-\#define \mbox{\hyperlink{enhanced__print_8h_a75d71e6bab9ec83e2f1ccbcc502ee1fb}{PRINT\+\_\+\+INFO}}(x, ...)~fprintf(stdout, \mbox{\hyperlink{color_8h_adce122f566c88a1eceeb79a635afa964}{GREY}} "{}\mbox{[}INFO\mbox{]} "{} x \mbox{\hyperlink{color_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}} , \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+);
+\#define \mbox{\hyperlink{enhanced__print_8h_a75d71e6bab9ec83e2f1ccbcc502ee1fb}{PRINT\+\_\+\+INFO}}(x, ...)
 \item 
-\#define \mbox{\hyperlink{enhanced__print_8h_af99775dabbf0c6fab12d183eee106eea}{PRINT\+\_\+\+WARNING}}(x, ...)~fprintf(stderr, \mbox{\hyperlink{color_8h_abf681265909adf3d3e8116c93c0ba179}{YELLOW}} "{}\mbox{[}WARNING\mbox{]} "{} x \mbox{\hyperlink{color_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}} , \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+);
+\#define \mbox{\hyperlink{enhanced__print_8h_af99775dabbf0c6fab12d183eee106eea}{PRINT\+\_\+\+WARNING}}(x, ...)
 \item 
-\#define \mbox{\hyperlink{enhanced__print_8h_a04428e100baf5556cb6448f6e6335879}{PRINT\+\_\+\+SERVER\+\_\+\+INFO}}(x, ...)~fprintf(stdout, \mbox{\hyperlink{color_8h_a62f05b1e00666a7e59003a86c1ca68d6}{BOLD\+\_\+\+CYAN}} "{}\mbox{[}SERVER INFO\mbox{]} "{} x \mbox{\hyperlink{color_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}} , \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+);
+\#define \mbox{\hyperlink{enhanced__print_8h_a04428e100baf5556cb6448f6e6335879}{PRINT\+\_\+\+SERVER\+\_\+\+INFO}}(x, ...)
 \item 
-\#define \mbox{\hyperlink{enhanced__print_8h_a72448d2cecc6158f64eea3719144774c}{PRINT\+\_\+\+CLIENT\+\_\+\+INFO}}(x, ...)~fprintf(stdout, \mbox{\hyperlink{color_8h_a0533bbc2534a2c8075e060896c9bd2d8}{BOLD\+\_\+\+MAGENTA}} "{}\mbox{[}CLIENT INFO\mbox{]} "{} x \mbox{\hyperlink{color_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}} , \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+);
+\#define \mbox{\hyperlink{enhanced__print_8h_a72448d2cecc6158f64eea3719144774c}{PRINT\+\_\+\+CLIENT\+\_\+\+INFO}}(x, ...)
 \item 
-\#define \mbox{\hyperlink{enhanced__print_8h_aaf8e6e3956443b117561717b77a73ff6}{PRINT\+\_\+\+SUCCESS}}(x, ...)~fprintf(stdout, \mbox{\hyperlink{color_8h_a08800e737f550f758120b8e717789a56}{BOLD\+\_\+\+GREEN}} "{}\mbox{[}SUCCESS\mbox{]} "{} x \mbox{\hyperlink{color_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}} , \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+);
+\#define \mbox{\hyperlink{enhanced__print_8h_aaf8e6e3956443b117561717b77a73ff6}{PRINT\+\_\+\+SUCCESS}}(x, ...)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{enhanced__print_8h_a72448d2cecc6158f64eea3719144774c}\label{enhanced__print_8h_a72448d2cecc6158f64eea3719144774c} 
-\index{enhanced\_print.h@{enhanced\_print.h}!PRINT\_CLIENT\_INFO@{PRINT\_CLIENT\_INFO}}
-\index{PRINT\_CLIENT\_INFO@{PRINT\_CLIENT\_INFO}!enhanced\_print.h@{enhanced\_print.h}}
-\doxysubsubsection{\texorpdfstring{PRINT\_CLIENT\_INFO}{PRINT\_CLIENT\_INFO}}
-{\footnotesize\ttfamily \#define PRINT\+\_\+\+CLIENT\+\_\+\+INFO(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{... }\end{DoxyParamCaption})~fprintf(stdout, \mbox{\hyperlink{color_8h_a0533bbc2534a2c8075e060896c9bd2d8}{BOLD\+\_\+\+MAGENTA}} "{}\mbox{[}CLIENT INFO\mbox{]} "{} x \mbox{\hyperlink{color_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}} , \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+);}
-
 \Hypertarget{enhanced__print_8h_a2ed00843a64b449ef39f4e95e252b45c}\label{enhanced__print_8h_a2ed00843a64b449ef39f4e95e252b45c} 
 \index{enhanced\_print.h@{enhanced\_print.h}!PRINT\_ERROR@{PRINT\_ERROR}}
 \index{PRINT\_ERROR@{PRINT\_ERROR}!enhanced\_print.h@{enhanced\_print.h}}
 \doxysubsubsection{\texorpdfstring{PRINT\_ERROR}{PRINT\_ERROR}}
-{\footnotesize\ttfamily \#define PRINT\+\_\+\+ERROR(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{... }\end{DoxyParamCaption})~fprintf(stderr, \mbox{\hyperlink{color_8h_a58f9401d546703859ab9c8720c61ee9e}{BOLD\+\_\+\+RED}} "{}\mbox{[}ERROR\mbox{]} "{} x \mbox{\hyperlink{color_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}} , \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+);}
+{\footnotesize\ttfamily \#define PRINT\+\_\+\+ERROR(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{... }\end{DoxyParamCaption})}
 
 \Hypertarget{enhanced__print_8h_a75d71e6bab9ec83e2f1ccbcc502ee1fb}\label{enhanced__print_8h_a75d71e6bab9ec83e2f1ccbcc502ee1fb} 
 \index{enhanced\_print.h@{enhanced\_print.h}!PRINT\_INFO@{PRINT\_INFO}}
 \index{PRINT\_INFO@{PRINT\_INFO}!enhanced\_print.h@{enhanced\_print.h}}
 \doxysubsubsection{\texorpdfstring{PRINT\_INFO}{PRINT\_INFO}}
-{\footnotesize\ttfamily \#define PRINT\+\_\+\+INFO(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{... }\end{DoxyParamCaption})~fprintf(stdout, \mbox{\hyperlink{color_8h_adce122f566c88a1eceeb79a635afa964}{GREY}} "{}\mbox{[}INFO\mbox{]} "{} x \mbox{\hyperlink{color_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}} , \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+);}
-
-\Hypertarget{enhanced__print_8h_a04428e100baf5556cb6448f6e6335879}\label{enhanced__print_8h_a04428e100baf5556cb6448f6e6335879} 
-\index{enhanced\_print.h@{enhanced\_print.h}!PRINT\_SERVER\_INFO@{PRINT\_SERVER\_INFO}}
-\index{PRINT\_SERVER\_INFO@{PRINT\_SERVER\_INFO}!enhanced\_print.h@{enhanced\_print.h}}
-\doxysubsubsection{\texorpdfstring{PRINT\_SERVER\_INFO}{PRINT\_SERVER\_INFO}}
-{\footnotesize\ttfamily \#define PRINT\+\_\+\+SERVER\+\_\+\+INFO(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{... }\end{DoxyParamCaption})~fprintf(stdout, \mbox{\hyperlink{color_8h_a62f05b1e00666a7e59003a86c1ca68d6}{BOLD\+\_\+\+CYAN}} "{}\mbox{[}SERVER INFO\mbox{]} "{} x \mbox{\hyperlink{color_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}} , \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+);}
-
-\Hypertarget{enhanced__print_8h_aaf8e6e3956443b117561717b77a73ff6}\label{enhanced__print_8h_aaf8e6e3956443b117561717b77a73ff6} 
-\index{enhanced\_print.h@{enhanced\_print.h}!PRINT\_SUCCESS@{PRINT\_SUCCESS}}
-\index{PRINT\_SUCCESS@{PRINT\_SUCCESS}!enhanced\_print.h@{enhanced\_print.h}}
-\doxysubsubsection{\texorpdfstring{PRINT\_SUCCESS}{PRINT\_SUCCESS}}
-{\footnotesize\ttfamily \#define PRINT\+\_\+\+SUCCESS(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{... }\end{DoxyParamCaption})~fprintf(stdout, \mbox{\hyperlink{color_8h_a08800e737f550f758120b8e717789a56}{BOLD\+\_\+\+GREEN}} "{}\mbox{[}SUCCESS\mbox{]} "{} x \mbox{\hyperlink{color_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}} , \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+);}
+{\footnotesize\ttfamily \#define PRINT\+\_\+\+INFO(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{... }\end{DoxyParamCaption})}
 
 \Hypertarget{enhanced__print_8h_af99775dabbf0c6fab12d183eee106eea}\label{enhanced__print_8h_af99775dabbf0c6fab12d183eee106eea} 
 \index{enhanced\_print.h@{enhanced\_print.h}!PRINT\_WARNING@{PRINT\_WARNING}}
 \index{PRINT\_WARNING@{PRINT\_WARNING}!enhanced\_print.h@{enhanced\_print.h}}
 \doxysubsubsection{\texorpdfstring{PRINT\_WARNING}{PRINT\_WARNING}}
-{\footnotesize\ttfamily \#define PRINT\+\_\+\+WARNING(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{... }\end{DoxyParamCaption})~fprintf(stderr, \mbox{\hyperlink{color_8h_abf681265909adf3d3e8116c93c0ba179}{YELLOW}} "{}\mbox{[}WARNING\mbox{]} "{} x \mbox{\hyperlink{color_8h_ab702106cf3b3e96750b6845ded4e0299}{RESET}} , \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+);}
+{\footnotesize\ttfamily \#define PRINT\+\_\+\+WARNING(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+\Hypertarget{enhanced__print_8h_a04428e100baf5556cb6448f6e6335879}\label{enhanced__print_8h_a04428e100baf5556cb6448f6e6335879} 
+\index{enhanced\_print.h@{enhanced\_print.h}!PRINT\_SERVER\_INFO@{PRINT\_SERVER\_INFO}}
+\index{PRINT\_SERVER\_INFO@{PRINT\_SERVER\_INFO}!enhanced\_print.h@{enhanced\_print.h}}
+\doxysubsubsection{\texorpdfstring{PRINT\_SERVER\_INFO}{PRINT\_SERVER\_INFO}}
+{\footnotesize\ttfamily \#define PRINT\+\_\+\+SERVER\+\_\+\+INFO(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+\Hypertarget{enhanced__print_8h_a72448d2cecc6158f64eea3719144774c}\label{enhanced__print_8h_a72448d2cecc6158f64eea3719144774c} 
+\index{enhanced\_print.h@{enhanced\_print.h}!PRINT\_CLIENT\_INFO@{PRINT\_CLIENT\_INFO}}
+\index{PRINT\_CLIENT\_INFO@{PRINT\_CLIENT\_INFO}!enhanced\_print.h@{enhanced\_print.h}}
+\doxysubsubsection{\texorpdfstring{PRINT\_CLIENT\_INFO}{PRINT\_CLIENT\_INFO}}
+{\footnotesize\ttfamily \#define PRINT\+\_\+\+CLIENT\+\_\+\+INFO(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+\Hypertarget{enhanced__print_8h_aaf8e6e3956443b117561717b77a73ff6}\label{enhanced__print_8h_aaf8e6e3956443b117561717b77a73ff6} 
+\index{enhanced\_print.h@{enhanced\_print.h}!PRINT\_SUCCESS@{PRINT\_SUCCESS}}
+\index{PRINT\_SUCCESS@{PRINT\_SUCCESS}!enhanced\_print.h@{enhanced\_print.h}}
+\doxysubsubsection{\texorpdfstring{PRINT\_SUCCESS}{PRINT\_SUCCESS}}
+{\footnotesize\ttfamily \#define PRINT\+\_\+\+SUCCESS(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{... }\end{DoxyParamCaption})}
 

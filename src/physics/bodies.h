@@ -1,24 +1,15 @@
-#include "../math/math_util.h"
-#include "../io/model.h"
+#include <math/math_util.h>
+#include <io/model.h>
 
 #ifndef BODIES_H
 #define BODIES_H
 
-/**
- * @defgroup BodiesGroup Bodies
- * @brief Represents a node in the physics simulation.
- * 
- * A node is a generic object that can be used to represent different types of 
- * bodies in the physics simulation, such as static bodies, rigid bodies, and 
- * kinematic bodies.
- * 
- * @{
- */
-
 struct Node;
 
 /**
+ * @class StaticBody
  * @brief Represents a static body in the physics simulation.
+ * @ingroup Classes Classes
  * 
  * A static body does not move and is used for objects like walls or floors.
  */
@@ -29,7 +20,9 @@ typedef struct StaticBody {
 } StaticBody;
 
 /**
+ * @class RigidBody
  * @brief Represents a rigid body in the physics simulation.
+ * @ingroup Classes Classes
  * 
  * A rigid body can move and is affected by forces and collisions.
  */
@@ -46,7 +39,9 @@ typedef struct RigidBody {
 } RigidBody;
 
 /**
+ * @class KinematicBody
  * @brief Represents a kinematic body in the physics simulation.
+ * @ingroup Classes Classes
  * 
  * A kinematic body is controlled by the user and is not affected by forces.
  */
@@ -55,6 +50,17 @@ typedef struct KinematicBody {
     vec3 velocity; /**< Current velocity of the kinematic body. */
     u8 length; /**< Number of collision shapes. */
 } KinematicBody;
+
+/**
+ * @defgroup BodiesGroup Bodies
+ * @brief Represents a node in the physics simulation.
+ * 
+ * A node is a generic object that can be used to represent different types of 
+ * bodies in the physics simulation, such as static bodies, rigid bodies, and 
+ * kinematic bodies.
+ * 
+ * @{
+ */
 
 /**
  * @brief Represents a plane collision shape.
@@ -118,18 +124,9 @@ typedef struct RayCollisionShape {
  */
 typedef struct CollisionBuffer {
     struct Node **collisionsShapes; /**< Array of collision shapes in the buffer. */
-    u8 length; /**< Number of collision shapes in the buffer. */
-    u8 index; /**< Current index in the buffer. */
+    u32 length; /**< Number of collision shapes in the buffer. */
+    u32 index; /**< Current index in the buffer. */
 } CollisionBuffer;
-
-// All the bodies listed bellow have shared attributes. It allows the compiler to get an attribute from the void* pointer.
-#define GET_FROM_BODY_NODE(node, attribute, dest) \
-switch (node->type) {\
-    case CLASS_TYPE_STATICBODY:              dest = &((StaticBody *) node->object)->attribute;                  break;\
-    case CLASS_TYPE_RIGIDBODY:               dest = &((RigidBody *) node->object)->attribute;                   break;\
-    case CLASS_TYPE_KINEMATICBODY:           dest = &((KinematicBody *) node->object)->attribute;               break;\
-    default:                            dest = 0;                                                         break;\
-};
 
 /** @} */
 

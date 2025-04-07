@@ -1,5 +1,5 @@
-#include "../raptiquax.h"
-#include "stack.h"
+#include <raptiquax.h>
+#include <storage/stack.h>
 
 void stack_push(Stack *stack, void *data) {
     Stack *new_element = malloc(sizeof(Stack));
@@ -22,6 +22,7 @@ void *stack_pop(Stack *stack) {
 
 void stack_free(Stack *stack) {
     Stack *cursor = stack->next;
+    if (!cursor) return;
     while (cursor->next != NULL) {
         Stack *next = cursor->next;
         free(cursor);

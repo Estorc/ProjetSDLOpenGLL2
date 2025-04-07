@@ -26,53 +26,6 @@ Utilities for handling collision detection and response in the physics engine.
 This file contains functions and definitions that assist in detecting and responding to collisions between objects in the physics simulation. It provides essential utilities to ensure accurate and efficient collision handling. 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{group__CollisionUtil_ga887c531e537fcc2721fbda07db006867}\label{group__CollisionUtil_ga887c531e537fcc2721fbda07db006867} 
-\index{Collision Utilities@{Collision Utilities}!closest\_point\_on\_triangle@{closest\_point\_on\_triangle}}
-\index{closest\_point\_on\_triangle@{closest\_point\_on\_triangle}!Collision Utilities@{Collision Utilities}}
-\doxysubsubsection{\texorpdfstring{closest\_point\_on\_triangle()}{closest\_point\_on\_triangle()}}
-{\footnotesize\ttfamily void closest\+\_\+point\+\_\+on\+\_\+triangle (\begin{DoxyParamCaption}\item[{vec3}]{p,  }\item[{vec3}]{a,  }\item[{vec3}]{b,  }\item[{vec3}]{c,  }\item[{vec3}]{closest\+Point }\end{DoxyParamCaption})}
-
-
-
-Finds the closest point on a triangle to a given point. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em p} & The point to find the closest point to. \\
-\hline
-{\em a} & The first vertex of the triangle. \\
-\hline
-{\em b} & The second vertex of the triangle. \\
-\hline
-{\em c} & The third vertex of the triangle. \\
-\hline
-{\em closest\+Point} & Pointer to store the closest point on the triangle. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{group__CollisionUtil_ga4aae0c429a4146e14becc2528d3accb8}\label{group__CollisionUtil_ga4aae0c429a4146e14becc2528d3accb8} 
-\index{Collision Utilities@{Collision Utilities}!compute\_overlap@{compute\_overlap}}
-\index{compute\_overlap@{compute\_overlap}!Collision Utilities@{Collision Utilities}}
-\doxysubsubsection{\texorpdfstring{compute\_overlap()}{compute\_overlap()}}
-{\footnotesize\ttfamily float compute\+\_\+overlap (\begin{DoxyParamCaption}\item[{float}]{minA,  }\item[{float}]{maxA,  }\item[{float}]{minB,  }\item[{float}]{maxB }\end{DoxyParamCaption})}
-
-
-
-Computes the overlap between two projections. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em minA} & The minimum value of the first projection. \\
-\hline
-{\em maxA} & The maximum value of the first projection. \\
-\hline
-{\em minB} & The minimum value of the second projection. \\
-\hline
-{\em maxB} & The maximum value of the second projection. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The amount of overlap between the two projections. 
-\end{DoxyReturn}
 \Hypertarget{group__CollisionUtil_gaf2d5738dccc46ab8aea8c19bdbb6ee3d}\label{group__CollisionUtil_gaf2d5738dccc46ab8aea8c19bdbb6ee3d} 
 \index{Collision Utilities@{Collision Utilities}!project\_box\_onto\_axis@{project\_box\_onto\_axis}}
 \index{project\_box\_onto\_axis@{project\_box\_onto\_axis}!Collision Utilities@{Collision Utilities}}
@@ -123,6 +76,29 @@ Projects a capsule onto a given axis.
 {\em max\+Proj} & Pointer to store the maximum projection value. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{group__CollisionUtil_ga887c531e537fcc2721fbda07db006867}\label{group__CollisionUtil_ga887c531e537fcc2721fbda07db006867} 
+\index{Collision Utilities@{Collision Utilities}!closest\_point\_on\_triangle@{closest\_point\_on\_triangle}}
+\index{closest\_point\_on\_triangle@{closest\_point\_on\_triangle}!Collision Utilities@{Collision Utilities}}
+\doxysubsubsection{\texorpdfstring{closest\_point\_on\_triangle()}{closest\_point\_on\_triangle()}}
+{\footnotesize\ttfamily void closest\+\_\+point\+\_\+on\+\_\+triangle (\begin{DoxyParamCaption}\item[{vec3}]{p,  }\item[{vec3}]{a,  }\item[{vec3}]{b,  }\item[{vec3}]{c,  }\item[{vec3}]{closest\+Point }\end{DoxyParamCaption})}
+
+
+
+Finds the closest point on a triangle to a given point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The point to find the closest point to. \\
+\hline
+{\em a} & The first vertex of the triangle. \\
+\hline
+{\em b} & The second vertex of the triangle. \\
+\hline
+{\em c} & The third vertex of the triangle. \\
+\hline
+{\em closest\+Point} & Pointer to store the closest point on the triangle. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{group__CollisionUtil_gae7bef81b9525080c3b948836aa82dc88}\label{group__CollisionUtil_gae7bef81b9525080c3b948836aa82dc88} 
 \index{Collision Utilities@{Collision Utilities}!projections\_overlap@{projections\_overlap}}
 \index{projections\_overlap@{projections\_overlap}!Collision Utilities@{Collision Utilities}}
@@ -146,4 +122,28 @@ Checks if two projections overlap.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 true if the projections overlap, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{group__CollisionUtil_ga4aae0c429a4146e14becc2528d3accb8}\label{group__CollisionUtil_ga4aae0c429a4146e14becc2528d3accb8} 
+\index{Collision Utilities@{Collision Utilities}!compute\_overlap@{compute\_overlap}}
+\index{compute\_overlap@{compute\_overlap}!Collision Utilities@{Collision Utilities}}
+\doxysubsubsection{\texorpdfstring{compute\_overlap()}{compute\_overlap()}}
+{\footnotesize\ttfamily float compute\+\_\+overlap (\begin{DoxyParamCaption}\item[{float}]{minA,  }\item[{float}]{maxA,  }\item[{float}]{minB,  }\item[{float}]{maxB }\end{DoxyParamCaption})}
+
+
+
+Computes the overlap between two projections. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em minA} & The minimum value of the first projection. \\
+\hline
+{\em maxA} & The maximum value of the first projection. \\
+\hline
+{\em minB} & The minimum value of the second projection. \\
+\hline
+{\em maxB} & The maximum value of the second projection. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The amount of overlap between the two projections. 
 \end{DoxyReturn}

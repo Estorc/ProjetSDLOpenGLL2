@@ -1,0 +1,91 @@
+%% Creator: Inkscape 1.3.2 (091e20e, 2023-11-25, custom), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'node_svg-tex.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{1264.77236938bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.45869943)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{node_svg-tex.pdf}}%
+    \put(0.14454161,0.18732991){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Objet\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{node_svg-tex.pdf}}%
+    \put(0.34666982,0.18732991){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Position\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{node_svg-tex.pdf}}%
+    \put(0.47664799,0.18732991){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Taille\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{node_svg-tex.pdf}}%
+    \put(0.60636778,0.18732991){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Rotation\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{node_svg-tex.pdf}}%
+    \put(0.34666981,0.39137455){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}x\end{tabular}}}}%
+    \put(0.34666981,0.3646899){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}y\end{tabular}}}}%
+    \put(0.34666981,0.33800526){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}z\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{node_svg-tex.pdf}}%
+    \put(0.47694844,0.39137455){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}x\end{tabular}}}}%
+    \put(0.47694844,0.3646899){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}y\end{tabular}}}}%
+    \put(0.47694844,0.33800526){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}z\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{node_svg-tex.pdf}}%
+    \put(0.6071841,0.39137455){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}x\end{tabular}}}}%
+    \put(0.6071841,0.3646899){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}y\end{tabular}}}}%
+    \put(0.6071841,0.33800526){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}z\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{node_svg-tex.pdf}}%
+    \put(0.14546098,0.3550084){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}struct \{...\}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{node_svg-tex.pdf}}%
+    \put(0.73694689,0.18754876){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Pere\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{node_svg-tex.pdf}}%
+    \put(0.73738783,0.34948529){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Noeud * \{...\}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{node_svg-tex.pdf}}%
+    \put(0.86090339,0.046841){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}[Noeud * \{...\} ...]\end{tabular}}}}%
+    \put(0.34583744,0.43396217){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Vec3\end{tabular}}}}%
+    \put(0.4772843,0.43396217){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Vec3\end{tabular}}}}%
+    \put(0.60627545,0.43396217){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Vec3\end{tabular}}}}%
+    \put(0.06479569,0.27487638){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Noeud\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{node_svg-tex.pdf}}%
+    \put(0.89511459,0.1869793){\color[rgb]{0.11764706,0.11764706,0.11764706}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Enfants\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

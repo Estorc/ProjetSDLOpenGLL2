@@ -14,21 +14,38 @@
  * @date 2023-10-20
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "storage/node.h"
-#include "io/shader.h"
-#include "render/render.h"
-#include "window.h"
-#include "gui/frame.h"
-#include "io/input.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <storage/node.h>
+#include <io/shader.h>
+#include <render/render.h>
+#include <window.h>
+#include <gui/frame.h>
+#include <io/input.h>
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class InputArea : public Frame {
     __containerType__ Node *
     public:
 
+    /**
+     * @brief Constructor for the input area class.
+     *
+     * This function initializes an input area with the specified default text,
+     * horizontal alignment, and vertical alignment.
+     *
+     * @param defaultText A pointer to a character array containing the default text
+     *                    to be displayed in the input area.
+     * @param ha An integer representing the horizontal alignment of the input area.
+     *           Possible values can be defined as constants or enums elsewhere in the code.
+     * @param va An integer representing the vertical alignment of the input area.
+     *           Possible values can be defined as constants or enums elsewhere in the code.
+     */
     void constructor(char *defaultText, int ha, int va) {
         this->type = __type__; 
 
@@ -57,8 +74,13 @@ class InputArea : public Frame {
         frame->alignment[1] = va;
     }
 
-    
-
+    /**
+     * @brief Loads data from a file.
+     *
+     * This function reads data from the given file and processes it accordingly.
+     *
+     * @param file A pointer to the file to be loaded.
+     */
     void load(FILE *file) {
         char defaultText[100];
         char alignment[2];
@@ -69,6 +91,12 @@ class InputArea : public Frame {
         this::constructor(defaultText, alignment[0], alignment[1]);
     }
 
+    /**
+     * @brief Refreshes the input area.
+     *
+     * This function is responsible for refreshing the input area, updating its state and rendering
+     * any necessary changes. It should be called whenever the input area needs to be redrawn or updated.
+     */
     void refresh() {
         SUPER(refresh);
         Frame *frame = (Frame *) this->object;
@@ -84,6 +112,13 @@ class InputArea : public Frame {
         SUPER(refreshContent);
     }
 
+    /**
+     * @brief Updates the state of the input area.
+     *
+     * This function is responsible for updating the state of the input area.
+     * It should be called whenever there is a need to refresh or change the state
+     * of the input area based on user interactions or other events.
+     */
     void update() {
         Frame *frame = (Frame *) this->object;
         InputArea *inputArea = (InputArea *) frame->inputArea;
@@ -132,15 +167,40 @@ class InputArea : public Frame {
         }
     }
 
+    /**
+     * @brief Checks if the current area is an input area.
+     *
+     * This function sets the value of the provided boolean pointer to indicate
+     * whether the current area is an input area.
+     *
+     * @param result A pointer to a boolean variable where the result will be stored.
+     *               - true: if the current area is an input area.
+     *               - false: otherwise.
+     */
     void is_input_area(bool *result) {
         *result = true;
     }
 
+    /**
+     * @brief Saves the current state of the editor node to a file.
+     *
+     * This function writes the state of the given editor node to the specified file.
+     *
+     * @param file A pointer to the FILE object where the editor node state will be saved.
+     * @param editor A pointer to the Node object representing the editor node whose state is to be saved.
+     */
     void save(FILE *file, Node *editor) {
         UNUSED(editor);
         fprintf(file, "%s", classManager.class_names[this->type]);
     }
 
+    /**
+     * @brief Frees the resources allocated for the input area class.
+     *
+     * This function is responsible for releasing any memory or resources
+     * that were allocated for the input area class. It should be called
+     * when the input area is no longer needed to prevent memory leaks.
+     */
     void free() {
         Frame *frame = (Frame *) this->object;
         InputArea *inputArea = frame->inputArea;
@@ -150,3 +210,4 @@ class InputArea : public Frame {
  
     
 }
+

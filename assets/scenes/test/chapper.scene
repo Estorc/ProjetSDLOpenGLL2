@@ -4,7 +4,7 @@ SphereCShape[m0,-2,0r0,0,0s1,1,1a1v1]
 SphereCShape[m0,0,0r0,0,0s1,1,1a1v1]
 [m0,2,10r0,0,0s1,1,1a1v1]{NULL,script_cc_player_update,script_cc_player_signal}:2
 Camera(1)[m0,0,0r0,0,0s1,1,1a1v1]{NULL,script_cc_camera_player,NULL}
-SpotLight(50,50,50,0.03,0,1,0.09,0.03,1,0.95)[m0,0,0r0,0,0s1,1,1a1v1]{NULL,flashlight,NULL}
+SpotLight(50,50,50,0.03,0,1,0.09,0.03,1,0.95)[m0,0,0r0,0,0s1,1,1a1v1]{cc_flashlight_init,cc_flashlight_update,NULL}
 Node[m0,8,0s7,7,7]{script_cc_chapper_init,script_cc_chapper_update,NULL}:2
 Model(assets/models/Chapper/Parts/head.obj)[r20.0,0,0]:1
 Model(assets/models/Chapper/Parts/neck_1.obj)[m0,0.246533,-0.156832r-20.0,0,0]:1

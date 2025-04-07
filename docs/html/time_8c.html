@@ -119,11 +119,11 @@ Include dependency graph for time.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="time_8c__incl.png" border="0" usemap="#asrc_2utils_2time_8c" alt=""/></div>
 <map name="asrc_2utils_2time_8c" id="asrc_2utils_2time_8c">
-<area shape="rect" title=" " alt="" coords="30,5,149,31"/>
-<area shape="rect" href="time_8h.html" title=" " alt="" coords="5,79,69,104"/>
-<area shape="poly" title=" " alt="" coords="83,33,56,69,52,66,79,29"/>
-<area shape="rect" title=" " alt="" coords="93,79,189,104"/>
-<area shape="poly" title=" " alt="" coords="100,29,127,66,123,69,96,33"/>
+<area shape="rect" title=" " alt="" coords="5,31,124,56"/>
+<area shape="rect" href="time_8h.html" title=" " alt="" coords="188,5,252,31"/>
+<area shape="poly" title=" " alt="" coords="124,31,174,23,174,28,125,36"/>
+<area shape="rect" title=" " alt="" coords="172,55,268,80"/>
+<area shape="poly" title=" " alt="" coords="125,50,159,55,158,60,124,55"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -164,6 +164,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -172,7 +182,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

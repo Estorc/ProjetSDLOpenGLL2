@@ -124,7 +124,7 @@ Functions</h2></td></tr>
 <tr class="memitem:ga63cbb7972f065dfe4d8a5bfb6690f3b6" id="r_ga63cbb7972f065dfe4d8a5bfb6690f3b6"><td class="memItemLeft" align="right" valign="top">SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextureLoader.html#ga63cbb7972f065dfe4d8a5bfb6690f3b6">flip_y_surface</a> (SDL_Surface *surface)</td></tr>
 <tr class="memdesc:ga63cbb7972f065dfe4d8a5bfb6690f3b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flips an SDL_Surface vertically (along the Y-axis).  <br /></td></tr>
 <tr class="separator:ga63cbb7972f065dfe4d8a5bfb6690f3b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga591c0c9eb16ebc91a0c71c112cbae995" id="r_ga591c0c9eb16ebc91a0c71c112cbae995"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextureLoader.html#ga591c0c9eb16ebc91a0c71c112cbae995">load_texture_from_path</a> (const char *path, GLenum format, bool yReversed)</td></tr>
+<tr class="memitem:ga591c0c9eb16ebc91a0c71c112cbae995" id="r_ga591c0c9eb16ebc91a0c71c112cbae995"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__MemoryCache.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextureLoader.html#ga591c0c9eb16ebc91a0c71c112cbae995">load_texture_from_path</a> (const char *path, GLenum format, bool yReversed)</td></tr>
 <tr class="memdesc:ga591c0c9eb16ebc91a0c71c112cbae995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a texture from a specified file path and creates an OpenGL texture.  <br /></td></tr>
 <tr class="separator:ga591c0c9eb16ebc91a0c71c112cbae995"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga26673e4bbcfa9dda796c186ad71308ed" id="r_ga26673e4bbcfa9dda796c186ad71308ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextureLoader.html#ga26673e4bbcfa9dda796c186ad71308ed">draw_text</a> (SDL_Surface *render_surface, int x, int y, const char *text, TTF_Font *font, SDL_Color color, char *alignment, int width)</td></tr>
@@ -160,6 +160,87 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>{float*} A pointer to the array of floats representing the RGB32F texture data.</dd></dl>
 <p>This function takes an SDL_Surface that contains RGBA texture data and converts it to an array of floats representing an RGB32F texture. This format is suitable for high dynamic range (HDR) rendering in OpenGL. </p>
+
+</div>
+</div>
+<a id="ga63cbb7972f065dfe4d8a5bfb6690f3b6" name="ga63cbb7972f065dfe4d8a5bfb6690f3b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga63cbb7972f065dfe4d8a5bfb6690f3b6">&#9670;&#160;</a></span>flip_y_surface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Surface * flip_y_surface </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>surface</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Flips an SDL_Surface vertically (along the Y-axis). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">surface</td><td>{SDL_Surface*} A pointer to the SDL_Surface to be flipped. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>{SDL_Surface*} A pointer to the new SDL_Surface that has been flipped vertically.</dd></dl>
+<p>This function creates a new SDL_Surface that is a vertically flipped version of the input surface. This is useful for correcting the orientation of textures that are loaded upside down. </p>
+
+</div>
+</div>
+<a id="ga591c0c9eb16ebc91a0c71c112cbae995" name="ga591c0c9eb16ebc91a0c71c112cbae995"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga591c0c9eb16ebc91a0c71c112cbae995">&#9670;&#160;</a></span>load_texture_from_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__MemoryCache.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a> load_texture_from_path </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>yReversed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Loads a texture from a specified file path and creates an OpenGL texture. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>{char*} A string containing the file path to the texture image. </td></tr>
+    <tr><td class="paramname">format</td><td>{GLenum} The format of the texture (e.g., GL_RGBA, GL_RGB). </td></tr>
+    <tr><td class="paramname">yReversed</td><td>{bool} A boolean indicating whether the texture's Y-axis should be reversed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>{TextureMap} The generated OpenGL texture ID, or 0 if loading fails.</dd></dl>
+<p>This function utilizes SDL_image to load a texture from the specified file path, creates an OpenGL texture object, and configures its parameters. The loaded texture is suitable for use in rendering graphics with OpenGL.</p>
+<p>Example Usage: </p><div class="fragment"><div class="line"><a class="code hl_typedef" href="group__MemoryCache.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a> texture = <a class="code hl_function" href="group__TextureLoader.html#ga591c0c9eb16ebc91a0c71c112cbae995">load_texture_from_path</a>(<span class="stringliteral">&quot;path/to/texture.png&quot;</span>, GL_RGBA, <span class="keyword">true</span>);</div>
+<div class="line"><span class="keywordflow">if</span> (texture != 0) {</div>
+<div class="line">    <span class="comment">// Use the texture for rendering...</span></div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__MemoryCache_html_gaa9abb132ae6f23dafca840fb8c6081ae"><div class="ttname"><a href="group__MemoryCache.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a></div><div class="ttdeci">u32 TextureMap</div><div class="ttdoc">Alias for u32 representing a texture map.</div><div class="ttdef"><b>Definition</b> memory.h:25</div></div>
+<div class="ttc" id="agroup__TextureLoader_html_ga591c0c9eb16ebc91a0c71c112cbae995"><div class="ttname"><a href="group__TextureLoader.html#ga591c0c9eb16ebc91a0c71c112cbae995">load_texture_from_path</a></div><div class="ttdeci">TextureMap load_texture_from_path(const char *path, GLenum format, bool yReversed)</div><div class="ttdoc">Loads a texture from a specified file path and creates an OpenGL texture.</div><div class="ttdef"><b>Definition</b> gltexture_loader.c:50</div></div>
+</div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>Returns the OpenGL texture ID on success. If the texture fails to load, the function returns 0. </dd></dl>
 
 </div>
 </div>
@@ -243,87 +324,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga63cbb7972f065dfe4d8a5bfb6690f3b6" name="ga63cbb7972f065dfe4d8a5bfb6690f3b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga63cbb7972f065dfe4d8a5bfb6690f3b6">&#9670;&#160;</a></span>flip_y_surface()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SDL_Surface * flip_y_surface </td>
-          <td>(</td>
-          <td class="paramtype">SDL_Surface *&#160;</td>
-          <td class="paramname"><em>surface</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Flips an SDL_Surface vertically (along the Y-axis). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">surface</td><td>{SDL_Surface*} A pointer to the SDL_Surface to be flipped. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>{SDL_Surface*} A pointer to the new SDL_Surface that has been flipped vertically.</dd></dl>
-<p>This function creates a new SDL_Surface that is a vertically flipped version of the input surface. This is useful for correcting the orientation of textures that are loaded upside down. </p>
-
-</div>
-</div>
-<a id="ga591c0c9eb16ebc91a0c71c112cbae995" name="ga591c0c9eb16ebc91a0c71c112cbae995"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga591c0c9eb16ebc91a0c71c112cbae995">&#9670;&#160;</a></span>load_texture_from_path()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a> load_texture_from_path </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">GLenum&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>yReversed</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Loads a texture from a specified file path and creates an OpenGL texture. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">path</td><td>{char*} A string containing the file path to the texture image. </td></tr>
-    <tr><td class="paramname">format</td><td>{GLenum} The format of the texture (e.g., GL_RGBA, GL_RGB). </td></tr>
-    <tr><td class="paramname">yReversed</td><td>{bool} A boolean indicating whether the texture's Y-axis should be reversed. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>{TextureMap} The generated OpenGL texture ID, or 0 if loading fails.</dd></dl>
-<p>This function utilizes SDL_image to load a texture from the specified file path, creates an OpenGL texture object, and configures its parameters. The loaded texture is suitable for use in rendering graphics with OpenGL.</p>
-<p>Example Usage: </p><div class="fragment"><div class="line"><a class="code hl_typedef" href="group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a> texture = <a class="code hl_function" href="group__TextureLoader.html#ga591c0c9eb16ebc91a0c71c112cbae995">load_texture_from_path</a>(<span class="stringliteral">&quot;path/to/texture.png&quot;</span>, GL_RGBA, <span class="keyword">true</span>);</div>
-<div class="line"><span class="keywordflow">if</span> (texture != 0) {</div>
-<div class="line">    <span class="comment">// Use the texture for rendering...</span></div>
-<div class="line">}</div>
-<div class="ttc" id="agroup__ModelHandling_html_gaa9abb132ae6f23dafca840fb8c6081ae"><div class="ttname"><a href="group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae">TextureMap</a></div><div class="ttdeci">u32 TextureMap</div><div class="ttdoc">Alias for u32 representing a texture map.</div><div class="ttdef"><b>Definition</b> model.h:86</div></div>
-<div class="ttc" id="agroup__TextureLoader_html_ga591c0c9eb16ebc91a0c71c112cbae995"><div class="ttname"><a href="group__TextureLoader.html#ga591c0c9eb16ebc91a0c71c112cbae995">load_texture_from_path</a></div><div class="ttdeci">TextureMap load_texture_from_path(const char *path, GLenum format, bool yReversed)</div><div class="ttdoc">Loads a texture from a specified file path and creates an OpenGL texture.</div><div class="ttdef"><b>Definition</b> gltexture_loader.c:50</div></div>
-</div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>Returns the OpenGL texture ID on success. If the texture fails to load, the function returns 0. </dd></dl>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -355,6 +355,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -363,7 +373,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

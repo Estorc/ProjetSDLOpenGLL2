@@ -127,25 +127,25 @@ Public Attributes</h2></td></tr>
 <tr class="separator:af7ac3badebf6a913e880fed8f327c115"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe9fb91d164312de484f987ab088ae50" id="r_afe9fb91d164312de484f987ab088ae50"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFace.html#afe9fb91d164312de484f987ab088ae50">textureVertex</a> [<a class="el" href="group__ObjLoader.html#ga505a07845a4c8d45ba2013e9760bd7f0">MAX_VERTEX_PER_FACE</a>]</td></tr>
 <tr class="separator:afe9fb91d164312de484f987ab088ae50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8660f1df79e1a97a34365fab4e5b6f1" id="r_ad8660f1df79e1a97a34365fab4e5b6f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFace.html#ad8660f1df79e1a97a34365fab4e5b6f1">length</a></td></tr>
+<tr class="memitem:ad8660f1df79e1a97a34365fab4e5b6f1" id="r_ad8660f1df79e1a97a34365fab4e5b6f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFace.html#ad8660f1df79e1a97a34365fab4e5b6f1">length</a></td></tr>
 <tr class="separator:ad8660f1df79e1a97a34365fab4e5b6f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure representing a face of a 3D model. </p>
 <p>This structure holds the indices of vertices, normals, and texture vertices that make up a face. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="ad8660f1df79e1a97a34365fab4e5b6f1" name="ad8660f1df79e1a97a34365fab4e5b6f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8660f1df79e1a97a34365fab4e5b6f1">&#9670;&#160;</a></span>length</h2>
+<a id="a1172248468cc8f99ca3f268afd45e301" name="a1172248468cc8f99ca3f268afd45e301"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1172248468cc8f99ca3f268afd45e301">&#9670;&#160;</a></span>vertex</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> Face::length</td>
+          <td class="memname">int Face::vertex[<a class="el" href="group__ObjLoader.html#ga505a07845a4c8d45ba2013e9760bd7f0">MAX_VERTEX_PER_FACE</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Number of vertices in the face </p>
+<p>Indices of vertices </p>
 
 </div>
 </div>
@@ -179,18 +179,18 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a1172248468cc8f99ca3f268afd45e301" name="a1172248468cc8f99ca3f268afd45e301"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1172248468cc8f99ca3f268afd45e301">&#9670;&#160;</a></span>vertex</h2>
+<a id="ad8660f1df79e1a97a34365fab4e5b6f1" name="ad8660f1df79e1a97a34365fab4e5b6f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8660f1df79e1a97a34365fab4e5b6f1">&#9670;&#160;</a></span>length</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Face::vertex[<a class="el" href="group__ObjLoader.html#ga505a07845a4c8d45ba2013e9760bd7f0">MAX_VERTEX_PER_FACE</a>]</td>
+          <td class="memname"><a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> Face::length</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Indices of vertices </p>
+<p>Number of vertices in the face </p>
 
 </div>
 </div>
@@ -228,6 +228,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -236,7 +246,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

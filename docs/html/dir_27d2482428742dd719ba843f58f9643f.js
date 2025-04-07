@@ -8,8 +8,7 @@ var dir_27d2482428742dd719ba843f58f9643f =
     [ "mesh.class.c", "mesh_8class_8c.html", null ],
     [ "model.class.c", "model_8class_8c.html", null ],
     [ "render_target.class.c", "render__target_8class_8c.html", null ],
-    [ "scene.class.c", "scene_8class_8c.html", "scene_8class_8c" ],
-    [ "skybox.class.c", "skybox_8class_8c.html", "skybox_8class_8c" ],
-    [ "texture.class.c", "texture_8class_8c.html", "texture_8class_8c" ],
+    [ "scene.class.c", "scene_8class_8c.html", null ],
+    [ "skybox.class.c", "skybox_8class_8c.html", null ],
     [ "textured_mesh.class.c", "textured__mesh_8class_8c.html", null ]
 ];

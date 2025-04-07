@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['object_0',['object',['../structObject.html#a8cc6ed7117cf960bfbc8b5543b674968',1,'Object::object'],['../group__NodeFunctions.html#ga9cf70c2b354e11c49130331da4519864',1,'Node::object']]],
-  ['objects_1',['objects',['../structModelData.html#abed85b0c0f0a25e5775f7b824a6a8e2e',1,'ModelData']]],
-  ['offsetmatrix_2',['offsetMatrix',['../structBone.html#a842ad02b3b17a412a3fd505081c186db',1,'Bone']]],
-  ['opacity_3',['opacity',['../structMaterial.html#a5f665ff4d2fdfd52db7f8a8624f4aab5',1,'Material']]],
-  ['opengl_5fctx_4',['opengl_ctx',['../structWindow.html#ac292b9a43d516b4d2eaaaa259d60febb',1,'Window']]],
-  ['opticaldensity_5',['opticalDensity',['../structMaterial.html#ac03bf1d5a0befb80a4258bd9004b21a7',1,'Material']]],
-  ['options_6',['options',['../classSelectList.html#a7a50be0e7699f6b3437418c79c324c8e',1,'SelectList']]],
-  ['outercutoff_7',['outerCutOff',['../classSpotLight.html#ad4152c35627a503d111d1c613fae3ad1',1,'SpotLight']]],
-  ['overflow_8',['overflow',['../classFrame.html#a26597ca9417001184f7d396ffd7a62a5',1,'Frame']]]
+  ['name_0',['name',['../structMaterial.html#a60ae747c079187c06770d44d30a1b64c',1,'Material::name'],['../structBone.html#a5308bf49086d4115802d73c9f3607b28',1,'Bone::name'],['../structModelAnimation.html#a5fa9232357f3527e9fce7982ff7739cc',1,'ModelAnimation::name'],['../structScript.html#a0a0c95e8768aa2b629e06637aeb2876e',1,'Script::name']]],
+  ['needs_5ffree_1',['needs_free',['../structEntry.html#a59d5a56986c7e756b9e16fb6c7bd7984',1,'Entry']]],
+  ['next_2',['next',['../structEntry.html#a4d1a3e1ac9b0de8ccc7927aed43cdc4c',1,'Entry::next'],['../structQueue.html#ad24d8a7c7ac3f464928f019d7cc94abd',1,'Queue::next'],['../structStack.html#a367ee07bba3354478a9216f5ee6d5c6b',1,'Stack::next']]],
+  ['node_3',['node',['../structCollectedNode.html#a56691d678dc6ff5c67db10372b91e00d',1,'CollectedNode::node'],['../unionBehaviorAttribute.html#a50669aec06276310fd491f39a820dd8d',1,'BehaviorAttribute::node']]],
+  ['normals_4',['normals',['../structFace.html#af7ac3badebf6a913e880fed8f327c115',1,'Face::normals'],['../group__ObjLoader.html#ga6fa9ea9ae14a33791794d1c08623700c',1,'LoadingModelBuffer::normals']]],
+  ['numfaces_5',['numFaces',['../structMeshCollisionShape.html#a98464ef9ccbbe3f33f1a0b861d1ec549',1,'MeshCollisionShape']]]
 ];

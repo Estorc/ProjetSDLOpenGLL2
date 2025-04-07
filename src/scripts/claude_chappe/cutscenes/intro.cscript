@@ -1,28 +1,53 @@
-#include "../../../raptiquax.h"
-#include "../../../math/math_util.h"
-#include "../../../storage/node.h"
-#include "../../../render/camera.h"
-#include "../../../gui/frame.h"
-#include "../../../storage/queue.h"
-#include "../../../utils/scene.h"
-#include "../../../io/audio.h"
-#include "../../../render/lighting.h"
-#include "../../../buffer.h"
-#include "../../../window.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <storage/node.h>
+#include <render/camera.h>
+#include <gui/frame.h>
+#include <storage/queue.h>
+#include <utils/deferred.h>
+#include <io/audio.h>
+#include <render/lighting.h>
+#include <buffer.h>
+#include <window.h>
 
 NEW_SCRIPT(script_cc_intro_init)
-    Frame * frame = this->children[0]->children[0]->children[2]->children[0]->object;
-    SET_ATTRIBUTES_COUNT(2);
+    Frame * frame = this->children[0]->children[0]->children[0]->object;
+    SET_ATTRIBUTES_COUNT(3);
     this->attribute[1].i = strlen(frame->label->text);
 
     frame->label->displayLength = 0;
     play_music("assets/audio/musics/intro_music.mp3", MIX_MAX_VOLUME, -1);
-    SDL_SetRelativeMouseMode(SDL_TRUE);
 END_SCRIPT(script_cc_intro_init)
 
 NEW_SCRIPT(script_cc_intro_update)
     GET_READY_PARAMETERS();
-    Frame * frame = this->children[0]->children[0]->children[2]->children[0]->object;
+    Frame * frame = this->children[0]->children[0]->children[0]->object;
+
+    if (frame->label->displayLength < this->attribute[1].i) {
+        if (SDL_GetTicks() - this->attribute[0].i > 50) {
+            frame->label->displayLength++;
+            frame->flags |= FRAME_NEEDS_REFRESH;
+            this->attribute[0].i = SDL_GetTicks();
+            
+            char sfx[] = "assets/audio/sfx/text/key?.mp3";
+            sfx[sizeof(sfx) - 6] = (rand()%3+1) + '0';
+            play_sfx(sfx, 80, 0);
+        }
+    }
+	if (this->attribute[2].b) {
+		Game.window->fadeColor[3] += 1.0f * delta;
+		if (Game.window->fadeColor[3] >= 1.0f)
+            deferred_load_scene("assets/scenes/claude_chappe/level.scene");
+	} else {
+		if (Game.window->fadeColor[3] > 0.0f)
+			Game.window->fadeColor[3] -= 1.0f * delta;
+	}
+END_SCRIPT(script_cc_intro_update)
+
+
+NEW_SCRIPT(_old_script_cc_intro_update)
+    GET_READY_PARAMETERS();
+    Frame * frame = this->children[0]->children[0]->children[0]->object;
 
     if (frame->label->displayLength < this->attribute[1].i) {
         if (SDL_GetTicks() - this->attribute[0].i > 50) {
@@ -37,7 +62,7 @@ NEW_SCRIPT(script_cc_intro_update)
     }
     if (Game.window->fadeColor[3] > 0.0f)
         Game.window->fadeColor[3] -= 1.0f * delta;
-END_SCRIPT(script_cc_intro_update)
+END_SCRIPT(_old_script_cc_intro_update)
 
 
 NEW_SCRIPT(script_cc_intro_btn)
@@ -45,8 +70,9 @@ NEW_SCRIPT(script_cc_intro_btn)
     switch (signal) {
         case SIGNAL_BUTTON_CLICKED:
             play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
-            prepare_change_scene("assets/scenes/claude_chappe/whole_scene_8.scene");
             SDL_SetRelativeMouseMode(SDL_FALSE);
+            Game.mainTree->root->attribute[2].b = true;
+			fade_out_music(1000);
             break;
         case SIGNAL_BUTTON_HOVERED:
             play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);

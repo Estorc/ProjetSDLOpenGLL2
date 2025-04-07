@@ -1,35 +1,37 @@
-#include "raptiquax.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "render/framebuffer.h"
-#include "storage/node.h"
-#include "render/depth_map.h"
-#include "render/render.h"
-#include "render/lighting.h"
-#include "window.h"
-#include "io/input.h"
-#include "io/osio.h"
-#include "render/camera.h"
-#include "io/shader.h"
-#include "io/scene_loader.h"
-#include "io/node_loader.h"
-#include "physics/physics.h"
-#include "physics/bodies.h"
-#include "scripts/scripts.h"
-#include "gui/frame.h"
-#include "settings.h"
-#include "memory.h"
-#include "buffer.h"
-#include "storage/queue.h"
-#include "storage/hash.h"
-#include "utils/scene.h"
-#include "utils/random.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <render/depth_map.h>
+#include <render/render.h>
+#include <render/lighting.h>
+#include <window.h>
+#include <io/input.h>
+#include <io/osio.h>
+#include <render/camera.h>
+#include <io/shader.h>
+#include <io/scene_loader.h>
+#include <io/node_loader.h>
+#include <physics/physics.h>
+#include <physics/bodies.h>
+#include <scripts/scripts.h>
+#include <gui/frame.h>
+#include <settings.h>
+#include <memory.h>
+#include <buffer.h>
+#include <storage/queue.h>
+#include <storage/hash.h>
+#include <utils/scene.h>
+#include <utils/random.h>
+#include <render/shaders/ssao.h>
 
-#include "classes/classes.h"
+#include <classes/classes.h>
 
 #define BOOT_SCENE "assets/scenes/claude_chappe/boot.scene"
+#define GAME_NAME "RaptiquaX"
 
-int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa, Mesh *screenPlane) {
+int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, Mesh *screenPlane) {
     static float accumulator = 0.0f;
     const float fixedTimeStep = 0.0167f;
     
@@ -56,6 +58,7 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
         if (delta) {
             fps = (fps+(1.0/delta))/2.0;
             sprintf(fps_str, "FPS: %.4f", fps);
+            printf("\rFPS: %.4f\n", fps);
         }
 
         TTF_Font *font = TTF_OpenFont("assets/fonts/determination-mono.ttf", 48);
@@ -87,7 +90,7 @@ int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, MSAA *msaa
 
     set_lightings(lightsCount);
     refresh_ui(window);
-    update_window(window, Game.mainTree->root, Game.camera, shaders, depthMap, msaa, screenPlane);
+    update_window(window, Game.mainTree->root, Game.camera, shaders, depthMap, screenPlane);
 
     return 0;
 }
@@ -100,33 +103,42 @@ int main(int argc, char *argv[]) {
     init_random();
     init_memory_cache();
 
-    default_input_settings(&Game.settings->keybinds);
+    default_input_settings();
 
     load_settings();
 
-    if (create_window("Physics Engine Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE, Game.window) == -1) return -1;
+    if (create_window(GAME_NAME, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE, Game.window) == -1) return -1;
     init_input(Game.input);
 
     Game.storage = table_create(16);
-
     
     // TODO: Transform this in singletons
 
     WorldShaders defaultShaders = {
         .render = create_shader(DEFAULT_RENDER_SHADER),
         .depth = create_shader(DEFAULT_DEPTH_SHADER),
+        .smaa = create_shader(DEFAULT_SMAA_SHADER),
         .screen = create_shader(DEFAULT_SCREEN_SHADER),
         .skybox = create_shader(DEFAULT_SKYBOX_SHADER),
-        .gui = create_shader(DEFAULT_GUI_SHADER)
+        .gui = create_shader(DEFAULT_GUI_SHADER),
+        .ssr = create_shader(DEFAULT_SSR_SHADER),
+        .light = create_shader(DEFAULT_LIGHT_SHADER),
+        .ssao = create_shader(DEFAULT_SSAO_SHADER),
+        .ssaoBlur = create_shader(DEFAULT_SSAO_BLUR_SHADER),
+        .bloom = create_shader(DEFAULT_BLOOM_SHADER),
     };
+
+    init_ssao(defaultShaders.ssao, defaultShaders.ssaoBlur);
+    set_shaders_screen_size(SCREEN_WIDTH, SCREEN_HEIGHT);
 
     create_depthmap(Game.depthMap, &defaultShaders);
 
     Mesh screenPlane;
     create_screen_plane(&screenPlane);
 
-    create_msaa_framebuffer(Game.msaa);
-
+    create_cfbo(Game.uiFBO);
+    create_dfbo(Game.deferredBuffer);
+    create_intermediate_fbo();
 
     
     init_buffers();
@@ -144,7 +156,7 @@ int main(int argc, char *argv[]) {
     #endif
     Game.mainTree->root = load_scene(BOOT_SCENE, &Game.camera, Game.scripts);
 
-    while (update(Game.window, &defaultShaders, Game.depthMap, Game.msaa, &screenPlane) >= 0);
+    while (update(Game.window, &defaultShaders, Game.depthMap, &screenPlane) >= 0);
 
     if (!queue_is_empty(Game.callQueue)) {
         queue_free(Game.callQueue);
@@ -155,7 +167,9 @@ int main(int argc, char *argv[]) {
     PRINT_INFO("Free scripts!\n");
     free(Game.scripts);
 
-    free_msaa_framebuffer(Game.msaa);
+    free_dfbo(Game.deferredBuffer);
+    free_cfbo(Game.uiFBO);
+    free_intermediate_fbo();
 
     free_buffers();
     free_memory_cache();

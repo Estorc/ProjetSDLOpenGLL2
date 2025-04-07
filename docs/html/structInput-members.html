@@ -115,10 +115,11 @@ $(document).ready(function(){initNavTree('structInput.html',''); initResizable()
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="structInput.html#aace579899ad6ffde6db9a20dec15d0f6">active_keys</a></td><td class="entry"><a class="el" href="structInput.html">Input</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="structInput.html#a95307f96874196b3ed1bb52c2617f5f7">inputBuffer</a></td><td class="entry"><a class="el" href="structInput.html">Input</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="structInput.html#aa550a7cbd9bd67b21bfb40eca7d190c5">mouse</a></td><td class="entry"><a class="el" href="structInput.html">Input</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structInput.html#ab54371d47eadcd883ea043948a82de8d">pressed_keys</a></td><td class="entry"><a class="el" href="structInput.html">Input</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="structInput.html#a4e6a3f41845bb6124d2dfe02645a3afd">released_keys</a></td><td class="entry"><a class="el" href="structInput.html">Input</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structInput.html#a0022f695cb110c0fdfa7b04ff0c422cd">text_input</a></td><td class="entry"><a class="el" href="structInput.html">Input</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structInput.html#a3ebed9e45af459930efac5bf7edd96ba">locked</a></td><td class="entry"><a class="el" href="structInput.html">Input</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structInput.html#aa550a7cbd9bd67b21bfb40eca7d190c5">mouse</a></td><td class="entry"><a class="el" href="structInput.html">Input</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structInput.html#ab54371d47eadcd883ea043948a82de8d">pressed_keys</a></td><td class="entry"><a class="el" href="structInput.html">Input</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structInput.html#a4e6a3f41845bb6124d2dfe02645a3afd">released_keys</a></td><td class="entry"><a class="el" href="structInput.html">Input</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structInput.html#a0022f695cb110c0fdfa7b04ff0c422cd">text_input</a></td><td class="entry"><a class="el" href="structInput.html">Input</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -150,6 +151,16 @@ $(document).ready(function(){initNavTree('structInput.html',''); initResizable()
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -158,7 +169,7 @@ $(document).ready(function(){initNavTree('structInput.html',''); initResizable()
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

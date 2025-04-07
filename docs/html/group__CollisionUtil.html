@@ -138,116 +138,6 @@ Functions</h2></td></tr>
 <p>Utilities for handling collision detection and response in the physics engine. </p>
 <p>This file contains functions and definitions that assist in detecting and responding to collisions between objects in the physics simulation. It provides essential utilities to ensure accurate and efficient collision handling. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga887c531e537fcc2721fbda07db006867" name="ga887c531e537fcc2721fbda07db006867"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga887c531e537fcc2721fbda07db006867">&#9670;&#160;</a></span>closest_point_on_triangle()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void closest_point_on_triangle </td>
-          <td>(</td>
-          <td class="paramtype">vec3&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">vec3&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">vec3&#160;</td>
-          <td class="paramname"><em>b</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">vec3&#160;</td>
-          <td class="paramname"><em>c</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">vec3&#160;</td>
-          <td class="paramname"><em>closestPoint</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Finds the closest point on a triangle to a given point. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p</td><td>The point to find the closest point to. </td></tr>
-    <tr><td class="paramname">a</td><td>The first vertex of the triangle. </td></tr>
-    <tr><td class="paramname">b</td><td>The second vertex of the triangle. </td></tr>
-    <tr><td class="paramname">c</td><td>The third vertex of the triangle. </td></tr>
-    <tr><td class="paramname">closestPoint</td><td>Pointer to store the closest point on the triangle. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ga4aae0c429a4146e14becc2528d3accb8" name="ga4aae0c429a4146e14becc2528d3accb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4aae0c429a4146e14becc2528d3accb8">&#9670;&#160;</a></span>compute_overlap()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float compute_overlap </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>minA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>maxA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>minB</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>maxB</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes the overlap between two projections. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">minA</td><td>The minimum value of the first projection. </td></tr>
-    <tr><td class="paramname">maxA</td><td>The maximum value of the first projection. </td></tr>
-    <tr><td class="paramname">minB</td><td>The minimum value of the second projection. </td></tr>
-    <tr><td class="paramname">maxB</td><td>The maximum value of the second projection. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The amount of overlap between the two projections. </dd></dl>
-
-</div>
-</div>
 <a id="gaf2d5738dccc46ab8aea8c19bdbb6ee3d" name="gaf2d5738dccc46ab8aea8c19bdbb6ee3d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaf2d5738dccc46ab8aea8c19bdbb6ee3d">&#9670;&#160;</a></span>project_box_onto_axis()</h2>
 
@@ -378,6 +268,64 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga887c531e537fcc2721fbda07db006867" name="ga887c531e537fcc2721fbda07db006867"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga887c531e537fcc2721fbda07db006867">&#9670;&#160;</a></span>closest_point_on_triangle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void closest_point_on_triangle </td>
+          <td>(</td>
+          <td class="paramtype">vec3&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec3&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec3&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec3&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec3&#160;</td>
+          <td class="paramname"><em>closestPoint</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds the closest point on a triangle to a given point. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>The point to find the closest point to. </td></tr>
+    <tr><td class="paramname">a</td><td>The first vertex of the triangle. </td></tr>
+    <tr><td class="paramname">b</td><td>The second vertex of the triangle. </td></tr>
+    <tr><td class="paramname">c</td><td>The third vertex of the triangle. </td></tr>
+    <tr><td class="paramname">closestPoint</td><td>Pointer to store the closest point on the triangle. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="gae7bef81b9525080c3b948836aa82dc88" name="gae7bef81b9525080c3b948836aa82dc88"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gae7bef81b9525080c3b948836aa82dc88">&#9670;&#160;</a></span>projections_overlap()</h2>
 
@@ -430,6 +378,58 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga4aae0c429a4146e14becc2528d3accb8" name="ga4aae0c429a4146e14becc2528d3accb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4aae0c429a4146e14becc2528d3accb8">&#9670;&#160;</a></span>compute_overlap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float compute_overlap </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>minA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maxA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>minB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maxB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the overlap between two projections. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minA</td><td>The minimum value of the first projection. </td></tr>
+    <tr><td class="paramname">maxA</td><td>The maximum value of the first projection. </td></tr>
+    <tr><td class="paramname">minB</td><td>The minimum value of the second projection. </td></tr>
+    <tr><td class="paramname">maxB</td><td>The maximum value of the second projection. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The amount of overlap between the two projections. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -461,6 +461,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -469,7 +479,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

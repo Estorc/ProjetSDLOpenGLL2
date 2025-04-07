@@ -112,22 +112,25 @@ $(document).ready(function(){initNavTree('server_8h.html',''); initResizable(); 
   <div class="headertitle"><div class="title">server.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Header file for socket server functions.  
+<a href="#details">More...</a></p>
 <div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="server_8h__dep__incl.png" border="0" usemap="#asrc_2io_2socket_2server_8hdep" alt=""/></div>
 <map name="asrc_2io_2socket_2server_8hdep" id="asrc_2io_2socket_2server_8hdep">
-<area shape="rect" title=" " alt="" coords="277,5,435,31"/>
-<area shape="rect" href="socket_8h.html" title=" " alt="" coords="275,79,437,104"/>
-<area shape="poly" title=" " alt="" coords="359,44,359,79,353,79,353,44"/>
-<area shape="rect" href="client_8c.html" title=" " alt="" coords="5,159,160,185"/>
-<area shape="poly" title=" " alt="" coords="304,110,123,162,122,157,302,105"/>
-<area shape="rect" href="network__utils_8c.html" title=" " alt="" coords="184,152,344,192"/>
-<area shape="poly" title=" " alt="" coords="334,115,288,154,284,150,330,111"/>
-<area shape="rect" href="server_8c.html" title=" " alt="" coords="369,159,527,185"/>
-<area shape="poly" title=" " alt="" coords="382,111,436,157,433,161,378,115"/>
-<area shape="rect" href="chessboard_8h.html" title=" " alt="" coords="551,152,707,192"/>
-<area shape="poly" title=" " alt="" coords="410,105,564,149,563,154,408,110"/>
+<area shape="rect" title="Header file for socket server functions." alt="" coords="5,92,164,117"/>
+<area shape="rect" href="socket_8h.html" title=" " alt="" coords="212,92,373,117"/>
+<area shape="poly" title=" " alt="" coords="178,102,212,102,212,107,178,107"/>
+<area shape="rect" href="client_8c.html" title=" " alt="" coords="424,5,579,31"/>
+<area shape="poly" title=" " alt="" coords="329,83,420,41,456,28,458,33,422,46,331,88"/>
+<area shape="rect" href="network__utils_8c.html" title=" " alt="" coords="421,55,581,95"/>
+<area shape="poly" title=" " alt="" coords="387,89,421,84,422,89,387,94"/>
+<area shape="rect" href="server_8c.html" title=" " alt="" coords="422,120,581,145"/>
+<area shape="poly" title=" " alt="" coords="388,115,422,119,422,125,387,120"/>
+<area shape="rect" href="chessboard_8h.html" title=" " alt="" coords="423,170,579,210"/>
+<area shape="poly" title=" " alt="" coords="338,120,453,168,451,172,336,125"/>
 </map>
 </div>
 </div>
@@ -136,13 +139,19 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aa7ad269e4e652646d7a4f890c8f1994a" id="r_aa7ad269e4e652646d7a4f890c8f1994a"><td class="memItemLeft" align="right" valign="top">struct sockaddr_in&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_8h.html#aa7ad269e4e652646d7a4f890c8f1994a">create_address</a> (int port)</td></tr>
+<tr class="memdesc:aa7ad269e4e652646d7a4f890c8f1994a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a sockaddr_in structure for the given port.  <br /></td></tr>
 <tr class="separator:aa7ad269e4e652646d7a4f890c8f1994a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d8c98e35a73aad3456022c16c047db8" id="r_a8d8c98e35a73aad3456022c16c047db8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_8h.html#a8d8c98e35a73aad3456022c16c047db8">create_socket_server</a> (int port)</td></tr>
+<tr class="memdesc:a8d8c98e35a73aad3456022c16c047db8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a socket server and binds it to the specified port.  <br /></td></tr>
 <tr class="separator:a8d8c98e35a73aad3456022c16c047db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a8744b86b3f7eeba52008fe48c01e05" id="r_a2a8744b86b3f7eeba52008fe48c01e05"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="server_8h.html#a2a8744b86b3f7eeba52008fe48c01e05">listen_socket</a> (int sock)</td></tr>
+<tr class="memdesc:a2a8744b86b3f7eeba52008fe48c01e05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Listens for incoming connections on the specified socket.  <br /></td></tr>
 <tr class="separator:a2a8744b86b3f7eeba52008fe48c01e05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Header file for socket server functions. </p>
+<p>This file contains the declarations of functions used to create and manage a socket server. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="aa7ad269e4e652646d7a4f890c8f1994a" name="aa7ad269e4e652646d7a4f890c8f1994a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa7ad269e4e652646d7a4f890c8f1994a">&#9670;&#160;</a></span>create_address()</h2>
 
@@ -158,6 +167,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Creates a sockaddr_in structure for the given port. </p>
+<p>This function initializes a sockaddr_in structure with the specified port and sets the address to INADDR_ANY.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port number to bind the address to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A sockaddr_in structure initialized with the given port. </dd></dl>
 
 </div>
 </div>
@@ -177,6 +196,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Creates a socket server and binds it to the specified port. </p>
+<p>This function creates a socket, binds it to the given port, and sets it up to listen for incoming connections.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port number to bind the socket to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The file descriptor of the created socket, or -1 on error. </dd></dl>
+
 </div>
 </div>
 <a id="a2a8744b86b3f7eeba52008fe48c01e05" name="a2a8744b86b3f7eeba52008fe48c01e05"></a>
@@ -194,6 +223,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Listens for incoming connections on the specified socket. </p>
+<p>This function sets the socket to listen for incoming connections.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>The file descriptor of the socket to listen on. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, or -1 on error. </dd></dl>
 
 </div>
 </div>
@@ -228,6 +267,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -236,7 +285,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

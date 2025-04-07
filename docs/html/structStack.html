@@ -123,8 +123,8 @@ Collaboration diagram for Stack:</div>
 <div class="dyncontent">
 <div class="center"><img src="structStack__coll__graph.png" border="0" usemap="#aStack_coll__map" alt="Collaboration graph"/></div>
 <map name="aStack_coll__map" id="aStack_coll__map">
-<area shape="rect" title="A node in the stack." alt="" coords="5,5,64,31"/>
-<area shape="poly" title=" " alt="" coords="79,11,91,18,82,24,64,25,64,20,80,19,85,18,77,16"/>
+<area shape="rect" title="A node in the stack." alt="" coords="5,44,64,69"/>
+<area shape="poly" title=" " alt="" coords="22,29,26,21,35,17,42,20,47,27,46,44,41,44,42,28,39,24,35,23,30,25,27,31"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -139,21 +139,6 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>A node in the stack. </p>
 <p>This structure represents a single node in the stack. Each node contains a pointer to the next node in the stack and a pointer to the data stored in the node. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="ac6da0059516e42463ddacb5f859ec06c" name="ac6da0059516e42463ddacb5f859ec06c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6da0059516e42463ddacb5f859ec06c">&#9670;&#160;</a></span>data</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void* Stack::data</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Pointer to the data stored in the node. </p>
-
-</div>
-</div>
 <a id="a367ee07bba3354478a9216f5ee6d5c6b" name="a367ee07bba3354478a9216f5ee6d5c6b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a367ee07bba3354478a9216f5ee6d5c6b">&#9670;&#160;</a></span>next</h2>
 
@@ -166,6 +151,21 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Pointer to the next node in the stack. </p>
+
+</div>
+</div>
+<a id="ac6da0059516e42463ddacb5f859ec06c" name="ac6da0059516e42463ddacb5f859ec06c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6da0059516e42463ddacb5f859ec06c">&#9670;&#160;</a></span>data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* Stack::data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pointer to the data stored in the node. </p>
 
 </div>
 </div>
@@ -203,6 +203,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -211,7 +221,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

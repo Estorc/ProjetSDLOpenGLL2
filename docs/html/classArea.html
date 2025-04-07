@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Claude Chappe&#39; Curse - A C Game: Area Struct Reference</title>
+<title>Claude Chappe&#39; Curse - A C Game: Area Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">var page_layout=1;</script>
 <script type="text/javascript" src="jquery.js"></script>
@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('classArea.html',''); initResizable(); 
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classArea-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">Area Struct Reference<div class="ingroups"><a class="el" href="group__Physics.html">Physics</a></div></div></div>
+  <div class="headertitle"><div class="title">Area Class Reference<div class="ingroups"><a class="el" href="group__Classes.html">Classes</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -125,11 +125,11 @@ Inheritance diagram for Area:</div>
 <div class="dyncontent">
 <div class="center"><img src="classArea__inherit__graph.png" border="0" usemap="#aArea_inherit__map" alt="Inheritance graph"/></div>
 <map name="aArea_inherit__map" id="aArea_inherit__map">
-<area shape="rect" title="Represents an area with collision shapes and nodes." alt="" coords="35,152,87,177"/>
-<area shape="rect" href="classPhysicalNode.html" title=" " alt="" coords="5,79,116,104"/>
-<area shape="poly" title=" " alt="" coords="63,118,63,152,58,152,58,118"/>
-<area shape="rect" href="classNode.html" title="Represents a node in the tree structure." alt="" coords="33,5,89,31"/>
-<area shape="poly" title=" " alt="" coords="63,44,63,79,58,79,58,44"/>
+<area shape="rect" title="Represents an area with collision shapes and nodes." alt="" coords="268,5,320,31"/>
+<area shape="rect" href="classPhysicalNode.html" title=" " alt="" coords="109,5,220,31"/>
+<area shape="poly" title=" " alt="" coords="233,15,268,15,268,21,233,21"/>
+<area shape="rect" href="classNode.html" title="Represents a node in the tree structure." alt="" coords="5,5,61,31"/>
+<area shape="poly" title=" " alt="" coords="75,15,109,15,109,21,75,21"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -137,78 +137,106 @@ Collaboration diagram for Area:</div>
 <div class="dyncontent">
 <div class="center"><img src="classArea__coll__graph.png" border="0" usemap="#aArea_coll__map" alt="Collaboration graph"/></div>
 <map name="aArea_coll__map" id="aArea_coll__map">
-<area shape="rect" title="Represents an area with collision shapes and nodes." alt="" coords="169,185,221,211"/>
-<area shape="rect" href="classPhysicalNode.html" title=" " alt="" coords="140,97,251,123"/>
-<area shape="poly" title=" " alt="" coords="198,137,198,185,193,185,193,137"/>
-<area shape="rect" href="classNode.html" title="Represents a node in the tree structure." alt="" coords="247,7,303,33"/>
-<area shape="poly" title=" " alt="" coords="234,30,175,40,109,56,51,75,30,87,16,99,8,118,14,134,30,149,54,161,114,180,170,190,169,196,113,185,52,166,27,153,9,137,3,118,12,96,27,82,49,71,108,51,174,35,233,25"/>
-<area shape="poly" title=" " alt="" coords="257,45,208,99,204,95,254,41"/>
-<area shape="poly" title=" " alt="" coords="318,10,326,13,330,20,321,29,304,31,303,26,319,24,325,20,323,17,316,15"/>
-<area shape="rect" href="unionBehaviorAttribute.html" title=" " alt="" coords="275,97,412,123"/>
-<area shape="poly" title=" " alt="" coords="270,46,270,60,274,72,286,85,303,95,300,100,283,90,269,75,264,61,265,46"/>
-<area shape="rect" href="structCollectedNode.html" title="Represents a node collected by an area." alt="" coords="437,97,554,123"/>
-<area shape="poly" title=" " alt="" coords="317,31,391,56,475,95,472,100,389,61,315,36"/>
-<area shape="poly" title=" " alt="" coords="329,86,312,60,287,35,291,31,316,57,333,83"/>
-<area shape="poly" title=" " alt="" coords="442,129,222,192,221,187,441,124"/>
+<area shape="rect" title="Represents an area with collision shapes and nodes." alt="" coords="462,51,514,76"/>
+<area shape="rect" href="classPhysicalNode.html" title=" " alt="" coords="185,51,295,76"/>
+<area shape="poly" title=" " alt="" coords="310,61,462,61,462,66,310,66"/>
+<area shape="rect" href="classNode.html" title="Represents a node in the tree structure." alt="" coords="6,59,62,84"/>
+<area shape="poly" title=" " alt="" coords="58,47,85,33,102,29,116,29,147,33,229,31,294,28,358,29,439,42,463,50,461,55,437,47,357,35,294,33,230,36,147,38,116,35,103,34,87,38,61,52"/>
+<area shape="poly" title=" " alt="" coords="75,55,86,53,136,50,185,52,184,58,136,55,86,58,76,60"/>
+<area shape="poly" title=" " alt="" coords="16,44,22,36,34,32,44,34,51,41,49,59,44,58,46,43,42,39,34,37,25,40,21,47"/>
+<area shape="rect" href="unionBehaviorAttribute.html" title="Union representing different types of behavior attributes." alt="" coords="171,100,309,125"/>
+<area shape="poly" title=" " alt="" coords="76,77,177,97,175,103,75,82"/>
+<area shape="rect" href="structCollectedNode.html" title="Represents a node collected by an area." alt="" coords="181,149,299,175"/>
+<area shape="poly" title=" " alt="" coords="48,95,64,121,87,142,109,153,133,159,181,164,181,169,132,164,108,158,85,147,60,124,44,98"/>
+<area shape="poly" title=" " alt="" coords="157,128,121,126,85,118,61,104,44,86,47,82,65,99,87,113,122,121,158,122"/>
+<area shape="poly" title=" " alt="" coords="290,142,308,136,460,72,463,77,310,140,292,147"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab057dcc33eff0273510ca17becbe03b9" id="r_ab057dcc33eff0273510ca17becbe03b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#ab057dcc33eff0273510ca17becbe03b9">constructor</a> (int <a class="el" href="classArea.html#a0184f6b0f7d5b95791cfee7842a53d7f">signal_id</a>)</td></tr>
+<tr class="memdesc:ab057dcc33eff0273510ca17becbe03b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the physics area class.  <br /></td></tr>
 <tr class="separator:ab057dcc33eff0273510ca17becbe03b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18cc3c9215fb618b5c90e8d30f0eb929" id="r_a18cc3c9215fb618b5c90e8d30f0eb929"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a18cc3c9215fb618b5c90e8d30f0eb929">load</a> (FILE *file, <a class="el" href="classCamera.html">Camera</a> **c, <a class="el" href="structScript.html">Script</a> *scripts, <a class="el" href="classNode.html">Node</a> *editor)</td></tr>
+<tr class="memdesc:a18cc3c9215fb618b5c90e8d30f0eb929"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads data from a file and initializes the given camera, scripts, and editor node.  <br /></td></tr>
 <tr class="separator:a18cc3c9215fb618b5c90e8d30f0eb929"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53c3b2817302a4a4a53478cc3faa636b" id="r_a53c3b2817302a4a4a53478cc3faa636b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a53c3b2817302a4a4a53478cc3faa636b">collect_node</a> (<a class="el" href="classNode.html">Node</a> *node, double distance, float *impactPoint)</td></tr>
-<tr class="separator:a53c3b2817302a4a4a53478cc3faa636b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0e09d3148de0be1b0a8982c2590e47a" id="r_ac0e09d3148de0be1b0a8982c2590e47a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#ac0e09d3148de0be1b0a8982c2590e47a">collect_node</a> (<a class="el" href="classNode.html">Node</a> *node, float distance, vec3 impactPoint)</td></tr>
+<tr class="memdesc:ac0e09d3148de0be1b0a8982c2590e47a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collects a node based on the given distance and calculates the impact point.  <br /></td></tr>
+<tr class="separator:ac0e09d3148de0be1b0a8982c2590e47a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa5492d5041c690d630e9be327acdc0c" id="r_aaa5492d5041c690d630e9be327acdc0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#aaa5492d5041c690d630e9be327acdc0c">is_area</a> (bool *area)</td></tr>
+<tr class="memdesc:aaa5492d5041c690d630e9be327acdc0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the given area is valid.  <br /></td></tr>
 <tr class="separator:aaa5492d5041c690d630e9be327acdc0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10c01b01dd5bd4bed630b8438d70adb1" id="r_a10c01b01dd5bd4bed630b8438d70adb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a10c01b01dd5bd4bed630b8438d70adb1">sort_nodes</a> ()</td></tr>
+<tr class="memdesc:a10c01b01dd5bd4bed630b8438d70adb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts the nodes in the physics area.  <br /></td></tr>
 <tr class="separator:a10c01b01dd5bd4bed630b8438d70adb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a589fbdb24b0e82711669645e24b40c91" id="r_a589fbdb24b0e82711669645e24b40c91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a589fbdb24b0e82711669645e24b40c91">update</a> (float *<a class="el" href="group__NodeFunctions.html#ga19f2506921f0378b62b4200d0f674411">pos</a>, float *<a class="el" href="group__NodeFunctions.html#ga4c1d2fdb8be63309e0a7e2a4b3a17066">rot</a>, float *<a class="el" href="group__NodeFunctions.html#gac6f771ff3b5a0575ab61ce09df2ed685">scale</a>)</td></tr>
-<tr class="separator:a589fbdb24b0e82711669645e24b40c91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cef19e601e24e23dad05e780b671f6e" id="r_a5cef19e601e24e23dad05e780b671f6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a5cef19e601e24e23dad05e780b671f6e">get_collisions_shapes</a> (<a class="el" href="classNode.html">Node</a> ****shapes, <a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> **<a class="el" href="classArea.html#ad6881cbeab01152d62749a7a34d0aa40">length</a>)</td></tr>
+<tr class="memitem:a6385456e4c8e268c746eb88b373579b1" id="r_a6385456e4c8e268c746eb88b373579b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a6385456e4c8e268c746eb88b373579b1">update</a> (vec3 <a class="el" href="classNode.html#a19f2506921f0378b62b4200d0f674411">pos</a>, vec3 <a class="el" href="classNode.html#a4c1d2fdb8be63309e0a7e2a4b3a17066">rot</a>, vec3 <a class="el" href="classNode.html#ac6f771ff3b5a0575ab61ce09df2ed685">scale</a>)</td></tr>
+<tr class="memdesc:a6385456e4c8e268c746eb88b373579b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the position, rotation, and scale of an object.  <br /></td></tr>
+<tr class="separator:a6385456e4c8e268c746eb88b373579b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cef19e601e24e23dad05e780b671f6e" id="r_a5cef19e601e24e23dad05e780b671f6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a5cef19e601e24e23dad05e780b671f6e">get_collisions_shapes</a> (<a class="el" href="classNode.html">Node</a> ****shapes, <a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> **<a class="el" href="classArea.html#ad6881cbeab01152d62749a7a34d0aa40">length</a>)</td></tr>
+<tr class="memdesc:a5cef19e601e24e23dad05e780b671f6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the collision shapes and their lengths.  <br /></td></tr>
 <tr class="separator:a5cef19e601e24e23dad05e780b671f6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28fdf9c2977f0746bcfe1d15ec9ee0e2" id="r_a28fdf9c2977f0746bcfe1d15ec9ee0e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a28fdf9c2977f0746bcfe1d15ec9ee0e2">get_node_collection</a> (<a class="el" href="structCollectedNode.html">CollectedNode</a> **nodes, <a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> *<a class="el" href="classArea.html#ad6881cbeab01152d62749a7a34d0aa40">length</a>)</td></tr>
+<tr class="memitem:a28fdf9c2977f0746bcfe1d15ec9ee0e2" id="r_a28fdf9c2977f0746bcfe1d15ec9ee0e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a28fdf9c2977f0746bcfe1d15ec9ee0e2">get_node_collection</a> (<a class="el" href="structCollectedNode.html">CollectedNode</a> **nodes, <a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> *<a class="el" href="classArea.html#ad6881cbeab01152d62749a7a34d0aa40">length</a>)</td></tr>
+<tr class="memdesc:a28fdf9c2977f0746bcfe1d15ec9ee0e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a collection of nodes.  <br /></td></tr>
 <tr class="separator:a28fdf9c2977f0746bcfe1d15ec9ee0e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fc67491e18cd5c2552fe115a5f56acb" id="r_a0fc67491e18cd5c2552fe115a5f56acb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a0fc67491e18cd5c2552fe115a5f56acb">save</a> (FILE *file)</td></tr>
+<tr class="memdesc:a0fc67491e18cd5c2552fe115a5f56acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the current state of the physics area to a file.  <br /></td></tr>
 <tr class="separator:a0fc67491e18cd5c2552fe115a5f56acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classPhysicalNode"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPhysicalNode')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classPhysicalNode.html">PhysicalNode</a></td></tr>
 <tr class="memitem:ab4fba76d5aa0a7a55ac60153eca1b466 inherit pub_methods_classPhysicalNode" id="r_ab4fba76d5aa0a7a55ac60153eca1b466"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPhysicalNode.html#ab4fba76d5aa0a7a55ac60153eca1b466">free</a> ()</td></tr>
+<tr class="memdesc:ab4fba76d5aa0a7a55ac60153eca1b466 inherit pub_methods_classPhysicalNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources allocated for the <a class="el" href="classPhysicalNode.html">PhysicalNode</a> instance.  <br /></td></tr>
 <tr class="separator:ab4fba76d5aa0a7a55ac60153eca1b466 inherit pub_methods_classPhysicalNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classNode"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classNode')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classNode.html">Node</a></td></tr>
 <tr class="memitem:adc8290bb6f9a55e929ea1d8af7a75818 inherit pub_methods_classNode" id="r_adc8290bb6f9a55e929ea1d8af7a75818"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#adc8290bb6f9a55e929ea1d8af7a75818">constructor</a> ()</td></tr>
+<tr class="memdesc:adc8290bb6f9a55e929ea1d8af7a75818 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classNode.html" title="Represents a node in the tree structure.">Node</a> class.  <br /></td></tr>
 <tr class="separator:adc8290bb6f9a55e929ea1d8af7a75818 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b7d86c5640d6ea769915d22f1129186 inherit pub_methods_classNode" id="r_a6b7d86c5640d6ea769915d22f1129186"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a6b7d86c5640d6ea769915d22f1129186">initialize_node</a> ()</td></tr>
+<tr class="memdesc:a6b7d86c5640d6ea769915d22f1129186 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a node.  <br /></td></tr>
 <tr class="separator:a6b7d86c5640d6ea769915d22f1129186 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2811c63060e67e1c365b4ca6c583d804 inherit pub_methods_classNode" id="r_a2811c63060e67e1c365b4ca6c583d804"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a2811c63060e67e1c365b4ca6c583d804">get_glow_shader</a> (<a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> *<a class="el" href="group__NodeFunctions.html#ga16c1ef53dee5d0538a5027edc2e937f3">shader</a>)</td></tr>
+<tr class="memitem:a2811c63060e67e1c365b4ca6c583d804 inherit pub_methods_classNode" id="r_a2811c63060e67e1c365b4ca6c583d804"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a2811c63060e67e1c365b4ca6c583d804">get_glow_shader</a> (<a class="el" href="group__MemoryCache.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> *<a class="el" href="classNode.html#a16c1ef53dee5d0538a5027edc2e937f3">shader</a>)</td></tr>
+<tr class="memdesc:a2811c63060e67e1c365b4ca6c583d804 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the glow shader.  <br /></td></tr>
 <tr class="separator:a2811c63060e67e1c365b4ca6c583d804 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a542c25c237f346a743cde5f78f81e55b inherit pub_methods_classNode" id="r_a542c25c237f346a743cde5f78f81e55b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a542c25c237f346a743cde5f78f81e55b">get_settings_data</a> (void ***ptr, int *<a class="el" href="group__NodeFunctions.html#gaf0605f2b8a070fb62821274a6cf9b531">length</a>)</td></tr>
+<tr class="memitem:a542c25c237f346a743cde5f78f81e55b inherit pub_methods_classNode" id="r_a542c25c237f346a743cde5f78f81e55b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a542c25c237f346a743cde5f78f81e55b">get_settings_data</a> (void ***ptr, int *<a class="el" href="classNode.html#af0605f2b8a070fb62821274a6cf9b531">length</a>)</td></tr>
+<tr class="memdesc:a542c25c237f346a743cde5f78f81e55b inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves settings data.  <br /></td></tr>
 <tr class="separator:a542c25c237f346a743cde5f78f81e55b inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0672fc0a4d6c6b05c20b9bb5dddf9c3 inherit pub_methods_classNode" id="r_af0672fc0a4d6c6b05c20b9bb5dddf9c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#af0672fc0a4d6c6b05c20b9bb5dddf9c3">load</a> ()</td></tr>
+<tr class="memdesc:af0672fc0a4d6c6b05c20b9bb5dddf9c3 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the necessary resources or data for the node.  <br /></td></tr>
 <tr class="separator:af0672fc0a4d6c6b05c20b9bb5dddf9c3 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06da5ccd34d78a1119160005629f0193 inherit pub_methods_classNode" id="r_a06da5ccd34d78a1119160005629f0193"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a06da5ccd34d78a1119160005629f0193">save</a> (FILE *file)</td></tr>
+<tr class="memdesc:a06da5ccd34d78a1119160005629f0193 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the current state to the specified file.  <br /></td></tr>
 <tr class="separator:a06da5ccd34d78a1119160005629f0193 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab05e54fc6a226fe70d274e46e9ced07a inherit pub_methods_classNode" id="r_ab05e54fc6a226fe70d274e46e9ced07a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ab05e54fc6a226fe70d274e46e9ced07a">prepare_render</a> (mat4 *modelMatrix, <a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> activeShader)</td></tr>
-<tr class="memdesc:ab05e54fc6a226fe70d274e46e9ced07a inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a node using the specified model matrix and shader.  <br /></td></tr>
-<tr class="separator:ab05e54fc6a226fe70d274e46e9ced07a inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af61079d444fa059127bc4983cf5e4ea5 inherit pub_methods_classNode" id="r_af61079d444fa059127bc4983cf5e4ea5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#af61079d444fa059127bc4983cf5e4ea5">prepare_render</a> (mat4 modelMatrix, <a class="el" href="group__MemoryCache.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a> activeShader)</td></tr>
+<tr class="memdesc:af61079d444fa059127bc4983cf5e4ea5 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a node using the specified model matrix and shader.  <br /></td></tr>
+<tr class="separator:af61079d444fa059127bc4983cf5e4ea5 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab93a6f41e02422a21c44227c0355382a inherit pub_methods_classNode" id="r_ab93a6f41e02422a21c44227c0355382a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ab93a6f41e02422a21c44227c0355382a">render</a> ()</td></tr>
+<tr class="memdesc:ab93a6f41e02422a21c44227c0355382a inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the node.  <br /></td></tr>
 <tr class="separator:ab93a6f41e02422a21c44227c0355382a inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2621112ec04d166f9ec376eba06f3bbb inherit pub_methods_classNode" id="r_a2621112ec04d166f9ec376eba06f3bbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a2621112ec04d166f9ec376eba06f3bbb">update_global_position</a> (vec3 *<a class="el" href="group__NodeFunctions.html#ga19f2506921f0378b62b4200d0f674411">pos</a>, vec3 *<a class="el" href="group__NodeFunctions.html#ga4c1d2fdb8be63309e0a7e2a4b3a17066">rot</a>, vec3 *<a class="el" href="group__NodeFunctions.html#gac6f771ff3b5a0575ab61ce09df2ed685">scale</a>)</td></tr>
-<tr class="separator:a2621112ec04d166f9ec376eba06f3bbb inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a500a682914a24af188bd9eb79ba2aaae inherit pub_methods_classNode" id="r_a500a682914a24af188bd9eb79ba2aaae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a500a682914a24af188bd9eb79ba2aaae">update</a> (vec3 *<a class="el" href="group__NodeFunctions.html#ga19f2506921f0378b62b4200d0f674411">pos</a>, vec3 *<a class="el" href="group__NodeFunctions.html#ga4c1d2fdb8be63309e0a7e2a4b3a17066">rot</a>, vec3 *<a class="el" href="group__NodeFunctions.html#gac6f771ff3b5a0575ab61ce09df2ed685">scale</a>)</td></tr>
-<tr class="separator:a500a682914a24af188bd9eb79ba2aaae inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a117da4a7be3efb9541f5279a98bf839f inherit pub_methods_classNode" id="r_a117da4a7be3efb9541f5279a98bf839f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a117da4a7be3efb9541f5279a98bf839f">update_global_position</a> (vec3 <a class="el" href="classNode.html#a19f2506921f0378b62b4200d0f674411">pos</a>, vec3 <a class="el" href="classNode.html#a4c1d2fdb8be63309e0a7e2a4b3a17066">rot</a>, vec3 <a class="el" href="classNode.html#ac6f771ff3b5a0575ab61ce09df2ed685">scale</a>)</td></tr>
+<tr class="memdesc:a117da4a7be3efb9541f5279a98bf839f inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the global position of a node.  <br /></td></tr>
+<tr class="separator:a117da4a7be3efb9541f5279a98bf839f inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e577d625ac818cc6dac5634e713cdaf inherit pub_methods_classNode" id="r_a1e577d625ac818cc6dac5634e713cdaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a1e577d625ac818cc6dac5634e713cdaf">update</a> (vec3 <a class="el" href="classNode.html#a19f2506921f0378b62b4200d0f674411">pos</a>, vec3 <a class="el" href="classNode.html#a4c1d2fdb8be63309e0a7e2a4b3a17066">rot</a>, vec3 <a class="el" href="classNode.html#ac6f771ff3b5a0575ab61ce09df2ed685">scale</a>)</td></tr>
+<tr class="memdesc:a1e577d625ac818cc6dac5634e713cdaf inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the position, rotation, and scale of a node.  <br /></td></tr>
+<tr class="separator:a1e577d625ac818cc6dac5634e713cdaf inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86288848282bf3bba83f0cc7437207ac inherit pub_methods_classNode" id="r_a86288848282bf3bba83f0cc7437207ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a86288848282bf3bba83f0cc7437207ac">on_resize</a> ()</td></tr>
+<tr class="memdesc:a86288848282bf3bba83f0cc7437207ac inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the resize event for the node.  <br /></td></tr>
+<tr class="separator:a86288848282bf3bba83f0cc7437207ac inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acda79ab291312990e96552767c577a3d inherit pub_methods_classNode" id="r_acda79ab291312990e96552767c577a3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#acda79ab291312990e96552767c577a3d">free</a> ()</td></tr>
+<tr class="memdesc:acda79ab291312990e96552767c577a3d inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the resources allocated by the object.  <br /></td></tr>
 <tr class="separator:acda79ab291312990e96552767c577a3d inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2ee01789b301b3c0323473dbe968283 inherit pub_methods_classNode" id="r_ae2ee01789b301b3c0323473dbe968283"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ae2ee01789b301b3c0323473dbe968283">is_cshape</a> (bool *cshape)</td></tr>
+<tr class="memdesc:ae2ee01789b301b3c0323473dbe968283 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the current shape is a custom shape.  <br /></td></tr>
 <tr class="separator:ae2ee01789b301b3c0323473dbe968283 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75c27b8cf028ae9509b20ad7392c49f8 inherit pub_methods_classNode" id="r_a75c27b8cf028ae9509b20ad7392c49f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a75c27b8cf028ae9509b20ad7392c49f8">is_body</a> (bool *body)</td></tr>
+<tr class="memdesc:a75c27b8cf028ae9509b20ad7392c49f8 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the body status of the node.  <br /></td></tr>
 <tr class="separator:a75c27b8cf028ae9509b20ad7392c49f8 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45b2f4d0c4efe87777b198cd3b9bf2eb inherit pub_methods_classNode" id="r_a45b2f4d0c4efe87777b198cd3b9bf2eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a45b2f4d0c4efe87777b198cd3b9bf2eb">is_area</a> (bool *area)</td></tr>
+<tr class="memdesc:a45b2f4d0c4efe87777b198cd3b9bf2eb inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the current node is within a specified area.  <br /></td></tr>
 <tr class="separator:a45b2f4d0c4efe87777b198cd3b9bf2eb inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a743d883f14521da8f8c62608ce65f7ee inherit pub_methods_classNode" id="r_a743d883f14521da8f8c62608ce65f7ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a743d883f14521da8f8c62608ce65f7ee">is_render_target</a> (bool *render_target)</td></tr>
+<tr class="memdesc:a743d883f14521da8f8c62608ce65f7ee inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the render target status.  <br /></td></tr>
 <tr class="separator:a743d883f14521da8f8c62608ce65f7ee inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29ad16f4987533c2ddebec71439bfbd5 inherit pub_methods_classNode" id="r_a29ad16f4987533c2ddebec71439bfbd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a29ad16f4987533c2ddebec71439bfbd5">is_gui_element</a> (bool *result)</td></tr>
+<tr class="memdesc:a29ad16f4987533c2ddebec71439bfbd5 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the current node is a GUI element.  <br /></td></tr>
 <tr class="separator:a29ad16f4987533c2ddebec71439bfbd5 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42da38ee8e0a621e438e14b94c0e381e inherit pub_methods_classNode" id="r_a42da38ee8e0a621e438e14b94c0e381e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a42da38ee8e0a621e438e14b94c0e381e">add_child</a> (<a class="el" href="classNode.html">Node</a> *child)</td></tr>
 <tr class="memdesc:a42da38ee8e0a621e438e14b94c0e381e inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a child node to a parent node.  <br /></td></tr>
@@ -235,151 +263,78 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aef2f74d45bec672840433aff6abe0d45 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the details of a node at a specified level of indentation.  <br /></td></tr>
 <tr class="separator:aef2f74d45bec672840433aff6abe0d45 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a846d06ed1f7a5ac618fbfef10881230f inherit pub_methods_classNode" id="r_a846d06ed1f7a5ac618fbfef10881230f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a846d06ed1f7a5ac618fbfef10881230f">emit_ready</a> (...)</td></tr>
+<tr class="memdesc:a846d06ed1f7a5ac618fbfef10881230f inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits the 'ready' signal for the node.  <br /></td></tr>
 <tr class="separator:a846d06ed1f7a5ac618fbfef10881230f inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e7054036adfcf19c240b48a7f353f83 inherit pub_methods_classNode" id="r_a3e7054036adfcf19c240b48a7f353f83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a3e7054036adfcf19c240b48a7f353f83">emit_update</a> (...)</td></tr>
+<tr class="memdesc:a3e7054036adfcf19c240b48a7f353f83 inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits an update event for the node.  <br /></td></tr>
 <tr class="separator:a3e7054036adfcf19c240b48a7f353f83 inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a3256bf578114f603b9407814638a2f inherit pub_methods_classNode" id="r_a0a3256bf578114f603b9407814638a2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a0a3256bf578114f603b9407814638a2f">emit_signal</a> (...)</td></tr>
+<tr class="memdesc:a0a3256bf578114f603b9407814638a2f inherit pub_methods_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits a signal if the node has a script and the script has a signal handler.  <br /></td></tr>
 <tr class="separator:a0a3256bf578114f603b9407814638a2f inherit pub_methods_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a08b84bd1f8ae3d3dbdbfe7d58d181c05" id="r_a08b84bd1f8ae3d3dbdbfe7d58d181c05"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a08b84bd1f8ae3d3dbdbfe7d58d181c05">compare_distance_nodes</a> (const void *a, const void *b)</td></tr>
+<tr class="memdesc:a08b84bd1f8ae3d3dbdbfe7d58d181c05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares the distances of two nodes.  <br /></td></tr>
 <tr class="separator:a08b84bd1f8ae3d3dbdbfe7d58d181c05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a81fbd9797b9458beeda0fd4853596687" id="r_a81fbd9797b9458beeda0fd4853596687"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="classNode.html">Node</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a81fbd9797b9458beeda0fd4853596687">collisionsShapes</a></td></tr>
 <tr class="separator:a81fbd9797b9458beeda0fd4853596687"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6881cbeab01152d62749a7a34d0aa40" id="r_ad6881cbeab01152d62749a7a34d0aa40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#ad6881cbeab01152d62749a7a34d0aa40">length</a></td></tr>
+<tr class="memitem:ad6881cbeab01152d62749a7a34d0aa40" id="r_ad6881cbeab01152d62749a7a34d0aa40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#ad6881cbeab01152d62749a7a34d0aa40">length</a></td></tr>
 <tr class="separator:ad6881cbeab01152d62749a7a34d0aa40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab560744196b8b3cec57b80dd2560af3" id="r_aab560744196b8b3cec57b80dd2560af3"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structCollectedNode.html">CollectedNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#aab560744196b8b3cec57b80dd2560af3">collectedNodes</a></td></tr>
 <tr class="separator:aab560744196b8b3cec57b80dd2560af3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a736dc4fb322517b2ba4e68bd6140aa59" id="r_a736dc4fb322517b2ba4e68bd6140aa59"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a736dc4fb322517b2ba4e68bd6140aa59">collectedLength</a></td></tr>
+<tr class="memitem:a736dc4fb322517b2ba4e68bd6140aa59" id="r_a736dc4fb322517b2ba4e68bd6140aa59"><td class="memItemLeft" align="right" valign="top"><a class="el" href="aliases_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a736dc4fb322517b2ba4e68bd6140aa59">collectedLength</a></td></tr>
 <tr class="separator:a736dc4fb322517b2ba4e68bd6140aa59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0184f6b0f7d5b95791cfee7842a53d7f" id="r_a0184f6b0f7d5b95791cfee7842a53d7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#a2b19d553290a8d4a083d3c03280ea800">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a0184f6b0f7d5b95791cfee7842a53d7f">signal_id</a></td></tr>
+<tr class="memitem:a0184f6b0f7d5b95791cfee7842a53d7f" id="r_a0184f6b0f7d5b95791cfee7842a53d7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="aliases_8h.html#a2b19d553290a8d4a083d3c03280ea800">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArea.html#a0184f6b0f7d5b95791cfee7842a53d7f">signal_id</a></td></tr>
 <tr class="separator:a0184f6b0f7d5b95791cfee7842a53d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classNode"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classNode')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classNode.html">Node</a></td></tr>
-<tr class="memitem:ga9cf70c2b354e11c49130331da4519864 inherit pub_attribs_classNode" id="r_ga9cf70c2b354e11c49130331da4519864"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga9cf70c2b354e11c49130331da4519864">object</a></td></tr>
-<tr class="separator:ga9cf70c2b354e11c49130331da4519864 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3d857c2fdb25634fe92ca32ff006c233 inherit pub_attribs_classNode" id="r_ga3d857c2fdb25634fe92ca32ff006c233"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="classNode.html">Node</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga3d857c2fdb25634fe92ca32ff006c233">children</a></td></tr>
-<tr class="separator:ga3d857c2fdb25634fe92ca32ff006c233 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga34f3ab9670c7b70dad8905359a243c92 inherit pub_attribs_classNode" id="r_ga34f3ab9670c7b70dad8905359a243c92"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="classNode.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga34f3ab9670c7b70dad8905359a243c92">parent</a></td></tr>
-<tr class="separator:ga34f3ab9670c7b70dad8905359a243c92 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf0605f2b8a070fb62821274a6cf9b531 inherit pub_attribs_classNode" id="r_gaf0605f2b8a070fb62821274a6cf9b531"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#a2b19d553290a8d4a083d3c03280ea800">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#gaf0605f2b8a070fb62821274a6cf9b531">length</a></td></tr>
-<tr class="separator:gaf0605f2b8a070fb62821274a6cf9b531 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga670b66a39fdb438336be47a9cb68a516 inherit pub_attribs_classNode" id="r_ga670b66a39fdb438336be47a9cb68a516"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga670b66a39fdb438336be47a9cb68a516">type</a></td></tr>
-<tr class="separator:ga670b66a39fdb438336be47a9cb68a516 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0c95683293e9f234118c583a28bc9cc0 inherit pub_attribs_classNode" id="r_ga0c95683293e9f234118c583a28bc9cc0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga0c95683293e9f234118c583a28bc9cc0">flags</a></td></tr>
-<tr class="separator:ga0c95683293e9f234118c583a28bc9cc0 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga19f2506921f0378b62b4200d0f674411 inherit pub_attribs_classNode" id="r_ga19f2506921f0378b62b4200d0f674411"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga19f2506921f0378b62b4200d0f674411">pos</a></td></tr>
-<tr class="separator:ga19f2506921f0378b62b4200d0f674411 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4c1d2fdb8be63309e0a7e2a4b3a17066 inherit pub_attribs_classNode" id="r_ga4c1d2fdb8be63309e0a7e2a4b3a17066"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga4c1d2fdb8be63309e0a7e2a4b3a17066">rot</a></td></tr>
-<tr class="separator:ga4c1d2fdb8be63309e0a7e2a4b3a17066 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac6f771ff3b5a0575ab61ce09df2ed685 inherit pub_attribs_classNode" id="r_gac6f771ff3b5a0575ab61ce09df2ed685"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#gac6f771ff3b5a0575ab61ce09df2ed685">scale</a></td></tr>
-<tr class="separator:gac6f771ff3b5a0575ab61ce09df2ed685 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1cf2ef86297b1bdfed11d030c0ed3dd2 inherit pub_attribs_classNode" id="r_ga1cf2ef86297b1bdfed11d030c0ed3dd2"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga1cf2ef86297b1bdfed11d030c0ed3dd2">globalPos</a></td></tr>
-<tr class="separator:ga1cf2ef86297b1bdfed11d030c0ed3dd2 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga16edb124722f7491fa3d41573b2fec8a inherit pub_attribs_classNode" id="r_ga16edb124722f7491fa3d41573b2fec8a"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga16edb124722f7491fa3d41573b2fec8a">globalRot</a></td></tr>
-<tr class="separator:ga16edb124722f7491fa3d41573b2fec8a inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1d353831fd989481401e337cd5ba0ddc inherit pub_attribs_classNode" id="r_ga1d353831fd989481401e337cd5ba0ddc"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga1d353831fd989481401e337cd5ba0ddc">globalScale</a></td></tr>
-<tr class="separator:ga1d353831fd989481401e337cd5ba0ddc inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafecba6f76777835ffecef5c947e19f26 inherit pub_attribs_classNode" id="r_gafecba6f76777835ffecef5c947e19f26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="scripts_8h.html#a43b2073db874347a0a4ab166b38e36bd">Behavior</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#gafecba6f76777835ffecef5c947e19f26">behavior</a></td></tr>
-<tr class="separator:gafecba6f76777835ffecef5c947e19f26 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafa50314ea6ca719d2fcbbdaa33dd052a inherit pub_attribs_classNode" id="r_gafa50314ea6ca719d2fcbbdaa33dd052a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionBehaviorAttribute.html">BehaviorAttribute</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#gafa50314ea6ca719d2fcbbdaa33dd052a">attribute</a></td></tr>
-<tr class="separator:gafa50314ea6ca719d2fcbbdaa33dd052a inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab9c00a78e2cb89d68c1d9a251c870444 inherit pub_attribs_classNode" id="r_gab9c00a78e2cb89d68c1d9a251c870444"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#gab9c00a78e2cb89d68c1d9a251c870444">attributes_count</a></td></tr>
-<tr class="separator:gab9c00a78e2cb89d68c1d9a251c870444 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga16c1ef53dee5d0538a5027edc2e937f3 inherit pub_attribs_classNode" id="r_ga16c1ef53dee5d0538a5027edc2e937f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NodeFunctions.html#ga16c1ef53dee5d0538a5027edc2e937f3">shader</a></td></tr>
-<tr class="separator:ga16c1ef53dee5d0538a5027edc2e937f3 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cf70c2b354e11c49130331da4519864 inherit pub_attribs_classNode" id="r_a9cf70c2b354e11c49130331da4519864"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a9cf70c2b354e11c49130331da4519864">object</a></td></tr>
+<tr class="separator:a9cf70c2b354e11c49130331da4519864 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d857c2fdb25634fe92ca32ff006c233 inherit pub_attribs_classNode" id="r_a3d857c2fdb25634fe92ca32ff006c233"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="classNode.html">Node</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a3d857c2fdb25634fe92ca32ff006c233">children</a></td></tr>
+<tr class="separator:a3d857c2fdb25634fe92ca32ff006c233 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34f3ab9670c7b70dad8905359a243c92 inherit pub_attribs_classNode" id="r_a34f3ab9670c7b70dad8905359a243c92"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="classNode.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a34f3ab9670c7b70dad8905359a243c92">parent</a></td></tr>
+<tr class="separator:a34f3ab9670c7b70dad8905359a243c92 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0605f2b8a070fb62821274a6cf9b531 inherit pub_attribs_classNode" id="r_af0605f2b8a070fb62821274a6cf9b531"><td class="memItemLeft" align="right" valign="top"><a class="el" href="aliases_8h.html#a2b19d553290a8d4a083d3c03280ea800">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#af0605f2b8a070fb62821274a6cf9b531">length</a></td></tr>
+<tr class="separator:af0605f2b8a070fb62821274a6cf9b531 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a670b66a39fdb438336be47a9cb68a516 inherit pub_attribs_classNode" id="r_a670b66a39fdb438336be47a9cb68a516"><td class="memItemLeft" align="right" valign="top"><a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a670b66a39fdb438336be47a9cb68a516">type</a></td></tr>
+<tr class="separator:a670b66a39fdb438336be47a9cb68a516 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c95683293e9f234118c583a28bc9cc0 inherit pub_attribs_classNode" id="r_a0c95683293e9f234118c583a28bc9cc0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a0c95683293e9f234118c583a28bc9cc0">flags</a></td></tr>
+<tr class="separator:a0c95683293e9f234118c583a28bc9cc0 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19f2506921f0378b62b4200d0f674411 inherit pub_attribs_classNode" id="r_a19f2506921f0378b62b4200d0f674411"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a19f2506921f0378b62b4200d0f674411">pos</a></td></tr>
+<tr class="separator:a19f2506921f0378b62b4200d0f674411 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c1d2fdb8be63309e0a7e2a4b3a17066 inherit pub_attribs_classNode" id="r_a4c1d2fdb8be63309e0a7e2a4b3a17066"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a4c1d2fdb8be63309e0a7e2a4b3a17066">rot</a></td></tr>
+<tr class="separator:a4c1d2fdb8be63309e0a7e2a4b3a17066 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6f771ff3b5a0575ab61ce09df2ed685 inherit pub_attribs_classNode" id="r_ac6f771ff3b5a0575ab61ce09df2ed685"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ac6f771ff3b5a0575ab61ce09df2ed685">scale</a></td></tr>
+<tr class="separator:ac6f771ff3b5a0575ab61ce09df2ed685 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cf2ef86297b1bdfed11d030c0ed3dd2 inherit pub_attribs_classNode" id="r_a1cf2ef86297b1bdfed11d030c0ed3dd2"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a1cf2ef86297b1bdfed11d030c0ed3dd2">globalPos</a></td></tr>
+<tr class="separator:a1cf2ef86297b1bdfed11d030c0ed3dd2 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16edb124722f7491fa3d41573b2fec8a inherit pub_attribs_classNode" id="r_a16edb124722f7491fa3d41573b2fec8a"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a16edb124722f7491fa3d41573b2fec8a">globalRot</a></td></tr>
+<tr class="separator:a16edb124722f7491fa3d41573b2fec8a inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d353831fd989481401e337cd5ba0ddc inherit pub_attribs_classNode" id="r_a1d353831fd989481401e337cd5ba0ddc"><td class="memItemLeft" align="right" valign="top">vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a1d353831fd989481401e337cd5ba0ddc">globalScale</a></td></tr>
+<tr class="separator:a1d353831fd989481401e337cd5ba0ddc inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afecba6f76777835ffecef5c947e19f26 inherit pub_attribs_classNode" id="r_afecba6f76777835ffecef5c947e19f26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="scripts_8h.html#a73db917e73a3821d62d9869b4196c024">Behavior</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#afecba6f76777835ffecef5c947e19f26">behavior</a></td></tr>
+<tr class="separator:afecba6f76777835ffecef5c947e19f26 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa50314ea6ca719d2fcbbdaa33dd052a inherit pub_attribs_classNode" id="r_afa50314ea6ca719d2fcbbdaa33dd052a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionBehaviorAttribute.html">BehaviorAttribute</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#afa50314ea6ca719d2fcbbdaa33dd052a">attribute</a></td></tr>
+<tr class="separator:afa50314ea6ca719d2fcbbdaa33dd052a inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9c00a78e2cb89d68c1d9a251c870444 inherit pub_attribs_classNode" id="r_ab9c00a78e2cb89d68c1d9a251c870444"><td class="memItemLeft" align="right" valign="top"><a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ab9c00a78e2cb89d68c1d9a251c870444">attributes_count</a></td></tr>
+<tr class="separator:ab9c00a78e2cb89d68c1d9a251c870444 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16c1ef53dee5d0538a5027edc2e937f3 inherit pub_attribs_classNode" id="r_a16c1ef53dee5d0538a5027edc2e937f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__MemoryCache.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a16c1ef53dee5d0538a5027edc2e937f3">shader</a></td></tr>
+<tr class="separator:a16c1ef53dee5d0538a5027edc2e937f3 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_attribs_classNode"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classNode')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classNode.html">Node</a></td></tr>
-<tr class="memitem:a44e2ccb5f2209f6367f33a3c712f0eb1 inherit pub_static_attribs_classNode" id="r_a44e2ccb5f2209f6367f33a3c712f0eb1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__ShaderManagement.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a44e2ccb5f2209f6367f33a3c712f0eb1">glowShader</a> = 0</td></tr>
-<tr class="separator:a44e2ccb5f2209f6367f33a3c712f0eb1 inherit pub_static_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad05f8b1de975fa3370e8b98c0ec5aa4f inherit pub_static_attribs_classNode" id="r_ad05f8b1de975fa3370e8b98c0ec5aa4f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__MemoryCache.html#gaf8187ff58761df5fefccb33e254e5eb5">Shader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#ad05f8b1de975fa3370e8b98c0ec5aa4f">glowShader</a> = 0</td></tr>
+<tr class="memdesc:ad05f8b1de975fa3370e8b98c0ec5aa4f inherit pub_static_attribs_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static Shader variable used for glow effect.  <br /></td></tr>
+<tr class="separator:ad05f8b1de975fa3370e8b98c0ec5aa4f inherit pub_static_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents an area with collision shapes and nodes. </p>
 <p>This structure holds information about an area, including its collision shapes, collected nodes, and sorted nodes. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a53c3b2817302a4a4a53478cc3faa636b" name="a53c3b2817302a4a4a53478cc3faa636b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a53c3b2817302a4a4a53478cc3faa636b">&#9670;&#160;</a></span>collect_node()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Area::collect_node </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>node</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>distance</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>impactPoint</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a08b84bd1f8ae3d3dbdbfe7d58d181c05" name="a08b84bd1f8ae3d3dbdbfe7d58d181c05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08b84bd1f8ae3d3dbdbfe7d58d181c05">&#9670;&#160;</a></span>compare_distance_nodes()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static int Area::compare_distance_nodes </td>
-          <td>(</td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ab057dcc33eff0273510ca17becbe03b9" name="ab057dcc33eff0273510ca17becbe03b9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab057dcc33eff0273510ca17becbe03b9">&#9670;&#160;</a></span>constructor()</h2>
 
@@ -404,103 +359,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a5cef19e601e24e23dad05e780b671f6e" name="a5cef19e601e24e23dad05e780b671f6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5cef19e601e24e23dad05e780b671f6e">&#9670;&#160;</a></span>get_collisions_shapes()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Area::get_collisions_shapes </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classNode.html">Node</a> ****&#160;</td>
-          <td class="paramname"><em>shapes</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> **&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a28fdf9c2977f0746bcfe1d15ec9ee0e2" name="a28fdf9c2977f0746bcfe1d15ec9ee0e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28fdf9c2977f0746bcfe1d15ec9ee0e2">&#9670;&#160;</a></span>get_node_collection()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Area::get_node_collection </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structCollectedNode.html">CollectedNode</a> **&#160;</td>
-          <td class="paramname"><em>nodes</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> *&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aaa5492d5041c690d630e9be327acdc0c" name="aaa5492d5041c690d630e9be327acdc0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa5492d5041c690d630e9be327acdc0c">&#9670;&#160;</a></span>is_area()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Area::is_area </td>
-          <td>(</td>
-          <td class="paramtype">bool *&#160;</td>
-          <td class="paramname"><em>area</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Constructor for the physics area class. </p>
+<p>This function initializes a new instance of the physics area class with the given signal ID.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">signal_id</td><td>The signal ID to initialize the physics area instance with. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -550,10 +416,22 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Loads data from a file and initializes the given camera, scripts, and editor node. </p>
+<p>This function reads data from the specified file and uses it to initialize the provided camera, scripts, and editor node. The exact format and content of the file are assumed to be known by the caller.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>A pointer to the FILE object from which data will be read. </td></tr>
+    <tr><td class="paramname">c</td><td>A double pointer to a <a class="el" href="classCamera.html" title="A structure to represent a camera with position and rotation in 3D space.">Camera</a> object that will be initialized with data from the file. </td></tr>
+    <tr><td class="paramname">scripts</td><td>A pointer to a <a class="el" href="structScript.html" title="Structure representing a script with a function and a name.">Script</a> object that will be initialized with data from the file. </td></tr>
+    <tr><td class="paramname">editor</td><td>A pointer to a <a class="el" href="classNode.html" title="Represents a node in the tree structure.">Node</a> object representing the editor that will be initialized with data from the file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a0fc67491e18cd5c2552fe115a5f56acb" name="a0fc67491e18cd5c2552fe115a5f56acb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0fc67491e18cd5c2552fe115a5f56acb">&#9670;&#160;</a></span>save()</h2>
+<a id="ac0e09d3148de0be1b0a8982c2590e47a" name="ac0e09d3148de0be1b0a8982c2590e47a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0e09d3148de0be1b0a8982c2590e47a">&#9670;&#160;</a></span>collect_node()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -562,10 +440,63 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Area::save </td>
+          <td class="memname">void Area::collect_node </td>
           <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>file</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>distance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec3&#160;</td>
+          <td class="paramname"><em>impactPoint</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Collects a node based on the given distance and calculates the impact point. </p>
+<p>This function processes a given node and calculates the impact point based on the specified distance.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>A pointer to the <a class="el" href="classNode.html" title="Represents a node in the tree structure.">Node</a> structure that needs to be processed. </td></tr>
+    <tr><td class="paramname">distance</td><td>A double value representing the distance used in the calculation. </td></tr>
+    <tr><td class="paramname">impactPoint</td><td>Vec3 where the calculated impact point will be stored. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aaa5492d5041c690d630e9be327acdc0c" name="aaa5492d5041c690d630e9be327acdc0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa5492d5041c690d630e9be327acdc0c">&#9670;&#160;</a></span>is_area()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Area::is_area </td>
+          <td>(</td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>area</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -575,6 +506,62 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Checks if the given area is valid. </p>
+<p>This function takes a pointer to a boolean variable and checks if the area is valid.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">area</td><td>A pointer to a boolean variable that indicates the validity of the area. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a08b84bd1f8ae3d3dbdbfe7d58d181c05" name="a08b84bd1f8ae3d3dbdbfe7d58d181c05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08b84bd1f8ae3d3dbdbfe7d58d181c05">&#9670;&#160;</a></span>compare_distance_nodes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int Area::compare_distance_nodes </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compares the distances of two nodes. </p>
+<p>This function is used to compare the distances of two nodes. It is typically used in sorting algorithms where nodes need to be ordered based on their distances.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Pointer to the first node to compare. </td></tr>
+    <tr><td class="paramname">b</td><td>Pointer to the second node to compare. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An integer less than, equal to, or greater than zero if the distance of the first node is considered to be respectively less than, equal to, or greater than the distance of the second node. </dd></dl>
 
 </div>
 </div>
@@ -601,10 +588,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Sorts the nodes in the physics area. </p>
+<p>This function sorts the nodes in the physics area based on a specific criterion. The sorting algorithm and criterion are not specified in the provided code snippet.</p>
+<dl class="section note"><dt>Note</dt><dd>Ensure that the nodes are properly initialized before calling this function. </dd></dl>
+
 </div>
 </div>
-<a id="a589fbdb24b0e82711669645e24b40c91" name="a589fbdb24b0e82711669645e24b40c91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a589fbdb24b0e82711669645e24b40c91">&#9670;&#160;</a></span>update()</h2>
+<a id="a6385456e4c8e268c746eb88b373579b1" name="a6385456e4c8e268c746eb88b373579b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6385456e4c8e268c746eb88b373579b1">&#9670;&#160;</a></span>update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -615,19 +606,19 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void Area::update </td>
           <td>(</td>
-          <td class="paramtype">float *&#160;</td>
+          <td class="paramtype">vec3&#160;</td>
           <td class="paramname"><em>pos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float *&#160;</td>
+          <td class="paramtype">vec3&#160;</td>
           <td class="paramname"><em>rot</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float *&#160;</td>
+          <td class="paramtype">vec3&#160;</td>
           <td class="paramname"><em>scale</em>&#160;</td>
         </tr>
         <tr>
@@ -643,17 +634,169 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Updates the position, rotation, and scale of an object. </p>
+<p>This function takes pointers to the position, rotation, and scale of an object and updates them accordingly.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>Vec3 position of the object. It is expected to be a float array of size 3 representing x, y, and z coordinates. </td></tr>
+    <tr><td class="paramname">rot</td><td>Vec3 rotation of the object. It is expected to be a float array of size 3 representing rotation angles around x, y, and z axes. </td></tr>
+    <tr><td class="paramname">scale</td><td>Vec3 scale of the object. It is expected to be a float array of size 3 representing scaling factors along x, y, and z axes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5cef19e601e24e23dad05e780b671f6e" name="a5cef19e601e24e23dad05e780b671f6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cef19e601e24e23dad05e780b671f6e">&#9670;&#160;</a></span>get_collisions_shapes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Area::get_collisions_shapes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classNode.html">Node</a> ****&#160;</td>
+          <td class="paramname"><em>shapes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> **&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the collision shapes and their lengths. </p>
+<p>This function populates the provided pointers with the collision shapes and their corresponding lengths.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shapes</td><td>A pointer to a 4-dimensional array of <a class="el" href="classNode.html" title="Represents a node in the tree structure.">Node</a> pointers. This will be populated with the collision shapes. </td></tr>
+    <tr><td class="paramname">length</td><td>A pointer to an array of unsigned 8-bit integers. This will be populated with the lengths of the collision shapes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a28fdf9c2977f0746bcfe1d15ec9ee0e2" name="a28fdf9c2977f0746bcfe1d15ec9ee0e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28fdf9c2977f0746bcfe1d15ec9ee0e2">&#9670;&#160;</a></span>get_node_collection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Area::get_node_collection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCollectedNode.html">CollectedNode</a> **&#160;</td>
+          <td class="paramname"><em>nodes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> *&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves a collection of nodes. </p>
+<p>This function populates the provided array with a collection of nodes and sets the length of the collection.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">nodes</td><td>A pointer to an array of <a class="el" href="structCollectedNode.html" title="Represents a node collected by an area.">CollectedNode</a> pointers that will be populated with the nodes. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">length</td><td>A pointer to an unsigned 8-bit integer that will be set to the length of the node collection. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0fc67491e18cd5c2552fe115a5f56acb" name="a0fc67491e18cd5c2552fe115a5f56acb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fc67491e18cd5c2552fe115a5f56acb">&#9670;&#160;</a></span>save()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Area::save </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Saves the current state of the physics area to a file. </p>
+<p>This function writes the current state of the physics area to the specified file. The file should be opened in a mode that allows writing before calling this function.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>A pointer to a FILE object that identifies the file to which the state will be saved. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a736dc4fb322517b2ba4e68bd6140aa59" name="a736dc4fb322517b2ba4e68bd6140aa59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a736dc4fb322517b2ba4e68bd6140aa59">&#9670;&#160;</a></span>collectedLength</h2>
+<a id="a81fbd9797b9458beeda0fd4853596687" name="a81fbd9797b9458beeda0fd4853596687"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81fbd9797b9458beeda0fd4853596687">&#9670;&#160;</a></span>collisionsShapes</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a> Area::collectedLength</td>
+          <td class="memname">struct <a class="el" href="classNode.html">Node</a>** Area::collisionsShapes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6881cbeab01152d62749a7a34d0aa40" name="ad6881cbeab01152d62749a7a34d0aa40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6881cbeab01152d62749a7a34d0aa40">&#9670;&#160;</a></span>length</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> Area::length</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -676,28 +819,14 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a81fbd9797b9458beeda0fd4853596687" name="a81fbd9797b9458beeda0fd4853596687"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81fbd9797b9458beeda0fd4853596687">&#9670;&#160;</a></span>collisionsShapes</h2>
+<a id="a736dc4fb322517b2ba4e68bd6140aa59" name="a736dc4fb322517b2ba4e68bd6140aa59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a736dc4fb322517b2ba4e68bd6140aa59">&#9670;&#160;</a></span>collectedLength</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="classNode.html">Node</a>** Area::collisionsShapes</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad6881cbeab01152d62749a7a34d0aa40" name="ad6881cbeab01152d62749a7a34d0aa40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6881cbeab01152d62749a7a34d0aa40">&#9670;&#160;</a></span>length</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> Area::length</td>
+          <td class="memname"><a class="el" href="aliases_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6">u32</a> Area::collectedLength</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -712,7 +841,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#a2b19d553290a8d4a083d3c03280ea800">u16</a> Area::signal_id</td>
+          <td class="memname"><a class="el" href="aliases_8h.html#a2b19d553290a8d4a083d3c03280ea800">u16</a> Area::signal_id</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -720,7 +849,7 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/classes/nodes/physics/<a class="el" href="area_8class_8c.html">area.class.c</a></li>
 <li>src/physics/<a class="el" href="physics_8h_source.html">physics.h</a></li>
 </ul>
@@ -755,6 +884,16 @@ Additional Inherited Members</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -763,7 +902,7 @@ Additional Inherited Members</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

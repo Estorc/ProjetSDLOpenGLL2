@@ -1,0 +1,50 @@
+\doxysection{src/render/shaders/ssao.c File Reference}
+\hypertarget{ssao_8c}{}\label{ssao_8c}\index{src/render/shaders/ssao.c@{src/render/shaders/ssao.c}}
+{\ttfamily \#include $<$raptiquax.\+h$>$}\newline
+{\ttfamily \#include $<$utils/random.\+h$>$}\newline
+{\ttfamily \#include $<$utils/interp.\+h$>$}\newline
+{\ttfamily \#include $<$io/shader.\+h$>$}\newline
+Include dependency graph for ssao.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ssao_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ssao_8c_ac18b0efa13a57edad20fa47a12de42e6}{init\+\_\+ssao}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} shader\+SSAO, \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} shader\+SSAOBlur)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static vec3 \mbox{\hyperlink{ssao_8c_af2df9e928269858be5e82130d67253da}{ssao\+Kernel}} \mbox{[}64\mbox{]}
+\item 
+static vec3 \mbox{\hyperlink{ssao_8c_a900b23c67b0dea23067e036fd78c2634}{ssao\+Noise}} \mbox{[}16\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ssao_8c_ac18b0efa13a57edad20fa47a12de42e6}\label{ssao_8c_ac18b0efa13a57edad20fa47a12de42e6} 
+\index{ssao.c@{ssao.c}!init\_ssao@{init\_ssao}}
+\index{init\_ssao@{init\_ssao}!ssao.c@{ssao.c}}
+\doxysubsubsection{\texorpdfstring{init\_ssao()}{init\_ssao()}}
+{\footnotesize\ttfamily void init\+\_\+ssao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{shader\+SSAO,  }\item[{\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{shader\+SSAOBlur }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{ssao_8c_af2df9e928269858be5e82130d67253da}\label{ssao_8c_af2df9e928269858be5e82130d67253da} 
+\index{ssao.c@{ssao.c}!ssaoKernel@{ssaoKernel}}
+\index{ssaoKernel@{ssaoKernel}!ssao.c@{ssao.c}}
+\doxysubsubsection{\texorpdfstring{ssaoKernel}{ssaoKernel}}
+{\footnotesize\ttfamily vec3 ssao\+Kernel\mbox{[}64\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{ssao_8c_a900b23c67b0dea23067e036fd78c2634}\label{ssao_8c_a900b23c67b0dea23067e036fd78c2634} 
+\index{ssao.c@{ssao.c}!ssaoNoise@{ssaoNoise}}
+\index{ssaoNoise@{ssaoNoise}!ssao.c@{ssao.c}}
+\doxysubsubsection{\texorpdfstring{ssaoNoise}{ssaoNoise}}
+{\footnotesize\ttfamily vec3 ssao\+Noise\mbox{[}16\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+

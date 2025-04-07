@@ -23,15 +23,15 @@ Bunch of math functions.
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \mbox{\hyperlink{group__MathGroup_ga2e853840b7e363d728f0295d2241e7c7}{frsqrt}} (\mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} number)
+\mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \mbox{\hyperlink{group__MathGroup_ga2e853840b7e363d728f0295d2241e7c7}{frsqrt}} (\mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} number)
 \begin{DoxyCompactList}\small\item\em Computes the fast inverse square root of a given number using the "{}\+Fast Inverse Square Root"{} algorithm. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \mbox{\hyperlink{group__MathGroup_gaf12eb49731c13c96d3bcc7818566af82}{to\+\_\+radians}} (\mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} angle)
+\mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \mbox{\hyperlink{group__MathGroup_gaf12eb49731c13c96d3bcc7818566af82}{to\+\_\+radians}} (\mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} angle)
 \begin{DoxyCompactList}\small\item\em Converts an angle from degrees to radians. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \mbox{\hyperlink{group__MathGroup_ga2409f579c7b190a358b346041eded59a}{to\+\_\+degrees}} (\mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} angle)
+\mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \mbox{\hyperlink{group__MathGroup_ga2409f579c7b190a358b346041eded59a}{to\+\_\+degrees}} (\mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} angle)
 \begin{DoxyCompactList}\small\item\em Converts an angle from radians to degrees. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \mbox{\hyperlink{group__MathGroup_ga6d951237d6e1837dc2b93720aa1e3f28}{float\+\_\+approach}} (\mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \texorpdfstring{$\ast$}{*}const origin, const \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} dest, const \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} factor)
+\mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \mbox{\hyperlink{group__MathGroup_ga6d951237d6e1837dc2b93720aa1e3f28}{float\+\_\+approach}} (\mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \texorpdfstring{$\ast$}{*}const origin, const \mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} dest, const \mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} factor)
 \begin{DoxyCompactList}\small\item\em Approaches a target float by a given factor. \end{DoxyCompactList}\item 
-float \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__MathGroup_ga895111283c3f80f0ea9a848eedd4e254}{vec3\+\_\+approach}} (float \texorpdfstring{$\ast$}{*}origin, float \texorpdfstring{$\ast$}{*}dest, const \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} factor)
+float \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__MathGroup_ga895111283c3f80f0ea9a848eedd4e254}{vec3\+\_\+approach}} (float \texorpdfstring{$\ast$}{*}origin, float \texorpdfstring{$\ast$}{*}dest, const \mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} factor)
 \begin{DoxyCompactList}\small\item\em Approaches a target vector by a given factor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -41,6 +41,100 @@ Bunch of math functions.
 
 
 \doxysubsection{Macro Definition Documentation}
+\Hypertarget{group__MathGroup_gadee8c6d2fc20a1194cf64c481e7b6353}\label{group__MathGroup_gadee8c6d2fc20a1194cf64c481e7b6353} 
+\index{Math Utilities@{Math Utilities}!sqr@{sqr}}
+\index{sqr@{sqr}!Math Utilities@{Math Utilities}}
+\doxysubsubsection{\texorpdfstring{sqr}{sqr}}
+{\footnotesize\ttfamily \#define sqr(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((x)\texorpdfstring{$\ast$}{*}(x))}
+
+
+
+Computes the square of a number. 
+
+This macro takes a number and returns its square by multiplying the number by itself.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The number to be squared. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The square of the input number. 
+\end{DoxyReturn}
+\Hypertarget{group__MathGroup_ga8368822f21884eec2e99ce31c08b0df4}\label{group__MathGroup_ga8368822f21884eec2e99ce31c08b0df4} 
+\index{Math Utilities@{Math Utilities}!cube@{cube}}
+\index{cube@{cube}!Math Utilities@{Math Utilities}}
+\doxysubsubsection{\texorpdfstring{cube}{cube}}
+{\footnotesize\ttfamily \#define cube(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((x)\texorpdfstring{$\ast$}{*}(x)\texorpdfstring{$\ast$}{*}(x))}
+
+
+
+Computes the cube of a number. 
+
+This macro takes a number and returns its cube by multiplying the number by itself twice.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The number to be cubed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cube of the input number. 
+\end{DoxyReturn}
+\Hypertarget{group__MathGroup_ga598a3330b3c21701223ee0ca14316eca}\label{group__MathGroup_ga598a3330b3c21701223ee0ca14316eca} 
+\index{Math Utilities@{Math Utilities}!PI@{PI}}
+\index{PI@{PI}!Math Utilities@{Math Utilities}}
+\doxysubsubsection{\texorpdfstring{PI}{PI}}
+{\footnotesize\ttfamily \#define PI~3.\+14159265358979323846264338327}
+
+
+
+The mathematical constant π (pi). 
+
+This macro defines the value of π (pi) to a high degree of precision. \Hypertarget{group__MathGroup_ga74e75242132eaabbc1c512488a135926}\label{group__MathGroup_ga74e75242132eaabbc1c512488a135926} 
+\index{Math Utilities@{Math Utilities}!MIN@{MIN}}
+\index{MIN@{MIN}!Math Utilities@{Math Utilities}}
+\doxysubsubsection{\texorpdfstring{MIN}{MIN}}
+{\footnotesize\ttfamily \#define MIN(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~((x $<$ y) ? x \+: y)}
+
+
+
+Computes the minimum of two values. 
+
+This macro takes two values and returns the smaller of the two.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The first value. \\
+\hline
+{\em y} & The second value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The smaller of the two input values. 
+\end{DoxyReturn}
+\Hypertarget{group__MathGroup_gaacc3ee1a7f283f8ef65cea31f4436a95}\label{group__MathGroup_gaacc3ee1a7f283f8ef65cea31f4436a95} 
+\index{Math Utilities@{Math Utilities}!MAX@{MAX}}
+\index{MAX@{MAX}!Math Utilities@{Math Utilities}}
+\doxysubsubsection{\texorpdfstring{MAX}{MAX}}
+{\footnotesize\ttfamily \#define MAX(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~((x $>$ y) ? x \+: y)}
+
+
+
+Computes the maximum of two values. 
+
+This macro takes two values and returns the larger of the two.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The first value. \\
+\hline
+{\em y} & The second value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The larger of the two input values. 
+\end{DoxyReturn}
 \Hypertarget{group__MathGroup_ga3d82ffe4989b63f6edc6e6349838ae3c}\label{group__MathGroup_ga3d82ffe4989b63f6edc6e6349838ae3c} 
 \index{Math Utilities@{Math Utilities}!CLAMP@{CLAMP}}
 \index{CLAMP@{CLAMP}!Math Utilities@{Math Utilities}}
@@ -65,127 +159,14 @@ This macro takes a value and ensures it falls within the specified range. If the
 \begin{DoxyReturn}{Returns}
 The clamped value. 
 \end{DoxyReturn}
-\Hypertarget{group__MathGroup_ga8368822f21884eec2e99ce31c08b0df4}\label{group__MathGroup_ga8368822f21884eec2e99ce31c08b0df4} 
-\index{Math Utilities@{Math Utilities}!cube@{cube}}
-\index{cube@{cube}!Math Utilities@{Math Utilities}}
-\doxysubsubsection{\texorpdfstring{cube}{cube}}
-{\footnotesize\ttfamily \#define cube(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((x)\texorpdfstring{$\ast$}{*}(x)\texorpdfstring{$\ast$}{*}(x))}
-
-
-
-Computes the cube of a number. 
-
-This macro takes a number and returns its cube by multiplying the number by itself twice.
-
-
-\begin{DoxyParams}{Parameters}
-{\em x} & The number to be cubed. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The cube of the input number. 
-\end{DoxyReturn}
-\Hypertarget{group__MathGroup_gaacc3ee1a7f283f8ef65cea31f4436a95}\label{group__MathGroup_gaacc3ee1a7f283f8ef65cea31f4436a95} 
-\index{Math Utilities@{Math Utilities}!MAX@{MAX}}
-\index{MAX@{MAX}!Math Utilities@{Math Utilities}}
-\doxysubsubsection{\texorpdfstring{MAX}{MAX}}
-{\footnotesize\ttfamily \#define MAX(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~((x $>$ y) ? x \+: y)}
-
-
-
-Computes the maximum of two values. 
-
-This macro takes two values and returns the larger of the two.
-
-
-\begin{DoxyParams}{Parameters}
-{\em x} & The first value. \\
-\hline
-{\em y} & The second value. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The larger of the two input values. 
-\end{DoxyReturn}
-\Hypertarget{group__MathGroup_ga74e75242132eaabbc1c512488a135926}\label{group__MathGroup_ga74e75242132eaabbc1c512488a135926} 
-\index{Math Utilities@{Math Utilities}!MIN@{MIN}}
-\index{MIN@{MIN}!Math Utilities@{Math Utilities}}
-\doxysubsubsection{\texorpdfstring{MIN}{MIN}}
-{\footnotesize\ttfamily \#define MIN(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~((x $<$ y) ? x \+: y)}
-
-
-
-Computes the minimum of two values. 
-
-This macro takes two values and returns the smaller of the two.
-
-
-\begin{DoxyParams}{Parameters}
-{\em x} & The first value. \\
-\hline
-{\em y} & The second value. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The smaller of the two input values. 
-\end{DoxyReturn}
-\Hypertarget{group__MathGroup_ga598a3330b3c21701223ee0ca14316eca}\label{group__MathGroup_ga598a3330b3c21701223ee0ca14316eca} 
-\index{Math Utilities@{Math Utilities}!PI@{PI}}
-\index{PI@{PI}!Math Utilities@{Math Utilities}}
-\doxysubsubsection{\texorpdfstring{PI}{PI}}
-{\footnotesize\ttfamily \#define PI~3.\+14159265358979323846264338327}
-
-
-
-The mathematical constant π (pi). 
-
-This macro defines the value of π (pi) to a high degree of precision. \Hypertarget{group__MathGroup_gadee8c6d2fc20a1194cf64c481e7b6353}\label{group__MathGroup_gadee8c6d2fc20a1194cf64c481e7b6353} 
-\index{Math Utilities@{Math Utilities}!sqr@{sqr}}
-\index{sqr@{sqr}!Math Utilities@{Math Utilities}}
-\doxysubsubsection{\texorpdfstring{sqr}{sqr}}
-{\footnotesize\ttfamily \#define sqr(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((x)\texorpdfstring{$\ast$}{*}(x))}
-
-
-
-Computes the square of a number. 
-
-This macro takes a number and returns its square by multiplying the number by itself.
-
-
-\begin{DoxyParams}{Parameters}
-{\em x} & The number to be squared. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The square of the input number. 
-\end{DoxyReturn}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{group__MathGroup_ga6d951237d6e1837dc2b93720aa1e3f28}\label{group__MathGroup_ga6d951237d6e1837dc2b93720aa1e3f28} 
-\index{Math Utilities@{Math Utilities}!float\_approach@{float\_approach}}
-\index{float\_approach@{float\_approach}!Math Utilities@{Math Utilities}}
-\doxysubsubsection{\texorpdfstring{float\_approach()}{float\_approach()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} float\+\_\+approach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \texorpdfstring{$\ast$}{*}const}]{origin,  }\item[{const \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{dest,  }\item[{const \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{factor }\end{DoxyParamCaption})}
-
-
-
-Approaches a target float by a given factor. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em a} & \{f32\} The float to be approached. \\
-\hline
-{\em b} & \{f32\} The target float. \\
-\hline
-{\em t} & \{f32\} The approach factor.\\
-\hline
-\end{DoxyParams}
-This macro moves float a towards float b by a factor of t. \Hypertarget{group__MathGroup_ga2e853840b7e363d728f0295d2241e7c7}\label{group__MathGroup_ga2e853840b7e363d728f0295d2241e7c7} 
+\Hypertarget{group__MathGroup_ga2e853840b7e363d728f0295d2241e7c7}\label{group__MathGroup_ga2e853840b7e363d728f0295d2241e7c7} 
 \index{Math Utilities@{Math Utilities}!frsqrt@{frsqrt}}
 \index{frsqrt@{frsqrt}!Math Utilities@{Math Utilities}}
 \doxysubsubsection{\texorpdfstring{frsqrt()}{frsqrt()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} frsqrt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{number }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} frsqrt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{number }\end{DoxyParamCaption})}
 
 
 
@@ -207,31 +188,11 @@ i = 0x5f3759df - (i >> 1) // The magic constant
 x = *(float*)&i      // Convert back to float
 x = x * (1.5 - (number * 0.5 * x * x)) // Newton's method refinement
 \end{DoxyVerb}
- This function is typically used in graphics and game development, where performance is critical, and is suitable for scenarios where the input number is non-\/negative. \Hypertarget{group__MathGroup_ga2409f579c7b190a358b346041eded59a}\label{group__MathGroup_ga2409f579c7b190a358b346041eded59a} 
-\index{Math Utilities@{Math Utilities}!to\_degrees@{to\_degrees}}
-\index{to\_degrees@{to\_degrees}!Math Utilities@{Math Utilities}}
-\doxysubsubsection{\texorpdfstring{to\_degrees()}{to\_degrees()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} to\+\_\+degrees (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{angle }\end{DoxyParamCaption})}
-
-
-
-Converts an angle from radians to degrees. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em angle} & \{f32\} The angle in radians to be converted. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\{f32\} The converted angle in degrees.
-\end{DoxyReturn}
-This function takes an angle specified in radians and converts it to degrees using the formula\+: \begin{DoxyVerb}degrees = radians * (180 / PI)
-\end{DoxyVerb}
- where PI is a constant representing the mathematical constant π. The function returns the equivalent angle in degrees, allowing for easier interpretation and usage in applications where degrees are preferred. \Hypertarget{group__MathGroup_gaf12eb49731c13c96d3bcc7818566af82}\label{group__MathGroup_gaf12eb49731c13c96d3bcc7818566af82} 
+ This function is typically used in graphics and game development, where performance is critical, and is suitable for scenarios where the input number is non-\/negative. \Hypertarget{group__MathGroup_gaf12eb49731c13c96d3bcc7818566af82}\label{group__MathGroup_gaf12eb49731c13c96d3bcc7818566af82} 
 \index{Math Utilities@{Math Utilities}!to\_radians@{to\_radians}}
 \index{to\_radians@{to\_radians}!Math Utilities@{Math Utilities}}
 \doxysubsubsection{\texorpdfstring{to\_radians()}{to\_radians()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} to\+\_\+radians (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{angle }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} to\+\_\+radians (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{angle }\end{DoxyParamCaption})}
 
 
 
@@ -247,11 +208,50 @@ Converts an angle from degrees to radians.
 \end{DoxyReturn}
 This function takes an angle specified in degrees and converts it to radians using the formula\+: \begin{DoxyVerb}radians = degrees * (PI / 180)
 \end{DoxyVerb}
- where PI is a constant representing the mathematical constant π. The function returns the equivalent angle in radians, allowing for easier interpretation and usage in applications where radians are preferred. \Hypertarget{group__MathGroup_ga895111283c3f80f0ea9a848eedd4e254}\label{group__MathGroup_ga895111283c3f80f0ea9a848eedd4e254} 
+ where PI is a constant representing the mathematical constant π. The function returns the equivalent angle in radians, allowing for easier interpretation and usage in applications where radians are preferred. \Hypertarget{group__MathGroup_ga2409f579c7b190a358b346041eded59a}\label{group__MathGroup_ga2409f579c7b190a358b346041eded59a} 
+\index{Math Utilities@{Math Utilities}!to\_degrees@{to\_degrees}}
+\index{to\_degrees@{to\_degrees}!Math Utilities@{Math Utilities}}
+\doxysubsubsection{\texorpdfstring{to\_degrees()}{to\_degrees()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} to\+\_\+degrees (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{angle }\end{DoxyParamCaption})}
+
+
+
+Converts an angle from radians to degrees. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & \{f32\} The angle in radians to be converted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{f32\} The converted angle in degrees.
+\end{DoxyReturn}
+This function takes an angle specified in radians and converts it to degrees using the formula\+: \begin{DoxyVerb}degrees = radians * (180 / PI)
+\end{DoxyVerb}
+ where PI is a constant representing the mathematical constant π. The function returns the equivalent angle in degrees, allowing for easier interpretation and usage in applications where degrees are preferred. \Hypertarget{group__MathGroup_ga6d951237d6e1837dc2b93720aa1e3f28}\label{group__MathGroup_ga6d951237d6e1837dc2b93720aa1e3f28} 
+\index{Math Utilities@{Math Utilities}!float\_approach@{float\_approach}}
+\index{float\_approach@{float\_approach}!Math Utilities@{Math Utilities}}
+\doxysubsubsection{\texorpdfstring{float\_approach()}{float\_approach()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} float\+\_\+approach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}} \texorpdfstring{$\ast$}{*}const}]{origin,  }\item[{const \mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{dest,  }\item[{const \mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{factor }\end{DoxyParamCaption})}
+
+
+
+Approaches a target float by a given factor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \{f32\} The float to be approached. \\
+\hline
+{\em b} & \{f32\} The target float. \\
+\hline
+{\em t} & \{f32\} The approach factor.\\
+\hline
+\end{DoxyParams}
+This macro moves float a towards float b by a factor of t. \Hypertarget{group__MathGroup_ga895111283c3f80f0ea9a848eedd4e254}\label{group__MathGroup_ga895111283c3f80f0ea9a848eedd4e254} 
 \index{Math Utilities@{Math Utilities}!vec3\_approach@{vec3\_approach}}
 \index{vec3\_approach@{vec3\_approach}!Math Utilities@{Math Utilities}}
 \doxysubsubsection{\texorpdfstring{vec3\_approach()}{vec3\_approach()}}
-{\footnotesize\ttfamily float \texorpdfstring{$\ast$}{*} vec3\+\_\+approach (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{origin,  }\item[{float \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{const \mbox{\hyperlink{raptiquax_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{factor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily float \texorpdfstring{$\ast$}{*} vec3\+\_\+approach (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{origin,  }\item[{float \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{const \mbox{\hyperlink{aliases_8h_a1bd198f821a2a4ea63fa8ab2e4a2afb3}{f32}}}]{factor }\end{DoxyParamCaption})}
 
 
 

@@ -1,8 +1,8 @@
 #ifndef CLASSES_H
 #define CLASSES_H
-#include "classes_types.h"
-#include "import_classes.h"
-#include "../raptiquax.h"
+#include <classes/classes_types.h>
+#include <classes/import_classes.h>
+#include <raptiquax.h>
 
 extern const struct ClassManager classManager;
 
@@ -18,7 +18,7 @@ extern const struct ClassManager classManager;
 
 
 /**
- * @struct Object
+ * @class Object
  * @brief A generic object structure.
  * 
  * This structure represents a generic object with a pointer to the actual object data

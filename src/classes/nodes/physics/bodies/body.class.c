@@ -13,24 +13,44 @@
  * @date 2023-10-20
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "render/framebuffer.h"
-#include "storage/node.h"
-#include "io/scene_loader.h"
-#include "render/lighting.h"
-#include "buffer.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <io/scene_loader.h>
+#include <render/lighting.h>
+#include <buffer.h>
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class Body : public PhysicalNode {
     __containerType__ Node *
     public:
 
+    /**
+     * @brief Checks if the given pointer represents a body.
+     *
+     * This function takes a pointer to a boolean and performs a check to determine if it represents a body.
+     *
+     * @param body A pointer to a boolean that will be checked.
+     */
     void is_body(bool *body) {
         (*body) = true;
     }
 
+    /**
+     * @brief Applies an impulse to the physics body.
+     *
+     * This function is responsible for applying an impulse to the physics body,
+     * which will affect its velocity and position based on the physics simulation.
+     *
+     * @note The specific details of how the impulse is calculated and applied
+     *       are not provided in this snippet.
+     */
     void apply_impulse() {
         // Do nothing
     }
@@ -40,7 +60,6 @@ class Body : public PhysicalNode {
      * 
      * @param child The child shape to be added to the node.
      */
-
     void add_shape(Node *child) {
         u8 *length;
         Node ***shapes;
@@ -56,7 +75,6 @@ class Body : public PhysicalNode {
      * @param node The parent node to which the child shape will be added.
      * @param child The child shape to be added to the node.
      */
-
     void add_shape_and_realloc(Node *child) {
         u8 *length;
         Node ***shapes;
@@ -73,7 +91,6 @@ class Body : public PhysicalNode {
      * @param node The parent node from which the child shape will be removed.
      * @param child The child shape to be removed from the node.
      */
-
     void remove_shape(Node *child) {
         u8 *length;
         Node ***shapes;
@@ -90,7 +107,6 @@ class Body : public PhysicalNode {
      * @param node The parent node from which the child shape will be removed.
      * @param child The child shape to be removed from the node.
      */
-
     void remove_shape_and_realloc(Node *child) {
         u8 *length;
         Node ***shapes;
@@ -109,7 +125,6 @@ class Body : public PhysicalNode {
      * @param node The parent node from which the child shape will be removed.
      * @param child The child shape to be removed and freed.
      */
-
     void remove_shape_and_free(Node *child) {
         u8 *length;
         Node ***shapes;
@@ -126,7 +141,6 @@ class Body : public PhysicalNode {
      * @param node The parent node from which the child shape will be removed.
      * @param child The child shape to be removed, freed, and reallocated.
      */
-
     void remove_shape_and_free_and_realloc(Node *child) {
         u8 *length;
         Node ***shapes;
@@ -142,7 +156,15 @@ class Body : public PhysicalNode {
         //POINTER_CHECK((*shapes));
     }
 
+    /**
+     * @brief Calculates the collision normal vector.
+     *
+     * This function computes the normal vector of a collision and stores it in the provided array.
+     *
+     * @param[out] normal A pointer to an array of floats where the collision normal vector will be stored.
+     */
     void get_collision_normal(float *normal) {
         glm_vec3_zero(normal);
     }
 }
+

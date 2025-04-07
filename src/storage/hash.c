@@ -2,12 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "hash.h"
+#include <storage/hash.h>
 
-#define LOAD_FACTOR 0.75f       // Threshold for resizing the table
-#define MULTIPLIER 31           // Multiplier for the hash function
+#define LOAD_FACTOR 0.75f
+#define MULTIPLIER 31
 
-// Hash function
 unsigned int hash(const char *key, int capacity) {
     unsigned int hash = 0;
     for (int i = 0; key[i] != '\0'; i++) {
@@ -16,7 +15,6 @@ unsigned int hash(const char *key, int capacity) {
     return hash % capacity;
 }
 
-// Create a new hash table
 HashTable *table_create(int initial_capacity) {
     HashTable *table = (HashTable *)malloc(sizeof(HashTable));
     table->table = (Entry **)calloc(initial_capacity, sizeof(Entry *));
@@ -45,7 +43,6 @@ void table_resize(HashTable *table) {
     table->capacity = new_capacity;
 }
 
-// Insert a key-value pair into the hash table
 Entry * table_insert(HashTable *table, const char *key, void *value) {
     if (table->size >= table->capacity * LOAD_FACTOR) {
         table_resize(table);
@@ -76,8 +73,6 @@ void table_insert_raw(HashTable *table, const char *key, void *value) {
     table_insert(table, key, value)->needs_free = true;
 }
 
-
-// Retrieve a value from the hash table
 void *table_get(HashTable *table, const char *key) {
     unsigned int index = hash(key, table->capacity);
     Entry *entry = table->table[index];
@@ -90,7 +85,6 @@ void *table_get(HashTable *table, const char *key) {
     return NULL;
 }
 
-// Remove a key-value pair from the hash table
 void table_remove(HashTable *table, const char *key) {
     unsigned int index = hash(key, table->capacity);
     Entry *entry = table->table[index];
@@ -115,7 +109,6 @@ void table_remove(HashTable *table, const char *key) {
     }
 }
 
-// Free the memory used by the hash table
 void table_free(HashTable *table) {
     for (int i = 0; i < table->capacity; i++) {
         Entry *entry = table->table[i];

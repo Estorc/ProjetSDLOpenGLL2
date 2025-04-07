@@ -110,36 +110,39 @@ $(document).ready(function(){initNavTree('camera_8h_source.html',''); initResiza
   <div class="headertitle"><div class="title">camera.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="camera_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;../raptiquax.h&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;../math/math_util.h&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;../io/shader.h&quot;</span></div>
+<a href="camera_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;<a class="code" href="raptiquax_8h.html">raptiquax.h</a>&gt;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;<a class="code" href="math__util_8h.html">math/math_util.h</a>&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;<a class="code" href="shader_8h.html">io/shader.h</a>&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef CAMERA_H</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define CAMERA_H</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">struct </span><a class="code hl_struct" href="classNode.html">Node</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">struct </span><a class="code hl_class" href="classNode.html">Node</a>;</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">struct </span><a class="code hl_struct" href="structWorldShaders.html">WorldShaders</a>;</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="classCamera.html">Camera</a> {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classCamera.html#a58f8b51664251b5c0f59be0e0a87e754">   23</a></span>    vec3 <a class="code hl_variable" href="classCamera.html#a58f8b51664251b5c0f59be0e0a87e754">pos</a>; </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classCamera.html#a1456c80b084814b7811c8fe3d797021d">   24</a></span>    vec3 <a class="code hl_variable" href="classCamera.html#a1456c80b084814b7811c8fe3d797021d">rot</a>; </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classCamera.html#aff7393c9cfbccd7e369091f00008da93">   25</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="classCamera.html#aff7393c9cfbccd7e369091f00008da93">fov</a>; </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>} <a class="code hl_struct" href="classCamera.html">Camera</a>;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__Camera.html#ga8251d5473e00feb6f2181942b89e654d">init_camera</a>(<a class="code hl_struct" href="classCamera.html">Camera</a> *c);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_class" href="classCamera.html">Camera</a> {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classCamera.html#a58f8b51664251b5c0f59be0e0a87e754">   17</a></span>    vec3 <a class="code hl_variable" href="classCamera.html#a58f8b51664251b5c0f59be0e0a87e754">pos</a>; </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classCamera.html#a1456c80b084814b7811c8fe3d797021d">   18</a></span>    vec3 <a class="code hl_variable" href="classCamera.html#a1456c80b084814b7811c8fe3d797021d">rot</a>; </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classCamera.html#aff7393c9cfbccd7e369091f00008da93">   19</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="classCamera.html#aff7393c9cfbccd7e369091f00008da93">fov</a>; </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>} <a class="code hl_class" href="classCamera.html">Camera</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__Camera.html#ga8251d5473e00feb6f2181942b89e654d">init_camera</a>(<a class="code hl_class" href="classCamera.html">Camera</a> *c);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__Camera.html#gadd86e5f49d6695d5497c08e3de4207af">camera_projection</a>(<a class="code hl_struct" href="classCamera.html">Camera</a> *c, <span class="keyword">struct</span> <a class="code hl_struct" href="structWorldShaders.html">WorldShaders</a> *shaders);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">void</span> <a class="code hl_function" href="group__Camera.html#gadd86e5f49d6695d5497c08e3de4207af">camera_projection</a>(<a class="code hl_class" href="classCamera.html">Camera</a> *c, <span class="keyword">struct</span> <a class="code hl_struct" href="structWorldShaders.html">WorldShaders</a> *shaders);</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
  <span class="comment">// end of Camera group</span><div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassCamera_html"><div class="ttname"><a href="classCamera.html">Camera</a></div><div class="ttdoc">A structure to represent a camera with position and rotation in 3D space.</div><div class="ttdef"><b>Definition</b> camera.class.c:24</div></div>
-<div class="ttc" id="aclassCamera_html_a1456c80b084814b7811c8fe3d797021d"><div class="ttname"><a href="classCamera.html#a1456c80b084814b7811c8fe3d797021d">Camera::rot</a></div><div class="ttdeci">vec3 rot</div><div class="ttdef"><b>Definition</b> camera.h:24</div></div>
-<div class="ttc" id="aclassCamera_html_a58f8b51664251b5c0f59be0e0a87e754"><div class="ttname"><a href="classCamera.html#a58f8b51664251b5c0f59be0e0a87e754">Camera::pos</a></div><div class="ttdeci">vec3 pos</div><div class="ttdef"><b>Definition</b> camera.h:23</div></div>
-<div class="ttc" id="aclassCamera_html_aff7393c9cfbccd7e369091f00008da93"><div class="ttname"><a href="classCamera.html#aff7393c9cfbccd7e369091f00008da93">Camera::fov</a></div><div class="ttdeci">float fov</div><div class="ttdef"><b>Definition</b> camera.h:25</div></div>
-<div class="ttc" id="aclassNode_html"><div class="ttname"><a href="classNode.html">Node</a></div><div class="ttdoc">Represents a node in the tree structure.</div><div class="ttdef"><b>Definition</b> node.class.c:21</div></div>
+<div class="ttc" id="aclassCamera_html"><div class="ttname"><a href="classCamera.html">Camera</a></div><div class="ttdoc">A structure to represent a camera with position and rotation in 3D space.</div><div class="ttdef"><b>Definition</b> camera.class.c:29</div></div>
+<div class="ttc" id="aclassCamera_html_a1456c80b084814b7811c8fe3d797021d"><div class="ttname"><a href="classCamera.html#a1456c80b084814b7811c8fe3d797021d">Camera::rot</a></div><div class="ttdeci">vec3 rot</div><div class="ttdef"><b>Definition</b> camera.h:18</div></div>
+<div class="ttc" id="aclassCamera_html_a58f8b51664251b5c0f59be0e0a87e754"><div class="ttname"><a href="classCamera.html#a58f8b51664251b5c0f59be0e0a87e754">Camera::pos</a></div><div class="ttdeci">vec3 pos</div><div class="ttdef"><b>Definition</b> camera.h:17</div></div>
+<div class="ttc" id="aclassCamera_html_aff7393c9cfbccd7e369091f00008da93"><div class="ttname"><a href="classCamera.html#aff7393c9cfbccd7e369091f00008da93">Camera::fov</a></div><div class="ttdeci">float fov</div><div class="ttdef"><b>Definition</b> camera.h:19</div></div>
+<div class="ttc" id="aclassNode_html"><div class="ttname"><a href="classNode.html">Node</a></div><div class="ttdoc">Represents a node in the tree structure.</div><div class="ttdef"><b>Definition</b> node.class.c:26</div></div>
 <div class="ttc" id="agroup__Camera_html_ga8251d5473e00feb6f2181942b89e654d"><div class="ttname"><a href="group__Camera.html#ga8251d5473e00feb6f2181942b89e654d">init_camera</a></div><div class="ttdeci">void init_camera(Camera *c)</div><div class="ttdoc">Initializes the camera.</div><div class="ttdef"><b>Definition</b> camera.c:13</div></div>
 <div class="ttc" id="agroup__Camera_html_gadd86e5f49d6695d5497c08e3de4207af"><div class="ttname"><a href="group__Camera.html#gadd86e5f49d6695d5497c08e3de4207af">camera_projection</a></div><div class="ttdeci">void camera_projection(Camera *c, struct WorldShaders *shaders)</div><div class="ttdoc">Sets up the camera projection.</div><div class="ttdef"><b>Definition</b> camera.c:21</div></div>
-<div class="ttc" id="astructWorldShaders_html"><div class="ttname"><a href="structWorldShaders.html">WorldShaders</a></div><div class="ttdoc">A structure to hold various shaders used in the rendering process.</div><div class="ttdef"><b>Definition</b> render.h:26</div></div>
+<div class="ttc" id="amath__util_8h_html"><div class="ttname"><a href="math__util_8h.html">math_util.h</a></div></div>
+<div class="ttc" id="araptiquax_8h_html"><div class="ttname"><a href="raptiquax_8h.html">raptiquax.h</a></div><div class="ttdoc">This file contains type definitions for fixed-width integer types and floating-point types.</div></div>
+<div class="ttc" id="ashader_8h_html"><div class="ttname"><a href="shader_8h.html">shader.h</a></div></div>
+<div class="ttc" id="astructWorldShaders_html"><div class="ttname"><a href="structWorldShaders.html">WorldShaders</a></div><div class="ttdoc">A structure to hold various shaders used in the rendering process.</div><div class="ttdef"><b>Definition</b> render.h:25</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -171,6 +174,16 @@ $(document).ready(function(){initNavTree('camera_8h_source.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -179,7 +192,7 @@ $(document).ready(function(){initNavTree('camera_8h_source.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

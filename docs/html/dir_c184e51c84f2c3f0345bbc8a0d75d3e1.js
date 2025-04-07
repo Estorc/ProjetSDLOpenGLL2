@@ -4,6 +4,8 @@ var dir_c184e51c84f2c3f0345bbc8a0d75d3e1 =
     [ "socket", "dir_ef516d76f21f096676b9e6c12b74d1fb.html", "dir_ef516d76f21f096676b9e6c12b74d1fb" ],
     [ "audio.c", "audio_8c.html", "audio_8c" ],
     [ "audio.h", "audio_8h.html", "audio_8h" ],
+    [ "dirent.c", "dirent_8c.html", "dirent_8c" ],
+    [ "dirent.h", "dirent_8h.html", "dirent_8h" ],
     [ "gltexture_loader.c", "gltexture__loader_8c.html", "gltexture__loader_8c" ],
     [ "gltexture_loader.h", "gltexture__loader_8h.html", "gltexture__loader_8h" ],
     [ "input.c", "input_8c.html", "input_8c" ],

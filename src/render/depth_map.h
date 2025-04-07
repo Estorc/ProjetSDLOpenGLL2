@@ -1,5 +1,5 @@
-#include "../io/model.h"
-#include "framebuffer.h"
+#include <io/model.h>
+#include <render/framebuffer.h>
 #ifndef DEPTH_MAP_H
 #define DEPTH_MAP_H
 

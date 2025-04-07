@@ -128,54 +128,6 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Functions to load and manage materials from .mtl files. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gac5de2e2bc09610c6333155368f283bf1" name="gac5de2e2bc09610c6333155368f283bf1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac5de2e2bc09610c6333155368f283bf1">&#9670;&#160;</a></span>find_material()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int find_material </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structMaterial.html">Material</a> *&#160;</td>
-          <td class="paramname"><em>materials</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>materialsCount</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>materialName</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Searches for a material by its name in a list of materials. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">materials</td><td>{Material*} A pointer to an array of <a class="el" href="structMaterial.html" title="Structure representing a material with various properties.">Material</a> structures. </td></tr>
-    <tr><td class="paramname">materialsCount</td><td>{int} The total number of materials in the array. </td></tr>
-    <tr><td class="paramname">materialName</td><td>{char*} The name of the material to search for.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function iterates through the array of <a class="el" href="structMaterial.html" title="Structure representing a material with various properties.">Material</a> structures to find a material that matches the specified name. It performs a string comparison using <code>strcmp</code> to check for equality.</p>
-<p>If a matching material is found, the function returns the index of that material in the array. If no match is found, it returns -1.</p>
-<p>Example Usage: int index = find_material(materials, materialsCount, "Wood"); if (index != -1) { // <a class="el" href="structMaterial.html" title="Structure representing a material with various properties.">Material</a> found, process it... } else { // <a class="el" href="structMaterial.html" title="Structure representing a material with various properties.">Material</a> not found... }</p>
-<dl class="section return"><dt>Returns</dt><dd>Returns the index of the found material or -1 if not found. </dd></dl>
-
-</div>
-</div>
 <a id="ga6fb214d51f0409a0b7bcb233e55b5966" name="ga6fb214d51f0409a0b7bcb233e55b5966"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga6fb214d51f0409a0b7bcb233e55b5966">&#9670;&#160;</a></span>load_mtl()</h2>
 
@@ -225,7 +177,7 @@ Functions</h2></td></tr>
 <li>Optical density</li>
 <li>Illumination flag</li>
 <li>Opacity</li>
-<li><a class="el" href="classTexture.html">Texture</a> maps (diffuse, normal, displacement)</li>
+<li>Texture maps (diffuse, normal, displacement)</li>
 </ul>
 <p>If a material with the same name already exists, it will be skipped.</p>
 <p>The function dynamically allocates memory for the materials and resizes the allocation if necessary, doubling the size of the materials array when more space is needed.</p>
@@ -233,6 +185,54 @@ Functions</h2></td></tr>
 <p>The function returns the number of materials loaded or -1 if an error occurs.</p>
 <p>Example Usage: <a class="el" href="structMaterial.html" title="Structure representing a material with various properties.">Material</a> *materials; int materialCount = load_mtl("path/to/materials/", "material.mtl", &amp;materials); if (materialCount == -1) { // Handle error... } else { // Process loaded materials... }</p>
 <dl class="section return"><dt>Returns</dt><dd>Returns the number of materials loaded or -1 on error. </dd></dl>
+
+</div>
+</div>
+<a id="gac5de2e2bc09610c6333155368f283bf1" name="gac5de2e2bc09610c6333155368f283bf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac5de2e2bc09610c6333155368f283bf1">&#9670;&#160;</a></span>find_material()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int find_material </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMaterial.html">Material</a> *&#160;</td>
+          <td class="paramname"><em>materials</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>materialsCount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>materialName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Searches for a material by its name in a list of materials. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">materials</td><td>{Material*} A pointer to an array of <a class="el" href="structMaterial.html" title="Structure representing a material with various properties.">Material</a> structures. </td></tr>
+    <tr><td class="paramname">materialsCount</td><td>{int} The total number of materials in the array. </td></tr>
+    <tr><td class="paramname">materialName</td><td>{char*} The name of the material to search for.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function iterates through the array of <a class="el" href="structMaterial.html" title="Structure representing a material with various properties.">Material</a> structures to find a material that matches the specified name. It performs a string comparison using <code>strcmp</code> to check for equality.</p>
+<p>If a matching material is found, the function returns the index of that material in the array. If no match is found, it returns -1.</p>
+<p>Example Usage: int index = find_material(materials, materialsCount, "Wood"); if (index != -1) { // <a class="el" href="structMaterial.html" title="Structure representing a material with various properties.">Material</a> found, process it... } else { // <a class="el" href="structMaterial.html" title="Structure representing a material with various properties.">Material</a> not found... }</p>
+<dl class="section return"><dt>Returns</dt><dd>Returns the index of the found material or -1 if not found. </dd></dl>
 
 </div>
 </div>
@@ -267,6 +267,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -275,7 +285,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

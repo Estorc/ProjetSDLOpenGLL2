@@ -195,6 +195,26 @@ CTEST\+\_\+\+RAY\+\_\+\+WITH\+\_\+\+RAY&Collision between two ray shapes. \\
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{group__Collision_ga02b692af0e1f9bb492d97ff0cd92aac4}\label{group__Collision_ga02b692af0e1f9bb492d97ff0cd92aac4} 
+\index{Collision Detection and Response@{Collision Detection and Response}!get\_collision\_code@{get\_collision\_code}}
+\index{get\_collision\_code@{get\_collision\_code}!Collision Detection and Response@{Collision Detection and Response}}
+\doxysubsubsection{\texorpdfstring{get\_collision\_code()}{get\_collision\_code()}}
+{\footnotesize\ttfamily unsigned int get\+\_\+collision\+\_\+code (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
+
+
+
+Get the collision code between two shapes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shapeA} & Pointer to the first shape\textquotesingle{}s \doxylink{classNode}{Node} structure. \\
+\hline
+{\em shapeB} & Pointer to the second shape\textquotesingle{}s \doxylink{classNode}{Node} structure. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unsigned int Collision code representing the type of collision. 
+\end{DoxyReturn}
 \Hypertarget{group__Collision_ga78b4e79005b435db32c087988aa4ea55}\label{group__Collision_ga78b4e79005b435db32c087988aa4ea55} 
 \index{Collision Detection and Response@{Collision Detection and Response}!apply\_collision@{apply\_collision}}
 \index{apply\_collision@{apply\_collision}!Collision Detection and Response@{Collision Detection and Response}}
@@ -238,6 +258,46 @@ Check for collision between two box shapes.
 \begin{DoxyReturn}{Returns}
 true if the boxes collide, false otherwise. 
 \end{DoxyReturn}
+\Hypertarget{group__Collision_gae9135b6684e4b19ee50553bf83031f40}\label{group__Collision_gae9135b6684e4b19ee50553bf83031f40} 
+\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_box\_with\_sphere@{check\_collision\_box\_with\_sphere}}
+\index{check\_collision\_box\_with\_sphere@{check\_collision\_box\_with\_sphere}!Collision Detection and Response@{Collision Detection and Response}}
+\doxysubsubsection{\texorpdfstring{check\_collision\_box\_with\_sphere()}{check\_collision\_box\_with\_sphere()}}
+{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+box\+\_\+with\+\_\+sphere (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
+
+
+
+Check for collision between a box and a sphere shape. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shapeA} & Pointer to the box shape node. \\
+\hline
+{\em shapeB} & Pointer to the sphere shape node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the box and sphere collide, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{group__Collision_ga1a92e5bf5c370168872e897cbfcc1738}\label{group__Collision_ga1a92e5bf5c370168872e897cbfcc1738} 
+\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_box\_with\_plane@{check\_collision\_box\_with\_plane}}
+\index{check\_collision\_box\_with\_plane@{check\_collision\_box\_with\_plane}!Collision Detection and Response@{Collision Detection and Response}}
+\doxysubsubsection{\texorpdfstring{check\_collision\_box\_with\_plane()}{check\_collision\_box\_with\_plane()}}
+{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+box\+\_\+with\+\_\+plane (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
+
+
+
+Check for collision between a box and a plane shape. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shapeA} & Pointer to the box shape node. \\
+\hline
+{\em shapeB} & Pointer to the plane shape node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the box and plane collide, false otherwise. 
+\end{DoxyReturn}
 \Hypertarget{group__Collision_gad79af3dd3a324e7e14033304c087d6e1}\label{group__Collision_gad79af3dd3a324e7e14033304c087d6e1} 
 \index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_box\_with\_capsule@{check\_collision\_box\_with\_capsule}}
 \index{check\_collision\_box\_with\_capsule@{check\_collision\_box\_with\_capsule}!Collision Detection and Response@{Collision Detection and Response}}
@@ -278,26 +338,6 @@ Check for collision between a box and a mesh shape.
 \begin{DoxyReturn}{Returns}
 true if the box and mesh collide, false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{group__Collision_ga1a92e5bf5c370168872e897cbfcc1738}\label{group__Collision_ga1a92e5bf5c370168872e897cbfcc1738} 
-\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_box\_with\_plane@{check\_collision\_box\_with\_plane}}
-\index{check\_collision\_box\_with\_plane@{check\_collision\_box\_with\_plane}!Collision Detection and Response@{Collision Detection and Response}}
-\doxysubsubsection{\texorpdfstring{check\_collision\_box\_with\_plane()}{check\_collision\_box\_with\_plane()}}
-{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+box\+\_\+with\+\_\+plane (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
-
-
-
-Check for collision between a box and a plane shape. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em shapeA} & Pointer to the box shape node. \\
-\hline
-{\em shapeB} & Pointer to the plane shape node. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true if the box and plane collide, false otherwise. 
-\end{DoxyReturn}
 \Hypertarget{group__Collision_ga1381e118a5747bb067ccd0c78c533679}\label{group__Collision_ga1381e118a5747bb067ccd0c78c533679} 
 \index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_box\_with\_ray@{check\_collision\_box\_with\_ray}}
 \index{check\_collision\_box\_with\_ray@{check\_collision\_box\_with\_ray}!Collision Detection and Response@{Collision Detection and Response}}
@@ -318,25 +358,209 @@ Check for collision between a box and a ray shape.
 \begin{DoxyReturn}{Returns}
 true if the box and ray collide, false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{group__Collision_gae9135b6684e4b19ee50553bf83031f40}\label{group__Collision_gae9135b6684e4b19ee50553bf83031f40} 
-\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_box\_with\_sphere@{check\_collision\_box\_with\_sphere}}
-\index{check\_collision\_box\_with\_sphere@{check\_collision\_box\_with\_sphere}!Collision Detection and Response@{Collision Detection and Response}}
-\doxysubsubsection{\texorpdfstring{check\_collision\_box\_with\_sphere()}{check\_collision\_box\_with\_sphere()}}
-{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+box\+\_\+with\+\_\+sphere (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
+\Hypertarget{group__Collision_ga37b6065c0c898cbf884d1c17aa12c7d7}\label{group__Collision_ga37b6065c0c898cbf884d1c17aa12c7d7} 
+\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_sphere\_with\_sphere@{check\_collision\_sphere\_with\_sphere}}
+\index{check\_collision\_sphere\_with\_sphere@{check\_collision\_sphere\_with\_sphere}!Collision Detection and Response@{Collision Detection and Response}}
+\doxysubsubsection{\texorpdfstring{check\_collision\_sphere\_with\_sphere()}{check\_collision\_sphere\_with\_sphere()}}
+{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+sphere\+\_\+with\+\_\+sphere (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
 
 
 
-Check for collision between a box and a sphere shape. 
+Check for collision between two sphere shapes. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em shapeA} & Pointer to the box shape node. \\
+{\em shapeA} & Pointer to the first sphere shape node. \\
 \hline
-{\em shapeB} & Pointer to the sphere shape node. \\
+{\em shapeB} & Pointer to the second sphere shape node. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true if the box and sphere collide, false otherwise. 
+true if the spheres collide, false otherwise.
+\end{DoxyReturn}
+Check if a collision occured between two sphere shapes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+Node\texorpdfstring{$\ast$}{*}\}} & shapeA -\/ The first sphere shape. \\
+\hline
+{\em \{\+Node\texorpdfstring{$\ast$}{*}\}} & shapeB -\/ The second sphere shape. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{bool\} The collision state. 
+\end{DoxyReturn}
+\Hypertarget{group__Collision_gac5a4c6b09cd516390e55a666abbaf495}\label{group__Collision_gac5a4c6b09cd516390e55a666abbaf495} 
+\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_sphere\_with\_plane@{check\_collision\_sphere\_with\_plane}}
+\index{check\_collision\_sphere\_with\_plane@{check\_collision\_sphere\_with\_plane}!Collision Detection and Response@{Collision Detection and Response}}
+\doxysubsubsection{\texorpdfstring{check\_collision\_sphere\_with\_plane()}{check\_collision\_sphere\_with\_plane()}}
+{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+sphere\+\_\+with\+\_\+plane (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
+
+
+
+Check for collision between a sphere and a plane shape. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shapeA} & Pointer to the sphere shape node. \\
+\hline
+{\em shapeB} & Pointer to the plane shape node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the sphere and plane collide, false otherwise.
+\end{DoxyReturn}
+Check if a collision occured between a sphere shape and a plane shape.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+Node\texorpdfstring{$\ast$}{*}\}} & shapeA -\/ The sphere shape. \\
+\hline
+{\em \{\+Node\texorpdfstring{$\ast$}{*}\}} & shapeB -\/ The plane shape. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{bool\} The collision state. 
+\end{DoxyReturn}
+\Hypertarget{group__Collision_ga15b7d860367d8b79e570e71a874ab6b3}\label{group__Collision_ga15b7d860367d8b79e570e71a874ab6b3} 
+\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_sphere\_with\_capsule@{check\_collision\_sphere\_with\_capsule}}
+\index{check\_collision\_sphere\_with\_capsule@{check\_collision\_sphere\_with\_capsule}!Collision Detection and Response@{Collision Detection and Response}}
+\doxysubsubsection{\texorpdfstring{check\_collision\_sphere\_with\_capsule()}{check\_collision\_sphere\_with\_capsule()}}
+{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+sphere\+\_\+with\+\_\+capsule (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
+
+
+
+Check for collision between a sphere and a capsule shape. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shapeA} & Pointer to the sphere shape node. \\
+\hline
+{\em shapeB} & Pointer to the capsule shape node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the sphere and capsule collide, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{group__Collision_ga16d110012e15dd4be594f3f487086dec}\label{group__Collision_ga16d110012e15dd4be594f3f487086dec} 
+\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_sphere\_with\_mesh@{check\_collision\_sphere\_with\_mesh}}
+\index{check\_collision\_sphere\_with\_mesh@{check\_collision\_sphere\_with\_mesh}!Collision Detection and Response@{Collision Detection and Response}}
+\doxysubsubsection{\texorpdfstring{check\_collision\_sphere\_with\_mesh()}{check\_collision\_sphere\_with\_mesh()}}
+{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+sphere\+\_\+with\+\_\+mesh (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
+
+
+
+Check for collision between a sphere and a mesh shape. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shapeA} & Pointer to the sphere shape node. \\
+\hline
+{\em shapeB} & Pointer to the mesh shape node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the sphere and mesh collide, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{group__Collision_ga66dc00a8f46760fcd271b19bea1b9bf8}\label{group__Collision_ga66dc00a8f46760fcd271b19bea1b9bf8} 
+\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_sphere\_with\_ray@{check\_collision\_sphere\_with\_ray}}
+\index{check\_collision\_sphere\_with\_ray@{check\_collision\_sphere\_with\_ray}!Collision Detection and Response@{Collision Detection and Response}}
+\doxysubsubsection{\texorpdfstring{check\_collision\_sphere\_with\_ray()}{check\_collision\_sphere\_with\_ray()}}
+{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+sphere\+\_\+with\+\_\+ray (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
+
+
+
+Check for collision between a sphere and a ray shape. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shapeA} & Pointer to the sphere shape node. \\
+\hline
+{\em shapeB} & Pointer to the ray shape node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the sphere and ray collide, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{group__Collision_gab7bf8b5fd6ad3ea2ac6c7bbf4d96ebaa}\label{group__Collision_gab7bf8b5fd6ad3ea2ac6c7bbf4d96ebaa} 
+\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_plane\_with\_plane@{check\_collision\_plane\_with\_plane}}
+\index{check\_collision\_plane\_with\_plane@{check\_collision\_plane\_with\_plane}!Collision Detection and Response@{Collision Detection and Response}}
+\doxysubsubsection{\texorpdfstring{check\_collision\_plane\_with\_plane()}{check\_collision\_plane\_with\_plane()}}
+{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+plane\+\_\+with\+\_\+plane (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
+
+
+
+Check for collision between two plane shapes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shapeA} & Pointer to the first plane shape node. \\
+\hline
+{\em shapeB} & Pointer to the second plane shape node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the planes collide, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{group__Collision_ga9d6d2ed3bfc7b49f56bd55a558aad7c8}\label{group__Collision_ga9d6d2ed3bfc7b49f56bd55a558aad7c8} 
+\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_plane\_with\_capsule@{check\_collision\_plane\_with\_capsule}}
+\index{check\_collision\_plane\_with\_capsule@{check\_collision\_plane\_with\_capsule}!Collision Detection and Response@{Collision Detection and Response}}
+\doxysubsubsection{\texorpdfstring{check\_collision\_plane\_with\_capsule()}{check\_collision\_plane\_with\_capsule()}}
+{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+plane\+\_\+with\+\_\+capsule (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
+
+
+
+Check for collision between a plane and a capsule shape. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shapeA} & Pointer to the plane shape node. \\
+\hline
+{\em shapeB} & Pointer to the capsule shape node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the plane and capsule collide, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{group__Collision_ga7f1da69188e7458e6ec10fb79c01d0ea}\label{group__Collision_ga7f1da69188e7458e6ec10fb79c01d0ea} 
+\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_plane\_with\_mesh@{check\_collision\_plane\_with\_mesh}}
+\index{check\_collision\_plane\_with\_mesh@{check\_collision\_plane\_with\_mesh}!Collision Detection and Response@{Collision Detection and Response}}
+\doxysubsubsection{\texorpdfstring{check\_collision\_plane\_with\_mesh()}{check\_collision\_plane\_with\_mesh()}}
+{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+plane\+\_\+with\+\_\+mesh (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
+
+
+
+Check for collision between a plane and a mesh shape. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shapeA} & Pointer to the plane shape node. \\
+\hline
+{\em shapeB} & Pointer to the mesh shape node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the plane and mesh collide, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{group__Collision_gac463d3c86682d29537d15e2083d093f1}\label{group__Collision_gac463d3c86682d29537d15e2083d093f1} 
+\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_plane\_with\_ray@{check\_collision\_plane\_with\_ray}}
+\index{check\_collision\_plane\_with\_ray@{check\_collision\_plane\_with\_ray}!Collision Detection and Response@{Collision Detection and Response}}
+\doxysubsubsection{\texorpdfstring{check\_collision\_plane\_with\_ray()}{check\_collision\_plane\_with\_ray()}}
+{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+plane\+\_\+with\+\_\+ray (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
+
+
+
+Check for collision between a plane and a ray shape. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shapeA} & Pointer to the plane shape node. \\
+\hline
+{\em shapeB} & Pointer to the ray shape node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the plane and ray collide, false otherwise. 
 \end{DoxyReturn}
 \Hypertarget{group__Collision_ga8d1305c7c1dbd7a2070f0debb01febaa}\label{group__Collision_ga8d1305c7c1dbd7a2070f0debb01febaa} 
 \index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_capsule\_with\_capsule@{check\_collision\_capsule\_with\_capsule}}
@@ -438,86 +662,6 @@ Check for collision between a mesh and a ray shape.
 \begin{DoxyReturn}{Returns}
 true if the mesh and ray collide, false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{group__Collision_ga9d6d2ed3bfc7b49f56bd55a558aad7c8}\label{group__Collision_ga9d6d2ed3bfc7b49f56bd55a558aad7c8} 
-\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_plane\_with\_capsule@{check\_collision\_plane\_with\_capsule}}
-\index{check\_collision\_plane\_with\_capsule@{check\_collision\_plane\_with\_capsule}!Collision Detection and Response@{Collision Detection and Response}}
-\doxysubsubsection{\texorpdfstring{check\_collision\_plane\_with\_capsule()}{check\_collision\_plane\_with\_capsule()}}
-{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+plane\+\_\+with\+\_\+capsule (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
-
-
-
-Check for collision between a plane and a capsule shape. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em shapeA} & Pointer to the plane shape node. \\
-\hline
-{\em shapeB} & Pointer to the capsule shape node. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true if the plane and capsule collide, false otherwise. 
-\end{DoxyReturn}
-\Hypertarget{group__Collision_ga7f1da69188e7458e6ec10fb79c01d0ea}\label{group__Collision_ga7f1da69188e7458e6ec10fb79c01d0ea} 
-\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_plane\_with\_mesh@{check\_collision\_plane\_with\_mesh}}
-\index{check\_collision\_plane\_with\_mesh@{check\_collision\_plane\_with\_mesh}!Collision Detection and Response@{Collision Detection and Response}}
-\doxysubsubsection{\texorpdfstring{check\_collision\_plane\_with\_mesh()}{check\_collision\_plane\_with\_mesh()}}
-{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+plane\+\_\+with\+\_\+mesh (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
-
-
-
-Check for collision between a plane and a mesh shape. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em shapeA} & Pointer to the plane shape node. \\
-\hline
-{\em shapeB} & Pointer to the mesh shape node. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true if the plane and mesh collide, false otherwise. 
-\end{DoxyReturn}
-\Hypertarget{group__Collision_gab7bf8b5fd6ad3ea2ac6c7bbf4d96ebaa}\label{group__Collision_gab7bf8b5fd6ad3ea2ac6c7bbf4d96ebaa} 
-\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_plane\_with\_plane@{check\_collision\_plane\_with\_plane}}
-\index{check\_collision\_plane\_with\_plane@{check\_collision\_plane\_with\_plane}!Collision Detection and Response@{Collision Detection and Response}}
-\doxysubsubsection{\texorpdfstring{check\_collision\_plane\_with\_plane()}{check\_collision\_plane\_with\_plane()}}
-{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+plane\+\_\+with\+\_\+plane (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
-
-
-
-Check for collision between two plane shapes. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em shapeA} & Pointer to the first plane shape node. \\
-\hline
-{\em shapeB} & Pointer to the second plane shape node. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true if the planes collide, false otherwise. 
-\end{DoxyReturn}
-\Hypertarget{group__Collision_gac463d3c86682d29537d15e2083d093f1}\label{group__Collision_gac463d3c86682d29537d15e2083d093f1} 
-\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_plane\_with\_ray@{check\_collision\_plane\_with\_ray}}
-\index{check\_collision\_plane\_with\_ray@{check\_collision\_plane\_with\_ray}!Collision Detection and Response@{Collision Detection and Response}}
-\doxysubsubsection{\texorpdfstring{check\_collision\_plane\_with\_ray()}{check\_collision\_plane\_with\_ray()}}
-{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+plane\+\_\+with\+\_\+ray (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
-
-
-
-Check for collision between a plane and a ray shape. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em shapeA} & Pointer to the plane shape node. \\
-\hline
-{\em shapeB} & Pointer to the ray shape node. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true if the plane and ray collide, false otherwise. 
-\end{DoxyReturn}
 \Hypertarget{group__Collision_gabd0d15fcf20dc4b9f1616d18970eaf82}\label{group__Collision_gabd0d15fcf20dc4b9f1616d18970eaf82} 
 \index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_ray\_with\_ray@{check\_collision\_ray\_with\_ray}}
 \index{check\_collision\_ray\_with\_ray@{check\_collision\_ray\_with\_ray}!Collision Detection and Response@{Collision Detection and Response}}
@@ -537,148 +681,4 @@ Check for collision between two ray shapes.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 true if the rays collide, false otherwise. 
-\end{DoxyReturn}
-\Hypertarget{group__Collision_ga15b7d860367d8b79e570e71a874ab6b3}\label{group__Collision_ga15b7d860367d8b79e570e71a874ab6b3} 
-\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_sphere\_with\_capsule@{check\_collision\_sphere\_with\_capsule}}
-\index{check\_collision\_sphere\_with\_capsule@{check\_collision\_sphere\_with\_capsule}!Collision Detection and Response@{Collision Detection and Response}}
-\doxysubsubsection{\texorpdfstring{check\_collision\_sphere\_with\_capsule()}{check\_collision\_sphere\_with\_capsule()}}
-{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+sphere\+\_\+with\+\_\+capsule (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
-
-
-
-Check for collision between a sphere and a capsule shape. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em shapeA} & Pointer to the sphere shape node. \\
-\hline
-{\em shapeB} & Pointer to the capsule shape node. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true if the sphere and capsule collide, false otherwise. 
-\end{DoxyReturn}
-\Hypertarget{group__Collision_ga16d110012e15dd4be594f3f487086dec}\label{group__Collision_ga16d110012e15dd4be594f3f487086dec} 
-\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_sphere\_with\_mesh@{check\_collision\_sphere\_with\_mesh}}
-\index{check\_collision\_sphere\_with\_mesh@{check\_collision\_sphere\_with\_mesh}!Collision Detection and Response@{Collision Detection and Response}}
-\doxysubsubsection{\texorpdfstring{check\_collision\_sphere\_with\_mesh()}{check\_collision\_sphere\_with\_mesh()}}
-{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+sphere\+\_\+with\+\_\+mesh (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
-
-
-
-Check for collision between a sphere and a mesh shape. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em shapeA} & Pointer to the sphere shape node. \\
-\hline
-{\em shapeB} & Pointer to the mesh shape node. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true if the sphere and mesh collide, false otherwise. 
-\end{DoxyReturn}
-\Hypertarget{group__Collision_gac5a4c6b09cd516390e55a666abbaf495}\label{group__Collision_gac5a4c6b09cd516390e55a666abbaf495} 
-\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_sphere\_with\_plane@{check\_collision\_sphere\_with\_plane}}
-\index{check\_collision\_sphere\_with\_plane@{check\_collision\_sphere\_with\_plane}!Collision Detection and Response@{Collision Detection and Response}}
-\doxysubsubsection{\texorpdfstring{check\_collision\_sphere\_with\_plane()}{check\_collision\_sphere\_with\_plane()}}
-{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+sphere\+\_\+with\+\_\+plane (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
-
-
-
-Check for collision between a sphere and a plane shape. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em shapeA} & Pointer to the sphere shape node. \\
-\hline
-{\em shapeB} & Pointer to the plane shape node. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true if the sphere and plane collide, false otherwise.
-\end{DoxyReturn}
-Check if a collision occured between a sphere shape and a plane shape.
-
-
-\begin{DoxyParams}{Parameters}
-{\em \{\+Node\texorpdfstring{$\ast$}{*}\}} & shapeA -\/ The sphere shape. \\
-\hline
-{\em \{\+Node\texorpdfstring{$\ast$}{*}\}} & shapeB -\/ The plane shape. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\{bool\} The collision state. 
-\end{DoxyReturn}
-\Hypertarget{group__Collision_ga66dc00a8f46760fcd271b19bea1b9bf8}\label{group__Collision_ga66dc00a8f46760fcd271b19bea1b9bf8} 
-\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_sphere\_with\_ray@{check\_collision\_sphere\_with\_ray}}
-\index{check\_collision\_sphere\_with\_ray@{check\_collision\_sphere\_with\_ray}!Collision Detection and Response@{Collision Detection and Response}}
-\doxysubsubsection{\texorpdfstring{check\_collision\_sphere\_with\_ray()}{check\_collision\_sphere\_with\_ray()}}
-{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+sphere\+\_\+with\+\_\+ray (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
-
-
-
-Check for collision between a sphere and a ray shape. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em shapeA} & Pointer to the sphere shape node. \\
-\hline
-{\em shapeB} & Pointer to the ray shape node. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true if the sphere and ray collide, false otherwise. 
-\end{DoxyReturn}
-\Hypertarget{group__Collision_ga37b6065c0c898cbf884d1c17aa12c7d7}\label{group__Collision_ga37b6065c0c898cbf884d1c17aa12c7d7} 
-\index{Collision Detection and Response@{Collision Detection and Response}!check\_collision\_sphere\_with\_sphere@{check\_collision\_sphere\_with\_sphere}}
-\index{check\_collision\_sphere\_with\_sphere@{check\_collision\_sphere\_with\_sphere}!Collision Detection and Response@{Collision Detection and Response}}
-\doxysubsubsection{\texorpdfstring{check\_collision\_sphere\_with\_sphere()}{check\_collision\_sphere\_with\_sphere()}}
-{\footnotesize\ttfamily bool check\+\_\+collision\+\_\+sphere\+\_\+with\+\_\+sphere (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{\mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
-
-
-
-Check for collision between two sphere shapes. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em shapeA} & Pointer to the first sphere shape node. \\
-\hline
-{\em shapeB} & Pointer to the second sphere shape node. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true if the spheres collide, false otherwise.
-\end{DoxyReturn}
-Check if a collision occured between two sphere shapes.
-
-
-\begin{DoxyParams}{Parameters}
-{\em \{\+Node\texorpdfstring{$\ast$}{*}\}} & shapeA -\/ The first sphere shape. \\
-\hline
-{\em \{\+Node\texorpdfstring{$\ast$}{*}\}} & shapeB -\/ The second sphere shape. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\{bool\} The collision state. 
-\end{DoxyReturn}
-\Hypertarget{group__Collision_ga02b692af0e1f9bb492d97ff0cd92aac4}\label{group__Collision_ga02b692af0e1f9bb492d97ff0cd92aac4} 
-\index{Collision Detection and Response@{Collision Detection and Response}!get\_collision\_code@{get\_collision\_code}}
-\index{get\_collision\_code@{get\_collision\_code}!Collision Detection and Response@{Collision Detection and Response}}
-\doxysubsubsection{\texorpdfstring{get\_collision\_code()}{get\_collision\_code()}}
-{\footnotesize\ttfamily unsigned int get\+\_\+collision\+\_\+code (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeA,  }\item[{struct \mbox{\hyperlink{classNode}{Node}} \texorpdfstring{$\ast$}{*}}]{shapeB }\end{DoxyParamCaption})}
-
-
-
-Get the collision code between two shapes. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em shapeA} & Pointer to the first shape\textquotesingle{}s \doxylink{classNode}{Node} structure. \\
-\hline
-{\em shapeB} & Pointer to the second shape\textquotesingle{}s \doxylink{classNode}{Node} structure. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-unsigned int Collision code representing the type of collision. 
 \end{DoxyReturn}

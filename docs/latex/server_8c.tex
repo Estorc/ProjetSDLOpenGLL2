@@ -1,8 +1,9 @@
 \doxysection{src/io/socket/server.c File Reference}
 \hypertarget{server_8c}{}\label{server_8c}\index{src/io/socket/server.c@{src/io/socket/server.c}}
-{\ttfamily \#include "{}../../raptiquax.\+h"{}}\newline
-{\ttfamily \#include "{}socket.\+h"{}}\newline
-Include dependency graph for server.\+c\+:\nopagebreak
+{\ttfamily \#include $<$raptiquax.\+h$>$}\newline
+{\ttfamily \#include $<$io/socket/socket.\+h$>$}\newline
+Include dependency graph for server.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -13,11 +14,11 @@ Include dependency graph for server.\+c\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 struct sockaddr\+\_\+in \mbox{\hyperlink{server_8c_aa7ad269e4e652646d7a4f890c8f1994a}{create\+\_\+address}} (int port)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a sockaddr\+\_\+in structure for the given port. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{server_8c_a8d8c98e35a73aad3456022c16c047db8}{create\+\_\+socket\+\_\+server}} (int port)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a socket server and binds it to the specified port. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{server_8c_a2a8744b86b3f7eeba52008fe48c01e05}{listen\+\_\+socket}} (int sock)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Listens for incoming connections on the specified socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -27,15 +28,57 @@ int \mbox{\hyperlink{server_8c_a2a8744b86b3f7eeba52008fe48c01e05}{listen\+\_\+so
 \doxysubsubsection{\texorpdfstring{create\_address()}{create\_address()}}
 {\footnotesize\ttfamily struct sockaddr\+\_\+in create\+\_\+address (\begin{DoxyParamCaption}\item[{int}]{port }\end{DoxyParamCaption})}
 
+
+
+Creates a sockaddr\+\_\+in structure for the given port. 
+
+This function initializes a sockaddr\+\_\+in structure with the specified port and sets the address to INADDR\+\_\+\+ANY.
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The port number to bind the address to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A sockaddr\+\_\+in structure initialized with the given port. 
+\end{DoxyReturn}
 \Hypertarget{server_8c_a8d8c98e35a73aad3456022c16c047db8}\label{server_8c_a8d8c98e35a73aad3456022c16c047db8} 
 \index{server.c@{server.c}!create\_socket\_server@{create\_socket\_server}}
 \index{create\_socket\_server@{create\_socket\_server}!server.c@{server.c}}
 \doxysubsubsection{\texorpdfstring{create\_socket\_server()}{create\_socket\_server()}}
 {\footnotesize\ttfamily int create\+\_\+socket\+\_\+server (\begin{DoxyParamCaption}\item[{int}]{port }\end{DoxyParamCaption})}
 
+
+
+Creates a socket server and binds it to the specified port. 
+
+This function creates a socket, binds it to the given port, and sets it up to listen for incoming connections.
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The port number to bind the socket to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The file descriptor of the created socket, or -\/1 on error. 
+\end{DoxyReturn}
 \Hypertarget{server_8c_a2a8744b86b3f7eeba52008fe48c01e05}\label{server_8c_a2a8744b86b3f7eeba52008fe48c01e05} 
 \index{server.c@{server.c}!listen\_socket@{listen\_socket}}
 \index{listen\_socket@{listen\_socket}!server.c@{server.c}}
 \doxysubsubsection{\texorpdfstring{listen\_socket()}{listen\_socket()}}
 {\footnotesize\ttfamily int listen\+\_\+socket (\begin{DoxyParamCaption}\item[{int}]{sock }\end{DoxyParamCaption})}
 
+
+
+Listens for incoming connections on the specified socket. 
+
+This function sets the socket to listen for incoming connections.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sock} & The file descriptor of the socket to listen on. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, or -\/1 on error. 
+\end{DoxyReturn}

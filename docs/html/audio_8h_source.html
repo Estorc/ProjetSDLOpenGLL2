@@ -112,14 +112,20 @@ $(document).ready(function(){initNavTree('audio_8h_source.html',''); initResizab
 <div class="contents">
 <a href="audio_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keywordtype">void</span> <a class="code hl_function" href="audio_8h.html#aed0b0c574c1994f085c0b29b02a06d5a">play_sfx</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> path, <span class="keyword">const</span> <span class="keywordtype">int</span> volume, <span class="keyword">const</span> <span class="keywordtype">int</span> loops);</div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keywordtype">void</span> <a class="code hl_function" href="audio_8h.html#ab601c6b9c1088aab010f6db884bbd31d">play_music</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> path, <span class="keyword">const</span> <span class="keywordtype">int</span> volume, <span class="keyword">const</span> <span class="keywordtype">int</span> loops);</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keywordtype">void</span> <a class="code hl_function" href="audio_8h.html#a7a312a24cc4857272167d423ed10e78b">fade_out_music</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> ms);</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keywordtype">void</span> <a class="code hl_function" href="audio_8h.html#a721333addcbf76cb7147b9b91833e5ef">refresh_music_volume</a>();</div>
-<div class="ttc" id="aaudio_8h_html_a721333addcbf76cb7147b9b91833e5ef"><div class="ttname"><a href="audio_8h.html#a721333addcbf76cb7147b9b91833e5ef">refresh_music_volume</a></div><div class="ttdeci">void refresh_music_volume()</div><div class="ttdef"><b>Definition</b> audio.c:43</div></div>
-<div class="ttc" id="aaudio_8h_html_a7a312a24cc4857272167d423ed10e78b"><div class="ttname"><a href="audio_8h.html#a7a312a24cc4857272167d423ed10e78b">fade_out_music</a></div><div class="ttdeci">void fade_out_music(const int ms)</div><div class="ttdef"><b>Definition</b> audio.c:47</div></div>
-<div class="ttc" id="aaudio_8h_html_ab601c6b9c1088aab010f6db884bbd31d"><div class="ttname"><a href="audio_8h.html#ab601c6b9c1088aab010f6db884bbd31d">play_music</a></div><div class="ttdeci">void play_music(const char *const path, const int volume, const int loops)</div><div class="ttdef"><b>Definition</b> audio.c:23</div></div>
-<div class="ttc" id="aaudio_8h_html_aed0b0c574c1994f085c0b29b02a06d5a"><div class="ttname"><a href="audio_8h.html#aed0b0c574c1994f085c0b29b02a06d5a">play_sfx</a></div><div class="ttdeci">void play_sfx(const char *const path, const int volume, const int loops)</div><div class="ttdef"><b>Definition</b> audio.c:9</div></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>Mix_Chunk * <a class="code hl_function" href="audio_8h.html#a3e75618a4df30874bc8a8c651c41e8c5">play_sfx</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> path, <span class="keyword">const</span> <span class="keywordtype">int</span> volume, <span class="keyword">const</span> <span class="keywordtype">int</span> loops);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keywordtype">void</span> <a class="code hl_function" href="audio_8h.html#ab601c6b9c1088aab010f6db884bbd31d">play_music</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> path, <span class="keyword">const</span> <span class="keywordtype">int</span> volume, <span class="keyword">const</span> <span class="keywordtype">int</span> loops);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">void</span> <a class="code hl_function" href="audio_8h.html#a7a312a24cc4857272167d423ed10e78b">fade_out_music</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> ms);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keywordtype">void</span> <a class="code hl_function" href="audio_8h.html#a721333addcbf76cb7147b9b91833e5ef">refresh_music_volume</a>();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keywordtype">void</span> <a class="code hl_function" href="audio_8h.html#a2e28cd40cd59f4ae4d5e3b36f8ab9450">set_sfx_volume</a>(Mix_Chunk * <span class="keyword">const</span> chunk, <span class="keyword">const</span> <span class="keywordtype">int</span> volume);</div>
+<div class="ttc" id="aaudio_8h_html_a2e28cd40cd59f4ae4d5e3b36f8ab9450"><div class="ttname"><a href="audio_8h.html#a2e28cd40cd59f4ae4d5e3b36f8ab9450">set_sfx_volume</a></div><div class="ttdeci">void set_sfx_volume(Mix_Chunk *const chunk, const int volume)</div><div class="ttdoc">Sets the volume of a sound effect.</div><div class="ttdef"><b>Definition</b> audio.c:43</div></div>
+<div class="ttc" id="aaudio_8h_html_a3e75618a4df30874bc8a8c651c41e8c5"><div class="ttname"><a href="audio_8h.html#a3e75618a4df30874bc8a8c651c41e8c5">play_sfx</a></div><div class="ttdeci">Mix_Chunk * play_sfx(const char *const path, const int volume, const int loops)</div><div class="ttdoc">Plays a sound effect.</div><div class="ttdef"><b>Definition</b> audio.c:9</div></div>
+<div class="ttc" id="aaudio_8h_html_a721333addcbf76cb7147b9b91833e5ef"><div class="ttname"><a href="audio_8h.html#a721333addcbf76cb7147b9b91833e5ef">refresh_music_volume</a></div><div class="ttdeci">void refresh_music_volume()</div><div class="ttdoc">Refreshes the music volume.</div><div class="ttdef"><b>Definition</b> audio.c:47</div></div>
+<div class="ttc" id="aaudio_8h_html_a7a312a24cc4857272167d423ed10e78b"><div class="ttname"><a href="audio_8h.html#a7a312a24cc4857272167d423ed10e78b">fade_out_music</a></div><div class="ttdeci">void fade_out_music(const int ms)</div><div class="ttdoc">Fades out the currently playing music.</div><div class="ttdef"><b>Definition</b> audio.c:51</div></div>
+<div class="ttc" id="aaudio_8h_html_ab601c6b9c1088aab010f6db884bbd31d"><div class="ttname"><a href="audio_8h.html#ab601c6b9c1088aab010f6db884bbd31d">play_music</a></div><div class="ttdeci">void play_music(const char *const path, const int volume, const int loops)</div><div class="ttdoc">Plays a music file.</div><div class="ttdef"><b>Definition</b> audio.c:24</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -151,6 +157,16 @@ $(document).ready(function(){initNavTree('audio_8h_source.html',''); initResizab
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -159,7 +175,7 @@ $(document).ready(function(){initNavTree('audio_8h_source.html',''); initResizab
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

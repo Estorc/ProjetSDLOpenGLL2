@@ -1,6 +1,6 @@
-#include "../../raptiquax.h"
-#include "../../math/math_util.h"
-#include "../model.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
 
 
 int load_mtl(char *path, char *filename, Material **materials) {

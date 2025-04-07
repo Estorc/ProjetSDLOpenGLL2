@@ -1,11 +1,11 @@
-#include "../../raptiquax.h"
-#include "../../settings.h"
-#include "../../io/osio.h"
-#include "../../storage/node.h"
-#include "../../io/node_loader.h"
-#include "../../gui/frame.h"
-#include "../../storage/queue.h"
-#include "../../classes/classes.h"
+#include <raptiquax.h>
+#include <settings.h>
+#include <io/osio.h>
+#include <storage/node.h>
+#include <io/node_loader.h>
+#include <gui/frame.h>
+#include <storage/queue.h>
+#include <classes/classes.h>
 
 #ifdef DEBUG
 

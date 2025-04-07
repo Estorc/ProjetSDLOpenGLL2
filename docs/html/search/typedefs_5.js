@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['texturemap_0',['texturemap',['../group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae',1,'TextureMap:&#160;model.h'],['../group__MemoryCache.html#ga9efea9b7fc3085f1062d9148aa012307',1,'TextureMap:&#160;memory.h']]],
-  ['texturevertex_1',['TextureVertex',['../group__ObjLoader.html#ga035e3505138fdf49eb7ebdcfc5d5a1fc',1,'obj_loader.h']]]
+  ['scriptfunc_0',['ScriptFunc',['../scripts_8h.html#a9ecadf256432372682e2216abac9ab04',1,'scripts.h']]],
+  ['shader_1',['shader',['../group__MemoryCache.html#gaf8187ff58761df5fefccb33e254e5eb5',1,'Shader:&#160;memory.h'],['../aliases_8h.html#aa62cc72210d7c5d9d678c071771aa07b',1,'Shader:&#160;aliases.h']]]
 ];

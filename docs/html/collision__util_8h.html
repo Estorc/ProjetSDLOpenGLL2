@@ -117,9 +117,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="collision__util_8h__dep__incl.png" border="0" usemap="#asrc_2physics_2collision__util_8hdep" alt=""/></div>
 <map name="asrc_2physics_2collision__util_8hdep" id="asrc_2physics_2collision__util_8hdep">
-<area shape="rect" title=" " alt="" coords="11,5,163,45"/>
-<area shape="rect" href="collision_8c.html" title=" " alt="" coords="5,93,168,119"/>
-<area shape="poly" title=" " alt="" coords="89,59,89,93,84,93,84,59"/>
+<area shape="rect" title=" " alt="" coords="5,5,157,45"/>
+<area shape="rect" href="collision_8c.html" title=" " alt="" coords="205,13,368,38"/>
+<area shape="poly" title=" " alt="" coords="171,23,205,23,205,28,171,28"/>
 </map>
 </div>
 </div>
@@ -174,6 +174,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -182,7 +192,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

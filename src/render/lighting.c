@@ -1,15 +1,15 @@
-#include "../raptiquax.h"
-#include "../math/math_util.h"
-#include "../io/model.h"
-#include "framebuffer.h"
-#include "../storage/node.h"
-#include "../window.h"
-#include "camera.h"
-#include "render.h"
-#include "../memory.h"
-#include "lighting.h"
-#include "depth_map.h"
-#include "../classes/classes.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <framebuffer.h>
+#include <storage/node.h>
+#include <window.h>
+#include <camera.h>
+#include <render.h>
+#include <memory.h>
+#include <lighting.h>
+#include <depth_map.h>
+#include <classes/classes.h>
 
 
 

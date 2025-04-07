@@ -436,6 +436,8 @@ int desktop_element_update(Desktop_t *desktop, SDL_Event *event) {
         
                 // Vérifie si l'utilisateur a effectué un double-clic sur l'élément
                 if (event->button.clicks == 2) {
+                    currWidget->icon.isClicked = FALSE ;
+                    currWidget->icon.isDragged = FALSE ;
                     return currWidget->icon.actionID ;
                 }
             }

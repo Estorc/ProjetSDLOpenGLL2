@@ -18,16 +18,21 @@ A structure to handle Multi-\/\+Sample Anti-\/\+Aliasing (\doxylink{structMSAA}{
 \item 
 \mbox{\hyperlink{group__Framebuffer_ga5ccf15e59bc43f1030c39f6951deb862}{RBO}} \mbox{\hyperlink{structMSAA_a17b499fb58ee18125e8df2c1872df0f1}{rbo}}
 \item 
-\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{structMSAA_a883d36587238fc78ac789a78ff317ae7}{texture\+Color\+Buffer\+Multi\+Sampled}}
+\mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{structMSAA_a883d36587238fc78ac789a78ff317ae7}{texture\+Color\+Buffer\+Multi\+Sampled}}
 \item 
-\mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{structMSAA_a0405c57a77662de583e0bba37cc306f2}{screen\+Texture}}
+\mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} \mbox{\hyperlink{structMSAA_a0405c57a77662de583e0bba37cc306f2}{screen\+Texture}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 A structure to handle Multi-\/\+Sample Anti-\/\+Aliasing (\doxylink{structMSAA}{MSAA}) framebuffers. 
 
-This structure contains the necessary components to manage \doxylink{structMSAA}{MSAA} framebuffers, including the main framebuffer, an intermediate framebuffer, a renderbuffer object, and texture maps for multi-\/sampled color buffer and screen texture. 
+This structure contains the necessary components to manage \doxylink{structMSAA}{MSAA} framebuffers, including the main framebuffer, an intermediate framebuffer, a renderbuffer object, and texture maps for multi-\/sampled color buffer and screen texture.
+
+\begin{DoxyNote}{Note}
+DEPRECATED\+: This structure is deprecated and should not be used in new code. 
+\end{DoxyNote}
+
 
 \doxysubsection{Member Data Documentation}
 \Hypertarget{structMSAA_abf724a2cf62347effbc5d719649dff01}\label{structMSAA_abf724a2cf62347effbc5d719649dff01} 
@@ -48,19 +53,19 @@ This structure contains the necessary components to manage \doxylink{structMSAA}
 \doxysubsubsection{\texorpdfstring{rbo}{rbo}}
 {\footnotesize\ttfamily \mbox{\hyperlink{group__Framebuffer_ga5ccf15e59bc43f1030c39f6951deb862}{RBO}} MSAA\+::rbo}
 
-\texorpdfstring{$<$}{<} The intermediate framebuffer for post-\/processing. \Hypertarget{structMSAA_a0405c57a77662de583e0bba37cc306f2}\label{structMSAA_a0405c57a77662de583e0bba37cc306f2} 
-\index{MSAA@{MSAA}!screenTexture@{screenTexture}}
-\index{screenTexture@{screenTexture}!MSAA@{MSAA}}
-\doxysubsubsection{\texorpdfstring{screenTexture}{screenTexture}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} MSAA\+::screen\+Texture}
-
-\texorpdfstring{$<$}{<} The multi-\/sampled color attachment texture. \Hypertarget{structMSAA_a883d36587238fc78ac789a78ff317ae7}\label{structMSAA_a883d36587238fc78ac789a78ff317ae7} 
+\texorpdfstring{$<$}{<} The intermediate framebuffer for post-\/processing. \Hypertarget{structMSAA_a883d36587238fc78ac789a78ff317ae7}\label{structMSAA_a883d36587238fc78ac789a78ff317ae7} 
 \index{MSAA@{MSAA}!textureColorBufferMultiSampled@{textureColorBufferMultiSampled}}
 \index{textureColorBufferMultiSampled@{textureColorBufferMultiSampled}!MSAA@{MSAA}}
 \doxysubsubsection{\texorpdfstring{textureColorBufferMultiSampled}{textureColorBufferMultiSampled}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ModelHandling_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} MSAA\+::texture\+Color\+Buffer\+Multi\+Sampled}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} MSAA\+::texture\+Color\+Buffer\+Multi\+Sampled}
 
-\texorpdfstring{$<$}{<} The renderbuffer object for depth and stencil attachments. 
+\texorpdfstring{$<$}{<} The renderbuffer object for depth and stencil attachments. \Hypertarget{structMSAA_a0405c57a77662de583e0bba37cc306f2}\label{structMSAA_a0405c57a77662de583e0bba37cc306f2} 
+\index{MSAA@{MSAA}!screenTexture@{screenTexture}}
+\index{screenTexture@{screenTexture}!MSAA@{MSAA}}
+\doxysubsubsection{\texorpdfstring{screenTexture}{screenTexture}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__MemoryCache_gaa9abb132ae6f23dafca840fb8c6081ae}{Texture\+Map}} MSAA\+::screen\+Texture}
+
+\texorpdfstring{$<$}{<} The multi-\/sampled color attachment texture. 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

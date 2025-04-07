@@ -14,28 +14,74 @@
  * @date 2023-10-10
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "render/framebuffer.h"
-#include "storage/node.h"
-#include "render/lighting.h"
-#include "render/depth_map.h"
-#include "buffer.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <render/lighting.h>
+#include <render/depth_map.h>
+#include <buffer.h>
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class PointLight : public Light {
     __containerType__ Node *
     public:
 
-    void constructor(struct PointLight *pointLight) {
-        this->object = pointLight;
+    /**
+     * @brief Constructor for the PointLight class.
+     *
+     * This function initializes a PointLight object with the specified parameters.
+     *
+     * @param r The red component of the light color.
+     * @param g The green component of the light color.
+     * @param b The blue component of the light color.
+     * @param bias The bias value for the light.
+     * @param size The size of the light.
+     * @param constant The constant attenuation factor.
+     * @param linear The linear attenuation factor.
+     * @param quadratic The quadratic attenuation factor.
+     */
+    void constructor(float r, float g, float b, float bias, float size, float constant, float linear, float quadratic) {
         this->type = __type__;
+
+        PointLight *pointLight;
+        pointLight = malloc(sizeof(PointLight));
+        POINTER_CHECK(pointLight);
+
+        Game.buffers->lightingBuffer.length++;
+
+        pointLight->color[0] = r;
+        pointLight->color[1] = g;
+        pointLight->color[2] = b;
+        pointLight->bias = bias;
+        pointLight->size = size;
+        pointLight->constant = constant;
+        pointLight->linear = linear;
+        pointLight->quadratic = quadratic;
+
+        this->object = pointLight;
         SUPER(initialize_node);
         SUPER(init_light);
     }
 
-    void update(vec3 *pos, vec3 *rot, vec3 *scale, double delta, u8 *lightsCount) {
+    /**
+     * @brief Updates the position, rotation, and scale of a point light, and increments the lights count.
+     *
+     * This function updates the position, rotation, and scale of a point light based on the provided delta time.
+     * It also increments the count of active lights.
+     *
+     * @param pos Vec3 structure representing the position of the point light.
+     * @param rot Vec3 structure representing the rotation of the point light.
+     * @param scale Vec3 structure representing the scale of the point light.
+     * @param delta The time delta used to update the point light's properties.
+     * @param lightsCount Pointer to an unsigned 8-bit integer representing the count of active lights.
+     */
+    void update(vec3 pos, vec3 rot, vec3 scale, double delta, u8 *lightsCount) {
         UNUSED(delta);
         if (!(this->flags & NODE_LIGHT_ACTIVE)) return;
         PointLight *pointLight = (PointLight *) this->object;
@@ -76,9 +122,15 @@ class PointLight : public Light {
         lightsCount[POINT_LIGHT]++;
     }    
 
-
-
-
+    /**
+     * @brief Retrieves the settings data for the point light.
+     *
+     * This function populates the provided pointer with the settings data
+     * and sets the length of the data.
+     *
+     * @param[out] ptr A pointer to a pointer to a pointer where the settings data will be stored.
+     * @param[out] length A pointer to an integer where the length of the settings data will be stored.
+     */
     void get_settings_data(void *** ptr, int * length) {
         SUPER(get_settings_data, ptr, length);
         PointLight *pointLight = (PointLight *) this->object;
@@ -95,35 +147,49 @@ class PointLight : public Light {
         *length += sizeof(data)/sizeof(void *);
     }
 
+    /**
+     * @brief Loads data from a file.
+     *
+     * This function reads data from the specified file and loads it into the
+     * appropriate structures or variables. The file pointer should be valid and
+     * opened in the appropriate mode for reading.
+     *
+     * @param file A pointer to the file from which data will be loaded.
+     */
     void load(FILE *file) {
-        PointLight *pointLight;
-        pointLight = malloc(sizeof(PointLight));
-        POINTER_CHECK(pointLight);
-
+        vec3 color;
+        f32 bias, size, constant, linear, quadratic;
         if (file) {
             fscanf(file,"(%g,%g,%g,%g,%g,%g,%g,%g)\n", 
-                &pointLight->color[0], &pointLight->color[1], &pointLight->color[2], 
-                &pointLight->bias,
-                &pointLight->size,
-                &pointLight->constant,
-                &pointLight->linear,
-                &pointLight->quadratic
+                &color[0], &color[1], &color[2], 
+                &bias,
+                &size,
+                &constant,
+                &linear,
+                &quadratic
                 );
         } else {
-            glm_vec3_one(pointLight->color);
-            pointLight->bias = 0.005f;
-            pointLight->size = 0.0f;
-            pointLight->constant = 1.0f;
-            pointLight->linear = 0.09f;
-            pointLight->quadratic = 0.032f;
+            glm_vec3_one(color);
+            bias = 0.005f;
+            size = 0.0f;
+            constant = 1.0f;
+            linear = 0.09f;
+            quadratic = 0.032f;
         }
 
-        Game.buffers->lightingBuffer.length++;
-        this->type = __type__;
-        this::constructor(pointLight);
+        this::constructor(color[0], color[1], color[2], bias, size, constant, linear, quadratic);
         this->flags |= NODE_EDITOR_FLAG;
     }
 
+    /**
+     * @brief Saves the state of the point light to a file.
+     *
+     * This function writes the current state of the point light to the specified
+     * file. The state includes all relevant properties of the point light that
+     * need to be persisted.
+     *
+     * @param file A pointer to the FILE object where the point light state will be saved.
+     */
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         PointLight *pointLight = (PointLight*) this->object;
@@ -147,7 +213,6 @@ class PointLight : public Light {
      * @param lightsCount The number of lights in the scene.
      * @param pointLightId The ID of the point light.
      */
-
     void configure_lighting(Camera *c, WorldShaders *shaders, DepthMap *depthMap, u8 *lightsCount, int pointLightId) {
 
         UNUSED(c);
@@ -190,5 +255,5 @@ class PointLight : public Light {
         SUPER(configure_lighting, shaders, lightView, lightProjection, storageBufferIndex, depthMap);
     }
 
-    
 }
+

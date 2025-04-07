@@ -117,13 +117,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="node__loader_8h__dep__incl.png" border="0" usemap="#asrc_2io_2node__loader_8hdep" alt=""/></div>
 <map name="asrc_2io_2node__loader_8hdep" id="asrc_2io_2node__loader_8hdep">
-<area shape="rect" title=" " alt="" coords="156,5,308,31"/>
-<area shape="rect" href="scene__loader_8c.html" title=" " alt="" coords="5,79,163,104"/>
-<area shape="poly" title=" " alt="" coords="197,39,109,81,107,76,195,34"/>
-<area shape="rect" href="main_8c.html" title=" " alt="" coords="187,79,277,104"/>
-<area shape="poly" title=" " alt="" coords="235,44,235,79,229,79,229,44"/>
-<area shape="rect" href="raptiquax_8c.html" title=" " alt="" coords="301,79,419,104"/>
-<area shape="poly" title=" " alt="" coords="266,35,340,76,338,81,263,40"/>
+<area shape="rect" title=" " alt="" coords="5,55,157,80"/>
+<area shape="rect" href="scene__loader_8c.html" title=" " alt="" coords="205,5,363,31"/>
+<area shape="poly" title=" " alt="" coords="146,49,230,28,232,33,148,54"/>
+<area shape="rect" href="main_8c.html" title=" " alt="" coords="239,55,329,80"/>
+<area shape="poly" title=" " alt="" coords="171,65,239,65,239,70,171,70"/>
+<area shape="rect" href="raptiquax_8c.html" title=" " alt="" coords="225,104,343,129"/>
+<area shape="poly" title=" " alt="" coords="148,81,232,101,230,107,146,86"/>
 </map>
 </div>
 </div>
@@ -169,6 +169,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -177,7 +187,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

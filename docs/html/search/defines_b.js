@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['s16_0',['s16',['../raptiquax_8h.html#ad6aafede8a0cfa326715005e57f9d9f5',1,'raptiquax.h']]],
-  ['s32_1',['s32',['../raptiquax_8h.html#af0938d8dd13b4f7a595e78aacafd3323',1,'raptiquax.h']]],
-  ['s64_2',['s64',['../raptiquax_8h.html#aa2049b7d943f40b2facb60b17e8a7199',1,'raptiquax.h']]],
-  ['s8_3',['s8',['../raptiquax_8h.html#a543c9bcb4e7b83b40dd6ae7a024a63d2',1,'raptiquax.h']]],
-  ['screen_5fheight_4',['SCREEN_HEIGHT',['../window_8h.html#a6974d08a74da681b3957b2fead2608b8',1,'window.h']]],
-  ['screen_5fwidth_5',['SCREEN_WIDTH',['../window_8h.html#a2cd109632a6dcccaa80b43561b1ab700',1,'window.h']]],
-  ['set_5fattributes_5fcount_6',['SET_ATTRIBUTES_COUNT',['../scripts_8h.html#a3b256363c9ad696b1e4d662f05bca390',1,'scripts.h']]],
-  ['strtok_5fr_7',['strtok_r',['../stringio_8h.html#abff4e21c5a2026f9982e88f1e686e63a',1,'stringio.h']]],
-  ['strtok_5fs_8',['strtok_s',['../stringio_8h.html#a832190fda79639e68038e8a2c0e2df02',1,'stringio.h']]]
+  ['u16_0',['u16',['../aliases_8h.html#a2b19d553290a8d4a083d3c03280ea800',1,'aliases.h']]],
+  ['u32_1',['u32',['../aliases_8h.html#a332ccd83dfe2973e6cb2b61e4f3ab7e6',1,'aliases.h']]],
+  ['u64_2',['u64',['../aliases_8h.html#a969c7c1ebb4f70581e040a3034b14ee0',1,'aliases.h']]],
+  ['u8_3',['u8',['../aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd',1,'aliases.h']]],
+  ['unused_4',['UNUSED',['../config_8h.html#a86d500a34c624c2cae56bc25a31b12f3',1,'config.h']]]
 ];

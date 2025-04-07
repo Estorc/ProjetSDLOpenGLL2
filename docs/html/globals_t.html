@@ -117,8 +117,8 @@ $(document).ready(function(){initNavTree('globals_t.html',''); initResizable(); 
 <li>table_insert_raw()&#160;:&#160;<a class="el" href="hash_8c.html#ae56ca11912523d3739e1675fd69e4342">hash.c</a>, <a class="el" href="hash_8h.html#ae56ca11912523d3739e1675fd69e4342">hash.h</a></li>
 <li>table_remove()&#160;:&#160;<a class="el" href="hash_8c.html#a5f6c940dc140fecbc4f17495ef05670d">hash.c</a>, <a class="el" href="hash_8h.html#a5f6c940dc140fecbc4f17495ef05670d">hash.h</a></li>
 <li>table_resize()&#160;:&#160;<a class="el" href="hash_8c.html#a09e2f3b54e1f988ab1f1adda0b5f3853">hash.c</a>, <a class="el" href="hash_8h.html#a09e2f3b54e1f988ab1f1adda0b5f3853">hash.h</a></li>
-<li>TextureMap&#160;:&#160;<a class="el" href="group__ModelHandling.html#gaa9abb132ae6f23dafca840fb8c6081ae">model.h</a>, <a class="el" href="group__MemoryCache.html#ga9efea9b7fc3085f1062d9148aa012307">memory.h</a></li>
-<li>TextureVertex&#160;:&#160;<a class="el" href="group__ObjLoader.html#ga035e3505138fdf49eb7ebdcfc5d5a1fc">obj_loader.h</a></li>
+<li>TextureMap&#160;:&#160;<a class="el" href="group__MemoryCache.html#gaa9abb132ae6f23dafca840fb8c6081ae">memory.h</a>, <a class="el" href="aliases_8h.html#a9efea9b7fc3085f1062d9148aa012307">aliases.h</a></li>
+<li>TextureVertex&#160;:&#160;<a class="el" href="aliases_8h.html#a035e3505138fdf49eb7ebdcfc5d5a1fc">aliases.h</a></li>
 <li>to_degrees()&#160;:&#160;<a class="el" href="group__MathGroup.html#ga2409f579c7b190a358b346041eded59a">math_util.c</a>, <a class="el" href="group__MathGroup.html#ga2409f579c7b190a358b346041eded59a">math_util.h</a></li>
 <li>to_radians()&#160;:&#160;<a class="el" href="group__MathGroup.html#gaf12eb49731c13c96d3bcc7818566af82">math_util.c</a>, <a class="el" href="group__MathGroup.html#gaf12eb49731c13c96d3bcc7818566af82">math_util.h</a></li>
 </ul>
@@ -153,6 +153,16 @@ $(document).ready(function(){initNavTree('globals_t.html',''); initResizable(); 
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -161,7 +171,7 @@ $(document).ready(function(){initNavTree('globals_t.html',''); initResizable(); 
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

@@ -113,12 +113,12 @@ $(document).ready(function(){initNavTree('structpeer.html',''); initResizable();
 
 <p>This is the complete list of members for <a class="el" href="structpeer.html">peer</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="structpeer.html#a9aeb7d91e8fbc4b1000fd4eeaa423da8">handler_count</a></td><td class="entry"><a class="el" href="structpeer.html">peer</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structpeer.html#a38cce95c59d81f3136144afe2189a6b8">handlers</a></td><td class="entry"><a class="el" href="structpeer.html">peer</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="structpeer.html#a552ecaf1ddcbee53c0f9adfcc71a2ecf">incoming_buffer</a></td><td class="entry"><a class="el" href="structpeer.html">peer</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structpeer.html#a231b0c785c044676ff6a9f25d9533171">listener</a></td><td class="entry"><a class="el" href="structpeer.html">peer</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="structpeer.html#aa7cc8ce1e6f96584b324ace98d25c567">ping</a></td><td class="entry"><a class="el" href="structpeer.html">peer</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structpeer.html#aabb18ce7dc7a63a95f4c09998d985f19">socket</a></td><td class="entry"><a class="el" href="structpeer.html">peer</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structpeer.html#acc1a71a0f4d04b0f82fe81d852993cd4">handler_count</a></td><td class="entry"><a class="el" href="structpeer.html">peer</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structpeer.html#aa3cf9df79d3290444a46ccf912c97a64">handlers</a></td><td class="entry"><a class="el" href="structpeer.html">peer</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structpeer.html#a56b8cd88eeb0250decffc5c4a430836b">incoming_buffer</a></td><td class="entry"><a class="el" href="structpeer.html">peer</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structpeer.html#a806595a71a3b6d413dbaaa25585d7dc0">listener</a></td><td class="entry"><a class="el" href="structpeer.html">peer</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structpeer.html#a624d5261107607e5d48ab7dd3f00d693">ping</a></td><td class="entry"><a class="el" href="structpeer.html">peer</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structpeer.html#a77dae86dc4c270a2ac1c95f149d5ab2a">socket</a></td><td class="entry"><a class="el" href="structpeer.html">peer</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -150,6 +150,16 @@ $(document).ready(function(){initNavTree('structpeer.html',''); initResizable();
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -158,7 +168,7 @@ $(document).ready(function(){initNavTree('structpeer.html',''); initResizable();
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

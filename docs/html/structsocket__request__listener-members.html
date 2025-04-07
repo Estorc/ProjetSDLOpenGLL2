@@ -113,8 +113,8 @@ $(document).ready(function(){initNavTree('structsocket__request__listener.html',
 
 <p>This is the complete list of members for <a class="el" href="structsocket__request__listener.html">socket_request_listener</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="structsocket__request__listener.html#ac2c6f7a039f5d52bdb121da49e38534f">readfds</a></td><td class="entry"><a class="el" href="structsocket__request__listener.html">socket_request_listener</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structsocket__request__listener.html#af4e6820fa5ad4dbe471808b47d43ec05">timeout</a></td><td class="entry"><a class="el" href="structsocket__request__listener.html">socket_request_listener</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structsocket__request__listener.html#a69b8a2764767b054eebb2bc544295e39">readfds</a></td><td class="entry"><a class="el" href="structsocket__request__listener.html">socket_request_listener</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structsocket__request__listener.html#ab9215cb056d728a57458538827f59fb6">timeout</a></td><td class="entry"><a class="el" href="structsocket__request__listener.html">socket_request_listener</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -146,6 +146,16 @@ $(document).ready(function(){initNavTree('structsocket__request__listener.html',
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -154,7 +164,7 @@ $(document).ready(function(){initNavTree('structsocket__request__listener.html',
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

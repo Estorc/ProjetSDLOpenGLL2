@@ -114,17 +114,20 @@ $(document).ready(function(){initNavTree('unionBehaviorAttribute.html',''); init
 </div><!--header-->
 <div class="contents">
 
+<p>Union representing different types of behavior attributes.  
+ <a href="unionBehaviorAttribute.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="scripts_8h_source.html">scripts.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for BehaviorAttribute:</div>
 <div class="dyncontent">
 <div class="center"><img src="unionBehaviorAttribute__coll__graph.png" border="0" usemap="#aBehaviorAttribute_coll__map" alt="Collaboration graph"/></div>
 <map name="aBehaviorAttribute_coll__map" id="aBehaviorAttribute_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,143,31"/>
-<area shape="rect" href="classNode.html" title="Represents a node in the tree structure." alt="" coords="46,95,102,121"/>
-<area shape="poly" title=" " alt="" coords="40,41,27,56,25,66,30,76,52,93,49,97,26,79,20,67,22,54,36,37"/>
-<area shape="poly" title=" " alt="" coords="85,82,89,69,89,55,79,32,84,30,94,54,94,69,90,84"/>
-<area shape="poly" title=" " alt="" coords="117,98,125,101,129,108,120,117,103,119,102,114,118,112,123,108,121,105,115,103"/>
+<area shape="rect" title="Union representing different types of behavior attributes." alt="" coords="5,59,143,84"/>
+<area shape="rect" href="classNode.html" title="Represents a node in the tree structure." alt="" coords="252,59,308,84"/>
+<area shape="poly" title=" " alt="" coords="157,69,252,69,252,74,157,74"/>
+<area shape="poly" title=" " alt="" coords="242,92,228,95,199,98,168,97,114,87,115,81,169,92,198,93,228,90,241,86"/>
+<area shape="poly" title=" " alt="" coords="262,44,268,36,280,32,290,34,297,41,295,59,290,58,292,43,288,39,280,37,271,40,267,47"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -141,18 +144,21 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a50669aec06276310fd491f39a820dd8d" id="r_a50669aec06276310fd491f39a820dd8d"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="classNode.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionBehaviorAttribute.html#a50669aec06276310fd491f39a820dd8d">node</a></td></tr>
 <tr class="separator:a50669aec06276310fd491f39a820dd8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a3ecaf664b66006d185e839fc3e499ddf" name="a3ecaf664b66006d185e839fc3e499ddf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ecaf664b66006d185e839fc3e499ddf">&#9670;&#160;</a></span>b</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Union representing different types of behavior attributes. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a3fa7fd6f8165665bcdd85d4ccfc50459" name="a3fa7fd6f8165665bcdd85d4ccfc50459"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fa7fd6f8165665bcdd85d4ccfc50459">&#9670;&#160;</a></span>i</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool BehaviorAttribute::b</td>
+          <td class="memname">int BehaviorAttribute::i</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Integer attribute </p>
 
 </div>
 </div>
@@ -167,34 +173,22 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Float attribute </p>
 
 </div>
 </div>
-<a id="a3fa7fd6f8165665bcdd85d4ccfc50459" name="a3fa7fd6f8165665bcdd85d4ccfc50459"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3fa7fd6f8165665bcdd85d4ccfc50459">&#9670;&#160;</a></span>i</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BehaviorAttribute::i</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a50669aec06276310fd491f39a820dd8d" name="a50669aec06276310fd491f39a820dd8d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50669aec06276310fd491f39a820dd8d">&#9670;&#160;</a></span>node</h2>
+<a id="a3ecaf664b66006d185e839fc3e499ddf" name="a3ecaf664b66006d185e839fc3e499ddf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ecaf664b66006d185e839fc3e499ddf">&#9670;&#160;</a></span>b</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="classNode.html">Node</a>* BehaviorAttribute::node</td>
+          <td class="memname">bool BehaviorAttribute::b</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Boolean attribute </p>
 
 </div>
 </div>
@@ -209,6 +203,22 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Pointer attribute </p>
+
+</div>
+</div>
+<a id="a50669aec06276310fd491f39a820dd8d" name="a50669aec06276310fd491f39a820dd8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50669aec06276310fd491f39a820dd8d">&#9670;&#160;</a></span>node</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="classNode.html">Node</a>* BehaviorAttribute::node</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p><a class="el" href="classNode.html" title="Represents a node in the tree structure.">Node</a> pointer attribute </p>
 
 </div>
 </div>
@@ -246,6 +256,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -254,7 +274,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

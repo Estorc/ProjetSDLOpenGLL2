@@ -1,4 +1,4 @@
 <map id="Queue" name="Queue">
-<area shape="rect" id="Node000001" title="A node in the queue." alt="" coords="5,5,69,31"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="84,12,96,18,87,24,70,25,69,20,86,19,91,18,82,17"/>
+<area shape="rect" id="Node000001" title="A node in the queue." alt="" coords="5,44,69,69"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="23,29,28,21,37,17,46,20,51,27,50,44,45,44,46,28,43,24,37,23,31,25,28,32"/>
 </map>

@@ -119,8 +119,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="center"><img src="stack_8h__dep__incl.png" border="0" usemap="#asrc_2storage_2stack_8hdep" alt=""/></div>
 <map name="asrc_2storage_2stack_8hdep" id="asrc_2storage_2stack_8hdep">
 <area shape="rect" title=" " alt="" coords="5,5,151,31"/>
-<area shape="rect" href="stack_8c.html" title=" " alt="" coords="6,79,150,104"/>
-<area shape="poly" title=" " alt="" coords="81,44,81,79,75,79,75,44"/>
+<area shape="rect" href="stack_8c.html" title=" " alt="" coords="199,5,343,31"/>
+<area shape="poly" title=" " alt="" coords="165,15,199,15,199,21,165,21"/>
 </map>
 </div>
 </div>
@@ -178,6 +178,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -186,7 +196,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

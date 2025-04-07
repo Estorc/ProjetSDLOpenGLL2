@@ -1,5 +1,8 @@
 #version 430 core
-out vec4 FragColor;
+layout (location = 0) out vec4 FragColor;
+layout (location = 1) out vec4 FragPos;
+layout (location = 2) out vec4 FragNormal;
+layout (location = 3) out vec4 FragExtra;
 
 struct Material {
     vec3 ambient;
@@ -66,6 +69,7 @@ struct SpotLight {
 #define SPOT_LIGHTS_MAX 10
 
 in VS_OUT {
+    vec4 FragGPos;
     vec3 FragPos;
     vec3 Normal;
     vec2 TexCoords;
@@ -355,6 +359,9 @@ void main()
     color = pow(color, vec3(1.0/gamma));  
 
     FragColor = vec4(color, 1.0);
+    FragPos = fs_in.FragGPos;
+    FragNormal = vec4(normal, 1.0);
+    FragExtra = vec4(metallic, roughness, 0.0, 0.0);
 
     
     //vec3 debugColor = tangentViewDir * 0.5 + 0.5; // Map [-1, 1] range to [0, 1]

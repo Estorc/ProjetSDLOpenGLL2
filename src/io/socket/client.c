@@ -1,5 +1,5 @@
-#include "../../raptiquax.h"
-#include "socket.h"
+#include <raptiquax.h>
+#include <io/socket/socket.h>
 
 
 #pragma region LOW LEVEL

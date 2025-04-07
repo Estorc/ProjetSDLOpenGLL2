@@ -117,9 +117,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="raw_8h__dep__incl.png" border="0" usemap="#asrc_2storage_2raw_8hdep" alt=""/></div>
 <map name="asrc_2storage_2raw_8hdep" id="asrc_2storage_2raw_8hdep">
-<area shape="rect" title=" " alt="" coords="17,5,150,31"/>
-<area shape="rect" href="chessboard_8h.html" title=" " alt="" coords="5,79,161,119"/>
-<area shape="poly" title=" " alt="" coords="86,44,86,79,81,79,81,44"/>
+<area shape="rect" title=" " alt="" coords="5,13,139,38"/>
+<area shape="rect" href="chessboard_8h.html" title=" " alt="" coords="187,5,343,45"/>
+<area shape="poly" title=" " alt="" coords="152,23,186,23,186,28,152,28"/>
 </map>
 </div>
 </div>
@@ -133,34 +133,6 @@ Macros</h2></td></tr>
 <tr class="separator:a36e402057b28e948d41ada8476bff204"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a36e402057b28e948d41ada8476bff204" name="a36e402057b28e948d41ada8476bff204"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36e402057b28e948d41ada8476bff204">&#9670;&#160;</a></span>GET_RAW</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define GET_RAW</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">type, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">value&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;    value ? (*((type *) value)) : 0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a6154ab4bd717caa9740f2780239b6233" name="a6154ab4bd717caa9740f2780239b6233"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6154ab4bd717caa9740f2780239b6233">&#9670;&#160;</a></span>NEW_RAW</h2>
 
@@ -183,6 +155,34 @@ Macros</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td>&#160;&#160;&#160;    ((type *) memcpy(malloc(sizeof(type)), &amp;(type){value}, sizeof(type)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a36e402057b28e948d41ada8476bff204" name="a36e402057b28e948d41ada8476bff204"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36e402057b28e948d41ada8476bff204">&#9670;&#160;</a></span>GET_RAW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_RAW</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    value ? (*((type *) value)) : 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -220,6 +220,16 @@ Macros</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -228,7 +238,7 @@ Macros</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

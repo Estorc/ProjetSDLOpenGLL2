@@ -121,7 +121,7 @@ $(document).ready(function(){initNavTree('structBoxCollisionShape.html',''); ini
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a0fa63c479f9692ef730ea75e7d4638bc" id="r_a0fa63c479f9692ef730ea75e7d4638bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBoxCollisionShape.html#a0fa63c479f9692ef730ea75e7d4638bc">UNUSED</a></td></tr>
+<tr class="memitem:a0fa63c479f9692ef730ea75e7d4638bc" id="r_a0fa63c479f9692ef730ea75e7d4638bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBoxCollisionShape.html#a0fa63c479f9692ef730ea75e7d4638bc">UNUSED</a></td></tr>
 <tr class="separator:a0fa63c479f9692ef730ea75e7d4638bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -135,7 +135,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="raptiquax_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> BoxCollisionShape::UNUSED</td>
+          <td class="memname"><a class="el" href="aliases_8h.html#af3b86d961da0a3575b4f99c9ffaf01fd">u8</a> BoxCollisionShape::UNUSED</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -177,6 +177,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -185,7 +195,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

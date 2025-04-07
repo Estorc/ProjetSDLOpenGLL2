@@ -8,41 +8,52 @@ This file contains the declarations for shader management functions.
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{group__ShaderManagement_gaae0064bb82d7d6a3929c88550423b7db}{DEFAULT\+\_\+\+RENDER\+\_\+\+SHADER}}~"{}shaders/shadow\+Shader.\+vs"{}, "{}shaders/shadow\+Shader.\+fs"{}
+\#define \mbox{\hyperlink{group__ShaderManagement_gaae0064bb82d7d6a3929c88550423b7db}{DEFAULT\+\_\+\+RENDER\+\_\+\+SHADER}}~"{}shaders/deferred\+Shader.\+vs"{}, "{}shaders/deferred\+Shader.\+fs"{}
 \begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for rendering shadows. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{group__ShaderManagement_ga770865347525c47610ef50f584783534}{DEFAULT\+\_\+\+DEPTH\+\_\+\+SHADER}}~"{}shaders/simple\+Depth\+Shader.\+vs"{}, "{}shaders/simple\+Depth\+Shader.\+fs"{}
 \begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for simple depth rendering. \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{group__ShaderManagement_ga712eb81654f5792fdb633c586ac30389}{DEFAULT\+\_\+\+SCREEN\+\_\+\+SHADER}}~"{}shaders/aa\+\_\+post.\+vs"{}, "{}shaders/aa\+\_\+post.\+fs"{}
+\#define \mbox{\hyperlink{group__ShaderManagement_ga712eb81654f5792fdb633c586ac30389}{DEFAULT\+\_\+\+SCREEN\+\_\+\+SHADER}}~"{}shaders/screen.\+vs"{}, "{}shaders/screen.\+fs"{}
 \begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for screen post-\/processing. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__ShaderManagement_ga42c1d65749a22dd6ff726ded79cf9626}{DEFAULT\+\_\+\+SMAA\+\_\+\+SHADER}}~"{}shaders/smaa.\+vs"{}, "{}shaders/smaa.\+fs"{}
+\begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for SMAA (Subpixel Morphological Anti-\/\+Aliasing). \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{group__ShaderManagement_gab2db09e6298f20fac1c66c8c4ad69cee}{DEFAULT\+\_\+\+SKYBOX\+\_\+\+SHADER}}~"{}shaders/skybox.\+vs"{}, "{}shaders/skybox.\+fs"{}
 \begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for rendering the skybox. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{group__ShaderManagement_ga88325351f80640e41970b4141a549b44}{DEFAULT\+\_\+\+GUI\+\_\+\+SHADER}}~"{}shaders/gui.\+vs"{}, "{}shaders/gui.\+fs"{}
-\begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for rendering the GUI. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Typedefs}
-\begin{DoxyCompactItemize}
-\item 
-typedef unsigned int \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}
-\begin{DoxyCompactList}\small\item\em Represents an unsigned integer used as a shader identifier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for rendering the GUI. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__ShaderManagement_ga399af04357c2d46d523cf6cd7c7a22a8}{DEFAULT\+\_\+\+SSR\+\_\+\+SHADER}}~"{}shaders/ssr.\+vs"{}, "{}shaders/ssr.\+fs"{}
+\begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for Screen Space Reflections (SSR). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__ShaderManagement_gad2b87ff330b6ec2c15e8f25d7130965c}{DEFAULT\+\_\+\+LIGHT\+\_\+\+SHADER}}~"{}shaders/light\+Pass.\+vs"{}, "{}shaders/light\+Pass.\+fs"{}
+\begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for rendering lights. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__ShaderManagement_ga2f08d215a2319cd9b809bc268561bd1e}{DEFAULT\+\_\+\+SSAO\+\_\+\+SHADER}}~"{}shaders/ssao.\+vs"{}, "{}shaders/ssao.\+fs"{}
+\begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for Screen Space Ambient Occlusion (SSAO). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__ShaderManagement_gac87cb52280dba7b533a8ecd39ca0ae56}{DEFAULT\+\_\+\+SSAO\+\_\+\+BLUR\+\_\+\+SHADER}}~"{}shaders/ssao\+Blur.\+vs"{}, "{}shaders/ssao\+Blur.\+fs"{}
+\begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for SSAO blur. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__ShaderManagement_ga73e10cee88416a5d959ea793d5c60155}{DEFAULT\+\_\+\+BLOOM\+\_\+\+SHADER}}~"{}shaders/bloom.\+vs"{}, "{}shaders/bloom.\+fs"{}
+\begin{DoxyCompactList}\small\item\em Defines the default vertex and fragment shaders for bloom effect. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{group__ShaderManagement_ga7c682b9bed25d2159985f6a11de0b712}{create\+\_\+shaders}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} shaders\mbox{[}$\,$\mbox{]})
+void \mbox{\hyperlink{group__ShaderManagement_ga7c682b9bed25d2159985f6a11de0b712}{create\+\_\+shaders}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} shaders\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Creates multiple shaders. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__ShaderManagement_ga8c5722406ee9544fe6a6fdab7e87a1c0}{create\+\_\+shader}} (char \texorpdfstring{$\ast$}{*}vertex\+Path, char \texorpdfstring{$\ast$}{*}fragment\+Path)
+\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} \mbox{\hyperlink{group__ShaderManagement_ga8c5722406ee9544fe6a6fdab7e87a1c0}{create\+\_\+shader}} (char \texorpdfstring{$\ast$}{*}vertex\+Path, char \texorpdfstring{$\ast$}{*}fragment\+Path)
 \begin{DoxyCompactList}\small\item\em Creates a shader program from vertex and fragment shader files. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ShaderManagement_ga1117f5894f4b4abe13e41cfc8109ddbe}{use\+\_\+shader}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID)
+void \mbox{\hyperlink{group__ShaderManagement_gafd68e292f698dcd7e5853578c3c65a14}{set\+\_\+shader\+\_\+screen\+\_\+size}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, int width, int height)
+\begin{DoxyCompactList}\small\item\em Sets the screen size for the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ShaderManagement_ga1b874f083378d494481d6edc397bf4cb}{set\+\_\+shaders\+\_\+screen\+\_\+size}} (int width, int height)
+\begin{DoxyCompactList}\small\item\em Sets the screen size for all shaders. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__ShaderManagement_ga1117f5894f4b4abe13e41cfc8109ddbe}{use\+\_\+shader}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID)
 \begin{DoxyCompactList}\small\item\em Uses the specified shader program. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ShaderManagement_gaafee5005fc182fefb7fab74fa868631c}{set\+\_\+shader\+\_\+int}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, int value)
+void \mbox{\hyperlink{group__ShaderManagement_gaafee5005fc182fefb7fab74fa868631c}{set\+\_\+shader\+\_\+int}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, int value)
 \begin{DoxyCompactList}\small\item\em Sets an integer uniform in the shader program. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ShaderManagement_ga4f343c92d0744283d520b975c5408885}{set\+\_\+shader\+\_\+float}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, float value)
+void \mbox{\hyperlink{group__ShaderManagement_ga4f343c92d0744283d520b975c5408885}{set\+\_\+shader\+\_\+float}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, float value)
 \begin{DoxyCompactList}\small\item\em Sets a float uniform in the shader program. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ShaderManagement_ga4ddd55e651817701c9e65c3006d84f06}{set\+\_\+shader\+\_\+vec2}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec2 value)
+void \mbox{\hyperlink{group__ShaderManagement_ga4ddd55e651817701c9e65c3006d84f06}{set\+\_\+shader\+\_\+vec2}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec2 value)
 \begin{DoxyCompactList}\small\item\em Sets a vec2 uniform in the shader program. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ShaderManagement_gabe939b6bc86c802ec4514fb3c7a916c0}{set\+\_\+shader\+\_\+vec3}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec3 value)
+void \mbox{\hyperlink{group__ShaderManagement_gabe939b6bc86c802ec4514fb3c7a916c0}{set\+\_\+shader\+\_\+vec3}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec3 value)
 \begin{DoxyCompactList}\small\item\em Sets a vec3 uniform in the shader program. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ShaderManagement_ga225dc3d3319fe8c8cc67bb58cdea93d2}{set\+\_\+shader\+\_\+vec4}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec4 value)
+void \mbox{\hyperlink{group__ShaderManagement_ga225dc3d3319fe8c8cc67bb58cdea93d2}{set\+\_\+shader\+\_\+vec4}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, vec4 value)
 \begin{DoxyCompactList}\small\item\em Sets a vec4 uniform in the shader program. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group__ShaderManagement_gaaed666bd75a0e319dbacab5ed2191291}{set\+\_\+shader\+\_\+mat4}} (\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, mat4 \texorpdfstring{$\ast$}{*}value)
+void \mbox{\hyperlink{group__ShaderManagement_ga986a9b924ff7679bc67d11b5ea2e224b}{set\+\_\+shader\+\_\+mat4}} (\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} ID, char \texorpdfstring{$\ast$}{*}name, mat4 value)
 \begin{DoxyCompactList}\small\item\em Sets a mat4 uniform in the shader program. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -52,7 +63,17 @@ This file contains the declarations for shader management functions.
 The functions declared in this file are used to create, use, and set various types of data in shaders. Shaders are essential for rendering graphics in Open\+GL, and these functions provide a convenient interface for managing them. 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{group__ShaderManagement_ga770865347525c47610ef50f584783534}\label{group__ShaderManagement_ga770865347525c47610ef50f584783534} 
+\Hypertarget{group__ShaderManagement_gaae0064bb82d7d6a3929c88550423b7db}\label{group__ShaderManagement_gaae0064bb82d7d6a3929c88550423b7db} 
+\index{Shader Management@{Shader Management}!DEFAULT\_RENDER\_SHADER@{DEFAULT\_RENDER\_SHADER}}
+\index{DEFAULT\_RENDER\_SHADER@{DEFAULT\_RENDER\_SHADER}!Shader Management@{Shader Management}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_RENDER\_SHADER}{DEFAULT\_RENDER\_SHADER}}
+{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+RENDER\+\_\+\+SHADER~"{}shaders/deferred\+Shader.\+vs"{}, "{}shaders/deferred\+Shader.\+fs"{}}
+
+
+
+Defines the default vertex and fragment shaders for rendering shadows. 
+
+The vertex shader is located at "{}shaders/forward\+Shadow\+Shader.\+vs"{} and the fragment shader is located at "{}shaders/forward\+Shadow\+Shader.\+fs"{}. \Hypertarget{group__ShaderManagement_ga770865347525c47610ef50f584783534}\label{group__ShaderManagement_ga770865347525c47610ef50f584783534} 
 \index{Shader Management@{Shader Management}!DEFAULT\_DEPTH\_SHADER@{DEFAULT\_DEPTH\_SHADER}}
 \index{DEFAULT\_DEPTH\_SHADER@{DEFAULT\_DEPTH\_SHADER}!Shader Management@{Shader Management}}
 \doxysubsubsection{\texorpdfstring{DEFAULT\_DEPTH\_SHADER}{DEFAULT\_DEPTH\_SHADER}}
@@ -62,37 +83,27 @@ The functions declared in this file are used to create, use, and set various typ
 
 Defines the default vertex and fragment shaders for simple depth rendering. 
 
-The vertex shader is located at "{}shaders/simple\+Depth\+Shader.\+vs"{} and the fragment shader is located at "{}shaders/simple\+Depth\+Shader.\+fs"{}. \Hypertarget{group__ShaderManagement_ga88325351f80640e41970b4141a549b44}\label{group__ShaderManagement_ga88325351f80640e41970b4141a549b44} 
-\index{Shader Management@{Shader Management}!DEFAULT\_GUI\_SHADER@{DEFAULT\_GUI\_SHADER}}
-\index{DEFAULT\_GUI\_SHADER@{DEFAULT\_GUI\_SHADER}!Shader Management@{Shader Management}}
-\doxysubsubsection{\texorpdfstring{DEFAULT\_GUI\_SHADER}{DEFAULT\_GUI\_SHADER}}
-{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+GUI\+\_\+\+SHADER~"{}shaders/gui.\+vs"{}, "{}shaders/gui.\+fs"{}}
-
-
-
-Defines the default vertex and fragment shaders for rendering the GUI. 
-
-The vertex shader is located at "{}shaders/gui.\+vs"{} and the fragment shader is located at "{}shaders/gui.\+fs"{}. \Hypertarget{group__ShaderManagement_gaae0064bb82d7d6a3929c88550423b7db}\label{group__ShaderManagement_gaae0064bb82d7d6a3929c88550423b7db} 
-\index{Shader Management@{Shader Management}!DEFAULT\_RENDER\_SHADER@{DEFAULT\_RENDER\_SHADER}}
-\index{DEFAULT\_RENDER\_SHADER@{DEFAULT\_RENDER\_SHADER}!Shader Management@{Shader Management}}
-\doxysubsubsection{\texorpdfstring{DEFAULT\_RENDER\_SHADER}{DEFAULT\_RENDER\_SHADER}}
-{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+RENDER\+\_\+\+SHADER~"{}shaders/shadow\+Shader.\+vs"{}, "{}shaders/shadow\+Shader.\+fs"{}}
-
-
-
-Defines the default vertex and fragment shaders for rendering shadows. 
-
-The vertex shader is located at "{}shaders/shadow\+Shader.\+vs"{} and the fragment shader is located at "{}shaders/shadow\+Shader.\+fs"{}. \Hypertarget{group__ShaderManagement_ga712eb81654f5792fdb633c586ac30389}\label{group__ShaderManagement_ga712eb81654f5792fdb633c586ac30389} 
+The vertex shader is located at "{}shaders/simple\+Depth\+Shader.\+vs"{} and the fragment shader is located at "{}shaders/simple\+Depth\+Shader.\+fs"{}. \Hypertarget{group__ShaderManagement_ga712eb81654f5792fdb633c586ac30389}\label{group__ShaderManagement_ga712eb81654f5792fdb633c586ac30389} 
 \index{Shader Management@{Shader Management}!DEFAULT\_SCREEN\_SHADER@{DEFAULT\_SCREEN\_SHADER}}
 \index{DEFAULT\_SCREEN\_SHADER@{DEFAULT\_SCREEN\_SHADER}!Shader Management@{Shader Management}}
 \doxysubsubsection{\texorpdfstring{DEFAULT\_SCREEN\_SHADER}{DEFAULT\_SCREEN\_SHADER}}
-{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+SCREEN\+\_\+\+SHADER~"{}shaders/aa\+\_\+post.\+vs"{}, "{}shaders/aa\+\_\+post.\+fs"{}}
+{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+SCREEN\+\_\+\+SHADER~"{}shaders/screen.\+vs"{}, "{}shaders/screen.\+fs"{}}
 
 
 
 Defines the default vertex and fragment shaders for screen post-\/processing. 
 
-The vertex shader is located at "{}shaders/aa\+\_\+post.\+vs"{} and the fragment shader is located at "{}shaders/aa\+\_\+post.\+fs"{}. \Hypertarget{group__ShaderManagement_gab2db09e6298f20fac1c66c8c4ad69cee}\label{group__ShaderManagement_gab2db09e6298f20fac1c66c8c4ad69cee} 
+The vertex shader is located at "{}shaders/screen.\+vs"{} and the fragment shader is located at "{}shaders/screen.\+fs"{}. \Hypertarget{group__ShaderManagement_ga42c1d65749a22dd6ff726ded79cf9626}\label{group__ShaderManagement_ga42c1d65749a22dd6ff726ded79cf9626} 
+\index{Shader Management@{Shader Management}!DEFAULT\_SMAA\_SHADER@{DEFAULT\_SMAA\_SHADER}}
+\index{DEFAULT\_SMAA\_SHADER@{DEFAULT\_SMAA\_SHADER}!Shader Management@{Shader Management}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_SMAA\_SHADER}{DEFAULT\_SMAA\_SHADER}}
+{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+SMAA\+\_\+\+SHADER~"{}shaders/smaa.\+vs"{}, "{}shaders/smaa.\+fs"{}}
+
+
+
+Defines the default vertex and fragment shaders for SMAA (Subpixel Morphological Anti-\/\+Aliasing). 
+
+The vertex shader is located at "{}shaders/smaa.\+vs"{} and the fragment shader is located at "{}shaders/smaa.\+fs"{}. \Hypertarget{group__ShaderManagement_gab2db09e6298f20fac1c66c8c4ad69cee}\label{group__ShaderManagement_gab2db09e6298f20fac1c66c8c4ad69cee} 
 \index{Shader Management@{Shader Management}!DEFAULT\_SKYBOX\_SHADER@{DEFAULT\_SKYBOX\_SHADER}}
 \index{DEFAULT\_SKYBOX\_SHADER@{DEFAULT\_SKYBOX\_SHADER}!Shader Management@{Shader Management}}
 \doxysubsubsection{\texorpdfstring{DEFAULT\_SKYBOX\_SHADER}{DEFAULT\_SKYBOX\_SHADER}}
@@ -102,27 +113,91 @@ The vertex shader is located at "{}shaders/aa\+\_\+post.\+vs"{} and the fragment
 
 Defines the default vertex and fragment shaders for rendering the skybox. 
 
-The vertex shader is located at "{}shaders/skybox.\+vs"{} and the fragment shader is located at "{}shaders/skybox.\+fs"{}. 
-
-\doxysubsection{Typedef Documentation}
-\Hypertarget{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}\label{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5} 
-\index{Shader Management@{Shader Management}!Shader@{Shader}}
-\index{Shader@{Shader}!Shader Management@{Shader Management}}
-\doxysubsubsection{\texorpdfstring{Shader}{Shader}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}
+The vertex shader is located at "{}shaders/skybox.\+vs"{} and the fragment shader is located at "{}shaders/skybox.\+fs"{}. \Hypertarget{group__ShaderManagement_ga88325351f80640e41970b4141a549b44}\label{group__ShaderManagement_ga88325351f80640e41970b4141a549b44} 
+\index{Shader Management@{Shader Management}!DEFAULT\_GUI\_SHADER@{DEFAULT\_GUI\_SHADER}}
+\index{DEFAULT\_GUI\_SHADER@{DEFAULT\_GUI\_SHADER}!Shader Management@{Shader Management}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_GUI\_SHADER}{DEFAULT\_GUI\_SHADER}}
+{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+GUI\+\_\+\+SHADER~"{}shaders/gui.\+vs"{}, "{}shaders/gui.\+fs"{}}
 
 
 
-Represents an unsigned integer used as a shader identifier. 
+Defines the default vertex and fragment shaders for rendering the GUI. 
+
+The vertex shader is located at "{}shaders/gui.\+vs"{} and the fragment shader is located at "{}shaders/gui.\+fs"{}. \Hypertarget{group__ShaderManagement_ga399af04357c2d46d523cf6cd7c7a22a8}\label{group__ShaderManagement_ga399af04357c2d46d523cf6cd7c7a22a8} 
+\index{Shader Management@{Shader Management}!DEFAULT\_SSR\_SHADER@{DEFAULT\_SSR\_SHADER}}
+\index{DEFAULT\_SSR\_SHADER@{DEFAULT\_SSR\_SHADER}!Shader Management@{Shader Management}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_SSR\_SHADER}{DEFAULT\_SSR\_SHADER}}
+{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+SSR\+\_\+\+SHADER~"{}shaders/ssr.\+vs"{}, "{}shaders/ssr.\+fs"{}}
 
 
+
+Defines the default vertex and fragment shaders for Screen Space Reflections (SSR). 
+
+The vertex shader is located at "{}shaders/ssr.\+vs"{} and the fragment shader is located at "{}shaders/ssr.\+fs"{}. \Hypertarget{group__ShaderManagement_gad2b87ff330b6ec2c15e8f25d7130965c}\label{group__ShaderManagement_gad2b87ff330b6ec2c15e8f25d7130965c} 
+\index{Shader Management@{Shader Management}!DEFAULT\_LIGHT\_SHADER@{DEFAULT\_LIGHT\_SHADER}}
+\index{DEFAULT\_LIGHT\_SHADER@{DEFAULT\_LIGHT\_SHADER}!Shader Management@{Shader Management}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_LIGHT\_SHADER}{DEFAULT\_LIGHT\_SHADER}}
+{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+LIGHT\+\_\+\+SHADER~"{}shaders/light\+Pass.\+vs"{}, "{}shaders/light\+Pass.\+fs"{}}
+
+
+
+Defines the default vertex and fragment shaders for rendering lights. 
+
+The vertex shader is located at "{}shaders/light\+Pass.\+vs"{} and the fragment shader is located at "{}shaders/light\+Pass.\+fs"{}. \Hypertarget{group__ShaderManagement_ga2f08d215a2319cd9b809bc268561bd1e}\label{group__ShaderManagement_ga2f08d215a2319cd9b809bc268561bd1e} 
+\index{Shader Management@{Shader Management}!DEFAULT\_SSAO\_SHADER@{DEFAULT\_SSAO\_SHADER}}
+\index{DEFAULT\_SSAO\_SHADER@{DEFAULT\_SSAO\_SHADER}!Shader Management@{Shader Management}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_SSAO\_SHADER}{DEFAULT\_SSAO\_SHADER}}
+{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+SSAO\+\_\+\+SHADER~"{}shaders/ssao.\+vs"{}, "{}shaders/ssao.\+fs"{}}
+
+
+
+Defines the default vertex and fragment shaders for Screen Space Ambient Occlusion (SSAO). 
+
+The vertex shader is located at "{}shaders/ssao.\+vs"{} and the fragment shader is located at "{}shaders/ssao.\+fs"{}. \Hypertarget{group__ShaderManagement_gac87cb52280dba7b533a8ecd39ca0ae56}\label{group__ShaderManagement_gac87cb52280dba7b533a8ecd39ca0ae56} 
+\index{Shader Management@{Shader Management}!DEFAULT\_SSAO\_BLUR\_SHADER@{DEFAULT\_SSAO\_BLUR\_SHADER}}
+\index{DEFAULT\_SSAO\_BLUR\_SHADER@{DEFAULT\_SSAO\_BLUR\_SHADER}!Shader Management@{Shader Management}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_SSAO\_BLUR\_SHADER}{DEFAULT\_SSAO\_BLUR\_SHADER}}
+{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+SSAO\+\_\+\+BLUR\+\_\+\+SHADER~"{}shaders/ssao\+Blur.\+vs"{}, "{}shaders/ssao\+Blur.\+fs"{}}
+
+
+
+Defines the default vertex and fragment shaders for SSAO blur. 
+
+The vertex shader is located at "{}shaders/ssao\+Blur.\+vs"{} and the fragment shader is located at "{}shaders/ssao\+Blur.\+fs"{}. \Hypertarget{group__ShaderManagement_ga73e10cee88416a5d959ea793d5c60155}\label{group__ShaderManagement_ga73e10cee88416a5d959ea793d5c60155} 
+\index{Shader Management@{Shader Management}!DEFAULT\_BLOOM\_SHADER@{DEFAULT\_BLOOM\_SHADER}}
+\index{DEFAULT\_BLOOM\_SHADER@{DEFAULT\_BLOOM\_SHADER}!Shader Management@{Shader Management}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_BLOOM\_SHADER}{DEFAULT\_BLOOM\_SHADER}}
+{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+BLOOM\+\_\+\+SHADER~"{}shaders/bloom.\+vs"{}, "{}shaders/bloom.\+fs"{}}
+
+
+
+Defines the default vertex and fragment shaders for bloom effect. 
+
+The vertex shader is located at "{}shaders/bloom.\+vs"{} and the fragment shader is located at "{}shaders/bloom.\+fs"{}. 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{group__ShaderManagement_ga7c682b9bed25d2159985f6a11de0b712}\label{group__ShaderManagement_ga7c682b9bed25d2159985f6a11de0b712} 
+\index{Shader Management@{Shader Management}!create\_shaders@{create\_shaders}}
+\index{create\_shaders@{create\_shaders}!Shader Management@{Shader Management}}
+\doxysubsubsection{\texorpdfstring{create\_shaders()}{create\_shaders()}}
+{\footnotesize\ttfamily void create\+\_\+shaders (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{shaders\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Creates multiple shaders. 
+
+This function initializes and compiles multiple shaders from predefined paths.
+
+
+\begin{DoxyParams}{Parameters}
+{\em shaders} & An array of Shader objects to be created. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{group__ShaderManagement_ga8c5722406ee9544fe6a6fdab7e87a1c0}\label{group__ShaderManagement_ga8c5722406ee9544fe6a6fdab7e87a1c0} 
 \index{Shader Management@{Shader Management}!create\_shader@{create\_shader}}
 \index{create\_shader@{create\_shader}!Shader Management@{Shader Management}}
 \doxysubsubsection{\texorpdfstring{create\_shader()}{create\_shader()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} create\+\_\+shader (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{vertex\+Path,  }\item[{char \texorpdfstring{$\ast$}{*}}]{fragment\+Path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}} create\+\_\+shader (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{vertex\+Path,  }\item[{char \texorpdfstring{$\ast$}{*}}]{fragment\+Path }\end{DoxyParamCaption})}
 
 
 
@@ -140,49 +215,68 @@ This function reads the vertex and fragment shader source code from the specifie
 \begin{DoxyReturn}{Returns}
 A Shader object representing the compiled and linked shader program. 
 \end{DoxyReturn}
-\Hypertarget{group__ShaderManagement_ga7c682b9bed25d2159985f6a11de0b712}\label{group__ShaderManagement_ga7c682b9bed25d2159985f6a11de0b712} 
-\index{Shader Management@{Shader Management}!create\_shaders@{create\_shaders}}
-\index{create\_shaders@{create\_shaders}!Shader Management@{Shader Management}}
-\doxysubsubsection{\texorpdfstring{create\_shaders()}{create\_shaders()}}
-{\footnotesize\ttfamily void create\+\_\+shaders (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{shaders\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+\Hypertarget{group__ShaderManagement_gafd68e292f698dcd7e5853578c3c65a14}\label{group__ShaderManagement_gafd68e292f698dcd7e5853578c3c65a14} 
+\index{Shader Management@{Shader Management}!set\_shader\_screen\_size@{set\_shader\_screen\_size}}
+\index{set\_shader\_screen\_size@{set\_shader\_screen\_size}!Shader Management@{Shader Management}}
+\doxysubsubsection{\texorpdfstring{set\_shader\_screen\_size()}{set\_shader\_screen\_size()}}
+{\footnotesize\ttfamily void set\+\_\+shader\+\_\+screen\+\_\+size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
 
 
 
-Creates multiple shaders. 
+Sets the screen size for the shader program. 
 
-This function initializes and compiles multiple shaders from predefined paths.
-
-
-\begin{DoxyParams}{Parameters}
-{\em shaders} & An array of Shader objects to be created. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{group__ShaderManagement_ga4f343c92d0744283d520b975c5408885}\label{group__ShaderManagement_ga4f343c92d0744283d520b975c5408885} 
-\index{Shader Management@{Shader Management}!set\_shader\_float@{set\_shader\_float}}
-\index{set\_shader\_float@{set\_shader\_float}!Shader Management@{Shader Management}}
-\doxysubsubsection{\texorpdfstring{set\_shader\_float()}{set\_shader\_float()}}
-{\footnotesize\ttfamily void set\+\_\+shader\+\_\+float (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{float}]{value }\end{DoxyParamCaption})}
-
-
-
-Sets a float uniform in the shader program. 
-
-This function sets the value of a float uniform variable in the shader program.
+This function sets the screen width and height for the shader program, which can be used for rendering calculations.
 
 
 \begin{DoxyParams}{Parameters}
 {\em ID} & The Shader object representing the shader program. \\
 \hline
-{\em name} & The name of the uniform variable in the shader program. \\
+{\em width} & The width of the screen. \\
 \hline
-{\em value} & The float value to set for the uniform variable. \\
+{\em height} & The height of the screen. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__ShaderManagement_ga1b874f083378d494481d6edc397bf4cb}\label{group__ShaderManagement_ga1b874f083378d494481d6edc397bf4cb} 
+\index{Shader Management@{Shader Management}!set\_shaders\_screen\_size@{set\_shaders\_screen\_size}}
+\index{set\_shaders\_screen\_size@{set\_shaders\_screen\_size}!Shader Management@{Shader Management}}
+\doxysubsubsection{\texorpdfstring{set\_shaders\_screen\_size()}{set\_shaders\_screen\_size()}}
+{\footnotesize\ttfamily void set\+\_\+shaders\+\_\+screen\+\_\+size (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+Sets the screen size for all shaders. 
+
+This function sets the screen width and height for all shaders in the shader cache.
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & The width of the screen. \\
+\hline
+{\em height} & The height of the screen. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__ShaderManagement_ga1117f5894f4b4abe13e41cfc8109ddbe}\label{group__ShaderManagement_ga1117f5894f4b4abe13e41cfc8109ddbe} 
+\index{Shader Management@{Shader Management}!use\_shader@{use\_shader}}
+\index{use\_shader@{use\_shader}!Shader Management@{Shader Management}}
+\doxysubsubsection{\texorpdfstring{use\_shader()}{use\_shader()}}
+{\footnotesize\ttfamily void use\+\_\+shader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID }\end{DoxyParamCaption})}
+
+
+
+Uses the specified shader program. 
+
+This function activates the shader program identified by the given Shader ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ID} & The Shader object representing the shader program to be used. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{group__ShaderManagement_gaafee5005fc182fefb7fab74fa868631c}\label{group__ShaderManagement_gaafee5005fc182fefb7fab74fa868631c} 
 \index{Shader Management@{Shader Management}!set\_shader\_int@{set\_shader\_int}}
 \index{set\_shader\_int@{set\_shader\_int}!Shader Management@{Shader Management}}
 \doxysubsubsection{\texorpdfstring{set\_shader\_int()}{set\_shader\_int()}}
-{\footnotesize\ttfamily void set\+\_\+shader\+\_\+int (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{int}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void set\+\_\+shader\+\_\+int (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{int}]{value }\end{DoxyParamCaption})}
 
 
 
@@ -199,17 +293,17 @@ This function sets the value of an integer uniform variable in the shader progra
 {\em value} & The integer value to set for the uniform variable. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{group__ShaderManagement_gaaed666bd75a0e319dbacab5ed2191291}\label{group__ShaderManagement_gaaed666bd75a0e319dbacab5ed2191291} 
-\index{Shader Management@{Shader Management}!set\_shader\_mat4@{set\_shader\_mat4}}
-\index{set\_shader\_mat4@{set\_shader\_mat4}!Shader Management@{Shader Management}}
-\doxysubsubsection{\texorpdfstring{set\_shader\_mat4()}{set\_shader\_mat4()}}
-{\footnotesize\ttfamily void set\+\_\+shader\+\_\+mat4 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{mat4 \texorpdfstring{$\ast$}{*}}]{value }\end{DoxyParamCaption})}
+\Hypertarget{group__ShaderManagement_ga4f343c92d0744283d520b975c5408885}\label{group__ShaderManagement_ga4f343c92d0744283d520b975c5408885} 
+\index{Shader Management@{Shader Management}!set\_shader\_float@{set\_shader\_float}}
+\index{set\_shader\_float@{set\_shader\_float}!Shader Management@{Shader Management}}
+\doxysubsubsection{\texorpdfstring{set\_shader\_float()}{set\_shader\_float()}}
+{\footnotesize\ttfamily void set\+\_\+shader\+\_\+float (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{float}]{value }\end{DoxyParamCaption})}
 
 
 
-Sets a mat4 uniform in the shader program. 
+Sets a float uniform in the shader program. 
 
-This function sets the value of a mat4 (4x4 matrix) uniform variable in the shader program.
+This function sets the value of a float uniform variable in the shader program.
 
 
 \begin{DoxyParams}{Parameters}
@@ -217,14 +311,14 @@ This function sets the value of a mat4 (4x4 matrix) uniform variable in the shad
 \hline
 {\em name} & The name of the uniform variable in the shader program. \\
 \hline
-{\em value} & The mat4 value to set for the uniform variable. \\
+{\em value} & The float value to set for the uniform variable. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{group__ShaderManagement_ga4ddd55e651817701c9e65c3006d84f06}\label{group__ShaderManagement_ga4ddd55e651817701c9e65c3006d84f06} 
 \index{Shader Management@{Shader Management}!set\_shader\_vec2@{set\_shader\_vec2}}
 \index{set\_shader\_vec2@{set\_shader\_vec2}!Shader Management@{Shader Management}}
 \doxysubsubsection{\texorpdfstring{set\_shader\_vec2()}{set\_shader\_vec2()}}
-{\footnotesize\ttfamily void set\+\_\+shader\+\_\+vec2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{vec2}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void set\+\_\+shader\+\_\+vec2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{vec2}]{value }\end{DoxyParamCaption})}
 
 
 
@@ -245,7 +339,7 @@ This function sets the value of a vec2 (2-\/component vector) uniform variable i
 \index{Shader Management@{Shader Management}!set\_shader\_vec3@{set\_shader\_vec3}}
 \index{set\_shader\_vec3@{set\_shader\_vec3}!Shader Management@{Shader Management}}
 \doxysubsubsection{\texorpdfstring{set\_shader\_vec3()}{set\_shader\_vec3()}}
-{\footnotesize\ttfamily void set\+\_\+shader\+\_\+vec3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{vec3}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void set\+\_\+shader\+\_\+vec3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{vec3}]{value }\end{DoxyParamCaption})}
 
 
 
@@ -266,7 +360,7 @@ This function sets the value of a vec3 (3-\/component vector) uniform variable i
 \index{Shader Management@{Shader Management}!set\_shader\_vec4@{set\_shader\_vec4}}
 \index{set\_shader\_vec4@{set\_shader\_vec4}!Shader Management@{Shader Management}}
 \doxysubsubsection{\texorpdfstring{set\_shader\_vec4()}{set\_shader\_vec4()}}
-{\footnotesize\ttfamily void set\+\_\+shader\+\_\+vec4 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{vec4}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void set\+\_\+shader\+\_\+vec4 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{vec4}]{value }\end{DoxyParamCaption})}
 
 
 
@@ -283,20 +377,24 @@ This function sets the value of a vec4 (4-\/component vector) uniform variable i
 {\em value} & The vec4 value to set for the uniform variable. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{group__ShaderManagement_ga1117f5894f4b4abe13e41cfc8109ddbe}\label{group__ShaderManagement_ga1117f5894f4b4abe13e41cfc8109ddbe} 
-\index{Shader Management@{Shader Management}!use\_shader@{use\_shader}}
-\index{use\_shader@{use\_shader}!Shader Management@{Shader Management}}
-\doxysubsubsection{\texorpdfstring{use\_shader()}{use\_shader()}}
-{\footnotesize\ttfamily void use\+\_\+shader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__ShaderManagement_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID }\end{DoxyParamCaption})}
+\Hypertarget{group__ShaderManagement_ga986a9b924ff7679bc67d11b5ea2e224b}\label{group__ShaderManagement_ga986a9b924ff7679bc67d11b5ea2e224b} 
+\index{Shader Management@{Shader Management}!set\_shader\_mat4@{set\_shader\_mat4}}
+\index{set\_shader\_mat4@{set\_shader\_mat4}!Shader Management@{Shader Management}}
+\doxysubsubsection{\texorpdfstring{set\_shader\_mat4()}{set\_shader\_mat4()}}
+{\footnotesize\ttfamily void set\+\_\+shader\+\_\+mat4 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__MemoryCache_gaf8187ff58761df5fefccb33e254e5eb5}{Shader}}}]{ID,  }\item[{char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{mat4}]{value }\end{DoxyParamCaption})}
 
 
 
-Uses the specified shader program. 
+Sets a mat4 uniform in the shader program. 
 
-This function activates the shader program identified by the given Shader ID.
+This function sets the value of a mat4 (4x4 matrix) uniform variable in the shader program.
 
 
 \begin{DoxyParams}{Parameters}
-{\em ID} & The Shader object representing the shader program to be used. \\
+{\em ID} & The Shader object representing the shader program. \\
+\hline
+{\em name} & The name of the uniform variable in the shader program. \\
+\hline
+{\em value} & The mat4 value to set for the uniform variable. \\
 \hline
 \end{DoxyParams}

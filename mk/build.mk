@@ -1,4 +1,4 @@
-GCC = gcc
+CC ?= gcc
 
 prebuild:
 	@clear
@@ -23,10 +23,10 @@ define build_executable
 	@$(call check_tools)
 
 	@mkdir -p ${1}
-	@$(call PRINT_CENTERED,${ACT_COL}Linking ${FILE_COL}\"${APP_NAME}\"${NC}...)
-	@${GCC} -o ${1}/${APP_NAME} $(call requirements) ${LFLAGS} ${WFLAGS} ${2}
+	@$(call PRINT_CENTERED,${ACT_COL}Linking ${FILE_COL}\"${4}\"${NC}...)
+	@${CC} -o ${1}/${4} $(call requirements) ${LFLAGS} ${WFLAGS} ${2}
 
-	@if [ ${3} = "copy_assets" ]; then \
+	@if [ "${3}" = "copy_assets" ]; then \
 		$(call PRINT_CENTERED,${ACT_COL}Copying assets...); \
 		rsync -rupE assets ${1}/; \
 		$(call PRINT_CENTERED,${SUCCESS_COL}Assets copied!); \
@@ -47,11 +47,11 @@ define build_object
 
 	@$(call PRINT_CENTERED,${ACT_COL}Building ${FILE_COL}\"$*\"${NC}...);
 	@mkdir -p ${OBJ_DIR}/${1}/${dir $*}
-	@${GCC} -x c -c $<~ -o ${OBJ_DIR}/${1}/$*.o -I$(dir $*) ${MD} ${DFLAGS} ${LFLAGS} ${WFLAGS} ${2}
+	@${CC} -x c -c $<~ -o ${OBJ_DIR}/${1}/$*.o -I$(dir $*) ${MD} ${DFLAGS} ${LFLAGS} ${WFLAGS} ${2}
 	@sed -i 's#$<~#$<#g' ${OBJ_DIR}/${1}/$*.d
 	@$(call PRINT_CENTERED,${SUCCESS_COL}Builded ${FILE_COL}\"$*\"${NC} => ${SUCCESS_COL}${OBJ_DIR}/${1}/$*.o);
 
-	@if [ ${KEEP_TEMP_FILES} = "0" ]; then \
+	@if [ "${KEEP_TEMP_FILES}" = "0" ]; then \
 		rm -rf $<~; \
 	fi
 endef

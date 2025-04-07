@@ -1,4 +1,5 @@
 #pragma once
+#include <io/dirent.h>
 
 /**
  * @file osio.h
@@ -78,5 +79,20 @@ int update_cwd();
  * @return int Returns 0 on success, or a non-zero error code on failure.
  */
 int absolute_path_to_relative(char *path);
+
+/**
+ * @brief Finds files in a directory that match a given filter.
+ * 
+ * This function searches for files in the directory specified by the `path`
+ * parameter that match the filter function provided by the `filter` parameter.
+ * The filter function should return 1 for files that match the criteria, and 0
+ * for files that do not.
+ * 
+ * @param namelist A pointer to the list of directory entries.
+ * @param path The path to the directory where files should be searched.
+ * @param filter The filter function to apply to the directory entries.
+ * @return int Returns the number of files found, or a non-zero error code on failure.
+ */
+int osio_find(dirent_t ***namelist, const char * path, int (*filter)(const dirent_t *entry));
 
 /** @} */ // end of OSIO group

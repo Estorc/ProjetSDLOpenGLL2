@@ -10,22 +10,34 @@
  * @date 2023-10-20
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "storage/node.h"
-#include "io/shader.h"
-#include "render/render.h"
-#include "window.h"
-#include "gui/frame.h"
-#include "io/input.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <storage/node.h>
+#include <io/shader.h>
+#include <render/render.h>
+#include <window.h>
+#include <gui/frame.h>
+#include <io/input.h>
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class Slider : public Button {
     __containerType__ Node *
     public:
 
-    void constructor(double min, double max) {
+    /**
+     * @brief Constructor for the slider class.
+     *
+     * This function initializes a slider object with the specified minimum and maximum values.
+     *
+     * @param min The minimum value of the slider.
+     * @param max The maximum value of the slider.
+     */
+    void constructor(float min, float max) {
         this->type = __type__; 
         
         Frame *frame;
@@ -52,6 +64,12 @@ class Slider : public Button {
         frame->slider->max = max;
     }
 
+    /**
+     * @brief Initializes the slider.
+     *
+     * This function sets up the initial state of the slider, including any necessary
+     * resources or configurations. It should be called before using the slider.
+     */
     void init_slider() {
         Frame *frame = (Frame *) this->object;
         frame->slider = malloc(sizeof(Slider));
@@ -62,8 +80,14 @@ class Slider : public Button {
         slider->max = 1.0f;
     }
 
-    
-
+    /**
+     * @brief Loads data from a file.
+     *
+     * This function reads data from the given file and initializes the slider
+     * class with the loaded data.
+     *
+     * @param file A pointer to the file to read from.
+     */
     void load(FILE *file) {
         float min, max;
         if (file) {
@@ -73,6 +97,14 @@ class Slider : public Button {
         this::constructor(min, max);
     }
 
+    /**
+     * @brief Saves the state of the editor node to a file.
+     *
+     * This function writes the current state of the editor node to the specified file.
+     *
+     * @param file A pointer to the FILE object where the state will be saved.
+     * @param editor A pointer to the Node object representing the editor whose state is to be saved.
+     */
     void save(FILE *file, Node *editor) {
         UNUSED(editor);
         Frame *frame = (Frame *) this->object;
@@ -80,10 +112,25 @@ class Slider : public Button {
         frame->slider->min, frame->slider->max);
     }
 
+    /**
+     * @brief Checks if the current node is a radio button.
+     *
+     * This function determines whether the current node in the GUI framework
+     * is a radio button. It returns a boolean value indicating the result.
+     *
+     * @return true if the current node is a radio button, false otherwise.
+     */
     bool is_radiobutton() {
         return true;
     }
 
+    /**
+     * @brief Updates the state of the slider.
+     *
+     * This function is responsible for updating the state of the slider based on
+     * user interactions or other events. It should be called regularly to ensure
+     * the slider's state is kept up to date.
+     */
     void update() {
         Frame * frame = this->object;
         Frame * parentFrame = this->parent->object;
@@ -102,9 +149,17 @@ class Slider : public Button {
         this->pos[0] = -this->parent->globalScale[0] + this->parent->globalScale[0] * 2.0f * percent;
     }
 
+    /**
+     * @brief Frees the resources allocated by the slider class.
+     *
+     * This function is responsible for releasing any memory or resources
+     * that were allocated for the slider class. It should be called when
+     * the slider is no longer needed to prevent memory leaks.
+     */
     void free() {
         SUPER(free);
     }
  
     
 }
+

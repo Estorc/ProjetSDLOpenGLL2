@@ -14,21 +14,42 @@
  * @date 2023-10-20
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "storage/node.h"
-#include "io/shader.h"
-#include "render/render.h"
-#include "window.h"
-#include "gui/frame.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <storage/node.h>
+#include <io/shader.h>
+#include <render/render.h>
+#include <window.h>
+#include <gui/frame.h>
 
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 class ImageFrame : public Frame {
     __containerType__ Node *
     public:
 
-    void constructor(double x, int xu, double y, int yu, double w, int wu, double h, int hu, int ha, int va, char *imagePath) {
+    /**
+     * @brief Constructor for the image frame class.
+     *
+     * This function initializes an image frame with the specified parameters.
+     *
+     * @param x The x-coordinate of the image frame.
+     * @param xu The unit of the x-coordinate.
+     * @param y The y-coordinate of the image frame.
+     * @param yu The unit of the y-coordinate.
+     * @param w The width of the image frame.
+     * @param wu The unit of the width.
+     * @param h The height of the image frame.
+     * @param hu The unit of the height.
+     * @param ha The horizontal alignment of the image frame.
+     * @param va The vertical alignment of the image frame.
+     * @param imagePath The file path to the image to be used in the frame.
+     */
+    void constructor(float x, int xu, float y, int yu, float w, int wu, float h, int hu, int ha, int va, char *imagePath) {
         this->type = __type__; 
 
         Frame *frame;
@@ -53,21 +74,25 @@ class ImageFrame : public Frame {
         frame->alignment[0] = ha;
         frame->alignment[1] = va;
 
-        if (imagePath && *imagePath) {
-            frame->contentTexture = load_texture_from_path(imagePath, GL_SRGB_ALPHA, false);
-            GLint width, height;
-            glBindTexture(GL_TEXTURE_2D, frame->contentTexture);
-            glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &width);
-            glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &height);
-            glBindTexture(GL_TEXTURE_2D, 0);
-            frame->contentSize[0] = width;
-            frame->contentSize[1] = height;
-            frame->flags |= FRAME_CONTENT;
-        }
+        strcpy(frame->imageFrame->path, imagePath);
+        frame->contentTexture = load_texture_from_path(imagePath, GL_SRGB_ALPHA, false);
+        GLint width, height;
+        glBindTexture(GL_TEXTURE_2D, frame->contentTexture);
+        glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &width);
+        glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &height);
+        glBindTexture(GL_TEXTURE_2D, 0);
+        frame->contentSize[0] = width;
+        frame->contentSize[1] = height;
+        frame->flags |= FRAME_CONTENT;
     }
 
-    
-
+    /**
+     * @brief Loads data from a file.
+     *
+     * This function reads data from the provided file pointer and processes it accordingly.
+     *
+     * @param file A pointer to the FILE object from which data is to be read.
+     */
     void load(FILE *file) {
         float relPos[2], scale[2];
         char unit[4], alignment[2];
@@ -84,7 +109,13 @@ class ImageFrame : public Frame {
         this::constructor(relPos[0], unit[0], relPos[1], unit[1], scale[0], unit[2], scale[1], unit[3], alignment[0], alignment[1], imagePath);
     }
 
-
+    /**
+     * @brief Sets the image for the frame.
+     *
+     * This function sets the image for the frame by loading it from the specified file path.
+     *
+     * @param path The file path to the image to be loaded.
+     */
     void set_image(char *path) {
         Frame *frame = (Frame *) this->object;
         strcpy(frame->imageFrame->path, path);
@@ -92,11 +123,28 @@ class ImageFrame : public Frame {
         frame->flags |= FRAME_CONTENT;
     }
 
-
-    void render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
+    /**
+     * @brief Renders the image frame using the provided model matrix and shader.
+     *
+     * This function is responsible for rendering the image frame. It takes a model matrix,
+     * an active shader, and a set of world shaders as parameters to perform the rendering.
+     *
+     * @param modelMatrix A pointer to the model matrix used for rendering transformations.
+     * @param activeShader The shader program currently active for rendering.
+     * @param shaders A pointer to the WorldShaders structure containing various shaders used in the world.
+     */
+    void render(mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
         SUPER(render, modelMatrix, activeShader, shaders);
     }
 
+    /**
+     * @brief Saves the current state of the editor to a file.
+     *
+     * This function writes the current state of the editor to the specified file.
+     *
+     * @param file A pointer to the FILE object where the editor state will be saved.
+     * @param editor A pointer to the Node object representing the editor whose state is to be saved.
+     */
     void save(FILE *file, Node *editor) {
         Frame *frame = (Frame *) this->object;
         UNUSED(editor);
@@ -105,6 +153,13 @@ class ImageFrame : public Frame {
         frame->label->text, frame->alignment[0], frame->alignment[1]);
     }
  
+    /**
+     * @brief Frees the resources allocated for the image frame.
+     *
+     * This function is responsible for releasing any memory or resources
+     * that were allocated for the image frame. It should be called when
+     * the image frame is no longer needed to avoid memory leaks.
+     */
     void free() {
         Frame *frame = (Frame *) this->object;
         ImageFrame *imageFrame = (ImageFrame *) frame->imageFrame;
@@ -115,3 +170,4 @@ class ImageFrame : public Frame {
     }
     
 }
+

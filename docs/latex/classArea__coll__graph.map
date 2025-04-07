@@ -1,0 +1,15 @@
+<map id="Area" name="Area">
+<area shape="rect" id="Node000001" title="Represents an area with collision shapes and nodes." alt="" coords="462,51,514,76"/>
+<area shape="rect" id="Node000002" href="$classPhysicalNode.html" title=" " alt="" coords="185,51,295,76"/>
+<area shape="poly" id="edge9_Node000001_Node000002" title=" " alt="" coords="310,61,462,61,462,66,310,66"/>
+<area shape="rect" id="Node000003" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="6,59,62,84"/>
+<area shape="poly" id="edge14_Node000001_Node000003" title=" " alt="" coords="58,47,85,33,102,29,116,29,147,33,229,31,294,28,358,29,439,42,463,50,461,55,437,47,357,35,294,33,230,36,147,38,116,35,103,34,87,38,61,52"/>
+<area shape="poly" id="edge10_Node000002_Node000003" title=" " alt="" coords="75,55,86,53,136,50,185,52,184,58,136,55,86,58,76,60"/>
+<area shape="poly" id="edge11_Node000003_Node000003" title=" " alt="" coords="16,44,22,36,34,32,44,34,51,41,49,59,44,58,46,43,42,39,34,37,25,40,21,47"/>
+<area shape="rect" id="Node000004" href="$unionBehaviorAttribute.html" title="Union representing different types of behavior attributes." alt="" coords="171,100,309,125"/>
+<area shape="poly" id="edge13_Node000004_Node000003" title=" " alt="" coords="76,77,177,97,175,103,75,82"/>
+<area shape="rect" id="Node000005" href="$structCollectedNode.html" title="Represents a node collected by an area." alt="" coords="181,149,299,175"/>
+<area shape="poly" id="edge16_Node000005_Node000003" title=" " alt="" coords="48,95,64,121,87,142,109,153,133,159,181,164,181,169,132,164,108,158,85,147,60,124,44,98"/>
+<area shape="poly" id="edge12_Node000003_Node000004" title=" " alt="" coords="157,128,121,126,85,118,61,104,44,86,47,82,65,99,87,113,122,121,158,122"/>
+<area shape="poly" id="edge15_Node000001_Node000005" title=" " alt="" coords="290,142,308,136,460,72,463,77,310,140,292,147"/>
+</map>

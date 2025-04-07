@@ -1,5 +1,5 @@
 var scene__loader_8h =
 [
-    [ "load_node", "group__SceneLoader.html#gafbb853272747ad89201f0a3bf8e7846f", null ],
-    [ "load_scene", "group__SceneLoader.html#ga0aa55f0b593e73644e24b556cdfc58d7", null ]
+    [ "load_node", "group__SceneLoader.html#gace02f043a6c9c2c116475f09b1803a85", null ],
+    [ "load_scene", "group__SceneLoader.html#ga0627acf2ebe2601d761e6d500561dac9", null ]
 ];

@@ -5,11 +5,6 @@
 Functions for initializing and managing the camera.  
 
 
-\doxysubsubsection*{Classes}
-\begin{DoxyCompactItemize}
-\item 
-struct \mbox{\hyperlink{classCamera}{Camera}}
-\begin{DoxyCompactList}\small\item\em A structure to represent a camera with position and rotation in 3D space. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -25,6 +20,23 @@ Functions for initializing and managing the camera.
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{group__Camera_ga8251d5473e00feb6f2181942b89e654d}\label{group__Camera_ga8251d5473e00feb6f2181942b89e654d} 
+\index{Camera Functions@{Camera Functions}!init\_camera@{init\_camera}}
+\index{init\_camera@{init\_camera}!Camera Functions@{Camera Functions}}
+\doxysubsubsection{\texorpdfstring{init\_camera()}{init\_camera()}}
+{\footnotesize\ttfamily void init\+\_\+camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Initializes the camera. 
+
+This function sets up the initial state of the camera, including its position, orientation, and any other relevant parameters. It must be called before using the camera in rendering operations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Pointer to a \doxylink{classCamera}{Camera} structure that will be initialized. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{group__Camera_gadd86e5f49d6695d5497c08e3de4207af}\label{group__Camera_gadd86e5f49d6695d5497c08e3de4207af} 
 \index{Camera Functions@{Camera Functions}!camera\_projection@{camera\_projection}}
 \index{camera\_projection@{camera\_projection}!Camera Functions@{Camera Functions}}
@@ -42,22 +54,5 @@ This function configures the camera\textquotesingle{}s projection matrix and app
 {\em c} & Pointer to a \doxylink{classCamera}{Camera} structure that contains the camera\textquotesingle{}s parameters. \\
 \hline
 {\em shaders} & Pointer to a \doxylink{structWorldShaders}{World\+Shaders} structure that will be updated with the camera\textquotesingle{}s projection matrix. \\
-\hline
-\end{DoxyParams}
-\Hypertarget{group__Camera_ga8251d5473e00feb6f2181942b89e654d}\label{group__Camera_ga8251d5473e00feb6f2181942b89e654d} 
-\index{Camera Functions@{Camera Functions}!init\_camera@{init\_camera}}
-\index{init\_camera@{init\_camera}!Camera Functions@{Camera Functions}}
-\doxysubsubsection{\texorpdfstring{init\_camera()}{init\_camera()}}
-{\footnotesize\ttfamily void init\+\_\+camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCamera}{Camera}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
-
-
-
-Initializes the camera. 
-
-This function sets up the initial state of the camera, including its position, orientation, and any other relevant parameters. It must be called before using the camera in rendering operations.
-
-
-\begin{DoxyParams}{Parameters}
-{\em c} & Pointer to a \doxylink{classCamera}{Camera} structure that will be initialized. \\
 \hline
 \end{DoxyParams}

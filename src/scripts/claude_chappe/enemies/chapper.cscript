@@ -1,22 +1,22 @@
-#include "../../../raptiquax.h"
-#include "../../../math/math_util.h"
-#include "../../../storage/node.h"
-#include "../../../render/camera.h"
-#include "../../../gui/frame.h"
-#include "../../../storage/queue.h"
-#include "../../../utils/scene.h"
-#include "../../../io/audio.h"
-#include "../../../render/lighting.h"
-#include "../../../buffer.h"
-#include "../../../window.h"
-#include "../../../scripts/scripts.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <storage/node.h>
+#include <render/camera.h>
+#include <gui/frame.h>
+#include <storage/queue.h>
+#include <utils/deferred.h>
+#include <io/audio.h>
+#include <render/lighting.h>
+#include <buffer.h>
+#include <window.h>
+#include <scripts/scripts.h>
 
 
 static void play_chapper_idle_animation(Node *this, float *realPos) {
     this->pos[0] = realPos[0];
     this->pos[1] = realPos[1] + sinf(SDL_GetTicks()/100.0f) * 0.3f;
     this->pos[2] = realPos[2];
-    this->rot[1] = sinf(SDL_GetTicks()/100.0f) * 0.3f;
+    this->rot[2] = sinf(SDL_GetTicks()/100.0f) * 0.3f;
     this->rot[0] = sinf(SDL_GetTicks()/100.0f) * 0.3f;
     this->scale[0] = 7.0f + sinf(SDL_GetTicks()/140.0f) * 0.3f;
     this->scale[1] = 7.0f + sinf(SDL_GetTicks()/140.0f) * 0.3f;
@@ -35,12 +35,13 @@ typedef enum ChapperState {
 
 
 NEW_SCRIPT(script_cc_chapper_init)
-    SET_ATTRIBUTES_COUNT(5);
+    SET_ATTRIBUTES_COUNT(7);
     float *realPos = &this->attribute[0].f;
     ChapperState *state = (ChapperState *) &this->attribute[3];
+    float *timer = &this->attribute[5].f;
+    *timer = 2.0f;
     *state = CHAPPER_STATE_IDLE;
     glm_vec3_copy(this->pos, realPos);
-    play_music("assets/audio/musics/maquette_music_chapper.mp3", MIX_MAX_VOLUME, -1);
 END_SCRIPT(script_cc_chapper_init)
 
 NEW_SCRIPT(script_cc_chapper_update)
@@ -48,19 +49,41 @@ NEW_SCRIPT(script_cc_chapper_update)
     float *realPos = &this->attribute[0].f;
     ChapperState *state = (ChapperState *) &this->attribute[3];
     Node *camera = this->attribute[4].node;
+    float *timer = &this->attribute[5].f;
     float *targetRot;
+    vec3 dir;
     switch (*state)
     {
     case CHAPPER_STATE_IDLE:
         play_chapper_idle_animation(this, realPos);
-        PRINT_INFO("%d\n", SDL_GetTicks());
-        if (SDL_GetTicks() > 7000) {
+        if ((*timer -= delta) <= 0.0f) {
             *state = CHAPPER_STATE_CHASE;
         }
         break;
     
     case CHAPPER_STATE_CHASE:
-        realPos[2] += 30.0f * delta;
+        glm_vec3_sub(this->parent->children[1]->children[this->attribute[6].i]->globalPos, this->globalPos, dir);
+        glm_vec3_normalize(dir);
+        realPos[2] += dir[2] * delta * 10.0f;
+        realPos[1] += dir[1] * delta * 10.0f;
+        realPos[0] += dir[0] * delta * 10.0f;
+        float destRot = atan2f(this->parent->children[1]->children[this->attribute[6].i]->globalPos[0] - this->globalPos[0],
+            this->parent->children[1]->children[this->attribute[6].i]->globalPos[2] - this->globalPos[2]) * (180.0f / PI);
+        if (this->rot[1] - destRot > 180.0f) {
+            this->rot[1] -= 360.0f;
+        }
+        if (this->rot[1] - destRot < -180.0f) {
+            this->rot[1] += 360.0f;
+        }
+        float_approach(&this->rot[1],
+                    destRot,
+                    delta * 2.0f);
+        if (glm_vec3_distance2(this->globalPos, this->parent->children[1]->children[this->attribute[6].i]->globalPos) < 10.0f) {
+            this->attribute[6].i++;
+            if (this->attribute[6].i >= this->parent->children[1]->length) {
+                this->attribute[6].i = 0;
+            }
+        }
         play_chapper_idle_animation(this, realPos);
         break;
 
@@ -88,7 +111,7 @@ NEW_SCRIPT(script_cc_chapper_update)
                 Game.window->fadeColor[0] -= 1.0f * delta;
             }
             if (Game.window->fadeColor[0] <= 0.0f) {
-                prepare_change_scene("assets/scenes/claude_chappe/boot.scene");
+                deferred_load_scene("assets/scenes/claude_chappe/boot.scene");
                 SDL_SetRelativeMouseMode(SDL_FALSE);
             }
         }

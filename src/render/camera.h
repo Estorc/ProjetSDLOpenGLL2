@@ -1,6 +1,6 @@
-#include "../raptiquax.h"
-#include "../math/math_util.h"
-#include "../io/shader.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/shader.h>
 
 #ifndef CAMERA_H
 #define CAMERA_H
@@ -9,21 +9,21 @@ struct Node;
 struct WorldShaders;
 
 /**
- * @defgroup Camera Camera Functions
- * @brief Functions for initializing and managing the camera.
- * @{
- */
-
-/**
- * @struct Camera
+ * @class Camera
  * @brief A structure to represent a camera with position and rotation in 3D space.
+ * @ingroup Classes Classes
  */
-
 typedef struct Camera {
     vec3 pos; /**< Position of the camera. */
     vec3 rot; /**< Rotation of the camera. */
     float fov; /**< Field of view of the camera. */
 } Camera;
+
+/**
+ * @defgroup Camera Camera Functions
+ * @brief Functions for initializing and managing the camera.
+ * @{
+ */
 
 /**
  * @brief Initializes the camera.

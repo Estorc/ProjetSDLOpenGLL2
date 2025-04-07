@@ -2,6 +2,11 @@
 \hypertarget{structpeer}{}\label{structpeer}\index{peer@{peer}}
 
 
+Structure to represent a network peer.  
+
+
+
+
 {\ttfamily \#include $<$socket.\+h$>$}
 
 
@@ -16,58 +21,63 @@ Collaboration diagram for peer\+:\nopagebreak
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{structpeer_aabb18ce7dc7a63a95f4c09998d985f19}{socket}}
+int \mbox{\hyperlink{structpeer_a77dae86dc4c270a2ac1c95f149d5ab2a}{socket}}
 \item 
-struct \mbox{\hyperlink{structsocket__request__listener}{socket\+\_\+request\+\_\+listener}} \mbox{\hyperlink{structpeer_a231b0c785c044676ff6a9f25d9533171}{listener}}
+struct \mbox{\hyperlink{structsocket__request__listener}{socket\+\_\+request\+\_\+listener}} \mbox{\hyperlink{structpeer_a806595a71a3b6d413dbaaa25585d7dc0}{listener}}
 \item 
-char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structpeer_a552ecaf1ddcbee53c0f9adfcc71a2ecf}{incoming\+\_\+buffer}}
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structpeer_a56b8cd88eeb0250decffc5c4a430836b}{incoming\+\_\+buffer}}
 \item 
-int \mbox{\hyperlink{structpeer_aa7cc8ce1e6f96584b324ace98d25c567}{ping}}
+int \mbox{\hyperlink{structpeer_a624d5261107607e5d48ab7dd3f00d693}{ping}}
 \item 
-struct \mbox{\hyperlink{structmessage__handler}{message\+\_\+handler}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structpeer_a38cce95c59d81f3136144afe2189a6b8}{handlers}}
+struct \mbox{\hyperlink{structmessage__handler}{message\+\_\+handler}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structpeer_aa3cf9df79d3290444a46ccf912c97a64}{handlers}}
 \item 
-int \mbox{\hyperlink{structpeer_a9aeb7d91e8fbc4b1000fd4eeaa423da8}{handler\+\_\+count}}
+int \mbox{\hyperlink{structpeer_acc1a71a0f4d04b0f82fe81d852993cd4}{handler\+\_\+count}}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Structure to represent a network peer. 
+
+This structure contains information about a network peer, including its socket, request listener, incoming buffer, ping value, and message handlers. 
+
 \doxysubsection{Member Data Documentation}
-\Hypertarget{structpeer_a9aeb7d91e8fbc4b1000fd4eeaa423da8}\label{structpeer_a9aeb7d91e8fbc4b1000fd4eeaa423da8} 
-\index{peer@{peer}!handler\_count@{handler\_count}}
-\index{handler\_count@{handler\_count}!peer@{peer}}
-\doxysubsubsection{\texorpdfstring{handler\_count}{handler\_count}}
-{\footnotesize\ttfamily int peer\+::handler\+\_\+count}
-
-\Hypertarget{structpeer_a38cce95c59d81f3136144afe2189a6b8}\label{structpeer_a38cce95c59d81f3136144afe2189a6b8} 
-\index{peer@{peer}!handlers@{handlers}}
-\index{handlers@{handlers}!peer@{peer}}
-\doxysubsubsection{\texorpdfstring{handlers}{handlers}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structmessage__handler}{message\+\_\+handler}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} peer\+::handlers}
-
-\Hypertarget{structpeer_a552ecaf1ddcbee53c0f9adfcc71a2ecf}\label{structpeer_a552ecaf1ddcbee53c0f9adfcc71a2ecf} 
-\index{peer@{peer}!incoming\_buffer@{incoming\_buffer}}
-\index{incoming\_buffer@{incoming\_buffer}!peer@{peer}}
-\doxysubsubsection{\texorpdfstring{incoming\_buffer}{incoming\_buffer}}
-{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} peer\+::incoming\+\_\+buffer}
-
-\Hypertarget{structpeer_a231b0c785c044676ff6a9f25d9533171}\label{structpeer_a231b0c785c044676ff6a9f25d9533171} 
-\index{peer@{peer}!listener@{listener}}
-\index{listener@{listener}!peer@{peer}}
-\doxysubsubsection{\texorpdfstring{listener}{listener}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structsocket__request__listener}{socket\+\_\+request\+\_\+listener}} peer\+::listener}
-
-\Hypertarget{structpeer_aa7cc8ce1e6f96584b324ace98d25c567}\label{structpeer_aa7cc8ce1e6f96584b324ace98d25c567} 
-\index{peer@{peer}!ping@{ping}}
-\index{ping@{ping}!peer@{peer}}
-\doxysubsubsection{\texorpdfstring{ping}{ping}}
-{\footnotesize\ttfamily int peer\+::ping}
-
-\Hypertarget{structpeer_aabb18ce7dc7a63a95f4c09998d985f19}\label{structpeer_aabb18ce7dc7a63a95f4c09998d985f19} 
+\Hypertarget{structpeer_a77dae86dc4c270a2ac1c95f149d5ab2a}\label{structpeer_a77dae86dc4c270a2ac1c95f149d5ab2a} 
 \index{peer@{peer}!socket@{socket}}
 \index{socket@{socket}!peer@{peer}}
 \doxysubsubsection{\texorpdfstring{socket}{socket}}
-{\footnotesize\ttfamily int peer\+::socket}
+{\footnotesize\ttfamily peer\+::socket}
 
+The socket file descriptor associated with the peer. \Hypertarget{structpeer_a806595a71a3b6d413dbaaa25585d7dc0}\label{structpeer_a806595a71a3b6d413dbaaa25585d7dc0} 
+\index{peer@{peer}!listener@{listener}}
+\index{listener@{listener}!peer@{peer}}
+\doxysubsubsection{\texorpdfstring{listener}{listener}}
+{\footnotesize\ttfamily peer\+::listener}
 
+The socket request listener associated with the peer, used to monitor read events and handle timeouts. \Hypertarget{structpeer_a56b8cd88eeb0250decffc5c4a430836b}\label{structpeer_a56b8cd88eeb0250decffc5c4a430836b} 
+\index{peer@{peer}!incoming\_buffer@{incoming\_buffer}}
+\index{incoming\_buffer@{incoming\_buffer}!peer@{peer}}
+\doxysubsubsection{\texorpdfstring{incoming\_buffer}{incoming\_buffer}}
+{\footnotesize\ttfamily peer\+::incoming\+\_\+buffer}
+
+Pointer to a buffer used for storing incoming data from the peer. \Hypertarget{structpeer_a624d5261107607e5d48ab7dd3f00d693}\label{structpeer_a624d5261107607e5d48ab7dd3f00d693} 
+\index{peer@{peer}!ping@{ping}}
+\index{ping@{ping}!peer@{peer}}
+\doxysubsubsection{\texorpdfstring{ping}{ping}}
+{\footnotesize\ttfamily peer\+::ping}
+
+An integer value representing the ping (latency) of the peer. \Hypertarget{structpeer_aa3cf9df79d3290444a46ccf912c97a64}\label{structpeer_aa3cf9df79d3290444a46ccf912c97a64} 
+\index{peer@{peer}!handlers@{handlers}}
+\index{handlers@{handlers}!peer@{peer}}
+\doxysubsubsection{\texorpdfstring{handlers}{handlers}}
+{\footnotesize\ttfamily peer\+::handlers}
+
+Array of pointers to message handler structures, used to process incoming messages from the peer. \Hypertarget{structpeer_acc1a71a0f4d04b0f82fe81d852993cd4}\label{structpeer_acc1a71a0f4d04b0f82fe81d852993cd4} 
+\index{peer@{peer}!handler\_count@{handler\_count}}
+\index{handler\_count@{handler\_count}!peer@{peer}}
+\doxysubsubsection{\texorpdfstring{handler\_count}{handler\_count}}
+{\footnotesize\ttfamily peer\+::handler\+\_\+count}
+
+The number of message handlers in the handlers array. 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

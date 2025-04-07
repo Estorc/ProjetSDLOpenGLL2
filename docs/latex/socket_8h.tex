@@ -6,10 +6,11 @@
 {\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
 {\ttfamily \#include $<$netdb.\+h$>$}\newline
 {\ttfamily \#include $<$unistd.\+h$>$}\newline
-{\ttfamily \#include "{}server.\+h"{}}\newline
-{\ttfamily \#include "{}client.\+h"{}}\newline
-{\ttfamily \#include "{}network\+\_\+utils.\+h"{}}\newline
-Include dependency graph for socket.\+h\+:\nopagebreak
+{\ttfamily \#include $<$io/socket/server.\+h$>$}\newline
+{\ttfamily \#include $<$io/socket/client.\+h$>$}\newline
+{\ttfamily \#include $<$io/socket/network\+\_\+utils.\+h$>$}\newline
+Include dependency graph for socket.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -27,9 +28,9 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structsocket__request__listener}{socket\+\_\+request\+\_\+listener}}
-\item 
+\begin{DoxyCompactList}\small\item\em Structure to hold socket request listener information. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structpeer}{peer}}
-\item 
+\begin{DoxyCompactList}\small\item\em Structure to represent a network peer. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structmessage__handler}{message\+\_\+handler}}
 \begin{DoxyCompactList}\small\item\em Structure to handle messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Macros}

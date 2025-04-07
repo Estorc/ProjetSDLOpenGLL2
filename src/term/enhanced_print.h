@@ -1,6 +1,6 @@
 #pragma once
 
-#include "color.h"
+#include <term/color.h>
 #ifdef DEBUG
 #define PRINT_ERROR(x, ...) fprintf(stderr, BOLD_RED "[ERROR] " x RESET , ##__VA_ARGS__);
 #define PRINT_INFO(x, ...) fprintf(stdout, GREY "[INFO] " x RESET , ##__VA_ARGS__);

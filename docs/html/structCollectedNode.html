@@ -123,13 +123,13 @@ Collaboration diagram for CollectedNode:</div>
 <div class="dyncontent">
 <div class="center"><img src="structCollectedNode__coll__graph.png" border="0" usemap="#aCollectedNode_coll__map" alt="Collaboration graph"/></div>
 <map name="aCollectedNode_coll__map" id="aCollectedNode_coll__map">
-<area shape="rect" title="Represents a node collected by an area." alt="" coords="5,97,123,123"/>
-<area shape="rect" href="classNode.html" title="Represents a node in the tree structure." alt="" coords="120,7,176,33"/>
-<area shape="poly" title=" " alt="" coords="120,43,99,60,72,99,68,96,95,57,117,38"/>
-<area shape="poly" title=" " alt="" coords="191,10,199,13,203,20,194,29,177,31,176,26,192,24,197,20,195,17,189,15"/>
-<area shape="rect" href="unionBehaviorAttribute.html" title=" " alt="" coords="147,97,285,123"/>
-<area shape="poly" title=" " alt="" coords="143,46,142,60,146,72,159,85,175,95,173,100,155,90,142,75,137,61,137,46"/>
-<area shape="poly" title=" " alt="" coords="201,86,185,60,160,35,164,31,189,57,206,83"/>
+<area shape="rect" title="Represents a node collected by an area." alt="" coords="181,13,299,39"/>
+<area shape="rect" href="classNode.html" title="Represents a node in the tree structure." alt="" coords="6,59,62,84"/>
+<area shape="poly" title=" " alt="" coords="75,58,85,55,181,35,182,40,87,61,76,63"/>
+<area shape="poly" title=" " alt="" coords="16,44,22,36,34,32,44,34,51,41,49,59,44,58,46,43,42,39,34,37,25,40,21,47"/>
+<area shape="rect" href="unionBehaviorAttribute.html" title="Union representing different types of behavior attributes." alt="" coords="171,83,309,108"/>
+<area shape="poly" title=" " alt="" coords="76,73,172,85,171,90,75,79"/>
+<area shape="poly" title=" " alt="" coords="194,115,141,125,113,124,85,118,61,104,44,86,47,82,65,99,87,113,113,119,141,119,193,110"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -146,6 +146,20 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>Represents a node collected by an area. </p>
 <p>This structure holds a reference to a node and associated informations. It is used for sorting and managing nodes based on their distances. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a56691d678dc6ff5c67db10372b91e00d" name="a56691d678dc6ff5c67db10372b91e00d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56691d678dc6ff5c67db10372b91e00d">&#9670;&#160;</a></span>node</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="classNode.html">Node</a>* CollectedNode::node</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aaa9a6afb8dc190a0d0b553c0b13e1c35" name="aaa9a6afb8dc190a0d0b553c0b13e1c35"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaa9a6afb8dc190a0d0b553c0b13e1c35">&#9670;&#160;</a></span>distance</h2>
 
@@ -173,20 +187,6 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>&lt; Distance associated with the node. </p>
-
-</div>
-</div>
-<a id="a56691d678dc6ff5c67db10372b91e00d" name="a56691d678dc6ff5c67db10372b91e00d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56691d678dc6ff5c67db10372b91e00d">&#9670;&#160;</a></span>node</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="classNode.html">Node</a>* CollectedNode::node</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -224,6 +224,16 @@ Public Attributes</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -232,7 +242,7 @@ Public Attributes</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

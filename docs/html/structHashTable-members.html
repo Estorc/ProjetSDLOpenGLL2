@@ -113,9 +113,9 @@ $(document).ready(function(){initNavTree('structHashTable.html',''); initResizab
 
 <p>This is the complete list of members for <a class="el" href="structHashTable.html">HashTable</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="structHashTable.html#ad7b2a756fb5beae48601b03888235ff7">capacity</a></td><td class="entry"><a class="el" href="structHashTable.html">HashTable</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="structHashTable.html#ad732056fce42df5162c810b4dd28fca1">size</a></td><td class="entry"><a class="el" href="structHashTable.html">HashTable</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="structHashTable.html#ae0ed1720c43ef387133367a60c80c183">table</a></td><td class="entry"><a class="el" href="structHashTable.html">HashTable</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structHashTable.html#ab0c80fc75b46e3801d6165df60352f9d">capacity</a></td><td class="entry"><a class="el" href="structHashTable.html">HashTable</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="structHashTable.html#a3d60340060fe631634debd36fbf06394">size</a></td><td class="entry"><a class="el" href="structHashTable.html">HashTable</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="structHashTable.html#a4972f69f6bb5defc96a27ab2a8f89886">table</a></td><td class="entry"><a class="el" href="structHashTable.html">HashTable</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -147,6 +147,16 @@ $(document).ready(function(){initNavTree('structHashTable.html',''); initResizab
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -155,7 +165,7 @@ $(document).ready(function(){initNavTree('structHashTable.html',''); initResizab
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

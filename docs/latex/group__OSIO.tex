@@ -17,7 +17,9 @@ int \mbox{\hyperlink{group__OSIO_gadc303caa72b5aed4b43ffa8f34f0375f}{osio\+\_\+p
 int \mbox{\hyperlink{group__OSIO_ga2c057d7941c6df59458be2230e3e7f88}{update\+\_\+cwd}} ()
 \begin{DoxyCompactList}\small\item\em Updates the current working directory. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{group__OSIO_ga6f9da097d97bc24c4c4bf7b2996331d0}{absolute\+\_\+path\+\_\+to\+\_\+relative}} (char \texorpdfstring{$\ast$}{*}path)
-\begin{DoxyCompactList}\small\item\em Converts an absolute file path to a relative path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Converts an absolute file path to a relative path. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__OSIO_ga73f3b3dc473ae5d8d46d95fe3cd72759}{osio\+\_\+find}} (\mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}namelist, const char \texorpdfstring{$\ast$}{*}path, int(\texorpdfstring{$\ast$}{*}filter)(const \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}entry))
+\begin{DoxyCompactList}\small\item\em Finds files in a directory that match a given filter. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -26,21 +28,23 @@ Functions for file operations and error handling.
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{group__OSIO_ga6f9da097d97bc24c4c4bf7b2996331d0}\label{group__OSIO_ga6f9da097d97bc24c4c4bf7b2996331d0} 
-\index{OSIO File Operations@{OSIO File Operations}!absolute\_path\_to\_relative@{absolute\_path\_to\_relative}}
-\index{absolute\_path\_to\_relative@{absolute\_path\_to\_relative}!OSIO File Operations@{OSIO File Operations}}
-\doxysubsubsection{\texorpdfstring{absolute\_path\_to\_relative()}{absolute\_path\_to\_relative()}}
-{\footnotesize\ttfamily int absolute\+\_\+path\+\_\+to\+\_\+relative (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
+\Hypertarget{group__OSIO_ga13b0479e5e15d717ef71927639b2822f}\label{group__OSIO_ga13b0479e5e15d717ef71927639b2822f} 
+\index{OSIO File Operations@{OSIO File Operations}!osio\_save\_file@{osio\_save\_file}}
+\index{osio\_save\_file@{osio\_save\_file}!OSIO File Operations@{OSIO File Operations}}
+\doxysubsubsection{\texorpdfstring{osio\_save\_file()}{osio\_save\_file()}}
+{\footnotesize\ttfamily int osio\+\_\+save\+\_\+file (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{char \texorpdfstring{$\ast$}{*}}]{relative\+Path,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filter }\end{DoxyParamCaption})}
 
 
 
-Converts an absolute file path to a relative path. 
+Saves a file to the specified path with a given filter. 
 
-This function converts the absolute file path specified by the {\ttfamily path} parameter to a relative path. It can be useful for creating paths that are relative to the current working directory or another base directory.
+This function attempts to save a file to the location specified by the {\ttfamily path} parameter, applying the filter specified by the {\ttfamily filter} parameter. The filter can be used to specify file types or other criteria.
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & The absolute path to be converted to a relative path. \\
+{\em path} & The path where the file should be saved. \\
+\hline
+{\em filter} & The filter to apply when saving the file. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -90,28 +94,6 @@ This function prints the error message specified by the {\ttfamily msg} paramete
 \begin{DoxyReturn}{Returns}
 int Returns 0 on success, or a non-\/zero error code on failure. 
 \end{DoxyReturn}
-\Hypertarget{group__OSIO_ga13b0479e5e15d717ef71927639b2822f}\label{group__OSIO_ga13b0479e5e15d717ef71927639b2822f} 
-\index{OSIO File Operations@{OSIO File Operations}!osio\_save\_file@{osio\_save\_file}}
-\index{osio\_save\_file@{osio\_save\_file}!OSIO File Operations@{OSIO File Operations}}
-\doxysubsubsection{\texorpdfstring{osio\_save\_file()}{osio\_save\_file()}}
-{\footnotesize\ttfamily int osio\+\_\+save\+\_\+file (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{char \texorpdfstring{$\ast$}{*}}]{relative\+Path,  }\item[{char \texorpdfstring{$\ast$}{*}}]{filter }\end{DoxyParamCaption})}
-
-
-
-Saves a file to the specified path with a given filter. 
-
-This function attempts to save a file to the location specified by the {\ttfamily path} parameter, applying the filter specified by the {\ttfamily filter} parameter. The filter can be used to specify file types or other criteria.
-
-
-\begin{DoxyParams}{Parameters}
-{\em path} & The path where the file should be saved. \\
-\hline
-{\em filter} & The filter to apply when saving the file. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-int Returns 0 on success, or a non-\/zero error code on failure. 
-\end{DoxyReturn}
 \Hypertarget{group__OSIO_ga2c057d7941c6df59458be2230e3e7f88}\label{group__OSIO_ga2c057d7941c6df59458be2230e3e7f88} 
 \index{OSIO File Operations@{OSIO File Operations}!update\_cwd@{update\_cwd}}
 \index{update\_cwd@{update\_cwd}!OSIO File Operations@{OSIO File Operations}}
@@ -126,4 +108,48 @@ This function updates the current working directory to the latest state. It can 
 
 \begin{DoxyReturn}{Returns}
 int Returns 0 on success, or a non-\/zero error code on failure. 
+\end{DoxyReturn}
+\Hypertarget{group__OSIO_ga6f9da097d97bc24c4c4bf7b2996331d0}\label{group__OSIO_ga6f9da097d97bc24c4c4bf7b2996331d0} 
+\index{OSIO File Operations@{OSIO File Operations}!absolute\_path\_to\_relative@{absolute\_path\_to\_relative}}
+\index{absolute\_path\_to\_relative@{absolute\_path\_to\_relative}!OSIO File Operations@{OSIO File Operations}}
+\doxysubsubsection{\texorpdfstring{absolute\_path\_to\_relative()}{absolute\_path\_to\_relative()}}
+{\footnotesize\ttfamily int absolute\+\_\+path\+\_\+to\+\_\+relative (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
+
+
+
+Converts an absolute file path to a relative path. 
+
+This function converts the absolute file path specified by the {\ttfamily path} parameter to a relative path. It can be useful for creating paths that are relative to the current working directory or another base directory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The absolute path to be converted to a relative path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Returns 0 on success, or a non-\/zero error code on failure. 
+\end{DoxyReturn}
+\Hypertarget{group__OSIO_ga73f3b3dc473ae5d8d46d95fe3cd72759}\label{group__OSIO_ga73f3b3dc473ae5d8d46d95fe3cd72759} 
+\index{OSIO File Operations@{OSIO File Operations}!osio\_find@{osio\_find}}
+\index{osio\_find@{osio\_find}!OSIO File Operations@{OSIO File Operations}}
+\doxysubsubsection{\texorpdfstring{osio\_find()}{osio\_find()}}
+{\footnotesize\ttfamily int osio\+\_\+find (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{namelist,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{int(\texorpdfstring{$\ast$}{*})(const \mbox{\hyperlink{dirent_8h_a6673e8f64ca9ebd7e26e6289dca06e87}{dirent\+\_\+t}} \texorpdfstring{$\ast$}{*}entry)}]{filter }\end{DoxyParamCaption})}
+
+
+
+Finds files in a directory that match a given filter. 
+
+This function searches for files in the directory specified by the {\ttfamily path} parameter that match the filter function provided by the {\ttfamily filter} parameter. The filter function should return 1 for files that match the criteria, and 0 for files that do not.
+
+
+\begin{DoxyParams}{Parameters}
+{\em namelist} & A pointer to the list of directory entries. \\
+\hline
+{\em path} & The path to the directory where files should be searched. \\
+\hline
+{\em filter} & The filter function to apply to the directory entries. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Returns the number of files found, or a non-\/zero error code on failure. 
 \end{DoxyReturn}

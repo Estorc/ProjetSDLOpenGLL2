@@ -10,19 +10,23 @@
  * @date October 20, 2023
  */
 
-#include "raptiquax.h"
-#include "classes/classes.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "render/framebuffer.h"
-#include "storage/node.h"
-#include "memory.h"
-#include "render/render.h"
+#include <raptiquax.h>
+#include <classes/classes.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <render/framebuffer.h>
+#include <storage/node.h>
+#include <memory.h>
+#include <render/render.h>
+
+/**
+ * @ingroup Classes Classes
+ * @{
+ */
 
 class Skybox : public Node {
     __containerType__ Node *
     public:
-
 
     /**
      * @brief Loads a cubemap texture from 6 individual texture faces.
@@ -36,7 +40,6 @@ class Skybox : public Node {
      * 
      * @return TextureMap The loaded cubemap texture.
      */
-
      TextureMap load_cubemap(char (*faces)[100]) {
 
         for (int i = 0; i < Game.memoryCaches->cubeMapCount; i++) {
@@ -87,7 +90,6 @@ class Skybox : public Node {
         return textureID;
     }  
 
-
     /**
      * @brief Creates a skybox with the given textures.
      *
@@ -98,7 +100,6 @@ class Skybox : public Node {
      *                      The textures should be ordered as follows: right, left, top, bottom, front, back.
      * @note Each file path in the skyboxTexture array should not exceed 200 characters.
      */
-
     void create_skybox(TexturedMesh *texturedMesh, char (*skyboxTexture)[100]) {
 
         VBO skyboxVBO;
@@ -166,9 +167,14 @@ class Skybox : public Node {
 
     }
 
-
-
-
+    /**
+     * @brief Constructor for the Skybox class.
+     *
+     * This function initializes a Skybox object with the given path to the skybox textures.
+     *
+     * @param path A pointer to an array of strings, each string representing the file path to a texture image.
+     *             The array should contain exactly 6 file paths, one for each face of the skybox.
+     */
     void constructor(const char (*path)[100]) {
         this->type = __type__;
 
@@ -181,7 +187,14 @@ class Skybox : public Node {
         SUPER(initialize_node);
     }
 
-
+    /**
+     * @brief Loads data from a file.
+     *
+     * This function reads data from the provided file and processes it
+     * to load the necessary information for the Skybox class.
+     *
+     * @param file A pointer to the file to be read.
+     */
     void load(FILE *file) {
         char path[6][100];
         if (file) {
@@ -199,6 +212,13 @@ class Skybox : public Node {
         this::constructor(&path);
     }
 
+    /**
+     * @brief Saves the current state of the Skybox to a file.
+     *
+     * This function writes the current state of the Skybox object to the specified file.
+     *
+     * @param file A pointer to the FILE object where the Skybox state will be saved.
+     */
     void save(FILE *file) {
         fprintf(file, "%s", classManager.class_names[this->type]);
         TextureMap texture = ((TexturedMesh*) this->object)->texture;
@@ -217,8 +237,19 @@ class Skybox : public Node {
         }
     }
 
-
-    void render(mat4 *modelMatrix, Shader activeShader, WorldShaders *shaders) {
+    /**
+     * @brief Renders the skybox using the provided model matrix and shader.
+     *
+     * This function is responsible for rendering the skybox in the scene. It uses
+     * the provided model matrix to transform the skybox and the active shader to
+     * apply the necessary shading effects. Additionally, it utilizes the world
+     * shaders for any global shader settings or configurations.
+     *
+     * @param modelMatrix Model matrix used to transform the skybox.
+     * @param activeShader The shader program currently active for rendering.
+     * @param shaders A pointer to the WorldShaders structure containing global shader settings.
+     */
+    void render(mat4 modelMatrix, Shader activeShader, WorldShaders *shaders) {
         UNUSED(activeShader);
         
         glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
@@ -242,3 +273,4 @@ class Skybox : public Node {
     }
 
 }
+

@@ -111,10 +111,10 @@ $(document).ready(function(){initNavTree('functions_vars_g.html',''); initResiza
 
 <h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
 <li>g&#160;:&#160;<a class="el" href="structRawColor.html#ac566902e0983ad79358da29dda45f1e0">RawColor</a></li>
-<li>globalPos&#160;:&#160;<a class="el" href="group__NodeFunctions.html#ga1cf2ef86297b1bdfed11d030c0ed3dd2">Node</a></li>
-<li>globalRot&#160;:&#160;<a class="el" href="group__NodeFunctions.html#ga16edb124722f7491fa3d41573b2fec8a">Node</a></li>
-<li>globalScale&#160;:&#160;<a class="el" href="group__NodeFunctions.html#ga1d353831fd989481401e337cd5ba0ddc">Node</a></li>
-<li>glowShader&#160;:&#160;<a class="el" href="classNode.html#a44e2ccb5f2209f6367f33a3c712f0eb1">Node</a></li>
+<li>globalPos&#160;:&#160;<a class="el" href="classNode.html#a1cf2ef86297b1bdfed11d030c0ed3dd2">Node</a></li>
+<li>globalRot&#160;:&#160;<a class="el" href="classNode.html#a16edb124722f7491fa3d41573b2fec8a">Node</a></li>
+<li>globalScale&#160;:&#160;<a class="el" href="classNode.html#a1d353831fd989481401e337cd5ba0ddc">Node</a></li>
+<li>glowShader&#160;:&#160;<a class="el" href="classNode.html#ad05f8b1de975fa3370e8b98c0ec5aa4f">Node</a></li>
 <li>gravity&#160;:&#160;<a class="el" href="classRigidBody.html#acfa7c599a0861664ec4e7a3a117a0caa">RigidBody</a></li>
 <li>gui&#160;:&#160;<a class="el" href="structWorldShaders.html#a92889bafce33339104ccfc29db9d1522">WorldShaders</a></li>
 </ul>
@@ -149,6 +149,16 @@ $(document).ready(function(){initNavTree('functions_vars_g.html',''); initResiza
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -157,7 +167,7 @@ $(document).ready(function(){initNavTree('functions_vars_g.html',''); initResiza
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

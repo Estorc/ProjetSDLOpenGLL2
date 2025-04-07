@@ -4,78 +4,32 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <GL/glew.h>}\ \ \textcolor{comment}{//\ Include\ before\ OpenGL\ functions}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdarg.h>}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <limits.h>}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_opengl.h>}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_mixer.h>}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <GL/gl.h>}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <GL/glu.h>}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <GL/glext.h>}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <cglm/cglm.h>}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <math.h>}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{stringio_8h}{io/stringio.h}}"{}}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{config_8h}{config.h}}"{}}}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00031\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMemoryCaches}{MemoryCaches}};}
-\DoxyCodeLine{00032\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBufferCollection}{BufferCollection}};}
-\DoxyCodeLine{00033\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structQueue}{Queue}};}
-\DoxyCodeLine{00034\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structTree}{Tree}};}
-\DoxyCodeLine{00035\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structInput}{Input}};}
-\DoxyCodeLine{00036\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSettings}{Settings}};}
-\DoxyCodeLine{00037\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structWindow}{Window}};}
-\DoxyCodeLine{00038\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classCamera}{Camera}};}
-\DoxyCodeLine{00039\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classRenderTarget}{RenderTarget}};}
-\DoxyCodeLine{00040\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structScript}{Script}};}
-\DoxyCodeLine{00041\ \textcolor{keyword}{struct\ }ClassManager;}
-\DoxyCodeLine{00042\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structHashTable}{HashTable}};}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00053\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRaptiquaX__t}{RaptiquaX\_t}}\ \{}
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMemoryCaches}{MemoryCaches}}\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_a230f0f177f36d012505ef63342f73d72}{memoryCaches}};\ \ }
-\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBufferCollection}{BufferCollection}}\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_a8d370f45176595b7f119489749b3ed18}{buffers}};\ \ }
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structQueue}{Queue}}\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_af9407d64ede7f649fcdcc0171f7cdd87}{callQueue}};\ \ }
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structTree}{Tree}}\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_adfadc30b0addd71f1b7ccf4d26e3cd02}{mainTree}};\ \ }
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structInput}{Input}}\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_ac5dec1d4057951af43c282e1f3b89a6e}{input}};\ \ }
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSettings}{Settings}}\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_a9ff5de733c4c491a68b4bf5efab27fc2}{settings}};\ \ }
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structWindow}{Window}}\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_a0a06b56aacfc717a9a40be81eee1d869}{window}};\ \ }
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }ClassManager\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_ad2ab9245fa362d883807426a0051dd0f}{classManager}};\ \ }
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classCamera}{Camera}}\ *\mbox{\hyperlink{structRaptiquaX__t_a3f838cfab20c911d0f0379293c6edf2f}{camera}};\ }
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMSAA}{MSAA}}\ *\mbox{\hyperlink{structRaptiquaX__t_aa474abb47edc0036ef9d87003455c1dc}{msaa}};\ }
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classRenderTarget}{RenderTarget}}\ *\mbox{\hyperlink{structRaptiquaX__t_abf247e9ee0f60348ba10c660aae885ee}{renderTarget}};\ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structHashTable}{HashTable}}\ *\mbox{\hyperlink{structRaptiquaX__t_a1d8eff7379f2e9f669b1c5c8b9f3aa50}{storage}};\ }
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structScript}{Script}}\ *\mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}};\ }
-\DoxyCodeLine{00067\ \};}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRaptiquaX__t}{RaptiquaX\_t}}\ \mbox{\hyperlink{raptiquax_8h_ad749b00382c53c431741d17582670ad7}{Game}};}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ u8\ uint8\_t}}
-\DoxyCodeLine{00077\ }
-\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ u16\ uint16\_t}}
-\DoxyCodeLine{00083\ }
-\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ u32\ uint32\_t}}
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#define\ u64\ uint64\_t}}
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ s8\ int8\_t}}
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ s16\ int16\_t}}
-\DoxyCodeLine{00107\ }
-\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ s32\ int32\_t}}
-\DoxyCodeLine{00113\ }
-\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ s64\ int64\_t}}
-\DoxyCodeLine{00119\ }
-\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ f32\ float}}
-\DoxyCodeLine{00125\ }
-\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#define\ f64\ double}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{std_8h}{raptiquax/std.h}}>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{GL_8h}{raptiquax/GL.h}}>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{SDL_8h}{raptiquax/SDL.h}}>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{aliases_8h}{raptiquax/aliases.h}}>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{structs_8h}{raptiquax/structs.h}}>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{stringio_8h}{io/stringio.h}}>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{config_8h}{config.h}}>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRaptiquaX__t}{RaptiquaX\_t}}\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMemoryCaches}{MemoryCaches}}\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_a230f0f177f36d012505ef63342f73d72}{memoryCaches}};\ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBufferCollection}{BufferCollection}}\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_a8d370f45176595b7f119489749b3ed18}{buffers}};\ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structQueue}{Queue}}\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_af9407d64ede7f649fcdcc0171f7cdd87}{callQueue}};\ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structTree}{Tree}}\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_adfadc30b0addd71f1b7ccf4d26e3cd02}{mainTree}};\ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structInput}{Input}}\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_ac5dec1d4057951af43c282e1f3b89a6e}{input}};\ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSettings}{Settings}}\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_a9ff5de733c4c491a68b4bf5efab27fc2}{settings}};\ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structWindow}{Window}}\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_a0a06b56aacfc717a9a40be81eee1d869}{window}};\ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }ClassManager\ *\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structRaptiquaX__t_ad2ab9245fa362d883807426a0051dd0f}{classManager}};\ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classCamera}{Camera}}\ *\mbox{\hyperlink{structRaptiquaX__t_a3f838cfab20c911d0f0379293c6edf2f}{camera}};\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDFBO}{DFBO}}\ *\mbox{\hyperlink{structRaptiquaX__t_a19e237f478c20864e29f2aae4760f847}{deferredBuffer}};\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCFBO}{CFBO}}\ *\mbox{\hyperlink{structRaptiquaX__t_a79c4838b583474fa74ffe8d4ee7d60c3}{uiFBO}};\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classRenderTarget}{RenderTarget}}\ *\mbox{\hyperlink{structRaptiquaX__t_abf247e9ee0f60348ba10c660aae885ee}{renderTarget}};\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structHashTable}{HashTable}}\ *\mbox{\hyperlink{structRaptiquaX__t_a1d8eff7379f2e9f669b1c5c8b9f3aa50}{storage}};\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structScript}{Script}}\ *\mbox{\hyperlink{structRaptiquaX__t_a8a03bce29d7bd4ffd2e3e9816ec4fa1a}{scripts}};\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDepthMap}{DepthMap}}\ *\mbox{\hyperlink{structRaptiquaX__t_a4a580a42d4719fb7fda27c36864fb042}{depthMap}};\ }
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRaptiquaX__t}{RaptiquaX\_t}}\ \mbox{\hyperlink{raptiquax_8h_ad749b00382c53c431741d17582670ad7}{Game}};}
 
 \end{DoxyCode}

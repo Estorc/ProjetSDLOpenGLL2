@@ -117,11 +117,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="scene_8h__dep__incl.png" border="0" usemap="#asrc_2utils_2scene_8hdep" alt=""/></div>
 <map name="asrc_2utils_2scene_8hdep" id="asrc_2utils_2scene_8hdep">
-<area shape="rect" title=" " alt="" coords="51,5,177,31"/>
-<area shape="rect" href="main_8c.html" title=" " alt="" coords="5,79,95,104"/>
-<area shape="poly" title=" " alt="" coords="96,43,62,80,58,77,92,39"/>
-<area shape="rect" href="raptiquax_8c.html" title=" " alt="" coords="119,79,237,104"/>
-<area shape="poly" title=" " alt="" coords="136,39,170,77,166,80,132,43"/>
+<area shape="rect" title=" " alt="" coords="5,31,132,56"/>
+<area shape="rect" href="main_8c.html" title=" " alt="" coords="195,5,284,31"/>
+<area shape="poly" title=" " alt="" coords="145,29,194,22,195,27,146,35"/>
+<area shape="rect" href="raptiquax_8c.html" title=" " alt="" coords="180,55,299,80"/>
+<area shape="poly" title=" " alt="" coords="146,51,180,56,179,62,145,57"/>
 </map>
 </div>
 </div>
@@ -167,6 +167,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -175,7 +185,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

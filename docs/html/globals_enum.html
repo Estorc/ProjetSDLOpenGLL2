@@ -126,6 +126,7 @@ $(document).ready(function(){initNavTree('globals_enum.html',''); initResizable(
 <li>ReturnSymbol&#160;:&#160;<a class="el" href="config_8h.html#a4db59522f4f07ce6acf8a9a2f435340a">config.h</a></li>
 <li>Signal&#160;:&#160;<a class="el" href="signals_8h.html#af01fe53890022ebf14996ce6824f829e">signals.h</a></li>
 <li>VertexAttribute&#160;:&#160;<a class="el" href="group__ModelHandling.html#gabcb2d8ba41df6aa7347c241c89e81d3f">model.h</a></li>
+<li>WindowFlags&#160;:&#160;<a class="el" href="group__WindowManagement.html#ga85bb57df22ad4aa3bdf0a3d44a82e7a2">window.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -158,6 +159,16 @@ $(document).ready(function(){initNavTree('globals_enum.html',''); initResizable(
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -166,7 +177,7 @@ $(document).ready(function(){initNavTree('globals_enum.html',''); initResizable(
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

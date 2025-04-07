@@ -110,9 +110,11 @@ $(document).ready(function(){initNavTree('globals_func_g.html',''); initResizabl
 <div class="textblock">Here is a list of all functions with links to the files they belong to:</div>
 
 <h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
-<li>get_address()&#160;:&#160;<a class="el" href="client_8c.html#add147e82ff8d88b5e97019783b5f5301">client.c</a>, <a class="el" href="io_2socket_2client_8h.html#add147e82ff8d88b5e97019783b5f5301">client.h</a></li>
+<li>get_address()&#160;:&#160;<a class="el" href="io_2socket_2client_8h.html#add147e82ff8d88b5e97019783b5f5301">client.h</a>, <a class="el" href="client_8c.html#add147e82ff8d88b5e97019783b5f5301">client.c</a></li>
 <li>get_collision_code()&#160;:&#160;<a class="el" href="group__Collision.html#ga02b692af0e1f9bb492d97ff0cd92aac4">collision.c</a>, <a class="el" href="group__Collision.html#ga02b692af0e1f9bb492d97ff0cd92aac4">collision.h</a></li>
+<li>get_fbo()&#160;:&#160;<a class="el" href="group__Framebuffer.html#ga7239212a7451660eb22ec24b7a35f2d7">framebuffer.c</a>, <a class="el" href="group__Framebuffer.html#ga7239212a7451660eb22ec24b7a35f2d7">framebuffer.h</a></li>
 <li>get_folder_path()&#160;:&#160;<a class="el" href="group__StringIO.html#ga5c0319e26f420cd9750b2ecbec8b50a3">stringio.c</a>, <a class="el" href="group__StringIO.html#ga5c0319e26f420cd9750b2ecbec8b50a3">stringio.h</a></li>
+<li>get_intermediate_texture()&#160;:&#160;<a class="el" href="group__Framebuffer.html#ga4629714663ba4f9cf524aa7e1032c0bd">framebuffer.c</a>, <a class="el" href="group__Framebuffer.html#ga4629714663ba4f9cf524aa7e1032c0bd">framebuffer.h</a></li>
 <li>get_mix_chunk_from_cache()&#160;:&#160;<a class="el" href="group__MemoryCache.html#ga1659300a896c5455fff79f6b2144337b">memory.c</a>, <a class="el" href="group__MemoryCache.html#ga1659300a896c5455fff79f6b2144337b">memory.h</a></li>
 <li>get_mix_music_from_cache()&#160;:&#160;<a class="el" href="group__MemoryCache.html#ga004ded5479b7e0050f7e5decd7743cf1">memory.c</a>, <a class="el" href="group__MemoryCache.html#ga004ded5479b7e0050f7e5decd7743cf1">memory.h</a></li>
 <li>get_model_from_cache()&#160;:&#160;<a class="el" href="group__MemoryCache.html#ga61ed234c023f30c5c5708cd4cd77c623">memory.c</a>, <a class="el" href="group__MemoryCache.html#ga61ed234c023f30c5c5708cd4cd77c623">memory.h</a></li>
@@ -150,6 +152,16 @@ $(document).ready(function(){initNavTree('globals_func_g.html',''); initResizabl
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -158,7 +170,7 @@ $(document).ready(function(){initNavTree('globals_func_g.html',''); initResizabl
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");

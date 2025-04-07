@@ -1,13 +1,19 @@
-#include "../../raptiquax.h"
-#include "../../io/input.h"
-#include "../../render/camera.h"
-#include "../../storage/node.h"
-#include "../../physics/bodies.h"
-#include "../../scripts/scripts.h"
+#include <raptiquax.h>
+#include <io/input.h>
+#include <render/camera.h>
+#include <storage/node.h>
+#include <physics/bodies.h>
+#include <scripts/scripts.h>
+
+
+NEW_SCRIPT(script_cc_player_init)
+	SET_ATTRIBUTES_COUNT(3);
+	this->attribute[2].b = false; // Player haven't got the flashlight yet
+	table_insert(Game.storage, "Game::player", this);
+END_SCRIPT(script_cc_player_init)
 
 NEW_SCRIPT(script_cc_player_update)
 	GET_READY_PARAMETERS();
-	SET_ATTRIBUTES_COUNT(2);
 
 	bool *menu_open = &this->attribute[0].b;
 	bool *stopped = &this->attribute[1].b;
@@ -19,8 +25,8 @@ NEW_SCRIPT(script_cc_player_update)
 
 	KinematicBody *player = (KinematicBody*) this->object;
 
-    f32 base_speed = 10.0f;
-    if (Game.input->active_keys & KEY_SPRINT) base_speed = 20.0f;
+    f32 base_speed = 6.0f;
+    if (Game.input->active_keys & KEY_SPRINT) base_speed = 10.0f;
     f32 vel = base_speed * 0.016f;  // Scale speed by delta for frame-rate independence
 
 	Camera *c = (Camera*) this->children[0]->object;
@@ -62,8 +68,8 @@ NEW_SCRIPT(script_cc_player_update)
 
 		
     // Smooth velocity adjustment using delta
-    player->velocity[0] += (appliedVelocity[0] - player->velocity[0]) * (delta * 2.0f);
-    player->velocity[2] += (appliedVelocity[2] - player->velocity[2]) * (delta * 2.0f);
+    player->velocity[0] += (appliedVelocity[0] - player->velocity[0]) * (delta * 4.0f);
+    player->velocity[2] += (appliedVelocity[2] - player->velocity[2]) * (delta * 4.0f);
 
     // Apply gravity scaled by delta
     player->velocity[1] -= 0.5f * delta;
@@ -81,9 +87,7 @@ NEW_SCRIPT(script_cc_player_signal)
 	GET_SIGNAL();
 	switch(signal) {
 		case SIGNAL_AREA_COLLISION:
-			PRINT_INFO("Collision with area\n");
 			GET_AREA_SIGNAL_PARAMETERS();
-			PRINT_INFO("%d\n", sigId);
 			switch (sigId)
 			{
 			case 5:
@@ -93,6 +97,18 @@ NEW_SCRIPT(script_cc_player_signal)
 				glm_vec3_zero(player->velocity);
 				other->parent->attribute[3].i = 2;
 				other->parent->attribute[4].node = this->children[0];
+				break;
+
+			case 6:
+				play_sfx("assets/audio/sfx/drone-attack.mp3", MIX_MAX_VOLUME, 0);
+				*stopped = true;
+				*menu_open = true;
+				glm_vec3_zero(player->velocity);
+				other->parent->attribute[3].i = 2;
+				other->parent->attribute[4].node = this->children[0];
+				break;
+			case 7:
+				other->parent->pos[1] += 0.01f;
 				break;
 			
 			default:

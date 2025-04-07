@@ -1,8 +1,8 @@
-#include "raptiquax.h"
-#include "math/math_util.h"
-#include "io/model.h"
-#include "io/shader.h"
-#include "memory.h"
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <io/model.h>
+#include <io/shader.h>
+#include <memory.h>
 
 void init_memory_cache() {
     Game.memoryCaches->cubeMapCache = NULL;

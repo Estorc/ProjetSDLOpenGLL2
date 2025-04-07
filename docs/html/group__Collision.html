@@ -290,6 +290,44 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ga02b692af0e1f9bb492d97ff0cd92aac4" name="ga02b692af0e1f9bb492d97ff0cd92aac4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga02b692af0e1f9bb492d97ff0cd92aac4">&#9670;&#160;</a></span>get_collision_code()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int get_collision_code </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the collision code between two shapes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shapeA</td><td>Pointer to the first shape's <a class="el" href="classNode.html" title="Represents a node in the tree structure.">Node</a> structure. </td></tr>
+    <tr><td class="paramname">shapeB</td><td>Pointer to the second shape's <a class="el" href="classNode.html" title="Represents a node in the tree structure.">Node</a> structure. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>unsigned int Collision code representing the type of collision. </dd></dl>
+
+</div>
+</div>
 <a id="ga78b4e79005b435db32c087988aa4ea55" name="ga78b4e79005b435db32c087988aa4ea55"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga78b4e79005b435db32c087988aa4ea55">&#9670;&#160;</a></span>apply_collision()</h2>
 
@@ -386,6 +424,82 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="gae9135b6684e4b19ee50553bf83031f40" name="gae9135b6684e4b19ee50553bf83031f40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae9135b6684e4b19ee50553bf83031f40">&#9670;&#160;</a></span>check_collision_box_with_sphere()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool check_collision_box_with_sphere </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check for collision between a box and a sphere shape. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shapeA</td><td>Pointer to the box shape node. </td></tr>
+    <tr><td class="paramname">shapeB</td><td>Pointer to the sphere shape node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the box and sphere collide, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga1a92e5bf5c370168872e897cbfcc1738" name="ga1a92e5bf5c370168872e897cbfcc1738"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1a92e5bf5c370168872e897cbfcc1738">&#9670;&#160;</a></span>check_collision_box_with_plane()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool check_collision_box_with_plane </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check for collision between a box and a plane shape. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shapeA</td><td>Pointer to the box shape node. </td></tr>
+    <tr><td class="paramname">shapeB</td><td>Pointer to the plane shape node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the box and plane collide, false otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="gad79af3dd3a324e7e14033304c087d6e1" name="gad79af3dd3a324e7e14033304c087d6e1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gad79af3dd3a324e7e14033304c087d6e1">&#9670;&#160;</a></span>check_collision_box_with_capsule()</h2>
 
@@ -462,44 +576,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga1a92e5bf5c370168872e897cbfcc1738" name="ga1a92e5bf5c370168872e897cbfcc1738"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1a92e5bf5c370168872e897cbfcc1738">&#9670;&#160;</a></span>check_collision_box_with_plane()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool check_collision_box_with_plane </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeB</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check for collision between a box and a plane shape. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">shapeA</td><td>Pointer to the box shape node. </td></tr>
-    <tr><td class="paramname">shapeB</td><td>Pointer to the plane shape node. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the box and plane collide, false otherwise. </dd></dl>
-
-</div>
-</div>
 <a id="ga1381e118a5747bb067ccd0c78c533679" name="ga1381e118a5747bb067ccd0c78c533679"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga1381e118a5747bb067ccd0c78c533679">&#9670;&#160;</a></span>check_collision_box_with_ray()</h2>
 
@@ -538,14 +614,108 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gae9135b6684e4b19ee50553bf83031f40" name="gae9135b6684e4b19ee50553bf83031f40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae9135b6684e4b19ee50553bf83031f40">&#9670;&#160;</a></span>check_collision_box_with_sphere()</h2>
+<a id="ga37b6065c0c898cbf884d1c17aa12c7d7" name="ga37b6065c0c898cbf884d1c17aa12c7d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga37b6065c0c898cbf884d1c17aa12c7d7">&#9670;&#160;</a></span>check_collision_sphere_with_sphere()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool check_collision_box_with_sphere </td>
+          <td class="memname">bool check_collision_sphere_with_sphere </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check for collision between two sphere shapes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shapeA</td><td>Pointer to the first sphere shape node. </td></tr>
+    <tr><td class="paramname">shapeB</td><td>Pointer to the second sphere shape node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the spheres collide, false otherwise.</dd></dl>
+<p>Check if a collision occured between two sphere shapes.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">{Node*}</td><td>shapeA - The first sphere shape. </td></tr>
+    <tr><td class="paramname">{Node*}</td><td>shapeB - The second sphere shape. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>{bool} The collision state. </dd></dl>
+
+</div>
+</div>
+<a id="gac5a4c6b09cd516390e55a666abbaf495" name="gac5a4c6b09cd516390e55a666abbaf495"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac5a4c6b09cd516390e55a666abbaf495">&#9670;&#160;</a></span>check_collision_sphere_with_plane()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool check_collision_sphere_with_plane </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check for collision between a sphere and a plane shape. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shapeA</td><td>Pointer to the sphere shape node. </td></tr>
+    <tr><td class="paramname">shapeB</td><td>Pointer to the plane shape node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the sphere and plane collide, false otherwise.</dd></dl>
+<p>Check if a collision occured between a sphere shape and a plane shape.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">{Node*}</td><td>shapeA - The sphere shape. </td></tr>
+    <tr><td class="paramname">{Node*}</td><td>shapeB - The plane shape. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>{bool} The collision state. </dd></dl>
+
+</div>
+</div>
+<a id="ga15b7d860367d8b79e570e71a874ab6b3" name="ga15b7d860367d8b79e570e71a874ab6b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga15b7d860367d8b79e570e71a874ab6b3">&#9670;&#160;</a></span>check_collision_sphere_with_capsule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool check_collision_sphere_with_capsule </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
           <td class="paramname"><em>shapeA</em>, </td>
@@ -564,15 +734,243 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Check for collision between a box and a sphere shape. </p>
+<p>Check for collision between a sphere and a capsule shape. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">shapeA</td><td>Pointer to the box shape node. </td></tr>
-    <tr><td class="paramname">shapeB</td><td>Pointer to the sphere shape node. </td></tr>
+    <tr><td class="paramname">shapeA</td><td>Pointer to the sphere shape node. </td></tr>
+    <tr><td class="paramname">shapeB</td><td>Pointer to the capsule shape node. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the box and sphere collide, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the sphere and capsule collide, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga16d110012e15dd4be594f3f487086dec" name="ga16d110012e15dd4be594f3f487086dec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga16d110012e15dd4be594f3f487086dec">&#9670;&#160;</a></span>check_collision_sphere_with_mesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool check_collision_sphere_with_mesh </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check for collision between a sphere and a mesh shape. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shapeA</td><td>Pointer to the sphere shape node. </td></tr>
+    <tr><td class="paramname">shapeB</td><td>Pointer to the mesh shape node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the sphere and mesh collide, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga66dc00a8f46760fcd271b19bea1b9bf8" name="ga66dc00a8f46760fcd271b19bea1b9bf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga66dc00a8f46760fcd271b19bea1b9bf8">&#9670;&#160;</a></span>check_collision_sphere_with_ray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool check_collision_sphere_with_ray </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check for collision between a sphere and a ray shape. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shapeA</td><td>Pointer to the sphere shape node. </td></tr>
+    <tr><td class="paramname">shapeB</td><td>Pointer to the ray shape node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the sphere and ray collide, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="gab7bf8b5fd6ad3ea2ac6c7bbf4d96ebaa" name="gab7bf8b5fd6ad3ea2ac6c7bbf4d96ebaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab7bf8b5fd6ad3ea2ac6c7bbf4d96ebaa">&#9670;&#160;</a></span>check_collision_plane_with_plane()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool check_collision_plane_with_plane </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check for collision between two plane shapes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shapeA</td><td>Pointer to the first plane shape node. </td></tr>
+    <tr><td class="paramname">shapeB</td><td>Pointer to the second plane shape node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the planes collide, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga9d6d2ed3bfc7b49f56bd55a558aad7c8" name="ga9d6d2ed3bfc7b49f56bd55a558aad7c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9d6d2ed3bfc7b49f56bd55a558aad7c8">&#9670;&#160;</a></span>check_collision_plane_with_capsule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool check_collision_plane_with_capsule </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check for collision between a plane and a capsule shape. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shapeA</td><td>Pointer to the plane shape node. </td></tr>
+    <tr><td class="paramname">shapeB</td><td>Pointer to the capsule shape node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the plane and capsule collide, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga7f1da69188e7458e6ec10fb79c01d0ea" name="ga7f1da69188e7458e6ec10fb79c01d0ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7f1da69188e7458e6ec10fb79c01d0ea">&#9670;&#160;</a></span>check_collision_plane_with_mesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool check_collision_plane_with_mesh </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check for collision between a plane and a mesh shape. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shapeA</td><td>Pointer to the plane shape node. </td></tr>
+    <tr><td class="paramname">shapeB</td><td>Pointer to the mesh shape node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the plane and mesh collide, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="gac463d3c86682d29537d15e2083d093f1" name="gac463d3c86682d29537d15e2083d093f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac463d3c86682d29537d15e2083d093f1">&#9670;&#160;</a></span>check_collision_plane_with_ray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool check_collision_plane_with_ray </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
+          <td class="paramname"><em>shapeB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check for collision between a plane and a ray shape. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shapeA</td><td>Pointer to the plane shape node. </td></tr>
+    <tr><td class="paramname">shapeB</td><td>Pointer to the ray shape node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the plane and ray collide, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -766,158 +1164,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga9d6d2ed3bfc7b49f56bd55a558aad7c8" name="ga9d6d2ed3bfc7b49f56bd55a558aad7c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9d6d2ed3bfc7b49f56bd55a558aad7c8">&#9670;&#160;</a></span>check_collision_plane_with_capsule()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool check_collision_plane_with_capsule </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeB</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check for collision between a plane and a capsule shape. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">shapeA</td><td>Pointer to the plane shape node. </td></tr>
-    <tr><td class="paramname">shapeB</td><td>Pointer to the capsule shape node. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the plane and capsule collide, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="ga7f1da69188e7458e6ec10fb79c01d0ea" name="ga7f1da69188e7458e6ec10fb79c01d0ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7f1da69188e7458e6ec10fb79c01d0ea">&#9670;&#160;</a></span>check_collision_plane_with_mesh()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool check_collision_plane_with_mesh </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeB</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check for collision between a plane and a mesh shape. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">shapeA</td><td>Pointer to the plane shape node. </td></tr>
-    <tr><td class="paramname">shapeB</td><td>Pointer to the mesh shape node. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the plane and mesh collide, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="gab7bf8b5fd6ad3ea2ac6c7bbf4d96ebaa" name="gab7bf8b5fd6ad3ea2ac6c7bbf4d96ebaa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab7bf8b5fd6ad3ea2ac6c7bbf4d96ebaa">&#9670;&#160;</a></span>check_collision_plane_with_plane()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool check_collision_plane_with_plane </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeB</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check for collision between two plane shapes. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">shapeA</td><td>Pointer to the first plane shape node. </td></tr>
-    <tr><td class="paramname">shapeB</td><td>Pointer to the second plane shape node. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the planes collide, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="gac463d3c86682d29537d15e2083d093f1" name="gac463d3c86682d29537d15e2083d093f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac463d3c86682d29537d15e2083d093f1">&#9670;&#160;</a></span>check_collision_plane_with_ray()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool check_collision_plane_with_ray </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeB</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check for collision between a plane and a ray shape. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">shapeA</td><td>Pointer to the plane shape node. </td></tr>
-    <tr><td class="paramname">shapeB</td><td>Pointer to the ray shape node. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the plane and ray collide, false otherwise. </dd></dl>
-
-</div>
-</div>
 <a id="gabd0d15fcf20dc4b9f1616d18970eaf82" name="gabd0d15fcf20dc4b9f1616d18970eaf82"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gabd0d15fcf20dc4b9f1616d18970eaf82">&#9670;&#160;</a></span>check_collision_ray_with_ray()</h2>
 
@@ -956,252 +1202,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga15b7d860367d8b79e570e71a874ab6b3" name="ga15b7d860367d8b79e570e71a874ab6b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga15b7d860367d8b79e570e71a874ab6b3">&#9670;&#160;</a></span>check_collision_sphere_with_capsule()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool check_collision_sphere_with_capsule </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeB</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check for collision between a sphere and a capsule shape. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">shapeA</td><td>Pointer to the sphere shape node. </td></tr>
-    <tr><td class="paramname">shapeB</td><td>Pointer to the capsule shape node. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the sphere and capsule collide, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="ga16d110012e15dd4be594f3f487086dec" name="ga16d110012e15dd4be594f3f487086dec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga16d110012e15dd4be594f3f487086dec">&#9670;&#160;</a></span>check_collision_sphere_with_mesh()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool check_collision_sphere_with_mesh </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeB</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check for collision between a sphere and a mesh shape. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">shapeA</td><td>Pointer to the sphere shape node. </td></tr>
-    <tr><td class="paramname">shapeB</td><td>Pointer to the mesh shape node. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the sphere and mesh collide, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="gac5a4c6b09cd516390e55a666abbaf495" name="gac5a4c6b09cd516390e55a666abbaf495"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac5a4c6b09cd516390e55a666abbaf495">&#9670;&#160;</a></span>check_collision_sphere_with_plane()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool check_collision_sphere_with_plane </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeB</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check for collision between a sphere and a plane shape. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">shapeA</td><td>Pointer to the sphere shape node. </td></tr>
-    <tr><td class="paramname">shapeB</td><td>Pointer to the plane shape node. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the sphere and plane collide, false otherwise.</dd></dl>
-<p>Check if a collision occured between a sphere shape and a plane shape.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">{Node*}</td><td>shapeA - The sphere shape. </td></tr>
-    <tr><td class="paramname">{Node*}</td><td>shapeB - The plane shape. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>{bool} The collision state. </dd></dl>
-
-</div>
-</div>
-<a id="ga66dc00a8f46760fcd271b19bea1b9bf8" name="ga66dc00a8f46760fcd271b19bea1b9bf8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga66dc00a8f46760fcd271b19bea1b9bf8">&#9670;&#160;</a></span>check_collision_sphere_with_ray()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool check_collision_sphere_with_ray </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeB</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check for collision between a sphere and a ray shape. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">shapeA</td><td>Pointer to the sphere shape node. </td></tr>
-    <tr><td class="paramname">shapeB</td><td>Pointer to the ray shape node. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the sphere and ray collide, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="ga37b6065c0c898cbf884d1c17aa12c7d7" name="ga37b6065c0c898cbf884d1c17aa12c7d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga37b6065c0c898cbf884d1c17aa12c7d7">&#9670;&#160;</a></span>check_collision_sphere_with_sphere()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool check_collision_sphere_with_sphere </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeB</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check for collision between two sphere shapes. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">shapeA</td><td>Pointer to the first sphere shape node. </td></tr>
-    <tr><td class="paramname">shapeB</td><td>Pointer to the second sphere shape node. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the spheres collide, false otherwise.</dd></dl>
-<p>Check if a collision occured between two sphere shapes.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">{Node*}</td><td>shapeA - The first sphere shape. </td></tr>
-    <tr><td class="paramname">{Node*}</td><td>shapeB - The second sphere shape. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>{bool} The collision state. </dd></dl>
-
-</div>
-</div>
-<a id="ga02b692af0e1f9bb492d97ff0cd92aac4" name="ga02b692af0e1f9bb492d97ff0cd92aac4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga02b692af0e1f9bb492d97ff0cd92aac4">&#9670;&#160;</a></span>get_collision_code()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int get_collision_code </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="classNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>shapeB</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the collision code between two shapes. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">shapeA</td><td>Pointer to the first shape's <a class="el" href="classNode.html" title="Represents a node in the tree structure.">Node</a> structure. </td></tr>
-    <tr><td class="paramname">shapeB</td><td>Pointer to the second shape's <a class="el" href="classNode.html" title="Represents a node in the tree structure.">Node</a> structure. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>unsigned int Collision code representing the type of collision. </dd></dl>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->
@@ -1233,6 +1233,16 @@ Functions</h2></td></tr>
       container.appendChild(element.cloneNode(true));
       element.style.display = "none";
     });
+    waitForElement('#nav-tree-contents>ul>li>.children_ul>li>.item a', (element) => {
+      document.querySelectorAll("#nav-tree-contents>ul>li>.children_ul>li>.item a").forEach((item) => {
+        item.href = "javascript:void(0)";
+        item.classList = "nolink";
+        let arrowElem = item.parentElement.parentElement.getElementsByTagName("a")[0];
+        let func = arrowElem.onclick;
+        if (func)
+          item.onclick = func.bind(arrowElem);
+      });
+    });
     function createIndent(o,domNode,node,level)
     {
       var level=-1;
@@ -1241,7 +1251,7 @@ Functions</h2></td></tr>
       if (node.childrenData) {
         var imgNode = document.createElement("span");
         imgNode.className = 'arrow';
-        imgNode.style.paddingLeft=(16*(level+1)).toString()+'px';
+        imgNode.style.marginLeft=(16*(level+1)).toString()+'px';
         imgNode.innerHTML=arrowRight;
         node.plus_img = imgNode;
         node.expandToggle = document.createElement("a");
