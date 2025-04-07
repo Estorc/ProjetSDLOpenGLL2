@@ -33,8 +33,8 @@ typedef struct Texture_u {
 Texture_t * create_texture (SDL_Rect position, SDL_Rect srcrect, int hidden) ;
 void destroy_texture (Texture_t ** texture) ;
 void destroy_texture_cb (void * texture) ;
-void destroy_textureV2 (Texture_t ** texture) ;
-void destroy_textureV2_cb (void * texture) ;
+// void destroy_textureV2 (Texture_t ** texture) ;
+// void destroy_textureV2_cb (void * texture) ;
 void texture_update (Texture_t * texture) ;
 void texture_list_update (List_t * list) ;
 void texture_list_update_from_file (List_t * list, const char * dataPath) ;

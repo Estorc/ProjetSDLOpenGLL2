@@ -100,6 +100,12 @@ void draw_map (Map_t * map, Camera_t * camera) {
     if ((srcrect.x + srcrect.w) > BACKGROUND_WIDTH) srcrect.x = BACKGROUND_WIDTH - srcrect.w;
     SDL_RenderCopy(renderer, map->background, &srcrect, NULL);
 
+    printf("affichage de %d obj\n", map->listObjects->size);
+    for (int i = 0; i < map->listObjects->size; i++) {
+        MapObj_t * object = map->listObjects->item(map->listObjects, i) ;
+        draw_texture(&object->sprite);
+    }
+
     // methode affichage complet de la map sur une position bien precise 
     // SDL_FRect dstrect = {-camera->x, -camera->y, BACKGROUND_WIDTH, BACKGROUND_HEIGHT};
     // SDL_RenderCopyF(renderer, map->background, NULL, &dstrect);

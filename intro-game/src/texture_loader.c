@@ -77,6 +77,10 @@ void texture_update (Texture_t * texture) {
 
     if (existe(texture)) {
 
+        if (texture->hidden == TRUE) {
+            return ;
+        }
+
         // Incrémentation du compteur de frames
         texture->frameCount++; 
         if (texture->frameCount >= texture->animationSpeed) {
@@ -100,7 +104,6 @@ void texture_update (Texture_t * texture) {
                 texture->playing = FALSE; // Sinon, on arrête la texture
             }
         }
-        //printf("nouvelle current frame %d \n", texture->currentFrame);
     }
     else {
         printf("Impossible d'update la texture car texture NULL\n");

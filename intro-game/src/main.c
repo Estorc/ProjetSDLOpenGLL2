@@ -8,6 +8,7 @@
 #include "../include/gui.h"
 #include "../include/scene.h"
 #include "../include/dictionary.h"
+#include "../include/texture_loader.h"
 
 
 int init_systeme ();

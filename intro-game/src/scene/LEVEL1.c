@@ -13,6 +13,18 @@
 #include "../include/camera.h"
 
 
+#define FLAME_BALL 0 
+
+
+// ensemble des evenements de la scene
+static float new_projectile_trigger (Scene_t * scene, Event_t * event) ;
+static void new_projectile (Scene_t * scene, float progress) ;
+
+
+static void init_flame_ball_vertical (MapObj_t * object, List_t * listSpriteSheet, size_t idSpriteSheet) ;
+static void init_map (Map_t * map) ;
+
+
 void LEVEL1_load (Scene_t * self) {
     
     if (self == NULL) {
@@ -54,6 +66,7 @@ void LEVEL1_load (Scene_t * self) {
         destroy_dictionary(&self->data);
         return ;
     }
+    init_map(map);
     dict->set(dict, "map", map, map_destructor_cb);
 
 
@@ -149,12 +162,18 @@ void LEVEL1_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * ma
     const uint8_t * keys = SDL_GetKeyboardState(NULL);
     handle_input(keys, player);
 
+
+    EventManager_t * eventManager = GET_EVENT_MANAGER(self->data) ;
+    process_events(eventManager, self);
+
     
     return ; 
 }
 
 
 void LEVEL1_update (Scene_t * self, SceneManager_t * manager) {
+
+    EventManager_t * eventManager = GET_EVENT_MANAGER(self->data) ;
 
     Player_t * player = GET_PLAYER(self->data) ;
     Map_t * map = GET_MAP(self->data) ;
@@ -163,9 +182,13 @@ void LEVEL1_update (Scene_t * self, SceneManager_t * manager) {
     // met a jour la position des objets dynamique 
     update_player(player, &map->ground);
     update_camera(camera, player);
+    map_update(self, map, player);
+
+    if ( (rand() % 100) == 0 ) {
+        add_event(eventManager, 0, 0, new_projectile_trigger, new_projectile);
+    }
 
     gameStatus.updateCount++;
-
     if (gameStatus.updateCount == 5) {
         gameStatus.updateCount = 0;
         update_player_anim_state (player);
@@ -186,4 +209,80 @@ void LEVEL1_render (Scene_t * self) {
         gameStatus.running = 0;
     }
 
+}
+
+
+static 
+float new_projectile_trigger (Scene_t * scene, Event_t * event) {
+    return 1.0f ;
+}
+static
+void new_projectile (Scene_t * scene, float progress) {
+    
+    Map_t * map = GET_MAP(scene->data) ;
+
+    MapObj_t * object = create_mapObj(map->listSpriteSheet, FLAME_BALL) ;
+    if (object == NULL) {
+        printf("Impossible d'ajouter une FLAME BALL, erreur creation object\n");
+        return ;
+    }
+
+    init_flame_ball_vertical(object, map->listSpriteSheet, FLAME_BALL) ;
+    map->listObjects->stack(map->listObjects, object);
+
+    printf("creation d'un obj a la position x = %d, y = %d\n", object->sprite.position.x, object->sprite.position.y);
+}
+
+
+/**
+ * Initialise une flame ball vertical dans une position aléatoire (sur l'axis X) en haut de la map.  
+ */
+static
+void init_flame_ball_vertical (MapObj_t * object, List_t * listSpriteSheet, size_t idSpriteSheet) {
+    
+    if (!existe(object)) {
+        printf("impossible d'init l'object car NULL\n");
+        return ;
+    }
+
+    object->sprite.texture = listSpriteSheet->item(listSpriteSheet, idSpriteSheet) ;
+    object->sprite.animationSpeed = 5 ;
+    object->sprite.currentFrame = 0 ;
+    object->sprite.frameCount = 0 ;
+    object->sprite.hidden = FALSE ;
+    object->sprite.loop = TRUE ;
+    object->sprite.numFrames = 6 ;
+    object->sprite.playing = TRUE ;
+    object->sprite.position = (SDL_Rect){ (BACKGROUND_WIDTH / 20) * (rand() % 20) , 0 , 25 , 189 } ;
+    object->sprite.srcrect = (SDL_Rect){0, 0, 25, 189} ;
+    object->sprite.typeAnim = DEFAULT ;
+
+    object->vx = 0 ;
+    object->vy = 1 ;
+
+    object->idAction = ACT_ID_LOSS_PV ;
+    object->idSpriteSheet = idSpriteSheet ;
+}
+
+
+static
+void init_map (Map_t * map) {
+
+    if (existe(map)) {
+
+        map->background = load_png("intro-game/assets/background_grey.png");
+        if (map->background == NULL) {
+            printf("Erreur background dans init map level1\n");
+            return ;
+        }
+
+        map->ground = (SDL_FRect){0, BACKGROUND_HEIGHT - GROUND_HEIGHT, GROUND_WIDTH, GROUND_HEIGHT} ;
+
+        SDL_Texture * spriteSheet1 = load_png("intro-game/assets/projectileVertical.png") ;
+        if (spriteSheet1 == NULL) {
+            printf("Erreur spriteSheet dans init map level1\n");
+            return ;
+        }
+        map->listSpriteSheet->stack(map->listSpriteSheet, spriteSheet1);
+    }
 }

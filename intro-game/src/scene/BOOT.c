@@ -222,7 +222,8 @@ void BOOT_change_state (Scene_t * self, InfoScene_t * info) {
 
 
 
-static float imageFadeIn_trigger (Scene_t * scene, Event_t * event) {
+static 
+float imageFadeIn_trigger (Scene_t * scene, Event_t * event) {
 
     InfoScene_t * info = GET_INFO(scene->data) ;
 
@@ -233,9 +234,10 @@ static float imageFadeIn_trigger (Scene_t * scene, Event_t * event) {
 
     return 0.0f ;
 }
-static void imageFadeIn (Scene_t * scene, float progress) {
+static 
+void imageFadeIn (Scene_t * scene, float progress) {
 
-    List_t * listTexture = GET_LIST_TEXTURE(scene->data) ;
+    List_t * listTexture = GET_LIST_TEXTURE(scene->data) ; 
     Texture_t * texture = listTexture->item(listTexture, I_BLIS_FL5) ;
 
     texture->hidden = FALSE ;
@@ -246,7 +248,9 @@ static void imageFadeIn (Scene_t * scene, float progress) {
         SDL_SetTextureAlphaMod(texture->texture, alpha);
     }
 }
-static float wait_to_loading_trigger (Scene_t * scene, Event_t * event) {
+
+static 
+float wait_to_loading_trigger (Scene_t * scene, Event_t * event) {
 
     InfoScene_t * info = GET_INFO(scene->data) ;
 
@@ -256,7 +260,8 @@ static float wait_to_loading_trigger (Scene_t * scene, Event_t * event) {
 
     return 0.0f ;
 }
-static void wait_to_loading (Scene_t * scene, float progress) {
+static 
+void wait_to_loading (Scene_t * scene, float progress) {
     List_t * listTexture = GET_LIST_TEXTURE(scene->data) ;
     Texture_t * loadingWheel = listTexture->item(listTexture, I_LOADING_WHEEL) ;
 
@@ -264,7 +269,9 @@ static void wait_to_loading (Scene_t * scene, float progress) {
 
     add_event(GET_EVENT_MANAGER(scene->data), 0, 6000, loading_bar_trigger, loading_bar);
 }
-static float loading_bar_trigger (Scene_t * scene, Event_t * event) {
+
+static 
+float loading_bar_trigger (Scene_t * scene, Event_t * event) {
     static uint8_t progress = 0 ;
 
     InfoScene_t * info = GET_INFO(scene->data) ;
@@ -283,7 +290,8 @@ static float loading_bar_trigger (Scene_t * scene, Event_t * event) {
 
     return (float)progress / 100 ; 
 }
-static void loading_bar (Scene_t * scene, float progress) {
+static 
+void loading_bar (Scene_t * scene, float progress) {
 
     List_t * listTexture = GET_LIST_TEXTURE(scene->data) ;
     Texture_t * loadingTexture = listTexture->item(listTexture, I_LOADING_WHEEL);
@@ -307,14 +315,17 @@ static void loading_bar (Scene_t * scene, float progress) {
     }
     
 }
-static float to_next_scene_trigger (Scene_t * scene, Event_t * event) {
+static 
+float to_next_scene_trigger (Scene_t * scene, Event_t * event) {
     InfoScene_t * info = GET_INFO(scene->data) ;
 
     if (info->currentTime >= event->execTime) {
         return 1.0f ;
     }
 
-    return 0.0f ;}
-static void to_next_scene (Scene_t * scene, float progress) {
+    return 0.0f ;
+}
+static 
+void to_next_scene (Scene_t * scene, float progress) {
     request_scene_change(sceneManager, "DESKTOP");
 }

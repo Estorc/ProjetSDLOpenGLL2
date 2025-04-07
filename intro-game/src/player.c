@@ -34,6 +34,8 @@ Player_t * player_constructor () {
     player->actionState = IDLE;
     player->animState = 0;
 
+    player->pv = 3 ;
+
     return player;
 }
 

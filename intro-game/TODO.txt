@@ -43,6 +43,7 @@ changer la maniere dont les texture_t sont detruite : il faudrait que les pointe
 detruis. Le pointeur sur sdl_texture sera un pointeur vers une texture commune partager par plusieurs Texture_t 
 free les sdl_texture causerais des double free(). la sdl_texture sera donc free en dehors des texture_t 
 
+changer l'update des texture_t pour qu'il update uniquement lorsque l'attribut hidden = FALSE
 
 
 === fait === 

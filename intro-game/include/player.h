@@ -10,7 +10,7 @@ extern GameStatus_t gameStatus ;
 #define PLAYER_WIDTH 150 
 #define PLAYER_HEIGHT 150  
 
-#define PLAYER_SPRITE_WIDTH 128
+#define PLAYER_SPRITE_WIDTH 128 
 #define PLAYER_SPRITE_HEIGHT 80
 
 #define JUMP_FORCE (PLAYER_HEIGHT * 2)
@@ -27,6 +27,8 @@ typedef struct Player_u {
     
     float acceleration, deceleration ;
     float vMax ;
+
+    uint8_t pv ;
 
     ActionState_t actionState ;
     int animState ;

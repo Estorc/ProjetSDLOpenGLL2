@@ -18,4 +18,5 @@ typedef struct StaticBody_u {
 
 void update_position (RigidBody_t * body);
 int check_collision (SDL_FRect * a, SDL_FRect * b);
+int SDL_Rect_check_collision(SDL_Rect * a, SDL_Rect * b);
 void ground_collision (RigidBody_t * object, SDL_FRect * ground);
