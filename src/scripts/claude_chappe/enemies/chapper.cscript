@@ -35,7 +35,7 @@ typedef enum ChapperState {
 
 
 NEW_SCRIPT(script_cc_chapper_init)
-    SET_ATTRIBUTES_COUNT(8);
+    SET_ATTRIBUTES_COUNT(9);
     float *realPos = &this->attribute[0].f;
     ChapperState *state = (ChapperState *) &this->attribute[3];
     float *timer = &this->attribute[5].f;
@@ -43,10 +43,16 @@ NEW_SCRIPT(script_cc_chapper_init)
     *state = CHAPPER_STATE_IDLE;
     glm_vec3_copy(this->pos, realPos);
     deferred_table_get(Game.storage, "Game::player", &this->attribute[7].node);
+    deferred_table_get(Game.storage, "Game::level", &this->attribute[8].node);
 END_SCRIPT(script_cc_chapper_init)
 
 NEW_SCRIPT(script_cc_chapper_update)
     GET_READY_PARAMETERS();
+    if (this->attribute[8].node && this->attribute[8].node->attribute[4].i == 4) {
+        this->flags &= ~NODE_ACTIVE;
+        this->flags &= ~NODE_VISIBLE;
+        return;
+    }
     float *realPos = &this->attribute[0].f;
     ChapperState *state = (ChapperState *) &this->attribute[3];
     Node *camera = this->attribute[4].node;

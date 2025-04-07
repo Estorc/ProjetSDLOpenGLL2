@@ -49,7 +49,7 @@ NEW_SCRIPT(script_cc_ending_video_update)
 	if (this->attribute[2].b) {
 		Game.window->fadeColor[3] += 1.0f * delta;
 		if (Game.window->fadeColor[3] >= 1.0f)
-            deferred_load_scene("assets/scenes/claude_chappe/level.scene");
+            deferred_load_scene("assets/scenes/claude_chappe/boot.scene");
 	} else {
 		if (Game.window->fadeColor[3] > 0.0f)
 			Game.window->fadeColor[3] -= 1.0f * delta;

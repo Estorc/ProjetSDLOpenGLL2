@@ -176,11 +176,6 @@ int get_video_audio(int64_t start_time, GLuint textureID) {
                 break;
             }
 
-            // Store video time for sync comparison
-            AVRational audio_time_base = formatContext->streams[audioStreamIndex]->time_base;
-            double audio_timestamp_ms = av_q2d(audio_time_base) * frame->pts * 1000.0;
-            audio_time = audio_timestamp_ms;
-
             int dataSize = av_samples_get_buffer_size(NULL, 1, frame->nb_samples, audioCodecContext->sample_fmt, 1);
             if (dataSize > 0) {
                 if (audioBufferSize < dataSize) {

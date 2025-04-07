@@ -129,3 +129,15 @@ NEW_SCRIPT(cc_level_flickering_light)
         this->flags &= ~NODE_LIGHT_ACTIVE;
     }
 END_SCRIPT(cc_level_flickering_light)
+
+NEW_SCRIPT(script_cc_end_trigger_update)
+    SET_ATTRIBUTES_COUNT(1);
+    GET_READY_PARAMETERS();
+    if (this->attribute[0].b) {
+        Game.window->fadeColor[3] += 2.0f * delta;
+        if (Game.window->fadeColor[3] >= 1.0f) {
+            fade_out_music(1000);
+            deferred_load_scene("assets/scenes/claude_chappe/ending.scene");
+        }
+    }
+END_SCRIPT(script_cc_end_trigger_update)

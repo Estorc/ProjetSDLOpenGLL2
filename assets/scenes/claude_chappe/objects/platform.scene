@@ -5,3 +5,4 @@ BoxCShape[m-19.75,-1,-51.5s2.5,1,2]{NULL,NULL,NULL}
 Model(assets/models/ClaudeChappe/plateforme_parcours.obj)
 Area(7,1)
 SphereCShape[m-19.75,0,-51.5s2,2,2]{NULL,NULL,NULL}
+{script_cc_init_platform,script_cc_update_platform, NULL}

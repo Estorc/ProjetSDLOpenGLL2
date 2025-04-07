@@ -1,0 +1,34 @@
+#include <raptiquax.h>
+#include <math/math_util.h>
+#include <storage/node.h>
+#include <render/camera.h>
+#include <gui/frame.h>
+#include <storage/queue.h>
+#include <storage/hash.h>
+#include <utils/scene.h>
+#include <io/audio.h>
+#include <render/lighting.h>
+#include <buffer.h>
+#include <window.h>
+#include <utils/random.h>
+#include <utils/deferred.h>
+#include <settings.h>
+
+#include <classes/classes.h>
+
+NEW_SCRIPT(script_cc_init_platform)
+    SET_ATTRIBUTES_COUNT(2);
+    this->attribute[0].f = this->parent->pos[1];
+END_SCRIPT(script_cc_init_platform)
+
+NEW_SCRIPT(script_cc_update_platform)
+    GET_READY_PARAMETERS();
+    if (this->attribute[1].b) {
+        this->parent->pos[1] += 2.0f * delta;
+    } else {
+        if (this->parent->pos[1] > this->attribute[0].f) {
+            this->parent->pos[1] -= 1.0f * delta;
+        } 
+    }
+    this->attribute[1].b = false;
+END_SCRIPT(script_cc_update_platform)

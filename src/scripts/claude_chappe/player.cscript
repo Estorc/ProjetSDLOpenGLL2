@@ -110,7 +110,11 @@ NEW_SCRIPT(script_cc_player_signal)
 				other->parent->attribute[4].node = this->children[0];
 				break;
 			case 7:
-				other->parent->pos[1] += 0.01f;
+				other->attribute[1].b = true;
+				break;
+
+			case 8:
+				other->attribute[0].b = true;
 				break;
 			
 			default:

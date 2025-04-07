@@ -15,7 +15,7 @@ anisor 0.000000
 map_Kd 4K_tiling_19_basecolor.jpg
 map_Pm 4K_tiling_19_metallic.jpg
 map_Pr 4K_tiling_19_roughness.jpg
-map_Bump -bm 0.100000 4K_tiling_19_normal.jpg
+map_Bump 4K_tiling_19_normal.jpg
 
 newmtl Dark_metal
 Ks 0.500000 0.500000 0.500000
@@ -31,7 +31,7 @@ aniso 0.000000
 anisor 0.000000
 map_Kd plane_divided_DefaultMaterial_BaseColor.jpg
 map_Pr plane_divided_DefaultMaterial_Roughness.jpg
-map_Bump -bm 1.000000 plane_divided_DefaultMaterial_Normal.jpg
+map_Bump plane_divided_DefaultMaterial_Normal.jpg
 
 newmtl Metal_Vent_Slats
 Ks 0.500000 0.500000 0.500000
@@ -62,7 +62,7 @@ anisor 0.000000
 map_Kd plastic07_diffuse.jpg
 map_Pm plastic_metallic.jpg
 map_Ks plastic_specular.jpg
-map_Bump -bm 1.000000 plastic_normal_opengl.jpg
+map_Bump plastic_normal_opengl.jpg
 
 newmtl STONE
 Ks 0.500000 0.500000 0.500000
@@ -78,7 +78,7 @@ Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
 map_Kd stone_C.jpg
-map_Bump -bm 1.000000 stone_N.jpg
+map_Bump stone_N.jpg
 
 newmtl Stone
 Ks 0.200000 0.200000 0.200000
@@ -92,8 +92,8 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
-map_Kd -s 1.5 1.5 1.5 stone-9_diffuse.jpg
-map_Pr -s 1.5 1.5 1.5 stone-9_smooth.jpg
+map_Kd stone-9_diffuse.jpg
+map_Pr stone-9_smooth.jpg
 
 newmtl Wood.120
 Ks 0.500000 0.500000 0.500000
@@ -107,8 +107,8 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
-map_Kd -s 3 3 3 wood-5-dark_diffuse.jpg
-map_Pr -s 3 3 3 wood-5_smooth.jpg
+map_Kd wood-5-dark_diffuse.jpg
+map_Pr wood-5_smooth.jpg
 
 newmtl plastic_bleu_foncé_amphi
 Kd 0.000778 0.004342 0.046442
