@@ -238,6 +238,8 @@ void draw_screen(Window *window, Node *scene, Camera *c, WorldShaders *shaders, 
     }
 
     swap_intermediate_fbo();
+    SDL_GetWindowSize(Game.window->sdl_window, &window_width, &window_height);
+    glViewport(0, 0, window_width, window_height);
     use_fbo(GL_FRAMEBUFFER, 0);
         glClear(GL_COLOR_BUFFER_BIT);
         use_shader(shaders->screen);
