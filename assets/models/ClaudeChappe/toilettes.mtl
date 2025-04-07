@@ -15,4 +15,4 @@ anisor 0.000000
 map_Kd plastic07_diffuse.jpg
 map_Pm plastic_metallic.jpg
 map_Ks plastic_specular.jpg
-map_Bump plastic_normal_opengl.jpg
+map_Bump -bm 1.000000 plastic_normal_opengl.jpg
