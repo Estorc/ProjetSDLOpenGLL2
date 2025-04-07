@@ -4,10 +4,13 @@
 #include <storage/node.h>
 #include <physics/bodies.h>
 #include <scripts/scripts.h>
+#include <window.h>
+#include <io/audio.h>
+#include <utils/deferred.h>
 
 
 NEW_SCRIPT(script_cc_player_init)
-	SET_ATTRIBUTES_COUNT(3);
+	SET_ATTRIBUTES_COUNT(6);
 	this->attribute[2].b = false; // Player haven't got the flashlight yet
 	table_insert(Game.storage, "Game::player", this);
 END_SCRIPT(script_cc_player_init)
@@ -17,6 +20,9 @@ NEW_SCRIPT(script_cc_player_update)
 
 	bool *menu_open = &this->attribute[0].b;
 	bool *stopped = &this->attribute[1].b;
+	bool *has_jumped = &this->attribute[3].b;
+	int *negative_vel_duration = &this->attribute[4].i;
+	bool *has_fallen = &this->attribute[5].b;
 	if (*stopped) return;
 
 	if (Game.input->released_keys & KEY_MENU) {
@@ -38,27 +44,55 @@ NEW_SCRIPT(script_cc_player_update)
 	vec3 appliedVelocity;
 	glm_vec3_zero(appliedVelocity);
 
+	if (player->velocity[1] < 0.0f) {
+		(*negative_vel_duration)++;
+	} else {
+		*negative_vel_duration = 0;
+	}
+
+	if (this->globalPos[1] < -10.0f) *has_fallen = true;
+
+	if (*has_fallen) { // Player fell off the map
+		if (Game.window->fadeColor[3] <= 0.0f) Mix_FadeOutMusic(1000);
+		if (Game.window->fadeColor[3] < 1.0f) {
+			Game.window->fadeColor[3] += 3.0f * delta;
+			Game.window->fadeColor[0] += 1.0f * delta;
+		}
+		if (Game.window->fadeColor[3] >= 1.0f) {
+			Game.window->fadeColor[0] -= 1.0f * delta;
+		}
+		if (Game.window->fadeColor[0] <= 0.0f) {
+			deferred_load_scene("assets/scenes/claude_chappe/boot.scene");
+			SDL_SetRelativeMouseMode(SDL_FALSE);
+		}
+	}
+
+	if (player->velocity[1] < -0.5f * delta || *negative_vel_duration >= 5) {
+		*has_jumped = false;
+	}
+
 	if (!*menu_open) {
 		SDL_SetRelativeMouseMode(SDL_TRUE);
 
 		if (Game.input->active_keys & KEY_LEFT) {
-			appliedVelocity[0] += dir[2] * vel;
-			appliedVelocity[2] -= dir[0] * vel;
+			appliedVelocity[0] += dir[2];
+			appliedVelocity[2] -= dir[0];
 		};
 		if (Game.input->active_keys & KEY_RIGHT) {
-			appliedVelocity[0] -= dir[2] * vel;
-			appliedVelocity[2] += dir[0] * vel;
+			appliedVelocity[0] -= dir[2];
+			appliedVelocity[2] += dir[0];
 		};
 		if (Game.input->active_keys & KEY_UP) {
-			appliedVelocity[0] += dir[0] * vel;
-			appliedVelocity[2] += dir[2] * vel;
+			appliedVelocity[0] += dir[0];
+			appliedVelocity[2] += dir[2];
 		};
 		if (Game.input->active_keys & KEY_DOWN) {
-			appliedVelocity[0] -= dir[0] * vel;
-			appliedVelocity[2] -= dir[2] * vel;
+			appliedVelocity[0] -= dir[0];
+			appliedVelocity[2] -= dir[2];
 		};
 
-		if (Game.input->pressed_keys & KEY_JUMP) {
+		if (Game.input->pressed_keys & KEY_JUMP && player->velocity[1] < 5.0f * delta && player->velocity[1] >= -0.5f * delta && !(*has_jumped)) {
+			*has_jumped = true;
 			player->velocity[1] = 0.2f;
 		};
 
@@ -66,7 +100,10 @@ NEW_SCRIPT(script_cc_player_update)
 
 	else SDL_SetRelativeMouseMode(SDL_FALSE);
 
-		
+	
+	glm_vec3_normalize(appliedVelocity);
+	glm_vec3_scale(appliedVelocity, vel, appliedVelocity);
+
     // Smooth velocity adjustment using delta
     player->velocity[0] += (appliedVelocity[0] - player->velocity[0]) * (delta * 4.0f);
     player->velocity[2] += (appliedVelocity[2] - player->velocity[2]) * (delta * 4.0f);
@@ -83,6 +120,7 @@ NEW_SCRIPT(script_cc_player_signal)
 	KinematicBody *player = (KinematicBody*) this->object;
 	bool *menu_open = &this->attribute[0].b;
 	bool *stopped = &this->attribute[1].b;
+	bool *has_fallen = &this->attribute[5].b;
 	if (*stopped) return;
 	GET_SIGNAL();
 	switch(signal) {
@@ -115,6 +153,10 @@ NEW_SCRIPT(script_cc_player_signal)
 
 			case 8:
 				other->attribute[0].b = true;
+				break;
+
+			case 9:
+				*has_fallen = true;
 				break;
 			
 			default:

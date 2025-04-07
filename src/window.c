@@ -90,7 +90,7 @@ s8 create_window(char *title, s32 x, s32 y, s32 width, s32 height, u32 flags, Wi
         return -1;
     }
 
-    if (init_video() == 0) {
+    if (init_video_player() == 0) {
         fprintf(stderr, "Failed to open audio device: %s\n", SDL_GetError());
         return -1;
     }
@@ -234,5 +234,9 @@ void free_window(Window *window) {
     SDL_FreeSurface(window->ui_surface);
     SDL_DestroyWindow(window->sdl_window);
     glDeleteTextures(1, &window->ui_texture);
+    free_video_player();
+    Mix_CloseAudio();
+    Mix_Quit();
+    TTF_Quit();
     PRINT_INFO("Free window!\n");
 }

@@ -22,7 +22,7 @@ NEW_SCRIPT(script_cc_ending_video_init)
     SET_ATTRIBUTES_COUNT(3);
     this->attribute[1].b = true;
 
-    if (loadVideo("assets/video/ending.mp4") < 0) {
+    if (load_video("assets/video/ending.mp4") < 0) {
         this->attribute[1].b = false;
         PRINT_ERROR("Failed to load video file: %s\n", SDL_GetError());
     }

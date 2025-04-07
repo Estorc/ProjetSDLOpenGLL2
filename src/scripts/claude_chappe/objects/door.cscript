@@ -19,9 +19,10 @@
 static char text[256];
 static char locked_text[256];
 NEW_SCRIPT(script_cc_door_init)
-    SET_ATTRIBUTES_COUNT(3);
+    SET_ATTRIBUTES_COUNT(4);
     deferred_table_get(Game.storage, "Game::alabel", &this->attribute[0].node);
     deferred_table_get(Game.storage, "Game::player", &this->attribute[2].node);
+    deferred_table_get(Game.storage, "Game::level", &this->attribute[3].node);
     sprintf(text, "Appuyez sur [%s] pour ouvrir la porte", SDL_GetKeyName(Game.settings->keybinds.interact));
     sprintf(locked_text, "La porte est verrouillée !");
 END_SCRIPT(script_cc_door_init)
@@ -32,10 +33,8 @@ NEW_SCRIPT(script_cc_asimov_door_init)
 END_SCRIPT(script_cc_asimov_door_init)
 
 NEW_SCRIPT(script_cc_locked_door_init)
-    SET_ATTRIBUTES_COUNT(4);
     script_cc_door_init(this, NULL);
     this->attribute[1].i = 2;
-    deferred_table_get(Game.storage, "Game::level", &this->attribute[3].node);
 END_SCRIPT(script_cc_locked_door_init)
 
 NEW_SCRIPT(script_cc_door_update)
@@ -63,12 +62,6 @@ NEW_SCRIPT(script_cc_door_chapper_update)
     if (this->attribute[1].i == 2 && this->attribute[3].node && this->attribute[3].node->attribute[4].i == 3) this->attribute[1].i = 0;
     if (this->attribute[1].i == 1) {
         float_approach(&this->rot[1], 90.0f, 0.1f);
-        if (glm_vec3_distance2(this->globalPos, this->attribute[2].node->globalPos) > sqr(10.0f)) {
-            this->attribute[1].i = 2;
-            this->parent->parent->children[1]->flags |= NODE_ACTIVE;
-            this->parent->parent->children[1]->flags |= NODE_VISIBLE;
-            play_music("assets/audio/musics/maquette_music_chapper.mp3", MIX_MAX_VOLUME, -1);
-        }
     }
     else float_approach(&this->rot[1], 0.0f, 0.1f);
 END_SCRIPT(script_cc_door_chapper_update)

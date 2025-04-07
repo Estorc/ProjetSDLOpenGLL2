@@ -23,8 +23,6 @@ NEW_SCRIPT(script_cc_camera_player)
 	GET_READY_PARAMETERS();
 	SET_ATTRIBUTES_COUNT(3);
 
-	glm_vec3_print(this->globalPos, stdout);
-
 	float *targetRot = &this->attribute[0].f;
 
 	if (!this->parent->attribute[0].b) {

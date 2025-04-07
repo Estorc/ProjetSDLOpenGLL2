@@ -17,8 +17,10 @@
 #include <classes/classes.h>
 
 NEW_SCRIPT(script_cc_init_platform)
-    SET_ATTRIBUTES_COUNT(2);
+    SET_ATTRIBUTES_COUNT(4);
     this->attribute[0].f = this->parent->pos[1];
+    deferred_table_get(Game.storage, "Game::alabel", &this->attribute[2].node);
+    deferred_table_get(Game.storage, "Game::level", &this->attribute[3].node);
 END_SCRIPT(script_cc_init_platform)
 
 NEW_SCRIPT(script_cc_update_platform)
@@ -32,3 +34,30 @@ NEW_SCRIPT(script_cc_update_platform)
     }
     this->attribute[1].b = false;
 END_SCRIPT(script_cc_update_platform)
+
+
+NEW_SCRIPT(script_cc_update_final_platform)
+    GET_READY_PARAMETERS();
+    Node * label = this->attribute[2].node;
+
+    if (this->attribute[1].b) {
+        if (this->attribute[3].node && this->attribute[3].node->attribute[4].i == 4) {
+            this->parent->pos[1] += 2.0f * delta;
+        } else {
+            if (label) {
+                label->flags |= NODE_ACTIVE;
+                label->flags |= NODE_VISIBLE;
+                label::set_text("La plateforme ascensionnelle nécessite\ndu courant électrique !");
+            }
+        }
+    } else {
+        if (label) {
+            label->flags &= ~NODE_ACTIVE;
+            label->flags &= ~NODE_VISIBLE;
+        }
+        if (this->parent->pos[1] > this->attribute[0].f) {
+            this->parent->pos[1] -= 1.0f * delta;
+        } 
+    }
+    this->attribute[1].b = false;
+END_SCRIPT(script_cc_update_final_platform)

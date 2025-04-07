@@ -16,6 +16,7 @@
 NEW_SCRIPT(title_screen_init)
 	SET_ATTRIBUTES_COUNT(1);
 	this->attribute[0].b = false;
+	SDL_SetRelativeMouseMode(SDL_FALSE);
 	play_music("assets/audio/musics/Menu (launch) theme 2.mp3", MIX_MAX_VOLUME, -1);
 END_SCRIPT(title_screen_init)
 

@@ -35,7 +35,7 @@ int initSDL() {
     }
 
 
-    if (init_video() == 0) {
+    if (init_video_player() == 0) {
         fprintf(stderr, "Failed to open audio device: %s\n", SDL_GetError());
         exit(1);
     }
@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
         return -1;
     }
 
-    if (loadVideo(argv[1]) < 0) {
+    if (load_video(argv[1]) < 0) {
         return -1;
     }
 

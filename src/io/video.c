@@ -36,7 +36,7 @@ AVPacket packet;
 int packet_state = -1;
 
 
-int init_video() {
+int init_video_player() {
     // Initialize SDL audio
     SDL_AudioSpec wantedSpec;
     SDL_zero(wantedSpec);
@@ -51,10 +51,23 @@ int init_video() {
 }
 
 
+void free_video() {
+    // Free resources
+    av_freep(&buffer);
+    av_frame_free(&frame);
+    av_frame_free(&rgbFrame);
+    sws_freeContext(swsContext);
+    avcodec_free_context(&codecContext);
+    avformat_close_input(&formatContext);
+}
+
+void free_video_player() {
+    SDL_CloseAudioDevice(audioDevice); // Close the audio device
+}
 
 
 // Function to load the MP4 file using FFmpeg
-int loadVideo(const char* filename) {
+int load_video(const char* filename) {
     //av_register_all(); DEPRECATED
     avformat_network_init();
 
@@ -62,13 +75,13 @@ int loadVideo(const char* filename) {
 
     // Open video file
     if (avformat_open_input(&formatContext, filename, NULL, NULL) != 0) {
-        printf("Could not open video file: %s\n", filename);
+        PRINT_WARNING("Could not open video file: %s\n", filename);
         return -1;
     }
 
     // Find video stream
     if (avformat_find_stream_info(formatContext, NULL) < 0) {
-        printf("Could not find stream information\n");
+        PRINT_WARNING("Could not find stream information\n");
         return -1;
     }
 
@@ -82,12 +95,12 @@ int loadVideo(const char* filename) {
     }
 
     if (videoStreamIndex == -1) {
-        printf("No video stream found!\n");
+        PRINT_WARNING("No video stream found!\n");
         return -1;
     }
 
     if (audioStreamIndex == -1) {
-        printf("No audio stream found!\n");
+        PRINT_WARNING("No audio stream found!\n");
         return -1;
     }
 
@@ -97,7 +110,7 @@ int loadVideo(const char* filename) {
     avcodec_parameters_to_context(audioCodecContext, formatContext->streams[audioStreamIndex]->codecpar);
     audioCodec = avcodec_find_decoder(audioCodecContext->codec_id);
     if (!audioCodec || avcodec_open2(audioCodecContext, audioCodec, NULL) < 0) {
-        fprintf(stderr, "Failed to open audio codec\n");
+        PRINT_ERROR("Failed to open audio codec\n");
         exit(1);
     }
 
@@ -106,12 +119,12 @@ int loadVideo(const char* filename) {
     avcodec_parameters_to_context(codecContext, formatContext->streams[videoStreamIndex]->codecpar);
     codec = avcodec_find_decoder(codecContext->codec_id);
     if (!codec) {
-        printf("Codec not found!\n");
+        PRINT_WARNING("Codec not found!\n");
         return -1;
     }
 
     if (avcodec_open2(codecContext, codec, NULL) < 0) {
-        printf("Could not open codec!\n");
+        PRINT_WARNING("Could not open codec!\n");
         return -1;
     }
 
@@ -119,7 +132,7 @@ int loadVideo(const char* filename) {
     frame = av_frame_alloc();
     rgbFrame = av_frame_alloc();
     if (!frame || !rgbFrame) {
-        printf("Could not allocate frame memory!\n");
+        PRINT_WARNING("Could not allocate frame memory!\n");
         return -1;
     }
 
@@ -128,14 +141,12 @@ int loadVideo(const char* filename) {
     buffer = (uint8_t*)av_malloc(numBytes * sizeof(uint8_t));
     av_image_fill_arrays(rgbFrame->data, rgbFrame->linesize, buffer, AV_PIX_FMT_RGB24, codecContext->width, codecContext->height, 1);
 
-    printf("Width: %d, Height: %d\n", codecContext->width, codecContext->height);
-
     // Initialize SwsContext for conversion
     swsContext = sws_getContext(codecContext->width, codecContext->height, codecContext->pix_fmt,
                                 codecContext->width, codecContext->height, AV_PIX_FMT_RGB24,
                                 SWS_FAST_BILINEAR, NULL, NULL, NULL);
     if (!swsContext) {
-        fprintf(stderr, "Erreur: sws_getContext a échoué.\n");
+        PRINT_ERROR("Could not initialize the conversion context\n");
         exit(EXIT_FAILURE);
     }
     return 0;
@@ -144,6 +155,7 @@ int loadVideo(const char* filename) {
 
 // Function to render the decoded frame using OpenGL
 void renderFrame(GLuint textureID) {
+    if (quit == -1) return; // Check if quit flag is set
     glBindTexture(GL_TEXTURE_2D, textureID);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, codecContext->width, codecContext->height, 0, GL_RGB, GL_UNSIGNED_BYTE, rgbFrame->data[0]);
 }
@@ -252,6 +264,8 @@ int play_video_loop(void *args) {
         get_video_audio(start_time, *textureID); // Pass the start time to playVideo
         flush_video();
     }
+    free_video(); // Free video resources
+    SDL_DestroyMutex(sdl_mutex); // Destroy the mutex
     if (callback) callback(); // Call the callback function after video playback
     return 0;
 }
@@ -264,20 +278,20 @@ int play_video_async(GLuint *textureID, void (*callback)()) {
     // Initialize SDL mutex
     sdl_mutex = SDL_CreateMutex();
     if (!sdl_mutex) {
-        fprintf(stderr, "Failed to create SDL mutex: %s\n", SDL_GetError());
+        PRINT_ERROR("Failed to create SDL mutex: %s\n", SDL_GetError());
         return -1;
     }
     // Create a thread to handle video playback
     void **args = malloc(2 * sizeof(void*));
     if (!args) {
-        fprintf(stderr, "Failed to allocate memory for thread arguments\n");
+        PRINT_ERROR("Failed to allocate memory for thread arguments\n");
         return -1;
     }
     args[0] = textureID; // Pass the texture ID to the thread
     args[1] = callback; // Pass the callback function to the thread
     SDL_Thread* videoThread = SDL_CreateThread(play_video_loop, "VideoThread", args);
     if (!videoThread) {
-        fprintf(stderr, "Failed to create video thread: %s\n", SDL_GetError());
+        PRINT_ERROR("Failed to create video thread: %s\n", SDL_GetError());
         return -1;
     }
 
@@ -290,14 +304,4 @@ int flush_video() {
         av_packet_unref(&packet);
     }
     return 0;
-}
-
-void free_video() {
-    // Free resources
-    av_freep(&buffer);
-    av_frame_free(&frame);
-    av_frame_free(&rgbFrame);
-    sws_freeContext(swsContext);
-    avcodec_free_context(&codecContext);
-    avformat_close_input(&formatContext);
 }
