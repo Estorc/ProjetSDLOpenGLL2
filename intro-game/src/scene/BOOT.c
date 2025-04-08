@@ -8,6 +8,7 @@
 #include "../include/texture_loader.h"
 #include "../include/list.h" 
 #include "../include/event.h"
+#include "../include/camera.h"
 
 
 #define STATE_LOADING 0
@@ -16,6 +17,8 @@
 #define I_LOADING_WHEEL 0
 #define I_BLIS_FL5 1
 
+// fonction de changelment d'etat 
+static void BOOT_change_state (Scene_t * self, InfoScene_t * info) ;
 
 // scripts evenements 
 static float imageFadeIn_trigger (Scene_t * scene, Event_t * event) ;
@@ -81,6 +84,9 @@ void BOOT_load (Scene_t * self) {
 
     // ajoute la liste des texture dans la data de la scene 
     dict->set(dict, "listTexture", listTexture, destroy_list_cb) ;
+
+    Camera_t * camera = camera_constructor(NULL) ;
+    dict->set(dict, "camera", camera, camera_destructor_cb) ;
 
     // recupere la date de lancement en millisecondes
     info->startTime = SDL_GetTicks() ;
@@ -180,17 +186,19 @@ void BOOT_update (Scene_t * self, SceneManager_t * manager) {
 void BOOT_render (Scene_t * self) {
 
     List_t * listTexture = GET_LIST_TEXTURE(self->data) ;
+    Camera_t * camera = GET_CAMERA(self->data) ;
+
     for (int i = 0; i < listTexture->size; i++) {
 
         Texture_t * texture = listTexture->item(listTexture, i) ;
-        draw_texture(texture);
+        draw_texture(texture, camera);
     }
 
 }
 
 
 
-
+static 
 void BOOT_change_state (Scene_t * self, InfoScene_t * info) {
 
     switch (info->nextState) {

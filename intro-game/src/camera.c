@@ -16,7 +16,10 @@ Camera_t * camera_constructor (Player_t * player) {
     cam->y = 0;
     cam->width = CAMERA_WIDTH;
     cam->height = CAMERA_HEIGHT;
-    cam->deadzone = player->body.position.w * 1.5;
+    if (player != NULL) 
+        cam->deadzone = player->body.position.w * 1.5 ;
+    else
+        cam->deadzone = 50 ; 
     cam->followPlayer = FALSE;
 
     return cam;

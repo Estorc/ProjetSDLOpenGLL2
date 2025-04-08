@@ -62,14 +62,17 @@ typedef struct TextAnim_u {
  
 
 err_t draw_text (Text_t * text) ;
-void draw_texture (Texture_t * texture) ;
+void draw_texture (Texture_t * texture, Camera_t * camera) ;
 void draw_map (Map_t * map, Camera_t * camera) ;
 void draw_desktop (Desktop_t * desktop) ;
 int draw (Camera_t * camera, Player_t * player, Map_t * map) ;
+void draw_player_pv (Player_t * player, SDL_Texture * texture) ;
+
 int generate_noise_texture(int width, int height) ;
 void destroy_noise_texture () ;
 int generate_desktop_glitch_texture () ;
 void destroy_desktop_glitch_texture () ;
+void apply_glitch(Camera_t * camera, SDL_Texture * texture) ;
 
 void draw_rect_filled (SDL_Rect rect, SDL_Color color) ;
 void draw_rect_border (SDL_Rect rect, SDL_Color color) ;

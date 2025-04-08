@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
     push_scene(sceneManager, bootScene);
     push_scene(sceneManager, desktopScene);
     push_scene(sceneManager, level1Scene);
-    request_scene_change(sceneManager, "BOOT");
+    request_scene_change(sceneManager, "DESKTOP");
     change_scene(sceneManager);
     
     // Boucle principale

@@ -16,4 +16,3 @@ void BOOT_unLoad (Scene_t * self) ;
 void BOOT_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * manager) ;
 void BOOT_update (Scene_t * self, SceneManager_t * manager) ;
 void BOOT_render (Scene_t * self) ; 
-void BOOT_change_state (Scene_t * self, InfoScene_t * info) ;

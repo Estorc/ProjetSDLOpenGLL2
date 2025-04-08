@@ -9,7 +9,9 @@
 #define MAX_SCENES 10
 
 #define GET_LIST_TEXTURE(dict) dict->get(dict, "listTexture") 
+#define GET_LIST_SDL_TEXTURE(dict) dict->get(dict, "listSDL_Texture") 
 #define GET_LIST_TEXT(dict) dict->get(dict, "listText") 
+#define GET_LIST_FONT(dict) dict->get(dict, "listFont") 
 #define GET_INFO(dict) dict->get(dict, "info")
 #define GET_EVENT_MANAGER(dict) dict->get(dict, "eventManager")
 #define GET_DESKTOP(dict) dict->get(dict, "desktop")

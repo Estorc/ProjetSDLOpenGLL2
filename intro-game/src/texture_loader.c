@@ -130,7 +130,7 @@ void texture_list_update (List_t * list) {
 void texture_list_update_from_file (List_t * list, const char * dataPath) {
 
     if (!existe(list)) {
-        printf("Impossible d'update le listTexture car list NULL\n");
+        printf("Impossible d'update le listTexture car list NULL\n"); 
         return ;
     }
     

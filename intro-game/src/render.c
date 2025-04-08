@@ -14,6 +14,7 @@ void draw_rect_filled (SDL_Rect rect, SDL_Color color) {
 
 
 void draw_rect_border (SDL_Rect rect, SDL_Color color) {
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderDrawRect(renderer, &rect);
 }
@@ -40,30 +41,31 @@ err_t draw_text (Text_t * text) {
 } 
 
 
-void draw_texture (Texture_t * texture) {
+void draw_texture (Texture_t * texture, Camera_t * camera) {
 
     if (existe(texture)) {
 
         if (texture->hidden == FALSE) {
 
             double angle ;
+            SDL_Rect dstrect = {texture->position.x - camera->x, texture->position.y - camera->y, texture->position.w, texture->position.h} ;
             switch (texture->typeAnim) {
                 case NONE : 
                     if (!compare_SDL_Rect(texture->srcrect, (SDL_Rect){0, 0, 0, 0})) {
-                        SDL_RenderCopy(renderer, texture->texture, NULL, &texture->position);
+                        SDL_RenderCopy(renderer, texture->texture, NULL, &dstrect);
                     }
                     else { 
-                        SDL_RenderCopy(renderer, texture->texture, &texture->srcrect, &texture->position);
+                        SDL_RenderCopy(renderer, texture->texture, &texture->srcrect, &dstrect);
                     }
                     break;
                     
                 case DEFAULT : 
                     if (!compare_SDL_Rect(texture->srcrect, (SDL_Rect){0, 0, 0, 0})) {
-                        SDL_RenderCopy(renderer, texture->texture, NULL, &texture->position);
+                        SDL_RenderCopy(renderer, texture->texture, NULL, &dstrect);
                     }
                     else { 
                         texture->srcrect.x = texture->srcrect.w * texture->currentFrame ;
-                        SDL_RenderCopy(renderer, texture->texture, &texture->srcrect, &texture->position);
+                        SDL_RenderCopy(renderer, texture->texture, &texture->srcrect, &dstrect);
                     }
                     break;
                 
@@ -71,10 +73,10 @@ void draw_texture (Texture_t * texture) {
                     angle = (360.0 / (texture->numFrames)) * texture->currentFrame ;
                 
                     if (!compare_SDL_Rect(texture->srcrect, (SDL_Rect){0, 0, 0, 0})) {
-                        SDL_RenderCopyEx(renderer, texture->texture, NULL, &texture->position, angle, NULL, SDL_FLIP_NONE);
+                        SDL_RenderCopyEx(renderer, texture->texture, NULL, &dstrect, angle, NULL, SDL_FLIP_NONE);
                     }
                     else { 
-                        SDL_RenderCopyEx(renderer, texture->texture, &texture->srcrect, &texture->position, angle, NULL, SDL_FLIP_NONE);
+                        SDL_RenderCopyEx(renderer, texture->texture, &texture->srcrect, &dstrect, angle, NULL, SDL_FLIP_NONE);
                     }
                     break;
                 
@@ -100,10 +102,9 @@ void draw_map (Map_t * map, Camera_t * camera) {
     if ((srcrect.x + srcrect.w) > BACKGROUND_WIDTH) srcrect.x = BACKGROUND_WIDTH - srcrect.w;
     SDL_RenderCopy(renderer, map->background, &srcrect, NULL);
 
-    printf("affichage de %d obj\n", map->listObjects->size);
     for (int i = 0; i < map->listObjects->size; i++) {
         MapObj_t * object = map->listObjects->item(map->listObjects, i) ;
-        draw_texture(&object->sprite);
+        draw_texture(&object->sprite, camera);
     }
 
     // methode affichage complet de la map sur une position bien precise 
@@ -279,6 +280,38 @@ void draw_player (Player_t * player, Camera_t * camera) {
 }
 
 
+void draw_player_pv (Player_t * player, SDL_Texture * texture) {
+
+    if (player == NULL || texture == NULL) {
+        printf("Impossible d'afficher les pv car player ou texture NULL\n");
+        return ;
+    }
+
+
+    SDL_Rect srcrect = {0, 0, 16, 16} ;
+    SDL_Rect dstrect = {30, 20, 32, 32} ;
+
+    int i = 0 ;
+
+    // affiche les coeurs plein 
+    while (i < player->pv) {
+        SDL_RenderCopy(renderer, texture, &srcrect, &dstrect);
+        dstrect.x += dstrect.w ;
+        i++;
+    }
+
+    // pour afficher une autre partie de la texture 
+    srcrect.x += srcrect.w * 2 ;
+
+    // affiche les coeurs vides 
+    while (i < 3) {
+        SDL_RenderCopy(renderer, texture, &srcrect, &dstrect);
+        dstrect.x += dstrect.w ;
+        i++;
+    }
+}
+
+
 static SDL_Texture * noiseTexture ;
 int generate_noise_texture(int width, int height) {
     
@@ -332,7 +365,7 @@ void destroy_desktop_glitch_texture () {
 }
 
 
-void apply_glitch(Camera_t * camera, SDL_Texture *texture, int width, int height) {
+void apply_glitch(Camera_t * camera, SDL_Texture *texture) {
     
     int axis = rand() % 2 ; // 0 pour horizontal, 1 pour vertical
 
@@ -386,7 +419,7 @@ int draw (Camera_t * camera, Player_t * player, Map_t * map) {
     draw_map(map, camera);
     draw_player(player, camera);
     // if (rand() % 10 > 6)
-    //     apply_glitch(camera, map->background, BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
+    //     apply_glitch(camera, map->background);
 
     return 0;
 }

@@ -13,13 +13,26 @@
 #include "../include/camera.h"
 
 
+// etat de la scène
+#define STATE_PLAYING 0
+#define STATE_DEAD 1
+
+// indice de la sprite sheet dans la listSpriteSheet
 #define FLAME_BALL 0 
 
+// indice des SDL_Texture dans la listSDL_Texture 
+#define INDEX_BLACK_HEART 0 
+
+// indice des text dans la listText 
+#define INDEX_MSG_RETRY 2
+
+
+// fonction de changement d'etat 
+static void change_state (Scene_t * self, InfoScene_t * info) ;
 
 // ensemble des evenements de la scene
 static float new_projectile_trigger (Scene_t * scene, Event_t * event) ;
 static void new_projectile (Scene_t * scene, float progress) ;
-
 
 static void init_flame_ball_vertical (MapObj_t * object, List_t * listSpriteSheet, size_t idSpriteSheet) ;
 static void init_map (Map_t * map) ;
@@ -49,6 +62,8 @@ void LEVEL1_load (Scene_t * self) {
     }
     info->len = 4;
     info->end = FALSE ;
+
+    dict->set(dict, "info", info, free_cb);
 
 
     Player_t * player = player_constructor();
@@ -81,14 +96,56 @@ void LEVEL1_load (Scene_t * self) {
 
     EventManager_t * eventManager = create_event_manager() ;
     if (!existe(eventManager)) {
+        fprintf(stderr, "Erreur creation eventManager\n");
         destroy_dictionary(&self->data);
         return ;
     }
     dict->set(dict, "eventManager", eventManager, destroy_event_manager_cb);
 
 
-    // Stockage dans `self->data`
-    dict->set(dict, "info", info, free_cb);
+    List_t * listSDL_Texture = create_list(SDL_DestroyTexture_cb) ;
+    if (!existe(listSDL_Texture)) {
+        fprintf(stderr, "Erreur creation listSDL_Texture\n");
+        destroy_dictionary(&self->data);
+        return ;
+    }
+    dict->set(dict, "listSDL_Texture", listSDL_Texture, destroy_list_cb);
+    
+    SDL_Texture * blackHeart = load_png("intro-game/assets/BlackHeart.png") ; 
+    listSDL_Texture->stack(listSDL_Texture, blackHeart) ;
+
+
+    List_t * listText = create_list(destroy_text_cb) ;
+    if (listText == NULL) {
+        fprintf(stderr, "Erreur creation listText\n");
+        destroy_dictionary(&self->data);
+        return ;
+    }
+    dict->set(dict, "listText", listText, destroy_list_cb) ;
+
+    List_t * listFont = create_list(TTF_CloseFont_cb) ;
+    if (listFont == NULL) {
+        fprintf(stderr, "Erreur creation listFont\n");
+        destroy_dictionary(&self->data);
+        return ;
+    }
+    dict->set(dict, "listFont", listFont, destroy_list_cb);
+
+    TTF_Font * font0 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 16) ;
+    TTF_Font * font1 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 20) ;
+    TTF_Font * font2 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 22) ;
+    listFont->stack(listFont, font0);
+    listFont->stack(listFont, font1);
+    listFont->stack(listFont, font2);
+
+
+    load_texts_from_file("intro-game/data/textsLevel1.csv", listFont, listText);
+
+
+    info->nextState = STATE_PLAYING ;
+    change_state(self, info);
+    info->startTime = SDL_GetTicks() ;
+    
 
     printf("[INFO] : Chargement des données LEVEL1 réussi\n");
     
@@ -130,12 +187,6 @@ void LEVEL1_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * ma
                 break;
             case SDL_KEYDOWN :
                 switch (event->key.keysym.sym) {
-                    case SDLK_q :
-                        break;
-                    case SDLK_d :
-                        break;
-                    case SDLK_SPACE :
-                        break;
                     case SDLK_BACKSPACE : 
                         info->end = TRUE ;
                         break;
@@ -144,6 +195,11 @@ void LEVEL1_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * ma
                         break;
                     case SDLK_i :
                         printf("INFO :\nplayer x, y, vx, vy : %f %f %f %f\ncamera x, y : %f %f\n", player->body.position.x, player->body.position.y, player->body.vx, player->body.vy, camera->x, camera->y);
+                        break;
+                    case SDLK_r : 
+                        if (info->state == STATE_DEAD) {
+                            request_scene_change(sceneManager, "DESKTOP");
+                        }
                         break;
                     default :
                         break;
@@ -159,9 +215,10 @@ void LEVEL1_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * ma
     }
 
 
-    const uint8_t * keys = SDL_GetKeyboardState(NULL);
-    handle_input(keys, player);
-
+    if (info->state != STATE_DEAD) {
+        const uint8_t * keys = SDL_GetKeyboardState(NULL);
+        handle_input(keys, player);
+    }
 
     EventManager_t * eventManager = GET_EVENT_MANAGER(self->data) ;
     process_events(eventManager, self);
@@ -173,26 +230,71 @@ void LEVEL1_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * ma
 
 void LEVEL1_update (Scene_t * self, SceneManager_t * manager) {
 
-    EventManager_t * eventManager = GET_EVENT_MANAGER(self->data) ;
+    InfoScene_t * info = GET_INFO(self->data) ;
 
-    Player_t * player = GET_PLAYER(self->data) ;
-    Map_t * map = GET_MAP(self->data) ;
-    Camera_t * camera = GET_CAMERA(self->data) ;
 
-    // met a jour la position des objets dynamique 
-    update_player(player, &map->ground);
-    update_camera(camera, player);
-    map_update(self, map, player);
+    switch(info->state) {
 
-    if ( (rand() % 100) == 0 ) {
-        add_event(eventManager, 0, 0, new_projectile_trigger, new_projectile);
+    case STATE_PLAYING :;
+
+        Player_t * player = GET_PLAYER(self->data) ;
+        Map_t * map = GET_MAP(self->data) ;
+        Camera_t * camera = GET_CAMERA(self->data) ;    
+
+        update_player(player, &map->ground);
+        update_camera(camera, player);
+        map_update(self, map, player);
+
+        if ( (rand() % 60) == 0 ) {
+            EventManager_t * eventManager = GET_EVENT_MANAGER(self->data) ;
+            add_event(eventManager, 0, 0, new_projectile_trigger, new_projectile);
+        }
+
+        gameStatus.updateCount++;
+        if (gameStatus.updateCount == 5) {
+            gameStatus.updateCount = 0;
+            update_player_anim_state (player);
+        }   
+
+        if (player->pv == 0) {
+            info->nextState = STATE_DEAD ;
+            printf("passaeg au state dead\n");
+        }
+        break; 
+    
+    case STATE_DEAD :;
+        List_t * listText = GET_LIST_TEXT(self->data) ;
+        List_t * listFont = GET_LIST_FONT(self->data) ;
+
+        // demarre l'animation du text1 lorsque le text0 a terminer son animation
+        Text_t * text1 = listText->item(listText, 1) ;
+        if (text1->hidden == TRUE) {
+
+            Text_t * text0 = listText->item(listText, 0) ;
+            if (text0->animation.playing == FALSE) {
+                text1->hidden = FALSE ;
+            }
+        }
+
+        text_list_update_from_file(listText, listFont, "intro-game/data/textsLevel1.csv");
+
+
+        Text_t * msgRetry = listText->item(listText, INDEX_MSG_RETRY) ;
+        if (msgRetry->hidden == TRUE && info->currentTime - info->startTime >= 2000) {
+            msgRetry->hidden = FALSE ;
+        }
+
+        break;
+
+    default :
+        break;
     }
 
-    gameStatus.updateCount++;
-    if (gameStatus.updateCount == 5) {
-        gameStatus.updateCount = 0;
-        update_player_anim_state (player);
-    }    
+
+    // effectue le changement d'etat de la scene 
+    if (info->nextState != info->state) {
+        change_state(self, info);   
+    }
 
     return ; 
 }
@@ -200,15 +302,64 @@ void LEVEL1_update (Scene_t * self, SceneManager_t * manager) {
 
 void LEVEL1_render (Scene_t * self) {
 
+    InfoScene_t * info = GET_INFO(self->data) ;
+
     Player_t * player = GET_PLAYER(self->data) ;
     Map_t * map = GET_MAP(self->data) ;
     Camera_t * camera = GET_CAMERA(self->data) ;
 
+
     // dessine le rendu 
-    if (draw (camera, player, map)) {
-        gameStatus.running = 0;
+    draw (camera, player, map);
+
+    
+    // affiche les pv restant 
+    List_t * listSDL_Texture = GET_LIST_SDL_TEXTURE(self->data) ;
+    draw_player_pv(player, listSDL_Texture->item(listSDL_Texture, INDEX_BLACK_HEART));
+
+    if (info->state == STATE_DEAD) {
+        
+        // affiche un effet de glitch 
+        apply_glitch(camera, map->background);
+
+        // assombri l'ecran 
+        SDL_Rect rect = {0, 0, WINDOW_WIDTH, WINDOW_HEIGHT} ;
+        draw_rect_filled(rect, (SDL_Color){0, 0, 0, 130});
+
+        List_t * listText = GET_LIST_TEXT(self->data) ;
+        for (int i = 0; i < listText->size; i++) {
+            draw_text(listText->item(listText, i));
+        }
     }
 
+}
+
+
+
+static 
+void change_state (Scene_t * self, InfoScene_t * info) {
+
+    EventManager_t * eventManager = GET_EVENT_MANAGER(self->data) ;
+
+    switch (info->nextState) {
+    case STATE_PLAYING :;
+        info->state = info->nextState ;
+        break;
+
+    case STATE_DEAD :;
+        
+        List_t * listText = GET_LIST_TEXT(self->data) ;
+        
+        Text_t * text = listText->item(listText, 0) ;
+        text->hidden = FALSE ;
+
+        info->startTime = info->currentTime ;
+        info->state = info->nextState ;
+        break;
+    
+    default:
+        break;
+    }
 }
 
 
@@ -221,7 +372,7 @@ void new_projectile (Scene_t * scene, float progress) {
     
     Map_t * map = GET_MAP(scene->data) ;
 
-    MapObj_t * object = create_mapObj(map->listSpriteSheet, FLAME_BALL) ;
+    MapObj_t * object = create_mapObj() ;
     if (object == NULL) {
         printf("Impossible d'ajouter une FLAME BALL, erreur creation object\n");
         return ;
@@ -229,9 +380,10 @@ void new_projectile (Scene_t * scene, float progress) {
 
     init_flame_ball_vertical(object, map->listSpriteSheet, FLAME_BALL) ;
     map->listObjects->stack(map->listObjects, object);
-
-    printf("creation d'un obj a la position x = %d, y = %d\n", object->sprite.position.x, object->sprite.position.y);
 }
+
+
+
 
 
 /**
@@ -258,7 +410,7 @@ void init_flame_ball_vertical (MapObj_t * object, List_t * listSpriteSheet, size
     object->sprite.typeAnim = DEFAULT ;
 
     object->vx = 0 ;
-    object->vy = 1 ;
+    object->vy = 3 ;
 
     object->idAction = ACT_ID_LOSS_PV ;
     object->idSpriteSheet = idSpriteSheet ;

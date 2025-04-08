@@ -89,16 +89,26 @@ void map_update (Scene_t * scene, Map_t * map, Player_t * player) {
             object->sprite.position.x += object->vx ;
             object->sprite.position.y += object->vy ;
 
-            SDL_Rect playerBody = (SDL_Rect){player->body.position.x, player->body.position.y, player->body.position.w, player->body.position.h} ;
-            if (SDL_Rect_check_collision(&playerBody, &object->sprite.position)) {
+            SDL_Rect objectHitbox = {
+                object->sprite.position.x, 
+                object->sprite.position.y + object->sprite.position.h - 25, 
+                object->sprite.position.w, 
+                25 
+            } ;
+            SDL_Rect playerHitbox = {
+                player->body.position.x + player->body.position.w / 2 - (30 / 2), 
+                player->body.position.y, 
+                30,
+                player->body.position.h
+            } ;
+            if (SDL_Rect_check_collision(&playerHitbox, &objectHitbox)) {
                 mapObj_action(scene, map, player, object->idAction);
                 map->listObjects->remove(map->listObjects, i);
             }
 
             SDL_Rect groundRect = {map->ground.x, map->ground.y, map->ground.w, map->ground.h} ;
-            if (SDL_Rect_check_collision(&groundRect, &object->sprite.position)) {
+            if (SDL_Rect_check_collision(&groundRect, &objectHitbox)) {
                 map->listObjects->remove(map->listObjects, i);
-                printf("destruction d'un obj\n");
             }
         }
     }
@@ -111,7 +121,7 @@ void mapObj_action (Scene_t * scene, Map_t * map, Player_t * player, uint8_t idA
     
     case ACT_ID_LOSS_PV :
         printf("action 0 effectuee sur map\n");
-        if (player->pv >= 0)
+        if (player->pv > 0)
             player->pv--;
         break;
     

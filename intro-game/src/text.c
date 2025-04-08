@@ -209,6 +209,10 @@ void text_update (Text_t * text) {
     }
 
     // Incrémentation du compteur de frames
+
+    if (text->hidden == TRUE) 
+        return ;
+
     anim->frameCount++; 
     if (anim->frameCount == anim->animationSpeed) {
         anim->frameCount = 0 ; // Réinitialisation du compteur
@@ -314,15 +318,13 @@ void text_change_visibility (Text_t * text, int hidden) {
     if (existe(text)) {
 
         text->hidden = hidden ;
-
-        text->animation.needChange = TRUE ;
     }
 }
 
 
 void text_change_font (Text_t * text, TTF_Font * newFont) {
     
-    if (existe(text)) {
+    if (existe(text) && text->font != newFont) {
 
         text->font = newFont ;
 
@@ -400,6 +402,82 @@ int load_texts_from_file (const char * dataPath, List_t * listFont, List_t * lis
     fclose(file);
 
     return NO_ERR ;
+}
+
+
+void text_list_update_from_file (List_t * list, List_t * listFont, const char * dataPath) {
+    if (!existe(list)) {
+        printf("Impossible d'update le listTexture car list NULL\n"); 
+        return ;
+    }
+    
+    if (fileModified(dataPath)) {
+
+        FILE * file = fopen(dataPath, "r") ;
+        if (!existe(file)) {
+            fprintf(stderr, "Erreur ouverture du fichier %s : %s\n", dataPath, SDL_GetError());
+            return ;
+        }
+
+        // Variables pour stocker les données lues
+        int r, g, b, a;
+        int x, y, w, h;
+        int hollow, typeHollow ;
+        int hr, hg, hb, ha;
+        char key[64], string[512];
+        int animated, speed ;
+        int fontSize ;
+        int hidden ;
+        char buffer[256];
+
+        // Lecture de la première ligne
+        fgets(buffer, sizeof(buffer), file);
+
+        for (int i = 0; i < list->size; i++) {
+
+            Text_t * text = list->item(list, i) ;
+
+            // Lecture et initialisation des éléments
+            if (fscanf(file, "%[^;];%[^;];%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d%%", 
+                key, string, &r, &g, &b, &a, &x, &y, &hollow, &hr, &hg, &hb, &ha, &typeHollow, &animated, &speed, &fontSize, &hidden) == 18) {
+        
+                if (strcmp(text->string, string)) {
+                    int len = strlen(string) ;
+                    strcpy(text->string, string);
+                    text->len = len ;
+                }
+                
+                text_change_hollow(text, hollow, (SDL_Color){hr, hg, hb, ha}, typeHollow);
+        
+                if (!animated) {
+                    text->animation.currentFrame = text->animation.numFrames ;
+                    text->animation.loop = FALSE ;
+                    text->animation.playing = FALSE ;
+                }
+                else {
+                    text->animation.currentFrame = 0 ;
+                    text->animation.frameCount = 0 ;
+                    text->animation.loop = FALSE ;
+                    text->animation.playing = TRUE ;
+                }
+                text->animation.animationSpeed = speed ;
+                text->animation.position = (SDL_Rect){x, y, 0, 0} ;
+                text->animation.textColor = (SDL_Color){r, g, b, a} ;
+        
+                text->hidden = hidden ;
+                text_change_font(text, listFont->item(listFont, fontSize));
+            }
+            
+            text_update(text);
+        }
+
+        fclose(file);
+    }
+    else {
+        for (int i = 0; i < list->size; i++) {
+            text_update(list->item(list, i));
+        }
+    }
 }
 
 
