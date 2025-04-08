@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include <io/dirent.h>
 
+#ifdef _WIN32
+
 int scandir_windows(const char *dirpath, dirent_t ***namelist,
                     int (*filter)(const dirent_t *),
                     int (*compar)(const dirent_t **, const dirent_t **)) {
@@ -62,3 +64,4 @@ int scandir_windows(const char *dirpath, dirent_t ***namelist,
 int alphasort_portable(const dirent_t **a, const dirent_t **b) {
     return strcmp((*a)->d_name, (*b)->d_name);
 }
+#endif

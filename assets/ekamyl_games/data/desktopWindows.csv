@@ -1,0 +1,3 @@
+bgPath;spriteSheetPath;widgetsPath;widgetCount;posX;posY;posW;posH
+assets/ekamyl_games/assets/backgroundDesktopScene.png;assets/ekamyl_games/assets/objectsDesktopScene.png;assets/ekamyl_games/data/docWinWidgets.csv;20;100;200;800;533
+assets/ekamyl_games/assets/errorWindow.png;assets/ekamyl_games/assets/objectsDesktopScene.png;assets/ekamyl_games/data/lockedWinWidgets.csv;20;300;400;319;120

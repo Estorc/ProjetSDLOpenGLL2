@@ -12,7 +12,7 @@ uniform mat4 view;
 uniform mat4 invView;
 uniform mat4 invprojection;
 
-noperspective in vec2 TexCoords;
+in vec2 TexCoords;
 
 out vec4 outColor;
 

@@ -1,17 +1,19 @@
 MD += -MD
 
 LFLAGS += `sdl2-config --cflags --libs`
-LFLAGS += -lswscale -lavcodec -lavformat -lavutil
+LFLAGS += -lSDL2_mixer
+LFLAGS += -lSDL2_image
+LFLAGS += -lSDL2_ttf
 LFLAGS += -lm
 LFLAGS += -Isrc
 LFLAGS += -Iinclude
-LFLAGS += -Ilib
-LFLAGS += -lSDL2_image
-LFLAGS += -lSDL2_ttf
-LFLAGS += -lSDL2_mixer
-LFLAGS += -lCUnit
+LFLAGS += -Llib
+LFLAGS += -Llib/linux
+LFLAGS += -lavformat -lavcodec -lavutil -lswscale -lswresample -lz
+LFLAGS += -lz -llzma
 LFLAGS += -pthread
 ifeq ($(OS),Windows_NT)
+LFLAGS += -lCUnit
 LFLAGS += -lglew32
 LFLAGS += -lopengl32
 LFLAGS += -lavif
@@ -21,6 +23,7 @@ else
 LFLAGS += -lGL
 LFLAGS += -lGLU
 LFLAGS += -lGLX
+LFLAGS += -ldrm
 endif
 
 WFLAGS += -Wall

@@ -74,7 +74,7 @@ uniform mat4 invView;
 uniform mat4 invProjection;
 uniform vec3 viewPos;
 
-noperspective in vec2 TexCoords;
+in vec2 TexCoords;
 
 const float PI = 3.14159265359;
 

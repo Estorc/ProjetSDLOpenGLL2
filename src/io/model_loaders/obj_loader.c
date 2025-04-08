@@ -42,6 +42,7 @@ int load_obj_model(const char *path, ModelData *model) {
     int selectedMaterialId;
     PRINT_INFO("Loading model %s\n", path);
     FILE * file = fopen(path, "r");
+    if (!file) printf("%s\n",path);
     POINTER_CHECK(file);
 
     u32 oi = 0, offv = 1, offvt = 1, offvn = 1, fi = 0, vi = 0, vti = 0, vni = 0, fim = 30, vim = 50, vtim = 50, vnim = 50, oim = 1, mc = 0;

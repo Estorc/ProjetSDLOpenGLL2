@@ -11,7 +11,9 @@
 #include <stdarg.h>
 #include <limits.h>
 #include <io/dirent.h>
+#include <io/stringio.h>
 #include <ctype.h>
 #include <time.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <unistd.h>

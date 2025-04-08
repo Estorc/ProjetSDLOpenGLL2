@@ -93,6 +93,6 @@ int absolute_path_to_relative(char *path);
  * @param filter The filter function to apply to the directory entries.
  * @return int Returns the number of files found, or a non-zero error code on failure.
  */
-int osio_find(dirent_t ***namelist, const char * path, int (*filter)(const dirent_t *entry));
+//int osio_find(dirent_t ***namelist, const char * path, int (*filter)(const dirent_t *entry));
 
 /** @} */ // end of OSIO group

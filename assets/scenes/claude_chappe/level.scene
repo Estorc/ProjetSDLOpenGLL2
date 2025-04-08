@@ -1,6 +1,6 @@
 Node{script_cc_level_init,script_cc_level_update,NULL}:7
 Scene(assets/scenes/claude_chappe/whole_scene_8.scene)[s1.2,1.2,1.2]
-Node:34
+Node:33
 Node:2
 Area(0,1)
 SphereCShape[s2,2,2]
@@ -33,7 +33,6 @@ Scene(assets/scenes/claude_chappe/objects/door.scene)[m-46.26,10.48,24.29s1.3,1.
 Scene(assets/scenes/claude_chappe/objects/locked_door.scene)[m-38.76,10.48,24.29s1.3,1.35,1.3r0,-90,0]
 Scene(assets/scenes/claude_chappe/objects/locked_door.scene)[m-18.71,10.48,24.29s1.3,1.35,1.3r0,-90,0]
 Scene(assets/scenes/claude_chappe/objects/door.scene)[m-21.15,0,-27.65s1.2,1.2,1.2r0,180,0]
-Scene(assets/scenes/claude_chappe/entities/chapper_1.scene)[s1.2,1.2,1.2a0v0] 
 Area(8,1)
 SphereCShape[s3,3,3]
 [m-5.93,3.79,-8.54r0,57,0]{NULL,script_cc_end_trigger_update,NULL}

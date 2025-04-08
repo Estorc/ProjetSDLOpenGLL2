@@ -84,7 +84,7 @@ NEW_SCRIPT(script_cc_drone_update)
             if ((*timer) > 2.0f) {
                 *timer = 0.0f;
             }
-            set_sfx_volume(this->attribute[8].p, max(128 - (int) (glm_vec3_distance2(this->globalPos, player->globalPos) / 20.0f), 0));
+            set_sfx_volume(this->attribute[8].p, MAX(128 - (int) (glm_vec3_distance2(this->globalPos, player->globalPos) / 20.0f), 0));
         }
         break;
     case DRONE_STATE_ATTACK:

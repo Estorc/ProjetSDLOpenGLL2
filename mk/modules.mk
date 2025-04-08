@@ -1,3 +1,22 @@
+MODULES += src/ekamyl_games/source/scene/BOOT.o
+MODULES += src/ekamyl_games/source/scene/DESKTOP.o
+MODULES += src/ekamyl_games/source/scene/LEVEL1.o
+MODULES += src/ekamyl_games/source/scene/scene.o
+MODULES += src/ekamyl_games/source/camera.o
+MODULES += src/ekamyl_games/source/dictionary.o
+MODULES += src/ekamyl_games/source/event.o
+MODULES += src/ekamyl_games/source/gui.o
+MODULES += src/ekamyl_games/source/list.o
+MODULES += src/ekamyl_games/source/main.o
+MODULES += src/ekamyl_games/source/map.o
+MODULES += src/ekamyl_games/source/physics.o
+MODULES += src/ekamyl_games/source/player.o
+MODULES += src/ekamyl_games/source/render.o
+MODULES += src/ekamyl_games/source/text.o
+MODULES += src/ekamyl_games/source/texture_loader.o
+MODULES += src/ekamyl_games/source/utils.o
+
+
 MODULES += src/math/math_util.o
 
 MODULES += src/classes/classes.o
@@ -6,9 +25,6 @@ MODULES += src/io/socket/client.o
 MODULES += src/io/socket/server.o
 MODULES += src/io/socket/network_utils.o
 
-ifneq ($(OS),Windows_NT)
-MODULES += src/io/model_loaders/fbx_loader.o
-endif
 MODULES += src/io/model_loaders/obj_loader.o
 MODULES += src/io/model_loaders/mtl_loader.o
 MODULES += src/io/model_loaders/model_loader.o

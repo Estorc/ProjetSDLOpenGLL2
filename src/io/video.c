@@ -1,8 +1,8 @@
+#include <GL/glew.h>
 #include <raptiquax.h>
 #include <window.h>
 #include <SDL.h>
 #include <SDL_image.h>
-#include <GL/glew.h>
 #include <GL/gl.h>
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>

@@ -66,7 +66,7 @@ class RenderTarget : public Node {
         renderTarget->mouse.active_button = 0;
 
         glGenFramebuffers(1, &renderTarget->fbo);
-        set_fbo(GL_FRAMEBUFFER, renderTarget->fbo);
+        use_fbo(GL_FRAMEBUFFER, renderTarget->fbo);
         
         // Create texture to store FBO result
         glGenTextures(1, &renderTarget->texture);
@@ -84,7 +84,7 @@ class RenderTarget : public Node {
         }
         
         // Unbind FBO (back to default framebuffer)
-        set_fbo(GL_FRAMEBUFFER, 0);
+        use_fbo(GL_FRAMEBUFFER, 0);
 
         SUPER(initialize_node);
     }

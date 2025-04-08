@@ -79,7 +79,7 @@ int load_model(const char *path, ModelData ** modelPtr) {
     if (path[strlen(path)-1] == 'j') {
         if (load_obj_model(path, model) == -1) return -1;
     } else {
-        #ifdef _WIN32
+        #ifndef FBX_SUPPORT
             PRINT_ERROR("Unsupported model format: %s\n", path);
             return -1;
         #else

@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <io/osio.h>
 
+
 #ifdef _WIN32
 int osio_open_file(char *path, char *relativePath, char *filter) {
     OPENFILENAME ofn;       // Structure de sélection de fichier
@@ -220,14 +221,14 @@ int osio_print_error(char *msg) {
 #endif
 
 
-int osio_find(dirent_t ***namelist, const char * path, int (*filter)(const dirent_t *entry)) {
+/*int osio_find(dirent_t ***namelist, const char * path, int (*filter)(const dirent_t *entry)) {
     int n = scandir(path, namelist, filter, alphasort);
     if (n < 0) {
         PRINT_ERROR("scandir failed\n");
         return n;
     }
     return n;
-}
+}*/
 
 int update_cwd() {
     char exe_path[1024]; // Buffer to store the executable path.
