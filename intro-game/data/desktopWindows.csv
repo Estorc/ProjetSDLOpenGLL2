@@ -1,0 +1,2 @@
+bgPath;spriteSheetPath;widgetsPath;widgetCount;posX;posY;posW;posH
+intro-game/assets/backgroundDesktopScene.png;intro-game/assets/objectsDesktopScene.png;intro-game/data/docWinWidgets.csv;1;100;200;800;533

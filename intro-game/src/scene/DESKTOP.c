@@ -13,25 +13,10 @@
 #include "../include/list.h"
 
 
-void window_add_widget_test (Window_t * window) {
+uint8_t icon_locked = TRUE ;
 
-    SDL_Rect relPosition = {WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, 319, 120} ;
-    WidgetType_t type = 2 ;
-    Icon_t icon = {
-        .srcrect = (SDL_Rect){360, 0, 319, 120},
-        .isClicked = FALSE, 
-        .isDragged = FALSE, 
-        .actionID = 0
-    };
 
-    Widget_t widget = {
-        .relPosition = relPosition,
-        .type = type,
-        .icon = icon
-    };
-
-    window_add_widget(window, widget);
-}
+static void init_desktop_main_window (Desktop_t * desktop, WinTheme_t theme) ;
 
 
 /**
@@ -101,10 +86,10 @@ void DESKTOP_load(Scene_t *self) {
 
     SDL_Color textColor = {255, 255, 255, SDL_ALPHA_OPAQUE} ;
     SDL_Color bgColor = {155, 0, 0, SDL_ALPHA_OPAQUE} ;
-    init_desktop_main_window(&desktop->mainWindow, (WinTheme_t){font1, textColor, bgColor});
-    window_change_theme(&desktop->mainWindow, (WinTheme_t){font1, textColor, (SDL_Color){0, 0, 0, 0}});
+    init_desktop_main_window(desktop, (WinTheme_t){font1, textColor, bgColor});
+    
 
-    load_windows_from_file(desktop->listWindow, "intro-game/data/testWin.csv", (WinTheme_t){font1, textColor, bgColor});
+    
     
     dict->set(dict, "desktop", desktop, destroy_desktop_cb);
     
@@ -175,7 +160,7 @@ void DESKTOP_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * m
                 break;
             case SDL_MOUSEBUTTONDOWN :;
                 actionID = desktop_element_update(desktop, event) ;
-                if (actionID != -1) desktop_handle_button_events(self, actionID) ;
+                if (actionID != - 1) desktop_handle_button_events(self, actionID) ;
                 break;
             case SDL_MOUSEBUTTONUP :;
                 desktop_element_update(desktop, event) ;
@@ -187,13 +172,11 @@ void DESKTOP_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * m
                 break;
         }
     }
+
 }
 
 
 void DESKTOP_update (Scene_t * self, SceneManager_t * manager) {
-
-    
-
     return; 
 }
 
@@ -202,4 +185,49 @@ void DESKTOP_render (Scene_t * self) {
 
     Desktop_t * desktop = self->data->get(self->data, "desktop") ;
     draw_desktop(desktop);
+
+}
+
+
+
+
+static
+void init_desktop_main_window (Desktop_t * desktop, WinTheme_t theme ) {
+
+    Window_t * window = &desktop->mainWindow ;
+
+    window->background = load_png("intro-game/assets/background3.jpg") ;
+    if (!existe(window->background)) {
+        printf("Erreur creation background dans load_window_from_file\n"); 
+        return ;
+    }
+
+    window->spriteSheet = load_png("intro-game/assets/objectsDesktopScene.png") ;
+    if (!existe(window->spriteSheet)) {
+        printf("Erreur creation spriteSheet dans load_window_from_file\n"); 
+        return ;
+    }
+
+    window->position.x = 0 ; 
+    window->position.y = 0 ; 
+    window->position.w = WINDOW_WIDTH ; 
+    window->position.h = WINDOW_HEIGHT ;
+    
+    window->widgetCount = 3 ;
+    window->tabWidget = malloc(sizeof(Widget_t) * window->widgetCount) ;
+    if (!existe(window->tabWidget)) {
+        fprintf(stderr, "Erreur malloc tabWidget : %s\n", SDL_GetError());
+        return ;
+    }
+
+    init_widgets_from_file(window->tabWidget, "intro-game/data/desktopWidgets.csv", theme);
+
+    window->theme = theme ;
+
+    window->isActive = TRUE ;
+    window->isDragged = FALSE ;
+
+    window_change_theme(window, (WinTheme_t){theme.font, theme.textColor, (SDL_Color){0, 0, 0, 0}});
+
+    load_windows_from_file(desktop->listWindow, "intro-game/data/desktopWindows.csv", (WinTheme_t){theme.font, theme.textColor, (SDL_Color){0, 0, 0, 0}});
 }

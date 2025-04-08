@@ -8,7 +8,7 @@
 #include "../include/scene.h"
 
 // id de la liste de fenetre pour differencier chaque fenetre
-static uint8_t windowId = 0 ;
+static uint8_t windowId ;
 
 /**
  * Creer une structure de type `Desktop_t`. L'intialisation de ses attributs devra se faire 
@@ -32,6 +32,7 @@ Desktop_t * create_desktop () {
 
     desktop->listWindow = create_list(destroy_window_cb) ;
     
+    windowId = 0 ;
 
     return desktop;
 }
@@ -105,41 +106,6 @@ Window_t * create_window () {
 }
 
 
-void init_desktop_main_window (Window_t * window, WinTheme_t theme ) {
-
-    window->background = load_png("intro-game/assets/backgroundDesktopScene.png") ;
-    if (!existe(window->background)) {
-        printf("Erreur creation background dans load_window_from_file\n"); 
-        return ;
-    }
-
-    window->spriteSheet = load_png("intro-game/assets/objectsDesktopScene.png") ;
-    if (!existe(window->spriteSheet)) {
-        printf("Erreur creation spriteSheet dans load_window_from_file\n"); 
-        return ;
-    }
-
-    window->position.x = 0 ; 
-    window->position.y = 0 ; 
-    window->position.w = WINDOW_WIDTH ; 
-    window->position.h = WINDOW_HEIGHT ;
-    
-    window->widgetCount = 4 ;
-    window->tabWidget = malloc(sizeof(Widget_t) * window->widgetCount) ;
-    if (!existe(window->tabWidget)) {
-        fprintf(stderr, "Erreur malloc tabWidget : %s\n", SDL_GetError());
-        return ;
-    }
-
-    init_widgets_from_file(window->tabWidget, "intro-game/data/desktopWidgets.csv", theme);
-
-    window->theme = theme ;
-
-    window->isActive = TRUE ;
-    window->isDragged = FALSE ;
-}
-
-
 /**
  * Creer une structure `Window_t` puis initialise ses attributs a partir d'un fichier.
  */
@@ -151,14 +117,14 @@ void load_windows_from_file (List_t * list, char * dataPath, WinTheme_t theme) {
         return ;
     }
 
-    char backgroundPath[256], spriteSheetPath[256], widgetsPath[256] ;
+    char backgroundPath[512], spriteSheetPath[512], widgetsPath[512] ;
     int x, y, w, h ;
     int widgetCount ;
     
     char buffer[256] ;
     fgets(buffer, sizeof(buffer), file);
 
-    while (fscanf(file, "%[^;];%[^;];%[^;];%d;%d;%d;%d;%d", backgroundPath, spriteSheetPath, widgetsPath, &widgetCount, &x, &y, &w, &h) == 8) {
+    while (fscanf(file, "%[^;];%[^;];%[^;];%d;%d;%d;%d;%d%%", backgroundPath, spriteSheetPath, widgetsPath, &widgetCount, &x, &y, &w, &h) == 8) {
 
         Window_t * window = create_window() ;
         if (!existe(window)) {
@@ -404,7 +370,9 @@ int desktop_element_update(Desktop_t *desktop, SDL_Event *event) {
             run = FALSE ;
 
             if (i != listWindow->size - 1) {
+                printf("demadne de swap\n");
                 listWindow->swap(listWindow, i, listWindow->size - 1);
+                printf("fin demadne de swap\n");
             }
         }
     }
@@ -450,7 +418,7 @@ int desktop_element_update(Desktop_t *desktop, SDL_Event *event) {
         
         case WIDGET_BUTTON :;
             if (SDL_PointInRect(&mouse, &absPosition)) {
-                if (i == CLOSE_BUTTON) {
+                if (currWidget->button.actionID == 0) {
                     window->isActive = FALSE ;
                     window->isDragged = FALSE ;
                 }
@@ -556,18 +524,35 @@ void desktop_handle_button_events (Scene_t * scene, uint8_t actionID) {
     Desktop_t * desktop = GET_DESKTOP(scene->data) ;
 
     switch(actionID) {
-    
+
     case 0 :
-        printf("action 0 effectuée\n");
-        Window_t * window = desktop_get_window_from_id(desktop, 0) ;
-        if (existe(window)) {
-            window->isActive = TRUE ;
-        }
+        printf("action fermeture fenetre\n");
         break;
 
     case 1 :
         printf("action 1 effectuée\n");
         request_scene_change(sceneManager, "LEVEL1");
+        break;
+
+    case 2 : 
+        printf("action 2 effectue\n");
+        if (icon_locked) {
+            Window_t * window = desktop_get_window_from_id(desktop, 1) ;
+            if (existe(window)) {
+                window->isActive = TRUE ;
+            }
+        }
+        else {
+            request_scene_change(sceneManager, "LEVEL1");
+        }
+        break;
+
+    case 3 :
+        printf("action 0 effectuée\n");
+        Window_t * window = desktop_get_window_from_id(desktop, 0) ;
+        if (existe(window)) {
+            window->isActive = TRUE ;
+        }
         break;
 
     default :

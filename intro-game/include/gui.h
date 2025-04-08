@@ -85,7 +85,6 @@ void destroy_desktop_cb (void * desktop) ;
 Window_t * create_window () ;
 void destroy_window (Window_t ** window) ;
 void destroy_window_cb (void * window) ;
-void init_desktop_main_window (Window_t * window, WinTheme_t theme) ;
 void load_windows_from_file (List_t * list, char * dataPath, WinTheme_t theme) ;
 void window_change_theme (Window_t * window, WinTheme_t newTheme) ;
 void window_add_widget (Window_t * window, Widget_t newWidget) ;

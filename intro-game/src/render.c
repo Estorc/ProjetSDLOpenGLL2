@@ -312,6 +312,11 @@ void draw_player_pv (Player_t * player, SDL_Texture * texture) {
 }
 
 
+void draw_timer (uint32_t time) {
+    
+}
+
+
 static SDL_Texture * noiseTexture ;
 int generate_noise_texture(int width, int height) {
     

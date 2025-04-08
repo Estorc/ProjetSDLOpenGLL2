@@ -67,6 +67,7 @@ void draw_map (Map_t * map, Camera_t * camera) ;
 void draw_desktop (Desktop_t * desktop) ;
 int draw (Camera_t * camera, Player_t * player, Map_t * map) ;
 void draw_player_pv (Player_t * player, SDL_Texture * texture) ;
+void draw_timer (uint32_t time) ;
 
 int generate_noise_texture(int width, int height) ;
 void destroy_noise_texture () ;

@@ -9,7 +9,7 @@ typedef struct SceneManager_u SceneManager_t ;
 typedef struct InfoScene_u InfoScene_t ; 
 
 extern GameStatus_t gameStatus ;
-
+extern uint8_t icon_locked ;
 
 void LEVEL1_load (Scene_t * self) ;
 void LEVEL1_unLoad (Scene_t * self) ;
