@@ -88,8 +88,6 @@ void DESKTOP_load(Scene_t *self) {
     SDL_Color bgColor = {155, 0, 0, SDL_ALPHA_OPAQUE} ;
     init_desktop_main_window(desktop, (WinTheme_t){font1, textColor, bgColor});
     
-
-    
     
     dict->set(dict, "desktop", desktop, destroy_desktop_cb);
     

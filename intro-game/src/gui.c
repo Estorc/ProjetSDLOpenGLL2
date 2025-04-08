@@ -169,7 +169,7 @@ void load_windows_from_file (List_t * list, char * dataPath, WinTheme_t theme) {
     }
 
     fclose(file);
-
+    printf("liste window taille = %d\n", list->size) ; 
 
     return ;
 }
@@ -310,7 +310,7 @@ void init_widgets_from_file (Widget_t * tab, char * dataPath, WinTheme_t theme) 
             break;
 
         case WIDGET_TEXT :;
-            char text[256] ;
+            char text[1024] ;
             if (fscanf(file, ";%[^\n]", text) != 1) 
             {
                 fprintf(stderr, "Erreur fscanf de WIDGET_TEXT dans init_widgets_from_file\n");
@@ -323,6 +323,8 @@ void init_widgets_from_file (Widget_t * tab, char * dataPath, WinTheme_t theme) 
                 printf("Erreur creation ttf texture dans init_widgets_from_file\n");
                 return ;
             }
+
+            SDL_QueryTexture(tab[i].text.texture, NULL, NULL, &tab[i].relPosition.w, &tab[i].relPosition.h);
 
             break;
 
@@ -445,7 +447,6 @@ int desktop_element_update(Desktop_t *desktop, SDL_Event *event) {
         window->isDragged = FALSE ;
     }
 
-
     return -1; // Aucun élément n'a été activé
 }
 
@@ -460,6 +461,7 @@ int desktop_element_update(Desktop_t *desktop, SDL_Event *event) {
  * @param event Pointeur vers la structure `SDL_Event` contenant les informations sur l'événement utilisateur.
  */
 void desktop_move_element(Desktop_t *desktop, SDL_Event *event) {
+
     
     if (desktop == NULL || event == NULL) {
         fprintf(stderr, "Erreur: `desktop` ou `event` est NULL\n");
