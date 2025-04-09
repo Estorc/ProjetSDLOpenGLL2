@@ -87,7 +87,7 @@ void destroy_desktop_cb (void * desktop) {
 }
 
 
-Window_t * create_window () {
+static Window_t * create_window () {
 
     Window_t * window = malloc(sizeof(Window_t)) ;
     if (!existe(window)) {

@@ -13,7 +13,6 @@
 #include <utils/random.h>
 #include <utils/deferred.h>
 #include <settings.h>
-#include <ekamyl_games/include/main.h>
 
 #include <classes/classes.h>
 
@@ -47,9 +46,6 @@ NEW_SCRIPT(script_cc_computer_signal)
                     label::set_text(text);
                 }
                 if (Game.input->pressed_keys & KEY_INTERACT) {
-                    /*SDL_SetRelativeMouseMode(SDL_FALSE);
-                    ekamyl_main();
-                    SDL_SetRelativeMouseMode(SDL_TRUE);*/
                     this->parent->children[1]->flags |= NODE_ACTIVE;
                     play_sfx("assets/audio/sfx/circuit-disrupt.wav", MIX_MAX_VOLUME, 0);
                     play_music("assets/audio/musics/maquette_music_chapper.mp3", MIX_MAX_VOLUME, -1);

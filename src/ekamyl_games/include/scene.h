@@ -2,9 +2,9 @@
 
 
 #include "lib.h"
-#include "../src/scene/BOOT.h"
-#include "../src/scene/DESKTOP.h"
-#include "../src/scene/LEVEL1.h"
+#include "../source/scene/BOOT.h"
+#include "../source/scene/DESKTOP.h"
+#include "../source/scene/LEVEL1.h"
 
 #define MAX_SCENES 10
 

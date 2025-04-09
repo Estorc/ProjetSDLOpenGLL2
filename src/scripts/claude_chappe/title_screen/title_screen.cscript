@@ -8,6 +8,7 @@
 #include <io/audio.h>
 #include <render/lighting.h>
 #include <buffer.h>
+#include <ekamyl_games/include/main.h>
 #include <window.h>
 
 #include <storage/hash.h>
@@ -43,6 +44,11 @@ NEW_SCRIPT(play_game_button)
 	switch (signal) {
 		case SIGNAL_BUTTON_CLICKED:
 			play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
+			if (Game.input->active_keys & KEY_INTERACT) {
+				SDL_SetRelativeMouseMode(SDL_FALSE);
+				ekamyl_main();
+				SDL_SetRelativeMouseMode(SDL_TRUE);
+			}
 			if (Game.input->active_keys & KEY_SPRINT) {
 				deferred_load_scene("assets/scenes/fps_chess/boot.scene");
 			}

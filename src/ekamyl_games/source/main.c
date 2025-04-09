@@ -22,7 +22,7 @@ SDL_Renderer * renderer ;
 SceneManager_t * sceneManager ;
 GameStatus_t gameStatus ; 
 
-int main(int argc, char* argv[]) {
+int ekamyl_main() {
 
     if (init_systeme()) {
         return 1;
@@ -189,23 +189,5 @@ void terminate_system (Mix_Chunk * music, int audio, int ttf, int mixer, int img
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
-    if (music) {
-        Mix_FreeChunk(music);
-    }
-    if (audio) {
-        Mix_CloseAudio();
-    }
-    if (ttf) {
-        TTF_Quit();
-    }
-    if (mixer) {
-        Mix_Quit();
-    }
-    if (img) {
-        IMG_Quit();
-    }
-    if (sdl) {
-        SDL_Quit();
-    }
 
 }

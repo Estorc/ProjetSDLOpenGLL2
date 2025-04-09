@@ -82,7 +82,6 @@ Desktop_t * create_desktop () ;
 void destroy_desktop(Desktop_t **desktop) ;
 void destroy_desktop_cb (void * desktop) ;
 
-Window_t * create_window () ;
 void destroy_window (Window_t ** window) ;
 void destroy_window_cb (void * window) ;
 void load_windows_from_file (List_t * list, char * dataPath, WinTheme_t theme) ;

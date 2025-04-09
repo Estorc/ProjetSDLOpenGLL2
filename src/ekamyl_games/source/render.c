@@ -23,7 +23,7 @@ void draw_rect_border (SDL_Rect rect, SDL_Color color) {
 /**
  * 
  */
-err_t draw_text (Text_t * text) {
+err_t ekamyl_draw_text (Text_t * text) {
 
     if (text->hidden == FALSE) {
         SDL_Rect posHollow = {text->animation.position.x - 3, text->animation.position.y + 3, text->animation.position.w, text->animation.position.h} ;

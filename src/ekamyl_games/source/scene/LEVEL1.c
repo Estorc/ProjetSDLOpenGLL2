@@ -401,7 +401,7 @@ void LEVEL1_render (Scene_t * self) {
 
         List_t * listText = GET_LIST_TEXT(self->data) ;
         for (int i = 0; i < listText->size; i++) {
-            draw_text(listText->item(listText, i));
+            ekamyl_draw_text(listText->item(listText, i));
         }
     }
     else if (info->state == STATE_DEAD) {
@@ -415,7 +415,7 @@ void LEVEL1_render (Scene_t * self) {
 
         List_t * listText = GET_LIST_TEXT(self->data) ;
         for (int i = 0; i < listText->size; i++) {
-            draw_text(listText->item(listText, i));
+            ekamyl_draw_text(listText->item(listText, i));
         }
     }
     else if (info->state == STATE_WIN) {
@@ -426,7 +426,7 @@ void LEVEL1_render (Scene_t * self) {
 
         List_t * listText = GET_LIST_TEXT(self->data) ;
         for (int i = 0; i < listText->size; i++) {
-            draw_text(listText->item(listText, i));
+            ekamyl_draw_text(listText->item(listText, i));
         }
     }
 

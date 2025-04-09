@@ -23,3 +23,4 @@ typedef struct {
     int scene ;
 } GameStatus_t ; 
 
+int ekamyl_main();

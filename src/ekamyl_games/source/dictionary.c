@@ -3,6 +3,17 @@
 #include "../include/dictionary.h"
 
 
+static unsigned int hash (const char * key) {
+
+    unsigned int index = 0 ;
+
+    for (int i = 0; key[i] != '\0'; i++) {
+        index = (index * 31) + key[i] ;
+    }
+
+    return index % TABLE_SIZE ;
+}
+
 
 static 
 void dict_set(Dictionary_t *dict, const char * key, void * value, void (*destroy) (void *)) {
@@ -96,18 +107,6 @@ void dict_remove(Dictionary_t * dict, const char * key) {
         prev = entry;
         entry = entry->next;
     }
-}
-
-
-unsigned int hash (const char * key) {
-
-    unsigned int index = 0 ;
-
-    for (int i = 0; key[i] != '\0'; i++) {
-        index = (index * 31) + key[i] ;
-    }
-
-    return index % TABLE_SIZE ;
 }
 
 

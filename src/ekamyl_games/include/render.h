@@ -61,7 +61,7 @@ typedef struct TextAnim_u {
 } TextAnim_t ; 
  
 
-err_t draw_text (Text_t * text) ;
+err_t ekamyl_draw_text (Text_t * text) ;
 void draw_texture (Texture_t * texture, Camera_t * camera) ;
 void draw_map (Map_t * map, Camera_t * camera) ;
 void draw_desktop (Desktop_t * desktop) ;
