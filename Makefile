@@ -54,7 +54,7 @@ $(call register_modules, ${CLASSES_MODULES})
 # === Executables ===
 
 release: prebuild ${RELEASE_MODULES} ${LIBS}
-	$(call build_executable, ${BUILD_DIR}/$(RELEASE_DIR), -g -DDEBUG -O0,copy_assets,$(APP_NAME))
+	$(call build_executable, ${BUILD_DIR}/$(RELEASE_DIR), -O3,copy_assets,$(APP_NAME))
 	$(call launch,${BUILD_DIR}/$(RELEASE_DIR)/$(APP_NAME))
 
 debug: prebuild ${DEBUG_MODULES} ${LIBS}
