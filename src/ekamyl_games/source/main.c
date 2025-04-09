@@ -46,7 +46,7 @@ int ekamyl_main() {
     push_scene(sceneManager, bootScene);
     push_scene(sceneManager, desktopScene);
     push_scene(sceneManager, level1Scene);
-    request_scene_change(sceneManager, "DESKTOP");
+    request_scene_change(sceneManager, "BOOT");
     change_scene(sceneManager);
     
     // Boucle principale
