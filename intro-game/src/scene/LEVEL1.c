@@ -16,6 +16,8 @@
 // etat de la scène
 #define STATE_PLAYING 0
 #define STATE_DEAD 1
+#define STATE_WIN 2
+#define STATE_INTRO 3
 
 // indice de la sprite sheet dans la listSpriteSheet
 #define FLAME_BALL 0 
@@ -24,16 +26,32 @@
 #define INDEX_BLACK_HEART 0 
 
 // indice des text dans la listText 
+#define INDEX_MSG_LOSS1 0
+#define INDEX_MSG_LOSS2 1
 #define INDEX_MSG_RETRY 2
+#define INDEX_MSG_WIN 3
+#define INDEX_MSG_INTRO0 4
+#define INDEX_MSG_INTRO1 5
+
+#define TIMER_MS 30000
 
 
 // fonction de changement d'etat 
 static void change_state (Scene_t * self, InfoScene_t * info) ;
 
+
 // ensemble des evenements de la scene
 static float new_projectile_trigger (Scene_t * scene, Event_t * event) ;
 static void new_projectile (Scene_t * scene, float progress) ;
 
+static float remaining_time_calculation_trigger (Scene_t * scene, Event_t * event) ;
+static void remaining_time_calculation (Scene_t * scene, float progress) ;
+
+static float change_visibility_win_msg_trigger (Scene_t * scene, Event_t * event) ;
+static void change_visibility_win_msg (Scene_t * scene, float progress) ;
+
+
+// fonctions propre a cette scene 
 static void init_flame_ball_vertical (MapObj_t * object, List_t * listSpriteSheet, size_t idSpriteSheet) ;
 static void init_map (Map_t * map) ;
 
@@ -134,15 +152,23 @@ void LEVEL1_load (Scene_t * self) {
     TTF_Font * font0 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 16) ;
     TTF_Font * font1 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 20) ;
     TTF_Font * font2 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 22) ;
+    TTF_Font * font3 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 32) ;
     listFont->stack(listFont, font0);
     listFont->stack(listFont, font1);
     listFont->stack(listFont, font2);
-
+    listFont->stack(listFont, font3);
 
     load_texts_from_file("intro-game/data/textsLevel1.csv", listFont, listText);
 
 
-    info->nextState = STATE_PLAYING ;
+    // timer qui va servir au compte a rebours du mini jeux 
+    uint32_t * timer = malloc(sizeof(uint32_t)) ;
+    *timer = TIMER_MS ;
+
+    dict->set(dict, "timer", timer, free_cb);
+
+
+    info->nextState = STATE_INTRO ;
     change_state(self, info);
     info->startTime = SDL_GetTicks() ;
     
@@ -197,7 +223,7 @@ void LEVEL1_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * ma
                         printf("INFO :\nplayer x, y, vx, vy : %f %f %f %f\ncamera x, y : %f %f\n", player->body.position.x, player->body.position.y, player->body.vx, player->body.vy, camera->x, camera->y);
                         break;
                     case SDLK_r : 
-                        if (info->state == STATE_DEAD) {
+                        if (info->state == STATE_DEAD || info->state == STATE_WIN) {
                             request_scene_change(sceneManager, "DESKTOP");
                         }
                         break;
@@ -215,7 +241,7 @@ void LEVEL1_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * ma
     }
 
 
-    if (info->state != STATE_DEAD) {
+    if (info->state == STATE_PLAYING) {
         const uint8_t * keys = SDL_GetKeyboardState(NULL);
         handle_input(keys, player);
     }
@@ -223,7 +249,6 @@ void LEVEL1_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * ma
     EventManager_t * eventManager = GET_EVENT_MANAGER(self->data) ;
     process_events(eventManager, self);
 
-    
     return ; 
 }
 
@@ -231,9 +256,34 @@ void LEVEL1_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * ma
 void LEVEL1_update (Scene_t * self, SceneManager_t * manager) {
 
     InfoScene_t * info = GET_INFO(self->data) ;
-
+    List_t * listText ;
+    List_t * listFont ;
 
     switch(info->state) {
+
+    case STATE_INTRO :;
+        
+        listText = GET_LIST_TEXT(self->data) ;
+        listFont = GET_LIST_FONT(self->data) ;
+
+        Text_t * intro0 = listText->item(listText, INDEX_MSG_INTRO0) ;
+        Text_t * intro1 = listText->item(listText, INDEX_MSG_INTRO1) ;
+
+        if (intro0->hidden == TRUE) {
+            intro0->hidden = FALSE ;
+            intro1->hidden = FALSE ;
+        }
+
+        text_list_update_from_file(listText, listFont, "intro-game/data/textsLevel1.csv");
+
+        if (info->currentTime >= info->startTime + 7000) {
+            printf("pasage au state playing\n");
+            info->nextState = STATE_PLAYING ;
+            intro0->hidden = TRUE ;
+            intro1->hidden = TRUE ;
+        }
+        
+        break;
 
     case STATE_PLAYING :;
 
@@ -245,7 +295,7 @@ void LEVEL1_update (Scene_t * self, SceneManager_t * manager) {
         update_camera(camera, player);
         map_update(self, map, player);
 
-        if ( (rand() % 60) == 0 ) {
+        if ( (rand() % 30) == 0 ) {
             EventManager_t * eventManager = GET_EVENT_MANAGER(self->data) ;
             add_event(eventManager, 0, 0, new_projectile_trigger, new_projectile);
         }
@@ -260,11 +310,18 @@ void LEVEL1_update (Scene_t * self, SceneManager_t * manager) {
             info->nextState = STATE_DEAD ;
             printf("passaeg au state dead\n");
         }
+
+        uint32_t * timer = GET_TIMER(self->data) ;
+        if (*timer == 0) {
+            info->nextState = STATE_WIN ;
+            printf("passaeg au state win\n");
+        }
+
         break; 
     
     case STATE_DEAD :;
-        List_t * listText = GET_LIST_TEXT(self->data) ;
-        List_t * listFont = GET_LIST_FONT(self->data) ;
+        listText = GET_LIST_TEXT(self->data) ;
+        listFont = GET_LIST_FONT(self->data) ;
 
         // demarre l'animation du text1 lorsque le text0 a terminer son animation
         Text_t * text1 = listText->item(listText, 1) ;
@@ -283,6 +340,16 @@ void LEVEL1_update (Scene_t * self, SceneManager_t * manager) {
         if (msgRetry->hidden == TRUE && info->currentTime - info->startTime >= 2000) {
             msgRetry->hidden = FALSE ;
         }
+
+        break;
+
+    case STATE_WIN :;
+        listText = GET_LIST_TEXT(self->data) ;
+        listFont = GET_LIST_FONT(self->data) ;
+
+        icon_locked = FALSE ;
+
+        text_list_update_from_file(listText, listFont, "intro-game/data/textsLevel1.csv");
 
         break;
 
@@ -308,20 +375,51 @@ void LEVEL1_render (Scene_t * self) {
     Map_t * map = GET_MAP(self->data) ;
     Camera_t * camera = GET_CAMERA(self->data) ;
 
-
     // dessine le rendu 
     draw (camera, player, map);
-
+    
     
     // affiche les pv restant 
     List_t * listSDL_Texture = GET_LIST_SDL_TEXTURE(self->data) ;
     draw_player_pv(player, listSDL_Texture->item(listSDL_Texture, INDEX_BLACK_HEART));
 
-    if (info->state == STATE_DEAD) {
+    // affiche le temps restant 
+    List_t * listFont = GET_LIST_FONT(self->data) ;
+    uint32_t * timer = GET_TIMER(self->data) ;
+    draw_timer(*timer, 
+        (SDL_Rect){WINDOW_WIDTH / 2 - 70, 20, 0, 0}, 
+        listFont->item(listFont, 0),
+        (SDL_Color){202, 202, 202, SDL_ALPHA_OPAQUE}
+    );
+
+
+    if (info->state == STATE_INTRO) {
+
+        // assombri l'ecran 
+        SDL_Rect rect = {0, 0, WINDOW_WIDTH, WINDOW_HEIGHT} ;
+        draw_rect_filled(rect, (SDL_Color){47, 47, 47, 255});
+
+        List_t * listText = GET_LIST_TEXT(self->data) ;
+        for (int i = 0; i < listText->size; i++) {
+            draw_text(listText->item(listText, i));
+        }
+    }
+    else if (info->state == STATE_DEAD) {
         
         // affiche un effet de glitch 
         apply_glitch(camera, map->background);
 
+        // assombri l'ecran 
+        SDL_Rect rect = {0, 0, WINDOW_WIDTH, WINDOW_HEIGHT} ;
+        draw_rect_filled(rect, (SDL_Color){0, 0, 0, 130});
+
+        List_t * listText = GET_LIST_TEXT(self->data) ;
+        for (int i = 0; i < listText->size; i++) {
+            draw_text(listText->item(listText, i));
+        }
+    }
+    else if (info->state == STATE_WIN) {
+        
         // assombri l'ecran 
         SDL_Rect rect = {0, 0, WINDOW_WIDTH, WINDOW_HEIGHT} ;
         draw_rect_filled(rect, (SDL_Color){0, 0, 0, 130});
@@ -342,7 +440,18 @@ void change_state (Scene_t * self, InfoScene_t * info) {
     EventManager_t * eventManager = GET_EVENT_MANAGER(self->data) ;
 
     switch (info->nextState) {
+
+    case STATE_INTRO :;
+
+        info->startTime = info->currentTime ;
+        info->state = info->nextState ;
+        break;
+
     case STATE_PLAYING :;
+
+        add_event(eventManager, 1000, TIMER_MS, remaining_time_calculation_trigger, remaining_time_calculation) ;
+
+        info->startTime = info->currentTime ;
         info->state = info->nextState ;
         break;
 
@@ -352,6 +461,14 @@ void change_state (Scene_t * self, InfoScene_t * info) {
         
         Text_t * text = listText->item(listText, 0) ;
         text->hidden = FALSE ;
+
+        info->startTime = info->currentTime ;
+        info->state = info->nextState ;
+        break;
+
+    case STATE_WIN :;
+
+        add_event(eventManager, 2000, 0, change_visibility_win_msg_trigger, change_visibility_win_msg);
 
         info->startTime = info->currentTime ;
         info->state = info->nextState ;
@@ -380,6 +497,51 @@ void new_projectile (Scene_t * scene, float progress) {
 
     init_flame_ball_vertical(object, map->listSpriteSheet, FLAME_BALL) ;
     map->listObjects->stack(map->listObjects, object);
+}
+static
+float remaining_time_calculation_trigger (Scene_t * scene, Event_t * event) {
+
+    InfoScene_t * info = GET_INFO(scene->data) ;
+    
+    if (info->currentTime >= event->execTime) {
+
+        return (float)(info->currentTime - event->execTime) / (float)(event->duration) ;
+    }
+
+    return 0.0f ;
+}
+static
+void remaining_time_calculation (Scene_t * scene, float progress) {
+
+    InfoScene_t * info = GET_INFO(scene->data) ;
+
+    if (info->state == STATE_PLAYING) {
+        uint32_t * timer = scene->data->get(scene->data, "timer") ;
+        *timer = TIMER_MS * (1 - progress) ;
+    }
+}
+static
+float change_visibility_win_msg_trigger (Scene_t * scene, Event_t * event) {
+    
+    InfoScene_t * info = GET_INFO(scene->data) ;
+    
+    if (info->currentTime >= event->execTime) {
+
+        return 1.0f ;
+    }
+
+    return 0.0f ;
+}
+static
+void change_visibility_win_msg (Scene_t * scene, float progress) {
+
+    List_t * listText = GET_LIST_TEXT(scene->data) ;
+
+    Text_t * msgWin = listText->item(listText, INDEX_MSG_WIN) ;
+    msgWin->hidden = FALSE ;
+
+    Text_t * msgRetry = listText->item(listText, INDEX_MSG_RETRY) ;
+    msgRetry->hidden = FALSE ;
 }
 
 

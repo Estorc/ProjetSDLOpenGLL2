@@ -45,6 +45,28 @@ free les sdl_texture causerais des double free(). la sdl_texture sera donc free 
 
 changer l'update des texture_t pour qu'il update uniquement lorsque l'attribut hidden = FALSE
 
+changer les texturet pour que leur positon soit un SDL_FRect 
+
+
+
+URGENT :
+    - scene d'intro ou l'ecran glitch pour faire comprendre que c l'ia qui parle 
+    il s'etonnera de nous voir sur le reseau de son bat et nous demandera de partir puis il nous 
+    lancera au defi de reussir l'epreuve et de changer son code source dans le no.bbl 
+    - implementer le timer du mini jeu 
+    - implementer la fonction d'affichage du timer du jeu   
+    - implementer une fonction d'ajout de fenetre ( pour la fin du jeu )
+    - faire la fin du jeu qui se de roulera ainsi :
+        - l'ia s'enerve psk on a reussi 
+        - prend le seum et bloque l'acces a no.bbl qui venait d'etre deverouillé ( en théorie mdr )
+        - lance plein de fenetre popup d'erreur pour nous empecher de pouvoir acceder a l'ordi librement
+        - l'ecran fini par casser et le jeu se termine 
+    - implementer une fonction de destruction de fenetre ( actionID = 255 )
+BONUS :
+    - creer de nouvelles interaction apres la fin du premier mini jeu 
+    - ajouter d'autre icone de minijeu pour lancer d'autre minijeu, la fin du jeu se declenchera qu'apres
+    la completition de tout les minijeu
+
 
 === fait === 
 

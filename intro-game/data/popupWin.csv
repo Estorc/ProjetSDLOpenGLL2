@@ -1,0 +1,2 @@
+bgPath;spriteSheetPath;widgetsPath;widgetCount;posX;posY;posW;posH
+intro-game/assets/errorWindow.png;intro-game/assets/objectsDesktopScene.png;intro-game/data/popupWinWidgets.csv;20;300;300;319;120

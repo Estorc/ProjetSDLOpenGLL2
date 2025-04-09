@@ -18,6 +18,7 @@
 #define GET_PLAYER(dict) dict->get(dict, "player")
 #define GET_MAP(dict) dict->get(dict, "map")
 #define GET_CAMERA(dict) dict->get(dict, "camera")
+#define GET_TIMER(dict) dict->get(dict, "timer")
 
 extern SDL_Renderer * renderer ;
 

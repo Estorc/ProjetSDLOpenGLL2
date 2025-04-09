@@ -107,7 +107,8 @@ Window_t * create_window () {
 
 
 /**
- * Creer une structure `Window_t` puis initialise ses attributs a partir d'un fichier.
+ * Creer une structure `Window_t` puis initialise ses attributs a partir d'un fichier et l'ajoute dans la liste.
+ * Ne modifie pas les elements deja present dans la liste.
  */
 void load_windows_from_file (List_t * list, char * dataPath, WinTheme_t theme) {
 
@@ -119,12 +120,12 @@ void load_windows_from_file (List_t * list, char * dataPath, WinTheme_t theme) {
 
     char backgroundPath[512], spriteSheetPath[512], widgetsPath[512] ;
     int x, y, w, h ;
-    int widgetCount ;
+    int lenWidgetTab ;
     
     char buffer[256] ;
     fgets(buffer, sizeof(buffer), file);
 
-    while (fscanf(file, "%[^;];%[^;];%[^;];%d;%d;%d;%d;%d%%", backgroundPath, spriteSheetPath, widgetsPath, &widgetCount, &x, &y, &w, &h) == 8) {
+    while (fscanf(file, "%[^;];%[^;];%[^;];%d;%d;%d;%d;%d%%", backgroundPath, spriteSheetPath, widgetsPath, &lenWidgetTab, &x, &y, &w, &h) == 8) {
 
         Window_t * window = create_window() ;
         if (!existe(window)) {
@@ -149,14 +150,14 @@ void load_windows_from_file (List_t * list, char * dataPath, WinTheme_t theme) {
         window->position.w = w ; 
         window->position.h = h ;
         
-        window->tabWidget = malloc(sizeof(Widget_t) * widgetCount) ;
+        window->tabWidget = malloc(sizeof(Widget_t) * lenWidgetTab) ;
         if (!existe(window->tabWidget)) {
             fprintf(stderr, "Erreur malloc tabWidget : %s\n", SDL_GetError());
             return ;
         }
 
-        init_widgets_from_file(window->tabWidget, widgetsPath, theme);
-        window->widgetCount = widgetCount ;
+        int nbWidgets = init_widgets_from_file(window->tabWidget, widgetsPath, theme);
+        window->widgetCount = nbWidgets ;
 
         window->theme = theme ;
 
@@ -253,12 +254,12 @@ void window_add_widget (Window_t * window, Widget_t newWidget) {
 }
 
 
-void init_widgets_from_file (Widget_t * tab, char * dataPath, WinTheme_t theme) {
+int init_widgets_from_file (Widget_t * tab, char * dataPath, WinTheme_t theme) {
 
     FILE * file = fopen(dataPath, "r") ;
     if (!existe(file)) {
         fprintf(stderr, "Erreur ouverture fichier \"%s\" : %s\n", dataPath, SDL_GetError());
-        return ;
+        return 0 ;
     }
 
     int x1, y1, w1, h1 ;
@@ -289,7 +290,7 @@ void init_widgets_from_file (Widget_t * tab, char * dataPath, WinTheme_t theme) 
 
             if (fscanf(file, ";%d", (int *)&tab[i].button.actionID) != 1) {
                 printf("Erreur fscanf de cbFunc dans init_widgets_from_file\n");
-                return ;
+                return 0 ;
             }
             break;
         
@@ -304,7 +305,7 @@ void init_widgets_from_file (Widget_t * tab, char * dataPath, WinTheme_t theme) 
 
             if (fscanf(file, ";%d", (int *)&tab[i].icon.actionID) != 1) {
                 printf("Erreur fscanf de cbFunc dans init_widgets_from_file\n");
-                return ;
+                return 0 ;
             }
 
             break;
@@ -314,14 +315,14 @@ void init_widgets_from_file (Widget_t * tab, char * dataPath, WinTheme_t theme) 
             if (fscanf(file, ";%[^\n]", text) != 1) 
             {
                 fprintf(stderr, "Erreur fscanf de WIDGET_TEXT dans init_widgets_from_file\n");
-                return ;
+                return 0 ;
             }
             tab[i].text.string = strdup(text) ;
 
             tab[i].text.texture = create_TTF_Texture(theme.font, text, theme.textColor) ;
             if (!existe(tab[i].text.texture)) {
                 printf("Erreur creation ttf texture dans init_widgets_from_file\n");
-                return ;
+                return 0 ;
             }
 
             SDL_QueryTexture(tab[i].text.texture, NULL, NULL, &tab[i].relPosition.w, &tab[i].relPosition.h);
@@ -337,7 +338,7 @@ void init_widgets_from_file (Widget_t * tab, char * dataPath, WinTheme_t theme) 
 
     fclose(file);
 
-    return ;
+    return i ;
 }
 
 
@@ -372,9 +373,7 @@ int desktop_element_update(Desktop_t *desktop, SDL_Event *event) {
             run = FALSE ;
 
             if (i != listWindow->size - 1) {
-                printf("demadne de swap\n");
                 listWindow->swap(listWindow, i, listWindow->size - 1);
-                printf("fin demadne de swap\n");
             }
         }
     }
@@ -423,6 +422,10 @@ int desktop_element_update(Desktop_t *desktop, SDL_Event *event) {
                 if (currWidget->button.actionID == 0) {
                     window->isActive = FALSE ;
                     window->isDragged = FALSE ;
+                }
+                else if (currWidget->button.actionID == 255) {
+                    desktop->listWindow->pop(desktop->listWindow);
+                    return 255 ;
                 }
                 return currWidget->button.actionID ;
             } 
@@ -532,12 +535,12 @@ void desktop_handle_button_events (Scene_t * scene, uint8_t actionID) {
         break;
 
     case 1 :
-        printf("action 1 effectuée\n");
+        printf("action changement de scene vers LEVEL1 effectuée\n");
         request_scene_change(sceneManager, "LEVEL1");
         break;
 
     case 2 : 
-        printf("action 2 effectue\n");
+        printf("action activation fenetre 1 effectue\n");
         if (icon_locked) {
             Window_t * window = desktop_get_window_from_id(desktop, 1) ;
             if (existe(window)) {
@@ -545,16 +548,20 @@ void desktop_handle_button_events (Scene_t * scene, uint8_t actionID) {
             }
         }
         else {
-            request_scene_change(sceneManager, "LEVEL1");
+            
         }
         break;
 
     case 3 :
-        printf("action 0 effectuée\n");
+        printf("action activation fenetre 3 effectuée\n");
         Window_t * window = desktop_get_window_from_id(desktop, 0) ;
         if (existe(window)) {
             window->isActive = TRUE ;
         }
+        break;
+
+    case 255 :
+        printf("action destruction fenetre effectuee\n");
         break;
 
     default :
