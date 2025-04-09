@@ -57,6 +57,9 @@ make debug      # Construit le projet avec la configuration de déboggage.
 ```
 
 ## GIT
+### Large git
+The .a libs use large git : https://git-lfs.github.com
+
 ### Clone repository
 ```sh
 cd <EMPLACEMENT_DU_PROJET>
