@@ -17,11 +17,11 @@ NEW_SCRIPT(settings_go_to_main)
     GET_SIGNAL();	
     switch (signal) {
         case SIGNAL_BUTTON_CLICKED:
-            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
             deferred_load_scene("assets/scenes/settings/main.scene");
             break;
         case SIGNAL_BUTTON_HOVERED:
-            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
             break;
         default:
             break;
@@ -32,11 +32,11 @@ NEW_SCRIPT(settings_go_to_graphics)
     GET_SIGNAL();	
     switch (signal) {
         case SIGNAL_BUTTON_CLICKED:
-            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
             deferred_load_scene("assets/scenes/settings/graphics.scene");
             break;
         case SIGNAL_BUTTON_HOVERED:
-            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
             break;
         default:
             break;
@@ -47,11 +47,11 @@ NEW_SCRIPT(settings_go_to_audio)
     GET_SIGNAL();	
     switch (signal) {
         case SIGNAL_BUTTON_CLICKED:
-            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
             deferred_load_scene("assets/scenes/settings/audio.scene");
             break;
         case SIGNAL_BUTTON_HOVERED:
-            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
             break;
         default:
             break;
@@ -62,11 +62,11 @@ NEW_SCRIPT(settings_go_to_keybinds)
     GET_SIGNAL();	
     switch (signal) {
         case SIGNAL_BUTTON_CLICKED:
-            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
             deferred_load_scene("assets/scenes/settings/keybinds.scene");
             break;
         case SIGNAL_BUTTON_HOVERED:
-            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
             break;
         default:
             break;
@@ -197,7 +197,7 @@ NEW_SCRIPT(st_vsync_signal)
     GET_SIGNAL();	
     switch (signal) {
         case SIGNAL_BUTTON_CLICKED:
-            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
             if (Game.settings->vsync) {
                 SDL_GL_SetSwapInterval(1);
             } else {
@@ -205,7 +205,7 @@ NEW_SCRIPT(st_vsync_signal)
             }
             break;
         case SIGNAL_BUTTON_HOVERED:
-            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
             break;
         default:
             break;
@@ -227,10 +227,10 @@ NEW_SCRIPT(st_signal)
     GET_SIGNAL();	
     switch (signal) {
         case SIGNAL_BUTTON_CLICKED:
-            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
             break;
         case SIGNAL_BUTTON_HOVERED:
-            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
             break;
         default:
             break;
@@ -241,12 +241,12 @@ NEW_SCRIPT(settings_return_to_main_menu)
 	GET_SIGNAL();	
 	switch (signal) {
 		case SIGNAL_BUTTON_CLICKED:
-			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+			play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
             char * last_scene = table_get(Game.storage, "Game::last_scene");
 			deferred_load_scene(last_scene);
 			break;
 		case SIGNAL_BUTTON_HOVERED:
-			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+			play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
 			break;
 		default:
 			break;
@@ -275,7 +275,7 @@ NEW_SCRIPT(st_fullscreen_signal)
     GET_SIGNAL();	
     switch (signal) {
         case SIGNAL_BUTTON_CLICKED:
-            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
             if (Game.settings->window_fullscreen) {
                 SDL_SetWindowFullscreen(Game.window->sdl_window, SDL_WINDOW_FULLSCREEN_DESKTOP);
             } else {
@@ -283,7 +283,7 @@ NEW_SCRIPT(st_fullscreen_signal)
             }
             break;
         case SIGNAL_BUTTON_HOVERED:
-            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
             break;
         default:
             break;
@@ -313,11 +313,11 @@ NEW_SCRIPT(st_save)
     GET_SIGNAL();	
     switch (signal) {
         case SIGNAL_BUTTON_CLICKED:
-            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
             save_settings();
             break;
         case SIGNAL_BUTTON_HOVERED:
-            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
             break;
         default:
             break;
@@ -328,11 +328,11 @@ NEW_SCRIPT(st_load)
     GET_SIGNAL();	
     switch (signal) {
         case SIGNAL_BUTTON_CLICKED:
-            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
             load_settings();
             break;
         case SIGNAL_BUTTON_HOVERED:
-            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
             break;
         default:
             break;

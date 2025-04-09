@@ -42,7 +42,7 @@ NEW_SCRIPT(play_game_button)
 	GET_SIGNAL();	
 	switch (signal) {
 		case SIGNAL_BUTTON_CLICKED:
-			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+			play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
 			if (Game.input->active_keys & KEY_SPRINT) {
 				deferred_load_scene("assets/scenes/fps_chess/boot.scene");
 			}
@@ -51,7 +51,7 @@ NEW_SCRIPT(play_game_button)
 			Game.mainTree->root->children[5]->flags &= ~NODE_ACTIVE;
 			break;
 		case SIGNAL_BUTTON_HOVERED:
-			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+			play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
 			break;
 		default:
 			break;
@@ -63,13 +63,13 @@ NEW_SCRIPT(settings_game_button)
 	GET_SIGNAL();	
 	switch (signal) {
 		case SIGNAL_BUTTON_CLICKED:
-			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+			play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
 			Game.window->fadeColor[3] = 0.0f;
 			table_insert(Game.storage, "Game::last_scene", "assets/scenes/claude_chappe/boot.scene");
 			deferred_load_scene("assets/scenes/settings/main.scene");
 			break;
 		case SIGNAL_BUTTON_HOVERED:
-			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+			play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
 			break;
 		default:
 			break;
@@ -81,11 +81,11 @@ NEW_SCRIPT(quit_game_button)
 	GET_SIGNAL();	
 	switch (signal) {
 		case SIGNAL_BUTTON_CLICKED:
-			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+			play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
 			queue_push(Game.callQueue, NULL);
 			break;
 		case SIGNAL_BUTTON_HOVERED:
-			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+			play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
 			break;
 		default:
 			break;

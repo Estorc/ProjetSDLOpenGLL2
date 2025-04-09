@@ -110,7 +110,7 @@ NEW_SCRIPT(st_keybind_signal)
     GET_SIGNAL();	
     switch (signal) {
         case SIGNAL_BUTTON_CLICKED:
-            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
             this->parent->parent->parent->flags &= ~NODE_ACTIVE;
             this->parent->parent->parent->parent->children[0]->flags |= NODE_ACTIVE;
             this->parent->parent->parent->parent->children[0]->attribute[0].p = this;
@@ -119,7 +119,7 @@ NEW_SCRIPT(st_keybind_signal)
 
             break;
         case SIGNAL_BUTTON_HOVERED:
-            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
             break;
         default:
             break;

@@ -56,7 +56,7 @@ GET_SIGNAL();
   @code{.c}
   GET_SIGNAL();
   if (signal == SIGNAL_BUTTON_CLICKED) {
-      play_sfx("assets/audio/sfx/click.mp3", 50, 0);
+      play_sfx("assets/audio/sfx/click.wav", 50, 0);
   }
   @endcode
 
@@ -98,11 +98,11 @@ NEW_SCRIPT(return_to_main_menu)
     GET_SIGNAL();    
     switch (signal) {
         case SIGNAL_BUTTON_CLICKED:
-            play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
             prepare_change_scene("assets/scenes/claude_chappe/boot.scene");
             break;
         case SIGNAL_BUTTON_HOVERED:
-            play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+            play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
             break;
         default:
             break;

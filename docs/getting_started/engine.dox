@@ -49,7 +49,7 @@ Nodes can emit and receive signals, allowing for event-driven programming:
 @code{.c}
 GET_SIGNAL();
 if (signal == SIGNAL_BUTTON_CLICKED) {
-    play_sfx("assets/audio/click.mp3", 50, 0);
+    play_sfx("assets/audio/click.wav", 50, 0);
 }
 @endcode
 This system improves modularity and decouples logic efficiently.

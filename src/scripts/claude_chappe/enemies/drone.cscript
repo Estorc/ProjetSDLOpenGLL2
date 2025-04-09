@@ -38,7 +38,7 @@ NEW_SCRIPT(script_cc_drone_init)
     *state = DRONE_STATE_IDLE;
     glm_vec3_copy(this->pos, realPos);
     deferred_table_get(Game.storage, "Game::player", &this->attribute[7].node);
-    this->attribute[8].p = play_sfx("assets/audio/sfx/drone-fly.mp3", 1, -1);
+    this->attribute[8].p = play_sfx("assets/audio/sfx/drone-fly.wav", 1, -1);
 END_SCRIPT(script_cc_drone_init)
 
 NEW_SCRIPT(script_cc_drone_update)

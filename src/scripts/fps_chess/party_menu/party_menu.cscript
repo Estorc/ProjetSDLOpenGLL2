@@ -117,7 +117,7 @@ NEW_SCRIPT(script_fc_join_party_button)
 GET_SIGNAL();	
 switch (signal) {
 	case SIGNAL_BUTTON_CLICKED:
-		play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+		play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
 		//((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
 		//Game.mainTree->root->attribute[0].b = true;
 		//Frame *frame = this->parent->parent->children[1]->children[0]->object;
@@ -131,7 +131,7 @@ switch (signal) {
 		Game.mainTree->root->attribute[0].b = true;
 		break;
 	case SIGNAL_BUTTON_HOVERED:
-		play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+		play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
 		break;
 	default:
 		break;
@@ -142,7 +142,7 @@ NEW_SCRIPT(script_fc_create_party_button)
 GET_SIGNAL();	
 switch (signal) {
 	case SIGNAL_BUTTON_CLICKED:
-		play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+		play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
 		//((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
 		//Game.mainTree->root->attribute[0].b = true;
 		Frame *frame = this->parent->parent->children[1]->children[0]->object;
@@ -156,7 +156,7 @@ switch (signal) {
 		Game.mainTree->root->attribute[0].b = true;
 		break;
 	case SIGNAL_BUTTON_HOVERED:
-		play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+		play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
 		break;
 	default:
 		break;
@@ -169,13 +169,13 @@ NEW_SCRIPT(script_fc_refresh_party_button)
 GET_SIGNAL();	
 switch (signal) {
 	case SIGNAL_BUTTON_CLICKED:
-		play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+		play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
         struct peer *peer = table_get(Game.storage, "socket::server");
         add_message_handler(peer, "PARTY_LIST", get_party_list_wrapper, 1, 0, NULL);
         send_message(peer->socket, "LIST_PARTY", 0);
 		break;
 	case SIGNAL_BUTTON_HOVERED:
-		play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+		play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
 		break;
 	default:
 		break;
@@ -187,7 +187,7 @@ NEW_SCRIPT(script_fc_create_party_menu_button)
 	GET_SIGNAL();	
 	switch (signal) {
 		case SIGNAL_BUTTON_CLICKED:
-			play_sfx("assets/audio/sfx/button-clicked-sfx.mp3", 50, 0);
+			play_sfx("assets/audio/sfx/button-clicked-sfx.wav", 50, 0);
             //((Frame *) this->parent->parent->children[0]->object)->selectArea->text[0];
 			//Game.mainTree->root->attribute[0].b = true;
 			Game.mainTree->root->children[11]->children[0]->flags &= ~NODE_ACTIVE;
@@ -195,7 +195,7 @@ NEW_SCRIPT(script_fc_create_party_menu_button)
 			Game.mainTree->root->children[11]->children[1]->flags |= NODE_VISIBLE;
 			break;
 		case SIGNAL_BUTTON_HOVERED:
-			play_sfx("assets/audio/sfx/button-hover-sfx.mp3", 50, 0);
+			play_sfx("assets/audio/sfx/button-hover-sfx.wav", 50, 0);
 			break;
 		default:
 			break;
