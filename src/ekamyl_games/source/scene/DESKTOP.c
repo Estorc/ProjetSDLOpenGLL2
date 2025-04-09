@@ -11,11 +11,25 @@
 #include "../../include/dictionary.h"
 #include "../../include/texture_loader.h"
 #include "../../include/list.h"
+#include "../../include/event.h"
 
 
 uint8_t icon_locked = TRUE ;
 
+#define STATE_PLAY 0
+#define STATE_END 1
 
+
+// scripts de cette scene 
+static float terminate_game_trigger (Scene_t * scene, Event_t * event) ;
+static void terminate_game (Scene_t * scene, float progress) ;
+
+
+// fonction de changement d'etat 
+static void change_state (Scene_t * self, InfoScene_t * info) ;
+
+
+// fonction propre a cette scene 
 static void init_desktop_main_window (Desktop_t * desktop, WinTheme_t theme) ;
 
 
@@ -62,18 +76,33 @@ void DESKTOP_load(Scene_t *self) {
 
     dict->set(dict, "info", info, free_cb);
 
+    
+    List_t * listFont = create_list(TTF_CloseFont_cb) ;
+    if (listFont == NULL) {
+        fprintf(stderr, "Erreur creation listFont\n");
+        destroy_dictionary(&self->data);
+        return ;
+    }
+    dict->set(dict, "listFont", listFont, destroy_list_cb);
 
     // Création font (TTF_Font) 
     TTF_Font * font1 = TTF_OpenFont("assets/ekamyl_games/assets/PressStart2P-Regular.ttf", 12) ;
     TTF_Font * font2 = TTF_OpenFont("assets/ekamyl_games/assets/PressStart2P-Regular.ttf", 18) ;
     TTF_Font * font3 = TTF_OpenFont("assets/ekamyl_games/assets/PressStart2P-Regular.ttf", 20) ;
-    
-    List_t * listFont = create_list(TTF_CloseFont_cb) ;
     listFont->stack(listFont, font1);
     listFont->stack(listFont, font2);
     listFont->stack(listFont, font3);
     
-    dict->set(dict, "listFont", listFont, destroy_list_cb);
+
+    List_t * listText = create_list(destroy_text_cb) ;
+    if (listText == NULL) {
+        fprintf(stderr, "Erreur creation listText\n");
+        destroy_dictionary(&self->data);
+        return ;
+    }
+    dict->set(dict, "listText", listText, destroy_list_cb) ;
+
+    // load_texts_from_file("assets/ekamyl_games/data/textsDesktop.csv", font1, listText);
 
 
     // Création du bureau (Desktop_t)
@@ -83,14 +112,29 @@ void DESKTOP_load(Scene_t *self) {
         destroy_dictionary(&self->data); 
         return ;
     }
+    dict->set(dict, "desktop", desktop, destroy_desktop_cb);
 
     SDL_Color textColor = {255, 255, 255, SDL_ALPHA_OPAQUE} ;
     SDL_Color bgColor = {155, 0, 0, SDL_ALPHA_OPAQUE} ;
     init_desktop_main_window(desktop, (WinTheme_t){font1, textColor, bgColor});
+
+
+    EventManager_t * eventManager = create_event_manager() ;
+    if (!existe(eventManager)) {
+        fprintf(stderr, "Erreur creation eventManager\n");
+        destroy_dictionary(&self->data);
+        return ;
+    }
+    dict->set(dict, "eventManager", eventManager, destroy_event_manager_cb);
     
+
+    if (icon_locked) 
+        info->nextState = STATE_PLAY ;
+    else 
+        info->nextState = STATE_END ;
     
-    dict->set(dict, "desktop", desktop, destroy_desktop_cb);
-    
+    change_state(self, info);
+
 
     info->startTime = SDL_GetTicks() ;
     info->currentTime = info->startTime ;
@@ -171,10 +215,18 @@ void DESKTOP_handleEvents (Scene_t * self, SDL_Event * event, SceneManager_t * m
         }
     }
 
+
+    EventManager_t * eventManager = GET_EVENT_MANAGER(self->data) ;
+    process_events(eventManager, self);
+
+    return ;
 }
 
 
 void DESKTOP_update (Scene_t * self, SceneManager_t * manager) {
+
+    
+
     return; 
 }
 
@@ -184,9 +236,59 @@ void DESKTOP_render (Scene_t * self) {
     Desktop_t * desktop = self->data->get(self->data, "desktop") ;
     draw_desktop(desktop);
 
+    List_t * listFont = GET_LIST_FONT(self->data) ;
+    draw_time((SDL_Rect){822, 652, 0, 0}, listFont->item(listFont, 0), (SDL_Color){202, 202, 202, SDL_ALPHA_OPAQUE});
 }
 
 
+
+
+static 
+void change_state (Scene_t * self, InfoScene_t * info) {
+
+    EventManager_t * eventManager = GET_EVENT_MANAGER(self->data) ;
+
+    switch (info->nextState) {
+
+    case STATE_PLAY :;
+
+        info->startTime = info->currentTime ;
+        info->state = info->nextState ;
+        break;
+
+    case STATE_END :;
+
+        add_event(eventManager, 5000, 0, terminate_game_trigger, terminate_game);
+
+        info->startTime = info->currentTime ;
+        info->state = info->nextState ;
+        break;
+    
+    default:
+        break;
+    }
+}
+
+
+static
+float terminate_game_trigger (Scene_t * scene, Event_t * event) {
+    
+    InfoScene_t * info = GET_INFO(scene->data) ;
+    
+    if (info->currentTime >= event->execTime) {
+
+        return (float)(info->currentTime - event->execTime) / (float)(event->duration) ;
+    }
+
+    return 0.0f ;
+}
+static
+void terminate_game (Scene_t * scene, float progress) {
+
+    InfoScene_t * info = GET_INFO(scene->data) ;
+
+    info->end = TRUE ;
+}
 
 
 static
@@ -194,7 +296,7 @@ void init_desktop_main_window (Desktop_t * desktop, WinTheme_t theme ) {
 
     Window_t * window = &desktop->mainWindow ;
 
-    window->background = load_png("assets/ekamyl_games/assets/background3.jpg") ;
+    window->background = load_png("assets/ekamyl_games/assets/desktop_glitch2.png") ;
     if (!existe(window->background)) {
         printf("Erreur creation background dans load_window_from_file\n"); 
         return ;
@@ -209,7 +311,7 @@ void init_desktop_main_window (Desktop_t * desktop, WinTheme_t theme ) {
     window->position.x = 0 ; 
     window->position.y = 0 ; 
     window->position.w = WINDOW_WIDTH ; 
-    window->position.h = WINDOW_HEIGHT ;
+    window->position.h = WINDOW_HEIGHT ; 
     
     window->widgetCount = 3 ;
     window->tabWidget = malloc(sizeof(Widget_t) * window->widgetCount) ;

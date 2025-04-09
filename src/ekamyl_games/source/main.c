@@ -17,13 +17,12 @@ void print_fps (uint32_t * previousTime);
 void start_frame (uint32_t * timerStart);
 void end_frame (uint32_t * timerStart, uint32_t * previousTime);
 
-SDL_Window * ekamyl_window ; 
+SDL_Window * window ; 
 SDL_Renderer * renderer ; 
 SceneManager_t * sceneManager ;
 GameStatus_t gameStatus ; 
 
-
-int ekamyl_main() {
+int main(int argc, char* argv[]) {
 
     if (init_systeme()) {
         return 1;
@@ -151,8 +150,8 @@ int init_systeme () {
 
 
     // Création de la fenêtre
-    ekamyl_window = SDL_CreateWindow("Intro Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
-    if (ekamyl_window == NULL) {
+    window = SDL_CreateWindow("Intro Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+    if (window == NULL) {
         printf("Erreur de création de la fenêtre: %s\n", SDL_GetError());
         Mix_CloseAudio();
         Mix_Quit();
@@ -161,14 +160,14 @@ int init_systeme () {
         SDL_Quit();
         return 1;
     }
-    SDL_SetWindowResizable(ekamyl_window, SDL_FALSE);
+    SDL_SetWindowResizable(window, SDL_FALSE);
 
 
     // Création du renderer
-    renderer = SDL_CreateRenderer(ekamyl_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (renderer == NULL) {
         printf("Erreur de création du renderer: %s\n", SDL_GetError());
-        SDL_DestroyWindow(ekamyl_window);
+        SDL_DestroyWindow(window);
         Mix_CloseAudio();
         Mix_Quit();
         TTF_Quit();
@@ -189,7 +188,7 @@ int init_systeme () {
 void terminate_system (Mix_Chunk * music, int audio, int ttf, int mixer, int img, int sdl) {
 
     SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(ekamyl_window);
+    SDL_DestroyWindow(window);
     if (music) {
         Mix_FreeChunk(music);
     }

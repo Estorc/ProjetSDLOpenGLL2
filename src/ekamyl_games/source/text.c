@@ -21,7 +21,7 @@
  * 
  * @return Un pointeur vers la structure `Text_t` créée, ou NULL en cas d'échec d'allocation.
  */
-static Text_t * create_text (const char * string, TTF_Font * font, SDL_Color color, SDL_Rect position) {
+Text_t * create_text (const char * string, TTF_Font * font, SDL_Color color, SDL_Rect position) {
 
     // Allocation dynamique de la structure `Text_t`
     Text_t * text = malloc(sizeof(Text_t));
@@ -120,8 +120,7 @@ void destroy_text (Text_t ** text) {
     }
 }
 void destroy_text_cb (void * text) {
-    Text_t ** ptext = (Text_t **)text ;
-    destroy_text(ptext);
+    destroy_text(text);
 }
 
 
@@ -172,6 +171,11 @@ void text_update (Text_t * text) {
         return ;
     }
 
+    // les text non visible ne subissent pas d'update
+    if (text->hidden == TRUE) {
+        return ;
+    }
+
     // Récupération de la structure d'animation associée au texte
     TextAnim_t * anim = &text->animation;
 
@@ -208,11 +212,8 @@ void text_update (Text_t * text) {
         free(buffer);
     }
 
+
     // Incrémentation du compteur de frames
-
-    if (text->hidden == TRUE) 
-        return ;
-
     anim->frameCount++; 
     if (anim->frameCount == anim->animationSpeed) {
         anim->frameCount = 0 ; // Réinitialisation du compteur
@@ -221,7 +222,7 @@ void text_update (Text_t * text) {
         if (anim->playing == TRUE) {
             do {
                 anim->currentFrame++;
-            } while (!isalpha(text->string[anim->currentFrame])) ;
+            } while (text->string[anim->currentFrame] == ' ') ;
             anim->needChange = TRUE; // Indique qu'on doit redessiner la texture
         }
         else {
@@ -451,8 +452,10 @@ void text_list_update_from_file (List_t * list, List_t * listFont, const char * 
         
                 if (!animated) {
                     text->animation.currentFrame = text->animation.numFrames ;
+                    text->animation.frameCount = 0 ;
                     text->animation.loop = FALSE ;
                     text->animation.playing = FALSE ;
+                    text->animation.needChange = TRUE ;
                 }
                 else {
                     text->animation.currentFrame = 0 ;

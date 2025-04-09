@@ -2,9 +2,9 @@
 
 
 #include "lib.h"
-#include "../source/scene/BOOT.h"
-#include "../source/scene/DESKTOP.h"
-#include "../source/scene/LEVEL1.h"
+#include "../src/scene/BOOT.h"
+#include "../src/scene/DESKTOP.h"
+#include "../src/scene/LEVEL1.h"
 
 #define MAX_SCENES 10
 
@@ -18,6 +18,7 @@
 #define GET_PLAYER(dict) dict->get(dict, "player")
 #define GET_MAP(dict) dict->get(dict, "map")
 #define GET_CAMERA(dict) dict->get(dict, "camera")
+#define GET_TIMER(dict) dict->get(dict, "timer")
 
 extern SDL_Renderer * renderer ;
 

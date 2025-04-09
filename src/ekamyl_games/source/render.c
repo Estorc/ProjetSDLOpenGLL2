@@ -23,7 +23,7 @@ void draw_rect_border (SDL_Rect rect, SDL_Color color) {
 /**
  * 
  */
-err_t ekamyl_draw_text (Text_t * text) {
+err_t draw_text (Text_t * text) {
 
     if (text->hidden == FALSE) {
         SDL_Rect posHollow = {text->animation.position.x - 3, text->animation.position.y + 3, text->animation.position.w, text->animation.position.h} ;
@@ -136,11 +136,9 @@ void draw_background (Map_t * map, Camera_t * camera) {
 
 
 /**
- * Affiche le widget.
+ * affiche les widgets uniquement.
  */
-void draw_window (Window_t * window) {
-
-    SDL_RenderCopy(renderer, window->background, NULL, &window->position);
+void draw_widgets (Window_t * window) {
 
     SDL_Rect winPosition = window->position ;
     Widget_t * tabWidget = window->tabWidget ;
@@ -220,11 +218,31 @@ void draw_window (Window_t * window) {
     }
 }
 /**
+ * Affiche la fenetre.
+ */
+void draw_window (Window_t * window) { 
+
+    SDL_Rect srcrect = {0, 0, WINDOW_WIDTH, WINDOW_HEIGHT} ;
+    SDL_RenderCopy(renderer, window->background, &srcrect, &window->position);
+
+    draw_widgets(window);
+}
+/**
+ * afiche une des 4 portions du bakcground de la fenetre (utile que pour les fenetre qui doivent faire un effet de glitch)
+ */
+void draw_window_glitched (Window_t * window) {
+
+    SDL_Rect srcrect = {WINDOW_WIDTH * (rand() % 2), WINDOW_HEIGHT * (rand() % 2), WINDOW_WIDTH, WINDOW_HEIGHT} ;
+    SDL_RenderCopy(renderer, window->background, &srcrect, &window->position);
+
+    draw_widgets(window);
+}
+/**
  * Pour afficher les elements relativement a la fenetre et non pas a la camera, passée NULL a camera.
  */
 void draw_desktop (Desktop_t * desktop) {
 
-    draw_window(&desktop->mainWindow);
+    draw_window_glitched(&desktop->mainWindow);
 
     List_t * listWindow = desktop->listWindow ;
     for (int i = 0; i < listWindow->size; i++) {
@@ -289,7 +307,7 @@ void draw_player_pv (Player_t * player, SDL_Texture * texture) {
 
 
     SDL_Rect srcrect = {0, 0, 16, 16} ;
-    SDL_Rect dstrect = {30, 20, 32, 32} ;
+    SDL_Rect dstrect = {30, 20, 48, 48} ;
 
     int i = 0 ;
 
@@ -312,8 +330,108 @@ void draw_player_pv (Player_t * player, SDL_Texture * texture) {
 }
 
 
-void draw_timer (uint32_t time) {
+static uint8_t ptSizeNumber ;
+static SDL_Texture * numberTexture = NULL ;
+void generate_number_texture (uint8_t ptSize, SDL_Color color) {
+
+    if (numberTexture != NULL) {
+        SDL_DestroyTexture(numberTexture);
+        numberTexture = NULL ;
+    }
+
+    if (numberTexture == NULL) {
+
+        TTF_Font * font = TTF_OpenFont("assets/ekamyl_games/assets/PressStart2P-Regular.ttf", ptSize) ;
+
+        numberTexture = create_TTF_Texture(font, "0123456789", color) ;
+        ptSizeNumber = ptSize ;
+
+        TTF_CloseFont(font);
+    }
+}
+void destroy_number_texture () {
     
+    if (numberTexture != NULL) {
+        SDL_DestroyTexture(numberTexture);
+        numberTexture = NULL ;
+    }
+}
+
+
+static uint8_t ptSizeLetter ;
+static SDL_Texture * letterTexture = NULL ;
+void generate_letter_texture (uint8_t ptSize, SDL_Color color) {
+
+    if (letterTexture != NULL) {
+        SDL_DestroyTexture(letterTexture);
+        letterTexture = NULL ;
+    }
+
+    if (letterTexture == NULL) {
+
+        TTF_Font * font = TTF_OpenFont("assets/ekamyl_games/assets/PressStart2P-Regular.ttf", ptSize) ;
+
+        letterTexture = create_TTF_Texture(font, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", color) ;
+        ptSizeLetter = ptSize ;
+
+        TTF_CloseFont(font);
+    }
+}
+void destroy_letter_texture () {
+    
+    if (letterTexture != NULL) {
+        SDL_DestroyTexture(letterTexture);
+        letterTexture = NULL ;
+    }
+}
+
+
+/**
+ * affiche en seconde le temp passer en param
+ */
+void draw_timer(uint32_t time, SDL_Rect dstrect, TTF_Font * font, SDL_Color color) {
+
+    uint32_t seconds = time / 1000;
+    uint32_t milliseconds = time % 1000;
+
+    char buffer[256];
+    sprintf(buffer, "%02u.%03u", seconds, milliseconds);
+
+    SDL_Texture *texture = create_TTF_Texture(font, buffer, color);
+    
+    SDL_QueryTexture(texture, NULL, NULL, &dstrect.w, &dstrect.h);
+    SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+
+    SDL_DestroyTexture(texture);
+}
+
+
+void draw_time (SDL_Rect dstrect, TTF_Font * font, SDL_Color color) {
+
+    time_t timestamp ;
+    struct tm * local_time ;
+
+    time(&timestamp);
+
+    local_time = localtime(&timestamp) ;
+
+
+    char buffer[256] ;
+    sprintf(buffer, "%02d:%02d\n%02d/%02d/%d", 
+        local_time->tm_hour,
+        local_time->tm_min,
+        local_time->tm_mday,
+        local_time->tm_mon + 1,
+        local_time->tm_year + 1900
+    );
+
+
+    SDL_Texture * texture = create_TTF_Texture(font, buffer, color) ;
+
+    SDL_QueryTexture(texture, NULL, NULL, &dstrect.w, &dstrect.h);
+    SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+
+    SDL_DestroyTexture(texture);
 }
 
 

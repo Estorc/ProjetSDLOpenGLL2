@@ -30,7 +30,7 @@ void SDL_DestroyTexture_cb (void * texture) {
 }
 
 
-static Texture_t * create_texture (SDL_Rect position, SDL_Rect srcrect, int hidden) {
+Texture_t * create_texture (SDL_Rect position, SDL_Rect srcrect, int hidden) {
 
     Texture_t * texture = malloc(sizeof(Texture_t)) ;
     if (!existe(texture)) {

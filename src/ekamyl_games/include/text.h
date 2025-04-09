@@ -17,6 +17,7 @@ typedef struct Text_u {
 } Text_t ; 
 
 
+Text_t * create_text (const char * string, TTF_Font * font, SDL_Color color, SDL_Rect position) ;
 void destroy_text (Text_t ** text) ;
 void destroy_text_cb (void * text) ;
 SDL_Texture * create_TTF_Texture (TTF_Font * font, const char * string, SDL_Color color) ;

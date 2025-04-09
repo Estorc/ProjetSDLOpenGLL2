@@ -28,3 +28,4 @@ typedef struct Dictionary_u {
 Dictionary_t * create_dictionnary () ;
 void destroy_dictionary(Dictionary_t ** dict) ;
 void destroy_dictionary_cb (void * dict) ;
+unsigned int hash (const char * key) ;

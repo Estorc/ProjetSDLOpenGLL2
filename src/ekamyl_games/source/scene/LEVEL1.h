@@ -1,7 +1,7 @@
 #pragma once 
 
 
-#include "../../include/lib.h"
+#include "lib.h" 
 
 
 typedef struct Scene_u Scene_t ;

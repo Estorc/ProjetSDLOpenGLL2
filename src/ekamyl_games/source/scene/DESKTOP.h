@@ -1,6 +1,6 @@
 #pragma once 
 
-#include "../../include/lib.h"
+#include "lib.h"
 
 #define DESKTOP_NB_EVENT 3
 #define NB_ELEM_DESKTOP_SCENE 4
