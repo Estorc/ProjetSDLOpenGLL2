@@ -6,7 +6,7 @@ Ce projet est un dérivé du projet principal *Chapper's Fallout*, développé d
 
 Cependant, en raison de problèmes techniques survenus en fin de développement, l’intégration dans la scène principale n’a **pas pu aboutir à temps**. Pour cette raison, le mini-jeu a été placé dans une **branche dédiée du dépôt GitHub**, sous le nom de `Ekamyl`, et reste jouable **en standalone** via une exécution directe.
 
-Le **seul contributeur** de ce mini-jeu est **Ekrem (Ekamyl)**.
+Mini-jeu réalisé par **Ekrem (Ekamyl)**.
 
 ## Mini-jeu : Survie face aux boules de feu
 
