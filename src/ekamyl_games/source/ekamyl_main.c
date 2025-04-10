@@ -17,7 +17,7 @@ void print_fps (uint32_t * previousTime);
 void start_frame (uint32_t * timerStart);
 void end_frame (uint32_t * timerStart, uint32_t * previousTime);
 
-SDL_Window * window ; 
+static SDL_Window * window ; 
 SDL_Renderer * renderer ; 
 SceneManager_t * sceneManager ;
 GameStatus_t gameStatus ; 

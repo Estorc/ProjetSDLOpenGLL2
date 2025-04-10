@@ -70,3 +70,5 @@ Scene_t * create_scene (char * name, void (*load) (Scene_t *), void (*unLoad) (S
             void (*render) (Scene_t *));    
 void destroy_scene (Scene_t ** scene);
 int play_scene (SceneManager_t * manager, SDL_Event * event);
+
+extern SceneManager_t * sceneManager ;

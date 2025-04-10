@@ -162,15 +162,12 @@ class RigidBody : public Body {
         glm_vec3_add(rigidBody->velocity, gravity, rigidBody->velocity);
 
          // Apply friction
-        glm_vec3_scale(rigidBody->velocity, powf(rigidBody->friction, delta), rigidBody->velocity);
+        glm_vec3_scale(rigidBody->velocity, rigidBody->friction * (1.0-delta), rigidBody->velocity);
 
         // Integrate velocity into position
-        vec3 deltaVelocity;
-        glm_vec3_scale(rigidBody->velocity, 6.25f*delta, deltaVelocity);
-        glm_vec3_add(this->pos, deltaVelocity, this->pos);
+        glm_vec3_add(this->pos, rigidBody->velocity, this->pos);
 
-        // Dampen angular velocity
-        glm_vec3_scale(rigidBody->angularVelocity, powf(0.95f, delta), rigidBody->angularVelocity);
+        glm_vec3_scale(rigidBody->angularVelocity, 0.95f, rigidBody->angularVelocity);
 
         if (glm_vec3_isnan(rigidBody->angularVelocity)) {
             glm_vec3_zero(rigidBody->angularVelocity);
@@ -183,7 +180,8 @@ class RigidBody : public Body {
 
         // Convert angular velocity to degrees per second and integrate into rotation
         vec3 degreeAngularVelocity;
-        glm_vec3_scale(rigidBody->angularVelocity, delta * (180.0f / PI), degreeAngularVelocity);
+        glm_vec3_scale(rigidBody->angularVelocity, delta, degreeAngularVelocity);
+        glm_vec3_scale(degreeAngularVelocity, 180.0f/PI, degreeAngularVelocity);
         glm_vec3_add(this->rot, rigidBody->angularVelocity, this->rot);
 
         this->rot[0] = fmod(this->rot[0], 360.0f);  // Keep the roll angle within [0, 360)

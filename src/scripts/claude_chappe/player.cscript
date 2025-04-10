@@ -91,7 +91,11 @@ NEW_SCRIPT(script_cc_player_update)
 			appliedVelocity[2] -= dir[2];
 		};
 
-		if (Game.input->pressed_keys & KEY_JUMP && player->velocity[1] < 5.0f * delta && player->velocity[1] >= -0.5f * delta && !(*has_jumped)) {
+		if (Game.input->pressed_keys & KEY_JUMP
+			#ifndef DEBUG
+				&& player->velocity[1] < 5.0f * delta && player->velocity[1] >= -0.5f * delta && !(*has_jumped)
+			#endif
+		) {
 			*has_jumped = true;
 			player->velocity[1] = 0.2f;
 		};

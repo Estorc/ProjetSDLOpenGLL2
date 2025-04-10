@@ -24,3 +24,6 @@ typedef struct {
 } GameStatus_t ; 
 
 int ekamyl_main();
+
+extern SDL_Renderer * renderer ;
+extern GameStatus_t gameStatus ;
