@@ -17,7 +17,7 @@ Vous incarnez un petit personnage qui doit **survivre pendant un temps donné** 
 
 ## Fonctionnement
 
-Le mini-jeu utilise SDL2 et repose sur une **gestion complète des fenêtres et des événements**, similaire au système utilisé dans le projet principal. Un `event manager` dédié capte les entrées clavier/souris en temps réel, et orchestre les transitions entre les différentes phases du jeu (lancement, gameplay, fin de partie).
+Le mini-jeu utilise SDL2 et repose sur une **gestion complète des fenêtres et des événements**. Un `event manager` dédié capte les entrées clavier/souris en temps réel, et orchestre les transitions entre les différentes phases du jeu (lancement, gameplay, fin de partie).
 
 Les textures, animations et interactions sont gérées via un système de spritesheets avec un compteur de frames, garantissant des animations fluides et cohérentes.
 
