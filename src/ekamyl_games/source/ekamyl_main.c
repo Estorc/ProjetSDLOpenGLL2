@@ -10,32 +10,40 @@
 #include "../include/dictionary.h"
 #include "../include/texture_loader.h"
 
-
-int init_systeme ();
-void terminate_system (Mix_Chunk * music, int audio, int ttf, int mixer, int img, int sdl);
-void print_fps (uint32_t * previousTime);
-void start_frame (uint32_t * timerStart);
-void end_frame (uint32_t * timerStart, uint32_t * previousTime);
-
 static SDL_Window * window ; 
 SDL_Renderer * renderer ; 
 SceneManager_t * sceneManager ;
+SDL_Texture * render_texture ;
 GameStatus_t gameStatus ; 
 
-int ekamyl_main() {
 
-    if (init_systeme()) {
+// initialise les variables globales du systeme
+int init_systeme () {
+
+    // Création de la fenêtre
+    window = SDL_CreateWindow("Intro Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+    if (window == NULL) {
+        printf("Erreur de création de la fenêtre: %s\n", SDL_GetError());
         return 1;
     }
+    SDL_SetWindowResizable(window, SDL_FALSE);
+
+
+    // Création du renderer
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if (renderer == NULL) {
+        printf("Erreur de création du renderer: %s\n", SDL_GetError());
+        SDL_DestroyWindow(window);
+        return 1;
+    }
+
+    render_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, WINDOW_WIDTH, WINDOW_HEIGHT) ;
+    SDL_SetRenderTarget(renderer, render_texture);
     
-    
-    // variable pour l'affichage du nombre de FPS 
-    uint32_t previousTime = SDL_GetTicks(); // to print fps every second 
-    uint32_t timerStart; 
-    
-    // variable gestion evenements 
-    SDL_Event event ;
-    int running = TRUE;
+    gameStatus.running = TRUE;
+    gameStatus.scene = 0;
+    gameStatus.frameCount = 0;
+    gameStatus.updateCount = 0;
 
     // initialise le scene manager  
     sceneManager = create_scene_manager() ;
@@ -47,147 +55,38 @@ int ekamyl_main() {
     push_scene(sceneManager, level1Scene);
     request_scene_change(sceneManager, "BOOT");
     change_scene(sceneManager);
-    
-    // Boucle principale
-    while (running) { 
-
-        // traitement debut frame 
-        start_frame(&timerStart);
-
-        // Joue scene et vérification de l'état du jeu (fin ou continuer)
-        if (play_scene(sceneManager, &event)) { 
-            running = FALSE ;
-        } 
-        
-        // traitement fin frame  
-        end_frame(&timerStart, &previousTime);
-    }
-    
-    // Nettoyage
-    destroy_scene_manager(&sceneManager);
-    terminate_system(NULL, TRUE, TRUE, TRUE, TRUE, TRUE);
-
-    printf("fin propre\n");
 
     return 0;
 }
 
 
-void start_frame (uint32_t * timerStart) {
+int ekamyl_play() {
+
+    uint32_t timerStart; 
+    
+    // variable gestion evenements 
+    SDL_Event event ;
+    int running = TRUE;
+
     *timerStart = SDL_GetTicks();
-}
 
-
-void end_frame (uint32_t * timerStart, uint32_t * previousTime) {
-
-    print_fps(previousTime);
-
-    gameStatus.frameCount++;
+    running = play_scene(sceneManager, &event) ; 
 
     uint32_t timerDelay = SDL_GetTicks() - *timerStart;
     if (timerDelay < FRAME_DELAY) {
         SDL_Delay(FRAME_DELAY - timerDelay);
     }
+
+
+    return running ;
 }
 
 
-void print_fps (uint32_t * previousTime) {
-    uint32_t time = SDL_GetTicks();
-    if (time - *previousTime > 1000) {
-        *previousTime = time;
-        printf("FPS : %d\n", gameStatus.frameCount);
-        gameStatus.frameCount = 0;
-    }
-}
-
-
-// initialise les variables globales du systeme et les differentes librairies 
-int init_systeme () {
-
-    srand(time(NULL));
-
-    // Initialisation de SDL
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
-        printf("Erreur d'initialisation de SDL: %s\n", SDL_GetError());
-        return 1;
-    }
-
-
-    // Initialisation de SDL_image
-    int imgFlags = IMG_INIT_PNG;
-    if (!(IMG_Init(imgFlags) & imgFlags)) {
-        printf("Erreur d'initialisation de SDL_image: %s\n", IMG_GetError());
-        SDL_Quit();
-        return 1;
-    }
-
-
-    // initialisation de SDL_ttf 
-    if (TTF_Init() == -1) {
-        printf("Erreur d'initialisation de SDL_ttf : %s\n", TTF_GetError());
-        IMG_Quit();
-        SDL_Quit();
-        return 1;
-    }
-
-
-    // Initialisation de SDL_mixer et configuration audio 
-    if (Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG) != (MIX_INIT_MP3 | MIX_INIT_OGG )) {
-        printf("Erreur d'initialisation de SDL_mixer : %s\n", Mix_GetError());
-        TTF_Quit();
-        IMG_Quit();
-        SDL_Quit();
-        return 1;
-    }
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
-        printf("Erreur d'initialisation de Mix_OpenAudio : %s\n", Mix_GetError());
-        Mix_Quit();
-        TTF_Quit();
-        IMG_Quit();
-        SDL_Quit();
-        return 1;
-    }
-
-
-    // Création de la fenêtre
-    window = SDL_CreateWindow("Intro Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
-    if (window == NULL) {
-        printf("Erreur de création de la fenêtre: %s\n", SDL_GetError());
-        Mix_CloseAudio();
-        Mix_Quit();
-        TTF_Quit();
-        IMG_Quit();
-        SDL_Quit();
-        return 1;
-    }
-    SDL_SetWindowResizable(window, SDL_FALSE);
-
-
-    // Création du renderer
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    if (renderer == NULL) {
-        printf("Erreur de création du renderer: %s\n", SDL_GetError());
-        SDL_DestroyWindow(window);
-        Mix_CloseAudio();
-        Mix_Quit();
-        TTF_Quit();
-        IMG_Quit();
-        SDL_Quit();
-        return 1;
-    }
-    
-    gameStatus.running = TRUE;
-    gameStatus.scene = 0;
-    gameStatus.frameCount = 0;
-    gameStatus.updateCount = 0;
-
-    return 0;
-}
-
-
-void terminate_system (Mix_Chunk * music, int audio, int ttf, int mixer, int img, int sdl) {
+void terminate_system () {
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
+    SDL_DestroyTexture(render_texture);
+    destroy_scene_manager(&sceneManager);
 
 }
