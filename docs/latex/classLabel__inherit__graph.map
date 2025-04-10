@@ -1,7 +1,0 @@
-<map id="Label" name="Label">
-<area shape="rect" id="Node000001" title="Represents a label." alt="" coords="220,5,277,31"/>
-<area shape="rect" id="Node000002" href="$classFrame.html" title="Represents a frame." alt="" coords="109,5,172,31"/>
-<area shape="poly" id="edge3_Node000001_Node000002" title=" " alt="" coords="186,15,220,15,220,21,186,21"/>
-<area shape="rect" id="Node000003" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="5,5,61,31"/>
-<area shape="poly" id="edge4_Node000002_Node000003" title=" " alt="" coords="75,15,109,15,109,21,75,21"/>
-</map>

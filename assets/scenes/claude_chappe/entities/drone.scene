@@ -1,5 +1,0 @@
-Node[s0.05,0.05,0.05]{script_cc_drone_init,script_cc_drone_update,NULL}:2
-Model(assets/models/Drone/drone.obj)
-Area(6,1)
-SphereCShape[s150,150,150]
-:0

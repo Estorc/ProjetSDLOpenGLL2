@@ -1,0 +1,2 @@
+bgPath;spriteSheetPath;widgetsPath;widgetCount;posX;posY;posW;posH
+assets/errorWindow.png;assets/objectsDesktopScene.png;data/popupWinWidgets.csv;20;300;300;319;120

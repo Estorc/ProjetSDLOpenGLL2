@@ -1,0 +1,3 @@
+bgPath;spriteSheetPath;widgetsPath;widgetCount;posX;posY;posW;posH
+assets/backgroundDesktopScene.png;assets/objectsDesktopScene.png;data/docWinWidgets.csv;20;100;100;800;533
+assets/errorWindow.png;assets/objectsDesktopScene.png;data/lockedWinWidgets.csv;20;300;300;319;120

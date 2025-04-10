@@ -1,7 +1,0 @@
-Node:1
-StaticBody(1)
-BoxCShape[m-19.75,-1,-51.5s2.5,1,2]{NULL,NULL,NULL}
-:2
-Model(assets/models/ClaudeChappe/plateforme_parcours.obj)
-Area(7,1)
-SphereCShape[m-19.75,0,-51.5s2,2,2]{NULL,NULL,NULL}

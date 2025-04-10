@@ -1,0 +1,3 @@
+key;filePath;x;y;w;h;srcX;srcY;srcW;srcH;hidden;numFrames;speed;loop;typeAnim
+loading_wheel;assets/loading_wheel_bis.png;450;200;150;150;0;0;0;0;1;12;12;1;2
+blis_fl5;assets/blis_fl5.png;230;300;650;120;0;0;0;0;1;1;1;0;0

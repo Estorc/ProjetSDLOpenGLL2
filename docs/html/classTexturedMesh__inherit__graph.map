@@ -1,5 +1,0 @@
-<map id="TexturedMesh" name="TexturedMesh">
-<area shape="rect" id="Node000001" title="Structure representing a textured mesh." alt="" coords="109,5,223,31"/>
-<area shape="rect" id="Node000002" href="$classNode.html" title="Represents a node in the tree structure." alt="" coords="5,5,61,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,15,109,15,109,21,75,21"/>
-</map>

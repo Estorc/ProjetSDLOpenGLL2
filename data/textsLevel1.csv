@@ -1,0 +1,7 @@
+key;string;r;g;b;a;x;y;hollow;r;g;b;a;typeHollow;anim;speed;fontPt;hidden
+message1;Tu as échoué...;255;255;255;255;100;200;1;150;0;0;255;2;1;4;2;1
+message2;Je m’y attendais.;255;255;255;255;100;230;1;150;0;0;255;2;1;4;2;1
+msgRetry;Appuie sur R pour revenir au bureau;255;255;255;200;500;700;1;0;0;0;255;2;1;4;0;1
+msgWin;You WIN !;202;202;202;255;300;300;1;0;0;0;255;2;1;4;3;1
+intro0;OBJECTIF;255;202;202;255;400;300;1;0;0;0;255;2;0;4;3;1
+intro1;Survivre 30s sans se faire toucher par les projectiles;202;202;202;255;120;400;1;0;0;0;255;2;1;4;0;1

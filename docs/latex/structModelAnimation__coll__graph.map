@@ -1,7 +1,0 @@
-<map id="ModelAnimation" name="ModelAnimation">
-<area shape="rect" id="Node000001" title="Structure representing the data of a 3D model animation." alt="" coords="473,37,603,62"/>
-<area shape="rect" id="Node000002" href="$structBone.html" title="Structure representing a bone in a 3D model." alt="" coords="320,37,375,62"/>
-<area shape="poly" id="edge3_Node000001_Node000002" title=" " alt="" coords="388,47,473,47,473,52,388,52"/>
-<area shape="rect" id="Node000003" href="$structModelKeyframe.html" title="Structure representing the data of a 3D model keyframe." alt="" coords="5,37,131,62"/>
-<area shape="poly" id="edge4_Node000002_Node000003" title=" " alt="" coords="144,47,320,47,320,52,144,52"/>
-</map>

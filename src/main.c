@@ -1,197 +1,212 @@
-#include <raptiquax.h>
-#include <math/math_util.h>
-#include <io/model.h>
-#include <render/framebuffer.h>
-#include <storage/node.h>
-#include <render/depth_map.h>
-#include <render/render.h>
-#include <render/lighting.h>
-#include <window.h>
-#include <io/input.h>
-#include <io/osio.h>
-#include <render/camera.h>
-#include <io/shader.h>
-#include <io/scene_loader.h>
-#include <io/node_loader.h>
-#include <physics/physics.h>
-#include <physics/bodies.h>
-#include <scripts/scripts.h>
-#include <gui/frame.h>
-#include <settings.h>
-#include <memory.h>
-#include <buffer.h>
-#include <storage/queue.h>
-#include <storage/hash.h>
-#include <utils/scene.h>
-#include <utils/random.h>
-#include <render/shaders/ssao.h>
+#include "../include/lib.h"
+#include "../include/main.h"
+#include "../include/window.h"
+#include "../include/player.h"
+#include "../include/map.h"
+#include "../include/camera.h"
+#include "../include/render.h"
+#include "../include/gui.h"
+#include "../include/scene.h"
+#include "../include/dictionary.h"
+#include "../include/texture_loader.h"
 
-#include <classes/classes.h>
 
-#define BOOT_SCENE "assets/scenes/claude_chappe/boot.scene"
-#define GAME_NAME "RaptiquaX"
+int init_systeme ();
+void terminate_system (Mix_Chunk * music, int audio, int ttf, int mixer, int img, int sdl);
+void print_fps (uint32_t * previousTime);
+void start_frame (uint32_t * timerStart);
+void end_frame (uint32_t * timerStart, uint32_t * previousTime);
 
-int update(Window *window, WorldShaders *shaders, DepthMap *depthMap, Mesh *screenPlane) {
-    static float accumulator = 0.0f;
-    const float fixedTimeStep = 0.0167f;
+SDL_Window * window ; 
+SDL_Renderer * renderer ; 
+SceneManager_t * sceneManager ;
+SDL_Texture * render_texture ;
+GameStatus_t gameStatus ; 
+
+int main(int argc, char* argv[]) {
+
+    if (init_systeme()) {
+        return 1;
+    }
     
-    float delta = (window->lastTime) ? window->time - window->lastTime : 0.0;
-    const float maxDelta = 0.1f;
-    delta = (delta > maxDelta) ? maxDelta : delta;
-    accumulator += delta;
+    
+    // variable pour l'affichage du nombre de FPS 
+    uint32_t previousTime = SDL_GetTicks(); // to print fps every second 
+    uint32_t timerStart; 
+    
+    // variable gestion evenements 
+    SDL_Event event ;
+    int running = TRUE;
 
-    if (accumulator >= fixedTimeStep) SDL_FillRect(window->ui_surface, NULL, 0x000000);
+    // initialise le scene manager  
+    sceneManager = create_scene_manager() ;
+    Scene_t * bootScene = create_scene("BOOT", BOOT_load, BOOT_unLoad, BOOT_handleEvents, BOOT_update, BOOT_render);
+    Scene_t * desktopScene = create_scene("DESKTOP", DESKTOP_load, DESKTOP_unLoad, DESKTOP_handleEvents, DESKTOP_update, DESKTOP_render);
+    Scene_t * level1Scene = create_scene("LEVEL1", LEVEL1_load, LEVEL1_unLoad, LEVEL1_handleEvents, LEVEL1_update, LEVEL1_render);
+    push_scene(sceneManager, bootScene);
+    push_scene(sceneManager, desktopScene);
+    push_scene(sceneManager, level1Scene);
+    request_scene_change(sceneManager, "BOOT");
+    change_scene(sceneManager);
+    
+    // Boucle principale
+    while (running) { 
 
-    while (!queue_is_empty(Game.callQueue)) {
-        void(*call)() = queue_pop(Game.callQueue);
-        if (call) call();
-        else return -1;
+        // traitement debut frame 
+        start_frame(&timerStart);
+
+        // Joue scene et vérification de l'état du jeu (fin ou continuer)
+        if (play_scene(sceneManager, &event)) { 
+            running = FALSE ;
+        } 
+        
+        // traitement fin frame  
+        end_frame(&timerStart, &previousTime);
     }
+    
+    // Nettoyage
+    destroy_scene_manager(&sceneManager);
+    terminate_system(NULL, TRUE, TRUE, TRUE, TRUE, TRUE);
 
-
-
-    static float fps = 0.0;
-    char delta_str[50];
-    char fps_str[50];
-    if (Game.settings->show_fps) {
-        sprintf(delta_str, "DELTA: %.4f", delta);
-        if (delta) {
-            fps = (fps+(1.0/delta))/2.0;
-            sprintf(fps_str, "FPS: %.4f", fps);
-            printf("\rFPS: %.4f\n", fps);
-        }
-
-        TTF_Font *font = TTF_OpenFont("assets/fonts/determination-mono.ttf", 48);
-        SDL_Color textColor = {255, 255, 255, 255};
-        draw_text(window->ui_surface, 8, 0, delta_str, font, textColor, "lt", -1);
-        draw_text(window->ui_surface, 8, 32, fps_str, font, textColor, "lt", -1);
-        TTF_CloseFont(font);
-    }
-
-
-
-    u8 lightsCount[LIGHTS_COUNT];
-    while (accumulator >= fixedTimeStep) {
-        s8 input_result = update_input(Game.input);
-        if (input_result) {
-            if (input_result == -1) return -1;
-            if (input_result == 1) {
-                refresh_resolution();
-            }
-        }
-
-        Game.buffers->collisionBuffer.index = 0;
-        Game.buffers->lightingBuffer.index = 0;
-        memset(lightsCount, 0, sizeof(lightsCount));
-        update_physics(Game.mainTree->root, (vec3) {0.0, 0.0, 0.0}, (vec3) {0.0, 0.0, 0.0}, (vec3) {1.0, 1.0, 1.0}, fixedTimeStep, Game.input, window, lightsCount, true);
-        accumulator -= fixedTimeStep;
-    }
-
-
-    set_lightings(lightsCount);
-    refresh_ui(window);
-    update_window(window, Game.mainTree->root, Game.camera, shaders, depthMap, screenPlane);
+    printf("fin propre\n");
 
     return 0;
 }
 
 
-int main(int argc, char *argv[]) {
+void start_frame (uint32_t * timerStart) {
+    *timerStart = SDL_GetTicks();
+}
 
-    if (update_cwd() == -1) return -1;
 
-    init_random();
-    init_memory_cache();
+void end_frame (uint32_t * timerStart, uint32_t * previousTime) {
 
-    default_input_settings();
+    gameStatus.frameCount++;
 
-    load_settings();
-
-    if (create_window(GAME_NAME, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE, Game.window) == -1) return -1;
-    init_input(Game.input);
-
-    Game.storage = table_create(16);
-    
-    // TODO: Transform this in singletons
-
-    WorldShaders defaultShaders = {
-        .render = create_shader(DEFAULT_RENDER_SHADER),
-        .depth = create_shader(DEFAULT_DEPTH_SHADER),
-        .smaa = create_shader(DEFAULT_SMAA_SHADER),
-        .screen = create_shader(DEFAULT_SCREEN_SHADER),
-        .skybox = create_shader(DEFAULT_SKYBOX_SHADER),
-        .gui = create_shader(DEFAULT_GUI_SHADER),
-        .ssr = create_shader(DEFAULT_SSR_SHADER),
-        .light = create_shader(DEFAULT_LIGHT_SHADER),
-        .ssao = create_shader(DEFAULT_SSAO_SHADER),
-        .ssaoBlur = create_shader(DEFAULT_SSAO_BLUR_SHADER),
-        .bloom = create_shader(DEFAULT_BLOOM_SHADER),
-    };
-
-    init_ssao(defaultShaders.ssao, defaultShaders.ssaoBlur);
-    set_shaders_screen_size(SCREEN_WIDTH, SCREEN_HEIGHT);
-
-    create_depthmap(Game.depthMap, &defaultShaders);
-
-    Mesh screenPlane;
-    create_screen_plane(&screenPlane);
-
-    create_cfbo(Game.uiFBO);
-    create_dfbo(Game.deferredBuffer);
-    create_intermediate_fbo();
-
-    
-    init_buffers();
-
-    Mix_OpenAudio(48000, AUDIO_S16SYS, 2, 2048);
-
-    #ifdef DEBUG
-    if (argc >= 2) {
-        char scene[256] = "assets/scenes/";
-        strcat(scene, argv[1]);
-        strcat(scene, ".scene");
-        Game.mainTree->root = load_scene(scene, &Game.camera, Game.scripts);
+    uint32_t timerDelay = SDL_GetTicks() - *timerStart;
+    if (timerDelay < FRAME_DELAY) {
+        SDL_Delay(FRAME_DELAY - timerDelay);
     }
-    else 
-    #endif
-    Game.mainTree->root = load_scene(BOOT_SCENE, &Game.camera, Game.scripts);
+}
 
-    while (update(Game.window, &defaultShaders, Game.depthMap, &screenPlane) >= 0);
 
-    if (!queue_is_empty(Game.callQueue)) {
-        queue_free(Game.callQueue);
-        PRINT_INFO("Free call queue!\n");
+void print_fps (uint32_t * previousTime) {
+    uint32_t time = SDL_GetTicks();
+    if (time - *previousTime > 1000) {
+        *previousTime = time;
+        printf("FPS : %d\n", gameStatus.frameCount);
+        gameStatus.frameCount = 0;
+    }
+}
+
+
+// initialise les variables globales du systeme et les differentes librairies 
+int init_systeme () {
+
+    srand(time(NULL));
+
+    // Initialisation de SDL
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
+        printf("Erreur d'initialisation de SDL: %s\n", SDL_GetError());
+        return 1;
     }
 
 
-    PRINT_INFO("Free scripts!\n");
-    free(Game.scripts);
-
-    free_dfbo(Game.deferredBuffer);
-    free_cfbo(Game.uiFBO);
-    free_intermediate_fbo();
-
-    free_buffers();
-    free_memory_cache();
-    PRINT_INFO("Free nodes!\n");
-    (Game.mainTree->root)::free();
-
-    glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
-    glDeleteTextures(1, &Game.depthMap->texture);
-    for (int i = 0; i < NUM_DIRECTIONAL_LIGHTS + NUM_POINT_LIGHTS * 6 + NUM_SPOT_LIGHTS; i++) {
-        glDeleteFramebuffers(1, &Game.depthMap->frameBuffer[i]);
+    // Initialisation de SDL_image
+    int imgFlags = IMG_INIT_PNG;
+    if (!(IMG_Init(imgFlags) & imgFlags)) {
+        printf("Erreur d'initialisation de SDL_image: %s\n", IMG_GetError());
+        SDL_Quit();
+        return 1;
     }
-    glDeleteBuffers(1, &Game.depthMap->tbo);
-    glDeleteTextures(1, &Game.depthMap->matrixTexture);
-    PRINT_INFO("Free depth map!\n");
 
-    table_free(Game.storage);
-    PRINT_INFO("Free storage!\n");
+
+    // initialisation de SDL_ttf 
+    if (TTF_Init() == -1) {
+        printf("Erreur d'initialisation de SDL_ttf : %s\n", TTF_GetError());
+        IMG_Quit();
+        SDL_Quit();
+        return 1;
+    }
+
+
+    // Initialisation de SDL_mixer et configuration audio 
+    if (Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG) != (MIX_INIT_MP3 | MIX_INIT_OGG )) {
+        printf("Erreur d'initialisation de SDL_mixer : %s\n", Mix_GetError());
+        TTF_Quit();
+        IMG_Quit();
+        SDL_Quit();
+        return 1;
+    }
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+        printf("Erreur d'initialisation de Mix_OpenAudio : %s\n", Mix_GetError());
+        Mix_Quit();
+        TTF_Quit();
+        IMG_Quit();
+        SDL_Quit();
+        return 1;
+    }
+
+
+    // Création de la fenêtre
+    window = SDL_CreateWindow("Intro Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+    if (window == NULL) {
+        printf("Erreur de création de la fenêtre: %s\n", SDL_GetError());
+        Mix_CloseAudio();
+        Mix_Quit();
+        TTF_Quit();
+        IMG_Quit();
+        SDL_Quit();
+        return 1;
+    }
+    SDL_SetWindowResizable(window, SDL_FALSE);
+
+
+    // Création du renderer
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if (renderer == NULL) {
+        printf("Erreur de création du renderer: %s\n", SDL_GetError());
+        SDL_DestroyWindow(window);
+        Mix_CloseAudio();
+        Mix_Quit();
+        TTF_Quit();
+        IMG_Quit();
+        SDL_Quit();
+        return 1;
+    }
+
+    render_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, WINDOW_WIDTH, WINDOW_HEIGHT) ;
     
-    free_window(Game.window);
-    SDL_Quit();
+    gameStatus.running = TRUE;
+    gameStatus.scene = 0;
+    gameStatus.frameCount = 0;
+    gameStatus.updateCount = 0;
+
     return 0;
 }
 
 
+void terminate_system (Mix_Chunk * music, int audio, int ttf, int mixer, int img, int sdl) {
 
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    if (music) {
+        Mix_FreeChunk(music);
+    }
+    if (audio) {
+        Mix_CloseAudio();
+    }
+    if (ttf) {
+        TTF_Quit();
+    }
+    if (mixer) {
+        Mix_Quit();
+    }
+    if (img) {
+        IMG_Quit();
+    }
+    if (sdl) {
+        SDL_Quit();
+    }
+
+}

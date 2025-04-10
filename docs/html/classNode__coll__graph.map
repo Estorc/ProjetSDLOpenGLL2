@@ -1,7 +1,0 @@
-<map id="Node" name="Node">
-<area shape="rect" id="Node000001" title="Represents a node in the tree structure." alt="" coords="6,59,62,84"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="16,44,22,36,34,32,44,34,51,41,49,59,44,58,46,43,42,39,34,37,25,40,21,47"/>
-<area shape="rect" id="Node000002" href="$unionBehaviorAttribute.html" title="Union representing different types of behavior attributes." alt="" coords="171,59,309,84"/>
-<area shape="poly" id="edge3_Node000002_Node000001" title=" " alt="" coords="76,69,171,69,171,74,76,74"/>
-<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="187,90,138,98,86,95,59,87,61,81,86,90,137,92,186,85"/>
-</map>

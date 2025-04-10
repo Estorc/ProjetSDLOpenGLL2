@@ -1,0 +1,4 @@
+type;posX;posY;posW;posH;rectX;rectY;rectW;rectH;actionID/text
+2;40;72;80;80;0;0;120;120;2
+2;250;72;80;80;120;0;120;120;1
+2;460;72;80;80;240;0;120;120;3

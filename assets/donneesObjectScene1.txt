@@ -1,0 +1,16 @@
+{24, 72, 120, 120}	icone cadena
+{144, 72, 120, 120}	icone jeu
+{264, 72, 120, 120}	icone doc
+{24, 192, 319, 120}	message erreur
+{0, 0, 1080, 56}	bordure haute
+{0, 0, 13, 720}		bordure gauche 
+{1067, 0, 13, 720}	bordure droite 
+{0, 705, 1080, 15}	bordure basse
+{24, 72, 80, 80}	icone cadenas dst
+{144, 72, 80, 80}	icone jeu dst
+{264, 72, 80, 80}	icone doc dst
+{24, 192, 398, 150}	message erreur dst
+{0, 0, 1080, 56}	bordure haute dst
+{0, 0, 13, 720}		bordure gauche dst
+{1067, 0, 13, 720}	bordure droite dst
+{0, 705, 1080, 15}	bordure basse dst
