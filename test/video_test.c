@@ -1,6 +1,5 @@
 #include <SDL.h>
 #include <SDL_image.h>
-#include <GL/glew.h>
 #include <GL/gl.h>
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
@@ -52,11 +51,6 @@ int initSDL() {
     context = SDL_GL_CreateContext(test_window);
     if (!context) {
         printf("OpenGL context could not be created! SDL_Error: %s\n", SDL_GetError());
-        return -1;
-    }
-
-    if (glewInit() != GLEW_OK) {
-        printf("Error initializing GLEW!\n");
         return -1;
     }
 

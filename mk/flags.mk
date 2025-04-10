@@ -11,9 +11,9 @@ LFLAGS += -Llib
 LFLAGS += -Llib/linux
 LFLAGS += -lavformat -lavcodec -lavutil -lswscale -lswresample -lz
 LFLAGS += -lz -llzma
+LFLAGS += -lcunit
 LFLAGS += -pthread
 ifeq ($(OS),Windows_NT)
-LFLAGS += -lCUnit
 LFLAGS += -lglew32
 LFLAGS += -lopengl32
 LFLAGS += -lavif
