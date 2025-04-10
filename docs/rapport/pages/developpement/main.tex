@@ -21,36 +21,36 @@ signaux qui sont émis notamment lorsque les objets entrent en collision avec
 d'autres objets, mais il est possible de paramétrer divers signaux personnalisés.
 
 \paragraph{Mini-jeux}
-Dans le cadre de Chapper's Fallout, les mini-jeux en 2D sont conçus pour être totalement intégrés au sein d’un environnement homogène. Chaque mini-jeu débute 
-par l’activation d’une fenêtre qui simule le démarrage d’un ordinateur. Cette fenêtre, gérée par un système de fenêtrage complet, initialise automatiquement 
-l’affichage du bureau virtuel et coordonne le déroulement des scènes à l’aide d’un gestionnaire d’événements centralisé.
-\\ \\
-Le premier mini-jeu, par exemple, présente un bureau sur lequel se trouvent des icônes décoratives. Le cœur du gameplay repose sur l’apparition de 
-notifications qui indiquent la prochaine mission. Ici, le joueur reçoit un message de Souleymane lui demandant de le rejoindre pour un TP dans le bâtiment CC. 
-Une fois le message accepté via une interaction clavier ou souris, la fenêtre signale la fin du mini-jeu et permet le retour fluide dans le monde 3D.
-\\ \\
-Le second mini-jeu suit une logique similaire : l’ordinateur se lance dans une nouvelle fenêtre affichant le bureau, puis, en cliquant sur une icône spécifique, 
-le joueur accède à un jeu en 2D. Ce dernier consiste à esquiver des objets projetés depuis les bords de la fenêtre. Une fois l’épreuve terminée, le joueur peut 
-ouvrir un fichier interactif, conçu pour afficher des lignes de code de l’IA, et tenter de modifier ces paramètres pour réparer le système, même si l’issue n’est 
-pas toujours favorable.
-\\ \\
-Le troisième mini-jeu reprend le même mécanisme de lancement d’ordinateur. Après l’affichage du bureau, le joueur est amené à réaliser un jeu de décodage simple, 
-où il doit décrypter une série de symboles. La réussite de cette épreuve permet d’accéder à un fichier de nettoyage, indispensable pour poursuivre la réparation 
-de l’IA.
-\\ \\
-Au niveau du code, la gestion des événements est assurée par une boucle principale qui interroge SDL afin de capter en temps réel les entrées utilisateur (clics, 
-déplacements de souris, frappes clavier). Chaque mini-jeu possède ainsi son propre « event manager » qui orchestre les transitions entre les différentes scènes. 
-Par ailleurs, le système de gestion de fenêtres permet de créer, mettre à jour et détruire les fenêtres de jeu en synchronisation avec ces événements, assurant 
-ainsi une expérience utilisateur fluide et réactive.
-\\ \\
-Les structures de données, notamment celles dédiées aux éléments du bureau et aux textures animées, jouent un rôle crucial dans l’animation et 
-l’affichage des éléments graphiques. Par exemple, la fonction de mise à jour des textures incrémente le compteur de frames pour afficher la portion adéquate d’un 
-spritesheet, garantissant une animation cohérente et dynamique. Ce modèle a d’ailleurs été pensé pour être facilement extensible, afin d’ajouter de nouvelles 
-interactions ou de modifier l’ordre des scènes sans perturber le fonctionnement global du système.
-\\ \\
-Dans l’ensemble, ce design modulaire basé sur le système de fenêtrage intégré, couplé à une gestion des événements et une architecture orientée scène, permet de 
-créer des mini-jeux diversifiés et immersifs, renforçant ainsi l’expérience globale du joueur dans l’univers de Chapper's Fallout.
-
+Dans le cadre de Chapper's Fallout, un mini-jeu en 2D a été conçu pour s’intégrer de manière fluide à l’univers 
+du jeu principal. Ce mini-jeu est accessible via un unique ordinateur interactif placé dans le bâtiment. Lorsqu’il 
+est activé, une fenêtre s’ouvre, simulant le démarrage d’un système d’exploitation. Cette interface, gérée par un 
+système de fenêtrage complet, lance automatiquement un bureau virtuel et orchestre les différentes scènes via un 
+gestionnaire d’événements centralisé.
+\\
+Le cœur de ce mini-jeu repose sur une séquence dynamique dans laquelle le joueur incarne un petit personnage à l’écran. 
+L’objectif est simple mais engageant : survivre pendant un certain temps en esquivant des boules de feu tombant aléatoirement 
+du ciel. L’ensemble est enrichi par quelques animations et effets visuels qui donnent vie à l’interface et renforcent 
+l’immersion dans cet environnement fictif d’ordinateur.
+\\
+Sur le plan technique, la gestion des événements est assurée par une boucle principale qui interroge SDL en temps réel pour 
+capter les entrées utilisateur (clics, mouvements de souris, frappes clavier). Le mini-jeu dispose de son propre « event manager », 
+qui gère les transitions entre les différentes scènes et assure la réactivité du gameplay.
+\\
+Le système de fenêtres permet la création, la mise à jour et la destruction d’interfaces graphiques synchronisées avec les 
+événements du jeu, garantissant une expérience utilisateur fluide et cohérente.
+\\
+Enfin, les structures de données, notamment celles associées aux éléments du bureau et aux textures animées, jouent un rôle clé dans 
+l’affichage dynamique. Par exemple, la mise à jour des sprites utilise un compteur de frames pour sélectionner la portion adéquate 
+d’un spritesheet, assurant ainsi une animation fluide. Ce modèle est pensé pour être facilement extensible, permettant l’ajout de 
+nouveaux comportements ou scènes sans compromettre l’équilibre général du système.
+\\
+Dans l’ensemble, cette architecture modulaire, fondée sur un système de fenêtres intégré et une gestion rigoureuse des événements, 
+permet d’offrir un mini-jeu simple mais immersif, parfaitement intégré à l’expérience globale de Chapper's Fallout.
+\\
+Cependant, en raison de difficultés techniques rencontrées lors de son intégration dans la scène principale, le mini-jeu ne sera 
+finalement pas accessible via l’ordinateur en jeu. Il sera uniquement jouable via une touche spéciale au lancement du jeu, permettant 
+d’y accéder directement en dehors du gameplay principal.
+\\
 \subsubsection{Gestion des PNJ (personnages non joueurs)}
 
 Les PNJ sont des entités qui se déplacent dans la scène. Ils sont gérés par le moteur
