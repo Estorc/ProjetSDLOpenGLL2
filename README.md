@@ -1,6 +1,6 @@
 # MiniJeu_Survie - Projet Chapper's Fallout
 
-## Context
+## Contexte
 
 Ce projet est un dérivé du projet principal *Chapper's Fallout*, développé dans le cadre de la 2e année de Licence Informatique à l’Université du Mans. Le mini-jeu présenté ici n’a **pas vocation à être un jeu autonome**, mais devait initialement être **intégré dans l’environnement 3D principal** via un ordinateur interactif dans le bâtiment Claude Chappe.
 
