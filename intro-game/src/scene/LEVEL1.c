@@ -33,7 +33,7 @@
 #define INDEX_MSG_INTRO0 4
 #define INDEX_MSG_INTRO1 5
 
-#define TIMER_MS 30000
+#define TIMER_MS 3000
 
 
 // fonction de changement d'etat 

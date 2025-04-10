@@ -23,6 +23,7 @@ uint8_t icon_locked = TRUE ;
 #define INDEX_MSG_2 1
 #define INDEX_MSG_3 2
 #define INDEX_MSG_4 3
+#define INDEX_MSG_5 4
 
 
 // scripts de cette scene 
@@ -94,9 +95,13 @@ void DESKTOP_load(Scene_t *self) {
     TTF_Font * font1 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 12) ;
     TTF_Font * font2 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 18) ;
     TTF_Font * font3 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 20) ;
+    TTF_Font * font4 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 24) ;
+    TTF_Font * font5 = TTF_OpenFont("intro-game/assets/PressStart2P-Regular.ttf", 28) ;
     listFont->stack(listFont, font1);
     listFont->stack(listFont, font2);
     listFont->stack(listFont, font3);
+    listFont->stack(listFont, font4);
+    listFont->stack(listFont, font5);
     
 
     List_t * listText = create_list(destroy_text_cb) ;
@@ -282,6 +287,7 @@ void DESKTOP_update (Scene_t * self, SceneManager_t * manager) {
         Text_t * text2 = listText->item(listText, INDEX_MSG_2) ;
         Text_t * text3 = listText->item(listText, INDEX_MSG_3) ;
         Text_t * text4 = listText->item(listText, INDEX_MSG_4) ;
+        Text_t * text5 = listText->item(listText, INDEX_MSG_5) ;
         if (text1->animation.playing == FALSE) {
             text2->hidden = FALSE ;
         }
@@ -293,8 +299,11 @@ void DESKTOP_update (Scene_t * self, SceneManager_t * manager) {
         if (text3->animation.playing == FALSE) {
             text4->hidden = FALSE ;
         }
+        if (text4->animation.playing == FALSE) {
+            text5->hidden = FALSE ;
+        }
 
-        text_list_update_from_file(listText, listFont, "intro-game/data/textsLevel1.csv");
+        text_list_update_from_file(listText, listFont, "intro-game/data/textsDesktop.csv");
     }
 
     if (info->nextState != info->state) {
@@ -357,7 +366,7 @@ void change_state (Scene_t * self, InfoScene_t * info) {
         Text_t * text1 = listText->item(listText, INDEX_MSG_1) ;
         text1->hidden = FALSE ;
 
-        add_event(eventManager, 10000, 0, terminate_game_trigger, terminate_game);
+        add_event(eventManager, 15000, 0, terminate_game_trigger, terminate_game);
 
         info->startTime = info->currentTime ;
         info->state = info->nextState ;

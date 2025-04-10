@@ -20,6 +20,7 @@ void end_frame (uint32_t * timerStart, uint32_t * previousTime);
 SDL_Window * window ; 
 SDL_Renderer * renderer ; 
 SceneManager_t * sceneManager ;
+SDL_Texture * render_texture ;
 GameStatus_t gameStatus ; 
 
 int main(int argc, char* argv[]) {
@@ -79,8 +80,6 @@ void start_frame (uint32_t * timerStart) {
 
 
 void end_frame (uint32_t * timerStart, uint32_t * previousTime) {
-
-    print_fps(previousTime);
 
     gameStatus.frameCount++;
 
@@ -175,6 +174,8 @@ int init_systeme () {
         SDL_Quit();
         return 1;
     }
+
+    render_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, WINDOW_WIDTH, WINDOW_HEIGHT) ;
     
     gameStatus.running = TRUE;
     gameStatus.scene = 0;

@@ -21,7 +21,7 @@
 #define GET_TIMER(dict) dict->get(dict, "timer")
 
 extern SDL_Renderer * renderer ;
-
+extern SDL_Texture * render_texture ;
 
 typedef struct Dictionary_u Dictionary_t ; 
 typedef struct Map_u Map_t ; 

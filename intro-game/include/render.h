@@ -13,7 +13,6 @@
 extern SDL_Renderer * renderer ;
 extern GameStatus_t gameStatus ;
 
-
 typedef struct Text_u Text_t ;
 typedef struct Texture_u Texture_t ;
 typedef enum Direction_u {UP, DOWN, LEFT, RIGHT} Direction_t ;

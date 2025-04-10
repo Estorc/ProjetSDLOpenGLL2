@@ -243,6 +243,8 @@ int play_scene (SceneManager_t * manager, SDL_Event * event) {
     int end = info->end ;
     info->currentTime = SDL_GetTicks() ;
 
+    SDL_SetRenderTarget(renderer, render_texture);
+
     // efface l'affichage precedent
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(renderer);
@@ -251,9 +253,19 @@ int play_scene (SceneManager_t * manager, SDL_Event * event) {
     currentScene->handleEvents(currentScene, event, manager) ;
     currentScene->update(currentScene, manager) ;
     currentScene->render(currentScene) ;
+ 
+    SDL_SetRenderTarget(renderer, NULL); // retour à la fenêtre
 
-    // dessine le nouvel affichage 
+    // Efface la fenêtre
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+
+    // Dessine la texture rendue sur la fenêtre
+    SDL_RenderCopy(renderer, render_texture, NULL, NULL);
+
+    // Affiche
     SDL_RenderPresent(renderer);
+
 
     // Vérification des scènes en attentes
     if (strcmp(manager->nextScene, "") != 0) {
