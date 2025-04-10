@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.1)  4 APR 2025 23:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.1)  10 APR 2025 15:32
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/loupe/Documents/Programmation/ProjetSDLOpenGLL2/docs/rapport/main.tex
+**c:/Users/loupe/Documents/Programmation/ProjetSDLOpenGLL2/docs/rapport/main copy
 (c:/Users/loupe/Documents/Programmation/ProjetSDLOpenGLL2/docs/rapport/main.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -905,22 +905,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--10
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 11--15
+Underfull \hbox (badness 10000) in paragraph at lines 12--16
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--21
+Underfull \hbox (badness 10000) in paragraph at lines 17--22
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--26
+Underfull \hbox (badness 10000) in paragraph at lines 23--27
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--36
+Underfull \hbox (badness 10000) in paragraph at lines 28--37
 
  []
 
@@ -930,9 +930,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--36
 Underfull \hbox (badness 10000) in paragraph at lines 6--7
 
  []
-
-
-LaTeX Warning: Reference `sec:intro' on page 4 undefined on input line 12.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 8--13
@@ -1087,12 +1084,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 50--51
 
  []
 
-<images/m64wireframe.jpg, id=216, 642.4pt x 481.8pt>
+<images/m64wireframe.jpg, id=217, 642.4pt x 481.8pt>
 File: images/m64wireframe.jpg Graphic file (type jpg)
 <use images/m64wireframe.jpg>
 Package pdftex.def Info: images/m64wireframe.jpg  used on input line 56.
 (pdftex.def)             Requested size: 172.00249pt x 128.99968pt.
-<images/m64result.png, id=217, 321.2pt x 240.9pt>
+<images/m64result.png, id=218, 321.2pt x 240.9pt>
 File: images/m64result.png Graphic file (type png)
 <use images/m64result.png>
 Package pdftex.def Info: images/m64result.png  used on input line 62.
@@ -1108,110 +1105,107 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 87--94
+Underfull \hbox (badness 10000) in paragraph at lines 85--92
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--105
+Underfull \hbox (badness 10000) in paragraph at lines 95--103
 
  []
 
 
 
 [9 <./images/m64wireframe.jpg> <./images/m64result.png>]
-Overfull \vbox (70.31023pt too high) has occurred while \output is active []
-
- [10]
-Underfull \hbox (badness 10000) in paragraph at lines 243--257
+Underfull \hbox (badness 10000) in paragraph at lines 113--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--257
+Underfull \hbox (badness 10000) in paragraph at lines 113--127
 
  []
 
-Package svg Info: Last page of `./svg-inkscape/node_svg-tex.pdf' is 12 on input line 260.
+Package svg Info: Last page of `./svg-inkscape/node_svg-tex.pdf' is 12 on input line 130.
 (svg-inkscape/node_svg-tex.pdf_tex
-<./svg-inkscape/node_svg-tex.pdf, id=289, page=1, 1269.51523pt x 582.3259pt>
+<./svg-inkscape/node_svg-tex.pdf, id=256, page=1, 1269.51523pt x 582.3259pt>
 File: ./svg-inkscape/node_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/node_svg-tex.pdf, page 1>
 Package pdftex.def Info: ./svg-inkscape/node_svg-tex.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 430.00462pt x 197.24179pt.
-<./svg-inkscape/node_svg-tex.pdf, id=290, page=2, 1269.51523pt x 582.3259pt>
+<./svg-inkscape/node_svg-tex.pdf, id=257, page=2, 1269.51523pt x 582.3259pt>
 File: ./svg-inkscape/node_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/node_svg-tex.pdf, page 2>
 Package pdftex.def Info: ./svg-inkscape/node_svg-tex.pdf , page2 used on input line 58.
 (pdftex.def)             Requested size: 430.00462pt x 197.24179pt.
-<./svg-inkscape/node_svg-tex.pdf, id=291, page=3, 1269.51523pt x 582.3259pt>
+<./svg-inkscape/node_svg-tex.pdf, id=258, page=3, 1269.51523pt x 582.3259pt>
 File: ./svg-inkscape/node_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/node_svg-tex.pdf, page 3>
 Package pdftex.def Info: ./svg-inkscape/node_svg-tex.pdf , page3 used on input line 60.
 (pdftex.def)             Requested size: 430.00462pt x 197.24179pt.
-<./svg-inkscape/node_svg-tex.pdf, id=292, page=4, 1269.51523pt x 582.3259pt>
+<./svg-inkscape/node_svg-tex.pdf, id=259, page=4, 1269.51523pt x 582.3259pt>
 File: ./svg-inkscape/node_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/node_svg-tex.pdf, page 4>
 Package pdftex.def Info: ./svg-inkscape/node_svg-tex.pdf , page4 used on input line 62.
 (pdftex.def)             Requested size: 430.00462pt x 197.24179pt.
-<./svg-inkscape/node_svg-tex.pdf, id=293, page=5, 1269.51523pt x 582.3259pt>
+<./svg-inkscape/node_svg-tex.pdf, id=260, page=5, 1269.51523pt x 582.3259pt>
 File: ./svg-inkscape/node_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/node_svg-tex.pdf, page 5>
 Package pdftex.def Info: ./svg-inkscape/node_svg-tex.pdf , page5 used on input line 64.
 (pdftex.def)             Requested size: 430.00462pt x 197.24179pt.
-<./svg-inkscape/node_svg-tex.pdf, id=294, page=6, 1269.51523pt x 582.3259pt>
+<./svg-inkscape/node_svg-tex.pdf, id=261, page=6, 1269.51523pt x 582.3259pt>
 File: ./svg-inkscape/node_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/node_svg-tex.pdf, page 6>
 Package pdftex.def Info: ./svg-inkscape/node_svg-tex.pdf , page6 used on input line 68.
 (pdftex.def)             Requested size: 430.00462pt x 197.24179pt.
-<./svg-inkscape/node_svg-tex.pdf, id=295, page=7, 1269.51523pt x 582.3259pt>
+<./svg-inkscape/node_svg-tex.pdf, id=262, page=7, 1269.51523pt x 582.3259pt>
 File: ./svg-inkscape/node_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/node_svg-tex.pdf, page 7>
 Package pdftex.def Info: ./svg-inkscape/node_svg-tex.pdf , page7 used on input line 72.
 (pdftex.def)             Requested size: 430.00462pt x 197.24179pt.
-<./svg-inkscape/node_svg-tex.pdf, id=296, page=8, 1269.51523pt x 582.3259pt>
+<./svg-inkscape/node_svg-tex.pdf, id=263, page=8, 1269.51523pt x 582.3259pt>
 File: ./svg-inkscape/node_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/node_svg-tex.pdf, page 8>
 Package pdftex.def Info: ./svg-inkscape/node_svg-tex.pdf , page8 used on input line 76.
 (pdftex.def)             Requested size: 430.00462pt x 197.24179pt.
-<./svg-inkscape/node_svg-tex.pdf, id=297, page=9, 1269.51523pt x 582.3259pt>
+<./svg-inkscape/node_svg-tex.pdf, id=264, page=9, 1269.51523pt x 582.3259pt>
 File: ./svg-inkscape/node_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/node_svg-tex.pdf, page 9>
 Package pdftex.def Info: ./svg-inkscape/node_svg-tex.pdf , page9 used on input line 78.
 (pdftex.def)             Requested size: 430.00462pt x 197.24179pt.
-<./svg-inkscape/node_svg-tex.pdf, id=298, page=10, 1269.51523pt x 582.3259pt>
+<./svg-inkscape/node_svg-tex.pdf, id=265, page=10, 1269.51523pt x 582.3259pt>
 File: ./svg-inkscape/node_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/node_svg-tex.pdf, page 10>
 Package pdftex.def Info: ./svg-inkscape/node_svg-tex.pdf , page10 used on input line 80.
 (pdftex.def)             Requested size: 430.00462pt x 197.24179pt.
-<./svg-inkscape/node_svg-tex.pdf, id=299, page=11, 1269.51523pt x 582.3259pt>
+<./svg-inkscape/node_svg-tex.pdf, id=266, page=11, 1269.51523pt x 582.3259pt>
 File: ./svg-inkscape/node_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/node_svg-tex.pdf, page 11>
 Package pdftex.def Info: ./svg-inkscape/node_svg-tex.pdf , page11 used on input line 82.
 (pdftex.def)             Requested size: 430.00462pt x 197.24179pt.
-<./svg-inkscape/node_svg-tex.pdf, id=300, page=12, 1269.51523pt x 582.3259pt>
+<./svg-inkscape/node_svg-tex.pdf, id=267, page=12, 1269.51523pt x 582.3259pt>
 File: ./svg-inkscape/node_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/node_svg-tex.pdf, page 12>
 Package pdftex.def Info: ./svg-inkscape/node_svg-tex.pdf , page12 used on input line 88.
 (pdftex.def)             Requested size: 430.00462pt x 197.24179pt.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 274--291
+Underfull \hbox (badness 10000) in paragraph at lines 144--161
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--291
+Underfull \hbox (badness 10000) in paragraph at lines 144--161
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--291
+Underfull \hbox (badness 10000) in paragraph at lines 144--161
 
  []
 
 
 
-[11 <./svg-inkscape/node_svg-tex.pdf> <./svg-inkscape/node_svg-tex.pdf
+[10 <./svg-inkscape/node_svg-tex.pdf> <./svg-inkscape/node_svg-tex.pdf
 
 pdfTeX warning: pdflatex (file ./svg-inkscape/node_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 > <./svg-inkscape/node_svg-tex.pdf
@@ -1245,23 +1239,23 @@ pdfTeX warning: pdflatex (file ./svg-inkscape/node_svg-tex.pdf): PDF inclusion: 
 
 pdfTeX warning: pdflatex (file ./svg-inkscape/node_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-Underfull \hbox (badness 10000) in paragraph at lines 299--303
+Underfull \hbox (badness 10000) in paragraph at lines 169--173
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 321--323
+Underfull \hbox (badness 10000) in paragraph at lines 191--193
 
  []
 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 332--4
+Underfull \hbox (badness 10000) in paragraph at lines 202--4
 
  []
 
 
 
-[12] (pages/developpement/creation_des_ressources.tex
+[11] (pages/developpement/creation_des_ressources.tex
 Underfull \hbox (badness 10000) in paragraph at lines 3--15
 
  []
@@ -1307,8 +1301,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 31--35
  []
 
 
-
-[13]
 Underfull \hbox (badness 10000) in paragraph at lines 36--37
 
  []
@@ -1323,12 +1315,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 42--43
 
  []
 
-<images/base_cube.png, id=337, 3854.4pt x 2168.1pt>
+
+
+[12]
+<images/base_cube.png, id=300, 3854.4pt x 2168.1pt>
 File: images/base_cube.png Graphic file (type png)
 <use images/base_cube.png>
 Package pdftex.def Info: images/base_cube.png  used on input line 53.
 (pdftex.def)             Requested size: 210.70462pt x 118.50151pt.
-<images/cubemodif.png, id=338, 1463.4675pt x 954.56625pt>
+<images/cubemodif.png, id=301, 1463.4675pt x 954.56625pt>
 File: images/cubemodif.png Graphic file (type png)
 <use images/cubemodif.png>
 Package pdftex.def Info: images/cubemodif.png  used on input line 60.
@@ -1370,7 +1365,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--22
 
 
 
-[14 <./images/base_cube.png> <./images/cubemodif.png>]
+[13 <./images/base_cube.png> <./images/cubemodif.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 24--53
 
  []
@@ -1402,7 +1397,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--53
 
 
 
-[15]
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 56--60
 
  []
@@ -1427,16 +1422,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--19
 
  []
 
-<images/screenshot_editeur.png, id=353, 1927.2pt x 1084.05pt>
+<images/screenshot_editeur.png, id=317, 1927.2pt x 1084.05pt>
 File: images/screenshot_editeur.png Graphic file (type png)
 <use images/screenshot_editeur.png>
 Package pdftex.def Info: images/screenshot_editeur.png  used on input line 24.
 (pdftex.def)             Requested size: 430.00462pt x 241.86615pt.
 
 
-[16]
+[15]
 
-[17 <./images/screenshot_editeur.png>])) (pages/conclusion.tex
+[16 <./images/screenshot_editeur.png>])) (pages/conclusion.tex
 Underfull \hbox (badness 10000) in paragraph at lines 3--9
 
  []
@@ -1456,7 +1451,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--30
 
  []
 
-) (pages/bibliography.tex (main.gls
+) (pages/annexes.tex
+
+[17] (main.gls
 
 [18]) (main.nls
 
@@ -1468,8 +1465,6 @@ File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 10.0pt on input line 7.
 
-
-[20]
 Underfull \hbox (badness 10000) in paragraph at lines 21--27
 \T1/zi4/m/n/10 univ-[]lyon1 . fr / jean-[]claude . iehl / Public / educ / M2PROIMA / 2018 / deferred _ vs _ forward . html$[][]\T1/cmr/m/n/10 .
  []
@@ -1481,46 +1476,47 @@ Underfull \hbox (badness 1577) in paragraph at lines 37--43
 
 
 
-[21{C:/Users/loupe/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1-0.enc}])) (pages/annexes.tex
-
-[22]
-<images/gdb_editeur.png, id=412, 1927.2pt x 1084.05pt>
+[20{C:/Users/loupe/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1-0.enc}])
+<images/gdb_editeur.png, id=371, 1927.2pt x 1084.05pt>
 File: images/gdb_editeur.png Graphic file (type png)
 <use images/gdb_editeur.png>
-Package pdftex.def Info: images/gdb_editeur.png  used on input line 8.
+Package pdftex.def Info: images/gdb_editeur.png  used on input line 13.
 (pdftex.def)             Requested size: 172.00249pt x 96.74977pt.
-<images/gdb_editeur2.png, id=413, 1927.2pt x 1084.05pt>
+<images/gdb_editeur2.png, id=372, 1927.2pt x 1084.05pt>
 File: images/gdb_editeur2.png Graphic file (type png)
 <use images/gdb_editeur2.png>
-Package pdftex.def Info: images/gdb_editeur2.png  used on input line 14.
+Package pdftex.def Info: images/gdb_editeur2.png  used on input line 19.
 (pdftex.def)             Requested size: 172.00249pt x 96.74977pt.
-<images/gdb_editeur3.png, id=414, 1927.2pt x 1084.05pt>
+<images/gdb_editeur3.png, id=373, 1927.2pt x 1084.05pt>
 File: images/gdb_editeur3.png Graphic file (type png)
 <use images/gdb_editeur3.png>
-Package pdftex.def Info: images/gdb_editeur3.png  used on input line 20.
+Package pdftex.def Info: images/gdb_editeur3.png  used on input line 25.
 (pdftex.def)             Requested size: 172.00249pt x 96.74977pt.
 
-Overfull \hbox (2.22166pt too wide) in paragraph at lines 6--24
+Overfull \hbox (2.22166pt too wide) in paragraph at lines 11--29
 [][] []
  []
 
-<images/gdb.png, id=415, 1104.37593pt x 738.50906pt>
+
+
+[21]
+<images/gdb.png, id=383, 1104.37593pt x 738.50906pt>
 File: images/gdb.png Graphic file (type png)
 <use images/gdb.png>
-Package pdftex.def Info: images/gdb.png  used on input line 31.
+Package pdftex.def Info: images/gdb.png  used on input line 36.
 (pdftex.def)             Requested size: 215.0023pt x 143.7664pt.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 31--32
+Overfull \hbox (5.0pt too wide) in paragraph at lines 36--37
  [][] 
  []
 
-<images/gdb_fix.png, id=416, 904.1278pt x 721.94719pt>
+<images/gdb_fix.png, id=384, 904.1278pt x 721.94719pt>
 File: images/gdb_fix.png Graphic file (type png)
 <use images/gdb_fix.png>
-Package pdftex.def Info: images/gdb_fix.png  used on input line 38.
+Package pdftex.def Info: images/gdb_fix.png  used on input line 43.
 (pdftex.def)             Requested size: 215.0023pt x 171.67354pt.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 38--39
+Overfull \hbox (5.0pt too wide) in paragraph at lines 43--44
  [][] 
  []
 
@@ -1531,10 +1527,8 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 ) (C:\Users\loupe\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 )
-
-[23 <./images/gdb_editeur.png (PNG copy)> <./images/gdb_editeur2.png> <./images/gdb_editeur3.png> <./images/gdb.png> <./images/gdb_fix.png>]
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 9.0pt on input line 45.
+(Font)              scaled to size 9.0pt on input line 50.
  (C:\Users\loupe\AppData\Local\Programs\MiKTeX\tex/latex/base\latin1.def
 File: latin1.def 2024/02/08 v1.3d Input encoding file
 ) (C:\Users\loupe\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\se-utf8.def
@@ -1551,33 +1545,36 @@ LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
 
 LaTeX Font Info:    Font shape `T1/zi4/m/it' will be
 (Font)              scaled to size 9.0pt on input line 3.
-<images/Deferred_rendering_pass_col.jpg, id=428, 331.2375pt x 247.92625pt>
+
+
+[22 <./images/gdb_editeur.png (PNG copy)> <./images/gdb_editeur2.png> <./images/gdb_editeur3.png> <./images/gdb.png> <./images/gdb_fix.png>]
+<images/Deferred_rendering_pass_col.jpg, id=399, 331.2375pt x 247.92625pt>
 File: images/Deferred_rendering_pass_col.jpg Graphic file (type jpg)
 <use images/Deferred_rendering_pass_col.jpg>
-Package pdftex.def Info: images/Deferred_rendering_pass_col.jpg  used on input line 52.
+Package pdftex.def Info: images/Deferred_rendering_pass_col.jpg  used on input line 57.
 (pdftex.def)             Requested size: 172.00249pt x 128.7408pt.
-<images/Deferred_rendering_pass_nor.jpg, id=429, 481.8pt x 361.35pt>
+<images/Deferred_rendering_pass_nor.jpg, id=400, 481.8pt x 361.35pt>
 File: images/Deferred_rendering_pass_nor.jpg Graphic file (type jpg)
 <use images/Deferred_rendering_pass_nor.jpg>
-Package pdftex.def Info: images/Deferred_rendering_pass_nor.jpg  used on input line 58.
+Package pdftex.def Info: images/Deferred_rendering_pass_nor.jpg  used on input line 63.
 (pdftex.def)             Requested size: 172.00249pt x 128.9997pt.
-<images/Deferred_rendering_pass_dep.jpg, id=430, 481.8pt x 361.35pt>
+<images/Deferred_rendering_pass_dep.jpg, id=401, 481.8pt x 361.35pt>
 File: images/Deferred_rendering_pass_dep.jpg Graphic file (type jpg)
 <use images/Deferred_rendering_pass_dep.jpg>
-Package pdftex.def Info: images/Deferred_rendering_pass_dep.jpg  used on input line 64.
+Package pdftex.def Info: images/Deferred_rendering_pass_dep.jpg  used on input line 69.
 (pdftex.def)             Requested size: 172.00249pt x 128.9997pt.
-<images/Deferred_rendering_pass_res.jpg, id=431, 481.8pt x 361.35pt>
+<images/Deferred_rendering_pass_res.jpg, id=402, 481.8pt x 361.35pt>
 File: images/Deferred_rendering_pass_res.jpg Graphic file (type jpg)
 <use images/Deferred_rendering_pass_res.jpg>
-Package pdftex.def Info: images/Deferred_rendering_pass_res.jpg  used on input line 70.
+Package pdftex.def Info: images/Deferred_rendering_pass_res.jpg  used on input line 75.
 (pdftex.def)             Requested size: 172.00249pt x 128.9997pt.
 
-Overfull \hbox (2.22166pt too wide) in paragraph at lines 50--74
+Overfull \hbox (2.22166pt too wide) in paragraph at lines 55--79
 [][] []
  []
 
 
-Overfull \hbox (2.22166pt too wide) in paragraph at lines 50--74
+Overfull \hbox (2.22166pt too wide) in paragraph at lines 55--79
 [] [] 
  []
 
@@ -1586,97 +1583,99 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[24]
-<images/raptiquax_rendering_gbuffer_albedo.png, id=460, 603.75563pt x 475.7775pt>
+[23]
+<images/raptiquax_rendering_gbuffer_albedo.png, id=428, 603.75563pt x 475.7775pt>
 File: images/raptiquax_rendering_gbuffer_albedo.png Graphic file (type png)
 <use images/raptiquax_rendering_gbuffer_albedo.png>
-Package pdftex.def Info: images/raptiquax_rendering_gbuffer_albedo.png  used on input line 91.
+Package pdftex.def Info: images/raptiquax_rendering_gbuffer_albedo.png  used on input line 96.
 (pdftex.def)             Requested size: 172.00249pt x 135.5399pt.
-<images/raptiquax_rendering_gbuffer_position.png, id=461, 603.75563pt x 475.7775pt>
+<images/raptiquax_rendering_gbuffer_position.png, id=429, 603.75563pt x 475.7775pt>
 File: images/raptiquax_rendering_gbuffer_position.png Graphic file (type png)
 <use images/raptiquax_rendering_gbuffer_position.png>
-Package pdftex.def Info: images/raptiquax_rendering_gbuffer_position.png  used on input line 97.
+Package pdftex.def Info: images/raptiquax_rendering_gbuffer_position.png  used on input line 102.
 (pdftex.def)             Requested size: 172.00249pt x 135.5399pt.
-<images/raptiquax_rendering_gbuffer_normal.png, id=462, 603.75563pt x 475.7775pt>
+<images/raptiquax_rendering_gbuffer_normal.png, id=430, 603.75563pt x 475.7775pt>
 File: images/raptiquax_rendering_gbuffer_normal.png Graphic file (type png)
 <use images/raptiquax_rendering_gbuffer_normal.png>
-Package pdftex.def Info: images/raptiquax_rendering_gbuffer_normal.png  used on input line 103.
+Package pdftex.def Info: images/raptiquax_rendering_gbuffer_normal.png  used on input line 108.
 (pdftex.def)             Requested size: 172.00249pt x 135.5399pt.
-<images/raptiquax_rendering_gbuffer_extra.png, id=463, 603.75563pt x 475.7775pt>
+<images/raptiquax_rendering_gbuffer_extra.png, id=431, 603.75563pt x 475.7775pt>
 File: images/raptiquax_rendering_gbuffer_extra.png Graphic file (type png)
 <use images/raptiquax_rendering_gbuffer_extra.png>
-Package pdftex.def Info: images/raptiquax_rendering_gbuffer_extra.png  used on input line 109.
+Package pdftex.def Info: images/raptiquax_rendering_gbuffer_extra.png  used on input line 114.
 (pdftex.def)             Requested size: 172.00249pt x 135.5399pt.
 
-Overfull \hbox (2.22166pt too wide) in paragraph at lines 89--113
+Overfull \hbox (2.22166pt too wide) in paragraph at lines 94--118
 [][] []
  []
 
 
-Overfull \hbox (2.22166pt too wide) in paragraph at lines 89--113
+Overfull \hbox (2.22166pt too wide) in paragraph at lines 94--118
 [] [] 
  []
 
-<images/raptiquax_rendering_ssao.png, id=464, 603.75563pt x 475.7775pt>
+<images/raptiquax_rendering_ssao.png, id=432, 603.75563pt x 475.7775pt>
 File: images/raptiquax_rendering_ssao.png Graphic file (type png)
 <use images/raptiquax_rendering_ssao.png>
-Package pdftex.def Info: images/raptiquax_rendering_ssao.png  used on input line 119.
+Package pdftex.def Info: images/raptiquax_rendering_ssao.png  used on input line 124.
 (pdftex.def)             Requested size: 103.20253pt x 81.32394pt.
-<images/raptiquax_rendering_lightings.png, id=465, 603.75563pt x 475.7775pt>
+<images/raptiquax_rendering_lightings.png, id=433, 603.75563pt x 475.7775pt>
 File: images/raptiquax_rendering_lightings.png Graphic file (type png)
 <use images/raptiquax_rendering_lightings.png>
-Package pdftex.def Info: images/raptiquax_rendering_lightings.png  used on input line 125.
+Package pdftex.def Info: images/raptiquax_rendering_lightings.png  used on input line 130.
 (pdftex.def)             Requested size: 103.20253pt x 81.32394pt.
-<images/raptiquax_rendering_ssr.png, id=466, 603.75563pt x 475.7775pt>
+<images/raptiquax_rendering_ssr.png, id=434, 603.75563pt x 475.7775pt>
 File: images/raptiquax_rendering_ssr.png Graphic file (type png)
 <use images/raptiquax_rendering_ssr.png>
-Package pdftex.def Info: images/raptiquax_rendering_ssr.png  used on input line 131.
+Package pdftex.def Info: images/raptiquax_rendering_ssr.png  used on input line 136.
 (pdftex.def)             Requested size: 103.20253pt x 81.32394pt.
-<images/raptiquax_rendering_bloom.png, id=467, 603.75563pt x 475.7775pt>
+<images/raptiquax_rendering_bloom.png, id=435, 603.75563pt x 475.7775pt>
 File: images/raptiquax_rendering_bloom.png Graphic file (type png)
 <use images/raptiquax_rendering_bloom.png>
-Package pdftex.def Info: images/raptiquax_rendering_bloom.png  used on input line 137.
+Package pdftex.def Info: images/raptiquax_rendering_bloom.png  used on input line 142.
 (pdftex.def)             Requested size: 103.20253pt x 81.32394pt.
-<images/raptiquax_rendering_gui.png, id=468, 603.75563pt x 475.7775pt>
+<images/raptiquax_rendering_gui.png, id=436, 603.75563pt x 475.7775pt>
 File: images/raptiquax_rendering_gui.png Graphic file (type png)
 <use images/raptiquax_rendering_gui.png>
-Package pdftex.def Info: images/raptiquax_rendering_gui.png  used on input line 143.
+Package pdftex.def Info: images/raptiquax_rendering_gui.png  used on input line 148.
 (pdftex.def)             Requested size: 103.20253pt x 81.32394pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--147
+Underfull \hbox (badness 10000) in paragraph at lines 122--152
 [][] [] []
  []
 
 
 
-[25 <./images/Deferred_rendering_pass_col.jpg> <./images/Deferred_rendering_pass_nor.jpg> <./images/Deferred_rendering_pass_dep.jpg> <./images/Deferred_rendering_pass_res.jpg>]
-<images/raptiquax_rendering_result.png, id=475, 603.75563pt x 475.7775pt>
+[24 <./images/Deferred_rendering_pass_col.jpg> <./images/Deferred_rendering_pass_nor.jpg> <./images/Deferred_rendering_pass_dep.jpg> <./images/Deferred_rendering_pass_res.jpg>]
+<images/raptiquax_rendering_result.png, id=442, 603.75563pt x 475.7775pt>
 File: images/raptiquax_rendering_result.png Graphic file (type png)
 <use images/raptiquax_rendering_result.png>
-Package pdftex.def Info: images/raptiquax_rendering_result.png  used on input line 152.
+Package pdftex.def Info: images/raptiquax_rendering_result.png  used on input line 157.
 (pdftex.def)             Requested size: 215.0023pt x 169.42851pt.
 
 
-[26 <./images/raptiquax_rendering_gbuffer_albedo.png> <./images/raptiquax_rendering_gbuffer_position.png> <./images/raptiquax_rendering_gbuffer_normal.png> <./images/raptiquax_rendering_gbuffer_extra.png>]
-<images/flstudio.png, id=485, 1403.99532pt x 758.835pt>
+[25 <./images/raptiquax_rendering_gbuffer_albedo.png> <./images/raptiquax_rendering_gbuffer_position.png> <./images/raptiquax_rendering_gbuffer_normal.png> <./images/raptiquax_rendering_gbuffer_extra.png>]
+<images/flstudio.png, id=453, 1403.99532pt x 758.835pt>
 File: images/flstudio.png Graphic file (type png)
 <use images/flstudio.png>
-Package pdftex.def Info: images/flstudio.png  used on input line 159.
+Package pdftex.def Info: images/flstudio.png  used on input line 164.
 (pdftex.def)             Requested size: 430.00462pt x 232.41118pt.
 
 
-[27 <./images/raptiquax_rendering_ssao.png> <./images/raptiquax_rendering_lightings.png> <./images/raptiquax_rendering_ssr.png> <./images/raptiquax_rendering_bloom.png> <./images/raptiquax_rendering_gui.png> <./images/raptiquax_rendering_result.png>]
+[26 <./images/raptiquax_rendering_ssao.png> <./images/raptiquax_rendering_lightings.png> <./images/raptiquax_rendering_ssr.png> <./images/raptiquax_rendering_bloom.png> <./images/raptiquax_rendering_gui.png> <./images/raptiquax_rendering_result.png>]
 
-[28 <./images/flstudio.png>]
-Overfull \hbox (18.49844pt too wide) in alignment at lines 169--209
+[27 <./images/flstudio.png>]
+
+[28]
+Overfull \hbox (18.49844pt too wide) in alignment at lines 301--341
  [] [] 
  []
 
-)
+[29])
 
-[29]
+[30]
 
-[30] (main.aux)
+[31] (main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1686,26 +1685,23 @@ L3 programming layer <2025-01-18>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1993AE74421186BCB8682596A3B6042D;5877.
+(rerunfilecheck)             Checksum: B5BE6C4B8C9B5A8B814D391A3BDBAD14;5958.
  ) 
 Here is how much of TeX's memory you used:
- 30438 strings out of 473523
- 573854 string characters out of 5714631
- 1404210 words of memory out of 5000000
- 53015 multiletter control sequences out of 15000+600000
+ 30433 strings out of 473523
+ 573628 string characters out of 5714631
+ 1392068 words of memory out of 5000000
+ 53011 multiletter control sequences out of 15000+600000
  580469 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 110i,14n,131p,2458b,1997s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 110i,14n,131p,2459b,2829s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0700.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1000.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0500.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0900.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1728.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <C:\Users\loupe\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk><C:/Users/loupe/AppData/Local/Programs/MiKTeX/fonts/type1/public/inconsolata/Inconsolata-zi4b.pfb><C:/Users/loupe/AppData/Local/Programs/MiKTeX/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><C:/Users/loupe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/loupe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/loupe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/loupe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/loupe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/loupe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/loupe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/loupe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on main.pdf (30 pages, 9326221 bytes).
+Output written on main.pdf (31 pages, 9327590 bytes).
 PDF statistics:
- 1250 PDF objects out of 1440 (max. 8388607)
- 149 named destinations out of 1000 (max. 500000)
+ 1256 PDF objects out of 1440 (max. 8388607)
+ 150 named destinations out of 1000 (max. 500000)
  461 words of extra memory for PDF output out of 10000 (max. 10000000)
 

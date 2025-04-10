@@ -1,5 +1,6 @@
 /.vscode/*
 /bin/*
+/test/bin/*
 /obj/*
 /.venv/*
 /src/__processed__/*

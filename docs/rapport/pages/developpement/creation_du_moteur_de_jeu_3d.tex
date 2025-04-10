@@ -72,7 +72,6 @@
     finale, en utilisant les informations de la scène stockées dans le
     \gls{GBuffer} et en appliquant les effets de post-processing.
     Dans notre moteur, nous avons implémenté les techniques de rendu suivantes :
-    \begin{multicols}{2}
     \begin{itemize}
         \item Le rendu différé
         \item Le rendu de la lumière en suivant le modèle de Phong 
@@ -82,7 +81,6 @@
         \item Le rendu d'éblouissement en utilisant le \gls{bloom}
         \item L'anti-aliasing en utilisant le \gls{smaa}
     \end{itemize}
-    \end{multicols}
 
     Une grande partie de ces techniques sont inspirées des travaux de Joey de Vries
     dans son site web LearnOpenGL \cite{learnopengl}, auquels nous avons
@@ -106,137 +104,9 @@
     \newpage
 
     Soit deux objets rigides, \( A \) et \( B \), se déplacent et entrent
-    en collision. Voici comment nous calculons la réponse à la collision
-    en utilisant les concepts de base de la physique des corps rigides.
-
-    \begin{multicols}{2}
-
-        \paragraph{Norme de la collision}
-        La norme de la collision entre les deux corps est donnée par un vecteur
-        normal à la surface de collision. Si les corps ont une normale de
-        collision définie, cette norme est utilisée dans les calculs suivants.
-    
-        \nomenclature{$\mathbf{n}$}{Vecteur normal à la surface de collision}
-        \nomenclature{$\mathbf{\lambda}_A$}{Normale de l'objet $A$}
-        \nomenclature{$\mathbf{\lambda}_B$}{Normale de l'objet $B$}
-        
-        \begin{equation}
-        \mathbf{n} = \mathbf{\lambda}_A \cdot \mathbf{\lambda}_B
-        \end{equation}
-    
-        \paragraph{Vitesse relative}
-        La vitesse relative des deux objets rigides \( A \) et \( B \) est calculée
-        comme la différence entre leurs vitesses respectives :
-    
-        \nomenclature{$\mathbf{v}_{\text{relative}}$}{Vitesse relative entre deux objets}
-        \nomenclature{$\mathbf{v}_A$}{Vitesse de l'objet $A$}
-        \nomenclature{$\mathbf{v}_B$}{Vitesse de l'objet $B$}
-        
-        \begin{equation}
-        \mathbf{v}_{\text{relative}} = \mathbf{v}_B - \mathbf{v}_A
-        \end{equation}
-    
-        \paragraph{Vitesse relative selon la direction normale}
-        \nomenclature{$v_{\text{normal}}$}{Vitesse relative projetée sur la normale de collision}
-        
-        \begin{equation}
-        v_{\text{normal}} = \mathbf{v}_{\text{relative}} \cdot \mathbf{n}
-        \end{equation}
-    
-        \paragraph{Coefficient de restitution (élasticité de la collision)}
-        \nomenclature{$e$}{Coefficient de restitution}
-        
-        \begin{equation}
-        e = 0.02
-        \end{equation}
-    
-        \columnbreak
-    
-        \paragraph{Calcul de l'impulsion}
-        \nomenclature{$I_{scalaire}$}{Quantité scalaire représentant l'impulsion échangée}
-        \nomenclature{$m_A$}{Masse de l'objet $A$}
-        \nomenclature{$m_B$}{Masse de l'objet $B$}
-        
-        \begin{equation}
-        I_{scalaire} = \frac{(1 + e) \cdot v_{\text{normal}}}{m_A^{-1} + m_B^{-1}}
-        \end{equation}
-    
-        \paragraph{Calcul du vecteur d'impulsion}
-        \nomenclature{$\mathbf{I}$}{Vecteur d'impulsion appliqué pendant la collision}
-        
-        \begin{equation}
-        \mathbf{I} = I_{scalaire} \cdot \mathbf{n}
-        \end{equation}
-    
-        \paragraph{Application de l'impulsion et du couple}
-        \nomenclature{$\mathbf{r}_A$}{Vecteur du centre de masse de $A$ au point d’impact}
-        \nomenclature{$\mathbf{r}_B$}{Vecteur du centre de masse de $B$ au point d’impact}
-        \nomenclature{$\mathbf{C}_A$}{Centre de masse de $A$}
-        \nomenclature{$\mathbf{C}_B$}{Centre de masse de $B$}
-        \nomenclature{$\mathbf{P}_{\text{impact}}$}{Point d’impact}
-        
-        \begin{equation}
-        \mathbf{r}_A = \mathbf{P}_{\text{impact}} - \mathbf{C}_A
-        \end{equation}
-        \begin{equation}
-        \mathbf{r}_B = \mathbf{P}_{\text{impact}} - \mathbf{C}_B
-        \end{equation}
-        \begin{equation}
-        \text{Couple sur A} = \mathbf{r}_A \times \mathbf{I}
-        \end{equation}
-        \begin{equation}
-        \text{Couple sur B} = \mathbf{r}_B \times \mathbf{I}
-        \end{equation}
-    
-        \paragraph{Application de l'impulsion}
-        \nomenclature{$\mathbf{v}_A'$}{Nouvelle vitesse de l’objet $A$}
-        \nomenclature{$\mathbf{v}_B'$}{Nouvelle vitesse de l’objet $B$}
-        
-        \begin{equation}
-        \mathbf{v}_A' = \mathbf{v}_A + \mathbf{I} \cdot m_A^{-1}
-        \end{equation}
-        \begin{equation}
-        \mathbf{v}_B' = \mathbf{v}_B - \mathbf{I} \cdot m_B^{-1}
-        \end{equation}
-    
-        \paragraph{Correction de la pénétration}
-        \nomenclature{$\delta$}{Profondeur de pénétration}
-        \nomenclature{$\mathbf{C}$}{Correction appliquée pour compenser la pénétration}
-        \nomenclature{$\mathbf{P}_A$}{Position initiale de l'objet $A$}
-        \nomenclature{$\mathbf{P}_B$}{Position initiale de l'objet $B$}
-        \nomenclature{$\mathbf{P}_A'$}{Nouvelle position de l'objet $A$}
-        \nomenclature{$\mathbf{P}_B'$}{Nouvelle position de l'objet $B$}
-        
-        \[
-        \mathbf{C} = \delta \cdot \mathbf{n}
-        \]
-        \begin{equation}
-        \mathbf{P}_A' = \mathbf{P}_A - \mathbf{C}
-        \end{equation}
-        \begin{equation}
-        \mathbf{P}_B' = \mathbf{P}_B + \mathbf{C}
-        \end{equation}
-    
-        \paragraph{Calcul du couple et de l'inertie}
-        \nomenclature{$\mathbf{I}_{\text{locale}}$}{Matrice d’inertie locale}
-        \nomenclature{$w$}{Largeur de l'objet}
-        \nomenclature{$h$}{Hauteur de l'objet}
-        \nomenclature{$d$}{Profondeur de l'objet}
-    
-        \begin{equation}
-        \mathbf{I}_{\text{locale}} = \frac{m}{12} \begin{bmatrix} h^2 + d^2 & 0 & 0 \\ 0 & w^2 + d^2 & 0 \\ 0 & 0 & w^2 + h^2 \end{bmatrix}
-        \end{equation}
-    
-        \paragraph{Accélération angulaire}
-        \nomenclature{$\mathbf{\alpha}$}{Accélération angulaire}
-        \nomenclature{$\mathbf{T}$}{Couple appliqué}
-        \nomenclature{$\mathbf{I}^{-1}$}{Inverse de la matrice d’inertie}
-        
-        \begin{equation}
-        \mathbf{\alpha} = \mathbf{I}^{-1} \cdot \mathbf{T}
-        \end{equation}
-    
-    \end{multicols}
+    en collision. \( A \) et \( B \) se repoussent mutuellement selon les
+    forces de contact, qui sont proportionnelles à la vitesse de choc et à la
+    masse de chaque objet, tel que décrit par les équations de la section \ref{sec:physics_equations}.
 
 \subsubsection{Conception de l'arbre de données}
 
