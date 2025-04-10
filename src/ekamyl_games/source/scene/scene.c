@@ -252,6 +252,8 @@ int play_scene (SceneManager_t * manager, SDL_Event * event) {
     currentScene->update(currentScene, manager) ;
     currentScene->render(currentScene) ;
 
+    // dessine le nouvel affichage 
+    SDL_RenderPresent(renderer);
 
     // Vérification des scènes en attentes
     if (strcmp(manager->nextScene, "") != 0) {

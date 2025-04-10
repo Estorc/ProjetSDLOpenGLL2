@@ -1,0 +1,5 @@
+Node:1
+Area(0,1)
+BoxCShape[m0,0,0,s1,1,0.1]
+{script_cc_computer_screen_init,script_cc_computer_screen_update,script_cc_computer_screen_signal}:1
+TexturedMesh(assets/textures/texture.png)[m0,0,0r90,0,0s1,1,0.5a1v1]
