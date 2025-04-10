@@ -43,6 +43,8 @@ sudo apt install build-essential libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev l
 ```
 
 Compilation (unix systemes) :
+```sh
 make            # Compile le mini-jeu.
-mak run         # Compile et lance le mini-jeu.
+make run         # Compile et lance le mini-jeu.
 make clear      # Nettoie les fichiers générés.
+```
