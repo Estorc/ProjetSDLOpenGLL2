@@ -1,4 +1,4 @@
-# ProjetSDLOpenGLL2
+# RaptiquaX
 
 ## Context
 
