@@ -45,34 +45,8 @@ Arch based distro: ``pacman -S --needed base-devel kdialog sdl2 sdl2_image sdl2_
 
 MSYS2 based (Windows): ``pacman -S make mingw-w64-x86_64-python pacman -S mingw-w64-x86_64-python-pip mingw-w64-x86_64-SDL2 mingw-w64-x86_64-SDL2_gfx mingw-w64-x86_64-SDL2_ttf mingw-w64-x86_64-SDL2_image mingw-w64-x86_64-SDL2_mixer mingw-w64-x86_64-glew mingw-w64-x86_64-freeglut rsync``
 
-## Compilation
-```
-make install    # Installe toutes les librairies nécessaires.
-make tools      # Construit les outils de compilation.
-make test       # Build tout les fichiers de test dans le repertoire bin avec un fichier
-                # test global pour exécuté tout les fichiers tests d'une traite 
-make            # Construit le projet avec la configuration par défaut.
-make clear      # Efface tous les fichiers du build.
-make debug      # Construit le projet avec la configuration de déboggage.
-```
 
 ## GIT
 ### Large git
-The .a libs use large git : https://git-lfs.github.com
-
-### Clone repository
-```sh
-cd <EMPLACEMENT_DU_PROJET>
-git clone https://github.com/Estorc/ProjetSDLOpenGLL2.git
-```
-
-### Récupérer les changements
-```git
-git pull                # Permet de récupérer les dernières mises à jour du projet.
-```
-### Envoyer les changements
-```git
-git commit -a           # Prépare le commit.
-git push -u origin main # Permet d'envoyer les changements locaux au git.
-```
+The libs use large git : https://git-lfs.github.com
 
