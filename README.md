@@ -26,7 +26,7 @@ At the start of the game, a brief tutorial introduces you to the essential contr
 https://docs.google.com/spreadsheets/d/13zt-Oj6qx9QxYYYmqX78YSamAOPGoE6hBWrT9ppttbs/edit?usp=sharing
 
 ## Documentation
-https://estorc.github.io/ProjetSDLOpenGLL2/html/
+https://estorc.github.io/RaptiquaX/html/
 
 ## Librairies
 - SDL2
